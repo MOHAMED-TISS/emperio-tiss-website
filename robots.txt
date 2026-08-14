@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tiss-group.com/sitemap.xml
