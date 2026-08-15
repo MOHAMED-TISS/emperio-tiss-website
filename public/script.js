@@ -1,69 +1,43 @@
-/* =====================================================
+/* =========================================================
    EMPERIO TISS
-   Interactions & Scroll Animations
-===================================================== */
+   Global Interaction & Animation System
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===================================================
+  /* -------------------------------------------------------
      PAGE LOAD
-  =================================================== */
+  ------------------------------------------------------- */
 
-  document.body.classList.add("loaded");
-
-
-  /* ===================================================
-     HEADER
-  =================================================== */
-
-  const header = document.querySelector(".site-header");
-
-  const updateHeader = () => {
-
-    if (!header) return;
-
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-
-  };
-
-  updateHeader();
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
+  requestAnimationFrame(() => {
+    document.body.classList.add("loaded");
+  });
 
 
-  /* ===================================================
+  /* -------------------------------------------------------
      MOBILE MENU
-  =================================================== */
+  ------------------------------------------------------- */
 
-  const menuButton =
-    document.querySelector(".menu-toggle");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
 
-  const nav =
-    document.querySelector(".nav");
+  if (menuToggle && nav) {
 
-  if (menuButton && nav) {
+    menuToggle.addEventListener("click", () => {
 
-    menuButton.addEventListener("click", () => {
+      const isOpen =
+        menuToggle.getAttribute("aria-expanded") === "true";
 
-      const open =
-        nav.classList.toggle("open");
-
-      menuButton.classList.toggle(
-        "active",
-        open
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
       );
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(open)
+      nav.classList.toggle("nav-open", !isOpen);
+
+      document.body.classList.toggle(
+        "menu-open",
+        !isOpen
       );
 
     });
@@ -73,13 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       link.addEventListener("click", () => {
 
-        nav.classList.remove("open");
-
-        menuButton.classList.remove("active");
-
-        menuButton.setAttribute(
+        menuToggle.setAttribute(
           "aria-expanded",
           "false"
+        );
+
+        nav.classList.remove("nav-open");
+
+        document.body.classList.remove(
+          "menu-open"
         );
 
       });
@@ -89,12 +65,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* ===================================================
-     SCROLL REVEALS
-  =================================================== */
+  /* -------------------------------------------------------
+     SCROLL REVEAL
+  ------------------------------------------------------- */
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(
+    ".reveal, " +
+    ".product-card, " +
+    ".market, " +
+    ".step, " +
+    ".network-region, " +
+    ".network-center, " +
+    ".network-line"
+  );
+
 
   if ("IntersectionObserver" in window) {
 
@@ -104,121 +88,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
           entries.forEach(entry => {
 
-            if (
-              entry.isIntersecting
-            ) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
+            if (!entry.isIntersecting) {
+              return;
             }
+
+            entry.target.classList.add(
+              "visible"
+            );
+
+            observer.unobserve(
+              entry.target
+            );
 
           });
 
         },
         {
           threshold: 0.12,
-
-          rootMargin:
-            "0px 0px -60px 0px"
+          rootMargin: "0px 0px -70px 0px"
         }
       );
 
 
     revealElements.forEach(element => {
-
       observer.observe(element);
-
     });
 
   } else {
 
     revealElements.forEach(element => {
-
       element.classList.add("visible");
-
     });
 
   }
 
 
-  /* ===================================================
-     NETWORK LINES
-  =================================================== */
+  /* -------------------------------------------------------
+     HEADER SCROLL STATE
+  ------------------------------------------------------- */
 
-  const network =
-    document.querySelector(".network");
+  const header =
+    document.querySelector(".site-header");
 
-  if (network) {
+  if (header) {
 
-    const lines =
-      network.querySelectorAll(
-        ".network-line"
-      );
+    const updateHeader = () => {
 
-    if ("IntersectionObserver" in window) {
-
-      const networkObserver =
-        new IntersectionObserver(
-          entries => {
-
-            entries.forEach(entry => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                lines.forEach(
-                  (line, index) => {
-
-                    setTimeout(() => {
-
-                      line.classList.add(
-                        "visible"
-                      );
-
-                    }, index * 250);
-
-                  }
-                );
-
-                networkObserver.unobserve(
-                  entry.target
-                );
-
-              }
-
-            });
-
-          },
-          {
-            threshold: .25
-          }
+      if (window.scrollY > 40) {
+        header.classList.add("header-scrolled");
+      } else {
+        header.classList.remove(
+          "header-scrolled"
         );
+      }
 
-      networkObserver.observe(network);
+    };
 
-    } else {
+    updateHeader();
 
-      lines.forEach(line => {
-
-        line.classList.add("visible");
-
-      });
-
-    }
+    window.addEventListener(
+      "scroll",
+      updateHeader,
+      {
+        passive: true
+      }
+    );
 
   }
 
 
-  /* ===================================================
-     SMOOTH INTERNAL LINKS
-  =================================================== */
+  /* -------------------------------------------------------
+     SMOOTH ANCHOR NAVIGATION
+  ------------------------------------------------------- */
 
   document
     .querySelectorAll('a[href^="#"]')
@@ -243,23 +184,15 @@ document.addEventListener("DOMContentLoaded", () => {
               targetId
             );
 
-          if (!target) return;
+          if (!target) {
+            return;
+          }
 
           event.preventDefault();
 
-          const headerHeight =
-            header
-              ? header.offsetHeight
-              : 0;
-
-          const targetPosition =
-            target.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth"
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
           });
 
         }
@@ -268,15 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* ===================================================
-     PARALLAX HERO
-  =================================================== */
+  /* -------------------------------------------------------
+     IMAGE PARALLAX
+  ------------------------------------------------------- */
 
-  const heroImage =
-    document.querySelector(".hero-image");
+  const parallaxImages =
+    document.querySelectorAll(
+      "[data-parallax]"
+    );
+
 
   if (
-    heroImage &&
+    parallaxImages.length &&
     !window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches
@@ -284,69 +220,338 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let ticking = false;
 
+    const updateParallax = () => {
+
+      const viewportHeight =
+        window.innerHeight;
+
+      parallaxImages.forEach(image => {
+
+        const rect =
+          image.getBoundingClientRect();
+
+        if (
+          rect.bottom < 0 ||
+          rect.top > viewportHeight
+        ) {
+          return;
+        }
+
+        const progress =
+          (
+            viewportHeight - rect.top
+          ) /
+          (
+            viewportHeight + rect.height
+          );
+
+        const movement =
+          (progress - 0.5) * -45;
+
+        image.style.transform =
+          `translate3d(0, ${movement}px, 0)`;
+
+      });
+
+      ticking = false;
+    };
+
+
     window.addEventListener(
       "scroll",
       () => {
 
-        if (ticking) return;
+        if (!ticking) {
 
-        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(
+            updateParallax
+          );
 
-          const scroll =
-            window.scrollY;
+          ticking = true;
 
-          if (scroll < window.innerHeight) {
-
-            heroImage.style.transform =
-              `scale(1.08) translateY(${scroll * 0.12}px)`;
-
-          }
-
-          ticking = false;
-
-        });
-
-        ticking = true;
+        }
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
   }
 
 
-  /* ===================================================
-     FOOTER YEAR
-  =================================================== */
+  /* -------------------------------------------------------
+     PRODUCT CARD MOUSE MOVEMENT
+  ------------------------------------------------------- */
 
-  const year =
-    document.getElementById("year");
-
-  if (year) {
-
-    year.textContent =
-      new Date().getFullYear();
-
-  }
+  const cards =
+    document.querySelectorAll(
+      ".product-card"
+    );
 
 
-  /* ===================================================
-     IMAGE FALLBACK
-  =================================================== */
+  if (
+    cards.length &&
+    window.matchMedia(
+      "(hover: hover)"
+    ).matches
+  ) {
 
-  document
-    .querySelectorAll("img")
-    .forEach(image => {
+    cards.forEach(card => {
 
-      image.addEventListener(
-        "error",
+      card.addEventListener(
+        "mousemove",
+        event => {
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
+            event.clientX - rect.left;
+
+          const y =
+            event.clientY - rect.top;
+
+          const rotateX =
+            ((y / rect.height) - 0.5) * -2;
+
+          const rotateY =
+            ((x / rect.width) - 0.5) * 2;
+
+          card.style.transform =
+            `translateY(-4px)
+             perspective(1000px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+
+        }
+      );
+
+
+      card.addEventListener(
+        "mouseleave",
         () => {
 
-          image.style.opacity = "0";
+          card.style.transform = "";
 
         }
       );
 
     });
+
+  }
+
+
+  /* -------------------------------------------------------
+     NETWORK ANIMATION
+  ------------------------------------------------------- */
+
+  const network =
+    document.querySelector(".network");
+
+  if (network) {
+
+    const center =
+      network.querySelector(
+        ".network-center"
+      );
+
+    const lines =
+      network.querySelectorAll(
+        ".network-line"
+      );
+
+    const regions =
+      network.querySelectorAll(
+        ".network-region"
+      );
+
+
+    const networkObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            if (center) {
+              center.classList.add(
+                "visible"
+              );
+            }
+
+            regions.forEach(
+              (region, index) => {
+
+                setTimeout(
+                  () => {
+                    region.classList.add(
+                      "visible"
+                    );
+                  },
+                  index * 180
+                );
+
+              }
+            );
+
+            lines.forEach(
+              (line, index) => {
+
+                setTimeout(
+                  () => {
+                    line.classList.add(
+                      "visible"
+                    );
+                  },
+                  450 + index * 250
+                );
+
+              }
+            );
+
+            networkObserver.unobserve(
+              entry.target
+            );
+
+          });
+
+        },
+        {
+          threshold: .25
+        }
+      );
+
+
+    networkObserver.observe(network);
+
+  }
+
+
+  /* -------------------------------------------------------
+     STAGGER GENERIC ELEMENTS
+  ------------------------------------------------------- */
+
+  document
+    .querySelectorAll(
+      "[data-stagger]"
+    )
+    .forEach(container => {
+
+      const children =
+        container.children;
+
+      Array.from(children).forEach(
+        (child, index) => {
+
+          child.style.transitionDelay =
+            `${index * 100}ms`;
+
+        }
+      );
+
+    });
+
+
+  /* -------------------------------------------------------
+     CURRENT YEAR
+  ------------------------------------------------------- */
+
+  document
+    .querySelectorAll(
+      "[data-year], #year"
+    )
+    .forEach(element => {
+
+      element.textContent =
+        new Date().getFullYear();
+
+    });
+
+
+  /* -------------------------------------------------------
+     IMAGE LOADING
+  ------------------------------------------------------- */
+
+  document
+    .querySelectorAll("img")
+    .forEach(image => {
+
+      if (image.complete) {
+        image.classList.add(
+          "image-loaded"
+        );
+        return;
+      }
+
+      image.addEventListener(
+        "load",
+        () => {
+          image.classList.add(
+            "image-loaded"
+          );
+        },
+        {
+          once: true
+        }
+      );
+
+    });
+
+
+  /* -------------------------------------------------------
+     ESCAPE KEY
+  ------------------------------------------------------- */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      if (menuToggle) {
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      }
+
+      if (nav) {
+        nav.classList.remove(
+          "nav-open"
+        );
+      }
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+    }
+  );
+
+
+  /* -------------------------------------------------------
+     PREVENT ANIMATION JUMP ON BACK/FORWARD CACHE
+  ------------------------------------------------------- */
+
+  window.addEventListener(
+    "pageshow",
+    event => {
+
+      if (event.persisted) {
+        document.body.classList.add(
+          "loaded"
+        );
+      }
+
+    }
+  );
 
 });
