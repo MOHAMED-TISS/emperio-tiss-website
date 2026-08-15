@@ -4,39 +4,37 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Products — EMPERIO TISS</title>
 
   <meta
     name="description"
-    content="EMPERIO TISS — Professional food supply connecting Europe, Africa and the Middle East."
+    content="Explore seafood, fish, fruits, vegetables and seasonal products supplied by EMPERIO TISS across professional food markets."
   >
-
-  <meta property="og:title" content="EMPERIO TISS — Products">
-  <meta
-    property="og:description"
-    content="Fish & Seafood, Fruits & Vegetables and Seasonal Products."
-  >
-  <meta property="og:type" content="website">
-
-  <title>Products | EMPERIO TISS</title>
-
-  <link rel="icon" href="../logo.png">
-
-  <!-- =====================================================
-       FONTS
-  ====================================================== -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="icon"
+    href="../logo.png"
+  >
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
 
-  <!-- MAIN CSS -->
-
-  <link rel="stylesheet" href="../style.css">
+  <!-- Global stylesheet -->
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
 
 </head>
 
@@ -44,21 +42,18 @@
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
-<header class="site-header" id="top">
+<header class="site-header">
 
   <div class="container nav-wrap">
 
-
-    <!-- LOGO -->
-
     <a
-      class="brand"
       href="../index.html"
-      aria-label="EMPERIO TISS home"
+      class="brand"
+      aria-label="EMPERIO TISS"
     >
 
       <img
@@ -69,52 +64,35 @@
     </a>
 
 
-    <!-- MOBILE MENU -->
-
     <button
       class="menu-toggle"
+      type="button"
       aria-label="Open navigation"
       aria-expanded="false"
-      aria-controls="main-navigation"
     >
       ☰
     </button>
 
 
-    <!-- NAVIGATION -->
+    <nav class="nav">
 
-    <nav
-      class="nav"
-      id="main-navigation"
-      aria-label="Main navigation"
-    >
+      <a href="../index.html">
+        Home
+      </a>
 
+      <a href="../about/about.html">
+        About
+      </a>
 
       <a
-        href="index.html"
+        href="../products/index.html"
         class="active"
       >
         Products
       </a>
 
-
       <a href="../markets/markets.html">
         Markets
-      </a>
-
-
-      <a href="../index.html#services">
-        Services
-      </a>
-
-
-      <a href="../index.html#about">
-        Company
-      </a>
-
-
-      <a href="../index.html#contact">
-        Contact
       </a>
 
 
@@ -126,7 +104,7 @@
       >
 
         <a
-          href="index.html"
+          href="../products/index.html"
           class="active"
         >
           EN
@@ -147,15 +125,12 @@
       </div>
 
 
-      <!-- CTA -->
-
       <a
         class="nav-cta"
         href="../index.html#contact"
       >
         Business enquiry
       </a>
-
 
     </nav>
 
@@ -165,53 +140,51 @@
 
 
 
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <main>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<section class="hero product-hero">
 
-<section class="hero products-hero">
+  <div class="container">
 
-  <div class="container hero-content">
+    <div class="hero-content">
 
+      <p class="eyebrow">
+        Products
+      </p>
 
-    <p class="eyebrow">
-      EMPERIO TISS · PRODUCTS
-    </p>
+      <h1>
+        Products built
+        for professional markets.
+      </h1>
 
+      <p class="hero-text">
+        Seafood, fish, fruits, vegetables and seasonal
+        products selected around the requirements of
+        professional buyers and distribution markets.
+      </p>
 
-    <h1>
-      Products<br>
-      for connected markets.
-    </h1>
+      <div class="hero-actions">
 
+        <a
+          href="#product-categories"
+          class="button primary"
+        >
+          Explore products
+        </a>
 
-    <p class="hero-text">
-      A focused product structure built around professional
-      food markets, availability, seasonality and destination.
-    </p>
+        <a
+          href="../index.html#contact"
+          class="button secondary"
+        >
+          Business enquiry
+        </a>
 
-
-    <div class="hero-actions">
-
-
-      <a
-        class="button primary"
-        href="#categories"
-      >
-        Explore categories
-      </a>
-
-
-      <a
-        class="button secondary"
-        href="../markets/markets.html"
-      >
-        Explore markets
-      </a>
-
+      </div>
 
     </div>
 
@@ -219,46 +192,322 @@
 
 
   <div class="hero-scroll">
+
+    <span>
+      SCROLL
+    </span>
+
     ↓
+
   </div>
 
 </section>
 
 
 
-<!-- =====================================================
-     INTRODUCTION
-===================================================== -->
+<!-- =========================================================
+     PRODUCT INTRO
+========================================================= -->
 
 <section class="section">
 
   <div class="container">
 
-
-    <div class="section-head">
-
+    <div class="section-head fade-up">
 
       <div>
 
         <p class="eyebrow dark">
-          OUR PRODUCTS
+          Product categories
         </p>
 
+        <h2>
+          From the sea
+          to the field.
+        </h2>
+
+      </div>
+
+      <p>
+        Our product portfolio is organised around the
+        categories most relevant to our sourcing and
+        distribution activity.
+      </p>
+
+    </div>
+
+
+    <div
+      id="product-categories"
+      class="cards four"
+    >
+
+
+      <!-- SEAFOOD -->
+
+      <article class="card product-card fade-up">
+
+        <span class="card-number">
+          01 · SEAFOOD
+        </span>
+
+        <div>
+
+          <h3>
+            Seafood
+          </h3>
+
+          <p>
+            Fish, shellfish and cephalopods for
+            professional wholesale and distribution.
+          </p>
+
+        </div>
+
+        <a
+          href="seafood.html"
+          class="product-link"
+        >
+          Explore seafood →
+        </a>
+
+      </article>
+
+
+      <!-- FRUITS & VEGETABLES -->
+
+      <article class="card product-card fade-up">
+
+        <span class="card-number">
+          02 · PRODUCE
+        </span>
+
+        <div>
+
+          <h3>
+            Fruits & vegetables
+          </h3>
+
+          <p>
+            Fresh produce sourced from relevant
+            production regions and prepared for
+            professional markets.
+          </p>
+
+        </div>
+
+        <a
+          href="fruits-vegetables.html"
+          class="product-link"
+        >
+          Explore produce →
+        </a>
+
+      </article>
+
+
+      <!-- SEASONAL -->
+
+      <article class="card product-card fade-up">
+
+        <span class="card-number">
+          03 · SEASONAL
+        </span>
+
+        <div>
+
+          <h3>
+            Seasonal
+          </h3>
+
+          <p>
+            Products shaped by harvest periods,
+            availability and market demand.
+          </p>
+
+        </div>
+
+        <a
+          href="seasonal.html"
+          class="product-link"
+        >
+          View seasonal →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SEAFOOD FEATURE
+========================================================= -->
+
+<section class="marine-route">
+
+  <div class="container">
+
+    <div class="section-head fade-up">
+
+      <div>
+
+        <p class="eyebrow">
+          01 · Seafood
+        </p>
 
         <h2>
-          Three categories.<br>
-          One supply network.
+          From coastal
+          supply to market.
+        </h2>
+
+      </div>
+
+      <p>
+        Seafood is a core part of our activity, with
+        sourcing and distribution focused on professional
+        markets and reliable delivery routes.
+      </p>
+
+    </div>
+
+
+    <div class="route-items">
+
+
+      <div class="route-item fade-up">
+
+        <strong>
+          Fish
+        </strong>
+
+        <span>
+          FRESH · FROZEN
+        </span>
+
+      </div>
+
+
+      <div class="route-item fade-up">
+
+        <strong>
+          Shellfish
+        </strong>
+
+        <span>
+          PROFESSIONAL SUPPLY
+        </span>
+
+      </div>
+
+
+      <div class="route-item fade-up">
+
+        <strong>
+          Cephalopods
+        </strong>
+
+        <span>
+          WHOLESALE MARKETS
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="section-link-row">
+
+      <a
+        href="seafood.html"
+        class="text-link"
+      >
+        Explore seafood
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PRODUCE FEATURE
+========================================================= -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="two-col">
+
+
+      <div class="intro-copy fade-up">
+
+        <p class="eyebrow dark">
+          02 · Fruits & vegetables
+        </p>
+
+        <h2>
+          Fresh produce
+          with a clear route.
         </h2>
 
       </div>
 
 
-      <p>
-        EMPERIO TISS works across a focused range of food
-        categories, allowing each enquiry to be structured
-        around product, market and destination.
-      </p>
+      <div class="intro-copy fade-up">
 
+        <p>
+          We develop sourcing opportunities around
+          fruits and vegetables from production regions
+          connected to our target markets.
+        </p>
+
+        <p>
+          Availability, seasonality, quality and logistics
+          are considered together when building a product
+          programme.
+        </p>
+
+
+        <div class="section-link-row">
+
+          <a
+            href="fruits-vegetables.html"
+            class="text-link"
+          >
+            Explore fruits & vegetables
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCT STATEMENT -->
+
+    <div class="large-statement fade-up">
+
+      <span>
+        Product philosophy
+      </span>
+
+      <strong>
+        Quality · Timing · Route
+      </strong>
 
     </div>
 
@@ -268,286 +517,121 @@
 
 
 
-<!-- =====================================================
-     PRODUCT CATEGORIES
-===================================================== -->
-
-<section
-  class="section products"
-  id="categories"
->
-
-  <div class="container">
-
-
-    <div class="cards four">
-
-
-      <!-- =================================================
-           01 — FISH & SEAFOOD
-      ================================================== -->
-
-      <a
-        class="card product-card"
-        href="seafood.html"
-        data-reveal
-      >
-
-
-        <div class="card-number">
-          01
-        </div>
-
-
-        <div>
-
-          <h3>
-            Fish & Seafood
-          </h3>
-
-
-          <p>
-            Fresh and frozen seafood supply structured
-            around product specifications, availability,
-            destination and market requirements.
-          </p>
-
-        </div>
-
-
-        <span class="product-link">
-          Explore category →
-        </span>
-
-
-      </a>
-
-
-
-      <!-- =================================================
-           02 — FRUITS & VEGETABLES
-      ================================================== -->
-
-      <a
-        class="card product-card"
-        href="fruits-vegetables.html"
-        data-reveal
-      >
-
-
-        <div class="card-number">
-          02
-        </div>
-
-
-        <div>
-
-          <h3>
-            Fruits & Vegetables
-          </h3>
-
-
-          <p>
-            Fresh produce opportunities coordinated around
-            seasonality, availability, specifications and
-            destination requirements.
-          </p>
-
-        </div>
-
-
-        <span class="product-link">
-          Explore category →
-        </span>
-
-
-      </a>
-
-
-
-      <!-- =================================================
-           03 — SEASONAL PRODUCTS
-      ================================================== -->
-
-      <a
-        class="card product-card"
-        href="seasonal.html"
-        data-reveal
-      >
-
-
-        <div class="card-number">
-          03
-        </div>
-
-
-        <div>
-
-          <h3>
-            Seasonal Products
-          </h3>
-
-
-          <p>
-            Selected seasonal opportunities responding
-            to market demand, timing and availability.
-          </p>
-
-        </div>
-
-
-        <span class="product-link">
-          Explore category →
-        </span>
-
-
-      </a>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MARKET CONNECTION
-===================================================== -->
+<!-- =========================================================
+     SEASONAL FEATURE
+========================================================= -->
 
 <section class="section dark-section">
 
   <div class="container">
 
-
-    <div class="section-head light">
-
+    <div class="section-head fade-up">
 
       <div>
 
         <p class="eyebrow">
-          MARKET CONNECTION
+          03 · Seasonal
         </p>
 
-
         <h2>
-          From origin<br>
-          to destination.
+          The right product
+          at the right time.
         </h2>
 
       </div>
 
-
       <p>
-        Product opportunities are evaluated in relation
-        to the markets we serve across Europe, Africa
-        and the Middle East.
+        Seasonal opportunities allow us to respond to
+        changing supply conditions, harvest windows and
+        market demand.
       </p>
 
-
     </div>
-
 
 
     <div class="market-grid">
 
 
-      <!-- EUROPE -->
-
-      <a
-        class="market featured"
-        href="../markets/markets.html"
-      >
+      <div class="market fade-up">
 
         <span>
-          01
+          AVAILABILITY
         </span>
 
-
         <strong>
-          Europe
+          Harvest
         </strong>
 
-
         <small>
-          Spain · France · Italy · Germany · Netherlands
-        </small>
-
-      </a>
-
-
-
-      <!-- AFRICA -->
-
-      <a
-        class="market"
-        href="../markets/markets.html"
-      >
-
-        <span>
-          02
-        </span>
-
-
-        <strong>
-          Africa
-        </strong>
-
-
-        <small>
-          Morocco · Tunisia · Mauritania · West Africa
-        </small>
-
-      </a>
-
-
-
-      <!-- MIDDLE EAST -->
-
-      <a
-        class="market"
-        href="../markets/markets.html"
-      >
-
-        <span>
-          03
-        </span>
-
-
-        <strong>
-          Middle East
-        </strong>
-
-
-        <small>
-          GCC · Levant
-        </small>
-
-      </a>
-
-
-
-      <!-- MADRID -->
-
-      <div class="market">
-
-        <span>
-          HUB
-        </span>
-
-
-        <strong>
-          Madrid
-        </strong>
-
-
-        <small>
-          European coordination point
+          Production windows
         </small>
 
       </div>
 
+
+      <div class="market fade-up">
+
+        <span>
+          QUALITY
+        </span>
+
+        <strong>
+          Selection
+        </strong>
+
+        <small>
+          Product requirements
+        </small>
+
+      </div>
+
+
+      <div class="market fade-up">
+
+        <span>
+          MARKET
+        </span>
+
+        <strong>
+          Demand
+        </strong>
+
+        <small>
+          Commercial timing
+        </small>
+
+      </div>
+
+
+      <div class="market fade-up">
+
+        <span>
+          ROUTE
+        </span>
+
+        <strong>
+          Distribution
+        </strong>
+
+        <small>
+          Destination planning
+        </small>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="section-link-row">
+
+      <a
+        href="seasonal.html"
+        class="text-link"
+      >
+        Explore seasonal products
+        <span>→</span>
+      </a>
 
     </div>
 
@@ -557,55 +641,118 @@
 
 
 
-<!-- =====================================================
-     CATALOGUE
-===================================================== -->
+<!-- =========================================================
+     MARKETS CONNECTION
+========================================================= -->
 
 <section class="section">
 
   <div class="container">
 
-
-    <div class="two-col">
-
+    <div class="section-head fade-up">
 
       <div>
 
         <p class="eyebrow dark">
-          PRODUCT CATALOGUE
+          Markets
         </p>
 
-
         <h2>
-          A catalogue<br>
-          built progressively.
+          Products only matter
+          when they reach the market.
         </h2>
 
       </div>
 
+      <p>
+        Our product activity is connected to sourcing
+        regions and distribution destinations across
+        Europe, Africa and the Middle East.
+      </p>
 
-      <div class="intro-copy">
-
-
-        <p>
-          The product catalogue will be developed progressively
-          as a structured reference for professional buyers.
-        </p>
-
-
-        <p>
-          Products can later be organised by category, origin,
-          season, specifications, packaging and destination.
-        </p>
+    </div>
 
 
-        <p>
-          For current availability, enquiries are handled
-          directly according to market requirements.
-        </p>
+    <div class="bridge-network">
 
+
+      <article class="bridge-node europe fade-up">
+
+        <span>
+          01 · EUROPE
+        </span>
+
+        <strong>
+          Distribution
+        </strong>
+
+        <small>
+          Spain · France · Italy · Germany · Netherlands
+        </small>
+
+      </article>
+
+
+      <article class="bridge-node africa fade-up">
+
+        <span>
+          02 · AFRICA
+        </span>
+
+        <strong>
+          Sourcing
+        </strong>
+
+        <small>
+          Morocco · Tunisia · Mauritania · West Africa
+        </small>
+
+      </article>
+
+
+      <div class="bridge-center">
+
+        <span>
+          EMPERIO
+        </span>
+
+        <strong>
+          TISS
+        </strong>
 
       </div>
+
+
+      <article class="bridge-node middle-east fade-up">
+
+        <span>
+          03 · MIDDLE EAST
+        </span>
+
+        <strong>
+          Market access
+        </strong>
+
+        <small>
+          Developing selected commercial routes
+          towards Middle Eastern markets.
+        </small>
+
+      </article>
+
+
+    </div>
+
+
+    <div class="section-link-row">
+
+      <a
+        href="../markets/markets.html"
+        class="text-link"
+      >
+        Explore markets
+        <span>→</span>
+      </a>
 
     </div>
 
@@ -615,315 +762,148 @@
 
 
 
-<!-- =====================================================
-     HOW WE WORK
-===================================================== -->
+<!-- =========================================================
+     CTA
+========================================================= -->
 
-<section class="section products">
+<section class="cta-section">
 
   <div class="container">
 
+    <div class="cta-inner fade-up">
 
-    <div class="section-head">
+      <p class="eyebrow">
+        Business enquiries
+      </p>
 
+      <h2>
+        Looking for a product
+        or a sourcing opportunity?
+      </h2>
 
-      <div>
+      <p>
+        Tell us what you are looking for,
+        where you need it and when.
+      </p>
 
-        <p class="eyebrow dark">
-          HOW WE WORK
-        </p>
+      <div class="hero-actions">
 
+        <a
+          href="../index.html#contact"
+          class="button light-button"
+        >
+          Business enquiry
+        </a>
 
-        <h2>
-          The right product.<br>
-          The right market.
-        </h2>
+        <a
+          href="../markets/markets.html"
+          class="button secondary"
+        >
+          Explore markets
+        </a>
 
       </div>
 
-
-      <p>
-        We structure enquiries around real commercial
-        requirements rather than relying on a fixed catalogue.
-      </p>
-
-
-    </div>
-
-
-
-    <div class="service-list">
-
-
-      <article data-reveal>
-
-        <span>
-          01
-        </span>
-
-
-        <div>
-
-          <h3>
-            Product
-          </h3>
-
-
-          <p>
-            Identify the required category, product and
-            specifications.
-          </p>
-
-        </div>
-
-      </article>
-
-
-
-      <article data-reveal>
-
-        <span>
-          02
-        </span>
-
-
-        <div>
-
-          <h3>
-            Availability
-          </h3>
-
-
-          <p>
-            Assess current availability, seasonality
-            and origin.
-          </p>
-
-        </div>
-
-      </article>
-
-
-
-      <article data-reveal>
-
-        <span>
-          03
-        </span>
-
-
-        <div>
-
-          <h3>
-            Market
-          </h3>
-
-
-          <p>
-            Match the opportunity with the requirements
-            of the destination market.
-          </p>
-
-        </div>
-
-      </article>
-
-
-
-      <article data-reveal>
-
-        <span>
-          04
-        </span>
-
-
-        <div>
-
-          <h3>
-            Logistics
-          </h3>
-
-
-          <p>
-            Coordinate the appropriate transport and
-            delivery conditions.
-          </p>
-
-        </div>
-
-      </article>
-
-
     </div>
 
   </div>
 
 </section>
-
-
-
-<!-- =====================================================
-     CTA
-===================================================== -->
-
-<section
-  class="cta-section"
-  id="contact"
->
-
-  <div class="container cta-inner">
-
-
-    <p class="eyebrow">
-      BUSINESS ENQUIRY
-    </p>
-
-
-    <h2>
-      Looking for a specific product?
-    </h2>
-
-
-    <p>
-      Tell us the product, volume, destination and timing.
-      We'll work on the supply route.
-    </p>
-
-
-    <div class="hero-actions">
-
-
-      <a
-        class="button light-button"
-        href="mailto:contact@emperio-tiss.com"
-      >
-        Send an enquiry
-      </a>
-
-
-      <a
-        class="button secondary"
-        href="../index.html"
-      >
-        Back to home
-      </a>
-
-
-    </div>
-
-  </div>
-
-</section>
-
 
 </main>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer class="footer">
 
-  <div class="container footer-grid">
+  <div class="container">
+
+    <div class="footer-grid">
 
 
-    <div>
+      <div>
 
-      <img
-        class="footer-logo"
-        src="../logo.png"
-        alt="EMPERIO TISS"
-      >
+        <img
+          src="../logo.png"
+          alt="EMPERIO TISS"
+          class="footer-logo"
+        >
 
+        <p>
+          Professional food trade connecting markets
+          across Europe, Africa and the Middle East.
+        </p>
 
-      <p>
-        Connecting professional food markets across
-        Africa, Europe and the Middle East.
-      </p>
-
-    </div>
-
+      </div>
 
 
-    <div>
+      <div>
 
-      <strong>
-        Products
-      </strong>
+        <strong>
+          Explore
+        </strong>
 
+        <a href="../index.html">
+          Home
+        </a>
 
-      <a href="index.html">
-        All Products
-      </a>
+        <a href="../about/about.html">
+          About
+        </a>
 
+        <a href="index.html">
+          Products
+        </a>
 
-      <a href="seafood.html">
-        Fish & Seafood
-      </a>
+        <a href="../markets/markets.html">
+          Markets
+        </a>
 
-
-      <a href="fruits-vegetables.html">
-        Fruits & Vegetables
-      </a>
-
-
-      <a href="seasonal.html">
-        Seasonal Products
-      </a>
-
-    </div>
+      </div>
 
 
+      <div>
 
-    <div>
+        <strong>
+          Products
+        </strong>
 
-      <strong>
-        Company
-      </strong>
+        <a href="seafood.html">
+          Seafood
+        </a>
 
+        <a href="fruits-vegetables.html">
+          Fruits & vegetables
+        </a>
 
-      <a href="../markets/markets.html">
-        Markets
-      </a>
+        <a href="seasonal.html">
+          Seasonal
+        </a>
 
+        <a href="../index.html#contact">
+          Business enquiry
+        </a>
 
-      <a href="../index.html#services">
-        Services
-      </a>
-
-
-      <a href="../index.html#about">
-        Company
-      </a>
-
-
-      <a href="../index.html#contact">
-        Business enquiry
-      </a>
+      </div>
 
     </div>
 
 
-  </div>
+    <div class="footer-bottom">
 
+      <span>
+        © 2026 EMPERIO TISS
+      </span>
 
+      <span>
+        Europe · Africa · Middle East
+      </span>
 
-  <div class="container footer-bottom">
-
-
-    <span>
-      © <span id="year"></span> EMPERIO TISS SL
-    </span>
-
-
-    <span>
-      Spain · France · Italy · Germany · Netherlands
-      · Morocco · Tunisia · Mauritania · West Africa
-      · Middle East
-    </span>
-
+    </div>
 
   </div>
 
@@ -931,9 +911,9 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+<!-- =========================================================
+     SCRIPT
+========================================================= -->
 
 <script src="../script.js"></script>
 
