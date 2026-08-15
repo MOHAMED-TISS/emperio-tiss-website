@@ -1743,7 +1743,519 @@ h3 {
   .market,
   .step {
     opacity: 1 !important;
-
     transform: none !important;
   }
+}
+
+/* =========================================================
+   EMPERIO TISS — FINAL INTERACTION LAYER
+========================================================= */
+
+/* ---------------------------------------------------------
+   PAGE LOAD
+--------------------------------------------------------- */
+
+body {
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+
+/* ---------------------------------------------------------
+   HEADER
+--------------------------------------------------------- */
+
+.site-header {
+  transition:
+    background .35s ease,
+    box-shadow .35s ease,
+    padding .35s ease,
+    transform .35s ease;
+}
+
+.site-header.header-scrolled {
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE MENU BUTTON
+--------------------------------------------------------- */
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+}
+
+
+/* ---------------------------------------------------------
+   REVEAL ANIMATIONS
+--------------------------------------------------------- */
+
+.reveal,
+.product-card,
+.market,
+.step,
+.network-region,
+.network-center,
+.network-line {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.visible,
+.product-card.visible,
+.market.visible,
+.step.visible,
+.network-region.visible,
+.network-center.visible,
+.network-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ---------------------------------------------------------
+   PRODUCT CARDS
+--------------------------------------------------------- */
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transform-style: preserve-3d;
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    box-shadow .45s ease;
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  transition:
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+.product-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 30%,
+      rgba(0,0,0,.78) 100%
+    );
+  pointer-events: none;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
+}
+
+.product-content {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px;
+  color: #fff;
+}
+
+.product-number {
+  display: block;
+  margin-bottom: 55px;
+  font-size: .75rem;
+  letter-spacing: .14em;
+  opacity: .75;
+}
+
+.product-content h3 {
+  margin: 0 0 16px;
+}
+
+.product-content p {
+  max-width: 460px;
+  margin-bottom: 24px;
+}
+
+.product-arrow {
+  display: inline-block;
+  transition: transform .3s ease;
+}
+
+.product-card:hover .product-arrow {
+  transform: translateX(8px);
+}
+
+
+/* ---------------------------------------------------------
+   NETWORK
+--------------------------------------------------------- */
+
+.network {
+  position: relative;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.network-region,
+.network-center {
+  position: relative;
+  z-index: 3;
+}
+
+.network-region:nth-child(1) {
+  grid-column: 1;
+}
+
+.network-region:nth-child(3) {
+  grid-column: 2;
+}
+
+.network-region h3 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem,4vw,4rem);
+  margin-bottom: 24px;
+}
+
+.network-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.network-list span {
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 9px 14px;
+  border-radius: 100px;
+  font-size: .8rem;
+}
+
+.network-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:
+    translate(-50%,-50%)
+    scale(.9);
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: #fff;
+  color: #111410;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.25);
+}
+
+.network-center.visible {
+  transform:
+    translate(-50%,-50%)
+    scale(1);
+}
+
+.network-center strong {
+  font-size: .85rem;
+  letter-spacing: .08em;
+}
+
+.network-center span {
+  margin-top: 8px;
+  font-size: .7rem;
+  opacity: .6;
+}
+
+.network-line {
+  position: absolute;
+  height: 1px;
+  top: 50%;
+  width: 30%;
+  background: rgba(255,255,255,.35);
+  transform-origin: center;
+}
+
+.network-line.left {
+  left: 18%;
+}
+
+.network-line.right {
+  right: 18%;
+}
+
+
+/* ---------------------------------------------------------
+   MARKET HOVER
+--------------------------------------------------------- */
+
+.market {
+  transition:
+    opacity .6s ease,
+    transform .5s cubic-bezier(.22,1,.36,1),
+    padding-left .35s ease;
+}
+
+.market:hover {
+  transform: translateX(8px);
+}
+
+
+/* ---------------------------------------------------------
+   STEPS
+--------------------------------------------------------- */
+
+.step {
+  transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.22,1,.36,1),
+    border-color .3s ease;
+}
+
+.step:hover {
+  transform: translateY(-6px);
+}
+
+
+/* ---------------------------------------------------------
+   CTA
+--------------------------------------------------------- */
+
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition:
+    transform .35s ease,
+    background .35s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE LOADING
+--------------------------------------------------------- */
+
+img {
+  transition:
+    opacity .7s ease,
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+img:not(.image-loaded) {
+  opacity: .01;
+}
+
+img.image-loaded {
+  opacity: 1;
+}
+
+
+/* ---------------------------------------------------------
+   DESKTOP NAV
+--------------------------------------------------------- */
+
+@media (min-width: 901px) {
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 22px;
+
+    padding: 100px 30px 40px;
+
+    background: #111410;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-20px);
+
+    transition:
+      opacity .35s ease,
+      transform .35s ease,
+      visibility .35s ease;
+  }
+
+  .nav a {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .nav .nav-cta {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+
+  .nav.nav-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .network {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 60px 0;
+  }
+
+  .network-region:nth-child(1),
+  .network-region:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .network-center {
+    position: relative;
+    left: auto;
+    top: auto;
+
+    grid-column: 1;
+
+    width: 140px;
+    height: 140px;
+
+    margin: 20px auto;
+
+    transform: scale(.9);
+  }
+
+  .network-center.visible {
+    transform: scale(1);
+  }
+
+  .network-line {
+    display: none;
+  }
+
+  .product-content {
+    padding: 25px;
+  }
+
+  .product-card img {
+    min-height: 420px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .hero h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .product-card img {
+    min-height: 360px;
+  }
+
+  .product-content {
+    padding: 22px;
+  }
+
+  .product-number {
+    margin-bottom: 35px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  body {
+    opacity: 1;
+  }
+
 }
