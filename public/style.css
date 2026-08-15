@@ -2839,3 +2839,143 @@ p{
   }
 
 }
+/* =========================================================
+   MARKETS — CENTERED 3-COLUMN COMPOSITION
+========================================================= */
+
+.markets-home-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  align-items:stretch;
+  margin-top:65px;
+}
+
+.market-home-card{
+  min-width:0;
+  min-height:390px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  padding:32px;
+
+  background:#202a28;
+
+  border-top:1px solid rgba(255,255,255,.14);
+  border-bottom:1px solid rgba(255,255,255,.14);
+  border-right:1px solid rgba(255,255,255,.14);
+
+  overflow:hidden;
+}
+
+.market-home-card:first-child{
+  border-left:1px solid rgba(255,255,255,.14);
+}
+
+.market-home-card:nth-child(2){
+  background:#0b222d;
+}
+
+.market-home-card:nth-child(3){
+  background:#18201f;
+}
+
+
+/* Keep all three visually centered */
+
+.market-home-card > div{
+  width:100%;
+  max-width:320px;
+  margin:auto 0;
+}
+
+
+/* Center vertical rhythm */
+
+.market-home-card h3{
+  margin:0;
+  line-height:1;
+}
+
+.market-home-card p{
+  margin-top:18px;
+}
+
+
+/* =========================================================
+   CENTER EMPERIO TISS BRIDGE
+========================================================= */
+
+.market-home-card:nth-child(2)::before{
+  content:"";
+
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  border:1px solid rgba(185,160,106,.22);
+
+  border-radius:50%;
+
+  pointer-events:none;
+}
+
+.market-home-card:nth-child(2)::after{
+  transform-origin:center;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:901px){
+
+  .market-home-card{
+    position:relative;
+  }
+
+  .market-home-card:nth-child(2){
+    transform:translateY(-20px);
+    min-height:430px;
+    z-index:3;
+
+    box-shadow:
+      0 30px 80px rgba(0,0,0,.25);
+  }
+
+  .market-home-card:nth-child(2):hover{
+    transform:translateY(-28px);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+  .markets-home-grid{
+    grid-template-columns:1fr;
+  }
+
+  .market-home-card:nth-child(2){
+    transform:none;
+    min-height:300px;
+  }
+
+  .market-home-card:nth-child(2):hover{
+    transform:translateY(-6px);
+  }
+
+}
