@@ -1,661 +1,81 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Fish & Seafood | EMPERIO TISS</title>
-
   <meta
     name="description"
-    content="Fish and seafood supply connected with professional markets across Africa, Europe and the Middle East."
+    content="EMPERIO TISS — Fish & Seafood supply connecting professional food markets across Europe, Africa and the Middle East."
   >
+
+  <meta property="og:title" content="EMPERIO TISS — Fish & Seafood">
+  <meta
+    property="og:description"
+    content="Professional fish and seafood supply across Europe, Africa and the Middle East."
+  >
+  <meta property="og:type" content="website">
+
+  <title>Fish & Seafood | EMPERIO TISS</title>
 
   <link rel="icon" href="../logo.png">
 
+  <!-- EMPERIO TISS typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
     rel="stylesheet"
   >
 
-  <style>
+  <link rel="stylesheet" href="../style.css">
 
-    :root {
-      --black: #111412;
-      --dark: #181d1a;
-      --cream: #f4f1e9;
-      --white: #ffffff;
-      --muted: #a9aea8;
-      --line: rgba(255,255,255,.14);
-      --green: #758b58;
-      --green-dark: #52663c;
-      --sand: #d8c9a9;
-      --max: 1400px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "DM Sans", sans-serif;
-      background: var(--cream);
-      color: var(--black);
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 48px));
-      margin: auto;
-    }
-
-    /* HEADER */
-
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 20;
-      color: white;
-    }
-
-    .nav {
-      height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,.16);
-    }
-
-    .logo {
-      width: 150px;
-    }
-
-    .logo img {
-      width: 100%;
-      height: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .nav-links a {
-      opacity: .9;
-      transition: opacity .2s;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-    }
-
-    .nav-contact {
-      padding: 11px 18px;
-      border: 1px solid rgba(255,255,255,.45);
-      border-radius: 999px;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 720px;
-      height: 88vh;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      color: white;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(8,12,10,.84),
-          rgba(8,12,10,.42),
-          rgba(8,12,10,.12)
-        ),
-        linear-gradient(
-          0deg,
-          rgba(8,12,10,.72),
-          transparent 60%
-        ),
-        url("https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=2400&q=90")
-        center / cover;
-    }
-
-    .hero-content {
-      padding-bottom: 95px;
-      max-width: 950px;
-    }
-
-    .eyebrow {
-      color: var(--sand);
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(55px, 8vw, 108px);
-      line-height: .94;
-      letter-spacing: -.065em;
-      margin-bottom: 30px;
-    }
-
-    .hero-description {
-      max-width: 650px;
-      font-size: 21px;
-      color: rgba(255,255,255,.86);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 35px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 24px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--cream);
-      color: var(--black);
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,.5);
-      color: white;
-    }
-
-    /* INTRO */
-
-    .intro {
-      padding: 125px 0;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 90px;
-    }
-
-    .section-label {
-      text-transform: uppercase;
-      letter-spacing: .17em;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--green-dark);
-    }
-
-    .intro h2 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(40px, 5vw, 68px);
-      line-height: .98;
-      letter-spacing: -.055em;
-    }
-
-    .intro-text {
-      margin-top: 30px;
-      max-width: 700px;
-      color: #555c56;
-      font-size: 19px;
-      line-height: 1.65;
-    }
-
-    /* CATEGORIES */
-
-    .categories {
-      background: var(--dark);
-      color: white;
-      padding: 125px 0;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 50px;
-      margin-bottom: 70px;
-    }
-
-    .section-head h2 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(44px, 6vw, 76px);
-      line-height: .95;
-      letter-spacing: -.06em;
-      margin-top: 18px;
-    }
-
-    .section-head > p {
-      max-width: 390px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .seafood-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .seafood-card {
-      min-height: 450px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .seafood-card img {
-      position: absolute;
-      inset: 0;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s;
-    }
-
-    .seafood-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .seafood-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        0deg,
-        rgba(0,0,0,.82),
-        rgba(0,0,0,.05) 70%
-      );
-    }
-
-    .seafood-content {
-      position: relative;
-      z-index: 2;
-      padding: 28px;
-    }
-
-    .seafood-number {
-      color: var(--sand);
-      font-size: 11px;
-      margin-bottom: 85px;
-    }
-
-    .seafood-content h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 27px;
-      margin-bottom: 8px;
-    }
-
-    .seafood-content p {
-      color: rgba(255,255,255,.75);
-      font-size: 13px;
-    }
-
-    /* SPECIFICATIONS */
-
-    .specifications {
-      padding: 125px 0;
-    }
-
-    .spec-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid #c8c4ba;
-    }
-
-    .spec {
-      padding: 28px 25px 28px 0;
-      border-bottom: 1px solid #c8c4ba;
-    }
-
-    .spec:nth-child(even) {
-      padding-left: 25px;
-      border-left: 1px solid #c8c4ba;
-    }
-
-    .spec-number {
-      color: var(--green-dark);
-      font-size: 11px;
-      margin-bottom: 35px;
-    }
-
-    .spec h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 21px;
-      margin-bottom: 6px;
-    }
-
-    .spec p {
-      color: #646a64;
-      font-size: 14px;
-    }
-
-    /* ORIGINS / MARKETS */
-
-    .markets {
-      background: #e7e2d5;
-      padding: 125px 0;
-    }
-
-    .market-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid rgba(17,20,18,.2);
-    }
-
-    .market {
-      padding: 28px 25px 28px 0;
-      border-bottom: 1px solid rgba(17,20,18,.2);
-    }
-
-    .market:nth-child(3n+2),
-    .market:nth-child(3n+3) {
-      padding-left: 25px;
-      border-left: 1px solid rgba(17,20,18,.2);
-    }
-
-    .market span {
-      color: var(--green-dark);
-      font-size: 11px;
-    }
-
-    .market h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 25px;
-      margin: 35px 0 7px;
-    }
-
-    .market p {
-      color: #646a64;
-      font-size: 14px;
-    }
-
-    /* PROCESS */
-
-    .process {
-      background: var(--black);
-      color: white;
-      padding: 125px 0;
-    }
-
-    .process-list {
-      border-top: 1px solid var(--line);
-    }
-
-    .process-item {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      gap: 30px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .process-number {
-      color: var(--sand);
-      font-size: 11px;
-    }
-
-    .process-item h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 21px;
-    }
-
-    .process-item p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* CTA */
-
-    .cta {
-      padding: 150px 0;
-      background:
-        linear-gradient(
-          rgba(17,20,18,.72),
-          rgba(17,20,18,.72)
-        ),
-        url("https://images.unsplash.com/photo-1516684669134-de6cec5b1c5d?auto=format&fit=crop&w=2200&q=90")
-        center / cover;
-      color: white;
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(48px, 7vw, 90px);
-      line-height: .95;
-      letter-spacing: -.065em;
-      max-width: 1000px;
-      margin: 18px auto 25px;
-    }
-
-    .cta p {
-      color: rgba(255,255,255,.75);
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: var(--black);
-      color: white;
-      padding: 65px 0 30px;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 50px;
-      padding-bottom: 55px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .footer-logo {
-      width: 150px;
-      margin-bottom: 20px;
-    }
-
-    .footer-brand p {
-      color: var(--muted);
-      max-width: 390px;
-      font-size: 14px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 70px;
-    }
-
-    .footer-column h4 {
-      color: var(--sand);
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      font-size: 10px;
-      margin-bottom: 20px;
-    }
-
-    .footer-column a {
-      display: block;
-      margin-bottom: 11px;
-      color: #d2d5d1;
-      font-size: 14px;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-top: 25px;
-      color: #727871;
-      font-size: 11px;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1000px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .intro-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .seafood-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .market-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .market:nth-child(3n+2),
-      .market:nth-child(3n+3) {
-        padding-left: 0;
-        border-left: 0;
-      }
-
-      .market:nth-child(even) {
-        padding-left: 25px;
-        border-left: 1px solid rgba(17,20,18,.2);
-      }
-
-      .section-head,
-      .footer-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .process-item {
-        grid-template-columns: 60px 1fr;
-      }
-
-      .process-item p {
-        grid-column: 2;
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .nav {
-        height: 72px;
-      }
-
-      .hero {
-        min-height: 650px;
-      }
-
-      .hero-content {
-        padding-bottom: 65px;
-      }
-
-      .hero h1 {
-        font-size: 58px;
-      }
-
-      .intro,
-      .categories,
-      .specifications,
-      .markets,
-      .process {
-        padding: 85px 0;
-      }
-
-      .seafood-grid,
-      .market-grid,
-      .spec-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .spec:nth-child(even),
-      .market:nth-child(even) {
-        padding-left: 0;
-        border-left: 0;
-      }
-
-      .spec {
-        padding-right: 0;
-      }
-
-      .market {
-        padding-right: 0;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        gap: 40px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-      }
-    }
-
-  </style>
 </head>
 
-<body>
 
-<header>
+<body class="seafood-page">
 
-  <div class="container nav">
 
-    <a href="../index.html" class="logo">
-      <img src="../logo.png" alt="EMPERIO TISS">
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header marine-header" id="top">
+
+  <div class="container nav-wrap">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="EMPERIO TISS home"
+    >
+      <img
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
     </a>
 
-    <nav class="nav-links">
 
-      <a href="../index.html">Home</a>
+    <button
+      class="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      ☰
+    </button>
 
-      <a href="../index.html#products">
+
+    <nav
+      class="nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+
+      <a href="index.html">
         Products
       </a>
 
@@ -663,16 +83,54 @@
         Markets
       </a>
 
-      <a href="../index.html#solutions">
-        Solutions
+      <a href="../index.html#services">
+        Services
       </a>
 
       <a href="../index.html#about">
-        About
+        Company
       </a>
 
-      <a href="../index.html#contact" class="nav-contact">
+      <a href="../index.html#contact">
         Contact
+      </a>
+
+
+      <div class="language-switcher">
+
+        <a
+          class="active"
+          href="seafood.html"
+        >
+          EN
+        </a>
+
+        <a
+          href="../es/products/seafood.html"
+        >
+          ES
+        </a>
+
+        <a
+          href="../fr/products/seafood.html"
+        >
+          FR
+        </a>
+
+        <a
+          href="../ar/products/seafood.html"
+        >
+          AR
+        </a>
+
+      </div>
+
+
+      <a
+        class="nav-cta"
+        href="../index.html#contact"
+      >
+        Business enquiry
       </a>
 
     </nav>
@@ -682,631 +140,831 @@
 </header>
 
 
+
 <main>
 
-  <!-- HERO -->
 
-  <section class="hero">
+<!-- =====================================================
+     MARINE HERO
+===================================================== -->
 
-    <div class="container hero-content">
+<section class="marine-hero">
 
-      <div class="eyebrow">
-        Products & Opportunities
-      </div>
+  <div class="marine-depth depth-one"></div>
+  <div class="marine-depth depth-two"></div>
 
-      <h1>
-        Fish &<br>
-        Seafood.
-      </h1>
+  <div class="marine-light"></div>
 
-      <p class="hero-description">
-        Seafood supply connected with professional markets
-        across Africa, Europe and the Middle East.
-      </p>
+  <div class="container hero-content">
 
-      <div class="hero-actions">
+    <p class="eyebrow">
+      PRODUCT CATEGORY · 01
+    </p>
 
-        <a
-          href="../index.html#contact"
-          class="btn btn-primary"
-        >
-          Business enquiry →
-        </a>
+    <h1>
+      Fish &<br>
+      Seafood.
+    </h1>
 
-        <a
-          href="../index.html#products"
-          class="btn btn-secondary"
-        >
-          Explore products
-        </a>
+    <p class="hero-text">
+      Connecting marine supply with professional markets
+      across Europe, Africa and the Middle East.
+    </p>
 
-      </div>
 
-    </div>
-
-  </section>
-
-
-  <!-- INTRO -->
-
-  <section class="intro">
-
-    <div class="container intro-grid">
-
-      <div>
-
-        <div class="section-label">
-          Fish & Seafood
-        </div>
-
-      </div>
-
-      <div>
-
-        <h2>
-          The right product.
-          The right specification.
-          The right destination.
-        </h2>
-
-        <p class="intro-text">
-          EMPERIO TISS connects seafood supply with professional
-          market requirements, taking into account product
-          specifications, availability, timing, destination and
-          logistics.
-        </p>
-
-        <p class="intro-text">
-          Supply can be structured around fresh or frozen formats
-          depending on the product, origin, season and destination
-          requirements.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CATEGORIES -->
-
-  <section class="categories">
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-label">
-            Product focus
-          </div>
-
-          <h2>
-            Seafood categories.
-          </h2>
-
-        </div>
-
-        <p>
-          A focused range adaptable to availability,
-          seasonality and professional customer requirements.
-        </p>
-
-      </div>
-
-
-      <div class="seafood-grid">
-
-        <article class="seafood-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=1200&q=85"
-            alt="Fresh fish"
-          >
-
-          <div class="seafood-content">
-
-            <div class="seafood-number">
-              01
-            </div>
-
-            <h3>
-              Fresh Fish
-            </h3>
-
-            <p>
-              Fresh fish according to product,
-              origin and destination specifications.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="seafood-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=1200&q=85"
-            alt="Frozen fish"
-          >
-
-          <div class="seafood-content">
-
-            <div class="seafood-number">
-              02
-            </div>
-
-            <h3>
-              Frozen Fish
-            </h3>
-
-            <p>
-              Frozen formats supporting planning,
-              volume and supply continuity.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="seafood-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=1200&q=85"
-            alt="Shellfish"
-          >
-
-          <div class="seafood-content">
-
-            <div class="seafood-number">
-              03
-            </div>
-
-            <h3>
-              Shellfish
-            </h3>
-
-            <p>
-              Shellfish supply according to
-              product and market requirements.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="seafood-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85"
-            alt="Cephalopods and molluscs"
-          >
-
-          <div class="seafood-content">
-
-            <div class="seafood-number">
-              04
-            </div>
-
-            <h3>
-              Cephalopods & Molluscs
-            </h3>
-
-            <p>
-              Marine products adapted to season,
-              specification and destination.
-            </p>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- SPECIFICATIONS -->
-
-  <section class="specifications">
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-label">
-            Supply specifications
-          </div>
-
-          <h2>
-            Built around your requirements.
-          </h2>
-
-        </div>
-
-        <p>
-          Every enquiry can be structured around the
-          operational and commercial requirements of the
-          destination market.
-        </p>
-
-      </div>
-
-
-      <div class="spec-grid">
-
-        <div class="spec">
-          <div class="spec-number">01</div>
-          <h3>Species</h3>
-          <p>Product and species requirements.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">02</div>
-          <h3>Origin</h3>
-          <p>Origin and sourcing specifications.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">03</div>
-          <h3>Size</h3>
-          <p>Calibre and size requirements.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">04</div>
-          <h3>Presentation</h3>
-          <p>Product presentation and format.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">05</div>
-          <h3>Packaging</h3>
-          <p>Packaging and preparation requirements.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">06</div>
-          <h3>Volume</h3>
-          <p>Quantity and supply frequency.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">07</div>
-          <h3>Destination</h3>
-          <p>Delivery market and location.</p>
-        </div>
-
-        <div class="spec">
-          <div class="spec-number">08</div>
-          <h3>Timing</h3>
-          <p>Delivery schedule and requirements.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- MARKETS -->
-
-  <section class="markets">
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-label">
-            Connected markets
-          </div>
-
-          <h2>
-            Africa.<br>
-            Europe.<br>
-            Middle East.
-          </h2>
-
-        </div>
-
-        <p>
-          Supply routes are developed according to product,
-          destination and specific customer requirements.
-        </p>
-
-      </div>
-
-
-      <div class="market-grid">
-
-        <div class="market">
-          <span>01</span>
-          <h3>Spain</h3>
-          <p>
-            Madrid · Murcia · Valencia · Almería
-          </p>
-        </div>
-
-        <div class="market">
-          <span>02</span>
-          <h3>France</h3>
-          <p>
-            Paris · Rungis · Perpignan
-          </p>
-        </div>
-
-        <div class="market">
-          <span>03</span>
-          <h3>Germany</h3>
-          <p>
-            Professional food markets
-          </p>
-        </div>
-
-        <div class="market">
-          <span>04</span>
-          <h3>Italy</h3>
-          <p>
-            European food markets
-          </p>
-        </div>
-
-        <div class="market">
-          <span>05</span>
-          <h3>Netherlands</h3>
-          <p>
-            European distribution
-          </p>
-        </div>
-
-        <div class="market">
-          <span>06</span>
-          <h3>Tunisia</h3>
-          <p>
-            Mediterranean connection
-          </p>
-        </div>
-
-        <div class="market">
-          <span>07</span>
-          <h3>Morocco</h3>
-          <p>
-            North Africa
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PROCESS -->
-
-  <section class="process">
-
-    <div class="container">
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="section-label">
-            How we work
-          </div>
-
-          <h2>
-            From requirement<br>
-            to destination.
-          </h2>
-
-        </div>
-
-        <p>
-          Each enquiry is structured around the product,
-          specifications, destination and timing.
-        </p>
-
-      </div>
-
-
-      <div class="process-list">
-
-        <div class="process-item">
-
-          <div class="process-number">01</div>
-
-          <h3>
-            Requirement
-          </h3>
-
-          <p>
-            Product, specification, quantity,
-            destination and timing are identified.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <div class="process-number">02</div>
-
-          <h3>
-            Product coordination
-          </h3>
-
-          <p>
-            Availability and product specifications
-            are assessed against the enquiry.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <div class="process-number">03</div>
-
-          <h3>
-            Commercial proposal
-          </h3>
-
-          <p>
-            Supply conditions are structured around
-            the requested requirements.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <div class="process-number">04</div>
-
-          <h3>
-            Logistics coordination
-          </h3>
-
-          <p>
-            Transport and delivery requirements are
-            coordinated according to the agreed conditions.
-          </p>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <div class="process-number">05</div>
-
-          <h3>
-            Destination
-          </h3>
-
-          <p>
-            The supply process is coordinated through
-            to the agreed destination.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CTA -->
-
-  <section class="cta">
-
-    <div class="container">
-
-      <div class="section-label">
-        Seafood enquiry
-      </div>
-
-      <h2>
-        Tell us what your market needs.
-      </h2>
-
-      <p>
-        Product. Specifications. Volume. Destination. Timing.
-      </p>
+    <div class="hero-actions">
 
       <a
-        href="mailto:contact@emperio-tiss.com"
-        class="btn btn-primary"
+        class="button primary"
+        href="#category"
       >
-        Send a business enquiry →
+        Explore category
+      </a>
+
+      <a
+        class="button secondary"
+        href="../index.html#contact"
+      >
+        Business enquiry
       </a>
 
     </div>
 
-  </section>
-
-</main>
+  </div>
 
 
-<footer>
+  <div class="marine-hero-label">
+    <span>FRESH</span>
+    <span>FROZEN</span>
+    <span>SEAFOOD</span>
+  </div>
 
-  <div class="container footer-top">
 
-    <div class="footer-brand">
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <strong>↓</strong>
+  </div>
 
-      <img
-        src="../logo.png"
-        alt="EMPERIO TISS"
-        class="footer-logo"
-      >
+</section>
+
+
+
+<!-- =====================================================
+     OCEAN TRANSITION
+===================================================== -->
+
+<div class="ocean-divider"></div>
+
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section
+  class="section marine-category"
+  id="category"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow">
+          THE CATEGORY
+        </p>
+
+        <h2>
+          From the ocean<br>
+          to the market.
+        </h2>
+
+      </div>
 
       <p>
-        Connecting food supply with professional markets
-        across Africa, Europe and the Middle East.
+        EMPERIO TISS connects fish and seafood supply with
+        professional buyers, distributors and food markets,
+        structuring each opportunity around specification,
+        availability, volume and destination.
       </p>
 
     </div>
 
 
-    <div class="footer-links">
+    <div
+      class="marine-statement"
+      data-reveal
+    >
 
-      <div class="footer-column">
+      <span>
+        MARINE SUPPLY
+      </span>
 
-        <h4>Products</h4>
+      <strong>
+        CONNECTED.
+      </strong>
 
-        <a href="seafood.html">
-          Fish & Seafood
-        </a>
+    </div>
 
-        <a href="fruits-vegetables.html">
-          Fruits & Vegetables
-        </a>
+  </div>
 
-        <a href="../index.html#products">
-          Seasonal Opportunities
-        </a>
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCT CATEGORIES
+===================================================== -->
+
+<section class="section marine-category marine-product-section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow">
+          PRODUCT STRUCTURE
+        </p>
+
+        <h2>
+          What we<br>
+          work with.
+        </h2>
+
+      </div>
+
+      <p>
+        A flexible product structure designed to accommodate
+        different market requirements and future catalogue
+        development.
+      </p>
+
+    </div>
+
+
+    <div class="marine-products">
+
+
+      <article
+        class="marine-card"
+        data-reveal
+      >
+
+        <div class="marine-card-number">
+          01 · FRESH
+        </div>
+
+        <div>
+
+          <h3>
+            Fresh Fish
+          </h3>
+
+          <p>
+            Fresh fish opportunities structured around
+            quality, size, presentation, availability
+            and destination.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <article
+        class="marine-card"
+        data-reveal
+      >
+
+        <div class="marine-card-number">
+          02 · FROZEN
+        </div>
+
+        <div>
+
+          <h3>
+            Frozen Fish
+          </h3>
+
+          <p>
+            Frozen supply coordinated according to
+            product specifications, volume, packaging
+            and destination requirements.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <article
+        class="marine-card"
+        data-reveal
+      >
+
+        <div class="marine-card-number">
+          03 · SEAFOOD
+        </div>
+
+        <div>
+
+          <h3>
+            Seafood
+          </h3>
+
+          <p>
+            Selected seafood opportunities connecting
+            international supply with professional demand.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <article
+        class="marine-card"
+        data-reveal
+      >
+
+        <div class="marine-card-number">
+          04 · CEPHALOPODS
+        </div>
+
+        <div>
+
+          <h3>
+            Cephalopods
+          </h3>
+
+          <p>
+            Cephalopod supply structured around
+            specification, format, availability,
+            volume and market requirements.
+          </p>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REQUIREMENTS
+===================================================== -->
+
+<section class="section marine-category marine-requirement-section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow">
+          SPECIFICATIONS
+        </p>
+
+        <h2>
+          The details<br>
+          matter.
+        </h2>
+
+      </div>
+
+      <p>
+        Professional seafood transactions depend on precise
+        specifications. Each enquiry is structured around
+        the requirements of the destination market.
+      </p>
+
+    </div>
+
+
+    <div class="marine-requirements">
+
+
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>01</span>
+
+        <strong>
+          Species
+        </strong>
 
       </div>
 
 
-      <div class="footer-column">
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
 
-        <h4>Explore</h4>
+        <span>02</span>
 
-        <a href="../index.html">
-          Home
-        </a>
+        <strong>
+          Quality
+        </strong>
 
-        <a href="../markets/markets.html">
-          Markets
-        </a>
+      </div>
 
-        <a href="../index.html#solutions">
-          Solutions
-        </a>
 
-        <a href="../index.html#contact">
-          Contact
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>03</span>
+
+        <strong>
+          Size / Calibre
+        </strong>
+
+      </div>
+
+
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>04</span>
+
+        <strong>
+          Fresh / Frozen
+        </strong>
+
+      </div>
+
+
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>05</span>
+
+        <strong>
+          Presentation
+        </strong>
+
+      </div>
+
+
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>06</span>
+
+        <strong>
+          Packaging
+        </strong>
+
+      </div>
+
+
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>07</span>
+
+        <strong>
+          Volume
+        </strong>
+
+      </div>
+
+
+      <div
+        class="marine-requirement"
+        data-reveal
+      >
+
+        <span>08</span>
+
+        <strong>
+          Destination
+        </strong>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SUPPLY ROUTE
+===================================================== -->
+
+<section class="marine-route">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow">
+          THE SUPPLY ROUTE
+        </p>
+
+        <h2>
+          Supply.<br>
+          Coordinated.
+        </h2>
+
+      </div>
+
+      <p>
+        From the initial requirement to the agreed
+        destination, every stage is coordinated around
+        the commercial conditions of the transaction.
+      </p>
+
+    </div>
+
+
+    <div class="route-items">
+
+
+      <div
+        class="route-item"
+        data-reveal
+      >
+
+        <strong>
+          Requirement
+        </strong>
+
+        <span>
+          WHAT THE MARKET NEEDS
+        </span>
+
+      </div>
+
+
+      <div
+        class="route-item"
+        data-reveal
+      >
+
+        <strong>
+          Supply
+        </strong>
+
+        <span>
+          WHAT IS AVAILABLE
+        </span>
+
+      </div>
+
+
+      <div
+        class="route-item"
+        data-reveal
+      >
+
+        <strong>
+          Destination
+        </strong>
+
+        <span>
+          WHERE IT GOES
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARKETS
+===================================================== -->
+
+<section class="section marine-market-section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow dark">
+          PROFESSIONAL MARKETS
+        </p>
+
+        <h2>
+          Three regions.<br>
+          One network.
+        </h2>
+
+      </div>
+
+      <p>
+        Our seafood activity connects professional markets
+        across Europe, Africa and the Middle East.
+      </p>
+
+    </div>
+
+
+    <div class="market-grid light-market-grid">
+
+
+      <a
+        class="market"
+        href="../markets/markets.html"
+      >
+
+        <span>
+          01
+        </span>
+
+        <strong>
+          Europe
+        </strong>
+
+        <small>
+          Spain · France · Italy · Germany · Netherlands
+        </small>
+
+      </a>
+
+
+      <a
+        class="market"
+        href="../markets/markets.html"
+      >
+
+        <span>
+          02
+        </span>
+
+        <strong>
+          Africa
+        </strong>
+
+        <small>
+          Morocco · Tunisia · Mauritania · West Africa
+        </small>
+
+      </a>
+
+
+      <a
+        class="market"
+        href="../markets/markets.html"
+      >
+
+        <span>
+          03
+        </span>
+
+        <strong>
+          Middle East
+        </strong>
+
+        <small>
+          GCC · Levant
+        </small>
+
+      </a>
+
+
+      <div class="market featured">
+
+        <span>
+          HUB
+        </span>
+
+        <strong>
+          Madrid
+        </strong>
+
+        <small>
+          European coordination point
+        </small>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATALOGUE
+===================================================== -->
+
+<section class="section marine-category marine-catalogue">
+
+  <div class="container">
+
+    <div class="two-col">
+
+      <div>
+
+        <p class="eyebrow">
+          FUTURE CATALOGUE
+        </p>
+
+        <h2>
+          Details<br>
+          when they matter.
+        </h2>
+
+      </div>
+
+
+      <div class="intro-copy">
+
+        <p>
+          The detailed seafood catalogue will progressively
+          include species, formats, specifications, packaging,
+          availability and commercial information.
+        </p>
+
+        <p>
+          For now, we work directly from your requirement
+          and structure the opportunity around your market.
+        </p>
+
+        <a
+          class="button primary"
+          href="../index.html#contact"
+        >
+          Request a product
         </a>
 
       </div>
 
     </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section marine-cta">
+
+  <div class="container cta-inner">
+
+    <p class="eyebrow">
+      FISH & SEAFOOD
+    </p>
+
+    <h2>
+      Tell us what your market needs.
+    </h2>
+
+    <p>
+      Species. Specification. Volume.
+      Destination. Timing.
+    </p>
+
+
+    <div class="hero-actions">
+
+      <a
+        class="button light-button"
+        href="mailto:contact@emperio-tiss.com"
+      >
+        Send an enquiry
+      </a>
+
+      <a
+        class="button secondary"
+        href="../index.html"
+      >
+        Back to EMPERIO TISS
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer marine-footer">
+
+  <div class="container footer-grid">
+
+
+    <div>
+
+      <img
+        class="footer-logo"
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
+
+      <p>
+        Connecting professional food markets across
+        Africa, Europe and the Middle East.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Products
+      </strong>
+
+      <a href="index.html">
+        All Products
+      </a>
+
+      <a href="seafood.html">
+        Fish & Seafood
+      </a>
+
+      <a href="fruits-vegetables.html">
+        Fruits & Vegetables
+      </a>
+
+      <a href="seasonal.html">
+        Seasonal Products
+      </a>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        Company
+      </strong>
+
+      <a href="../markets/markets.html">
+        Markets
+      </a>
+
+      <a href="../index.html#services">
+        Services
+      </a>
+
+      <a href="../index.html#about">
+        Company
+      </a>
+
+      <a href="../index.html#contact">
+        Business enquiry
+      </a>
+
+    </div>
+
 
   </div>
 
@@ -1314,16 +972,22 @@
   <div class="container footer-bottom">
 
     <span>
-      © 2026 EMPERIO TISS SL. All rights reserved.
+      © <span id="year"></span> EMPERIO TISS SL
     </span>
 
     <span>
-      Food Moves. Markets Connect.
+      Spain · France · Italy · Germany · Netherlands
+      · Morocco · Tunisia · Mauritania · West Africa
+      · Middle East
     </span>
 
   </div>
 
 </footer>
 
+
+<script src="../script.js"></script>
+
 </body>
 </html>
+```
