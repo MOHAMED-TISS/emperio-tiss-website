@@ -1,60 +1,352 @@
-const translations = {
-en:{
-nav_products:"Products",nav_markets:"Markets",nav_services:"Services",nav_about:"About",nav_contact:"Contact",nav_quote:"Request a quote",
-hero_eyebrow:"INTERNATIONAL FOOD DISTRIBUTION & SUPPLY",hero_title:"Reliable food supply across Europe and the Mediterranean.",hero_text:"Professional supply solutions for businesses looking for quality products, dependable availability and coordinated logistics.",hero_products:"Explore products",hero_quote:"Request a quote",
-intro_eyebrow:"EMPERIO TISS",intro_title:"Food supply built around reliability.",intro_text:"We provide professional food distribution and supply solutions connecting quality products with business demand across European and Mediterranean markets.",intro_link:"Discover our services →",
-products_eyebrow:"OUR PRODUCTS",products_title:"Selected for professional markets.",products_intro:"A focused range designed around quality, availability and commercial requirements.",
-fish_title:"Fish & Seafood",fish_text:"Fresh and frozen fish, seafood and marine products for professional buyers.",produce_title:"Fruits & Vegetables",produce_text:"Fresh produce selected according to seasonality, quality and market demand.",fresh_title:"Fresh & Frozen",fresh_text:"Flexible product solutions adapted to different business requirements.",seasonal_title:"Seasonal Products",seasonal_text:"Products selected around season, availability and commercial opportunity.",
-markets_eyebrow:"MARKETS",markets_title:"European reach. Mediterranean connection.",markets_intro:"Our commercial activity is focused on connections between European and Mediterranean markets.",
-services_eyebrow:"OUR SERVICES",services_title:"More than products. A complete supply approach.",service1_title:"Food Distribution",service1_text:"Professional B2B distribution adapted to product and destination requirements.",service2_title:"Product Sourcing",service2_text:"Product identification according to specifications, volumes, season and destination.",service3_title:"Import & Export",service3_text:"Cross-border coordination supporting movement between European and Mediterranean markets.",service4_title:"Logistics Coordination",service4_text:"Coordinated transport planning from origin to destination.",service5_title:"Supply Solutions",service5_text:"Commercial solutions built around recurring demand, timing and operational needs.",
-about_eyebrow:"ABOUT EMPERIO TISS",about_title:"Professional supply. International perspective.",about_text:"EMPERIO TISS is a Madrid-based company focused on professional food distribution and supply across European and Mediterranean markets. Our approach combines product access, commercial coordination and logistics to create practical supply solutions for business customers.",
-cta_title:"Looking for a reliable food supply solution?",cta_text:"Tell us what you need, where you need it and the quantities involved.",form_name:"Name",form_company:"Company",form_email:"Email",form_phone:"Phone",form_product:"Product",form_destination:"Destination",form_message:"Message",form_send:"Prepare enquiry",form_note:"This free version opens your email application with the enquiry prepared. We can connect a professional form service later.",footer_tagline:"International Food Distribution & Supply",footer_nav:"Navigation",footer_contact:"Contact"
-},
-es:{
-nav_products:"Productos",nav_markets:"Mercados",nav_services:"Servicios",nav_about:"Empresa",nav_contact:"Contacto",nav_quote:"Solicitar presupuesto",
-hero_eyebrow:"DISTRIBUCIÓN Y SUMINISTRO INTERNACIONAL DE ALIMENTOS",hero_title:"Suministro alimentario fiable en Europa y el Mediterráneo.",hero_text:"Soluciones profesionales de suministro para empresas que buscan productos de calidad, disponibilidad fiable y logística coordinada.",hero_products:"Ver productos",hero_quote:"Solicitar presupuesto",
-intro_eyebrow:"EMPERIO TISS",intro_title:"Suministro alimentario basado en la fiabilidad.",intro_text:"Ofrecemos soluciones profesionales de distribución y suministro alimentario, conectando productos de calidad con la demanda empresarial en mercados europeos y mediterráneos.",intro_link:"Descubrir nuestros servicios →",
-products_eyebrow:"NUESTROS PRODUCTOS",products_title:"Seleccionados para mercados profesionales.",products_intro:"Una gama enfocada en calidad, disponibilidad y necesidades comerciales.",
-fish_title:"Pescado y Marisco",fish_text:"Pescado, marisco y productos del mar frescos y congelados para clientes profesionales.",produce_title:"Frutas y Hortalizas",produce_text:"Productos frescos seleccionados según temporada, calidad y demanda del mercado.",fresh_title:"Fresco y Congelado",fresh_text:"Soluciones de producto adaptadas a diferentes necesidades empresariales.",seasonal_title:"Productos de Temporada",seasonal_text:"Productos seleccionados según temporada, disponibilidad y oportunidad comercial.",
-markets_eyebrow:"MERCADOS",markets_title:"Alcance europeo. Conexión mediterránea.",markets_intro:"Nuestra actividad comercial se centra en las conexiones entre los mercados europeos y mediterráneos.",
-services_eyebrow:"NUESTROS SERVICIOS",services_title:"Más que productos. Un enfoque integral de suministro.",service1_title:"Distribución Alimentaria",service1_text:"Distribución B2B profesional adaptada a las necesidades del producto y destino.",service2_title:"Abastecimiento de Productos",service2_text:"Identificación de productos según especificaciones, volúmenes, temporada y destino.",service3_title:"Importación y Exportación",service3_text:"Coordinación internacional para el movimiento entre mercados europeos y mediterráneos.",service4_title:"Coordinación Logística",service4_text:"Planificación coordinada del transporte desde el origen hasta el destino.",service5_title:"Soluciones de Suministro",service5_text:"Soluciones comerciales adaptadas a demanda recurrente, plazos y necesidades operativas.",
-about_eyebrow:"SOBRE EMPERIO TISS",about_title:"Suministro profesional. Perspectiva internacional.",about_text:"EMPERIO TISS es una empresa con sede en Madrid especializada en distribución y suministro alimentario profesional en mercados europeos y mediterráneos. Combinamos acceso a productos, coordinación comercial y logística para crear soluciones prácticas de suministro.",
-cta_title:"¿Busca una solución fiable de suministro alimentario?",cta_text:"Indíquenos qué necesita, dónde lo necesita y las cantidades previstas.",form_name:"Nombre",form_company:"Empresa",form_email:"Email",form_phone:"Teléfono",form_product:"Producto",form_destination:"Destino",form_message:"Mensaje",form_send:"Preparar consulta",form_note:"Esta versión gratuita abre su aplicación de correo con la consulta preparada. Más adelante podemos conectar un servicio profesional de formularios.",footer_tagline:"Distribución y Suministro Internacional de Alimentos",footer_nav:"Navegación",footer_contact:"Contacto"
-},
-fr:{
-nav_products:"Produits",nav_markets:"Marchés",nav_services:"Services",nav_about:"Entreprise",nav_contact:"Contact",nav_quote:"Demander un devis",
-hero_eyebrow:"DISTRIBUTION ET APPROVISIONNEMENT ALIMENTAIRE INTERNATIONAL",hero_title:"Un approvisionnement alimentaire fiable en Europe et en Méditerranée.",hero_text:"Des solutions professionnelles pour les entreprises recherchant des produits de qualité, une disponibilité fiable et une logistique coordonnée.",hero_products:"Voir les produits",hero_quote:"Demander un devis",
-intro_eyebrow:"EMPERIO TISS",intro_title:"Un approvisionnement fondé sur la fiabilité.",intro_text:"Nous proposons des solutions professionnelles de distribution et d'approvisionnement alimentaire reliant des produits de qualité aux besoins des entreprises sur les marchés européens et méditerranéens.",intro_link:"Découvrir nos services →",
-products_eyebrow:"NOS PRODUITS",products_title:"Sélectionnés pour les marchés professionnels.",products_intro:"Une gamme ciblée autour de la qualité, de la disponibilité et des besoins commerciaux.",
-fish_title:"Poissons & Produits de la Mer",fish_text:"Poissons, fruits de mer et produits marins frais et surgelés pour les professionnels.",produce_title:"Fruits & Légumes",produce_text:"Produits frais sélectionnés selon la saison, la qualité et la demande du marché.",fresh_title:"Frais & Surgelé",fresh_text:"Des solutions adaptées aux différents besoins des entreprises.",seasonal_title:"Produits de Saison",seasonal_text:"Produits sélectionnés selon la saison, la disponibilité et les opportunités commerciales.",
-markets_eyebrow:"MARCHÉS",markets_title:"Présence européenne. Connexion méditerranéenne.",markets_intro:"Notre activité commerciale se concentre sur les échanges entre les marchés européens et méditerranéens.",
-services_eyebrow:"NOS SERVICES",services_title:"Plus que des produits. Une approche complète de l'approvisionnement.",service1_title:"Distribution Alimentaire",service1_text:"Distribution B2B professionnelle adaptée aux exigences du produit et de la destination.",service2_title:"Approvisionnement Produits",service2_text:"Identification des produits selon les spécifications, volumes, saison et destination.",service3_title:"Import & Export",service3_text:"Coordination transfrontalière entre les marchés européens et méditerranéens.",service4_title:"Coordination Logistique",service4_text:"Planification coordonnée du transport de l'origine à la destination.",service5_title:"Solutions d'Approvisionnement",service5_text:"Des solutions adaptées aux besoins récurrents, aux délais et aux contraintes opérationnelles.",
-about_eyebrow:"À PROPOS D'EMPERIO TISS",about_title:"Approvisionnement professionnel. Perspective internationale.",about_text:"EMPERIO TISS est une entreprise basée à Madrid, spécialisée dans la distribution et l'approvisionnement alimentaire professionnel sur les marchés européens et méditerranéens. Nous combinons accès aux produits, coordination commerciale et logistique pour créer des solutions concrètes.",
-cta_title:"Vous recherchez une solution fiable d'approvisionnement alimentaire ?",cta_text:"Indiquez-nous vos besoins, votre destination et les quantités souhaitées.",form_name:"Nom",form_company:"Entreprise",form_email:"Email",form_phone:"Téléphone",form_product:"Produit",form_destination:"Destination",form_message:"Message",form_send:"Préparer la demande",form_note:"Cette version gratuite ouvre votre application e-mail avec la demande préparée. Nous pourrons connecter ultérieurement un service professionnel de formulaires.",footer_tagline:"Distribution et Approvisionnement Alimentaire International",footer_nav:"Navigation",footer_contact:"Contact"
-}};
-let currentLang="en";
-function setLang(lang){
-  currentLang=lang; const t=translations[lang]||translations.en;
-  document.documentElement.lang=lang;
-  document.querySelector(".lang-btn").textContent=lang.toUpperCase()+" ▾";
-  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(t[k])el.textContent=t[k]});
-}
-document.querySelector(".menu-toggle").addEventListener("click",()=>{
- const nav=document.querySelector(".nav"), btn=document.querySelector(".menu-toggle");
- const open=nav.classList.toggle("open");btn.setAttribute("aria-expanded",open);
-});
-document.querySelectorAll("[data-lang]").forEach(btn=>btn.addEventListener("click",()=>setLang(btn.dataset.lang)));
-document.querySelectorAll(".nav a").forEach(a=>a.addEventListener("click",()=>document.querySelector(".nav").classList.remove("open")));
-document.getElementById("year").textContent=new Date().getFullYear();
+/* =====================================================
+   EMPERIO TISS
+   Interactions & Scroll Animations
+===================================================== */
 
-document.getElementById("quoteForm").addEventListener("submit",(e)=>{
- e.preventDefault();
- const f=new FormData(e.currentTarget);
- const subject=encodeURIComponent("EMPERIO TISS — Business Enquiry");
- const body=encodeURIComponent(
- `Name: ${f.get("name")}\nCompany: ${f.get("company")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone")}\nProduct: ${f.get("product")}\nDestination: ${f.get("destination")}\n\nMessage:\n${f.get("message")}`
- );
- // Replace the address below with the final business mailbox before launch.
- window.location.href=`mailto:info@tiss-group.com?subject=${subject}&body=${body}`;
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===================================================
+     PAGE LOAD
+  =================================================== */
+
+  document.body.classList.add("loaded");
+
+
+  /* ===================================================
+     HEADER
+  =================================================== */
+
+  const header = document.querySelector(".site-header");
+
+  const updateHeader = () => {
+
+    if (!header) return;
+
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+  };
+
+  updateHeader();
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
+
+
+  /* ===================================================
+     MOBILE MENU
+  =================================================== */
+
+  const menuButton =
+    document.querySelector(".menu-toggle");
+
+  const nav =
+    document.querySelector(".nav");
+
+  if (menuButton && nav) {
+
+    menuButton.addEventListener("click", () => {
+
+      const open =
+        nav.classList.toggle("open");
+
+      menuButton.classList.toggle(
+        "active",
+        open
+      );
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+    });
+
+
+    nav.querySelectorAll("a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        nav.classList.remove("open");
+
+        menuButton.classList.remove("active");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+  }
+
+
+  /* ===================================================
+     SCROLL REVEALS
+  =================================================== */
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12,
+
+          rootMargin:
+            "0px 0px -60px 0px"
+        }
+      );
+
+
+    revealElements.forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+  } else {
+
+    revealElements.forEach(element => {
+
+      element.classList.add("visible");
+
+    });
+
+  }
+
+
+  /* ===================================================
+     NETWORK LINES
+  =================================================== */
+
+  const network =
+    document.querySelector(".network");
+
+  if (network) {
+
+    const lines =
+      network.querySelectorAll(
+        ".network-line"
+      );
+
+    if ("IntersectionObserver" in window) {
+
+      const networkObserver =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                lines.forEach(
+                  (line, index) => {
+
+                    setTimeout(() => {
+
+                      line.classList.add(
+                        "visible"
+                      );
+
+                    }, index * 250);
+
+                  }
+                );
+
+                networkObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
+            });
+
+          },
+          {
+            threshold: .25
+          }
+        );
+
+      networkObserver.observe(network);
+
+    } else {
+
+      lines.forEach(line => {
+
+        line.classList.add("visible");
+
+      });
+
+    }
+
+  }
+
+
+  /* ===================================================
+     SMOOTH INTERNAL LINKS
+  =================================================== */
+
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        event => {
+
+          const targetId =
+            link.getAttribute("href");
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
+
+          const target =
+            document.querySelector(
+              targetId
+            );
+
+          if (!target) return;
+
+          event.preventDefault();
+
+          const headerHeight =
+            header
+              ? header.offsetHeight
+              : 0;
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+          });
+
+        }
+      );
+
+    });
+
+
+  /* ===================================================
+     PARALLAX HERO
+  =================================================== */
+
+  const heroImage =
+    document.querySelector(".hero-image");
+
+  if (
+    heroImage &&
+    !window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+  ) {
+
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (ticking) return;
+
+        window.requestAnimationFrame(() => {
+
+          const scroll =
+            window.scrollY;
+
+          if (scroll < window.innerHeight) {
+
+            heroImage.style.transform =
+              `scale(1.08) translateY(${scroll * 0.12}px)`;
+
+          }
+
+          ticking = false;
+
+        });
+
+        ticking = true;
+
+      },
+      { passive: true }
+    );
+
+  }
+
+
+  /* ===================================================
+     FOOTER YEAR
+  =================================================== */
+
+  const year =
+    document.getElementById("year");
+
+  if (year) {
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  /* ===================================================
+     IMAGE FALLBACK
+  =================================================== */
+
+  document
+    .querySelectorAll("img")
+    .forEach(image => {
+
+      image.addEventListener(
+        "error",
+        () => {
+
+          image.style.opacity = "0";
+
+        }
+      );
+
+    });
+
 });
-setLang("en");
