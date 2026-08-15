@@ -1446,3 +1446,123 @@ p{
   }
 
 }
+/* =========================================================
+   LANGUAGE SWITCHER — REFINED NAVIGATION
+========================================================= */
+
+.language-switcher{
+  display:flex;
+  align-items:center;
+  gap:0;
+
+  margin-left:4px;
+
+  height:30px;
+
+  border-left:1px solid rgba(255,255,255,.25);
+  padding-left:14px;
+}
+
+.language-switcher a{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:27px;
+  height:28px;
+
+  padding:0 5px;
+
+  color:rgba(255,255,255,.55);
+
+  font-family:"DM Sans",sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+
+  opacity:1;
+
+  transition:
+    color .3s ease,
+    opacity .3s ease;
+}
+
+.language-switcher a:hover{
+  color:#fff;
+}
+
+.language-switcher a.active{
+  color:#fff;
+}
+
+.language-switcher a.active::after{
+  content:"";
+
+  position:absolute;
+
+  left:6px;
+  right:6px;
+  bottom:1px;
+
+  height:1px;
+
+  background:var(--accent);
+}
+
+
+/* ---------------------------------------------------------
+   SCROLLED HEADER
+--------------------------------------------------------- */
+
+.site-header.scrolled .language-switcher{
+  border-left-color:var(--line);
+}
+
+.site-header.scrolled .language-switcher a{
+  color:rgba(24,32,31,.45);
+}
+
+.site-header.scrolled .language-switcher a:hover,
+.site-header.scrolled .language-switcher a.active{
+  color:var(--ink);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media(max-width:760px){
+
+  .language-switcher{
+    width:100%;
+
+    height:auto;
+
+    margin:0;
+
+    padding:10px 18px;
+
+    border-left:0;
+
+    border-bottom:1px solid var(--line);
+
+    justify-content:flex-start;
+
+    gap:4px;
+  }
+
+  .language-switcher a{
+    min-width:40px;
+    height:32px;
+
+    border:1px solid transparent;
+  }
+
+  .language-switcher a.active{
+    border-color:var(--line);
+  }
+
+}
