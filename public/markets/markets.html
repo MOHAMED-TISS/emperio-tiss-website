@@ -1,76 +1,1228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="EMPERIO TISS connects Africa, Europe and the Middle East through food distribution, international trade and coordinated supply solutions.">
-
-  <meta name="theme-color" content="#071624">
-
-  <meta property="og:title" content="Markets | EMPERIO TISS">
-  <meta property="og:description" content="Connecting Africa, Europe and the Middle East through food, trade and supply.">
-  <meta property="og:type" content="website">
-
   <title>Markets | EMPERIO TISS</title>
+
+  <meta
+    name="description"
+    content="EMPERIO TISS connects food origins and professional markets across Africa, Europe and the Middle East."
+  >
+
+  <meta name="robots" content="index, follow">
 
   <link rel="icon" href="../logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-  <link rel="stylesheet" href="../style.css">
+  <style>
+
+    :root {
+      --black: #101310;
+      --dark: #171c19;
+      --dark-2: #202720;
+
+      --cream: #f4f1e9;
+      --cream-2: #e8e3d7;
+
+      --white: #ffffff;
+
+      --muted: #a7ada5;
+      --muted-dark: #646b64;
+
+      --green: #758b58;
+      --green-dark: #52663c;
+
+      --sand: #d8c9a9;
+
+      --line-dark: rgba(16,19,16,.15);
+      --line-light: rgba(255,255,255,.14);
+
+      --max: 1440px;
+    }
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+
+      font-family: "DM Sans", sans-serif;
+
+      line-height: 1.5;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+
+    .container {
+      width: min(var(--max), calc(100% - 56px));
+      margin: 0 auto;
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .site-header {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 20;
+
+      color: var(--white);
+    }
+
+
+    .nav {
+      min-height: 92px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid rgba(255,255,255,.16);
+    }
+
+
+    .logo {
+      width: 155px;
+    }
+
+
+    .logo img {
+      width: 100%;
+      height: auto;
+    }
+
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+
+    .nav-links a {
+      opacity: .88;
+    }
+
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+
+    .nav-contact {
+      padding: 10px 18px;
+
+      border: 1px solid rgba(255,255,255,.45);
+
+      border-radius: 999px;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      min-height: 720px;
+
+      display: flex;
+      align-items: flex-end;
+
+      position: relative;
+
+      color: var(--white);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7,11,9,.88),
+          rgba(7,11,9,.42)
+        ),
+        linear-gradient(
+          0deg,
+          rgba(7,11,9,.82),
+          rgba(7,11,9,.04)
+        ),
+        url("https://images.unsplash.com/photo-1524666041070-9cff998c24a3?auto=format&fit=crop&w=2400&q=90")
+        center / cover;
+    }
+
+
+    .hero-content {
+      padding-bottom: 90px;
+
+      max-width: 1050px;
+    }
+
+
+    .eyebrow {
+      color: var(--sand);
+
+      text-transform: uppercase;
+      letter-spacing: .2em;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    .hero h1 {
+      margin: 20px 0 25px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(60px, 9vw, 120px);
+
+      line-height: .88;
+
+      letter-spacing: -.075em;
+    }
+
+
+    .hero-text {
+      max-width: 690px;
+
+      color: rgba(255,255,255,.82);
+
+      font-size: 19px;
+
+      line-height: 1.55;
+    }
+
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 34px;
+    }
+
+
+    .button {
+      min-height: 50px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 23px;
+
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+
+    .button-primary {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+
+    .button-secondary {
+      color: var(--white);
+
+      border: 1px solid rgba(255,255,255,.45);
+    }
+
+
+    /* =====================================================
+       INTRO
+       ===================================================== */
+
+    .intro {
+      padding: 130px 0;
+    }
+
+
+    .two-column {
+      display: grid;
+
+      grid-template-columns: .8fr 1.5fr;
+
+      gap: 100px;
+    }
+
+
+    .section-label {
+      color: var(--green-dark);
+
+      text-transform: uppercase;
+      letter-spacing: .18em;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    .intro h2,
+    .section-heading h2 {
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(46px, 6vw, 76px);
+
+      line-height: .94;
+
+      letter-spacing: -.065em;
+    }
+
+
+    .intro-copy {
+      max-width: 760px;
+
+      color: var(--muted-dark);
+
+      font-size: 18px;
+
+      line-height: 1.7;
+    }
+
+
+    .intro-copy + .intro-copy {
+      margin-top: 20px;
+    }
+
+
+    /* =====================================================
+       NETWORK
+       ===================================================== */
+
+    .network {
+      padding: 130px 0;
+
+      background: var(--dark);
+
+      color: var(--white);
+    }
+
+
+    .network .section-label {
+      color: var(--sand);
+
+      margin-bottom: 18px;
+    }
+
+
+    .network-heading {
+      max-width: 850px;
+
+      margin-bottom: 70px;
+    }
+
+
+    .network-heading h2 {
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(50px, 7vw, 88px);
+
+      line-height: .92;
+
+      letter-spacing: -.07em;
+    }
+
+
+    .network-visual {
+      min-height: 520px;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .network-center {
+      width: 190px;
+      height: 190px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 3;
+
+      border-radius: 50%;
+
+      background: var(--cream);
+
+      color: var(--black);
+
+      text-align: center;
+
+      box-shadow: 0 0 0 18px rgba(255,255,255,.035);
+    }
+
+
+    .network-center strong {
+      font-family: "Manrope", sans-serif;
+
+      font-size: 17px;
+    }
+
+
+    .network-center span {
+      margin-top: 5px;
+
+      color: var(--green-dark);
+
+      font-size: 10px;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+    }
+
+
+    .network-node {
+      position: absolute;
+
+      width: 220px;
+
+      padding: 25px;
+
+      background: rgba(255,255,255,.045);
+
+      border: 1px solid var(--line-light);
+    }
+
+
+    .network-node::after {
+      content: "";
+
+      position: absolute;
+
+      height: 1px;
+
+      width: 180px;
+
+      top: 50%;
+
+      background: rgba(255,255,255,.22);
+
+      z-index: -1;
+    }
+
+
+    .network-node.africa {
+      left: 0;
+      top: 95px;
+    }
+
+
+    .network-node.africa::after {
+      right: -180px;
+    }
+
+
+    .network-node.europe {
+      right: 0;
+      top: 95px;
+    }
+
+
+    .network-node.europe::after {
+      left: -180px;
+    }
+
+
+    .network-node.middle-east {
+      right: 0;
+      bottom: 95px;
+    }
+
+
+    .network-node.middle-east::after {
+      left: -180px;
+    }
+
+
+    .network-node .node-label {
+      color: var(--sand);
+
+      font-size: 10px;
+
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+    }
+
+
+    .network-node h3 {
+      margin: 12px 0 8px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: 27px;
+    }
+
+
+    .network-node p {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       REGIONS
+       ===================================================== */
+
+    .regions {
+      padding: 130px 0;
+    }
+
+
+    .section-heading {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 60px;
+
+      margin-bottom: 65px;
+    }
+
+
+    .section-heading > p {
+      max-width: 430px;
+
+      color: var(--muted-dark);
+
+      font-size: 15px;
+    }
+
+
+    .region-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+
+    .region-card {
+      min-height: 500px;
+
+      padding: 32px;
+
+      display: flex;
+      flex-direction: column;
+
+      background: var(--cream-2);
+
+      border: 1px solid var(--line-dark);
+    }
+
+
+    .region-number {
+      color: var(--green-dark);
+
+      font-size: 10px;
+
+      letter-spacing: .15em;
+    }
+
+
+    .region-card h3 {
+      margin-top: auto;
+      margin-bottom: 13px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: 39px;
+
+      line-height: 1;
+    }
+
+
+    .region-card > p {
+      color: var(--muted-dark);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       AFRICA
+       ===================================================== */
+
+    .africa-section {
+      padding: 130px 0;
+
+      background: var(--dark);
+
+      color: var(--white);
+    }
+
+
+    .africa-section .section-label {
+      color: var(--sand);
+
+      margin-bottom: 18px;
+    }
+
+
+    .africa-section h2 {
+      color: var(--white);
+    }
+
+
+    .africa-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 14px;
+
+      margin-top: 70px;
+    }
+
+
+    .country-card {
+      min-height: 310px;
+
+      padding: 32px;
+
+      background: var(--dark-2);
+
+      border: 1px solid var(--line-light);
+    }
+
+
+    .country-code {
+      color: var(--sand);
+
+      font-size: 10px;
+
+      letter-spacing: .16em;
+    }
+
+
+    .country-card h3 {
+      margin: 70px 0 12px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: 32px;
+    }
+
+
+    .country-card p {
+      max-width: 500px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    .country-products {
+      display: inline-block;
+
+      margin-top: 22px;
+
+      color: var(--cream);
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       EUROPE
+       ===================================================== */
+
+    .europe-section {
+      padding: 130px 0;
+    }
+
+
+    .market-list {
+      border-top: 1px solid var(--line-dark);
+    }
+
+
+    .market-row {
+      display: grid;
+
+      grid-template-columns: 90px 1fr 1.2fr;
+
+      gap: 30px;
+
+      padding: 28px 0;
+
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+
+    .market-code {
+      color: var(--green-dark);
+
+      font-size: 11px;
+
+      letter-spacing: .15em;
+    }
+
+
+    .market-row h3 {
+      font-family: "Manrope", sans-serif;
+
+      font-size: 25px;
+    }
+
+
+    .market-row p {
+      color: var(--muted-dark);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       MIDDLE EAST
+       ===================================================== */
+
+    .middle-east-section {
+      padding: 130px 0;
+
+      background: var(--cream-2);
+    }
+
+
+    .middle-east-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      margin-top: 65px;
+
+      border-top: 1px solid var(--line-dark);
+      border-left: 1px solid var(--line-dark);
+    }
+
+
+    .middle-card {
+      min-height: 230px;
+
+      padding: 28px;
+
+      border-right: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+
+    .middle-card span {
+      color: var(--green-dark);
+
+      font-size: 10px;
+
+      letter-spacing: .15em;
+    }
+
+
+    .middle-card h3 {
+      margin: 55px 0 10px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: 25px;
+    }
+
+
+    .middle-card p {
+      color: var(--muted-dark);
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       CONNECTION
+       ===================================================== */
+
+    .connection {
+      padding: 130px 0;
+    }
+
+
+    .connection-list {
+      margin-top: 65px;
+
+      border-top: 1px solid var(--line-dark);
+    }
+
+
+    .connection-item {
+      display: grid;
+
+      grid-template-columns: 80px 1fr 1fr;
+
+      gap: 30px;
+
+      padding: 32px 0;
+
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+
+    .connection-number {
+      color: var(--green-dark);
+
+      font-size: 11px;
+    }
+
+
+    .connection-item h3 {
+      font-family: "Manrope", sans-serif;
+
+      font-size: 24px;
+    }
+
+
+    .connection-item p {
+      color: var(--muted-dark);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    .cta {
+      padding: 150px 0;
+
+      text-align: center;
+
+      color: var(--white);
+
+      background:
+        linear-gradient(
+          rgba(16,19,16,.84),
+          rgba(16,19,16,.84)
+        ),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=2400&q=90")
+        center / cover;
+    }
+
+
+    .cta h2 {
+      max-width: 1050px;
+
+      margin: 18px auto 25px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(50px, 7vw, 90px);
+
+      line-height: .92;
+
+      letter-spacing: -.07em;
+    }
+
+
+    .cta p {
+      margin-bottom: 35px;
+
+      color: rgba(255,255,255,.76);
+
+      font-size: 18px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      padding: 60px 0 28px;
+
+      background: var(--black);
+
+      color: var(--white);
+    }
+
+
+    .footer-top {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 70px;
+
+      padding-bottom: 50px;
+
+      border-bottom: 1px solid var(--line-light);
+    }
+
+
+    .footer-logo {
+      width: 155px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .footer-description {
+      max-width: 390px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    .footer-columns {
+      display: flex;
+
+      gap: 70px;
+    }
+
+
+    .footer-column h4 {
+      margin-bottom: 18px;
+
+      color: var(--sand);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: .16em;
+    }
+
+
+    .footer-column a {
+      display: block;
+
+      margin-bottom: 10px;
+
+      color: #d0d4cf;
+
+      font-size: 13px;
+    }
+
+
+    .footer-bottom {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding-top: 25px;
+
+      color: #727871;
+
+      font-size: 11px;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .nav-links {
+        gap: 18px;
+      }
+
+
+      .two-column {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+
+      .network-node {
+        width: 190px;
+      }
+
+
+      .network-node::after {
+        width: 100px;
+      }
+
+
+      .network-node.africa::after {
+        right: -100px;
+      }
+
+
+      .network-node.europe::after,
+      .network-node.middle-east::after {
+        left: -100px;
+      }
+
+
+      .region-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+
+      .africa-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .middle-east-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+
+      .market-row {
+        grid-template-columns: 70px 1fr;
+      }
+
+
+      .market-row p {
+        grid-column: 2;
+      }
+
+
+      .connection-item {
+        grid-template-columns: 60px 1fr;
+      }
+
+
+      .connection-item p {
+        grid-column: 2;
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .container {
+        width: calc(100% - 32px);
+      }
+
+
+      .nav {
+        min-height: 76px;
+      }
+
+
+      .nav-links {
+        display: none;
+      }
+
+
+      .hero {
+        min-height: 650px;
+      }
+
+
+      .hero-content {
+        padding-bottom: 65px;
+      }
+
+
+      .hero h1 {
+        font-size: 62px;
+      }
+
+
+      .intro,
+      .network,
+      .regions,
+      .africa-section,
+      .europe-section,
+      .middle-east-section,
+      .connection {
+        padding: 90px 0;
+      }
+
+
+      .network-visual {
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 14px;
+      }
+
+
+      .network-center {
+        width: 160px;
+        height: 160px;
+
+        order: 1;
+      }
+
+
+      .network-node {
+        position: relative;
+
+        inset: auto !important;
+
+        width: 100%;
+
+        order: 2;
+      }
+
+
+      .network-node::after {
+        display: none;
+      }
+
+
+      .section-heading {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+      }
+
+
+      .region-grid,
+      .africa-grid,
+      .middle-east-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .region-card {
+        min-height: 400px;
+      }
+
+
+      .middle-east-grid {
+        border-right: 0;
+      }
+
+
+      .footer-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+
+      .footer-columns {
+        flex-wrap: wrap;
+
+        gap: 40px;
+      }
+
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
-<header class="site-header" id="top">
 
-  <div class="container nav-wrap">
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
-    <a class="brand" href="../index.html" aria-label="EMPERIO TISS home">
-      <img src="../logo.png" alt="EMPERIO TISS logo">
+<header class="site-header">
+
+  <div class="container nav">
+
+    <a
+      href="../index.html"
+      class="logo"
+      aria-label="EMPERIO TISS home"
+    >
+
+      <img
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
+
     </a>
 
-    <button
-      class="menu-toggle"
-      aria-label="Open menu"
-      aria-expanded="false">
-      ☰
-    </button>
 
-    <nav class="nav" aria-label="Main navigation">
+    <nav class="nav-links">
 
-      <a href="../index.html#products">Products</a>
+      <a href="../products/index.html">
+        Products
+      </a>
 
-      <a href="markets.html">Markets</a>
+      <a href="markets.html">
+        Markets
+      </a>
 
-      <a href="../index.html#services">Services</a>
+      <a href="../index.html#solutions">
+        Solutions
+      </a>
 
-      <a href="../index.html#about">About</a>
-
-      <a href="../index.html#contact">Contact</a>
-
-      <div class="lang">
-
-        <button class="lang-btn" aria-label="Language">
-          EN ▾
-        </button>
-
-        <div class="lang-menu">
-          <button data-lang="en">English</button>
-          <button data-lang="es">Español</button>
-          <button data-lang="fr">Français</button>
-        </div>
-
-      </div>
+      <a href="../index.html#about">
+        About
+      </a>
 
       <a
-        class="nav-cta"
-        href="../index.html#contact">
-        Request a quote
+        href="../index.html#contact"
+        class="nav-contact"
+      >
+        Contact
       </a>
 
     </nav>
@@ -82,51 +1234,51 @@
 
 <main>
 
+
 <!-- =====================================================
      HERO
-===================================================== -->
+     ===================================================== -->
 
 <section class="hero">
 
-  <div class="hero-overlay"></div>
-
   <div class="container hero-content">
 
-    <p class="eyebrow">
+    <div class="eyebrow">
       OUR MARKETS
-    </p>
+    </div>
+
 
     <h1>
       Three regions.<br>
-      One commercial bridge.
+      One network.
     </h1>
 
+
     <p class="hero-text">
-      Connecting Africa, Europe and the Middle East through
-      food supply, international trade and coordinated
-      commercial solutions.
+      Connecting food origins, professional markets and
+      logistics across Africa, Europe and the Middle East.
     </p>
+
 
     <div class="hero-actions">
 
       <a
-        class="button primary"
-        href="#regions">
-        Explore our markets
+        href="#regions"
+        class="button button-primary"
+      >
+        Explore markets →
       </a>
 
+
       <a
-        class="button secondary"
-        href="../index.html#contact">
-        Discuss an opportunity
+        href="../index.html#contact"
+        class="button button-secondary"
+      >
+        Business enquiry
       </a>
 
     </div>
 
-  </div>
-
-  <div class="hero-scroll">
-    ↓
   </div>
 
 </section>
@@ -134,39 +1286,139 @@
 
 <!-- =====================================================
      INTRO
-===================================================== -->
+     ===================================================== -->
 
-<section class="intro section">
+<section class="intro">
 
-  <div class="container two-col">
+  <div class="container two-column">
 
     <div>
 
-      <p class="eyebrow dark">
-        THE EMPERIO TISS APPROACH
-      </p>
+      <div class="section-label">
+        EMPERIO TISS NETWORK
+      </div>
+
+    </div>
+
+
+    <div>
 
       <h2>
-        Connecting supply with opportunity.
+        Origin to market.
+      </h2>
+
+
+      <p class="intro-copy">
+        EMPERIO TISS is building a food-supply network
+        connecting selected origins in Africa with
+        professional markets in Europe and developing
+        opportunities across the Middle East.
+      </p>
+
+
+      <p class="intro-copy">
+        The network is built around products, market
+        requirements, availability, timing and the logistics
+        needed to connect them.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     NETWORK VISUAL
+     ===================================================== -->
+
+<section class="network">
+
+  <div class="container">
+
+    <div class="network-heading">
+
+      <div class="section-label">
+        The network
+      </div>
+
+
+      <h2>
+        Africa.<br>
+        Europe.<br>
+        Middle East.
       </h2>
 
     </div>
 
-    <div class="intro-copy">
 
-      <p>
-        EMPERIO TISS is building a commercial bridge between
-        Africa, Europe and the Middle East, connecting food
-        supply, market demand and cross-border business
-        opportunities.
-      </p>
+    <div class="network-visual">
 
-      <p>
-        Our approach combines product distribution,
-        international trade coordination and logistics to
-        facilitate practical supply solutions between
-        strategic markets.
-      </p>
+
+      <div class="network-node africa">
+
+        <span class="node-label">
+          Origin
+        </span>
+
+        <h3>
+          Africa
+        </h3>
+
+        <p>
+          Morocco · Tunisia · Senegal · Mauritania · Ghana
+        </p>
+
+      </div>
+
+
+      <div class="network-center">
+
+        <strong>
+          EMPERIO TISS
+        </strong>
+
+        <span>
+          Madrid · Spain
+        </span>
+
+      </div>
+
+
+      <div class="network-node europe">
+
+        <span class="node-label">
+          Core markets
+        </span>
+
+        <h3>
+          Europe
+        </h3>
+
+        <p>
+          Spain · France · Germany · Italy · Netherlands
+        </p>
+
+      </div>
+
+
+      <div class="network-node middle-east">
+
+        <span class="node-label">
+          Growth markets
+        </span>
+
+        <h3>
+          Middle East
+        </h3>
+
+        <p>
+          GCC · UAE · Saudi Arabia · Qatar · Levant
+        </p>
+
+      </div>
+
 
     </div>
 
@@ -177,91 +1429,105 @@
 
 <!-- =====================================================
      THREE REGIONS
-===================================================== -->
+     ===================================================== -->
 
 <section
-  class="section dark-section"
-  id="regions">
+  class="regions"
+  id="regions"
+>
 
   <div class="container">
 
-    <div class="section-head light">
+    <div class="section-heading">
 
       <div>
 
-        <p class="eyebrow">
-          THREE STRATEGIC REGIONS
-        </p>
+        <div class="section-label">
+          Geographic structure
+        </div>
 
         <h2>
-          Africa · Europe · Middle East
+          Three regions.<br>
+          Different roles.
         </h2>
 
       </div>
 
+
       <p>
-        Different markets, different opportunities —
-        connected through one commercial perspective.
+        Each region has a different position within the
+        network: production origins, established professional
+        markets and developing demand.
       </p>
 
     </div>
 
 
-    <div class="market-grid">
+    <div class="region-grid">
 
 
-      <!-- AFRICA -->
+      <article class="region-card">
 
-      <div class="market featured">
-
-        <span>01 · AFRICA</span>
-
-        <strong>
-          Africa
-        </strong>
-
-        <small>
-          Supply origins, production capabilities and
-          emerging commercial opportunities.
-        </small>
-
-      </div>
+        <span class="region-number">
+          01 · AFRICA
+        </span>
 
 
-      <!-- EUROPE -->
-
-      <div class="market">
-
-        <span>02 · EUROPE</span>
-
-        <strong>
-          Europe
-        </strong>
-
-        <small>
-          Established distribution networks and major
-          professional food markets.
-        </small>
-
-      </div>
+        <h3>
+          Production<br>
+          origins
+        </h3>
 
 
-      <!-- MIDDLE EAST -->
+        <p>
+          Selected origins with relevant agricultural,
+          fisheries and food-production capabilities.
+        </p>
 
-      <div class="market">
+      </article>
 
-        <span>03 · MIDDLE EAST</span>
 
-        <strong>
-          Middle East
-        </strong>
+      <article class="region-card">
 
-        <small>
-          High-value food markets and growing demand
-          across the region.
-        </small>
+        <span class="region-number">
+          02 · EUROPE
+        </span>
 
-      </div>
+
+        <h3>
+          Professional<br>
+          markets
+        </h3>
+
+
+        <p>
+          Established food markets and distribution
+          connections, with Madrid as the operational base.
+        </p>
+
+      </article>
+
+
+      <article class="region-card">
+
+        <span class="region-number">
+          03 · MIDDLE EAST
+        </span>
+
+
+        <h3>
+          Developing<br>
+          opportunities
+        </h3>
+
+
+        <p>
+          Selected Gulf and Levant markets where product,
+          demand and logistics requirements align.
+        </p>
+
+      </article>
+
 
     </div>
 
@@ -272,98 +1538,206 @@
 
 <!-- =====================================================
      AFRICA
-===================================================== -->
+     ===================================================== -->
 
-<section class="section">
+<section class="africa-section">
 
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-heading">
 
       <div>
 
-        <p class="eyebrow dark">
-          AFRICA
-        </p>
+        <div class="section-label">
+          Africa
+        </div>
 
         <h2>
-          From production origins to international markets.
+          Selected origins.<br>
+          Specific products.
         </h2>
 
       </div>
 
+
       <p>
-        Africa represents an important part of the
-        commercial bridge, with strong agricultural,
-        fisheries and food-production potential.
+        Our African network is being developed around
+        identifiable production origins and products with
+        potential for professional markets.
       </p>
 
     </div>
 
 
-    <div class="service-list">
-
-      <article>
-
-        <span>01</span>
-
-        <div>
-
-          <h3>
-            North Africa
-          </h3>
-
-          <p>
-            Morocco, Tunisia and other North African markets
-            provide strategic connections between African
-            production and international demand.
-          </p>
-
-        </div>
-
-      </article>
+    <div class="africa-grid">
 
 
-      <article>
+      <!-- MOROCCO -->
 
-        <span>02</span>
+      <article class="country-card">
 
-        <div>
+        <span class="country-code">
+          MA · NORTH AFRICA
+        </span>
 
-          <h3>
-            Product Origins
-          </h3>
 
-          <p>
-            Fruits, vegetables, seafood and selected food
-            products can create opportunities for
-            cross-border distribution.
-          </p>
+        <h3>
+          Morocco
+        </h3>
 
-        </div>
+
+        <p>
+          Berkane is an important citrus origin within the
+          network, with clementines, mandarins, oranges and
+          selected seasonal produce.
+        </p>
+
+
+        <span class="country-products">
+          BERKANE · CITRUS →
+        </span>
 
       </article>
 
 
-      <article>
+      <!-- TUNISIA -->
 
-        <span>03</span>
+      <article class="country-card">
 
-        <div>
+        <span class="country-code">
+          TN · NORTH AFRICA
+        </span>
 
-          <h3>
-            Market Development
-          </h3>
 
-          <p>
-            We aim to develop commercial connections where
-            product availability and market demand create
-            sustainable opportunities.
-          </p>
+        <h3>
+          Tunisia
+        </h3>
 
-        </div>
+
+        <p>
+          Cap Bon provides a strong citrus identity, including
+          Maltese oranges, mandarins, lemons and selected
+          seasonal produce.
+        </p>
+
+
+        <span class="country-products">
+          CAP BON · CITRUS →
+        </span>
 
       </article>
+
+
+      <!-- SENEGAL -->
+
+      <article class="country-card">
+
+        <span class="country-code">
+          SN · WEST AFRICA
+        </span>
+
+
+        <h3>
+          Senegal
+        </h3>
+
+
+        <p>
+          A developing West African connection within the
+          broader food-supply network.
+        </p>
+
+
+        <span class="country-products">
+          SELECTED PRODUCTS →
+        </span>
+
+      </article>
+
+
+      <!-- MAURITANIA -->
+
+      <article class="country-card">
+
+        <span class="country-code">
+          MR · WEST AFRICA
+        </span>
+
+
+        <h3>
+          Mauritania
+        </h3>
+
+
+        <p>
+          A strategic connection between West African and
+          Atlantic markets, particularly relevant to food
+          supply and seafood.
+        </p>
+
+
+        <span class="country-products">
+          FOOD SUPPLY · SEAFOOD →
+        </span>
+
+      </article>
+
+
+      <!-- GHANA -->
+
+      <article class="country-card">
+
+        <span class="country-code">
+          GH · WEST AFRICA
+        </span>
+
+
+        <h3>
+          Ghana
+        </h3>
+
+
+        <p>
+          Ghana forms part of the West African network, with
+          particular focus on cocoa and selected agricultural
+          products.
+        </p>
+
+
+        <span class="country-products">
+          COCOA · AGRICULTURAL PRODUCTS →
+        </span>
+
+      </article>
+
+
+      <!-- WEST AFRICA -->
+
+      <article class="country-card">
+
+        <span class="country-code">
+          WEST AFRICA
+        </span>
+
+
+        <h3>
+          Pineapple
+        </h3>
+
+
+        <p>
+          Selected West African pineapple opportunities,
+          considered according to season, availability,
+          product specifications and destination.
+        </p>
+
+
+        <span class="country-products">
+          PINEAPPLE · SEASONAL →
+        </span>
+
+      </article>
+
 
     </div>
 
@@ -374,110 +1748,124 @@
 
 <!-- =====================================================
      EUROPE
-===================================================== -->
+     ===================================================== -->
 
-<section class="section about">
+<section class="europe-section">
 
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-heading">
 
       <div>
 
-        <p class="eyebrow dark">
-          EUROPE
-        </p>
+        <div class="section-label">
+          Europe
+        </div>
 
         <h2>
-          European markets at the heart of the network.
+          Professional markets<br>
+          at the heart of the network.
         </h2>
 
       </div>
 
+
       <p>
-        Europe provides established consumption markets,
-        professional distribution channels and strategic
-        logistics connections.
+        Spain provides the operational base, while France,
+        Germany, Italy and the Netherlands form part of the
+        wider European market network.
       </p>
 
     </div>
 
 
-    <div class="market-grid">
+    <div class="market-list">
 
-      <div class="market">
 
-        <span>ES</span>
+      <article class="market-row">
 
-        <strong>
+        <span class="market-code">
+          ES
+        </span>
+
+        <h3>
           Spain
-        </strong>
+        </h3>
 
-        <small>
+        <p>
           Madrid · Murcia · Valencia · Almería
-        </small>
+        </p>
 
-      </div>
+      </article>
 
 
-      <div class="market">
+      <article class="market-row">
 
-        <span>FR</span>
+        <span class="market-code">
+          FR
+        </span>
 
-        <strong>
+        <h3>
           France
-        </strong>
+        </h3>
 
-        <small>
-          Rungis · Perpignan · Professional markets
-        </small>
+        <p>
+          Rungis · Perpignan · Professional food markets
+        </p>
 
-      </div>
+      </article>
 
 
-      <div class="market">
+      <article class="market-row">
 
-        <span>DE</span>
+        <span class="market-code">
+          DE
+        </span>
 
-        <strong>
+        <h3>
           Germany
-        </strong>
+        </h3>
 
-        <small>
-          Professional food distribution
-        </small>
+        <p>
+          Professional food distribution markets
+        </p>
 
-      </div>
+      </article>
 
 
-      <div class="market">
+      <article class="market-row">
 
-        <span>IT</span>
+        <span class="market-code">
+          IT
+        </span>
 
-        <strong>
+        <h3>
           Italy
-        </strong>
+        </h3>
 
-        <small>
-          European food markets
-        </small>
+        <p>
+          Selected European food markets
+        </p>
 
-      </div>
+      </article>
 
 
-      <div class="market">
+      <article class="market-row">
 
-        <span>NL</span>
+        <span class="market-code">
+          NL
+        </span>
 
-        <strong>
+        <h3>
           Netherlands
-        </strong>
+        </h3>
 
-        <small>
-          European distribution and logistics
-        </small>
+        <p>
+          European distribution and logistics connections
+        </p>
 
-      </div>
+      </article>
+
 
     </div>
 
@@ -488,95 +1876,109 @@
 
 <!-- =====================================================
      MIDDLE EAST
-===================================================== -->
+     ===================================================== -->
 
-<section class="section dark-section">
+<section class="middle-east-section">
 
   <div class="container">
 
-    <div class="section-head light">
+    <div class="section-heading">
 
       <div>
 
-        <p class="eyebrow">
-          MIDDLE EAST
-        </p>
+        <div class="section-label">
+          Middle East
+        </div>
 
         <h2>
-          Building connections with high-value markets.
+          Developing the<br>
+          next connections.
         </h2>
 
       </div>
 
+
       <p>
         The Middle East represents a strategic growth region
-        for international food supply and distribution.
+        for food supply, with opportunities assessed market
+        by market.
       </p>
 
     </div>
 
 
-    <div class="market-grid">
+    <div class="middle-east-grid">
 
 
-      <div class="market featured">
+      <article class="middle-card">
 
-        <span>GCC</span>
+        <span>
+          GCC
+        </span>
 
-        <strong>
+        <h3>
           Gulf Markets
-        </strong>
+        </h3>
 
-        <small>
-          Strategic opportunities across the Gulf region.
-        </small>
+        <p>
+          Selected opportunities across the Gulf region.
+        </p>
 
-      </div>
-
-
-      <div class="market">
-
-        <span>UAE</span>
-
-        <strong>
-          United Arab Emirates
-        </strong>
-
-        <small>
-          International distribution and commercial hub.
-        </small>
-
-      </div>
+      </article>
 
 
-      <div class="market">
+      <article class="middle-card">
 
-        <span>SA</span>
+        <span>
+          AE
+        </span>
 
-        <strong>
+        <h3>
+          UAE
+        </h3>
+
+        <p>
+          International distribution and regional
+          commercial hub.
+        </p>
+
+      </article>
+
+
+      <article class="middle-card">
+
+        <span>
+          SA
+        </span>
+
+        <h3>
           Saudi Arabia
-        </strong>
+        </h3>
 
-        <small>
-          Major regional food market and growth opportunity.
-        </small>
+        <p>
+          Major regional food market with developing
+          opportunities.
+        </p>
 
-      </div>
+      </article>
 
 
-      <div class="market">
+      <article class="middle-card">
 
-        <span>QA</span>
+        <span>
+          QA
+        </span>
 
-        <strong>
+        <h3>
           Qatar
-        </strong>
+        </h3>
 
-        <small>
-          Developing international food supply opportunities.
-        </small>
+        <p>
+          Selected international food-supply opportunities.
+        </p>
 
-      </div>
+      </article>
+
 
     </div>
 
@@ -586,116 +1988,130 @@
 
 
 <!-- =====================================================
-     THE BRIDGE
-===================================================== -->
+     HOW THE NETWORK WORKS
+     ===================================================== -->
 
-<section class="section">
+<section class="connection">
 
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-heading">
 
       <div>
 
-        <p class="eyebrow dark">
-          THE BRIDGE
-        </p>
+        <div class="section-label">
+          How we connect markets
+        </div>
 
         <h2>
-          From origin to opportunity.
+          Product → Market<br>
+          → Destination.
         </h2>
 
       </div>
 
+
       <p>
-        Our role is to connect the commercial requirements
-        of one market with the capabilities of another.
+        The connection starts with a real requirement and
+        follows the product through availability, commercial
+        conditions and logistics.
       </p>
 
     </div>
 
 
-    <div class="service-list">
+    <div class="connection-list">
 
 
-      <article>
+      <article class="connection-item">
 
-        <span>01</span>
+        <span class="connection-number">
+          01
+        </span>
 
-        <div>
+        <h3>
+          Identify
+        </h3>
 
-          <h3>
-            Identify
-          </h3>
-
-          <p>
-            Understand product availability, market demand,
-            specifications, volumes and timing.
-          </p>
-
-        </div>
+        <p>
+          Understand the product, specifications, volume,
+          destination and timing.
+        </p>
 
       </article>
 
 
-      <article>
+      <article class="connection-item">
 
-        <span>02</span>
+        <span class="connection-number">
+          02
+        </span>
 
-        <div>
+        <h3>
+          Source
+        </h3>
 
-          <h3>
-            Connect
-          </h3>
-
-          <p>
-            Match suitable products and commercial
-            opportunities across regions.
-          </p>
-
-        </div>
+        <p>
+          Identify suitable origins and assess product
+          availability against the requirement.
+        </p>
 
       </article>
 
 
-      <article>
+      <article class="connection-item">
 
-        <span>03</span>
+        <span class="connection-number">
+          03
+        </span>
 
-        <div>
+        <h3>
+          Match
+        </h3>
 
-          <h3>
-            Coordinate
-          </h3>
-
-          <p>
-            Align product specifications, commercial terms,
-            documentation and logistics requirements.
-          </p>
-
-        </div>
+        <p>
+          Match product characteristics with the requirements
+          of the destination market.
+        </p>
 
       </article>
 
 
-      <article>
+      <article class="connection-item">
 
-        <span>04</span>
+        <span class="connection-number">
+          04
+        </span>
 
-        <div>
+        <h3>
+          Coordinate
+        </h3>
 
-          <h3>
-            Move
-          </h3>
-
-          <p>
-            Coordinate the international movement of products
-            toward the appropriate destination.
-          </p>
-
-        </div>
+        <p>
+          Align commercial conditions, documentation,
+          timing and logistics.
+        </p>
 
       </article>
+
+
+      <article class="connection-item">
+
+        <span class="connection-number">
+          05
+        </span>
+
+        <h3>
+          Deliver
+        </h3>
+
+        <p>
+          Coordinate the route through to the agreed
+          destination.
+        </p>
+
+      </article>
+
 
     </div>
 
@@ -706,99 +2122,141 @@
 
 <!-- =====================================================
      CTA
-===================================================== -->
+     ===================================================== -->
 
-<section class="cta-section">
+<section class="cta">
 
-  <div class="container cta-inner">
+  <div class="container">
 
-    <p class="eyebrow">
-      INTERNATIONAL BUSINESS
-    </p>
+    <div class="eyebrow">
+      MARKET CONNECTION
+    </div>
+
 
     <h2>
-      Have a market, product or supply opportunity?
+      Tell us what your market needs.
     </h2>
 
+
     <p>
-      Tell us where the opportunity is, what product is
-      involved and where it needs to go.
+      Product. Volume. Origin. Destination. Timing.
     </p>
 
+
     <a
-      class="button light-button"
-      href="../index.html#contact">
-      Start a conversation
+      href="../index.html#contact"
+      class="button button-primary"
+    >
+      Start a business enquiry →
     </a>
 
   </div>
 
 </section>
 
+
 </main>
 
 
 <!-- =====================================================
      FOOTER
-===================================================== -->
+     ===================================================== -->
 
-<footer class="footer">
+<footer>
 
-  <div class="container footer-grid">
+  <div class="container footer-top">
+
 
     <div>
 
-      <img
-        class="footer-logo"
-        src="../logo.png"
-        alt="EMPERIO TISS">
+      <a href="../index.html">
 
-      <p>
-        Connecting Africa, Europe & the Middle East
-        through food, trade and supply.
+        <img
+          src="../logo.png"
+          alt="EMPERIO TISS"
+          class="footer-logo"
+        >
+
+      </a>
+
+
+      <p class="footer-description">
+        Connecting food supply with professional markets
+        across Africa, Europe and the Middle East.
       </p>
 
     </div>
 
 
-    <div>
-
-      <strong>
-        Navigation
-      </strong>
-
-      <a href="../index.html#products">
-        Products
-      </a>
-
-      <a href="markets.html">
-        Markets
-      </a>
-
-      <a href="../index.html#services">
-        Services
-      </a>
-
-      <a href="../index.html#about">
-        About
-      </a>
-
-    </div>
+    <div class="footer-columns">
 
 
-    <div>
+      <div class="footer-column">
 
-      <strong>
-        Contact
-      </strong>
+        <h4>
+          Products
+        </h4>
 
-      <a href="../index.html#contact">
-        Discuss an opportunity
-      </a>
+        <a href="../products/index.html">
+          All Products
+        </a>
 
-      <span>
-        Madrid, Spain
-      </span>
+        <a href="../products/seafood.html">
+          Fish & Seafood
+        </a>
+
+        <a href="../products/fruits-vegetables.html">
+          Fruits & Vegetables
+        </a>
+
+        <a href="../index.html#seasonal">
+          Seasonal Opportunities
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Markets
+        </h4>
+
+        <a href="markets.html">
+          Africa
+        </a>
+
+        <a href="markets.html#regions">
+          Europe
+        </a>
+
+        <a href="markets.html#regions">
+          Middle East
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Company
+        </h4>
+
+        <a href="../index.html#solutions">
+          Solutions
+        </a>
+
+        <a href="../index.html#about">
+          About
+        </a>
+
+        <a href="../index.html#contact">
+          Contact
+        </a>
+
+      </div>
+
 
     </div>
 
@@ -808,7 +2266,7 @@
   <div class="container footer-bottom">
 
     <span>
-      © 2026 EMPERIO TISS SL
+      © 2026 EMPERIO TISS SL. All rights reserved.
     </span>
 
     <span>
@@ -819,8 +2277,6 @@
 
 </footer>
 
-
-<script src="../script.js"></script>
 
 </body>
 </html>
