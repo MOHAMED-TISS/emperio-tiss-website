@@ -1566,3 +1566,302 @@ p{
   }
 
 }
+/* =========================================================
+   EMPERIO TISS — HOMEPAGE FINAL LAYER
+========================================================= */
+
+/* Language selector */
+
+.language-switcher{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left:4px;
+  padding-left:18px;
+  border-left:1px solid currentColor;
+}
+
+.language-switcher a{
+  position:relative;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  opacity:.55;
+  transition:opacity .3s ease;
+}
+
+.language-switcher a:hover,
+.language-switcher a.active{
+  opacity:1;
+}
+
+
+/* Hero scroll */
+
+.hero-scroll{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  font-size:11px;
+  letter-spacing:.18em;
+}
+
+.hero-scroll span{
+  font-size:8px;
+  letter-spacing:.2em;
+}
+
+
+/* Bridge network */
+
+.bridge-network{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 180px 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:18px;
+  min-height:420px;
+  margin-top:70px;
+}
+
+.bridge-network::before{
+  content:"";
+  position:absolute;
+  left:12%;
+  right:12%;
+  top:50%;
+  height:1px;
+  background:var(--line);
+}
+
+.bridge-network::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:12%;
+  bottom:12%;
+  width:1px;
+  background:var(--line);
+}
+
+.bridge-node{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:35px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  transition:
+    transform .6s var(--ease),
+    background .4s ease,
+    box-shadow .6s var(--ease);
+}
+
+.bridge-node:hover{
+  transform:translateY(-7px);
+  background:#fff;
+  box-shadow:0 20px 50px rgba(24,32,31,.09);
+}
+
+.bridge-node span{
+  margin-bottom:18px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--accent);
+}
+
+.bridge-node strong{
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+  font-weight:500;
+}
+
+.bridge-node small{
+  margin-top:8px;
+  max-width:280px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.bridge-node.europe{
+  grid-column:1;
+  grid-row:1;
+}
+
+.bridge-node.africa{
+  grid-column:1;
+  grid-row:2;
+}
+
+.bridge-node.middle-east{
+  grid-column:3;
+  grid-row:1 / span 2;
+  justify-content:center;
+}
+
+.bridge-center{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:50%;
+  width:150px;
+  height:150px;
+  transform:translate(-50%,-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--dark);
+  color:#fff;
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+}
+
+.bridge-center span{
+  font-size:9px;
+  letter-spacing:.18em;
+  color:var(--accent-light);
+}
+
+.bridge-center strong{
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  line-height:1;
+  font-weight:500;
+}
+
+
+/* Product cards */
+
+.product-card{
+  min-height:430px;
+}
+
+.product-link{
+  position:relative;
+  z-index:2;
+  display:inline-block;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:
+    transform .45s var(--ease),
+    color .3s ease;
+}
+
+.product-card:hover .product-link{
+  transform:translateX(8px);
+  color:var(--ink);
+}
+
+
+/* Section bottom links */
+
+.section-link-row{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:35px;
+}
+
+.text-link{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
+.text-link span{
+  transition:transform .4s var(--ease);
+}
+
+.text-link:hover span{
+  transform:translateX(6px);
+}
+
+.dark-link .text-link{
+  color:#fff;
+}
+
+
+/* Better dark sections */
+
+.dark-section .market-grid{
+  margin-top:10px;
+}
+
+
+/* Company section */
+
+.company-section{
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+  .language-switcher{
+    margin:8px 18px;
+    padding:10px 0;
+    border-left:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    justify-content:center;
+  }
+
+  .bridge-network{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    min-height:auto;
+  }
+
+  .bridge-network::before,
+  .bridge-network::after{
+    display:none;
+  }
+
+  .bridge-node,
+  .bridge-node.europe,
+  .bridge-node.africa,
+  .bridge-node.middle-east{
+    min-height:150px;
+  }
+
+  .bridge-center{
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+    width:125px;
+    height:125px;
+    margin:10px auto;
+    order:-1;
+  }
+
+}
+
+
+@media(max-width:760px){
+
+  .section-link-row{
+    justify-content:flex-start;
+  }
+
+  .product-card{
+    min-height:350px;
+  }
+
+}
