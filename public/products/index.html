@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,7 +10,7 @@
 
   <meta
     name="description"
-    content="EMPERIO TISS food products: Fish & Seafood, Fruits & Vegetables, and Seasonal Products."
+    content="Explore the food product categories of EMPERIO TISS: Fish & Seafood, Fruits & Vegetables, and Seasonal Products."
   >
 
   <link rel="icon" href="../logo.png">
@@ -80,7 +81,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 10;
+      z-index: 20;
       color: var(--white);
     }
 
@@ -121,6 +122,7 @@
 
     .nav-contact {
       padding: 10px 18px;
+
       border: 1px solid rgba(255,255,255,.45);
       border-radius: 999px;
     }
@@ -130,7 +132,7 @@
     ========================= */
 
     .hero {
-      min-height: 680px;
+      min-height: 720px;
 
       display: flex;
       align-items: flex-end;
@@ -140,42 +142,45 @@
       background:
         linear-gradient(
           90deg,
-          rgba(7,11,9,.90),
-          rgba(7,11,9,.42)
+          rgba(7,11,9,.94),
+          rgba(7,11,9,.38)
         ),
         linear-gradient(
           0deg,
-          rgba(7,11,9,.85),
+          rgba(7,11,9,.90),
           rgba(7,11,9,.08)
         ),
-        url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2400&q=90")
+        url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=2400&q=90")
         center / cover;
     }
 
     .hero-content {
-      padding-bottom: 90px;
+      padding-bottom: 95px;
       max-width: 1000px;
     }
 
     .eyebrow {
       color: var(--sand);
+
       text-transform: uppercase;
       letter-spacing: .20em;
+
       font-size: 11px;
       font-weight: 700;
     }
 
     .hero h1 {
-      margin: 20px 0 25px;
+      margin: 20px 0 28px;
 
       font-family: "Manrope", sans-serif;
-      font-size: clamp(65px, 9vw, 120px);
+
+      font-size: clamp(62px, 9vw, 120px);
       line-height: .88;
       letter-spacing: -.075em;
     }
 
     .hero-text {
-      max-width: 650px;
+      max-width: 700px;
 
       color: rgba(255,255,255,.82);
 
@@ -187,6 +192,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+
       margin-top: 34px;
     }
 
@@ -225,14 +231,18 @@
 
     .two-column {
       display: grid;
+
       grid-template-columns: .8fr 1.5fr;
+
       gap: 100px;
     }
 
     .section-label {
       color: var(--green-dark);
+
       text-transform: uppercase;
       letter-spacing: .18em;
+
       font-size: 11px;
       font-weight: 700;
     }
@@ -256,12 +266,224 @@
       line-height: 1.7;
     }
 
+    .intro-copy + .intro-copy {
+      margin-top: 18px;
+    }
+
     /* =========================
        PRODUCTS
     ========================= */
 
     .products {
-      padding: 0 0 130px;
+      padding: 125px 0;
+
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .products-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 60px;
+
+      margin-bottom: 65px;
+    }
+
+    .products .section-label {
+      color: var(--sand);
+    }
+
+    .products-heading h2 {
+      margin-top: 15px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+
+    .products-heading p {
+      max-width: 430px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .product-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+    .product-card {
+      position: relative;
+
+      min-height: 560px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      overflow: hidden;
+
+      background: #222822;
+    }
+
+    .product-image {
+      position: absolute;
+
+      inset: 0;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      opacity: .72;
+
+      transition:
+        transform .5s ease,
+        opacity .4s ease;
+    }
+
+    .product-card::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(5,8,6,.96),
+          rgba(5,8,6,.08) 70%
+        );
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.04);
+      opacity: .82;
+    }
+
+    .product-content {
+      position: relative;
+      z-index: 2;
+
+      padding: 35px;
+    }
+
+    .product-number {
+      color: var(--sand);
+
+      font-size: 11px;
+
+      letter-spacing: .16em;
+    }
+
+    .product-content h3 {
+      margin-top: 14px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: 38px;
+      line-height: .95;
+      letter-spacing: -.05em;
+    }
+
+    .product-content p {
+      max-width: 390px;
+
+      margin-top: 16px;
+
+      color: #c8cec7;
+
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .product-link {
+      display: inline-flex;
+
+      margin-top: 25px;
+
+      color: var(--white);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: .04em;
+    }
+
+    /* =========================
+       PRODUCT LOGIC
+    ========================= */
+
+    .product-note {
+      padding: 90px 0;
+    }
+
+    .product-note-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 100px;
+
+      align-items: center;
+    }
+
+    .product-note h2 {
+      margin-top: 15px;
+
+      font-family: "Manrope", sans-serif;
+
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: .94;
+      letter-spacing: -.065em;
+    }
+
+    .product-note-copy {
+      color: var(--muted-dark);
+
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .spec-list {
+      margin-top: 28px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
+    }
+
+    .spec {
+      padding: 17px 18px;
+
+      border: 1px solid var(--line);
+
+      background: var(--cream-2);
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       ORIGINS
+    ========================= */
+
+    .origins {
+      padding: 125px 0;
+
+      background: var(--cream-2);
     }
 
     .section-heading {
@@ -292,165 +514,7 @@
       font-size: 15px;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .product-card {
-      min-height: 600px;
-
-      position: relative;
-      overflow: hidden;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-
-      color: var(--white);
-
-      background: var(--dark);
-    }
-
-    .product-card img {
-      position: absolute;
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition: transform .6s ease;
-    }
-
-    .product-card:hover img {
-      transform: scale(1.04);
-    }
-
-    .product-overlay {
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          0deg,
-          rgba(7,11,9,.92),
-          rgba(7,11,9,.12) 70%
-        );
-    }
-
-    .product-content {
-      position: relative;
-      z-index: 2;
-
-      padding: 32px;
-    }
-
-    .product-number {
-      color: var(--sand);
-
-      font-size: 10px;
-      letter-spacing: .16em;
-    }
-
-    .product-content h3 {
-      margin: 12px 0 12px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: 39px;
-      line-height: 1;
-      letter-spacing: -.04em;
-    }
-
-    .product-content p {
-      max-width: 390px;
-
-      color: rgba(255,255,255,.75);
-
-      font-size: 14px;
-    }
-
-    .product-link {
-      display: inline-flex;
-
-      margin-top: 24px;
-
-      color: var(--white);
-
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* =========================
-       PRODUCT LOGIC
-    ========================= */
-
-    .product-logic {
-      padding: 125px 0;
-
-      background: var(--dark);
-      color: var(--white);
-    }
-
-    .product-logic .section-label {
-      color: var(--sand);
-    }
-
-    .logic-grid {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      margin-top: 65px;
-
-      border-top: 1px solid rgba(255,255,255,.14);
-      border-left: 1px solid rgba(255,255,255,.14);
-    }
-
-    .logic-item {
-      min-height: 240px;
-
-      padding: 28px;
-
-      border-right: 1px solid rgba(255,255,255,.14);
-      border-bottom: 1px solid rgba(255,255,255,.14);
-    }
-
-    .logic-number {
-      color: var(--sand);
-
-      font-size: 10px;
-      letter-spacing: .16em;
-    }
-
-    .logic-item h3 {
-      margin-top: 65px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: 24px;
-    }
-
-    .logic-item p {
-      margin-top: 10px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-    /* =========================
-       FEATURED OPPORTUNITIES
-    ========================= */
-
-    .featured {
-      padding: 125px 0;
-    }
-
-    .opportunity-grid {
+    .origin-grid {
       display: grid;
 
       grid-template-columns: repeat(3, 1fr);
@@ -458,34 +522,39 @@
       gap: 14px;
     }
 
-    .opportunity {
-      padding: 35px;
+    .origin-card {
+      min-height: 270px;
 
-      min-height: 290px;
+      padding: 30px;
 
-      background: var(--cream-2);
+      background: var(--cream);
 
       border: 1px solid var(--line);
     }
 
-    .opportunity span {
+    .origin-card span {
       color: var(--green-dark);
 
       font-size: 10px;
-      letter-spacing: .16em;
+      font-weight: 700;
+
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
-    .opportunity h3 {
-      margin-top: 80px;
+    .origin-card h3 {
+      margin-top: 75px;
 
       font-family: "Manrope", sans-serif;
 
-      font-size: 30px;
+      font-size: 29px;
+      line-height: 1;
+
+      letter-spacing: -.045em;
     }
 
-    .opportunity p {
-      margin-top: 10px;
+    .origin-card p {
+      margin-top: 12px;
 
       color: var(--muted-dark);
 
@@ -501,13 +570,12 @@
 
       text-align: center;
 
-      color: var(--white);
-
       background: var(--black);
+      color: var(--white);
     }
 
     .cta h2 {
-      max-width: 900px;
+      max-width: 950px;
 
       margin: 20px auto 25px;
 
@@ -567,6 +635,7 @@
 
     .footer-columns {
       display: flex;
+
       gap: 70px;
     }
 
@@ -609,11 +678,10 @@
        RESPONSIVE
     ========================= */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1050px) {
 
-      .two-column {
-        grid-template-columns: 1fr;
-        gap: 45px;
+      .nav-links {
+        gap: 18px;
       }
 
       .product-grid {
@@ -621,23 +689,16 @@
       }
 
       .product-card {
-        min-height: 520px;
+        min-height: 480px;
       }
 
-      .logic-grid {
+      .origin-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .opportunity-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .nav-links {
-        gap: 18px;
-      }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
 
       .container {
         width: calc(100% - 32px);
@@ -652,7 +713,7 @@
       }
 
       .hero {
-        min-height: 640px;
+        min-height: 650px;
       }
 
       .hero-content {
@@ -665,26 +726,36 @@
 
       .intro,
       .products,
-      .product-logic,
-      .featured {
+      .origins,
+      .product-note {
         padding-top: 90px;
         padding-bottom: 90px;
       }
 
+      .products-heading,
       .section-heading {
         flex-direction: column;
         align-items: flex-start;
         gap: 25px;
       }
 
-      .logic-grid,
-      .opportunity-grid {
+      .two-column,
+      .product-note-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .origin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .spec-list {
         grid-template-columns: 1fr;
       }
 
       .footer-top {
         flex-direction: column;
-        align-items: flex-start;
       }
 
       .footer-columns {
@@ -695,6 +766,7 @@
       .footer-bottom {
         flex-direction: column;
       }
+
     }
 
   </style>
@@ -782,9 +854,9 @@
 
 
     <p class="hero-text">
-      A focused product portfolio built around professional
-      requirements, seasonal availability and connections
-      between origins and destination markets.
+      A focused product portfolio built around fish &
+      seafood, fruits & vegetables, and selected seasonal
+      opportunities.
     </p>
 
 
@@ -823,7 +895,7 @@
     <div>
 
       <div class="section-label">
-        Product portfolio
+        Product approach
       </div>
 
     </div>
@@ -832,21 +904,23 @@
     <div>
 
       <h2>
-        Three categories.
+        Focused products.<br>
+        Flexible supply.
       </h2>
 
 
       <p class="intro-copy">
-        EMPERIO TISS focuses on three product categories:
-        Fish & Seafood, Fruits & Vegetables, and Seasonal
-        Products.
+        EMPERIO TISS works with a focused range of food
+        categories selected around professional customer
+        requirements, market demand and seasonal
+        opportunities.
       </p>
 
 
       <p class="intro-copy">
-        Each category can be structured around origin,
-        specification, availability, volume, destination
-        and timing.
+        Product specifications, origin, volume, timing,
+        destination and logistics requirements are considered
+        for each enquiry.
       </p>
 
     </div>
@@ -857,7 +931,7 @@
 
 
 <!-- =====================================================
-     CATEGORIES
+     THREE CATEGORIES
 ===================================================== -->
 
 <section
@@ -867,25 +941,25 @@
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="products-heading">
 
       <div>
 
         <div class="section-label">
-          Categories
+          Product categories
         </div>
 
         <h2>
-          Choose your<br>
-          category.
+          Three areas.<br>
+          One portfolio.
         </h2>
 
       </div>
 
 
       <p>
-        Explore each product category and communicate your
-        specific requirement directly to EMPERIO TISS.
+        Explore the three core product categories of
+        EMPERIO TISS.
       </p>
 
     </div>
@@ -894,27 +968,25 @@
     <div class="product-grid">
 
 
-      <!-- FISH & SEAFOOD -->
+      <!-- =================================================
+           01 FISH & SEAFOOD
+      ================================================== -->
 
-      <a
-        href="seafood.html"
-        class="product-card"
-      >
+      <article class="product-card">
 
         <img
-          src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=1600&q=90"
-          alt="Fresh fish and seafood"
+          class="product-image"
+          src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=1400&q=85"
+          alt="Fish and seafood"
           loading="lazy"
         >
-
-        <div class="product-overlay"></div>
 
 
         <div class="product-content">
 
-          <span class="product-number">
+          <div class="product-number">
             01 · SEAFOOD
-          </span>
+          </div>
 
 
           <h3>
@@ -924,41 +996,43 @@
 
 
           <p>
-            Fish, shellfish, cephalopods and molluscs for
-            professional customers and destination markets.
+            Fish, shellfish, cephalopods and selected
+            seafood products structured around professional
+            customer requirements.
           </p>
 
 
-          <span class="product-link">
+          <a
+            class="product-link"
+            href="seafood.html"
+          >
             Explore Fish & Seafood →
-          </span>
+          </a>
 
         </div>
 
-      </a>
+      </article>
 
 
-      <!-- FRUITS & VEGETABLES -->
+      <!-- =================================================
+           02 FRUITS & VEGETABLES
+      ================================================== -->
 
-      <a
-        href="fruits-vegetables.html"
-        class="product-card"
-      >
+      <article class="product-card">
 
         <img
-          src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=1600&q=90"
+          class="product-image"
+          src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1400&q=85"
           alt="Fresh fruits and vegetables"
           loading="lazy"
         >
 
-        <div class="product-overlay"></div>
-
 
         <div class="product-content">
 
-          <span class="product-number">
+          <div class="product-number">
             02 · PRODUCE
-          </span>
+          </div>
 
 
           <h3>
@@ -968,41 +1042,43 @@
 
 
           <p>
-            Citrus, fruits and vegetables connected to selected
-            origins and professional European markets.
+            Selected fruits and vegetables from North
+            African and other relevant origins according
+            to season, availability and specifications.
           </p>
 
 
-          <span class="product-link">
+          <a
+            class="product-link"
+            href="fruits-vegetables.html"
+          >
             Explore Fruits & Vegetables →
-          </span>
+          </a>
 
         </div>
 
-      </a>
+      </article>
 
 
-      <!-- SEASONAL -->
+      <!-- =================================================
+           03 SEASONAL PRODUCTS
+      ================================================== -->
 
-      <a
-        href="../index.html#seasonal"
-        class="product-card"
-      >
+      <article class="product-card">
 
         <img
-          src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=1600&q=90"
+          class="product-image"
+          src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1400&q=85"
           alt="Seasonal agricultural products"
           loading="lazy"
         >
 
-        <div class="product-overlay"></div>
-
 
         <div class="product-content">
 
-          <span class="product-number">
+          <div class="product-number">
             03 · SEASONAL
-          </span>
+          </div>
 
 
           <h3>
@@ -1012,18 +1088,22 @@
 
 
           <p>
-            Selected seasonal opportunities based on origin,
-            harvest periods, availability and market demand.
+            Selected products and market opportunities
+            linked to seasonality, origin, availability
+            and customer demand.
           </p>
 
 
-          <span class="product-link">
-            Explore Seasonal →
-          </span>
+          <a
+            class="product-link"
+            href="#seasonal"
+          >
+            Explore Seasonal Opportunities →
+          </a>
 
         </div>
 
-      </a>
+      </article>
 
 
     </div>
@@ -1034,109 +1114,81 @@
 
 
 <!-- =====================================================
-     PRODUCT LOGIC
+     SPECIFICATIONS
 ===================================================== -->
 
-<section class="product-logic">
+<section class="product-note">
 
-  <div class="container">
+  <div class="container product-note-grid">
 
-    <div class="section-heading">
 
-      <div>
+    <div>
 
-        <div class="section-label">
-          How products are structured
-        </div>
-
-        <h2>
-          More than<br>
-          a catalogue.
-        </h2>
-
+      <div class="section-label">
+        Product requirements
       </div>
 
 
-      <p style="color:#a7ada5;">
-        Product availability is considered together with the
-        requirements of the destination market.
-      </p>
+      <h2>
+        The details<br>
+        matter.
+      </h2>
 
     </div>
 
 
-    <div class="logic-grid">
+    <div>
+
+      <p class="product-note-copy">
+        A product enquiry can be structured around the
+        specifications that matter to the destination market
+        and the customer's operational requirements.
+      </p>
 
 
-      <article class="logic-item">
+      <div class="spec-list">
 
-        <span class="logic-number">
-          01
-        </span>
+        <div class="spec">
+          Product
+        </div>
 
-        <h3>
+        <div class="spec">
           Origin
-        </h3>
+        </div>
 
-        <p>
-          Where the product is available and under what
-          conditions.
-        </p>
+        <div class="spec">
+          Species / Variety
+        </div>
 
-      </article>
+        <div class="spec">
+          Size / Calibre
+        </div>
 
+        <div class="spec">
+          Presentation
+        </div>
 
-      <article class="logic-item">
+        <div class="spec">
+          Packaging
+        </div>
 
-        <span class="logic-number">
-          02
-        </span>
+        <div class="spec">
+          Volume
+        </div>
 
-        <h3>
-          Specification
-        </h3>
-
-        <p>
-          Species, variety, calibre, presentation and
-          packaging.
-        </p>
-
-      </article>
-
-
-      <article class="logic-item">
-
-        <span class="logic-number">
-          03
-        </span>
-
-        <h3>
-          Availability
-        </h3>
-
-        <p>
-          Season, volume and supply frequency.
-        </p>
-
-      </article>
-
-
-      <article class="logic-item">
-
-        <span class="logic-number">
-          04
-        </span>
-
-        <h3>
+        <div class="spec">
           Destination
-        </h3>
+        </div>
 
-        <p>
-          Market requirements, timing and logistics.
-        </p>
+        <div class="spec">
+          Timing
+        </div>
 
-      </article>
+        <div class="spec">
+          Supply Frequency
+        </div>
 
+      </div>
 
     </div>
 
@@ -1146,13 +1198,10 @@
 
 
 <!-- =====================================================
-     FEATURED OPPORTUNITIES
+     ORIGINS
 ===================================================== -->
 
-<section
-  class="featured"
-  id="seasonal"
->
+<section class="origins">
 
   <div class="container">
 
@@ -1161,79 +1210,225 @@
       <div>
 
         <div class="section-label">
-          Selected opportunities
+          Selected origins
         </div>
 
         <h2>
-          Products by<br>
-          origin.
+          Where products<br>
+          begin.
         </h2>
 
       </div>
 
 
       <p>
-        Selected examples from the geographic network.
-        Availability depends on season, product and
-        destination.
+        Our geographic network connects selected origins
+        in Africa with professional markets in Europe and
+        wider destinations.
       </p>
 
     </div>
 
 
-    <div class="opportunity-grid">
+    <div class="origin-grid">
 
 
-      <article class="opportunity">
+      <!-- MOROCCO -->
+
+      <article class="origin-card">
 
         <span>
-          Morocco · Berkane
+          Morocco · North Africa
         </span>
 
         <h3>
-          Citrus
+          Citrus, fruits<br>
+          & vegetables
         </h3>
 
         <p>
-          Clementines, mandarins, oranges and selected
-          seasonal citrus.
+          Including selected citrus and agricultural
+          products according to season and availability.
         </p>
 
       </article>
 
 
-      <article class="opportunity">
+      <!-- TUNISIA -->
+
+      <article class="origin-card">
 
         <span>
-          Tunisia · Cap Bon
+          Tunisia · North Africa
         </span>
 
         <h3>
-          Citrus
+          Mediterranean<br>
+          products
         </h3>
 
         <p>
-          Maltese oranges, mandarins, lemons and selected
-          seasonal produce.
+          Selected fruits, vegetables and food products
+          according to market requirements.
         </p>
 
       </article>
 
 
-      <article class="opportunity">
+      <!-- WEST AFRICA -->
+
+      <article class="origin-card">
 
         <span>
-          Ghana · West Africa
+          West Africa
         </span>
 
         <h3>
-          Cocoa
+          Cocoa,<br>
+          pineapple & more
         </h3>
 
         <p>
-          Cocoa opportunities from Ghana, subject to product
-          specifications and availability.
+          Selected opportunities from Ghana and other
+          West African origins.
         </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SEASONAL
+===================================================== -->
+
+<section
+  class="products"
+  id="seasonal"
+>
+
+  <div class="container">
+
+    <div class="products-heading">
+
+      <div>
+
+        <div class="section-label">
+          Seasonal opportunities
+        </div>
+
+        <h2>
+          Products<br>
+          in season.
+        </h2>
+
+      </div>
+
+
+      <p>
+        Seasonality can create specific opportunities
+        around origin, availability, timing and destination
+        market demand.
+      </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+      <article class="product-card">
+
+        <img
+          class="product-image"
+          src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=1400&q=85"
+          alt="Citrus fruits"
+          loading="lazy"
+        >
+
+
+        <div class="product-content">
+
+          <div class="product-number">
+            NORTH AFRICA
+          </div>
+
+          <h3>
+            Citrus
+          </h3>
+
+          <p>
+            Selected citrus opportunities according to
+            harvest periods, availability and destination
+            requirements.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="product-card">
+
+        <img
+          class="product-image"
+          src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=1400&q=85"
+          alt="Pineapple"
+          loading="lazy"
+        >
+
+
+        <div class="product-content">
+
+          <div class="product-number">
+            WEST AFRICA
+          </div>
+
+          <h3>
+            Pineapple
+          </h3>
+
+          <p>
+            Selected West African pineapple opportunities
+            subject to season, availability and specifications.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="product-card">
+
+        <img
+          class="product-image"
+          src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=1400&q=85"
+          alt="Cocoa"
+          loading="lazy"
+        >
+
+
+        <div class="product-content">
+
+          <div class="product-number">
+            WEST AFRICA
+          </div>
+
+          <h3>
+            Cocoa
+          </h3>
+
+          <p>
+            Selected cocoa opportunities from West African
+            origins according to market requirements.
+          </p>
+
+        </div>
 
       </article>
 
@@ -1259,12 +1454,12 @@
 
 
     <h2>
-      Tell us what your market needs.
+      Looking for a specific product?
     </h2>
 
 
     <p>
-      Product. Volume. Destination. Timing.
+      Product. Origin. Volume. Destination. Timing.
     </p>
 
 
@@ -1272,7 +1467,7 @@
       href="../index.html#contact"
       class="button button-primary"
     >
-      Start a business enquiry →
+      Send a business enquiry →
     </a>
 
   </div>
@@ -1306,8 +1501,8 @@
 
 
       <p class="footer-description">
-        Connecting food supply with professional markets
-        across Africa, Europe and the Middle East.
+        Connecting food supply between Africa, Europe
+        and selected Middle Eastern markets.
       </p>
 
     </div>
@@ -1348,11 +1543,11 @@
         </h4>
 
         <a href="../markets/markets.html">
-          Africa
+          Europe
         </a>
 
         <a href="../markets/markets.html">
-          Europe
+          Africa
         </a>
 
         <a href="../markets/markets.html">
