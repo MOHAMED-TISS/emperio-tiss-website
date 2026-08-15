@@ -2,1057 +2,68 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Fruits & Vegetables | EMPERIO TISS</title>
-
   <meta
     name="description"
-    content="Fruits and vegetables connected with professional markets across Africa, Europe and the Middle East."
+    content="EMPERIO TISS — Fruits & Vegetables connecting professional food markets across Europe, Africa and the Middle East."
   >
 
-  <meta
-    name="robots"
-    content="index, follow"
-  >
+  <title>Fruits & Vegetables | EMPERIO TISS</title>
 
-  <link
-    rel="icon"
-    href="../logo.png"
-  >
+  <link rel="icon" href="../logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
     rel="stylesheet"
   >
 
-  <style>
-
-    /* =========================================================
-       BASE
-       ========================================================= */
-
-    :root {
-      --black: #101310;
-      --dark: #171c19;
-      --dark-2: #202720;
-
-      --cream: #f4f1e9;
-      --cream-2: #e8e3d7;
-
-      --white: #ffffff;
-
-      --muted: #a7ada5;
-      --muted-dark: #646b64;
-
-      --green: #758b58;
-      --green-dark: #52663c;
-
-      --sand: #d8c9a9;
-
-      --line-dark: rgba(16,19,16,.15);
-      --line-light: rgba(255,255,255,.14);
-
-      --max: 1440px;
-    }
-
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-      margin: 0;
-
-      background: var(--cream);
-      color: var(--black);
-
-      font-family: "DM Sans", sans-serif;
-
-      line-height: 1.5;
-    }
-
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-
-    .container {
-      width: min(var(--max), calc(100% - 56px));
-      margin: 0 auto;
-    }
-
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-
-    .site-header {
-      position: absolute;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-
-      z-index: 20;
-
-      color: var(--white);
-    }
-
-
-    .nav {
-      min-height: 92px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      border-bottom: 1px solid rgba(255,255,255,.16);
-    }
-
-
-    .logo {
-      width: 155px;
-    }
-
-
-    .logo img {
-      width: 100%;
-      height: auto;
-    }
-
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-
-    .nav-links a {
-      opacity: .88;
-    }
-
-
-    .nav-links a:hover {
-      opacity: 1;
-    }
-
-
-    .nav-contact {
-      padding: 10px 18px;
-
-      border: 1px solid rgba(255,255,255,.45);
-      border-radius: 999px;
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    .hero {
-      min-height: 690px;
-
-      display: flex;
-      align-items: flex-end;
-
-      position: relative;
-
-      color: var(--white);
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(7,11,9,.84),
-          rgba(7,11,9,.40)
-        ),
-        linear-gradient(
-          0deg,
-          rgba(7,11,9,.78),
-          rgba(7,11,9,.05)
-        ),
-        url("https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=2400&q=90")
-        center / cover;
-    }
-
-
-    .hero-content {
-      padding-bottom: 90px;
-
-      max-width: 900px;
-    }
-
-
-    .eyebrow {
-      color: var(--sand);
-
-      text-transform: uppercase;
-      letter-spacing: .2em;
-
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-
-    .hero h1 {
-      margin: 20px 0 25px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: clamp(58px, 9vw, 115px);
-
-      line-height: .9;
-
-      letter-spacing: -.075em;
-    }
-
-
-    .hero p {
-      max-width: 680px;
-
-      color: rgba(255,255,255,.82);
-
-      font-size: 19px;
-      line-height: 1.55;
-    }
-
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      margin-top: 34px;
-    }
-
-
-    .button {
-      min-height: 50px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 0 23px;
-
-      border-radius: 999px;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-
-    .button-primary {
-      background: var(--cream);
-      color: var(--black);
-    }
-
-
-    .button-secondary {
-      color: var(--white);
-
-      border: 1px solid rgba(255,255,255,.45);
-    }
-
-
-    /* =========================================================
-       INTRO
-       ========================================================= */
-
-    .intro {
-      padding: 125px 0;
-    }
-
-
-    .two-column {
-      display: grid;
-
-      grid-template-columns: .8fr 1.5fr;
-
-      gap: 100px;
-    }
-
-
-    .section-label {
-      color: var(--green-dark);
-
-      text-transform: uppercase;
-      letter-spacing: .18em;
-
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-
-    .intro h2,
-    .section-heading h2 {
-      font-family: "Manrope", sans-serif;
-
-      font-size: clamp(45px, 6vw, 76px);
-
-      line-height: .94;
-
-      letter-spacing: -.065em;
-    }
-
-
-    .intro-copy {
-      max-width: 760px;
-
-      color: var(--muted-dark);
-
-      font-size: 18px;
-
-      line-height: 1.7;
-    }
-
-
-    .intro-copy + .intro-copy {
-      margin-top: 20px;
-    }
-
-
-    /* =========================================================
-       ORIGINS
-       ========================================================= */
-
-    .origins {
-      padding: 125px 0;
-
-      background: var(--dark);
-
-      color: var(--white);
-    }
-
-
-    .section-heading {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: flex-end;
-
-      gap: 60px;
-
-      margin-bottom: 65px;
-    }
-
-
-    .origins .section-label {
-      color: var(--sand);
-
-      margin-bottom: 17px;
-    }
-
-
-    .origins .section-heading h2 {
-      color: var(--white);
-    }
-
-
-    .section-heading > p {
-      max-width: 420px;
-
-      color: var(--muted);
-
-      font-size: 15px;
-    }
-
-
-    .origin-grid {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 14px;
-    }
-
-
-    .origin-card {
-      min-height: 570px;
-
-      position: relative;
-
-      display: flex;
-      align-items: flex-end;
-
-      overflow: hidden;
-
-      color: var(--white);
-
-      background: var(--dark-2);
-    }
-
-
-    .origin-card > img {
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition: transform .55s ease;
-    }
-
-
-    .origin-card:hover > img {
-      transform: scale(1.05);
-    }
-
-
-    .origin-card::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          0deg,
-          rgba(0,0,0,.9),
-          rgba(0,0,0,.05) 72%
-        );
-    }
-
-
-    .origin-content {
-      position: relative;
-
-      z-index: 2;
-
-      width: 100%;
-
-      padding: 30px;
-    }
-
-
-    .origin-label {
-      display: block;
-
-      color: var(--sand);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .16em;
-      text-transform: uppercase;
-
-      margin-bottom: 100px;
-    }
-
-
-    .origin-content h3 {
-      margin-bottom: 12px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: 31px;
-
-      line-height: 1;
-    }
-
-
-    .origin-content p {
-      max-width: 390px;
-
-      color: rgba(255,255,255,.76);
-
-      font-size: 14px;
-    }
-
-
-    /* =========================================================
-       PRODUCT FOCUS
-       ========================================================= */
-
-    .focus {
-      padding: 125px 0;
-    }
-
-
-    .focus-grid {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 14px;
-    }
-
-
-    .focus-card {
-      min-height: 360px;
-
-      padding: 35px;
-
-      background: var(--cream-2);
-
-      border: 1px solid var(--line-dark);
-    }
-
-
-    .focus-number {
-      color: var(--green-dark);
-
-      font-size: 11px;
-
-      letter-spacing: .15em;
-    }
-
-
-    .focus-card h3 {
-      margin: 90px 0 13px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: 31px;
-
-      line-height: 1;
-    }
-
-
-    .focus-card p {
-      max-width: 470px;
-
-      color: var(--muted-dark);
-
-      font-size: 14px;
-    }
-
-
-    /* =========================================================
-       PRODUCT REQUIREMENTS
-       ========================================================= */
-
-    .requirements {
-      padding: 125px 0;
-
-      background: var(--cream-2);
-    }
-
-
-    .requirements-grid {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      border-top: 1px solid var(--line-dark);
-      border-left: 1px solid var(--line-dark);
-    }
-
-
-    .requirement {
-      min-height: 190px;
-
-      padding: 25px;
-
-      border-right: 1px solid var(--line-dark);
-      border-bottom: 1px solid var(--line-dark);
-    }
-
-
-    .requirement span {
-      color: var(--green-dark);
-
-      font-size: 10px;
-
-      letter-spacing: .15em;
-    }
-
-
-    .requirement h3 {
-      margin: 35px 0 8px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: 21px;
-    }
-
-
-    .requirement p {
-      color: var(--muted-dark);
-
-      font-size: 13px;
-    }
-
-
-    /* =========================================================
-       MARKETS
-       ========================================================= */
-
-    .markets {
-      padding: 125px 0;
-
-      background: var(--black);
-
-      color: var(--white);
-    }
-
-
-    .markets .section-label {
-      color: var(--sand);
-
-      margin-bottom: 17px;
-    }
-
-
-    .markets h2 {
-      color: var(--white);
-    }
-
-
-    .markets-grid {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      border-top: 1px solid var(--line-light);
-    }
-
-
-    .market {
-      min-height: 210px;
-
-      padding: 28px 28px 28px 0;
-
-      border-bottom: 1px solid var(--line-light);
-    }
-
-
-    .market:not(:nth-child(3n + 1)) {
-      padding-left: 28px;
-
-      border-left: 1px solid var(--line-light);
-    }
-
-
-    .market-code {
-      color: var(--sand);
-
-      font-size: 10px;
-
-      letter-spacing: .15em;
-    }
-
-
-    .market h3 {
-      margin: 32px 0 8px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: 25px;
-    }
-
-
-    .market p {
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    /* =========================================================
-       HOW WE WORK
-       ========================================================= */
-
-    .approach {
-      padding: 125px 0;
-    }
-
-
-    .approach-list {
-      border-top: 1px solid var(--line-dark);
-    }
-
-
-    .approach-item {
-      display: grid;
-
-      grid-template-columns: 80px 1fr 1fr;
-
-      gap: 30px;
-
-      padding: 30px 0;
-
-      border-bottom: 1px solid var(--line-dark);
-    }
-
-
-    .approach-number {
-      color: var(--green-dark);
-
-      font-size: 11px;
-    }
-
-
-    .approach-item h3 {
-      font-family: "Manrope", sans-serif;
-
-      font-size: 22px;
-    }
-
-
-    .approach-item p {
-      color: var(--muted-dark);
-
-      font-size: 14px;
-    }
-
-
-    /* =========================================================
-       CTA
-       ========================================================= */
-
-    .cta {
-      padding: 150px 0;
-
-      text-align: center;
-
-      color: var(--white);
-
-      background:
-        linear-gradient(
-          rgba(16,19,16,.8),
-          rgba(16,19,16,.8)
-        ),
-        url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=2400&q=90")
-        center / cover;
-    }
-
-
-    .cta h2 {
-      max-width: 1000px;
-
-      margin: 18px auto 25px;
-
-      font-family: "Manrope", sans-serif;
-
-      font-size: clamp(48px, 7vw, 90px);
-
-      line-height: .94;
-
-      letter-spacing: -.07em;
-    }
-
-
-    .cta p {
-      margin-bottom: 35px;
-
-      color: rgba(255,255,255,.76);
-
-      font-size: 18px;
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-      padding: 60px 0 28px;
-
-      background: var(--black);
-
-      color: var(--white);
-    }
-
-
-    .footer-top {
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 70px;
-
-      padding-bottom: 50px;
-
-      border-bottom: 1px solid var(--line-light);
-    }
-
-
-    .footer-logo {
-      width: 155px;
-
-      margin-bottom: 20px;
-    }
-
-
-    .footer-description {
-      max-width: 390px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-    }
-
-
-    .footer-columns {
-      display: flex;
-
-      gap: 70px;
-    }
-
-
-    .footer-column h4 {
-      margin-bottom: 18px;
-
-      color: var(--sand);
-
-      font-size: 10px;
-
-      text-transform: uppercase;
-      letter-spacing: .16em;
-    }
-
-
-    .footer-column a {
-      display: block;
-
-      margin-bottom: 10px;
-
-      color: #d0d4cf;
-
-      font-size: 13px;
-    }
-
-
-    .footer-bottom {
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding-top: 25px;
-
-      color: #727871;
-
-      font-size: 11px;
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
-
-    @media (max-width: 1000px) {
-
-      .nav-links {
-        gap: 18px;
-      }
-
-
-      .two-column {
-        grid-template-columns: 1fr;
-
-        gap: 45px;
-      }
-
-
-      .origin-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-
-      .requirements-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-
-      .markets-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-
-      .market:not(:nth-child(3n + 1)) {
-        padding-left: 0;
-
-        border-left: 0;
-      }
-
-
-      .market:not(:nth-child(2n + 1)) {
-        padding-left: 28px;
-
-        border-left: 1px solid var(--line-light);
-      }
-
-
-      .approach-item {
-        grid-template-columns: 60px 1fr;
-      }
-
-
-      .approach-item p {
-        grid-column: 2;
-      }
-
-    }
-
-
-    @media (max-width: 700px) {
-
-      .container {
-        width: calc(100% - 32px);
-      }
-
-
-      .site-header .nav {
-        min-height: 76px;
-      }
-
-
-      .nav-links {
-        display: none;
-      }
-
-
-      .hero {
-        min-height: 650px;
-      }
-
-
-      .hero-content {
-        padding-bottom: 65px;
-      }
-
-
-      .hero h1 {
-        font-size: 60px;
-      }
-
-
-      .intro,
-      .origins,
-      .focus,
-      .requirements,
-      .markets,
-      .approach {
-        padding: 90px 0;
-      }
-
-
-      .section-heading {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 25px;
-      }
-
-
-      .origin-grid,
-      .focus-grid,
-      .markets-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .origin-card {
-        min-height: 500px;
-      }
-
-
-      .requirements-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .market:not(:nth-child(2n + 1)) {
-        padding-left: 0;
-
-        border-left: 0;
-      }
-
-
-      .footer-top {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-
-      .footer-columns {
-        flex-wrap: wrap;
-
-        gap: 40px;
-      }
-
-
-      .footer-bottom {
-        flex-direction: column;
-      }
-
-    }
-
-  </style>
+  <link rel="stylesheet" href="../style.css">
 
 </head>
-
 
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
      HEADER
-     ========================================================= -->
+===================================================== -->
 
-<header class="site-header">
+<header class="site-header" id="top">
 
-  <div class="container nav">
+  <div class="container nav-wrap">
 
     <a
+      class="brand"
       href="../index.html"
-      class="logo"
       aria-label="EMPERIO TISS home"
     >
-
       <img
         src="../logo.png"
         alt="EMPERIO TISS"
       >
-
     </a>
 
 
-    <nav class="nav-links">
+    <button
+      class="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      ☰
+    </button>
+
+
+    <nav
+      class="nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
 
       <a href="index.html">
         Products
@@ -1062,19 +73,45 @@
         Markets
       </a>
 
-      <a href="../index.html#solutions">
-        Solutions
+      <a href="../index.html#services">
+        Services
       </a>
 
       <a href="../index.html#about">
-        About
+        Company
       </a>
 
-      <a
-        href="../index.html#contact"
-        class="nav-contact"
-      >
+      <a href="../index.html#contact">
         Contact
+      </a>
+
+
+      <div class="language-switcher">
+
+        <a class="active" href="fruits-vegetables.html">
+          EN
+        </a>
+
+        <a href="../es/products/fruits-vegetables.html">
+          ES
+        </a>
+
+        <a href="../fr/products/fruits-vegetables.html">
+          FR
+        </a>
+
+        <a href="../ar/products/fruits-vegetables.html">
+          AR
+        </a>
+
+      </div>
+
+
+      <a
+        class="nav-cta"
+        href="../index.html#contact"
+      >
+        Business enquiry
       </a>
 
     </nav>
@@ -1084,95 +121,108 @@
 </header>
 
 
+
 <main>
 
 
-<!-- =========================================================
+<!-- =====================================================
      HERO
-     ========================================================= -->
+===================================================== -->
 
-<section class="hero">
+<section class="hero product-hero">
 
   <div class="container hero-content">
 
-    <div class="eyebrow">
+    <p class="eyebrow">
       PRODUCT CATEGORY · 02
-    </div>
-
+    </p>
 
     <h1>
       Fruits &<br>
-      Vegetables
+      Vegetables.
     </h1>
 
-
-    <p>
-      Selected produce connected with professional markets
-      across Africa, Europe and the Middle East.
+    <p class="hero-text">
+      Fresh produce connected with professional markets
+      across Europe, Africa and the Middle East.
     </p>
 
 
     <div class="hero-actions">
 
       <a
-        href="../index.html#contact"
-        class="button button-primary"
+        class="button primary"
+        href="#category"
       >
-        Discuss your requirement →
+        Explore category
       </a>
-
 
       <a
-        href="index.html"
-        class="button button-secondary"
+        class="button secondary"
+        href="../index.html#contact"
       >
-        All products
+        Business enquiry
       </a>
 
     </div>
 
   </div>
 
+
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <strong>↓</strong>
+  </div>
+
 </section>
 
 
-<!-- =========================================================
+
+<!-- =====================================================
      INTRO
-     ========================================================= -->
+===================================================== -->
 
-<section class="intro">
+<section
+  class="section"
+  id="category"
+>
 
-  <div class="container two-column">
+  <div class="container">
 
-    <div>
+    <div class="section-head">
 
-      <div class="section-label">
-        Fruits & Vegetables
+      <div>
+
+        <p class="eyebrow dark">
+          THE CATEGORY
+        </p>
+
+        <h2>
+          Fresh supply.<br>
+          Connected markets.
+        </h2>
+
       </div>
+
+      <p>
+        Our fruits and vegetables activity connects
+        selected supply opportunities with professional
+        demand, taking into account seasonality,
+        availability, specifications, volume and destination.
+      </p>
 
     </div>
 
 
-    <div>
+    <div class="large-statement" data-reveal>
 
-      <h2>
-        Product origin matters.
-      </h2>
+      <span>
+        FROM SUPPLY
+      </span>
 
-
-      <p class="intro-copy">
-        Our fruits and vegetables activity focuses on
-        connecting selected origins with professional
-        demand, taking into account product specifications,
-        seasonality, availability, volume and destination.
-      </p>
-
-
-      <p class="intro-copy">
-        The objective is simple: identify the right product,
-        from the right origin, for the right market and
-        timing.
-      </p>
+      <strong>
+        TO MARKET.
+      </strong>
 
     </div>
 
@@ -1181,69 +231,56 @@
 </section>
 
 
-<!-- =========================================================
-     ORIGINS
-     ========================================================= -->
 
-<section class="origins">
+<!-- =====================================================
+     PRODUCT CATEGORIES
+===================================================== -->
+
+<section class="section products">
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="section-head">
 
       <div>
 
-        <div class="section-label">
-          Selected origins
-        </div>
+        <p class="eyebrow dark">
+          PRODUCT STRUCTURE
+        </p>
 
         <h2>
-          From origin<br>
-          to market.
+          What we work with.
         </h2>
 
       </div>
 
-
       <p>
-        Selected African origins form part of the geographic
-        network we are developing around fruits, vegetables
-        and seasonal products.
+        The catalogue will evolve according to market
+        requirements, availability and seasonal opportunities.
       </p>
 
     </div>
 
 
-    <div class="origin-grid">
+    <div class="cards produce-cards">
 
 
-      <!-- MOROCCO -->
+      <article class="card product-card" data-reveal>
 
-      <article class="origin-card">
+        <div class="card-number">
+          01
+        </div>
 
-        <img
-          src="https://images.unsplash.com/photo-1609424572698-04d9d2e04954?auto=format&fit=crop&w=1400&q=88"
-          alt="Citrus fruit from Morocco"
-          loading="lazy"
-        >
-
-
-        <div class="origin-content">
-
-          <span class="origin-label">
-            MOROCCO · BERKANE
-          </span>
-
+        <div>
 
           <h3>
             Citrus
           </h3>
 
-
           <p>
-            Berkane clementines, mandarins, oranges and
-            selected seasonal produce, subject to availability,
-            specifications and destination requirements.
+            Selected citrus opportunities structured
+            around variety, quality, calibre, packaging,
+            timing and destination.
           </p>
 
         </div>
@@ -1251,32 +288,23 @@
       </article>
 
 
-      <!-- TUNISIA -->
 
-      <article class="origin-card">
+      <article class="card product-card" data-reveal>
 
-        <img
-          src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=1400&q=88"
-          alt="Citrus oranges representing Tunisia"
-          loading="lazy"
-        >
+        <div class="card-number">
+          02
+        </div>
 
-
-        <div class="origin-content">
-
-          <span class="origin-label">
-            TUNISIA · CAP BON
-          </span>
-
+        <div>
 
           <h3>
-            Citrus
+            Vegetables
           </h3>
 
-
           <p>
-            Maltese oranges, mandarins, lemons and selected
-            seasonal produce from the Cap Bon region.
+            Fresh vegetable supply adapted to
+            professional specifications, volume and
+            destination requirements.
           </p>
 
         </div>
@@ -1284,33 +312,45 @@
       </article>
 
 
-      <!-- WEST AFRICA -->
 
-      <article class="origin-card">
+      <article class="card product-card" data-reveal>
 
-        <img
-          src="https://images.unsplash.com/photo-1582281298055-e25b84a30b0b?auto=format&fit=crop&w=1400&q=88"
-          alt="Pineapple and tropical agricultural products"
-          loading="lazy"
-        >
+        <div class="card-number">
+          03
+        </div>
 
-
-        <div class="origin-content">
-
-          <span class="origin-label">
-            GHANA · WEST AFRICA
-          </span>
-
+        <div>
 
           <h3>
-            Cocoa & Pineapple
+            Exotic Fruits
           </h3>
 
+          <p>
+            Selected exotic fruit opportunities connecting
+            international supply with professional demand.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="card product-card" data-reveal>
+
+        <div class="card-number">
+          04
+        </div>
+
+        <div>
+
+          <h3>
+            Seasonal Produce
+          </h3>
 
           <p>
-            Cocoa from Ghana and selected West African
-            pineapple opportunities, subject to season,
-            availability and destination requirements.
+            Opportunities shaped by seasonality,
+            availability and current market demand.
           </p>
 
         </div>
@@ -1325,147 +365,22 @@
 </section>
 
 
-<!-- =========================================================
-     PRODUCT FOCUS
-     ========================================================= -->
 
-<section class="focus">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <div>
-
-        <div class="section-label">
-          Product focus
-        </div>
-
-        <h2>
-          Selected products.<br>
-          Clear requirements.
-        </h2>
-
-      </div>
-
-
-      <p>
-        Product selection is based on origin, season,
-        market demand and the specifications required by
-        the destination.
-      </p>
-
-    </div>
-
-
-    <div class="focus-grid">
-
-
-      <article class="focus-card">
-
-        <span class="focus-number">
-          01 · CITRUS
-        </span>
-
-
-        <h3>
-          Clementines & Mandarins
-        </h3>
-
-
-        <p>
-          Selected citrus varieties from Mediterranean
-          origins, including Berkane and Cap Bon, according
-          to season and availability.
-        </p>
-
-      </article>
-
-
-      <article class="focus-card">
-
-        <span class="focus-number">
-          02 · CITRUS
-        </span>
-
-
-        <h3>
-          Oranges & Lemons
-        </h3>
-
-
-        <p>
-          Citrus products structured around variety,
-          calibre, packaging, volume, timing and destination.
-        </p>
-
-      </article>
-
-
-      <article class="focus-card">
-
-        <span class="focus-number">
-          03 · TROPICAL
-        </span>
-
-
-        <h3>
-          Pineapple
-        </h3>
-
-
-        <p>
-          Selected West African pineapple opportunities
-          according to season, product condition, volume and
-          destination requirements.
-        </p>
-
-      </article>
-
-
-      <article class="focus-card">
-
-        <span class="focus-number">
-          04 · AGRICULTURAL
-        </span>
-
-
-        <h3>
-          Seasonal Produce
-        </h3>
-
-
-        <p>
-          Additional fruits and vegetables considered when
-          origin, market timing and commercial requirements
-          align.
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
+<!-- =====================================================
      REQUIREMENTS
-     ========================================================= -->
+===================================================== -->
 
-<section class="requirements">
+<section class="section dark-section">
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="section-head">
 
       <div>
 
-        <div class="section-label">
-          Product specifications
-        </div>
+        <p class="eyebrow">
+          REQUIREMENTS
+        </p>
 
         <h2>
           Built around<br>
@@ -1474,317 +389,257 @@
 
       </div>
 
-
       <p>
-        Each enquiry can be structured according to the
-        exact specifications required by the destination
-        market.
+        Each enquiry can be structured around the exact
+        commercial and logistical requirements of the
+        destination market.
       </p>
 
     </div>
 
 
-    <div class="requirements-grid">
+    <div class="market-grid requirement-grid">
 
 
-      <article class="requirement">
+      <div class="market" data-reveal>
+
+        <span>01</span>
+
+        <strong>
+          Variety
+        </strong>
+
+        <small>
+          Product and variety requirements.
+        </small>
+
+      </div>
+
+
+      <div class="market" data-reveal>
+
+        <span>02</span>
+
+        <strong>
+          Quality
+        </strong>
+
+        <small>
+          Quality and specification requirements.
+        </small>
+
+      </div>
+
+
+      <div class="market" data-reveal>
+
+        <span>03</span>
+
+        <strong>
+          Calibre
+        </strong>
+
+        <small>
+          Size and classification requirements.
+        </small>
+
+      </div>
+
+
+      <div class="market" data-reveal>
+
+        <span>04</span>
+
+        <strong>
+          Packaging
+        </strong>
+
+        <small>
+          Format, box and pallet requirements.
+        </small>
+
+      </div>
+
+
+      <div class="market" data-reveal>
+
+        <span>05</span>
+
+        <strong>
+          Volume
+        </strong>
+
+        <small>
+          Quantity and supply frequency.
+        </small>
+
+      </div>
+
+
+      <div class="market" data-reveal>
+
+        <span>06</span>
+
+        <strong>
+          Timing
+        </strong>
+
+        <small>
+          Harvest, loading and delivery schedule.
+        </small>
+
+      </div>
+
+
+      <div class="market featured" data-reveal>
+
+        <span>07</span>
+
+        <strong>
+          Destination
+        </strong>
+
+        <small>
+          Delivery market and location.
+        </small>
+
+      </div>
+
+
+      <div class="market" data-reveal>
+
+        <span>08</span>
+
+        <strong>
+          Logistics
+        </strong>
+
+        <small>
+          Transport and coordination requirements.
+        </small>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARKETS
+===================================================== -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow dark">
+          PROFESSIONAL MARKETS
+        </p>
+
+        <h2>
+          Three regions.<br>
+          One network.
+        </h2>
+
+      </div>
+
+      <p>
+        Fruits and vegetables are connected with professional
+        markets across Europe, Africa and the Middle East.
+      </p>
+
+    </div>
+
+
+    <div class="market-grid light-market-grid">
+
+
+      <a
+        class="market"
+        href="../markets/markets.html"
+      >
 
         <span>
           01
         </span>
 
-        <h3>
-          Variety
-        </h3>
+        <strong>
+          Europe
+        </strong>
 
-        <p>
-          Product and variety requirements.
-        </p>
+        <small>
+          Spain · France · Italy · Germany · Netherlands
+        </small>
 
-      </article>
+      </a>
 
 
-      <article class="requirement">
+      <a
+        class="market"
+        href="../markets/markets.html"
+      >
 
         <span>
           02
         </span>
 
-        <h3>
-          Origin
-        </h3>
+        <strong>
+          Africa
+        </strong>
 
-        <p>
-          Production origin and sourcing requirements.
-        </p>
+        <small>
+          Morocco · Tunisia · Mauritania · West Africa
+        </small>
 
-      </article>
+      </a>
 
 
-      <article class="requirement">
+      <a
+        class="market"
+        href="../markets/markets.html"
+      >
 
         <span>
           03
         </span>
 
-        <h3>
-          Calibre
-        </h3>
+        <strong>
+          Middle East
+        </strong>
 
-        <p>
-          Size and classification requirements.
-        </p>
+        <small>
+          GCC · Levant
+        </small>
 
-      </article>
-
-
-      <article class="requirement">
-
-        <span>
-          04
-        </span>
-
-        <h3>
-          Quality
-        </h3>
-
-        <p>
-          Quality and product specifications.
-        </p>
-
-      </article>
+      </a>
 
 
-      <article class="requirement">
+      <div class="market featured">
 
         <span>
-          05
+          HUB
         </span>
 
-        <h3>
-          Packaging
-        </h3>
+        <strong>
+          Madrid
+        </strong>
 
-        <p>
-          Format, box and pallet requirements.
-        </p>
-
-      </article>
-
-
-      <article class="requirement">
-
-        <span>
-          06
-        </span>
-
-        <h3>
-          Volume
-        </h3>
-
-        <p>
-          Quantity and supply frequency.
-        </p>
-
-      </article>
-
-
-      <article class="requirement">
-
-        <span>
-          07
-        </span>
-
-        <h3>
-          Destination
-        </h3>
-
-        <p>
-          Delivery market and location.
-        </p>
-
-      </article>
-
-
-      <article class="requirement">
-
-        <span>
-          08
-        </span>
-
-        <h3>
-          Timing
-        </h3>
-
-        <p>
-          Harvest, loading and delivery schedule.
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     MARKETS
-     ========================================================= -->
-
-<section class="markets">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <div>
-
-        <div class="section-label">
-          Professional markets
-        </div>
-
-        <h2>
-          Connecting origins<br>
-          with demand.
-        </h2>
+        <small>
+          European coordination point
+        </small>
 
       </div>
 
 
-      <p>
-        Fruits and vegetables can be structured for selected
-        European markets and developing opportunities across
-        Africa and the Middle East.
-      </p>
-
-    </div>
-
-
-    <div class="markets-grid">
-
-
-      <article class="market">
-
-        <span class="market-code">
-          EUROPE · 01
-        </span>
-
-        <h3>
-          Spain
-        </h3>
-
-        <p>
-          Madrid and major professional food markets.
-        </p>
-
-      </article>
-
-
-      <article class="market">
-
-        <span class="market-code">
-          EUROPE · 02
-        </span>
-
-        <h3>
-          France
-        </h3>
-
-        <p>
-          Rungis, Perpignan and wider French markets.
-        </p>
-
-      </article>
-
-
-      <article class="market">
-
-        <span class="market-code">
-          EUROPE · 03
-        </span>
-
-        <h3>
-          Germany
-        </h3>
-
-        <p>
-          Professional food distribution markets.
-        </p>
-
-      </article>
-
-
-      <article class="market">
-
-        <span class="market-code">
-          EUROPE · 04
-        </span>
-
-        <h3>
-          Italy
-        </h3>
-
-        <p>
-          Selected professional food markets.
-        </p>
-
-      </article>
-
-
-      <article class="market">
-
-        <span class="market-code">
-          EUROPE · 05
-        </span>
-
-        <h3>
-          Netherlands
-        </h3>
-
-        <p>
-          European distribution connections.
-        </p>
-
-      </article>
-
-
-      <article class="market">
-
-        <span class="market-code">
-          AFRICA · 06
-        </span>
-
-        <h3>
-          North & West Africa
-        </h3>
-
-        <p>
-          Morocco, Tunisia, Senegal, Mauritania and Ghana.
-        </p>
-
-      </article>
-
-
-      <article class="market">
-
-        <span class="market-code">
-          MIDDLE EAST · 07
-        </span>
-
-        <h3>
-          GCC & Levant
-        </h3>
-
-        <p>
-          Developing opportunities across selected markets.
-        </p>
-
-      </article>
-
-
     </div>
 
   </div>
@@ -1792,21 +647,22 @@
 </section>
 
 
-<!-- =========================================================
-     APPROACH
-     ========================================================= -->
 
-<section class="approach">
+<!-- =====================================================
+     PROCESS
+===================================================== -->
+
+<section class="section services">
 
   <div class="container">
 
-    <div class="section-heading">
+    <div class="section-head">
 
       <div>
 
-        <div class="section-label">
-          Our approach
-        </div>
+        <p class="eyebrow dark">
+          OUR APPROACH
+        </p>
 
         <h2>
           From requirement<br>
@@ -1815,104 +671,127 @@
 
       </div>
 
-
       <p>
         We structure each enquiry around the product,
-        origin, customer requirements and destination.
+        commercial requirement and destination.
       </p>
 
     </div>
 
 
-    <div class="approach-list">
+    <div class="service-list">
 
 
-      <article class="approach-item">
+      <article data-reveal>
 
-        <span class="approach-number">
+        <span>
           01
         </span>
 
-        <h3>
-          Requirement
-        </h3>
+        <div>
 
-        <p>
-          Product, variety, quality, volume, destination
-          and timing are identified.
-        </p>
+          <h3>
+            Requirement
+          </h3>
+
+          <p>
+            Product, variety, quality, volume,
+            destination and timing are identified.
+          </p>
+
+        </div>
 
       </article>
 
 
-      <article class="approach-item">
 
-        <span class="approach-number">
+      <article data-reveal>
+
+        <span>
           02
         </span>
 
-        <h3>
-          Origin & Availability
-        </h3>
+        <div>
 
-        <p>
-          Product availability and origin conditions are
-          assessed against the requirement.
-        </p>
+          <h3>
+            Availability
+          </h3>
+
+          <p>
+            Available supply is assessed against
+            the requested specifications.
+          </p>
+
+        </div>
 
       </article>
 
 
-      <article class="approach-item">
 
-        <span class="approach-number">
+      <article data-reveal>
+
+        <span>
           03
         </span>
 
-        <h3>
-          Commercial Proposal
-        </h3>
+        <div>
 
-        <p>
-          The product and supply conditions are structured
-          around the specific enquiry.
-        </p>
+          <h3>
+            Commercial Proposal
+          </h3>
+
+          <p>
+            Supply conditions are structured around
+            the specific enquiry.
+          </p>
+
+        </div>
 
       </article>
 
 
-      <article class="approach-item">
 
-        <span class="approach-number">
+      <article data-reveal>
+
+        <span>
           04
         </span>
 
-        <h3>
-          Logistics Coordination
-        </h3>
+        <div>
 
-        <p>
-          Loading, transport and destination requirements
-          are coordinated according to the agreed conditions.
-        </p>
+          <h3>
+            Logistics Coordination
+          </h3>
+
+          <p>
+            Loading, transport and destination requirements
+            are coordinated according to the agreed conditions.
+          </p>
+
+        </div>
 
       </article>
 
 
-      <article class="approach-item">
 
-        <span class="approach-number">
+      <article data-reveal>
+
+        <span>
           05
         </span>
 
-        <h3>
-          Delivery
-        </h3>
+        <div>
 
-        <p>
-          The process is coordinated through to the agreed
-          destination.
-        </p>
+          <h3>
+            Delivery
+          </h3>
+
+          <p>
+            The process is coordinated through to
+            the agreed destination.
+          </p>
+
+        </div>
 
       </article>
 
@@ -1924,35 +803,100 @@
 </section>
 
 
-<!-- =========================================================
-     CTA
-     ========================================================= -->
 
-<section class="cta">
+<!-- =====================================================
+     CATALOGUE NOTE
+===================================================== -->
+
+<section class="section dark-section catalogue-section">
 
   <div class="container">
 
-    <div class="eyebrow">
-      Fruits & Vegetables
+    <div class="two-col">
+
+      <div>
+
+        <p class="eyebrow">
+          COMING CATALOGUE
+        </p>
+
+        <h2>
+          A catalogue<br>
+          built over time.
+        </h2>
+
+      </div>
+
+
+      <div class="intro-copy">
+
+        <p>
+          Our detailed product catalogue will provide
+          specifications, formats, availability and
+          commercial information.
+        </p>
+
+        <p>
+          Until then, enquiries can be structured directly
+          around the product and market requirement.
+        </p>
+
+        <a
+          class="button primary"
+          href="../index.html#contact"
+        >
+          Discuss a requirement
+        </a>
+
+      </div>
+
     </div>
 
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+  <div class="container cta-inner">
+
+    <p class="eyebrow">
+      FRUITS & VEGETABLES
+    </p>
 
     <h2>
       Tell us what your market needs.
     </h2>
 
-
     <p>
-      Product. Volume. Origin. Destination. Timing.
+      Product. Volume. Destination. Timing.
+      We'll work on the supply route.
     </p>
 
 
-    <a
-      href="../index.html#contact"
-      class="button button-primary"
-    >
-      Send a business enquiry →
-    </a>
+    <div class="hero-actions">
+
+      <a
+        class="button light-button"
+        href="mailto:contact@emperio-tiss.com"
+      >
+        Send an enquiry
+      </a>
+
+      <a
+        class="button secondary"
+        href="../index.html"
+      >
+        Back to EMPERIO TISS
+      </a>
+
+    </div>
 
   </div>
 
@@ -1962,107 +906,81 @@
 </main>
 
 
-<!-- =========================================================
+
+<!-- =====================================================
      FOOTER
-     ========================================================= -->
+===================================================== -->
 
-<footer>
+<footer class="footer">
 
-  <div class="container footer-top">
+  <div class="container footer-grid">
 
 
     <div>
 
-      <a href="../index.html">
+      <img
+        class="footer-logo"
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
 
-        <img
-          src="../logo.png"
-          alt="EMPERIO TISS"
-          class="footer-logo"
-        >
-
-      </a>
-
-
-      <p class="footer-description">
-        Connecting food supply with professional markets
-        across Africa, Europe and the Middle East.
+      <p>
+        Connecting professional food markets across
+        Africa, Europe and the Middle East.
       </p>
 
     </div>
 
 
-    <div class="footer-columns">
+    <div>
 
+      <strong>
+        Products
+      </strong>
 
-      <div class="footer-column">
+      <a href="index.html">
+        All Products
+      </a>
 
-        <h4>
-          Products
-        </h4>
+      <a href="seafood.html">
+        Fish & Seafood
+      </a>
 
-        <a href="index.html">
-          All Products
-        </a>
+      <a href="fruits-vegetables.html">
+        Fruits & Vegetables
+      </a>
 
-        <a href="seafood.html">
-          Fish & Seafood
-        </a>
-
-        <a href="fruits-vegetables.html">
-          Fruits & Vegetables
-        </a>
-
-        <a href="../index.html#seasonal">
-          Seasonal Opportunities
-        </a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>
-          Company
-        </h4>
-
-        <a href="../markets/markets.html">
-          Markets
-        </a>
-
-        <a href="../index.html#solutions">
-          Solutions
-        </a>
-
-        <a href="../index.html#about">
-          About
-        </a>
-
-        <a href="../index.html#contact">
-          Contact
-        </a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h4>
-          Base
-        </h4>
-
-        <a href="../index.html#about">
-          Madrid · Spain
-        </a>
-
-        <a href="mailto:contact@emperio-tiss.com">
-          contact@emperio-tiss.com
-        </a>
-
-      </div>
-
+      <a href="seasonal.html">
+        Seasonal Products
+      </a>
 
     </div>
+
+
+    <div>
+
+      <strong>
+        Company
+      </strong>
+
+      <a href="../markets/markets.html">
+        Markets
+      </a>
+
+      <a href="../index.html#services">
+        Services
+      </a>
+
+      <a href="../index.html#about">
+        Company
+      </a>
+
+      <a href="../index.html#contact">
+        Business enquiry
+      </a>
+
+    </div>
+
 
   </div>
 
@@ -2070,11 +988,13 @@
   <div class="container footer-bottom">
 
     <span>
-      © 2026 EMPERIO TISS SL. All rights reserved.
+      © <span id="year"></span> EMPERIO TISS SL
     </span>
 
     <span>
-      Food Moves. Markets Connect.
+      Spain · France · Italy · Germany · Netherlands
+      · Morocco · Tunisia · Mauritania · West Africa
+      · Middle East
     </span>
 
   </div>
@@ -2082,5 +1002,8 @@
 </footer>
 
 
+<script src="../script.js"></script>
+
 </body>
+
 </html>
