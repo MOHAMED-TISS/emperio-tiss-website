@@ -2417,3 +2417,78 @@ img.image-loaded {
   }
 
 }
+/* =========================================================
+   SEAFOOD PAGE
+========================================================= */
+
+.seafood-hero {
+  min-height: 85vh;
+}
+
+.seafood-specifications {
+  padding: 120px 0;
+}
+
+.specification-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 60px;
+  background: rgba(255,255,255,.14);
+}
+
+.specification {
+  min-height: 180px;
+  padding: 28px;
+  background: #111410;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    background .35s ease,
+    transform .35s ease;
+}
+
+.specification:hover {
+  background: rgba(255,255,255,.06);
+  transform: translateY(-4px);
+}
+
+.specification span {
+  font-size: .7rem;
+  opacity: .5;
+  letter-spacing: .12em;
+}
+
+.specification strong {
+  font-size: 1.05rem;
+}
+
+.specification small {
+  opacity: .55;
+  font-size: .75rem;
+}
+
+@media (max-width: 900px) {
+
+  .specification-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .seafood-specifications {
+    padding: 80px 0;
+  }
+
+  .specification-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .specification {
+    min-height: 140px;
+  }
+
+}
