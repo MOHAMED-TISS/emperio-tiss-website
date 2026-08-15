@@ -7,1522 +7,1425 @@
   <title>Seafood | EMPERIO TISS</title>
   <meta
     name="description"
-    content="Premium seafood sourcing and distribution connecting Africa, Europe and the Middle East."
+    content="EMPERIO TISS — Fish, seafood and cephalopods connecting Mediterranean supply with Europe, Africa and the Middle East."
   >
 
-  <!-- Existing visual system -->
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="icon" href="../../logo.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
 
+  <link rel="stylesheet" href="../style.css">
+
   <style>
+
     /* =====================================================
-       EMPERIO TISS
-       SEAFOOD — MARINE EDITORIAL SYSTEM
+       EMPERIO TISS — SEAFOOD
+       Clean Marine Edition
     ===================================================== */
 
-    :root {
-      --ocean-0: #020c11;
-      --ocean-1: #04151d;
-      --ocean-2: #06232e;
-      --ocean-3: #0b3948;
-      --ocean-4: #15566a;
-
-      --water: #83c5d2;
-      --water-soft: rgba(131,197,210,.55);
-
-      --gold: #b9a06a;
-      --cream: #f4f2ed;
-
-      --white: #ffffff;
-      --white-soft: rgba(255,255,255,.68);
-      --white-faint: rgba(255,255,255,.12);
-
-      --marine-ease: cubic-bezier(.16,1,.3,1);
+    :root{
+      --sea:#061923;
+      --sea-2:#092734;
+      --sea-3:#0d3b4b;
+      --sea-line:rgba(190,225,232,.16);
+      --sea-soft:rgba(190,225,232,.65);
+      --gold:#b39a67;
+      --cream:#f4f2ed;
     }
 
     /* =====================================================
-       BASE
+       PAGE
     ===================================================== */
 
-    .seafood-page {
-      background: var(--ocean-1);
-      color: var(--white);
-      overflow-x: hidden;
-    }
-
-    .seafood-page * {
-      box-sizing: border-box;
-    }
-
-    .seafood-page a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .seafood-container {
-      width: min(1240px, calc(100% - 48px));
-      margin: 0 auto;
+    .seafood-page{
+      background:var(--cream);
+      color:#18201f;
     }
 
     /* =====================================================
        HEADER
     ===================================================== */
 
-    .seafood-header {
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-
-      padding: 24px 0;
-
-      color: #fff;
+    .seafood-header{
+      position:fixed;
+      z-index:1000;
+      top:0;
+      left:0;
+      right:0;
+      padding:22px 0;
+      color:#fff;
 
       transition:
         background .5s ease,
-        padding .5s var(--marine-ease),
-        color .4s ease;
+        padding .5s ease,
+        box-shadow .5s ease;
     }
 
-    .seafood-header.scrolled {
-      padding: 13px 0;
-
-      background: rgba(244,242,237,.94);
-      color: #18201f;
-
-      backdrop-filter: blur(18px);
-      box-shadow: 0 1px 0 rgba(24,32,31,.1);
+    .seafood-header.scrolled{
+      padding:12px 0;
+      background:rgba(244,242,237,.94);
+      color:#18201f;
+      backdrop-filter:blur(18px);
+      box-shadow:0 1px 0 rgba(24,32,31,.12);
     }
 
-    .seafood-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
+    .seafood-nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
     }
 
-    /* IMPORTANT:
-       logo.png is in /public
-       seafood.html is in /public/products
-       therefore ../../logo.png is correct.
+    .seafood-logo{
+      display:block;
+      width:150px;
+      height:auto;
+    }
+
+    /*
+      IMPORTANT:
+      No white filter.
+      The original logo is used directly.
     */
 
-    .seafood-logo {
-      display: block;
-      width: 155px;
-      height: auto;
-
-      object-fit: contain;
-
-      filter: brightness(0) invert(1);
-
-      transition:
-        width .5s var(--marine-ease),
-        filter .4s ease;
+    .seafood-navigation{
+      display:flex;
+      align-items:center;
+      gap:28px;
     }
 
-    .seafood-header.scrolled .seafood-logo {
-      width: 140px;
-      filter: none;
+    .seafood-navigation a{
+      position:relative;
+      color:inherit;
+      font-size:12px;
+      font-weight:600;
     }
 
-    .seafood-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-
-      font-size: 12px;
-      font-weight: 600;
+    .seafood-navigation a:not(.seafood-contact)::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-7px;
+      width:0;
+      height:1px;
+      background:currentColor;
+      transition:width .4s ease;
     }
 
-    .seafood-links a {
-      position: relative;
-      opacity: .8;
-      transition: opacity .3s ease;
+    .seafood-navigation a:hover::after{
+      width:100%;
     }
 
-    .seafood-links a:hover {
-      opacity: 1;
+    .seafood-contact{
+      padding:10px 16px;
+      border:1px solid currentColor;
+      transition:.4s ease;
     }
 
-    .seafood-links a:not(.seafood-contact)::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-      bottom: -7px;
-
-      width: 0;
-      height: 1px;
-
-      background: currentColor;
-
-      transition: width .45s var(--marine-ease);
+    .seafood-contact:hover{
+      background:#fff;
+      color:var(--sea);
     }
 
-    .seafood-links a:hover::after {
-      width: 100%;
+    .seafood-header.scrolled .seafood-contact:hover{
+      background:var(--sea);
+      color:#fff;
     }
 
-    .seafood-contact {
-      padding: 10px 16px;
-      border: 1px solid currentColor;
+    .seafood-menu{
+      display:none;
+      border:0;
+      background:none;
+      color:inherit;
+      font-size:25px;
+      cursor:pointer;
     }
 
     /* =====================================================
        HERO
     ===================================================== */
 
-    .seafood-hero {
-      position: relative;
+    .seafood-hero{
+      position:relative;
+      min-height:100svh;
+      overflow:hidden;
 
-      min-height: 100svh;
-
-      display: flex;
-      align-items: center;
-
-      overflow: hidden;
+      display:flex;
+      align-items:center;
 
       background:
         radial-gradient(
-          circle at 76% 20%,
-          rgba(55,141,164,.45),
-          transparent 26%
+          circle at 75% 25%,
+          rgba(48,130,151,.42),
+          transparent 28%
         ),
         radial-gradient(
           circle at 20% 80%,
-          rgba(20,86,108,.42),
+          rgba(23,81,101,.32),
           transparent 32%
         ),
         linear-gradient(
-          145deg,
-          #020b10 0%,
-          #041923 48%,
-          #0a3543 100%
+          135deg,
+          #020c11 0%,
+          var(--sea) 45%,
+          var(--sea-3) 100%
         );
+
+      color:#fff;
     }
 
-    /* Deep ocean movement */
+    /* Ocean atmosphere */
 
-    .seafood-hero::before {
-      content: "";
-
-      position: absolute;
-      inset: -20%;
+    .seafood-hero::before{
+      content:"";
+      position:absolute;
+      inset:-20%;
 
       background:
         radial-gradient(
-          ellipse at 50% 100%,
-          rgba(91,182,201,.22),
-          transparent 38%
+          ellipse at 50% 110%,
+          rgba(86,174,190,.22),
+          transparent 40%
         ),
         radial-gradient(
-          ellipse at 80% 35%,
-          rgba(107,201,218,.14),
+          ellipse at 80% 20%,
+          rgba(135,208,220,.10),
           transparent 28%
         );
 
-      filter: blur(8px);
+      filter:blur(8px);
 
       animation:
-        oceanMove 16s ease-in-out infinite alternate;
+        oceanMovement 18s ease-in-out infinite alternate;
     }
 
-    @keyframes oceanMove {
-      0% {
-        transform:
-          translate3d(-2%, 1%, 0)
-          scale(1.04);
+    @keyframes oceanMovement{
+      0%{
+        transform:translate3d(-2%,1%,0) scale(1.03);
       }
 
-      50% {
-        transform:
-          translate3d(1%, -2%, 0)
-          scale(1.1);
+      50%{
+        transform:translate3d(1%,-2%,0) scale(1.08);
       }
 
-      100% {
-        transform:
-          translate3d(3%, 1%, 0)
-          scale(1.15);
+      100%{
+        transform:translate3d(3%,1%,0) scale(1.13);
       }
     }
 
-    /* Water rays */
+    /* Underwater light */
 
-    .seafood-hero::after {
-      content: "";
-
-      position: absolute;
-      inset: -20%;
+    .seafood-hero::after{
+      content:"";
+      position:absolute;
+      inset:-30%;
 
       background:
         repeating-linear-gradient(
-          110deg,
+          112deg,
           transparent 0,
-          transparent 95px,
-          rgba(210,245,250,.035) 98px,
-          transparent 103px
+          transparent 110px,
+          rgba(190,235,240,.035) 113px,
+          transparent 118px
         );
 
-      opacity: .8;
-
       animation:
-        waterRays 18s linear infinite;
+        waterMovement 20s linear infinite;
     }
 
-    @keyframes waterRays {
-      from {
-        transform: translateX(-5%) rotate(-1deg);
+    @keyframes waterMovement{
+      from{
+        transform:translateX(-5%);
       }
 
-      to {
-        transform: translateX(5%) rotate(1deg);
-      }
-    }
-
-    /* Underwater light beam */
-
-    .sea-light {
-      position: absolute;
-      z-index: 1;
-
-      top: -20%;
-      left: 57%;
-
-      width: 180px;
-      height: 140%;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(208,244,249,.28),
-          transparent 70%
-        );
-
-      filter: blur(30px);
-
-      opacity: .35;
-
-      transform: rotate(17deg);
-
-      animation:
-        lightBeam 9s ease-in-out infinite alternate;
-    }
-
-    @keyframes lightBeam {
-      from {
-        transform:
-          rotate(17deg)
-          translateX(-50px);
-      }
-
-      to {
-        transform:
-          rotate(22deg)
-          translateX(60px);
+      to{
+        transform:translateX(5%);
       }
     }
 
-    /* Ocean rings */
-
-    .ocean-ring {
-      position: absolute;
-      z-index: 1;
-
-      border: 1px solid rgba(130,210,222,.1);
-      border-radius: 50%;
-
-      pointer-events: none;
+    .seafood-hero-content{
+      position:relative;
+      z-index:5;
+      padding-top:80px;
     }
 
-    .ocean-ring.one {
-      width: 760px;
-      height: 760px;
+    .seafood-eyebrow{
+      margin-bottom:24px;
 
-      right: -340px;
-      bottom: -420px;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.24em;
+      text-transform:uppercase;
 
-      animation:
-        ringFloat 13s ease-in-out infinite alternate;
+      color:#91c5ce;
     }
 
-    .ocean-ring.two {
-      width: 520px;
-      height: 520px;
+    .seafood-hero h1{
+      max-width:1050px;
+      margin:0;
 
-      right: -30px;
-      bottom: -300px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(58px,8vw,112px);
+      font-weight:500;
+      line-height:.91;
+      letter-spacing:-.045em;
 
-      animation:
-        ringFloat 10s ease-in-out infinite alternate-reverse;
+      color:#fff;
     }
 
-    @keyframes ringFloat {
-      from {
-        transform: translateY(0) scale(1);
-      }
+    .seafood-hero-copy{
+      max-width:620px;
+      margin-top:32px;
 
-      to {
-        transform: translateY(-30px) scale(1.06);
-      }
+      font-size:17px;
+      line-height:1.75;
+
+      color:rgba(238,247,248,.68);
     }
 
-    /* Hero content */
-
-    .seafood-hero-content {
-      position: relative;
-      z-index: 5;
-
-      width: 100%;
-
-      padding-top: 90px;
+    .seafood-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:35px;
     }
 
-    .seafood-eyebrow {
-      margin-bottom: 22px;
+    .seafood-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
 
-      color: var(--water);
+      min-height:49px;
+      padding:0 22px;
 
-      font-size: 10px;
-      font-weight: 700;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.03em;
 
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    .seafood-hero h1 {
-      max-width: 1050px;
-
-      margin: 0;
-
-      color: #fff;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(58px, 8vw, 112px);
-      font-weight: 500;
-
-      line-height: .92;
-
-      letter-spacing: -.05em;
-    }
-
-    .seafood-hero h1 em {
-      color: #9fd1da;
-      font-style: normal;
-    }
-
-    .seafood-description {
-      max-width: 620px;
-
-      margin-top: 30px;
-
-      color: rgba(255,255,255,.65);
-
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-    .seafood-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-
-      margin-top: 35px;
-    }
-
-    .seafood-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-height: 50px;
-
-      padding: 0 23px;
-
-      font-size: 12px;
-      font-weight: 700;
-
-      border: 1px solid transparent;
+      border:1px solid transparent;
 
       transition:
-        transform .5s var(--marine-ease),
-        background .4s ease,
-        border-color .4s ease;
+        transform .45s ease,
+        background .45s ease,
+        color .45s ease,
+        border-color .45s ease;
     }
 
-    .seafood-button:hover {
-      transform: translateY(-4px);
+    .seafood-button:hover{
+      transform:translateY(-4px);
     }
 
-    .seafood-button.primary {
-      background: var(--gold);
-      color: #fff;
+    .seafood-button.primary{
+      background:var(--gold);
+      color:#fff;
     }
 
-    .seafood-button.primary:hover {
-      background: #9e844e;
+    .seafood-button.primary:hover{
+      background:#947c4e;
     }
 
-    .seafood-button.secondary {
-      border-color: rgba(255,255,255,.4);
-      color: #fff;
+    .seafood-button.secondary{
+      color:#fff;
+      border-color:rgba(255,255,255,.35);
     }
 
-    .seafood-button.secondary:hover {
-      border-color: #fff;
-      background: rgba(255,255,255,.06);
+    .seafood-button.secondary:hover{
+      border-color:#fff;
+      background:rgba(255,255,255,.06);
     }
 
-    /* Hero metadata */
+    /* Hero bottom information */
 
-    .hero-meta {
-      position: absolute;
-      z-index: 5;
+    .seafood-hero-meta{
+      position:absolute;
+      z-index:5;
 
-      right: 42px;
-      bottom: 45px;
+      right:40px;
+      bottom:38px;
 
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
+      display:flex;
+      flex-direction:column;
+      gap:7px;
 
-      color: rgba(255,255,255,.42);
+      font-size:9px;
+      line-height:1.4;
+      letter-spacing:.18em;
+      text-transform:uppercase;
 
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-
-      text-align: right;
+      color:rgba(255,255,255,.38);
+      text-align:right;
     }
 
-    .hero-scroll {
-      position: absolute;
-      z-index: 5;
+    .seafood-scroll{
+      position:absolute;
+      z-index:5;
 
-      left: 50%;
-      bottom: 28px;
+      left:50%;
+      bottom:30px;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
 
-      transform: translateX(-50%);
+      transform:translateX(-50%);
 
-      color: rgba(255,255,255,.55);
+      font-size:9px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
 
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+      color:rgba(255,255,255,.45);
 
-      animation: scrollPulse 2.5s ease-in-out infinite;
+      animation:scrollDown 2.4s ease-in-out infinite;
     }
 
-    .hero-scroll strong {
-      font-size: 17px;
-      font-weight: 400;
+    .seafood-scroll strong{
+      font-size:18px;
+      font-weight:400;
     }
 
-    @keyframes scrollPulse {
-      0%,100% {
-        opacity: .45;
-        transform: translate(-50%,0);
+    @keyframes scrollDown{
+      0%,100%{
+        transform:translate(-50%,0);
       }
 
-      50% {
-        opacity: 1;
-        transform: translate(-50%,8px);
+      50%{
+        transform:translate(-50%,8px);
       }
-    }
-
-    /* =====================================================
-       OCEAN TRANSITION
-    ===================================================== */
-
-    .ocean-wave {
-      position: relative;
-
-      height: 100px;
-
-      overflow: hidden;
-
-      background: var(--ocean-1);
-    }
-
-    .ocean-wave::before,
-    .ocean-wave::after {
-      content: "";
-
-      position: absolute;
-
-      left: -10%;
-
-      width: 120%;
-      height: 90px;
-
-      border-top:
-        1px solid rgba(130,205,218,.15);
-
-      border-radius: 50%;
-    }
-
-    .ocean-wave::before {
-      top: 25px;
-
-      transform:
-        rotate(-1deg);
-    }
-
-    .ocean-wave::after {
-      top: 42px;
-
-      opacity: .5;
-
-      transform:
-        rotate(1deg);
     }
 
     /* =====================================================
        INTRO
     ===================================================== */
 
-    .seafood-intro {
-      padding: 120px 0;
-
-      background: var(--ocean-1);
+    .seafood-intro{
+      padding:125px 0;
+      background:var(--cream);
     }
 
-    .seafood-section-label {
-      margin-bottom: 18px;
-
-      color: var(--water);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .2em;
-      text-transform: uppercase;
+    .seafood-intro-grid{
+      display:grid;
+      grid-template-columns:1.1fr .75fr;
+      gap:100px;
+      align-items:end;
     }
 
-    .seafood-intro-grid {
-      display: grid;
+    .seafood-kicker{
+      margin-bottom:20px;
 
-      grid-template-columns: 1.1fr .8fr;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.2em;
+      text-transform:uppercase;
 
-      gap: 90px;
-
-      align-items: end;
+      color:var(--gold);
     }
 
-    .seafood-intro h2 {
-      margin: 0;
+    .seafood-intro h2{
+      margin:0;
 
-      color: #fff;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(42px, 5vw, 70px);
-      font-weight: 500;
-
-      line-height: 1;
-
-      letter-spacing: -.035em;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(44px,5.5vw,75px);
+      font-weight:500;
+      line-height:1;
+      letter-spacing:-.035em;
     }
 
-    .seafood-intro-copy {
-      color: rgba(255,255,255,.58);
-
-      font-size: 16px;
-      line-height: 1.8;
+    .seafood-intro-copy{
+      font-size:16px;
+      line-height:1.8;
+      color:#66706d;
     }
 
-    .seafood-statement {
-      margin-top: 65px;
-
-      padding: 48px 0;
-
-      border-top: 1px solid var(--white-faint);
-      border-bottom: 1px solid var(--white-faint);
-    }
-
-    .seafood-statement small {
-      display: block;
-
-      color: var(--water);
-
-      font-size: 9px;
-      font-weight: 700;
-
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .seafood-statement strong {
-      display: block;
-
-      margin-top: 10px;
-
-      color: #fff;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(55px, 9vw, 125px);
-      font-weight: 500;
-
-      line-height: .88;
-
-      letter-spacing: -.05em;
+    .seafood-intro-copy p + p{
+      margin-top:20px;
     }
 
     /* =====================================================
-       PRODUCT CATEGORIES
+       STATEMENT
     ===================================================== */
 
-    .seafood-products {
-      padding: 120px 0;
+    .seafood-statement{
+      margin-top:75px;
+      padding:55px 0;
+
+      border-top:1px solid rgba(24,32,31,.12);
+      border-bottom:1px solid rgba(24,32,31,.12);
+    }
+
+    .seafood-statement span{
+      display:block;
+
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+
+      color:var(--gold);
+    }
+
+    .seafood-statement strong{
+      display:block;
+      margin-top:8px;
+
+      font-family:"Playfair Display",serif;
+      font-size:clamp(52px,8vw,120px);
+      font-weight:500;
+      line-height:.9;
+      letter-spacing:-.045em;
+    }
+
+    /* =====================================================
+       CATEGORIES
+    ===================================================== */
+
+    .seafood-categories{
+      padding:120px 0;
 
       background:
         linear-gradient(
           180deg,
-          #061b25,
-          #082631
+          var(--sea),
+          #092632
         );
+
+      color:#fff;
     }
 
-    .seafood-products-header {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: end;
-
-      gap: 40px;
-
-      margin-bottom: 55px;
+    .seafood-section-heading{
+      display:grid;
+      grid-template-columns:1fr .7fr;
+      gap:80px;
+      align-items:end;
+      margin-bottom:60px;
     }
 
-    .seafood-products-header h2 {
-      margin: 0;
+    .seafood-section-heading h2{
+      margin:0;
 
-      color: #fff;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(42px, 5vw, 68px);
-      font-weight: 500;
-
-      line-height: 1;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(43px,5vw,68px);
+      font-weight:500;
+      line-height:1;
+      color:#fff;
     }
 
-    .seafood-products-header p {
-      max-width: 440px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 14px;
-      line-height: 1.7;
+    .seafood-section-heading p{
+      color:rgba(255,255,255,.58);
+      line-height:1.75;
     }
 
-    .seafood-grid {
-      display: grid;
+    .seafood-products{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
 
-      grid-template-columns: repeat(2,1fr);
-
-      gap: 1px;
-
-      background: var(--marine-line);
-
-      border:
-        1px solid var(--marine-line);
+      border:1px solid var(--sea-line);
+      background:var(--sea-line);
+      gap:1px;
     }
 
-    .seafood-card {
-      position: relative;
+    .seafood-card{
+      position:relative;
 
-      min-height: 390px;
+      min-height:390px;
+      padding:35px;
 
-      padding: 38px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      overflow: hidden;
+      overflow:hidden;
 
       background:
         linear-gradient(
           145deg,
-          #0d3442,
+          #0d3543,
           #061923
         );
 
       transition:
-        transform .7s var(--marine-ease),
-        background .7s ease;
+        transform .65s cubic-bezier(.22,.61,.36,1),
+        background .65s ease;
     }
 
-    .seafood-card::before {
-      content: "";
+    .seafood-card::before{
+      content:"";
 
-      position: absolute;
+      position:absolute;
 
-      width: 270px;
-      height: 270px;
+      width:280px;
+      height:280px;
 
-      right: -110px;
-      bottom: -130px;
+      right:-120px;
+      bottom:-120px;
 
-      border:
-        1px solid rgba(140,210,220,.11);
-
-      border-radius: 50%;
+      border:1px solid rgba(160,215,225,.12);
+      border-radius:50%;
 
       transition:
-        transform 1s var(--marine-ease);
+        transform 1s cubic-bezier(.22,.61,.36,1);
     }
 
-    .seafood-card::after {
-      content: "";
+    .seafood-card::after{
+      content:"";
 
-      position: absolute;
+      position:absolute;
 
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left:0;
+      right:0;
+      bottom:0;
 
-      height: 2px;
+      height:2px;
 
-      background: var(--gold);
+      background:var(--gold);
 
-      transform: scaleX(0);
-      transform-origin: left;
+      transform:scaleX(0);
+      transform-origin:left;
+
+      transition:transform .7s ease;
+    }
+
+    .seafood-card:hover{
+      transform:translateY(-8px);
+      background:#104050;
+    }
+
+    .seafood-card:hover::before{
+      transform:scale(2);
+    }
+
+    .seafood-card:hover::after{
+      transform:scaleX(1);
+    }
+
+    .seafood-card > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .seafood-number{
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.2em;
+      color:#8dbfc9;
+    }
+
+    .seafood-card h3{
+      margin:0;
+
+      font-family:"Playfair Display",serif;
+      font-size:38px;
+      font-weight:500;
+
+      color:#fff;
+    }
+
+    .seafood-card p{
+      max-width:450px;
+      margin-top:12px;
+
+      font-size:14px;
+      line-height:1.7;
+
+      color:rgba(255,255,255,.55);
+    }
+
+    .seafood-card-link{
+      display:inline-block;
+      margin-top:20px;
+
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+
+      color:#b8dbe1;
 
       transition:
-        transform .7s var(--marine-ease);
+        transform .4s ease,
+        color .4s ease;
     }
 
-    .seafood-card:hover {
-      transform: translateY(-8px);
-
-      background: #10404f;
-    }
-
-    .seafood-card:hover::before {
-      transform: scale(2.2);
-    }
-
-    .seafood-card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .seafood-number {
-      position: relative;
-      z-index: 2;
-
-      color: var(--water);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .2em;
-    }
-
-    .seafood-card-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .seafood-card h3 {
-      margin: 0;
-
-      color: #fff;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: 38px;
-      font-weight: 500;
-    }
-
-    .seafood-card p {
-      max-width: 460px;
-
-      margin-top: 13px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .seafood-card-link {
-      display: inline-flex;
-
-      margin-top: 22px;
-
-      color: var(--water);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .14em;
-      text-transform: uppercase;
-
-      transition:
-        transform .4s var(--marine-ease);
-    }
-
-    .seafood-card:hover .seafood-card-link {
-      transform: translateX(7px);
+    .seafood-card:hover .seafood-card-link{
+      transform:translateX(7px);
+      color:#fff;
     }
 
     /* =====================================================
-       QUALITY / LOGISTICS
+       SUPPLY NETWORK
     ===================================================== */
 
-    .seafood-quality {
-      padding: 120px 0;
-
-      background: var(--cream);
-
-      color: #18201f;
+    .seafood-network{
+      padding:125px 0;
+      background:#f4f2ed;
     }
 
-    .quality-header {
-      display: grid;
+    .seafood-network-grid{
+      position:relative;
 
-      grid-template-columns: 1fr .8fr;
+      display:grid;
+      grid-template-columns:1fr 180px 1fr;
+      grid-template-rows:1fr 1fr;
 
-      gap: 80px;
+      gap:18px;
 
-      align-items: end;
-
-      margin-bottom: 60px;
+      min-height:450px;
+      margin-top:70px;
     }
 
-    .quality-header h2 {
-      margin: 0;
+    .seafood-network-grid::before{
+      content:"";
 
-      font-family: "Playfair Display", serif;
+      position:absolute;
 
-      font-size: clamp(42px, 5vw, 68px);
-      font-weight: 500;
+      left:12%;
+      right:12%;
+      top:50%;
 
-      line-height: 1;
+      height:1px;
+
+      background:rgba(24,32,31,.13);
     }
 
-    .quality-header p {
-      color: #66706d;
+    .seafood-network-grid::after{
+      content:"";
 
-      font-size: 15px;
-      line-height: 1.75;
+      position:absolute;
+
+      left:50%;
+      top:12%;
+      bottom:12%;
+
+      width:1px;
+
+      background:rgba(24,32,31,.13);
     }
 
-    .quality-grid {
-      display: grid;
+    .network-node{
+      position:relative;
+      z-index:2;
 
-      grid-template-columns: repeat(4,1fr);
+      padding:32px;
 
-      border-top: 1px solid rgba(24,32,31,.12);
-      border-left: 1px solid rgba(24,32,31,.12);
-    }
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
 
-    .quality-item {
-      min-height: 190px;
-
-      padding: 27px;
-
-      border-right: 1px solid rgba(24,32,31,.12);
-      border-bottom: 1px solid rgba(24,32,31,.12);
+      background:#fff;
+      border:1px solid rgba(24,32,31,.11);
 
       transition:
-        background .4s ease,
-        transform .5s var(--marine-ease);
+        transform .6s ease,
+        box-shadow .6s ease;
     }
 
-    .quality-item:hover {
-      background: #fff;
-
-      transform: translateY(-5px);
+    .network-node:hover{
+      transform:translateY(-7px);
+      box-shadow:0 25px 60px rgba(24,32,31,.1);
     }
 
-    .quality-item span {
-      color: #a88a56;
+    .network-node span{
+      margin-bottom:15px;
 
-      font-size: 10px;
-      font-weight: 700;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.17em;
 
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      color:var(--gold);
     }
 
-    .quality-item strong {
-      display: block;
+    .network-node strong{
+      font-family:"Playfair Display",serif;
+      font-size:30px;
+      font-weight:500;
+    }
 
-      margin-top: 48px;
+    .network-node small{
+      max-width:300px;
+      margin-top:8px;
 
-      font-family: "Playfair Display", serif;
+      font-size:12px;
+      line-height:1.6;
 
-      font-size: 25px;
-      font-weight: 500;
+      color:#66706d;
+    }
+
+    .network-europe{
+      grid-column:1;
+      grid-row:1;
+    }
+
+    .network-africa{
+      grid-column:1;
+      grid-row:2;
+    }
+
+    .network-middle{
+      grid-column:3;
+      grid-row:1 / span 2;
+    }
+
+    .network-center{
+      position:absolute;
+      z-index:5;
+
+      left:50%;
+      top:50%;
+
+      width:155px;
+      height:155px;
+
+      transform:translate(-50%,-50%);
+
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:var(--sea);
+      color:#fff;
+
+      box-shadow:0 25px 60px rgba(0,0,0,.18);
+    }
+
+    .network-center span{
+      font-size:9px;
+      letter-spacing:.2em;
+      color:#91c5ce;
+    }
+
+    .network-center strong{
+      margin-top:7px;
+
+      font-family:"Playfair Display",serif;
+      font-size:25px;
+      font-weight:500;
     }
 
     /* =====================================================
-       TRADE ROUTE
+       REQUIREMENTS
     ===================================================== */
 
-    .seafood-route {
-      position: relative;
+    .seafood-requirements{
+      padding:120px 0;
 
-      padding: 120px 0;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          ellipse at 50% 0%,
-          #155165,
-          #04151d 62%
-        );
+      background:var(--sea);
+      color:#fff;
     }
 
-    .seafood-route h2 {
-      margin: 0;
+    .requirements-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
 
-      color: #fff;
+      border-top:1px solid var(--sea-line);
+      border-left:1px solid var(--sea-line);
 
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(42px, 5vw, 68px);
-      font-weight: 500;
-
-      line-height: 1;
+      margin-top:60px;
     }
 
-    .route-subtitle {
-      max-width: 550px;
+    .requirement{
+      min-height:180px;
+      padding:27px;
 
-      margin-top: 20px;
+      border-right:1px solid var(--sea-line);
+      border-bottom:1px solid var(--sea-line);
 
-      color: rgba(255,255,255,.58);
-
-      font-size: 15px;
-      line-height: 1.7;
+      transition:
+        background .5s ease,
+        transform .5s ease;
     }
 
-    .route-line {
-      position: absolute;
-
-      left: 8%;
-      right: 8%;
-
-      top: 61%;
-
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(130,205,218,.5),
-          transparent
-        );
+    .requirement:hover{
+      background:rgba(120,190,205,.07);
+      transform:translateY(-4px);
     }
 
-    .route-grid {
-      position: relative;
-      z-index: 2;
-
-      display: grid;
-
-      grid-template-columns: repeat(3,1fr);
-
-      gap: 40px;
-
-      margin-top: 75px;
+    .requirement span{
+      font-size:10px;
+      letter-spacing:.18em;
+      color:#8ebfc9;
     }
 
-    .route-node {
-      text-align: center;
+    .requirement strong{
+      display:block;
+      margin-top:50px;
+
+      font-family:"Playfair Display",serif;
+      font-size:25px;
+      font-weight:500;
     }
 
-    .route-node-circle {
-      width: 15px;
-      height: 15px;
+    /* =====================================================
+       MARKETS
+    ===================================================== */
 
-      margin: 0 auto 25px;
-
-      border: 1px solid var(--water);
-
-      border-radius: 50%;
-
-      background: var(--ocean-2);
-
-      box-shadow:
-        0 0 0 8px rgba(130,205,218,.05);
+    .seafood-markets{
+      padding:120px 0;
+      background:var(--cream);
     }
 
-    .route-node strong {
-      display: block;
+    .market-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
 
-      color: #fff;
+      border-top:1px solid rgba(24,32,31,.12);
+      border-left:1px solid rgba(24,32,31,.12);
 
-      font-family: "Playfair Display", serif;
-
-      font-size: 32px;
-      font-weight: 500;
+      margin-top:60px;
     }
 
-    .route-node span {
-      display: block;
+    .market-box{
+      min-height:200px;
+      padding:28px;
 
-      margin-top: 8px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
 
-      color: var(--water);
+      background:#fff;
 
-      font-size: 9px;
-      font-weight: 700;
+      border-right:1px solid rgba(24,32,31,.12);
+      border-bottom:1px solid rgba(24,32,31,.12);
 
-      letter-spacing: .2em;
-      text-transform: uppercase;
+      transition:
+        transform .6s ease,
+        background .4s ease;
+    }
+
+    .market-box:hover{
+      transform:translateY(-7px);
+      background:#ebe7de;
+    }
+
+    .market-box span{
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.16em;
+      color:var(--gold);
+    }
+
+    .market-box strong{
+      font-family:"Playfair Display",serif;
+      font-size:29px;
+      font-weight:500;
+    }
+
+    .market-box small{
+      font-size:11px;
+      color:#66706d;
     }
 
     /* =====================================================
        CTA
     ===================================================== */
 
-    .seafood-cta {
-      padding: 130px 0;
+    .seafood-cta{
+      padding:120px 0;
 
-      text-align: center;
+      text-align:center;
 
       background:
         radial-gradient(
-          circle at 50% 0%,
-          #1a5264,
-          #061923 65%
+          ellipse at 50% 0%,
+          #185164,
+          var(--sea) 65%
         );
+
+      color:#fff;
     }
 
-    .seafood-cta small {
-      color: var(--water);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .2em;
-      text-transform: uppercase;
+    .seafood-cta-inner{
+      max-width:850px;
+      margin:auto;
     }
 
-    .seafood-cta h2 {
-      max-width: 850px;
+    .seafood-cta h2{
+      margin:0;
 
-      margin: 20px auto 0;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(44px,5.5vw,72px);
+      font-weight:500;
+      line-height:1;
 
-      color: #fff;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(45px, 6vw, 78px);
-      font-weight: 500;
-
-      line-height: .98;
-
-      letter-spacing: -.04em;
+      color:#fff;
     }
 
-    .seafood-cta p {
-      max-width: 560px;
+    .seafood-cta p{
+      max-width:600px;
+      margin:25px auto 0;
 
-      margin: 25px auto 0;
-
-      color: rgba(255,255,255,.62);
-
-      font-size: 15px;
-    }
-
-    .seafood-cta .seafood-actions {
-      justify-content: center;
+      color:rgba(255,255,255,.62);
     }
 
     /* =====================================================
        FOOTER
     ===================================================== */
 
-    .seafood-footer {
-      padding: 70px 0 25px;
-
-      background: #020b10;
-
-      color: #fff;
+    .seafood-footer{
+      padding:70px 0 25px;
+      background:#020c11;
+      color:#fff;
     }
 
-    .footer-inner {
-      display: grid;
-
-      grid-template-columns: 1.5fr 1fr 1fr;
-
-      gap: 70px;
-
-      padding-bottom: 55px;
+    .seafood-footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:70px;
+      padding-bottom:55px;
     }
 
-    .footer-logo {
-      width: 145px;
-      margin-bottom: 20px;
-
-      filter: brightness(0) invert(1);
+    .seafood-footer-logo{
+      width:145px;
+      height:auto;
+      margin-bottom:20px;
     }
 
-    .footer-description {
-      max-width: 360px;
+    .seafood-footer p{
+      max-width:350px;
 
-      color: rgba(255,255,255,.42);
+      font-size:13px;
+      line-height:1.7;
 
-      font-size: 13px;
-      line-height: 1.7;
+      color:rgba(255,255,255,.45);
     }
 
-    .footer-title {
-      display: block;
+    .seafood-footer strong{
+      display:block;
+      margin-bottom:17px;
 
-      margin-bottom: 18px;
+      font-size:10px;
+      letter-spacing:.17em;
+      text-transform:uppercase;
 
-      color: var(--water);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      color:#b9a06a;
     }
 
-    .footer-link {
-      display: block;
+    .seafood-footer a{
+      display:block;
+      width:max-content;
 
-      width: max-content;
+      margin-bottom:9px;
 
-      margin-bottom: 9px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 13px;
+      font-size:13px;
+      color:rgba(255,255,255,.55);
 
       transition:
-        color .3s ease,
-        transform .4s var(--marine-ease);
+        color .35s ease,
+        transform .35s ease;
     }
 
-    .footer-link:hover {
-      color: #fff;
-
-      transform: translateX(5px);
+    .seafood-footer a:hover{
+      color:#fff;
+      transform:translateX(4px);
     }
 
-    .footer-bottom {
-      display: flex;
+    .seafood-footer-bottom{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
 
-      justify-content: space-between;
+      padding-top:20px;
 
-      gap: 20px;
+      border-top:1px solid rgba(255,255,255,.1);
 
-      padding-top: 20px;
-
-      border-top:
-        1px solid rgba(255,255,255,.1);
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
+      font-size:10px;
+      color:rgba(255,255,255,.32);
     }
 
     /* =====================================================
-       RESPONSIVE
+       REVEAL
     ===================================================== */
 
-    @media(max-width: 900px) {
+    .seafood-reveal{
+      opacity:0;
+      transform:translateY(35px);
 
-      .seafood-links {
-        gap: 17px;
-      }
-
-      .seafood-intro-grid,
-      .quality-header {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .quality-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-      }
+      transition:
+        opacity 1s cubic-bezier(.16,1,.3,1),
+        transform 1s cubic-bezier(.16,1,.3,1);
     }
 
-    @media(max-width: 700px) {
+    .seafood-reveal.visible{
+      opacity:1;
+      transform:none;
+    }
 
-      .seafood-container {
-        width: min(100% - 32px, 1240px);
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media(max-width:1000px){
+
+      .seafood-section-heading,
+      .seafood-intro-grid{
+        grid-template-columns:1fr;
+        gap:30px;
       }
 
-      .seafood-header {
-        padding: 18px 0;
+      .seafood-products{
+        grid-template-columns:1fr 1fr;
       }
 
-      .seafood-logo {
-        width: 125px;
+      .requirements-grid{
+        grid-template-columns:1fr 1fr;
       }
 
-      .seafood-links a:not(.seafood-contact) {
-        display: none;
+      .market-strip{
+        grid-template-columns:1fr 1fr;
       }
 
-      .seafood-contact {
-        padding: 8px 12px;
+      .seafood-footer-grid{
+        grid-template-columns:1fr 1fr;
       }
 
-      .seafood-hero {
-        min-height: 760px;
+      .seafood-network-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:1fr 1fr;
       }
 
-      .seafood-hero h1 {
-        font-size: clamp(52px, 15vw, 78px);
+      .network-middle{
+        grid-column:2;
+        grid-row:1 / span 2;
       }
 
-      .seafood-description {
-        font-size: 15px;
+    }
+
+    @media(max-width:760px){
+
+      .seafood-header{
+        padding:17px 0;
       }
 
-      .hero-meta {
-        display: none;
+      .seafood-logo{
+        width:125px;
       }
 
-      .hero-scroll {
-        bottom: 22px;
+      .seafood-navigation{
+        position:absolute;
+
+        top:100%;
+        left:16px;
+        right:16px;
+
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+
+        background:#fff;
+        color:#18201f;
+
+        border:1px solid rgba(24,32,31,.12);
+        box-shadow:0 20px 50px rgba(0,0,0,.12);
+      }
+
+      .seafood-navigation.active{
+        display:flex;
+      }
+
+      .seafood-navigation a{
+        padding:15px 18px;
+        border-bottom:1px solid rgba(24,32,31,.1);
+      }
+
+      .seafood-menu{
+        display:block;
+      }
+
+      .seafood-hero{
+        min-height:760px;
+      }
+
+      .seafood-hero h1{
+        font-size:clamp(52px,14vw,75px);
+      }
+
+      .seafood-hero-copy{
+        font-size:15px;
+      }
+
+      .seafood-hero-meta{
+        right:18px;
+        bottom:20px;
+      }
+
+      .seafood-scroll{
+        display:none;
       }
 
       .seafood-intro,
-      .seafood-products,
-      .seafood-quality,
-      .seafood-route {
-        padding: 85px 0;
+      .seafood-categories,
+      .seafood-network,
+      .seafood-requirements,
+      .seafood-markets,
+      .seafood-cta{
+        padding:85px 0;
       }
 
-      .seafood-products-header {
-        display: block;
+      .seafood-statement{
+        margin-top:50px;
+        padding:40px 0;
       }
 
-      .seafood-products-header p {
-        margin-top: 22px;
+      .seafood-statement strong{
+        font-size:18vw;
       }
 
-      .seafood-grid {
-        grid-template-columns: 1fr;
+      .seafood-products{
+        grid-template-columns:1fr;
       }
 
-      .seafood-card {
-        min-height: 320px;
+      .seafood-card{
+        min-height:320px;
       }
 
-      .seafood-card h3 {
-        font-size: 32px;
+      .requirements-grid{
+        grid-template-columns:1fr 1fr;
       }
 
-      .quality-grid {
-        grid-template-columns: 1fr 1fr;
+      .market-strip{
+        grid-template-columns:1fr;
       }
 
-      .route-line {
-        display: none;
+      .seafood-network-grid{
+        display:flex;
+        flex-direction:column;
+        min-height:auto;
+        gap:12px;
       }
 
-      .route-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
+      .seafood-network-grid::before,
+      .seafood-network-grid::after{
+        display:none;
       }
 
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
+      .network-center{
+        position:relative;
+        left:auto;
+        top:auto;
+
+        width:125px;
+        height:125px;
+
+        margin:0 auto 12px;
+
+        transform:none;
+
+        order:-1;
       }
 
-      .footer-bottom {
-        flex-direction: column;
+      .network-node,
+      .network-europe,
+      .network-africa,
+      .network-middle{
+        min-height:160px;
       }
 
-      .seafood-statement strong {
-        font-size: 18vw;
+      .seafood-footer-grid{
+        grid-template-columns:1fr;
+        gap:40px;
       }
+
+      .seafood-footer-bottom{
+        flex-direction:column;
+        gap:10px;
+      }
+
     }
 
-    @media(prefers-reduced-motion: reduce) {
+    @media(prefers-reduced-motion:reduce){
 
       *,
       *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
+      *::after{
+        animation:none!important;
+        transition:none!important;
       }
+
+      .seafood-reveal{
+        opacity:1;
+        transform:none;
+      }
+
     }
+
   </style>
 </head>
 
+
 <body class="seafood-page">
 
-  <!-- =====================================================
+  <!-- ===================================================
        HEADER
-  ====================================================== -->
+  ==================================================== -->
 
   <header class="seafood-header" id="seafoodHeader">
-    <div class="seafood-container">
-      <nav class="seafood-nav">
 
-        <a href="../index.html" aria-label="EMPERIO TISS">
-          <img
-            class="seafood-logo"
-            src="../../logo.png"
-            alt="EMPERIO TISS"
-          >
+    <div class="container seafood-nav">
+
+      <a href="../index.html" aria-label="EMPERIO TISS home">
+        <img
+          src="../../logo.png"
+          alt="EMPERIO TISS"
+          class="seafood-logo"
+        >
+      </a>
+
+      <nav class="seafood-navigation" id="seafoodNavigation">
+
+        <a href="../index.html">Home</a>
+
+        <a href="../index.html#products">Products</a>
+
+        <a href="../index.html#markets">Markets</a>
+
+        <a href="../index.html#company">Company</a>
+
+        <a
+          href="../index.html#contact"
+          class="seafood-contact"
+        >
+          Contact
         </a>
 
-        <div class="seafood-links">
-          <a href="../index.html">Home</a>
-          <a href="../fruits-vegetables.html">Products</a>
-          <a href="../../markets/markets.html">Markets</a>
-
-          <a
-            class="seafood-contact"
-            href="../index.html#contact"
-          >
-            Contact
-          </a>
-        </div>
-
       </nav>
+
+      <button
+        class="seafood-menu"
+        id="seafoodMenu"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
     </div>
+
   </header>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        HERO
-  ====================================================== -->
+  ==================================================== -->
 
   <main>
 
     <section class="seafood-hero">
 
-      <div class="sea-light"></div>
+      <div class="seafood-hero-content container">
 
-      <div class="ocean-ring one"></div>
-      <div class="ocean-ring two"></div>
+        <div class="seafood-eyebrow">
+          Fish · Seafood · Cephalopods
+        </div>
 
-      <div class="seafood-container">
-        <div class="seafood-hero-content">
+        <h1>
+          From the sea<br>
+          to the market.
+        </h1>
 
-          <div class="seafood-eyebrow">
-            EMPERIO TISS · SEAFOOD
-          </div>
+        <p class="seafood-hero-copy">
+          EMPERIO TISS connects reliable seafood supply
+          with professional buyers across Europe, Africa
+          and the Middle East.
+        </p>
 
-          <h1>
-            From the <em>sea</em><br>
-            to the market.
-          </h1>
+        <div class="seafood-actions">
 
-          <p class="seafood-description">
-            Premium fish and seafood sourcing connecting
-            producers, markets and professional buyers across
-            Africa, Europe and the Middle East.
-          </p>
+          <a
+            href="../index.html#contact"
+            class="seafood-button primary"
+          >
+            Request availability
+          </a>
 
-          <div class="seafood-actions">
-
-            <a
-              class="seafood-button primary"
-              href="#products"
-            >
-              Explore seafood
-            </a>
-
-            <a
-              class="seafood-button secondary"
-              href="../index.html#contact"
-            >
-              Talk to us
-            </a>
-
-          </div>
+          <a
+            href="#categories"
+            class="seafood-button secondary"
+          >
+            Explore seafood
+          </a>
 
         </div>
+
       </div>
 
-      <div class="hero-meta">
-        <span>Atlantic</span>
-        <span>Mediterranean</span>
-        <span>Global Markets</span>
+
+      <div class="seafood-hero-meta">
+        <span>Mediterranean supply</span>
+        <span>Europe · Africa · Middle East</span>
       </div>
 
-      <div class="hero-scroll">
+
+      <a href="#intro" class="seafood-scroll">
         <span>Discover</span>
         <strong>↓</strong>
-      </div>
+      </a>
 
     </section>
 
 
-    <!-- ===================================================
-         OCEAN TRANSITION
-    ==================================================== -->
-
-    <div class="ocean-wave"></div>
-
-
-    <!-- ===================================================
+    <!-- =================================================
          INTRO
-    ==================================================== -->
+    ================================================== -->
 
-    <section class="seafood-intro">
+    <section
+      class="seafood-intro seafood-reveal"
+      id="intro"
+    >
 
-      <div class="seafood-container">
+      <div class="container">
 
         <div class="seafood-intro-grid">
 
           <div>
-            <div class="seafood-section-label">
-              Our seafood division
+
+            <div class="seafood-kicker">
+              Seafood division
             </div>
 
             <h2>
-              Sourced close<br>
-              to the water.
+              A marine supply
+              network built for
+              business.
             </h2>
+
           </div>
 
-          <p class="seafood-intro-copy">
-            We work across established fishing and seafood
-            origins to connect supply with professional buyers,
-            wholesalers, distributors and foodservice operators.
-          </p>
+          <div class="seafood-intro-copy">
+
+            <p>
+              We work with professional buyers looking for
+              consistency, quality and dependable logistics
+              across fresh and frozen seafood.
+            </p>
+
+            <p>
+              Our position connects Mediterranean sourcing
+              with European distribution and selected
+              markets across Africa and the Middle East.
+            </p>
+
+          </div>
 
         </div>
 
+
         <div class="seafood-statement">
 
-          <small>
-            What we move
-          </small>
+          <span>
+            Our approach
+          </span>
 
           <strong>
-            FRESH · FROZEN
+            Source. Move. Deliver.
           </strong>
 
         </div>
@@ -1532,63 +1435,59 @@
     </section>
 
 
-    <!-- ===================================================
-         PRODUCTS
-    ==================================================== -->
+    <!-- =================================================
+         CATEGORIES
+    ================================================== -->
 
     <section
-      class="seafood-products"
-      id="products"
+      class="seafood-categories"
+      id="categories"
     >
 
-      <div class="seafood-container">
+      <div class="container">
 
-        <div class="seafood-products-header">
+        <div class="seafood-section-heading seafood-reveal">
 
-          <div>
-            <div class="seafood-section-label">
-              Product portfolio
-            </div>
-
-            <h2>
-              From catch<br>
-              to catalogue.
-            </h2>
-          </div>
+          <h2>
+            Seafood,
+            precisely selected.
+          </h2>
 
           <p>
-            A focused seafood portfolio designed around
-            professional market requirements, availability,
-            quality and logistics.
+            A focused range designed around professional
+            wholesale demand, availability and market
+            requirements.
           </p>
 
         </div>
 
 
-        <div class="seafood-grid">
+        <div class="seafood-products">
 
-          <article class="seafood-card">
+
+          <article class="seafood-card seafood-reveal">
 
             <span class="seafood-number">
-              01 · FISH
+              01
             </span>
 
-            <div class="seafood-card-content">
+            <div>
 
               <h3>
                 Fish
               </h3>
 
               <p>
-                Selected fresh and frozen fish for wholesale
-                distribution and professional buyers.
+                Fresh and frozen fish sourced according to
+                market specifications, seasonality and
+                destination requirements.
               </p>
 
               <a
-                class="seafood-card-link"
                 href="#contact"
+                class="seafood-card-link"
               >
-                Request availability →
+                Enquire →
               </a>
 
             </div>
@@ -1596,28 +1495,58 @@
           </article>
 
 
-          <article class="seafood-card">
+          <article class="seafood-card seafood-reveal">
 
             <span class="seafood-number">
-              02 · CEPHALOPODS
+              02
             </span>
 
-            <div class="seafood-card-content">
+            <div>
+
+              <h3>
+                Crustaceans
+              </h3>
+
+              <p>
+                Selected crustaceans for wholesale,
+                foodservice and professional distribution
+                channels.
+              </p>
+
+              <a
+                href="#contact"
+                class="seafood-card-link"
+              >
+                Enquire →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="seafood-card seafood-reveal">
+
+            <span class="seafood-number">
+              03
+            </span>
+
+            <div>
 
               <h3>
                 Cephalopods
               </h3>
 
               <p>
-                Octopus, squid and cuttlefish sourced for
-                demanding Mediterranean and international markets.
+                Squid, cuttlefish and octopus solutions
+                adapted to destination market demand.
               </p>
 
               <a
-                class="seafood-card-link"
                 href="#contact"
+                class="seafood-card-link"
               >
-                Request availability →
+                Enquire →
               </a>
 
             </div>
@@ -1625,62 +1554,34 @@
           </article>
 
 
-          <article class="seafood-card">
+          <article class="seafood-card seafood-reveal">
 
             <span class="seafood-number">
-              03 · SHELLFISH
+              04
             </span>
 
-            <div class="seafood-card-content">
+            <div>
 
               <h3>
                 Shellfish
               </h3>
 
               <p>
-                A flexible sourcing network for shellfish and
-                premium seafood requirements.
+                Shellfish supply focused on freshness,
+                handling and reliable delivery.
               </p>
 
               <a
-                class="seafood-card-link"
                 href="#contact"
+                class="seafood-card-link"
               >
-                Request availability →
+                Enquire →
               </a>
 
             </div>
 
           </article>
 
-
-          <article class="seafood-card">
-
-            <span class="seafood-number">
-              04 · CUSTOM SOURCING
-            </span>
-
-            <div class="seafood-card-content">
-
-              <h3>
-                Special sourcing
-              </h3>
-
-              <p>
-                Need a specific species, origin, format or
-                specification? We build sourcing around the requirement.
-              </p>
-
-              <a
-                class="seafood-card-link"
-                href="#contact"
-              >
-                Discuss your requirement →
-              </a>
-
-            </div>
-
-          </article>
 
         </div>
 
@@ -1689,170 +1590,333 @@
     </section>
 
 
-    <!-- ===================================================
-         QUALITY
-    ==================================================== -->
+    <!-- =================================================
+         NETWORK
+    ================================================== -->
 
-    <section class="seafood-quality">
+    <section class="seafood-network">
 
-      <div class="seafood-container">
+      <div class="container">
 
-        <div class="quality-header">
+        <div class="seafood-section-heading seafood-reveal">
 
-          <div>
-            <div class="seafood-section-label">
-              Professional supply
-            </div>
-
-            <h2>
-              Quality is<br>
-              a logistics issue.
-            </h2>
-          </div>
+          <h2>
+            Three regions.
+            One network.
+          </h2>
 
           <p>
-            For seafood, sourcing is only one part of the equation.
-            Timing, cold chain, preparation, documentation and
-            destination requirements determine the real value of a shipment.
+            EMPERIO TISS operates as a commercial bridge
+            between sourcing origins and destination
+            markets.
           </p>
 
         </div>
 
 
-        <div class="quality-grid">
-
-          <div class="quality-item">
-            <span>01</span>
-            <strong>Origin</strong>
-          </div>
-
-          <div class="quality-item">
-            <span>02</span>
-            <strong>Freshness</strong>
-          </div>
-
-          <div class="quality-item">
-            <span>03</span>
-            <strong>Cold chain</strong>
-          </div>
-
-          <div class="quality-item">
-            <span>04</span>
-            <strong>Traceability</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
+        <div class="seafood-network-grid">
 
 
-    <!-- ===================================================
-         ROUTE
-    ==================================================== -->
-
-    <section class="seafood-route">
-
-      <div class="seafood-container">
-
-        <div class="seafood-section-label">
-          Our network
-        </div>
-
-        <h2>
-          Three regions.<br>
-          One supply bridge.
-        </h2>
-
-        <p class="route-subtitle">
-          EMPERIO TISS connects sourcing and demand between
-          Africa, Europe and the Middle East through a
-          professional B2B distribution network.
-        </p>
-
-
-        <div class="route-grid">
-
-          <div class="route-node">
-
-            <div class="route-node-circle"></div>
-
-            <strong>Africa</strong>
+          <article class="network-node network-europe seafood-reveal">
 
             <span>
-              Origin & sourcing
+              EUROPE
             </span>
 
-          </div>
-
-
-          <div class="route-node">
-
-            <div class="route-node-circle"></div>
-
-            <strong>Europe</strong>
-
-            <span>
+            <strong>
               Distribution
-            </span>
+            </strong>
 
-          </div>
+            <small>
+              Spain, France, Italy and wider European
+              professional markets.
+            </small>
+
+          </article>
 
 
-          <div class="route-node">
-
-            <div class="route-node-circle"></div>
-
-            <strong>Middle East</strong>
+          <article class="network-node network-africa seafood-reveal">
 
             <span>
-              Market access
+              AFRICA
             </span>
 
+            <strong>
+              Origin &amp; trade
+            </strong>
+
+            <small>
+              Mediterranean and West African connections
+              supporting sourcing and commercial flows.
+            </small>
+
+          </article>
+
+
+          <div class="network-center">
+
+            <span>
+              EMPERIO
+            </span>
+
+            <strong>
+              TISS
+            </strong>
+
           </div>
+
+
+          <article class="network-node network-middle seafood-reveal">
+
+            <span>
+              MIDDLE EAST
+            </span>
+
+            <strong>
+              Market access
+            </strong>
+
+            <small>
+              Connecting selected seafood supply with
+              professional buyers in Middle Eastern markets.
+            </small>
+
+          </article>
+
 
         </div>
 
       </div>
 
-      <div class="route-line"></div>
+    </section>
+
+
+    <!-- =================================================
+         REQUIREMENTS
+    ================================================== -->
+
+    <section class="seafood-requirements">
+
+      <div class="container">
+
+        <div class="seafood-section-heading seafood-reveal">
+
+          <h2>
+            What matters
+            in seafood.
+          </h2>
+
+          <p>
+            Every shipment depends on more than the
+            product itself.
+          </p>
+
+        </div>
+
+
+        <div class="requirements-grid">
+
+
+          <article class="requirement seafood-reveal">
+
+            <span>
+              01
+            </span>
+
+            <strong>
+              Quality
+            </strong>
+
+          </article>
+
+
+          <article class="requirement seafood-reveal">
+
+            <span>
+              02
+            </span>
+
+            <strong>
+              Traceability
+            </strong>
+
+          </article>
+
+
+          <article class="requirement seafood-reveal">
+
+            <span>
+              03
+            </span>
+
+            <strong>
+              Cold chain
+            </strong>
+
+          </article>
+
+
+          <article class="requirement seafood-reveal">
+
+            <span>
+              04
+            </span>
+
+            <strong>
+              Reliability
+            </strong>
+
+          </article>
+
+
+        </div>
+
+      </div>
 
     </section>
 
 
-    <!-- ===================================================
+    <!-- =================================================
+         MARKETS
+    ================================================== -->
+
+    <section class="seafood-markets">
+
+      <div class="container">
+
+        <div class="seafood-section-heading seafood-reveal">
+
+          <h2>
+            Where we
+            connect.
+          </h2>
+
+          <p>
+            A growing commercial network around the
+            Mediterranean, Europe, Africa and the Middle East.
+          </p>
+
+        </div>
+
+
+        <div class="market-strip">
+
+
+          <article class="market-box seafood-reveal">
+
+            <span>
+              EUROPE
+            </span>
+
+            <strong>
+              Spain
+            </strong>
+
+            <small>
+              Origin · distribution · wholesale
+            </small>
+
+          </article>
+
+
+          <article class="market-box seafood-reveal">
+
+            <span>
+              EUROPE
+            </span>
+
+            <strong>
+              France
+            </strong>
+
+            <small>
+              Professional wholesale markets
+            </small>
+
+          </article>
+
+
+          <article class="market-box seafood-reveal">
+
+            <span>
+              AFRICA
+            </span>
+
+            <strong>
+              North &amp; West Africa
+            </strong>
+
+            <small>
+              Mediterranean and regional connections
+            </small>
+
+          </article>
+
+
+          <article class="market-box seafood-reveal">
+
+            <span>
+              MIDDLE EAST
+            </span>
+
+            <strong>
+              Selected markets
+            </strong>
+
+            <small>
+              Commercial development
+            </small>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
          CTA
-    ==================================================== -->
+    ================================================== -->
 
     <section
       class="seafood-cta"
       id="contact"
     >
 
-      <div class="seafood-container">
+      <div class="container seafood-cta-inner seafood-reveal">
 
-        <small>
-          Seafood sourcing
-        </small>
+        <div class="seafood-kicker">
+          Work with EMPERIO TISS
+        </div>
 
         <h2>
-          Looking for the right
+          Looking for a reliable
           seafood supply?
         </h2>
 
         <p>
-          Tell us what you need, where it needs to go
-          and when you need it.
+          Tell us what you need, where you need it and
+          when. We will work with availability, origin,
+          specifications and logistics.
         </p>
 
-        <div class="seafood-actions">
+        <div class="seafood-actions" style="justify-content:center;">
 
           <a
-            class="seafood-button primary"
             href="mailto:contact@emperio-tiss.com"
+            class="seafood-button primary"
           >
-            Start a conversation
+            Contact us
+          </a>
+
+          <a
+            href="../index.html"
+            class="seafood-button secondary"
+          >
+            EMPERIO TISS
           </a>
 
         </div>
@@ -1864,27 +1928,31 @@
   </main>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        FOOTER
-  ====================================================== -->
+  ==================================================== -->
 
   <footer class="seafood-footer">
 
-    <div class="seafood-container">
+    <div class="container">
 
-      <div class="footer-inner">
+      <div class="seafood-footer-grid">
 
         <div>
 
-          <img
-            class="footer-logo"
-            src="../../logo.png"
-            alt="EMPERIO TISS"
-          >
+          <a href="../index.html">
 
-          <p class="footer-description">
-            Seafood and food products connecting
-            Africa, Europe and the Middle East.
+            <img
+              src="../../logo.png"
+              alt="EMPERIO TISS"
+              class="seafood-footer-logo"
+            >
+
+          </a>
+
+          <p>
+            Seafood and food supply connecting Africa,
+            Europe and the Middle East.
           </p>
 
         </div>
@@ -1892,35 +1960,19 @@
 
         <div>
 
-          <span class="footer-title">
-            Explore
-          </span>
+          <strong>
+            Products
+          </strong>
 
-          <a
-            class="footer-link"
-            href="../index.html"
-          >
-            Home
-          </a>
-
-          <a
-            class="footer-link"
-            href="../fruits-vegetables.html"
-          >
-            Fruits & Vegetables
-          </a>
-
-          <a
-            class="footer-link"
-            href="seafood.html"
-          >
+          <a href="seafood.html">
             Seafood
           </a>
 
-          <a
-            class="footer-link"
-            href="../seasonal.html"
-          >
+          <a href="fruits-vegetables.html">
+            Fruits &amp; Vegetables
+          </a>
+
+          <a href="seasonal.html">
             Seasonal
           </a>
 
@@ -1929,29 +1981,20 @@
 
         <div>
 
-          <span class="footer-title">
+          <strong>
+            Company
+          </strong>
+
+          <a href="../index.html#markets">
             Markets
-          </span>
-
-          <a
-            class="footer-link"
-            href="../../markets/markets.html"
-          >
-            Europe
           </a>
 
-          <a
-            class="footer-link"
-            href="../../markets/markets.html"
-          >
-            Africa
+          <a href="../index.html#company">
+            About
           </a>
 
-          <a
-            class="footer-link"
-            href="../../markets/markets.html"
-          >
-            Middle East
+          <a href="../index.html#contact">
+            Contact
           </a>
 
         </div>
@@ -1959,14 +2002,14 @@
       </div>
 
 
-      <div class="footer-bottom">
+      <div class="seafood-footer-bottom">
 
         <span>
           © 2026 EMPERIO TISS
         </span>
 
         <span>
-          Seafood · Food · Trade
+          Seafood · Fruits · Vegetables · Trade
         </span>
 
       </div>
@@ -1976,26 +2019,125 @@
   </footer>
 
 
-  <!-- =====================================================
-       HEADER SCRIPT
-  ====================================================== -->
+  <!-- ===================================================
+       JAVASCRIPT
+  ==================================================== -->
 
   <script>
-    const header = document.getElementById("seafoodHeader");
 
-    function updateHeader() {
-      if (window.scrollY > 40) {
+    const header =
+      document.getElementById("seafoodHeader");
+
+    const menu =
+      document.getElementById("seafoodMenu");
+
+    const navigation =
+      document.getElementById("seafoodNavigation");
+
+
+    /* Header scroll */
+
+    function updateHeader(){
+
+      if(window.scrollY > 50){
+
         header.classList.add("scrolled");
-      } else {
+
+      }else{
+
         header.classList.remove("scrolled");
+
       }
+
     }
 
-    window.addEventListener("scroll", updateHeader, {
-      passive: true
-    });
+    window.addEventListener(
+      "scroll",
+      updateHeader,
+      { passive:true }
+    );
 
     updateHeader();
+
+
+    /* Mobile navigation */
+
+    menu.addEventListener("click", () => {
+
+      const active =
+        navigation.classList.toggle("active");
+
+      menu.setAttribute(
+        "aria-expanded",
+        active ? "true" : "false"
+      );
+
+    });
+
+
+    navigation
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navigation.classList.remove("active");
+
+          menu.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+
+    /* Scroll reveal */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".seafood-reveal"
+      );
+
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold:.12,
+          rootMargin:"0px 0px -50px 0px"
+        }
+
+      );
+
+
+    revealElements.forEach(element => {
+
+      observer.observe(element);
+
+    });
+
   </script>
 
 </body>
