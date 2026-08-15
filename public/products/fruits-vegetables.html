@@ -3,57 +3,71 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Fruits & Vegetables | EMPERIO TISS
+  </title>
 
   <meta
     name="description"
-    content="EMPERIO TISS — Fruits & Vegetables connecting professional food markets across Europe, Africa and the Middle East."
+    content="Fresh fruits and vegetables sourced across Europe and North Africa for professional food markets."
   >
 
-  <title>Fruits & Vegetables | EMPERIO TISS</title>
-
-  <link rel="icon" href="../logo.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="../style.css">
-
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
 </head>
 
-<body>
+
+<body class="produce-page">
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
-<header class="site-header" id="top">
+<header class="site-header">
 
   <div class="container nav-wrap">
 
     <a
-      class="brand"
       href="../index.html"
+      class="brand"
       aria-label="EMPERIO TISS home"
     >
+
       <img
         src="../logo.png"
         alt="EMPERIO TISS"
       >
+
     </a>
 
 
     <button
       class="menu-toggle"
-      aria-label="Open navigation"
+      type="button"
+      aria-label="Open menu"
       aria-expanded="false"
-      aria-controls="main-navigation"
     >
       ☰
     </button>
@@ -61,9 +75,16 @@
 
     <nav
       class="nav"
-      id="main-navigation"
       aria-label="Main navigation"
     >
+
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a href="../about/about.html">
+        About
+      </a>
 
       <a href="index.html">
         Products
@@ -73,22 +94,17 @@
         Markets
       </a>
 
-      <a href="../index.html#services">
-        Services
-      </a>
 
-      <a href="../index.html#about">
-        Company
-      </a>
+      <div
+        class="language-switcher"
+        aria-label="Language selector"
+      >
 
-      <a href="../index.html#contact">
-        Contact
-      </a>
-
-
-      <div class="language-switcher">
-
-        <a class="active" href="fruits-vegetables.html">
+        <a
+          href="fruits-vegetables.html"
+          class="active"
+          aria-current="page"
+        >
           EN
         </a>
 
@@ -109,7 +125,7 @@
 
       <a
         class="nav-cta"
-        href="../index.html#contact"
+        href="../contact/contact.html"
       >
         Business enquiry
       </a>
@@ -121,47 +137,57 @@
 </header>
 
 
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <main>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<section class="produce-hero hero">
 
-<section class="hero product-hero">
+  <div class="produce-sun"></div>
+
+  <div class="produce-field produce-field-one"></div>
+  <div class="produce-field produce-field-two"></div>
+
 
   <div class="container hero-content">
 
     <p class="eyebrow">
-      PRODUCT CATEGORY · 02
+      Fruits · Vegetables · Fresh produce
     </p>
 
+
     <h1>
-      Fruits &<br>
-      Vegetables.
+      Fresh produce
+      from origin
+      to market.
     </h1>
 
+
     <p class="hero-text">
-      Fresh produce connected with professional markets
-      across Europe, Africa and the Middle East.
+      EMPERIO TISS connects growers, origins and
+      professional buyers across Europe and North Africa,
+      with a focus on freshness, seasonality and reliable
+      distribution.
     </p>
 
 
     <div class="hero-actions">
 
       <a
+        href="../contact/contact.html"
         class="button primary"
-        href="#category"
       >
-        Explore category
+        Request availability
       </a>
 
       <a
+        href="#products"
         class="button secondary"
-        href="../index.html#contact"
       >
-        Business enquiry
+        Explore products
       </a>
 
     </div>
@@ -169,107 +195,101 @@
   </div>
 
 
-  <div class="hero-scroll">
-    <span>SCROLL</span>
-    <strong>↓</strong>
+  <div class="produce-hero-label">
+
+    <span>
+      MEDITERRANEAN
+    </span>
+
+    <span>
+      EUROPE
+    </span>
+
+    <span>
+      NORTH AFRICA
+    </span>
+
   </div>
+
+
+  <a
+    href="#products"
+    class="hero-scroll"
+  >
+
+    <span>
+      SCROLL
+    </span>
+
+    ↓
+
+  </a>
 
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      INTRO
-===================================================== -->
+========================================================= -->
 
 <section
-  class="section"
-  id="category"
+  class="section produce-section"
+  id="products"
 >
 
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-head fade-up">
 
       <div>
 
         <p class="eyebrow dark">
-          THE CATEGORY
+          Fresh produce
         </p>
 
         <h2>
-          Fresh supply.<br>
-          Connected markets.
+          Selected around
+          the season.
         </h2>
 
       </div>
 
+
       <p>
-        Our fruits and vegetables activity connects
-        selected supply opportunities with professional
-        demand, taking into account seasonality,
-        availability, specifications, volume and destination.
+        We source fresh fruits and vegetables according
+        to origin, season, quality, availability and
+        destination-market requirements.
       </p>
 
     </div>
 
 
-    <div class="large-statement" data-reveal>
+    <div class="large-statement fade-up">
 
       <span>
-        FROM SUPPLY
+        FROM ORIGIN
       </span>
 
       <strong>
-        TO MARKET.
+        Fresh.
       </strong>
 
     </div>
 
-  </div>
 
-</section>
+    <!-- =====================================================
+         PRODUCT FAMILIES
+    ====================================================== -->
 
-
-
-<!-- =====================================================
-     PRODUCT CATEGORIES
-===================================================== -->
-
-<section class="section products">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow dark">
-          PRODUCT STRUCTURE
-        </p>
-
-        <h2>
-          What we work with.
-        </h2>
-
-      </div>
-
-      <p>
-        The catalogue will evolve according to market
-        requirements, availability and seasonal opportunities.
-      </p>
-
-    </div>
+    <div class="produce-cards">
 
 
-    <div class="cards produce-cards">
+      <article class="card produce-card fade-up">
 
+        <span class="card-number">
+          01 · CITRUS
+        </span>
 
-      <article class="card product-card" data-reveal>
-
-        <div class="card-number">
-          01
-        </div>
 
         <div>
 
@@ -278,22 +298,30 @@
           </h3>
 
           <p>
-            Selected citrus opportunities structured
-            around variety, quality, calibre, packaging,
-            timing and destination.
+            Oranges, mandarins, clementines and other
+            citrus products selected according to season,
+            origin and market demand.
           </p>
 
         </div>
 
+
+        <a
+          href="../contact/contact.html"
+          class="product-link"
+        >
+          Enquire →
+        </a>
+
       </article>
 
 
+      <article class="card produce-card fade-up">
 
-      <article class="card product-card" data-reveal>
+        <span class="card-number">
+          02 · VEGETABLES
+        </span>
 
-        <div class="card-number">
-          02
-        </div>
 
         <div>
 
@@ -302,61 +330,85 @@
           </h3>
 
           <p>
-            Fresh vegetable supply adapted to
-            professional specifications, volume and
-            destination requirements.
+            Fresh vegetables for wholesalers,
+            distributors, retailers and professional
+            food businesses.
           </p>
 
         </div>
 
+
+        <a
+          href="../contact/contact.html"
+          class="product-link"
+        >
+          Enquire →
+        </a>
+
       </article>
 
 
+      <article class="card produce-card fade-up">
 
-      <article class="card product-card" data-reveal>
+        <span class="card-number">
+          03 · FRUIT
+        </span>
 
-        <div class="card-number">
-          03
-        </div>
 
         <div>
 
           <h3>
-            Exotic Fruits
+            Fresh fruit
           </h3>
 
           <p>
-            Selected exotic fruit opportunities connecting
-            international supply with professional demand.
+            Seasonal and year-round fruit sourced from
+            selected European and North African origins.
           </p>
 
         </div>
 
+
+        <a
+          href="../contact/contact.html"
+          class="product-link"
+        >
+          Enquire →
+        </a>
+
       </article>
 
 
+      <article class="card produce-card fade-up">
 
-      <article class="card product-card" data-reveal>
+        <span class="card-number">
+          04 · EXOTIC
+        </span>
 
-        <div class="card-number">
-          04
-        </div>
 
         <div>
 
           <h3>
-            Seasonal Produce
+            Exotic produce
           </h3>
 
           <p>
-            Opportunities shaped by seasonality,
-            availability and current market demand.
+            Selected products outside the traditional
+            Mediterranean range according to availability
+            and destination requirements.
           </p>
 
         </div>
 
-      </article>
 
+        <a
+          href="../contact/contact.html"
+          class="product-link"
+        >
+          Enquire →
+        </a>
+
+      </article>
 
     </div>
 
@@ -365,436 +417,401 @@
 </section>
 
 
+<!-- =========================================================
+     SOURCING
+========================================================= -->
 
-<!-- =====================================================
-     REQUIREMENTS
-===================================================== -->
+<section class="section produce-origin">
+
+  <div class="container">
+
+    <div class="section-head fade-up">
+
+      <div>
+
+        <p class="eyebrow dark">
+          Sourcing network
+        </p>
+
+        <h2>
+          Europe meets
+          North Africa.
+        </h2>
+
+      </div>
+
+
+      <p>
+        Our sourcing strategy focuses particularly on
+        Mediterranean and European origins, creating
+        practical supply routes for professional markets.
+      </p>
+
+    </div>
+
+
+    <div class="produce-origin-grid">
+
+
+      <article class="produce-origin-card fade-up">
+
+        <span>
+          01
+        </span>
+
+        <div>
+
+          <strong>
+            Spain
+          </strong>
+
+          <small>
+            Citrus · Vegetables · Fruit
+          </small>
+
+        </div>
+
+      </article>
+
+
+      <article class="produce-origin-card fade-up">
+
+        <span>
+          02
+        </span>
+
+        <div>
+
+          <strong>
+            Morocco
+          </strong>
+
+          <small>
+            Citrus · Vegetables · Seasonal
+          </small>
+
+        </div>
+
+      </article>
+
+
+      <article class="produce-origin-card fade-up">
+
+        <span>
+          03
+        </span>
+
+        <div>
+
+          <strong>
+            Tunisia
+          </strong>
+
+          <small>
+            Seasonal · Mediterranean produce
+          </small>
+
+        </div>
+
+      </article>
+
+
+      <article class="produce-origin-card fade-up">
+
+        <span>
+          04
+        </span>
+
+        <div>
+
+          <strong>
+            Europe
+          </strong>
+
+          <small>
+            Selected European origins
+          </small>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEASONALITY
+========================================================= -->
+
+<section class="section seasonal-section">
+
+  <div class="container">
+
+    <div class="section-head fade-up">
+
+      <div>
+
+        <p class="eyebrow dark">
+          Seasonality
+        </p>
+
+        <h2>
+          Timing matters.
+        </h2>
+
+      </div>
+
+
+      <p>
+        Availability changes with origin, harvest,
+        weather and destination demand. Our sourcing
+        follows the commercial reality of each season.
+      </p>
+
+    </div>
+
+
+    <div class="seasonal-timeline">
+
+
+      <article class="season-item fade-up">
+
+        <span>
+          WINTER
+        </span>
+
+        <strong>
+          Citrus
+        </strong>
+
+        <p>
+          Oranges, mandarins, clementines and
+          Mediterranean produce.
+        </p>
+
+      </article>
+
+
+      <article class="season-item fade-up">
+
+        <span>
+          SPRING
+        </span>
+
+        <strong>
+          Transition
+        </strong>
+
+        <p>
+          Changing origins and increasing
+          Mediterranean availability.
+        </p>
+
+      </article>
+
+
+      <article class="season-item fade-up">
+
+        <span>
+          SUMMER
+        </span>
+
+        <strong>
+          Fresh fruit
+        </strong>
+
+        <p>
+          High seasonal variety across European
+          and Mediterranean origins.
+        </p>
+
+      </article>
+
+
+      <article class="season-item fade-up">
+
+        <span>
+          AUTUMN
+        </span>
+
+        <strong>
+          New harvest
+        </strong>
+
+        <p>
+          Citrus and seasonal products return to
+          the commercial cycle.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="section-link-row">
+
+      <a
+        href="seasonal.html"
+        class="text-link"
+      >
+
+        Explore seasonal products
+
+        <span>
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMERCIAL REQUIREMENTS
+========================================================= -->
 
 <section class="section dark-section">
 
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-head fade-up">
 
       <div>
 
         <p class="eyebrow">
-          REQUIREMENTS
+          Professional supply
         </p>
 
         <h2>
-          Built around<br>
-          the requirement.
+          Every detail
+          matters.
         </h2>
 
       </div>
 
+
       <p>
-        Each enquiry can be structured around the exact
-        commercial and logistical requirements of the
-        destination market.
+        Product specifications are aligned with the
+        requirements of the destination market and
+        professional buyer.
       </p>
 
     </div>
 
 
-    <div class="market-grid requirement-grid">
+    <div class="produce-requirements">
 
 
-      <div class="market" data-reveal>
+      <article class="produce-requirement fade-up">
 
-        <span>01</span>
+        <span>
+          01
+        </span>
+
+        <strong>
+          Origin
+        </strong>
+
+      </article>
+
+
+      <article class="produce-requirement fade-up">
+
+        <span>
+          02
+        </span>
 
         <strong>
           Variety
         </strong>
 
-        <small>
-          Product and variety requirements.
-        </small>
+      </article>
 
-      </div>
 
-
-      <div class="market" data-reveal>
-
-        <span>02</span>
-
-        <strong>
-          Quality
-        </strong>
-
-        <small>
-          Quality and specification requirements.
-        </small>
-
-      </div>
-
-
-      <div class="market" data-reveal>
-
-        <span>03</span>
-
-        <strong>
-          Calibre
-        </strong>
-
-        <small>
-          Size and classification requirements.
-        </small>
-
-      </div>
-
-
-      <div class="market" data-reveal>
-
-        <span>04</span>
-
-        <strong>
-          Packaging
-        </strong>
-
-        <small>
-          Format, box and pallet requirements.
-        </small>
-
-      </div>
-
-
-      <div class="market" data-reveal>
-
-        <span>05</span>
-
-        <strong>
-          Volume
-        </strong>
-
-        <small>
-          Quantity and supply frequency.
-        </small>
-
-      </div>
-
-
-      <div class="market" data-reveal>
-
-        <span>06</span>
-
-        <strong>
-          Timing
-        </strong>
-
-        <small>
-          Harvest, loading and delivery schedule.
-        </small>
-
-      </div>
-
-
-      <div class="market featured" data-reveal>
-
-        <span>07</span>
-
-        <strong>
-          Destination
-        </strong>
-
-        <small>
-          Delivery market and location.
-        </small>
-
-      </div>
-
-
-      <div class="market" data-reveal>
-
-        <span>08</span>
-
-        <strong>
-          Logistics
-        </strong>
-
-        <small>
-          Transport and coordination requirements.
-        </small>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MARKETS
-===================================================== -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow dark">
-          PROFESSIONAL MARKETS
-        </p>
-
-        <h2>
-          Three regions.<br>
-          One network.
-        </h2>
-
-      </div>
-
-      <p>
-        Fruits and vegetables are connected with professional
-        markets across Europe, Africa and the Middle East.
-      </p>
-
-    </div>
-
-
-    <div class="market-grid light-market-grid">
-
-
-      <a
-        class="market"
-        href="../markets/markets.html"
-      >
-
-        <span>
-          01
-        </span>
-
-        <strong>
-          Europe
-        </strong>
-
-        <small>
-          Spain · France · Italy · Germany · Netherlands
-        </small>
-
-      </a>
-
-
-      <a
-        class="market"
-        href="../markets/markets.html"
-      >
-
-        <span>
-          02
-        </span>
-
-        <strong>
-          Africa
-        </strong>
-
-        <small>
-          Morocco · Tunisia · Mauritania · West Africa
-        </small>
-
-      </a>
-
-
-      <a
-        class="market"
-        href="../markets/markets.html"
-      >
+      <article class="produce-requirement fade-up">
 
         <span>
           03
         </span>
 
         <strong>
-          Middle East
+          Calibration
         </strong>
 
-        <small>
-          GCC · Levant
-        </small>
-
-      </a>
-
-
-      <div class="market featured">
-
-        <span>
-          HUB
-        </span>
-
-        <strong>
-          Madrid
-        </strong>
-
-        <small>
-          European coordination point
-        </small>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PROCESS
-===================================================== -->
-
-<section class="section services">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow dark">
-          OUR APPROACH
-        </p>
-
-        <h2>
-          From requirement<br>
-          to destination.
-        </h2>
-
-      </div>
-
-      <p>
-        We structure each enquiry around the product,
-        commercial requirement and destination.
-      </p>
-
-    </div>
-
-
-    <div class="service-list">
-
-
-      <article data-reveal>
-
-        <span>
-          01
-        </span>
-
-        <div>
-
-          <h3>
-            Requirement
-          </h3>
-
-          <p>
-            Product, variety, quality, volume,
-            destination and timing are identified.
-          </p>
-
-        </div>
-
       </article>
 
 
-
-      <article data-reveal>
-
-        <span>
-          02
-        </span>
-
-        <div>
-
-          <h3>
-            Availability
-          </h3>
-
-          <p>
-            Available supply is assessed against
-            the requested specifications.
-          </p>
-
-        </div>
-
-      </article>
-
-
-
-      <article data-reveal>
-
-        <span>
-          03
-        </span>
-
-        <div>
-
-          <h3>
-            Commercial Proposal
-          </h3>
-
-          <p>
-            Supply conditions are structured around
-            the specific enquiry.
-          </p>
-
-        </div>
-
-      </article>
-
-
-
-      <article data-reveal>
+      <article class="produce-requirement fade-up">
 
         <span>
           04
         </span>
 
-        <div>
-
-          <h3>
-            Logistics Coordination
-          </h3>
-
-          <p>
-            Loading, transport and destination requirements
-            are coordinated according to the agreed conditions.
-          </p>
-
-        </div>
+        <strong>
+          Packaging
+        </strong>
 
       </article>
 
 
-
-      <article data-reveal>
+      <article class="produce-requirement fade-up">
 
         <span>
           05
         </span>
 
-        <div>
-
-          <h3>
-            Delivery
-          </h3>
-
-          <p>
-            The process is coordinated through to
-            the agreed destination.
-          </p>
-
-        </div>
+        <strong>
+          Volume
+        </strong>
 
       </article>
 
+
+      <article class="produce-requirement fade-up">
+
+        <span>
+          06
+        </span>
+
+        <strong>
+          Timing
+        </strong>
+
+      </article>
+
+
+      <article class="produce-requirement fade-up">
+
+        <span>
+          07
+        </span>
+
+        <strong>
+          Destination
+        </strong>
+
+      </article>
+
+
+      <article class="produce-requirement fade-up">
+
+        <span>
+          08
+        </span>
+
+        <strong>
+          Logistics
+        </strong>
+
+      </article>
 
     </div>
 
@@ -803,49 +820,306 @@
 </section>
 
 
+<!-- =========================================================
+     DISTRIBUTION
+========================================================= -->
 
-<!-- =====================================================
-     CATALOGUE NOTE
-===================================================== -->
-
-<section class="section dark-section catalogue-section">
+<section class="section produce-distribution">
 
   <div class="container">
 
-    <div class="two-col">
+    <div class="section-head fade-up">
 
       <div>
 
-        <p class="eyebrow">
-          COMING CATALOGUE
+        <p class="eyebrow dark">
+          Distribution
         </p>
 
         <h2>
-          A catalogue<br>
-          built over time.
+          From harvest
+          to destination.
         </h2>
 
       </div>
 
 
-      <div class="intro-copy">
+      <p>
+        We coordinate product selection and distribution
+        around the timing and specifications required by
+        professional markets.
+      </p>
 
-        <p>
-          Our detailed product catalogue will provide
-          specifications, formats, availability and
-          commercial information.
+    </div>
+
+
+    <div class="produce-route">
+
+
+      <div class="produce-route-step fade-up">
+
+        <span>
+          01
+        </span>
+
+        <strong>
+          Origin
+        </strong>
+
+        <small>
+          Growers & sourcing
+        </small>
+
+      </div>
+
+
+      <div class="produce-route-line">
+        →
+      </div>
+
+
+      <div class="produce-route-step fade-up">
+
+        <span>
+          02
+        </span>
+
+        <strong>
+          Selection
+        </strong>
+
+        <small>
+          Quality & specifications
+        </small>
+
+      </div>
+
+
+      <div class="produce-route-line">
+        →
+      </div>
+
+
+      <div class="produce-route-step fade-up">
+
+        <span>
+          03
+        </span>
+
+        <strong>
+          Market
+        </strong>
+
+        <small>
+          Professional distribution
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     MARKETS
+========================================================= -->
+
+<section class="section produce-market-section">
+
+  <div class="container">
+
+    <div class="section-head fade-up">
+
+      <div>
+
+        <p class="eyebrow dark">
+          Destination markets
         </p>
 
-        <p>
-          Until then, enquiries can be structured directly
-          around the product and market requirement.
-        </p>
+        <h2>
+          Where fresh produce
+          meets demand.
+        </h2>
+
+      </div>
+
+
+      <p>
+        Europe is the core distribution environment,
+        supported by sourcing relationships across
+        North Africa and Mediterranean origins.
+      </p>
+
+    </div>
+
+
+    <div class="light-market-grid">
+
+
+      <article class="market fade-up">
+
+        <span>
+          01
+        </span>
+
+        <strong>
+          Spain
+        </strong>
+
+        <small>
+          Distribution
+        </small>
+
+      </article>
+
+
+      <article class="market fade-up">
+
+        <span>
+          02
+        </span>
+
+        <strong>
+          France
+        </strong>
+
+        <small>
+          Professional markets
+        </small>
+
+      </article>
+
+
+      <article class="market fade-up">
+
+        <span>
+          03
+        </span>
+
+        <strong>
+          Italy
+        </strong>
+
+        <small>
+          Mediterranean demand
+        </small>
+
+      </article>
+
+
+      <article class="market fade-up">
+
+        <span>
+          04
+        </span>
+
+        <strong>
+          Germany
+        </strong>
+
+        <small>
+          European distribution
+        </small>
+
+      </article>
+
+
+      <article class="market fade-up">
+
+        <span>
+          05
+        </span>
+
+        <strong>
+          Netherlands
+        </strong>
+
+        <small>
+          European trade
+        </small>
+
+      </article>
+
+
+      <article class="market fade-up">
+
+        <span>
+          06
+        </span>
+
+        <strong>
+          North Africa
+        </strong>
+
+        <small>
+          Regional markets
+        </small>
+
+      </article>
+
+    </div>
+
+
+    <div class="section-link-row">
+
+      <a
+        href="../markets/markets.html"
+        class="text-link"
+      >
+
+        Explore our markets
+
+        <span>
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta-section produce-cta">
+
+  <div class="container">
+
+    <div class="cta-inner fade-up">
+
+      <p class="eyebrow">
+        Fresh produce enquiries
+      </p>
+
+
+      <h2>
+        Looking for a specific
+        product or origin?
+      </h2>
+
+
+      <p>
+        Tell us the product, origin, format, volume,
+        destination and timing. We will review the
+        available sourcing options.
+      </p>
+
+
+      <div class="hero-actions">
 
         <a
-          class="button primary"
-          href="../index.html#contact"
+          href="../contact/contact.html"
+          class="button light-button"
         >
-          Discuss a requirement
+          Business enquiry
         </a>
 
       </div>
@@ -857,145 +1131,96 @@
 </section>
 
 
-
-<!-- =====================================================
-     CTA
-===================================================== -->
-
-<section class="cta-section">
-
-  <div class="container cta-inner">
-
-    <p class="eyebrow">
-      FRUITS & VEGETABLES
-    </p>
-
-    <h2>
-      Tell us what your market needs.
-    </h2>
-
-    <p>
-      Product. Volume. Destination. Timing.
-      We'll work on the supply route.
-    </p>
-
-
-    <div class="hero-actions">
-
-      <a
-        class="button light-button"
-        href="mailto:contact@emperio-tiss.com"
-      >
-        Send an enquiry
-      </a>
-
-      <a
-        class="button secondary"
-        href="../index.html"
-      >
-        Back to EMPERIO TISS
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
 </main>
 
 
-
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer class="footer">
 
-  <div class="container footer-grid">
+  <div class="container">
+
+    <div class="footer-grid">
 
 
-    <div>
+      <div>
 
-      <img
-        class="footer-logo"
-        src="../logo.png"
-        alt="EMPERIO TISS"
-      >
+        <img
+          src="../logo.png"
+          alt="EMPERIO TISS"
+          class="footer-logo"
+        >
 
-      <p>
-        Connecting professional food markets across
-        Africa, Europe and the Middle East.
-      </p>
+        <p>
+          Professional food sourcing and distribution
+          connecting markets across Europe, Africa
+          and the Middle East.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Company
+        </strong>
+
+        <a href="../about/about.html">
+          About
+        </a>
+
+        <a href="../markets/markets.html">
+          Markets
+        </a>
+
+        <a href="index.html">
+          Products
+        </a>
+
+        <a href="../contact/contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Products
+        </strong>
+
+        <a href="seafood.html">
+          Seafood
+        </a>
+
+        <a href="fruits-vegetables.html">
+          Fruits & Vegetables
+        </a>
+
+        <a href="seasonal.html">
+          Seasonal
+        </a>
+
+      </div>
 
     </div>
 
 
-    <div>
+    <div class="footer-bottom">
 
-      <strong>
-        Products
-      </strong>
+      <span>
+        © 2026 EMPERIO TISS
+      </span>
 
-      <a href="index.html">
-        All Products
-      </a>
-
-      <a href="seafood.html">
-        Fish & Seafood
-      </a>
-
-      <a href="fruits-vegetables.html">
-        Fruits & Vegetables
-      </a>
-
-      <a href="seasonal.html">
-        Seasonal Products
-      </a>
+      <span>
+        Professional food trade
+      </span>
 
     </div>
-
-
-    <div>
-
-      <strong>
-        Company
-      </strong>
-
-      <a href="../markets/markets.html">
-        Markets
-      </a>
-
-      <a href="../index.html#services">
-        Services
-      </a>
-
-      <a href="../index.html#about">
-        Company
-      </a>
-
-      <a href="../index.html#contact">
-        Business enquiry
-      </a>
-
-    </div>
-
-
-  </div>
-
-
-  <div class="container footer-bottom">
-
-    <span>
-      © <span id="year"></span> EMPERIO TISS SL
-    </span>
-
-    <span>
-      Spain · France · Italy · Germany · Netherlands
-      · Morocco · Tunisia · Mauritania · West Africa
-      · Middle East
-    </span>
 
   </div>
 
