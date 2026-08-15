@@ -1,73 +1,54 @@
 /* =========================================================
-   EMPERIO TISS
-   FINAL INTERACTION SYSTEM
+   EMPERIO TISS — MOTION ENGINE
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =======================================================
-     HEADER SCROLL EFFECT
-  ======================================================= */
+  /* -----------------------------------------
+     HEADER
+  ----------------------------------------- */
 
   const header = document.querySelector(".site-header");
 
-  const updateHeader = () => {
-
+  function updateHeader() {
     if (!header) return;
 
-    if (window.scrollY > 40) {
+    if (window.scrollY > 45) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
-
-  };
+  }
 
   updateHeader();
 
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
+  window.addEventListener("scroll", updateHeader, {
+    passive: true
+  });
 
 
-  /* =======================================================
-     MOBILE NAVIGATION
-  ======================================================= */
+  /* -----------------------------------------
+     MOBILE MENU
+  ----------------------------------------- */
 
-  const menuToggle =
-    document.querySelector(".menu-toggle");
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
 
-  const nav =
-    document.querySelector(".nav");
+  if (toggle && nav) {
 
-  if (menuToggle && nav) {
+    toggle.addEventListener("click", () => {
 
-    menuToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("active");
 
-      const isOpen =
-        nav.classList.toggle("active");
-
-      menuToggle.setAttribute(
+      toggle.setAttribute(
         "aria-expanded",
         String(isOpen)
       );
 
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Close navigation"
-          : "Open navigation"
-      );
-
-      menuToggle.textContent =
-        isOpen ? "×" : "☰";
+      toggle.textContent = isOpen ? "×" : "☰";
 
     });
 
-
-    /* Close menu after clicking a link */
 
     nav.querySelectorAll("a").forEach(link => {
 
@@ -75,46 +56,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         nav.classList.remove("active");
 
-        menuToggle.setAttribute(
+        toggle.setAttribute(
           "aria-expanded",
           "false"
         );
 
-        menuToggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
-
-        menuToggle.textContent = "☰";
+        toggle.textContent = "☰";
 
       });
 
     });
 
 
-    /* Close when clicking outside */
-
     document.addEventListener("click", event => {
 
       if (
         nav.classList.contains("active") &&
         !nav.contains(event.target) &&
-        !menuToggle.contains(event.target)
+        !toggle.contains(event.target)
       ) {
 
         nav.classList.remove("active");
 
-        menuToggle.setAttribute(
+        toggle.setAttribute(
           "aria-expanded",
           "false"
         );
 
-        menuToggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
-
-        menuToggle.textContent = "☰";
+        toggle.textContent = "☰";
 
       }
 
@@ -123,22 +92,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
+  /* -----------------------------------------
      SCROLL REVEAL
-  ======================================================= */
+  ----------------------------------------- */
 
-  const revealElements =
-    document.querySelectorAll(
-      ".reveal, .fade-up, [data-reveal]"
-    );
+  const revealElements = document.querySelectorAll(
+    ".section-head, .card, .market, .service-list article, .two-col"
+  );
 
-  if (
-    revealElements.length &&
-    "IntersectionObserver" in window
-  ) {
+
+  revealElements.forEach((element, index) => {
+
+    element.classList.add("fade-up");
+
+    const delay =
+      Math.min((index % 6) * 70, 350);
+
+    element.style.transitionDelay =
+      `${delay}ms`;
+
+  });
+
+
+  if ("IntersectionObserver" in window) {
 
     const observer =
       new IntersectionObserver(
+
         entries => {
 
           entries.forEach(entry => {
@@ -156,93 +136,31 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
         },
+
         {
           threshold: 0.12,
-          rootMargin: "0px 0px -50px 0px"
+          rootMargin: "0px 0px -45px 0px"
         }
+
       );
 
+
     revealElements.forEach(element => {
-
       observer.observe(element);
-
     });
 
   } else {
 
     revealElements.forEach(element => {
-
       element.classList.add("visible");
-
     });
 
   }
 
 
-  /* =======================================================
-     ADD REVEAL EFFECTS AUTOMATICALLY
-  ======================================================= */
-
-  const animatedSections =
-    document.querySelectorAll(
-      ".section-head, .card, .market, .service-list article, .origin-card"
-    );
-
-  if (
-    "IntersectionObserver" in window
-  ) {
-
-    const animationObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (!entry.isIntersecting) return;
-
-            entry.target.classList.add(
-              "visible"
-            );
-
-            animationObserver.unobserve(
-              entry.target
-            );
-
-          });
-
-        },
-        {
-          threshold: 0.08,
-          rootMargin: "0px 0px -40px 0px"
-        }
-      );
-
-
-    animatedSections.forEach(
-      (element, index) => {
-
-        element.classList.add("fade-up");
-
-        /*
-          Small stagger without excessive delay.
-        */
-
-        element.style.transitionDelay =
-          `${Math.min(index * 45, 250)}ms`;
-
-        animationObserver.observe(
-          element
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     SMOOTH INTERNAL LINKS
-  ======================================================= */
+  /* -----------------------------------------
+     SMOOTH ANCHOR NAVIGATION
+  ----------------------------------------- */
 
   document
     .querySelectorAll('a[href^="#"]')
@@ -250,22 +168,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       link.addEventListener("click", event => {
 
-        const targetId =
+        const id =
           link.getAttribute("href");
 
-        if (
-          !targetId ||
-          targetId === "#"
-        ) {
+        if (!id || id === "#") {
           return;
         }
 
         const target =
-          document.querySelector(
-            targetId
-          );
+          document.querySelector(id);
 
-        if (!target) return;
+        if (!target) {
+          return;
+        }
 
         event.preventDefault();
 
@@ -279,24 +194,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =======================================================
+  /* -----------------------------------------
      CURRENT YEAR
-  ======================================================= */
+  ----------------------------------------- */
 
   const year =
     document.getElementById("year");
 
   if (year) {
-
     year.textContent =
       new Date().getFullYear();
-
   }
 
 
-  /* =======================================================
-     ESCAPE KEY — CLOSE MOBILE NAV
-  ======================================================= */
+  /* -----------------------------------------
+     ESCAPE → CLOSE MOBILE MENU
+  ----------------------------------------- */
 
   document.addEventListener(
     "keydown",
@@ -310,19 +223,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         nav.classList.remove("active");
 
-        if (menuToggle) {
+        if (toggle) {
 
-          menuToggle.setAttribute(
+          toggle.setAttribute(
             "aria-expanded",
             "false"
           );
 
-          menuToggle.setAttribute(
-            "aria-label",
-            "Open navigation"
-          );
-
-          menuToggle.textContent = "☰";
+          toggle.textContent = "☰";
 
         }
 
@@ -330,32 +238,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
   );
-
-
-  /* =======================================================
-     PREVENT BROKEN HASH JUMP ON PAGE LOAD
-  ======================================================= */
-
-  if (window.location.hash) {
-
-    const target =
-      document.querySelector(
-        window.location.hash
-      );
-
-    if (target) {
-
-      setTimeout(() => {
-
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      }, 100);
-
-    }
-
-  }
 
 });
