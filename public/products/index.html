@@ -1,363 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Products | EMPERIO TISS</title>
 
   <meta
     name="description"
-    content="Seafood, fruits, vegetables and seasonal products sourced and distributed across Europe and North Africa."
+    content="Seafood, fruits, vegetables and seasonal products sourced for professional markets."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
     rel="stylesheet"
   >
 
   <link rel="stylesheet" href="../style.css">
 </head>
 
+
 <body class="products-page">
 
-<!-- =====================================================
-HEADER
-===================================================== -->
 
 <header class="site-header">
-  <div class="container nav-wrap">
 
-    <a href="../index.html" class="brand">
-      <img src="../logo.png" alt="EMPERIO TISS">
+  <div class="header-inner">
+
+    <a
+      href="../index.html"
+      class="brand"
+      aria-label="EMPERIO TISS"
+    >
+      <img
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
     </a>
 
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open menu"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
 
-    <nav class="nav">
+    <nav class="main-nav">
 
-      <a href="../index.html">Home</a>
+      <a href="../about/about.html">
+        About
+      </a>
 
-      <a href="../about/about.html">About</a>
+      <a
+        href="index.html"
+        aria-current="page"
+      >
+        Products
+      </a>
 
-      <a href="index.html" class="active">Products</a>
+      <a href="../markets/markets.html">
+        Markets
+      </a>
 
-      <a href="../markets/markets.html">Markets</a>
 
-      <div class="language-switcher">
-        <a href="index.html" class="active">EN</a>
-        <a href="../es/products/index.html">ES</a>
-        <a href="../fr/products/index.html">FR</a>
-        <a href="../ar/products/index.html">AR</a>
+      <div class="languages">
+
+        <a class="active" href="#">
+          EN
+        </a>
+
+        <span>/</span>
+
+        <a href="#">
+          ES
+        </a>
+
+        <span>/</span>
+
+        <a href="#">
+          FR
+        </a>
+
+        <span>/</span>
+
+        <a href="#">
+          AR
+        </a>
+
       </div>
+
 
       <a
         href="../contact/contact.html"
-        class="nav-cta"
+        class="nav-button"
       >
-        Business enquiry
+        Business enquiry ↗
       </a>
 
     </nav>
 
+
+    <button
+      class="mobile-menu"
+      type="button"
+      aria-label="Open menu"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
   </div>
+
 </header>
 
 
 <main>
 
-<!-- =====================================================
-HERO
-===================================================== -->
 
-<section class="products-hero">
+<!-- ======================================================
+     HERO
+====================================================== -->
 
-  <div class="products-hero-image"></div>
+<section class="page-hero">
 
-  <div class="products-hero-overlay"></div>
+  <div class="page-hero-inner">
 
-  <div class="container products-hero-inner">
+    <p class="eyebrow">
+      01 / Products
+    </p>
 
-    <div class="products-index-number">
-      01 / PRODUCTS
-    </div>
 
-    <div class="products-hero-copy">
+    <h1>
+      From the sea
+      <br>
+      <em>to the field.</em>
+    </h1>
 
-      <p class="eyebrow">
-        Seafood · Produce · Seasonality
-      </p>
 
-      <h1>
-        From the
-        <em>sea</em>
-        to the field.
-      </h1>
-
-      <p>
-        Products selected around origin, season,
-        quality and professional market demand.
-      </p>
-
-    </div>
-
-    <a href="#product-worlds" class="products-scroll">
-      Explore
-      <span>↓</span>
-    </a>
+    <p class="page-hero-copy">
+      Seafood, fruits, vegetables and seasonal products
+      selected around origin, availability, specifications
+      and professional market demand.
+    </p>
 
   </div>
 
 </section>
 
 
-<!-- =====================================================
-INTRO
-===================================================== -->
+<!-- ======================================================
+     PRODUCT OVERVIEW
+====================================================== -->
 
-<section class="products-intro">
+<section class="products-overview">
 
-  <div class="container products-intro-grid">
+  <div class="section-container">
 
-    <div class="products-intro-title">
+    <div class="products-overview-intro">
 
-      <span class="section-index">
-        01
-      </span>
+      <p class="eyebrow">
+        What we source
+      </p>
 
       <h2>
-        What we
-        <em>source.</em>
+        Selected around
+        <br>
+        <em>origin.</em>
       </h2>
-
-    </div>
-
-    <div class="products-intro-text">
 
       <p>
-        EMPERIO TISS works across two principal
-        sourcing environments: the sea and the land.
-      </p>
-
-      <p>
-        Seafood, fruits and vegetables are selected
-        according to origin, availability, specification
-        and destination market.
+        EMPERIO TISS works across two principal sourcing
+        environments: the sea and the land.
+        Products are selected according to origin,
+        availability, specification and destination market.
       </p>
 
     </div>
 
-  </div>
 
-</section>
+    <div class="product-grid">
 
 
-<!-- =====================================================
-PRODUCT WORLDS
-===================================================== -->
+      <!-- SEAFOOD -->
 
-<section
-  class="product-worlds"
-  id="product-worlds"
->
+      <article class="product-card">
 
-  <!-- SEAFOOD -->
+        <span class="product-card-number">
+          01
+        </span>
 
-  <article class="product-world product-world-seafood">
 
-    <div class="product-world-media">
+        <span class="product-card-category">
+          From the sea
+        </span>
 
-      <div class="product-world-image seafood-image"></div>
 
-      <div class="product-world-overlay"></div>
+        <h3>
+          Seafood
+        </h3>
 
-      <span class="product-world-index">
-        01
-      </span>
 
-    </div>
+        <p>
+          Fish, shellfish and cephalopods selected
+          for professional food markets.
+        </p>
 
-    <div class="product-world-content">
 
-      <p class="eyebrow">
-        From the sea
-      </p>
+        <a
+          href="seafood.html"
+          class="product-card-link"
+        >
+          Explore seafood ↗
+        </a>
 
-      <h2>
-        Seafood
-      </h2>
+      </article>
 
-      <p class="product-world-lead">
-        Fish, shellfish and cephalopods selected
-        for professional food markets.
-      </p>
 
-      <div class="product-tags">
+      <!-- PRODUCE -->
 
-        <span>Fish</span>
-        <span>Shellfish</span>
-        <span>Cephalopods</span>
+      <article class="product-card">
 
-      </div>
-
-      <a
-        href="seafood.html"
-        class="world-link"
-      >
-        Explore seafood
-        <span>↗</span>
-      </a>
-
-    </div>
-
-  </article>
-
-
-  <!-- FRUITS & VEGETABLES -->
-
-  <article class="product-world product-world-produce">
-
-    <div class="product-world-media">
-
-      <div class="product-world-image produce-image"></div>
-
-      <div class="product-world-overlay"></div>
-
-      <span class="product-world-index">
-        02
-      </span>
-
-    </div>
-
-    <div class="product-world-content">
-
-      <p class="eyebrow">
-        From the land
-      </p>
-
-      <h2>
-        Fruits &
-        <em>Vegetables</em>
-      </h2>
-
-      <p class="product-world-lead">
-        Fresh produce sourced around Mediterranean
-        origins, harvest cycles and market demand.
-      </p>
-
-      <div class="product-tags">
-
-        <span>Citrus</span>
-        <span>Fruit</span>
-        <span>Vegetables</span>
-        <span>Exotic</span>
-
-      </div>
-
-      <a
-        href="fruits-vegetables.html"
-        class="world-link"
-      >
-        Explore produce
-        <span>↗</span>
-      </a>
-
-    </div>
-
-  </article>
-
-
-  <!-- SEASONAL -->
-
-  <article class="product-world product-world-seasonal">
-
-    <div class="product-world-media">
-
-      <div class="product-world-image seasonal-image"></div>
-
-      <div class="product-world-overlay"></div>
-
-      <span class="product-world-index">
-        03
-      </span>
-
-    </div>
-
-    <div class="product-world-content">
-
-      <p class="eyebrow">
-        Timing is part of the product
-      </p>
-
-      <h2>
-        Seasonal
-      </h2>
-
-      <p class="product-world-lead">
-        Availability changes with origin, harvest,
-        weather and destination requirements.
-      </p>
-
-      <div class="product-tags">
-
-        <span>Availability</span>
-        <span>Origin</span>
-        <span>Harvest</span>
-        <span>Timing</span>
-
-      </div>
-
-      <a
-        href="seasonal.html"
-        class="world-link"
-      >
-        Explore seasonality
-        <span>↗</span>
-      </a>
-
-    </div>
-
-  </article>
-
-</section>
-
-
-<!-- =====================================================
-ORIGIN
-===================================================== -->
-
-<section class="products-origin">
-
-  <div class="container">
-
-    <div class="products-origin-header">
-
-      <div>
-
-        <span class="section-index">
+        <span class="product-card-number">
           02
         </span>
 
-        <p class="eyebrow dark">
-          Sourcing geography
+
+        <span class="product-card-category">
+          From the land
+        </span>
+
+
+        <h3>
+          Fruits &
+          Vegetables
+        </h3>
+
+
+        <p>
+          Fresh produce sourced around Mediterranean
+          origins, harvest cycles and market demand.
+        </p>
+
+
+        <a
+          href="fruits-vegetables.html"
+          class="product-card-link"
+        >
+          Explore produce ↗
+        </a>
+
+      </article>
+
+
+      <!-- SEASONAL -->
+
+      <article class="product-card">
+
+        <span class="product-card-number">
+          03
+        </span>
+
+
+        <span class="product-card-category">
+          Timing matters
+        </span>
+
+
+        <h3>
+          Seasonal
+        </h3>
+
+
+        <p>
+          Availability changes with origin, harvest,
+          weather and destination requirements.
+        </p>
+
+
+        <a
+          href="seasonal.html"
+          class="product-card-link"
+        >
+          Explore seasonality ↗
+        </a>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+     ORIGINS
+====================================================== -->
+
+<section class="section dark-section">
+
+  <div class="section-container">
+
+    <div class="section-head">
+
+      <div>
+
+        <p class="eyebrow">
+          02 / Origins
         </p>
 
         <h2>
           Origin shapes
+          <br>
           <em>availability.</em>
         </h2>
 
       </div>
+
 
       <p>
         Our strongest sourcing focus is Europe and
@@ -368,38 +329,40 @@ ORIGIN
     </div>
 
 
-    <div class="origin-map">
+    <div class="origin-grid">
 
-      <div class="origin-line"></div>
+      <article class="origin-card">
 
-      <div class="origin-point origin-europe">
+        <span class="origin-card-number">
+          01
+        </span>
 
-        <span class="point-dot"></span>
+        <h3>
+          Europe
+        </h3>
 
-        <div>
-          <small>01</small>
-          <strong>Europe</strong>
-          <p>
-            Spain · France · Italy · Germany · Netherlands
-          </p>
-        </div>
+        <p>
+          Spain · France · Italy · Germany · Netherlands
+        </p>
 
-      </div>
+      </article>
 
 
-      <div class="origin-point origin-africa">
+      <article class="origin-card">
 
-        <span class="point-dot"></span>
+        <span class="origin-card-number">
+          02
+        </span>
 
-        <div>
-          <small>02</small>
-          <strong>North Africa</strong>
-          <p>
-            Morocco · Tunisia · Mauritania · West Africa
-          </p>
-        </div>
+        <h3>
+          North Africa
+        </h3>
 
-      </div>
+        <p>
+          Morocco · Tunisia · Mauritania · West Africa
+        </p>
+
+      </article>
 
     </div>
 
@@ -408,270 +371,196 @@ ORIGIN
 </section>
 
 
-<!-- =====================================================
-PRODUCT LOGIC
-===================================================== -->
+<!-- ======================================================
+     COMMERCIAL SPECIFICATIONS
+====================================================== -->
 
-<section class="products-logic">
+<section class="section">
 
-  <div class="container">
+  <div class="section-container">
 
-    <div class="products-logic-header">
-
-      <span class="section-index">
-        03
-      </span>
+    <div class="section-head">
 
       <div>
 
         <p class="eyebrow">
-          Professional supply
+          03 / Specifications
         </p>
 
         <h2>
-          Product decisions
-          are commercial decisions.
+          The product is
+          <br>
+          <em>more than a name.</em>
         </h2>
 
       </div>
 
-    </div>
-
-
-    <div class="logic-grid">
-
-      <div class="logic-item">
-
-        <span>01</span>
-
-        <strong>
-          Origin
-        </strong>
-
-        <p>
-          Where the product comes from and
-          how origin affects availability.
-        </p>
-
-      </div>
-
-
-      <div class="logic-item">
-
-        <span>02</span>
-
-        <strong>
-          Season
-        </strong>
-
-        <p>
-          Harvest cycles and the right commercial
-          window for each product.
-        </p>
-
-      </div>
-
-
-      <div class="logic-item">
-
-        <span>03</span>
-
-        <strong>
-          Specification
-        </strong>
-
-        <p>
-          Variety, calibre, format, packaging
-          and buyer requirements.
-        </p>
-
-      </div>
-
-
-      <div class="logic-item">
-
-        <span>04</span>
-
-        <strong>
-          Destination
-        </strong>
-
-        <p>
-          Product selection adapted to the
-          requirements of the receiving market.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-MARKETS STRIP
-===================================================== -->
-
-<section class="products-market-strip">
-
-  <div class="container">
-
-    <div class="market-strip-inner">
-
-      <div>
-
-        <span class="section-index">
-          04
-        </span>
-
-        <p class="eyebrow">
-          From origin to destination
-        </p>
-
-      </div>
-
-      <h2>
-        Europe
-        <span>×</span>
-        Africa
-      </h2>
-
-      <a
-        href="../markets/markets.html"
-        class="world-link"
-      >
-        Explore markets
-        <span>↗</span>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-CTA
-===================================================== -->
-
-<section class="products-final-cta">
-
-  <div class="products-final-cta-bg"></div>
-
-  <div class="container">
-
-    <div class="products-final-inner">
-
-      <p class="eyebrow">
-        Business enquiry
-      </p>
-
-      <h2>
-        Looking for
-        something specific?
-      </h2>
 
       <p>
-        Tell us the product, origin, format,
-        volume, destination and timing.
+        Professional purchasing depends on precise
+        specifications and timing. Each enquiry is
+        evaluated around the destination requirement.
       </p>
 
-      <a
-        href="../contact/contact.html"
-        class="button light-button"
-      >
-        Start an enquiry
-      </a>
+    </div>
+
+
+    <div class="info-grid">
+
+      <article class="info-card">
+        <span class="info-card-number">01</span>
+        <h3>Origin</h3>
+        <p>Where the product comes from.</p>
+      </article>
+
+
+      <article class="info-card">
+        <span class="info-card-number">02</span>
+        <h3>Quality</h3>
+        <p>Product condition and commercial specification.</p>
+      </article>
+
+
+      <article class="info-card">
+        <span class="info-card-number">03</span>
+        <h3>Format</h3>
+        <p>Presentation, packaging and preparation.</p>
+      </article>
+
+
+      <article class="info-card">
+        <span class="info-card-number">04</span>
+        <h3>Volume</h3>
+        <p>Required quantity and purchasing frequency.</p>
+      </article>
+
+
+      <article class="info-card">
+        <span class="info-card-number">05</span>
+        <h3>Timing</h3>
+        <p>Availability and delivery window.</p>
+      </article>
+
+
+      <article class="info-card">
+        <span class="info-card-number">06</span>
+        <h3>Destination</h3>
+        <p>Requirements of the receiving market.</p>
+      </article>
 
     </div>
 
   </div>
 
 </section>
+
+
+<!-- ======================================================
+     CTA
+====================================================== -->
+
+<section class="cta-section">
+
+  <div class="cta-inner">
+
+    <p class="eyebrow">
+      Product enquiry
+    </p>
+
+    <h2>
+      Looking for
+      <br>
+      <em>something specific?</em>
+    </h2>
+
+    <p>
+      Tell us the product, origin, specification,
+      volume, destination and timing.
+    </p>
+
+    <a
+      href="../contact/contact.html"
+      class="button light-button"
+    >
+      Business enquiry ↗
+    </a>
+
+  </div>
+
+</section>
+
 
 </main>
 
 
-<!-- =====================================================
-FOOTER
-===================================================== -->
+<footer class="site-footer">
 
-<footer class="footer">
+  <div class="footer-main">
 
-  <div class="container">
+    <div class="footer-brand">
 
-    <div class="footer-grid">
+      <img
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
 
-      <div>
-
-        <img
-          src="../logo.png"
-          alt="EMPERIO TISS"
-          class="footer-logo"
-        >
-
-        <p>
-          Professional food sourcing and distribution
-          connecting Europe, Africa and the Middle East.
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <strong>Company</strong>
-
-        <a href="../about/about.html">
-          About
-        </a>
-
-        <a href="../markets/markets.html">
-          Markets
-        </a>
-
-        <a href="../contact/contact.html">
-          Contact
-        </a>
-
-      </div>
-
-
-      <div>
-
-        <strong>Products</strong>
-
-        <a href="seafood.html">
-          Seafood
-        </a>
-
-        <a href="fruits-vegetables.html">
-          Fruits & Vegetables
-        </a>
-
-        <a href="seasonal.html">
-          Seasonal
-        </a>
-
-      </div>
+      <p>
+        Food sourcing and distribution
+        connecting Europe and Africa.
+      </p>
 
     </div>
 
 
-    <div class="footer-bottom">
+    <div class="footer-column">
 
-      <span>
-        © 2026 EMPERIO TISS
-      </span>
+      <span>Company</span>
 
-      <span>
-        Professional food trade
-      </span>
+      <a href="../about/about.html">
+        About
+      </a>
+
+      <a href="../markets/markets.html">
+        Markets
+      </a>
+
+      <a href="../contact/contact.html">
+        Contact
+      </a>
 
     </div>
+
+
+    <div class="footer-column">
+
+      <span>Products</span>
+
+      <a href="seafood.html">
+        Seafood
+      </a>
+
+      <a href="fruits-vegetables.html">
+        Fruits & Vegetables
+      </a>
+
+      <a href="seasonal.html">
+        Seasonal
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 EMPERIO TISS
+    </span>
+
+    <span>
+      Europe × Africa
+    </span>
 
   </div>
 
