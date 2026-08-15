@@ -1,985 +1,1425 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-    content="EMPERIO TISS — International food distribution and supply connecting Africa, Europe and the Middle East. Fish, seafood, fruits and vegetables for professional markets.">
-
-  <meta name="keywords"
-    content="EMPERIO TISS, food distribution, seafood, fish, fruits, vegetables, Europe, Africa, Middle East, food supply">
-
-  <meta name="theme-color" content="#071624">
-
-  <meta property="og:title"
-    content="EMPERIO TISS | Africa · Europe · Middle East">
-
-  <meta property="og:description"
-    content="International food distribution and supply connecting Africa, Europe and the Middle East.">
-
-  <meta property="og:type" content="website">
-
-  <title>EMPERIO TISS | Africa · Europe · Middle East</title>
-
-  <link rel="icon" href="logo.png">
+  <title>EMPERIO TISS | Food Moves. Markets Connect.</title>
+  <meta name="description" content="EMPERIO TISS connects food markets across Africa, Europe and the Middle East through sourcing, distribution, import, export and logistics.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
-    rel="stylesheet">
+  <style>
+    :root {
+      --black: #111412;
+      --dark: #181d1a;
+      --cream: #f4f1e9;
+      --white: #ffffff;
+      --muted: #a9aea8;
+      --line: rgba(255,255,255,.14);
+      --green: #758b58;
+      --green-dark: #52663c;
+      --sand: #d8c9a9;
+      --max: 1400px;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      color: white;
+    }
+
+    .nav {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+    }
+
+    .logo {
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      letter-spacing: .14em;
+      font-size: 18px;
+    }
+
+    .logo span {
+      color: var(--sand);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      opacity: .9;
+      transition: opacity .2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-contact {
+      padding: 11px 18px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 999px;
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: 0;
+      color: white;
+      font-size: 26px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 780px;
+      height: 92vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(8,12,10,.83) 0%, rgba(8,12,10,.56) 45%, rgba(8,12,10,.18) 100%),
+        linear-gradient(0deg, rgba(8,12,10,.65), transparent 60%),
+        url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2400&q=90")
+        center / cover;
+    }
+
+    .hero-content {
+      padding-bottom: 105px;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sand);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(55px, 8vw, 112px);
+      line-height: .94;
+      letter-spacing: -.065em;
+      max-width: 950px;
+      margin-bottom: 30px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(18px, 2vw, 25px);
+      color: rgba(255,255,255,.87);
+      max-width: 620px;
+      margin-bottom: 38px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.5);
+      color: white;
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      padding: 120px 0;
+      background: var(--cream);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .intro h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(36px, 5vw, 65px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      max-width: 700px;
+    }
+
+    .intro-text {
+      font-size: 21px;
+      line-height: 1.55;
+      color: #4d554f;
+      max-width: 650px;
+    }
+
+    /* =========================
+       BRIDGE
+    ========================= */
+
+    .bridge {
+      background: var(--dark);
+      color: white;
+      padding: 130px 0;
+      overflow: hidden;
+    }
+
+    .bridge-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+
+    .bridge h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(45px, 6vw, 82px);
+      letter-spacing: -.06em;
+      line-height: .95;
+      max-width: 760px;
+    }
+
+    .bridge-description {
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .network {
+      position: relative;
+      min-height: 390px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .network-line {
+      position: absolute;
+      height: 1px;
+      background: rgba(216,201,169,.35);
+      top: 50%;
+      left: 7%;
+      right: 7%;
+    }
+
+    .network-line::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -4px;
+      width: 8px;
+      height: 8px;
+      border-top: 1px solid var(--sand);
+      border-right: 1px solid var(--sand);
+      transform: rotate(45deg);
+    }
+
+    .network-node {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+    }
+
+    .network-node h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .network-node p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .node-africa {
+      left: 3%;
+    }
+
+    .node-emperio {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .node-europe {
+      right: 3%;
+      top: 27%;
+    }
+
+    .node-middle {
+      right: 3%;
+      top: 73%;
+    }
+
+    .node-emperio .circle {
+      width: 150px;
+      height: 150px;
+      border: 1px solid var(--sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: var(--dark);
+      position: relative;
+      z-index: 2;
+    }
+
+    .node-emperio strong {
+      font-family: "Manrope", sans-serif;
+      font-size: 17px;
+      letter-spacing: .05em;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products {
+      padding: 130px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+
+    .section-head h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 6vw, 76px);
+      letter-spacing: -.06em;
+      line-height: .95;
+      margin-top: 16px;
+    }
+
+    .section-head p {
+      max-width: 390px;
+      color: #5d635e;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .product-card {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      color: white;
+      display: flex;
+      align-items: flex-end;
+      background: #222;
+    }
+
+    .product-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,.05) 70%);
+    }
+
+    .product-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-content {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+      width: 100%;
+    }
+
+    .product-number {
+      font-size: 12px;
+      color: var(--sand);
+      margin-bottom: 75px;
+    }
+
+    .product-card h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 29px;
+      letter-spacing: -.04em;
+      margin-bottom: 9px;
+    }
+
+    .product-card p {
+      color: rgba(255,255,255,.75);
+      font-size: 14px;
+    }
+
+    .product-arrow {
+      position: absolute;
+      right: 28px;
+      bottom: 29px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* =========================
+       MARKETS
+    ========================= */
+
+    .markets {
+      background: #e7e2d5;
+      padding: 130px 0;
+    }
+
+    .markets-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .markets h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(44px, 6vw, 78px);
+      letter-spacing: -.06em;
+      line-height: .95;
+      margin: 18px 0 30px;
+    }
+
+    .markets-intro {
+      color: #5b605b;
+      max-width: 530px;
+      font-size: 18px;
+    }
+
+    .market-list {
+      border-top: 1px solid rgba(17,20,18,.2);
+    }
+
+    .market {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 23px 0;
+      border-bottom: 1px solid rgba(17,20,18,.2);
+      font-family: "Manrope", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .market span {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: #70756f;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    /* =========================
+       HOW WE WORK
+    ========================= */
+
+    .process {
+      background: var(--black);
+      color: white;
+      padding: 130px 0;
+    }
+
+    .process h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(45px, 6vw, 76px);
+      letter-spacing: -.06em;
+      line-height: .95;
+      max-width: 800px;
+      margin: 18px 0 75px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .step {
+      padding: 30px 25px 30px 0;
+      border-right: 1px solid var(--line);
+      min-height: 190px;
+    }
+
+    .step:not(:first-child) {
+      padding-left: 25px;
+    }
+
+    .step:last-child {
+      border-right: 0;
+    }
+
+    .step-number {
+      color: var(--sand);
+      font-size: 12px;
+      margin-bottom: 55px;
+    }
+
+    .step h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 20px;
+      margin-bottom: 7px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       CAPABILITIES
+    ========================= */
+
+    .capabilities {
+      padding: 130px 0;
+    }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+    }
+
+    .capabilities h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(43px, 6vw, 75px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin-top: 18px;
+    }
+
+    .cap-list {
+      border-top: 1px solid #c8c4ba;
+    }
+
+    .cap-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid #c8c4ba;
+      font-size: 18px;
+    }
+
+    .cap-item span {
+      color: var(--green-dark);
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      background:
+        linear-gradient(rgba(17,20,18,.68), rgba(17,20,18,.68)),
+        url("https://images.unsplash.com/photo-1534940519139-f860fb3c6c12?auto=format&fit=crop&w=2200&q=85")
+        center / cover;
+      color: white;
+      padding: 150px 0;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(48px, 7vw, 94px);
+      letter-spacing: -.065em;
+      line-height: .95;
+      max-width: 1000px;
+      margin: 18px auto 25px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,.75);
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 70px 0 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      max-width: 400px;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 75px;
+    }
+
+    .footer-column h4 {
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 10px;
+      color: var(--sand);
+      margin-bottom: 20px;
+    }
+
+    .footer-column a {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 11px;
+      color: #d2d5d1;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 25px;
+      color: #727871;
+      font-size: 11px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 1000px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero {
+        min-height: 700px;
+      }
+
+      .intro-grid,
+      .markets-grid,
+      .cap-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .step:nth-child(2),
+      .step:nth-child(4) {
+        border-right: 0;
+      }
+
+      .step:nth-child(3),
+      .step:nth-child(4),
+      .step:nth-child(5) {
+        border-top: 1px solid var(--line);
+      }
+
+      .network {
+        min-height: 500px;
+      }
+
+      .network-line {
+        transform: rotate(90deg);
+        left: 20%;
+        right: 20%;
+      }
+
+      .node-africa {
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .node-emperio {
+        top: 50%;
+      }
+
+      .node-europe {
+        top: 87%;
+        right: auto;
+        left: 28%;
+      }
+
+      .node-middle {
+        top: 87%;
+        right: 10%;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .container {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .nav {
+        height: 72px;
+      }
+
+      .nav-contact {
+        display: none;
+      }
+
+      .hero {
+        min-height: 680px;
+        height: 90vh;
+      }
+
+      .hero-content {
+        padding-bottom: 65px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .intro,
+      .bridge,
+      .products,
+      .markets,
+      .process,
+      .capabilities {
+        padding: 85px 0;
+      }
+
+      .bridge-heading,
+      .section-head,
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        min-height: 460px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step,
+      .step:not(:first-child) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 25px 0;
+      }
+
+      .step-number {
+        margin-bottom: 30px;
+      }
+
+      .footer-links {
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .footer-bottom {
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<header>
+  <div class="container nav">
 
-<header class="site-header" id="top">
-
-  <div class="container nav-wrap">
-
-    <a class="brand" href="index.html" aria-label="EMPERIO TISS home">
-      <img src="logo.png" alt="EMPERIO TISS logo">
+    <a href="index.html" class="logo">
+      EMPERIO <span>TISS</span>
     </a>
 
-    <button
-      class="menu-toggle"
-      aria-label="Open navigation menu"
-      aria-expanded="false">
+    <nav class="nav-links">
+      <a href="products/">Products</a>
+      <a href="markets/">Markets</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-contact">Contact</a>
+    </nav>
+
+    <button class="mobile-menu" aria-label="Open menu">
       ☰
     </button>
 
-    <nav class="nav" aria-label="Main navigation">
-
-      <a href="#products">
-        Products
-      </a>
-
-      <a href="markets/">
-        Markets
-      </a>
-
-      <a href="#services">
-        Services
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
-
-      <div class="lang">
-
-        <button
-          class="lang-btn"
-          aria-label="Select language">
-          EN ▾
-        </button>
-
-        <div class="lang-menu">
-
-          <button data-lang="en">
-            English
-          </button>
-
-          <button data-lang="es">
-            Español
-          </button>
-
-          <button data-lang="fr">
-            Français
-          </button>
-
-        </div>
-
-      </div>
-
-      <a class="nav-cta" href="#contact">
-        Request a quote
-      </a>
-
-    </nav>
-
   </div>
-
 </header>
 
 
 <main>
 
+  <!-- HERO -->
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+  <section class="hero">
 
-<section class="hero">
+    <div class="container hero-content">
 
-  <div class="hero-overlay"></div>
+      <div class="eyebrow">
+        Africa · Europe · Middle East
+      </div>
 
-  <div class="container hero-content">
+      <h1>
+        Food moves.<br>
+        Markets connect.
+      </h1>
 
-    <p class="eyebrow">
-      INTERNATIONAL FOOD DISTRIBUTION & SUPPLY
-    </p>
+      <p class="hero-subtitle">
+        EMPERIO TISS connects food supply with professional markets
+        across Africa, Europe and the Middle East.
+      </p>
 
-    <h1>
-      Connecting Africa,<br>
-      Europe & the<br>
-      Middle East.
-    </h1>
+      <div class="hero-actions">
+        <a href="products/" class="btn btn-primary">
+          Explore Products →
+        </a>
 
-    <p class="hero-text">
-      EMPERIO TISS develops professional food distribution
-      and supply solutions connecting products, markets and
-      business demand across three strategic regions.
-    </p>
-
-    <div class="hero-actions">
-
-      <a class="button primary" href="#products">
-        Explore products
-      </a>
-
-      <a class="button secondary" href="markets/">
-        Explore markets
-      </a>
+        <a href="markets/" class="btn btn-secondary">
+          Explore Markets
+        </a>
+      </div>
 
     </div>
 
-  </div>
-
-  <div class="hero-scroll">
-    ↓
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================================================
-     INTRO
-========================================================= -->
+  <!-- INTRO -->
 
-<section class="intro section">
+  <section class="intro" id="about">
 
-  <div class="container two-col">
-
-    <div>
-
-      <p class="eyebrow dark">
-        EMPERIO TISS
-      </p>
-
-      <h2>
-        A bridge between markets.
-      </h2>
-
-    </div>
-
-    <div class="intro-copy">
-
-      <p>
-        We connect food supply with professional demand
-        across Europe, Africa and the Middle East.
-      </p>
-
-      <p>
-        Our approach combines product distribution,
-        commercial coordination and logistics to create
-        practical international supply solutions.
-      </p>
-
-      <a class="text-link" href="markets/">
-        Discover our markets →
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     PRODUCTS
-========================================================= -->
-
-<section class="section products" id="products">
-
-  <div class="container">
-
-    <div class="section-head">
+    <div class="container intro-grid">
 
       <div>
+        <div class="section-label">
+          The idea
+        </div>
+      </div>
 
-        <p class="eyebrow dark">
-          OUR PRODUCTS
-        </p>
-
+      <div>
         <h2>
-          Food categories built<br>
-          for professional markets.
+          From origin to market, we build the route.
         </h2>
+
+        <p class="intro-text" style="margin-top:35px;">
+          EMPERIO TISS works across international food markets,
+          connecting suppliers, products and professional buyers
+          through sourcing, trade and logistics coordination.
+        </p>
 
       </div>
 
-      <p>
-        A focused product portfolio developed around
-        professional demand, seasonality, availability
-        and destination requirements.
-      </p>
-
     </div>
 
+  </section>
 
-    <div class="cards four">
 
+  <!-- BRIDGE -->
 
-      <!-- FISH & SEAFOOD -->
+  <section class="bridge">
 
-      <a
-        class="card product-card fish"
-        href="products/seafood.html">
+    <div class="container">
 
-        <div class="card-number">
-          01
-        </div>
+      <div class="bridge-heading">
 
         <div>
+          <div class="section-label">
+            Our network
+          </div>
 
-          <h3>
-            Fish & Seafood
-          </h3>
-
-          <p>
-            Fresh and frozen fish, seafood and marine
-            products for professional buyers.
-          </p>
-
+          <h2>
+            One bridge.<br>
+            Multiple markets.
+          </h2>
         </div>
 
-      </a>
-
-
-      <!-- FRUITS & VEGETABLES -->
-
-      <a
-        class="card product-card produce"
-        href="products/fruits-vegetables.html">
-
-        <div class="card-number">
-          02
-        </div>
-
-        <div>
-
-          <h3>
-            Fruits & Vegetables
-          </h3>
-
-          <p>
-            Fresh produce selected according to
-            seasonality, quality and market demand.
-          </p>
-
-        </div>
-
-      </a>
-
-
-      <!-- FRESH & FROZEN -->
-
-      <a
-        class="card product-card fresh"
-        href="#contact">
-
-        <div class="card-number">
-          03
-        </div>
-
-        <div>
-
-          <h3>
-            Fresh & Frozen
-          </h3>
-
-          <p>
-            Product solutions adapted to professional
-            requirements, specifications and destination.
-          </p>
-
-        </div>
-
-      </a>
-
-
-      <!-- SEASONAL -->
-
-      <a
-        class="card product-card seasonal"
-        href="#contact">
-
-        <div class="card-number">
-          04
-        </div>
-
-        <div>
-
-          <h3>
-            Seasonal Products
-          </h3>
-
-          <p>
-            Products aligned with seasonality,
-            availability and commercial demand.
-          </p>
-
-        </div>
-
-      </a>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     MARKET BRIDGE
-========================================================= -->
-
-<section class="dark-section market-bridge">
-
-  <div class="container">
-
-    <div class="section-head light">
-
-      <div>
-
-        <p class="eyebrow">
-          OUR POSITION
+        <p class="bridge-description">
+          We operate around commercial routes connecting
+          production origins with demanding food markets.
         </p>
-
-        <h2>
-          Three regions.<br>
-          One commercial bridge.
-        </h2>
 
       </div>
 
-      <p>
-        EMPERIO TISS is developing connections between
-        established European distribution corridors,
-        African markets and growing opportunities in
-        the Middle East.
-      </p>
+
+      <div class="network">
+
+        <div class="network-line"></div>
+
+        <div class="network-node node-africa">
+          <h3>Africa</h3>
+          <p>
+            Morocco · Tunisia<br>
+            Senegal · Mauritania<br>
+            Ghana
+          </p>
+        </div>
+
+        <div class="network-node node-emperio">
+
+          <div class="circle">
+            <strong>
+              EMPERIO<br>
+              TISS
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="network-node node-europe">
+          <h3>Europe</h3>
+          <p>
+            Spain · France<br>
+            Germany · Italy<br>
+            Netherlands
+          </p>
+        </div>
+
+        <div class="network-node node-middle">
+          <h3>Middle East</h3>
+          <p>
+            GCC<br>
+            Levant
+          </p>
+        </div>
+
+      </div>
 
     </div>
 
+  </section>
 
-    <div class="bridge-grid">
+
+  <!-- PRODUCTS -->
+
+  <section class="products">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+          <div class="section-label">
+            What we trade
+          </div>
+
+          <h2>
+            Products.
+          </h2>
+        </div>
+
+        <p>
+          Selected food categories designed around professional
+          B2B demand, seasonality and cross-border opportunities.
+        </p>
+
+      </div>
 
 
-      <div class="bridge-region">
+      <div class="product-grid">
 
-        <span>
-          01
-        </span>
+        <a href="products/fish-seafood.html" class="product-card">
 
-        <h3>
+          <img
+            src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=1000&q=85"
+            alt="Fresh fish and seafood"
+          >
+
+          <div class="product-content">
+
+            <div class="product-number">01 / 04</div>
+
+            <h3>Fish & Seafood</h3>
+
+            <p>
+              Fresh and frozen products for professional markets.
+            </p>
+
+            <div class="product-arrow">↗</div>
+
+          </div>
+
+        </a>
+
+
+        <a href="products/fruits-vegetables.html" class="product-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=1000&q=85"
+            alt="Fresh fruits and vegetables"
+          >
+
+          <div class="product-content">
+
+            <div class="product-number">02 / 04</div>
+
+            <h3>Fruits & Vegetables</h3>
+
+            <p>
+              Origins, varieties and seasonal supply programs.
+            </p>
+
+            <div class="product-arrow">↗</div>
+
+          </div>
+
+        </a>
+
+
+        <a href="products/fresh-frozen.html" class="product-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?auto=format&fit=crop&w=1000&q=85"
+            alt="Fresh food products"
+          >
+
+          <div class="product-content">
+
+            <div class="product-number">03 / 04</div>
+
+            <h3>Fresh & Frozen</h3>
+
+            <p>
+              Supply solutions adapted to destination markets.
+            </p>
+
+            <div class="product-arrow">↗</div>
+
+          </div>
+
+        </a>
+
+
+        <a href="products/seasonal.html" class="product-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1000&q=85"
+            alt="Seasonal food market"
+          >
+
+          <div class="product-content">
+
+            <div class="product-number">04 / 04</div>
+
+            <h3>Seasonal</h3>
+
+            <p>
+              Market opportunities shaped by timing and demand.
+            </p>
+
+            <div class="product-arrow">↗</div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MARKETS -->
+
+  <section class="markets">
+
+    <div class="container markets-grid">
+
+      <div>
+
+        <div class="section-label">
+          Where we operate
+        </div>
+
+        <h2>
+          Markets<br>
+          without borders.
+        </h2>
+
+        <p class="markets-intro">
+          Our network is built around strategic food corridors
+          between production regions and professional buyers.
+        </p>
+
+      </div>
+
+
+      <div class="market-list">
+
+        <a href="markets/europe.html" class="market">
           Europe
-        </h3>
+          <span>Spain · France · Germany · Italy</span>
+        </a>
 
-        <p>
-          Our European commercial base and distribution
-          network.
-        </p>
-
-        <div class="region-countries">
-          Spain · France · Germany · Italy · Netherlands
-        </div>
-
-      </div>
-
-
-      <div class="bridge-line">
-        <span>↔</span>
-      </div>
-
-
-      <div class="bridge-region">
-
-        <span>
-          02
-        </span>
-
-        <h3>
+        <a href="markets/africa.html" class="market">
           Africa
-        </h3>
+          <span>North · West Africa</span>
+        </a>
 
-        <p>
-          Developing commercial connections with
-          North, West and other African markets.
-        </p>
-
-        <div class="region-countries">
-          Morocco · Tunisia · Senegal · Mauritania · Ghana
-        </div>
-
-      </div>
-
-
-      <div class="bridge-line">
-        <span>↔</span>
-      </div>
-
-
-      <div class="bridge-region">
-
-        <span>
-          03
-        </span>
-
-        <h3>
+        <a href="markets/middle-east.html" class="market">
           Middle East
-        </h3>
+          <span>GCC · Levant</span>
+        </a>
 
-        <p>
-          Building access to new international demand
-          and professional food markets.
-        </p>
+      </div>
 
-        <div class="region-countries">
-          Middle Eastern markets
+    </div>
+
+  </section>
+
+
+  <!-- PROCESS -->
+
+  <section class="process" id="solutions">
+
+    <div class="container">
+
+      <div class="section-label">
+        How we work
+      </div>
+
+      <h2>
+        From product<br>
+        to destination.
+      </h2>
+
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Product</h3>
+          <p>
+            Identify the right product, origin and specification.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Sourcing</h3>
+          <p>
+            Connect supply with commercial requirements.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Commercial</h3>
+          <p>
+            Align volumes, pricing, timing and terms.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Logistics</h3>
+          <p>
+            Coordinate the route between origin and destination.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">05</div>
+          <h3>Market</h3>
+          <p>
+            Deliver to the professional buyer and develop the route.
+          </p>
         </div>
 
       </div>
 
-
     </div>
 
-
-    <div class="market-button-wrap">
-
-      <a class="button secondary" href="markets/">
-        Explore our markets →
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================================================
-     SERVICES
-========================================================= -->
+  <!-- CAPABILITIES -->
 
-<section class="section services" id="services">
+  <section class="capabilities">
 
-  <div class="container">
-
-    <div class="section-head">
+    <div class="container cap-grid">
 
       <div>
 
-        <p class="eyebrow dark">
-          OUR SERVICES
-        </p>
+        <div class="section-label">
+          Commercial capabilities
+        </div>
 
         <h2>
-          From product to destination.
+          Built for professional food markets.
         </h2>
 
       </div>
 
-      <p>
-        We coordinate the commercial and operational
-        elements required to move food products between
-        markets efficiently.
-      </p>
+
+      <div class="cap-list">
+
+        <div class="cap-item">
+          B2B distribution
+          <span>↗</span>
+        </div>
+
+        <div class="cap-item">
+          Import & export
+          <span>↗</span>
+        </div>
+
+        <div class="cap-item">
+          Cross-border sourcing
+          <span>↗</span>
+        </div>
+
+        <div class="cap-item">
+          Logistics coordination
+          <span>↗</span>
+        </div>
+
+        <div class="cap-item">
+          Recurring supply
+          <span>↗</span>
+        </div>
+
+        <div class="cap-item">
+          Market development
+          <span>↗</span>
+        </div>
+
+      </div>
 
     </div>
 
-
-    <div class="service-list">
-
-
-      <article>
-
-        <span>
-          01
-        </span>
-
-        <div>
-
-          <h3>
-            Food Distribution
-          </h3>
-
-          <p>
-            Professional B2B distribution adapted to
-            product, volume and destination requirements.
-          </p>
-
-        </div>
-
-      </article>
+  </section>
 
 
-      <article>
+  <!-- CTA -->
 
-        <span>
-          02
-        </span>
+  <section class="cta" id="contact">
 
-        <div>
+    <div class="container">
 
-          <h3>
-            Product Supply
-          </h3>
-
-          <p>
-            Identification and coordination of products
-            according to specifications, seasonality,
-            availability and demand.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article>
-
-        <span>
-          03
-        </span>
-
-        <div>
-
-          <h3>
-            Import & Export
-          </h3>
-
-          <p>
-            Cross-border commercial coordination supporting
-            movements between European, African and
-            Mediterranean markets.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article>
-
-        <span>
-          04
-        </span>
-
-        <div>
-
-          <h3>
-            Logistics Coordination
-          </h3>
-
-          <p>
-            Transport planning and coordination from origin
-            through to the required destination.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article>
-
-        <span>
-          05
-        </span>
-
-        <div>
-
-          <h3>
-            Recurring Supply Solutions
-          </h3>
-
-          <p>
-            Commercial supply structures designed around
-            recurring demand, timing and operational needs.
-          </p>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section class="section about" id="about">
-
-  <div class="container about-box">
-
-    <div class="about-mark">
-      E
-    </div>
-
-    <div>
-
-      <p class="eyebrow dark">
-        ABOUT EMPERIO TISS
-      </p>
+      <div class="section-label">
+        Start a conversation
+      </div>
 
       <h2>
-        International perspective.<br>
-        Practical execution.
+        Tell us what your market needs.
       </h2>
 
       <p>
-        EMPERIO TISS is a Madrid-based company focused
-        on professional food distribution and supply
-        across European, African and Mediterranean markets.
+        Product. Volume. Destination. Timing.
       </p>
 
-      <p>
-        We aim to build long-term commercial connections
-        by combining product knowledge, market understanding,
-        coordination and logistics.
-      </p>
-
-      <div class="pill-row">
-
-        <span>
-          Quality
-        </span>
-
-        <span>
-          Reliability
-        </span>
-
-        <span>
-          Coordination
-        </span>
-
-        <span>
-          International
-        </span>
-
-      </div>
+      <a href="mailto:contact@emperio-tiss.com" class="btn btn-primary">
+        Contact EMPERIO TISS →
+      </a>
 
     </div>
 
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CONTACT / CTA
-========================================================= -->
-
-<section class="cta-section" id="contact">
-
-  <div class="container cta-inner">
-
-    <p class="eyebrow">
-      LET'S CONNECT
-    </p>
-
-    <h2>
-      Looking for a reliable food supply partner?
-    </h2>
-
-    <p>
-      Tell us what product you are looking for,
-      where you need it, the required volume and
-      your expected timing.
-    </p>
-
-
-    <form class="contact-form" id="quoteForm">
-
-
-      <div class="form-grid">
-
-
-        <label>
-
-          <span>
-            Name
-          </span>
-
-          <input
-            name="name"
-            type="text"
-            required>
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Company
-          </span>
-
-          <input
-            name="company"
-            type="text">
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Email
-          </span>
-
-          <input
-            name="email"
-            type="email"
-            required>
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Phone
-          </span>
-
-          <input
-            name="phone"
-            type="text">
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Product
-          </span>
-
-          <input
-            name="product"
-            type="text"
-            placeholder="e.g. seafood / citrus">
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Destination
-          </span>
-
-          <input
-            name="destination"
-            type="text"
-            placeholder="City / country">
-
-        </label>
-
-
-      </div>
-
-
-      <label>
-
-        <span>
-          Message
-        </span>
-
-        <textarea
-          name="message"
-          rows="5"
-          required></textarea>
-
-      </label>
-
-
-      <button
-        class="button light-button"
-        type="submit">
-
-        Prepare enquiry
-
-      </button>
-
-
-      <p class="form-note">
-        Your enquiry will be prepared in your email
-        application. A professional contact form can
-        be connected later.
-      </p>
-
-
-    </form>
-
-  </div>
-
-</section>
-
+  </section>
 
 </main>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<!-- FOOTER -->
 
-<footer class="footer">
+<footer>
 
-  <div class="container footer-grid">
+  <div class="container">
 
+    <div class="footer-top">
 
-    <div>
+      <div class="footer-brand">
 
-      <img
-        class="footer-logo"
-        src="logo.png"
-        alt="EMPERIO TISS">
+        <div class="logo">
+          EMPERIO <span>TISS</span>
+        </div>
 
-      <p>
-        International Food Distribution & Supply
-      </p>
+        <p>
+          Connecting food markets across Africa,
+          Europe and the Middle East.
+        </p>
 
-      <p>
-        Africa · Europe · Middle East
-      </p>
-
-    </div>
+      </div>
 
 
-    <div>
+      <div class="footer-links">
 
-      <strong>
-        Navigation
-      </strong>
+        <div class="footer-column">
 
-      <a href="#products">
-        Products
-      </a>
+          <h4>Explore</h4>
 
-      <a href="markets/">
-        Markets
-      </a>
+          <a href="products/">Products</a>
+          <a href="markets/">Markets</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#about">About</a>
 
-      <a href="#services">
-        Services
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-    </div>
+        </div>
 
 
-    <div>
+        <div class="footer-column">
 
-      <strong>
-        Products
-      </strong>
+          <h4>Contact</h4>
 
-      <a href="products/seafood.html">
-        Fish & Seafood
-      </a>
+          <a href="mailto:contact@emperio-tiss.com">
+            contact@emperio-tiss.com
+          </a>
 
-      <a href="products/fruits-vegetables.html">
-        Fruits & Vegetables
-      </a>
+          <a href="#contact">
+            Madrid · Spain
+          </a>
 
-      <a href="#products">
-        Fresh & Frozen
-      </a>
+        </div>
 
-      <a href="#products">
-        Seasonal Products
-      </a>
+      </div>
 
     </div>
 
 
-    <div>
+    <div class="footer-bottom">
 
-      <strong>
-        Contact
-      </strong>
+      <div>
+        © 2026 EMPERIO TISS SL. All rights reserved.
+      </div>
 
-      <a href="#contact">
-        Request a quote
-      </a>
-
-      <span>
-        Madrid, Spain
-      </span>
+      <div>
+        Food Moves. Markets Connect.
+      </div>
 
     </div>
-
-
-  </div>
-
-
-  <div class="container footer-bottom">
-
-    <span>
-      © <span id="year"></span> EMPERIO TISS SL
-    </span>
-
-    <span>
-      Africa · Europe · Middle East
-    </span>
 
   </div>
 
 </footer>
 
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
-<script src="script.js"></script>
-
-<script>
-
-  const yearElement = document.getElementById("year");
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-
-</script>
 
 </body>
 </html>
