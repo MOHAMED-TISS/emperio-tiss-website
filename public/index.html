@@ -1,133 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>
-    EMPERIO TISS | Europe · Africa · Mediterranean
-  </title>
+  <title>EMPERIO TISS | Europe × Africa</title>
 
   <meta
     name="description"
-    content="EMPERIO TISS connects selected food origins in Africa with professional markets across Europe through sourcing, fresh products and distribution."
+    content="EMPERIO TISS connects selected food origins in Africa with professional markets across Europe."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
     rel="stylesheet"
   >
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
-
-<body>
-
-
-<!-- ======================================================
-     HEADER
-====================================================== -->
+<body class="home-page">
 
 <header class="site-header">
 
-  <div class="container nav-wrap">
+  <div class="header-inner">
 
-    <a
-      href="index.html"
-      class="brand"
-      aria-label="EMPERIO TISS"
-    >
-
-      <img
-        src="logo.png"
-        alt="EMPERIO TISS"
-      >
-
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="EMPERIO TISS">
     </a>
 
+    <nav class="main-nav">
 
-    <nav
-      class="nav"
-      id="mainNav"
-    >
+      <a href="about/about.html">About</a>
+      <a href="products/index.html">Products</a>
+      <a href="markets/markets.html">Markets</a>
 
-      <a href="about/about.html">
-        About
-      </a>
-
-      <a href="products/index.html">
-        Products
-      </a>
-
-      <a href="markets/markets.html">
-        Markets
-      </a>
-
-
-      <div
-        class="language-switcher"
-        aria-label="Languages"
-      >
-
-        <a
-          href="#"
-          class="active"
-        >
-          EN
-        </a>
-
-        <a href="es/index.html">
-          ES
-        </a>
-
-        <a href="fr/index.html">
-          FR
-        </a>
-
-        <a href="ar/index.html">
-          AR
-        </a>
-
+      <div class="languages">
+        <a href="#" class="active">EN</a>
+        <span>/</span>
+        <a href="#">ES</a>
+        <span>/</span>
+        <a href="#">FR</a>
+        <span>/</span>
+        <a href="#">AR</a>
       </div>
-
 
       <a
         href="contact/contact.html"
-        class="nav-cta"
+        class="nav-button"
       >
         Business enquiry ↗
       </a>
 
     </nav>
 
-
     <button
-      class="menu-toggle"
-      type="button"
+      class="mobile-menu"
       aria-label="Open navigation"
-      aria-expanded="false"
-      aria-controls="mainNav"
+      type="button"
     >
-      ☰
+      <span></span>
+      <span></span>
     </button>
 
   </div>
@@ -137,207 +74,148 @@
 
 <main>
 
-
-<!-- ======================================================
-     HERO
-====================================================== -->
+<!-- HERO -->
 
 <section class="home-hero">
 
-  <div class="container hero-grid">
+  <div class="hero-top">
+
+    <span>EUROPE</span>
+
+    <span class="hero-symbol">×</span>
+
+    <span>AFRICA</span>
+
+  </div>
 
 
-    <div>
+  <div class="hero-title">
 
-      <p class="eyebrow">
-        Europe · Africa · Mediterranean
-      </p>
+    <h1>
+      Two continents.
+    </h1>
 
-
-      <h1 class="hero-title">
-
-        Two continents.
-
-        <em>
-          One commercial direction.
-        </em>
-
-      </h1>
-
-
-      <p class="hero-description">
-
-        EMPERIO TISS connects selected food origins
-        in Africa with professional markets across
-        Europe, focusing on practical sourcing,
-        distribution and reliable commercial routes.
-
-      </p>
-
-
-      <div class="hero-actions">
-
-        <a
-          href="markets/markets.html"
-          class="button primary"
-        >
-          Explore markets ↗
-        </a>
-
-        <a
-          href="products/index.html"
-          class="button secondary"
-        >
-          Discover products
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <aside class="hero-side">
-
-      <strong>
-        THE NETWORK
-      </strong>
-
-      <span>
-        01 · Europe
-      </span>
-
-      <span>
-        Distribution
-      </span>
-
-      <span>
-        02 · Africa
-      </span>
-
-      <span>
-        Sourcing
-      </span>
-
-    </aside>
+    <h1 class="italic">
+      One direction.
+    </h1>
 
   </div>
 
 
   <div class="hero-bottom">
 
-    <span>
-      Food trade · sourcing · distribution
-    </span>
+    <p>
+      EMPERIO TISS connects selected food origins
+      in Africa with professional markets across Europe,
+      focusing on sourcing, distribution and reliable
+      commercial routes.
+    </p>
 
-    <a
-      href="#network"
-      class="hero-scroll"
-    >
-      Scroll to explore ↓
-    </a>
+
+    <div class="hero-actions">
+
+      <a
+        href="markets/markets.html"
+        class="button button-dark"
+      >
+        Explore markets ↗
+      </a>
+
+      <a
+        href="products/index.html"
+        class="button button-light"
+      >
+        Discover products
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="hero-index">
+
+    <span>01</span>
+
+    <div></div>
+
+    <span>02</span>
 
   </div>
 
 </section>
 
 
-<!-- ======================================================
-     NETWORK
-====================================================== -->
+<!-- NETWORK -->
 
-<section
-  class="section network-section"
-  id="network"
->
+<section class="network-section">
 
-  <div class="container">
+  <div class="section-container">
 
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow">
-          01 — The network
-        </p>
-
-        <h2>
-          Where origin
-          meets destination.
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        Europe represents our core distribution
-        environment, while North and West Africa
-        provide strategic sourcing origins for
-        selected food products.
-
-      </p>
-
+    <div class="section-label">
+      <span>01</span>
+      <span>The network</span>
     </div>
 
 
     <div class="network-intro">
 
+      <h2>
+        Europe receives.
+        <br>
+        <em>Africa sources.</em>
+      </h2>
 
-      <article class="network-half">
+      <p>
+        A focused network built around selected origins,
+        professional markets and practical distribution.
+      </p>
 
-        <span class="network-number">
-          01
-        </span>
+    </div>
 
 
-        <div>
+    <div class="network-grid">
 
-          <div class="network-label">
-            Distribution
-          </div>
+      <article class="network-card europe-card">
 
-          <h3>
-            Europe
-          </h3>
-
-          <p class="network-countries">
-
-            Spain · France · Italy · Germany ·
-            Netherlands
-
-          </p>
-
+        <div class="card-top">
+          <span>01</span>
+          <span>Distribution</span>
         </div>
+
+        <h3>Europe</h3>
+
+        <p>
+          Spain · France · Italy
+          <br>
+          Germany · Netherlands
+        </p>
+
+        <a href="markets/markets.html">
+          Explore Europe ↗
+        </a>
 
       </article>
 
 
-      <article class="network-half">
+      <article class="network-card africa-card">
 
-        <span class="network-number">
-          02
-        </span>
-
-
-        <div>
-
-          <div class="network-label">
-            Sourcing
-          </div>
-
-          <h3>
-            Africa
-          </h3>
-
-          <p class="network-countries">
-
-            Morocco · Tunisia · Mauritania ·
-            West Africa
-
-          </p>
-
+        <div class="card-top">
+          <span>02</span>
+          <span>Sourcing</span>
         </div>
+
+        <h3>Africa</h3>
+
+        <p>
+          Morocco · Tunisia
+          <br>
+          Mauritania · West Africa
+        </p>
+
+        <a href="markets/markets.html">
+          Explore Africa ↗
+        </a>
 
       </article>
 
@@ -348,124 +226,88 @@
 </section>
 
 
-<!-- ======================================================
-     PRODUCTS
-====================================================== -->
+<!-- PRODUCTS -->
 
-<section class="section products-section">
+<section class="home-products">
 
-  <div class="container">
+  <div class="section-container">
 
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow">
-          02 — What we trade
-        </p>
-
-        <h2>
-          Products
-          with purpose.
-        </h2>
-
-      </div>
+    <div class="section-label">
+      <span>02</span>
+      <span>Products</span>
+    </div>
 
 
-      <p>
+    <div class="products-heading">
 
-        Selected according to origin,
-        seasonality, specifications,
-        availability and destination.
+      <h2>
+        Selected products.
+        <br>
+        <em>Right origins.</em>
+      </h2>
 
-      </p>
+      <a
+        href="products/index.html"
+        class="circle-link"
+      >
+        ↗
+      </a>
 
     </div>
 
 
-    <div class="product-list">
-
+    <div class="product-strip">
 
       <a
         href="products/seafood.html"
-        class="product-row"
+        class="product-item"
       >
 
-        <span class="product-number">
-          01
-        </span>
+        <span>01</span>
 
-        <span class="product-name">
-          Seafood
-        </span>
+        <h3>Seafood</h3>
 
-        <span class="product-description">
+        <p>
+          Fresh & frozen
+        </p>
 
-          Fresh and frozen fish, seafood
-          and cephalopods for professional
-          markets.
-
-        </span>
-
-        <span class="product-arrow">
-          ↗
-        </span>
+        <strong>↗</strong>
 
       </a>
 
 
       <a
         href="products/fruits-vegetables.html"
-        class="product-row"
+        class="product-item"
       >
 
-        <span class="product-number">
-          02
-        </span>
+        <span>02</span>
 
-        <span class="product-name">
-          Fresh produce
-        </span>
+        <h3>Fruits & Vegetables</h3>
 
-        <span class="product-description">
+        <p>
+          Seasonal produce
+        </p>
 
-          Fruits and vegetables sourced
-          around Mediterranean origins
-          and commercial demand.
-
-        </span>
-
-        <span class="product-arrow">
-          ↗
-        </span>
+        <strong>↗</strong>
 
       </a>
 
 
       <a
         href="products/seasonal.html"
-        class="product-row"
+        class="product-item"
       >
 
-        <span class="product-number">
-          03
-        </span>
+        <span>03</span>
 
-        <span class="product-name">
-          Seasonal
-        </span>
+        <h3>Seasonal</h3>
 
-        <span class="product-description">
+        <p>
+          Availability calendar
+        </p>
 
-          A commercial view of availability,
-          origins and seasonal supply cycles.
-
-        </span>
-
-        <span class="product-arrow">
-          ↗
-        </span>
+        <strong>↗</strong>
 
       </a>
 
@@ -476,331 +318,34 @@
 </section>
 
 
-<!-- ======================================================
-     PROCESS
-====================================================== -->
-
-<section class="section process-section">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow">
-          03 — How we work
-        </p>
-
-        <h2>
-          From origin
-          to destination.
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        Commercial decisions are built around
-        product availability, specifications,
-        volume, timing and destination.
-
-      </p>
-
-    </div>
-
-
-    <div class="process-grid">
-
-
-      <article class="process-item">
-
-        <span class="process-number">
-          01 · SOURCE
-        </span>
-
-        <h3>
-          Source.
-        </h3>
-
-        <p>
-
-          Identify suitable origins,
-          products and availability.
-
-        </p>
-
-      </article>
-
-
-      <article class="process-item">
-
-        <span class="process-number">
-          02 · SELECT
-        </span>
-
-        <h3>
-          Select.
-        </h3>
-
-        <p>
-
-          Match specifications,
-          volume and destination.
-
-        </p>
-
-      </article>
-
-
-      <article class="process-item">
-
-        <span class="process-number">
-          03 · DISTRIBUTE
-        </span>
-
-        <h3>
-          Distribute.
-        </h3>
-
-        <p>
-
-          Coordinate the commercial
-          route to the market.
-
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     MARKETS
-====================================================== -->
-
-<section class="section markets-section">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div>
-
-        <p class="eyebrow">
-          04 — Destinations
-        </p>
-
-        <h2>
-          Built around
-          markets.
-        </h2>
-
-      </div>
-
-
-      <p>
-
-        Europe is the core distribution
-        environment, supported by sourcing
-        relationships across North and
-        West Africa.
-
-      </p>
-
-    </div>
-
-
-    <div class="market-grid">
-
-
-      <article class="market-card">
-
-        <span>
-          01 · DISTRIBUTION
-        </span>
-
-        <strong>
-          Spain
-        </strong>
-
-        <small>
-          Europe
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          02 · DISTRIBUTION
-        </span>
-
-        <strong>
-          France
-        </strong>
-
-        <small>
-          Europe
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          03 · DISTRIBUTION
-        </span>
-
-        <strong>
-          Italy
-        </strong>
-
-        <small>
-          Europe
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          04 · DISTRIBUTION
-        </span>
-
-        <strong>
-          Germany
-        </strong>
-
-        <small>
-          Europe
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          05 · DISTRIBUTION
-        </span>
-
-        <strong>
-          Netherlands
-        </strong>
-
-        <small>
-          Europe
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          06 · SOURCING
-        </span>
-
-        <strong>
-          Morocco
-        </strong>
-
-        <small>
-          Africa
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          07 · SOURCING
-        </span>
-
-        <strong>
-          Tunisia
-        </strong>
-
-        <small>
-          Africa
-        </small>
-
-      </article>
-
-
-      <article class="market-card">
-
-        <span>
-          08 · SOURCING
-        </span>
-
-        <strong>
-          Mauritania
-        </strong>
-
-        <small>
-          Africa
-        </small>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     CTA
-====================================================== -->
-
-<section class="section cta-section">
-
-  <div class="container">
-
-    <div class="cta-inner">
-
-      <p class="eyebrow">
-        Business enquiry
-      </p>
-
-
-      <h2>
-        Looking for a product,
-        origin or market?
-      </h2>
-
-
-      <p>
-
-        Tell us what you need,
-        where it comes from and
-        where it needs to go.
-
-      </p>
-
-
-      <a
-        href="contact/contact.html"
-        class="button"
-      >
-        Start a conversation ↗
-      </a>
-
-    </div>
+<!-- CLOSING -->
+
+<section class="home-closing">
+
+  <div class="closing-inner">
+
+    <span class="closing-label">
+      EUROPE × AFRICA
+    </span>
+
+    <h2>
+      From origin
+      <br>
+      <em>to destination.</em>
+    </h2>
+
+    <p>
+      Tell us what you are looking for.
+      We will discuss origin, product,
+      availability and destination.
+    </p>
+
+    <a
+      href="contact/contact.html"
+      class="closing-button"
+    >
+      Business enquiry ↗
+    </a>
 
   </div>
 
@@ -809,69 +354,44 @@
 </main>
 
 
-<!-- ======================================================
-     FOOTER
-====================================================== -->
+<footer class="site-footer">
 
-<footer class="footer">
+  <div class="footer-main">
 
-  <div class="container footer-grid">
-
-
-    <div>
+    <div class="footer-brand">
 
       <img
         src="logo.png"
         alt="EMPERIO TISS"
-        class="footer-logo"
       >
 
       <p>
-
-        Professional food sourcing and
-        distribution connecting Europe
-        and Africa.
-
+        Food sourcing and distribution
+        connecting Europe and Africa.
       </p>
 
     </div>
 
 
-    <div>
+    <div class="footer-column">
 
-      <strong>
-        Company
-      </strong>
+      <span>Company</span>
 
-      <a href="about/about.html">
-        About
-      </a>
-
-      <a href="markets/markets.html">
-        Markets
-      </a>
-
-      <a href="contact/contact.html">
-        Contact
-      </a>
+      <a href="about/about.html">About</a>
+      <a href="markets/markets.html">Markets</a>
+      <a href="contact/contact.html">Contact</a>
 
     </div>
 
 
-    <div>
+    <div class="footer-column">
 
-      <strong>
-        Products
-      </strong>
+      <span>Products</span>
 
-      <a href="products/seafood.html">
-        Seafood
-      </a>
-
+      <a href="products/seafood.html">Seafood</a>
       <a href="products/fruits-vegetables.html">
-        Fresh produce
+        Fruits & Vegetables
       </a>
-
       <a href="products/seasonal.html">
         Seasonal
       </a>
@@ -881,14 +401,14 @@
   </div>
 
 
-  <div class="container footer-bottom">
+  <div class="footer-bottom">
 
     <span>
       © 2026 EMPERIO TISS
     </span>
 
     <span>
-      Europe · Africa · Mediterranean
+      Europe × Africa
     </span>
 
   </div>
@@ -896,81 +416,7 @@
 </footer>
 
 
-<script>
-
-  document.documentElement.classList.add("js");
-
-  const menuButton =
-    document.querySelector(".menu-toggle");
-
-  const nav =
-    document.querySelector(".nav");
-
-  if (menuButton && nav) {
-
-    menuButton.addEventListener("click", () => {
-
-      const open =
-        nav.classList.toggle("open");
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        open ? "true" : "false"
-      );
-
-    });
-
-  }
-
-
-  const elements =
-    document.querySelectorAll(".fade-up");
-
-
-  if ("IntersectionObserver" in window) {
-
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add(
-                "is-visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: .12
-        }
-      );
-
-
-    elements.forEach(element => {
-      observer.observe(element);
-    });
-
-  } else {
-
-    elements.forEach(element => {
-      element.classList.add("is-visible");
-    });
-
-  }
-
-</script>
-
+<script src="script.js"></script>
 
 </body>
-
 </html>
