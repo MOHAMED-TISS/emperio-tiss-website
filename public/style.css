@@ -1081,3 +1081,368 @@ p{
   }
 
 }
+/* =========================================================
+   MARKETS PAGE
+========================================================= */
+
+.markets-hero{
+  min-height:100svh;
+}
+
+
+/* ---------------------------------------------------------
+   MARKET INTRO
+--------------------------------------------------------- */
+
+.market-intro-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+
+.market-intro-item{
+  min-height:240px;
+
+  padding:32px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+
+  transition:
+    transform .7s var(--ease),
+    background .5s ease;
+}
+
+.market-intro-item:hover{
+  transform:translateY(-7px);
+  background:#fff;
+}
+
+.market-intro-item span{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  color:var(--accent);
+}
+
+.market-intro-item strong{
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+  font-weight:500;
+}
+
+.market-intro-item p{
+  max-width:280px;
+  font-size:13px;
+}
+
+
+/* ---------------------------------------------------------
+   REGION LIST
+--------------------------------------------------------- */
+
+.region-list{
+  border-top:1px solid var(--light-line);
+}
+
+.region-card{
+  display:grid;
+
+  grid-template-columns:
+    80px 1fr 220px;
+
+  gap:40px;
+
+  padding:55px 0;
+
+  border-bottom:
+    1px solid var(--light-line);
+
+  transition:
+    padding .7s var(--ease),
+    background .5s ease;
+}
+
+.region-card:hover{
+  padding-left:15px;
+}
+
+.region-number{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  color:var(--accent-light);
+}
+
+.region-label{
+  margin-bottom:12px;
+
+  font-size:10px;
+  letter-spacing:.2em;
+  font-weight:700;
+
+  color:var(--accent-light);
+}
+
+.region-main h3{
+  font-size:42px;
+  color:#fff;
+  margin-bottom:20px;
+}
+
+.region-description{
+  max-width:680px;
+
+  color:rgba(255,255,255,.58);
+
+  font-size:15px;
+  line-height:1.75;
+}
+
+.country-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+
+  margin-top:28px;
+}
+
+.country-list span{
+  padding:8px 12px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.14);
+
+  color:rgba(255,255,255,.68);
+
+  font-size:11px;
+
+  transition:
+    background .4s ease,
+    border-color .4s ease;
+}
+
+.country-list span:hover{
+  background:rgba(255,255,255,.06);
+  border-color:var(--accent);
+}
+
+.region-side{
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  text-align:right;
+}
+
+.region-side span{
+  font-family:"Playfair Display",serif;
+
+  font-size:40px;
+
+  color:rgba(255,255,255,.16);
+}
+
+.region-side small{
+  color:rgba(255,255,255,.38);
+
+  font-size:11px;
+}
+
+
+/* ---------------------------------------------------------
+   CONNECTION
+--------------------------------------------------------- */
+
+.connection-map{
+  display:grid;
+
+  grid-template-columns:
+    1fr 120px 1fr 120px 1fr;
+
+  align-items:center;
+
+  margin-top:70px;
+}
+
+.connection-region{
+  min-height:180px;
+
+  padding:30px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  transition:
+    transform .7s var(--ease),
+    box-shadow .7s var(--ease);
+}
+
+.connection-region:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 25px 60px
+    rgba(24,32,31,.1);
+}
+
+.connection-region span{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+
+  color:var(--accent);
+}
+
+.connection-region strong{
+  font-family:"Playfair Display",serif;
+
+  font-size:28px;
+
+  font-weight:500;
+}
+
+.connection-region small{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.connection-line{
+  position:relative;
+
+  height:1px;
+
+  background:var(--accent);
+
+  opacity:.45;
+
+  text-align:center;
+}
+
+.connection-line span{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  padding:6px 9px;
+
+  background:var(--paper);
+
+  color:var(--accent);
+
+  font-size:8px;
+
+  letter-spacing:.12em;
+
+  white-space:nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   REQUIREMENTS
+--------------------------------------------------------- */
+
+.market-requirements{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.light-market{
+  background:#fff;
+  border-color:var(--line);
+}
+
+.light-market span{
+  color:var(--accent);
+}
+
+.light-market strong{
+  color:var(--ink);
+}
+
+.light-market small{
+  color:var(--muted);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media(max-width:1000px){
+
+  .region-card{
+    grid-template-columns:
+      60px 1fr;
+  }
+
+  .region-side{
+    display:none;
+  }
+
+  .connection-map{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .connection-line{
+    width:1px;
+    height:60px;
+    margin:auto;
+  }
+
+  .connection-line span{
+    transform:
+      translate(-50%,-50%)
+      rotate(90deg);
+  }
+
+  .market-requirements{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:760px){
+
+  .market-intro-grid{
+    grid-template-columns:1fr;
+  }
+
+  .region-card{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:38px 0;
+  }
+
+  .region-main h3{
+    font-size:34px;
+  }
+
+  .connection-map{
+    margin-top:45px;
+  }
+
+  .market-requirements{
+    grid-template-columns:1fr;
+  }
+
+}
