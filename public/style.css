@@ -839,427 +839,6 @@ p{
   transform:translateX(7px);
 }
 
-
-/* =========================================================
-   15 — MARKETS HOMEPAGE
-   THREE EQUAL COLUMNS
-   TRUE CENTER CIRCLE
-========================================================= */
-
-.markets-home{
-  position:relative;
-
-  overflow:hidden;
-
-  padding:130px 0;
-
-  background:#18201f;
-
-  color:#fff;
-}
-
-.markets-home .section-head{
-  position:relative;
-  z-index:20;
-}
-
-.markets-home .section-head h2{
-  color:#fff;
-}
-
-.markets-home .section-head > p{
-  color:rgba(255,255,255,.58);
-}
-
-
-/* GRID */
-
-.markets-home-grid{
-  position:relative;
-
-  display:grid;
-
-  grid-template-columns:repeat(3,minmax(0,1fr));
-
-  width:100%;
-
-  margin-top:65px;
-
-  border-top:1px solid rgba(255,255,255,.14);
-  border-left:1px solid rgba(255,255,255,.14);
-}
-
-
-/* CARDS */
-
-.market-home-card{
-  position:relative;
-  z-index:1;
-
-  min-width:0;
-  min-height:390px;
-
-  padding:32px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
-  overflow:hidden;
-
-  background:#202a28;
-
-  border-right:1px solid rgba(255,255,255,.14);
-  border-bottom:1px solid rgba(255,255,255,.14);
-
-  transform:none !important;
-
-  transition:
-    background .5s ease,
-    box-shadow .5s ease;
-}
-
-.market-home-card:nth-child(1),
-.market-home-card:nth-child(2),
-.market-home-card:nth-child(3){
-  min-height:390px;
-  transform:none !important;
-}
-
-.market-home-card:nth-child(1){
-  background:#202a28;
-}
-
-.market-home-card:nth-child(2){
-  background:#1d2927;
-}
-
-.market-home-card:nth-child(3){
-  background:#202a28;
-}
-
-.market-home-card:hover{
-  transform:none !important;
-
-  background:#26312f;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.04);
-}
-
-.market-home-card > *{
-  position:relative;
-  z-index:5;
-}
-
-.market-index{
-  color:var(--gold-light);
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.18em;
-}
-
-.market-home-card small{
-  display:block;
-
-  margin-bottom:12px;
-
-  color:var(--gold);
-
-  font-size:9px;
-  font-weight:700;
-
-  letter-spacing:.2em;
-}
-
-.market-home-card h3{
-  color:#fff;
-
-  font-size:42px;
-  line-height:1;
-}
-
-.market-home-card p{
-  max-width:270px;
-
-  margin-top:16px;
-
-  color:rgba(255,255,255,.5);
-
-  font-size:13px;
-  line-height:1.7;
-}
-
-.market-arrow{
-  align-self:flex-end;
-
-  color:var(--gold-light);
-
-  font-size:22px;
-
-  transition:
-    transform .45s var(--ease),
-    color .3s ease;
-}
-
-.market-home-card:hover .market-arrow{
-  transform:translate(5px,-5px);
-  color:#fff;
-}
-
-
-/* Ocean rings */
-
-.market-home-card::before{
-  content:"";
-
-  position:absolute;
-
-  width:280px;
-  height:280px;
-
-  right:-150px;
-  bottom:-150px;
-
-  border:1px solid rgba(173,140,82,.14);
-
-  border-radius:50%;
-
-  pointer-events:none;
-
-  transition:
-    transform 1s var(--ease),
-    border-color .6s ease;
-}
-
-.market-home-card:hover::before{
-  transform:scale(1.35);
-
-  border-color:rgba(173,140,82,.28);
-}
-
-.market-home-card::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:2px;
-
-  background:var(--gold);
-
-  transform:scaleX(0);
-  transform-origin:left;
-
-  transition:transform .7s var(--ease);
-}
-
-.market-home-card:hover::after{
-  transform:scaleX(1);
-}
-
-
-/* =========================================================
-   CENTER BRIDGE
-========================================================= */
-
-.markets-center-circle{
-  position:absolute;
-
-  z-index:50;
-
-  left:50%;
-  top:50%;
-
-  width:190px;
-  height:190px;
-
-  transform:translate(-50%,-50%) !important;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 28%,
-      #34423f,
-      #111b1a 68%,
-      #0b1211 100%
-    );
-
-  border:1px solid rgba(215,195,156,.48);
-
-  box-shadow:
-    0 28px 75px rgba(0,0,0,.48),
-    inset 0 0 0 8px rgba(255,255,255,.025);
-
-  text-align:center;
-
-  pointer-events:none;
-}
-
-.markets-center-circle::before{
-  content:"";
-
-  position:absolute;
-
-  inset:-12px;
-
-  border:1px solid rgba(173,140,82,.23);
-
-  border-radius:50%;
-
-  animation:marketPulse 5s ease-in-out infinite;
-}
-
-@keyframes marketPulse{
-
-  0%,
-  100%{
-    transform:scale(1);
-    opacity:.35;
-  }
-
-  50%{
-    transform:scale(1.04);
-    opacity:.75;
-  }
-}
-
-.markets-center-circle span{
-  color:var(--gold-light);
-
-  font-size:8px;
-  font-weight:700;
-
-  letter-spacing:.2em;
-}
-
-.markets-center-circle strong{
-  margin:7px 0;
-
-  color:#fff;
-
-  font-family:"Playfair Display",serif;
-  font-size:31px;
-  font-weight:500;
-  line-height:1;
-}
-
-.markets-center-circle small{
-  max-width:125px;
-
-  color:rgba(255,255,255,.42);
-
-  font-size:7px;
-  line-height:1.5;
-
-  letter-spacing:.13em;
-}
-
-
-/* Connection line behind circle */
-
-.markets-home-grid::before{
-  content:"";
-
-  position:absolute;
-
-  z-index:10;
-
-  left:0;
-  right:0;
-  top:50%;
-
-  height:1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(173,140,82,.15) 20%,
-      rgba(173,140,82,.4) 38%,
-      rgba(173,140,82,.6) 50%,
-      rgba(173,140,82,.4) 62%,
-      rgba(173,140,82,.15) 80%,
-      transparent
-    );
-
-  pointer-events:none;
-}
-
-
-/* =========================================================
-   16 — MARKET PAGE
-========================================================= */
-
-.markets-hero{
-  min-height:100svh;
-}
-
-.market-intro-grid{
-  display:grid;
-
-  grid-template-columns:repeat(3,minmax(0,1fr));
-
-  border-top:1px solid var(--line);
-  border-left:1px solid var(--line);
-}
-
-.market-intro-item{
-  min-height:240px;
-
-  padding:32px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-
-  transition:
-    transform .6s var(--ease),
-    background .5s ease;
-}
-
-.market-intro-item:hover{
-  transform:translateY(-6px);
-  background:#fff;
-}
-
-.market-intro-item span{
-  color:var(--gold);
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.18em;
-}
-
-.market-intro-item strong{
-  font-family:"Playfair Display",serif;
-
-  font-size:34px;
-  font-weight:500;
-}
-
-.market-intro-item p{
-  max-width:280px;
-
-  font-size:13px;
-}
-
-
 /* Regions */
 
 .region-list{
@@ -2857,4 +2436,662 @@ p{
     opacity:1 !important;
     transform:none !important;
   }
+}
+/* =========================================================
+   EMPERIO TISS
+   HOMEPAGE MARKETS — FINAL SYSTEM
+   EUROPE / AFRICA / MIDDLE EAST
+========================================================= */
+
+.markets-home{
+  position:relative;
+  overflow:hidden;
+
+  padding:140px 0;
+
+  background:#18201f;
+  color:#fff;
+}
+
+
+/* ---------------------------------------------------------
+   HEADER
+--------------------------------------------------------- */
+
+.markets-home-head{
+  position:relative;
+  z-index:5;
+
+  margin-bottom:70px;
+}
+
+.markets-home-head h2{
+  color:#fff;
+}
+
+.markets-home-head > p{
+  color:rgba(255,255,255,.58);
+}
+
+
+/* ---------------------------------------------------------
+   GRID
+--------------------------------------------------------- */
+
+.markets-home-grid{
+
+  position:relative;
+
+  width:100%;
+
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+
+  align-items:stretch;
+
+  border-top:1px solid rgba(255,255,255,.13);
+  border-left:1px solid rgba(255,255,255,.13);
+}
+
+
+/* ---------------------------------------------------------
+   MARKET CARDS
+--------------------------------------------------------- */
+
+.market-home-card{
+
+  position:relative;
+  z-index:1;
+
+  min-width:0;
+  min-height:420px;
+
+  padding:34px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  overflow:hidden;
+
+  border-right:1px solid rgba(255,255,255,.13);
+  border-bottom:1px solid rgba(255,255,255,.13);
+
+  color:#fff;
+
+  transition:
+    background .6s var(--ease),
+    transform .7s var(--ease),
+    box-shadow .7s var(--ease);
+}
+
+
+/* ---------------------------------------------------------
+   INDIVIDUAL ATMOSPHERE
+--------------------------------------------------------- */
+
+.market-europe{
+  background:
+    linear-gradient(
+      145deg,
+      #202b29,
+      #182321
+    );
+}
+
+.market-africa{
+  background:
+    linear-gradient(
+      145deg,
+      #172a2c,
+      #102125
+    );
+}
+
+.market-middle-east{
+  background:
+    linear-gradient(
+      145deg,
+      #1e2928,
+      #18201f
+    );
+}
+
+
+/* ---------------------------------------------------------
+   OCEAN ATMOSPHERE
+--------------------------------------------------------- */
+
+.market-home-card::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:360px;
+  height:360px;
+
+  right:-190px;
+  bottom:-190px;
+
+  border:1px solid rgba(143,198,207,.12);
+
+  border-radius:50%;
+
+  transition:
+    transform 1.2s var(--ease),
+    border-color .7s ease;
+}
+
+
+.market-home-card::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  width:100%;
+  height:2px;
+
+  background:#b9a06a;
+
+  transform:scaleX(0);
+  transform-origin:left;
+
+  transition:
+    transform .8s var(--ease);
+}
+
+
+.market-home-card:hover{
+
+  transform:translateY(-7px);
+
+  background:#24302e;
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.25);
+}
+
+
+.market-home-card:hover::before{
+
+  transform:scale(1.55);
+
+  border-color:
+    rgba(143,198,207,.25);
+}
+
+
+.market-home-card:hover::after{
+
+  transform:scaleX(1);
+}
+
+
+/* ---------------------------------------------------------
+   CARD CONTENT
+--------------------------------------------------------- */
+
+.market-home-card > *{
+  position:relative;
+  z-index:3;
+}
+
+
+.market-index{
+
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:.2em;
+
+  color:#d9c8a6;
+}
+
+
+.market-card-content{
+
+  max-width:320px;
+
+  margin:auto 0;
+}
+
+
+.market-home-card small{
+
+  display:block;
+
+  margin-bottom:14px;
+
+  font-size:9px;
+
+  font-weight:700;
+
+  letter-spacing:.22em;
+
+  color:#b9a06a;
+}
+
+
+.market-home-card h3{
+
+  margin:0;
+
+  font-family:"Playfair Display",serif;
+
+  font-size:clamp(38px,4vw,54px);
+
+  line-height:.95;
+
+  font-weight:500;
+
+  letter-spacing:-.03em;
+
+  color:#fff;
+
+  transition:
+    transform .6s var(--ease);
+}
+
+
+.market-home-card:hover h3{
+
+  transform:translateX(7px);
+}
+
+
+.market-home-card p{
+
+  max-width:300px;
+
+  margin-top:18px;
+
+  color:rgba(255,255,255,.52);
+
+  font-size:13px;
+
+  line-height:1.75;
+}
+
+
+/* ---------------------------------------------------------
+   ARROW
+--------------------------------------------------------- */
+
+.market-arrow{
+
+  align-self:flex-end;
+
+  font-size:24px;
+
+  font-weight:300;
+
+  color:#d9c8a6;
+
+  transition:
+    transform .5s var(--ease),
+    color .3s ease;
+}
+
+
+.market-home-card:hover .market-arrow{
+
+  transform:translate(7px,-7px);
+
+  color:#fff;
+}
+
+
+/* =========================================================
+   CENTRAL EMPERIO TISS BRIDGE
+========================================================= */
+
+.markets-center-circle{
+
+  position:absolute;
+
+  z-index:10;
+
+  left:50%;
+  top:50%;
+
+  width:190px;
+  height:190px;
+
+  transform:translate(-50%,-50%);
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      #31413e 0%,
+      #101b1a 62%,
+      #091211 100%
+    );
+
+  border:1px solid rgba(217,200,166,.55);
+
+  box-shadow:
+
+    0 30px 80px rgba(0,0,0,.48),
+
+    inset 0 0 0 7px
+      rgba(255,255,255,.025),
+
+    inset 0 0 50px
+      rgba(143,198,207,.05);
+
+  text-align:center;
+
+  pointer-events:none;
+}
+
+
+/* ---------------------------------------------------------
+   OUTER RING
+--------------------------------------------------------- */
+
+.markets-center-circle::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-13px;
+
+  border:1px solid
+    rgba(185,160,106,.22);
+
+  border-radius:50%;
+
+  animation:
+    marketBridgePulse 5s ease-in-out infinite;
+}
+
+
+@keyframes marketBridgePulse{
+
+  0%,
+  100%{
+    transform:scale(1);
+    opacity:.35;
+  }
+
+  50%{
+    transform:scale(1.045);
+    opacity:.8;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   CENTER TEXT
+--------------------------------------------------------- */
+
+.markets-center-circle span{
+
+  font-size:8px;
+
+  font-weight:700;
+
+  letter-spacing:.22em;
+
+  color:#d9c8a6;
+}
+
+
+.markets-center-circle strong{
+
+  margin:9px 0 7px;
+
+  font-family:"Playfair Display",serif;
+
+  font-size:29px;
+
+  line-height:.9;
+
+  font-weight:500;
+
+  letter-spacing:-.02em;
+
+  color:#fff;
+}
+
+
+.markets-center-circle small{
+
+  max-width:125px;
+
+  font-size:7px;
+
+  line-height:1.55;
+
+  letter-spacing:.13em;
+
+  color:rgba(255,255,255,.42);
+}
+
+
+/* =========================================================
+   CENTRAL CONNECTION LINE
+========================================================= */
+
+.markets-home-grid::before{
+
+  content:"";
+
+  position:absolute;
+
+  z-index:4;
+
+  left:0;
+  right:0;
+
+  top:50%;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+
+      transparent 0%,
+
+      rgba(185,160,106,.08) 15%,
+
+      rgba(185,160,106,.30) 32%,
+
+      rgba(185,160,106,.58) 50%,
+
+      rgba(185,160,106,.30) 68%,
+
+      rgba(185,160,106,.08) 85%,
+
+      transparent 100%
+    );
+
+  pointer-events:none;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION LINK
+--------------------------------------------------------- */
+
+.markets-home .section-link-row{
+
+  position:relative;
+
+  z-index:5;
+
+  margin-top:36px;
+}
+
+
+.markets-home .text-link{
+
+  color:#fff;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:900px){
+
+  .markets-home{
+    padding:110px 0;
+  }
+
+  .markets-home-grid{
+
+    grid-template-columns:1fr;
+
+    border-left:0;
+  }
+
+
+  .market-home-card{
+
+    min-height:320px;
+
+    border-left:1px solid
+      rgba(255,255,255,.13);
+  }
+
+
+  .markets-home-grid::before{
+    display:none;
+  }
+
+
+  /*
+     Circle becomes a real bridge element
+     between the cards.
+  */
+
+  .markets-center-circle{
+
+    position:relative;
+
+    left:auto;
+    top:auto;
+
+    transform:none;
+
+    width:150px;
+    height:150px;
+
+    margin:-75px auto;
+
+    z-index:20;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+  .markets-home{
+    padding:90px 0;
+  }
+
+
+  .markets-home-head{
+    margin-bottom:45px;
+  }
+
+
+  .markets-home-grid{
+
+    gap:12px;
+
+    border:0;
+  }
+
+
+  .market-home-card{
+
+    min-height:280px;
+
+    padding:27px;
+
+    border:1px solid
+      rgba(255,255,255,.13);
+  }
+
+
+  .market-home-card h3{
+
+    font-size:40px;
+  }
+
+
+  .market-home-card p{
+
+    font-size:12px;
+  }
+
+
+  .markets-center-circle{
+
+    width:135px;
+    height:135px;
+
+    margin:-67px auto;
+  }
+
+
+  .markets-center-circle strong{
+
+    font-size:24px;
+  }
+
+
+  .markets-center-circle small{
+
+    font-size:6px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  .markets-center-circle::before{
+    animation:none;
+  }
+
+  .market-home-card,
+  .market-home-card::before,
+  .market-home-card::after,
+  .market-home-card h3,
+  .market-arrow{
+    transition:none;
+  }
+
 }
