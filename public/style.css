@@ -1,312 +1,260 @@
 /* =========================================================
    EMPERIO TISS
-   GLOBAL DESIGN SYSTEM
+   GLOBAL STYLE SYSTEM
    CLEAN REBUILD — 2026
 ========================================================= */
 
+:root {
+  --ink: #18201f;
+  --dark: #111918;
+  --dark-2: #202a28;
 
-/* =========================================================
-   01 — DESIGN TOKENS
-========================================================= */
+  --paper: #f4f2ed;
+  --white: #fff;
 
-:root{
+  --muted: #66706d;
 
-  --ink:#17201f;
-  --ink-soft:#25302e;
-  --dark:#101817;
-  --dark-2:#192320;
+  --gold: #a88a56;
+  --gold-light: #d9c8a6;
 
-  --paper:#f4f1ea;
-  --paper-2:#ebe7dd;
-  --white:#fff;
+  --marine-deep: #031018;
+  --marine: #061822;
+  --marine-mid: #0b2f3d;
+  --marine-blue: #124556;
+  --marine-cyan: #8fc6cf;
+  --marine-white: #eef7f8;
 
-  --muted:#68716e;
-  --muted-light:rgba(255,255,255,.62);
+  --line: rgba(24, 32, 31, .12);
+  --dark-line: rgba(255, 255, 255, .14);
+  --marine-line: rgba(150, 210, 220, .16);
 
-  --gold:#ad8c52;
-  --gold-light:#d7c39c;
-  --gold-dark:#876b3d;
+  --max: 1240px;
 
-  /* Marine */
-  --ocean-deep:#031018;
-  --ocean:#061b26;
-  --ocean-mid:#0b3442;
-  --ocean-blue:#125064;
-  --ocean-cyan:#8fcbd4;
-  --ocean-white:#eef8fa;
-  --ocean-muted:rgba(238,248,250,.62);
-  --ocean-line:rgba(150,215,225,.17);
-
-  --line:rgba(23,32,31,.12);
-  --line-dark:rgba(255,255,255,.13);
-
-  --max:1240px;
-
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --ease-soft:cubic-bezier(.16,1,.3,1);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --ease-soft: cubic-bezier(.16, 1, .3, 1);
 }
 
 
 /* =========================================================
-   02 — RESET
+   RESET
 ========================================================= */
 
 *,
 *::before,
-*::after{
-  box-sizing:border-box;
+*::after {
+  box-sizing: border-box;
 }
 
-html{
-  margin:0;
-  padding:0;
-
-  background:var(--paper);
-
-  scroll-behavior:smooth;
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: var(--paper);
 }
 
-body{
-  margin:0;
-  padding:0;
+body {
+  margin: 0;
+  padding: 0;
 
-  overflow-x:hidden;
+  overflow-x: hidden;
 
-  background:var(--paper);
-  color:var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
 
-  font-family:"DM Sans",sans-serif;
-  line-height:1.6;
-
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  color: var(--ink);
+  background: var(--paper);
 }
 
-img{
-  display:block;
-  max-width:100%;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button,
 input,
 textarea,
-select{
-  font:inherit;
+select {
+  font: inherit;
 }
 
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
 }
 
-::selection{
-  background:var(--gold);
-  color:#fff;
-}
-
-
-/* =========================================================
-   03 — LAYOUT
-========================================================= */
-
-.container{
-  width:min(calc(100% - 48px),var(--max));
-  margin-inline:auto;
-}
-
-.section{
-  padding:120px 0;
-}
-
-.section-sm{
-  padding:80px 0;
-}
-
-.section-dark{
-  background:var(--dark);
-  color:#fff;
-}
-
-.section-ocean{
-  background:var(--ocean);
-  color:#fff;
+.container {
+  width: min(calc(100% - 48px), var(--max));
+  margin-inline: auto;
 }
 
 
 /* =========================================================
-   04 — TYPOGRAPHY
+   TYPOGRAPHY
 ========================================================= */
 
 h1,
 h2,
-h3,
-h4{
-  margin:0;
+h3 {
+  margin: 0;
 
-  font-family:"Playfair Display",serif;
-  font-weight:500;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
 
-  letter-spacing:-.03em;
+  letter-spacing: -.025em;
 }
 
-h1{
-  font-size:clamp(54px,7vw,100px);
-  line-height:.96;
+h1 {
+  font-size: clamp(54px, 7vw, 100px);
+  line-height: .98;
 }
 
-h2{
-  font-size:clamp(42px,5vw,68px);
-  line-height:1;
+h2 {
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.02;
 }
 
-h3{
-  font-size:30px;
-  line-height:1.12;
+h3 {
+  font-size: 28px;
+  line-height: 1.15;
 }
 
-p{
-  margin:0;
-  color:var(--muted);
+p {
+  margin: 0;
+  color: var(--muted);
 }
 
-.eyebrow{
-  margin-bottom:20px;
+.eyebrow {
+  margin: 0 0 20px;
 
-  color:var(--gold-light);
+  font-size: 10px;
+  line-height: 1.2;
 
-  font-size:10px;
-  font-weight:700;
-  line-height:1.2;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 700;
 
-  letter-spacing:.22em;
-  text-transform:uppercase;
+  color: var(--gold);
 }
 
-.eyebrow.dark{
-  color:var(--gold);
-}
-
-.display{
-  font-family:"Playfair Display",serif;
-  font-weight:500;
+.dark-section .eyebrow,
+.hero .eyebrow,
+.marine-hero .eyebrow {
+  color: var(--gold-light);
 }
 
 
 /* =========================================================
-   05 — HEADER
+   HEADER
 ========================================================= */
 
-.site-header{
-  position:fixed;
-  z-index:1000;
+.site-header {
+  position: fixed;
+  z-index: 1000;
 
-  top:0;
-  left:0;
-  right:0;
+  top: 0;
+  left: 0;
+  right: 0;
 
-  padding:22px 0;
+  padding: 22px 0;
 
-  color:#fff;
+  color: #fff;
 
   transition:
     padding .6s var(--ease),
-    background .6s ease,
+    background .6s var(--ease),
     color .4s ease,
     box-shadow .6s ease;
 }
 
-.site-header.scrolled{
-  padding:11px 0;
+.site-header.scrolled {
+  padding: 12px 0;
 
-  color:var(--ink);
+  color: var(--ink);
 
-  background:rgba(244,241,234,.94);
+  background: rgba(244, 242, 237, .94);
 
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter: blur(18px);
 
-  box-shadow:0 1px 0 var(--line);
+  box-shadow: 0 1px 0 var(--line);
 }
 
-.nav-wrap{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  gap:28px;
+  gap: 30px;
 }
 
-.brand{
-  display:block;
-  flex-shrink:0;
+.brand {
+  display: block;
+  flex-shrink: 0;
 
-  line-height:0;
+  overflow: hidden;
 }
 
-.brand img{
-  width:150px;
-  height:auto;
+.brand img {
+  display: block;
 
-  object-fit:contain;
+  width: 150px;
+  height: auto;
 
-  transition:
-    transform .6s var(--ease),
-    filter .4s ease;
+  object-fit: contain;
+
+  transition: transform .6s var(--ease);
 }
 
-.site-header.scrolled .brand img{
-  transform:scale(.9);
+.site-header.scrolled .brand img {
+  transform: scale(.92);
 }
 
 
 /* =========================================================
-   06 — NAVIGATION
+   NAVIGATION
 ========================================================= */
 
-.nav{
-  display:flex;
-  align-items:center;
+.nav {
+  display: flex;
+  align-items: center;
 
-  gap:28px;
+  gap: 28px;
 
-  font-size:12px;
-  font-weight:600;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.nav > a{
-  position:relative;
-
-  white-space:nowrap;
+.nav > a {
+  position: relative;
 }
 
-.nav > a:not(.nav-cta)::after{
-  content:"";
+.nav > a:not(.nav-cta)::after {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  left:0;
-  bottom:-7px;
+  left: 0;
+  bottom: -7px;
 
-  width:0;
-  height:1px;
+  width: 0;
+  height: 1px;
 
-  background:currentColor;
+  background: currentColor;
 
-  transition:width .45s var(--ease);
+  transition: width .45s var(--ease);
 }
 
-.nav > a:hover::after{
-  width:100%;
+.nav > a:hover::after {
+  width: 100%;
 }
 
-.nav-cta{
-  padding:10px 17px;
+.nav-cta {
+  padding: 10px 17px;
 
-  border:1px solid currentColor;
+  border: 1px solid currentColor;
 
   transition:
     background .4s ease,
@@ -314,225 +262,189 @@ p{
     transform .4s var(--ease);
 }
 
-.nav-cta:hover{
-  background:#fff;
-  color:var(--ink);
+.nav-cta:hover {
+  background: var(--ink);
+  color: #fff;
 
-  transform:translateY(-2px);
-}
-
-.site-header.scrolled .nav-cta:hover{
-  background:var(--ink);
-  color:#fff;
+  transform: translateY(-2px);
 }
 
 
 /* =========================================================
-   07 — LANGUAGE SWITCHER
+   LANGUAGES
 ========================================================= */
 
-.language-switcher{
-  display:flex;
-  align-items:center;
-  gap:7px;
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 
-  margin-left:3px;
-  padding-left:15px;
+  margin-left: 4px;
+  padding-left: 15px;
 
-  border-left:1px solid currentColor;
+  border-left: 1px solid currentColor;
 }
 
-.language-switcher a{
-  position:relative;
+.language-switcher a {
+  position: relative;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  min-width:27px;
-  height:27px;
+  min-width: 27px;
+  height: 27px;
 
-  opacity:.48;
+  color: inherit;
 
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.1em;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
 
-  transition:
-    opacity .3s ease,
-    color .3s ease;
+  opacity: .5;
+
+  transition: opacity .3s ease;
 }
 
 .language-switcher a:hover,
-.language-switcher a.active{
-  opacity:1;
+.language-switcher a.active {
+  opacity: 1;
 }
 
-.language-switcher a.active::after{
-  content:"";
+.language-switcher a.active::after {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  left:5px;
-  right:5px;
-  bottom:0;
+  left: 5px;
+  right: 5px;
+  bottom: 1px;
 
-  height:1px;
+  height: 1px;
 
-  background:var(--gold);
-}
-
-
-/* =========================================================
-   08 — MOBILE MENU
-========================================================= */
-
-.menu-toggle{
-  display:none;
-
-  width:42px;
-  height:42px;
-
-  padding:0;
-
-  border:1px solid currentColor;
-
-  background:transparent;
-  color:inherit;
-}
-
-.menu-toggle span,
-.menu-toggle::before,
-.menu-toggle::after{
-  display:block;
-
-  width:18px;
-  height:1px;
-
-  margin:4px auto;
-
-  background:currentColor;
-
-  content:"";
+  background: var(--gold);
 }
 
 
 /* =========================================================
-   09 — BUTTONS
+   MOBILE MENU
 ========================================================= */
 
-.button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+.menu-toggle {
+  display: none;
 
-  min-height:48px;
+  padding: 0;
 
-  padding:0 22px;
+  border: 0;
 
-  border:1px solid transparent;
+  background: transparent;
 
-  font-size:12px;
-  font-weight:700;
+  color: inherit;
+
+  font-size: 26px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0 22px;
+
+  border: 1px solid transparent;
+
+  font-size: 13px;
+  font-weight: 700;
 
   transition:
     transform .5s var(--ease),
     background .4s ease,
-    border-color .4s ease,
-    color .4s ease;
+    color .4s ease,
+    border-color .4s ease;
 }
 
-.button:hover{
-  transform:translateY(-4px);
+.button:hover {
+  transform: translateY(-3px);
 }
 
-.button.primary{
-  background:var(--gold);
-  color:#fff;
+.button.primary {
+  background: var(--gold);
+  color: #fff;
 }
 
-.button.primary:hover{
-  background:var(--gold-dark);
+.button.primary:hover {
+  background: #8f7445;
 }
 
-.button.secondary{
-  border-color:rgba(255,255,255,.4);
-  color:#fff;
+.button.secondary {
+  border-color: rgba(255, 255, 255, .42);
+  color: #fff;
 }
 
-.button.secondary:hover{
-  border-color:#fff;
-  background:rgba(255,255,255,.06);
-}
-
-.button.light{
-  background:#fff;
-  color:var(--ink);
-}
-
-.button.light:hover{
-  background:var(--ink);
-  color:#fff;
+.button.secondary:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,.07);
 }
 
 
 /* =========================================================
-   10 — HERO
+   HERO
 ========================================================= */
 
-.hero{
-  position:relative;
+.hero {
+  position: relative;
 
-  min-height:100svh;
+  min-height: 100svh;
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 
-  overflow:hidden;
+  overflow: hidden;
 
   background:
     radial-gradient(
-      circle at 78% 25%,
-      rgba(173,140,82,.28),
+      circle at 76% 30%,
+      rgba(168,138,86,.28),
       transparent 24%
-    ),
-    radial-gradient(
-      circle at 15% 80%,
-      rgba(255,255,255,.06),
-      transparent 30%
     ),
     linear-gradient(
       125deg,
-      #111918,
-      #273330 60%,
-      #1a2422
+      #141c1b,
+      #31403b 58%,
+      #202a28
     );
 
-  color:#fff;
+  color: #fff;
 }
 
-.hero::before{
-  content:"";
+.hero::before {
+  content: "";
 
-  position:absolute;
-  inset:-12%;
+  position: absolute;
+  inset: -10%;
 
   background:
     radial-gradient(
-      ellipse at 75% 30%,
+      circle at 20% 75%,
       rgba(255,255,255,.06),
-      transparent 30%
+      transparent 25%
     );
 
-  animation:
-    heroDrift 18s ease-in-out infinite alternate;
+  animation: heroAtmosphere 18s ease-in-out infinite alternate;
 }
 
-.hero::after{
-  content:"";
+.hero::after {
+  content: "";
 
-  position:absolute;
-  inset:0;
+  position: absolute;
+  inset: 0;
 
   background:
     linear-gradient(
@@ -542,843 +454,1037 @@ p{
     );
 }
 
-@keyframes heroDrift{
-  from{
-    transform:scale(1) translateX(-1%);
+@keyframes heroAtmosphere {
+  from {
+    transform: scale(1.04) translate3d(-1%,0,0);
   }
 
-  to{
-    transform:scale(1.12) translateX(2%);
+  to {
+    transform: scale(1.12) translate3d(1%,-1%,0);
   }
 }
 
-.hero-content{
-  position:relative;
-  z-index:5;
+.hero-content {
+  position: relative;
+  z-index: 3;
 
-  padding-top:90px;
+  padding-top: 90px;
 }
 
-.hero h1{
-  max-width:950px;
+.hero h1 {
+  max-width: 950px;
 
-  color:#fff;
+  color: #fff;
 }
 
-.hero-text{
-  max-width:620px;
+.hero-text {
+  max-width: 620px;
 
-  margin-top:28px;
+  margin-top: 28px;
 
-  color:rgba(255,255,255,.7);
+  color: rgba(255,255,255,.72);
 
-  font-size:17px;
-  line-height:1.75;
+  font-size: 17px;
+  line-height: 1.75;
 }
 
-.hero-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
 
-  margin-top:35px;
-}
+  gap: 12px;
 
-.hero-scroll{
-  position:absolute;
-  z-index:5;
-
-  left:50%;
-  bottom:27px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:7px;
-
-  transform:translateX(-50%);
-
-  color:rgba(255,255,255,.55);
-
-  font-size:8px;
-  letter-spacing:.2em;
-
-  animation:
-    scrollFloat 2.8s ease-in-out infinite;
-}
-
-@keyframes scrollFloat{
-
-  0%,
-  100%{
-    transform:translate(-50%,0);
-    opacity:.45;
-  }
-
-  50%{
-    transform:translate(-50%,8px);
-    opacity:1;
-  }
+  margin-top: 34px;
 }
 
 
 /* =========================================================
-   11 — HERO REVEAL
+   HERO ANIMATION
 ========================================================= */
 
 .hero .eyebrow,
 .hero h1,
 .hero-text,
-.hero-actions{
-  opacity:0;
-  transform:translateY(35px);
+.hero-actions {
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.hero.loaded .eyebrow{
-  animation:heroReveal .8s var(--ease-soft) .1s forwards;
+.hero.loaded .eyebrow {
+  animation: reveal .8s var(--ease-soft) .1s forwards;
 }
 
-.hero.loaded h1{
-  animation:heroReveal 1s var(--ease-soft) .25s forwards;
+.hero.loaded h1 {
+  animation: reveal 1s var(--ease-soft) .25s forwards;
 }
 
-.hero.loaded .hero-text{
-  animation:heroReveal .9s var(--ease-soft) .45s forwards;
+.hero.loaded .hero-text {
+  animation: reveal .9s var(--ease-soft) .45s forwards;
 }
 
-.hero.loaded .hero-actions{
-  animation:heroReveal .9s var(--ease-soft) .6s forwards;
+.hero.loaded .hero-actions {
+  animation: reveal .9s var(--ease-soft) .6s forwards;
 }
 
-@keyframes heroReveal{
-  to{
-    opacity:1;
-    transform:none;
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
 
 /* =========================================================
-   12 — SECTION HEAD
+   SECTIONS
 ========================================================= */
 
-.section-head{
-  display:grid;
-
-  grid-template-columns:1.05fr .75fr;
-
-  gap:80px;
-
-  align-items:end;
-
-  margin-bottom:60px;
+.section {
+  padding: 120px 0;
 }
 
-.section-head > p{
-  max-width:520px;
+.section-head {
+  display: grid;
 
-  font-size:15px;
-  line-height:1.75;
+  grid-template-columns: 1.05fr .75fr;
+
+  gap: 80px;
+
+  align-items: end;
+
+  margin-bottom: 60px;
+}
+
+.section-head > p {
+  max-width: 520px;
+
+  font-size: 16px;
+}
+
+.two-col {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 100px;
 }
 
 
 /* =========================================================
-   13 — SCROLL REVEAL
+   SCROLL REVEAL
 ========================================================= */
 
-.fade-up{
-  opacity:0;
+.fade-up {
+  opacity: 0;
 
-  transform:translateY(45px);
+  transform: translateY(45px);
 
   transition:
     opacity 1s var(--ease-soft),
     transform 1s var(--ease-soft);
 }
 
-.fade-up.visible{
-  opacity:1;
-  transform:none;
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
 }
 
 
 /* =========================================================
-   14 — PRODUCT CARDS
+   PRODUCT CARDS
 ========================================================= */
 
-.cards{
-  display:grid;
-  gap:16px;
+.cards {
+  display: grid;
+  gap: 16px;
 }
 
-.cards.four{
-  grid-template-columns:repeat(3,minmax(0,1fr));
+.cards.four {
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.card{
-  position:relative;
+.card {
+  position: relative;
 
-  min-height:380px;
+  min-height: 380px;
 
-  padding:34px;
+  padding: 34px;
 
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  overflow:hidden;
+  overflow: hidden;
 
-  background:#fff;
+  background: #fff;
 
-  border:1px solid var(--line);
-
-  transition:
-    transform .7s var(--ease),
-    box-shadow .7s var(--ease);
-}
-
-.card::before{
-  content:"";
-
-  position:absolute;
-  inset:-20%;
-
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(173,140,82,.13),
-      transparent 32%
-    );
-
-  opacity:0;
-
-  transform:scale(.8);
-
-  transition:
-    opacity .7s ease,
-    transform .9s var(--ease);
-}
-
-.card::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:2px;
-
-  background:var(--gold);
-
-  transform:scaleX(0);
-  transform-origin:left;
-
-  transition:transform .7s var(--ease);
-}
-
-.card:hover{
-  transform:translateY(-8px);
-
-  box-shadow:
-    0 25px 60px rgba(23,32,31,.11);
-}
-
-.card:hover::before{
-  opacity:1;
-  transform:scale(1);
-}
-
-.card:hover::after{
-  transform:scaleX(1);
-}
-
-.card > *{
-  position:relative;
-  z-index:2;
-}
-
-.card-number{
-  color:var(--gold);
-
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.18em;
-}
-
-.product-card{
-  min-height:420px;
-}
-
-.product-card p{
-  max-width:430px;
-
-  margin-top:14px;
-
-  font-size:13px;
-  line-height:1.75;
-}
-
-.product-link{
-  color:var(--gold);
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.13em;
-  text-transform:uppercase;
-
-  transition:
-    transform .4s var(--ease),
-    color .3s ease;
-}
-
-.product-card:hover .product-link{
-  color:var(--ink);
-  transform:translateX(7px);
-}
-
-/* Regions */
-
-.region-list{
-  border-top:1px solid var(--line-dark);
-}
-
-.region-card{
-  display:grid;
-
-  grid-template-columns:70px 1fr 200px;
-
-  gap:40px;
-
-  padding:55px 0;
-
-  border-bottom:1px solid var(--line-dark);
-
-  transition:
-    padding .6s var(--ease),
-    background .5s ease;
-}
-
-.region-card:hover{
-  padding-left:12px;
-}
-
-.region-number{
-  color:var(--gold-light);
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.18em;
-}
-
-.region-label{
-  margin-bottom:12px;
-
-  color:var(--gold-light);
-
-  font-size:9px;
-  font-weight:700;
-
-  letter-spacing:.2em;
-}
-
-.region-main h3{
-  margin-bottom:20px;
-
-  color:#fff;
-
-  font-size:42px;
-}
-
-.region-description{
-  max-width:680px;
-
-  color:rgba(255,255,255,.58);
-
-  font-size:15px;
-  line-height:1.75;
-}
-
-.country-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-
-  margin-top:28px;
-}
-
-.country-list span{
-  padding:8px 12px;
-
-  border:1px solid rgba(255,255,255,.14);
-
-  color:rgba(255,255,255,.68);
-
-  font-size:11px;
-
-  transition:
-    background .4s ease,
-    border-color .4s ease;
-}
-
-.country-list span:hover{
-  background:rgba(255,255,255,.06);
-  border-color:var(--gold);
-}
-
-.region-side{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
-  text-align:right;
-}
-
-.region-side span{
-  color:rgba(255,255,255,.15);
-
-  font-family:"Playfair Display",serif;
-  font-size:40px;
-}
-
-.region-side small{
-  color:rgba(255,255,255,.35);
-
-  font-size:10px;
-}
-
-
-/* =========================================================
-   17 — BRIDGE NETWORK
-========================================================= */
-
-.bridge-network{
-  position:relative;
-
-  display:grid;
-
-  grid-template-columns:1fr 180px 1fr;
-  grid-template-rows:1fr 1fr;
-
-  gap:18px;
-
-  min-height:420px;
-
-  margin-top:70px;
-}
-
-.bridge-network::before{
-  content:"";
-
-  position:absolute;
-
-  left:12%;
-  right:12%;
-  top:50%;
-
-  height:1px;
-
-  background:var(--line);
-}
-
-.bridge-network::after{
-  content:"";
-
-  position:absolute;
-
-  left:50%;
-  top:12%;
-  bottom:12%;
-
-  width:1px;
-
-  background:var(--line);
-}
-
-.bridge-node{
-  position:relative;
-  z-index:2;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-
-  padding:35px;
-
-  background:var(--paper);
-
-  border:1px solid var(--line);
+  border: 1px solid var(--line);
 
   transition:
     transform .6s var(--ease),
     box-shadow .6s var(--ease);
 }
 
-.bridge-node:hover{
-  transform:translateY(-6px);
-
-  background:#fff;
+.card:hover {
+  transform: translateY(-8px);
 
   box-shadow:
-    0 20px 50px rgba(23,32,31,.09);
+    0 25px 60px rgba(24,32,31,.12);
 }
 
-.bridge-node span{
-  margin-bottom:18px;
+.card-number {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
 
-  color:var(--gold);
-
-  font-size:9px;
-  font-weight:700;
-
-  letter-spacing:.18em;
+  color: var(--gold);
 }
 
-.bridge-node strong{
-  font-family:"Playfair Display",serif;
-  font-size:30px;
-  font-weight:500;
+.product-card {
+  min-height: 430px;
 }
 
-.bridge-node small{
-  max-width:280px;
+.product-card p {
+  margin-top: 14px;
 
-  margin-top:8px;
-
-  color:var(--muted);
-
-  font-size:12px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.bridge-node.europe{
-  grid-column:1;
-  grid-row:1;
-}
+.product-link {
+  font-size: 10px;
+  font-weight: 700;
 
-.bridge-node.africa{
-  grid-column:1;
-  grid-row:2;
-}
+  letter-spacing: .12em;
+  text-transform: uppercase;
 
-.bridge-node.middle-east{
-  grid-column:3;
-  grid-row:1 / span 2;
-}
-
-.bridge-center{
-  position:absolute;
-  z-index:4;
-
-  left:50%;
-  top:50%;
-
-  width:150px;
-  height:150px;
-
-  transform:translate(-50%,-50%);
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:var(--dark);
-
-  color:#fff;
-
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.2);
-}
-
-.bridge-center span{
-  color:var(--gold-light);
-
-  font-size:8px;
-  letter-spacing:.18em;
-}
-
-.bridge-center strong{
-  color:#fff;
-
-  font-family:"Playfair Display",serif;
-  font-size:25px;
-  line-height:1;
+  color: var(--gold);
 }
 
 
 /* =========================================================
-   18 — SERVICES
+   DARK SECTION
 ========================================================= */
 
-.service-list{
-  border-top:1px solid var(--line);
+.dark-section {
+  background: var(--dark);
+
+  color: #fff;
 }
 
-.service-list article{
-  display:grid;
+.dark-section h2 {
+  color: #fff;
+}
 
-  grid-template-columns:80px 1fr;
+.dark-section .section-head > p {
+  color: rgba(255,255,255,.6);
+}
 
-  gap:30px;
 
-  padding:30px 0;
+/* =========================================================
+   HOMEPAGE MARKETS
+   THREE EQUAL COLUMNS
+========================================================= */
 
-  border-bottom:1px solid var(--line);
+.markets-home {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 130px 0;
+
+  background: #18201f;
+
+  color: #fff;
+}
+
+.markets-home .section-head {
+  position: relative;
+  z-index: 5;
+}
+
+.markets-home .section-head h2 {
+  color: #fff;
+}
+
+.markets-home .section-head > p {
+  color: rgba(255,255,255,.58);
+}
+
+
+/* GRID */
+
+.markets-home-grid {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  width: 100%;
+
+  margin-top: 65px;
+
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-left: 1px solid rgba(255,255,255,.14);
+}
+
+
+/* CARDS */
+
+.market-home-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 390px;
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  background: #202a28;
+
+  border-right: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+
+  transform: none !important;
 
   transition:
-    padding .5s var(--ease);
+    background .5s ease,
+    box-shadow .5s ease;
 }
 
-.service-list article:hover{
-  padding-left:10px;
+.market-home-card:first-child {
+  border-left: 1px solid rgba(255,255,255,.14);
 }
 
-.service-list article > span{
-  color:var(--gold);
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.15em;
+.market-home-card:nth-child(2) {
+  background: #1d2927;
 }
 
-.service-list h3{
-  margin-bottom:7px;
+.market-home-card:nth-child(3) {
+  background: #202a28;
 }
 
-.service-list p{
-  max-width:680px;
+.market-home-card:hover {
+  transform: none !important;
 
-  font-size:14px;
-}
+  background: #26312f;
 
-
-/* =========================================================
-   19 — TEXT LINKS
-========================================================= */
-
-.section-link-row{
-  display:flex;
-  justify-content:flex-end;
-
-  margin-top:35px;
-}
-
-.text-link{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-
-.text-link span{
-  transition:transform .4s var(--ease);
-}
-
-.text-link:hover span{
-  transform:translateX(6px);
-}
-
-.dark-link .text-link,
-.dark-section .text-link{
-  color:#fff;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.04);
 }
 
 
-/* =========================================================
-   20 — FRUITS & VEGETABLES
-========================================================= */
+/* CARD CONTENT */
 
-.product-hero{
-  min-height:88svh;
+.market-home-card > * {
+  position: relative;
+  z-index: 3;
 }
 
-.product-hero h1{
-  max-width:900px;
+.market-index {
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .18em;
+
+  color: var(--gold-light);
 }
 
-.large-statement{
-  display:flex;
-  flex-direction:column;
+.market-home-card small {
+  display: block;
 
-  margin-top:40px;
-  padding:55px 0;
+  margin-bottom: 12px;
 
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: .2em;
+
+  color: var(--gold);
 }
 
-.large-statement span{
-  color:var(--gold);
+.market-home-card h3 {
+  margin: 0;
 
-  font-size:10px;
-  font-weight:700;
+  font-size: 42px;
+  line-height: 1;
 
-  letter-spacing:.2em;
+  color: #fff;
 }
 
-.large-statement strong{
-  margin-top:8px;
+.market-home-card p {
+  max-width: 270px;
 
-  font-family:"Playfair Display",serif;
+  margin-top: 16px;
 
-  font-size:clamp(55px,9vw,130px);
-  line-height:.88;
+  color: rgba(255,255,255,.5);
 
-  font-weight:500;
-  letter-spacing:-.045em;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
-.produce-cards{
-  grid-template-columns:repeat(2,minmax(0,1fr));
+.market-arrow {
+  align-self: flex-end;
+
+  font-size: 22px;
+
+  color: var(--gold-light);
 }
 
-.produce-cards .card{
-  min-height:330px;
-}
 
-.requirement-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-}
+/* OCEAN RING */
 
-.light-market-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+.market-home-card::before {
+  content: "";
 
-  border-top:1px solid var(--line);
-  border-left:1px solid var(--line);
-}
+  position: absolute;
 
-.light-market-grid .market{
-  background:#fff;
-  color:var(--ink);
+  width: 280px;
+  height: 280px;
 
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
+  right: -150px;
+  bottom: -150px;
 
-.light-market-grid .market span{
-  color:var(--gold);
-}
+  border: 1px solid rgba(168,138,86,.14);
 
-.light-market-grid .market strong{
-  color:var(--ink);
-}
+  border-radius: 50%;
 
-.light-market-grid .market small{
-  color:var(--muted);
-}
-
-.light-market-grid .market:hover{
-  background:#ece8df;
+  pointer-events: none;
 }
 
 
 /* =========================================================
-   21 — SEAFOOD / MARINE SYSTEM
+   CENTER BRIDGE
 ========================================================= */
 
-.seafood-page{
-  --marine-deep:var(--ocean-deep);
-  --marine:var(--ocean);
-  --marine-mid:var(--ocean-mid);
-  --marine-blue:var(--ocean-blue);
-  --marine-cyan:var(--ocean-cyan);
-  --marine-text:var(--ocean-white);
-  --marine-muted:var(--ocean-muted);
-  --marine-line:var(--ocean-line);
-  --marine-gold:#b9a06a;
-}
+.markets-center-circle {
+  position: absolute;
 
+  z-index: 20;
 
-/* Marine Hero */
+  left: 50%;
+  top: 50%;
 
-.marine-hero{
-  position:relative;
+  width: 190px;
+  height: 190px;
 
-  min-height:100svh;
+  margin: 0;
 
-  display:flex;
-  align-items:center;
+  transform: translate(-50%, -50%);
 
-  overflow:hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
 
   background:
     radial-gradient(
-      ellipse at 76% 22%,
-      rgba(60,142,163,.42),
-      transparent 27%
+      circle at 35% 30%,
+      #303c39,
+      #111b1a 70%
+    );
+
+  border: 1px solid rgba(217,200,166,.5);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    inset 0 0 0 7px rgba(255,255,255,.025);
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.markets-center-circle::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -12px;
+
+  border: 1px solid rgba(168,138,86,.25);
+
+  border-radius: 50%;
+
+  animation: marketPulse 5s ease-in-out infinite;
+}
+
+@keyframes marketPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: .35;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: .8;
+  }
+}
+
+.markets-center-circle span {
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: .2em;
+
+  color: var(--gold-light);
+}
+
+.markets-center-circle strong {
+  margin: 7px 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 31px;
+  font-weight: 500;
+
+  color: #fff;
+}
+
+.markets-center-circle small {
+  max-width: 125px;
+
+  font-size: 7px;
+  line-height: 1.5;
+
+  letter-spacing: .13em;
+
+  color: rgba(255,255,255,.42);
+}
+
+
+/* =========================================================
+   MARKETS CONNECTION LINE
+========================================================= */
+
+.markets-home-grid::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 10;
+
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(168,138,86,.2) 20%,
+      rgba(168,138,86,.5) 50%,
+      rgba(168,138,86,.2) 80%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MARKETS LINK
+========================================================= */
+
+.markets-home .section-link-row {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 35px;
+}
+
+.markets-home .text-link {
+  color: #fff;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.service-list {
+  border-top: 1px solid var(--line);
+}
+
+.service-list article {
+  display: grid;
+
+  grid-template-columns: 90px 1fr;
+
+  gap: 30px;
+
+  padding: 31px 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.service-list article > span {
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .13em;
+
+  color: var(--gold);
+}
+
+.service-list h3 {
+  margin-bottom: 7px;
+}
+
+.service-list p {
+  max-width: 680px;
+}
+
+
+/* =========================================================
+   BRIDGE NETWORK
+========================================================= */
+
+.bridge-network {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 1fr 180px 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  gap: 18px;
+
+  min-height: 420px;
+
+  margin-top: 70px;
+}
+
+.bridge-network::before {
+  content: "";
+
+  position: absolute;
+
+  left: 12%;
+  right: 12%;
+  top: 50%;
+
+  height: 1px;
+
+  background: var(--line);
+}
+
+.bridge-network::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 12%;
+  bottom: 12%;
+
+  width: 1px;
+
+  background: var(--line);
+}
+
+.bridge-node {
+  position: relative;
+  z-index: 2;
+
+  padding: 35px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: var(--paper);
+
+  border: 1px solid var(--line);
+}
+
+.bridge-node span {
+  margin-bottom: 18px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .16em;
+
+  color: var(--gold);
+}
+
+.bridge-node strong {
+  font-family: "Playfair Display", serif;
+
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.bridge-node small {
+  margin-top: 8px;
+
+  max-width: 280px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+.bridge-node.europe {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.bridge-node.africa {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.bridge-node.middle-east {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.bridge-center {
+  position: absolute;
+  z-index: 4;
+
+  left: 50%;
+  top: 50%;
+
+  width: 150px;
+  height: 150px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border-radius: 50%;
+
+  background: var(--dark);
+
+  color: #fff;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,.18);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+  padding: 120px 0;
+
+  background: var(--gold);
+
+  color: #fff;
+}
+
+.cta-inner {
+  max-width: 900px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.cta-inner h2 {
+  color: #fff;
+}
+
+.cta-inner > p:not(.eyebrow) {
+  max-width: 620px;
+
+  margin: 24px auto 0;
+
+  color: rgba(255,255,255,.8);
+}
+
+.cta-inner .hero-actions {
+  justify-content: center;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  padding: 75px 0 25px;
+
+  background: #111716;
+
+  color: #fff;
+}
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr 1fr;
+
+  gap: 80px;
+
+  padding-bottom: 60px;
+}
+
+.footer-logo {
+  width: 145px;
+
+  margin-bottom: 20px;
+}
+
+.footer p {
+  max-width: 350px;
+
+  color: rgba(255,255,255,.5);
+
+  font-size: 13px;
+}
+
+.footer strong {
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-size: 11px;
+  letter-spacing: .13em;
+
+  text-transform: uppercase;
+
+  color: var(--gold-light);
+}
+
+.footer a {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: rgba(255,255,255,.6);
+
+  font-size: 13px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(255,255,255,.1);
+
+  font-size: 11px;
+
+  color: rgba(255,255,255,.38);
+}
+
+
+/* =========================================================
+   MARKETS PAGE
+========================================================= */
+
+.markets-hero {
+  min-height: 100svh;
+}
+
+.market-intro-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.market-intro-item {
+  min-height: 240px;
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.market-intro-item span {
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .15em;
+
+  color: var(--gold);
+}
+
+.market-intro-item strong {
+  font-family: "Playfair Display", serif;
+
+  font-size: 34px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   FRUITS & VEGETABLES
+========================================================= */
+
+.product-hero {
+  min-height: 88svh;
+}
+
+.product-hero h1 {
+  max-width: 850px;
+}
+
+.large-statement {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 40px;
+  padding: 55px 0;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.large-statement span {
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .2em;
+
+  color: var(--gold);
+}
+
+.large-statement strong {
+  margin-top: 5px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(55px, 9vw, 130px);
+
+  line-height: .9;
+
+  font-weight: 500;
+
+  letter-spacing: -.04em;
+}
+
+.produce-cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* =========================================================
+   MARINE / SEAFOOD
+========================================================= */
+
+.seafood-page {
+  background: var(--marine-deep);
+  color: var(--marine-white);
+}
+
+
+/* HERO */
+
+.marine-hero {
+  position: relative;
+
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 75% 20%,
+      rgba(43,117,139,.42),
+      transparent 28%
     ),
     radial-gradient(
-      ellipse at 17% 82%,
-      rgba(18,78,96,.5),
+      ellipse at 15% 80%,
+      rgba(18,69,86,.55),
       transparent 35%
     ),
     linear-gradient(
       145deg,
-      #020b11,
-      #061822 48%,
-      #0b3040
+      #020b10,
+      #061822 50%,
+      #0b2f3d
     );
 
-  color:#fff;
+  color: #fff;
 }
 
-.marine-hero::before{
-  content:"";
+.marine-hero::before {
+  content: "";
 
-  position:absolute;
-  inset:-20%;
+  position: absolute;
+  inset: -20%;
 
   background:
     radial-gradient(
       ellipse at 45% 110%,
-      rgba(72,165,183,.18),
+      rgba(65,151,169,.18),
       transparent 38%
     ),
     radial-gradient(
       ellipse at 85% 35%,
-      rgba(113,205,220,.13),
+      rgba(113,190,202,.12),
       transparent 30%
     );
 
-  filter:blur(8px);
+  filter: blur(8px);
 
-  animation:
-    marineDrift 18s ease-in-out infinite alternate;
+  animation: marineDrift 18s ease-in-out infinite alternate;
 }
 
-@keyframes marineDrift{
-
-  from{
-    transform:translate(-2%,1%) scale(1.04);
+@keyframes marineDrift {
+  from {
+    transform: translate3d(-2%,1%,0) scale(1.04);
   }
 
-  50%{
-    transform:translate(1%,-2%) scale(1.09);
-  }
-
-  to{
-    transform:translate(3%,1%) scale(1.14);
+  to {
+    transform: translate3d(3%,1%,0) scale(1.14);
   }
 }
 
-.marine-hero::after{
-  content:"";
+.marine-hero::after {
+  content: "";
 
-  position:absolute;
-  inset:-20%;
+  position: absolute;
+  inset: -20%;
 
   background:
     repeating-linear-gradient(
@@ -1389,56 +1495,50 @@ p{
       transparent 108px
     );
 
-  animation:
-    marineRays 16s linear infinite;
+  animation: marineRays 16s linear infinite;
 }
 
-@keyframes marineRays{
-
-  from{
-    transform:translateX(-4%) rotate(-1deg);
+@keyframes marineRays {
+  from {
+    transform: translateX(-4%);
   }
 
-  to{
-    transform:translateX(4%) rotate(1deg);
+  to {
+    transform: translateX(4%);
   }
 }
 
-.marine-hero .hero-content{
-  position:relative;
-  z-index:5;
+.marine-hero .hero-content {
+  position: relative;
+  z-index: 5;
 }
 
-.marine-hero h1{
-  max-width:950px;
+.marine-hero h1 {
+  max-width: 950px;
 
-  color:#fff;
+  color: #fff;
 
-  letter-spacing:-.045em;
+  letter-spacing: -.045em;
 }
 
-.marine-hero .eyebrow{
-  color:#94cbd4;
-}
-
-.marine-hero .hero-text{
-  color:var(--marine-muted);
+.marine-hero .hero-text {
+  color: rgba(238,247,248,.63);
 }
 
 
-/* Light ray */
+/* LIGHT */
 
-.marine-light{
-  position:absolute;
-  z-index:2;
+.marine-light {
+  position: absolute;
+  z-index: 2;
 
-  top:-15%;
-  left:52%;
+  top: -15%;
+  left: 52%;
 
-  width:180px;
-  height:130%;
+  width: 180px;
+  height: 130%;
 
-  opacity:.13;
+  opacity: .13;
 
   background:
     linear-gradient(
@@ -1447,224 +1547,178 @@ p{
       transparent 70%
     );
 
-  transform:rotate(16deg);
+  transform: rotate(16deg);
 
-  filter:blur(25px);
+  filter: blur(25px);
 
-  animation:
-    lightMove 9s ease-in-out infinite alternate;
+  animation: marineLight 9s ease-in-out infinite alternate;
 }
 
-@keyframes lightMove{
-
-  from{
-    transform:rotate(16deg) translateX(-40px);
-  }
-
-  to{
-    transform:rotate(21deg) translateX(60px);
+@keyframes marineLight {
+  to {
+    transform: rotate(21deg) translateX(60px);
   }
 }
 
 
-/* Depth rings */
+/* DEPTH */
 
-.marine-depth{
-  position:absolute;
+.marine-depth {
+  position: absolute;
 
-  border:1px solid rgba(130,205,216,.08);
+  border: 1px solid rgba(130,205,216,.08);
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  pointer-events:none;
+  pointer-events: none;
 }
 
-.depth-one{
-  width:700px;
-  height:700px;
+.depth-one {
+  width: 700px;
+  height: 700px;
 
-  right:-260px;
-  bottom:-360px;
-
-  animation:
-    depthFloat 14s ease-in-out infinite alternate;
+  right: -260px;
+  bottom: -360px;
 }
 
-.depth-two{
-  width:450px;
-  height:450px;
+.depth-two {
+  width: 450px;
+  height: 450px;
 
-  right:50px;
-  bottom:-280px;
-
-  animation:
-    depthFloat 10s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes depthFloat{
-
-  from{
-    transform:translateY(0) scale(1);
-  }
-
-  to{
-    transform:translateY(-35px) scale(1.05);
-  }
-}
-
-.marine-hero-label{
-  position:absolute;
-  z-index:5;
-
-  right:40px;
-  bottom:45px;
-
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-
-  color:rgba(255,255,255,.4);
-
-  font-size:9px;
-  letter-spacing:.22em;
+  right: 50px;
+  bottom: -280px;
 }
 
 
-/* =========================================================
-   22 — OCEAN DIVIDER
-========================================================= */
+/* OCEAN DIVIDER */
 
-.ocean-divider{
-  position:relative;
+.ocean-divider {
+  position: relative;
 
-  height:90px;
+  height: 90px;
 
-  overflow:hidden;
+  overflow: hidden;
 
-  background:var(--ocean-deep);
+  background: var(--marine-deep);
 }
 
 .ocean-divider::before,
-.ocean-divider::after{
-  content:"";
+.ocean-divider::after {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  left:-10%;
+  left: -10%;
 
-  width:120%;
+  width: 120%;
 
-  border-top:1px solid var(--ocean-line);
+  border-top: 1px solid var(--marine-line);
 
-  border-radius:50%;
+  border-radius: 50%;
 }
 
-.ocean-divider::before{
-  top:25px;
-  height:70px;
-
-  transform:rotate(-1deg);
+.ocean-divider::before {
+  top: 25px;
+  height: 70px;
 }
 
-.ocean-divider::after{
-  top:42px;
-  height:80px;
+.ocean-divider::after {
+  top: 42px;
+  height: 80px;
 
-  opacity:.45;
-
-  transform:rotate(1deg);
+  opacity: .45;
 }
 
 
-/* =========================================================
-   23 — MARINE CATEGORY
-========================================================= */
+/* MARINE CATEGORY */
 
-.marine-category{
+.marine-category {
   background:
     linear-gradient(
       180deg,
       #061822,
-      #08222e
+      #081f2a
     );
 
-  color:#fff;
+  color: #fff;
 }
 
-.marine-category h2{
-  color:#fff;
+.marine-category h2 {
+  color: #fff;
 }
 
 .marine-category p,
-.marine-category .section-head > p{
-  color:var(--marine-muted);
-}
-
-.marine-statement{
-  display:flex;
-  flex-direction:column;
-
-  margin-top:35px;
-  padding:55px 0;
-
-  border-top:1px solid var(--marine-line);
-  border-bottom:1px solid var(--marine-line);
-}
-
-.marine-statement span{
-  color:#8dbec8;
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.2em;
-}
-
-.marine-statement strong{
-  margin-top:8px;
-
-  color:#fff;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(55px,9vw,125px);
-  line-height:.88;
-
-  font-weight:500;
-  letter-spacing:-.045em;
+.marine-category .section-head > p {
+  color: rgba(238,247,248,.63);
 }
 
 
-/* =========================================================
-   24 — MARINE PRODUCTS
-========================================================= */
+/* MARINE STATEMENT */
 
-.marine-products{
-  display:grid;
+.marine-statement {
+  display: flex;
+  flex-direction: column;
 
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  margin-top: 35px;
 
-  gap:1px;
+  padding: 55px 0;
 
-  overflow:hidden;
-
-  border:1px solid var(--marine-line);
-
-  background:var(--marine-line);
+  border-top: 1px solid var(--marine-line);
+  border-bottom: 1px solid var(--marine-line);
 }
 
-.marine-card{
-  position:relative;
+.marine-statement span {
+  font-size: 10px;
+  font-weight: 700;
 
-  min-height:390px;
+  letter-spacing: .2em;
 
-  padding:38px;
+  color: var(--marine-cyan);
+}
 
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+.marine-statement strong {
+  margin-top: 8px;
 
-  overflow:hidden;
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(55px, 9vw, 125px);
+
+  line-height: .9;
+
+  font-weight: 500;
+
+  letter-spacing: -.045em;
+
+  color: #fff;
+}
+
+
+/* MARINE PRODUCTS */
+
+.marine-products {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1px;
+
+  background: var(--marine-line);
+
+  border: 1px solid var(--marine-line);
+}
+
+.marine-card {
+  position: relative;
+
+  min-height: 390px;
+
+  padding: 38px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
 
   background:
     linear-gradient(
@@ -1674,156 +1728,114 @@ p{
     );
 
   transition:
-    transform .7s var(--ease),
-    background .7s ease;
+    transform .6s var(--ease),
+    background .5s ease;
 }
 
-.marine-card::before{
-  content:"";
+.marine-card:hover {
+  transform: translateY(-7px);
 
-  position:absolute;
-
-  width:260px;
-  height:260px;
-
-  right:-100px;
-  bottom:-120px;
-
-  border:1px solid rgba(145,210,220,.11);
-
-  border-radius:50%;
-
-  transition:transform .9s var(--ease);
+  background: #0d3442;
 }
 
-.marine-card::after{
-  content:"";
+.marine-card::before {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  left:0;
-  right:0;
-  bottom:0;
+  width: 260px;
+  height: 260px;
 
-  height:2px;
+  right: -100px;
+  bottom: -120px;
 
-  background:var(--marine-gold);
+  border: 1px solid rgba(145,210,220,.11);
 
-  transform:scaleX(0);
-  transform-origin:left;
-
-  transition:transform .7s var(--ease);
+  border-radius: 50%;
 }
 
-.marine-card:hover{
-  transform:translateY(-8px);
+.marine-card-number {
+  position: relative;
+  z-index: 2;
 
-  background:#0d3442;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .2em;
+
+  color: var(--marine-cyan);
 }
 
-.marine-card:hover::before{
-  transform:scale(2.2);
+.marine-card h3 {
+  position: relative;
+  z-index: 2;
+
+  color: #fff;
+
+  font-size: 36px;
 }
 
-.marine-card:hover::after{
-  transform:scaleX(1);
-}
+.marine-card p {
+  position: relative;
+  z-index: 2;
 
-.marine-card-number{
-  position:relative;
-  z-index:2;
+  max-width: 460px;
 
-  color:#91c4ce;
+  margin-top: 13px;
 
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:.2em;
-}
-
-.marine-card h3{
-  position:relative;
-  z-index:2;
-
-  color:#fff;
-
-  font-size:36px;
-}
-
-.marine-card p{
-  position:relative;
-  z-index:2;
-
-  max-width:460px;
-
-  margin-top:13px;
-
-  color:rgba(255,255,255,.55)!important;
+  color: rgba(255,255,255,.55) !important;
 }
 
 
-/* =========================================================
-   25 — MARINE REQUIREMENTS
-========================================================= */
+/* MARINE REQUIREMENTS */
 
-.marine-requirements{
-  display:grid;
+.marine-requirements {
+  display: grid;
 
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns: repeat(4, 1fr);
 
-  border-top:1px solid var(--marine-line);
-  border-left:1px solid var(--marine-line);
+  border-top: 1px solid var(--marine-line);
+  border-left: 1px solid var(--marine-line);
 }
 
-.marine-requirement{
-  min-height:175px;
+.marine-requirement {
+  min-height: 175px;
 
-  padding:25px;
+  padding: 25px;
 
-  border-right:1px solid var(--marine-line);
-  border-bottom:1px solid var(--marine-line);
-
-  transition:
-    background .5s ease,
-    transform .5s var(--ease);
+  border-right: 1px solid var(--marine-line);
+  border-bottom: 1px solid var(--marine-line);
 }
 
-.marine-requirement:hover{
-  background:rgba(100,180,195,.07);
-  transform:translateY(-4px);
+.marine-requirement span {
+  font-size: 10px;
+
+  letter-spacing: .18em;
+
+  color: var(--marine-cyan);
 }
 
-.marine-requirement span{
-  color:#8dbec8;
+.marine-requirement strong {
+  display: block;
 
-  font-size:10px;
-  letter-spacing:.18em;
-}
+  margin-top: 48px;
 
-.marine-requirement strong{
-  display:block;
+  font-family: "Playfair Display", serif;
 
-  margin-top:48px;
+  font-size: 25px;
 
-  color:#fff;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:25px;
-  font-weight:500;
+  color: #fff;
 }
 
 
-/* =========================================================
-   26 — MARINE ROUTE
-========================================================= */
+/* MARINE ROUTE */
 
-.marine-route{
-  position:relative;
+.marine-route {
+  position: relative;
 
-  overflow:hidden;
+  overflow: hidden;
 
-  padding:120px 0;
+  padding: 120px 0;
 
   background:
     radial-gradient(
@@ -1832,1177 +1844,72 @@ p{
       #06151d 60%
     );
 
-  color:#fff;
+  color: #fff;
 }
 
-.marine-route h2{
-  color:#fff;
+.marine-route h2 {
+  color: #fff;
 }
 
-.marine-route .section-head > p{
-  color:rgba(255,255,255,.6);
+.route-items {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 40px;
+
+  margin-top: 65px;
+
+  text-align: center;
 }
 
-.marine-route::before{
-  content:"";
+.route-item strong {
+  display: block;
 
-  position:absolute;
+  font-family: "Playfair Display", serif;
 
-  left:8%;
-  right:8%;
-  top:65%;
-
-  height:1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(150,210,220,.4),
-      transparent
-    );
+  font-size: 32px;
 }
 
-.route-items{
-  position:relative;
-  z-index:2;
+.route-item span {
+  display: block;
 
-  display:grid;
+  margin-top: 10px;
 
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  font-size: 9px;
 
-  gap:40px;
+  letter-spacing: .2em;
 
-  margin-top:65px;
-
-  text-align:center;
-}
-
-.route-item strong{
-  display:block;
-
-  color:#fff;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:32px;
-  font-weight:500;
-}
-
-.route-item span{
-  display:block;
-
-  margin-top:10px;
-
-  color:#8ebfc9;
-
-  font-size:9px;
-  letter-spacing:.2em;
+  color: var(--marine-cyan);
 }
 
 
 /* =========================================================
-   27 — MARINE CTA
+   RESPONSIVE
 ========================================================= */
 
-.marine-cta{
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      #174d60,
-      #061822 65%
-    );
-}
+@media (max-width: 1000px) {
 
-.marine-cta h2{
-  color:#fff;
-}
+  .section-head {
+    grid-template-columns: 1fr;
 
-.marine-cta .cta-inner > p:not(.eyebrow){
-  color:rgba(255,255,255,.65);
-}
-
-
-/* =========================================================
-   28 — CTA
-========================================================= */
-
-.cta-section{
-  padding:120px 0;
-
-  background:var(--gold);
-
-  color:#fff;
-}
-
-.cta-inner{
-  max-width:900px;
-
-  margin:auto;
-
-  text-align:center;
-}
-
-.cta-inner h2{
-  color:#fff;
-}
-
-.cta-inner > p:not(.eyebrow){
-  max-width:620px;
-
-  margin:24px auto 0;
-
-  color:rgba(255,255,255,.8);
-}
-
-.cta-inner .hero-actions{
-  justify-content:center;
-}
-
-
-/* =========================================================
-   29 — FOOTER
-========================================================= */
-
-.footer{
-  padding:75px 0 25px;
-
-  background:#101615;
-
-  color:#fff;
-}
-
-.footer-grid{
-  display:grid;
-
-  grid-template-columns:1.5fr 1fr 1fr;
-
-  gap:80px;
-
-  padding-bottom:60px;
-}
-
-.footer-logo{
-  width:145px;
-
-  margin-bottom:20px;
-}
-
-.footer p{
-  max-width:350px;
-
-  color:rgba(255,255,255,.5);
-
-  font-size:13px;
-}
-
-.footer strong{
-  display:block;
-
-  margin-bottom:18px;
-
-  color:var(--gold-light);
-
-  font-size:10px;
-  letter-spacing:.15em;
-
-  text-transform:uppercase;
-}
-
-.footer a{
-  display:block;
-
-  width:max-content;
-
-  margin-bottom:9px;
-
-  color:rgba(255,255,255,.58);
-
-  font-size:13px;
-
-  transition:
-    color .3s ease,
-    transform .4s var(--ease);
-}
-
-.footer a:hover{
-  color:#fff;
-  transform:translateX(4px);
-}
-
-.footer-bottom{
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:30px;
-
-  padding-top:20px;
-
-  border-top:1px solid rgba(255,255,255,.1);
-
-  color:rgba(255,255,255,.35);
-
-  font-size:10px;
-}
-
-
-/* =========================================================
-   30 — RESPONSIVE / TABLET
-========================================================= */
-
-@media(max-width:1000px){
-
-  .section-head{
-    grid-template-columns:1fr;
-    gap:25px;
-  }
-
-  .cards.four{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .market-intro-grid{
-    grid-template-columns:1fr;
-  }
-
-  .region-card{
-    grid-template-columns:60px 1fr;
-  }
-
-  .region-side{
-    display:none;
-  }
-
-  .requirement-grid,
-  .light-market-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .marine-requirements{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .footer-grid{
-    gap:45px;
-  }
-}
-
-
-/* =========================================================
-   31 — MOBILE
-========================================================= */
-
-@media(max-width:760px){
-
-  .container{
-    width:min(calc(100% - 32px),var(--max));
-  }
-
-  .section{
-    padding:82px 0;
-  }
-
-  /* Header */
-
-  .brand img{
-    width:125px;
-  }
-
-  .menu-toggle{
-    display:block;
-  }
-
-  .nav{
-    position:absolute;
-
-    top:calc(100% + 1px);
-    left:16px;
-    right:16px;
-
-    display:none;
-
-    flex-direction:column;
-    align-items:stretch;
-
-    gap:0;
-
-    padding:5px 0;
-
-    background:#fff;
-
-    color:var(--ink);
-
-    border:1px solid var(--line);
-
-    box-shadow:
-      0 20px 45px rgba(23,32,31,.15);
-  }
-
-  .nav.active{
-    display:flex;
-  }
-
-  .nav > a{
-    padding:15px 18px;
-
-    border-bottom:1px solid var(--line);
-  }
-
-  .nav > a:last-of-type{
-    border-bottom:0;
-  }
-
-  .nav-cta{
-    margin:10px;
-
-    text-align:center;
-  }
-
-  .language-switcher{
-    justify-content:center;
-
-    margin:8px 18px;
-    padding:12px 0;
-
-    border-left:0;
-
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-
-
-  /* Typography */
-
-  h1,
-  .marine-hero h1{
-    font-size:clamp(47px,14vw,72px);
-  }
-
-  .hero{
-    min-height:760px;
-  }
-
-  .hero-text{
-    font-size:15px;
-  }
-
-
-  /* Cards */
-
-  .cards.four,
-  .market-grid{
-    grid-template-columns:1fr;
-  }
-
-  .card{
-    min-height:300px;
-  }
-
-  .product-card{
-    min-height:350px;
-  }
-
-
-  /* Homepage Markets */
-
-  .markets-home{
-    padding:85px 0;
-  }
-
-  .markets-home-grid{
-    grid-template-columns:1fr;
-
-    gap:12px;
-
-    margin-top:45px;
-
-    border:0;
-  }
-
-  .market-home-card,
-  .market-home-card:nth-child(1),
-  .market-home-card:nth-child(2),
-  .market-home-card:nth-child(3){
-    min-height:270px;
-
-    padding:26px;
-
-    border:1px solid rgba(255,255,255,.14);
-
-    transform:none !important;
-  }
-
-  .market-home-card h3{
-    font-size:36px;
-  }
-
-  .markets-home-grid::before{
-    display:none;
-  }
-
-  .markets-center-circle{
-    position:relative;
-
-    left:auto;
-    top:auto;
-
-    width:135px;
-    height:135px;
-
-    margin:-67px auto 0;
-
-    transform:none !important;
-  }
-
-  .markets-center-circle strong{
-    font-size:25px;
-  }
-
-
-  /* Markets */
-
-  .region-card{
-    grid-template-columns:1fr;
-
-    gap:20px;
-
-    padding:38px 0;
-  }
-
-  .region-main h3{
-    font-size:34px;
-  }
-
-
-  /* Bridge */
-
-  .bridge-network{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-    min-height:auto;
-  }
-
-  .bridge-network::before,
-  .bridge-network::after{
-    display:none;
-  }
-
-  .bridge-node,
-  .bridge-node.europe,
-  .bridge-node.africa,
-  .bridge-node.middle-east{
-    min-height:150px;
-  }
-
-  .bridge-center{
-    position:relative;
-
-    left:auto;
-    top:auto;
-
-    width:125px;
-    height:125px;
-
-    margin:10px auto;
-
-    transform:none;
-
-    order:-1;
-  }
-
-
-  /* Fruits */
-
-  .produce-cards{
-    grid-template-columns:1fr;
-  }
-
-  .requirement-grid,
-  .light-market-grid{
-    grid-template-columns:1fr;
-  }
-
-  .large-statement{
-    padding:40px 0;
-  }
-
-  .large-statement strong,
-  .marine-statement strong{
-    font-size:18vw;
-  }
-
-
-  /* Seafood */
-
-  .marine-hero{
-    min-height:760px;
-  }
-
-  .marine-hero-label{
-    right:20px;
-    bottom:25px;
-  }
-
-  .marine-products{
-    grid-template-columns:1fr;
-  }
-
-  .marine-card{
-    min-height:320px;
-  }
-
-  .marine-card h3{
-    font-size:31px;
-  }
-
-  .marine-requirements{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .route-items{
-    grid-template-columns:1fr;
-
-    gap:55px;
-  }
-
-  .marine-route::before{
-    display:none;
-  }
-
-
-  /* Services */
-
-  .service-list article{
-    grid-template-columns:50px 1fr;
-
-    gap:18px;
-  }
-
-
-  /* CTA */
-
-  .cta-section{
-    padding:85px 0;
-  }
-
-
-  /* Footer */
-
-  .footer-grid{
-    grid-template-columns:1fr;
-
-    gap:40px;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-
-    gap:10px;
-  }
-
-  .section-link-row{
-    justify-content:flex-start;
-  }
-}
-
-
-/* =========================================================
-   32 — REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  html{
-    scroll-behavior:auto;
-  }
-
-  *,
-  *::before,
-  *::after{
-    animation:none !important;
-    transition:none !important;
-  }
-
-  .fade-up,
-  .hero .eyebrow,
-  .hero h1,
-  .hero-text,
-  .hero-actions{
-    opacity:1 !important;
-    transform:none !important;
-  }
-}
-/* =========================================================
-   EMPERIO TISS
-   HOMEPAGE MARKETS — FINAL SYSTEM
-   EUROPE / AFRICA / MIDDLE EAST
-========================================================= */
-
-.markets-home{
-  position:relative;
-  overflow:hidden;
-
-  padding:140px 0;
-
-  background:#18201f;
-  color:#fff;
-}
-
-
-/* ---------------------------------------------------------
-   HEADER
---------------------------------------------------------- */
-
-.markets-home-head{
-  position:relative;
-  z-index:5;
-
-  margin-bottom:70px;
-}
-
-.markets-home-head h2{
-  color:#fff;
-}
-
-.markets-home-head > p{
-  color:rgba(255,255,255,.58);
-}
-
-
-/* ---------------------------------------------------------
-   GRID
---------------------------------------------------------- */
-
-.markets-home-grid{
-
-  position:relative;
-
-  width:100%;
-
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-
-  align-items:stretch;
-
-  border-top:1px solid rgba(255,255,255,.13);
-  border-left:1px solid rgba(255,255,255,.13);
-}
-
-
-/* ---------------------------------------------------------
-   MARKET CARDS
---------------------------------------------------------- */
-
-.market-home-card{
-
-  position:relative;
-  z-index:1;
-
-  min-width:0;
-  min-height:420px;
-
-  padding:34px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
-  overflow:hidden;
-
-  border-right:1px solid rgba(255,255,255,.13);
-  border-bottom:1px solid rgba(255,255,255,.13);
-
-  color:#fff;
-
-  transition:
-    background .6s var(--ease),
-    transform .7s var(--ease),
-    box-shadow .7s var(--ease);
-}
-
-
-/* ---------------------------------------------------------
-   INDIVIDUAL ATMOSPHERE
---------------------------------------------------------- */
-
-.market-europe{
-  background:
-    linear-gradient(
-      145deg,
-      #202b29,
-      #182321
-    );
-}
-
-.market-africa{
-  background:
-    linear-gradient(
-      145deg,
-      #172a2c,
-      #102125
-    );
-}
-
-.market-middle-east{
-  background:
-    linear-gradient(
-      145deg,
-      #1e2928,
-      #18201f
-    );
-}
-
-
-/* ---------------------------------------------------------
-   OCEAN ATMOSPHERE
---------------------------------------------------------- */
-
-.market-home-card::before{
-
-  content:"";
-
-  position:absolute;
-
-  width:360px;
-  height:360px;
-
-  right:-190px;
-  bottom:-190px;
-
-  border:1px solid rgba(143,198,207,.12);
-
-  border-radius:50%;
-
-  transition:
-    transform 1.2s var(--ease),
-    border-color .7s ease;
-}
-
-
-.market-home-card::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  bottom:0;
-
-  width:100%;
-  height:2px;
-
-  background:#b9a06a;
-
-  transform:scaleX(0);
-  transform-origin:left;
-
-  transition:
-    transform .8s var(--ease);
-}
-
-
-.market-home-card:hover{
-
-  transform:translateY(-7px);
-
-  background:#24302e;
-
-  box-shadow:
-    0 35px 80px rgba(0,0,0,.25);
-}
-
-
-.market-home-card:hover::before{
-
-  transform:scale(1.55);
-
-  border-color:
-    rgba(143,198,207,.25);
-}
-
-
-.market-home-card:hover::after{
-
-  transform:scaleX(1);
-}
-
-
-/* ---------------------------------------------------------
-   CARD CONTENT
---------------------------------------------------------- */
-
-.market-home-card > *{
-  position:relative;
-  z-index:3;
-}
-
-
-.market-index{
-
-  font-size:10px;
-
-  font-weight:700;
-
-  letter-spacing:.2em;
-
-  color:#d9c8a6;
-}
-
-
-.market-card-content{
-
-  max-width:320px;
-
-  margin:auto 0;
-}
-
-
-.market-home-card small{
-
-  display:block;
-
-  margin-bottom:14px;
-
-  font-size:9px;
-
-  font-weight:700;
-
-  letter-spacing:.22em;
-
-  color:#b9a06a;
-}
-
-
-.market-home-card h3{
-
-  margin:0;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(38px,4vw,54px);
-
-  line-height:.95;
-
-  font-weight:500;
-
-  letter-spacing:-.03em;
-
-  color:#fff;
-
-  transition:
-    transform .6s var(--ease);
-}
-
-
-.market-home-card:hover h3{
-
-  transform:translateX(7px);
-}
-
-
-.market-home-card p{
-
-  max-width:300px;
-
-  margin-top:18px;
-
-  color:rgba(255,255,255,.52);
-
-  font-size:13px;
-
-  line-height:1.75;
-}
-
-
-/* ---------------------------------------------------------
-   ARROW
---------------------------------------------------------- */
-
-.market-arrow{
-
-  align-self:flex-end;
-
-  font-size:24px;
-
-  font-weight:300;
-
-  color:#d9c8a6;
-
-  transition:
-    transform .5s var(--ease),
-    color .3s ease;
-}
-
-
-.market-home-card:hover .market-arrow{
-
-  transform:translate(7px,-7px);
-
-  color:#fff;
-}
-
-
-/* =========================================================
-   CENTRAL EMPERIO TISS BRIDGE
-========================================================= */
-
-.markets-center-circle{
-
-  position:absolute;
-
-  z-index:10;
-
-  left:50%;
-  top:50%;
-
-  width:190px;
-  height:190px;
-
-  transform:translate(-50%,-50%);
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 28%,
-      #31413e 0%,
-      #101b1a 62%,
-      #091211 100%
-    );
-
-  border:1px solid rgba(217,200,166,.55);
-
-  box-shadow:
-
-    0 30px 80px rgba(0,0,0,.48),
-
-    inset 0 0 0 7px
-      rgba(255,255,255,.025),
-
-    inset 0 0 50px
-      rgba(143,198,207,.05);
-
-  text-align:center;
-
-  pointer-events:none;
-}
-
-
-/* ---------------------------------------------------------
-   OUTER RING
---------------------------------------------------------- */
-
-.markets-center-circle::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:-13px;
-
-  border:1px solid
-    rgba(185,160,106,.22);
-
-  border-radius:50%;
-
-  animation:
-    marketBridgePulse 5s ease-in-out infinite;
-}
-
-
-@keyframes marketBridgePulse{
-
-  0%,
-  100%{
-    transform:scale(1);
-    opacity:.35;
-  }
-
-  50%{
-    transform:scale(1.045);
-    opacity:.8;
-  }
-
-}
-
-
-/* ---------------------------------------------------------
-   CENTER TEXT
---------------------------------------------------------- */
-
-.markets-center-circle span{
-
-  font-size:8px;
-
-  font-weight:700;
-
-  letter-spacing:.22em;
-
-  color:#d9c8a6;
-}
-
-
-.markets-center-circle strong{
-
-  margin:9px 0 7px;
-
-  font-family:"Playfair Display",serif;
-
-  font-size:29px;
-
-  line-height:.9;
-
-  font-weight:500;
-
-  letter-spacing:-.02em;
-
-  color:#fff;
-}
-
-
-.markets-center-circle small{
-
-  max-width:125px;
-
-  font-size:7px;
-
-  line-height:1.55;
-
-  letter-spacing:.13em;
-
-  color:rgba(255,255,255,.42);
-}
-
-
-/* =========================================================
-   CENTRAL CONNECTION LINE
-========================================================= */
-
-.markets-home-grid::before{
-
-  content:"";
-
-  position:absolute;
-
-  z-index:4;
-
-  left:0;
-  right:0;
-
-  top:50%;
-
-  height:1px;
-
-  background:
-    linear-gradient(
-      90deg,
-
-      transparent 0%,
-
-      rgba(185,160,106,.08) 15%,
-
-      rgba(185,160,106,.30) 32%,
-
-      rgba(185,160,106,.58) 50%,
-
-      rgba(185,160,106,.30) 68%,
-
-      rgba(185,160,106,.08) 85%,
-
-      transparent 100%
-    );
-
-  pointer-events:none;
-}
-
-
-/* ---------------------------------------------------------
-   SECTION LINK
---------------------------------------------------------- */
-
-.markets-home .section-link-row{
-
-  position:relative;
-
-  z-index:5;
-
-  margin-top:36px;
-}
-
-
-.markets-home .text-link{
-
-  color:#fff;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:900px){
-
-  .markets-home{
-    padding:110px 0;
-  }
-
-  .markets-home-grid{
-
-    grid-template-columns:1fr;
-
-    border-left:0;
+    gap: 25px;
   }
-
 
-  .market-home-card{
-
-    min-height:320px;
-
-    border-left:1px solid
-      rgba(255,255,255,.13);
+  .cards.four {
+    grid-template-columns: 1fr 1fr;
   }
 
-
-  .markets-home-grid::before{
-    display:none;
+  .marine-requirements {
+    grid-template-columns: 1fr 1fr;
   }
-
 
-  /*
-     Circle becomes a real bridge element
-     between the cards.
-  */
-
-  .markets-center-circle{
-
-    position:relative;
-
-    left:auto;
-    top:auto;
-
-    transform:none;
-
-    width:150px;
-    height:150px;
-
-    margin:-75px auto;
-
-    z-index:20;
+  .footer-grid {
+    gap: 40px;
   }
-
 }
 
 
@@ -3010,69 +1917,215 @@ p{
    MOBILE
 ========================================================= */
 
-@media(max-width:760px){
+@media (max-width: 760px) {
 
-  .markets-home{
-    padding:90px 0;
+  .container {
+    width: min(calc(100% - 32px), var(--max));
   }
 
 
-  .markets-home-head{
-    margin-bottom:45px;
+  /* HEADER */
+
+  .brand img {
+    width: 125px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+
+    top: 100%;
+    left: 16px;
+    right: 16px;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    background: #fff;
+
+    color: var(--ink);
+
+    border: 1px solid var(--line);
+
+    box-shadow:
+      0 20px 45px rgba(24,32,31,.13);
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .nav > a {
+    padding: 15px 18px;
+
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-cta {
+    margin: 10px;
+
+    text-align: center;
+  }
+
+  .language-switcher {
+    margin: 8px 18px;
+    padding: 10px 0;
+
+    justify-content: center;
+
+    border-left: 0;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
 
-  .markets-home-grid{
+  /* HERO */
 
-    gap:12px;
+  .hero,
+  .marine-hero {
+    min-height: 760px;
+  }
 
-    border:0;
+  .hero h1,
+  .marine-hero h1 {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+  .hero-text {
+    font-size: 16px;
   }
 
 
-  .market-home-card{
+  /* SECTIONS */
 
-    min-height:280px;
+  .section {
+    padding: 82px 0;
+  }
 
-    padding:27px;
+  .two-col {
+    grid-template-columns: 1fr;
 
-    border:1px solid
-      rgba(255,255,255,.13);
+    gap: 40px;
   }
 
 
-  .market-home-card h3{
+  /* CARDS */
 
-    font-size:40px;
+  .cards.four,
+  .produce-cards,
+  .marine-products {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 300px;
   }
 
 
-  .market-home-card p{
+  /* HOMEPAGE MARKETS */
 
-    font-size:12px;
+  .markets-home {
+    padding: 85px 0;
+  }
+
+  .markets-home-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    border: 0;
+  }
+
+  .market-home-card {
+    min-height: 270px;
+
+    padding: 26px;
+
+    border: 1px solid rgba(255,255,255,.14);
+  }
+
+  .market-home-card h3 {
+    font-size: 36px;
+  }
+
+  .markets-home-grid::after {
+    display: none;
+  }
+
+  .markets-center-circle {
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    width: 135px;
+    height: 135px;
+
+    margin: -67px auto 0;
+
+    transform: none;
+  }
+
+  .markets-center-circle strong {
+    font-size: 25px;
   }
 
 
-  .markets-center-circle{
+  /* MARINE */
 
-    width:135px;
-    height:135px;
+  .marine-products {
+    grid-template-columns: 1fr;
+  }
 
-    margin:-67px auto;
+  .marine-card {
+    min-height: 320px;
+  }
+
+  .marine-card h3 {
+    font-size: 31px;
+  }
+
+  .marine-requirements {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .route-items {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
   }
 
 
-  .markets-center-circle strong{
+  /* CTA */
 
-    font-size:24px;
+  .cta-section {
+    padding: 85px 0;
   }
 
 
-  .markets-center-circle small{
+  /* FOOTER */
 
-    font-size:6px;
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
 
+  .footer-bottom {
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .section-link-row {
+    justify-content: flex-start;
+  }
 }
 
 
@@ -3080,18 +2133,26 @@ p{
    REDUCED MOTION
 ========================================================= */
 
-@media(prefers-reduced-motion:reduce){
+@media (prefers-reduced-motion: reduce) {
 
-  .markets-center-circle::before{
-    animation:none;
+  html {
+    scroll-behavior: auto;
   }
 
-  .market-home-card,
-  .market-home-card::before,
-  .market-home-card::after,
-  .market-home-card h3,
-  .market-arrow{
-    transition:none;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 
+  .hero .eyebrow,
+  .hero h1,
+  .hero-text,
+  .hero-actions,
+  .fade-up {
+    opacity: 1 !important;
+
+    transform: none !important;
+  }
 }
