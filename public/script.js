@@ -1,51 +1,79 @@
 /* =========================================================
-   EMPERIO TISS — MOTION ENGINE
+   EMPERIO TISS — INTERACTION ENGINE
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* -----------------------------------------
+  /* =======================================================
+     HERO INTRO
+  ======================================================= */
+
+  const hero = document.querySelector(".hero");
+
+  if (hero) {
+    requestAnimationFrame(() => {
+      hero.classList.add("loaded");
+    });
+  }
+
+
+  /* =======================================================
      HEADER
-  ----------------------------------------- */
+  ======================================================= */
 
   const header = document.querySelector(".site-header");
 
-  function updateHeader() {
+  const updateHeader = () => {
+
     if (!header) return;
 
-    if (window.scrollY > 45) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  }
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 45
+    );
+
+  };
 
   updateHeader();
 
-  window.addEventListener("scroll", updateHeader, {
-    passive: true
-  });
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
 
 
-  /* -----------------------------------------
-     MOBILE MENU
-  ----------------------------------------- */
+  /* =======================================================
+     MOBILE NAVIGATION
+  ======================================================= */
 
-  const toggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
+  const toggle =
+    document.querySelector(".menu-toggle");
+
+  const nav =
+    document.querySelector(".nav");
 
   if (toggle && nav) {
 
     toggle.addEventListener("click", () => {
 
-      const isOpen = nav.classList.toggle("active");
+      const open =
+        nav.classList.toggle("active");
 
       toggle.setAttribute(
         "aria-expanded",
-        String(isOpen)
+        String(open)
       );
 
-      toggle.textContent = isOpen ? "×" : "☰";
+      toggle.setAttribute(
+        "aria-label",
+        open
+          ? "Close navigation"
+          : "Open navigation"
+      );
+
+      toggle.textContent =
+        open ? "×" : "☰";
 
     });
 
@@ -59,6 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
         toggle.setAttribute(
           "aria-expanded",
           "false"
+        );
+
+        toggle.setAttribute(
+          "aria-label",
+          "Open navigation"
         );
 
         toggle.textContent = "☰";
@@ -83,6 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
           "false"
         );
 
+        toggle.setAttribute(
+          "aria-label",
+          "Open navigation"
+        );
+
         toggle.textContent = "☰";
 
       }
@@ -92,12 +130,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -----------------------------------------
+  /* =======================================================
      SCROLL REVEAL
-  ----------------------------------------- */
+  ======================================================= */
 
   const revealElements = document.querySelectorAll(
-    ".section-head, .card, .market, .service-list article, .two-col"
+    ".section-head, " +
+    ".card, " +
+    ".market, " +
+    ".service-list article, " +
+    ".two-col, " +
+    ".bridge-node, " +
+    ".bridge-center"
   );
 
 
@@ -106,7 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
     element.classList.add("fade-up");
 
     const delay =
-      Math.min((index % 6) * 70, 350);
+      Math.min(
+        (index % 5) * 90,
+        360
+      );
 
     element.style.transitionDelay =
       `${delay}ms`;
@@ -118,30 +165,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer =
       new IntersectionObserver(
-
         entries => {
 
           entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("visible");
-
-              observer.unobserve(
-                entry.target
-              );
-
+            if (!entry.isIntersecting) {
+              return;
             }
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(
+              entry.target
+            );
 
           });
 
         },
-
         {
-          threshold: 0.12,
-          rootMargin: "0px 0px -45px 0px"
+          threshold:0.12,
+          rootMargin:"0px 0px -50px 0px"
         }
-
       );
 
 
@@ -158,9 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -----------------------------------------
-     SMOOTH ANCHOR NAVIGATION
-  ----------------------------------------- */
+  /* =======================================================
+     SMOOTH INTERNAL LINKS
+  ======================================================= */
 
   document
     .querySelectorAll('a[href^="#"]')
@@ -171,7 +215,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const id =
           link.getAttribute("href");
 
-        if (!id || id === "#") {
+        if (
+          !id ||
+          id === "#"
+        ) {
           return;
         }
 
@@ -185,8 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
         target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+          behavior:"smooth",
+          block:"start"
         });
 
       });
@@ -194,22 +241,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* -----------------------------------------
+  /* =======================================================
      CURRENT YEAR
-  ----------------------------------------- */
+  ======================================================= */
 
   const year =
     document.getElementById("year");
 
   if (year) {
+
     year.textContent =
       new Date().getFullYear();
+
   }
 
 
-  /* -----------------------------------------
-     ESCAPE → CLOSE MOBILE MENU
-  ----------------------------------------- */
+  /* =======================================================
+     ESCAPE → CLOSE MENU
+  ======================================================= */
 
   document.addEventListener(
     "keydown",
@@ -228,6 +277,11 @@ document.addEventListener("DOMContentLoaded", () => {
           toggle.setAttribute(
             "aria-expanded",
             "false"
+          );
+
+          toggle.setAttribute(
+            "aria-label",
+            "Open navigation"
           );
 
           toggle.textContent = "☰";
