@@ -1985,3 +1985,448 @@ p{
   }
 
 }
+/* =========================================================
+   EMPERIO TISS — MARINE SYSTEM
+   FISH & SEAFOOD
+========================================================= */
+
+:root{
+  --marine:#071a24;
+  --marine-deep:#041219;
+  --marine-mid:#0c2b38;
+  --marine-blue:#16495b;
+  --marine-line:rgba(160,210,220,.16);
+  --marine-text:#eef7f8;
+  --marine-muted:rgba(238,247,248,.62);
+  --marine-accent:#b9a06a;
+}
+
+
+/* ---------------------------------------------------------
+   MARINE HERO
+--------------------------------------------------------- */
+
+.marine-hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(34,105,125,.42),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--marine-deep),
+      var(--marine),
+      #0b303e
+    );
+  color:var(--marine-text);
+}
+
+
+/* atmospheric ocean movement */
+
+.marine-hero::before{
+  content:"";
+  position:absolute;
+  inset:-15%;
+  background:
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(58,142,160,.22),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 80% 40%,
+      rgba(105,180,194,.13),
+      transparent 30%
+    );
+  filter:blur(4px);
+  animation:oceanDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes oceanDrift{
+
+  0%{
+    transform:
+      translate3d(-2%,1%,0)
+      scale(1.04);
+  }
+
+  50%{
+    transform:
+      translate3d(1%,-2%,0)
+      scale(1.08);
+  }
+
+  100%{
+    transform:
+      translate3d(3%,1%,0)
+      scale(1.12);
+  }
+
+}
+
+
+/* underwater light */
+
+.marine-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.35;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0,
+      transparent 90px,
+      rgba(255,255,255,.025) 92px,
+      transparent 95px
+    );
+  animation:waterLines 14s linear infinite;
+}
+
+@keyframes waterLines{
+
+  from{
+    transform:translateX(-4%);
+  }
+
+  to{
+    transform:translateX(4%);
+  }
+
+}
+
+
+.marine-hero .hero-content{
+  position:relative;
+  z-index:3;
+}
+
+.marine-hero h1{
+  color:#fff;
+  max-width:1000px;
+  letter-spacing:-.045em;
+}
+
+.marine-hero .eyebrow{
+  color:#a8d0d8;
+}
+
+.marine-hero .hero-text{
+  color:var(--marine-muted);
+}
+
+
+/* ---------------------------------------------------------
+   OCEAN DIVIDER
+--------------------------------------------------------- */
+
+.ocean-divider{
+  height:100px;
+  position:relative;
+  overflow:hidden;
+  background:var(--marine-deep);
+}
+
+.ocean-divider::before,
+.ocean-divider::after{
+  content:"";
+  position:absolute;
+  left:-10%;
+  width:120%;
+  height:80px;
+  border-top:1px solid var(--marine-line);
+  border-radius:50%;
+}
+
+.ocean-divider::before{
+  top:20px;
+  transform:rotate(-1deg);
+}
+
+.ocean-divider::after{
+  top:35px;
+  opacity:.5;
+  transform:rotate(1deg);
+}
+
+
+/* ---------------------------------------------------------
+   MARINE CATEGORY
+--------------------------------------------------------- */
+
+.marine-category{
+  background:
+    linear-gradient(
+      180deg,
+      #071a24 0%,
+      #0a222d 100%
+    );
+  color:#fff;
+}
+
+.marine-category h2{
+  color:#fff;
+}
+
+.marine-category p{
+  color:rgba(255,255,255,.62);
+}
+
+
+/* ---------------------------------------------------------
+   OCEAN PRODUCT CARDS
+--------------------------------------------------------- */
+
+.marine-products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--marine-line);
+  border:1px solid var(--marine-line);
+}
+
+.marine-card{
+  position:relative;
+  min-height:370px;
+  padding:38px;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      #0b2935,
+      #071a24
+    );
+  transition:
+    transform .7s cubic-bezier(.22,.61,.36,1),
+    background .7s ease;
+}
+
+.marine-card::before{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  right:-100px;
+  bottom:-100px;
+  border:1px solid rgba(160,210,220,.12);
+  border-radius:50%;
+  transition:
+    transform .9s cubic-bezier(.22,.61,.36,1);
+}
+
+.marine-card::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:2px;
+  background:var(--marine-accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .7s ease;
+}
+
+.marine-card:hover{
+  transform:translateY(-8px);
+  background:#0d303d;
+}
+
+.marine-card:hover::before{
+  transform:scale(2.2);
+}
+
+.marine-card:hover::after{
+  transform:scaleX(1);
+}
+
+.marine-card-number{
+  font-size:10px;
+  letter-spacing:.2em;
+  color:#91c2cc;
+  font-weight:700;
+}
+
+.marine-card h3{
+  margin-top:120px;
+  color:#fff;
+  font-size:34px;
+}
+
+.marine-card p{
+  margin-top:12px;
+  max-width:450px;
+  color:rgba(255,255,255,.56);
+}
+
+
+/* ---------------------------------------------------------
+   MARINE REQUIREMENTS
+--------------------------------------------------------- */
+
+.marine-requirements{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--marine-line);
+  border-left:1px solid var(--marine-line);
+}
+
+.marine-requirement{
+  min-height:170px;
+  padding:25px;
+  border-right:1px solid var(--marine-line);
+  border-bottom:1px solid var(--marine-line);
+  transition:
+    background .5s ease,
+    transform .5s ease;
+}
+
+.marine-requirement:hover{
+  background:rgba(100,170,190,.07);
+  transform:translateY(-4px);
+}
+
+.marine-requirement span{
+  font-size:10px;
+  letter-spacing:.18em;
+  color:#8ebfc9;
+}
+
+.marine-requirement strong{
+  display:block;
+  margin-top:45px;
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  font-weight:500;
+  color:#fff;
+}
+
+
+/* ---------------------------------------------------------
+   MARINE ROUTE
+--------------------------------------------------------- */
+
+.marine-route{
+  position:relative;
+  padding:90px 0;
+  background:#06151d;
+  color:#fff;
+  overflow:hidden;
+}
+
+.marine-route::before{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  top:50%;
+  height:1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(160,210,220,.4),
+      transparent
+    );
+}
+
+.route-items{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  text-align:center;
+}
+
+.route-item strong{
+  display:block;
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+  font-weight:500;
+}
+
+.route-item span{
+  display:block;
+  margin-top:8px;
+  font-size:10px;
+  letter-spacing:.18em;
+  color:#8ebfc9;
+}
+
+
+/* ---------------------------------------------------------
+   MARINE CTA
+--------------------------------------------------------- */
+
+.marine-cta{
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #17485a,
+      #071a24 60%
+    );
+  color:#fff;
+}
+
+.marine-cta h2{
+  color:#fff;
+}
+
+.marine-cta p{
+  color:rgba(255,255,255,.65);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media(max-width:760px){
+
+  .marine-hero{
+    min-height:760px;
+  }
+
+  .marine-products{
+    grid-template-columns:1fr;
+  }
+
+  .marine-card{
+    min-height:300px;
+  }
+
+  .marine-card h3{
+    margin-top:80px;
+  }
+
+  .marine-requirements{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .route-items{
+    grid-template-columns:1fr;
+    gap:55px;
+  }
+
+  .marine-route::before{
+    display:none;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .marine-hero::before,
+  .marine-hero::after{
+    animation:none;
+  }
+
+}
