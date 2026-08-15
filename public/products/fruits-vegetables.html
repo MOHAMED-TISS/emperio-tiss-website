@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fruits & Vegetables | EMPERIO TISS</title>
+
+  <meta
+    name="description"
+    content="Fruits and vegetables from selected origins, connected with professional markets across Africa, Europe and the Middle East."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --black: #111412;
+      --dark: #181d1a;
+      --cream: #f4f1e9;
+      --white: #ffffff;
+      --muted: #a9aea8;
+      --line: rgba(255,255,255,.14);
+      --green: #758b58;
+      --green-dark: #52663c;
+      --sand: #d8c9a9;
+      --max: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      color: white;
+    }
+
+    .nav {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+    }
+
+    .logo {
+      display: block;
+      width: 150px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      opacity: .9;
+      transition: opacity .2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-contact {
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 999px;
+      padding: 11px 18px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 720px;
+      height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      color: white;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(8,12,10,.82),
+          rgba(8,12,10,.40),
+          rgba(8,12,10,.12)
+        ),
+        linear-gradient(
+          0deg,
+          rgba(8,12,10,.72),
+          transparent 60%
+        ),
+        url("https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=2400&q=90")
+        center / cover;
+    }
+
+    .hero-content {
+      padding-bottom: 95px;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      color: var(--sand);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(55px, 8vw, 105px);
+      letter-spacing: -.065em;
+      line-height: .94;
+      margin-bottom: 30px;
+    }
+
+    .hero-description {
+      font-size: 20px;
+      max-width: 620px;
+      color: rgba(255,255,255,.85);
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding: 120px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 90px;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .intro h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(38px, 5vw, 65px);
+      letter-spacing: -.055em;
+      line-height: 1;
+      max-width: 800px;
+    }
+
+    .intro-text {
+      margin-top: 30px;
+      max-width: 680px;
+      font-size: 19px;
+      color: #555c56;
+      line-height: 1.65;
+    }
+
+    /* ORIGINS */
+
+    .origins {
+      background: var(--dark);
+      color: white;
+      padding: 125px 0;
+    }
+
+    .origins-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 50px;
+      margin-bottom: 70px;
+    }
+
+    .origins h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(44px, 6vw, 75px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin-top: 18px;
+    }
+
+    .origins-description {
+      max-width: 380px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .origin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .origin-card {
+      min-height: 430px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .origin-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+
+    .origin-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .origin-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0,0,0,.8),
+        rgba(0,0,0,.05) 70%
+      );
+    }
+
+    .origin-content {
+      position: relative;
+      z-index: 2;
+      padding: 28px;
+    }
+
+    .origin-content small {
+      color: var(--sand);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 10px;
+    }
+
+    .origin-content h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 30px;
+      margin-top: 10px;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      padding: 125px 0;
+    }
+
+    .categories h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(43px, 6vw, 75px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin: 18px 0 70px;
+    }
+
+    .category-list {
+      border-top: 1px solid #c8c4ba;
+    }
+
+    .category {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid #c8c4ba;
+    }
+
+    .category-number {
+      color: var(--green-dark);
+      font-size: 12px;
+    }
+
+    .category h3 {
+      font-family: "Manrope", sans-serif;
+      font-size: 24px;
+    }
+
+    .category p {
+      color: #646a64;
+      font-size: 14px;
+    }
+
+    /* COMMERCIAL */
+
+    .commercial {
+      background: #e7e2d5;
+      padding: 125px 0;
+    }
+
+    .commercial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+    }
+
+    .commercial h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin-top: 18px;
+    }
+
+    .commercial-list {
+      border-top: 1px solid rgba(17,20,18,.2);
+    }
+
+    .commercial-item {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(17,20,18,.2);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 17px;
+    }
+
+    .commercial-item span {
+      color: var(--green-dark);
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 150px 0;
+      background:
+        linear-gradient(
+          rgba(17,20,18,.72),
+          rgba(17,20,18,.72)
+        ),
+        url("https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=2200&q=90")
+        center / cover;
+
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(48px, 7vw, 90px);
+      line-height: .95;
+      letter-spacing: -.065em;
+      max-width: 1000px;
+      margin: 18px auto 25px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,.75);
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-flex;
+      padding: 15px 25px;
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 65px 0 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      padding-bottom: 55px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 390px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 70px;
+    }
+
+    .footer-column h4 {
+      color: var(--sand);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column a {
+      display: block;
+      margin-bottom: 11px;
+      color: #d2d5d1;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 25px;
+      color: #727871;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .intro-grid,
+      .commercial-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .origin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category {
+        grid-template-columns: 50px 1fr;
+      }
+
+      .category p {
+        grid-column: 2;
+      }
+
+      .origins-header,
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .nav {
+        height: 72px;
+      }
+
+      .hero {
+        min-height: 650px;
+      }
+
+      .hero-content {
+        padding-bottom: 65px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .intro,
+      .origins,
+      .categories,
+      .commercial {
+        padding: 85px 0;
+      }
+
+      .category {
+        gap: 15px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="container nav">
+
+    <a href="../index.html" class="logo">
+      <img src="../logo.png" alt="EMPERIO TISS">
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="../index.html">Home</a>
+
+      <a href="fruits-vegetables.html">
+        Products
+      </a>
+
+      <a href="../markets/markets.html">
+        Markets
+      </a>
+
+      <a href="../index.html#solutions">
+        Solutions
+      </a>
+
+      <a href="../index.html#about">
+        About
+      </a>
+
+      <a href="../index.html#contact" class="nav-contact">
+        Contact
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="eyebrow">
+        Products & Opportunities
+      </div>
+
+      <h1>
+        Fruits &<br>
+        Vegetables.
+      </h1>
+
+      <p class="hero-description">
+        Fresh produce from selected origins, connected with
+        professional markets across Africa, Europe and the
+        Middle East.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="container intro-grid">
+
+      <div>
+
+        <div class="section-label">
+          The category
+        </div>
+
+      </div>
+
+      <div>
+
+        <h2>
+          From growing regions to professional markets.
+        </h2>
+
+        <p class="intro-text">
+          We focus on selected fruits and vegetables where
+          origin, quality, timing and destination requirements
+          create strong supply opportunities.
+        </p>
+
+        <p class="intro-text">
+          The objective is simple: connect the right product
+          with the right market at the right moment.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ORIGINS -->
+
+  <section class="origins">
+
+    <div class="container">
+
+      <div class="origins-header">
+
+        <div>
+
+          <div class="section-label">
+            Selected origins
+          </div>
+
+          <h2>
+            Where supply<br>
+            begins.
+          </h2>
+
+        </div>
+
+        <p class="origins-description">
+          Our network is built around productive regions
+          with access to international food markets.
+        </p>
+
+      </div>
+
+
+      <div class="origin-grid">
+
+        <div class="origin-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=1200&q=85"
+            alt="Morocco agricultural production"
+          >
+
+          <div class="origin-content">
+
+            <small>North Africa</small>
+
+            <h3>Morocco</h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="origin-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=1200&q=85"
+            alt="Tunisia agricultural production"
+          >
+
+          <div class="origin-content">
+
+            <small>North Africa</small>
+
+            <h3>Tunisia</h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="origin-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=85"
+            alt="African agricultural production"
+          >
+
+          <div class="origin-content">
+
+            <small>West Africa</small>
+
+            <h3>West Africa</h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+
+  <section class="categories">
+
+    <div class="container">
+
+      <div class="section-label">
+        Product focus
+      </div>
+
+      <h2>
+        Selected categories.
+      </h2>
+
+
+      <div class="category-list">
+
+        <div class="category">
+
+          <div class="category-number">01</div>
+
+          <h3>Citrus</h3>
+
+          <p>
+            Oranges, mandarins, clementines and other seasonal
+            citrus opportunities.
+          </p>
+
+        </div>
+
+
+        <div class="category">
+
+          <div class="category-number">02</div>
+
+          <h3>Vegetables</h3>
+
+          <p>
+            Selected vegetables according to origin,
+            season and destination demand.
+          </p>
+
+        </div>
+
+
+        <div class="category">
+
+          <div class="category-number">03</div>
+
+          <h3>Exotic Fruits</h3>
+
+          <p>
+            Products connecting emerging origins with
+            international market demand.
+          </p>
+
+        </div>
+
+
+        <div class="category">
+
+          <div class="category-number">04</div>
+
+          <h3>Seasonal Produce</h3>
+
+          <p>
+            Opportunities defined by harvest windows,
+            market timing and availability.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMMERCIAL -->
+
+  <section class="commercial">
+
+    <div class="container commercial-grid">
+
+      <div>
+
+        <div class="section-label">
+          What matters
+        </div>
+
+        <h2>
+          Product is only<br>
+          part of the equation.
+        </h2>
+
+      </div>
+
+
+      <div class="commercial-list">
+
+        <div class="commercial-item">
+          Origin
+          <span>↗</span>
+        </div>
+
+        <div class="commercial-item">
+          Specification
+          <span>↗</span>
+        </div>
+
+        <div class="commercial-item">
+          Volume
+          <span>↗</span>
+        </div>
+
+        <div class="commercial-item">
+          Timing
+          <span>↗</span>
+        </div>
+
+        <div class="commercial-item">
+          Destination
+          <span>↗</span>
+        </div>
+
+        <div class="commercial-item">
+          Logistics
+          <span>↗</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <div class="section-label">
+        Fruits & Vegetables
+      </div>
+
+      <h2>
+        Looking for a specific product?
+      </h2>
+
+      <p>
+        Tell us the product, volume, destination and timing.
+      </p>
+
+      <a
+        href="mailto:contact@emperio-tiss.com"
+        class="btn"
+      >
+        Contact EMPERIO TISS →
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+
+        <img
+          src="../logo.png"
+          alt="EMPERIO TISS"
+          class="footer-logo"
+        >
+
+        <p>
+          Connecting food supply with professional markets
+          across Africa, Europe and the Middle East.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <h4>Explore</h4>
+
+          <a href="../index.html">
+            Home
+          </a>
+
+          <a href="seafood.html">
+            Fish & Seafood
+          </a>
+
+          <a href="fruits-vegetables.html">
+            Fruits & Vegetables
+          </a>
+
+          <a href="../markets/markets.html">
+            Markets
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>Contact</h4>
+
+          <a href="mailto:contact@emperio-tiss.com">
+            contact@emperio-tiss.com
+          </a>
+
+          <a href="../index.html#contact">
+            Madrid · Spain
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 EMPERIO TISS SL. All rights reserved.
+      </div>
+
+      <div>
+        Food Moves. Markets Connect.
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
