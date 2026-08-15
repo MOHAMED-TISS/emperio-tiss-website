@@ -2979,3 +2979,230 @@ p{
   }
 
 }
+/* =========================================================
+   MARKETS — CENTER CIRCLE
+========================================================= */
+
+.markets-home-grid{
+  position:relative;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  margin-top:65px;
+}
+
+
+/* THREE EQUAL MARKETS */
+
+.market-home-card{
+  position:relative;
+  z-index:1;
+
+  min-height:390px;
+  padding:32px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  background:#202a28;
+
+  border-top:1px solid rgba(255,255,255,.14);
+  border-bottom:1px solid rgba(255,255,255,.14);
+  border-right:1px solid rgba(255,255,255,.14);
+
+  transition:
+    background .6s ease,
+    transform .7s var(--ease);
+}
+
+.market-home-card:first-child{
+  border-left:1px solid rgba(255,255,255,.14);
+}
+
+.market-home-card:hover{
+  background:#25312f;
+  transform:translateY(-6px);
+}
+
+
+/* =========================================================
+   CENTER CIRCLE
+========================================================= */
+
+.markets-center-circle{
+  position:absolute;
+
+  z-index:10;
+
+  left:50%;
+  top:50%;
+
+  width:190px;
+  height:190px;
+
+  transform:translate(-50%,-50%);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #263432,
+      #111b1a 70%
+    );
+
+  border:1px solid rgba(217,200,166,.45);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.38),
+    inset 0 0 0 8px rgba(255,255,255,.025);
+
+  text-align:center;
+
+  pointer-events:none;
+}
+
+
+/* outer ring */
+
+.markets-center-circle::before{
+  content:"";
+
+  position:absolute;
+
+  inset:-12px;
+
+  border:1px solid rgba(168,138,86,.18);
+
+  border-radius:50%;
+
+  animation:
+    marketPulse 5s ease-in-out infinite;
+}
+
+
+@keyframes marketPulse{
+
+  0%,
+  100%{
+    transform:scale(1);
+    opacity:.35;
+  }
+
+  50%{
+    transform:scale(1.04);
+    opacity:.75;
+  }
+
+}
+
+
+.markets-center-circle span{
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.2em;
+
+  color:#d9c8a6;
+}
+
+
+.markets-center-circle strong{
+  margin:7px 0;
+
+  font-family:"Playfair Display",serif;
+  font-size:31px;
+  font-weight:500;
+
+  color:#fff;
+}
+
+
+.markets-center-circle small{
+  max-width:120px;
+
+  font-size:7px;
+  line-height:1.5;
+  letter-spacing:.13em;
+
+  color:rgba(255,255,255,.42);
+}
+
+
+/* =========================================================
+   CONNECTION LINES
+========================================================= */
+
+.markets-home-grid::before{
+  content:"";
+
+  position:absolute;
+
+  z-index:5;
+
+  left:0;
+  right:0;
+  top:50%;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(168,138,86,.25) 30%,
+      rgba(168,138,86,.55) 50%,
+      rgba(168,138,86,.25) 70%,
+      transparent 100%
+    );
+
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+  .markets-home-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .markets-home-grid::before{
+    display:none;
+  }
+
+  .market-home-card{
+    min-height:270px;
+  }
+
+  .markets-center-circle{
+    position:relative;
+
+    left:auto;
+    top:auto;
+
+    width:145px;
+    height:145px;
+
+    transform:none;
+
+    margin:-72px auto 0;
+
+    order:4;
+  }
+
+  .markets-center-circle strong{
+    font-size:25px;
+  }
+
+}
