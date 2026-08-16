@@ -3,46 +3,52 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Fruits & Vegetables | EMPERIO TISS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
     content="Fresh fruits and vegetables sourced across Mediterranean origins for professional markets in Europe, Africa and the Middle East."
   >
 
+  <meta property="og:title" content="Fruits & Vegetables | EMPERIO TISS">
+  <meta
+    property="og:description"
+    content="Fresh fruits and vegetables sourced across Mediterranean origins for professional markets."
+  >
+  <meta property="og:type" content="website">
+
+  <title>Fruits & Vegetables | EMPERIO TISS</title>
+
+  <link rel="icon" href="../logo.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="/products.css">
+  <link rel="stylesheet" href="../style.css">
+
 </head>
 
 
-<body class="produce-page">
+<body>
 
 
 <!-- =====================================================
      HEADER
 ===================================================== -->
 
-<header class="site-header">
+<header class="site-header" id="top">
 
   <div class="container nav-wrap">
 
     <a
-      href="../index.html"
       class="brand"
-      aria-label="EMPERIO TISS"
+      href="../index.html"
+      aria-label="EMPERIO TISS home"
     >
       <img
         src="../logo.png"
@@ -53,24 +59,21 @@
 
     <button
       class="menu-toggle"
-      type="button"
-      aria-label="Open menu"
+      aria-label="Open navigation"
       aria-expanded="false"
+      aria-controls="main-navigation"
     >
       ☰
     </button>
 
 
-    <nav class="nav">
+    <nav
+      class="nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
 
-      <a href="../about/about.html">
-        About
-      </a>
-
-      <a
-        href="index.html"
-        class="active"
-      >
+      <a href="index.html" class="active">
         Products
       </a>
 
@@ -78,13 +81,22 @@
         Markets
       </a>
 
+      <a href="../index.html#services">
+        Services
+      </a>
+
+      <a href="../index.html#about">
+        Company
+      </a>
+
+      <a href="../index.html#contact">
+        Contact
+      </a>
+
 
       <div class="language-switcher">
 
-        <a
-          href="fruits-vegetables.html"
-          class="active"
-        >
+        <a class="active" href="fruits-vegetables.html">
           EN
         </a>
 
@@ -104,10 +116,10 @@
 
 
       <a
-        href="../contact/contact.html"
         class="nav-cta"
+        href="../index.html#contact"
       >
-        Business enquiry ↗
+        Business enquiry
       </a>
 
     </nav>
@@ -118,62 +130,41 @@
 
 
 
+<main>
+
+
 <!-- =====================================================
      HERO
 ===================================================== -->
 
-<main>
+<section class="hero product-hero">
 
+  <div class="container hero-content">
 
-<section class="produce-hero">
-
-  <div class="produce-hero-image">
-
-    <img
-      src="https://www.montfruits.com/sites/default/files/styles/slideshow_home/public/slide/225/imatges/montfruits-m40a0185.jpg"
-      alt="Mediterranean citrus orchard"
-    >
-
-  </div>
-
-
-  <div class="produce-hero-overlay"></div>
-
-
-  <div class="container produce-hero-content">
-
-    <div class="produce-kicker">
-
-      <span>02</span>
-
-      <span>FRUITS & VEGETABLES</span>
-
-    </div>
-
+    <p class="eyebrow">
+      PRODUCT CATEGORY · 02
+    </p>
 
     <h1>
-
-      From the
-      <em>Mediterranean</em>
-      to the market.
-
+      Fruits &<br>
+      Vegetables.
     </h1>
 
-
-    <div class="produce-hero-bottom">
-
-      <p>
-        Fresh fruit and vegetables selected around
-        origin, harvest, availability and destination.
-      </p>
+    <p class="hero-text">
+      Fresh produce sourced across Mediterranean origins
+      for professional markets in Europe, Africa and
+      the Middle East.
+    </p>
 
 
-      <a
-        href="../contact/contact.html"
-        class="produce-button"
-      >
+    <div class="hero-actions">
+
+      <a class="button primary" href="#range">
+        Explore the range
+      </a>
+
+      <a class="button secondary" href="../index.html#contact">
         Request availability
-        <span>↗</span>
       </a>
 
     </div>
@@ -181,14 +172,8 @@
   </div>
 
 
-  <div class="produce-hero-origin">
-
-    <span>SPAIN</span>
-    <i>·</i>
-    <span>MOROCCO</span>
-    <i>·</i>
-    <span>TUNISIA</span>
-
+  <div class="hero-scroll">
+    <span>SCROLL</span>
   </div>
 
 </section>
@@ -196,175 +181,48 @@
 
 
 <!-- =====================================================
-     INTRO
+     INTRO / STATEMENT
 ===================================================== -->
 
-<section class="produce-intro">
+<section class="section products">
 
   <div class="container">
 
-    <div class="produce-intro-grid">
+    <div class="section-head">
 
       <div>
 
-        <span class="produce-section-number">
-          01
-        </span>
-
-        <p class="produce-label">
+        <p class="eyebrow dark">
           THE PRODUCE
         </p>
 
-      </div>
-
-
-      <div>
-
         <h2>
-          Freshness begins
-          <em>at origin.</em>
+          Freshness begins<br>
+          at origin.
         </h2>
 
-        <p class="produce-lead">
-          We work around Mediterranean growing regions
-          and seasonal production cycles to connect
-          selected origins with professional buyers.
-        </p>
-
       </div>
 
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CITRUS
-===================================================== -->
-
-<section class="produce-feature produce-feature-citrus">
-
-  <div class="produce-feature-image">
-
-    <img
-      src="https://www.agrifarming.in/wp-content/uploads/Citrus-Farming-in-Spain3.jpg"
-      alt="Spanish orange orchard"
-      loading="lazy"
-    >
-
-  </div>
-
-
-  <div class="produce-feature-content">
-
-    <span class="produce-section-number">
-      02
-    </span>
-
-    <p class="produce-label">
-      CITRUS
-    </p>
-
-
-    <h2>
-      The Mediterranean
-      <em>citrus cycle.</em>
-    </h2>
-
-
-    <p>
-      Oranges, mandarins, clementines, lemons and
-      selected citrus varieties sourced according to
-      campaign, origin and market requirements.
-    </p>
-
-
-    <div class="produce-tags">
-
-      <span>Oranges</span>
-      <span>Mandarins</span>
-      <span>Clementines</span>
-      <span>Lemons</span>
+      <p>
+        We work around Mediterranean growing regions and
+        seasonal production cycles, connecting selected
+        origins with professional buyers.
+      </p>
 
     </div>
 
 
-    <a
-      href="../contact/contact.html"
-      class="produce-text-link"
-    >
-      Ask about current availability
-      <span>↗</span>
-    </a>
+    <div class="large-statement fade-up">
 
-  </div>
+      <span>
+        MEDITERRANEAN SOURCING
+      </span>
 
-</section>
-
-
-
-<!-- =====================================================
-     VEGETABLES
-===================================================== -->
-
-<section class="produce-feature produce-feature-vegetables">
-
-  <div class="produce-feature-content">
-
-    <span class="produce-section-number">
-      03
-    </span>
-
-    <p class="produce-label">
-      VEGETABLES
-    </p>
-
-
-    <h2>
-      Grown for the
-      <em>right market.</em>
-    </h2>
-
-
-    <p>
-      Fresh vegetables selected around production
-      origin, quality, format, timing and destination
-      requirements.
-    </p>
-
-
-    <div class="produce-tags">
-
-      <span>Tomatoes</span>
-      <span>Peppers</span>
-      <span>Eggplant</span>
-      <span>Courgettes</span>
-      <span>Leafy vegetables</span>
+      <strong>
+        SEASONAL.
+      </strong>
 
     </div>
-
-
-    <a
-      href="../contact/contact.html"
-      class="produce-text-link"
-    >
-      Request vegetable availability
-      <span>↗</span>
-    </a>
-
-  </div>
-
-
-  <div class="produce-feature-image">
-
-    <img
-      src="https://image.ondacero.es/clipping/cmsimages01/2026/03/31/2F1EF56D-A94A-490F-B4B6-6A93EC58E3DA/campo-ibiza_69.jpg?crop=1600%2C900%2Cx0%2Cy151&format=jpg&height=720&optimize=low&width=1280"
-      alt="Mediterranean vegetable harvest"
-      loading="lazy"
-    >
 
   </div>
 
@@ -376,140 +234,109 @@
      PRODUCT RANGE
 ===================================================== -->
 
-<section class="produce-range">
+<section class="section products" id="range">
 
   <div class="container">
 
-    <div class="produce-range-header">
+    <div class="section-head">
 
       <div>
 
-        <span class="produce-section-number">
-          04
-        </span>
-
-        <p class="produce-label">
+        <p class="eyebrow dark">
           RANGE
         </p>
 
+        <h2>
+          What we<br>
+          work with.
+        </h2>
+
       </div>
 
-
-      <h2>
-        Selected according
-        to the <em>season.</em>
-      </h2>
+      <p>
+        A flexible product structure designed to accommodate
+        different market requirements and seasonal availability.
+      </p>
 
     </div>
 
 
-    <div class="produce-range-grid">
+    <div class="cards four produce-cards">
 
 
-      <article class="produce-range-card">
+      <article class="card product-card fade-up">
 
-        <div class="range-image">
-
-          <img
-            src="https://www.montfruits.com/sites/default/files/styles/slideshow_home/public/slide/225/imatges/montfruits-m40a0185.jpg"
-            alt="Citrus"
-            loading="lazy"
-          >
-
+        <div class="card-number">
+          01 · CITRUS
         </div>
 
-        <div class="range-content">
-
-          <span>01</span>
+        <div>
 
           <h3>Citrus</h3>
 
           <p>
-            Oranges · Mandarins · Clementines · Lemons
+            Oranges, mandarins, clementines and lemons
+            sourced according to campaign and origin.
           </p>
 
         </div>
+
+        <a class="product-link" href="../index.html#contact">
+          Ask about availability →
+        </a>
 
       </article>
 
 
 
-      <article class="produce-range-card">
+      <article class="card product-card fade-up">
 
-        <div class="range-image">
-
-          <img
-            src="https://image.ondacero.es/clipping/cmsimages01/2026/03/31/2F1EF56D-A94A-490F-B4B6-6A93EC58E3DA/campo-ibiza_69.jpg?crop=1600%2C900%2Cx0%2Cy151&format=jpg&height=720&optimize=low&width=1280"
-            alt="Vegetables"
-            loading="lazy"
-          >
-
+        <div class="card-number">
+          02 · VEGETABLES
         </div>
 
-        <div class="range-content">
-
-          <span>02</span>
+        <div>
 
           <h3>Vegetables</h3>
 
           <p>
-            Tomatoes · Peppers · Courgettes · Leafy produce
+            Tomatoes, peppers, courgettes and leafy produce
+            selected around quality, format and timing.
           </p>
 
         </div>
+
+        <a class="product-link" href="../index.html#contact">
+          Ask about availability →
+        </a>
 
       </article>
 
 
 
-      <article class="produce-range-card">
+      <article class="card product-card fade-up">
 
-        <div class="range-image">
-
-          <img
-            src="https://masquetierra.es/wp-content/uploads/2023/05/hortalizas-huerta.png"
-            alt="Fresh Mediterranean produce"
-            loading="lazy"
-          >
-
+        <div class="card-number">
+          03 · FRUIT
         </div>
 
-        <div class="range-content">
+        <div>
 
-          <span>03</span>
-
-          <h3>Fruit</h3>
+          <h3>Seasonal Fruit</h3>
 
           <p>
-            Seasonal fruit from selected Mediterranean origins
+            Stone fruit, melons and seasonal fruit from
+            selected Mediterranean origins.
           </p>
 
         </div>
 
-      </article>
-
-
-
-      <article class="produce-range-card range-card-dark">
-
-        <div class="range-content">
-
-          <span>04</span>
-
-          <h3>Exotic</h3>
-
-          <p>
-            Selected products according to origin,
-            availability and destination demand.
-          </p>
-
-          <a href="../contact/contact.html">
-            Ask for availability ↗
-          </a>
-
-        </div>
+        <a class="product-link" href="../index.html#contact">
+          Ask about availability →
+        </a>
 
       </article>
+
 
     </div>
 
@@ -523,90 +350,63 @@
      ORIGINS
 ===================================================== -->
 
-<section class="produce-origins">
+<section class="section dark-section">
 
   <div class="container">
 
-    <div class="produce-origins-header">
+    <div class="section-head">
 
       <div>
 
-        <span class="produce-section-number">
-          05
-        </span>
-
-        <p class="produce-label">
+        <p class="eyebrow">
           ORIGINS
         </p>
 
+        <h2>
+          Origin shapes<br>
+          availability.
+        </h2>
+
       </div>
 
-
-      <h2>
-        Origin shapes
-        <em>availability.</em>
-      </h2>
+      <p>
+        Selected Mediterranean growing regions supporting
+        complementary seasonal campaigns.
+      </p>
 
     </div>
 
 
-    <div class="origin-grid">
+    <div class="market-grid">
 
 
-      <article>
-
+      <div class="market">
         <span>01</span>
-
-        <h3>Spain</h3>
-
-        <p>
-          Mediterranean citrus, fruit and vegetables
-          from established European production areas.
-        </p>
-
-      </article>
+        <strong>Spain</strong>
+        <small>Citrus, fruit and vegetables</small>
+      </div>
 
 
-      <article>
-
+      <div class="market">
         <span>02</span>
-
-        <h3>Morocco</h3>
-
-        <p>
-          Citrus and fresh produce supporting
-          complementary Mediterranean campaigns.
-        </p>
-
-      </article>
+        <strong>Morocco</strong>
+        <small>Citrus and fresh produce</small>
+      </div>
 
 
-      <article>
-
+      <div class="market">
         <span>03</span>
-
-        <h3>Tunisia</h3>
-
-        <p>
-          Selected seasonal Mediterranean produce
-          according to commercial availability.
-        </p>
-
-      </article>
+        <strong>Tunisia</strong>
+        <small>Seasonal Mediterranean produce</small>
+      </div>
 
 
-      <article>
-
+      <div class="market featured">
         <span>04</span>
+        <strong>Europe</strong>
+        <small>Additional selected origins</small>
+      </div>
 
-        <h3>Europe</h3>
-
-        <p>
-          Additional European origins selected
-          according to product and destination.
-        </p>
-
-      </article>
 
     </div>
 
@@ -620,75 +420,83 @@
      SEASONALITY
 ===================================================== -->
 
-<section class="produce-seasonality">
+<section class="section products">
 
   <div class="container">
 
-    <div class="seasonality-intro">
-
-      <span class="produce-section-number">
-        06
-      </span>
+    <div class="section-head">
 
       <div>
 
-        <p class="produce-label">
+        <p class="eyebrow dark">
           SEASONALITY
         </p>
 
         <h2>
-          Availability follows
-          the <em>harvest.</em>
+          Availability follows<br>
+          the harvest.
         </h2>
 
-        <p>
-          We do not treat every product as a permanent
-          catalogue item. Origin, harvest window,
-          weather and market demand determine what is
-          commercially available.
-        </p>
-
       </div>
+
+      <p>
+        Origin, harvest window, weather and market demand
+        determine what is commercially available.
+      </p>
 
     </div>
 
 
-    <div class="seasonality-line">
+    <div class="cards four requirement-grid">
 
-      <div>
-        <span>WINTER</span>
-        <strong>Citrus</strong>
-        <small>Mandarins · Clementines · Oranges</small>
+
+      <div class="card fade-up">
+        <div class="card-number">WINTER</div>
+        <div>
+          <h3>Citrus</h3>
+          <p>Mandarins · Clementines · Oranges</p>
+        </div>
       </div>
 
-      <div>
-        <span>SPRING</span>
-        <strong>Transition</strong>
-        <small>Changing origins · Fresh vegetables</small>
+
+      <div class="card fade-up">
+        <div class="card-number">SPRING</div>
+        <div>
+          <h3>Transition</h3>
+          <p>Changing origins · Fresh vegetables</p>
+        </div>
       </div>
 
-      <div>
-        <span>SUMMER</span>
-        <strong>Fruit</strong>
-        <small>Stone fruit · Melons · Seasonal produce</small>
+
+      <div class="card fade-up">
+        <div class="card-number">SUMMER</div>
+        <div>
+          <h3>Fruit</h3>
+          <p>Stone fruit · Melons · Seasonal produce</p>
+        </div>
       </div>
 
-      <div>
-        <span>AUTUMN</span>
-        <strong>New cycle</strong>
-        <small>Citrus · New harvests</small>
+
+      <div class="card fade-up">
+        <div class="card-number">AUTUMN</div>
+        <div>
+          <h3>New cycle</h3>
+          <p>Citrus · New harvests</p>
+        </div>
       </div>
+
 
     </div>
 
 
-    <a
-      href="seasonal.html"
-      class="seasonality-link"
-    >
-      Explore the seasonal calendar
-      <span>↗</span>
-    </a>
+    <div class="section-link-row">
+
+      <a class="text-link" href="seasonal.html">
+        Explore the seasonal calendar
+        <span>→</span>
+      </a>
+
+    </div>
 
   </div>
 
@@ -697,55 +505,41 @@
 
 
 <!-- =====================================================
-     COMMERCIAL
+     CATALOGUE
 ===================================================== -->
 
-<section class="produce-commercial">
+<section class="section catalogue-section">
 
   <div class="container">
 
-    <div class="commercial-grid">
+    <div class="two-col">
 
       <div>
 
-        <span class="produce-section-number">
-          07
-        </span>
-
-        <p class="produce-label">
+        <p class="eyebrow dark">
           PROFESSIONAL SUPPLY
         </p>
+
+        <h2>
+          Tell us what<br>
+          the market needs.
+        </h2>
 
       </div>
 
 
-      <div>
-
-        <h2>
-          Tell us what the
-          market <em>needs.</em>
-        </h2>
+      <div class="intro-copy">
 
         <p>
           Product, origin, variety, calibre, packaging,
-          volume, destination and timing. These are the
-          details that allow us to evaluate the right
-          sourcing option.
+          volume, destination and timing — these are the
+          details that let us evaluate the right sourcing
+          option.
         </p>
 
-
-        <div class="commercial-list">
-
-          <span>Origin</span>
-          <span>Variety</span>
-          <span>Calibre</span>
-          <span>Packaging</span>
-          <span>Volume</span>
-          <span>Destination</span>
-          <span>Timing</span>
-          <span>Logistics</span>
-
-        </div>
+        <a class="button primary" href="../index.html#contact">
+          Request a product
+        </a>
 
       </div>
 
@@ -761,46 +555,31 @@
      CTA
 ===================================================== -->
 
-<section class="produce-cta">
+<section class="cta-section">
 
-  <div class="produce-cta-image">
+  <div class="container cta-inner">
 
-    <img
-      src="https://www.agrifarming.in/wp-content/uploads/Citrus-Farming-in-Spain3.jpg"
-      alt=""
-      loading="lazy"
-    >
+    <p class="eyebrow">
+      FRUITS & VEGETABLES
+    </p>
 
-  </div>
+    <h2>
+      Looking for a specific origin?
+    </h2>
 
-
-  <div class="produce-cta-overlay"></div>
-
-
-  <div class="container">
-
-    <div class="produce-cta-content">
-
-      <p class="produce-label">
-        FRUITS & VEGETABLES
-      </p>
-
-      <h2>
-        Looking for a
-        specific <em>origin?</em>
-      </h2>
-
-      <p>
-        Tell us what you need and where it needs to go.
-      </p>
+    <p>
+      Tell us what you need and where it needs to go.
+    </p>
 
 
-      <a
-        href="../contact/contact.html"
-        class="produce-button light"
-      >
-        Business enquiry
-        <span>↗</span>
+    <div class="hero-actions">
+
+      <a class="button light-button" href="mailto:contact@emperio-tiss.com">
+        Send an enquiry
+      </a>
+
+      <a class="button secondary" href="../index.html">
+        Back to EMPERIO TISS
       </a>
 
     </div>
@@ -808,7 +587,6 @@
   </div>
 
 </section>
-
 
 
 </main>
@@ -819,121 +597,72 @@
      FOOTER
 ===================================================== -->
 
-<footer class="site-footer">
+<footer class="footer">
 
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-
-        <img
-          src="../logo.png"
-          alt="EMPERIO TISS"
-        >
-
-        <p>
-          Food sourcing and distribution connecting
-          selected origins with professional markets.
-        </p>
-
-      </div>
+  <div class="container footer-grid">
 
 
-      <div class="footer-column">
+    <div>
 
-        <strong>Company</strong>
+      <img
+        class="footer-logo"
+        src="../logo.png"
+        alt="EMPERIO TISS"
+      >
 
-        <a href="../about/about.html">
-          About
-        </a>
-
-        <a href="../markets/markets.html">
-          Markets
-        </a>
-
-        <a href="../contact/contact.html">
-          Contact
-        </a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <strong>Products</strong>
-
-        <a href="index.html">
-          Products
-        </a>
-
-        <a href="seafood.html">
-          Seafood
-        </a>
-
-        <a href="seasonal.html">
-          Seasonal
-        </a>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <strong>Languages</strong>
-
-        <a href="fruits-vegetables.html">EN</a>
-        <a href="../es/products/fruits-vegetables.html">ES</a>
-        <a href="../fr/products/fruits-vegetables.html">FR</a>
-        <a href="../ar/products/fruits-vegetables.html">AR</a>
-
-      </div>
+      <p>
+        Connecting professional food markets across
+        Africa, Europe and the Middle East.
+      </p>
 
     </div>
 
 
-    <div class="footer-bottom">
+    <div>
 
-      <span>
-        © 2026 EMPERIO TISS
-      </span>
+      <strong>Products</strong>
 
-      <span>
-        Europe · Africa · Mediterranean
-      </span>
+      <a href="index.html">All Products</a>
+      <a href="seafood.html">Fish & Seafood</a>
+      <a href="fruits-vegetables.html">Fruits & Vegetables</a>
+      <a href="seasonal.html">Seasonal Products</a>
 
     </div>
+
+
+    <div>
+
+      <strong>Company</strong>
+
+      <a href="../markets/markets.html">Markets</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#about">Company</a>
+      <a href="../index.html#contact">Business enquiry</a>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="container footer-bottom">
+
+    <span>
+      © <span id="year"></span> EMPERIO TISS SL
+    </span>
+
+    <span>
+      Spain · France · Italy · Germany · Netherlands
+      · Morocco · Tunisia · Mauritania · West Africa
+      · Middle East
+    </span>
 
   </div>
 
 </footer>
 
 
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const menuButton = document.querySelector(".menu-toggle");
-  const navigation = document.querySelector(".nav");
-
-  if (!menuButton || !navigation) return;
-
-  menuButton.addEventListener("click", function () {
-
-    const opened =
-      navigation.classList.toggle("is-open");
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      opened ? "true" : "false"
-    );
-
-  });
-
-});
-
-</script>
+<script src="../script.js"></script>
 
 </body>
 </html>
