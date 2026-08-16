@@ -696,12 +696,9 @@
 .contact-footer .footer-brand img {
   width: 100px;
   height: auto;
-
-  /* logo.png is the original dark logo:
-     keep it visible on the dark footer */
-  filter: brightness(0) invert(1);
+  filter: none;
+  opacity: 1;
 }
-
 
 /* =========================================================
    RESPONSIVE
