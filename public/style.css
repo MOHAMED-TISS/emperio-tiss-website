@@ -4709,3 +4709,218 @@ ol {
   }
 
 }
+/* =========================================================
+   SEAFOOD — CONTRAST & FOOTER FIX
+========================================================= */
+
+/* ---------- LIGHT SECTIONS ---------- */
+
+.seafood-page .sf-intro,
+.seafood-page .sf-range,
+.seafood-page .sf-specifications,
+.seafood-page .sf-availability {
+  color: var(--sf-ink);
+}
+
+/* Force readable text on light backgrounds */
+
+.seafood-page .sf-intro h2,
+.seafood-page .sf-intro p,
+.seafood-page .sf-range h2,
+.seafood-page .sf-range h3,
+.seafood-page .sf-range p,
+.seafood-page .sf-range span,
+.seafood-page .sf-specifications h2,
+.seafood-page .sf-specifications p,
+.seafood-page .sf-specifications strong,
+.seafood-page .sf-specifications span,
+.seafood-page .sf-availability h2,
+.seafood-page .sf-availability p,
+.seafood-page .sf-availability span {
+  color: var(--sf-ink);
+}
+
+/* Secondary text */
+
+.seafood-page .sf-intro-main > p:last-child,
+.seafood-page .sf-section-heading > p,
+.seafood-page .sf-spec-head > p,
+.seafood-page .sf-availability-inner > div:last-child > p {
+  color: #536965;
+}
+
+/* Eyebrows on light backgrounds */
+
+.seafood-page .sf-intro .sf-eyebrow,
+.seafood-page .sf-range .sf-eyebrow,
+.seafood-page .sf-specifications .sf-eyebrow,
+.seafood-page .sf-availability .sf-eyebrow {
+  color: #31504d;
+}
+
+
+/* ---------- RANGE CARDS ---------- */
+
+.seafood-page .sf-range-card {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-range-card .sf-card-top,
+.seafood-page .sf-range-card .sf-card-small {
+  color: #31504d;
+}
+
+.seafood-page .sf-range-card .sf-card-body p {
+  color: #536965;
+}
+
+.seafood-page .sf-range-card .sf-card-body h3 {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-range-card .sf-card-mark {
+  color: var(--sf-ink);
+}
+
+
+/* ---------- SPECIFICATIONS ---------- */
+
+.seafood-page .sf-spec-grid div {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-spec-grid div:hover {
+  color: white;
+}
+
+.seafood-page .sf-spec-grid div:hover strong,
+.seafood-page .sf-spec-grid div:hover span {
+  color: white;
+}
+
+
+/* ---------- AVAILABILITY ---------- */
+
+.seafood-page .sf-availability {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-availability h2 {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-availability-inner > div:last-child {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-availability-line {
+  color: var(--sf-ink);
+}
+
+.seafood-page .sf-availability-line span {
+  color: var(--sf-ink);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.seafood-page .sf-footer {
+  background: #03181d;
+  color: white;
+}
+
+.seafood-page .sf-footer-logo {
+  /*
+     IMPORTANT:
+     Footer logo must be WHITE.
+     If logo.png is already white, don't invert it.
+  */
+  filter: none;
+  opacity: 1;
+}
+
+.seafood-page .sf-footer-main,
+.seafood-page .sf-footer-main p,
+.seafood-page .sf-footer-links,
+.seafood-page .sf-footer-links strong,
+.seafood-page .sf-footer-bottom {
+  color: white;
+}
+
+.seafood-page .sf-footer-main > div:first-child p {
+  color: rgba(255,255,255,.58);
+}
+
+.seafood-page .sf-footer-links a {
+  color: rgba(255,255,255,.58);
+}
+
+.seafood-page .sf-footer-links a:hover {
+  color: white;
+}
+
+.seafood-page .sf-footer-bottom {
+  color: rgba(255,255,255,.4);
+}
+
+.seafood-page .sf-footer-bottom a {
+  color: rgba(255,255,255,.55);
+}
+
+.seafood-page .sf-footer-bottom a:hover {
+  color: white;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.seafood-page .sf-header,
+.seafood-page .sf-navigation,
+.seafood-page .sf-navigation > a {
+  color: white;
+}
+
+.seafood-page .sf-enquiry {
+  color: var(--sf-deep) !important;
+}
+
+.seafood-page .sf-languages a {
+  color: white;
+}
+
+
+/* =========================================================
+   DARK SECTIONS
+========================================================= */
+
+.seafood-page .sf-hero,
+.seafood-page .sf-origins,
+.seafood-page .sf-cta {
+  color: white;
+}
+
+.seafood-page .sf-hero h1,
+.seafood-page .sf-hero p,
+.seafood-page .sf-hero span,
+.seafood-page .sf-origins h2,
+.seafood-page .sf-origins p,
+.seafood-page .sf-cta h2,
+.seafood-page .sf-cta p {
+  color: inherit;
+}
+
+
+/* =========================================================
+   SAFETY OVERRIDE AGAINST GLOBAL CSS
+========================================================= */
+
+.seafood-page .sf-intro *,
+.seafood-page .sf-range *,
+.seafood-page .sf-specifications *,
+.seafood-page .sf-availability * {
+  /* Prevent accidental global white text inheritance */
+}
