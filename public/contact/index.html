@@ -110,139 +110,122 @@
   </section>
 
 
-  <!-- CONTACT AREA -->
+  <form class="contact-form" action="#" method="post">
 
-  <section class="contact-main">
+  <!-- REQUIRED NOTICE -->
+  <p class="form-required-notice">
+    <strong><span>*</span> Fields marked with * are required.</strong>
+  </p>
 
-    <div class="container">
+  <!-- ROW 1 -->
+  <div class="form-row">
 
-      <div class="contact-layout">
+    <label>
+      <span><b>*</b> Name</span>
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name"
+        autocomplete="name"
+        required
+      >
+    </label>
 
-        <!-- FORM -->
+    <label>
+      <span><b>*</b> Company</span>
+      <input
+        type="text"
+        name="company"
+        placeholder="Company name"
+        autocomplete="organization"
+        required
+      >
+    </label>
 
-        <div class="contact-form-area">
+  </div>
 
-          <div class="section-label">
-            01 / BUSINESS ENQUIRY
-          </div>
+  <!-- ROW 2 -->
+  <div class="form-row">
 
-          <h2>
-            Tell us<br>
-            <em>what you need.</em>
-          </h2>
+    <label>
+      <span><b>*</b> Email</span>
+      <input
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        autocomplete="email"
+        required
+      >
+    </label>
 
-          <p class="contact-intro">
-            The more information you provide, the faster we can
-            understand your requirement and respond with the right
-            sourcing option.
-          </p>
+    <label>
+      <span><b>*</b> Phone</span>
+      <input
+        type="tel"
+        name="phone"
+        placeholder="+34"
+        autocomplete="tel"
+        required
+      >
+    </label>
 
-          <form class="contact-form" action="#" method="post">
+  </div>
 
-            <div class="form-row">
-<p class="form-required-notice">
-  <strong><span>*</span> Fields marked with * are required.</strong>
-</p>
+  <!-- ROW 3 -->
+  <div class="form-row">
 
-<div class="form-row">
+    <label>
+      <span><b>*</b> Product</span>
 
-  <label>
-    <span><b>*</b> Name</span>
-    <input
-      type="text"
-      name="name"
-      placeholder="Your name"
-      autocomplete="name"
+      <select name="product" required>
+        <option value="" selected disabled>Select a product</option>
+        <option value="seafood">Seafood</option>
+        <option value="fish">Fish</option>
+        <option value="shellfish">Shellfish</option>
+        <option value="cephalopods">Cephalopods</option>
+        <option value="fruits">Fruits</option>
+        <option value="vegetables">Vegetables</option>
+        <option value="seasonal">Seasonal products</option>
+        <option value="other">Other</option>
+      </select>
+
+    </label>
+
+    <label>
+      <span><b>*</b> Destination</span>
+
+      <input
+        type="text"
+        name="destination"
+        placeholder="City / country"
+        required
+      >
+
+    </label>
+
+  </div>
+
+  <!-- REQUIREMENT -->
+  <label class="requirement-field">
+
+    <span>Requirement</span>
+
+    <textarea
+      name="message"
+      rows="7"
+      placeholder="Product, origin, size, calibre, quality, packaging, volume, timing..."
       required
-    >
+    ></textarea>
+
   </label>
 
-  <label>
-    <span><b>*</b> Company</span>
-    <input
-      type="text"
-      name="company"
-      placeholder="Company name"
-      autocomplete="organization"
-      required
-    >
-  </label>
+  <!-- SUBMIT -->
+  <button type="submit" class="contact-submit">
+    <span>Send enquiry</span>
+    <span>↗</span>
+  </button>
 
-</div>
-
-<div class="form-row">
-
-  <label>
-    <span><b>*</b> Email</span>
-    <input
-      type="email"
-      name="email"
-      placeholder="your@email.com"
-      autocomplete="email"
-      required
-    >
-  </label>
-
-  <label>
-    <span><b>*</b> Phone</span>
-    <input
-      type="tel"
-      name="phone"
-      placeholder="+34"
-      autocomplete="tel"
-      required
-    >
-  </label>
-
-</div>
-
-<div class="form-row">
-
-  <label>
-    <span><b>*</b> Product</span>
-    <select name="product" required>
-      <option value="" selected disabled>Select a product</option>
-      <option value="seafood">Seafood</option>
-      <option value="fish">Fish</option>
-      <option value="shellfish">Shellfish</option>
-      <option value="cephalopods">Cephalopods</option>
-      <option value="fruits">Fruits</option>
-      <option value="vegetables">Vegetables</option>
-      <option value="seasonal">Seasonal products</option>
-      <option value="other">Other</option>
-    </select>
-  </label>
-
-  <label>
-    <span><b>*</b> Destination</span>
-    <input
-      type="text"
-      name="destination"
-      placeholder="City / country"
-      required
-    >
-  </label>
-</div>
-
-            <label>
-              <span>Requirement</span>
-              <textarea
-                name="message"
-                rows="7"
-                placeholder="Product, origin, size, calibre, quality, packaging, volume, timing..."
-                required
-              ></textarea>
-            </label>
-
-            <button type="submit" class="contact-submit">
-              Send enquiry
-              <span>↗</span>
-            </button>
-
-          </form>
-
-        </div>
-
+</form>
 
         <!-- CONTACT INFORMATION -->
 
