@@ -909,3 +909,139 @@
 .form-required-notice .required-star {
   color: #c62828;
 }
+/* =========================================================
+   CONTACT — LAYOUT FIX
+   ========================================================= */
+
+.contact-main,
+.contact-direct {
+  width: 100%;
+}
+
+.contact-main > .container,
+.contact-direct > .container,
+.contact-layout,
+.contact-direct-layout {
+  width: min(1240px, calc(100% - 160px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Keep the contact columns centered */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  gap: 100px;
+  align-items: start;
+}
+
+/* Form itself must stay inside its column */
+.contact-form-area {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Required notice */
+.form-required-notice {
+  width: 100%;
+  margin: 0 0 32px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form-required-notice .required-star,
+.form-required-notice span {
+  color: #c62828;
+}
+
+/* Form rows */
+.contact-form .form-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+/* Individual fields */
+.contact-form label {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Requirement full width */
+.contact-form > label {
+  width: 100%;
+}
+
+/* Submit button — controlled size */
+.contact-submit {
+  width: auto !important;
+  min-width: 155px;
+  max-width: 190px;
+  height: 52px;
+  padding: 0 28px !important;
+  margin-top: 32px;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Direct contact section */
+.contact-direct {
+  width: 100%;
+  padding: 120px 0;
+}
+
+.contact-direct .container {
+  width: min(1240px, calc(100% - 160px));
+  margin-inline: auto;
+}
+
+.contact-direct-content {
+  max-width: 620px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .contact-main > .container,
+  .contact-direct > .container,
+  .contact-layout,
+  .contact-direct-layout {
+    width: min(100% - 100px, 1000px);
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-main > .container,
+  .contact-direct > .container,
+  .contact-layout,
+  .contact-direct-layout {
+    width: calc(100% - 64px);
+  }
+
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .contact-direct {
+    padding: 80px 0;
+  }
+}
