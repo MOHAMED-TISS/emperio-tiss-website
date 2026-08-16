@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Seafood | EMPERIO TISS</title>
-
   <meta
     name="description"
-    content="Seafood sourced around origin, species, seasonality and availability for professional markets."
+    content="Seafood sourced around origin, species, seasonality and availability for professional markets across Europe, Africa and the Mediterranean."
   >
+
+  <meta property="og:title" content="Seafood | EMPERIO TISS">
+  <meta
+    property="og:description"
+    content="Fish, shellfish and cephalopods sourced for professional markets."
+  >
+  <meta property="og:type" content="website">
+
+  <title>Seafood | EMPERIO TISS</title>
+
+  <link rel="icon" href="../logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,29 +30,32 @@
   >
 
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../products.css">
+  <link rel="stylesheet" href="products.css">
+
 </head>
 
 <body class="products-page seafood-page">
 
-<header class="products-header">
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="products-header" role="banner">
+
   <div class="products-nav">
 
-    <a href="../index.html" class="products-logo">
+    <a href="../index.html" class="products-logo" aria-label="EMPERIO TISS home">
       <img src="../logo.png" alt="EMPERIO TISS">
     </a>
 
-    <nav class="products-main-nav">
+    <nav class="products-main-nav" aria-label="Main navigation">
 
-      <a href="../about/about.html">About</a>
+      <a href="../index.html#about">About</a>
 
-      <a href="index.html" class="active">
-        Products
-      </a>
+      <a href="index.html" class="active">Products</a>
 
-      <a href="../markets/markets.html">
-        Markets
-      </a>
+      <a href="../index.html#markets">Markets</a>
 
       <div class="products-languages">
         <a href="seafood.html" class="active">EN</a>
@@ -54,11 +67,8 @@
         <a href="../ar/products/seafood.html">AR</a>
       </div>
 
-      <a
-        href="../contact/contact.html"
-        class="products-enquiry"
-      >
-        Business enquiry ↗
+      <a href="../index.html#contact" class="products-enquiry">
+        Business enquiry
       </a>
 
     </nav>
@@ -66,24 +76,27 @@
     <button
       class="products-menu"
       type="button"
-      aria-label="Open menu"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
     >
       ☰
     </button>
 
   </div>
+
 </header>
 
 
-<main>
+<main role="main">
+
 
 <!-- =====================================================
-     SEAFOOD HERO
+     HERO SECTION
 ===================================================== -->
 
-<section class="seafood-hero">
+<section class="seafood-hero" aria-label="Seafood product hero">
 
-  <div class="seafood-hero-overlay"></div>
+  <div class="seafood-hero-overlay" aria-hidden="true"></div>
 
   <div class="products-container seafood-hero-inner">
 
@@ -95,12 +108,10 @@
     <div class="seafood-hero-main">
 
       <div>
-
         <h1>
           From the
           <em>sea.</em>
         </h1>
-
       </div>
 
       <div class="seafood-hero-copy">
@@ -111,12 +122,9 @@
           seasonality and availability.
         </p>
 
-        <a
-          href="../contact/contact.html"
-          class="seafood-hero-link"
-        >
+        <a href="../index.html#contact" class="seafood-hero-link">
           Request seafood availability
-          <span>↗</span>
+          <span aria-hidden="true">↗</span>
         </a>
 
       </div>
@@ -124,12 +132,10 @@
     </div>
 
     <div class="seafood-hero-bottom">
-
       <span>MEDITERRANEAN</span>
       <span>ATLANTIC</span>
       <span>EUROPE</span>
       <span>NORTH AFRICA</span>
-
     </div>
 
   </div>
@@ -138,15 +144,15 @@
 
 
 <!-- =====================================================
-     INTRO
+     INTRO SECTION
 ===================================================== -->
 
-<section class="seafood-intro">
+<section class="seafood-intro" aria-label="Seafood introduction">
 
   <div class="products-container">
 
     <div class="products-section-label">
-      02 / SEAFOOD
+      <span>02</span> / SEAFOOD
     </div>
 
     <div class="seafood-intro-grid">
@@ -181,15 +187,15 @@
 
 
 <!-- =====================================================
-     CATEGORIES
+     CATEGORIES SECTION
 ===================================================== -->
 
-<section class="seafood-categories">
+<section class="seafood-categories" aria-label="Product categories">
 
   <div class="products-container">
 
     <div class="products-section-label">
-      03 / PRODUCT FAMILIES
+      <span>03</span> / PRODUCT FAMILIES
     </div>
 
     <div class="seafood-category-grid">
@@ -205,9 +211,7 @@
 
           <span>FRESH & FROZEN</span>
 
-          <h2>
-            Fish
-          </h2>
+          <h2>Fish</h2>
 
           <p>
             Selected species according to origin,
@@ -236,9 +240,7 @@
 
           <span>LIVE · FRESH · FROZEN</span>
 
-          <h2>
-            Shellfish
-          </h2>
+          <h2>Shellfish</h2>
 
           <p>
             Shellfish selected around freshness,
@@ -267,9 +269,7 @@
 
           <span>SEASONAL AVAILABILITY</span>
 
-          <h2>
-            Cephalopods
-          </h2>
+          <h2>Cephalopods</h2>
 
           <p>
             Squid, cuttlefish and related products
@@ -295,10 +295,10 @@
 
 
 <!-- =====================================================
-     PRODUCT LOGIC
+     PRODUCT LOGIC SECTION
 ===================================================== -->
 
-<section class="seafood-logic">
+<section class="seafood-logic" aria-label="How we select products">
 
   <div class="products-container">
 
@@ -307,7 +307,7 @@
       <div>
 
         <div class="products-section-label">
-          04 / HOW WE SELECT
+          <span>04</span> / HOW WE SELECT
         </div>
 
         <h2>
@@ -321,7 +321,6 @@
         </p>
 
       </div>
-
 
       <div class="seafood-factors">
 
@@ -371,15 +370,15 @@
 
 
 <!-- =====================================================
-     ORIGINS
+     ORIGINS SECTION
 ===================================================== -->
 
-<section class="seafood-origins">
+<section class="seafood-origins" aria-label="Sourcing origins">
 
   <div class="products-container">
 
     <div class="products-section-label">
-      05 / ORIGIN
+      <span>05</span> / ORIGIN
     </div>
 
     <div class="seafood-origins-heading">
@@ -396,7 +395,6 @@
       </p>
 
     </div>
-
 
     <div class="seafood-origin-grid">
 
@@ -438,15 +436,15 @@
 
 
 <!-- =====================================================
-     SPECIFICATIONS
+     SPECIFICATIONS SECTION
 ===================================================== -->
 
-<section class="seafood-specifications">
+<section class="seafood-specifications" aria-label="Product specifications">
 
   <div class="products-container">
 
     <div class="products-section-label">
-      06 / SPECIFICATIONS
+      <span>06</span> / SPECIFICATIONS
     </div>
 
     <div class="seafood-spec-grid">
@@ -464,7 +462,6 @@
         </p>
 
       </div>
-
 
       <div class="seafood-spec-list">
 
@@ -518,10 +515,10 @@
 
 
 <!-- =====================================================
-     AVAILABILITY
+     AVAILABILITY SECTION (CTA)
 ===================================================== -->
 
-<section class="seafood-availability">
+<section class="seafood-availability" aria-label="Availability and contact">
 
   <div class="products-container">
 
@@ -529,9 +526,7 @@
 
       <div>
 
-        <span class="availability-label">
-          CURRENT AVAILABILITY
-        </span>
+        <span class="availability-label">CURRENT AVAILABILITY</span>
 
         <h2>
           Looking for a
@@ -548,11 +543,9 @@
           We will review current sourcing options.
         </p>
 
-        <a
-          href="../contact/contact.html"
-          class="seafood-availability-button"
-        >
-          Business enquiry ↗
+        <a href="../index.html#contact" class="seafood-availability-button">
+          Business enquiry
+          <span aria-hidden="true">↗</span>
         </a>
 
       </div>
@@ -564,11 +557,14 @@
 </section>
 
 
+</main>
+
+
 <!-- =====================================================
      FOOTER
 ===================================================== -->
 
-<footer class="products-footer">
+<footer class="products-footer" role="contentinfo">
 
   <div class="products-container">
 
@@ -576,10 +572,7 @@
 
       <div class="products-footer-brand">
 
-        <img
-          src="../logo.png"
-          alt="EMPERIO TISS"
-        >
+        <img src="../logo.png" alt="EMPERIO TISS">
 
         <p>
           Selected food origins connecting
@@ -592,21 +585,10 @@
 
         <strong>Company</strong>
 
-        <a href="../about/about.html">
-          About
-        </a>
-
-        <a href="index.html">
-          Products
-        </a>
-
-        <a href="../markets/markets.html">
-          Markets
-        </a>
-
-        <a href="../contact/contact.html">
-          Contact
-        </a>
+        <a href="../index.html#about">About</a>
+        <a href="index.html">Products</a>
+        <a href="../index.html#markets">Markets</a>
+        <a href="../index.html#contact">Contact</a>
 
       </div>
 
@@ -614,17 +596,9 @@
 
         <strong>Products</strong>
 
-        <a href="seafood.html">
-          Seafood
-        </a>
-
-        <a href="fruits-vegetables.html">
-          Fruits & Vegetables
-        </a>
-
-        <a href="seasonal.html">
-          Seasonal
-        </a>
+        <a href="seafood.html">Seafood</a>
+        <a href="fruits-vegetables.html">Fruits & Vegetables</a>
+        <a href="seasonal.html">Seasonal</a>
 
       </div>
 
@@ -633,7 +607,7 @@
     <div class="products-footer-bottom">
 
       <span>
-        © 2026 EMPERIO TISS
+        © <span id="year"></span> EMPERIO TISS SL
       </span>
 
       <span>
@@ -646,7 +620,9 @@
 
 </footer>
 
+
 <script src="../script.js"></script>
 
 </body>
+
 </html>
