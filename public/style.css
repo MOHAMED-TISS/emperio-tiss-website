@@ -4962,3 +4962,57 @@ ol {
     color: #ffffff !important;
     border-color: rgba(255,255,255,.7) !important;
 }
+/* =========================================================
+   SEAFOOD — CTA BUTTON HARD RESET
+========================================================= */
+
+.seafood-page .hero-actions a:first-child {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: auto !important;
+    min-width: 180px !important;
+    height: 52px !important;
+
+    padding: 0 28px !important;
+
+    background: #ffffff !important;
+    color: #063c3d !important;
+
+    border: 1px solid #ffffff !important;
+    border-radius: 999px !important;
+
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+
+    text-indent: 0 !important;
+    text-align: center !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    overflow: visible !important;
+}
+
+/* Force the actual text */
+
+.seafood-page .hero-actions a:first-child::before,
+.seafood-page .hero-actions a:first-child::after {
+    display: none !important;
+}
+
+.seafood-page .hero-actions a:first-child {
+    -webkit-text-fill-color: #063c3d !important;
+}
+
+/* Hover */
+
+.seafood-page .hero-actions a:first-child:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border-color: rgba(255,255,255,.7) !important;
+}
