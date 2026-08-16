@@ -1,303 +1,644 @@
-/* =========================================================
-   EMPERIO TISS
-   PRODUCTS SYSTEM
-   ISOLATED — DO NOT MODIFY HOME
-========================================================= */
+```css
+/* ============================================================
+   EMPERIO TISS — PRODUCTS SYSTEM
+   ------------------------------------------------------------
+   Applies ONLY to:
+   /products/
+   /products/seafood.html
+   /products/fruits-vegetables.html
+   /products/seasonal.html
 
-.products-page {
-  --p-ink: #062c28;
-  --p-paper: #f4f1e9;
-  --p-cream: #e9e3d7;
-  --p-line: rgba(6,44,40,.18);
-  --p-muted: #69736f;
-  --p-white: #f7f7f2;
-  --p-ocean: #063c43;
-  --p-ocean-2: #0b5960;
-  --p-green: #0a3933;
+   IMPORTANT:
+   This file must NOT style Home or Markets.
+============================================================ */
 
-  margin: 0;
-  background: var(--p-paper);
+
+/* ============================================================
+   01. PRODUCT SYSTEM
+============================================================ */
+
+.products-page,
+.seafood-page,
+.produce-page,
+.seasonal-page {
+
+  --p-ink: #082d29;
+  --p-deep: #05231f;
+  --p-cream: #f3f0e8;
+  --p-paper: #faf9f5;
+  --p-soft: #e8e4d9;
+  --p-muted: #68736f;
+  --p-line: rgba(8,45,41,.16);
+  --p-white: #ffffff;
+
+  --p-serif: "Playfair Display", Georgia, serif;
+  --p-sans: "DM Sans", Arial, sans-serif;
+
+  background: var(--p-cream);
   color: var(--p-ink);
-  font-family: "DM Sans", Arial, sans-serif;
+
+  font-family: var(--p-sans);
+
+  min-height: 100vh;
+
   overflow-x: hidden;
 }
 
+
+/* ============================================================
+   02. LOCAL RESET
+============================================================ */
+
 .products-page *,
 .products-page *::before,
-.products-page *::after {
+.products-page *::after,
+.seafood-page *,
+.seafood-page *::before,
+.seafood-page *::after,
+.produce-page *,
+.produce-page *::before,
+.produce-page *::after,
+.seasonal-page *,
+.seasonal-page *::before,
+.seasonal-page *::after {
+
   box-sizing: border-box;
 }
 
-.products-page a {
-  color: inherit;
-  text-decoration: none;
-}
 
-.products-page img {
+.products-page img,
+.seafood-page img,
+.produce-page img,
+.seasonal-page img {
+
   display: block;
   max-width: 100%;
 }
 
-.products-container {
-  width: min(1240px, calc(100% - 80px));
-  margin: 0 auto;
+
+.products-page a,
+.seafood-page a,
+.produce-page a,
+.seasonal-page a {
+
+  color: inherit;
+  text-decoration: none;
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+.products-page h1,
+.products-page h2,
+.products-page h3,
+.products-page h4,
+.products-page p,
 
-.products-header {
-  height: 84px;
-  border-bottom: 1px solid var(--p-line);
-  background: rgba(244,241,233,.97);
+.seafood-page h1,
+.seafood-page h2,
+.seafood-page h3,
+.seafood-page h4,
+.seafood-page p,
+
+.produce-page h1,
+.produce-page h2,
+.produce-page h3,
+.produce-page h4,
+.produce-page p,
+
+.seasonal-page h1,
+.seasonal-page h2,
+.seasonal-page h3,
+.seasonal-page h4,
+.seasonal-page p {
+
+  margin: 0;
+}
+
+
+/* ============================================================
+   03. CONTAINERS
+============================================================ */
+
+.products-page .container,
+.produce-page .container,
+.seasonal-page .container {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  margin-inline: auto;
+}
+
+
+.seafood-page .sf-container {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  margin-inline: auto;
+}
+
+
+/* ============================================================
+   04. HEADER — LIGHT PRODUCT PAGES
+============================================================ */
+
+.products-page .site-header,
+.produce-page .site-header,
+.seasonal-page .site-header {
+
   position: relative;
   z-index: 100;
+
+  width: 100%;
+
+  background: rgba(243,240,232,.97);
+
+  border-bottom: 1px solid var(--p-line);
+
+  backdrop-filter: blur(14px);
 }
 
-.products-nav {
-  width: min(1240px, calc(100% - 80px));
-  height: 84px;
-  margin: auto;
+
+.products-page .nav-wrap,
+.produce-page .nav-wrap,
+.seasonal-page .nav-wrap {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  min-height: 84px;
+
+  margin-inline: auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 40px;
 }
 
-.products-logo {
-  width: 110px;
-  height: 74px;
+
+/* ============================================================
+   05. LOGO
+============================================================ */
+
+.products-page .brand,
+.produce-page .brand,
+.seasonal-page .brand {
+
+  width: 120px;
+  height: 84px;
 
   display: flex;
   align-items: center;
+
+  flex-shrink: 0;
 }
 
-.products-logo img {
+
+.products-page .brand img,
+.produce-page .brand img,
+.seasonal-page .brand img {
+
   width: 92px;
   height: auto;
+
+  max-height: 70px;
+
+  object-fit: contain;
+
+  filter: none !important;
 }
 
-.products-main-nav {
+
+/* ============================================================
+   06. NAVIGATION
+============================================================ */
+
+.products-page .nav,
+.produce-page .nav,
+.seasonal-page .nav {
+
   display: flex;
   align-items: center;
+
   gap: 30px;
+
+  color: var(--p-ink);
+
   font-size: 13px;
+  font-weight: 500;
 }
 
-.products-main-nav > a {
-  transition: opacity .25s ease;
+
+.products-page .nav > a,
+.produce-page .nav > a,
+.seasonal-page .nav > a {
+
+  position: relative;
+
+  white-space: nowrap;
 }
 
-.products-main-nav > a:hover {
-  opacity: .55;
+
+.products-page .nav > a:not(.nav-cta)::after,
+.produce-page .nav > a:not(.nav-cta)::after,
+.seasonal-page .nav > a:not(.nav-cta)::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: currentColor;
+
+  transition: width .25s ease;
 }
 
-.products-main-nav .active {
-  font-weight: 700;
+
+.products-page .nav > a:not(.nav-cta):hover::after,
+.produce-page .nav > a:not(.nav-cta):hover::after,
+.seasonal-page .nav > a:not(.nav-cta):hover::after {
+
+  width: 100%;
 }
 
-.products-languages {
+
+/* ============================================================
+   07. LANGUAGES
+============================================================ */
+
+.products-page .language-switcher,
+.produce-page .language-switcher,
+.seasonal-page .language-switcher {
+
   display: flex;
   align-items: center;
-  gap: 8px;
 
-  font-size: 11px;
+  gap: 9px;
+
+  color: #7b8581;
+
+  font-size: 10px;
+
   letter-spacing: .12em;
 }
 
-.products-languages span {
-  color: #a1a6a3;
+
+.products-page .language-switcher a,
+.produce-page .language-switcher a,
+.seasonal-page .language-switcher a {
+
+  color: #7b8581;
+
+  transition: color .2s ease;
 }
 
-.products-languages a {
-  color: #7c8581;
-}
 
-.products-languages .active {
+.products-page .language-switcher a:hover,
+.produce-page .language-switcher a:hover,
+.seasonal-page .language-switcher a:hover,
+
+.products-page .language-switcher .active,
+.produce-page .language-switcher .active,
+.seasonal-page .language-switcher .active {
+
   color: var(--p-ink);
-  font-weight: 700;
-}
-
-.products-enquiry {
-  background: var(--p-ink);
-  color: white !important;
-
-  padding: 14px 21px;
-  border-radius: 100px;
-
-  font-weight: 600;
-}
-
-.products-menu {
-  display: none;
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+/* ============================================================
+   08. HEADER CTA
+============================================================ */
 
-.products-hero {
-  min-height: 690px;
-  padding: 90px 0 65px;
+.products-page .nav-cta,
+.produce-page .nav-cta,
+.seasonal-page .nav-cta {
 
-  position: relative;
-  overflow: hidden;
-}
+  min-height: 44px;
 
-.products-hero-inner {
-  width: min(1240px, calc(100% - 80px));
-  margin: auto;
-}
+  padding: 0 22px;
 
-.products-kicker,
-.products-section-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
 
-  font-size: 11px;
+  border-radius: 999px;
+
+  background: var(--p-ink) !important;
+  color: #fff !important;
+
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: .18em;
+
+  border: 1px solid var(--p-ink);
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+
+.products-page .nav-cta:hover,
+.produce-page .nav-cta:hover,
+.seasonal-page .nav-cta:hover {
+
+  background: #11473f !important;
+
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   09. MOBILE MENU
+============================================================ */
+
+.products-page .menu-toggle,
+.produce-page .menu-toggle,
+.seasonal-page .menu-toggle {
+
+  display: none;
+
+  color: var(--p-ink);
+
+  font-size: 22px;
+}
+
+
+/* ============================================================
+   10. GENERIC PRODUCT BUTTONS
+============================================================ */
+
+.products-page .button,
+.produce-page .button,
+.seasonal-page .button {
+
+  min-height: 52px;
+
+  padding: 0 27px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  font-family: var(--p-sans);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease;
+}
+
+
+.products-page .button:hover,
+.produce-page .button:hover,
+.seasonal-page .button:hover {
+
+  transform: translateY(-2px);
+}
+
+
+.products-page .button.primary,
+.produce-page .button.primary,
+.seasonal-page .button.primary {
+
+  background: var(--p-ink) !important;
+  color: #fff !important;
+
+  border: 1px solid var(--p-ink) !important;
+
+  -webkit-text-fill-color: #fff !important;
+}
+
+
+.products-page .button.primary:hover,
+.produce-page .button.primary:hover,
+.seasonal-page .button.primary:hover {
+
+  background: #11473f !important;
+}
+
+
+.products-page .button.secondary,
+.produce-page .button.secondary,
+.seasonal-page .button.secondary {
+
+  background: transparent !important;
+
+  color: var(--p-ink) !important;
+
+  border: 1px solid var(--p-line) !important;
+
+  -webkit-text-fill-color: var(--p-ink) !important;
+}
+
+
+.products-page .button.secondary:hover,
+.produce-page .button.secondary:hover,
+.seasonal-page .button.secondary:hover {
+
+  background: var(--p-paper) !important;
+}
+
+
+/* ============================================================
+   11. GENERIC PAGE HERO
+============================================================ */
+
+.products-page .page-hero {
+
+  min-height: 650px;
+
+  padding-top: 84px;
+
+  display: flex;
+  align-items: flex-end;
+
+  border-bottom: 1px solid var(--p-line);
+
+  background:
+    radial-gradient(
+      circle at 78% 30%,
+      rgba(255,255,255,.7),
+      transparent 32%
+    ),
+    var(--p-cream);
+}
+
+
+.products-page .page-hero-inner {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  margin-inline: auto;
+
+  padding-bottom: 85px;
+}
+
+
+.products-page .eyebrow,
+.produce-page .eyebrow,
+.seasonal-page .eyebrow {
+
+  margin-bottom: 20px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .17em;
+
   text-transform: uppercase;
 }
 
-.products-kicker span:first-child {
-  width: 34px;
-  height: 34px;
 
-  display: grid;
-  place-items: center;
+.products-page .eyebrow.dark,
+.produce-page .eyebrow.dark,
+.seasonal-page .eyebrow.dark {
 
-  border: 1px solid var(--p-line);
-  border-radius: 50%;
-
-  font-size: 10px;
-}
-
-.products-hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr .65fr;
-  gap: 80px;
-
-  margin-top: 70px;
-}
-
-.products-hero-title h1 {
-  margin: 0;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 400;
-
-  font-size: clamp(80px, 10vw, 150px);
-  line-height: .82;
-  letter-spacing: -.065em;
-}
-
-.products-hero-title em {
-  font-style: italic;
-}
-
-.products-hero-copy {
-  padding-top: 35px;
-  max-width: 400px;
-}
-
-.products-hero-copy p {
-  margin: 0;
-
-  font-size: 16px;
-  line-height: 1.8;
   color: var(--p-muted);
 }
 
-.products-hero-index {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
 
-  margin-top: 50px;
+.products-page .page-hero h1 {
 
-  font-size: 10px;
-  letter-spacing: .14em;
-  font-weight: 600;
-}
+  max-width: 1050px;
 
-.products-hero-index span {
-  padding-bottom: 11px;
-  border-bottom: 1px solid var(--p-line);
-}
+  font-family: var(--p-serif);
 
-.products-hero-line {
-  margin-top: 90px;
-  border-top: 1px solid var(--p-line);
-}
+  font-size: clamp(
+    68px,
+    9vw,
+    132px
+  );
 
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.products-intro {
-  padding: 130px 0 80px;
-}
-
-.products-intro-grid {
-  display: grid;
-  grid-template-columns: 1fr .55fr;
-  gap: 100px;
-
-  margin-top: 55px;
-}
-
-.products-intro h2,
-.products-origin-heading h2,
-.products-spec-grid h2 {
-  margin: 0;
-
-  font-family: "Playfair Display", Georgia, serif;
   font-weight: 400;
 
-  font-size: clamp(60px, 7vw, 100px);
   line-height: .88;
-  letter-spacing: -.055em;
+
+  letter-spacing: -.065em;
+
+  color: var(--p-ink);
 }
 
-.products-intro h2 em,
-.products-origin-heading h2 em,
-.products-spec-grid h2 em {
+
+.products-page .page-hero h1 em {
+
   font-style: italic;
 }
 
-.products-intro-grid p {
-  max-width: 430px;
-  margin: 8px 0 0;
+
+.products-page .page-hero-copy {
+
+  max-width: 650px;
+
+  margin-top: 34px;
 
   color: var(--p-muted);
 
   font-size: 15px;
+
   line-height: 1.8;
 }
 
 
-/* =========================================================
-   PRODUCT WORLDS
-========================================================= */
+/* ============================================================
+   12. PRODUCTS INDEX
+============================================================ */
 
-.products-worlds {
-  padding: 40px 0 140px;
+.products-page .products-overview {
+
+  padding: 135px 0;
 }
 
-.products-world-grid {
+
+.products-page .products-overview-intro {
+
+  max-width: 780px;
+
+  margin-bottom: 85px;
+}
+
+
+.products-page .products-overview-intro h2 {
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    55px,
+    7vw,
+    100px
+  );
+
+  font-weight: 400;
+
+  line-height: .9;
+
+  letter-spacing: -.055em;
+}
+
+
+.products-page .products-overview-intro h2 em {
+
+  font-style: italic;
+}
+
+
+.products-page .products-overview-intro p {
+
+  max-width: 650px;
+
+  margin-top: 34px;
+
+  color: var(--p-muted);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   13. PRODUCT GRID
+============================================================ */
+
+.products-page .product-grid {
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
 }
 
-.products-world {
-  min-height: 620px;
+
+.products-page .product-card {
+
+  min-height: 520px;
 
   padding: 32px;
 
@@ -305,1173 +646,3579 @@
   flex-direction: column;
 
   position: relative;
+
   overflow: hidden;
 
   border: 1px solid var(--p-line);
 
+  background: var(--p-paper);
+
   transition:
-    transform .45s ease,
-    box-shadow .45s ease;
+    transform .35s ease,
+    background .35s ease;
 }
 
-.products-world:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(6,44,40,.10);
+
+.products-page .product-card:hover {
+
+  transform: translateY(-7px);
 }
 
-.seafood-world {
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(65,150,160,.28),
-      transparent 32%
-    ),
-    linear-gradient(
-      145deg,
-      #06383e,
-      #05282d
-    );
 
-  color: white;
+.products-page .product-card:nth-child(2) {
+
+  background: var(--p-ink);
+
+  color: #fff;
 }
 
-.produce-world {
-  background: #dfe6d8;
+
+.products-page .product-card:nth-child(3) {
+
+  background: var(--p-soft);
 }
 
-.seasonal-world {
-  background: #e8e0d2;
-}
 
-.world-top {
-  display: flex;
-  justify-content: space-between;
+.products-page .product-card-number {
 
   font-size: 10px;
+
   letter-spacing: .16em;
-  font-weight: 600;
 }
 
-.world-content {
+
+.products-page .product-card-category {
+
   margin-top: auto;
+  margin-bottom: 26px;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: .15em;
+
+  opacity: .55;
 }
 
-.world-content h2 {
-  margin: 0;
 
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(48px, 5vw, 72px);
+.products-page .product-card h3 {
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    48px,
+    5vw,
+    72px
+  );
+
   font-weight: 400;
-  line-height: .9;
-  letter-spacing: -.055em;
+
+  line-height: .88;
+
+  letter-spacing: -.05em;
 }
 
-.world-content h2 em {
-  font-style: italic;
-}
 
-.world-content p {
-  max-width: 350px;
+.products-page .product-card p {
 
-  margin: 25px 0 0;
+  max-width: 390px;
+
+  margin-top: 22px;
 
   font-size: 14px;
+
   line-height: 1.7;
 
   opacity: .72;
 }
 
-.world-link {
-  display: inline-flex;
+
+.products-page .product-card-link {
+
+  margin-top: 30px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   14. PRODUCT INFORMATION
+============================================================ */
+
+.products-page .info-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  border-top: 1px solid var(--p-line);
+
+  border-left: 1px solid var(--p-line);
+}
+
+
+.products-page .info-card {
+
+  min-height: 260px;
+
+  padding: 30px;
+
+  border-right: 1px solid var(--p-line);
+
+  border-bottom: 1px solid var(--p-line);
+
+  background: var(--p-cream);
+}
+
+
+.products-page .info-card-number {
+
+  font-size: 10px;
+
+  letter-spacing: .16em;
+
+  color: var(--p-muted);
+}
+
+
+.products-page .info-card h3 {
+
+  margin-top: 75px;
+
+  font-family: var(--p-serif);
+
+  font-size: 36px;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+.products-page .info-card p {
+
+  margin-top: 15px;
+
+  color: var(--p-muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   15. GENERIC DARK PRODUCT SECTION
+============================================================ */
+
+.products-page .dark-section {
+
+  background: var(--p-ink);
+
+  color: #fff;
+}
+
+
+.products-page .dark-section .eyebrow {
+
+  color: rgba(255,255,255,.55);
+}
+
+
+.products-page .dark-section .section-head > p {
+
+  color: rgba(255,255,255,.62);
+}
+
+
+/* ============================================================
+   16. SECTION HEAD
+============================================================ */
+
+.products-page .section,
+.produce-page .section,
+.seasonal-page .section {
+
+  padding: 135px 0;
+}
+
+
+.products-page .section-head,
+.produce-page .section-head,
+.seasonal-page .section-head {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(280px, .62fr);
+
+  gap: 90px;
+
+  align-items: end;
+
+  margin-bottom: 75px;
+}
+
+
+.products-page .section-head h2,
+.produce-page .section-head h2,
+.seasonal-page .section-head h2 {
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    54px,
+    6vw,
+    92px
+  );
+
+  font-weight: 400;
+
+  line-height: .9;
+
+  letter-spacing: -.055em;
+}
+
+
+.products-page .section-head h2 em,
+.produce-page .section-head h2 em,
+.seasonal-page .section-head h2 em {
+
+  font-style: italic;
+}
+
+
+.products-page .section-head > p,
+.produce-page .section-head > p,
+.seasonal-page .section-head > p {
+
+  max-width: 430px;
+
+  color: var(--p-muted);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   17. PRODUCE PAGE
+============================================================ */
+
+.produce-page {
+
+  --produce-green: #173c34;
+  --produce-light: #ebe6d9;
+  --produce-paper: #f7f4ec;
+}
+
+
+.produce-page .produce-hero {
+
+  position: relative;
+
+  min-height: 780px;
+
+  display: flex;
   align-items: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      115deg,
+      #d9ded1 0%,
+      #eee9dc 48%,
+      #c7d0bb 100%
+    );
+
+  border-bottom: 1px solid var(--p-line);
+}
+
+
+.produce-page .produce-hero::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  right: -180px;
+  top: 100px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(23,60,52,.14);
+
+  box-shadow:
+    0 0 0 80px rgba(23,60,52,.025),
+    0 0 0 160px rgba(23,60,52,.02);
+}
+
+
+.produce-page .produce-sun {
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: 16%;
+  top: 20%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(238,196,100,.65),
+      rgba(238,196,100,.08) 55%,
+      transparent 70%
+    );
+
+  filter: blur(3px);
+}
+
+
+.produce-page .produce-field {
+
+  position: absolute;
+
+  left: -5%;
+  bottom: -120px;
+
+  width: 75%;
+
+  height: 270px;
+
+  border-radius: 50%;
+
+  background: rgba(61,86,55,.13);
+
+  transform: rotate(-5deg);
+}
+
+
+.produce-page .produce-field-two {
+
+  left: 30%;
+
+  bottom: -170px;
+
+  background: rgba(35,69,49,.10);
+
+  transform: rotate(5deg);
+}
+
+
+.produce-page .hero-content {
+
+  position: relative;
+
+  z-index: 3;
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  margin-inline: auto;
+}
+
+
+.produce-page .produce-hero h1 {
+
+  max-width: 900px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    70px,
+    9vw,
+    135px
+  );
+
+  font-weight: 400;
+
+  line-height: .85;
+
+  letter-spacing: -.065em;
+}
+
+
+.produce-page .hero-text {
+
+  max-width: 610px;
+
+  margin-top: 35px;
+
+  color: #51615b;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+}
+
+
+.produce-page .hero-actions {
+
+  display: flex;
+
   gap: 12px;
 
   margin-top: 32px;
+}
+
+
+.produce-page .produce-hero-label {
+
+  position: absolute;
+
+  z-index: 4;
+
+  right: 45px;
+  bottom: 35px;
+
+  display: flex;
+
+  gap: 20px;
+
+  font-size: 9px;
+
+  letter-spacing: .14em;
+
+  color: #5d6862;
+}
+
+
+.produce-page .hero-scroll {
+
+  position: absolute;
+
+  z-index: 4;
+
+  left: 40px;
+  bottom: 35px;
+
+  display: flex;
+
+  gap: 10px;
+
+  align-items: center;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
+}
+
+
+/* ============================================================
+   18. PRODUCE CARDS
+============================================================ */
+
+.produce-page .produce-cards {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+.produce-page .produce-card {
+
+  min-height: 440px;
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border: 1px solid var(--p-line);
+
+  background: var(--p-paper);
+
+  transition:
+    transform .35s ease,
+    background .35s ease;
+}
+
+
+.produce-page .produce-card:hover {
+
+  transform: translateY(-6px);
+
+  background: #fff;
+}
+
+
+.produce-page .produce-card:nth-child(2) {
+
+  background: #e5e9df;
+}
+
+
+.produce-page .produce-card:nth-child(3) {
+
+  background: #e8e0d0;
+}
+
+
+.produce-page .produce-card:nth-child(4) {
+
+  background: var(--p-ink);
+
+  color: #fff;
+}
+
+
+.produce-page .card-number {
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  opacity: .65;
+}
+
+
+.produce-page .produce-card h3 {
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    48px,
+    5vw,
+    76px
+  );
+
+  font-weight: 400;
+
+  line-height: .88;
+
+  letter-spacing: -.055em;
+}
+
+
+.produce-page .produce-card p {
+
+  max-width: 440px;
+
+  margin-top: 20px;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  opacity: .72;
+}
+
+
+.produce-page .product-link {
+
+  margin-top: 28px;
 
   font-size: 12px;
-  font-weight: 700;
+
+  font-weight: 600;
 }
 
-.world-link span {
-  font-size: 18px;
+
+/* ============================================================
+   19. PRODUCE ORIGINS
+============================================================ */
+
+.produce-page .produce-origin {
+
+  background: #e7e3d8;
 }
 
-.world-species {
+
+.produce-page .produce-origin-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  border-top: 1px solid var(--p-line);
+
+  border-left: 1px solid var(--p-line);
+}
+
+
+.produce-page .produce-origin-card {
+
+  min-height: 220px;
+
+  padding: 28px;
+
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+
+  justify-content: space-between;
+
+  border-right: 1px solid var(--p-line);
+
+  border-bottom: 1px solid var(--p-line);
+}
+
+
+.produce-page .produce-origin-card span {
+
+  font-size: 10px;
+
+  letter-spacing: .14em;
+
+  color: var(--p-muted);
+}
+
+
+.produce-page .produce-origin-card strong {
+
+  display: block;
+
+  font-family: var(--p-serif);
+
+  font-size: 45px;
+
+  font-weight: 400;
+
+  line-height: .95;
+}
+
+
+.produce-page .produce-origin-card small {
+
+  display: block;
+
+  margin-top: 12px;
+
+  color: var(--p-muted);
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   20. PRODUCE SEASONAL PREVIEW
+============================================================ */
+
+.produce-page .seasonal-section {
+
+  background: var(--p-paper);
+}
+
+
+.produce-page .seasonal-timeline {
+
+  border-top: 1px solid var(--p-line);
+}
+
+
+.produce-page .season-item {
+
+  display: grid;
+
+  grid-template-columns:
+    150px
+    1fr
+    1.2fr;
+
+  gap: 40px;
+
+  align-items: center;
+
+  min-height: 120px;
+
+  border-bottom: 1px solid var(--p-line);
+}
+
+
+.produce-page .season-item span {
+
+  font-size: 10px;
+
+  letter-spacing: .16em;
+}
+
+
+.produce-page .season-item strong {
+
+  font-family: var(--p-serif);
+
+  font-size: 34px;
+
+  font-weight: 400;
+}
+
+
+.produce-page .season-item p {
+
+  max-width: 430px;
+
+  color: var(--p-muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.produce-page .section-link-row {
+
+  margin-top: 35px;
+}
+
+
+.produce-page .text-link {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.produce-page .text-link span {
+
+  transition: transform .25s ease;
+}
+
+
+.produce-page .text-link:hover span {
+
+  transform: translateX(5px);
+}
+
+
+/* ============================================================
+   21. PRODUCE REQUIREMENTS
+============================================================ */
+
+.produce-page .dark-section {
+
+  background: var(--p-deep);
+
+  color: #fff;
+}
+
+
+.produce-page .dark-section .eyebrow {
+
+  color: rgba(255,255,255,.5);
+}
+
+
+.produce-page .dark-section .section-head > p {
+
+  color: rgba(255,255,255,.6);
+}
+
+
+.produce-page .produce-requirements {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  border-top: 1px solid rgba(255,255,255,.16);
+
+  border-left: 1px solid rgba(255,255,255,.16);
+}
+
+
+.produce-page .produce-requirement {
+
+  min-height: 150px;
+
+  padding: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right: 1px solid rgba(255,255,255,.16);
+
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+
+
+.produce-page .produce-requirement span {
+
+  font-size: 9px;
+
+  opacity: .45;
+}
+
+
+.produce-page .produce-requirement strong {
+
+  font-family: var(--p-serif);
+
+  font-size: 28px;
+
+  font-weight: 400;
+}
+
+
+/* ============================================================
+   22. PRODUCE ROUTE
+============================================================ */
+
+.produce-page .produce-route {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto 1fr auto 1fr;
+
+  gap: 20px;
+
+  align-items: center;
+}
+
+
+.produce-page .produce-route-step {
+
+  min-height: 250px;
+
+  padding: 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  border: 1px solid var(--p-line);
+
+  background: var(--p-paper);
+}
+
+
+.produce-page .produce-route-step span {
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  color: var(--p-muted);
+}
+
+
+.produce-page .produce-route-step strong {
+
+  margin-top: auto;
+
+  font-family: var(--p-serif);
+
+  font-size: 40px;
+
+  font-weight: 400;
+}
+
+
+.produce-page .produce-route-step small {
+
+  margin-top: 10px;
+
+  color: var(--p-muted);
+
+  font-size: 12px;
+}
+
+
+.produce-page .produce-route-line {
+
+  color: var(--p-muted);
+
+  font-size: 20px;
+}
+
+
+/* ============================================================
+   23. PRODUCE MARKETS
+============================================================ */
+
+.produce-page .light-market-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  border-top: 1px solid var(--p-line);
+
+  border-left: 1px solid var(--p-line);
+}
+
+
+.produce-page .market {
+
+  min-height: 210px;
+
+  padding: 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right: 1px solid var(--p-line);
+
+  border-bottom: 1px solid var(--p-line);
+
+  background: var(--p-paper);
+
+  transition:
+    background .25s ease,
+    transform .25s ease;
+}
+
+
+.produce-page .market:hover {
+
+  background: #fff;
+
+  transform: translateY(-3px);
+}
+
+
+.produce-page .market span {
+
+  font-size: 9px;
+
+  color: var(--p-muted);
+}
+
+
+.produce-page .market strong {
+
+  font-family: var(--p-serif);
+
+  font-size: 34px;
+
+  font-weight: 400;
+}
+
+
+.produce-page .market small {
+
+  color: var(--p-muted);
+
+  font-size: 11px;
+}
+
+
+/* ============================================================
+   24. GENERIC CTA
+============================================================ */
+
+.products-page .cta-section,
+.produce-page .cta-section,
+.seasonal-page .cta-section {
+
+  padding: 145px 0;
+
+  background: var(--p-deep);
+
+  color: #fff;
+}
+
+
+.products-page .cta-inner,
+.produce-page .cta-inner,
+.seasonal-page .cta-inner {
+
+  max-width: 1000px;
+}
+
+
+.products-page .cta-inner h2,
+.produce-page .cta-inner h2,
+.seasonal-page .cta-inner h2 {
+
+  margin-top: 20px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    65px,
+    8vw,
+    125px
+  );
+
+  font-weight: 400;
+
+  line-height: .85;
+
+  letter-spacing: -.06em;
+}
+
+
+.products-page .cta-inner > p:not(.eyebrow),
+.produce-page .cta-inner > p:not(.eyebrow),
+.seasonal-page .cta-inner > p:not(.eyebrow) {
+
+  max-width: 520px;
+
+  margin-top: 32px;
+
+  color: rgba(255,255,255,.62);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+.products-page .light-button,
+.produce-page .light-button,
+.seasonal-page .light-button {
 
   margin-top: 30px;
+
+  background: #fff !important;
+
+  color: var(--p-ink) !important;
+
+  border: 1px solid #fff !important;
+
+  -webkit-text-fill-color: var(--p-ink) !important;
 }
 
-.world-species span {
-  padding: 8px 10px;
 
-  border: 1px solid currentColor;
-  border-radius: 100px;
+.products-page .light-button:hover,
+.produce-page .light-button:hover,
+.seasonal-page .light-button:hover {
 
-  font-size: 8px;
-  letter-spacing: .12em;
+  background: transparent !important;
+
+  color: #fff !important;
+
+  -webkit-text-fill-color: #fff !important;
+}
+
+
+/* ============================================================
+   25. GENERIC FOOTER
+============================================================ */
+
+.products-page .footer,
+.produce-page .footer,
+.seasonal-page .footer {
+
+  padding: 75px 0 25px;
+
+  background: #031a18;
+
+  color: #fff;
+}
+
+
+.products-page .footer .container,
+.produce-page .footer .container,
+.seasonal-page .footer .container {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+}
+
+
+.products-page .footer-grid,
+.produce-page .footer-grid,
+.seasonal-page .footer-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1.4fr
+    .6fr
+    .6fr;
+
+  gap: 70px;
+
+  padding-bottom: 65px;
+
+  border-bottom: 1px solid rgba(255,255,255,.13);
+}
+
+
+.products-page .footer-logo,
+.produce-page .footer-logo,
+.seasonal-page .footer-logo {
+
+  width: 100px;
+
+  height: auto;
+
+  filter: brightness(0) invert(1) !important;
+
+  opacity: 1 !important;
+}
+
+
+.products-page .footer-grid p,
+.produce-page .footer-grid p,
+.seasonal-page .footer-grid p {
+
+  max-width: 430px;
+
+  margin-top: 20px;
+
+  color: rgba(255,255,255,.52) !important;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.products-page .footer-grid strong,
+.produce-page .footer-grid strong,
+.seasonal-page .footer-grid strong {
+
+  display: block;
+
+  margin-bottom: 16px;
+
+  color: #fff !important;
+
+  font-size: 10px;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+}
+
+
+.products-page .footer-grid a,
+.produce-page .footer-grid a,
+.seasonal-page .footer-grid a {
+
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: rgba(255,255,255,.55) !important;
+
+  font-size: 12px;
+}
+
+
+.products-page .footer-grid a:hover,
+.produce-page .footer-grid a:hover,
+.seasonal-page .footer-grid a:hover {
+
+  color: #fff !important;
+}
+
+
+.products-page .footer-bottom,
+.produce-page .footer-bottom,
+.seasonal-page .footer-bottom {
+
+  padding-top: 22px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  color: rgba(255,255,255,.35);
+
+  font-size: 9px;
+
+  letter-spacing: .08em;
+}
+
+
+/* ============================================================
+   26. SEAFOOD SYSTEM
+============================================================ */
+
+.seafood-page {
+
+  --sf-deep: #032b32;
+  --sf-ocean: #07515a;
+  --sf-blue: #0b6972;
+  --sf-mint: #dcece7;
+  --sf-foam: #edf3ee;
+  --sf-sand: #e8e0d1;
+  --sf-ink: #082d31;
+  --sf-line: rgba(8,45,49,.17);
+  --sf-white: #f5f7f3;
+
+  background: var(--sf-foam);
+
+  color: var(--sf-ink);
+}
+
+
+/* ============================================================
+   27. SEAFOOD HEADER
+============================================================ */
+
+.seafood-page .sf-header {
+
+  position: absolute;
+
+  z-index: 100;
+
+  inset: 0 0 auto;
+
+  height: 86px;
+
+  color: #fff;
+
+  border-bottom: 1px solid rgba(255,255,255,.18);
+
+  background: transparent;
+}
+
+
+.seafood-page .sf-nav {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  height: 86px;
+
+  margin-inline: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.seafood-page .sf-logo img {
+
+  width: 105px;
+
+  height: auto;
+
+  filter: none !important;
+}
+
+
+.seafood-page .sf-navigation {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+  font-size: 12px;
+}
+
+
+.seafood-page .sf-navigation > a {
+
+  color: #fff !important;
+
+  transition: opacity .2s ease;
+}
+
+
+.seafood-page .sf-navigation > a:hover {
+
+  opacity: .6;
+}
+
+
+.seafood-page .sf-languages {
+
+  display: flex;
+
+  gap: 10px;
+
+  font-size: 10px;
+
+  letter-spacing: .08em;
+}
+
+
+.seafood-page .sf-languages a {
+
+  color: #fff !important;
 
   opacity: .55;
 }
 
 
-/* =========================================================
-   ORIGIN
-========================================================= */
+.seafood-page .sf-languages a.active {
 
-.products-origin {
-  padding: 130px 0;
-  background: #e8e4da;
-}
+  opacity: 1;
 
-.products-origin-heading {
-  display: grid;
-  grid-template-columns: 1fr .55fr;
-  gap: 100px;
-
-  margin-top: 60px;
-}
-
-.products-origin-heading p {
-  max-width: 420px;
-  margin: 10px 0 0;
-
-  color: var(--p-muted);
-
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.origin-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-
-  margin-top: 90px;
-
-  border-top: 1px solid var(--p-line);
-  border-bottom: 1px solid var(--p-line);
-}
-
-.origin-card {
-  min-height: 220px;
-
-  padding: 25px;
-
-  display: flex;
-  flex-direction: column;
-
-  border-right: 1px solid var(--p-line);
-}
-
-.origin-card:last-child {
-  border-right: 0;
-}
-
-.origin-card span {
-  font-size: 10px;
-  letter-spacing: .15em;
-}
-
-.origin-card strong {
-  margin-top: auto;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 32px;
-  font-weight: 400;
-}
-
-.origin-card small {
-  margin-top: 8px;
-
-  color: var(--p-muted);
-  font-size: 11px;
+  font-weight: 700;
 }
 
 
-/* =========================================================
-   SPECIFICATIONS
-========================================================= */
+.seafood-page .sf-enquiry {
 
-.products-specifications {
-  padding: 140px 0;
-}
+  padding: 13px 20px;
 
-.products-spec-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 120px;
-}
+  border-radius: 999px;
 
-.spec-list {
-  border-top: 1px solid var(--p-line);
-}
+  background: #fff !important;
 
-.spec-list div {
-  min-height: 75px;
+  color: var(--sf-deep) !important;
 
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  align-items: center;
-
-  border-bottom: 1px solid var(--p-line);
-}
-
-.spec-list span {
-  font-size: 10px;
-  letter-spacing: .12em;
-  color: var(--p-muted);
-}
-
-.spec-list strong {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.products-cta {
-  padding: 130px 0;
-
-  background: var(--p-ink);
-  color: white;
-}
-
-.products-cta-inner {
-  max-width: 850px;
-}
-
-.products-cta-inner > span {
-  font-size: 10px;
-  letter-spacing: .18em;
-}
-
-.products-cta h2 {
-  margin: 30px 0 0;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(65px, 8vw, 115px);
-  font-weight: 400;
-  line-height: .88;
-  letter-spacing: -.06em;
-}
-
-.products-cta p {
-  max-width: 500px;
-
-  margin: 35px 0 0;
-
-  color: rgba(255,255,255,.68);
-
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.products-cta-button {
-  display: inline-flex;
-
-  margin-top: 40px;
-  padding: 16px 24px;
-
-  border: 1px solid rgba(255,255,255,.45);
-  border-radius: 100px;
-
-  color: white;
-
-  font-size: 12px;
   font-weight: 600;
-
-  transition:
-    background .3s ease,
-    color .3s ease;
-}
-
-.products-cta-button:hover {
-  background: white;
-  color: var(--p-ink);
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* ============================================================
+   28. SEAFOOD HERO
+============================================================ */
 
-.products-footer {
-  padding: 75px 0 25px;
+.seafood-page .sf-hero {
 
-  background: #e8e4da;
-  color: var(--p-ink);
-}
+  position: relative;
 
-.products-footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 80px;
-}
+  min-height: 850px;
 
-.products-footer-brand img {
-  width: 95px;
-  height: auto;
-}
-
-.products-footer-brand p {
-  max-width: 300px;
-
-  margin-top: 25px;
-
-  color: var(--p-muted);
-
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.products-footer-column {
   display: flex;
+
   flex-direction: column;
-  gap: 13px;
 
-  font-size: 13px;
-}
-
-.products-footer-column strong {
-  margin-bottom: 12px;
-
-  font-size: 10px;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-
-.products-footer-column a {
-  color: var(--p-muted);
-}
-
-.products-footer-column a:hover {
-  color: var(--p-ink);
-}
-
-.products-footer-bottom {
-  display: flex;
   justify-content: space-between;
 
-  margin-top: 70px;
-  padding-top: 20px;
+  padding:
+    145px
+    max(40px, calc((100vw - 1240px) / 2))
+    35px;
 
-  border-top: 1px solid var(--p-line);
-
-  color: var(--p-muted);
-
-  font-size: 10px;
-  letter-spacing: .08em;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .products-container,
-  .products-nav,
-  .products-hero-inner {
-    width: min(100% - 40px, 680px);
-  }
-
-  .products-main-nav {
-    display: none;
-  }
-
-  .products-menu {
-    display: block;
-
-    border: 0;
-    background: transparent;
-
-    font-size: 22px;
-    color: var(--p-ink);
-  }
-
-  .products-hero {
-    min-height: auto;
-    padding: 65px 0;
-  }
-
-  .products-hero-grid,
-  .products-intro-grid,
-  .products-origin-heading,
-  .products-spec-grid {
-    grid-template-columns: 1fr;
-    gap: 45px;
-  }
-
-  .products-hero-grid {
-    margin-top: 55px;
-  }
-
-  .products-hero-title h1 {
-    font-size: clamp(68px, 18vw, 120px);
-  }
-
-  .products-world-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .products-world {
-    min-height: 520px;
-  }
-
-  .origin-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .origin-card {
-    border-bottom: 1px solid var(--p-line);
-  }
-
-  .origin-card:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .products-footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .products-footer-brand {
-    grid-column: 1 / -1;
-  }
-}
-
-
-@media (max-width: 600px) {
-
-  .products-container,
-  .products-nav,
-  .products-hero-inner {
-    width: calc(100% - 32px);
-  }
-
-  .products-header,
-  .products-nav {
-    height: 72px;
-  }
-
-  .products-logo {
-    height: 65px;
-  }
-
-  .products-logo img {
-    width: 78px;
-  }
-
-  .products-hero-title h1 {
-    font-size: 64px;
-  }
-
-  .products-intro,
-  .products-origin,
-  .products-specifications,
-  .products-cta {
-    padding: 90px 0;
-  }
-
-  .products-worlds {
-    padding-bottom: 90px;
-  }
-
-  .products-world {
-    min-height: 470px;
-    padding: 25px;
-  }
-
-  .origin-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .origin-card {
-    min-height: 150px;
-    border-right: 0 !important;
-  }
-
-  .products-cta h2 {
-    font-size: 62px;
-  }
-
-  .products-footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .products-footer-brand {
-    grid-column: auto;
-  }
-
-  .products-footer-bottom {
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-/* =========================================================
-   SEAFOOD PAGE
-========================================================= */
-
-.seafood-page {
-  --sea-dark: #031f25;
-  --sea-deep: #063942;
-  --sea-mid: #0b5961;
-  --sea-line: rgba(255,255,255,.18);
-}
-
-
-/* HERO */
-
-.seafood-hero {
-  min-height: 760px;
-  position: relative;
   overflow: hidden;
 
-  color: white;
+  color: var(--sf-white);
 
   background:
     radial-gradient(
-      circle at 75% 25%,
-      rgba(55,145,155,.45),
-      transparent 28%
+      circle at 73% 40%,
+      rgba(51,150,160,.42),
+      transparent 25%
     ),
     radial-gradient(
-      circle at 20% 80%,
-      rgba(18,91,103,.35),
+      circle at 82% 75%,
+      rgba(11,105,114,.35),
       transparent 30%
     ),
     linear-gradient(
-      145deg,
-      #031c22 0%,
-      #06363e 48%,
-      #05252b 100%
+      125deg,
+      #021f26 0%,
+      #043a43 48%,
+      #07515a 100%
     );
 }
 
-.seafood-hero::before {
-  content: "";
+
+.seafood-page .sf-water {
+
   position: absolute;
+
   inset: 0;
+
+  opacity: .28;
+
+  pointer-events: none;
 
   background:
     repeating-linear-gradient(
       165deg,
       transparent 0,
-      transparent 85px,
-      rgba(255,255,255,.035) 86px,
-      transparent 87px
+      transparent 46px,
+      rgba(255,255,255,.055) 47px,
+      transparent 48px,
+      transparent 92px
     );
-
-  opacity: .7;
 }
 
-.seafood-hero-overlay {
+
+.seafood-page .sf-water::before,
+.seafood-page .sf-water::after {
+
+  content: "";
+
   position: absolute;
+
   width: 700px;
   height: 700px;
 
-  right: -180px;
-  bottom: -350px;
-
   border: 1px solid rgba(255,255,255,.12);
-  border-radius: 50%;
 
-  box-shadow:
-    0 0 0 90px rgba(255,255,255,.025),
-    0 0 0 180px rgba(255,255,255,.018);
+  border-radius: 50%;
 }
 
-.seafood-hero-inner {
+
+.seafood-page .sf-water::before {
+
+  right: -170px;
+
+  top: 90px;
+}
+
+
+.seafood-page .sf-water::after {
+
+  right: 100px;
+
+  top: 230px;
+
+  width: 420px;
+  height: 420px;
+}
+
+
+.seafood-page .sf-hero-grid {
+
   position: relative;
+
   z-index: 2;
 
-  padding-top: 70px;
-}
-
-.seafood-kicker {
-  color: rgba(255,255,255,.72);
-}
-
-.seafood-kicker span:first-child {
-  border-color: rgba(255,255,255,.25);
-}
-
-.seafood-hero-main {
-  min-height: 540px;
-
   display: grid;
-  grid-template-columns: 1.25fr .55fr;
-  align-items: center;
 
-  gap: 100px;
+  grid-template-columns: 90px 1fr;
+
+  gap: 55px;
 }
 
-.seafood-hero h1 {
-  margin: 0;
 
-  font-family: "Playfair Display", Georgia, serif;
+.seafood-page .sf-hero-number {
+
+  font-size: 11px;
+
+  letter-spacing: .15em;
+
+  opacity: .6;
+}
+
+
+.seafood-page .sf-hero-content {
+
+  max-width: 1000px;
+}
+
+
+.seafood-page .sf-hero .sf-eyebrow {
+
+  margin-bottom: 30px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: .16em;
+
+  opacity: .72;
+}
+
+
+.seafood-page .sf-hero h1 {
+
+  max-width: 1000px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    75px,
+    10vw,
+    155px
+  );
+
   font-weight: 400;
 
-  font-size: clamp(100px, 15vw, 210px);
-  line-height: .76;
-  letter-spacing: -.075em;
+  line-height: .84;
+
+  letter-spacing: -.065em;
+
+  color: #fff;
 }
 
-.seafood-hero h1 em {
+
+.seafood-page .sf-hero h1 em {
+
   display: block;
+
+  margin-left: 12vw;
+
   font-style: italic;
 }
 
-.seafood-hero-copy {
-  max-width: 380px;
-}
 
-.seafood-hero-copy p {
-  margin: 0;
+.seafood-page .sf-hero-text {
 
-  color: rgba(255,255,255,.7);
-
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.seafood-hero-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-
-  margin-top: 35px;
-  padding-bottom: 10px;
-
-  border-bottom: 1px solid rgba(255,255,255,.4);
-
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.seafood-hero-bottom {
-  display: flex;
-  gap: 35px;
-
-  padding-top: 25px;
-
-  border-top: 1px solid rgba(255,255,255,.16);
-
-  color: rgba(255,255,255,.5);
-
-  font-size: 9px;
-  letter-spacing: .18em;
-}
-
-
-/* INTRO */
-
-.seafood-intro {
-  padding: 140px 0;
-  background: #f0eee7;
-}
-
-.seafood-intro-grid {
-  display: grid;
-  grid-template-columns: 1fr .55fr;
-  gap: 120px;
-
-  margin-top: 65px;
-}
-
-.seafood-intro h2 {
-  margin: 0;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 400;
-
-  font-size: clamp(60px, 7vw, 100px);
-  line-height: .88;
-  letter-spacing: -.06em;
-}
-
-.seafood-intro h2 em {
-  font-style: italic;
-}
-
-.seafood-intro-grid p {
-  margin: 0 0 25px;
-
-  color: #68736f;
-
-  font-size: 15px;
-  line-height: 1.85;
-}
-
-
-/* CATEGORIES */
-
-.seafood-categories {
-  padding: 120px 0;
-
-  background: #062d34;
-  color: white;
-}
-
-.seafood-category-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 14px;
+  max-width: 560px;
 
   margin-top: 55px;
-}
 
-.seafood-category {
-  min-height: 610px;
+  color: rgba(245,247,243,.72);
 
-  padding: 30px;
+  font-size: 16px;
 
-  display: flex;
-  flex-direction: column;
-
-  position: relative;
-  overflow: hidden;
-}
-
-.fish-category {
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(91,173,180,.35),
-      transparent 35%
-    ),
-    #0b515a;
-}
-
-.shellfish-category {
-  background:
-    radial-gradient(
-      circle at 20% 30%,
-      rgba(122,167,159,.22),
-      transparent 35%
-    ),
-    #12443f;
-}
-
-.cephalopod-category {
-  background:
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(94,110,154,.25),
-      transparent 35%
-    ),
-    #202f43;
-}
-
-.seafood-category-number {
-  font-size: 11px;
-  letter-spacing: .15em;
-}
-
-.seafood-category-content {
-  margin-top: auto;
-}
-
-.seafood-category-content > span {
-  font-size: 9px;
-  letter-spacing: .16em;
-  opacity: .55;
-}
-
-.seafood-category h2 {
-  margin: 22px 0 0;
-
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 400;
-
-  font-size: 68px;
-  line-height: .85;
-  letter-spacing: -.06em;
-}
-
-.seafood-category p {
-  max-width: 330px;
-
-  margin: 25px 0 0;
-
-  color: rgba(255,255,255,.65);
-
-  font-size: 13px;
   line-height: 1.7;
 }
 
-.seafood-tags {
+
+.seafood-page .sf-actions {
+
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+
+  gap: 12px;
 
   margin-top: 30px;
 }
 
-.seafood-tags span {
-  padding: 8px 10px;
 
-  border: 1px solid rgba(255,255,255,.25);
-  border-radius: 100px;
+.seafood-page .sf-button {
 
-  font-size: 8px;
-  letter-spacing: .12em;
+  min-height: 52px;
+
+  padding: 0 23px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
 }
 
 
-/* LOGIC */
+.seafood-page .sf-button:hover {
 
-.seafood-logic {
-  padding: 140px 0;
-  background: #e7e4dc;
+  transform: translateY(-3px);
 }
 
-.seafood-logic-grid {
+
+.seafood-page .sf-button-primary {
+
+  background: #fff !important;
+
+  color: var(--sf-deep) !important;
+
+  border: 1px solid #fff !important;
+
+  -webkit-text-fill-color: var(--sf-deep) !important;
+}
+
+
+.seafood-page .sf-button-outline {
+
+  background: transparent !important;
+
+  color: #fff !important;
+
+  border: 1px solid rgba(255,255,255,.35) !important;
+
+  -webkit-text-fill-color: #fff !important;
+}
+
+
+.seafood-page .sf-button-outline:hover {
+
+  background: rgba(255,255,255,.1) !important;
+}
+
+
+.seafood-page .sf-hero-bottom {
+
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
+
+  font-weight: 600;
+}
+
+
+.seafood-page .sf-hero-bottom i {
+
+  width: 42px;
+
+  height: 1px;
+
+  background: rgba(255,255,255,.3);
+}
+
+
+/* ============================================================
+   29. SEAFOOD INTRO
+============================================================ */
+
+.seafood-page .sf-intro {
+
+  padding: 150px 0;
+
+  background: var(--sf-foam);
+
+  color: var(--sf-ink);
+}
+
+
+.seafood-page .sf-intro .sf-container {
+
   display: grid;
-  grid-template-columns: .8fr 1fr;
-  gap: 140px;
+
+  grid-template-columns: 100px 1fr;
+
+  gap: 60px;
 }
 
-.seafood-logic h2,
-.seafood-origins-heading h2,
-.seafood-spec-grid h2 {
-  margin: 45px 0 0;
 
-  font-family: "Playfair Display", Georgia, serif;
+.seafood-page .sf-intro-index {
+
+  font-size: 10px;
+
+  letter-spacing: .13em;
+
+  opacity: .5;
+}
+
+
+.seafood-page .sf-intro-main {
+
+  max-width: 950px;
+}
+
+
+.seafood-page .sf-intro-main h2 {
+
+  max-width: 900px;
+
+  margin: 18px 0 50px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    55px,
+    7vw,
+    105px
+  );
+
   font-weight: 400;
 
-  font-size: clamp(65px, 7vw, 105px);
-  line-height: .84;
-  letter-spacing: -.06em;
+  line-height: .9;
+
+  letter-spacing: -.055em;
+
+  color: var(--sf-ink);
 }
 
-.seafood-logic-intro {
-  max-width: 350px;
 
-  margin-top: 35px;
+.seafood-page .sf-intro-main h2 em {
 
-  color: #69736f;
+  display: block;
+
+  font-style: italic;
+}
+
+
+.seafood-page .sf-intro-main > p:last-child {
+
+  max-width: 540px;
+
+  color: #687876;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   30. SEAFOOD RANGE
+============================================================ */
+
+.seafood-page .sf-range {
+
+  padding: 140px 0;
+
+  background: var(--sf-sand);
+
+  color: var(--sf-ink);
+}
+
+
+.seafood-page .sf-section-heading {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    360px;
+
+  gap: 80px;
+
+  align-items: end;
+
+  margin-bottom: 75px;
+}
+
+
+.seafood-page .sf-section-heading h2,
+.seafood-page .sf-spec-head h2 {
+
+  margin-top: 15px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    55px,
+    7vw,
+    100px
+  );
+
+  font-weight: 400;
+
+  line-height: .88;
+
+  letter-spacing: -.05em;
+
+  color: var(--sf-ink);
+}
+
+
+.seafood-page .sf-section-heading h2 em,
+.seafood-page .sf-spec-head h2 em {
+
+  display: block;
+
+  font-style: italic;
+}
+
+
+.seafood-page .sf-section-heading > p,
+.seafood-page .sf-spec-head > p {
+
+  color: #65726e;
+
+  font-size: 14px;
 
   line-height: 1.7;
 }
 
-.seafood-factors {
-  border-top: 1px solid rgba(6,44,40,.18);
-}
 
-.seafood-factor {
-  padding: 25px 0;
+.seafood-page .sf-range-grid {
 
   display: grid;
-  grid-template-columns: 55px 1fr;
-  gap: 10px;
 
-  border-bottom: 1px solid rgba(6,44,40,.18);
-}
-
-.seafood-factor span {
-  font-size: 10px;
-  color: #7d8582;
-}
-
-.seafood-factor strong {
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.seafood-factor p {
-  grid-column: 2;
-
-  margin: 5px 0 0;
-
-  color: #69736f;
-
-  font-size: 13px;
-  line-height: 1.6;
+  grid-template-columns: 1fr 1fr;
 }
 
 
-/* ORIGINS */
+.seafood-page .sf-range-card {
 
-.seafood-origins {
-  padding: 130px 0;
-  background: #f1eee6;
+  min-height: 510px;
+
+  padding: 30px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-top: 1px solid var(--sf-line);
+
+  border-right: 1px solid var(--sf-line);
+
+  color: var(--sf-ink);
+
+  transition: transform .35s ease;
 }
 
-.seafood-origins-heading {
-  display: grid;
-  grid-template-columns: 1fr .5fr;
-  gap: 100px;
 
-  margin-top: 40px;
+.seafood-page .sf-range-card:hover {
+
+  transform: translateY(-5px);
 }
 
-.seafood-origins-heading h2 em {
-  font-style: italic;
-}
 
-.seafood-origins-heading p {
-  margin-top: 12px;
+.seafood-page .sf-range-card:nth-child(2n) {
 
-  color: #69736f;
-
-  line-height: 1.8;
-}
-
-.seafood-origin-grid {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-
-  margin-top: 90px;
-
-  border-top: 1px solid rgba(6,44,40,.18);
-  border-bottom: 1px solid rgba(6,44,40,.18);
-}
-
-.seafood-origin-card {
-  min-height: 210px;
-
-  padding: 24px;
-
-  display: flex;
-  flex-direction: column;
-
-  border-right: 1px solid rgba(6,44,40,.18);
-}
-
-.seafood-origin-card:last-child {
   border-right: 0;
 }
 
-.seafood-origin-card span {
-  font-size: 10px;
+
+.seafood-page .sf-range-card:nth-child(n+3) {
+
+  border-bottom: 1px solid var(--sf-line);
 }
 
-.seafood-origin-card strong {
+
+.seafood-page .sf-card-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 10px;
+
+  letter-spacing: .13em;
+
+  font-weight: 700;
+}
+
+
+.seafood-page .sf-card-body {
+
+  position: relative;
+
+  z-index: 2;
+
   margin-top: auto;
 
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 30px;
+  padding-top: 170px;
+}
+
+
+.seafood-page .sf-card-small {
+
+  margin-bottom: 15px;
+
+  font-size: 9px;
+
+  letter-spacing: .14em;
+
+  font-weight: 700;
+}
+
+
+.seafood-page .sf-card-body h3 {
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    50px,
+    6vw,
+    85px
+  );
+
   font-weight: 400;
+
+  line-height: .85;
+
+  letter-spacing: -.055em;
+
+  color: var(--sf-ink);
 }
 
-.seafood-origin-card small {
-  margin-top: 7px;
 
-  color: #69736f;
+.seafood-page .sf-card-body p:last-child {
 
-  font-size: 10px;
+  max-width: 400px;
+
+  margin-top: 25px;
+
+  color: #536965;
+
+  font-size: 13px;
+
+  line-height: 1.7;
 }
 
 
-/* SPECIFICATIONS */
+.seafood-page .sf-card-mark {
 
-.seafood-specifications {
-  padding: 140px 0;
+  position: absolute;
 
-  background: #062d34;
-  color: white;
+  right: 25px;
+
+  top: 95px;
+
+  font-family: var(--p-serif);
+
+  font-size: 230px;
+
+  line-height: .7;
+
+  color: var(--sf-ink);
+
+  opacity: .07;
 }
 
-.seafood-spec-grid {
+
+.seafood-page .sf-fish {
+  background: #d6e2df;
+}
+
+
+.seafood-page .sf-ceph {
+  background: #c9ddd9;
+}
+
+
+.seafood-page .sf-shell {
+  background: #e4d9c5;
+}
+
+
+.seafood-page .sf-frozen {
+  background: #d7e2e3;
+}
+
+
+/* ============================================================
+   31. SEAFOOD ORIGINS
+============================================================ */
+
+.seafood-page .sf-origins {
+
+  padding: 145px 0;
+
+  color: #fff;
+
+  background:
+    radial-gradient(
+      circle at 65% 50%,
+      rgba(16,115,126,.3),
+      transparent 32%
+    ),
+    var(--sf-deep);
+}
+
+
+.seafood-page .sf-light-heading h2 {
+
+  color: #fff;
+}
+
+
+.seafood-page .sf-light-heading > p {
+
+  color: rgba(255,255,255,.58);
+}
+
+
+.seafood-page .sf-origin-layout {
+
   display: grid;
-  grid-template-columns: .9fr 1fr;
-  gap: 130px;
+
+  grid-template-columns:
+    1.3fr
+    .7fr;
+
+  gap: 70px;
+
+  align-items: center;
 }
 
-.seafood-spec-grid h2 {
-  margin-top: 40px;
+
+.seafood-page .sf-origin-map {
+
+  min-height: 600px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(31,130,139,.23),
+      transparent 57%
+    );
 }
 
-.seafood-spec-grid p {
-  max-width: 350px;
 
-  margin-top: 35px;
+.seafood-page .sf-sea-circle {
 
-  color: rgba(255,255,255,.6);
+  position: absolute;
 
-  line-height: 1.8;
+  width: 430px;
+  height: 430px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%,-50%);
+
+  border: 1px solid rgba(255,255,255,.16);
+
+  border-radius: 50%;
 }
 
-.seafood-spec-list {
-  border-top: 1px solid rgba(255,255,255,.18);
+
+.seafood-page .sf-sea-circle::before,
+.seafood-page .sf-sea-circle::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%,-50%);
+
+  border: 1px solid rgba(255,255,255,.1);
+
+  border-radius: 50%;
 }
 
-.seafood-spec-list div {
-  min-height: 70px;
 
-  display: grid;
-  grid-template-columns: 60px 1fr;
+.seafood-page .sf-sea-circle::before {
+
+  width: 280px;
+  height: 280px;
+}
+
+
+.seafood-page .sf-sea-circle::after {
+
+  width: 130px;
+  height: 130px;
+}
+
+
+.seafood-page .sf-origin-point {
+
+  position: absolute;
+
+  display: flex;
+
   align-items: center;
 
-  border-bottom: 1px solid rgba(255,255,255,.18);
+  gap: 10px;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  letter-spacing: .08em;
 }
 
-.seafood-spec-list span {
+
+.seafood-page .sf-origin-point span {
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #b9eee5;
+
+  box-shadow:
+    0 0 0 7px rgba(185,238,229,.08);
+}
+
+
+.seafood-page .sf-tunisia {
+  left: 49%;
+  top: 53%;
+}
+
+
+.seafood-page .sf-morocco {
+  left: 29%;
+  top: 62%;
+}
+
+
+.seafood-page .sf-spain {
+  left: 36%;
+  top: 38%;
+}
+
+
+.seafood-page .sf-europe {
+  left: 61%;
+  top: 25%;
+}
+
+
+.seafood-page .sf-origin-list {
+
+  border-top: 1px solid rgba(255,255,255,.15);
+}
+
+
+.seafood-page .sf-origin-list article {
+
+  min-height: 105px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+
+.seafood-page .sf-origin-list article > span {
+
   font-size: 10px;
-  color: rgba(255,255,255,.4);
-}
 
-.seafood-spec-list strong {
-  font-size: 14px;
-  font-weight: 500;
+  opacity: .45;
 }
 
 
-/* AVAILABILITY */
+.seafood-page .sf-origin-list strong {
 
-.seafood-availability {
-  padding: 130px 0;
-  background: #dfe5dc;
+  display: block;
+
+  font-family: var(--p-serif);
+
+  font-size: 30px;
+
+  font-weight: 400;
 }
 
-.seafood-availability-inner {
+
+.seafood-page .sf-origin-list small {
+
+  display: block;
+
+  margin-top: 4px;
+
+  color: rgba(255,255,255,.48);
+}
+
+
+/* ============================================================
+   32. SEAFOOD SPECIFICATIONS
+============================================================ */
+
+.seafood-page .sf-specifications {
+
+  padding: 145px 0;
+
+  background: var(--sf-foam);
+
+  color: var(--sf-ink);
+}
+
+
+.seafood-page .sf-spec-head {
+
   display: grid;
-  grid-template-columns: 1fr .6fr;
-  gap: 100px;
+
+  grid-template-columns:
+    1fr
+    360px;
+
+  gap: 80px;
+
+  align-items: end;
+
+  margin-bottom: 80px;
 }
 
-.availability-label {
+
+.seafood-page .sf-spec-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  border-top: 1px solid var(--sf-line);
+
+  border-left: 1px solid var(--sf-line);
+}
+
+
+.seafood-page .sf-spec-grid div {
+
+  min-height: 190px;
+
+  padding: 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right: 1px solid var(--sf-line);
+
+  border-bottom: 1px solid var(--sf-line);
+
+  color: var(--sf-ink);
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+
+.seafood-page .sf-spec-grid div:hover {
+
+  background: var(--sf-deep);
+
+  color: #fff;
+}
+
+
+.seafood-page .sf-spec-grid span {
+
   font-size: 10px;
-  letter-spacing: .18em;
-  font-weight: 600;
+
+  opacity: .5;
 }
 
-.seafood-availability h2 {
-  margin: 35px 0 0;
 
-  font-family: "Playfair Display", Georgia, serif;
+.seafood-page .sf-spec-grid strong {
+
+  font-family: var(--p-serif);
+
+  font-size: 28px;
+
+  font-weight: 400;
+}
+
+
+/* ============================================================
+   33. SEAFOOD AVAILABILITY
+============================================================ */
+
+.seafood-page .sf-availability {
+
+  padding: 130px 0;
+
+  background: #d3e3df;
+
+  color: var(--sf-ink);
+}
+
+
+.seafood-page .sf-availability-inner {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 100px;
+
+  align-items: center;
+}
+
+
+.seafood-page .sf-availability h2 {
+
+  margin-top: 15px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    65px,
+    8vw,
+    115px
+  );
+
   font-weight: 400;
 
-  font-size: clamp(65px, 8vw, 110px);
   line-height: .85;
-  letter-spacing: -.06em;
+
+  letter-spacing: -.055em;
+
+  color: var(--sf-ink);
 }
 
-.seafood-availability p {
-  margin: 5px 0 0;
 
-  color: #69736f;
+.seafood-page .sf-availability h2 em {
+
+  display: block;
+
+  font-style: italic;
+}
+
+
+.seafood-page .sf-availability-inner > div:last-child > p {
+
+  max-width: 460px;
+
+  color: #526a66;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+.seafood-page .sf-availability-line {
+
+  margin-top: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: var(--sf-ink);
+
+  font-size: 9px;
+
+  letter-spacing: .12em;
+
+  font-weight: 700;
+}
+
+
+.seafood-page .sf-availability-line i {
+
+  width: 28px;
+
+  height: 1px;
+
+  background: rgba(8,45,49,.3);
+}
+
+
+/* ============================================================
+   34. SEAFOOD CTA
+============================================================ */
+
+.seafood-page .sf-cta {
+
+  padding: 150px 0;
+
+  color: #fff;
+
+  background: #041f25;
+}
+
+
+.seafood-page .sf-cta-inner {
+
+  max-width: 1000px;
+}
+
+
+.seafood-page .sf-cta h2 {
+
+  margin: 20px 0 40px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    70px,
+    9vw,
+    140px
+  );
+
+  font-weight: 400;
+
+  line-height: .83;
+
+  letter-spacing: -.06em;
+
+  color: #fff;
+}
+
+
+.seafood-page .sf-cta h2 em {
+
+  display: block;
+
+  font-style: italic;
+}
+
+
+.seafood-page .sf-cta-inner > p:not(.sf-eyebrow) {
+
+  max-width: 500px;
+
+  margin-bottom: 35px;
+
+  color: rgba(255,255,255,.62);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+.seafood-page .sf-cta-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 16px 23px;
+
+  border-radius: 999px;
+
+  background: #fff;
+
+  color: var(--sf-deep) !important;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   35. SEAFOOD FOOTER
+============================================================ */
+
+.seafood-page .sf-footer {
+
+  padding: 75px 0 25px;
+
+  background: #03181d;
+
+  color: #fff;
+}
+
+
+.seafood-page .sf-footer-logo {
+
+  width: 105px;
+
+  filter: brightness(0) invert(1) !important;
+
+  opacity: 1 !important;
+}
+
+
+.seafood-page .sf-footer-main {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 100px;
+
+  padding-bottom: 70px;
+
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+
+.seafood-page .sf-footer-main > div:first-child p {
+
+  max-width: 430px;
+
+  margin-top: 22px;
+
+  color: rgba(255,255,255,.5);
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+
+.seafood-page .sf-footer-links {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  max-width: 400px;
+
+  margin-left: auto;
+
+  gap: 60px;
+}
+
+
+.seafood-page .sf-footer-links div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 11px;
+}
+
+
+.seafood-page .sf-footer-links strong {
+
+  margin-bottom: 10px;
+
+  color: #fff;
+
+  font-size: 10px;
+
+  letter-spacing: .14em;
+}
+
+
+.seafood-page .sf-footer-links a {
+
+  color: rgba(255,255,255,.55);
+
+  font-size: 12px;
+}
+
+
+.seafood-page .sf-footer-links a:hover {
+
+  color: #fff;
+}
+
+
+.seafood-page .sf-footer-bottom {
+
+  padding-top: 22px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  color: rgba(255,255,255,.35);
+
+  font-size: 9px;
+
+  letter-spacing: .08em;
+}
+
+
+/* ============================================================
+   36. SEASONAL PAGE
+============================================================ */
+
+.seasonal-page {
+
+  --season-green: #173b34;
+  --season-gold: #b08b4f;
+}
+
+
+.seasonal-page .seasonal-hero {
+
+  min-height: 720px;
+
+  padding-top: 84px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  border-bottom: 1px solid var(--p-line);
+
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(211,170,94,.24),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #eee9dc,
+      #dfe4d8
+    );
+}
+
+
+.seasonal-page .seasonal-hero-inner {
+
+  width: min(
+    1240px,
+    calc(100% - 80px)
+  );
+
+  margin-inline: auto;
+
+  padding-bottom: 90px;
+}
+
+
+.seasonal-page .seasonal-hero h1 {
+
+  max-width: 1050px;
+
+  font-family: var(--p-serif);
+
+  font-size: clamp(
+    72px,
+    10vw,
+    145px
+  );
+
+  font-weight: 400;
+
+  line-height: .84;
+
+  letter-spacing: -.065em;
+}
+
+
+.seasonal-page .seasonal-hero h1 em {
+
+  display: block;
+
+  margin-left: 11vw;
+
+  font-style: italic;
+}
+
+
+.seasonal-page .seasonal-hero p {
+
+  max-width: 600px;
+
+  margin-top: 38px;
+
+  color: var(--p-muted);
+
+  font-size: 15px;
 
   line-height: 1.8;
 }
 
-.seafood-availability-button {
-  display: inline-flex;
 
-  margin-top: 35px;
-  padding: 15px 22px;
+/* ============================================================
+   37. SEASONAL CALENDAR
+============================================================ */
 
-  border-radius: 100px;
+.seasonal-page .seasonal-calendar {
 
-  background: #062d34;
-  color: white;
+  border-top: 1px solid var(--p-line);
+}
+
+
+.seasonal-page .season-row {
+
+  display: grid;
+
+  grid-template-columns:
+    170px
+    1fr
+    220px;
+
+  min-height: 125px;
+
+  align-items: center;
+
+  gap: 30px;
+
+  border-bottom: 1px solid var(--p-line);
+}
+
+
+.seasonal-page .season-row span:first-child {
+
+  font-size: 10px;
+
+  letter-spacing: .16em;
+}
+
+
+.seasonal-page .season-row strong {
+
+  font-family: var(--p-serif);
+
+  font-size: 34px;
+
+  font-weight: 400;
+}
+
+
+.seasonal-page .season-row span:last-child {
+
+  color: var(--p-muted);
 
   font-size: 12px;
-  font-weight: 600;
 }
 
 
-/* MOBILE */
+/* ============================================================
+   38. SEASONAL ORIGIN MATRIX
+============================================================ */
 
-@media (max-width: 900px) {
+.seasonal-page .season-origin-grid {
 
-  .seafood-hero-main,
-  .seafood-intro-grid,
-  .seafood-logic-grid,
-  .seafood-origins-heading,
-  .seafood-spec-grid,
-  .seafood-availability-inner {
-    grid-template-columns: 1fr;
-    gap: 55px;
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  border-top: 1px solid var(--p-line);
+
+  border-left: 1px solid var(--p-line);
+}
+
+
+.seasonal-page .season-origin {
+
+  min-height: 250px;
+
+  padding: 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-right: 1px solid var(--p-line);
+
+  border-bottom: 1px solid var(--p-line);
+
+  background: var(--p-paper);
+}
+
+
+.seasonal-page .season-origin:nth-child(2) {
+
+  background: #e6eadf;
+}
+
+
+.seasonal-page .season-origin:nth-child(3) {
+
+  background: #e8e0d1;
+}
+
+
+.seasonal-page .season-origin:nth-child(4) {
+
+  background: #dce6df;
+}
+
+
+.seasonal-page .season-origin span {
+
+  font-size: 10px;
+
+  color: var(--p-muted);
+}
+
+
+.seasonal-page .season-origin strong {
+
+  font-family: var(--p-serif);
+
+  font-size: 35px;
+
+  font-weight: 400;
+}
+
+
+.seasonal-page .season-origin small {
+
+  color: var(--p-muted);
+
+  font-size: 11px;
+}
+
+
+/* ============================================================
+   39. SEASONAL AVAILABILITY
+============================================================ */
+
+.seasonal-page .availability-board {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(12,1fr);
+
+  border-top: 1px solid var(--p-line);
+
+  border-left: 1px solid var(--p-line);
+}
+
+
+.seasonal-page .availability-month {
+
+  min-height: 85px;
+
+  padding: 15px 8px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+
+  border-right: 1px solid var(--p-line);
+
+  border-bottom: 1px solid var(--p-line);
+
+  font-size: 9px;
+
+  letter-spacing: .08em;
+
+  color: var(--p-muted);
+}
+
+
+.seasonal-page .availability-month.active {
+
+  background: var(--season-green);
+
+  color: #fff;
+}
+
+
+/* ============================================================
+   40. ANIMATION
+============================================================ */
+
+.products-page .fade-up,
+.produce-page .fade-up,
+.seasonal-page .fade-up {
+
+  opacity: 1;
+
+  transform: none;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .products-page .fade-up,
+  .produce-page .fade-up,
+  .seasonal-page .fade-up {
+
+    animation:
+      productFadeUp .7s ease both;
   }
 
-  .seafood-hero {
-    min-height: 700px;
+}
+
+
+@keyframes productFadeUp {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(22px);
   }
 
-  .seafood-hero-main {
-    min-height: 500px;
-  }
+  to {
 
-  .seafood-hero h1 {
-    font-size: clamp(90px, 20vw, 150px);
-  }
+    opacity: 1;
 
-  .seafood-category-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .seafood-category {
-    min-height: 500px;
-  }
-
-  .seafood-origin-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .seafood-origin-card {
-    border-bottom: 1px solid rgba(6,44,40,.18);
-  }
-
-  .seafood-origin-card:nth-child(2n) {
-    border-right: 0;
+    transform:
+      translateY(0);
   }
 }
 
 
-@media (max-width: 600px) {
+/* ============================================================
+   41. RESPONSIVE — 1000px
+============================================================ */
 
-  .seafood-hero {
-    min-height: 620px;
+@media (max-width: 1000px) {
+
+  .products-page .product-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
-  .seafood-hero-inner {
-    padding-top: 45px;
+
+  .products-page .section-head,
+  .produce-page .section-head,
+  .seasonal-page .section-head {
+
+    grid-template-columns: 1fr;
+
+    gap: 30px;
   }
 
-  .seafood-hero h1 {
-    font-size: 80px;
+
+  .produce-page .produce-requirements {
+
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
-  .seafood-hero-bottom {
-    gap: 15px;
-    flex-wrap: wrap;
+
+  .produce-page .light-market-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
-  .seafood-intro,
-  .seafood-categories,
-  .seafood-logic,
-  .seafood-origins,
-  .seafood-specifications,
-  .seafood-availability {
+
+  .seasonal-page .season-origin-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+
+  .seasonal-page .availability-board {
+
+    overflow-x: auto;
+
+    grid-template-columns:
+      repeat(12,90px);
+  }
+
+}
+
+
+/* ============================================================
+   42. RESPONSIVE — 850px
+============================================================ */
+
+@media (max-width: 850px) {
+
+  .products-page .nav-wrap,
+  .produce-page .nav-wrap,
+  .seasonal-page .nav-wrap {
+
+    width: calc(100% - 40px);
+  }
+
+
+  .products-page .nav > a:not(.nav-cta),
+  .produce-page .nav > a:not(.nav-cta),
+  .seasonal-page .nav > a:not(.nav-cta),
+
+  .products-page .language-switcher,
+  .produce-page .language-switcher,
+  .seasonal-page .language-switcher {
+
+    display: none;
+  }
+
+
+  .products-page .menu-toggle,
+  .produce-page .menu-toggle,
+  .seasonal-page .menu-toggle {
+
+    display: block;
+  }
+
+
+  .products-page .nav-cta,
+  .produce-page .nav-cta,
+  .seasonal-page .nav-cta {
+
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    font-size: 10px;
+  }
+
+
+  .products-page .product-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .produce-page .produce-cards {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .produce-page .produce-route {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .produce-page .produce-route-line {
+
+    transform: rotate(90deg);
+
+    justify-self: center;
+  }
+
+
+  .produce-page .season-item {
+
+    grid-template-columns:
+      100px
+      1fr;
+  }
+
+
+  .produce-page .season-item p {
+
+    grid-column: 2;
+  }
+
+
+  .produce-page .produce-origin-grid,
+  .produce-page .light-market-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .seasonal-page .season-row {
+
+    grid-template-columns:
+      100px
+      1fr;
+  }
+
+
+  .seasonal-page .season-row span:last-child {
+
+    grid-column: 2;
+  }
+
+
+  .seasonal-page .season-origin-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .seafood-page .sf-navigation > a:not(.sf-enquiry),
+  .seafood-page .sf-languages {
+
+    display: none;
+  }
+
+
+  .seafood-page .sf-nav {
+
+    width: calc(100% - 40px);
+  }
+
+
+  .seafood-page .sf-hero {
+
+    min-height: 760px;
+
+    padding:
+      125px
+      20px
+      25px;
+  }
+
+
+  .seafood-page .sf-hero-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+
+  .seafood-page .sf-hero-number {
+
+    display: none;
+  }
+
+
+  .seafood-page .sf-hero h1 {
+
+    font-size:
+      clamp(
+        62px,
+        15vw,
+        100px
+      );
+  }
+
+
+  .seafood-page .sf-hero h1 em {
+
+    margin-left: 0;
+  }
+
+
+  .seafood-page .sf-actions {
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .seafood-page .sf-button {
+
+    width: 100%;
+  }
+
+
+  .seafood-page .sf-intro,
+  .seafood-page .sf-range,
+  .seafood-page .sf-origins,
+  .seafood-page .sf-specifications,
+  .seafood-page .sf-availability,
+  .seafood-page .sf-cta {
+
     padding: 90px 0;
   }
 
-  .seafood-category {
-    min-height: 450px;
-    padding: 25px;
+
+  .seafood-page .sf-container {
+
+    width: calc(100% - 40px);
   }
 
-  .seafood-category h2 {
-    font-size: 58px;
+
+  .seafood-page .sf-intro .sf-container {
+
+    grid-template-columns: 1fr;
+
+    gap: 25px;
   }
 
-  .seafood-origin-grid {
+
+  .seafood-page .sf-section-heading,
+  .seafood-page .sf-spec-head,
+  .seafood-page .sf-availability-inner,
+  .seafood-page .sf-origin-layout {
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .seafood-page .sf-range-grid {
+
     grid-template-columns: 1fr;
   }
 
-  .seafood-origin-card {
-    min-height: 150px;
-    border-right: 0 !important;
+
+  .seafood-page .sf-range-card {
+
+    min-height: 400px;
+
+    border-right: 0;
+
+    border-bottom: 1px solid var(--sf-line);
   }
 
-  .seafood-availability h2 {
+
+  .seafood-page .sf-origin-map {
+
+    min-height: 420px;
+  }
+
+
+  .seafood-page .sf-spec-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+
+  .seafood-page .sf-footer-main {
+
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+
+  .seafood-page .sf-footer-links {
+
+    margin-left: 0;
+  }
+
+}
+
+
+/* ============================================================
+   43. RESPONSIVE — 600px
+============================================================ */
+
+@media (max-width: 600px) {
+
+  .products-page .nav-wrap,
+  .produce-page .nav-wrap,
+  .seasonal-page .nav-wrap {
+
+    min-height: 74px;
+  }
+
+
+  .products-page .brand,
+  .produce-page .brand,
+  .seasonal-page .brand {
+
+    height: 74px;
+  }
+
+
+  .products-page .brand img,
+  .produce-page .brand img,
+  .seasonal-page .brand img {
+
+    width: 76px;
+
+    max-height: 58px;
+  }
+
+
+  .products-page .page-hero {
+
+    min-height: 540px;
+
+    padding-top: 74px;
+  }
+
+
+  .products-page .page-hero-inner {
+
+    width: calc(100% - 40px);
+
+    padding-bottom: 60px;
+  }
+
+
+  .products-page .page-hero h1 {
+
+    font-size:
+      clamp(
+        55px,
+        16vw,
+        82px
+      );
+  }
+
+
+  .products-page .products-overview,
+  .products-page .section,
+  .produce-page .section,
+  .seasonal-page .section {
+
+    padding: 90px 0;
+  }
+
+
+  .products-page .product-card {
+
+    min-height: 390px;
+
+    padding: 25px;
+  }
+
+
+  .products-page .product-card h3 {
+
+    font-size: 55px;
+  }
+
+
+  .products-page .info-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .products-page .info-card {
+
+    min-height: 220px;
+  }
+
+
+  .produce-page .produce-hero {
+
+    min-height: 680px;
+  }
+
+
+  .produce-page .hero-content {
+
+    width: calc(100% - 40px);
+
+    padding-top: 80px;
+  }
+
+
+  .produce-page .produce-hero h1 {
+
+    font-size:
+      clamp(
+        55px,
+        15vw,
+        82px
+      );
+  }
+
+
+  .produce-page .hero-actions {
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .produce-page .produce-hero-label {
+
+    left: 20px;
+    right: auto;
+
+    bottom: 22px;
+
+    gap: 10px;
+
+    font-size: 7px;
+  }
+
+
+  .produce-page .hero-scroll {
+
+    display: none;
+  }
+
+
+  .produce-page .produce-card {
+
+    min-height: 370px;
+
+    padding: 25px;
+  }
+
+
+  .produce-page .produce-card h3 {
+
+    font-size: 50px;
+  }
+
+
+  .produce-page .produce-requirements {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .seasonal-page .seasonal-hero {
+
+    min-height: 600px;
+
+    padding-top: 74px;
+  }
+
+
+  .seasonal-page .seasonal-hero-inner {
+
+    width: calc(100% - 40px);
+
+    padding-bottom: 60px;
+  }
+
+
+  .seasonal-page .seasonal-hero h1 {
+
+    font-size:
+      clamp(
+        58px,
+        16vw,
+        88px
+      );
+  }
+
+
+  .seasonal-page .seasonal-hero h1 em {
+
+    margin-left: 0;
+  }
+
+
+  .seasonal-page .season-row {
+
+    min-height: 105px;
+
+    grid-template-columns:
+      75px
+      1fr;
+
+    gap: 15px;
+  }
+
+
+  .seasonal-page .season-row strong {
+
+    font-size: 27px;
+  }
+
+
+  .products-page .footer-grid,
+  .produce-page .footer-grid,
+  .seasonal-page .footer-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+
+  .products-page .footer-bottom,
+  .produce-page .footer-bottom,
+  .seasonal-page .footer-bottom {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+
+  .seafood-page .sf-hero {
+
+    min-height: 720px;
+  }
+
+
+  .seafood-page .sf-hero h1 {
+
+    font-size: 58px;
+  }
+
+
+  .seafood-page .sf-hero-text {
+
+    margin-top: 35px;
+
+    font-size: 14px;
+  }
+
+
+  .seafood-page .sf-intro-main h2,
+  .seafood-page .sf-section-heading h2,
+  .seafood-page .sf-spec-head h2 {
+
+    font-size: 55px;
+  }
+
+
+  .seafood-page .sf-card-body h3 {
+
+    font-size: 52px;
+  }
+
+
+  .seafood-page .sf-sea-circle {
+
+    width: 300px;
+    height: 300px;
+  }
+
+
+  .seafood-page .sf-spec-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .seafood-page .sf-availability h2 {
+
+    font-size: 65px;
+  }
+
+
+  .seafood-page .sf-cta h2 {
+
     font-size: 62px;
   }
+
+
+  .seafood-page .sf-footer-links {
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 25px;
+  }
+
 }
+
+
+/* ============================================================
+   44. HARD SAFETY RULES
+   ------------------------------------------------------------
+   These are intentionally local.
+   They prevent the old white/empty button problem.
+============================================================ */
+
+.products-page .button,
+.products-page .button *,
+.produce-page .button,
+.produce-page .button *,
+.seasonal-page .button,
+.seasonal-page .button * {
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  text-indent: 0 !important;
+}
+
+
+.products-page .button.primary *,
+.produce-page .button.primary *,
+.seasonal-page .button.primary * {
+
+  color: #fff !important;
+
+  -webkit-text-fill-color: #fff !important;
+}
+
+
+.products-page .button.secondary *,
+.produce-page .button.secondary *,
+.seasonal-page .button.secondary * {
+
+  color: var(--p-ink) !important;
+
+  -webkit-text-fill-color: var(--p-ink) !important;
+}
+
+
+/* ============================================================
+   END
+============================================================ */
+```
