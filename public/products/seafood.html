@@ -38,7 +38,7 @@
 .seafood-page h1,.seafood-page h2,.seafood-page h3,.seafood-page p{margin:0}
 .sf-container{width:min(1240px,calc(100% - 80px));margin:auto}
 
-/* LOGO — inline SVG, no dependency on broken /images/logo.png */
+/* LOGO — actual site asset: public/logo.png */
 .sf-header{
   position:absolute;inset:0 0 auto;z-index:100;height:86px;
   color:#fff;background:transparent;
@@ -49,7 +49,13 @@
   display:flex;align-items:center;justify-content:space-between;
 }
 .sf-logo{display:flex;align-items:center;width:170px;height:86px}
-.sf-logo-mark{width:146px;height:auto;display:block}
+.sf-logo-mark{
+  display:block;
+  width:118px;
+  height:auto;
+  max-width:none;
+  object-fit:contain;
+}
 .sf-navigation{display:flex;align-items:center;gap:30px;font-size:12px}
 .sf-navigation>a{color:#fff!important;white-space:nowrap;transition:opacity .2s ease}
 .sf-navigation>a:hover{opacity:.62}
@@ -248,7 +254,7 @@
   .sf-footer-bottom{flex-direction:column;align-items:flex-start;gap:10px}
 }
 @media(max-width:500px){
-  .sf-logo{width:130px}.sf-logo-mark{width:120px}
+  .sf-logo{width:130px}.sf-logo-mark{width:92px}
   .sf-hero{min-height:720px}
   .sf-hero h1{font-size:58px!important}
   .sf-hero-text{font-size:14px}
@@ -269,12 +275,7 @@
 <header class="sf-header">
   <div class="sf-nav">
     <a class="sf-logo" href="../index.html" aria-label="EMPERIO TISS home">
-      <svg class="sf-logo-mark" viewBox="0 0 420 88" role="img" aria-label="EMPERIO TISS" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#fff">
-          <text x="0" y="62" font-family="Georgia,serif" font-size="51" letter-spacing="1">EMPERIO</text>
-          <text x="238" y="62" font-family="Arial,sans-serif" font-size="39" font-weight="700" letter-spacing="2">TISS</text>
-        </g>
-      </svg>
+      <img class="sf-logo-mark" src="../logo.png" alt="EMPERIO TISS">
     </a>
     <nav class="sf-navigation">
       <a href="../index.html">Home</a>
