@@ -282,6 +282,72 @@
   .sf-cta h2{font-size:62px!important}
 }
 </style>
+
+<style id="logo-header-fix">
+/* =========================================================
+   EMPERIO TISS — SEAFOOD HEADER / LOGO FIX
+========================================================= */
+
+.sf-header{
+  position: relative !important;
+  z-index: 1000 !important;
+  background: rgba(5,30,36,.96) !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.sf-header .sf-nav{
+  position: relative !important;
+  z-index: 1001 !important;
+}
+
+.sf-logo{
+  position: relative !important;
+  z-index: 1002 !important;
+  display: flex !important;
+  align-items: center !important;
+  background: transparent !important;
+}
+
+.sf-logo img,
+.sf-logo-mark{
+  display: block !important;
+  position: relative !important;
+  z-index: 1003 !important;
+  width: 118px !important;
+  height: auto !important;
+  max-width: 118px !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  background: transparent !important;
+}
+
+/* Header navigation remains readable on the marine background */
+.sf-header .sf-nav a,
+.sf-header .sf-menu,
+.sf-header .sf-menu-toggle{
+  color: #fff !important;
+}
+
+.sf-header .sf-nav a::after{
+  background: #fff !important;
+}
+
+/* Footer logo stays untouched */
+.sf-footer-logo{
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  background: transparent !important;
+}
+</style>
+
 </head>
 
 <body class="seafood-page">
