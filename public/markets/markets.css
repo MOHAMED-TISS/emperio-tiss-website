@@ -1022,3 +1022,12 @@
     width: calc(100vw - 56px) !important;
   }
 }
+/* Keep the footer logo in its original brand colour */
+.markets-page .markets-footer-logo img {
+  display: block !important;
+  width: 116px !important;
+  height: auto !important;
+  max-width: 116px !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
