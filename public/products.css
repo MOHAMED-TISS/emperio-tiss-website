@@ -1218,4 +1218,9 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-```
+/* Keep Products content centered despite shared site styles */
+.products-page .container,
+.products-page .nav-wrap {
+  width: min(var(--max), calc(100% - var(--pad))) !important;
+  margin-inline: auto !important;
+}
