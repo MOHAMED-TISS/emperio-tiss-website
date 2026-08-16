@@ -9,100 +9,428 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../products.css">
+
 <style>
-/* SEAFOOD PAGE — scoped overrides */
-.seafood-page .hero{min-height:760px;background:linear-gradient(135deg,#041b22 0%,#063540 52%,#0a4d59 100%);color:#fff}
-.seafood-page .hero::before{background:
- radial-gradient(circle at 78% 28%,rgba(107,190,205,.22),transparent 27%),
- radial-gradient(circle at 18% 78%,rgba(37,119,135,.18),transparent 34%)}
-.seafood-page .hero-content{padding-top:120px;padding-bottom:120px}
-.seafood-page .hero .eyebrow{color:rgba(255,255,255,.62)}
-.seafood-page .hero h1{color:#fff;white-space:nowrap;max-width:none;font-size:clamp(90px,14vw,210px);line-height:.78}
-.seafood-page .hero-text{color:rgba(255,255,255,.72);max-width:620px}
-.seafood-page .hero .button.secondary{color:#fff;border-color:rgba(255,255,255,.28)}
-.seafood-page .hero .button.secondary:hover{background:rgba(255,255,255,.08)}
-.seafood-page .section:nth-of-type(2){background:#f3f0e8}
-.seafood-page .seafood-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.seafood-page .seafood-card{min-height:560px;position:relative;padding:32px;display:flex;align-items:flex-end;overflow:hidden;color:#fff;background:#082f38;border:0}
-.seafood-page .seafood-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(2,20,25,.9) 100%);z-index:1}
-.seafood-page .seafood-card:nth-child(1){background:linear-gradient(135deg,#164b56,#06252d)}
-.seafood-page .seafood-card:nth-child(2){background:linear-gradient(135deg,#0b5966,#06303a)}
-.seafood-page .seafood-card:nth-child(3){background:linear-gradient(135deg,#073843,#021c23)}
-.seafood-page .seafood-card>div{position:relative;z-index:2}
-.seafood-page .seafood-card .card-number{font-size:10px;letter-spacing:.16em;font-weight:700;opacity:.65}
-.seafood-page .seafood-card h3{font-family:"Playfair Display",Georgia,serif;font-size:clamp(48px,5vw,76px);font-weight:500;line-height:.86;letter-spacing:-.05em;margin:14px 0}
-.seafood-page .seafood-card p{max-width:390px;margin:0;color:rgba(255,255,255,.72);font-size:14px;line-height:1.7}
-.seafood-page .market-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.seafood-page .market{min-height:220px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
-.seafood-page .market strong{font-family:"Playfair Display",Georgia,serif;font-size:38px;font-weight:500}
-.seafood-page .market small{color:var(--ink-soft)}
-.seafood-page .dark-section{background:#062d36}
-@media(max-width:900px){
- .seafood-page .hero{min-height:650px}
- .seafood-page .hero h1{font-size:clamp(72px,18vw,130px)}
- .seafood-page .seafood-grid{grid-template-columns:1fr}
- .seafood-page .seafood-card{min-height:460px}
- .seafood-page .market-grid{grid-template-columns:repeat(2,1fr)}
+/* =========================================================
+   SEAFOOD — FINAL ISOLATED LAYER
+   Deliberately uses sf-* classes so generic products rules
+   cannot split titles, resize the logo, or alter the layout.
+========================================================= */
+
+.seafood-page{
+  --sf-deep:#032b32;
+  --sf-ocean:#07515a;
+  --sf-blue:#0b6972;
+  --sf-mint:#dcece7;
+  --sf-foam:#edf3ee;
+  --sf-sand:#e8e0d1;
+  --sf-ink:#082d31;
+  --sf-line:rgba(8,45,49,.17);
+  --sf-white:#f5f7f3;
+  margin:0;
+  background:var(--sf-foam);
+  color:var(--sf-ink);
+  font-family:"DM Sans",Arial,sans-serif;
+  overflow-x:hidden;
 }
-@media(max-width:560px){
- .seafood-page .hero h1{font-size:64px}
- .seafood-page .hero-content{padding-top:80px;padding-bottom:80px}
- .seafood-page .market-grid{grid-template-columns:1fr}
+.seafood-page *,.seafood-page *::before,.seafood-page *::after{box-sizing:border-box}
+.seafood-page a{color:inherit;text-decoration:none}
+.seafood-page h1,.seafood-page h2,.seafood-page h3,.seafood-page p{margin:0}
+.sf-container{width:min(1240px,calc(100% - 80px));margin:auto}
+
+/* LOGO — inline SVG, no dependency on broken /images/logo.png */
+.sf-header{
+  position:absolute;inset:0 0 auto;z-index:100;height:86px;
+  color:#fff;background:transparent;
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+.sf-nav{
+  width:min(1240px,calc(100% - 80px));height:86px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.sf-logo{display:flex;align-items:center;width:170px;height:86px}
+.sf-logo-mark{width:146px;height:auto;display:block}
+.sf-navigation{display:flex;align-items:center;gap:30px;font-size:12px}
+.sf-navigation>a{color:#fff!important;white-space:nowrap;transition:opacity .2s ease}
+.sf-navigation>a:hover{opacity:.62}
+.sf-languages{display:flex;gap:10px;font-size:10px;letter-spacing:.08em}
+.sf-languages a{color:#fff!important;opacity:.5}
+.sf-languages .active{opacity:1;font-weight:700}
+.sf-enquiry{
+  padding:13px 20px;border-radius:999px;background:#fff!important;
+  color:var(--sf-deep)!important;font-weight:600;
+}
+
+/* HERO */
+.sf-hero{
+  position:relative;min-height:850px;display:flex;flex-direction:column;
+  justify-content:space-between;padding:145px max(40px,calc((100vw - 1240px)/2)) 35px;
+  overflow:hidden;color:#fff;
+  background:
+    radial-gradient(circle at 73% 40%,rgba(51,150,160,.42),transparent 25%),
+    radial-gradient(circle at 82% 75%,rgba(11,105,114,.35),transparent 30%),
+    linear-gradient(125deg,#021f26 0%,#043a43 48%,#07515a 100%);
+}
+.sf-water{
+  position:absolute;inset:0;opacity:.28;pointer-events:none;
+  background:repeating-linear-gradient(165deg,transparent 0,transparent 46px,rgba(255,255,255,.055) 47px,transparent 48px,transparent 92px);
+}
+.sf-water:before,.sf-water:after{
+  content:"";position:absolute;border:1px solid rgba(255,255,255,.10);border-radius:50%;
+}
+.sf-water:before{width:720px;height:720px;right:-260px;top:-100px}
+.sf-water:after{width:480px;height:480px;right:-140px;top:20px}
+.sf-hero-inner{position:relative;z-index:2;width:min(1240px,100%);margin:auto}
+.sf-hero-grid{
+  display:grid;grid-template-columns:1.2fr .55fr;gap:80px;align-items:end;
+  min-height:570px;
+}
+.sf-kicker{
+  display:flex;align-items:center;gap:15px;
+  font-size:10px;letter-spacing:.18em;font-weight:700;color:rgba(255,255,255,.62);
+}
+.sf-kicker i{display:block;width:38px;height:1px;background:rgba(255,255,255,.4)}
+.sf-hero h1{
+  margin-top:30px!important;
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-size:clamp(90px,13vw,190px)!important;
+  font-weight:400!important;line-height:.78!important;
+  letter-spacing:-.075em!important;color:#fff!important;
+  white-space:nowrap!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+}
+.sf-hero h1 em{font-style:italic}
+.sf-hero-text{max-width:470px;margin-top:42px!important;font-size:16px;line-height:1.8;color:rgba(255,255,255,.72)}
+.sf-actions{display:flex;gap:12px;margin-top:34px}
+.sf-button{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:52px;padding:0 26px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.3);font-size:13px;font-weight:600;
+  transition:transform .25s ease,background .25s ease,border-color .25s ease;
+}
+.sf-button.primary{background:#fff;color:#063c3d;border-color:#fff}
+.sf-button.secondary{color:#fff}
+.sf-button:hover{transform:translateY(-2px)}
+.sf-button.secondary:hover{background:rgba(255,255,255,.08)}
+.sf-hero-number{
+  justify-self:end;align-self:center;font-size:10px;letter-spacing:.18em;
+  color:rgba(255,255,255,.5);writing-mode:vertical-rl;
+}
+.sf-hero-bottom{
+  position:relative;z-index:2;display:flex;align-items:center;gap:16px;
+  font-size:9px;letter-spacing:.15em;font-weight:600;color:rgba(255,255,255,.48);
+}
+.sf-hero-bottom i{width:42px;height:1px;background:rgba(255,255,255,.3)}
+
+/* INTRO */
+.sf-intro{padding:150px 0;background:var(--sf-foam)}
+.sf-intro .sf-container{display:grid;grid-template-columns:100px 1fr;gap:60px}
+.sf-intro-index{font-size:10px;letter-spacing:.13em;opacity:.5}
+.sf-intro-main{max-width:950px}
+.sf-eyebrow{font-size:10px;letter-spacing:.18em;font-weight:700;color:#31504d}
+.sf-intro-main h2,.sf-section-heading h2,.sf-spec-head h2{
+  margin-top:18px!important;font-family:"Playfair Display",Georgia,serif!important;
+  font-size:clamp(55px,7vw,105px)!important;font-weight:400!important;
+  line-height:.88!important;letter-spacing:-.055em!important;color:var(--sf-ink)!important;
+}
+.sf-intro-main h2 em,.sf-section-heading h2 em,.sf-spec-head h2 em{display:block;font-style:italic}
+.sf-intro-main>p:last-child{max-width:540px;margin-top:50px!important;color:#687876;font-size:15px;line-height:1.8}
+
+/* RANGE */
+.sf-range{padding:140px 0;background:var(--sf-sand)}
+.sf-section-heading{display:grid;grid-template-columns:1fr 360px;gap:80px;align-items:end;margin-bottom:75px}
+.sf-section-heading>p,.sf-spec-head>p{color:#65726e;font-size:14px;line-height:1.7}
+.sf-range-grid{display:grid;grid-template-columns:1fr 1fr}
+.sf-range-card{
+  min-height:510px;padding:30px;position:relative;overflow:hidden;
+  border-top:1px solid var(--sf-line);border-right:1px solid var(--sf-line);
+  color:var(--sf-ink);transition:transform .35s ease;
+}
+.sf-range-card:hover{transform:translateY(-5px)}
+.sf-range-card:nth-child(2n){border-right:0}
+.sf-range-card:nth-child(n+3){border-bottom:1px solid var(--sf-line)}
+.sf-card-top{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.13em;font-weight:700;color:#31504d}
+.sf-card-body{position:relative;z-index:2;margin-top:auto;padding-top:170px}
+.sf-card-small{margin-bottom:15px;font-size:9px;letter-spacing:.14em;font-weight:700;color:#31504d}
+.sf-card-body h3{
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-size:clamp(50px,6vw,85px)!important;font-weight:400!important;
+  line-height:.85!important;letter-spacing:-.055em!important;
+  color:var(--sf-ink)!important;white-space:nowrap!important;word-break:normal!important;
+}
+.sf-card-body p{max-width:400px;margin-top:25px!important;color:#536965;font-size:13px;line-height:1.7}
+.sf-card-mark{
+  position:absolute;right:25px;top:95px;font-family:"Playfair Display",Georgia,serif;
+  font-size:230px;line-height:.7;color:var(--sf-ink);opacity:.07
+}
+.sf-fish{background:#d6e2df}.sf-ceph{background:#c9ddd9}.sf-shell{background:#e4d9c5}.sf-frozen{background:#d7e2e3}
+
+/* ORIGINS */
+.sf-origins{padding:145px 0;color:#fff;background:radial-gradient(circle at 65% 50%,rgba(16,115,126,.3),transparent 32%),var(--sf-deep)}
+.sf-light-heading h2{color:#fff!important}.sf-light-heading>p{color:rgba(255,255,255,.58)}
+.sf-origin-layout{display:grid;grid-template-columns:1.3fr .7fr;gap:70px;align-items:center}
+.sf-origin-map{
+  min-height:560px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);
+  background:radial-gradient(circle,rgba(31,130,139,.23),transparent 57%);
+}
+.sf-sea-circle{
+  position:absolute;width:430px;height:430px;left:50%;top:50%;
+  transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.16);border-radius:50%;
+}
+.sf-sea-circle:before,.sf-sea-circle:after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.1);border-radius:50%;
+}
+.sf-sea-circle:before{width:280px;height:280px}.sf-sea-circle:after{width:130px;height:130px}
+.sf-origin-point{position:absolute;display:flex;align-items:center;gap:10px;color:#fff;font-size:11px;letter-spacing:.08em}
+.sf-origin-point span{width:9px;height:9px;border-radius:50%;background:#b9eee5;box-shadow:0 0 0 6px rgba(185,238,229,.08)}
+.sf-origin-point.p1{left:18%;top:30%}.sf-origin-point.p2{left:58%;top:22%}.sf-origin-point.p3{left:32%;top:67%}.sf-origin-point.p4{left:68%;top:68%}
+.sf-origin-list{display:grid;border-top:1px solid rgba(255,255,255,.14)}
+.sf-origin-row{padding:23px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:20px}
+.sf-origin-row span{font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.42)}
+.sf-origin-row strong{font-family:"Playfair Display",Georgia,serif;font-size:28px;font-weight:400;color:#fff}
+
+/* SPECS */
+.sf-specifications{padding:145px 0;background:var(--sf-foam)}
+.sf-spec-head{display:grid;grid-template-columns:1fr 360px;gap:80px;align-items:end;margin-bottom:70px}
+.sf-spec-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--sf-line);border-left:1px solid var(--sf-line)}
+.sf-spec-grid div{
+  min-height:180px;padding:28px;border-right:1px solid var(--sf-line);border-bottom:1px solid var(--sf-line);
+  display:flex;flex-direction:column;justify-content:space-between;transition:background .3s ease,color .3s ease
+}
+.sf-spec-grid div:hover{background:var(--sf-deep);color:#fff}
+.sf-spec-grid span{font-size:10px;letter-spacing:.14em;opacity:.5}
+.sf-spec-grid strong{font-family:"Playfair Display",Georgia,serif;font-size:30px;font-weight:400}
+
+/* AVAILABILITY */
+.sf-availability{padding:145px 0;background:#f5f1e7}
+.sf-availability-inner{display:grid;grid-template-columns:1fr .65fr;gap:100px;align-items:end}
+.sf-availability h2{margin-top:18px!important;font-family:"Playfair Display",Georgia,serif!important;font-size:clamp(55px,7vw,105px)!important;font-weight:400!important;line-height:.88!important;letter-spacing:-.055em!important}
+.sf-availability p{max-width:470px;color:#536965;font-size:15px;line-height:1.8}
+.sf-availability-line{margin-top:55px;padding-top:25px;border-top:1px solid var(--sf-line);display:flex;justify-content:space-between;gap:30px;color:var(--sf-ink)}
+.sf-availability-line span{font-size:10px;letter-spacing:.13em}
+
+/* CTA */
+.sf-cta{padding:150px 0;color:#fff;background:linear-gradient(135deg,#021f26,#07515a)}
+.sf-cta-inner{max-width:950px}
+.sf-cta h2{margin-top:20px!important;font-family:"Playfair Display",Georgia,serif!important;font-size:clamp(65px,8vw,125px)!important;font-weight:400!important;line-height:.85!important;letter-spacing:-.06em!important;color:#fff!important}
+.sf-cta p:not(.sf-eyebrow){max-width:560px;margin-top:32px!important;color:rgba(255,255,255,.62);font-size:15px;line-height:1.7}
+.sf-cta .sf-button{margin-top:30px}
+
+/* FOOTER */
+.sf-footer{padding:75px 0 25px;background:#03181d;color:#fff}
+.sf-footer-main{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:70px;padding-bottom:65px;border-bottom:1px solid rgba(255,255,255,.13)}
+.sf-footer-logo{width:146px;height:auto;margin-bottom:20px}
+.sf-footer-main p{max-width:430px;color:rgba(255,255,255,.52);font-size:13px;line-height:1.7}
+.sf-footer-links strong{display:block;margin-bottom:16px;color:#fff;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.sf-footer-links a{display:block;margin-bottom:10px;color:rgba(255,255,255,.55);font-size:12px}
+.sf-footer-links a:hover{color:#fff}
+.sf-footer-bottom{padding-top:22px;display:flex;justify-content:space-between;color:rgba(255,255,255,.35);font-size:9px;letter-spacing:.08em}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .sf-navigation>a:not(.sf-enquiry),.sf-languages{display:none}
+  .sf-nav{width:calc(100% - 40px)}
+  .sf-container{width:calc(100% - 40px)}
+  .sf-hero{min-height:760px;padding:125px 20px 25px}
+  .sf-hero-grid{grid-template-columns:1fr;gap:25px}
+  .sf-hero-number{display:none}
+  .sf-hero h1{font-size:clamp(68px,16vw,110px)!important}
+  .sf-intro,.sf-range,.sf-origins,.sf-specifications,.sf-availability,.sf-cta{padding:90px 0}
+  .sf-intro .sf-container,.sf-section-heading,.sf-spec-head,.sf-availability-inner,.sf-origin-layout{grid-template-columns:1fr;gap:35px}
+  .sf-range-grid{grid-template-columns:1fr}
+  .sf-range-card{min-height:420px;border-right:0!important;border-bottom:1px solid var(--sf-line)!important}
+  .sf-origin-map{min-height:420px}
+  .sf-spec-grid{grid-template-columns:1fr 1fr}
+  .sf-spec-grid div{min-height:150px}
+  .sf-footer-main{grid-template-columns:1fr;gap:45px}
+  .sf-footer-bottom{flex-direction:column;align-items:flex-start;gap:10px}
+}
+@media(max-width:500px){
+  .sf-logo{width:130px}.sf-logo-mark{width:120px}
+  .sf-hero{min-height:720px}
+  .sf-hero h1{font-size:58px!important}
+  .sf-hero-text{font-size:14px}
+  .sf-actions{flex-direction:column;align-items:stretch}
+  .sf-button{width:100%}
+  .sf-intro-main h2,.sf-section-heading h2,.sf-spec-head h2{font-size:55px!important}
+  .sf-card-body h3{font-size:52px!important}
+  .sf-sea-circle{width:300px;height:300px}
+  .sf-spec-grid{grid-template-columns:1fr}
+  .sf-availability h2{font-size:65px!important}
+  .sf-cta h2{font-size:62px!important}
 }
 </style>
 </head>
+
 <body class="seafood-page">
-<header class="site-header">
- <div class="container nav-wrap">
-  <a href="../index.html" class="brand" aria-label="EMPERIO TISS"><img src="/images/logo.png" alt="EMPERIO TISS"></a>
-  <nav class="nav">
-   <a href="../index.html">About</a><a href="./" class="active">Products</a><a href="../markets/">Markets</a>
-   <div class="language-switcher"><a class="active" href="#">EN</a><a href="#">FR</a><a href="#">ES</a></div>
-   <a class="nav-cta" href="../contact/">Business enquiry ↗</a>
-  </nav>
-  <button class="menu-toggle" type="button" aria-label="Menu">☰</button>
- </div>
+
+<header class="sf-header">
+  <div class="sf-nav">
+    <a class="sf-logo" href="../index.html" aria-label="EMPERIO TISS home">
+      <svg class="sf-logo-mark" viewBox="0 0 420 88" role="img" aria-label="EMPERIO TISS" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#fff">
+          <text x="0" y="62" font-family="Georgia,serif" font-size="51" letter-spacing="1">EMPERIO</text>
+          <text x="238" y="62" font-family="Arial,sans-serif" font-size="39" font-weight="700" letter-spacing="2">TISS</text>
+        </g>
+      </svg>
+    </a>
+    <nav class="sf-navigation">
+      <a href="../index.html">Home</a>
+      <a href="../markets/">Markets</a>
+      <a href="./">Products</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
+      <div class="sf-languages"><a class="active" href="#">EN</a><a href="#">FR</a><a href="#">ES</a></div>
+      <a class="sf-enquiry" href="../contact/">Enquire ↗</a>
+    </nav>
+  </div>
 </header>
+
 <main>
-<section class="hero">
- <div class="container hero-content">
-  <p class="eyebrow">01 / SEAFOOD · FISH · SHELLFISH · CEPHALOPODS</p>
-  <h1>Seafood.</h1>
-  <p class="hero-text">Fresh and frozen seafood for professional buyers, wholesalers, foodservice and distribution — sourced around quality, specification, origin and reliable delivery.</p>
-  <div class="hero-actions"><a class="button primary" href="#categories">Explore seafood ↗</a><a class="button secondary" href="../contact/">Request availability</a></div>
- </div>
-</section>
-<section class="section" id="categories">
- <div class="container">
-  <div class="section-head"><div><p class="eyebrow">02 / SEAFOOD CATEGORIES</p><h2>From the sea<br>to the market.</h2></div><p>Three core categories, sourced according to species, origin, calibre, format, seasonality and destination.</p></div>
-  <div class="seafood-grid">
-   <article class="seafood-card"><div><span class="card-number">01 / FISH</span><h3>Fish.</h3><p>Whole fish, portions and professional formats selected for freshness, calibre and origin.</p></div></article>
-   <article class="seafood-card"><div><span class="card-number">02 / SHELLFISH</span><h3>Shellfish.</h3><p>Crustaceans and bivalves for restaurant, wholesale and distribution channels.</p></div></article>
-   <article class="seafood-card"><div><span class="card-number">03 / CEPHALOPODS</span><h3>Cephalopods.</h3><p>Squid, cuttlefish and octopus according to size, preparation, origin and destination.</p></div></article>
+<section class="sf-hero">
+  <div class="sf-water"></div>
+  <div class="sf-hero-inner">
+    <div class="sf-hero-grid">
+      <div>
+        <div class="sf-kicker"><i></i>01 / SEAFOOD · FISH · SHELLFISH · CEPHALOPODS</div>
+        <h1>Seafood<em>.</em></h1>
+        <p class="sf-hero-text">Fresh and frozen seafood for professional buyers, wholesalers, foodservice and distribution — sourced around quality, specification, origin and reliable delivery.</p>
+        <div class="sf-actions">
+          <a class="sf-button primary" href="#range">Explore the range ↗</a>
+          <a class="sf-button secondary" href="../contact/">Request availability</a>
+        </div>
+      </div>
+      <div class="sf-hero-number">EUROPE × AFRICA × MEDITERRANEAN</div>
+    </div>
   </div>
- </div>
+  <div class="sf-hero-bottom"><i></i> PROFESSIONAL SEAFOOD SOURCING <span>ORIGIN · QUALITY · FORMAT · LOGISTICS</span></div>
 </section>
-<section class="section">
- <div class="container">
-  <div class="section-head"><div><p class="eyebrow">03 / ORIGIN & MARKET</p><h2>Origin is part<br>of the product.</h2></div><p>Our sourcing approach connects Mediterranean and European supply with professional destination markets.</p></div>
-  <div class="market-grid">
-   <div class="market"><span>01</span><strong>Spain</strong><small>European supply</small></div>
-   <div class="market"><span>02</span><strong>Morocco</strong><small>North Africa</small></div>
-   <div class="market"><span>03</span><strong>Tunisia</strong><small>Mediterranean</small></div>
-   <div class="market"><span>04</span><strong>Europe</strong><small>Destination markets</small></div>
+
+<section class="sf-intro">
+  <div class="sf-container">
+    <div class="sf-intro-index">02 / APPROACH</div>
+    <div class="sf-intro-main">
+      <div class="sf-eyebrow">THE SEAFOOD SYSTEM</div>
+      <h2>From the sea<br><em>to the market.</em></h2>
+      <p>We organise seafood around what matters commercially: species, origin, calibre, quality, format, availability and destination. The objective is simple — reliable supply that fits the buyer's specification.</p>
+    </div>
   </div>
- </div>
 </section>
-<section class="section dark-section">
- <div class="container">
-  <div class="section-head"><div><p class="eyebrow">04 / SPECIFICATIONS</p><h2>Built around<br>your brief.</h2></div><p>Species, origin, quality, format and timing are aligned with the requirements of each buyer and destination.</p></div>
-  <div class="requirements">
-   <div class="requirement"><span>01</span><strong>Species</strong></div><div class="requirement"><span>02</span><strong>Origin</strong></div><div class="requirement"><span>03</span><strong>Calibre</strong></div><div class="requirement"><span>04</span><strong>Quality</strong></div>
-   <div class="requirement"><span>05</span><strong>Format</strong></div><div class="requirement"><span>06</span><strong>Packaging</strong></div><div class="requirement"><span>07</span><strong>Volume</strong></div><div class="requirement"><span>08</span><strong>Destination</strong></div>
+
+<section class="sf-range" id="range">
+  <div class="sf-container">
+    <div class="sf-section-heading">
+      <div><div class="sf-eyebrow">03 / PRODUCT RANGE</div><h2>Three worlds.<br><em>One supply chain.</em></h2></div>
+      <p>Our seafood range covers the core categories required by wholesale, foodservice and distribution markets.</p>
+    </div>
+    <div class="sf-range-grid">
+      <article class="sf-range-card sf-fish">
+        <div class="sf-card-top"><span>01 / FISH</span><span>MARINE</span></div>
+        <div class="sf-card-mark">F</div>
+        <div class="sf-card-body"><div class="sf-card-small">WHOLE · PORTIONS · PROFESSIONAL FORMATS</div><h3>Fish.</h3><p>Dorada, sea bass and pelagic species selected according to origin, calibre, freshness and destination requirements.</p></div>
+      </article>
+      <article class="sf-range-card sf-shell">
+        <div class="sf-card-top"><span>02 / SHELLFISH</span><span>CRUSTACEANS · BIVALVES</span></div>
+        <div class="sf-card-mark">S</div>
+        <div class="sf-card-body"><div class="sf-card-small">FRESH · LIVE · PROFESSIONAL SUPPLY</div><h3>Shellfish.</h3><p>Crustaceans and bivalves for restaurant, wholesale and distribution channels with clear commercial specifications.</p></div>
+      </article>
+      <article class="sf-range-card sf-ceph">
+        <div class="sf-card-top"><span>03 / CEPHALOPODS</span><span>MEDITERRANEAN · ATLANTIC</span></div>
+        <div class="sf-card-mark">C</div>
+        <div class="sf-card-body"><div class="sf-card-small">OCTOPUS · CALAMARI · CUTTLEFISH</div><h3>Cephalopods.</h3><p>Squid, cuttlefish and octopus according to size, preparation, origin, freezing method and destination.</p></div>
+      </article>
+      <article class="sf-range-card sf-frozen">
+        <div class="sf-card-top"><span>04 / FROZEN</span><span>YEAR-ROUND</span></div>
+        <div class="sf-card-mark">F</div>
+        <div class="sf-card-body"><div class="sf-card-small">AVAILABILITY · FORMAT · VOLUME</div><h3>Frozen.</h3><p>Selected frozen lines designed to support continuity, volume requirements and market availability beyond seasonal windows.</p></div>
+      </article>
+    </div>
   </div>
- </div>
 </section>
-<section class="cta-section"><div class="container"><div class="cta-inner"><p class="eyebrow">SEAFOOD SOURCING</p><h2>Need a specific<br>product?</h2><p>Send us species, format, calibre, volume and destination. We will build the sourcing request around your requirements.</p><div class="hero-actions"><a class="button light-button" href="../contact/">Start an enquiry ↗</a></div></div></div></section>
+
+<section class="sf-origins">
+  <div class="sf-container">
+    <div class="sf-section-heading sf-light-heading">
+      <div><div class="sf-eyebrow" style="color:rgba(255,255,255,.55)">04 / ORIGIN</div><h2 style="color:#fff!important">Origin is part<br><em>of the product.</em></h2></div>
+      <p>Our sourcing network connects Mediterranean and European supply with professional destination markets across Europe, Africa and the Middle East.</p>
+    </div>
+    <div class="sf-origin-layout">
+      <div class="sf-origin-map">
+        <div class="sf-sea-circle"></div>
+        <div class="sf-origin-point p1"><span></span>SPAIN</div>
+        <div class="sf-origin-point p2"><span></span>FRANCE</div>
+        <div class="sf-origin-point p3"><span></span>MOROCCO</div>
+        <div class="sf-origin-point p4"><span></span>TUNISIA</div>
+      </div>
+      <div class="sf-origin-list">
+        <div class="sf-origin-row"><span>01 · EUROPE</span><strong>Spain</strong></div>
+        <div class="sf-origin-row"><span>02 · EUROPE</span><strong>France</strong></div>
+        <div class="sf-origin-row"><span>03 · AFRICA</span><strong>Morocco</strong></div>
+        <div class="sf-origin-row"><span>04 · AFRICA</span><strong>Tunisia</strong></div>
+        <div class="sf-origin-row"><span>05 · NETWORK</span><strong>Atlantic / Mediterranean</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sf-specifications">
+  <div class="sf-container">
+    <div class="sf-spec-head">
+      <div><div class="sf-eyebrow">05 / SPECIFICATION</div><h2>Built around<br><em>your brief.</em></h2></div>
+      <p>Every enquiry is structured around the product details that determine quality, price, execution and suitability for the destination market.</p>
+    </div>
+    <div class="sf-spec-grid">
+      <div><span>01</span><strong>Species</strong></div>
+      <div><span>02</span><strong>Origin</strong></div>
+      <div><span>03</span><strong>Calibre</strong></div>
+      <div><span>04</span><strong>Quality</strong></div>
+      <div><span>05</span><strong>Format</strong></div>
+      <div><span>06</span><strong>Packaging</strong></div>
+      <div><span>07</span><strong>Volume</strong></div>
+      <div><span>08</span><strong>Destination</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="sf-availability">
+  <div class="sf-container">
+    <div class="sf-availability-inner">
+      <div><div class="sf-eyebrow">06 / AVAILABILITY</div><h2>Supply that<br><em>moves.</em></h2></div>
+      <div><p>Availability depends on species, fishing season, origin and market conditions. Send your requirement and we work backwards from destination, volume and delivery window.</p></div>
+    </div>
+    <div class="sf-availability-line"><span>WEEKLY SOURCING</span><span>EUROPE · NORTH AFRICA · MEDITERRANEAN</span><span>FRESH + FROZEN</span></div>
+  </div>
+</section>
+
+<section class="sf-cta">
+  <div class="sf-container">
+    <div class="sf-cta-inner">
+      <div class="sf-eyebrow" style="color:rgba(255,255,255,.55)">SEAFOOD SOURCING</div>
+      <h2>Tell us what<br>you need.</h2>
+      <p>Send us the species, specification, volume, destination and frequency. We will build the sourcing request around your commercial requirements.</p>
+      <a class="sf-button primary" href="../contact/">Start an enquiry ↗</a>
+    </div>
+  </div>
+</section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-grid"><div><img src="/images/logo.png" alt="EMPERIO TISS"><p>International B2B sourcing and distribution across seafood, fruits and vegetables — connecting origins, markets and reliable logistics.</p></div><div><strong>Products</strong><a href="seafood.html">Seafood</a><a href="fruits-vegetables.html">Fruits &amp; Vegetables</a><a href="seasonal.html">Seasonal</a></div><div><strong>Company</strong><a href="../markets/">Markets</a><a href="../about/">About</a><a href="../contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 EMPERIO TISS SL</span><span>EUROPE · AFRICA · MIDDLE EAST</span></div></div></footer>
-</body></html>
+
+<footer class="sf-footer">
+  <div class="sf-container">
+    <div class="sf-footer-main">
+      <div>
+        <svg class="sf-footer-logo" viewBox="0 0 420 88" aria-label="EMPERIO TISS" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#fff"><text x="0" y="62" font-family="Georgia,serif" font-size="51" letter-spacing="1">EMPERIO</text><text x="238" y="62" font-family="Arial,sans-serif" font-size="39" font-weight="700" letter-spacing="2">TISS</text></g>
+        </svg>
+        <p>International B2B sourcing and distribution across seafood, fruits and vegetables — connecting origins, markets and reliable logistics.</p>
+      </div>
+      <div class="sf-footer-links"><strong>Products</strong><a href="seafood.html">Seafood</a><a href="fruits-vegetables.html">Fruits &amp; Vegetables</a><a href="seasonal.html">Seasonal</a></div>
+      <div class="sf-footer-links"><strong>Company</strong><a href="../markets/">Markets</a><a href="../about/">About</a><a href="../contact/">Contact</a></div>
+    </div>
+    <div class="sf-footer-bottom"><span>© 2026 EMPERIO TISS SL</span><span>EUROPE · AFRICA · MIDDLE EAST</span></div>
+  </div>
+</footer>
+
+</body>
+</html>
