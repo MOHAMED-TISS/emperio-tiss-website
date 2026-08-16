@@ -1224,3 +1224,335 @@
   width: min(var(--max), calc(100% - var(--pad))) !important;
   margin-inline: auto !important;
 }
+```css
+/* =========================================================
+   EMPERIO TISS — FRUITS & VEGETABLES HERO
+   CONTROLLED / EDITORIAL / NOT FULL-WIDTH
+========================================================= */
+
+.produce-page {
+  --produce-ink: #10251f;
+  --produce-cream: #eee9dd;
+  --produce-green: #426447;
+  --produce-gold: #d8c394;
+
+  background: var(--produce-cream);
+  color: var(--produce-ink);
+  overflow-x: hidden;
+}
+
+/* HERO */
+
+.produce-page .produce-hero {
+  position: relative;
+  min-height: 720px;
+  padding: 0;
+  overflow: hidden;
+  background: #e9e6df;
+}
+
+/* Keep the composition narrower */
+.produce-page .produce-hero-inner {
+  position: relative;
+  width: min(1240px, calc(100% - 80px));
+  min-height: 720px;
+  margin: 0 auto;
+}
+
+/* IMAGE */
+
+.produce-page .produce-hero-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 66%;
+  height: 100%;
+
+  overflow: hidden;
+  z-index: 1;
+}
+
+.produce-page .produce-hero-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.02);
+  transition: transform 1.2s cubic-bezier(.22,.61,.36,1);
+}
+
+.produce-page .produce-hero:hover .produce-hero-image img {
+  transform: scale(1.055);
+}
+
+/* LEFT FADE */
+
+.produce-page .produce-hero-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #e9e6df 0%,
+      rgba(233,230,223,.92) 8%,
+      rgba(233,230,223,.25) 34%,
+      rgba(233,230,223,0) 58%
+    );
+
+  pointer-events: none;
+}
+
+/* CONTENT */
+
+.produce-page .produce-hero-content {
+  position: relative;
+  z-index: 3;
+
+  width: 52%;
+  min-height: 720px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 100px 0;
+}
+
+/* EYEBROW */
+
+.produce-page .produce-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 42px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  color: rgba(16,37,31,.58);
+}
+
+.produce-page .produce-hero-eyebrow::before {
+  content: "";
+
+  width: 34px;
+  height: 1px;
+
+  background: rgba(16,37,31,.25);
+}
+
+/* TITLE */
+
+.produce-page .produce-hero h1 {
+  max-width: 720px;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(78px, 9vw, 138px);
+  font-weight: 400;
+  line-height: .79;
+  letter-spacing: -.075em;
+}
+
+.produce-page .produce-hero h1 span {
+  display: block;
+}
+
+.produce-page .produce-hero h1 em {
+  display: block;
+
+  margin-left: 85px;
+
+  color: var(--produce-gold);
+  font-style: italic;
+}
+
+/* DESCRIPTION */
+
+.produce-page .produce-hero-description {
+  max-width: 430px;
+
+  margin-top: 45px;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: rgba(16,37,31,.68);
+}
+
+/* BOTTOM INFORMATION */
+
+.produce-page .produce-hero-meta {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 28px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(16,37,31,.13);
+}
+
+.produce-page .produce-hero-meta span {
+  font-size: 9px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+
+  color: rgba(16,37,31,.55);
+}
+
+/* DISCOVER */
+
+.produce-page .produce-hero-discover {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.produce-page .produce-hero-discover::after {
+  content: "↓";
+
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(16,37,31,.22);
+  border-radius: 50%;
+
+  font-size: 14px;
+
+  transition:
+    transform .35s cubic-bezier(.22,.61,.36,1),
+    background .35s ease;
+}
+
+.produce-page .produce-hero-discover:hover::after {
+  transform: translateY(4px);
+  background: rgba(16,37,31,.06);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .produce-page .produce-hero {
+    min-height: 780px;
+  }
+
+  .produce-page .produce-hero-inner {
+    width: calc(100% - 50px);
+    min-height: 780px;
+  }
+
+  .produce-page .produce-hero-image {
+    width: 100%;
+    height: 55%;
+
+    top: auto;
+    bottom: 0;
+  }
+
+  .produce-page .produce-hero-image::after {
+    background:
+      linear-gradient(
+        180deg,
+        #e9e6df 0%,
+        rgba(233,230,223,.65) 22%,
+        rgba(233,230,223,0) 55%
+      );
+  }
+
+  .produce-page .produce-hero-content {
+    width: 100%;
+    min-height: 500px;
+
+    justify-content: flex-start;
+
+    padding-top: 80px;
+  }
+
+  .produce-page .produce-hero h1 {
+    font-size: clamp(68px, 14vw, 110px);
+  }
+
+  .produce-page .produce-hero h1 em {
+    margin-left: 40px;
+  }
+
+  .produce-page .produce-hero-description {
+    max-width: 380px;
+    margin-top: 30px;
+  }
+
+  .produce-page .produce-hero-meta {
+    bottom: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .produce-page .produce-hero {
+    min-height: 720px;
+  }
+
+  .produce-page .produce-hero-inner {
+    width: calc(100% - 40px);
+    min-height: 720px;
+  }
+
+  .produce-page .produce-hero-content {
+    padding-top: 60px;
+  }
+
+  .produce-page .produce-hero-eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .produce-page .produce-hero h1 {
+    font-size: clamp(58px, 17vw, 82px);
+    line-height: .82;
+  }
+
+  .produce-page .produce-hero h1 em {
+    margin-left: 25px;
+  }
+
+  .produce-page .produce-hero-description {
+    max-width: 320px;
+    margin-top: 25px;
+    font-size: 13px;
+  }
+
+  .produce-page .produce-hero-image {
+    height: 48%;
+  }
+
+  .produce-page .produce-hero-meta {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .produce-page .produce-hero-meta span {
+    font-size: 8px;
+  }
+}
+
