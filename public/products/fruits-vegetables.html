@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
 
   <meta
     name="description"
-    content="EMPERIO TISS — Fresh fruits and vegetables sourced across Mediterranean and North African origins."
+    content="Fresh fruits and vegetables sourced across Mediterranean and North African origins for professional buyers."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,722 +22,17 @@
 
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../products.css">
-
-  <style>
-    /* =====================================================
-       FRUITS & VEGETABLES — VISUAL SYSTEM
-    ===================================================== */
-
-    .produce-page {
-      background: #f4f0e7;
-      color: #14221d;
-    }
-
-    .produce-page .site-header {
-      background: rgba(244,240,231,.94);
-    }
-
-    /* HERO */
-
-    .fv-hero {
-      position: relative;
-      min-height: 88vh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      color: #fff;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(12,28,20,.08) 20%,
-          rgba(8,25,18,.78) 100%
-        ),
-        url("/products/images/fruits-vegetables/hero.jpg")
-        center / cover no-repeat;
-    }
-
-    .fv-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(6,20,14,.62),
-          transparent 65%
-        );
-      pointer-events: none;
-    }
-
-    .fv-hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(1240px, calc(100% - 160px));
-      margin: 0 auto;
-      padding: 120px 0 90px;
-    }
-
-    .fv-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 35px;
-
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.72);
-    }
-
-    .fv-eyebrow::before {
-      content: "";
-      width: 38px;
-      height: 1px;
-      background: rgba(255,255,255,.55);
-    }
-
-    .fv-hero h1 {
-      max-width: 900px;
-
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(76px, 11vw, 170px);
-      font-weight: 400;
-      line-height: .82;
-      letter-spacing: -.07em;
-    }
-
-    .fv-hero h1 em {
-      font-style: italic;
-    }
-
-    .fv-hero-copy {
-      max-width: 470px;
-      margin-top: 45px;
-
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255,255,255,.78);
-    }
-
-    .fv-hero-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 35px;
-
-      margin-top: 70px;
-      padding-top: 22px;
-
-      border-top: 1px solid rgba(255,255,255,.22);
-
-      font-size: 9px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.55);
-    }
-
-
-    /* INTRO */
-
-    .fv-intro {
-      padding: 150px 0;
-    }
-
-    .fv-intro-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .7fr;
-      gap: 120px;
-      align-items: start;
-    }
-
-    .fv-label {
-      margin-bottom: 35px;
-
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-
-      color: #788078;
-    }
-
-    .fv-intro h2 {
-      max-width: 800px;
-
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(60px, 7vw, 108px);
-      font-weight: 400;
-      line-height: .86;
-      letter-spacing: -.065em;
-    }
-
-    .fv-intro h2 em {
-      font-style: italic;
-    }
-
-    .fv-intro-text {
-      max-width: 450px;
-      padding-top: 55px;
-
-      font-size: 16px;
-      line-height: 1.9;
-      color: #68736d;
-    }
-
-
-    /* PRODUCT WORLDS */
-
-    .fv-products {
-      padding: 30px 0 150px;
-    }
-
-    .fv-products-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 50px;
-
-      margin-bottom: 55px;
-    }
-
-    .fv-products-heading h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(52px, 6vw, 92px);
-      font-weight: 400;
-      line-height: .86;
-      letter-spacing: -.06em;
-    }
-
-    .fv-products-heading p {
-      max-width: 390px;
-      font-size: 14px;
-      line-height: 1.8;
-      color: #68736d;
-    }
-
-    .fv-product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .fv-product-card {
-      position: relative;
-      min-height: 650px;
-      overflow: hidden;
-
-      background: #d9d2c3;
-      color: #fff;
-    }
-
-    .fv-product-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.02) 25%,
-          rgba(0,0,0,.68) 100%
-        );
-
-      z-index: 1;
-    }
-
-    .fv-product-image {
-      position: absolute;
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition:
-        transform 1.2s cubic-bezier(.16,1,.3,1),
-        filter .8s ease;
-    }
-
-    .fv-product-card:hover .fv-product-image {
-      transform: scale(1.055);
-      filter: saturate(1.08);
-    }
-
-    .fv-product-content {
-      position: absolute;
-      inset: auto 38px 38px;
-
-      z-index: 2;
-    }
-
-    .fv-product-number {
-      display: block;
-      margin-bottom: 18px;
-
-      font-size: 9px;
-      letter-spacing: .18em;
-      font-weight: 700;
-
-      color: rgba(255,255,255,.68);
-    }
-
-    .fv-product-content h3 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(46px, 4vw, 68px);
-      font-weight: 400;
-      line-height: .88;
-      letter-spacing: -.055em;
-    }
-
-    .fv-product-content p {
-      max-width: 360px;
-      margin-top: 24px;
-
-      font-size: 14px;
-      line-height: 1.7;
-
-      color: rgba(255,255,255,.76);
-    }
-
-    .fv-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-
-      margin-top: 25px;
-    }
-
-    .fv-tags span {
-      padding: 7px 10px;
-
-      border: 1px solid rgba(255,255,255,.28);
-      border-radius: 30px;
-
-      font-size: 8px;
-      letter-spacing: .12em;
-
-      color: rgba(255,255,255,.76);
-    }
-
-
-    /* FIELD / MARKET */
-
-    .fv-process {
-      padding: 150px 0;
-      background: #e7e0d3;
-    }
-
-    .fv-process-heading {
-      display: grid;
-      grid-template-columns: 1fr .6fr;
-      gap: 100px;
-      margin-bottom: 80px;
-    }
-
-    .fv-process-heading h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(58px, 7vw, 105px);
-      font-weight: 400;
-      line-height: .84;
-      letter-spacing: -.065em;
-    }
-
-    .fv-process-heading p {
-      max-width: 430px;
-      padding-top: 20px;
-
-      font-size: 15px;
-      line-height: 1.85;
-      color: #69736d;
-    }
-
-    .fv-process-line {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-
-      border-top: 1px solid rgba(20,34,29,.18);
-    }
-
-    .fv-process-step {
-      min-height: 190px;
-      padding: 25px 25px 25px 0;
-
-      border-right: 1px solid rgba(20,34,29,.14);
-    }
-
-    .fv-process-step:not(:first-child) {
-      padding-left: 25px;
-    }
-
-    .fv-process-step:last-child {
-      border-right: 0;
-    }
-
-    .fv-process-step span {
-      display: block;
-
-      margin-bottom: 55px;
-
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .15em;
-
-      color: #7d857f;
-    }
-
-    .fv-process-step strong {
-      display: block;
-
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 28px;
-      font-weight: 400;
-    }
-
-
-    /* ORIGIN */
-
-    .fv-origin {
-      padding: 150px 0;
-      background: #f4f0e7;
-    }
-
-    .fv-origin-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 110px;
-      align-items: center;
-    }
-
-    .fv-origin-image {
-      height: 650px;
-      overflow: hidden;
-    }
-
-    .fv-origin-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-      transition: transform 1s cubic-bezier(.16,1,.3,1);
-    }
-
-    .fv-origin-image:hover img {
-      transform: scale(1.035);
-    }
-
-    .fv-origin-content h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(60px, 7vw, 105px);
-      font-weight: 400;
-      line-height: .84;
-      letter-spacing: -.065em;
-    }
-
-    .fv-origin-content h2 em {
-      font-style: italic;
-    }
-
-    .fv-origin-content p {
-      max-width: 500px;
-      margin-top: 35px;
-
-      font-size: 16px;
-      line-height: 1.85;
-      color: #68736d;
-    }
-
-    .fv-origin-route {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-
-      margin-top: 55px;
-    }
-
-    .fv-origin-route span {
-      padding: 13px 18px;
-
-      border: 1px solid rgba(20,34,29,.15);
-      border-right: 0;
-
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .fv-origin-route span:last-child {
-      border-right: 1px solid rgba(20,34,29,.15);
-    }
-
-
-    /* SEASONAL */
-
-    .fv-season {
-      padding: 120px 0;
-      background: #14231d;
-      color: #fff;
-    }
-
-    .fv-season-heading {
-      display: flex;
-      justify-content: space-between;
-      gap: 60px;
-      align-items: flex-end;
-      margin-bottom: 60px;
-    }
-
-    .fv-season-heading h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(60px, 7vw, 105px);
-      font-weight: 400;
-      line-height: .84;
-      letter-spacing: -.065em;
-    }
-
-    .fv-season-heading p {
-      max-width: 390px;
-      color: rgba(255,255,255,.58);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .fv-months {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid rgba(255,255,255,.15);
-      border-left: 1px solid rgba(255,255,255,.15);
-    }
-
-    .fv-month {
-      min-height: 230px;
-      padding: 25px;
-
-      border-right: 1px solid rgba(255,255,255,.15);
-      border-bottom: 1px solid rgba(255,255,255,.15);
-
-      transition:
-        background .4s ease,
-        transform .4s cubic-bezier(.16,1,.3,1);
-    }
-
-    .fv-month:hover {
-      background: rgba(255,255,255,.05);
-      transform: translateY(-4px);
-    }
-
-    .fv-month span {
-      font-size: 9px;
-      letter-spacing: .18em;
-      color: rgba(255,255,255,.45);
-    }
-
-    .fv-month strong {
-      display: block;
-      margin-top: 70px;
-
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 32px;
-      font-weight: 400;
-    }
-
-    .fv-month p {
-      margin-top: 8px;
-
-      font-size: 12px;
-      line-height: 1.6;
-      color: rgba(255,255,255,.52);
-    }
-
-
-    /* CTA */
-
-    .fv-cta {
-      padding: 150px 0;
-      background:
-        linear-gradient(
-          135deg,
-          #081d18,
-          #132e25
-        );
-      color: #fff;
-    }
-
-    .fv-cta-inner {
-      max-width: 900px;
-    }
-
-    .fv-cta-label {
-      font-size: 10px;
-      letter-spacing: .2em;
-      font-weight: 700;
-      color: rgba(255,255,255,.5);
-    }
-
-    .fv-cta h2 {
-      margin-top: 25px;
-
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(68px, 9vw, 135px);
-      font-weight: 400;
-      line-height: .82;
-      letter-spacing: -.07em;
-    }
-
-    .fv-cta p {
-      max-width: 520px;
-      margin-top: 35px;
-
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255,255,255,.62);
-    }
-
-    .fv-cta a {
-      display: inline-flex;
-      margin-top: 35px;
-
-      padding: 14px 26px;
-
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 30px;
-
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1000px) {
-
-      .fv-hero-inner {
-        width: min(100% - 100px, 1240px);
-      }
-
-      .fv-intro-grid,
-      .fv-process-heading,
-      .fv-origin-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .fv-product-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .fv-product-card {
-        min-height: 600px;
-      }
-
-      .fv-process-line {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .fv-process-step:nth-child(3) {
-        border-right: 0;
-      }
-
-      .fv-months {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-
-    @media (max-width: 700px) {
-
-      .fv-hero {
-        min-height: 780px;
-      }
-
-      .fv-hero-inner {
-        width: calc(100% - 48px);
-        padding-bottom: 60px;
-      }
-
-      .fv-hero h1 {
-        font-size: clamp(64px, 18vw, 110px);
-      }
-
-      .fv-intro,
-      .fv-products,
-      .fv-origin,
-      .fv-season,
-      .fv-cta {
-        padding: 90px 0;
-      }
-
-      .fv-intro-text {
-        padding-top: 0;
-      }
-
-      .fv-products-heading,
-      .fv-season-heading {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .fv-process-line {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .fv-process-step:nth-child(3) {
-        border-right: 1px solid rgba(20,34,29,.14);
-      }
-
-      .fv-process-step:nth-child(even) {
-        border-right: 0;
-      }
-
-      .fv-origin-image {
-        height: 480px;
-      }
-
-      .fv-origin-route span {
-        border-right: 1px solid rgba(20,34,29,.15);
-      }
-
-      .fv-months {
-        grid-template-columns: 1fr;
-      }
-
-      .fv-month {
-        min-height: 190px;
-      }
-    }
-
-
-    @media (max-width: 480px) {
-
-      .fv-process-line {
-        grid-template-columns: 1fr;
-      }
-
-      .fv-process-step,
-      .fv-process-step:nth-child(3),
-      .fv-process-step:nth-child(even) {
-        border-right: 0;
-        border-bottom: 1px solid rgba(20,34,29,.14);
-      }
-
-      .fv-process-step:last-child {
-        border-bottom: 0;
-      }
-
-      .fv-product-card {
-        min-height: 500px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="produce.css">
 </head>
-
 
 <body class="produce-page">
 
-<header class="site-header">
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="site-header produce-header">
+
   <div class="container nav-wrap">
 
     <a href="../index.html" class="brand" aria-label="EMPERIO TISS">
@@ -744,20 +40,24 @@
     </a>
 
     <nav class="nav" aria-label="Main navigation">
+
       <a href="../index.html">About</a>
+
       <a href="./" class="active">Products</a>
+
       <a href="../markets/">Markets</a>
 
       <div class="language-switcher">
-        <a href="../products/">EN</a>
-        <a href="../es/products/">ES</a>
-        <a href="../fr/products/">FR</a>
-        <a href="../ar/products/">AR</a>
+        <a href="./" class="active">EN</a>
+        <a href="../es/products/fruits-vegetables.html">ES</a>
+        <a href="../fr/products/fruits-vegetables.html">FR</a>
+        <a href="../ar/products/fruits-vegetables.html">AR</a>
       </div>
 
       <a href="../contact/" class="nav-cta">
         Business enquiry ↗
       </a>
+
     </nav>
 
     <button
@@ -770,126 +70,171 @@
     </button>
 
   </div>
+
 </header>
 
 
 <main>
 
-  <!-- HERO -->
+<!-- =====================================================
+     HERO — THE FIELD
+====================================================== -->
 
-  <section class="fv-hero">
+<section class="produce-hero">
 
-    <div class="fv-hero-inner">
+  <div class="produce-hero-image"></div>
 
-      <div class="fv-eyebrow">
-        02 / FROM THE LAND
-        <span>EUROPE · AFRICA · MEDITERRANEAN</span>
+  <div class="produce-hero-overlay"></div>
+
+  <div class="container produce-hero-inner">
+
+    <div class="produce-eyebrow">
+      <span>02</span>
+      FROM THE LAND
+    </div>
+
+    <div class="produce-hero-content">
+
+      <div>
+
+        <h1>
+          From the<br>
+          <em>field.</em>
+        </h1>
+
       </div>
 
-      <h1>
-        From the<br>
-        <em>field.</em>
-      </h1>
+      <div class="produce-hero-copy">
 
-      <p class="fv-hero-copy">
-        Fresh produce selected around origin, harvest,
-        variety, specification and the requirements of
-        professional buyers.
-      </p>
+        <p>
+          Fresh produce selected around origin, harvest,
+          variety, specification and the requirements of
+          professional buyers.
+        </p>
 
-      <div class="fv-hero-bottom">
-        <span>Origin</span>
-        <span>Harvest</span>
-        <span>Quality</span>
-        <span>Destination</span>
+        <div class="produce-hero-meta">
+          <span>ORIGIN</span>
+          <span>HARVEST</span>
+          <span>QUALITY</span>
+          <span>DESTINATION</span>
+        </div>
+
       </div>
 
     </div>
 
-  </section>
+    <div class="produce-scroll">
+      <span></span>
+      SCROLL TO EXPLORE
+    </div>
+
+  </div>
+
+</section>
 
 
-  <!-- INTRO -->
+<!-- =====================================================
+     INTRO
+====================================================== -->
 
-  <section class="fv-intro">
+<section class="produce-intro">
 
-    <div class="container fv-intro-grid">
+  <div class="container">
+
+    <div class="produce-intro-grid">
 
       <div>
 
-        <div class="fv-label">
+        <span class="produce-label">
           01 / THE LAND
-        </div>
+        </span>
 
         <h2>
           Agriculture<br>
-          has a <em>rhythm.</em>
+          <em>has a rhythm.</em>
         </h2>
 
       </div>
 
-      <p class="fv-intro-text">
-        Fruits and vegetables are shaped by soil, climate,
-        water, variety and timing. We follow those factors
-        to understand availability before building a supply.
-
-        <br><br>
-
-        From Mediterranean orchards and vegetable fields
-        to North African production areas, we connect
-        origins with professional destinations.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- PRODUCT WORLDS -->
-
-  <section class="fv-products">
-
-    <div class="container">
-
-      <div class="fv-products-heading">
-
-        <div>
-          <div class="fv-label">
-            02 / PRODUCT WORLDS
-          </div>
-
-          <h2>
-            What grows<br>
-            becomes <em>supply.</em>
-          </h2>
-        </div>
+      <div class="produce-intro-copy">
 
         <p>
-          Selected around variety, harvest window,
-          calibre, quality, format and destination.
+          Fruits and vegetables are shaped by soil, climate,
+          water, variety and timing.
+        </p>
+
+        <p>
+          We follow those factors to understand availability
+          before building a supply.
+        </p>
+
+        <p>
+          From Mediterranean orchards and vegetable fields to
+          North African production areas, we connect origins
+          with professional destinations.
         </p>
 
       </div>
 
+    </div>
 
-      <div class="fv-product-grid">
+  </div>
+
+</section>
 
 
-        <article class="fv-product-card">
+<!-- =====================================================
+     PRODUCT WORLDS
+====================================================== -->
 
-          <img
-            class="fv-product-image"
-            src="/products/images/fruits-vegetables/citrus.jpg"
-            alt="Mediterranean citrus orchard"
-          >
+<section class="produce-worlds">
 
-          <div class="fv-product-content">
+  <div class="container">
 
-            <span class="fv-product-number">
-              01 / ORCHARDS
-            </span>
+    <div class="produce-section-heading">
 
-            <h3>Citrus</h3>
+      <div>
+        <span class="produce-label">
+          02 / PRODUCT WORLDS
+        </span>
+
+        <h2>
+          What grows<br>
+          <em>becomes supply.</em>
+        </h2>
+      </div>
+
+      <p>
+        Selected around variety, harvest window, calibre,
+        quality, format and destination.
+      </p>
+
+    </div>
+
+
+    <div class="produce-cards">
+
+
+      <!-- CITRUS -->
+
+      <article class="produce-card produce-card-citrus">
+
+        <div class="produce-card-image"></div>
+
+        <div class="produce-card-overlay"></div>
+
+        <div class="produce-card-content">
+
+          <div class="produce-card-top">
+            <span>01 / ORCHARDS</span>
+            <span>01</span>
+          </div>
+
+          <div>
+
+            <h3>
+              Citrus
+            </h3>
 
             <p>
               Oranges, mandarins, lemons and other citrus
@@ -897,7 +242,7 @@
               and destination.
             </p>
 
-            <div class="fv-tags">
+            <div class="produce-tags">
               <span>ORANGES</span>
               <span>MANDARINS</span>
               <span>LEMONS</span>
@@ -906,24 +251,31 @@
 
           </div>
 
-        </article>
+        </div>
+
+      </article>
 
 
-        <article class="fv-product-card">
+      <!-- VEGETABLES -->
 
-          <img
-            class="fv-product-image"
-            src="/products/images/fruits-vegetables/vegetables.jpg"
-            alt="Fresh vegetables in agricultural field"
-          >
+      <article class="produce-card produce-card-fields">
 
-          <div class="fv-product-content">
+        <div class="produce-card-image"></div>
 
-            <span class="fv-product-number">
-              02 / FIELDS
-            </span>
+        <div class="produce-card-overlay"></div>
 
-            <h3>Vegetables</h3>
+        <div class="produce-card-content">
+
+          <div class="produce-card-top">
+            <span>02 / FIELDS</span>
+            <span>02</span>
+          </div>
+
+          <div>
+
+            <h3>
+              Vegetables
+            </h3>
 
             <p>
               Field-grown vegetables selected according to
@@ -931,7 +283,7 @@
               requirements.
             </p>
 
-            <div class="fv-tags">
+            <div class="produce-tags">
               <span>TOMATOES</span>
               <span>PEPPERS</span>
               <span>ZUCCHINI</span>
@@ -940,24 +292,31 @@
 
           </div>
 
-        </article>
+        </div>
+
+      </article>
 
 
-        <article class="fv-product-card">
+      <!-- FRUITS -->
 
-          <img
-            class="fv-product-image"
-            src="/products/images/fruits-vegetables/fruits.jpg"
-            alt="Fresh Mediterranean fruit"
-          >
+      <article class="produce-card produce-card-fruits">
 
-          <div class="fv-product-content">
+        <div class="produce-card-image"></div>
 
-            <span class="fv-product-number">
-              03 / MEDITERRANEAN
-            </span>
+        <div class="produce-card-overlay"></div>
 
-            <h3>Fruits</h3>
+        <div class="produce-card-content">
+
+          <div class="produce-card-top">
+            <span>03 / MEDITERRANEAN</span>
+            <span>03</span>
+          </div>
+
+          <div>
+
+            <h3>
+              Fruits
+            </h3>
 
             <p>
               Selected fruits following harvest windows,
@@ -965,7 +324,7 @@
               specification.
             </p>
 
-            <div class="fv-tags">
+            <div class="produce-tags">
               <span>STONE FRUIT</span>
               <span>MELONS</span>
               <span>GRAPES</span>
@@ -974,243 +333,270 @@
 
           </div>
 
-        </article>
+        </div>
 
-      </div>
+      </article>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- SUPPLY CHAIN -->
+<!-- =====================================================
+     ORIGIN / SPECIFICATION
+====================================================== -->
 
-  <section class="fv-process">
+<section class="produce-origin">
 
-    <div class="container">
+  <div class="container">
 
-      <div class="fv-process-heading">
+    <div class="produce-origin-heading">
+
+      <div>
+
+        <span class="produce-label">
+          03 / FROM ORIGIN TO DESTINATION
+        </span>
 
         <h2>
-          From origin<br>
-          to <em>destination.</em>
+          The field<br>
+          <em>becomes a route.</em>
         </h2>
-
-        <p>
-          A product is only right when its origin,
-          specification, volume and timing work together.
-        </p>
 
       </div>
 
+      <p>
+        A product is only right when its origin,
+        specification, volume and timing work together.
+      </p>
 
-      <div class="fv-process-line">
+    </div>
 
-        <div class="fv-process-step">
-          <span>01</span>
-          <strong>Origin</strong>
-        </div>
 
-        <div class="fv-process-step">
-          <span>02</span>
-          <strong>Variety</strong>
-        </div>
+    <div class="produce-route">
 
-        <div class="fv-process-step">
-          <span>03</span>
-          <strong>Calibre</strong>
-        </div>
+      <div class="route-line"></div>
 
-        <div class="fv-process-step">
-          <span>04</span>
-          <strong>Quality</strong>
-        </div>
+      <div class="route-item">
+        <span>01</span>
+        <strong>Origin</strong>
+      </div>
 
-        <div class="fv-process-step">
-          <span>05</span>
-          <strong>Volume</strong>
-        </div>
+      <div class="route-item">
+        <span>02</span>
+        <strong>Variety</strong>
+      </div>
 
-        <div class="fv-process-step">
-          <span>06</span>
-          <strong>Timing</strong>
-        </div>
+      <div class="route-item">
+        <span>03</span>
+        <strong>Calibre</strong>
+      </div>
+
+      <div class="route-item">
+        <span>04</span>
+        <strong>Quality</strong>
+      </div>
+
+      <div class="route-item">
+        <span>05</span>
+        <strong>Volume</strong>
+      </div>
+
+      <div class="route-item">
+        <span>06</span>
+        <strong>Timing</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEDITERRANEAN LANDSCAPE
+====================================================== -->
+
+<section class="produce-landscape">
+
+  <div class="produce-landscape-image"></div>
+
+  <div class="produce-landscape-overlay"></div>
+
+  <div class="container produce-landscape-inner">
+
+    <div>
+
+      <span class="produce-label light">
+        04 / ORIGIN
+      </span>
+
+      <h2>
+        Mediterranean<br>
+        <em>fields.</em>
+      </h2>
+
+    </div>
+
+    <div class="landscape-copy">
+
+      <p>
+        Our sourcing perspective follows the agricultural
+        landscapes around the Mediterranean and the connections
+        between European and North African supply.
+      </p>
+
+      <div class="origin-route">
+
+        <span>SPAIN</span>
+        <i>→</i>
+        <span>MOROCCO</span>
+        <i>→</i>
+        <span>TUNISIA</span>
+        <i>→</i>
+        <span>EUROPE</span>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- ORIGIN -->
+<!-- =====================================================
+     SEASONALITY
+====================================================== -->
 
-  <section class="fv-origin">
+<section class="produce-seasonality">
 
-    <div class="container fv-origin-grid">
+  <div class="container">
 
-      <div class="fv-origin-image">
+    <div class="produce-season-heading">
 
-        <img
-          src="/products/images/fruits-vegetables/mediterranean-field.jpg"
-          alt="Mediterranean agricultural fields"
-        >
+      <div>
 
-      </div>
-
-
-      <div class="fv-origin-content">
-
-        <div class="fv-label">
-          04 / ORIGIN
-        </div>
+        <span class="produce-label">
+          05 / SEASONALITY
+        </span>
 
         <h2>
-          Mediterranean<br>
-          <em>fields.</em>
+          Know when<br>
+          <em>the land speaks.</em>
         </h2>
 
-        <p>
-          Our sourcing perspective follows the agricultural
-          landscapes around the Mediterranean and the
-          connections between European and North African
-          supply.
-        </p>
-
-        <div class="fv-origin-route">
-          <span>Spain</span>
-          <span>Morocco</span>
-          <span>Tunisia</span>
-          <span>Europe</span>
-        </div>
-
       </div>
+
+      <p>
+        Availability changes throughout the year.
+        Harvest windows, origin and weather conditions
+        shape the commercial opportunity.
+      </p>
 
     </div>
 
-  </section>
 
+    <div class="season-line">
 
-  <!-- SEASONALITY -->
-
-  <section class="fv-season">
-
-    <div class="container">
-
-      <div class="fv-season-heading">
-
-        <div>
-
-          <div class="fv-label" style="color:rgba(255,255,255,.42)">
-            05 / SEASONALITY
-          </div>
-
-          <h2>
-            Know when<br>
-            the land <em>speaks.</em>
-          </h2>
-
-        </div>
-
+      <article>
+        <span>SPRING</span>
+        <strong>New harvests</strong>
         <p>
-          Availability changes throughout the year.
-          Harvest windows, origin and weather conditions
-          shape the commercial opportunity.
+          Fresh arrivals and transition between origins.
         </p>
+      </article>
 
-      </div>
+      <article>
+        <span>SUMMER</span>
+        <strong>Peak fields</strong>
+        <p>
+          High availability across Mediterranean production.
+        </p>
+      </article>
 
+      <article>
+        <span>AUTUMN</span>
+        <strong>Citrus begins</strong>
+        <p>
+          New citrus campaigns and changing varieties.
+        </p>
+      </article>
 
-      <div class="fv-months">
-
-        <div class="fv-month">
-          <span>SPRING</span>
-          <strong>New harvests</strong>
-          <p>
-            Fresh arrivals and transition between origins.
-          </p>
-        </div>
-
-        <div class="fv-month">
-          <span>SUMMER</span>
-          <strong>Peak fields</strong>
-          <p>
-            High availability across Mediterranean production.
-          </p>
-        </div>
-
-        <div class="fv-month">
-          <span>AUTUMN</span>
-          <strong>Citrus begins</strong>
-          <p>
-            New citrus campaigns and changing varieties.
-          </p>
-        </div>
-
-        <div class="fv-month">
-          <span>WINTER</span>
-          <strong>Citrus season</strong>
-          <p>
-            Strong Mediterranean citrus availability.
-          </p>
-        </div>
-
-      </div>
+      <article>
+        <span>WINTER</span>
+        <strong>Citrus season</strong>
+        <p>
+          Strong Mediterranean citrus availability.
+        </p>
+      </article>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- CTA -->
+<!-- =====================================================
+     CTA
+====================================================== -->
 
-  <section class="fv-cta">
+<section class="produce-cta">
 
-    <div class="container">
+  <div class="container">
 
-      <div class="fv-cta-inner">
+    <div class="produce-cta-inner">
 
-        <div class="fv-cta-label">
-          PRODUCT ENQUIRY
-        </div>
+      <span class="produce-label light">
+        PRODUCT ENQUIRY
+      </span>
 
-        <h2>
-          Tell us<br>
-          what you <em>need.</em>
-        </h2>
+      <h2>
+        Tell us<br>
+        <em>what you need.</em>
+      </h2>
 
-        <p>
-          Product, origin, calibre, packaging, volume,
-          destination and timing.
-        </p>
+      <p>
+        Product, origin, calibre, packaging,
+        volume, destination and timing.
+      </p>
 
-        <a href="../contact/">
-          Start an enquiry ↗
-        </a>
-
-      </div>
+      <a
+        href="../contact/"
+        class="produce-button"
+      >
+        Start an enquiry
+        <span>↗</span>
+      </a>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 </main>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
-<footer class="footer">
+<footer class="footer produce-footer">
 
   <div class="container">
 
     <div class="footer-grid">
 
-      <div>
+      <div class="footer-brand">
 
         <img
           src="../logo.png"
           alt="EMPERIO TISS"
-          class="footer-logo"
         >
 
         <p>
@@ -1226,7 +612,7 @@
         <strong>Company</strong>
 
         <a href="../about/">About</a>
-        <a href="../products/">Products</a>
+        <a href="./">Products</a>
         <a href="../markets/">Markets</a>
         <a href="../contact/">Contact</a>
 
@@ -1241,7 +627,9 @@
         <a href="fruits-vegetables.html">
           Fruits &amp; Vegetables
         </a>
-        <a href="seasonal.html">Seasonal</a>
+        <a href="seasonal.html">
+          Seasonal
+        </a>
 
       </div>
 
@@ -1251,7 +639,7 @@
     <div class="footer-bottom">
 
       <span>
-        © 2026 EMPERIO TISS
+        © 2026 EMPERIO TISS S.L
       </span>
 
       <span>
@@ -1277,17 +665,17 @@
 
     menuToggle.addEventListener("click", () => {
 
-      const open =
+      const isOpen =
         menuToggle.getAttribute("aria-expanded") === "true";
 
       menuToggle.setAttribute(
         "aria-expanded",
-        String(!open)
+        String(!isOpen)
       );
 
       nav.classList.toggle(
         "is-open",
-        !open
+        !isOpen
       );
 
     });
@@ -1298,3 +686,4 @@
 
 </body>
 </html>
+```
