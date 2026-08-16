@@ -991,3 +991,421 @@
   }
 
 }
+/* ============================================================
+   EMPERIO TISS — SEASONAL FINAL SYSTEM
+   Final override
+============================================================ */
+
+.seasonal-page {
+  --season-green: #496d5b;
+  --season-deep: #082d29;
+  --season-sand: #eee9dc;
+  --season-field: #dfe4d8;
+  --season-line: rgba(8,45,41,.14);
+
+  background: #f5f2ea;
+  color: #082d29;
+}
+
+
+/* HERO */
+
+.seasonal-page .seasonal-hero {
+  min-height: 680px;
+  display: flex;
+  align-items: flex-end;
+
+  background:
+    radial-gradient(
+      circle at 78% 30%,
+      rgba(211,170,94,.20),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #eee9dc 0%,
+      #dfe4d8 55%,
+      #e8dfd0 100%
+    );
+
+  border-bottom: 1px solid var(--season-line);
+  overflow: hidden;
+}
+
+.seasonal-page .seasonal-hero-inner {
+  width: min(1240px, calc(100% - 80px));
+  margin-inline: auto;
+  padding-bottom: 100px;
+}
+
+.seasonal-page .seasonal-hero h1 {
+  max-width: 1100px;
+  margin-top: 45px;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(76px, 10vw, 150px);
+  font-weight: 400;
+  line-height: .84;
+  letter-spacing: -.065em;
+}
+
+.seasonal-page .seasonal-hero h1 em {
+  display: block;
+  margin-left: 11vw;
+  font-style: italic;
+}
+
+.seasonal-page .seasonal-hero p:last-child {
+  max-width: 610px;
+  margin-top: 40px;
+
+  color: #68736f;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* GENERAL SECTIONS */
+
+.seasonal-page .section {
+  padding: 120px 0;
+}
+
+.seasonal-page .section-head {
+  display: grid;
+  grid-template-columns: 1fr .65fr;
+  gap: 100px;
+  align-items: start;
+  margin-bottom: 65px;
+}
+
+.seasonal-page .section-head h2 {
+  margin-top: 25px;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(58px, 7vw, 105px);
+  font-weight: 400;
+  line-height: .87;
+  letter-spacing: -.06em;
+}
+
+.seasonal-page .section-head > p {
+  max-width: 480px;
+  padding-top: 50px;
+
+  color: #68736f;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* CALENDAR */
+
+.seasonal-page .seasonal-calendar {
+  border-top: 1px solid var(--season-line);
+}
+
+.seasonal-page .season-row {
+  display: grid;
+  grid-template-columns: 170px minmax(220px, 1fr) 280px;
+  align-items: center;
+  gap: 35px;
+
+  min-height: 135px;
+
+  border-bottom: 1px solid var(--season-line);
+
+  transition:
+    padding .4s cubic-bezier(.22,.61,.36,1),
+    background .4s ease;
+}
+
+.seasonal-page .season-row:hover {
+  padding-left: 18px;
+  background: rgba(255,255,255,.45);
+}
+
+.seasonal-page .season-row span:first-child {
+  font-size: 10px;
+  letter-spacing: .16em;
+  font-weight: 600;
+}
+
+.seasonal-page .season-row strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.seasonal-page .season-row span:last-child {
+  color: #68736f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* ORIGINS */
+
+.seasonal-page .seasonal-origin-section {
+  background: #e8e4d9;
+}
+
+.seasonal-page .season-origin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  border-top: 1px solid var(--season-line);
+  border-left: 1px solid var(--season-line);
+}
+
+.seasonal-page .season-origin {
+  min-height: 300px;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-right: 1px solid var(--season-line);
+  border-bottom: 1px solid var(--season-line);
+
+  background: #f7f4ec;
+
+  transition:
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    background .45s ease;
+}
+
+.seasonal-page .season-origin:nth-child(2) {
+  background: #e6eadf;
+}
+
+.seasonal-page .season-origin:nth-child(3) {
+  background: #e8e0d1;
+}
+
+.seasonal-page .season-origin:nth-child(4) {
+  background: #dce6df;
+}
+
+.seasonal-page .season-origin:hover {
+  transform: translateY(-8px);
+  background: #fff;
+}
+
+.seasonal-page .season-origin span {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: #68736f;
+}
+
+.seasonal-page .season-origin strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 3vw, 48px);
+  font-weight: 400;
+  line-height: .95;
+}
+
+.seasonal-page .season-origin small {
+  max-width: 220px;
+  color: #68736f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* AVAILABILITY */
+
+.seasonal-page .seasonal-availability {
+  background: #faf9f5;
+}
+
+.seasonal-page .availability-board {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+
+  border-top: 1px solid var(--season-line);
+  border-left: 1px solid var(--season-line);
+}
+
+.seasonal-page .availability-month {
+  min-height: 110px;
+  padding: 18px 8px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  border-right: 1px solid var(--season-line);
+  border-bottom: 1px solid var(--season-line);
+
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: #68736f;
+
+  transition:
+    background .35s ease,
+    color .35s ease;
+}
+
+.seasonal-page .availability-month:hover {
+  background: #e8e4d9;
+}
+
+.seasonal-page .availability-month.active {
+  background: var(--season-green);
+  color: white;
+}
+
+
+/* DARK SOURCING SECTION */
+
+.seasonal-page .seasonal-dark {
+  background: #082d29;
+  color: white;
+}
+
+.seasonal-page .seasonal-dark .eyebrow {
+  color: rgba(255,255,255,.55);
+}
+
+.seasonal-page .seasonal-dark .section-head > p {
+  color: rgba(255,255,255,.65);
+}
+
+.seasonal-page .seasonal-principles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-left: 1px solid rgba(255,255,255,.14);
+}
+
+.seasonal-page .seasonal-principles > div {
+  min-height: 310px;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-right: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+
+  transition:
+    background .35s ease,
+    transform .35s ease;
+}
+
+.seasonal-page .seasonal-principles > div:hover {
+  background: rgba(255,255,255,.06);
+  transform: translateY(-5px);
+}
+
+.seasonal-page .seasonal-principles span {
+  font-size: 10px;
+  letter-spacing: .15em;
+  opacity: .5;
+}
+
+.seasonal-page .seasonal-principles strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.seasonal-page .seasonal-principles p {
+  max-width: 230px;
+  color: rgba(255,255,255,.62);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .seasonal-page .seasonal-hero-inner {
+    width: calc(100% - 50px);
+  }
+
+  .seasonal-page .section-head {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .seasonal-page .section-head > p {
+    padding-top: 0;
+  }
+
+  .seasonal-page .season-row {
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    padding: 25px 0;
+  }
+
+  .seasonal-page .season-row span:last-child {
+    grid-column: 2;
+  }
+
+  .seasonal-page .season-origin-grid,
+  .seasonal-page .seasonal-principles {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .seasonal-page .availability-board {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .seasonal-page .seasonal-hero {
+    min-height: 600px;
+  }
+
+  .seasonal-page .seasonal-hero-inner {
+    width: calc(100% - 40px);
+    padding-bottom: 65px;
+  }
+
+  .seasonal-page .seasonal-hero h1 {
+    font-size: clamp(58px, 16vw, 85px);
+  }
+
+  .seasonal-page .seasonal-hero h1 em {
+    margin-left: 0;
+  }
+
+  .seasonal-page .section {
+    padding: 90px 0;
+  }
+
+  .seasonal-page .section-head h2 {
+    font-size: 55px;
+  }
+
+  .seasonal-page .season-row {
+    grid-template-columns: 85px 1fr;
+    min-height: 110px;
+    gap: 15px;
+  }
+
+  .seasonal-page .season-row strong {
+    font-size: 30px;
+  }
+
+  .seasonal-page .season-origin-grid,
+  .seasonal-page .seasonal-principles {
+    grid-template-columns: 1fr;
+  }
+
+  .seasonal-page .availability-board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
