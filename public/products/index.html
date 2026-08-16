@@ -30,8 +30,15 @@
     .products-page > .footer .container {
       width: calc(100vw - 56px) !important;
     }
-  }
-</style>
+<style>
+  /* Force the Products layout to stay centred */
+  .products-page > .site-header .nav-wrap,
+  .products-page > main .container,
+  .products-page > .footer .container {
+    width: min(1240px, calc(100vw - 160px)) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   @media (max-width: 768px) {
@@ -43,7 +50,6 @@
   }
 </style>
 </head>
-
 <body class="products-page">
   <header class="site-header">
     <div class="container nav-wrap">
