@@ -838,67 +838,51 @@
   }
 
 }
-/* =========================================================
-   CONTACT — SUBMIT BUTTON FIX
-========================================================= */
+/* =========================================
+   CONTACT — SEND ENQUIRY BUTTON
+========================================= */
 
-.contact-form button[type="submit"],
-.contact-submit,
-.contact-form .button,
-.contact-form .submit-button {
-  appearance: none;
-  -webkit-appearance: none;
-
+.contact-form button,
+.contact-form .submit-button,
+.contact-form button[type="submit"] {
+  width: auto;
+  min-width: 0;
+  height: 52px;
+  padding: 0 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-width: 155px;
-  min-height: 52px;
-  padding: 0 28px;
-
-  background: #0a1f1d !important;
-  background-color: #0a1f1d !important;
-
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-
-  border: 1px solid #0a1f1d !important;
+  border: 0;
   border-radius: 999px;
+
+  background: #071f1d;
+  color: #fff;
 
   font-family: "DM Sans", Arial, sans-serif;
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .04em;
+  font-weight: 700;
+  line-height: 1;
 
   cursor: pointer;
-
-  box-shadow: 0 12px 30px rgba(10, 31, 29, .14);
+  box-shadow: 0 12px 30px rgba(7, 31, 29, 0.14);
 
   transition:
-    background-color .3s ease,
-    color .3s ease,
-    transform .3s cubic-bezier(.22,.61,.36,1),
-    box-shadow .3s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
-.contact-form button[type="submit"]:hover,
-.contact-submit:hover,
-.contact-form .button:hover,
-.contact-form .submit-button:hover {
-  background: #14332f !important;
-  background-color: #14332f !important;
-
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-
+.contact-form button:hover,
+.contact-form .submit-button:hover,
+.contact-form button[type="submit"]:hover {
   transform: translateY(-3px);
-
-  box-shadow: 0 18px 38px rgba(10, 31, 29, .20);
+  box-shadow: 0 18px 35px rgba(7, 31, 29, 0.18);
 }
 
-.contact-form button[type="submit"]:active,
-.contact-submit:active {
+.contact-form button:active,
+.contact-form .submit-button:active,
+.contact-form button[type="submit"]:active {
   transform: translateY(-1px);
 }
 /* =========================================================
