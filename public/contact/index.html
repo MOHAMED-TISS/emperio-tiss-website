@@ -140,82 +140,90 @@
           <form class="contact-form" action="#" method="post">
 
             <div class="form-row">
+<p class="form-required-notice">
+  <b>*</b> Fields marked with * are required.
+</p>
+  <label>
+    <span><b>*</b> Name</span>
+    <input
+      type="text"
+      name="name"
+      placeholder="Your name"
+      autocomplete="name"
+      required
+    >
+  </label>
 
-              <label>
-                <span>Name</span>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  autocomplete="name"
-                  required
-                >
-              </label>
+  <label>
+    <span><b>*</b> Company</span>
+    <input
+      type="text"
+      name="company"
+      placeholder="Company name"
+      autocomplete="organization"
+      required
+    >
+  </label>
 
-              <label>
-                <span>Company</span>
-                <input
-                  type="text"
-                  name="company"
-                  placeholder="Company name"
-                  autocomplete="organization"
-                >
-              </label>
+</div>
 
-            </div>
+<div class="form-row">
 
-            <div class="form-row">
+  <label>
+    <span><b>*</b> Email</span>
+    <input
+      type="email"
+      name="email"
+      placeholder="your@email.com"
+      autocomplete="email"
+      required
+    >
+  </label>
 
-              <label>
-                <span>Email</span>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  autocomplete="email"
-                  required
-                >
-              </label>
+  <label>
+    <span><b>*</b> Phone</span>
+    <input
+      type="tel"
+      name="phone"
+      placeholder="+34"
+      autocomplete="tel"
+      required
+    >
+  </label>
 
-              <label>
-                <span>Phone</span>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="+34"
-                  autocomplete="tel"
-                >
-              </label>
+</div>
 
-            </div>
+<div class="form-row">
 
-            <div class="form-row">
+  <label>
+    <span><b>*</b> Product</span>
+    <select
+      name="product"
+      required
+    >
+      <option value="" selected disabled>Select a product</option>
+      <option value="seafood">Seafood</option>
+      <option value="fish">Fish</option>
+      <option value="shellfish">Shellfish</option>
+      <option value="cephalopods">Cephalopods</option>
+      <option value="fruits">Fruits</option>
+      <option value="vegetables">Vegetables</option>
+      <option value="seasonal">Seasonal products</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
 
-              <label>
-                <span>Product</span>
-                <select name="product">
-                  <option value="">Select a product</option>
-                  <option value="seafood">Seafood</option>
-                  <option value="fish">Fish</option>
-                  <option value="shellfish">Shellfish</option>
-                  <option value="cephalopods">Cephalopods</option>
-                  <option value="fruits">Fruits</option>
-                  <option value="vegetables">Vegetables</option>
-                  <option value="seasonal">Seasonal products</option>
-                  <option value="other">Other</option>
-                </select>
-              </label>
+  <label>
+    <span><b>*</b> Destination</span>
+    <input
+      type="text"
+      name="destination"
+      placeholder="City / country"
+      required
+    >
+  </label>
 
-              <label>
-                <span>Destination</span>
-                <input
-                  type="text"
-                  name="destination"
-                  placeholder="City / country"
-                >
-              </label>
-
-            </div>
+</div>
 
             <label>
               <span>Requirement</span>
