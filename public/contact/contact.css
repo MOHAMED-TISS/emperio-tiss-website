@@ -363,18 +363,22 @@
 ========================================================= */
 
 .contact-submit {
+  width: 180px;
+  height: 64px;
+
+  margin-top: 34px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
 
-  min-height: 52px;
-  padding: 0 27px;
+  padding: 0 28px;
 
   border: 0;
   border-radius: 999px;
 
-  background: var(--contact-ink);
+  background: #0a1f1d;
   color: #fff;
 
   font-family: "DM Sans", Arial, sans-serif;
@@ -383,28 +387,27 @@
 
   cursor: pointer;
 
-  box-shadow: 0 8px 25px rgba(10,31,29,.14);
+  box-shadow: 0 18px 40px rgba(10, 31, 29, 0.16);
 
   transition:
-    transform .3s var(--contact-ease),
-    background .3s ease,
-    box-shadow .3s ease;
-}
-
-.contact-submit span {
-  transition: transform .3s var(--contact-ease);
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
 }
 
 .contact-submit:hover {
-  transform: translateY(-3px);
-  background: #15332f;
-  box-shadow: 0 14px 35px rgba(10,31,29,.18);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(10, 31, 29, 0.22);
 }
 
-.contact-submit:hover span {
-  transform: translate(4px,-2px);
+.contact-submit span:last-child {
+  font-size: 15px;
+  transition: transform 0.3s ease;
 }
 
+.contact-submit:hover span:last-child {
+  transform: translate(3px, -3px);
+}
 
 /* =========================================================
    CONTACT INFORMATION
@@ -889,20 +892,20 @@
    REQUIRED FIELD INDICATOR
 ========================================================= */
 
-.form-required-notice {
-  margin: 0 0 42px;
-  font-size: 12px;
-  line-height: 1.6;
-  color: #7a8582;
-  letter-spacing: .01em;
-}
-
-.form-required-notice span,
-.required-mark {
-  color: #0a1f1d;
+.required-star {
+  color: #c62828;
   font-weight: 700;
+  margin-right: 4px;
 }
 
-.required-mark {
-  margin-right: 3px;
+.form-required-notice {
+  grid-column: 1 / -1;
+  margin: 0 0 28px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: #111;
+}
+
+.form-required-notice .required-star {
+  color: #c62828;
 }
