@@ -502,4 +502,88 @@
 
 </body>
 </html>
-```
+<!-- NAME -->
+<div class="form-field">
+  <label for="name">NAME</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Your name"
+    required
+    autocomplete="name"
+  >
+</div>
+
+<!-- COMPANY -->
+<div class="form-field">
+  <label for="company">COMPANY</label>
+  <input
+    type="text"
+    id="company"
+    name="company"
+    placeholder="Company name"
+    required
+    autocomplete="organization"
+  >
+</div>
+
+<!-- EMAIL -->
+<div class="form-field">
+  <label for="email">EMAIL</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="your@email.com"
+    required
+    autocomplete="email"
+  >
+</div>
+
+<!-- PHONE -->
+<div class="form-field">
+  <label for="phone">PHONE</label>
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    placeholder="+34"
+    required
+    autocomplete="tel"
+  >
+</div>
+
+<!-- PRODUCT -->
+<div class="form-field">
+  <label for="product">PRODUCT</label>
+
+  <select
+    id="product"
+    name="product"
+    required
+  >
+    <option value="" selected disabled>Select a product</option>
+    <option value="seafood">Seafood</option>
+    <option value="fish">Fish</option>
+    <option value="shellfish">Shellfish</option>
+    <option value="cephalopods">Cephalopods</option>
+    <option value="fruits-vegetables">Fruits &amp; Vegetables</option>
+    <option value="seasonal">Seasonal</option>
+    <option value="other">Other</option>
+  </select>
+</div>
+
+<!-- DESTINATION -->
+<div class="form-field">
+  <label for="destination">DESTINATION</label>
+
+  <input
+    type="text"
+    id="destination"
+    name="destination"
+    placeholder="City / country"
+    required
+    autocomplete="shipping country"
+  >
+</div>
