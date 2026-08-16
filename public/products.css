@@ -1,1830 +1,852 @@
-```css
-/* =========================================================
-   EMPERIO TISS
-   PRODUCTS SYSTEM
-   ---------------------------------------------------------
-   Compatible with:
-   /products/index.html
-   /products/seafood.html
-   /products/fruits-vegetables.html
-   /products/seasonal.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
-   Loaded AFTER ../style.css
-========================================================= */
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
+  <title>Products — EMPERIO TISS</title>
 
-/* =========================================================
-   01 — PRODUCTS VARIABLES
-========================================================= */
+  <meta
+    name="description"
+    content="EMPERIO TISS — International sourcing and distribution of seafood, fish, fruits and vegetables connecting Europe, Africa and the Middle East."
+  >
 
-.products-page,
-.seafood-page,
-.produce-page,
-.seasonal-page {
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  --products-ink: #082f2b;
-  --products-ink-soft: #536764;
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
 
-  --products-cream: #f4f1e8;
-  --products-cream-dark: #e8e4d9;
+  <!-- Main website CSS -->
+  <link rel="stylesheet" href="../style.css">
 
-  --products-white: #ffffff;
+  <!-- Products CSS -->
+  <link rel="stylesheet" href="products.css">
+</head>
 
-  --products-deep: #062a27;
-  --products-deep-2: #041f1d;
+<body class="products-page">
 
-  --products-line: rgba(8, 47, 43, 0.15);
-  --products-line-light: rgba(255,255,255,0.16);
 
-  --products-max: 1320px;
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
-  background: var(--products-cream);
-  color: var(--products-ink);
+  <header class="products-header">
 
-  margin: 0;
-  padding: 0;
+    <nav class="products-nav">
 
-  overflow-x: hidden;
+      <a
+        href="../index.html"
+        class="products-logo"
+        aria-label="EMPERIO TISS"
+      >
+        <img
+          src="../images/logo.png"
+          alt="EMPERIO TISS"
+        >
+      </a>
 
-  font-family:
-    "DM Sans",
-    Arial,
-    sans-serif;
-}
 
+      <div class="products-main-nav">
 
-/* =========================================================
-   02 — SAFE BOX MODEL
-========================================================= */
+        <a href="../index.html">
+          Home
+        </a>
 
-.products-page *,
-.seafood-page *,
-.produce-page *,
-.seasonal-page * {
-  box-sizing: border-box;
-}
+        <a href="../about/index.html">
+          About
+        </a>
 
+        <a
+          href="index.html"
+          class="active"
+        >
+          Products
+        </a>
 
-.products-page img,
-.seafood-page img,
-.produce-page img,
-.seasonal-page img {
-  max-width: 100%;
-}
+        <a href="../markets/index.html">
+          Markets
+        </a>
 
+        <a href="../contact/index.html">
+          Contact
+        </a>
 
-.products-page a,
-.seafood-page a,
-.produce-page a,
-.seasonal-page a {
-  color: inherit;
-  text-decoration: none;
-}
 
+        <div class="products-languages">
 
-.products-page button,
-.seafood-page button,
-.produce-page button,
-.seasonal-page button {
-  font: inherit;
-}
+          <a
+            href="#"
+            class="active"
+          >
+            EN
+          </a>
 
+          <a href="#">
+            FR
+          </a>
 
-/* =========================================================
-   03 — SHARED PRODUCTS CONTAINER
-========================================================= */
+          <a href="#">
+            ES
+          </a>
 
-.products-page .products-container,
-.seafood-page .products-container,
-.produce-page .products-container,
-.seasonal-page .products-container {
+        </div>
 
-  width: min(
-    calc(100% - 64px),
-    var(--products-max)
-  );
+      </div>
 
-  margin-inline: auto;
-}
 
+      <a
+        href="../contact/index.html"
+        class="products-enquiry"
+      >
+        Enquire
+      </a>
 
-/* =========================================================
-   04 — HEADER
-========================================================= */
 
-.products-page .products-header,
-.seafood-page .products-header,
-.produce-page .products-header,
-.seasonal-page .products-header {
+      <button
+        class="products-menu"
+        type="button"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
 
-  position: relative;
-  z-index: 50;
+    </nav>
 
-  width: 100%;
+  </header>
 
-  background: rgba(244,241,232,.96);
 
-  border-bottom: 1px solid var(--products-line);
 
-  backdrop-filter: blur(18px);
-}
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
 
+  <main>
 
-.products-page .products-nav,
-.seafood-page .products-nav,
-.produce-page .products-nav,
-.seasonal-page .products-nav {
+    <section class="products-hero">
 
-  width: min(
-    calc(100% - 64px),
-    var(--products-max)
-  );
+      <div class="products-hero-inner">
 
-  min-height: 88px;
+        <div class="products-kicker">
 
-  margin-inline: auto;
+          <span>01</span>
 
-  display: flex;
+          <span>
+            Products / Global Sourcing
+          </span>
 
-  align-items: center;
+        </div>
 
-  justify-content: space-between;
 
-  gap: 40px;
-}
+        <div class="products-hero-grid">
 
+          <div class="products-hero-title">
 
-/* =========================================================
-   LOGO
-========================================================= */
+            <h1>
+              What<br>
+              <em>we source.</em>
+            </h1>
 
-.products-page .products-logo,
-.seafood-page .products-logo,
-.produce-page .products-logo,
-.seasonal-page .products-logo {
+            <div class="products-hero-copy">
 
-  flex: 0 0 auto;
+              <p>
+                From the Atlantic and Mediterranean to
+                European growing regions, EMPERIO TISS
+                connects trusted origins with professional
+                buyers across Europe, Africa and the Middle East.
+              </p>
 
-  display: flex;
+            </div>
 
-  align-items: center;
+          </div>
 
-  width: 120px;
-}
 
+          <div class="products-hero-index">
 
-.products-page .products-logo img,
-.seafood-page .products-logo img,
-.produce-page .products-logo img,
-.seasonal-page .products-logo img {
+            <span>
+              01 — Seafood
+            </span>
 
-  display: block;
+            <span>
+              02 — Fruits &amp; Vegetables
+            </span>
 
-  width: 78px !important;
-  height: auto !important;
+            <span>
+              03 — Seasonal Products
+            </span>
 
-  max-width: 78px !important;
-  max-height: 70px !important;
+            <span>
+              04 — Origins
+            </span>
 
-  object-fit: contain;
-}
+          </div>
 
+        </div>
 
-/* =========================================================
-   MAIN NAV
-========================================================= */
 
-.products-page .products-main-nav,
-.seafood-page .products-main-nav,
-.produce-page .products-main-nav,
-.seasonal-page .products-main-nav {
+        <div class="products-hero-line"></div>
 
-  display: flex;
+      </div>
 
-  align-items: center;
+    </section>
 
-  justify-content: flex-end;
 
-  gap: 30px;
 
-  min-width: 0;
-}
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
 
+    <section class="products-intro">
 
-.products-page .products-main-nav > a,
-.seafood-page .products-main-nav > a,
-.produce-page .products-main-nav > a,
-.seasonal-page .products-main-nav > a {
+      <div class="products-container">
 
-  position: relative;
+        <div class="products-section-label">
 
-  display: inline-flex;
+          <span>Our product universe</span>
 
-  align-items: center;
+        </div>
 
-  white-space: nowrap;
 
-  padding: 10px 0;
+        <div class="products-intro-grid">
 
-  color: var(--products-ink);
+          <h2>
+            Selected<br>
+            <em>with purpose.</em>
+          </h2>
 
-  font-size: 13px;
 
-  font-weight: 600;
-}
+          <div>
 
+            <p>
+              Our product portfolio is built around
+              reliability, seasonality and market demand.
+              We source products according to origin,
+              quality, availability and destination.
+            </p>
 
-.products-page .products-main-nav > a:not(.products-enquiry)::after,
-.seafood-page .products-main-nav > a:not(.products-enquiry)::after,
-.produce-page .products-main-nav > a:not(.products-enquiry)::after,
-.seasonal-page .products-main-nav > a:not(.products-enquiry)::after {
+            <p>
+              The result is a flexible supply network
+              designed for wholesalers, distributors,
+              retailers, restaurants and professional
+              food businesses.
+            </p>
 
-  content: "";
+          </div>
 
-  position: absolute;
+        </div>
 
-  left: 0;
-  bottom: 3px;
+      </div>
 
-  width: 0;
-  height: 1px;
+    </section>
 
-  background: currentColor;
 
-  transition: width .25s ease;
-}
 
+    <!-- =====================================================
+         PRODUCT WORLDS
+    ====================================================== -->
 
-.products-page .products-main-nav > a:hover::after,
-.seafood-page .products-main-nav > a:hover::after,
-.produce-page .products-main-nav > a:hover::after,
-.seasonal-page .products-main-nav > a:hover::after {
+    <section class="products-worlds">
 
-  width: 100%;
-}
+      <div class="products-container">
 
+        <div class="products-section-label">
 
-/* =========================================================
-   ACTIVE NAV
-========================================================= */
+          <span>01 — Product worlds</span>
 
-.products-page .products-main-nav > a.active,
-.seafood-page .products-main-nav > a.active,
-.produce-page .products-main-nav > a.active,
-.seasonal-page .products-main-nav > a.active {
+        </div>
 
-  font-weight: 700;
-}
 
+        <div class="products-world-grid">
 
-/* =========================================================
-   LANGUAGES
-========================================================= */
 
-.products-page .products-languages,
-.seafood-page .products-languages,
-.produce-page .products-languages,
-.seasonal-page .products-languages {
+          <!-- SEAFOOD -->
 
-  display: flex;
+          <article class="products-world seafood-world">
 
-  align-items: center;
+            <div class="world-top">
 
-  gap: 8px;
+              <span>
+                01
+              </span>
 
-  margin-left: 4px;
+              <span>
+                ATLANTIC / MEDITERRANEAN
+              </span>
 
-  white-space: nowrap;
-}
+            </div>
 
 
-.products-page .products-languages a,
-.seafood-page .products-languages a,
-.produce-page .products-languages a,
-.seasonal-page .products-languages a {
+            <div class="world-content">
 
-  font-size: 10px;
+              <h2>
+                Sea<br>
+                <em>food.</em>
+              </h2>
 
-  font-weight: 700;
 
-  letter-spacing: .12em;
+              <p>
+                Fresh and frozen fish, shellfish and
+                cephalopods sourced through established
+                European, Mediterranean and African
+                supply channels.
+              </p>
 
-  color: #75827f;
 
-  transition: color .2s ease;
-}
+              <div class="world-species">
 
+                <span>Fish</span>
+                <span>Shellfish</span>
+                <span>Cephalopods</span>
+                <span>Frozen</span>
 
-.products-page .products-languages a:hover,
-.seafood-page .products-languages a:hover,
-.produce-page .products-languages a:hover,
-.seasonal-page .products-languages a:hover {
+              </div>
 
-  color: var(--products-ink);
-}
 
+              <a
+                href="seafood.html"
+                class="world-link"
+              >
+                Explore seafood
+                <span>→</span>
+              </a>
 
-.products-page .products-languages a.active,
-.seafood-page .products-languages a.active,
-.produce-page .products-languages a.active,
-.seasonal-page .products-languages a.active {
+            </div>
 
-  color: var(--products-ink);
-}
+          </article>
 
 
-.products-page .products-languages span,
-.seafood-page .products-languages span,
-.produce-page .products-languages span,
-.seasonal-page .products-languages span {
 
-  color: #a2aaa7;
+          <!-- FRUITS & VEGETABLES -->
 
-  font-size: 10px;
-}
+          <article class="products-world produce-world">
 
+            <div class="world-top">
 
-/* =========================================================
-   BUSINESS ENQUIRY
-========================================================= */
+              <span>
+                02
+              </span>
 
-.products-page .products-enquiry,
-.seafood-page .products-enquiry,
-.produce-page .products-enquiry,
-.seasonal-page .products-enquiry {
+              <span>
+                MEDITERRANEAN / EUROPE
+              </span>
 
-  display: inline-flex !important;
+            </div>
 
-  align-items: center;
 
-  justify-content: center;
+            <div class="world-content">
 
-  min-height: 44px;
+              <h2>
+                Fruits<br>
+                <em>&amp; vegetables.</em>
+              </h2>
 
-  padding: 0 21px !important;
 
-  border-radius: 999px;
+              <p>
+                Fresh produce selected from key growing
+                regions in Spain, Morocco, Tunisia and
+                surrounding Mediterranean markets.
+              </p>
 
-  background: var(--products-deep);
 
-  color: #fff !important;
+              <div class="world-species">
 
-  font-size: 12px !important;
+                <span>Citrus</span>
+                <span>Vegetables</span>
+                <span>Exotic</span>
+                <span>Seasonal</span>
 
-  font-weight: 600 !important;
+              </div>
 
-  transition:
-    transform .25s ease,
-    background .25s ease;
-}
 
+              <a
+                href="fruits-vegetables.html"
+                class="world-link"
+              >
+                Explore produce
+                <span>→</span>
+              </a>
 
-.products-page .products-enquiry:hover,
-.seafood-page .products-enquiry:hover,
-.produce-page .products-enquiry:hover,
-.seasonal-page .products-enquiry:hover {
+            </div>
 
-  transform: translateY(-2px);
+          </article>
 
-  background: #0b3d37;
-}
 
 
-.products-page .products-enquiry::after,
-.seafood-page .products-enquiry::after,
-.produce-page .products-enquiry::after,
-.seasonal-page .products-enquiry::after {
+          <!-- SEASONAL -->
 
-  display: none !important;
-}
+          <article class="products-world seasonal-world">
 
+            <div class="world-top">
 
-/* =========================================================
-   MOBILE MENU BUTTON
-========================================================= */
+              <span>
+                03
+              </span>
 
-.products-page .products-menu,
-.seafood-page .products-menu,
-.produce-page .products-menu,
-.seasonal-page .products-menu {
+              <span>
+                SEASONAL SOURCING
+              </span>
 
-  display: none;
+            </div>
 
-  width: 42px;
-  height: 42px;
 
-  align-items: center;
-  justify-content: center;
+            <div class="world-content">
 
-  border: 1px solid var(--products-line);
+              <h2>
+                Seasonal<br>
+                <em>selection.</em>
+              </h2>
 
-  border-radius: 50%;
 
-  background: transparent;
+              <p>
+                Products selected according to season,
+                origin and market opportunity, allowing
+                our partners to access the right products
+                at the right moment.
+              </p>
 
-  color: var(--products-ink);
 
-  cursor: pointer;
-}
+              <div class="world-species">
 
+                <span>Seasonality</span>
+                <span>Origin</span>
+                <span>Availability</span>
+                <span>Market</span>
 
-/* =========================================================
-   05 — HERO
-========================================================= */
+              </div>
 
-.products-page .products-hero {
 
-  position: relative;
+              <a
+                href="seasonal.html"
+                class="world-link"
+              >
+                View seasonal products
+                <span>→</span>
+              </a>
 
-  min-height: 680px;
+            </div>
 
-  display: flex;
+          </article>
 
-  align-items: center;
 
-  background: var(--products-cream);
+        </div>
 
-  overflow: hidden;
-}
+      </div>
 
+    </section>
 
-.products-page .products-hero::after {
 
-  content: "";
 
-  position: absolute;
+    <!-- =====================================================
+         ORIGINS
+    ====================================================== -->
 
-  width: 650px;
-  height: 650px;
+    <section class="products-origin">
 
-  right: -220px;
-  top: 80px;
+      <div class="products-container">
 
-  border-radius: 50%;
+        <div class="products-section-label">
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(8,47,43,.09),
-      transparent 68%
-    );
+          <span>02 — Sourcing network</span>
 
-  pointer-events: none;
-}
+        </div>
 
 
-.products-page .products-hero-inner {
+        <div class="products-origin-heading">
 
-  position: relative;
-  z-index: 2;
+          <h2>
+            From<br>
+            <em>origin.</em>
+          </h2>
 
-  width: min(
-    calc(100% - 64px),
-    var(--products-max)
-  );
 
-  margin-inline: auto;
+          <p>
+            EMPERIO TISS operates between producing
+            regions and professional markets, building
+            sourcing routes around product availability,
+            quality requirements and logistics.
+          </p>
 
-  padding: 100px 0 55px;
-}
+        </div>
 
 
-/* =========================================================
-   HERO KICKER
-========================================================= */
+        <div class="origin-grid">
 
-.products-page .products-kicker {
 
-  display: flex;
+          <article class="origin-card">
 
-  align-items: center;
+            <span>01</span>
 
-  gap: 18px;
+            <strong>
+              Spain
+            </strong>
 
-  margin-bottom: 65px;
+            <small>
+              Fresh produce, seafood and
+              Mediterranean supply.
+            </small>
 
-  color: var(--products-ink);
+          </article>
 
-  font-size: 10px;
 
-  font-weight: 700;
+          <article class="origin-card">
 
-  letter-spacing: .18em;
-}
+            <span>02</span>
 
+            <strong>
+              France
+            </strong>
 
-.products-page .products-kicker span:first-child {
+            <small>
+              Professional wholesale and
+              distribution markets.
+            </small>
 
-  opacity: .45;
-}
+          </article>
 
 
-/* =========================================================
-   HERO GRID
-========================================================= */
+          <article class="origin-card">
 
-.products-page .products-hero-grid {
+            <span>03</span>
 
-  display: grid;
+            <strong>
+              Morocco
+            </strong>
 
-  grid-template-columns:
-    minmax(0, 1.45fr)
-    minmax(280px, .55fr);
+            <small>
+              Citrus, vegetables and
+              Mediterranean produce.
+            </small>
 
-  gap: 90px;
+          </article>
 
-  align-items: end;
-}
 
+          <article class="origin-card">
 
-/* =========================================================
-   HERO TITLE
-========================================================= */
+            <span>04</span>
 
-.products-page .products-hero-title h1 {
+            <strong>
+              Tunisia
+            </strong>
 
-  max-width: 900px;
+            <small>
+              Seafood and agricultural
+              sourcing opportunities.
+            </small>
 
-  margin: 0;
+          </article>
 
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
 
-  font-size: clamp(
-    72px,
-    9.5vw,
-    145px
-  );
+          <article class="origin-card">
 
-  font-weight: 400;
+            <span>05</span>
 
-  line-height: .82;
+            <strong>
+              Africa
+            </strong>
 
-  letter-spacing: -.065em;
+            <small>
+              Developing sourcing links
+              across West African markets.
+            </small>
 
-  color: var(--products-ink);
-}
+          </article>
 
 
-.products-page .products-hero-title em {
+        </div>
 
-  font-style: italic;
+      </div>
 
-  font-weight: 400;
-}
+    </section>
 
 
-/* =========================================================
-   HERO COPY
-========================================================= */
 
-.products-page .products-hero-copy {
+    <!-- =====================================================
+         SPECIFICATIONS
+    ====================================================== -->
 
-  padding-bottom: 7px;
-}
+    <section class="products-specifications">
 
+      <div class="products-container">
 
-.products-page .products-hero-copy p {
+        <div class="products-section-label">
 
-  max-width: 420px;
+          <span>03 — Supply approach</span>
 
-  margin: 0;
+        </div>
 
-  color: var(--products-ink-soft);
 
-  font-size: 15px;
+        <div class="products-spec-grid">
 
-  line-height: 1.75;
-}
+          <h2>
+            Beyond<br>
+            <em>the product.</em>
+          </h2>
 
 
-.products-page .products-hero-index {
+          <div class="spec-list">
 
-  display: flex;
+            <div>
 
-  flex-direction: column;
+              <span>01</span>
 
-  gap: 8px;
+              <strong>
+                Origin transparency
+              </strong>
 
-  margin-top: 38px;
+            </div>
 
-  padding-top: 22px;
 
-  border-top: 1px solid var(--products-line);
+            <div>
 
-  color: var(--products-ink);
+              <span>02</span>
 
-  font-size: 9px;
+              <strong>
+                Quality selection
+              </strong>
 
-  font-weight: 700;
+            </div>
 
-  letter-spacing: .16em;
-}
 
+            <div>
 
-.products-page .products-hero-line {
+              <span>03</span>
 
-  width: 100%;
+              <strong>
+                Flexible sourcing
+              </strong>
 
-  height: 1px;
+            </div>
 
-  margin-top: 90px;
 
-  background: var(--products-line);
-}
+            <div>
 
+              <span>04</span>
 
-/* =========================================================
-   06 — INTRO
-========================================================= */
+              <strong>
+                Professional logistics
+              </strong>
 
-.products-page .products-intro {
+            </div>
 
-  padding: 135px 0;
 
-  background: var(--products-cream);
-}
+            <div>
 
+              <span>05</span>
 
-.products-page .products-section-label {
+              <strong>
+                Market-oriented supply
+              </strong>
 
-  margin-bottom: 55px;
+            </div>
 
-  color: var(--products-ink);
 
-  font-size: 10px;
+            <div>
 
-  font-weight: 700;
+              <span>06</span>
 
-  letter-spacing: .16em;
-}
+              <strong>
+                Europe — Africa — Middle East
+              </strong>
 
+            </div>
 
-.products-page .products-intro-grid {
+          </div>
 
-  display: grid;
+        </div>
 
-  grid-template-columns:
-    minmax(0, 1.15fr)
-    minmax(280px, .55fr);
+      </div>
 
-  gap: 100px;
+    </section>
 
-  align-items: end;
-}
 
 
-.products-page .products-intro-grid h2,
-.products-page .products-origin-heading h2,
-.products-page .products-spec-grid h2 {
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
 
-  max-width: 850px;
+    <section class="products-cta">
 
-  margin: 0;
+      <div class="products-container">
 
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
+        <div class="products-cta-inner">
 
-  font-size: clamp(
-    52px,
-    6.2vw,
-    94px
-  );
+          <span>
+            Let's work together
+          </span>
 
-  font-weight: 400;
 
-  line-height: .9;
+          <h2>
+            Looking for<br>
+            something specific?
+          </h2>
 
-  letter-spacing: -.05em;
-}
 
+          <p>
+            Tell us what you are looking for, where you
+            need it and when. Our sourcing network allows
+            us to build solutions around your market.
+          </p>
 
-.products-page .products-intro-grid h2 em,
-.products-page .products-origin-heading h2 em,
-.products-page .products-spec-grid h2 em {
 
-  font-style: italic;
-}
+          <a
+            href="../contact/index.html"
+            class="products-cta-button"
+          >
+            Send an enquiry →
+          </a>
 
+        </div>
 
-.products-page .products-intro-grid p {
+      </div>
 
-  max-width: 450px;
+    </section>
 
-  margin: 0;
+  </main>
 
-  color: var(--products-ink-soft);
 
-  font-size: 15px;
 
-  line-height: 1.8;
-}
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
+  <footer class="products-footer">
 
-/* =========================================================
-   07 — PRODUCT WORLDS
-========================================================= */
+    <div class="products-container">
 
-.products-page .products-worlds {
+      <div class="products-footer-grid">
 
-  padding: 0 0 140px;
 
-  background: var(--products-cream);
-}
+        <div class="products-footer-brand">
 
+          <a href="../index.html">
 
-.products-page .products-world-grid {
+            <img
+              src="../images/logo.png"
+              alt="EMPERIO TISS"
+            >
 
-  display: grid;
+          </a>
 
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
 
-  gap: 16px;
-}
+          <p>
+            International sourcing and distribution
+            connecting Europe, Africa and the Middle East
+            through seafood and fresh produce.
+          </p>
 
+        </div>
 
-/* =========================================================
-   WORLD CARD
-========================================================= */
 
-.products-page .products-world {
+        <div class="products-footer-column">
 
-  min-height: 580px;
+          <strong>
+            Products
+          </strong>
 
-  padding: 30px;
+          <a href="index.html">
+            Products
+          </a>
 
-  display: flex;
+          <a href="seafood.html">
+            Seafood
+          </a>
 
-  flex-direction: column;
+          <a href="fruits-vegetables.html">
+            Fruits &amp; Vegetables
+          </a>
 
-  justify-content: space-between;
+          <a href="seasonal.html">
+            Seasonal
+          </a>
 
-  position: relative;
+        </div>
 
-  overflow: hidden;
 
-  border: 1px solid var(--products-line);
+        <div class="products-footer-column">
 
-  background: var(--products-cream-dark);
+          <strong>
+            Company
+          </strong>
 
-  transition:
-    transform .4s ease,
-    box-shadow .4s ease;
-}
+          <a href="../about/index.html">
+            About
+          </a>
 
+          <a href="../markets/index.html">
+            Markets
+          </a>
 
-.products-page .products-world:hover {
+          <a href="../contact/index.html">
+            Contact
+          </a>
 
-  transform: translateY(-7px);
+          <a href="../index.html">
+            Home
+          </a>
 
-  box-shadow:
-    0 24px 60px rgba(8,47,43,.11);
-}
+        </div>
 
 
-/* =========================================================
-   WORLD COLOUR DIFFERENCES
-========================================================= */
+      </div>
 
-.products-page .seafood-world {
 
-  background:
-    linear-gradient(
-      145deg,
-      #dce8e5 0%,
-      #c8dcd8 100%
-    );
-}
+      <div class="products-footer-bottom">
 
+        <span>
+          © 2026 EMPERIO TISS SL
+        </span>
 
-.products-page .produce-world {
+        <span>
+          Europe · Africa · Middle East
+        </span>
 
-  background:
-    linear-gradient(
-      145deg,
-      #eee9dc 0%,
-      #e4dece 100%
-    );
-}
+      </div>
 
+    </div>
 
-.products-page .seasonal-world {
+  </footer>
 
-  background:
-    linear-gradient(
-      145deg,
-      #e8e5dc 0%,
-      #dcd8cc 100%
-    );
-}
 
 
-/* =========================================================
-   WORLD TOP
-========================================================= */
+  <!-- =====================================================
+       MOBILE MENU
+  ====================================================== -->
 
-.products-page .world-top {
+  <script>
 
-  display: flex;
+    const menuButton =
+      document.querySelector(".products-menu");
 
-  align-items: center;
+    const navigation =
+      document.querySelector(".products-main-nav");
 
-  justify-content: space-between;
 
-  padding-bottom: 20px;
+    if (menuButton && navigation) {
 
-  border-bottom: 1px solid var(--products-line);
+      menuButton.addEventListener("click", () => {
 
-  font-size: 9px;
+        const isOpen =
+          navigation.classList.toggle("is-open");
 
-  font-weight: 700;
+        menuButton.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
 
-  letter-spacing: .16em;
-}
+      });
 
+    }
 
-.products-page .world-top span:first-child {
+  </script>
 
-  opacity: .45;
-}
-
-
-/* =========================================================
-   WORLD CONTENT
-========================================================= */
-
-.products-page .world-content {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 35px;
-}
-
-
-.products-page .world-content h2 {
-
-  margin: 0 0 18px;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    42px,
-    4vw,
-    60px
-  );
-
-  font-weight: 400;
-
-  line-height: .9;
-
-  letter-spacing: -.045em;
-}
-
-
-.products-page .world-content h2 em {
-
-  display: block;
-
-  font-style: italic;
-}
-
-
-.products-page .world-content p {
-
-  max-width: 400px;
-
-  margin: 0;
-
-  color: var(--products-ink-soft);
-
-  font-size: 14px;
-
-  line-height: 1.7;
-}
-
-
-/* =========================================================
-   WORLD LINK
-========================================================= */
-
-.products-page .world-link {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  width: 100%;
-
-  padding-top: 18px;
-
-  border-top: 1px solid var(--products-line);
-
-  font-size: 12px;
-
-  font-weight: 700;
-}
-
-
-.products-page .world-link span {
-
-  font-size: 18px;
-
-  transition: transform .25s ease;
-}
-
-
-.products-page .products-world:hover .world-link span {
-
-  transform: translate(4px,-4px);
-}
-
-
-/* =========================================================
-   WORLD SPECIES
-========================================================= */
-
-.products-page .world-species {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 7px;
-}
-
-
-.products-page .world-species span {
-
-  padding: 8px 10px;
-
-  border: 1px solid rgba(8,47,43,.18);
-
-  border-radius: 999px;
-
-  font-size: 8px;
-
-  font-weight: 700;
-
-  letter-spacing: .12em;
-}
-
-
-/* =========================================================
-   08 — ORIGIN
-========================================================= */
-
-.products-page .products-origin {
-
-  padding: 140px 0;
-
-  background: #eeebe1;
-}
-
-
-.products-page .products-origin-heading {
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.15fr)
-    minmax(280px, .55fr);
-
-  gap: 100px;
-
-  align-items: end;
-
-  margin-bottom: 80px;
-}
-
-
-.products-page .products-origin-heading p {
-
-  max-width: 440px;
-
-  margin: 0;
-
-  color: var(--products-ink-soft);
-
-  font-size: 15px;
-
-  line-height: 1.8;
-}
-
-
-/* =========================================================
-   ORIGIN GRID
-========================================================= */
-
-.products-page .origin-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, minmax(0, 1fr));
-
-  border-top: 1px solid var(--products-line);
-
-  border-left: 1px solid var(--products-line);
-}
-
-
-.products-page .origin-card {
-
-  min-height: 230px;
-
-  padding: 27px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: space-between;
-
-  border-right: 1px solid var(--products-line);
-
-  border-bottom: 1px solid var(--products-line);
-
-  transition:
-    background .3s ease;
-}
-
-
-.products-page .origin-card:hover {
-
-  background: rgba(255,255,255,.42);
-}
-
-
-.products-page .origin-card > span {
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  opacity: .4;
-}
-
-
-.products-page .origin-card strong {
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: 34px;
-
-  font-weight: 400;
-
-  line-height: 1;
-}
-
-
-.products-page .origin-card small {
-
-  color: var(--products-ink-soft);
-
-  font-size: 11px;
-}
-
-
-/* =========================================================
-   09 — SPECIFICATIONS
-========================================================= */
-
-.products-page .products-specifications {
-
-  padding: 145px 0;
-
-  background: var(--products-deep);
-
-  color: #fff;
-}
-
-
-.products-page .products-spec-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(380px, .85fr);
-
-  gap: 120px;
-
-  align-items: start;
-}
-
-
-.products-page .products-spec-grid .products-section-label {
-
-  color: rgba(255,255,255,.65);
-}
-
-
-.products-page .products-spec-grid h2 {
-
-  color: #fff;
-
-  max-width: 620px;
-}
-
-
-.products-page .spec-list {
-
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  border-top: 1px solid var(--products-line-light);
-
-  border-left: 1px solid var(--products-line-light);
-}
-
-
-.products-page .spec-list > div {
-
-  min-height: 125px;
-
-  padding: 22px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: space-between;
-
-  border-right: 1px solid var(--products-line-light);
-
-  border-bottom: 1px solid var(--products-line-light);
-}
-
-
-.products-page .spec-list span {
-
-  color: rgba(255,255,255,.4);
-
-  font-size: 9px;
-
-  font-weight: 700;
-
-  letter-spacing: .12em;
-}
-
-
-.products-page .spec-list strong {
-
-  color: #fff;
-
-  font-size: 13px;
-
-  font-weight: 600;
-}
-
-
-/* =========================================================
-   10 — CTA
-========================================================= */
-
-.products-page .products-cta {
-
-  padding: 150px 0;
-
-  background: var(--products-deep-2);
-
-  color: #fff;
-}
-
-
-.products-page .products-cta-inner {
-
-  max-width: 900px;
-}
-
-
-.products-page .products-cta-inner > span {
-
-  display: block;
-
-  margin-bottom: 35px;
-
-  color: rgba(255,255,255,.55);
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: .18em;
-}
-
-
-.products-page .products-cta-inner h2 {
-
-  max-width: 900px;
-
-  margin: 0;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(
-    58px,
-    7.5vw,
-    112px
-  );
-
-  font-weight: 400;
-
-  line-height: .87;
-
-  letter-spacing: -.055em;
-}
-
-
-.products-page .products-cta-inner p {
-
-  max-width: 560px;
-
-  margin: 38px 0 0;
-
-  color: rgba(255,255,255,.66);
-
-  font-size: 15px;
-
-  line-height: 1.75;
-}
-
-
-.products-page .products-cta-button {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 52px;
-
-  margin-top: 38px;
-
-  padding: 0 25px;
-
-  border-radius: 999px;
-
-  background: #fff;
-
-  color: var(--products-ink);
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  transition:
-    transform .25s ease,
-    background .25s ease;
-}
-
-
-.products-page .products-cta-button:hover {
-
-  transform: translateY(-3px);
-
-  background: #eeeae0;
-}
-
-
-/* =========================================================
-   11 — FOOTER
-========================================================= */
-
-.products-page .products-footer {
-
-  background: #031b19;
-
-  color: #fff;
-
-  padding: 78px 0 28px;
-}
-
-
-.products-page .products-footer-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 2fr)
-    minmax(120px, .7fr)
-    minmax(160px, .9fr);
-
-  gap: 80px;
-
-  padding-bottom: 70px;
-}
-
-
-/* =========================================================
-   FOOTER LOGO
-========================================================= */
-
-.products-page .products-footer-brand img {
-
-  display: block;
-
-  width: 90px !important;
-
-  height: auto !important;
-
-  max-width: 90px !important;
-
-  max-height: 90px !important;
-
-  object-fit: contain;
-
-  margin-bottom: 25px;
-
-  filter: none !important;
-}
-
-
-.products-page .products-footer-brand p {
-
-  max-width: 380px;
-
-  margin: 0;
-
-  color: rgba(255,255,255,.58);
-
-  font-size: 13px;
-
-  line-height: 1.75;
-}
-
-
-/* =========================================================
-   FOOTER COLUMNS
-========================================================= */
-
-.products-page .products-footer-column strong {
-
-  display: block;
-
-  margin-bottom: 22px;
-
-  color: #fff;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: .16em;
-
-  text-transform: uppercase;
-}
-
-
-.products-page .products-footer-column a {
-
-  display: block;
-
-  width: fit-content;
-
-  margin-bottom: 12px;
-
-  color: rgba(255,255,255,.62);
-
-  font-size: 13px;
-
-  transition: color .2s ease;
-}
-
-
-.products-page .products-footer-column a:hover {
-
-  color: #fff;
-}
-
-
-/* =========================================================
-   FOOTER BOTTOM
-========================================================= */
-
-.products-page .products-footer-bottom {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding-top: 25px;
-
-  border-top: 1px solid rgba(255,255,255,.12);
-
-  color: rgba(255,255,255,.38);
-
-  font-size: 10px;
-
-  letter-spacing: .03em;
-}
-
-
-/* =========================================================
-   12 — SEAFOOD / PRODUCE / SEASONAL COMPATIBILITY
-   ---------------------------------------------------------
-   These rules intentionally remain conservative.
-   They don't overwrite their individual page systems.
-========================================================= */
-
-
-/* Shared page background */
-
-.seafood-page,
-.produce-page,
-.seasonal-page {
-
-  background: var(--products-cream);
-
-  color: var(--products-ink);
-}
-
-
-/* Shared containers */
-
-.seafood-page .products-container,
-.produce-page .products-container,
-.seasonal-page .products-container {
-
-  width: min(
-    calc(100% - 64px),
-    var(--products-max)
-  );
-
-  margin-inline: auto;
-}
-
-
-/* =========================================================
-   13 — MOBILE
-========================================================= */
-
-@media (max-width: 1000px) {
-
-  .products-page .products-nav {
-
-    width: min(
-      calc(100% - 40px),
-      var(--products-max)
-    );
-
-    min-height: 78px;
-  }
-
-
-  .products-page .products-main-nav {
-
-    gap: 20px;
-  }
-
-
-  .products-page .products-hero-grid,
-  .products-page .products-intro-grid,
-  .products-page .products-origin-heading {
-
-    grid-template-columns: 1fr;
-
-    gap: 45px;
-  }
-
-
-  .products-page .products-hero-title h1 {
-
-    font-size: clamp(
-      70px,
-      12vw,
-      120px
-    );
-  }
-
-
-  .products-page .products-world-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .products-page .products-world {
-
-    min-height: 500px;
-  }
-
-
-  .products-page .origin-grid {
-
-    grid-template-columns:
-      repeat(3, 1fr);
-  }
-
-
-  .products-page .products-spec-grid {
-
-    grid-template-columns: 1fr;
-
-    gap: 70px;
-  }
-
-
-  .products-page .products-footer-grid {
-
-    grid-template-columns:
-      1.5fr
-      1fr
-      1fr;
-
-    gap: 40px;
-  }
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 760px) {
-
-  .products-page .products-nav {
-
-    width: calc(100% - 32px);
-
-    min-height: 72px;
-  }
-
-
-  .products-page .products-logo {
-
-    width: 80px;
-  }
-
-
-  .products-page .products-logo img {
-
-    width: 68px !important;
-
-    max-width: 68px !important;
-  }
-
-
-  .products-page .products-main-nav {
-
-    display: none;
-  }
-
-
-  .products-page .products-menu {
-
-    display: flex;
-  }
-
-
-  .products-page .products-container,
-  .products-page .products-hero-inner {
-
-    width: calc(100% - 32px);
-  }
-
-
-  .products-page .products-hero {
-
-    min-height: auto;
-  }
-
-
-  .products-page .products-hero-inner {
-
-    padding: 80px 0 40px;
-  }
-
-
-  .products-page .products-kicker {
-
-    margin-bottom: 45px;
-  }
-
-
-  .products-page .products-hero-title h1 {
-
-    font-size: clamp(
-      62px,
-      17vw,
-      100px
-    );
-
-    line-height: .86;
-  }
-
-
-  .products-page .products-hero-copy {
-
-    padding-top: 20px;
-  }
-
-
-  .products-page .products-hero-line {
-
-    margin-top: 60px;
-  }
-
-
-  .products-page .products-intro,
-  .products-page .products-origin,
-  .products-page .products-specifications,
-  .products-page .products-cta {
-
-    padding-top: 90px;
-
-    padding-bottom: 90px;
-  }
-
-
-  .products-page .products-section-label {
-
-    margin-bottom: 35px;
-  }
-
-
-  .products-page .products-intro-grid h2,
-  .products-page .products-origin-heading h2,
-  .products-page .products-spec-grid h2 {
-
-    font-size: clamp(
-      48px,
-      14vw,
-      72px
-    );
-  }
-
-
-  .products-page .products-worlds {
-
-    padding-bottom: 90px;
-  }
-
-
-  .products-page .products-world {
-
-    min-height: 480px;
-
-    padding: 24px;
-  }
-
-
-  .products-page .origin-grid {
-
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
-
-
-  .products-page .origin-card {
-
-    min-height: 180px;
-
-    padding: 22px;
-  }
-
-
-  .products-page .spec-list {
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .products-page .products-footer {
-
-    padding-top: 60px;
-  }
-
-
-  .products-page .products-footer-grid {
-
-    grid-template-columns: 1fr;
-
-    gap: 45px;
-
-    padding-bottom: 50px;
-  }
-
-
-  .products-page .products-footer-bottom {
-
-    flex-direction: column;
-
-    align-items: flex-start;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-  .products-page .products-hero-title h1 {
-
-    font-size: 58px;
-
-    letter-spacing: -.06em;
-  }
-
-
-  .products-page .products-hero-copy p {
-
-    font-size: 14px;
-  }
-
-
-  .products-page .products-world {
-
-    min-height: 440px;
-  }
-
-
-  .products-page .products-world h2 {
-
-    font-size: 43px;
-  }
-
-
-  .products-page .origin-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .products-page .origin-card {
-
-    min-height: 150px;
-  }
-
-
-  .products-page .products-cta-inner h2 {
-
-    font-size: 56px;
-  }
-
-}
-
-
-/* =========================================================
-   14 — ACCESSIBILITY
-========================================================= */
-
-.products-page a:focus-visible,
-.products-page button:focus-visible {
-
-  outline: 2px solid currentColor;
-
-  outline-offset: 4px;
-}
-
-
-/* =========================================================
-   15 — REDUCE MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .products-page *,
-  .seafood-page *,
-  .produce-page *,
-  .seasonal-page * {
-
-    scroll-behavior: auto !important;
-
-    transition-duration: 0.01ms !important;
-
-    animation-duration: 0.01ms !important;
-
-    animation-iteration-count: 1 !important;
-  }
-
-}
+</body>
+</html>
 ```
