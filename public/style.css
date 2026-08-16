@@ -4951,3 +4951,14 @@ ol {
 .seafood-page a.light-button:hover * {
     color: #ffffff !important;
 }
+.seafood-page .hero-actions .button.primary {
+    background: #ffffff !important;
+    color: #063c3d !important;
+    border-color: #ffffff !important;
+}
+
+.seafood-page .hero-actions .button.primary:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,.7) !important;
+}
