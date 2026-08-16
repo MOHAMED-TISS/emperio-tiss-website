@@ -50,12 +50,17 @@
 }
 .sf-logo{display:flex;align-items:center;width:170px;height:86px}
 .sf-logo-mark{
-  display:block !important;
-  width:118px;
-  height:auto;
-  max-width:none;
-  object-fit:contain;
-}
+   display:block !important;
+   width:118px;
+   height:auto;
+   max-width:none;
+   object-fit:contain;
+
+   /* Dark logo for the transparent header. */
+   filter:brightness(0) saturate(100%) invert(15%) sepia(24%)
+          saturate(1050%) hue-rotate(132deg) brightness(88%) contrast(102%) !important;
+   opacity:1 !important;
+ }
 .sf-navigation{display:flex;align-items:center;gap:30px;font-size:12px}
 .sf-navigation>a{color:#fff!important;white-space:nowrap;transition:opacity .2s ease}
 .sf-navigation>a:hover{opacity:.62}
@@ -228,15 +233,15 @@
 .sf-footer{padding:75px 0 25px;background:#03181d;color:#fff}
 .sf-footer-main{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:70px;padding-bottom:65px;border-bottom:1px solid rgba(255,255,255,.13)}
 .sf-footer-logo{
-  display:block !important;
-  width:146px !important;
-  height:auto !important;
-  max-width:146px !important;
-  margin:0 0 20px !important;
-  object-fit:contain;
-  filter:none !important;
-  opacity:1 !important;
-}
+   display:block !important;
+   width:146px !important;
+   height:auto !important;
+   max-width:146px !important;
+   margin:0 0 20px !important;
+   object-fit:contain;
+   filter:none !important;
+   opacity:1 !important;
+ }
 .sf-footer-main p{max-width:430px;color:rgba(255,255,255,.52);font-size:13px;line-height:1.7}
 .sf-footer-links strong{display:block;margin-bottom:16px;color:#fff;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
 .sf-footer-links a{display:block;margin-bottom:10px;color:rgba(255,255,255,.55);font-size:12px}
@@ -284,7 +289,7 @@
 <header class="sf-header">
   <div class="sf-nav">
     <a class="sf-logo" href="/" aria-label="EMPERIO TISS home">
-      <img class="sf-logo-mark" src="/logo.png?v=2" alt="EMPERIO TISS">
+      <img class="sf-logo-mark" src="/logo.png" alt="EMPERIO TISS">
     </a>
     <nav class="sf-navigation">
       <a href="../index.html">Home</a>
@@ -430,7 +435,7 @@
   <div class="sf-container">
     <div class="sf-footer-main">
       <div>
-        <img class="sf-footer-logo" src="/logo.png?v=2" alt="EMPERIO TISS">
+        <img class="sf-footer-logo" src="/logo.png" alt="EMPERIO TISS">
         <p>International B2B sourcing and distribution across seafood, fruits and vegetables — connecting origins, markets and reliable logistics.</p>
       </div>
       <div class="sf-footer-links"><strong>Products</strong><a href="seafood.html">Seafood</a><a href="fruits-vegetables.html">Fruits &amp; Vegetables</a><a href="seasonal.html">Seasonal</a></div>
