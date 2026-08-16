@@ -2877,9 +2877,8 @@ p{
     scroll-behavior:auto !important;
   }
 }
-```css
 /* =========================================================
-   HOME FOOTER
+   HOME FOOTER — FIXED
 ========================================================= */
 
 .home-footer {
@@ -2902,12 +2901,16 @@ p{
   border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
 
+/* Original dark logo, visible on a light tile */
 .home-footer-brand img {
   display: block;
   width: 116px !important;
   max-width: 116px !important;
   height: auto !important;
-  filter: brightness(0) invert(1);
+  padding: 9px;
+  border-radius: 5px;
+  background: #f3f0e8;
+  filter: none !important;
 }
 
 .home-footer-brand p {
@@ -2922,6 +2925,7 @@ p{
   display: block;
   margin-bottom: 18px;
   color: #fff;
+  font-family: "DM Sans", Arial, sans-serif;
   font-size: 10px;
   letter-spacing: .16em;
   text-transform: uppercase;
