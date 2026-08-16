@@ -5016,3 +5016,104 @@ ol {
     -webkit-text-fill-color: #ffffff !important;
     border-color: rgba(255,255,255,.7) !important;
 }
+/* =========================================================
+   GLOBAL CTA BUTTON FIX
+   ========================================================= */
+
+/* HOME / LIGHT BACKGROUND */
+
+.home-page .button.primary,
+body:not(.seafood-page) .hero-actions .button.primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #073b36 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #073b36 !important;
+
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* HOME PRIMARY HOVER */
+
+.home-page .button.primary:hover,
+body:not(.seafood-page) .hero-actions .button.primary:hover {
+    background: #0d5149 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* =========================================================
+   SEAFOOD
+   ========================================================= */
+
+.seafood-page .hero-actions .button.primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #ffffff !important;
+    color: #073b36 !important;
+
+    border: 1px solid #ffffff !important;
+
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    -webkit-text-fill-color: #073b36 !important;
+}
+
+
+/* SEAFOOD PRIMARY HOVER */
+
+.seafood-page .hero-actions .button.primary:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border-color: rgba(255,255,255,.7) !important;
+}
+
+
+/* =========================================================
+   FORCE TEXT INSIDE CTA
+   ========================================================= */
+
+.button.primary span,
+.button.primary strong,
+.button.primary em {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+
+/* Prevent pseudo-elements from covering the label */
+
+.button.primary::before,
+.button.primary::after {
+    pointer-events: none;
+}
+
+
+/* Never hide CTA text */
+
+.button.primary {
+    text-indent: 0 !important;
+    text-transform: none;
+}
