@@ -1003,4 +1003,22 @@
     gap: 30px;
   }
 }
-```
+/* FINAL MARKETS ALIGNMENT FIX */
+.markets-page .markets-nav,
+.markets-page .markets-region,
+.markets-page .markets-principles,
+.markets-page .markets-route {
+  width: min(1240px, calc(100vw - 160px)) !important;
+  max-width: none !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+@media (max-width: 768px) {
+  .markets-page .markets-nav,
+  .markets-page .markets-region,
+  .markets-page .markets-principles,
+  .markets-page .markets-route {
+    width: calc(100vw - 56px) !important;
+  }
+}
