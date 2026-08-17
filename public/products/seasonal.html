@@ -36,9 +36,10 @@
       --ssn-dark-2: #0e1a13;
       --ssn-cream: #f4f0e7;
       --ssn-paper: #e9e4d8;
-      --ssn-muted: #6c766a;
+      --ssn-muted: #4a5348;
       --ssn-accent: #c9a769;
-      --ssn-line: rgba(27,36,29,.12);
+      --ssn-accent-dark: #8a6d2e;
+      --ssn-line: rgba(27,36,29,.16);
 
       background: var(--ssn-cream);
       color: var(--ssn-ink);
@@ -140,9 +141,10 @@
     }
 
     .seasonal-page .site-header .nav > a {
-      color: rgba(255,255,255,.85) !important;
+      color: rgba(255,255,255,.92) !important;
       text-decoration: none !important;
       transition: color .3s ease !important;
+      text-shadow: 0 1px 3px rgba(0,0,0,.25) !important;
     }
 
     .seasonal-page .site-header .nav > a:hover,
@@ -161,7 +163,7 @@
     }
 
     .seasonal-page .language-switcher a {
-      color: rgba(255,255,255,.55) !important;
+      color: rgba(255,255,255,.72) !important;
       font-size: 10px !important;
       letter-spacing: .1em !important;
       text-decoration: none !important;
@@ -220,7 +222,8 @@
 
     .seasonal-page .site-header.scrolled .nav > a {
       color: var(--ssn-ink) !important;
-      opacity: .8 !important;
+      opacity: .85 !important;
+      text-shadow: none !important;
     }
 
     .seasonal-page .site-header.scrolled .nav > a:hover,
@@ -335,7 +338,7 @@
 
       font-size: 15px;
       line-height: 1.85;
-      color: rgba(255,255,255,.72);
+      color: rgba(255,255,255,.82);
     }
 
     /* =========================================================
@@ -417,6 +420,7 @@
     .season-row > span:last-child {
       color: var(--ssn-muted);
       font-size: 13px;
+      font-weight: 500;
       line-height: 1.6;
     }
 
@@ -506,19 +510,21 @@
       border-radius: 4px;
 
       background: #fff;
-      color: var(--ssn-muted);
+      color: var(--ssn-ink);
+      opacity: .55;
 
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .08em;
 
-      transition: transform .3s ease, background .3s ease, color .3s ease;
+      transition: transform .3s ease, background .3s ease, color .3s ease, opacity .3s ease;
     }
 
     .availability-month.active {
       background: var(--ssn-dark);
       color: #fff;
       border-color: var(--ssn-dark);
+      opacity: 1;
     }
 
     .availability-month:hover {
@@ -539,7 +545,7 @@
     }
 
     .seasonal-dark .section-head > p {
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.72);
     }
 
     .seasonal-dark .eyebrow {
@@ -587,7 +593,7 @@
     .seasonal-principles p {
       margin: 0;
 
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.72);
       font-size: 13px;
       line-height: 1.65;
     }
@@ -599,8 +605,10 @@
     .seasonal-page .cta-section {
       padding: 120px 0;
 
-      background: var(--ssn-accent);
-      color: #fff;
+      /* fondo dorado más profundo: el dorado claro original
+         no ofrecía contraste suficiente con texto blanco */
+      background: linear-gradient(135deg, var(--ssn-accent-dark) 0%, var(--ssn-accent) 100%);
+      color: var(--ssn-dark-2);
     }
 
     .seasonal-page .cta-inner {
@@ -608,11 +616,11 @@
     }
 
     .seasonal-page .cta-inner .eyebrow {
-      color: rgba(255,255,255,.75);
+      color: rgba(20,26,17,.75);
     }
 
     .seasonal-page .cta-inner .eyebrow::before {
-      background: rgba(255,255,255,.6);
+      background: rgba(20,26,17,.55);
     }
 
     .seasonal-page .cta-inner h2 {
@@ -623,14 +631,14 @@
       font-weight: 400;
       line-height: .95;
       letter-spacing: -.05em;
-      color: #fff;
+      color: var(--ssn-dark-2);
     }
 
     .seasonal-page .cta-inner > p:not(.eyebrow) {
       max-width: 480px;
       margin: 0 0 32px;
 
-      color: rgba(255,255,255,.85);
+      color: rgba(20,26,17,.8);
       font-size: 15px;
       line-height: 1.8;
     }
@@ -643,8 +651,8 @@
       min-height: 48px;
       padding: 0 24px;
 
-      background: #fff;
-      color: var(--ssn-dark-2);
+      background: var(--ssn-dark-2);
+      color: #fff;
 
       border-radius: 999px;
 
@@ -652,12 +660,13 @@
       font-weight: 700;
       text-decoration: none;
 
-      transition: transform .3s ease, box-shadow .3s ease;
+      transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
     }
 
     .seasonal-page .button.light-button:hover {
+      background: #000;
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
     }
 
     /* =========================================================
@@ -687,7 +696,7 @@
     .seasonal-page .footer-grid > div > p {
       max-width: 340px;
 
-      color: rgba(255,255,255,.55);
+      color: rgba(255,255,255,.68);
       font-size: 13px;
       line-height: 1.7;
     }
@@ -706,7 +715,7 @@
       display: block;
       margin-bottom: 9px;
 
-      color: rgba(255,255,255,.62);
+      color: rgba(255,255,255,.75);
       font-size: 13px;
       text-decoration: none;
 
@@ -724,9 +733,9 @@
       gap: 20px;
 
       padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,.1);
+      border-top: 1px solid rgba(255,255,255,.14);
 
-      color: rgba(255,255,255,.4);
+      color: rgba(255,255,255,.55);
       font-size: 11px;
       letter-spacing: .06em;
     }
