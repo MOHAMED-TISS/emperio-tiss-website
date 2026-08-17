@@ -2989,3 +2989,155 @@ p{
     gap: 12px;
   }
 }
+/* =========================================================
+   FINAL GLOBAL FIX — HEADER / FOOTER / ABOUT
+========================================================= */
+
+/* ---------- HEADER LOGO ---------- */
+
+.site-header .brand img {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Header on light pages */
+.site-header {
+  background: rgba(244, 240, 231, 0.94) !important;
+  color: #14231a !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header .nav a {
+  color: #14231a !important;
+  text-shadow: none !important;
+}
+
+.site-header .nav a:hover,
+.site-header .nav a.active {
+  color: #0b3b32 !important;
+}
+
+/* Business enquiry button */
+.site-header .nav-cta {
+  background: #0e3a32 !important;
+  color: #fff !important;
+  border: 1px solid #0e3a32 !important;
+}
+
+.site-header .nav-cta:hover {
+  background: #14231a !important;
+  color: #fff !important;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer .footer-logo {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/*
+   If logo.png itself is dark, this keeps it DARK.
+   The footer background is lightened so the original logo
+   remains visible.
+*/
+.footer {
+  background: #12201a !important;
+}
+
+.footer .footer-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* ---------- ABOUT DIRECTION SECTION ---------- */
+
+.large-statement {
+  padding: 40px 0 80px !important;
+  overflow: visible !important;
+}
+
+.large-statement > span {
+  display: block !important;
+
+  margin-bottom: 28px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .22em !important;
+  text-transform: uppercase !important;
+
+  color: #9a742c !important;
+}
+
+.large-statement > strong {
+  display: block !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(64px, 10vw, 150px) !important;
+  font-weight: 400 !important;
+  line-height: .9 !important;
+  letter-spacing: -.065em !important;
+
+  white-space: nowrap !important;
+  color: #111c16 !important;
+}
+
+.large-statement > p {
+  display: block !important;
+
+  margin: 36px 0 0 !important;
+
+  max-width: 650px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+
+  color: #3e4841 !important;
+}
+
+/* ---------- ABOUT HERO ---------- */
+
+.about-hero {
+  background: #f4f0e7 !important;
+  color: #14231a !important;
+}
+
+.about-hero h1 {
+  color: #14231a !important;
+}
+
+.about-hero .hero-text {
+  color: #4a5348 !important;
+}
+
+.about-hero .eyebrow {
+  color: #8a6d2e !important;
+}
+
+/* ---------- ABOUT MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+  .large-statement {
+    padding: 20px 0 60px !important;
+  }
+
+  .large-statement > strong {
+    white-space: normal !important;
+    font-size: clamp(52px, 16vw, 90px) !important;
+    line-height: .92 !important;
+  }
+
+  .large-statement > p {
+    margin-top: 28px !important;
+  }
+
+}
