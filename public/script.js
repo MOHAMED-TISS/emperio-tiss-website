@@ -1,25 +1,13 @@
 /* =========================================================
-   EMPERIO TISS — INTERACTION ENGINE
+   EMPERIO TISS
+   INTERACTION SYSTEM
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =======================================================
-     HERO INTRO
-  ======================================================= */
-
-  const hero = document.querySelector(".hero");
-
-  if (hero) {
-    requestAnimationFrame(() => {
-      hero.classList.add("loaded");
-    });
-  }
-
-
-  /* =======================================================
-     HEADER
-  ======================================================= */
+  /* -------------------------------------------------------
+     HEADER SCROLL
+  ------------------------------------------------------- */
 
   const header = document.querySelector(".site-header");
 
@@ -27,10 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!header) return;
 
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 45
-    );
+    if (window.scrollY > 30) {
+
+      header.classList.add("scrolled");
+
+    } else {
+
+      header.classList.remove("scrolled");
+
+    }
 
   };
 
@@ -43,168 +36,41 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  /* =======================================================
-     MOBILE NAVIGATION
-  ======================================================= */
+  /* -------------------------------------------------------
+     MOBILE MENU
+  ------------------------------------------------------- */
 
-  const toggle =
-    document.querySelector(".menu-toggle");
+  const menuButton =
+    document.querySelector(".mobile-menu");
 
-  const nav =
-    document.querySelector(".nav");
+  const navigation =
+    document.querySelector(".main-nav");
 
-  if (toggle && nav) {
+  if (menuButton && navigation) {
 
-    toggle.addEventListener("click", () => {
+    menuButton.addEventListener("click", () => {
 
-      const open =
-        nav.classList.toggle("active");
+      const isOpen =
+        menuButton.getAttribute("aria-expanded")
+        === "true";
 
-      toggle.setAttribute(
+      menuButton.setAttribute(
         "aria-expanded",
-        String(open)
+        String(!isOpen)
       );
 
-      toggle.setAttribute(
-        "aria-label",
-        open
-          ? "Close navigation"
-          : "Open navigation"
+      navigation.classList.toggle(
+        "mobile-open"
       );
-
-      toggle.textContent =
-        open ? "×" : "☰";
-
-    });
-
-
-    nav.querySelectorAll("a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        nav.classList.remove("active");
-
-        toggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        toggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
-
-        toggle.textContent = "☰";
-
-      });
-
-    });
-
-
-    document.addEventListener("click", event => {
-
-      if (
-        nav.classList.contains("active") &&
-        !nav.contains(event.target) &&
-        !toggle.contains(event.target)
-      ) {
-
-        nav.classList.remove("active");
-
-        toggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        toggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
-
-        toggle.textContent = "☰";
-
-      }
 
     });
 
   }
 
 
-  /* =======================================================
-     SCROLL REVEAL
-  ======================================================= */
-
-  const revealElements = document.querySelectorAll(
-    ".section-head, " +
-    ".card, " +
-    ".market, " +
-    ".service-list article, " +
-    ".two-col, " +
-    ".bridge-node, " +
-    ".bridge-center"
-  );
-
-
-  revealElements.forEach((element, index) => {
-
-    element.classList.add("fade-up");
-
-    const delay =
-      Math.min(
-        (index % 5) * 90,
-        360
-      );
-
-    element.style.transitionDelay =
-      `${delay}ms`;
-
-  });
-
-
-  if ("IntersectionObserver" in window) {
-
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            entry.target.classList.add("visible");
-
-            observer.unobserve(
-              entry.target
-            );
-
-          });
-
-        },
-        {
-          threshold:0.12,
-          rootMargin:"0px 0px -50px 0px"
-        }
-      );
-
-
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
-
-  } else {
-
-    revealElements.forEach(element => {
-      element.classList.add("visible");
-    });
-
-  }
-
-
-  /* =======================================================
+  /* -------------------------------------------------------
      SMOOTH INTERNAL LINKS
-  ======================================================= */
+  ------------------------------------------------------- */
 
   document
     .querySelectorAll('a[href^="#"]')
@@ -212,28 +78,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
       link.addEventListener("click", event => {
 
-        const id =
+        const targetId =
           link.getAttribute("href");
 
-        if (
-          !id ||
-          id === "#"
-        ) {
+        if (!targetId || targetId === "#") {
           return;
         }
 
         const target =
-          document.querySelector(id);
+          document.querySelector(targetId);
 
-        if (!target) {
-          return;
-        }
+        if (!target) return;
 
         event.preventDefault();
 
         target.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
+          behavior: "smooth",
+          block: "start"
         });
 
       });
@@ -241,56 +102,94 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =======================================================
-     CURRENT YEAR
-  ======================================================= */
+  /* -------------------------------------------------------
+     ACCESSIBILITY BUTTON
+  ------------------------------------------------------- */
 
-  const year =
-    document.getElementById("year");
+  const accessibilityButton =
+    document.querySelector(
+      ".accessibility-button"
+    );
 
-  if (year) {
+  if (accessibilityButton) {
 
-    year.textContent =
-      new Date().getFullYear();
+    accessibilityButton.addEventListener(
+      "click",
+      () => {
+
+        document.body.classList.toggle(
+          "accessibility-mode"
+        );
+
+        const enabled =
+          document.body.classList.contains(
+            "accessibility-mode"
+          );
+
+        accessibilityButton.setAttribute(
+          "aria-pressed",
+          String(enabled)
+        );
+
+      }
+    );
 
   }
 
 
-  /* =======================================================
-     ESCAPE → CLOSE MENU
-  ======================================================= */
+  /* -------------------------------------------------------
+     PREMIUM POINTER
+  ------------------------------------------------------- */
 
-  document.addEventListener(
-    "keydown",
-    event => {
+  if (
+    window.matchMedia(
+      "(pointer:fine)"
+    ).matches
+  ) {
 
-      if (
-        event.key === "Escape" &&
-        nav &&
-        nav.classList.contains("active")
-      ) {
+    const pointer =
+      document.createElement("div");
 
-        nav.classList.remove("active");
+    pointer.className =
+      "premium-pointer";
 
-        if (toggle) {
+    document.body.appendChild(pointer);
 
-          toggle.setAttribute(
-            "aria-expanded",
-            "false"
-          );
 
-          toggle.setAttribute(
-            "aria-label",
-            "Open navigation"
-          );
+    document.addEventListener(
+      "mousemove",
+      event => {
 
-          toggle.textContent = "☰";
+        pointer.style.left =
+          `${event.clientX}px`;
 
-        }
+        pointer.style.top =
+          `${event.clientY}px`;
 
       }
+    );
 
-    }
-  );
+
+    document
+      .querySelectorAll("a, button")
+      .forEach(element => {
+
+        element.addEventListener(
+          "mouseenter",
+          () => {
+            pointer.classList.add("active");
+          }
+        );
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+            pointer.classList.remove("active");
+          }
+        );
+
+      });
+
+  }
 
 });
