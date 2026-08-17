@@ -1,37 +1,1199 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>About — EMPERIO TISS</title>
 
   <meta
     name="description"
-    content="EMPERIO TISS connects professional food markets across Europe, Africa and the Middle East, with a focus on sourcing, distribution and reliable trade routes."
+    content="EMPERIO TISS connects professional food markets across Europe, Africa and the Middle East through sourcing, distribution and reliable trade routes."
   >
 
   <link rel="icon" href="../logo.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Global CSS -->
   <link rel="stylesheet" href="../style.css">
 
+  <style>
+    /* =========================================================
+       EMPERIO TISS — ABOUT
+       Complete visual system
+    ========================================================= */
+
+    :root {
+      --ink: #172019;
+      --dark: #0d1b14;
+      --dark-2: #11241a;
+      --cream: #f4f1e9;
+      --paper: #e9e5db;
+      --white: #ffffff;
+      --gold: #c9a96a;
+      --gold-dark: #9b793d;
+      --muted: #5b625a;
+      --line: rgba(23,32,25,.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .about-page {
+      overflow-x: hidden;
+    }
+
+    .about-page .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .about-page .site-header {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(13,27,20,.08) !important;
+      border: 0 !important;
+      box-shadow: none !important;
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      transition:
+        background .5s ease,
+        backdrop-filter .5s ease,
+        box-shadow .5s ease;
+    }
+
+    .about-page .site-header.scrolled {
+      background: rgba(244,241,233,.94) !important;
+      box-shadow: 0 1px 0 rgba(23,32,25,.12) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .about-page .nav-wrap {
+      width: min(1180px, calc(100% - 64px));
+      height: 92px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin: 0 auto;
+    }
+
+    .about-page .brand img {
+      width: 66px;
+      height: auto;
+
+      filter: brightness(0) invert(1);
+
+      transition: filter .4s ease;
+    }
+
+    .about-page .site-header.scrolled .brand img {
+      filter: none;
+    }
+
+    .about-page .nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .about-page .nav > a:not(.nav-cta) {
+      color: rgba(255,255,255,.92);
+      font-size: 12px;
+      font-weight: 500;
+
+      transition: color .3s ease;
+    }
+
+    .about-page .site-header.scrolled .nav > a:not(.nav-cta) {
+      color: var(--ink);
+    }
+
+    .about-page .nav > a.active {
+      font-weight: 700;
+    }
+
+    .about-page .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      padding-left: 18px;
+      border-left: 1px solid rgba(255,255,255,.28);
+    }
+
+    .about-page .site-header.scrolled .language-switcher {
+      border-left-color: var(--line);
+    }
+
+    .about-page .language-switcher a {
+      color: rgba(255,255,255,.65);
+      font-size: 9px;
+      letter-spacing: .1em;
+    }
+
+    .about-page .site-header.scrolled .language-switcher a {
+      color: rgba(23,32,25,.48);
+    }
+
+    .about-page .language-switcher a.active {
+      color: #fff;
+    }
+
+    .about-page .site-header.scrolled .language-switcher a.active {
+      color: var(--ink);
+    }
+
+    .about-page .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 40px;
+      padding: 0 18px;
+
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.06);
+      color: #fff;
+
+      font-size: 11px;
+      font-weight: 600;
+
+      transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+    }
+
+    .about-page .nav-cta:hover {
+      background: #fff;
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .about-page .site-header.scrolled .nav-cta {
+      border-color: rgba(23,32,25,.3);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .about-page .site-header.scrolled .nav-cta:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .about-page .menu-toggle {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+      background: transparent;
+
+      color: #fff;
+      font-size: 22px;
+
+      cursor: pointer;
+    }
+
+    .about-page .site-header.scrolled .menu-toggle {
+      color: var(--ink);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .about-hero {
+      position: relative;
+
+      min-height: 92vh;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 75% 25%,
+          rgba(201,169,106,.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #0b1811 0%,
+          #12271c 55%,
+          #1a3023 100%
+        );
+
+      color: #fff;
+    }
+
+    .about-hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.30),
+          transparent 60%
+        ),
+        repeating-linear-gradient(
+          120deg,
+          transparent 0,
+          transparent 90px,
+          rgba(255,255,255,.018) 92px,
+          transparent 96px
+        );
+
+      pointer-events: none;
+    }
+
+    .about-hero::after {
+      content: "";
+
+      position: absolute;
+      width: 520px;
+      height: 520px;
+
+      right: -180px;
+      bottom: -220px;
+
+      border: 1px solid rgba(201,169,106,.25);
+      border-radius: 50%;
+    }
+
+    .about-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-hero-content {
+      max-width: 850px;
+      padding-top: 70px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin: 0 0 22px;
+
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 32px;
+      height: 1px;
+
+      background: currentColor;
+      opacity: .7;
+    }
+
+    .about-hero h1 {
+      max-width: 900px;
+
+      margin: 0;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(58px, 8vw, 112px);
+      font-weight: 400;
+      line-height: .9;
+      letter-spacing: -.065em;
+    }
+
+    .about-hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-text {
+      max-width: 570px;
+
+      margin: 32px 0 0;
+
+      color: rgba(255,255,255,.76);
+
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+      padding: 0 22px;
+
+      border-radius: 999px;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .button.primary:hover {
+      background: #d8bc83;
+      transform: translateY(-3px);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      background: transparent;
+    }
+
+    .button.secondary:hover {
+      background: #fff;
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================================================
+       GENERAL SECTIONS
+    ========================================================= */
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr .65fr;
+      gap: 80px;
+      align-items: end;
+
+      margin-bottom: 65px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(45px, 5.5vw, 72px);
+      font-weight: 400;
+      line-height: .95;
+      letter-spacing: -.055em;
+    }
+
+    .section-head > p {
+      max-width: 440px;
+      margin: 0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .eyebrow.dark {
+      color: var(--gold-dark);
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .about-intro {
+      background: var(--cream);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+
+      border-top: 1px solid var(--line);
+      padding-top: 45px;
+    }
+
+    .intro-copy {
+      max-width: 480px;
+    }
+
+    .intro-copy p {
+      margin: 0 0 22px;
+
+      color: #3f473f;
+
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .intro-copy p:first-child {
+      color: var(--ink);
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+
+    /* =========================================================
+       DARK ACTIVITY
+    ========================================================= */
+
+    .dark-section {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .dark-section .section-head > p {
+      color: rgba(255,255,255,.65);
+    }
+
+    .dark-section .eyebrow {
+      color: var(--gold);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      border-top: 1px solid rgba(255,255,255,.14);
+      border-left: 1px solid rgba(255,255,255,.14);
+    }
+
+    .card {
+      min-height: 350px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 28px;
+
+      border-right: 1px solid rgba(255,255,255,.14);
+      border-bottom: 1px solid rgba(255,255,255,.14);
+
+      transition:
+        background .4s ease,
+        transform .4s ease;
+    }
+
+    .card:hover {
+      background: rgba(255,255,255,.035);
+      transform: translateY(-5px);
+    }
+
+    .card-number {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .15em;
+    }
+
+    .card h3 {
+      margin: 0 0 14px;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .card p {
+      margin: 0;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .product-link {
+      color: var(--gold);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       NETWORK
+    ========================================================= */
+
+    .bridge-network {
+      position: relative;
+
+      min-height: 470px;
+
+      display: grid;
+      grid-template-columns: 1fr 220px 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 25px;
+
+      align-items: center;
+    }
+
+    .bridge-node {
+      min-height: 190px;
+
+      padding: 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      border: 1px solid var(--line);
+
+      background: rgba(255,255,255,.35);
+
+      transition:
+        transform .4s ease,
+        background .4s ease;
+    }
+
+    .bridge-node:hover {
+      transform: translateY(-6px);
+      background: #fff;
+    }
+
+    .bridge-node span {
+      margin-bottom: auto;
+
+      color: var(--gold-dark);
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .15em;
+    }
+
+    .bridge-node strong {
+      margin-top: 30px;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    .bridge-node small {
+      margin-top: 9px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .bridge-node.europe {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .bridge-node.africa {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .bridge-node.middle-east {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      min-height: 405px;
+    }
+
+    .bridge-center {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+
+      width: 150px;
+      height: 150px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      justify-self: center;
+
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+
+      background: var(--dark);
+      color: #fff;
+
+      box-shadow:
+        0 0 0 14px rgba(201,169,106,.05),
+        0 25px 60px rgba(0,0,0,.16);
+    }
+
+    .bridge-center span {
+      color: var(--gold);
+
+      font-size: 8px;
+      letter-spacing: .2em;
+    }
+
+    .bridge-center strong {
+      margin-top: 4px;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+
+    /* =========================================================
+       VALUES
+    ========================================================= */
+
+    .service-list {
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .service-list article {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 35px;
+
+      padding: 32px 0;
+
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+
+    .service-list article > span {
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .service-list h3 {
+      margin: 0 0 8px;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 27px;
+      font-weight: 400;
+    }
+
+    .service-list p {
+      max-width: 580px;
+      margin: 0;
+
+      color: rgba(255,255,255,.62);
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       STATEMENT
+    ========================================================= */
+
+    .large-statement {
+      padding: 20px 0;
+    }
+
+    .large-statement > span {
+      display: block;
+
+      margin-bottom: 22px;
+
+      color: var(--gold-dark);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .large-statement strong {
+      display: block;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(65px, 11vw, 150px);
+      font-weight: 400;
+      line-height: .82;
+      letter-spacing: -.07em;
+    }
+
+    .large-statement p {
+      color: var(--muted);
+
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta-section {
+      padding: 120px 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #9a773b 0%,
+          #c9a96a 100%
+        );
+
+      color: var(--dark);
+    }
+
+    .cta-inner {
+      max-width: 780px;
+    }
+
+    .cta-inner .eyebrow {
+      color: rgba(13,27,20,.72);
+    }
+
+    .cta-inner h2 {
+      margin: 0 0 25px;
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(48px, 6vw, 78px);
+      font-weight: 400;
+      line-height: .93;
+      letter-spacing: -.055em;
+    }
+
+    .cta-inner > p:not(.eyebrow) {
+      max-width: 550px;
+      margin: 0;
+
+      color: rgba(13,27,20,.75);
+
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .cta-section .button.light-button {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .cta-section .button.light-button:hover {
+      background: #000;
+    }
+
+    .cta-section .button.secondary {
+      border-color: rgba(13,27,20,.45);
+      color: var(--dark);
+    }
+
+    .cta-section .button.secondary:hover {
+      background: var(--dark);
+      color: #fff;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .about-page .footer {
+      padding: 75px 0 25px;
+
+      background: #10221a !important;
+      color: #fff;
+    }
+
+    .about-page .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 80px;
+
+      padding-bottom: 55px;
+    }
+
+    .about-page .footer-logo {
+      display: block;
+
+      width: 100px !important;
+      height: auto;
+
+      margin-bottom: 20px;
+
+      filter: brightness(0) invert(1) !important;
+      opacity: 1 !important;
+    }
+
+    .about-page .footer p {
+      max-width: 340px;
+
+      margin: 0;
+
+      color: rgba(255,255,255,.65);
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .about-page .footer strong {
+      display: block;
+
+      margin-bottom: 17px;
+
+      color: var(--gold);
+
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .about-page .footer a {
+      display: block;
+
+      margin-bottom: 10px;
+
+      color: rgba(255,255,255,.7);
+
+      font-size: 13px;
+
+      transition:
+        color .3s ease,
+        transform .3s ease;
+    }
+
+    .about-page .footer a:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    .about-page .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding-top: 20px;
+
+      border-top: 1px solid rgba(255,255,255,.14);
+
+      color: rgba(255,255,255,.45);
+
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      .about-page .nav {
+        gap: 15px;
+      }
+
+      .about-page .nav > a:not(.nav-cta) {
+        font-size: 11px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bridge-network {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+      }
+
+      .bridge-node.europe {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .bridge-node.africa {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .bridge-node.middle-east {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+
+        min-height: 220px;
+      }
+
+      .bridge-center {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+      }
+
+      .about-page .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+      }
+    }
+
+
+    @media (max-width: 700px) {
+
+      .about-page .container,
+      .about-page .nav-wrap {
+        width: calc(100% - 32px);
+      }
+
+      .about-page .nav-wrap {
+        height: 76px;
+      }
+
+      .about-page .brand img {
+        width: 54px;
+      }
+
+      .about-page .nav {
+        position: fixed;
+
+        top: 76px;
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+
+        padding: 20px 24px 28px;
+
+        background: rgba(13,27,20,.97);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .about-page .nav.is-open {
+        display: flex;
+      }
+
+      .about-page .nav > a:not(.nav-cta) {
+        width: 100%;
+
+        padding: 14px 0;
+
+        color: #fff !important;
+
+        border-bottom: 1px solid rgba(255,255,255,.1);
+      }
+
+      .about-page .language-switcher {
+        width: 100%;
+
+        margin-top: 10px;
+        padding: 14px 0;
+
+        border-left: 0 !important;
+        border-top: 1px solid rgba(255,255,255,.1);
+      }
+
+      .about-page .language-switcher a {
+        color: rgba(255,255,255,.65) !important;
+      }
+
+      .about-page .language-switcher a.active {
+        color: #fff !important;
+      }
+
+      .about-page .nav-cta {
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .about-page .menu-toggle {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+      }
+
+      .about-hero {
+        min-height: 720px;
+      }
+
+      .about-hero-content {
+        padding-top: 80px;
+      }
+
+      .about-hero h1 {
+        font-size: clamp(55px, 16vw, 82px);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-head {
+        margin-bottom: 45px;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: 290px;
+      }
+
+      .bridge-network {
+        display: flex;
+        flex-direction: column;
+
+        min-height: auto;
+      }
+
+      .bridge-node {
+        width: 100%;
+        min-height: 190px !important;
+      }
+
+      .bridge-center {
+        order: 2;
+
+        width: 130px;
+        height: 130px;
+      }
+
+      .bridge-node.europe {
+        order: 1;
+      }
+
+      .bridge-node.africa {
+        order: 3;
+      }
+
+      .bridge-node.middle-east {
+        order: 4;
+      }
+
+      .service-list article {
+        grid-template-columns: 45px 1fr;
+        gap: 18px;
+      }
+
+      .large-statement strong {
+        font-size: 17vw;
+      }
+
+      .cta-section {
+        padding: 85px 0;
+      }
+
+      .about-page .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .about-page .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+
+  </style>
 </head>
 
 
-<body>
+<body class="about-page">
 
 
 <!-- =========================================================
@@ -40,29 +1202,18 @@
 
 <header class="site-header">
 
-  <div class="container nav-wrap">
+  <div class="nav-wrap">
 
     <a
       href="../index.html"
       class="brand"
-      aria-label="EMPERIO TISS Home"
+      aria-label="EMPERIO TISS"
     >
       <img
         src="../logo.png"
         alt="EMPERIO TISS"
       >
     </a>
-
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
-
 
     <nav class="nav">
 
@@ -71,7 +1222,7 @@
       </a>
 
       <a
-        href="../about/about.html"
+        href="./about.html"
         class="active"
       >
         About
@@ -85,13 +1236,7 @@
         Markets
       </a>
 
-
-      <!-- LANGUAGE -->
-
-      <div
-        class="language-switcher"
-        aria-label="Language selector"
-      >
+      <div class="language-switcher">
 
         <a
           href="../index.html"
@@ -114,42 +1259,49 @@
 
       </div>
 
-
       <a
-        class="nav-cta"
         href="../index.html#contact"
+        class="nav-cta"
       >
-        Business enquiry
+        Business enquiry ↗
       </a>
 
     </nav>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
 
   </div>
 
 </header>
 
 
+<main>
+
 
 <!-- =========================================================
      HERO
 ========================================================= -->
 
-<main>
-
-
-<section class="hero about-hero">
+<section class="about-hero">
 
   <div class="container">
 
-    <div class="hero-content">
+    <div class="about-hero-content">
 
       <p class="eyebrow">
         About EMPERIO TISS
       </p>
 
       <h1>
-        Built around
-        real food markets.
+        Built around<br>
+        <em>real food markets.</em>
       </h1>
 
       <p class="hero-text">
@@ -165,7 +1317,7 @@
           href="../markets/markets.html"
           class="button primary"
         >
-          Explore our markets
+          Explore our markets ↗
         </a>
 
         <a
@@ -184,25 +1336,24 @@
 </section>
 
 
-
 <!-- =========================================================
-     INTRODUCTION
+     INTRO
 ========================================================= -->
 
-<section class="section">
+<section class="section about-intro">
 
   <div class="container">
 
-    <div class="section-head fade-up">
+    <div class="section-head">
 
       <div>
 
         <p class="eyebrow dark">
-          Our approach
+          01 / OUR APPROACH
         </p>
 
         <h2>
-          From source
+          From source<br>
           to destination.
         </h2>
 
@@ -219,7 +1370,7 @@
 
     <div class="two-col">
 
-      <div class="intro-copy fade-up">
+      <div class="intro-copy">
 
         <p>
           EMPERIO TISS operates in professional food trade,
@@ -236,7 +1387,7 @@
       </div>
 
 
-      <div class="intro-copy fade-up">
+      <div class="intro-copy">
 
         <p>
           Europe and Africa are central to our sourcing and
@@ -259,25 +1410,24 @@
 </section>
 
 
-
 <!-- =========================================================
-     CORE ACTIVITY
+     ACTIVITY
 ========================================================= -->
 
 <section class="section dark-section">
 
   <div class="container">
 
-    <div class="section-head fade-up">
+    <div class="section-head">
 
       <div>
 
         <p class="eyebrow">
-          What we do
+          02 / WHAT WE DO
         </p>
 
         <h2>
-          Four connected
+          Four connected<br>
           areas of activity.
         </h2>
 
@@ -292,10 +1442,9 @@
     </div>
 
 
-    <div class="cards four">
+    <div class="cards">
 
-
-      <article class="card product-card fade-up">
+      <article class="card">
 
         <span class="card-number">
           01
@@ -321,7 +1470,7 @@
       </article>
 
 
-      <article class="card product-card fade-up">
+      <article class="card">
 
         <span class="card-number">
           02
@@ -350,7 +1499,7 @@
       </article>
 
 
-      <article class="card product-card fade-up">
+      <article class="card">
 
         <span class="card-number">
           03
@@ -379,7 +1528,7 @@
       </article>
 
 
-      <article class="card product-card fade-up">
+      <article class="card">
 
         <span class="card-number">
           04
@@ -404,7 +1553,6 @@
 
       </article>
 
-
     </div>
 
   </div>
@@ -412,25 +1560,24 @@
 </section>
 
 
-
 <!-- =========================================================
-     EUROPE / AFRICA
+     NETWORK
 ========================================================= -->
 
 <section class="section">
 
   <div class="container">
 
-    <div class="section-head fade-up">
+    <div class="section-head">
 
       <div>
 
         <p class="eyebrow dark">
-          Our geographic focus
+          03 / OUR NETWORK
         </p>
 
         <h2>
-          Europe and Africa
+          Europe and Africa<br>
           at the core.
         </h2>
 
@@ -447,8 +1594,7 @@
 
     <div class="bridge-network">
 
-
-      <article class="bridge-node europe fade-up">
+      <article class="bridge-node europe">
 
         <span>
           01 · EUROPE
@@ -465,7 +1611,7 @@
       </article>
 
 
-      <article class="bridge-node africa fade-up">
+      <article class="bridge-node africa">
 
         <span>
           02 · AFRICA
@@ -495,7 +1641,7 @@
       </div>
 
 
-      <article class="bridge-node middle-east fade-up">
+      <article class="bridge-node middle-east">
 
         <span>
           03 · MIDDLE EAST
@@ -512,13 +1658,11 @@
 
       </article>
 
-
     </div>
 
   </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -529,16 +1673,16 @@
 
   <div class="container">
 
-    <div class="section-head fade-up">
+    <div class="section-head">
 
       <div>
 
         <p class="eyebrow">
-          How we work
+          04 / HOW WE WORK
         </p>
 
         <h2>
-          Practical.
+          Practical.<br>
           Direct. Reliable.
         </h2>
 
@@ -554,8 +1698,7 @@
 
     <div class="service-list">
 
-
-      <article class="fade-up">
+      <article>
 
         <span>
           01
@@ -577,7 +1720,7 @@
       </article>
 
 
-      <article class="fade-up">
+      <article>
 
         <span>
           02
@@ -599,7 +1742,7 @@
       </article>
 
 
-      <article class="fade-up">
+      <article>
 
         <span>
           03
@@ -621,7 +1764,7 @@
       </article>
 
 
-      <article class="fade-up">
+      <article>
 
         <span>
           04
@@ -642,13 +1785,11 @@
 
       </article>
 
-
     </div>
 
   </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -659,7 +1800,7 @@
 
   <div class="container">
 
-    <div class="large-statement fade-up">
+    <div class="large-statement">
 
       <span>
         Our direction
@@ -669,7 +1810,7 @@
         Europe ↔ Africa
       </strong>
 
-      <p style="max-width:650px;margin-top:28px;">
+      <p>
         Building stronger food trade routes between
         production regions and professional markets,
         with the Middle East as an expanding destination.
@@ -682,7 +1823,6 @@
 </section>
 
 
-
 <!-- =========================================================
      CTA
 ========================================================= -->
@@ -691,7 +1831,7 @@
 
   <div class="container">
 
-    <div class="cta-inner fade-up">
+    <div class="cta-inner">
 
       <p class="eyebrow">
         Work with EMPERIO TISS
@@ -714,7 +1854,7 @@
           href="../index.html#contact"
           class="button light-button"
         >
-          Business enquiry
+          Business enquiry ↗
         </a>
 
         <a
@@ -735,7 +1875,6 @@
 </main>
 
 
-
 <!-- =========================================================
      FOOTER
 ========================================================= -->
@@ -745,7 +1884,6 @@
   <div class="container">
 
     <div class="footer-grid">
-
 
       <div>
 
@@ -773,7 +1911,7 @@
           Home
         </a>
 
-        <a href="../about/about.html">
+        <a href="./about.html">
           About
         </a>
 
@@ -803,11 +1941,10 @@
         </a>
 
         <a href="../products/fruits-vegetables.html">
-          Fruits & vegetables
+          Fruits &amp; vegetables
         </a>
 
       </div>
-
 
     </div>
 
@@ -829,13 +1966,65 @@
 </footer>
 
 
+<script>
 
-<!-- =========================================================
-     SCRIPT
-========================================================= -->
+  /* =========================================================
+     MOBILE MENU
+  ========================================================= */
 
-<script src="../script.js"></script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  if (menuToggle && nav) {
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen =
+        menuToggle.getAttribute("aria-expanded") === "true";
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
+
+      nav.classList.toggle(
+        "is-open",
+        !isOpen
+      );
+
+    });
+
+  }
+
+
+  /* =========================================================
+     SMOOTH HEADER
+  ========================================================= */
+
+  const header =
+    document.querySelector(".site-header");
+
+  function updateHeader() {
+
+    if (!header) return;
+
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 45
+    );
+
+  }
+
+  updateHeader();
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
+
+</script>
+
 
 </body>
-
 </html>
