@@ -54,151 +54,295 @@
   margin-inline: auto;
 }
 
-    /* =========================================================
-       HERO
-    ========================================================= */
+   /* =========================================================
+   HERO — FRUITS & VEGETABLES
+   ========================================================= */
 
-    .fv-hero {
-      position: relative;
-      min-height: 88vh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      color: #fff;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(13, 25, 17, .08) 0%,
-          rgba(13, 25, 17, .15) 35%,
-          rgba(13, 25, 17, .78) 100%
-        ),
-        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=88")
-        center / cover no-repeat;
-    }
+.fv-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background: #17261b;
+}
 
-    .fv-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(11, 24, 15, .58),
-          transparent 58%
-        );
-      pointer-events: none;
-    }
+/* Main photographic layer */
+.fv-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
 
-    .fv-hero::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 180px;
-      background: linear-gradient(
-        transparent,
-        rgba(9, 20, 13, .38)
-      );
-      pointer-events: none;
-    }
+  background-image:
+    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=88");
 
-    .fv-hero-image {
-      position: absolute;
-      inset: -4%;
-      background:
-        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=88")
-        center / cover no-repeat;
-      transform: scale(1.04);
-      transition: transform 1.4s cubic-bezier(.22,.61,.36,1);
-    }
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    .fv-hero:hover .fv-hero-image {
-      transform: scale(1.075);
-    }
+  transform: scale(1.03);
+  transition:
+    transform 1.8s cubic-bezier(.22,.61,.36,1),
+    filter 1.2s ease;
+}
 
-    .fv-hero-content {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      padding: 110px 0 90px;
-    }
+/* Subtle zoom */
+.fv-hero:hover .fv-hero-image {
+  transform: scale(1.075);
+}
 
-    .fv-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 34px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.72);
-    }
+/* Dark cinematic overlay */
+.fv-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
 
-    .fv-eyebrow::before {
-      content: "";
-      width: 38px;
-      height: 1px;
-      background: rgba(255,255,255,.55);
-    }
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 20, 12, .72) 0%,
+      rgba(8, 20, 12, .40) 38%,
+      rgba(8, 20, 12, .08) 72%,
+      rgba(8, 20, 12, .18) 100%
+    );
 
-    .fv-hero h1 {
-      max-width: 1050px;
-      margin: 0;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(72px, 11vw, 165px);
-      font-weight: 400;
-      line-height: .82;
-      letter-spacing: -.065em;
-    }
+  pointer-events: none;
+}
 
-    .fv-hero h1 em {
-      font-style: italic;
-      color: #e6d8b7;
-    }
+/* Bottom cinematic fade */
+.fv-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48%;
 
-    .fv-hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      margin-top: 60px;
-    }
+  z-index: -1;
 
-    .fv-hero-copy {
-      max-width: 470px;
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,.78);
-    }
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(7, 18, 11, .12) 25%,
+      rgba(7, 18, 11, .58) 72%,
+      rgba(7, 18, 11, .82) 100%
+    );
 
-    .fv-scroll {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 9px;
-      letter-spacing: .18em;
-      color: rgba(255,255,255,.6);
-      text-transform: uppercase;
-    }
+  pointer-events: none;
+}
 
-    .fv-scroll span {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 50%;
-      animation: fv-pulse 2.4s ease-in-out infinite;
-    }
+/* Content */
+.fv-hero-content {
+  position: relative;
+  z-index: 2;
 
-    @keyframes fv-pulse {
-      50% {
-        transform: translateY(5px);
-      }
-    }
+  width: 100%;
+  padding: 120px 0 85px;
+}
+
+/* Eyebrow */
+.fv-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 30px;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+
+  letter-spacing: .2em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.72);
+}
+
+.fv-eyebrow::before {
+  content: "";
+
+  width: 38px;
+  height: 1px;
+
+  flex: 0 0 38px;
+
+  background: rgba(255,255,255,.55);
+}
+
+/* Main title */
+.fv-hero h1 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(68px, 8vw, 125px);
+  font-weight: 400;
+
+  line-height: .84;
+  letter-spacing: -.06em;
+
+  text-wrap: balance;
+}
+
+.fv-hero h1 em {
+  font-style: italic;
+  color: #e6d8b7;
+}
+
+/* Bottom row */
+.fv-hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+  margin-top: 55px;
+}
+
+/* Description */
+.fv-hero-copy {
+  max-width: 390px;
+
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.8;
+
+  color: rgba(255,255,255,.78);
+}
+
+/* Discover indicator */
+.fv-scroll {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.62);
+}
+
+.fv-scroll span {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+
+  font-size: 16px;
+
+  animation: fv-pulse 2.4s ease-in-out infinite;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease;
+}
+
+.fv-scroll:hover span {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.7);
+}
+
+@keyframes fv-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .fv-hero {
+    min-height: 780px;
+  }
+
+  .fv-hero-content {
+    padding: 100px 0 70px;
+  }
+
+  .fv-hero h1 {
+    max-width: 720px;
+    font-size: clamp(64px, 11vw, 105px);
+  }
+
+  .fv-hero-bottom {
+    margin-top: 45px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .fv-hero {
+    min-height: 760px;
+  }
+
+  .fv-hero-image {
+    background-position: 58% center;
+    transform: scale(1.02);
+  }
+
+  .fv-hero:hover .fv-hero-image {
+    transform: scale(1.04);
+  }
+
+  .fv-hero-content {
+    padding: 90px 0 55px;
+  }
+
+  .fv-eyebrow {
+    margin-bottom: 25px;
+    font-size: 9px;
+  }
+
+  .fv-hero h1 {
+    max-width: 100%;
+    font-size: clamp(58px, 17vw, 92px);
+    line-height: .86;
+  }
+
+  .fv-hero-bottom {
+    display: block;
+    margin-top: 38px;
+  }
+
+  .fv-hero-copy {
+    max-width: 340px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .fv-scroll {
+    margin-top: 28px;
+  }
+}
 
     /* =========================================================
        INTRO / MANIFESTO
