@@ -986,6 +986,625 @@
         animation: none;
       }
     }
+    ```css
+/* =========================================================
+   FINAL HERO OVERRIDE
+   Matches the centered reference design
+========================================================= */
+
+/* ---------- HEADER ---------- */
+
+.produce-page .site-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 100 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.produce-page .site-header .nav-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 96px !important;
+  height: 96px !important;
+  padding: 0 34px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* ---------- LOGO ---------- */
+
+.produce-page .site-header .brand {
+  position: relative !important;
+  z-index: 101 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+.produce-page .site-header .brand img {
+  width: 64px !important;
+  height: auto !important;
+  max-height: 70px !important;
+  object-fit: contain !important;
+
+  /* make existing dark logo white */
+  filter: brightness(0) invert(1) !important;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.produce-page .site-header .nav {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+
+  transform: translate(-50%, -50%) !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 30px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+}
+
+.produce-page .site-header .nav > a {
+  color: rgba(255,255,255,.88) !important;
+  text-decoration: none !important;
+
+  font-size: 13px !important;
+  font-weight: 500 !important;
+
+  white-space: nowrap !important;
+
+  transition:
+    color .3s ease,
+    opacity .3s ease !important;
+}
+
+.produce-page .site-header .nav > a:hover {
+  color: #fff !important;
+}
+
+/* Languages */
+
+.produce-page .site-header .language-switcher {
+  display: flex !important;
+  align-items: center !important;
+  gap: 13px !important;
+  margin-left: 4px !important;
+}
+
+.produce-page .site-header .language-switcher a {
+  color: rgba(255,255,255,.62) !important;
+  font-size: 9px !important;
+  letter-spacing: .12em !important;
+  text-decoration: none !important;
+}
+
+.produce-page .site-header .language-switcher a:first-child {
+  color: #fff !important;
+}
+
+/* ---------- BUSINESS BUTTON ---------- */
+
+.produce-page .site-header .nav-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 42px !important;
+  padding: 0 20px !important;
+
+  border: 1px solid rgba(255,255,255,.55) !important;
+  border-radius: 999px !important;
+
+  color: #fff !important;
+  background: rgba(255,255,255,.04) !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+
+  white-space: nowrap !important;
+
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease !important;
+}
+
+.produce-page .site-header .nav-cta:hover {
+  background: #fff !important;
+  color: #17241c !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ---------- HAMBURGER ---------- */
+
+.produce-page .site-header .menu-toggle {
+  position: relative !important;
+  z-index: 102 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 48px !important;
+  height: 48px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  background: transparent !important;
+
+  color: #fff !important;
+
+  font-size: 0 !important;
+
+  cursor: pointer !important;
+}
+
+/* replace ☰ with clean three-line icon */
+
+.produce-page .site-header .menu-toggle::before {
+  content: "" !important;
+
+  width: 27px !important;
+  height: 17px !important;
+
+  display: block !important;
+
+  background:
+    linear-gradient(
+      #fff,
+      #fff
+    ) top left / 27px 1px no-repeat,
+
+    linear-gradient(
+      #fff,
+      #fff
+    ) center left / 27px 1px no-repeat,
+
+    linear-gradient(
+      #fff,
+      #fff
+    ) bottom left / 27px 1px no-repeat !important;
+
+  opacity: .88 !important;
+}
+
+/* ---------- HERO ---------- */
+
+.produce-page .fv-hero {
+  position: relative !important;
+
+  min-height: 100vh !important;
+  height: 100vh !important;
+  max-height: none !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow: hidden !important;
+
+  background: #17251b !important;
+}
+
+/* KEEP YOUR EXISTING IMAGE */
+
+.produce-page .fv-hero-image {
+  position: absolute !important;
+  inset: 0 !important;
+
+  z-index: -3 !important;
+
+  background-image:
+    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=88") !important;
+
+  background-position: center 42% !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+  transform: scale(1.035) !important;
+
+  transition:
+    transform 1.8s cubic-bezier(.22,.61,.36,1) !important;
+}
+
+.produce-page .fv-hero:hover .fv-hero-image {
+  transform: scale(1.065) !important;
+}
+
+/* darker cinematic overlay */
+
+.produce-page .fv-hero::before {
+  content: "" !important;
+
+  position: absolute !important;
+  inset: 0 !important;
+
+  z-index: -2 !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12,25,17,.62) 0%,
+      rgba(12,25,17,.28) 48%,
+      rgba(12,25,17,.08) 100%
+    ) !important;
+}
+
+/* bottom cinematic fade */
+
+.produce-page .fv-hero::after {
+  content: "" !important;
+
+  position: absolute !important;
+  inset: 0 !important;
+
+  z-index: -1 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8,18,11,.12) 0%,
+      rgba(8,18,11,.04) 45%,
+      rgba(8,18,11,.72) 100%
+    ) !important;
+}
+
+/* ---------- CENTERED HERO CONTENT ---------- */
+
+.produce-page .fv-hero-content {
+  position: relative !important;
+  z-index: 5 !important;
+
+  width: 100% !important;
+  max-width: 1180px !important;
+
+  margin: 0 auto !important;
+
+  padding:
+    100px 32px 70px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+}
+
+/* ---------- EYEBROW ---------- */
+
+.produce-page .fv-eyebrow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 17px !important;
+
+  margin: 0 0 28px !important;
+
+  color: rgba(255,255,255,.88) !important;
+
+  font-size: 10px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: .22em !important;
+}
+
+.produce-page .fv-eyebrow::before,
+.produce-page .fv-eyebrow::after {
+  content: "" !important;
+
+  width: 48px !important;
+  height: 1px !important;
+
+  background: rgba(255,255,255,.48) !important;
+}
+
+.produce-page .fv-eyebrow::before {
+  display: block !important;
+}
+
+/* ---------- HEADLINE ---------- */
+
+.produce-page .fv-hero h1 {
+  max-width: 1000px !important;
+
+  margin: 0 !important;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif !important;
+
+  font-size:
+    clamp(72px, 8.8vw, 138px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: .78 !important;
+
+  letter-spacing: -.065em !important;
+
+  text-align: center !important;
+
+  color: #fff !important;
+}
+
+.produce-page .fv-hero h1 em {
+  color: #e6d8b7 !important;
+  font-style: italic !important;
+}
+
+/* ---------- BOTTOM CONTENT ---------- */
+
+.produce-page .fv-hero-bottom {
+  width: 100% !important;
+
+  margin-top: 44px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 24px !important;
+}
+
+/* ---------- DESCRIPTION ---------- */
+
+.produce-page .fv-hero-copy {
+  max-width: 620px !important;
+
+  margin: 0 !important;
+
+  color: rgba(255,255,255,.82) !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.8 !important;
+
+  text-align: center !important;
+}
+
+/* ---------- DISCOVER ---------- */
+
+.produce-page .fv-scroll {
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 10px !important;
+
+  margin: 0 !important;
+
+  color: rgba(255,255,255,.78) !important;
+
+  font-size: 9px !important;
+
+  letter-spacing: .22em !important;
+
+  text-transform: uppercase !important;
+}
+
+.produce-page .fv-scroll span {
+  width: 50px !important;
+  height: 50px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border:
+    1px solid rgba(255,255,255,.48) !important;
+
+  border-radius: 50% !important;
+
+  font-size: 16px !important;
+
+  animation: fv-pulse 2.4s ease-in-out infinite !important;
+}
+
+
+/* =========================================================
+   FOOTER LOGO
+========================================================= */
+
+.produce-page .footer img {
+  width: 100px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+
+/* =========================================================
+   DESKTOP — FORCE MENU VISIBLE
+========================================================= */
+
+@media (min-width: 1001px) {
+
+  .produce-page .menu-toggle {
+    display: flex !important;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .produce-page .site-header .nav {
+    gap: 18px !important;
+  }
+
+  .produce-page .site-header .nav > a {
+    font-size: 11px !important;
+  }
+
+  .produce-page .site-header .nav-cta {
+    padding: 0 15px !important;
+  }
+
+  .produce-page .fv-hero h1 {
+    font-size: clamp(68px, 10vw, 105px) !important;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .produce-page .site-header .nav-wrap {
+    height: 78px !important;
+    min-height: 78px !important;
+
+    padding:
+      0 18px !important;
+  }
+
+  .produce-page .site-header .brand img {
+    width: 52px !important;
+  }
+
+  /* hide desktop nav on mobile */
+
+  .produce-page .site-header .nav {
+    position: fixed !important;
+
+    top: 78px !important;
+    left: 0 !important;
+
+    width: 100% !important;
+
+    transform: none !important;
+
+    display: none !important;
+
+    flex-direction: column !important;
+
+    padding: 28px !important;
+
+    background:
+      rgba(15,28,20,.96) !important;
+
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+  }
+
+  .produce-page .site-header .nav.is-open {
+    display: flex !important;
+  }
+
+  .produce-page .site-header .nav > a {
+    color: #fff !important;
+    font-size: 13px !important;
+  }
+
+  .produce-page .site-header .language-switcher {
+    order: 5 !important;
+  }
+
+  .produce-page .fv-hero {
+    min-height: 100svh !important;
+    height: 100svh !important;
+  }
+
+  .produce-page .fv-hero-image {
+    background-position: 57% center !important;
+  }
+
+  .produce-page .fv-hero-content {
+    padding:
+      100px 20px 45px !important;
+  }
+
+  .produce-page .fv-eyebrow {
+    margin-bottom: 23px !important;
+
+    font-size: 8px !important;
+    letter-spacing: .17em !important;
+  }
+
+  .produce-page .fv-eyebrow::before,
+  .produce-page .fv-eyebrow::after {
+    width: 27px !important;
+  }
+
+  .produce-page .fv-hero h1 {
+    max-width: 100% !important;
+
+    font-size:
+      clamp(58px, 17vw, 90px) !important;
+
+    line-height: .82 !important;
+  }
+
+  .produce-page .fv-hero-bottom {
+    margin-top: 30px !important;
+    gap: 20px !important;
+  }
+
+  .produce-page .fv-hero-copy {
+    max-width: 340px !important;
+
+    font-size: 12px !important;
+    line-height: 1.7 !important;
+  }
+
+  .produce-page .fv-scroll span {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .produce-page .fv-hero-image,
+  .produce-page .fv-scroll span {
+    transition: none !important;
+    animation: none !important;
+  }
+
+}
   </style>
 </head>
 
