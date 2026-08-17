@@ -2150,3 +2150,79 @@ button {
   }
 
 }
+/* =========================================================
+   PREMIUM POINTER
+========================================================= */
+
+.premium-pointer {
+
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  width: 9px;
+  height: 9px;
+
+  z-index: 10000;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background: var(--gold);
+
+  transform:
+    translate(-50%, -50%);
+
+  transition:
+    width .25s ease,
+    height .25s ease,
+    opacity .25s ease;
+
+}
+
+
+.premium-pointer.active {
+
+  width: 28px;
+  height: 28px;
+
+  background: transparent;
+
+  border:
+    1px solid var(--gold);
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY MODE
+========================================================= */
+
+body.accessibility-mode {
+
+  font-size: 105%;
+
+}
+
+
+body.accessibility-mode
+p {
+
+  line-height: 1.95;
+
+}
+
+
+body.accessibility-mode
+a:focus,
+body.accessibility-mode
+button:focus {
+
+  outline:
+    3px solid var(--gold);
+
+  outline-offset: 5px;
+
+}
