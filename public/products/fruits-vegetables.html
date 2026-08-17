@@ -986,625 +986,683 @@
         animation: none;
       }
     }
-    ```css
-/* =========================================================
-   FINAL HERO OVERRIDE
-   Matches the centered reference design
-========================================================= */
-
-/* ---------- HEADER ---------- */
-
-.produce-page .site-header {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  z-index: 100 !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-.produce-page .site-header .nav-wrap {
-  width: 100% !important;
-  max-width: none !important;
-  min-height: 96px !important;
-  height: 96px !important;
-  padding: 0 34px !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
-
-/* ---------- LOGO ---------- */
-
-.produce-page .site-header .brand {
-  position: relative !important;
-  z-index: 101 !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  height: 100% !important;
-  margin: 0 !important;
-}
-
-.produce-page .site-header .brand img {
-  width: 64px !important;
-  height: auto !important;
-  max-height: 70px !important;
-  object-fit: contain !important;
-
-  /* make existing dark logo white */
-  filter: brightness(0) invert(1) !important;
-}
-
-/* ---------- NAVIGATION ---------- */
-
-.produce-page .site-header .nav {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-
-  transform: translate(-50%, -50%) !important;
 
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+    /* =========================================================
+       FINAL HERO OVERRIDE
+       Matches the centered reference design
+    ========================================================= */
+
+    /* ---------- HEADER — FIXED, SIEMPRE CON CONTRASTE ---------- */
+
+    .produce-page .site-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 1000 !important;
+
+      /* Fondo oscuro translúcido SIEMPRE presente:
+         nunca queda del todo transparente, así el
+         logo y el texto blancos siempre tienen contraste,
+         estén sobre el hero o sobre cualquier sección clara. */
+      background: linear-gradient(
+        180deg,
+        rgba(10,20,13,.55) 0%,
+        rgba(10,20,13,.15) 100%
+      ) !important;
+
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+
+      border: 0 !important;
+      box-shadow: none !important;
+
+      transition: background .4s ease !important;
+    }
+
+    /* Estado al hacer scroll: fondo claro sólido + texto oscuro */
+
+    .produce-page .site-header.scrolled {
+      background: rgba(244,240,231,.97) !important;
+      box-shadow: 0 1px 0 rgba(23,36,28,.08) !important;
+    }
+
+    .produce-page .site-header.scrolled .nav > a {
+      color: #17241c !important;
+    }
+
+    .produce-page .site-header.scrolled .nav-cta {
+      border-color: rgba(23,36,28,.35) !important;
+      color: #17241c !important;
+      background: transparent !important;
+    }
+
+    .produce-page .site-header.scrolled .nav-cta:hover {
+      background: #17241c !important;
+      color: #fff !important;
+    }
+
+    .produce-page .site-header.scrolled .language-switcher a {
+      color: rgba(23,36,28,.5) !important;
+    }
+
+    .produce-page .site-header.scrolled .language-switcher a:first-child {
+      color: #17241c !important;
+    }
+
+    .produce-page .site-header.scrolled .brand img {
+      /* logo vuelve a su color oscuro original */
+      filter: none !important;
+    }
+
+    .produce-page .site-header.scrolled .menu-toggle::before {
+      background:
+        linear-gradient(#17241c, #17241c) top left / 27px 1px no-repeat,
+        linear-gradient(#17241c, #17241c) center left / 27px 1px no-repeat,
+        linear-gradient(#17241c, #17241c) bottom left / 27px 1px no-repeat !important;
+    }
+
+    .produce-page .site-header .nav-wrap {
+      width: 100% !important;
+      max-width: none !important;
+      min-height: 96px !important;
+      height: 96px !important;
+      padding: 0 34px !important;
+
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    /* ---------- LOGO ---------- */
+
+    .produce-page .site-header .brand {
+      position: relative !important;
+      z-index: 101 !important;
+
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      height: 100% !important;
+      margin: 0 !important;
+    }
 
-  gap: 30px !important;
+    .produce-page .site-header .brand img {
+      width: 64px !important;
+      height: auto !important;
+      max-height: 70px !important;
+      object-fit: contain !important;
 
-  margin: 0 !important;
-  padding: 0 !important;
+      /* logo blanco por defecto sobre el header oscuro */
+      filter: brightness(0) invert(1) !important;
+      transition: filter .4s ease !important;
+    }
 
-  background: transparent !important;
-}
+    /* ---------- NAVIGATION ---------- */
 
-.produce-page .site-header .nav > a {
-  color: rgba(255,255,255,.88) !important;
-  text-decoration: none !important;
+    .produce-page .site-header .nav {
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
 
-  font-size: 13px !important;
-  font-weight: 500 !important;
+      transform: translate(-50%, -50%) !important;
 
-  white-space: nowrap !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-  transition:
-    color .3s ease,
-    opacity .3s ease !important;
-}
+      gap: 30px !important;
 
-.produce-page .site-header .nav > a:hover {
-  color: #fff !important;
-}
+      margin: 0 !important;
+      padding: 0 !important;
 
-/* Languages */
+      background: transparent !important;
+    }
 
-.produce-page .site-header .language-switcher {
-  display: flex !important;
-  align-items: center !important;
-  gap: 13px !important;
-  margin-left: 4px !important;
-}
+    .produce-page .site-header .nav > a {
+      color: rgba(255,255,255,.88) !important;
+      text-decoration: none !important;
 
-.produce-page .site-header .language-switcher a {
-  color: rgba(255,255,255,.62) !important;
-  font-size: 9px !important;
-  letter-spacing: .12em !important;
-  text-decoration: none !important;
-}
+      font-size: 13px !important;
+      font-weight: 500 !important;
 
-.produce-page .site-header .language-switcher a:first-child {
-  color: #fff !important;
-}
+      white-space: nowrap !important;
 
-/* ---------- BUSINESS BUTTON ---------- */
+      transition:
+        color .3s ease,
+        opacity .3s ease !important;
+    }
 
-.produce-page .site-header .nav-cta {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+    .produce-page .site-header .nav > a:hover {
+      color: #fff !important;
+    }
 
-  min-height: 42px !important;
-  padding: 0 20px !important;
+    /* Languages */
 
-  border: 1px solid rgba(255,255,255,.55) !important;
-  border-radius: 999px !important;
+    .produce-page .site-header .language-switcher {
+      display: flex !important;
+      align-items: center !important;
+      gap: 13px !important;
+      margin-left: 4px !important;
+    }
 
-  color: #fff !important;
-  background: rgba(255,255,255,.04) !important;
+    .produce-page .site-header .language-switcher a {
+      color: rgba(255,255,255,.62) !important;
+      font-size: 9px !important;
+      letter-spacing: .12em !important;
+      text-decoration: none !important;
+    }
 
-  font-size: 11px !important;
-  font-weight: 600 !important;
+    .produce-page .site-header .language-switcher a:first-child {
+      color: #fff !important;
+    }
 
-  white-space: nowrap !important;
+    /* ---------- BUSINESS BUTTON ---------- */
 
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+    .produce-page .site-header .nav-cta {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-  transition:
-    background .3s ease,
-    color .3s ease,
-    transform .3s ease !important;
-}
+      min-height: 42px !important;
+      padding: 0 20px !important;
 
-.produce-page .site-header .nav-cta:hover {
-  background: #fff !important;
-  color: #17241c !important;
-  transform: translateY(-2px) !important;
-}
+      border: 1px solid rgba(255,255,255,.55) !important;
+      border-radius: 999px !important;
 
-/* ---------- HAMBURGER ---------- */
+      color: #fff !important;
+      background: rgba(255,255,255,.04) !important;
 
-.produce-page .site-header .menu-toggle {
-  position: relative !important;
-  z-index: 102 !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
 
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+      white-space: nowrap !important;
 
-  width: 48px !important;
-  height: 48px !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
 
-  margin: 0 !important;
-  padding: 0 !important;
+      transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease !important;
+    }
 
-  border: 0 !important;
-  background: transparent !important;
+    .produce-page .site-header .nav-cta:hover {
+      background: #fff !important;
+      color: #17241c !important;
+      transform: translateY(-2px) !important;
+    }
 
-  color: #fff !important;
+    /* ---------- HAMBURGER ---------- */
 
-  font-size: 0 !important;
+    .produce-page .site-header .menu-toggle {
+      position: relative !important;
+      z-index: 102 !important;
 
-  cursor: pointer !important;
-}
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-/* replace ☰ with clean three-line icon */
+      width: 48px !important;
+      height: 48px !important;
 
-.produce-page .site-header .menu-toggle::before {
-  content: "" !important;
+      margin: 0 !important;
+      padding: 0 !important;
 
-  width: 27px !important;
-  height: 17px !important;
+      border: 0 !important;
+      background: transparent !important;
 
-  display: block !important;
+      color: #fff !important;
 
-  background:
-    linear-gradient(
-      #fff,
-      #fff
-    ) top left / 27px 1px no-repeat,
+      font-size: 0 !important;
 
-    linear-gradient(
-      #fff,
-      #fff
-    ) center left / 27px 1px no-repeat,
+      cursor: pointer !important;
+    }
 
-    linear-gradient(
-      #fff,
-      #fff
-    ) bottom left / 27px 1px no-repeat !important;
+    /* replace ☰ with clean three-line icon */
 
-  opacity: .88 !important;
-}
+    .produce-page .site-header .menu-toggle::before {
+      content: "" !important;
 
-/* ---------- HERO ---------- */
+      width: 27px !important;
+      height: 17px !important;
 
-.produce-page .fv-hero {
-  position: relative !important;
+      display: block !important;
 
-  min-height: 100vh !important;
-  height: 100vh !important;
-  max-height: none !important;
+      background:
+        linear-gradient(
+          #fff,
+          #fff
+        ) top left / 27px 1px no-repeat,
 
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+        linear-gradient(
+          #fff,
+          #fff
+        ) center left / 27px 1px no-repeat,
 
-  overflow: hidden !important;
+        linear-gradient(
+          #fff,
+          #fff
+        ) bottom left / 27px 1px no-repeat !important;
 
-  background: #17251b !important;
-}
+      opacity: .88 !important;
+    }
 
-/* KEEP YOUR EXISTING IMAGE */
+    /* ---------- HERO ---------- */
 
-.produce-page .fv-hero-image {
-  position: absolute !important;
-  inset: 0 !important;
+    .produce-page .fv-hero {
+      position: relative !important;
 
-  z-index: -3 !important;
+      min-height: 100vh !important;
+      height: 100vh !important;
+      max-height: none !important;
 
-  background-image:
-    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=88") !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-  background-position: center 42% !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+      overflow: hidden !important;
 
-  transform: scale(1.035) !important;
+      background: #17251b !important;
+    }
 
-  transition:
-    transform 1.8s cubic-bezier(.22,.61,.36,1) !important;
-}
+    /* KEEP YOUR EXISTING IMAGE */
 
-.produce-page .fv-hero:hover .fv-hero-image {
-  transform: scale(1.065) !important;
-}
+    .produce-page .fv-hero-image {
+      position: absolute !important;
+      inset: 0 !important;
 
-/* darker cinematic overlay */
+      z-index: -3 !important;
 
-.produce-page .fv-hero::before {
-  content: "" !important;
+      background-image:
+        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2200&q=88") !important;
 
-  position: absolute !important;
-  inset: 0 !important;
+      background-position: center 42% !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
 
-  z-index: -2 !important;
+      transform: scale(1.035) !important;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(12,25,17,.62) 0%,
-      rgba(12,25,17,.28) 48%,
-      rgba(12,25,17,.08) 100%
-    ) !important;
-}
+      transition:
+        transform 1.8s cubic-bezier(.22,.61,.36,1) !important;
+    }
 
-/* bottom cinematic fade */
+    .produce-page .fv-hero:hover .fv-hero-image {
+      transform: scale(1.065) !important;
+    }
 
-.produce-page .fv-hero::after {
-  content: "" !important;
+    /* darker cinematic overlay */
 
-  position: absolute !important;
-  inset: 0 !important;
+    .produce-page .fv-hero::before {
+      content: "" !important;
 
-  z-index: -1 !important;
+      position: absolute !important;
+      inset: 0 !important;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(8,18,11,.12) 0%,
-      rgba(8,18,11,.04) 45%,
-      rgba(8,18,11,.72) 100%
-    ) !important;
-}
+      z-index: -2 !important;
 
-/* ---------- CENTERED HERO CONTENT ---------- */
+      background:
+        linear-gradient(
+          90deg,
+          rgba(12,25,17,.62) 0%,
+          rgba(12,25,17,.28) 48%,
+          rgba(12,25,17,.08) 100%
+        ) !important;
+    }
 
-.produce-page .fv-hero-content {
-  position: relative !important;
-  z-index: 5 !important;
+    /* bottom cinematic fade */
 
-  width: 100% !important;
-  max-width: 1180px !important;
+    .produce-page .fv-hero::after {
+      content: "" !important;
 
-  margin: 0 auto !important;
+      position: absolute !important;
+      inset: 0 !important;
 
-  padding:
-    100px 32px 70px !important;
+      z-index: -1 !important;
 
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(8,18,11,.12) 0%,
+          rgba(8,18,11,.04) 45%,
+          rgba(8,18,11,.72) 100%
+        ) !important;
+    }
 
-  text-align: center !important;
-}
+    /* ---------- CENTERED HERO CONTENT ---------- */
 
-/* ---------- EYEBROW ---------- */
+    .produce-page .fv-hero-content {
+      position: relative !important;
+      z-index: 5 !important;
 
-.produce-page .fv-eyebrow {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+      width: 100% !important;
+      max-width: 1180px !important;
 
-  gap: 17px !important;
+      margin: 0 auto !important;
 
-  margin: 0 0 28px !important;
+      padding:
+        100px 32px 70px !important;
 
-  color: rgba(255,255,255,.88) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-  font-size: 10px !important;
-  font-weight: 600 !important;
+      text-align: center !important;
+    }
 
-  letter-spacing: .22em !important;
-}
+    /* ---------- EYEBROW ---------- */
 
-.produce-page .fv-eyebrow::before,
-.produce-page .fv-eyebrow::after {
-  content: "" !important;
+    .produce-page .fv-eyebrow {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-  width: 48px !important;
-  height: 1px !important;
+      gap: 17px !important;
 
-  background: rgba(255,255,255,.48) !important;
-}
+      margin: 0 0 28px !important;
 
-.produce-page .fv-eyebrow::before {
-  display: block !important;
-}
+      color: rgba(255,255,255,.88) !important;
 
-/* ---------- HEADLINE ---------- */
+      font-size: 10px !important;
+      font-weight: 600 !important;
 
-.produce-page .fv-hero h1 {
-  max-width: 1000px !important;
+      letter-spacing: .22em !important;
+    }
 
-  margin: 0 !important;
+    .produce-page .fv-eyebrow::before,
+    .produce-page .fv-eyebrow::after {
+      content: "" !important;
 
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif !important;
+      width: 48px !important;
+      height: 1px !important;
 
-  font-size:
-    clamp(72px, 8.8vw, 138px) !important;
+      background: rgba(255,255,255,.48) !important;
+    }
 
-  font-weight: 400 !important;
+    .produce-page .fv-eyebrow::before {
+      display: block !important;
+    }
 
-  line-height: .78 !important;
+    /* ---------- HEADLINE ---------- */
 
-  letter-spacing: -.065em !important;
+    .produce-page .fv-hero h1 {
+      max-width: 1000px !important;
 
-  text-align: center !important;
+      margin: 0 !important;
 
-  color: #fff !important;
-}
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif !important;
 
-.produce-page .fv-hero h1 em {
-  color: #e6d8b7 !important;
-  font-style: italic !important;
-}
+      font-size:
+        clamp(72px, 8.8vw, 138px) !important;
 
-/* ---------- BOTTOM CONTENT ---------- */
+      font-weight: 400 !important;
 
-.produce-page .fv-hero-bottom {
-  width: 100% !important;
+      line-height: .78 !important;
 
-  margin-top: 44px !important;
+      letter-spacing: -.065em !important;
 
-  display: flex !important;
-  flex-direction: column !important;
+      text-align: center !important;
 
-  align-items: center !important;
-  justify-content: center !important;
+      color: #fff !important;
+    }
 
-  gap: 24px !important;
-}
+    .produce-page .fv-hero h1 em {
+      color: #e6d8b7 !important;
+      font-style: italic !important;
+    }
 
-/* ---------- DESCRIPTION ---------- */
+    /* ---------- BOTTOM CONTENT ---------- */
 
-.produce-page .fv-hero-copy {
-  max-width: 620px !important;
+    .produce-page .fv-hero-bottom {
+      width: 100% !important;
 
-  margin: 0 !important;
+      margin-top: 44px !important;
 
-  color: rgba(255,255,255,.82) !important;
+      display: flex !important;
+      flex-direction: column !important;
 
-  font-size: 14px !important;
+      align-items: center !important;
+      justify-content: center !important;
 
-  line-height: 1.8 !important;
+      gap: 24px !important;
+    }
 
-  text-align: center !important;
-}
+    /* ---------- DESCRIPTION ---------- */
 
-/* ---------- DISCOVER ---------- */
+    .produce-page .fv-hero-copy {
+      max-width: 620px !important;
 
-.produce-page .fv-scroll {
-  display: flex !important;
+      margin: 0 !important;
 
-  flex-direction: column !important;
+      color: rgba(255,255,255,.82) !important;
 
-  align-items: center !important;
-  justify-content: center !important;
+      font-size: 14px !important;
 
-  gap: 10px !important;
+      line-height: 1.8 !important;
 
-  margin: 0 !important;
+      text-align: center !important;
+    }
 
-  color: rgba(255,255,255,.78) !important;
+    /* ---------- DISCOVER ---------- */
 
-  font-size: 9px !important;
+    .produce-page .fv-scroll {
+      display: flex !important;
 
-  letter-spacing: .22em !important;
+      flex-direction: column !important;
 
-  text-transform: uppercase !important;
-}
+      align-items: center !important;
+      justify-content: center !important;
 
-.produce-page .fv-scroll span {
-  width: 50px !important;
-  height: 50px !important;
+      gap: 10px !important;
 
-  display: grid !important;
-  place-items: center !important;
+      margin: 0 !important;
 
-  border:
-    1px solid rgba(255,255,255,.48) !important;
+      color: rgba(255,255,255,.78) !important;
 
-  border-radius: 50% !important;
+      font-size: 9px !important;
 
-  font-size: 16px !important;
+      letter-spacing: .22em !important;
 
-  animation: fv-pulse 2.4s ease-in-out infinite !important;
-}
+      text-transform: uppercase !important;
+    }
 
+    .produce-page .fv-scroll span {
+      width: 50px !important;
+      height: 50px !important;
 
-/* =========================================================
-   FOOTER LOGO
-========================================================= */
+      display: grid !important;
+      place-items: center !important;
 
-.produce-page .footer img {
-  width: 100px !important;
-  height: auto !important;
-  object-fit: contain !important;
-}
+      border:
+        1px solid rgba(255,255,255,.48) !important;
 
+      border-radius: 50% !important;
 
-/* =========================================================
-   DESKTOP — FORCE MENU VISIBLE
-========================================================= */
+      font-size: 16px !important;
 
-@media (min-width: 1001px) {
+      animation: fv-pulse 2.4s ease-in-out infinite !important;
+    }
 
-  .produce-page .menu-toggle {
-    display: flex !important;
-  }
 
-}
+    /* =========================================================
+       FOOTER LOGO
+    ========================================================= */
 
+    .produce-page .footer img {
+      width: 100px !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
 
-/* =========================================================
-   TABLET
-========================================================= */
 
-@media (max-width: 1000px) {
+    /* =========================================================
+       DESKTOP — FORCE MENU VISIBLE
+    ========================================================= */
 
-  .produce-page .site-header .nav {
-    gap: 18px !important;
-  }
+    @media (min-width: 1001px) {
 
-  .produce-page .site-header .nav > a {
-    font-size: 11px !important;
-  }
+      .produce-page .menu-toggle {
+        display: flex !important;
+      }
 
-  .produce-page .site-header .nav-cta {
-    padding: 0 15px !important;
-  }
+    }
 
-  .produce-page .fv-hero h1 {
-    font-size: clamp(68px, 10vw, 105px) !important;
-  }
 
-}
+    /* =========================================================
+       TABLET
+    ========================================================= */
 
+    @media (max-width: 1000px) {
 
-/* =========================================================
-   MOBILE
-========================================================= */
+      .produce-page .site-header .nav {
+        gap: 18px !important;
+      }
 
-@media (max-width: 700px) {
+      .produce-page .site-header .nav > a {
+        font-size: 11px !important;
+      }
 
-  .produce-page .site-header .nav-wrap {
-    height: 78px !important;
-    min-height: 78px !important;
+      .produce-page .site-header .nav-cta {
+        padding: 0 15px !important;
+      }
 
-    padding:
-      0 18px !important;
-  }
+      .produce-page .fv-hero h1 {
+        font-size: clamp(68px, 10vw, 105px) !important;
+      }
 
-  .produce-page .site-header .brand img {
-    width: 52px !important;
-  }
+    }
 
-  /* hide desktop nav on mobile */
 
-  .produce-page .site-header .nav {
-    position: fixed !important;
+    /* =========================================================
+       MOBILE
+    ========================================================= */
 
-    top: 78px !important;
-    left: 0 !important;
+    @media (max-width: 700px) {
 
-    width: 100% !important;
+      .produce-page .site-header .nav-wrap {
+        height: 78px !important;
+        min-height: 78px !important;
 
-    transform: none !important;
+        padding:
+          0 18px !important;
+      }
 
-    display: none !important;
+      .produce-page .site-header .brand img {
+        width: 52px !important;
+      }
 
-    flex-direction: column !important;
+      /* hide desktop nav on mobile */
 
-    padding: 28px !important;
+      .produce-page .site-header .nav {
+        position: fixed !important;
 
-    background:
-      rgba(15,28,20,.96) !important;
+        top: 78px !important;
+        left: 0 !important;
 
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-  }
+        width: 100% !important;
 
-  .produce-page .site-header .nav.is-open {
-    display: flex !important;
-  }
+        transform: none !important;
 
-  .produce-page .site-header .nav > a {
-    color: #fff !important;
-    font-size: 13px !important;
-  }
+        display: none !important;
 
-  .produce-page .site-header .language-switcher {
-    order: 5 !important;
-  }
+        flex-direction: column !important;
 
-  .produce-page .fv-hero {
-    min-height: 100svh !important;
-    height: 100svh !important;
-  }
+        padding: 28px !important;
 
-  .produce-page .fv-hero-image {
-    background-position: 57% center !important;
-  }
+        background:
+          rgba(15,28,20,.96) !important;
 
-  .produce-page .fv-hero-content {
-    padding:
-      100px 20px 45px !important;
-  }
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+      }
 
-  .produce-page .fv-eyebrow {
-    margin-bottom: 23px !important;
+      .produce-page .site-header .nav.is-open {
+        display: flex !important;
+      }
 
-    font-size: 8px !important;
-    letter-spacing: .17em !important;
-  }
+      .produce-page .site-header .nav > a {
+        color: #fff !important;
+        font-size: 13px !important;
+      }
 
-  .produce-page .fv-eyebrow::before,
-  .produce-page .fv-eyebrow::after {
-    width: 27px !important;
-  }
+      .produce-page .site-header .language-switcher {
+        order: 5 !important;
+      }
 
-  .produce-page .fv-hero h1 {
-    max-width: 100% !important;
+      .produce-page .fv-hero {
+        min-height: 100svh !important;
+        height: 100svh !important;
+      }
 
-    font-size:
-      clamp(58px, 17vw, 90px) !important;
+      .produce-page .fv-hero-image {
+        background-position: 57% center !important;
+      }
 
-    line-height: .82 !important;
-  }
+      .produce-page .fv-hero-content {
+        padding:
+          100px 20px 45px !important;
+      }
 
-  .produce-page .fv-hero-bottom {
-    margin-top: 30px !important;
-    gap: 20px !important;
-  }
+      .produce-page .fv-eyebrow {
+        margin-bottom: 23px !important;
 
-  .produce-page .fv-hero-copy {
-    max-width: 340px !important;
+        font-size: 8px !important;
+        letter-spacing: .17em !important;
+      }
 
-    font-size: 12px !important;
-    line-height: 1.7 !important;
-  }
+      .produce-page .fv-eyebrow::before,
+      .produce-page .fv-eyebrow::after {
+        width: 27px !important;
+      }
 
-  .produce-page .fv-scroll span {
-    width: 44px !important;
-    height: 44px !important;
-  }
+      .produce-page .fv-hero h1 {
+        max-width: 100% !important;
 
-}
+        font-size:
+          clamp(58px, 17vw, 90px) !important;
 
+        line-height: .82 !important;
+      }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+      .produce-page .fv-hero-bottom {
+        margin-top: 30px !important;
+        gap: 20px !important;
+      }
 
-@media (prefers-reduced-motion: reduce) {
+      .produce-page .fv-hero-copy {
+        max-width: 340px !important;
 
-  .produce-page .fv-hero-image,
-  .produce-page .fv-scroll span {
-    transition: none !important;
-    animation: none !important;
-  }
+        font-size: 12px !important;
+        line-height: 1.7 !important;
+      }
 
-}
+      .produce-page .fv-scroll span {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .produce-page .fv-hero-image,
+      .produce-page .fv-scroll span {
+        transition: none !important;
+        animation: none !important;
+      }
+
+    }
   </style>
 </head>
 
@@ -2237,7 +2295,7 @@
 
 
   <!-- =======================================================
-       MOBILE NAVIGATION
+       MOBILE NAVIGATION + SCROLLED HEADER STATE
   ======================================================== -->
 
   <script>
@@ -2269,8 +2327,34 @@
 
     }
 
+    // Añade la clase "scrolled" al header al bajar,
+    // para que el fondo cambie a claro y el texto a oscuro.
+
+    const siteHeader =
+      document.querySelector(".site-header");
+
+    if (siteHeader) {
+
+      const toggleScrolled = () => {
+
+        siteHeader.classList.toggle(
+          "scrolled",
+          window.scrollY > 40
+        );
+
+      };
+
+      toggleScrolled();
+
+      window.addEventListener(
+        "scroll",
+        toggleScrolled,
+        { passive: true }
+      );
+
+    }
+
   </script>
 
 </body>
 </html>
-```
