@@ -1,92 +1,83 @@
+```html
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Seafood — EMPERIO TISS</title>
+<title>Seafood | EMPERIO TISS</title>
 
-  <meta
-    name="description"
-    content="Fresh and frozen seafood, fish, shellfish and cephalopods for professional buyers across Europe, Africa and Mediterranean markets."
-  >
+<meta
+  name="description"
+  content="Seafood, fish, shellfish and cephalopods sourced for professional buyers across Europe, Africa and the Mediterranean."
+>
 
-  <link rel="icon" href="../logo.png">
+<link rel="icon" href="../logo.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
-    rel="stylesheet"
-  >
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+  rel="stylesheet"
+>
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css">
 
-  <style>
+<style>
 
 /* =========================================================
-   SEAFOOD PAGE
+   SEAFOOD — OCEAN SYSTEM
 ========================================================= */
 
 :root {
-  --sea-deep: #062f35;
-  --sea-dark: #08252a;
-  --sea-mid: #0b6871;
-  --sea-light: #dcebe7;
-  --sea-foam: #f1f5f1;
-  --sea-sand: #e9e0d0;
-  --sea-cream: #f7f3ea;
-  --sea-ink: #102f31;
-  --sea-muted: #667876;
-  --sea-line: rgba(16,47,49,.14);
+  --ocean-950: #031c24;
+  --ocean-900: #042832;
+  --ocean-800: #063b47;
+  --ocean-700: #075664;
+  --ocean-500: #168493;
+
+  --foam: #eef5f2;
+  --sand: #e9e1d2;
+  --ink: #092d34;
+
+  --white: #ffffff;
+  --muted: rgba(255,255,255,.68);
+
+  --container: 1280px;
 }
 
+* {
+  box-sizing: border-box;
+}
 
-/* =========================================================
-   BASE
-========================================================= */
+html {
+  scroll-behavior: smooth;
+}
 
-.seafood-page {
+body {
   margin: 0;
-  background: var(--sea-foam);
-  color: var(--sea-ink);
+  background: var(--foam);
+  color: var(--ink);
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
 }
 
-.seafood-page *,
-.seafood-page *::before,
-.seafood-page *::after {
-  box-sizing: border-box;
-}
-
-.seafood-page a {
+a {
   color: inherit;
   text-decoration: none;
 }
 
-.seafood-page h1,
-.seafood-page h2,
-.seafood-page h3,
-.seafood-page p {
-  margin: 0;
+img {
+  max-width: 100%;
 }
 
-.sf-container {
-  width: min(1240px, calc(100% - 80px));
-  margin: 0 auto;
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 
@@ -95,124 +86,132 @@
 ========================================================= */
 
 .sf-header {
-  position: relative;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
   z-index: 100;
-  height: 82px;
 
-  background: rgba(247,243,234,.94);
-  border-bottom: 1px solid rgba(16,47,49,.10);
+  color: #fff;
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(2,22,29,.82),
+      rgba(2,22,29,.15)
+    );
+
+  border-bottom: 1px solid rgba(255,255,255,.12);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .sf-nav {
-  width: min(1240px, calc(100% - 80px));
-  height: 82px;
+
+  width: min(
+    var(--container),
+    calc(100% - 70px)
+  );
+
+  min-height: 86px;
+
   margin: auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 35px;
 }
 
 
 /* LOGO */
 
 .sf-logo {
+
   display: flex;
   align-items: center;
 
-  width: 150px;
-  height: 82px;
+  width: 155px;
 }
 
 .sf-logo img {
-  display: block;
 
   width: 118px;
   height: auto;
 
-  max-width: 118px;
-
-  object-fit: contain;
+  display: block;
 
   /*
     IMPORTANT:
-    Keep original logo colours.
-    No invert / brightness filter.
+    Do not force the logo white.
   */
-  filter: none !important;
-  opacity: 1 !important;
+
+  filter: none;
+
+  opacity: 1;
 }
 
 
-/* NAVIGATION */
+/* NAV */
 
 .sf-navigation {
+
   display: flex;
   align-items: center;
+
   gap: 28px;
 
   font-size: 12px;
   font-weight: 500;
 }
 
-.sf-navigation > a:not(.sf-enquiry) {
-  position: relative;
+.sf-navigation > a {
 
-  color: var(--sea-ink);
+  color: #fff;
+
   white-space: nowrap;
 
   transition:
-    color .25s ease,
-    opacity .25s ease;
+    opacity .25s ease,
+    transform .25s ease;
 }
 
-.sf-navigation > a:not(.sf-enquiry)::after {
-  content: "";
+.sf-navigation > a:hover {
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -7px;
+  opacity: .7;
 
-  height: 1px;
-
-  background: var(--sea-mid);
-
-  transform: scaleX(0);
-  transform-origin: center;
-
-  transition: transform .25s ease;
-}
-
-.sf-navigation > a:not(.sf-enquiry):hover::after,
-.sf-navigation > a.active::after {
-  transform: scaleX(1);
+  transform: translateY(-1px);
 }
 
 
 /* LANGUAGES */
 
 .sf-languages {
+
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 
   margin-left: 4px;
-
-  font-size: 9px;
-  letter-spacing: .1em;
 }
 
 .sf-languages a {
-  color: var(--sea-ink);
-  opacity: .42;
+
+  color: rgba(255,255,255,.55);
+
+  font-size: 10px;
+
+  letter-spacing: .1em;
 }
 
 .sf-languages a.active {
-  opacity: 1;
+
+  color: #fff;
+
   font-weight: 700;
 }
 
@@ -220,39 +219,46 @@
 /* BUSINESS ENQUIRY */
 
 .sf-enquiry {
+
   display: inline-flex !important;
+
   align-items: center;
   justify-content: center;
 
-  min-width: 150px;
-  min-height: 43px;
+  min-height: 44px;
 
   padding: 0 20px;
 
   border-radius: 999px;
 
-  background: var(--sea-deep) !important;
-  color: #fff !important;
+  background: #fff !important;
+
+  color: #063b47 !important;
 
   font-size: 11px !important;
-  font-weight: 600 !important;
+
+  font-weight: 700 !important;
+
   line-height: 1 !important;
 
   white-space: nowrap;
 
-  border: 1px solid var(--sea-deep);
+  opacity: 1 !important;
+
+  visibility: visible !important;
 
   transition:
-    background .25s ease,
     transform .25s ease,
-    box-shadow .25s ease;
+    background .25s ease;
 }
 
 .sf-enquiry:hover {
-  background: var(--sea-mid) !important;
+
   transform: translateY(-2px);
 
-  box-shadow: 0 8px 24px rgba(6,47,53,.16);
+  background: #e9f3f0 !important;
+
+  color: #063b47 !important;
 }
 
 
@@ -261,195 +267,201 @@
 ========================================================= */
 
 .sf-hero {
+
   position: relative;
 
-  min-height: 760px;
+  min-height: 900px;
 
   display: flex;
-  align-items: center;
-
-  padding: 110px 0 80px;
+  align-items: flex-end;
 
   overflow: hidden;
 
   color: #fff;
 
   background:
-    radial-gradient(
-      circle at 78% 35%,
-      rgba(72,169,174,.28),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(11,105,114,.35),
-      transparent 30%
-    ),
     linear-gradient(
-      125deg,
-      #041f25 0%,
-      #063c43 52%,
-      #075963 100%
-    );
+      180deg,
+      rgba(2,24,31,.58) 0%,
+      rgba(2,24,31,.08) 40%,
+      rgba(2,24,31,.68) 100%
+    ),
+    url("images/seafood/seafood-hero.jpg")
+    center center / cover no-repeat;
+
+  isolation: isolate;
 }
 
 
-/* WATER LINES */
+/* OCEAN LIGHT */
 
-.sf-water {
-  position: absolute;
-  inset: 0;
+.sf-hero::before {
 
-  pointer-events: none;
-
-  opacity: .35;
-
-  background:
-    repeating-linear-gradient(
-      165deg,
-      transparent 0,
-      transparent 50px,
-      rgba(255,255,255,.045) 51px,
-      transparent 53px,
-      transparent 100px
-    );
-}
-
-.sf-water::before,
-.sf-water::after {
   content: "";
 
   position: absolute;
 
-  border: 1px solid rgba(255,255,255,.08);
+  inset: 0;
 
-  border-radius: 50%;
+  z-index: -1;
+
+  background:
+
+    radial-gradient(
+      circle at 72% 35%,
+      rgba(63,190,201,.32),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 20% 75%,
+      rgba(0,116,135,.30),
+      transparent 30%
+    );
 }
 
-.sf-water::before {
-  width: 700px;
-  height: 700px;
 
-  right: -280px;
-  top: -120px;
-}
+/* WATER MOVEMENT */
 
-.sf-water::after {
-  width: 470px;
-  height: 470px;
+.sf-hero::after {
 
-  right: -150px;
-  top: 40px;
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  opacity: .25;
+
+  background:
+
+    repeating-linear-gradient(
+      160deg,
+      transparent 0,
+      transparent 58px,
+      rgba(255,255,255,.035) 59px,
+      transparent 61px,
+      transparent 120px
+    );
 }
 
 
 .sf-hero-inner {
-  position: relative;
-  z-index: 2;
 
-  width: min(1240px, calc(100% - 80px));
+  width: min(
+    var(--container),
+    calc(100% - 70px)
+  );
 
   margin: auto;
+
+  padding:
+    150px 0
+    65px;
 }
 
-.sf-hero-grid {
-  display: grid;
-
-  grid-template-columns: 1fr 100px;
-
-  gap: 70px;
-
-  align-items: center;
-}
-
-
-/* KICKER */
 
 .sf-kicker {
+
   display: flex;
   align-items: center;
+
   gap: 14px;
 
-  color: rgba(255,255,255,.58);
+  margin-bottom: 28px;
 
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 10px;
 
   letter-spacing: .18em;
+
+  font-weight: 700;
+
+  color: rgba(255,255,255,.7);
 }
 
-.sf-kicker i {
-  width: 38px;
+.sf-kicker span {
+
+  width: 42px;
   height: 1px;
 
-  background: rgba(255,255,255,.4);
+  background: rgba(255,255,255,.5);
 }
 
 
-/* HERO TITLE */
-
 .sf-hero h1 {
-  margin-top: 28px;
 
-  font-family: "Playfair Display", Georgia, serif;
+  max-width: 1000px;
 
-  font-size: clamp(90px, 13vw, 175px);
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(80px, 13vw, 185px);
 
   font-weight: 400;
 
   line-height: .78;
 
-  letter-spacing: -.075em;
-
-  color: #fff;
+  letter-spacing: -.07em;
 }
 
 .sf-hero h1 em {
-  color: #a9ded8;
+
   font-style: italic;
+
+  color: #bfe5df;
 }
 
 
-/* HERO TEXT */
+.sf-hero-description {
 
-.sf-hero-text {
-  max-width: 500px;
+  max-width: 570px;
 
   margin-top: 42px;
 
-  color: rgba(255,255,255,.70);
-
-  font-size: 15px;
+  font-size: 16px;
 
   line-height: 1.8;
+
+  color: rgba(255,255,255,.76);
 }
 
 
-/* HERO BUTTONS */
+/* HERO ACTIONS */
 
 .sf-actions {
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 12px;
 
-  margin-top: 34px;
+  margin-top: 35px;
 }
 
 .sf-button {
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
-  min-height: 50px;
+  min-height: 52px;
 
-  padding: 0 25px;
+  padding: 0 26px;
 
   border-radius: 999px;
 
   border: 1px solid rgba(255,255,255,.35);
 
   font-size: 12px;
-  font-weight: 600;
+
+  font-weight: 700;
 
   transition:
     transform .25s ease,
@@ -457,65 +469,57 @@
 }
 
 .sf-button:hover {
-  transform: translateY(-2px);
+
+  transform: translateY(-3px);
 }
 
 .sf-button.primary {
+
   background: #fff;
-  color: var(--sea-deep);
+
+  color: #063b47;
+
   border-color: #fff;
 }
 
 .sf-button.secondary {
+
   color: #fff;
+
+  background: rgba(255,255,255,.06);
+
+  backdrop-filter: blur(8px);
 }
 
 .sf-button.secondary:hover {
-  background: rgba(255,255,255,.10);
+
+  background: rgba(255,255,255,.14);
 }
 
 
-/* VERTICAL NUMBER */
+/* HERO FOOTER */
 
-.sf-hero-number {
-  justify-self: end;
+.sf-hero-meta {
 
-  color: rgba(255,255,255,.40);
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 110px;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid rgba(255,255,255,.18);
 
   font-size: 9px;
 
-  letter-spacing: .18em;
-
-  writing-mode: vertical-rl;
-}
-
-
-/* HERO BOTTOM */
-
-.sf-hero-bottom {
-  position: absolute;
-
-  left: max(40px, calc((100vw - 1240px) / 2));
-  right: max(40px, calc((100vw - 1240px) / 2));
-  bottom: 28px;
-
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  color: rgba(255,255,255,.40);
-
-  font-size: 8px;
-  font-weight: 600;
-
   letter-spacing: .15em;
-}
 
-.sf-hero-bottom i {
-  width: 40px;
-  height: 1px;
-
-  background: rgba(255,255,255,.25);
+  color: rgba(255,255,255,.5);
 }
 
 
@@ -524,12 +528,24 @@
 ========================================================= */
 
 .sf-intro {
-  padding: 145px 0;
 
-  background: var(--sea-foam);
+  padding: 150px 0;
+
+  background: var(--foam);
+}
+
+.sf-container {
+
+  width: min(
+    var(--container),
+    calc(100% - 70px)
+  );
+
+  margin: auto;
 }
 
 .sf-intro-grid {
+
   display: grid;
 
   grid-template-columns: 90px 1fr;
@@ -538,56 +554,64 @@
 }
 
 .sf-index {
-  color: var(--sea-muted);
 
-  font-size: 9px;
+  padding-top: 10px;
 
-  letter-spacing: .14em;
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  color: rgba(9,45,52,.45);
 }
 
 .sf-eyebrow {
-  color: #42625f;
 
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 10px;
 
   letter-spacing: .18em;
+
+  font-weight: 700;
+
+  color: #42625f;
 }
 
-.sf-intro-main {
-  max-width: 960px;
-}
+.sf-intro h2 {
 
-.sf-intro-main h2,
-.sf-section-heading h2,
-.sf-spec-head h2 {
   margin-top: 18px;
 
-  font-family: "Playfair Display", Georgia, serif;
+  max-width: 950px;
 
-  font-size: clamp(55px, 7vw, 100px);
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(55px, 8vw, 110px);
 
   font-weight: 400;
 
-  line-height: .88;
+  line-height: .86;
 
-  letter-spacing: -.055em;
+  letter-spacing: -.06em;
 }
 
-.sf-intro-main h2 em,
-.sf-section-heading h2 em,
-.sf-spec-head h2 em {
+.sf-intro h2 em {
+
   display: block;
 
   font-style: italic;
+
+  color: #39747a;
 }
 
-.sf-intro-main > p {
-  max-width: 560px;
+.sf-intro-text {
+
+  max-width: 590px;
 
   margin-top: 48px;
 
-  color: var(--sea-muted);
+  color: #61736f;
 
   font-size: 15px;
 
@@ -596,19 +620,26 @@
 
 
 /* =========================================================
-   RANGE
+   PRODUCT RANGE
 ========================================================= */
 
 .sf-range {
-  padding: 140px 0;
 
-  background: var(--sea-sand);
+  padding: 145px 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e6efec,
+      #f5f1e7
+    );
 }
 
 .sf-section-heading {
+
   display: grid;
 
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 370px;
 
   gap: 80px;
 
@@ -617,116 +648,132 @@
   margin-bottom: 70px;
 }
 
-.sf-section-heading > p,
-.sf-spec-head > p {
-  color: var(--sea-muted);
+.sf-section-heading h2 {
 
-  font-size: 13px;
+  margin-top: 18px;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(55px, 7vw, 100px);
+
+  font-weight: 400;
+
+  line-height: .86;
+
+  letter-spacing: -.06em;
+}
+
+.sf-section-heading h2 em {
+
+  font-style: italic;
+
+  color: #39747a;
+}
+
+.sf-section-heading > p {
+
+  color: #637570;
+
+  font-size: 14px;
 
   line-height: 1.8;
 }
 
-.sf-range-grid {
+
+/* PRODUCT GRID */
+
+.sf-products {
+
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 18px;
 }
 
-.sf-range-card {
+.sf-product {
+
   position: relative;
 
-  min-height: 500px;
-
-  padding: 30px;
+  min-height: 540px;
 
   overflow: hidden;
 
-  border-top: 1px solid var(--sea-line);
-  border-right: 1px solid var(--sea-line);
+  border-radius: 24px;
+
+  color: #fff;
+
+  background:
+    var(--product-image)
+    center / cover no-repeat;
+
+  box-shadow:
+    0 20px 60px rgba(2,35,40,.10);
 
   transition:
-    transform .35s ease,
-    box-shadow .35s ease;
+    transform .45s ease,
+    box-shadow .45s ease;
 }
 
-.sf-range-card:nth-child(2n) {
-  border-right: 0;
+.sf-product:hover {
+
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 30px 80px rgba(2,35,40,.18);
 }
 
-.sf-range-card:hover {
-  transform: translateY(-5px);
+.sf-product::before {
 
-  box-shadow: 0 20px 50px rgba(16,47,49,.08);
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.03),
+      rgba(2,25,30,.78)
+    );
 }
 
-.sf-fish {
-  background: #d7e4e0;
+.sf-product-content {
+
+  position: absolute;
+
+  inset:
+    auto 35px 35px;
+
+  z-index: 2;
 }
 
-.sf-shellfish {
-  background: #e5dbc9;
-}
-
-.sf-cephalopods {
-  background: #cbdedb;
-}
-
-.sf-frozen {
-  background: #dbe5e5;
-}
-
-.sf-card-top {
-  display: flex;
-  justify-content: space-between;
-
-  color: #3c5a57;
+.sf-product-number {
 
   font-size: 9px;
-  font-weight: 700;
 
-  letter-spacing: .13em;
+  letter-spacing: .16em;
+
+  color: rgba(255,255,255,.65);
 }
 
-.sf-card-number {
-  position: absolute;
+.sf-product h3 {
 
-  right: 25px;
-  top: 70px;
+  margin-top: 14px;
 
-  font-family: "Playfair Display", Georgia, serif;
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
 
-  font-size: 220px;
-
-  line-height: .7;
-
-  color: var(--sea-ink);
-
-  opacity: .055;
-}
-
-.sf-card-body {
-  position: absolute;
-
-  left: 30px;
-  right: 30px;
-  bottom: 35px;
-}
-
-.sf-card-small {
-  margin-bottom: 14px;
-
-  color: #3c5a57;
-
-  font-size: 8px;
-  font-weight: 700;
-
-  letter-spacing: .14em;
-}
-
-.sf-card-body h3 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(52px, 6vw, 82px);
+  font-size:
+    clamp(50px, 6vw, 85px);
 
   font-weight: 400;
 
@@ -735,90 +782,200 @@
   letter-spacing: -.055em;
 }
 
-.sf-card-body p {
+.sf-product p {
+
   max-width: 410px;
 
-  margin-top: 25px;
-
-  color: #526965;
+  margin-top: 20px;
 
   font-size: 13px;
 
-  line-height: 1.75;
+  line-height: 1.7;
+
+  color: rgba(255,255,255,.72);
+}
+
+
+/* IMAGE SOURCES */
+
+.sf-fish {
+
+  --product-image:
+    linear-gradient(
+      180deg,
+      rgba(3,35,42,.05),
+      rgba(3,35,42,.2)
+    ),
+    url("images/seafood/fish/dorada.jpg");
+}
+
+.sf-shellfish {
+
+  --product-image:
+    linear-gradient(
+      180deg,
+      rgba(3,35,42,.05),
+      rgba(3,35,42,.3)
+    ),
+    url("images/seafood/shellfish/shellfish.jpg");
+}
+
+.sf-cephalopods {
+
+  --product-image:
+    linear-gradient(
+      180deg,
+      rgba(3,35,42,.05),
+      rgba(3,35,42,.3)
+    ),
+    url("images/seafood/cephalopods/cephalopods.jpg");
+}
+
+.sf-frozen {
+
+  --product-image:
+    linear-gradient(
+      180deg,
+      rgba(3,35,42,.05),
+      rgba(3,35,42,.3)
+    ),
+    url("images/seafood/frozen/frozen-seafood.jpg");
 }
 
 
 /* =========================================================
-   ORIGINS
+   ORIGIN
 ========================================================= */
 
-.sf-origins {
-  padding: 145px 0;
+.sf-origin {
+
+  position: relative;
+
+  padding: 150px 0;
+
+  overflow: hidden;
 
   color: #fff;
 
   background:
+
     radial-gradient(
-      circle at 65% 50%,
-      rgba(30,130,139,.27),
-      transparent 34%
+      circle at 70% 30%,
+      rgba(27,143,157,.38),
+      transparent 32%
     ),
-    var(--sea-deep);
-}
 
-.sf-light {
-  color: #fff !important;
-}
-
-.sf-light-text {
-  color: rgba(255,255,255,.58) !important;
-}
-
-.sf-origin-layout {
-  display: grid;
-
-  grid-template-columns: 1.25fr .75fr;
-
-  gap: 70px;
-
-  align-items: center;
-}
-
-.sf-origin-map {
-  position: relative;
-
-  min-height: 540px;
-
-  overflow: hidden;
-
-  border: 1px solid rgba(255,255,255,.12);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(31,130,139,.25),
-      transparent 58%
+    linear-gradient(
+      135deg,
+      #021d25,
+      #064653,
+      #075d69
     );
 }
 
-.sf-sea-circle {
+.sf-origin::after {
+
+  content: "";
+
   position: absolute;
 
-  width: 420px;
-  height: 420px;
+  width: 900px;
+  height: 900px;
 
-  left: 50%;
-  top: 50%;
+  right: -350px;
+  top: -300px;
 
-  transform: translate(-50%, -50%);
-
-  border: 1px solid rgba(255,255,255,.15);
+  border:
+    1px solid rgba(255,255,255,.08);
 
   border-radius: 50%;
+
+  box-shadow:
+    0 0 0 120px rgba(255,255,255,.015),
+    0 0 0 240px rgba(255,255,255,.012);
 }
 
-.sf-sea-circle::before,
-.sf-sea-circle::after {
+.sf-origin h2 {
+
+  margin-top: 18px;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(55px, 8vw, 110px);
+
+  font-weight: 400;
+
+  line-height: .86;
+
+  letter-spacing: -.06em;
+}
+
+.sf-origin h2 em {
+
+  font-style: italic;
+
+  color: #a9ddd7;
+}
+
+.sf-origin-description {
+
+  max-width: 500px;
+
+  margin-top: 35px;
+
+  color: rgba(255,255,255,.62);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+.sf-origin-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr .65fr;
+
+  gap: 90px;
+
+  align-items: center;
+
+  margin-top: 80px;
+}
+
+
+/* ORIGIN VISUAL */
+
+.sf-ocean-map {
+
+  position: relative;
+
+  min-height: 520px;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  border-radius: 30px;
+
+  background:
+
+    radial-gradient(
+      circle at center,
+      rgba(52,177,187,.25),
+      transparent 55%
+    );
+}
+
+.sf-ocean-map::before,
+.sf-ocean-map::after {
+
   content: "";
 
   position: absolute;
@@ -826,97 +983,116 @@
   left: 50%;
   top: 50%;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
-  border: 1px solid rgba(255,255,255,.09);
+  border:
+    1px solid rgba(255,255,255,.12);
 
   border-radius: 50%;
 }
 
-.sf-sea-circle::before {
-  width: 280px;
-  height: 280px;
+.sf-ocean-map::before {
+
+  width: 380px;
+  height: 380px;
 }
 
-.sf-sea-circle::after {
-  width: 130px;
-  height: 130px;
+.sf-ocean-map::after {
+
+  width: 210px;
+  height: 210px;
 }
 
-.sf-origin-point {
+.sf-location {
+
   position: absolute;
 
   display: flex;
+
   align-items: center;
 
-  gap: 9px;
-
-  color: #fff;
+  gap: 10px;
 
   font-size: 10px;
 
-  letter-spacing: .08em;
+  letter-spacing: .12em;
 }
 
-.sf-origin-point span {
+.sf-location i {
+
   width: 8px;
   height: 8px;
 
   border-radius: 50%;
 
-  background: #a9ded8;
+  background: #bcebe5;
 
   box-shadow:
-    0 0 0 6px rgba(169,222,216,.08);
+    0 0 0 7px rgba(188,235,229,.08);
 }
 
-.sf-origin-point.p1 {
-  left: 17%;
-  top: 28%;
+.sf-location.spain {
+  left: 25%;
+  top: 27%;
 }
 
-.sf-origin-point.p2 {
-  left: 58%;
-  top: 20%;
+.sf-location.france {
+  left: 57%;
+  top: 21%;
 }
 
-.sf-origin-point.p3 {
+.sf-location.morocco {
   left: 30%;
-  top: 68%;
+  top: 66%;
 }
 
-.sf-origin-point.p4 {
-  left: 69%;
-  top: 68%;
+.sf-location.tunisia {
+  left: 65%;
+  top: 62%;
 }
+
+
+/* ORIGIN LIST */
 
 .sf-origin-list {
-  border-top: 1px solid rgba(255,255,255,.13);
+
+  border-top:
+    1px solid rgba(255,255,255,.14);
 }
 
 .sf-origin-row {
+
   display: flex;
 
+  align-items: center;
   justify-content: space-between;
+
   gap: 20px;
 
-  padding: 23px 0;
+  padding: 25px 0;
 
-  border-bottom: 1px solid rgba(255,255,255,.13);
+  border-bottom:
+    1px solid rgba(255,255,255,.14);
 }
 
 .sf-origin-row span {
-  color: rgba(255,255,255,.38);
 
   font-size: 9px;
 
   letter-spacing: .13em;
+
+  color: rgba(255,255,255,.4);
 }
 
 .sf-origin-row strong {
-  font-family: "Playfair Display", Georgia, serif;
 
-  font-size: 25px;
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 27px;
 
   font-weight: 400;
 }
@@ -926,138 +1102,78 @@
    SPECIFICATIONS
 ========================================================= */
 
-.sf-specifications {
+.sf-specs {
+
   padding: 145px 0;
 
-  background: var(--sea-foam);
-}
-
-.sf-spec-head {
-  display: grid;
-
-  grid-template-columns: 1fr 360px;
-
-  gap: 80px;
-
-  align-items: end;
-
-  margin-bottom: 70px;
+  background: #f4f1e7;
 }
 
 .sf-spec-grid {
+
   display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4, 1fr);
 
-  border-top: 1px solid var(--sea-line);
-  border-left: 1px solid var(--sea-line);
+  border-top:
+    1px solid rgba(9,45,52,.14);
+
+  border-left:
+    1px solid rgba(9,45,52,.14);
+
+  margin-top: 70px;
 }
 
-.sf-spec-grid div {
-  min-height: 175px;
+.sf-spec {
 
-  padding: 27px;
+  min-height: 190px;
+
+  padding: 28px;
+
+  border-right:
+    1px solid rgba(9,45,52,.14);
+
+  border-bottom:
+    1px solid rgba(9,45,52,.14);
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: space-between;
 
-  border-right: 1px solid var(--sea-line);
-  border-bottom: 1px solid var(--sea-line);
-
   transition:
-    background .25s ease,
-    color .25s ease;
+    background .3s ease,
+    color .3s ease;
 }
 
-.sf-spec-grid div:hover {
-  background: var(--sea-deep);
+.sf-spec:hover {
+
+  background: var(--ocean-900);
 
   color: #fff;
 }
 
-.sf-spec-grid span {
+.sf-spec span {
+
   font-size: 9px;
 
-  letter-spacing: .13em;
+  letter-spacing: .14em;
 
   opacity: .45;
 }
 
-.sf-spec-grid strong {
-  font-family: "Playfair Display", Georgia, serif;
+.sf-spec strong {
 
-  font-size: 28px;
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
 
-  font-weight: 400;
-}
-
-
-/* =========================================================
-   AVAILABILITY
-========================================================= */
-
-.sf-availability {
-  padding: 145px 0;
-
-  background: var(--sea-cream);
-}
-
-.sf-availability-grid {
-  display: grid;
-
-  grid-template-columns: 1fr .7fr;
-
-  gap: 100px;
-
-  align-items: end;
-}
-
-.sf-availability h2 {
-  margin-top: 18px;
-
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(55px, 7vw, 100px);
+  font-size: 30px;
 
   font-weight: 400;
-
-  line-height: .88;
-
-  letter-spacing: -.055em;
-}
-
-.sf-availability h2 em {
-  font-style: italic;
-}
-
-.sf-availability-text {
-  max-width: 480px;
-
-  color: #536965;
-
-  font-size: 14px;
-
-  line-height: 1.8;
-}
-
-.sf-availability-line {
-  margin-top: 55px;
-
-  padding-top: 25px;
-
-  display: flex;
-  justify-content: space-between;
-
-  gap: 30px;
-
-  border-top: 1px solid var(--sea-line);
-
-  color: var(--sea-ink);
-
-  font-size: 9px;
-
-  letter-spacing: .13em;
 }
 
 
@@ -1066,56 +1182,91 @@
 ========================================================= */
 
 .sf-cta {
-  padding: 145px 0;
+
+  position: relative;
+
+  padding: 155px 0;
+
+  overflow: hidden;
 
   color: #fff;
 
   background:
+
     linear-gradient(
-      135deg,
-      #031f25,
-      #07535d
-    );
+      110deg,
+      rgba(2,27,35,.96),
+      rgba(5,84,96,.82)
+    ),
+
+    url("images/seafood/seafood-hero.jpg")
+    center / cover no-repeat;
+}
+
+.sf-cta::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  right: -300px;
+  top: -300px;
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  border-radius: 50%;
 }
 
 .sf-cta-inner {
-  max-width: 950px;
+
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 900px;
 }
 
 .sf-cta h2 {
-  margin-top: 18px;
 
-  font-family: "Playfair Display", Georgia, serif;
+  margin-top: 20px;
 
-  font-size: clamp(65px, 8vw, 120px);
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(65px, 9vw, 130px);
 
   font-weight: 400;
 
-  line-height: .86;
+  line-height: .84;
 
-  letter-spacing: -.06em;
+  letter-spacing: -.065em;
 }
 
 .sf-cta h2 em {
+
   font-style: italic;
 
-  color: #a9ded8;
+  color: #b6e2dc;
 }
 
-.sf-cta-text {
-  max-width: 560px;
+.sf-cta p {
 
-  margin-top: 32px;
+  max-width: 570px;
 
-  color: rgba(255,255,255,.62);
+  margin-top: 30px;
 
-  font-size: 14px;
+  color: rgba(255,255,255,.64);
+
+  font-size: 15px;
 
   line-height: 1.8;
-}
-
-.sf-cta .sf-button {
-  margin-top: 32px;
 }
 
 
@@ -1124,85 +1275,90 @@
 ========================================================= */
 
 .sf-footer {
+
   padding: 75px 0 25px;
 
-  background: var(--sea-cream);
+  color: #fff;
 
-  color: var(--sea-ink);
-
-  border-top: 1px solid rgba(16,47,49,.10);
+  background: #031820;
 }
 
-.sf-footer-main {
+.sf-footer-grid {
+
   display: grid;
 
-  grid-template-columns: 1.4fr .6fr .6fr;
+  grid-template-columns:
+    1.5fr .6fr .6fr;
 
   gap: 70px;
 
   padding-bottom: 60px;
 
-  border-bottom: 1px solid rgba(16,47,49,.12);
+  border-bottom:
+    1px solid rgba(255,255,255,.12);
 }
 
-
-/* ORIGINAL LOGO — NO FILTER */
-
 .sf-footer-logo {
+
   display: block;
 
-  width: 140px;
+  width: 145px;
+
   height: auto;
 
   margin-bottom: 20px;
 
-  object-fit: contain;
+  filter: none;
 
-  filter: none !important;
-  opacity: 1 !important;
+  opacity: 1;
 }
 
-.sf-footer-description {
+.sf-footer p {
+
   max-width: 420px;
 
-  color: #687876;
+  color: rgba(255,255,255,.5);
 
-  font-size: 12px;
+  font-size: 13px;
 
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
-.sf-footer-links strong {
+.sf-footer strong {
+
   display: block;
 
-  margin-bottom: 16px;
+  margin-bottom: 17px;
 
-  color: var(--sea-ink);
+  color: #b8ddd8;
 
   font-size: 9px;
 
-  letter-spacing: .14em;
+  letter-spacing: .15em;
 
   text-transform: uppercase;
 }
 
-.sf-footer-links a {
+.sf-footer a {
+
   display: block;
 
   margin-bottom: 10px;
 
-  color: #687876;
+  color: rgba(255,255,255,.58);
 
   font-size: 12px;
 
   transition: color .2s ease;
 }
 
-.sf-footer-links a:hover {
-  color: var(--sea-mid);
+.sf-footer a:hover {
+
+  color: #fff;
 }
 
 .sf-footer-bottom {
+
   display: flex;
 
   justify-content: space-between;
@@ -1211,9 +1367,9 @@
 
   padding-top: 22px;
 
-  color: #899693;
+  color: rgba(255,255,255,.32);
 
-  font-size: 8px;
+  font-size: 9px;
 
   letter-spacing: .08em;
 }
@@ -1225,201 +1381,192 @@
 
 @media (max-width: 900px) {
 
+  .sf-nav,
   .sf-container,
-  .sf-hero-inner,
-  .sf-nav {
+  .sf-hero-inner {
+
     width: calc(100% - 40px);
-  }
-
-  .sf-header,
-  .sf-nav {
-    height: 76px;
-  }
-
-  .sf-logo {
-    height: 76px;
-    width: 120px;
-  }
-
-  .sf-logo img {
-    width: 95px;
-  }
-
-  .sf-navigation {
-    gap: 12px;
   }
 
   .sf-navigation > a:not(.sf-enquiry),
   .sf-languages {
+
     display: none;
   }
 
-  .sf-enquiry {
-    min-width: 138px;
-    min-height: 40px;
+  .sf-logo {
 
-    padding: 0 15px;
+    width: 125px;
+  }
 
-    font-size: 10px !important;
+  .sf-logo img {
+
+    width: 105px;
   }
 
   .sf-hero {
-    min-height: 720px;
 
-    padding: 110px 0 70px;
+    min-height: 760px;
   }
 
-  .sf-hero-grid {
-    grid-template-columns: 1fr;
-  }
+  .sf-hero-inner {
 
-  .sf-hero-number {
-    display: none;
+    padding:
+      145px 0
+      45px;
   }
 
   .sf-hero h1 {
-    font-size: clamp(70px, 17vw, 110px);
+
+    font-size:
+      clamp(70px, 18vw, 110px);
   }
 
-  .sf-hero-bottom {
-    left: 20px;
-    right: 20px;
+  .sf-hero-description {
 
-    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  .sf-hero-meta {
+
+    margin-top: 70px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
   }
 
   .sf-intro,
   .sf-range,
-  .sf-origins,
-  .sf-specifications,
-  .sf-availability,
+  .sf-origin,
+  .sf-specs,
   .sf-cta {
+
     padding: 90px 0;
   }
 
   .sf-intro-grid {
+
     grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .sf-section-heading {
+
+    grid-template-columns: 1fr;
+
     gap: 30px;
   }
 
-  .sf-section-heading,
-  .sf-spec-head,
-  .sf-availability-grid,
-  .sf-origin-layout {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
+  .sf-products {
 
-  .sf-range-grid {
     grid-template-columns: 1fr;
   }
 
-  .sf-range-card {
+  .sf-product {
+
+    min-height: 460px;
+  }
+
+  .sf-origin-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .sf-ocean-map {
+
     min-height: 430px;
-
-    border-right: 0;
-
-    border-bottom: 1px solid var(--sea-line);
   }
 
   .sf-spec-grid {
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+      repeat(2, 1fr);
   }
 
-  .sf-origin-map {
-    min-height: 420px;
-  }
+  .sf-footer-grid {
 
-  .sf-availability-line {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .sf-footer-main {
     grid-template-columns: 1fr;
 
     gap: 45px;
   }
 
   .sf-footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
 
-    gap: 10px;
+    flex-direction: column;
+
+    align-items: flex-start;
   }
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+@media (max-width: 520px) {
 
-@media (max-width: 500px) {
+  .sf-nav {
 
-  .sf-container,
-  .sf-hero-inner {
-    width: calc(100% - 30px);
-  }
-
-  .sf-logo img {
-    width: 88px;
+    min-height: 76px;
   }
 
   .sf-enquiry {
-    min-width: 128px;
-    padding: 0 13px;
+
+    min-height: 40px;
+
+    padding: 0 14px;
+
+    font-size: 10px !important;
+  }
+
+  .sf-hero {
+
+    min-height: 720px;
   }
 
   .sf-hero h1 {
-    font-size: 60px;
-  }
 
-  .sf-hero-text {
-    font-size: 14px;
+    font-size: 65px;
   }
 
   .sf-actions {
+
     flex-direction: column;
-    align-items: stretch;
   }
 
   .sf-button {
+
     width: 100%;
   }
 
-  .sf-intro-main h2,
-  .sf-section-heading h2,
-  .sf-spec-head h2 {
-    font-size: 54px;
+  .sf-product {
+
+    min-height: 420px;
+
+    border-radius: 18px;
   }
 
-  .sf-card-body h3 {
+  .sf-product h3 {
+
     font-size: 55px;
   }
 
-  .sf-sea-circle {
-    width: 290px;
-    height: 290px;
-  }
-
   .sf-spec-grid {
+
     grid-template-columns: 1fr;
   }
 
-  .sf-availability h2 {
-    font-size: 62px;
-  }
+  .sf-origin-row strong {
 
-  .sf-cta h2 {
-    font-size: 62px;
+    font-size: 22px;
   }
 }
 
-  </style>
+</style>
 </head>
 
 
-<body class="seafood-page">
+<body>
 
 
 <!-- =========================================================
@@ -1452,10 +1599,7 @@
         Markets
       </a>
 
-      <a
-        href="../products/index.html"
-        class="active"
-      >
+      <a href="../products/index.html">
         Products
       </a>
 
@@ -1470,10 +1614,7 @@
 
       <div class="sf-languages">
 
-        <a
-          href="#"
-          class="active"
-        >
+        <a class="active" href="#">
           EN
         </a>
 
@@ -1502,119 +1643,127 @@
 </header>
 
 
+
 <!-- =========================================================
-     MAIN
+     HERO
 ========================================================= -->
 
 <main>
 
-
-<!-- HERO -->
-
 <section class="sf-hero">
-
-  <div class="sf-water"></div>
 
   <div class="sf-hero-inner">
 
-    <div class="sf-hero-grid">
+    <div class="sf-kicker">
 
-      <div>
+      <span></span>
 
-        <div class="sf-kicker">
-          <i></i>
-          01 / SEAFOOD · FISH · SHELLFISH · CEPHALOPODS
-        </div>
-
-
-        <h1>
-          Seafood<em>.</em>
-        </h1>
-
-
-        <p class="sf-hero-text">
-          Fresh and frozen seafood for professional buyers,
-          wholesalers, foodservice and distribution —
-          selected around quality, specification, origin
-          and reliable delivery.
-        </p>
-
-
-        <div class="sf-actions">
-
-          <a
-            class="sf-button primary"
-            href="#range"
-          >
-            Explore the range ↗
-          </a>
-
-          <a
-            class="sf-button secondary"
-            href="../contact/"
-          >
-            Request availability
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="sf-hero-number">
-        EUROPE × AFRICA × MEDITERRANEAN
-      </div>
+      SEAFOOD · FISH · SHELLFISH · CEPHALOPODS
 
     </div>
 
-  </div>
+
+    <h1>
+      Seafood<em>.</em>
+    </h1>
 
 
-  <div class="sf-hero-bottom">
+    <p class="sf-hero-description">
 
-    <i></i>
+      Fresh and frozen seafood selected around
+      species, origin, calibre, quality, format
+      and destination requirements.
 
-    PROFESSIONAL SEAFOOD SOURCING
+    </p>
 
-    <span>
-      ORIGIN · QUALITY · FORMAT · LOGISTICS
-    </span>
+
+    <div class="sf-actions">
+
+      <a
+        href="#range"
+        class="sf-button primary"
+      >
+        Explore the range
+      </a>
+
+      <a
+        href="../contact/"
+        class="sf-button secondary"
+      >
+        Request availability
+      </a>
+
+    </div>
+
+
+    <div class="sf-hero-meta">
+
+      <span>
+        PROFESSIONAL SEAFOOD SOURCING
+      </span>
+
+      <span>
+        EUROPE · AFRICA · MEDITERRANEAN
+      </span>
+
+      <span>
+        FRESH + FROZEN
+      </span>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- INTRO -->
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
 
 <section class="sf-intro">
 
-  <div class="sf-container sf-intro-grid">
+  <div class="sf-container">
 
-    <div class="sf-index">
-      02 / APPROACH
-    </div>
+    <div class="sf-intro-grid">
 
-
-    <div class="sf-intro-main">
-
-      <div class="sf-eyebrow">
-        THE SEAFOOD SYSTEM
+      <div class="sf-index">
+        01 / APPROACH
       </div>
 
-      <h2>
-        From the sea
-        <br>
-        <em>to the market.</em>
-      </h2>
 
-      <p>
-        We organise seafood around what matters:
-        species, origin, calibre, quality, format,
-        availability and destination. The objective is
-        simple — dependable supply that fits the
-        buyer's specification.
-      </p>
+      <div>
+
+        <div class="sf-eyebrow">
+          THE SEAFOOD SYSTEM
+        </div>
+
+
+        <h2>
+
+          From the sea
+
+          <em>
+            to the market.
+          </em>
+
+        </h2>
+
+
+        <p class="sf-intro-text">
+
+          We organise seafood around the details
+          that matter: species, origin, calibre,
+          quality, format, availability and destination.
+
+          The objective is straightforward —
+          reliable supply that matches the buyer's
+          requirements.
+
+        </p>
+
+      </div>
 
     </div>
 
@@ -1623,7 +1772,10 @@
 </section>
 
 
-<!-- RANGE -->
+
+<!-- =========================================================
+     RANGE
+========================================================= -->
 
 <section
   class="sf-range"
@@ -1637,56 +1789,42 @@
       <div>
 
         <div class="sf-eyebrow">
-          03 / PRODUCT RANGE
+          02 / PRODUCT RANGE
         </div>
 
         <h2>
-          Four categories.
-          <br>
-          <em>One clear focus.</em>
+
+          Four worlds.
+
+          <em>
+            One ocean.
+          </em>
+
         </h2>
 
       </div>
 
 
       <p>
-        A focused seafood selection covering the core
-        categories required by professional buyers,
-        foodservice and distribution.
+
+        A focused seafood range covering
+        fish, shellfish, cephalopods and
+        frozen products.
+
       </p>
 
     </div>
 
 
-    <div class="sf-range-grid">
+    <div class="sf-products">
 
 
-      <!-- FISH -->
+      <article class="sf-product sf-fish">
 
-      <article class="sf-range-card sf-fish">
+        <div class="sf-product-content">
 
-        <div class="sf-card-top">
-
-          <span>
+          <div class="sf-product-number">
             01 / FISH
-          </span>
-
-          <span>
-            MARINE
-          </span>
-
-        </div>
-
-
-        <div class="sf-card-number">
-          F
-        </div>
-
-
-        <div class="sf-card-body">
-
-          <div class="sf-card-small">
-            WHOLE · PORTIONS · PROFESSIONAL FORMATS
           </div>
 
           <h3>
@@ -1694,94 +1832,9 @@
           </h3>
 
           <p>
-            Dorada, sea bass and selected marine species
-            according to origin, calibre, quality and
-            destination requirements.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- SHELLFISH -->
-
-      <article class="sf-range-card sf-shellfish">
-
-        <div class="sf-card-top">
-
-          <span>
-            02 / SHELLFISH
-          </span>
-
-          <span>
-            CRUSTACEANS · BIVALVES
-          </span>
-
-        </div>
-
-
-        <div class="sf-card-number">
-          S
-        </div>
-
-
-        <div class="sf-card-body">
-
-          <div class="sf-card-small">
-            FRESH · LIVE · PROFESSIONAL SUPPLY
-          </div>
-
-          <h3>
-            Shellfish.
-          </h3>
-
-          <p>
-            Crustaceans and bivalves selected for
-            professional foodservice, wholesale and
-            distribution requirements.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- CEPHALOPODS -->
-
-      <article class="sf-range-card sf-cephalopods">
-
-        <div class="sf-card-top">
-
-          <span>
-            03 / CEPHALOPODS
-          </span>
-
-          <span>
-            ATLANTIC · MEDITERRANEAN
-          </span>
-
-        </div>
-
-
-        <div class="sf-card-number">
-          C
-        </div>
-
-
-        <div class="sf-card-body">
-
-          <div class="sf-card-small">
-            OCTOPUS · CALAMARI · CUTTLEFISH
-          </div>
-
-          <h3>
-            Cephalopods.
-          </h3>
-
-          <p>
-            Squid, cuttlefish and octopus according to
-            size, preparation, origin, freezing method
+            Dorada, sea bass and selected
+            marine species according to
+            origin, calibre, freshness
             and destination.
           </p>
 
@@ -1790,32 +1843,58 @@
       </article>
 
 
-      <!-- FROZEN -->
+      <article class="sf-product sf-shellfish">
 
-      <article class="sf-range-card sf-frozen">
+        <div class="sf-product-content">
 
-        <div class="sf-card-top">
+          <div class="sf-product-number">
+            02 / SHELLFISH
+          </div>
 
-          <span>
+          <h3>
+            Shellfish.
+          </h3>
+
+          <p>
+            Crustaceans and bivalves selected
+            for professional buyers with
+            clear product specifications.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="sf-product sf-cephalopods">
+
+        <div class="sf-product-content">
+
+          <div class="sf-product-number">
+            03 / CEPHALOPODS
+          </div>
+
+          <h3>
+            Cephalopods.
+          </h3>
+
+          <p>
+            Octopus, calamari and cuttlefish
+            according to size, preparation,
+            origin and freezing method.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="sf-product sf-frozen">
+
+        <div class="sf-product-content">
+
+          <div class="sf-product-number">
             04 / FROZEN
-          </span>
-
-          <span>
-            YEAR-ROUND
-          </span>
-
-        </div>
-
-
-        <div class="sf-card-number">
-          F
-        </div>
-
-
-        <div class="sf-card-body">
-
-          <div class="sf-card-small">
-            AVAILABILITY · FORMAT · VOLUME
           </div>
 
           <h3>
@@ -1823,9 +1902,9 @@
           </h3>
 
           <p>
-            Selected frozen products supporting continuity,
-            volume requirements and availability beyond
-            seasonal windows.
+            Selected frozen products supporting
+            continuity, volume and availability
+            beyond seasonal windows.
           </p>
 
         </div>
@@ -1840,66 +1919,62 @@
 </section>
 
 
-<!-- ORIGINS -->
 
-<section class="sf-origins">
+<!-- =========================================================
+     ORIGIN
+========================================================= -->
+
+<section class="sf-origin">
 
   <div class="sf-container">
 
-    <div class="sf-section-heading">
-
-      <div>
-
-        <div class="sf-eyebrow sf-light-text">
-          04 / ORIGIN
-        </div>
-
-        <h2 class="sf-light">
-          Origin is part
-          <br>
-          <em>of the product.</em>
-        </h2>
-
-      </div>
-
-
-      <p class="sf-light-text">
-        Our sourcing network connects Mediterranean
-        and European supply with professional
-        destination markets across Europe and Africa.
-      </p>
-
+    <div class="sf-eyebrow" style="color:rgba(255,255,255,.55)">
+      03 / ORIGIN
     </div>
 
 
-    <div class="sf-origin-layout">
+    <h2>
+
+      Origin is part
+
+      <em>
+        of the product.
+      </em>
+
+    </h2>
 
 
-      <div class="sf-origin-map">
+    <p class="sf-origin-description">
 
-        <div class="sf-sea-circle"></div>
+      Our sourcing network connects Mediterranean
+      and European supply with destination markets
+      across Europe and neighbouring regions.
+
+    </p>
 
 
-        <div class="sf-origin-point p1">
-          <span></span>
+    <div class="sf-origin-grid">
+
+
+      <div class="sf-ocean-map">
+
+        <div class="sf-location spain">
+          <i></i>
           SPAIN
         </div>
 
-
-        <div class="sf-origin-point p2">
-          <span></span>
+        <div class="sf-location france">
+          <i></i>
           FRANCE
         </div>
 
-
-        <div class="sf-origin-point p3">
-          <span></span>
+        <div class="sf-location morocco">
+          <i></i>
           MOROCCO
         </div>
 
-
-        <div class="sf-origin-point p4">
-          <span></span>
+        <div class="sf-location tunisia">
+          <i></i>
           TUNISIA
         </div>
 
@@ -1907,7 +1982,6 @@
 
 
       <div class="sf-origin-list">
-
 
         <div class="sf-origin-row">
 
@@ -1968,11 +2042,10 @@
           </span>
 
           <strong>
-            Atlantic / Mediterranean
+            Mediterranean
           </strong>
 
         </div>
-
 
       </div>
 
@@ -1983,33 +2056,42 @@
 </section>
 
 
-<!-- SPECIFICATIONS -->
 
-<section class="sf-specifications">
+<!-- =========================================================
+     SPECIFICATIONS
+========================================================= -->
+
+<section class="sf-specs">
 
   <div class="sf-container">
 
-    <div class="sf-spec-head">
+    <div class="sf-section-heading">
 
       <div>
 
         <div class="sf-eyebrow">
-          05 / SPECIFICATION
+          04 / SPECIFICATION
         </div>
 
         <h2>
+
           Built around
-          <br>
-          <em>your brief.</em>
+
+          <em>
+            your brief.
+          </em>
+
         </h2>
 
       </div>
 
 
       <p>
-        Every enquiry is structured around the product
-        details that determine quality, suitability and
-        execution for the destination.
+
+        Every seafood requirement starts
+        with the product details that
+        determine suitability.
+
       </p>
 
     </div>
@@ -2017,42 +2099,42 @@
 
     <div class="sf-spec-grid">
 
-      <div>
+      <div class="sf-spec">
         <span>01</span>
         <strong>Species</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>02</span>
         <strong>Origin</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>03</span>
         <strong>Calibre</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>04</span>
         <strong>Quality</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>05</span>
         <strong>Format</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>06</span>
         <strong>Packaging</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>07</span>
         <strong>Volume</strong>
       </div>
 
-      <div>
+      <div class="sf-spec">
         <span>08</span>
         <strong>Destination</strong>
       </div>
@@ -2064,65 +2146,10 @@
 </section>
 
 
-<!-- AVAILABILITY -->
 
-<section class="sf-availability">
-
-  <div class="sf-container">
-
-    <div class="sf-availability-grid">
-
-      <div>
-
-        <div class="sf-eyebrow">
-          06 / AVAILABILITY
-        </div>
-
-        <h2>
-          Supply that
-          <br>
-          <em>moves.</em>
-        </h2>
-
-      </div>
-
-
-      <div>
-
-        <p class="sf-availability-text">
-          Availability depends on species, season,
-          origin and market conditions. Send your
-          requirement and we work backwards from
-          destination, volume and delivery window.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="sf-availability-line">
-
-      <span>
-        WEEKLY SOURCING
-      </span>
-
-      <span>
-        EUROPE · NORTH AFRICA · MEDITERRANEAN
-      </span>
-
-      <span>
-        FRESH + FROZEN
-      </span>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CTA -->
+<!-- =========================================================
+     CTA
+========================================================= -->
 
 <section class="sf-cta">
 
@@ -2130,29 +2157,52 @@
 
     <div class="sf-cta-inner">
 
-      <div class="sf-eyebrow sf-light-text">
+      <div
+        class="sf-eyebrow"
+        style="color:rgba(255,255,255,.55)"
+      >
         SEAFOOD SOURCING
       </div>
 
+
       <h2>
+
         Tell us what
-        <br>
-        you <em>need.</em>
+
+        <em>
+          you need.
+        </em>
+
       </h2>
 
-      <p class="sf-cta-text">
-        Send us the species, specification, volume,
-        destination and frequency. We will structure
-        the request around your requirements.
+
+      <p>
+
+        Send us the species, specification,
+        volume, destination and frequency.
+        We will structure the request around
+        your requirements.
+
       </p>
 
 
-      <a
-        class="sf-button primary"
-        href="../contact/"
-      >
-        Business enquiry ↗
-      </a>
+      <div class="sf-actions">
+
+        <a
+          href="../contact/"
+          class="sf-button primary"
+        >
+          Business enquiry
+        </a>
+
+        <a
+          href="../markets/markets.html"
+          class="sf-button secondary"
+        >
+          Explore markets
+        </a>
+
+      </div>
 
     </div>
 
@@ -2160,8 +2210,8 @@
 
 </section>
 
-
 </main>
+
 
 
 <!-- =========================================================
@@ -2172,7 +2222,7 @@
 
   <div class="sf-container">
 
-    <div class="sf-footer-main">
+    <div class="sf-footer-grid">
 
 
       <div>
@@ -2183,37 +2233,40 @@
           alt="EMPERIO TISS"
         >
 
-        <p class="sf-footer-description">
-          Seafood, fruits and vegetables connecting
-          reliable origins with professional markets
-          across Europe, Africa and the Mediterranean.
+
+        <p>
+
+          Seafood, fruits and vegetables
+          connecting origins and destination
+          markets across Europe and Africa.
+
         </p>
 
       </div>
 
 
-      <div class="sf-footer-links">
+      <div>
 
         <strong>
           Products
         </strong>
 
-        <a href="../products/seafood.html">
+        <a href="seafood.html">
           Seafood
         </a>
 
-        <a href="../products/fruits-vegetables.html">
+        <a href="fruits-vegetables.html">
           Fruits &amp; Vegetables
         </a>
 
-        <a href="../products/seasonal.html">
+        <a href="seasonal.html">
           Seasonal
         </a>
 
       </div>
 
 
-      <div class="sf-footer-links">
+      <div>
 
         <strong>
           Company
@@ -2253,5 +2306,7 @@
 
 </footer>
 
+
 </body>
 </html>
+```
