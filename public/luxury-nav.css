@@ -281,11 +281,10 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
 
 
 /* =========================================================
-   FULLSCREEN OVERLAY
+   FULLSCREEN NAVIGATION — STABLE DESKTOP
 ========================================================= */
 
 #navOverlay {
-
   position: fixed !important;
 
   top: 0 !important;
@@ -296,65 +295,37 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
   width: 100% !important;
   height: 100% !important;
 
-  min-height: 100dvh !important;
-
   box-sizing: border-box !important;
 
-  z-index: 9999 !important;
-
-  padding:
-    120px
-    8vw
-    55px !important;
-
-  display: grid !important;
-
-  grid-template-columns:
-    minmax(420px,1fr)
-    minmax(250px,320px) !important;
-
-  column-gap: 8vw !important;
-
-  align-items: center !important;
+  z-index: 9998 !important;
 
   overflow-x: hidden !important;
-
   overflow-y: auto !important;
-
-  overscroll-behavior: contain !important;
 
   -webkit-overflow-scrolling: touch !important;
 
   background:
-
     radial-gradient(
       circle at 85% 10%,
       rgba(201,169,97,.11),
       transparent 42%
     ),
-
     radial-gradient(
       circle at 20% 85%,
       rgba(32,72,66,.16),
       transparent 42%
     ),
-
     var(--et-ink) !important;
 
   opacity: 0 !important;
-
   visibility: hidden !important;
-
   pointer-events: none !important;
 
-  transform: translateY(-12px) !important;
+  transform: translateY(-10px) !important;
 
   transition:
-
     opacity .45s ease,
-
     transform .45s var(--et-ease),
-
     visibility 0s linear .45s !important;
 }
 
@@ -364,96 +335,100 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
 ========================================================= */
 
 body.nav-open #navOverlay {
-
   opacity: 1 !important;
-
   visibility: visible !important;
-
   pointer-events: auto !important;
 
   transform: translateY(0) !important;
 
   transition:
-
     opacity .45s ease,
-
     transform .45s var(--et-ease),
-
     visibility 0s linear 0s !important;
 }
 
 
 /* =========================================================
-   BODY LOCK
-   Correct: body doesn't scroll while menu is open.
-   Overlay handles scrolling.
+   OVERLAY INNER
 ========================================================= */
 
-body.nav-open {
+#navOverlay .nav-overlay-inner {
+  position: relative !important;
 
-  overflow: hidden !important;
+  width: 100% !important;
+  min-height: 100% !important;
 
+  box-sizing: border-box !important;
+
+  padding:
+    130px
+    8vw
+    45px !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    280px !important;
+
+  grid-template-rows:
+    1fr
+    auto !important;
+
+  column-gap: 8vw !important;
+
+  align-items: center !important;
 }
 
 
 /* =========================================================
-   NAVIGATION
+   NAV LINKS
 ========================================================= */
 
 #navOverlay .nav-overlay-links {
-
-  position: relative !important;
-
-  z-index: 10 !important;
-
-  width: 100% !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
 
   display: flex !important;
-
   flex-direction: column !important;
-
   align-items: flex-start !important;
 
-  justify-content: center !important;
-
-  gap: 4px !important;
+  gap: 3px !important;
 
   margin: 0 !important;
-
   padding: 0 !important;
 }
 
 
 #navOverlay .nav-overlay-links a {
-
   position: relative !important;
 
   display: grid !important;
 
-  grid-template-columns: 42px auto !important;
+  grid-template-columns:
+    42px auto !important;
 
   align-items: baseline !important;
 
   width: max-content !important;
 
+  padding: 8px 0 !important;
   margin: 0 !important;
 
-  padding: 8px 0 !important;
+  color: var(--et-soft) !important;
 
-  box-sizing: border-box !important;
-
-  font-family: "Playfair Display", serif !important;
+  font-family:
+    "Playfair Display",
+    serif !important;
 
   font-size:
-    clamp(40px,4.2vw,64px) !important;
-
-  font-weight: 400 !important;
+    clamp(40px, 4.2vw, 64px) !important;
 
   line-height: .98 !important;
 
-  letter-spacing: -.025em !important;
+  font-weight: 400 !important;
 
-  color: var(--et-soft) !important;
+  letter-spacing: -.025em !important;
 
   text-decoration: none !important;
 
@@ -464,23 +439,15 @@ body.nav-open {
   transform: translateY(15px) !important;
 
   transition:
-
     color .3s ease,
-
     opacity .45s var(--et-ease),
-
     transform .45s var(--et-ease) !important;
 }
 
 
-/* =========================================================
-   OPEN ANIMATION
-========================================================= */
-
-body.nav-open #navOverlay .nav-overlay-links a {
-
+body.nav-open
+#navOverlay .nav-overlay-links a {
   opacity: 1 !important;
-
   transform: translateY(0) !important;
 }
 
@@ -490,24 +457,20 @@ body.nav-open
   transition-delay: .06s !important;
 }
 
-
 body.nav-open
 #navOverlay .nav-overlay-links a:nth-child(2) {
   transition-delay: .11s !important;
 }
-
 
 body.nav-open
 #navOverlay .nav-overlay-links a:nth-child(3) {
   transition-delay: .16s !important;
 }
 
-
 body.nav-open
 #navOverlay .nav-overlay-links a:nth-child(4) {
   transition-delay: .21s !important;
 }
-
 
 body.nav-open
 #navOverlay .nav-overlay-links a:nth-child(5) {
@@ -519,43 +482,32 @@ body.nav-open
    NUMBERS
 ========================================================= */
 
-#navOverlay .nav-overlay-links .idx {
-
+#navOverlay .idx {
   width: 42px !important;
   min-width: 42px !important;
 
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: .13em !important;
-
   color: var(--et-muted) !important;
 
-  opacity: 1 !important;
-
-  visibility: visible !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  letter-spacing: .13em !important;
 }
 
 
 /* =========================================================
-   UNDERLINE
+   HOVER
 ========================================================= */
 
 #navOverlay .nav-overlay-links a::after {
-
   content: "";
 
   position: absolute;
 
   left: 42px;
-
   bottom: 2px;
 
   width: 0;
-
   height: 1px;
 
   background: var(--et-gold) !important;
@@ -566,9 +518,7 @@ body.nav-open
 
 
 #navOverlay .nav-overlay-links a:hover {
-
   color: var(--et-ivory) !important;
-
   transform: translateX(10px) !important;
 }
 
@@ -578,68 +528,65 @@ body.nav-open
 }
 
 
-#navOverlay .nav-overlay-links a:hover .idx {
-  color: var(--et-gold-bright) !important;
-}
-
-
 /* =========================================================
-   RIGHT BRAND PANEL
+   RIGHT BRAND
 ========================================================= */
 
-#navOverlay::after {
-
-  content:
-    "EMPERIO TISS S.L.\A"
-    "SEAFOOD · FRUITS & VEGETABLES · GLOBAL MARKETS\A\A"
-    "MADRID · SPAIN";
-
-  display: block !important;
-
-  width: 250px !important;
+#navOverlay .nav-overlay-side {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
 
   align-self: end !important;
-
   justify-self: end !important;
 
-  padding-left: 22px !important;
+  width: 100% !important;
 
-  box-sizing: border-box !important;
+  padding-left: 22px !important;
 
   border-left:
     1px solid var(--et-line) !important;
 
-  white-space: pre !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  line-height: 2 !important;
-
-  letter-spacing: .14em !important;
-
-  color: var(--et-muted) !important;
-
-  text-transform: uppercase !important;
+  box-sizing: border-box !important;
 
   opacity: 0 !important;
 
   transform: translateY(10px) !important;
 
   transition:
-
     opacity .5s ease .2s,
-
     transform .5s var(--et-ease) .2s !important;
 }
 
 
-body.nav-open #navOverlay::after {
-
+body.nav-open #navOverlay .nav-overlay-side {
   opacity: 1 !important;
-
   transform: translateY(0) !important;
+}
+
+
+.nav-overlay-brand {
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 8px !important;
+
+  color: var(--et-muted) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  line-height: 1.7 !important;
+
+  letter-spacing: .14em !important;
+
+  text-transform: uppercase !important;
+}
+
+
+.nav-overlay-brand strong {
+  color: var(--et-soft) !important;
+  font-weight: 500 !important;
 }
 
 
@@ -648,89 +595,169 @@ body.nav-open #navOverlay::after {
 ========================================================= */
 
 #navOverlay .nav-overlay-foot {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
 
-  position: absolute !important;
-
-  left: 8vw !important;
-
-  right: 8vw !important;
-
-  bottom: 30px !important;
-
-  z-index: 20 !important;
+  width: 100% !important;
 
   display: flex !important;
 
   align-items: center !important;
-
   justify-content: space-between !important;
+
+  padding-top: 30px !important;
 }
 
 
 /* =========================================================
-   LANGUAGE SWITCHER
+   LANGUAGES
 ========================================================= */
 
 #navOverlay .nav-overlay-lang {
-
   display: flex !important;
-
   align-items: center !important;
-
-  gap: 12px !important;
+  gap: 10px !important;
 
   font-family: "DM Sans", sans-serif !important;
-
   font-size: 9px !important;
 
   letter-spacing: .16em !important;
-
-  line-height: 1 !important;
 }
 
 
 #navOverlay .nav-overlay-lang a {
-
-  display: inline-block !important;
-
-  width: auto !important;
-
-  margin: 0 !important;
-
-  padding: 0 !important;
-
   color: var(--et-muted) !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  font-weight: 500 !important;
-
-  letter-spacing: .16em !important;
 
   text-decoration: none !important;
 
-  opacity: 1 !important;
-
-  transform: none !important;
+  transition: color .3s ease !important;
 }
 
 
-#navOverlay .nav-overlay-lang a::after {
-  display: none !important;
-}
-
-
-#navOverlay .nav-overlay-lang a:hover {
-  color: var(--et-ivory) !important;
-}
-
-
+#navOverlay .nav-overlay-lang a:hover,
 #navOverlay .nav-overlay-lang a.current {
   color: var(--et-gold-bright) !important;
 }
 
+
+#navOverlay .language-separator {
+  color: var(--et-line) !important;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+#navOverlay .nav-overlay-contact {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+
+  gap: 5px !important;
+
+  color: var(--et-muted) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 9px !important;
+
+  letter-spacing: .08em !important;
+}
+
+
+#navOverlay .nav-overlay-contact a {
+  color: var(--et-soft) !important;
+  text-decoration: none !important;
+}
+
+
+#navOverlay .nav-overlay-contact a:hover {
+  color: var(--et-gold-bright) !important;
+}
+
+
+/* =========================================================
+   IMPORTANT — BODY LOCK ONLY WHEN MENU IS OPEN
+========================================================= */
+
+body.nav-open {
+  overflow: hidden !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #navOverlay .nav-overlay-inner {
+    min-height: 100% !important;
+
+    padding:
+      105px
+      28px
+      35px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+  }
+
+
+  #navOverlay .nav-overlay-links {
+    width: 100% !important;
+  }
+
+
+  #navOverlay .nav-overlay-links a {
+    width: 100% !important;
+
+    grid-template-columns:
+      30px auto !important;
+
+    font-size:
+      clamp(30px, 9vw, 46px) !important;
+  }
+
+
+  #navOverlay .idx {
+    width: 30px !important;
+    min-width: 30px !important;
+  }
+
+
+  #navOverlay .nav-overlay-links a::after {
+    left: 30px !important;
+  }
+
+
+  #navOverlay .nav-overlay-side {
+    display: none !important;
+  }
+
+
+  #navOverlay .nav-overlay-foot {
+    width: 100% !important;
+
+    margin-top: auto !important;
+
+    padding-top: 25px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+
+    gap: 18px !important;
+  }
+
+
+  #navOverlay .nav-overlay-contact {
+    align-items: flex-start !important;
+  }
+}
 
 /* =========================================================
    PAGE CURTAIN
