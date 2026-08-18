@@ -1287,3 +1287,56 @@ body:has(.en-products-page) #menuToggleBtn {
   }
 
 }
+/* =========================================================
+   FINAL CURSOR RESTORE
+========================================================= */
+
+/* Restore the normal browser cursor everywhere */
+html,
+body,
+body * {
+  cursor: auto !important;
+}
+
+
+/* Clickable elements */
+a,
+button,
+[role="button"],
+.product-card,
+.cta-link {
+  cursor: pointer !important;
+}
+
+
+/* Navigation */
+#luxuryHeader #menuToggleBtn,
+#luxuryHeader #menuToggleBtn *,
+#navOverlay a,
+#navOverlay .language-switcher a {
+  cursor: pointer !important;
+}
+
+
+/* Don't let the decorative layers steal the mouse */
+#pageCurtain {
+  pointer-events: none !important;
+}
+
+#navOverlay::before,
+#navOverlay::after {
+  pointer-events: none !important;
+}
+
+
+/* Menu button itself */
+#luxuryHeader #menuToggleBtn {
+  pointer-events: auto !important;
+}
+
+
+/* Logo */
+#luxuryHeader .site-logo {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
