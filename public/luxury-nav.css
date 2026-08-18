@@ -1,648 +1,912 @@
 /* =========================================================
-   EMPERIO TISS — NAV OVERLAY + PAGE TRANSITIONS
-   Estilo editorial de lujo (ref: isradesign.com)
-   Fuentes: Playfair Display + DM Sans (ya cargadas)
+   EMPERIO TISS
+   LUXURY NAVIGATION SYSTEM
+   Desktop + Mobile
+   Editorial / Luxury / Marine
+========================================================= */
 
-   INSTALACIÓN (en cada página, en <head>, tras style.css):
-   <link rel="stylesheet" href="luxury-nav.css">
-   Y antes de </body>:
-   <script src="luxury-nav.js" defer></script>
+
+/* =========================================================
+   01 — VARIABLES
 ========================================================= */
 
 :root {
-  --et-black: #0a0a0a;
+  --et-black: #080b0a;
   --et-ink: #0e1512;
   --et-ivory: #f4f1ea;
+
   --et-gold: #c9a961;
   --et-gold-bright: #e4c98a;
-  --et-hairline: rgba(244,241,234,.16);
+
+  --et-line: rgba(244, 241, 234, .16);
+  --et-soft: rgba(244, 241, 234, .55);
+  --et-muted: rgba(244, 241, 234, .38);
+
+  --et-nav-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
+
 /* =========================================================
-   HEADER — BARRA MÍNIMA (logo + botón menú, siempre)
+   02 — HEADER
 ========================================================= */
 
 #luxuryHeader {
   position: fixed !important;
+
   top: 0 !important;
   left: 0 !important;
+
   width: 100% !important;
-  height: auto !important;
 
   background: transparent !important;
+
   border: none !important;
   box-shadow: none !important;
 
   z-index: 9999 !important;
-  mix-blend-mode: normal !important;
+
+  pointer-events: none !important;
 }
+
 
 #luxuryHeader .header-inner {
   position: relative !important;
+
   width: 100% !important;
   max-width: none !important;
+
   height: 92px !important;
+
   margin: 0 !important;
+
   padding: 0 48px !important;
+
+  box-sizing: border-box !important;
 
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
 
   background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
 }
+
+
+/* =========================================================
+   03 — LOGO
+========================================================= */
 
 #luxuryHeader .site-logo {
   position: relative !important;
-  z-index: 5 !important;
-  width: auto !important;
+
+  z-index: 10001 !important;
+
+  pointer-events: auto !important;
 }
+
 
 #luxuryHeader .site-logo img {
   width: 132px !important;
   height: auto !important;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) !important;
+
+  display: block !important;
+
+  filter:
+    drop-shadow(0 2px 6px rgba(0,0,0,.45)) !important;
 }
 
-/* ocultar el nav clásico en línea: todo vive ahora en el overlay */
+
+/* =========================================================
+   04 — HIDE OLD INLINE NAV
+========================================================= */
+
 #luxuryHeader .main-nav > a,
 #luxuryHeader .language-nav,
 #luxuryHeader .header-cta {
   display: none !important;
 }
 
+
 #luxuryHeader .main-nav {
-  position: static !important;
   display: flex !important;
   align-items: center !important;
 }
 
 
 /* =========================================================
-   BOTÓN MENÚ — visible siempre (desktop + mobile)
+   05 — MENU BUTTON
+   3 LINES
 ========================================================= */
 
 #luxuryHeader #menuToggleBtn {
-  display: flex !important;
+
   position: relative !important;
-  z-index: 5 !important;
 
-  margin-left: 0 !important;
+  z-index: 10001 !important;
 
-  width: 54px !important;
-  height: 54px !important;
+  width: 58px !important;
+  height: 58px !important;
 
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
-  gap: 6px !important;
+
+  gap: 5px !important;
 
   background: transparent !important;
-  border: 1px solid var(--et-hairline) !important;
+
+  border: 1px solid var(--et-line) !important;
   border-radius: 50% !important;
 
+  outline: none !important;
+
   cursor: pointer !important;
-  transition: border-color .3s ease, background .3s ease !important;
+
+  pointer-events: auto !important;
+
+  transition:
+    border-color .35s ease,
+    background .35s ease,
+    transform .35s ease !important;
 }
+
 
 #luxuryHeader #menuToggleBtn:hover {
+
   border-color: var(--et-gold) !important;
-  background: rgba(201,169,97,.08) !important;
+
+  background: rgba(201,169,97,.07) !important;
+
+  transform: scale(1.04) !important;
 }
 
+
+/* =========================================================
+   06 — THREE LINES
+========================================================= */
+
 #luxuryHeader #menuToggleBtn span {
-  width: 18px !important;
+
+  display: block !important;
+
   height: 1px !important;
+
   background: var(--et-ivory) !important;
-  transition: transform .35s ease, opacity .25s ease, background .3s ease !important;
+
+  transform-origin: center !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transition:
+    width .35s var(--et-nav-ease),
+    transform .45s var(--et-nav-ease),
+    opacity .25s ease,
+    background .3s ease !important;
 }
+
+
+#luxuryHeader #menuToggleBtn span:nth-child(1) {
+  width: 26px !important;
+}
+
+
+#luxuryHeader #menuToggleBtn span:nth-child(2) {
+  width: 18px !important;
+}
+
+
+#luxuryHeader #menuToggleBtn span:nth-child(3) {
+  width: 26px !important;
+}
+
 
 #luxuryHeader #menuToggleBtn:hover span {
   background: var(--et-gold-bright) !important;
 }
 
-/* estado abierto: transforma en X */
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
-  transform: translateY(3.5px) rotate(45deg) !important;
-}
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
-  transform: translateY(-3.5px) rotate(-45deg) !important;
+
+#luxuryHeader #menuToggleBtn:hover span:nth-child(2) {
+  width: 26px !important;
 }
 
 
 /* =========================================================
-   OVERLAY — PANTALLA COMPLETA
+   07 — OPEN STATE
+   3 LINES → X
+
+   IMPORTANT:
+   They DO NOT disappear.
+========================================================= */
+
+body.nav-open #luxuryHeader #menuToggleBtn {
+
+  gap: 0 !important;
+
+  border-color: var(--et-gold) !important;
+
+  background: rgba(201,169,97,.05) !important;
+}
+
+
+body.nav-open #luxuryHeader #menuToggleBtn span {
+
+  width: 27px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  background: var(--et-ivory) !important;
+}
+
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
+
+  transform:
+    translateY(1px)
+    rotate(45deg) !important;
+}
+
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+
+  opacity: 0 !important;
+
+  transform: scaleX(0) !important;
+}
+
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
+
+  transform:
+    translateY(-1px)
+    rotate(-45deg) !important;
+}
+
+
+/* =========================================================
+   08 — MENU LABEL
+========================================================= */
+
+#luxuryHeader #menuToggleBtn::after {
+
+  content: "MENU";
+
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  letter-spacing: .20em;
+
+  line-height: 1;
+
+  color: var(--et-ivory);
+
+  opacity: .55;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  transition:
+    color .3s ease,
+    opacity .3s ease !important;
+}
+
+
+body.nav-open #luxuryHeader #menuToggleBtn::after {
+
+  content: "CLOSE";
+
+  color: var(--et-gold-bright);
+
+  opacity: .85;
+}
+
+
+/* =========================================================
+   09 — FULLSCREEN OVERLAY
 ========================================================= */
 
 #navOverlay {
+
   position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: 0 !important;
+
+  inset: 0 !important;
 
   width: 100vw !important;
   height: 100vh !important;
+
   min-height: 100vh !important;
-  max-height: none !important;
+
+  box-sizing: border-box !important;
 
   z-index: 9998 !important;
 
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
+  padding: 120px 8vw 55px !important;
 
-  box-sizing: border-box !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
+  display: grid !important;
 
-  padding: 140px 64px 56px !important;
+  grid-template-columns:
+    minmax(420px, 1fr)
+    minmax(250px, 320px) !important;
+
+  column-gap: 8vw !important;
+
+  align-items: center !important;
+
+  overflow: hidden !important;
 
   background:
+
     radial-gradient(
       circle at 85% 10%,
-      rgba(201,169,97,.10),
-      transparent 55%
+      rgba(201,169,97,.11),
+      transparent 42%
     ),
-    #0e1512 !important;
+
+    radial-gradient(
+      circle at 20% 85%,
+      rgba(32,72,66,.16),
+      transparent 42%
+    ),
+
+    var(--et-ink) !important;
 
   opacity: 0 !important;
+
   visibility: hidden !important;
+
   pointer-events: none !important;
 
-  transform: translateY(-12px) !important;
+  transform: translateY(-18px) !important;
 
   transition:
-    opacity .55s cubic-bezier(.16,1,.3,1),
-    transform .55s cubic-bezier(.16,1,.3,1),
+
+    opacity .55s var(--et-nav-ease),
+
+    transform .55s var(--et-nav-ease),
+
     visibility 0s linear .55s !important;
 }
 
+
 body.nav-open #navOverlay {
+
   opacity: 1 !important;
+
   visibility: visible !important;
+
   pointer-events: auto !important;
+
   transform: translateY(0) !important;
 
   transition:
-    opacity .55s cubic-bezier(.16,1,.3,1),
-    transform .55s cubic-bezier(.16,1,.3,1),
+
+    opacity .55s var(--et-nav-ease),
+
+    transform .55s var(--et-nav-ease),
+
     visibility 0s linear 0s !important;
 }
 
-/* bloquear scroll del body cuando el overlay está abierto */
+
 body.nav-open {
   overflow: hidden !important;
 }
 
-@media (max-width: 700px) {
-  #navOverlay { padding: 120px 28px 40px !important; }
-  #navOverlay .nav-overlay-links a { font-size: 15vw !important; }
-  #navOverlay .nav-overlay-foot { flex-direction: column !important; align-items: flex-start !important; }
-  #navOverlay .nav-overlay-contact { text-align: left !important; }
+
+/* =========================================================
+   10 — NAVIGATION LIST
+========================================================= */
+
+#navOverlay .nav-overlay-links {
+
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: flex-start !important;
+
+  justify-content: center !important;
+
+  gap: 3px !important;
 }
 
 
 /* =========================================================
-   CORTINA DE TRANSICIÓN ENTRE PÁGINAS
+   11 — NAVIGATION ITEMS
+========================================================= */
+
+#navOverlay .nav-overlay-links a {
+
+  position: relative !important;
+
+  display: grid !important;
+
+  grid-template-columns: 42px auto !important;
+
+  align-items: baseline !important;
+
+  width: max-content !important;
+
+  margin: 0 !important;
+
+  padding: 8px 0 !important;
+
+  box-sizing: border-box !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: clamp(
+    40px,
+    4.2vw,
+    64px
+  ) !important;
+
+  font-weight: 400 !important;
+
+  line-height: .98 !important;
+
+  letter-spacing: -.025em !important;
+
+  text-align: left !important;
+
+  text-decoration: none !important;
+
+  white-space: nowrap !important;
+
+  color: var(--et-soft) !important;
+
+  opacity: 0 !important;
+
+  transform: translateY(22px) !important;
+
+  transition:
+
+    color .35s ease,
+
+    transform .55s var(--et-nav-ease),
+
+    opacity .55s var(--et-nav-ease) !important;
+}
+
+
+/* =========================================================
+   12 — MENU ITEMS ANIMATION
+========================================================= */
+
+body.nav-open #navOverlay .nav-overlay-links a {
+
+  opacity: 1 !important;
+
+  transform: translateY(0) !important;
+}
+
+
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(1) {
+  transition-delay: .08s !important;
+}
+
+
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(2) {
+  transition-delay: .13s !important;
+}
+
+
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(3) {
+  transition-delay: .18s !important;
+}
+
+
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(4) {
+  transition-delay: .23s !important;
+}
+
+
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) {
+  transition-delay: .28s !important;
+}
+
+
+/* =========================================================
+   13 — MENU NUMBERS
+========================================================= */
+
+#navOverlay .nav-overlay-links .idx {
+
+  display: block !important;
+
+  width: 42px !important;
+  min-width: 42px !important;
+
+  margin: 0 !important;
+  padding: 6px 0 0 !important;
+
+  box-sizing: border-box !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  font-weight: 500 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: .13em !important;
+
+  color: var(--et-muted) !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transition: color .3s ease !important;
+}
+
+
+/* =========================================================
+   14 — GOLD UNDERLINE
+========================================================= */
+
+#navOverlay .nav-overlay-links a::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 42px;
+
+  bottom: 2px;
+
+  width: 0;
+
+  height: 1px;
+
+  background: var(--et-gold) !important;
+
+  transition:
+    width .45s var(--et-nav-ease) !important;
+}
+
+
+/* =========================================================
+   15 — HOVER
+========================================================= */
+
+#navOverlay .nav-overlay-links a:hover {
+
+  color: var(--et-ivory) !important;
+
+  transform:
+    translateX(12px) !important;
+}
+
+
+#navOverlay .nav-overlay-links a:hover .idx {
+
+  color: var(--et-gold-bright) !important;
+}
+
+
+#navOverlay .nav-overlay-links a:hover::after {
+
+  width: 62px !important;
+}
+
+
+/* =========================================================
+   16 — ACTIVE PAGE
+========================================================= */
+
+#navOverlay .nav-overlay-links a.active {
+
+  color: var(--et-ivory) !important;
+}
+
+
+#navOverlay .nav-overlay-links a.active .idx {
+
+  color: var(--et-gold) !important;
+}
+
+
+#navOverlay .nav-overlay-links a.active::after {
+
+  width: 32px !important;
+}
+
+
+/* =========================================================
+   17 — RIGHT SIDE BRAND PANEL
+========================================================= */
+
+#navOverlay::after {
+
+  content:
+    "EMPERIO TISS S.L.\A"
+    "SEAFOOD · FRUITS & VEGETABLES · GLOBAL MARKETS\A\A"
+    "MADRID · SPAIN";
+
+  display: block !important;
+
+  width: 250px !important;
+
+  align-self: end !important;
+  justify-self: end !important;
+
+  padding-left: 22px !important;
+
+  border-left:
+    1px solid var(--et-line) !important;
+
+  box-sizing: border-box !important;
+
+  white-space: pre !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  font-weight: 400 !important;
+
+  line-height: 2 !important;
+
+  letter-spacing: .14em !important;
+
+  text-transform: uppercase !important;
+
+  color: var(--et-muted) !important;
+
+  opacity: 0 !important;
+
+  transform: translateY(15px) !important;
+
+  transition:
+    opacity .7s ease .35s,
+    transform .7s var(--et-nav-ease) .35s !important;
+}
+
+
+body.nav-open #navOverlay::after {
+
+  opacity: 1 !important;
+
+  transform: translateY(0) !important;
+}
+}
+
+
+body.nav-open #navOverlay::after {
+
+  opacity: 1 !important;
+
+  transform: translateY(0) !important;
+}
+
+
+/* =========================================================
+   18 — FOOTER
+========================================================= */
+
+#navOverlay .nav-overlay-foot {
+
+  position: absolute !important;
+
+  left: 8vw !important;
+  right: 8vw !important;
+
+  bottom: 30px !important;
+
+  width: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: space-between !important;
+}
+
+
+/* =========================================================
+   19 — PAGE CURTAIN
 ========================================================= */
 
 #pageCurtain {
+
   position: fixed !important;
+
   inset: 0 !important;
+
   z-index: 9000 !important;
 
   background: var(--et-ink) !important;
 
-  transform: scaleY(1) !important;
-  transform-origin: top !important;
-
   pointer-events: none !important;
 
-  transition: transform .65s cubic-bezier(.76,0,.24,1) !important;
-}
-
-/* al cargar la página: la cortina se retira hacia arriba */
-#pageCurtain.is-hidden {
-  transform: scaleY(0) !important;
-  transform-origin: bottom !important;
-}
-
-/* al salir de la página: la cortina cubre hacia abajo */
-#pageCurtain.is-covering {
   transform: scaleY(1) !important;
+
+  transform-origin: top !important;
+
+  transition:
+    transform .65s cubic-bezier(.76,0,.24,1) !important;
+}
+
+
+#pageCurtain.is-hidden {
+
+  transform: scaleY(0) !important;
+
   transform-origin: bottom !important;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  #pageCurtain,
-  #navOverlay,
-  #navOverlay .nav-overlay-links a,
-  #navOverlay .nav-overlay-foot,
-  #luxuryHeader #menuToggleBtn span {
-    transition: none !important;
+
+#pageCurtain.is-covering {
+
+  transform: scaleY(1) !important;
+
+  transform-origin: bottom !important;
+}
+
+
+/* =========================================================
+   20 — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #luxuryHeader .header-inner {
+
+    height: 76px !important;
+
+    padding: 0 22px !important;
   }
-}
-#luxuryHeader #menuToggleBtn {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
 
-#luxuryHeader #menuToggleBtn span {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  background: #f4f1ea !important;
-}
 
-body.nav-open #luxuryHeader #menuToggleBtn span {
-  background: #f4f1ea !important;
-}
-#luxuryHeader {
-  z-index: 9999 !important;
-}
+  #luxuryHeader .site-logo img {
 
-#luxuryHeader .header-inner {
-  position: relative !important;
-  z-index: 10000 !important;
-}
+    width: 108px !important;
+  }
 
-#luxuryHeader #menuToggleBtn {
-  position: relative !important;
-  z-index: 10001 !important;
-}
-/* =========================================================
-   FORCE NAVIGATION CONTENT VISIBILITY
-========================================================= */
 
-#navOverlay {
-  z-index: 9998 !important;
-}
+  #luxuryHeader #menuToggleBtn {
 
-#navOverlay .nav-overlay-links {
-  position: relative !important;
-  z-index: 100 !important;
-  display: flex !important;
-  visibility: visible !important;
-}
+    width: 48px !important;
+    height: 48px !important;
 
-#navOverlay .nav-overlay-links a {
-  display: flex !important;
-  visibility: visible !important;
-  color: #f4f1ea !important;
-}
+    gap: 5px !important;
+  }
 
-body.nav-open #navOverlay .nav-overlay-links a {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-}
 
-#navOverlay .nav-overlay-links a .idx {
-  color: #c9a961 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-/* =========================================================
-   EMPERIO TISS — DESKTOP NAV FIX
-   Match HOME navigation
-========================================================= */
+  #luxuryHeader #menuToggleBtn span:nth-child(1),
+  #luxuryHeader #menuToggleBtn span:nth-child(3) {
 
-@media (min-width: 701px) {
+    width: 22px !important;
+  }
 
-  /* Keep the overlay structure */
+
+  #luxuryHeader #menuToggleBtn span:nth-child(2) {
+
+    width: 16px !important;
+  }
+
+
   #navOverlay {
+
+    padding: 110px 28px 35px !important;
+
     display: flex !important;
+
     flex-direction: column !important;
-    justify-content: center !important;
+
+    justify-content: flex-start !important;
+
+    overflow-y: auto !important;
   }
 
-  /* Navigation list */
+
   #navOverlay .nav-overlay-links {
-    width: auto !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
 
     gap: 0 !important;
 
-    margin: 0 !important;
-    padding: 0 !important;
+    width: 100% !important;
   }
 
-  /* Every menu item */
+
   #navOverlay .nav-overlay-links a {
-    display: flex !important;
-    align-items: baseline !important;
 
-    width: auto !important;
+    grid-template-columns: 30px auto !important;
 
-    margin: 0 !important;
-    padding: 6px 0 !important;
+    width: 100% !important;
 
-    white-space: nowrap !important;
+    padding: 10px 0 !important;
 
-    line-height: 1 !important;
-
-    text-align: left !important;
+    font-size: clamp(
+      30px,
+      9vw,
+      46px
+    ) !important;
   }
 
-  /* Menu numbers */
+
   #navOverlay .nav-overlay-links .idx {
-    display: inline-block !important;
 
     width: 30px !important;
     min-width: 30px !important;
 
-    margin-right: 16px !important;
-
-    text-align: left !important;
+    font-size: 8px !important;
   }
 
-  /* Menu text */
-  #navOverlay .nav-overlay-links a span:not(.idx) {
-    display: inline-block !important;
+
+  #navOverlay .nav-overlay-links a::after {
+
+    left: 30px !important;
   }
 
-  /* Footer stays at the bottom */
+
+  #navOverlay::after {
+
+    display: none !important;
+  }
+
+
   #navOverlay .nav-overlay-foot {
+
+    position: relative !important;
+
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 100% !important;
+
     margin-top: auto !important;
-  }
 
-  /* =======================================================
-     OPEN BUTTON
-     Home behaviour: hide both bars
-  ======================================================= */
-
-  body.nav-open #luxuryHeader #menuToggleBtn span {
-    opacity: 0 !important;
-    transform: scaleX(0) !important;
-  }
-
-}
-/* =========================================================
-   EMPERIO TISS — DESKTOP MENU BUTTON
-   Editorial 3-line menu / no hamburger icon
-========================================================= */
-
-@media (min-width: 701px) {
-
-  #luxuryHeader #menuToggleBtn {
-    position: relative !important;
-
-    width: 82px !important;
-    height: 42px !important;
+    padding-top: 25px !important;
 
     display: flex !important;
+
     flex-direction: column !important;
-    align-items: flex-end !important;
-    justify-content: center !important;
 
-    gap: 6px !important;
+    align-items: flex-start !important;
 
-    padding: 0 !important;
-    margin: 0 !important;
-
-    border: 0 !important;
-    background: transparent !important;
-
-    cursor: pointer !important;
+    gap: 14px !important;
   }
-
-  /* Three elegant lines */
-  #luxuryHeader #menuToggleBtn span {
-    display: block !important;
-
-    height: 1px !important;
-
-    background: currentColor !important;
-
-    transform-origin: right center !important;
-
-    transition:
-      width .45s cubic-bezier(.22,1,.36,1),
-      opacity .3s ease,
-      transform .4s cubic-bezier(.22,1,.36,1) !important;
-  }
-
-  #luxuryHeader #menuToggleBtn span:nth-child(1) {
-    width: 42px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn span:nth-child(2) {
-    width: 30px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn span:nth-child(3) {
-    width: 18px !important;
-  }
-
-
-  /* Hover */
-  #luxuryHeader #menuToggleBtn:hover span:nth-child(1) {
-    width: 30px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn:hover span:nth-child(2) {
-    width: 42px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn:hover span:nth-child(3) {
-    width: 26px !important;
-  }
-
-
-  /* =======================================================
-     OPEN STATE
-     Do NOT transform into X.
-     Keep the three-line identity but fade them out.
-  ======================================================= */
-
-  body.nav-open #luxuryHeader #menuToggleBtn span {
-    opacity: 0 !important;
-
-    transform: translateX(12px) !important;
-  }
-
-
-  /* =======================================================
-     MENU LABEL
-  ======================================================= */
-
-  #luxuryHeader #menuToggleBtn::before {
-
-    content: "MENU";
-
-    position: absolute;
-
-    right: 0;
-    bottom: -17px;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 8px;
-    font-weight: 500;
-
-    letter-spacing: .22em;
-
-    color: currentColor;
-
-    opacity: .65;
-
-    transition:
-      opacity .3s ease,
-      letter-spacing .3s ease;
-  }
-
-  #luxuryHeader #menuToggleBtn:hover::before {
-    opacity: 1;
-    letter-spacing: .28em;
-  }
-
-  body.nav-open #luxuryHeader #menuToggleBtn::before {
-    content: "CLOSE";
-  }
-
 }
+
+
 /* =========================================================
-   EMPERIO TISS — PREMIUM MENU BUTTON
+   21 — ACCESSIBILITY / REDUCED MOTION
 ========================================================= */
 
-@media (min-width: 701px) {
+@media (prefers-reduced-motion: reduce) {
 
-  #luxuryHeader #menuToggleBtn {
-    position: relative !important;
+  #navOverlay,
+  #navOverlay .nav-overlay-links a,
+  #navOverlay::after,
+  #luxuryHeader #menuToggleBtn span,
+  #pageCurtain {
 
-    width: 54px !important;
-    height: 54px !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    gap: 5px !important;
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    border: 0 !important;
-    outline: none !important;
-
-    background: transparent !important;
-
-    cursor: pointer !important;
-
-    z-index: 10001 !important;
+    transition: none !important;
   }
-
-
-  /* THREE LINES */
-
-  #luxuryHeader #menuToggleBtn span {
-    display: block !important;
-
-    width: 30px !important;
-    height: 1px !important;
-
-    background: currentColor !important;
-
-    transform-origin: center !important;
-
-    transition:
-      transform .45s cubic-bezier(.22,1,.36,1),
-      opacity .25s ease,
-      width .35s ease !important;
-  }
-
-
-  /* subtle asymmetry */
-
-  #luxuryHeader #menuToggleBtn span:nth-child(1) {
-    width: 30px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn span:nth-child(2) {
-    width: 22px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn span:nth-child(3) {
-    width: 30px !important;
-  }
-
-
-  /* HOVER */
-
-  #luxuryHeader #menuToggleBtn:hover span:nth-child(2) {
-    width: 30px !important;
-  }
-
-
-  /* =======================================================
-     OPEN → X
-  ======================================================= */
-
-  body.nav-open #luxuryHeader #menuToggleBtn {
-    gap: 0 !important;
-  }
-
-  body.nav-open #luxuryHeader #menuToggleBtn span {
-    width: 30px !important;
-    opacity: 1 !important;
-  }
-
-  body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
-    transform: translateY(1px) rotate(45deg) !important;
-  }
-
-  body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
-    opacity: 0 !important;
-    transform: scaleX(0) !important;
-  }
-
-  body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
-    transform: translateY(-1px) rotate(-45deg) !important;
-  }
-
-
-  /* =======================================================
-     SMALL MENU LABEL
-  ======================================================= */
-
-  #luxuryHeader #menuToggleBtn::after {
-    content: "MENU";
-
-    position: absolute;
-
-    top: calc(100% + 7px);
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 7px;
-    line-height: 1;
-
-    letter-spacing: .22em;
-
-    opacity: .55;
-
-    white-space: nowrap;
-
-    transition: opacity .3s ease;
-  }
-
-  body.nav-open #luxuryHeader #menuToggleBtn::after {
-    content: "CLOSE";
-    opacity: .8;
-  }
-
 }
