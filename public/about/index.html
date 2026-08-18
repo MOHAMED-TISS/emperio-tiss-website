@@ -23,6 +23,7 @@
   >
 
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../luxury-nav.css">
 
   <style>
 
@@ -1238,12 +1239,12 @@
 
 <header class="site-header">
 
-  <div class="container nav-wrap">
+  <div class="header-inner">
 
     <a
       href="../index.html"
-      class="brand"
-      aria-label="EMPERIO TISS Home"
+      class="site-logo"
+      aria-label="EMPERIO TISS - Inicio"
     >
       <img
         src="../logo.png"
@@ -1251,72 +1252,46 @@
       >
     </a>
 
+    <button
+      class="mobile-menu"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="navOverlay"
+    >
+      <span></span>
+      <span></span>
+    </button>
 
-    <nav class="nav" aria-label="Main navigation">
-
-      <a href="../index.html">
-        Home
-      </a>
-
-      <a
-        href="../about/about.html"
-        class="active"
-      >
-        About
-      </a>
-
-      <a href="../products/index.html">
-        Products
-      </a>
-
-      <a href="../markets/markets.html">
-        Markets
-      </a>
+  </div>
 
 
-      <div
-        class="language-switcher"
-        aria-label="Language selector"
-      >
+  <!-- OVERLAY — pantalla completa, abre/cierra con luxury-nav.js -->
+  <div class="nav-overlay" id="navOverlay">
 
-        <a
-          href="../index.html"
-          class="active"
-        >
-          EN
-        </a>
-
-        <a href="../es/index.html">
-          ES
-        </a>
-
-        <a href="../fr/index.html">
-          FR
-        </a>
-
-        <a href="../ar/index.html">
-          AR
-        </a>
-
-      </div>
-
-
-      <a class="nav-cta" href="../index.html#contact">
-  <span>Business enquiry</span>
-  <span class="nav-cta-arrow">↗</span>
-</a>
-
+    <nav class="nav-overlay-links" aria-label="Navegación principal">
+      <a href="../index.html"><span class="idx">01</span> Inicio</a>
+      <a href="../about/index.html" class="active"><span class="idx">02</span> Empresa</a>
+      <a href="../products/index.html"><span class="idx">03</span> Productos</a>
+      <a href="../markets/index.html"><span class="idx">04</span> Mercados</a>
+      <a href="../contact/index.html"><span class="idx">05</span> Contacto</a>
     </nav>
 
+    <div class="nav-overlay-foot">
 
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
+      <div class="nav-overlay-lang">
+        <a href="../es/index.html" class="current">ES</a>
+        <a href="../index.html">EN</a>
+        <a href="../fr/index.html">FR</a>
+        <a href="../ar/index.html">AR</a>
+      </div>
+
+      <div class="nav-overlay-contact">
+        <a href="../index.html#contact">Consulta empresarial ↗</a><br>
+        Madrid · Europa · África · Mediterráneo
+      </div>
+
+    </div>
 
   </div>
 
