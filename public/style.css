@@ -2619,3 +2619,247 @@ button:focus {
     background: #d5b779 !important;
   }
 }
+/* =========================================================
+   EMPERIO TISS — LUXURY TRADING HOUSE HEADER
+========================================================= */
+
+.site-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  z-index: 1000 !important;
+}
+
+
+/* MAIN CONTAINER */
+
+.site-header .header-inner {
+  width: min(1380px, calc(100% - 80px)) !important;
+  height: 92px !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+
+  border-bottom: 1px solid rgba(255,255,255,.16) !important;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.site-header .site-logo {
+  justify-self: start !important;
+}
+
+.site-header .site-logo img {
+  width: 145px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+
+/* =========================================================
+   CENTER NAVIGATION
+========================================================= */
+
+.site-header .main-nav {
+  justify-self: center !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 34px !important;
+}
+
+
+/* STANDARD LINKS */
+
+.site-header .main-nav > a {
+  position: relative !important;
+
+  display: block !important;
+
+  padding: 8px 0 !important;
+
+  color: rgba(255,255,255,.88) !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+
+  text-decoration: none !important;
+
+  transition: color .25s ease !important;
+}
+
+
+.site-header .main-nav > a:hover,
+.site-header .main-nav > a.active {
+  color: #d2b477 !important;
+}
+
+
+/* Remove old underline */
+
+.site-header .main-nav > a::after {
+  display: none !important;
+}
+
+
+/* =========================================================
+   LANGUAGES
+========================================================= */
+
+.site-header .language-nav {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 10px !important;
+
+  margin: 0 0 0 2px !important;
+  padding: 0 0 0 18px !important;
+
+  border-left: 1px solid rgba(255,255,255,.20) !important;
+}
+
+
+.site-header .language-nav a {
+  color: rgba(255,255,255,.50) !important;
+
+  font-size: 8px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: .10em !important;
+
+  text-decoration: none !important;
+}
+
+
+.site-header .language-nav a.current,
+.site-header .language-nav a:hover {
+  color: #d2b477 !important;
+}
+
+
+/* =========================================================
+   RIGHT SIDE CTA
+========================================================= */
+
+.site-header .header-cta {
+  justify-self: end !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+
+  padding: 0 !important;
+
+  color: #d2b477 !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+
+  text-decoration: none !important;
+
+  box-shadow: none !important;
+
+  transition: color .25s ease !important;
+}
+
+
+.site-header .header-cta:hover {
+  color: #ffffff !important;
+
+  background: transparent !important;
+
+  transform: none !important;
+}
+
+
+.site-header .header-cta strong {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .site-header .header-inner {
+    width: calc(100% - 48px) !important;
+    grid-template-columns: 1fr auto !important;
+  }
+
+  .site-header .main-nav {
+    display: none !important;
+  }
+
+  .site-header .mobile-menu {
+    display: flex !important;
+
+    justify-self: end !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .site-header .mobile-menu span {
+    width: 20px !important;
+    height: 1px !important;
+
+    background: #d2b477 !important;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .site-header .header-inner {
+    width: calc(100% - 36px) !important;
+    height: 78px !important;
+  }
+
+  .site-header .site-logo img {
+    width: 125px !important;
+  }
+}
