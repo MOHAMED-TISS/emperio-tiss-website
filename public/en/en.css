@@ -1,67 +1,78 @@
 /* =========================================================
    EMPERIO TISS — ENGLISH PAGES
+   FRUITS & VEGETABLES
    Editorial / Marine / Premium
-   Scope: English pages only
+   PAGE-SCOPED — DOES NOT MODIFY NAVIGATION
 ========================================================= */
 
 :root {
   --en-bg: #eef3f1;
-  --en-surface: rgba(255,255,255,.58);
+  --en-surface: rgba(255, 255, 255, .62);
+  --en-surface-hover: rgba(255, 255, 255, .84);
+
   --en-ink: #10201c;
   --en-muted: #63716d;
-  --en-line: rgba(16,32,28,.14);
+
+  --en-line: rgba(16, 32, 28, .13);
+
   --en-accent: #a88952;
 }
 
 
 /* =========================================================
-   PAGE
+   01 — PAGE BACKGROUND
 ========================================================= */
 
 body {
-  background: var(--en-bg);
-  color: var(--en-ink);
+  background: var(--en-bg) !important;
+  color: var(--en-ink) !important;
 }
 
 
 /* =========================================================
-   MAIN
+   02 — MAIN
 ========================================================= */
 
 .fruits-vegetables-page {
   position: relative;
   z-index: 1;
 
-  min-height: 100vh;
+  width: 100%;
 
-  padding-top: 150px;
+  min-height: auto;
+
+  padding-top: 92px;
+
+  background: var(--en-bg);
 }
 
 
 /* =========================================================
-   HERO
+   03 — HERO
 ========================================================= */
 
 .fruits-vegetables-page .products-hero {
-
   width: min(1180px, calc(100% - 96px));
 
   margin: 0 auto;
 
-  padding: 90px 0 120px;
+  padding: 110px 0 115px;
 
   border-bottom: 1px solid var(--en-line);
 }
 
 
-.fruits-vegetables-page .eyebrow {
+/* eyebrow */
 
-  margin: 0 0 24px;
+.fruits-vegetables-page .eyebrow {
+  margin: 0 0 26px;
 
   font-family: "DM Sans", sans-serif;
 
   font-size: 10px;
   font-weight: 600;
+
+  line-height: 1;
 
   letter-spacing: .20em;
 
@@ -71,9 +82,10 @@ body {
 }
 
 
-.fruits-vegetables-page .products-hero h1 {
+/* title */
 
-  max-width: 900px;
+.fruits-vegetables-page .products-hero h1 {
+  max-width: 920px;
 
   margin: 0;
 
@@ -91,8 +103,9 @@ body {
 }
 
 
-.fruits-vegetables-page .products-hero > p:last-child {
+/* introduction */
 
+.fruits-vegetables-page .products-hero > p:last-child {
   max-width: 590px;
 
   margin: 38px 0 0;
@@ -101,6 +114,8 @@ body {
 
   font-size: 16px;
 
+  font-weight: 400;
+
   line-height: 1.8;
 
   color: var(--en-muted);
@@ -108,35 +123,33 @@ body {
 
 
 /* =========================================================
-   OVERVIEW
+   04 — PRODUCTS OVERVIEW
 ========================================================= */
 
 .fruits-vegetables-page .products-overview {
-
   width: min(1180px, calc(100% - 96px));
 
   margin: 0 auto;
 
-  padding: 80px 0;
+  padding: 82px 0;
 
   display: grid;
 
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 20px;
+  gap: 18px;
 }
 
 
 /* =========================================================
-   PRODUCT CARDS
+   05 — PRODUCT CARD
 ========================================================= */
 
 .fruits-vegetables-page .product-card {
-
   position: relative;
 
-  min-height: 300px;
+  min-height: 310px;
 
   padding: 34px;
 
@@ -146,8 +159,8 @@ body {
 
   border: 1px solid var(--en-line);
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   transition:
     transform .45s cubic-bezier(.22,1,.36,1),
@@ -157,24 +170,28 @@ body {
 
 
 .fruits-vegetables-page .product-card:hover {
+  transform: translateY(-7px);
 
-  transform: translateY(-8px);
+  background: var(--en-surface-hover);
 
-  background: rgba(255,255,255,.78);
-
-  border-color: rgba(168,137,82,.42);
+  border-color: rgba(168, 137, 82, .42);
 }
 
 
-.fruits-vegetables-page .product-number {
+/* number */
 
+.fruits-vegetables-page .product-number {
   display: block;
 
-  margin-bottom: 70px;
+  margin-bottom: 72px;
 
   font-family: "DM Sans", sans-serif;
 
   font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1;
 
   letter-spacing: .16em;
 
@@ -182,8 +199,9 @@ body {
 }
 
 
-.fruits-vegetables-page .product-card h2 {
+/* heading */
 
+.fruits-vegetables-page .product-card h2 {
   margin: 0 0 18px;
 
   font-family: "Playfair Display", serif;
@@ -194,12 +212,15 @@ body {
 
   line-height: 1;
 
+  letter-spacing: -.02em;
+
   color: var(--en-ink);
 }
 
 
-.fruits-vegetables-page .product-card p {
+/* text */
 
+.fruits-vegetables-page .product-card p {
   max-width: 340px;
 
   margin: 0;
@@ -215,23 +236,21 @@ body {
 
 
 /* =========================================================
-   CTA
+   06 — CTA
 ========================================================= */
 
 .fruits-vegetables-page .products-cta {
-
   width: min(1180px, calc(100% - 96px));
 
   margin: 0 auto;
 
-  padding: 100px 0 140px;
+  padding: 105px 0 130px;
 
   border-top: 1px solid var(--en-line);
 }
 
 
 .fruits-vegetables-page .products-cta h2 {
-
   max-width: 760px;
 
   margin: 0;
@@ -251,7 +270,6 @@ body {
 
 
 .fruits-vegetables-page .products-cta > p:not(.eyebrow) {
-
   max-width: 520px;
 
   margin: 28px 0 34px;
@@ -266,8 +284,9 @@ body {
 }
 
 
-.fruits-vegetables-page .products-cta a {
+/* CTA LINK */
 
+.fruits-vegetables-page .products-cta a {
   display: inline-flex;
 
   align-items: center;
@@ -284,6 +303,8 @@ body {
 
   font-weight: 600;
 
+  line-height: 1;
+
   letter-spacing: .08em;
 
   text-transform: uppercase;
@@ -292,6 +313,8 @@ body {
 
   color: var(--en-ink);
 
+  cursor: pointer;
+
   transition:
     color .3s ease,
     gap .3s ease;
@@ -299,7 +322,6 @@ body {
 
 
 .fruits-vegetables-page .products-cta a:hover {
-
   color: var(--en-accent);
 
   gap: 18px;
@@ -307,169 +329,25 @@ body {
 
 
 /* =========================================================
-   FOOTER
-   Keep compatible with existing site footer
+   07 — FOOTER
 ========================================================= */
 
-.fruits-vegetables-page + footer,
-body > footer {
-
-  position: relative;
-
-  z-index: 2;
-
-  width: 100%;
-
-  margin-top: 0;
-}
-
-
-/* =========================================================
-   DO NOT MODIFY GLOBAL CURSOR
-=========================================================
-
-   Cursor / pointer is intentionally NOT defined here.
-   luxury-nav.css and style.css remain responsible for it.
-
-========================================================= */
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .fruits-vegetables-page .products-hero,
-  .fruits-vegetables-page .products-overview,
-  .fruits-vegetables-page .products-cta {
-
-    width: min(100% - 56px, 720px);
-  }
-
-
-  .fruits-vegetables-page .products-overview {
-
-    grid-template-columns: 1fr;
-
-    gap: 14px;
-  }
-
-
-  .fruits-vegetables-page .product-card {
-
-    min-height: 240px;
-  }
-
-
-  .fruits-vegetables-page .product-number {
-
-    margin-bottom: 45px;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-  .fruits-vegetables-page {
-
-    padding-top: 100px;
-  }
-
-
-  .fruits-vegetables-page .products-hero,
-  .fruits-vegetables-page .products-overview,
-  .fruits-vegetables-page .products-cta {
-
-    width: calc(100% - 40px);
-  }
-
-
-  .fruits-vegetables-page .products-hero {
-
-    padding: 65px 0 75px;
-  }
-
-
-  .fruits-vegetables-page .products-hero h1 {
-
-    font-size: clamp(44px, 13vw, 68px);
-  }
-
-
-  .fruits-vegetables-page .products-hero > p:last-child {
-
-    margin-top: 28px;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-  }
-
-
-  .fruits-vegetables-page .products-overview {
-
-    padding: 55px 0;
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .fruits-vegetables-page .product-card {
-
-    min-height: 230px;
-
-    padding: 28px;
-  }
-
-
-  .fruits-vegetables-page .product-number {
-
-    margin-bottom: 45px;
-  }
-
-
-  .fruits-vegetables-page .products-cta {
-
-    padding: 70px 0 90px;
-  }
-
-
-  .fruits-vegetables-page .products-cta h2 {
-
-    font-size: clamp(40px, 11vw, 58px);
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .fruits-vegetables-page .product-card,
-  .fruits-vegetables-page .products-cta a {
-
-    transition: none;
-  }
-}
 .site-footer {
   position: relative;
+
   z-index: 2;
 
   width: 100%;
 
-  padding: 55px 0;
+  box-sizing: border-box;
+
+  padding: 58px 0;
 
   background: #0e1512;
 
-  color: rgba(244,241,234,.72);
+  color: rgba(244, 241, 234, .72);
 }
+
 
 .site-footer-inner {
   width: min(1180px, calc(100% - 96px));
@@ -485,12 +363,18 @@ body > footer {
   gap: 40px;
 }
 
+
+/* brand */
+
 .site-footer-brand img {
+  display: block;
+
   width: 110px;
   height: auto;
-  display: block;
-  margin-bottom: 18px;
+
+  margin: 0 0 18px;
 }
+
 
 .site-footer-brand p {
   margin: 0;
@@ -499,27 +383,138 @@ body > footer {
 
   font-size: 11px;
 
+  line-height: 1.5;
+
   letter-spacing: .08em;
 
-  color: rgba(244,241,234,.45);
+  color: rgba(244, 241, 234, .45);
 }
+
+
+/* metadata */
 
 .site-footer-meta {
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-end;
+
   gap: 7px;
 
   font-family: "DM Sans", sans-serif;
 
   font-size: 9px;
 
+  line-height: 1.4;
+
   letter-spacing: .14em;
 
   text-transform: uppercase;
+
+  color: rgba(244, 241, 234, .48);
 }
 
+
+/* =========================================================
+   08 — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .fruits-vegetables-page .products-hero,
+  .fruits-vegetables-page .products-overview,
+  .fruits-vegetables-page .products-cta,
+  .site-footer-inner {
+
+    width: min(100% - 56px, 720px);
+  }
+
+
+  .fruits-vegetables-page .products-overview {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+
+  .fruits-vegetables-page .product-card {
+    min-height: 250px;
+  }
+}
+
+
+/* =========================================================
+   09 — MOBILE
+========================================================= */
+
 @media (max-width: 700px) {
+
+  .fruits-vegetables-page {
+    padding-top: 76px;
+  }
+
+
+  .fruits-vegetables-page .products-hero,
+  .fruits-vegetables-page .products-overview,
+  .fruits-vegetables-page .products-cta {
+
+    width: calc(100% - 40px);
+  }
+
+
+  .fruits-vegetables-page .products-hero {
+    padding: 68px 0 75px;
+  }
+
+
+  .fruits-vegetables-page .products-hero h1 {
+    font-size: clamp(44px, 13vw, 68px);
+  }
+
+
+  .fruits-vegetables-page .products-hero > p:last-child {
+    margin-top: 28px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  .fruits-vegetables-page .products-overview {
+    padding: 55px 0;
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .fruits-vegetables-page .product-card {
+    min-height: 230px;
+
+    padding: 28px;
+  }
+
+
+  .fruits-vegetables-page .product-number {
+    margin-bottom: 45px;
+  }
+
+
+  .fruits-vegetables-page .products-cta {
+    padding: 70px 0 90px;
+  }
+
+
+  .fruits-vegetables-page .products-cta h2 {
+    font-size: clamp(40px, 11vw, 58px);
+  }
+
+
+  .site-footer {
+    padding: 45px 0;
+  }
+
 
   .site-footer-inner {
     width: calc(100% - 40px);
@@ -527,9 +522,26 @@ body > footer {
     flex-direction: column;
 
     align-items: flex-start;
+
+    gap: 30px;
   }
+
 
   .site-footer-meta {
     align-items: flex-start;
+  }
+}
+
+
+/* =========================================================
+   10 — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fruits-vegetables-page .product-card,
+  .fruits-vegetables-page .products-cta a {
+
+    transition: none;
   }
 }
