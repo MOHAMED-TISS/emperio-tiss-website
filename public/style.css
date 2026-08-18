@@ -2449,3 +2449,103 @@ button:focus {
     background: #c9a96b !important;
   }
 }
+/* =========================================================
+   EMPERIO TISS — REFINED LUXURY HEADER
+========================================================= */
+
+.site-header {
+  background: rgba(18, 18, 16, 0.82) !important;
+
+  border-bottom: 1px solid rgba(201, 169, 107, 0.18) !important;
+
+  box-shadow:
+    0 8px 35px rgba(0, 0, 0, 0.16) !important;
+
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+
+/* HEADER INNER */
+
+.site-header .header-inner {
+  height: 86px !important;
+}
+
+
+/* NAVIGATION */
+
+.site-header .main-nav > a {
+  color: rgba(245, 242, 235, 0.72) !important;
+
+  font-size: 10px !important;
+  font-weight: 500 !important;
+
+  letter-spacing: 0.14em !important;
+
+  transition:
+    color .3s ease,
+    opacity .3s ease !important;
+}
+
+.site-header .main-nav > a:hover,
+.site-header .main-nav > a.active {
+  color: #d4b878 !important;
+}
+
+
+/* GOLD DETAIL */
+
+.site-header .main-nav > a::after {
+  background: #d4b878 !important;
+}
+
+
+/* LANGUAGES */
+
+.site-header .language-nav {
+  border-left: 1px solid rgba(245, 242, 235, 0.14) !important;
+}
+
+.site-header .language-nav a {
+  color: rgba(245, 242, 235, 0.38) !important;
+
+  font-size: 9px !important;
+}
+
+.site-header .language-nav a:hover,
+.site-header .language-nav a.current {
+  color: #d4b878 !important;
+}
+
+
+/* BUSINESS CTA */
+
+.site-header .header-cta {
+  color: #171612 !important;
+
+  background: #d4b878 !important;
+
+  border: 1px solid #d4b878 !important;
+
+  letter-spacing: 0.12em !important;
+}
+
+.site-header .header-cta:hover {
+  color: #d4b878 !important;
+
+  background: transparent !important;
+
+  border-color: #d4b878 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .site-header {
+    background: rgba(18, 18, 16, 0.94) !important;
+  }
+
+}
