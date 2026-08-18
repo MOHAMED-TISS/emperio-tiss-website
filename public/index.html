@@ -34,13 +34,14 @@
 <body>
 
 <!-- =========================================================
-     HEADER — barra mínima + overlay de navegación
+     EMPERIO TISS — LUXURY HEADER
 ========================================================= -->
 
-<header class="site-header" id="luxuryHeader">
+<header id="luxuryHeader" class="site-header">
 
   <div class="header-inner">
 
+    <!-- LOGO -->
     <a
       href="index.html"
       class="site-logo"
@@ -52,129 +53,135 @@
       >
     </a>
 
-    <button id="menuToggleBtn" aria-label="Open menu" aria-expanded="false">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+    <!-- MENU / CLOSE -->
+    <button
+      id="menuToggleBtn"
+      class="mobile-menu"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="navOverlay"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
   </div>
 
+</header>
 
-  <!-- =========================================================
-     OVERLAY — FULLSCREEN NAVIGATION
+
+<!-- =========================================================
+     FULLSCREEN NAVIGATION
 ========================================================= -->
 
-<div class="nav-overlay" id="navOverlay">
+<div
+  id="navOverlay"
+  class="nav-overlay"
+  aria-hidden="true"
+>
 
-  <nav
-    class="nav-overlay-links"
-    aria-label="Navegación principal"
-  >
+  <div class="nav-overlay-inner">
 
-    <a href="/" class="active">
-      <span class="idx">01</span>
-      Inicio
-    </a>
-
-    <a href="/about/">
-      <span class="idx">02</span>
-      Empresa
-    </a>
-
-    <a href="/products/">
-      <span class="idx">03</span>
-      Productos
-    </a>
-
-    <a href="/markets/">
-      <span class="idx">04</span>
-      Mercados
-    </a>
-
-    <a href="/contact/">
-      <span class="idx">05</span>
-      Contacto
-    </a>
-
-  </nav>
-
-
-  <!-- =======================================================
-       MENU FOOTER
-  ======================================================== -->
-
-  <div class="nav-overlay-foot">
-
-
-    <!-- LANGUAGE -->
-
-    <div
-      class="nav-overlay-lang"
-      aria-label="Seleccionar idioma"
+    <!-- MAIN NAV -->
+    <nav
+      class="nav-overlay-links"
+      aria-label="Navegación principal"
     >
 
-      <span class="language-label">
-        LANGUAGE
-      </span>
-
-      <a
-        href="/"
-        class="current"
-        lang="es"
-      >
-        ES
+      <a href="index.html" class="active">
+        <span class="idx">01</span>
+        <span>Inicio</span>
       </a>
 
-      <span class="language-separator">/</span>
-
-      <a
-        href="/en/"
-        lang="en"
-      >
-        EN
+      <a href="about/index.html">
+        <span class="idx">02</span>
+        <span>Empresa</span>
       </a>
 
-      <span class="language-separator">/</span>
-
-      <a
-        href="/fr/"
-        lang="fr"
-      >
-        FR
+      <a href="products/index.html">
+        <span class="idx">03</span>
+        <span>Productos</span>
       </a>
 
-      <span class="language-separator">/</span>
-
-      <a
-        href="/ar/"
-        lang="ar"
-      >
-        AR
+      <a href="markets/index.html">
+        <span class="idx">04</span>
+        <span>Mercados</span>
       </a>
+
+      <a href="contact/index.html">
+        <span class="idx">05</span>
+        <span>Contacto</span>
+      </a>
+
+    </nav>
+
+
+    <!-- RIGHT / BOTTOM INFORMATION -->
+    <aside class="nav-overlay-side">
+
+      <div class="nav-overlay-brand">
+        <strong>EMPERIO TISS S.L.</strong>
+        <span>
+          SEAFOOD · FRUITS &amp; VEGETABLES · GLOBAL MARKETS
+        </span>
+        <span>
+          MADRID · SPAIN
+        </span>
+      </div>
+
+    </aside>
+
+
+    <!-- MENU FOOTER -->
+    <div class="nav-overlay-foot">
+
+      <!-- LANGUAGES -->
+      <div
+        class="nav-overlay-lang"
+        aria-label="Idiomas"
+      >
+
+        <a
+          href="index.html"
+          class="current"
+          aria-current="page"
+        >ES</a>
+
+        <span class="language-separator">·</span>
+
+        <a href="en/index.html">EN</a>
+
+        <span class="language-separator">·</span>
+
+        <a href="fr/index.html">FR</a>
+
+        <span class="language-separator">·</span>
+
+        <a href="ar/index.html">AR</a>
+
+      </div>
+
+
+      <!-- CONTACT -->
+      <div class="nav-overlay-contact">
+
+        <a href="index.html#contact">
+          Consulta empresarial ↗
+        </a>
+
+        <span>
+          Madrid · Europa · África · Mediterráneo
+        </span>
+
+      </div>
 
     </div>
-
-
-    <!-- CONTACT -->
-
-    <div class="nav-overlay-contact">
-
-      <a href="/contact/">
-        Consulta empresarial ↗
-      </a>
-
-      <br>
-
-      Madrid · Europa · África · Mediterráneo
-
-    </div>
-
 
   </div>
 
 </div>
-
 <!-- =========================================================
      HERO
 ========================================================= -->
