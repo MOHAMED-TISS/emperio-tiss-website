@@ -1,0 +1,342 @@
+/* =========================================================
+   EMPERIO TISS — HEADER DE LUJO / EDITORIAL
+   Mediterráneo · Internacional · Confianza
+   Fuentes: Playfair Display (display) + DM Sans (utilitaria)
+   — ya cargadas en tu <head>, no requiere import nuevo.
+
+   INSTALACIÓN: en <head>, justo DESPUÉS de style.css:
+   <link rel="stylesheet" href="header-emperio-tiss.css">
+========================================================= */
+
+:root {
+  --et-black: #0a0a0a;
+  --et-ivory: #f4f1ea;
+  --et-gold: #c9a961;
+  --et-gold-bright: #e4c98a;
+  --et-hairline: rgba(244,241,234,.16);
+}
+
+.site-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  z-index: 9999 !important;
+}
+
+
+/* =========================================================
+   SCRIM — asegura contraste del texto sobre CUALQUIER imagen
+   (antes el header dependía del fondo; ahora siempre es legible)
+========================================================= */
+
+.site-header::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  height: 160px !important;
+
+  background: linear-gradient(
+    180deg,
+    rgba(10,10,10,.55) 0%,
+    rgba(10,10,10,.28) 55%,
+    rgba(10,10,10,0) 100%
+  ) !important;
+
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+
+/* =========================================================
+   HEADER INNER
+========================================================= */
+
+.site-header .header-inner {
+  position: relative !important;
+  z-index: 1 !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  height: 100px !important;
+
+  margin: 0 !important;
+  padding: 0 48px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  border-bottom: 1px solid var(--et-hairline) !important;
+}
+
+
+/* =========================================================
+   LOGO — LEFT
+   Se corrige el bug: ya NO se fuerza a blanco sólido.
+   Se conserva el color/detalle real del logo, con una
+   sombra sutil para legibilidad sobre imágenes claras u oscuras.
+========================================================= */
+
+.site-header .site-logo {
+  position: relative !important;
+  z-index: 5 !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  width: 190px !important;
+}
+
+.site-header .site-logo img {
+  width: 148px !important;
+  height: auto !important;
+
+  display: block !important;
+
+  /* legibilidad sin destruir el color/detalle original */
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) !important;
+  opacity: 1 !important;
+}
+
+/* Si el logo original es oscuro y necesita versión clara,
+   usar un asset alternativo en vez de invertir por CSS:
+   <img src="logo-light.svg" class="logo-on-dark"> */
+.site-header .site-logo img.logo-on-dark {
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) brightness(0) invert(1) !important;
+}
+
+
+/* =========================================================
+   NAVIGATION — CENTER
+========================================================= */
+
+.site-header .main-nav {
+  position: relative !important;
+  left: auto !important;
+  transform: none !important;
+
+  flex: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 34px !important;
+  margin-left: 56px !important;
+
+  white-space: nowrap !important;
+}
+
+/* idioma + CTA están anidados dentro de main-nav en el HTML real:
+   el margin-left:auto de .language-nav (ver más abajo) empuja
+   ambos bloques al borde derecho del header */
+
+.site-header .main-nav > a {
+  position: relative !important;
+
+  color: rgba(244,241,234,.90) !important;
+
+  background: transparent !important;
+  border: none !important;
+
+  padding: 8px 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+
+  text-decoration: none !important;
+
+  transition: color .3s ease, opacity .3s ease !important;
+}
+
+.site-header .main-nav > a:hover,
+.site-header .main-nav > a.active {
+  color: var(--et-gold-bright) !important;
+}
+
+/* línea dorada fina en vez del punto — más editorial */
+.site-header .main-nav > a::after {
+  content: "" !important;
+  position: absolute !important;
+
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -9px !important;
+
+  height: 1px !important;
+
+  background: var(--et-gold) !important;
+
+  transform: scaleX(0) !important;
+  transform-origin: center !important;
+
+  transition: transform .35s ease !important;
+}
+
+.site-header .main-nav > a:hover::after,
+.site-header .main-nav > a.active::after {
+  transform: scaleX(1) !important;
+}
+
+
+/* =========================================================
+   LANGUAGE NAV
+========================================================= */
+
+.site-header .language-nav {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 11px !important;
+
+  margin-left: auto !important;
+  padding-left: 22px !important;
+
+  border-left: 1px solid var(--et-hairline) !important;
+}
+
+.site-header .language-nav a {
+  color: rgba(244,241,234,.50) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: .12em !important;
+
+  text-decoration: none !important;
+
+  transition: color .3s ease !important;
+}
+
+.site-header .language-nav a:hover,
+.site-header .language-nav a.current {
+  color: var(--et-gold-bright) !important;
+}
+
+
+/* =========================================================
+   CTA — RIGHT
+========================================================= */
+
+.site-header .header-cta {
+  position: relative !important;
+  z-index: 5 !important;
+
+  margin-left: auto !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 13px !important;
+
+  padding: 12px 0 12px 22px !important;
+
+  color: var(--et-gold-bright) !important;
+
+  background: transparent !important;
+
+  border: none !important;
+  border-left: 1px solid rgba(201,169,97,.5) !important;
+
+  font-family: "Playfair Display", serif !important;
+  font-style: italic !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+
+  letter-spacing: .01em !important;
+  text-transform: none !important;
+
+  transition: color .3s ease, padding-left .3s ease !important;
+}
+
+.site-header .header-cta:hover {
+  color: #fff !important;
+  padding-left: 27px !important;
+}
+
+.site-header .header-cta span {
+  font-family: "DM Sans", sans-serif !important;
+  font-style: normal !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+
+.site-header .header-cta::after {
+  display: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .site-header .header-inner {
+    width: calc(100% - 48px) !important;
+  }
+  .site-header .main-nav {
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header .header-inner {
+    width: calc(100% - 36px) !important;
+    height: 80px !important;
+    border-bottom-color: rgba(244,241,234,.12) !important;
+  }
+
+  .site-header .site-logo {
+    width: auto !important;
+  }
+
+  .site-header .site-logo img {
+    width: 128px !important;
+  }
+
+  .site-header .main-nav,
+  .site-header .header-cta {
+    display: none !important;
+  }
+
+  .site-header .mobile-menu {
+    display: flex !important;
+
+    margin-left: auto !important;
+
+    width: 42px !important;
+    height: 42px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+
+    background: rgba(244,241,234,.08) !important;
+    border: 1px solid rgba(244,241,234,.28) !important;
+    border-radius: 50% !important;
+  }
+
+  .site-header .mobile-menu span {
+    width: 18px !important;
+    height: 1px !important;
+    background: var(--et-gold) !important;
+  }
+}
