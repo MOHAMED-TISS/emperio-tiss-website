@@ -1,338 +1,486 @@
 /* =========================================================
-   EMPERIO TISS — ENGLISH VISUAL SYSTEM
-   Editorial / Marine / Luxury B2B
+   EMPERIO TISS
+   ENGLISH VISUAL SYSTEM
+   Clean / Editorial / Marine / B2B
+========================================================= */
+
+
+/* =========================================================
+   01 — ENGLISH VARIABLES
 ========================================================= */
 
 :root {
-  --en-bg: #08100f;
-  --en-bg-soft: #0d1715;
-  --en-text: #f3f0e8;
-  --en-muted: rgba(243,240,232,.62);
-  --en-soft: rgba(243,240,232,.38);
-  --en-line: rgba(243,240,232,.14);
-  --en-gold: #c9a961;
+
+  --en-paper: #f2efe7;
+  --en-paper-soft: #e9e5da;
+
+  --en-ink: #111715;
+  --en-ink-soft: #26302d;
+
+  --en-muted: rgba(17, 23, 21, .58);
+  --en-faint: rgba(17, 23, 21, .36);
+
+  --en-line: rgba(17, 23, 21, .14);
+
+  --en-gold: #a8874e;
+  --en-gold-light: #c9a961;
+
+  --en-white: #f7f4ed;
+
+  --en-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
 
 /* =========================================================
-   BASE
+   02 — BASE
 ========================================================= */
 
-html,
+html {
+  margin: 0;
+  padding: 0;
+  background: var(--en-paper);
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: var(--en-bg);
-  color: var(--en-text);
-}
 
-body {
+  min-height: 100vh;
+
   overflow-x: hidden;
+
+  background: var(--en-paper);
+
+  color: var(--en-ink);
+
+  font-family: "DM Sans", sans-serif;
+
+  cursor: default;
 }
 
-a {
+
+/* links */
+
+body a {
   color: inherit;
   text-decoration: none;
 }
 
-button,
-a {
+
+/* real clickable elements */
+
+body a,
+body button {
   cursor: pointer !important;
 }
 
 
 /* =========================================================
-   HEADER
+   03 — HEADER
+   SAME POSITIONING SYSTEM AS HOME
 ========================================================= */
 
 #luxuryHeader {
+
   position: fixed !important;
-  inset: 0 0 auto 0 !important;
+
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
 
   width: 100% !important;
+
   height: auto !important;
 
   background: transparent !important;
+
+  border: 0 !important;
+
+  box-shadow: none !important;
 
   z-index: 99999 !important;
 
   pointer-events: none !important;
 }
 
+
 #luxuryHeader .header-inner {
-  width: min(calc(100% - 96px), 1400px) !important;
+
+  width:
+    min(
+      1400px,
+      calc(100% - 96px)
+    ) !important;
 
   height: 92px !important;
 
   margin: 0 auto !important;
+
   padding: 0 !important;
 
+  box-sizing: border-box !important;
+
   display: flex !important;
+
   align-items: center !important;
+
   justify-content: space-between !important;
 
-  box-sizing: border-box !important;
+  background: transparent !important;
 }
+
+
+/* logo */
 
 #luxuryHeader .site-logo {
-  pointer-events: auto !important;
+
   display: block !important;
+
+  position: relative !important;
+
+  pointer-events: auto !important;
+
+  cursor: pointer !important;
+
+  z-index: 100001 !important;
 }
 
+
 #luxuryHeader .site-logo img {
+
   display: block !important;
+
   width: 132px !important;
+
   height: auto !important;
 }
 
 
 /* =========================================================
-   MENU BUTTON — ALWAYS VISIBLE
+   04 — MENU BUTTON
+   KEEP COMMON NAVIGATION BEHAVIOUR
 ========================================================= */
 
 #luxuryHeader #menuToggleBtn {
+
   position: relative !important;
 
-  width: 56px !important;
-  height: 56px !important;
+  width: 58px !important;
+  height: 58px !important;
 
-  padding: 0 !important;
   margin: 0 !important;
+  padding: 0 !important;
 
   display: flex !important;
+
   flex-direction: column !important;
+
   align-items: center !important;
   justify-content: center !important;
 
   gap: 5px !important;
 
-  background: rgba(8,16,15,.18) !important;
+  box-sizing: border-box !important;
 
-  border: 1px solid rgba(243,240,232,.28) !important;
+  background: rgba(17,23,21,.035) !important;
+
+  border:
+    1px solid rgba(17,23,21,.22) !important;
+
   border-radius: 50% !important;
 
+  outline: none !important;
+
   pointer-events: auto !important;
+
   cursor: pointer !important;
 
-  z-index: 100000 !important;
+  z-index: 100002 !important;
 
   transition:
-    border-color .3s ease,
-    background .3s ease,
-    transform .3s ease !important;
+    background .35s ease,
+    border-color .35s ease,
+    transform .35s var(--en-ease) !important;
 }
+
 
 #luxuryHeader #menuToggleBtn:hover {
-  border-color: var(--en-gold) !important;
-  background: rgba(201,169,97,.10) !important;
-  transform: scale(1.04) !important;
+
+  background:
+    rgba(168,135,78,.10) !important;
+
+  border-color:
+    var(--en-gold) !important;
+
+  transform:
+    scale(1.04) !important;
 }
 
+
+/* lines */
+
 #luxuryHeader #menuToggleBtn span {
+
   display: block !important;
 
   width: 27px !important;
+
   height: 1px !important;
 
   flex: 0 0 1px !important;
 
-  background: var(--en-text) !important;
+  background:
+    var(--en-ink) !important;
 
   opacity: 1 !important;
+
   visibility: visible !important;
+
+  pointer-events: none !important;
 
   transform-origin: center !important;
 
   transition:
-    transform .4s cubic-bezier(.22,1,.36,1),
-    opacity .2s ease !important;
+    transform .4s var(--en-ease),
+    opacity .25s ease,
+    width .3s ease !important;
 }
 
+
 #luxuryHeader #menuToggleBtn span:nth-child(2) {
+
   width: 19px !important;
 }
 
 
 /* =========================================================
-   OPEN → X
+   05 — OPEN STATE
+   THREE LINES → X
 ========================================================= */
 
 body.nav-open #luxuryHeader #menuToggleBtn {
-  border-color: var(--en-gold) !important;
-  background: rgba(201,169,97,.10) !important;
+
+  background:
+    rgba(168,135,78,.10) !important;
+
+  border-color:
+    var(--en-gold) !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
 }
 
+
 body.nav-open #luxuryHeader #menuToggleBtn span {
+
   position: absolute !important;
 
   width: 28px !important;
 
+  background:
+    var(--en-ink) !important;
+
   opacity: 1 !important;
+
   visibility: visible !important;
 }
 
+
 body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
-  transform: rotate(45deg) !important;
+
+  transform:
+    rotate(45deg) !important;
 }
+
 
 body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+
   opacity: 0 !important;
+
   visibility: hidden !important;
-  transform: scaleX(0) !important;
+
+  transform:
+    scaleX(0) !important;
 }
+
 
 body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
-  transform: rotate(-45deg) !important;
+
+  transform:
+    rotate(-45deg) !important;
 }
 
 
 /* =========================================================
-   PAGE CONTENT
+   06 — MAIN
 ========================================================= */
 
-main {
+.en-page,
+.en-products-page {
+
   position: relative;
+
   z-index: 1;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  background: var(--en-paper);
 }
 
 
 /* =========================================================
-   HERO
+   07 — FRUITS & VEGETABLES HERO
 ========================================================= */
 
-.products-hero,
-.hero {
+.en-products-page .products-hero {
+
+  position: relative;
+
+  width: 100%;
+
   min-height: 88vh;
 
+  margin: 0;
+
   padding:
-    180px
+    170px
     max(48px, calc((100vw - 1400px) / 2))
     100px;
 
   box-sizing: border-box;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
 
+  overflow: hidden;
+
   background:
+
     radial-gradient(
-      circle at 78% 32%,
-      rgba(201,169,97,.10),
+      circle at 82% 22%,
+      rgba(201,169,97,.16),
       transparent 30%
     ),
+
     linear-gradient(
       135deg,
-      #08100f 0%,
-      #0d1715 100%
+      #f2efe7 0%,
+      #eeeae0 100%
     );
 }
 
-.eyebrow {
-  margin: 0 0 24px;
 
-  font-family: "DM Sans", sans-serif;
+/* subtle marine detail */
+
+.en-products-page .products-hero::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -180px;
+  bottom: -220px;
+
+  border:
+    1px solid rgba(37,70,65,.10);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   08 — HERO EYEBROW
+========================================================= */
+
+.en-products-page .products-hero .eyebrow {
+
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 30px;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
 
   font-size: 10px;
+
   font-weight: 500;
 
-  letter-spacing: .20em;
+  line-height: 1;
+
+  letter-spacing: .22em;
+
   text-transform: uppercase;
 
   color: var(--en-gold);
 }
 
-.products-hero h1,
-.hero h1 {
-  max-width: 1000px;
+
+/* =========================================================
+   09 — HERO TITLE
+========================================================= */
+
+.en-products-page .products-hero h1 {
+
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1050px;
 
   margin: 0;
 
-  font-family: "Playfair Display", serif;
+  font-family:
+    "Playfair Display",
+    serif;
 
-  font-size: clamp(58px, 7vw, 112px);
+  font-size:
+    clamp(58px, 7vw, 110px);
 
   font-weight: 400;
 
-  line-height: .92;
+  line-height: .91;
 
   letter-spacing: -.045em;
 
-  color: var(--en-text);
-}
-
-.products-hero > p:last-child,
-.hero-text {
-  max-width: 650px;
-
-  margin: 34px 0 0;
-
-  font-family: "DM Sans", sans-serif;
-
-  font-size: 17px;
-
-  line-height: 1.7;
-
-  color: var(--en-muted);
+  color: var(--en-ink);
 }
 
 
 /* =========================================================
-   CONTENT SECTIONS
+   10 — HERO DESCRIPTION
 ========================================================= */
 
-.home-intro,
-.home-markets,
-.products-overview,
-.product-grid {
-  width: min(calc(100% - 96px), 1400px);
+.en-products-page .products-hero p:last-child {
 
-  margin: 0 auto;
+  position: relative;
 
-  box-sizing: border-box;
-}
+  z-index: 2;
 
-.home-intro,
-.home-markets {
-  min-height: 55vh;
+  max-width: 620px;
 
-  padding: 120px 0;
+  margin: 38px 0 0;
 
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 10vw;
-
-  align-items: center;
-
-  border-top: 1px solid var(--en-line);
-}
-
-.home-intro h2,
-.home-markets h2 {
-  max-width: 650px;
-
-  margin: 0;
-
-  font-family: "Playfair Display", serif;
-
-  font-size: clamp(42px, 5vw, 76px);
-
-  font-weight: 400;
-
-  line-height: .98;
-
-  letter-spacing: -.035em;
-}
-
-.home-intro p,
-.home-markets p {
-  max-width: 560px;
-
-  font-family: "DM Sans", sans-serif;
+  font-family:
+    "DM Sans",
+    sans-serif;
 
   font-size: 16px;
+
+  font-weight: 400;
 
   line-height: 1.8;
 
@@ -341,106 +489,198 @@ main {
 
 
 /* =========================================================
-   PRODUCT GRID
+   11 — PRODUCTS OVERVIEW
 ========================================================= */
 
-.products-overview,
-.product-grid {
-  padding: 110px 0;
+.en-products-page .products-overview {
+
+  width: 100%;
+
+  margin: 0;
+
+  padding:
+    0
+    max(48px, calc((100vw - 1400px) / 2))
+    120px;
+
+  box-sizing: border-box;
 
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
 
   gap: 1px;
 
-  background: var(--en-line);
+  background:
+    var(--en-line);
 }
 
-.product-card {
-  min-height: 390px;
+
+/* =========================================================
+   12 — PRODUCT CARD
+========================================================= */
+
+.en-products-page .product-card {
+
+  position: relative;
+
+  min-height: 430px;
+
+  margin: 0;
 
   padding: 42px;
 
   box-sizing: border-box;
 
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 
-  background: var(--en-bg-soft);
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  background:
+    var(--en-paper-soft);
+
+  border: 0;
+
+  border-radius: 0;
+
+  cursor: default;
 
   transition:
-    background .4s ease,
-    transform .4s cubic-bezier(.22,1,.36,1);
+    background .45s ease,
+    transform .5s var(--en-ease);
 }
 
-.product-card:hover {
-  background: #13201d;
 
-  transform: translateY(-8px);
+.en-products-page .product-card:hover {
+
+  background:
+    #e2ddd1;
+
+  transform:
+    translateY(-7px);
 }
 
-.product-number {
-  margin-bottom: auto;
 
-  font-family: "DM Sans", sans-serif;
+/* gold corner line */
 
-  font-size: 10px;
+.en-products-page .product-card::before {
 
-  letter-spacing: .15em;
+  content: "";
 
-  color: var(--en-gold);
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 1px;
+
+  background:
+    var(--en-gold);
+
+  transition:
+    width .5s var(--en-ease);
 }
 
-.product-card h2,
-.product-card h3 {
-  margin: 0 0 18px;
 
-  font-family: "Playfair Display", serif;
+.en-products-page .product-card:hover::before {
 
-  font-size: 38px;
-
-  font-weight: 400;
-
-  line-height: 1;
-}
-
-.product-card p {
-  margin: 0 0 26px;
-
-  font-family: "DM Sans", sans-serif;
-
-  font-size: 14px;
-
-  line-height: 1.7;
-
-  color: var(--en-muted);
-}
-
-.product-card > span:last-child {
-  font-family: "DM Sans", sans-serif;
-
-  font-size: 10px;
-
-  letter-spacing: .12em;
-
-  text-transform: uppercase;
-
-  color: var(--en-text);
+  width: 100%;
 }
 
 
 /* =========================================================
-   CTA
+   13 — PRODUCT NUMBER
 ========================================================= */
 
-.home-cta,
-.products-cta {
-  min-height: 65vh;
+.en-products-page .product-number {
+
+  display: block;
+
+  margin: 0;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: .18em;
+
+  color: var(--en-gold);
+}
+
+
+/* =========================================================
+   14 — CARD CONTENT
+========================================================= */
+
+.en-products-page .product-card-content {
+
+  margin-top: auto;
+}
+
+
+.en-products-page .product-card h2 {
+
+  margin: 0 0 20px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(34px, 3vw, 48px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -.03em;
+
+  color: var(--en-ink);
+}
+
+
+.en-products-page .product-card p {
+
+  max-width: 360px;
+
+  margin: 0;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: var(--en-muted);
+}
+
+
+/* =========================================================
+   15 — CTA
+========================================================= */
+
+.en-products-page .products-cta {
+
+  position: relative;
+
+  min-height: 68vh;
+
+  margin: 0;
 
   padding:
-    120px
+    130px
     max(48px, calc((100vw - 1400px) / 2));
 
   box-sizing: border-box;
@@ -451,50 +691,129 @@ main {
 
   justify-content: center;
 
+  overflow: hidden;
+
   background:
+
     radial-gradient(
-      circle at 70% 50%,
-      rgba(201,169,97,.09),
-      transparent 35%
-    );
+      circle at 76% 45%,
+      rgba(201,169,97,.13),
+      transparent 32%
+    ),
 
-  border-top: 1px solid var(--en-line);
+    var(--en-paper);
 }
 
-.home-cta h2,
-.products-cta h2 {
-  max-width: 900px;
 
-  margin: 0 0 35px;
+/* =========================================================
+   16 — CTA EYEBROW
+========================================================= */
 
-  font-family: "Playfair Display", serif;
+.en-products-page .products-cta .eyebrow {
 
-  font-size: clamp(46px, 6vw, 88px);
+  margin: 0 0 26px;
 
-  font-weight: 400;
+  font-family:
+    "DM Sans",
+    sans-serif;
 
-  line-height: .95;
+  font-size: 10px;
 
-  letter-spacing: -.04em;
-}
+  font-weight: 500;
 
-.home-cta a,
-.products-cta a {
-  width: fit-content;
+  line-height: 1;
 
-  padding-bottom: 8px;
-
-  border-bottom: 1px solid var(--en-gold);
-
-  font-family: "DM Sans", sans-serif;
-
-  font-size: 11px;
-
-  letter-spacing: .15em;
+  letter-spacing: .22em;
 
   text-transform: uppercase;
 
-  color: var(--en-text);
+  color: var(--en-gold);
+}
+
+
+/* =========================================================
+   17 — CTA TITLE
+========================================================= */
+
+.en-products-page .products-cta h2 {
+
+  max-width: 900px;
+
+  margin: 0;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(48px, 6vw, 88px);
+
+  font-weight: 400;
+
+  line-height: .94;
+
+  letter-spacing: -.04em;
+
+  color: var(--en-ink);
+}
+
+
+/* =========================================================
+   18 — CTA TEXT
+========================================================= */
+
+.en-products-page .products-cta p:not(.eyebrow) {
+
+  max-width: 560px;
+
+  margin: 30px 0;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  color: var(--en-muted);
+}
+
+
+/* =========================================================
+   19 — CTA LINK
+========================================================= */
+
+.en-products-page .products-cta a {
+
+  width: fit-content;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding-bottom: 9px;
+
+  border-bottom:
+    1px solid var(--en-gold);
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+
+  color: var(--en-ink);
 
   cursor: pointer !important;
 
@@ -503,675 +822,19 @@ main {
     border-color .3s ease;
 }
 
-.home-cta a:hover,
-.products-cta a:hover {
-  color: var(--en-gold);
+
+.en-products-page .products-cta a:hover {
+
+  color:
+    var(--en-gold);
+
+  border-color:
+    var(--en-gold-light);
 }
 
 
 /* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-  #luxuryHeader .header-inner {
-    width: calc(100% - 44px) !important;
-    height: 76px !important;
-  }
-
-  #luxuryHeader .site-logo img {
-    width: 108px !important;
-  }
-
-  #luxuryHeader #menuToggleBtn {
-    width: 48px !important;
-    height: 48px !important;
-  }
-
-  .products-hero,
-  .hero {
-    min-height: 85vh;
-
-    padding:
-      140px 28px 70px;
-  }
-
-  .products-hero h1,
-  .hero h1 {
-    font-size: clamp(48px, 13vw, 70px);
-  }
-
-  .products-hero > p:last-child,
-  .hero-text {
-    font-size: 15px;
-  }
-
-  .home-intro,
-  .home-markets {
-    width: calc(100% - 56px);
-
-    padding: 80px 0;
-
-    grid-template-columns: 1fr;
-
-    gap: 40px;
-  }
-
-  .products-overview,
-  .product-grid {
-    width: calc(100% - 56px);
-
-    padding: 70px 0;
-
-    grid-template-columns: 1fr;
-
-    background: transparent;
-
-    gap: 12px;
-  }
-
-  .product-card {
-    min-height: 330px;
-  }
-
-  .home-cta,
-  .products-cta {
-    padding: 90px 28px;
-  }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-  }
-
-}
-/* =========================================================
-   ENGLISH PRODUCTS — FINAL OVERRIDE
-   Must load after products.css
-========================================================= */
-
-html body {
-  background: #08100f !important;
-  color: #f4f1ea !important;
-}
-
-/* ---------- HEADER ---------- */
-
-#luxuryHeader {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-
-  width: 100% !important;
-
-  z-index: 99999 !important;
-
-  pointer-events: none !important;
-}
-
-#luxuryHeader .header-inner {
-  width: min(1400px, calc(100% - 96px)) !important;
-  height: 92px !important;
-
-  margin: 0 auto !important;
-  padding: 0 !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
-
-#luxuryHeader .site-logo {
-  pointer-events: auto !important;
-}
-
-#luxuryHeader #menuToggleBtn {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  z-index: 100000 !important;
-}
-
-/* ---------- MENU LINES ---------- */
-
-#luxuryHeader #menuToggleBtn span {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* ---------- OPEN X ---------- */
-
-body.nav-open #luxuryHeader #menuToggleBtn {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-}
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1),
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
-
-/* =========================================================
-   PRODUCT PAGE — REMOVE OLD TEMPLATE FEEL
-========================================================= */
-
-.products-page,
-.product-page,
-main {
-  background: transparent !important;
-}
-
-
-/* Hero */
-
-.products-hero {
-  position: relative !important;
-
-  min-height: 85vh !important;
-
-  padding:
-    170px
-    max(48px, calc((100vw - 1400px) / 2))
-    90px !important;
-
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-
-  background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(201,169,97,.10),
-      transparent 32%
-    ),
-    #08100f !important;
-}
-
-.products-hero h1 {
-  max-width: 1000px !important;
-
-  margin: 0 !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(58px, 7vw, 110px) !important;
-
-  font-weight: 400 !important;
-
-  line-height: .92 !important;
-
-  letter-spacing: -.045em !important;
-
-  color: #f4f1ea !important;
-}
-
-.products-hero p {
-  max-width: 620px !important;
-
-  margin-top: 30px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 16px !important;
-
-  line-height: 1.75 !important;
-
-  color: rgba(244,241,234,.62) !important;
-}
-
-
-/* =========================================================
-   POINTER
-========================================================= */
-
-a,
-button,
-#menuToggleBtn,
-.product-card,
-.nav-overlay-links a {
-  cursor: pointer !important;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-  #luxuryHeader .header-inner {
-    width: calc(100% - 44px) !important;
-    height: 76px !important;
-  }
-
-  .products-hero {
-    min-height: 82vh !important;
-
-    padding:
-      140px 28px 70px !important;
-  }
-
-  .products-hero h1 {
-    font-size: clamp(48px, 13vw, 72px) !important;
-  }
-}
-/* =========================================================
-   EMPERIO TISS — ENGLISH
-   FRUITS & VEGETABLES
-   VISUAL OVERRIDE
-========================================================= */
-
-
-/* =========================================================
-   01 — PAGE
-========================================================= */
-
-body:has(.en-products-page) {
-  background: #f3f0e8 !important;
-  color: #101513 !important;
-}
-
-
-/* =========================================================
-   02 — HEADER
-========================================================= */
-
-body:has(.en-products-page) #luxuryHeader {
-  pointer-events: none !important;
-}
-
-body:has(.en-products-page) #luxuryHeader .header-inner {
-  width: min(1400px, calc(100% - 96px)) !important;
-
-  margin-left: auto !important;
-  margin-right: auto !important;
-
-  padding: 0 !important;
-}
-
-body:has(.en-products-page) #luxuryHeader .site-logo,
-body:has(.en-products-page) #luxuryHeader #menuToggleBtn {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-}
-
-
-/* =========================================================
-   03 — HERO
-========================================================= */
-
-.en-products-page .products-hero {
-
-  min-height: 88vh !important;
-
-  margin: 0 !important;
-
-  padding:
-    170px
-    max(48px, calc((100vw - 1400px) / 2))
-    100px !important;
-
-  box-sizing: border-box !important;
-
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-
-  background:
-    radial-gradient(
-      circle at 82% 22%,
-      rgba(201,169,97,.13),
-      transparent 30%
-    ),
-    #f3f0e8 !important;
-}
-
-
-/* =========================================================
-   04 — EYEBROW
-========================================================= */
-
-.en-products-page .products-hero .eyebrow {
-
-  margin: 0 0 30px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 10px !important;
-
-  font-weight: 500 !important;
-
-  letter-spacing: .22em !important;
-
-  color: #9c7940 !important;
-}
-
-
-/* =========================================================
-   05 — HERO TITLE
-========================================================= */
-
-.en-products-page .products-hero h1 {
-
-  max-width: 1050px !important;
-
-  margin: 0 !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(58px, 7vw, 108px) !important;
-
-  font-weight: 400 !important;
-
-  line-height: .92 !important;
-
-  letter-spacing: -.045em !important;
-
-  color: #111715 !important;
-}
-
-
-/* =========================================================
-   06 — HERO TEXT
-========================================================= */
-
-.en-products-page .hero-description {
-
-  max-width: 610px !important;
-
-  margin: 38px 0 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 16px !important;
-
-  line-height: 1.8 !important;
-
-  color: rgba(16,21,19,.62) !important;
-}
-
-
-/* =========================================================
-   07 — PRODUCT AREA
-========================================================= */
-
-.en-products-page .products-overview {
-
-  margin: 0 !important;
-
-  padding:
-    0
-    max(48px, calc((100vw - 1400px) / 2))
-    120px !important;
-
-  display: grid !important;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr)) !important;
-
-  gap: 1px !important;
-
-  background: rgba(16,21,19,.12) !important;
-}
-
-
-/* =========================================================
-   08 — PRODUCT CARD
-========================================================= */
-
-.en-products-page .product-card {
-
-  min-height: 420px !important;
-
-  margin: 0 !important;
-
-  padding: 42px !important;
-
-  box-sizing: border-box !important;
-
-  display: flex !important;
-
-  flex-direction: column !important;
-
-  justify-content: space-between !important;
-
-  background: #ebe7dc !important;
-
-  border: 0 !important;
-
-  border-radius: 0 !important;
-
-  cursor: pointer !important;
-
-  transition:
-    background .45s ease,
-    transform .45s cubic-bezier(.22,1,.36,1) !important;
-}
-
-
-.en-products-page .product-card:hover {
-
-  background: #e4dfd1 !important;
-
-  transform: translateY(-6px) !important;
-}
-
-
-/* =========================================================
-   09 — NUMBER
-========================================================= */
-
-.en-products-page .product-number {
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  letter-spacing: .18em !important;
-
-  color: #a78650 !important;
-}
-
-
-/* =========================================================
-   10 — CARD CONTENT
-========================================================= */
-
-.en-products-page .product-card-content {
-
-  margin-top: auto !important;
-}
-
-
-.en-products-page .product-card h2 {
-
-  margin: 0 0 20px !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(34px, 3vw, 48px) !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: -.03em !important;
-
-  color: #111715 !important;
-}
-
-
-.en-products-page .product-card p {
-
-  max-width: 360px !important;
-
-  margin: 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 14px !important;
-
-  line-height: 1.75 !important;
-
-  color: rgba(16,21,19,.58) !important;
-}
-
-
-/* =========================================================
-   11 — CTA
-========================================================= */
-
-.en-products-page .products-cta {
-
-  min-height: 65vh !important;
-
-  margin: 0 !important;
-
-  padding:
-    130px
-    max(48px, calc((100vw - 1400px) / 2)) !important;
-
-  box-sizing: border-box !important;
-
-  display: flex !important;
-
-  flex-direction: column !important;
-
-  justify-content: center !important;
-
-  background: #f3f0e8 !important;
-
-  border-top:
-    1px solid rgba(16,21,19,.12) !important;
-}
-
-
-.en-products-page .products-cta .eyebrow {
-
-  margin: 0 0 25px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 10px !important;
-
-  letter-spacing: .22em !important;
-
-  color: #9c7940 !important;
-}
-
-
-.en-products-page .products-cta h2 {
-
-  max-width: 900px !important;
-
-  margin: 0 !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(48px, 6vw, 88px) !important;
-
-  font-weight: 400 !important;
-
-  line-height: .95 !important;
-
-  letter-spacing: -.04em !important;
-
-  color: #111715 !important;
-}
-
-
-.en-products-page .cta-description {
-
-  max-width: 560px !important;
-
-  margin: 30px 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 15px !important;
-
-  line-height: 1.8 !important;
-
-  color: rgba(16,21,19,.58) !important;
-}
-
-
-/* =========================================================
-   12 — CTA LINK
-========================================================= */
-
-.en-products-page .cta-link {
-
-  width: fit-content !important;
-
-  display: inline-flex !important;
-  align-items: center !important;
-
-  padding-bottom: 9px !important;
-
-  border-bottom: 1px solid #a78650 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 10px !important;
-
-  font-weight: 500 !important;
-
-  letter-spacing: .16em !important;
-
-  text-transform: uppercase !important;
-
-  color: #111715 !important;
-
-  text-decoration: none !important;
-
-  cursor: pointer !important;
-
-  transition:
-    color .3s ease,
-    border-color .3s ease !important;
-}
-
-
-.en-products-page .cta-link:hover {
-
-  color: #9c7940 !important;
-
-  border-color: #c9a961 !important;
-}
-
-
-.en-products-page .cta-link span {
-
-  margin-left: 12px !important;
-}
-
-
-/* =========================================================
-   13 — REAL PAGE FOOTER
+   20 — REAL PAGE FOOTER
 ========================================================= */
 
 .en-products-page::after {
@@ -1179,111 +842,224 @@ body:has(.en-products-page) #luxuryHeader #menuToggleBtn {
   content:
     "EMPERIO TISS S.L.  ·  SEAFOOD · FRUITS & VEGETABLES · GLOBAL MARKETS  ·  MADRID · SPAIN";
 
-  display: block !important;
+  display: block;
+
+  width: 100%;
 
   padding:
-    30px
-    max(48px, calc((100vw - 1400px) / 2)) !important;
+    28px
+    max(48px, calc((100vw - 1400px) / 2));
+
+  box-sizing: border-box;
 
   border-top:
-    1px solid rgba(16,21,19,.12) !important;
+    1px solid var(--en-line);
 
-  box-sizing: border-box !important;
+  background:
+    var(--en-paper);
 
-  font-family: "DM Sans", sans-serif !important;
+  font-family:
+    "DM Sans",
+    sans-serif;
 
-  font-size: 8px !important;
+  font-size: 8px;
 
-  letter-spacing: .14em !important;
+  font-weight: 400;
 
-  text-transform: uppercase !important;
+  line-height: 1.6;
 
-  color: rgba(16,21,19,.42) !important;
+  letter-spacing: .14em;
 
-  background: #f3f0e8 !important;
+  text-transform: uppercase;
+
+  color: var(--en-faint);
 }
 
 
 /* =========================================================
-   14 — POINTER / INTERACTION
+   21 — NAVIGATION OVERLAY
+   CONTENT REMAINS CONTROLLED BY luxury-nav.css
 ========================================================= */
 
-.en-products-page a,
-.en-products-page button,
-.en-products-page .product-card,
-body:has(.en-products-page) #menuToggleBtn {
+#navOverlay {
+
+  cursor: default !important;
+}
+
+
+#navOverlay a {
 
   cursor: pointer !important;
 }
 
 
 /* =========================================================
-   15 — MOBILE
+   22 — LANGUAGE LINKS
+========================================================= */
+
+#navOverlay .language-switcher a {
+
+  cursor: pointer !important;
+}
+
+
+/* =========================================================
+   23 — PAGE CURTAIN
+========================================================= */
+
+#pageCurtain {
+
+  pointer-events: none !important;
+}
+
+
+/* =========================================================
+   24 — MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
 
-  body:has(.en-products-page)
+
+  /* header */
+
   #luxuryHeader .header-inner {
 
-    width: calc(100% - 44px) !important;
+    width:
+      calc(100% - 44px) !important;
 
     height: 76px !important;
   }
 
 
+  #luxuryHeader .site-logo img {
+
+    width: 108px !important;
+  }
+
+
+  #luxuryHeader #menuToggleBtn {
+
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+
+  #luxuryHeader #menuToggleBtn span {
+
+    width: 22px !important;
+  }
+
+
+  #luxuryHeader #menuToggleBtn span:nth-child(2) {
+
+    width: 16px !important;
+  }
+
+
+  /* hero */
+
   .en-products-page .products-hero {
 
-    min-height: 82vh !important;
+    min-height: 82vh;
 
     padding:
-      135px 28px 80px !important;
+      135px 28px 80px;
   }
 
 
   .en-products-page .products-hero h1 {
 
     font-size:
-      clamp(48px, 13vw, 72px) !important;
+      clamp(48px, 13vw, 72px);
+
+    line-height: .93;
   }
 
+
+  .en-products-page .products-hero p:last-child {
+
+    max-width: 100%;
+
+    font-size: 15px;
+  }
+
+
+  /* product grid */
 
   .en-products-page .products-overview {
 
     padding:
-      0 28px 80px !important;
+      0 28px 80px;
 
-    grid-template-columns: 1fr !important;
+    grid-template-columns:
+      1fr;
 
-    background: transparent !important;
+    gap: 8px;
 
-    gap: 8px !important;
+    background:
+      var(--en-paper);
   }
 
 
   .en-products-page .product-card {
 
-    min-height: 330px !important;
+    min-height: 330px;
 
-    padding: 32px !important;
+    padding: 32px;
   }
 
+
+  .en-products-page .product-card h2 {
+
+    font-size:
+      clamp(34px, 10vw, 46px);
+  }
+
+
+  /* CTA */
 
   .en-products-page .products-cta {
 
-    min-height: 65vh !important;
+    min-height: 65vh;
 
     padding:
-      90px 28px !important;
+      90px 28px;
   }
 
+
+  .en-products-page .products-cta h2 {
+
+    font-size:
+      clamp(46px, 12vw, 68px);
+  }
+
+
+  /* footer */
 
   .en-products-page::after {
 
     padding:
-      25px 28px !important;
+      24px 28px;
 
-    line-height: 1.8 !important;
+    font-size: 7px;
+
+    letter-spacing: .11em;
   }
+}
 
+
+/* =========================================================
+   25 — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #luxuryHeader #menuToggleBtn,
+  #luxuryHeader #menuToggleBtn span,
+  .en-products-page .product-card,
+  .en-products-page .product-card::before,
+  .en-products-page .products-cta a {
+
+    transition: none !important;
+  }
 }
