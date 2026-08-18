@@ -306,3 +306,83 @@ body.nav-open #navOverlay .nav-overlay-links a {
   opacity: 1 !important;
   visibility: visible !important;
 }
+/* =========================================================
+   EMPERIO TISS — DESKTOP NAV FIX
+   Match HOME navigation
+========================================================= */
+
+@media (min-width: 701px) {
+
+  /* Keep the overlay structure */
+  #navOverlay {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  /* Navigation list */
+  #navOverlay .nav-overlay-links {
+    width: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+
+    gap: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Every menu item */
+  #navOverlay .nav-overlay-links a {
+    display: flex !important;
+    align-items: baseline !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+    padding: 6px 0 !important;
+
+    white-space: nowrap !important;
+
+    line-height: 1 !important;
+
+    text-align: left !important;
+  }
+
+  /* Menu numbers */
+  #navOverlay .nav-overlay-links .idx {
+    display: inline-block !important;
+
+    width: 30px !important;
+    min-width: 30px !important;
+
+    margin-right: 16px !important;
+
+    text-align: left !important;
+  }
+
+  /* Menu text */
+  #navOverlay .nav-overlay-links a span:not(.idx) {
+    display: inline-block !important;
+  }
+
+  /* Footer stays at the bottom */
+  #navOverlay .nav-overlay-foot {
+    margin-top: auto !important;
+  }
+
+  /* =======================================================
+     OPEN BUTTON
+     Home behaviour: hide both bars
+  ======================================================= */
+
+  body.nav-open #luxuryHeader #menuToggleBtn span {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+
+}
