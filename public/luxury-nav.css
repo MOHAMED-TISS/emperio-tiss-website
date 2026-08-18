@@ -245,3 +245,32 @@ body.nav-open {
     transition: none !important;
   }
 }
+#luxuryHeader #menuToggleBtn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#luxuryHeader #menuToggleBtn span {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #f4f1ea !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span {
+  background: #f4f1ea !important;
+}
+#luxuryHeader {
+  z-index: 9999 !important;
+}
+
+#luxuryHeader .header-inner {
+  position: relative !important;
+  z-index: 10000 !important;
+}
+
+#luxuryHeader #menuToggleBtn {
+  position: relative !important;
+  z-index: 10001 !important;
+}
