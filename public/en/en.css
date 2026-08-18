@@ -1,47 +1,236 @@
+/* EMPERIO TISS — ENGLISH PAGES
+   Visual system intentionally mirrors the Spanish site.
+   English files may change wording/content, but layout, spacing,
+   typography, colours, controls and responsive behaviour stay aligned. */
+
 :root {
-  --en-bg: #0a1110;
-  --en-bg-soft: #101a18;
-  --en-panel: rgba(255,255,255,.055);
-  --en-panel-strong: rgba(255,255,255,.085);
-  --en-line: rgba(245,241,231,.14);
-  --en-ivory: #f4f0e7;
-  --en-muted: #a9b1ad;
-  --en-gold: #b79a61;
-  --en-gold-soft: #d0b57b;
-  --en-max: 1240px;
+  --en-bg: #f3f0e8;
+  --en-bg-soft: #f8f6f0;
+  --en-cream: #f3f0e8;
+  --en-green: #061b14;
+  --en-green-2: #0d2c21;
+  --en-gold: #c9a35f;
+  --en-gold-light: #dec487;
+  --en-ink: #10251c;
+  --en-muted: #6d756f;
+  --en-line: rgba(16,37,28,.14);
+  --en-white: #fff;
+  --en-serif: "Playfair Display", Georgia, serif;
+  --en-sans: "DM Sans", Arial, sans-serif;
 }
 
-/* Cursor behavior — applies to every English page and subpage */
-html,
-body,
-.en-page {
-  cursor: auto !important;
+html { scroll-behavior: smooth; }
+body.en-page {
+  margin: 0;
+  background: var(--en-bg) !important;
+  color: var(--en-ink) !important;
+  font-family: var(--en-sans);
+  overflow-x: hidden;
+  cursor: default !important;
+}
+body.en-page *, body.en-page *::before, body.en-page *::after { box-sizing: border-box; }
+body.en-page a { color: inherit; cursor: pointer !important; }
+body.en-page button { cursor: pointer !important; }
+body.en-page img { display: block; max-width: 100%; }
+
+/* Keep the shared Spanish header/navigation system. */
+.en-page .site-header { z-index: 10000 !important; }
+.en-page .header-inner { background: rgba(231,230,224,.70); }
+.en-page .site-logo img { filter: none !important; opacity: 1 !important; }
+.en-page .mobile-menu { cursor: pointer !important; }
+
+/* Shared page geometry */
+.en-page main { position: relative; z-index: 1; }
+.en-section,
+.en-band,
+.en-cta {
+  width: 100%;
+}
+.en-section { padding: 150px 0; background: var(--en-bg-soft); }
+.en-section + .en-section { border-top: 0; }
+.en-section > *,
+.en-band-inner,
+.en-cta > * {
+  width: min(1240px, calc(100% - 80px));
+  margin-left: auto;
+  margin-right: auto;
 }
 
-a,
-button,
-[role="button"],
-input[type="button"],
-input[type="submit"],
-select,
-summary,
-#menuToggleBtn {
+/* Typography matches the Spanish site's Playfair / DM Sans hierarchy. */
+.en-eyebrow {
+  margin: 0 0 28px;
+  color: #9d7332;
+  font: 700 10px/1 var(--en-sans);
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+.en-section h2,
+.en-band h2,
+.en-cta h2 {
+  margin: 0;
+  color: var(--en-green);
+  font: 400 clamp(48px, 6vw, 86px)/.9 var(--en-serif);
+  letter-spacing: -.055em;
+}
+.en-section h2 em,
+.en-band h2 em,
+.en-cta h2 em { color: var(--en-gold); font-style: italic; }
+.en-copy,
+.en-section p,
+.en-band p,
+.en-cta p {
+  color: var(--en-muted);
+  font: 400 14px/1.85 var(--en-sans);
+}
+
+/* English home hero — same dark/gold visual language as Spanish hero. */
+.en-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 170px max(40px, calc((100vw - 1240px) / 2)) 70px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 72% 32%, rgba(38,83,62,.22), transparent 28%),
+    radial-gradient(circle at 92% 80%, rgba(201,163,95,.07), transparent 28%),
+    linear-gradient(125deg, #03150f 0%, #061d15 50%, #09251b 100%);
+}
+.en-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+  background-size: 120px 100%;
+  opacity: .35;
+}
+.en-hero-content { position: relative; z-index: 2; width: min(1240px, 100%); margin: 0 auto; }
+.en-hero .en-eyebrow { color: #d8b879; }
+.en-hero h1 {
+  margin: 0;
+  max-width: 1000px;
+  color: #fff;
+  font: 400 clamp(72px, 10vw, 150px)/.82 var(--en-serif);
+  letter-spacing: -.07em;
+}
+.en-hero h1 em { color: var(--en-gold-light); font-style: italic; }
+.en-hero .en-lead { max-width: 650px; margin-top: 42px; color: rgba(255,255,255,.68); }
+.en-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 35px; }
+.en-button {
+  min-height: 54px;
+  padding: 0 27px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 999px;
+  border: 1px solid #f5f2e9;
+  background: #f5f2e9;
+  color: #11231b !important;
+  font: 600 12px/1 var(--en-sans);
+  text-decoration: none;
+  transition: transform .3s ease, background .3s ease, border-color .3s ease;
   cursor: pointer !important;
 }
+.en-button:hover { transform: translateY(-3px); background: #fff; }
+.en-button.secondary { background: transparent; color: #fff !important; border-color: rgba(255,255,255,.38); }
+.en-button.secondary:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.75); }
 
-.en-page main { position: relative; z-index: 1; }
-.en-page a { color: inherit; }
-.en-page .site-header { z-index: 10000; }
+/* Split sections */
+.en-split { background: var(--en-bg-soft); }
+.en-split > div:first-child { padding-bottom: 45px; border-bottom: 1px solid var(--en-line); }
+.en-split .en-copy { max-width: 650px; margin-top: 55px; margin-right: max(40px, calc((100vw - 1240px) / 2)); }
+.en-split .en-copy p { margin: 0 0 22px; }
+.en-split .en-copy p:last-child { margin-bottom: 0; }
+.en-card-link { color: var(--en-green) !important; font-weight: 600 !important; text-decoration: none; }
 
-.en-hero { position: relative; min-height: min(860px, 100svh); display: flex; align-items: flex-end; padding: 170px max(28px, calc((100% - var(--en-max)) / 2)) 105px; box-sizing: border-box; overflow: hidden; background: radial-gradient(circle at 82% 28%, rgba(183,154,97,.16), transparent 28%), radial-gradient(circle at 12% 72%, rgba(31,91,79,.18), transparent 34%), linear-gradient(135deg, #08100f 0%, #0d1816 58%, #101d1a 100%); }
-.en-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.035) 50%, transparent 66%); pointer-events: none; }
-.en-hero::after { content: ""; position: absolute; width: 38vw; height: 38vw; right: -14vw; bottom: -18vw; border: 1px solid rgba(183,154,97,.24); border-radius: 50%; box-shadow: 0 0 0 70px rgba(183,154,97,.025), 0 0 0 140px rgba(183,154,97,.018); }
-.en-hero-content { position: relative; z-index: 2; max-width: 980px; }
-.en-eyebrow { margin: 0 0 24px; font: 600 10px/1 "DM Sans", sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--en-gold-soft); }
-.en-hero h1, .en-title { margin: 0; max-width: 1050px; font: 400 clamp(54px, 8vw, 116px)/.91 "Playfair Display", serif; letter-spacing: -.045em; color: var(--en-ivory); }
-.en-lead { max-width: 660px; margin: 34px 0 0; font: 400 16px/1.8 "DM Sans", sans-serif; color: var(--en-muted); }
-.en-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
-.en-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 46px; padding: 0 20px; border: 1px solid rgba(183,154,97,.62); background: rgba(183,154,97,.09); text-decoration: none; font: 600 10px/1 "DM Sans", sans-serif; letter-spacing: .13em; text-transform: uppercase; transition: transform .3s ease, background .3s ease, border-color .3s ease; cursor: pointer !important; }
-.en-button:hover { transform: translateY(-2px); background: rgba(183,154,97,.18); border-color: var(--en-gold-soft); }
-.en-button.secondary { border-color: var(--en-line); background: rgba(255,255,255,.025); }
-.en-section { width: min(var(--en-max), calc(100% - 56px)); margin: 0 auto; padding: 120px 0; }
+/* Cards */
+.en-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 65px;
+  border-top: 1px solid var(--en-line);
+  border-left: 1px solid var(--en-line);
+}
+.en-card {
+  min-height: 330px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--en-line);
+  border-bottom: 1px solid var(--en-line);
+  background: transparent;
+  text-decoration: none;
+  transition: transform .35s ease, background .35s ease;
+}
+.en-card:hover { transform: translateY(-5px); background: rgba(255,255,255,.55); }
+.en-card .num { color: var(--en-gold); font-size: 10px; letter-spacing: .16em; }
+.en-card h3 { margin: 0 0 14px; color: var(--en-green); font: 400 30px/1 var(--en-serif); }
+.en-card p { margin: 0; color: var(--en-muted); font-size: 13px; line-height: 1.7; }
+.en-card .en-card-link { margin-top: 28px; color: #9d7332 !important; font-size: 11px; }
+
+/* Dark band corresponds to the Spanish site's dark sections. */
+.en-band {
+  padding: 120px 0;
+  background: var(--en-green-2);
+  color: #fff;
+}
+.en-band-inner { display: grid; grid-template-columns: 1fr .7fr; gap: 90px; align-items: end; }
+.en-band h2 { color: #fff; }
+.en-band p { color: rgba(255,255,255,.68); }
+
+/* CTA */
+.en-cta {
+  padding: 150px 0;
+  background: var(--en-bg-soft);
+  text-align: left;
+}
+.en-cta > * { display: block; }
+.en-cta .en-title { max-width: 950px; }
+.en-cta .en-lead { max-width: 620px; margin-top: 35px; }
+.en-cta .en-button { margin-top: 35px; width: fit-content; }
+
+/* English footer uses the same proportions and tones as the Spanish footer. */
+.en-footer {
+  padding: 70px 0 45px;
+  background: #03140f;
+  color: #fff;
+}
+.en-footer-inner {
+  width: min(1240px, calc(100% - 80px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+}
+.en-footer img { width: 94px; height: auto; }
+.en-footer p { margin: 20px 0 0; max-width: 360px; color: rgba(255,255,255,.58); font-size: 13px; line-height: 1.7; }
+.en-footer-meta { display: flex; flex-direction: column; gap: 8px; color: rgba(255,255,255,.48); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; text-align: right; }
+
+/* Product/market/contact English subpages inherit the same visual language. */
+.en-page .en-hero + .en-section,
+.en-page .en-section { border-color: var(--en-line); }
+.en-page .en-section:nth-of-type(odd) { background: var(--en-bg-soft); }
+.en-page .en-section:nth-of-type(even) { background: var(--en-cream); }
+
+@media (max-width: 900px) {
+  .en-section > *, .en-band-inner, .en-cta > *, .en-footer-inner { width: calc(100% - 56px); }
+  .en-grid { grid-template-columns: 1fr; }
+  .en-band-inner { grid-template-columns: 1fr; gap: 35px; }
+  .en-split .en-copy { width: calc(100% - 56px); margin-right: auto; }
+}
+
+@media (max-width: 640px) {
+  .en-hero { min-height: 780px; padding: 145px 28px 65px; }
+  .en-hero-content { width: 100%; }
+  .en-hero h1 { font-size: clamp(58px, 16vw, 92px); }
+  .en-section { padding: 95px 0; }
+  .en-section > *, .en-band-inner, .en-cta > *, .en-footer-inner { width: calc(100% - 40px); }
+  .en-footer-inner { align-items: flex-start; flex-direction: column; }
+  .en-footer-meta { text-align: left; }
+}
