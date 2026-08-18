@@ -1,889 +1,198 @@
-/* =========================================================
-   EMPERIO TISS — ENGLISH PRODUCTS
-   Fruits & Vegetables
-   Editorial / Premium / Marine
-   Scope: .en-products-page + footer
-   Does NOT control luxury navigation
-========================================================= */
-
-
-/* =========================================================
-   01 — VARIABLES
-========================================================= */
-
 :root {
-  --en-bg: #edf3f1;
-  --en-surface: rgba(255, 255, 255, .60);
-  --en-surface-hover: rgba(255, 255, 255, .82);
-
-  --en-ink: #10201c;
-  --en-muted: #64736e;
-
-  --en-line: rgba(16, 32, 28, .13);
-
-  --en-accent: #a88952;
-  --en-accent-light: #c7aa70;
+  --en-bg: #0a1110;
+  --en-bg-soft: #101a18;
+  --en-panel: rgba(255,255,255,.055);
+  --en-panel-strong: rgba(255,255,255,.085);
+  --en-line: rgba(245,241,231,.14);
+  --en-ivory: #f4f0e7;
+  --en-muted: #a9b1ad;
+  --en-gold: #b79a61;
+  --en-gold-soft: #d0b57b;
+  --en-max: 1240px;
 }
 
-
-/* =========================================================
-   02 — PAGE
-========================================================= */
-
-body {
+.en-page {
   background: var(--en-bg) !important;
-  color: var(--en-ink) !important;
+  color: var(--en-ivory) !important;
+  overflow-x: hidden;
 }
 
-
-/* Only the English products page */
-
-.en-products-page {
-  position: relative !important;
-
-  z-index: 1 !important;
-
-  width: 100% !important;
-
-  min-height: auto !important;
-
-  padding-top: 92px !important;
-
-  box-sizing: border-box !important;
-
-  background: var(--en-bg) !important;
-
-  color: var(--en-ink) !important;
-}
-
-
-/* =========================================================
-   03 — HERO
-========================================================= */
-
-.en-products-page .products-hero {
-
-  width: min(1180px, calc(100% - 96px)) !important;
-
-  margin: 0 auto !important;
-
-  padding: 105px 0 115px !important;
-
-  box-sizing: border-box !important;
-
-  border-bottom:
-    1px solid var(--en-line) !important;
-}
-
-
-/* Eyebrow */
-
-.en-products-page .eyebrow {
-
-  margin: 0 0 26px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 10px !important;
-
-  font-weight: 600 !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: .20em !important;
-
-  text-transform: uppercase !important;
-
-  color: var(--en-accent) !important;
-}
-
-
-/* Hero title */
-
-.en-products-page .products-hero h1 {
-
-  max-width: 920px !important;
-
-  margin: 0 !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(
-    52px,
-    7vw,
-    104px
-  ) !important;
-
-  font-weight: 400 !important;
-
-  line-height: .94 !important;
-
-  letter-spacing: -.035em !important;
-
-  color: var(--en-ink) !important;
-}
-
-
-/* Hero description */
-
-.en-products-page .hero-description {
-
-  max-width: 590px !important;
-
-  margin: 38px 0 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 16px !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1.8 !important;
-
-  color: var(--en-muted) !important;
-}
-
-
-/* =========================================================
-   04 — PRODUCTS OVERVIEW
-========================================================= */
-
-.en-products-page .products-overview {
-
-  width: min(1180px, calc(100% - 96px)) !important;
-
-  margin: 0 auto !important;
-
-  padding: 82px 0 !important;
-
-  box-sizing: border-box !important;
-
-  display: grid !important;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr)) !important;
-
-  gap: 18px !important;
-}
-
-
-/* =========================================================
-   05 — PRODUCT CARD
-========================================================= */
-
-.en-products-page .product-card {
-
-  position: relative !important;
-
-  min-height: 315px !important;
-
-  padding: 34px !important;
-
-  box-sizing: border-box !important;
-
-  display: flex !important;
-
-  flex-direction: column !important;
-
-  background: var(--en-surface) !important;
-
-  border:
-    1px solid var(--en-line) !important;
-
-  backdrop-filter: blur(16px) !important;
-
-  -webkit-backdrop-filter: blur(16px) !important;
-
-  transition:
-    transform .45s cubic-bezier(.22,1,.36,1),
-    background .35s ease,
-    border-color .35s ease !important;
-}
-
-
-/* Card hover */
-
-.en-products-page .product-card:hover {
-
-  transform: translateY(-7px) !important;
-
+.en-page main { position: relative; z-index: 1; }
+.en-page a { color: inherit; }
+.en-page .site-header { z-index: 10000; }
+
+/* Shared page shell */
+.en-main,
+.en-page .page-shell { width: 100%; }
+
+.en-hero {
+  position: relative;
+  min-height: min(860px, 100svh);
+  display: flex;
+  align-items: flex-end;
+  padding: 170px max(28px, calc((100% - var(--en-max)) / 2)) 105px;
+  box-sizing: border-box;
+  overflow: hidden;
   background:
-    var(--en-surface-hover) !important;
-
-  border-color:
-    rgba(168, 137, 82, .42) !important;
+    radial-gradient(circle at 82% 28%, rgba(183,154,97,.16), transparent 28%),
+    radial-gradient(circle at 12% 72%, rgba(31,91,79,.18), transparent 34%),
+    linear-gradient(135deg, #08100f 0%, #0d1816 58%, #101d1a 100%);
 }
-
-
-/* =========================================================
-   06 — PRODUCT NUMBER
-========================================================= */
-
-.en-products-page .product-number {
-
-  display: block !important;
-
-  margin: 0 0 65px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 10px !important;
-
-  font-weight: 500 !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: .16em !important;
-
-  color: var(--en-accent) !important;
+.en-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.035) 50%, transparent 66%);
+  pointer-events: none;
 }
-
-
-/* =========================================================
-   07 — CARD CONTENT
-========================================================= */
-
-.en-products-page .product-card-content {
-
-  margin-top: auto !important;
+.en-hero::after {
+  content: "";
+  position: absolute; width: 38vw; height: 38vw; right: -14vw; bottom: -18vw;
+  border: 1px solid rgba(183,154,97,.24); border-radius: 50%;
+  box-shadow: 0 0 0 70px rgba(183,154,97,.025), 0 0 0 140px rgba(183,154,97,.018);
 }
-
-
-/* Card heading */
-
-.en-products-page .product-card h2 {
-
-  margin: 0 0 18px !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(
-    28px,
-    3vw,
-    42px
-  ) !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: -.02em !important;
-
-  color: var(--en-ink) !important;
+.en-hero-content { position: relative; z-index: 2; max-width: 980px; }
+.en-eyebrow {
+  margin: 0 0 24px;
+  font: 600 10px/1 "DM Sans", sans-serif;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--en-gold-soft);
 }
-
-
-/* Card paragraph */
-
-.en-products-page .product-card p {
-
-  max-width: 340px !important;
-
-  margin: 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 14px !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1.7 !important;
-
-  color: var(--en-muted) !important;
+.en-hero h1,
+.en-title {
+  margin: 0;
+  max-width: 1050px;
+  font: 400 clamp(54px, 8vw, 116px)/.91 "Playfair Display", serif;
+  letter-spacing: -.045em;
+  color: var(--en-ivory);
 }
-
-
-/* =========================================================
-   08 — CTA
-========================================================= */
-
-.en-products-page .products-cta {
-
-  width: min(1180px, calc(100% - 96px)) !important;
-
-  margin: 0 auto !important;
-
-  padding: 105px 0 130px !important;
-
-  box-sizing: border-box !important;
-
-  border-top:
-    1px solid var(--en-line) !important;
+.en-lead {
+  max-width: 660px;
+  margin: 34px 0 0;
+  font: 400 16px/1.8 "DM Sans", sans-serif;
+  color: var(--en-muted);
 }
-
-
-/* CTA eyebrow */
-
-.en-products-page .products-cta .eyebrow {
-
-  margin-bottom: 26px !important;
+.en-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.en-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 46px; padding: 0 20px; border: 1px solid rgba(183,154,97,.62);
+  background: rgba(183,154,97,.09); text-decoration: none;
+  font: 600 10px/1 "DM Sans", sans-serif; letter-spacing: .13em; text-transform: uppercase;
+  transition: transform .3s ease, background .3s ease, border-color .3s ease;
 }
+.en-button:hover { transform: translateY(-2px); background: rgba(183,154,97,.18); border-color: var(--en-gold-soft); }
+.en-button.secondary { border-color: var(--en-line); background: rgba(255,255,255,.025); }
 
-
-/* CTA title */
-
-.en-products-page .products-cta h2 {
-
-  max-width: 760px !important;
-
-  margin: 0 !important;
-
-  font-family: "Playfair Display", serif !important;
-
-  font-size: clamp(
-    42px,
-    5vw,
-    72px
-  ) !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: -.025em !important;
-
-  color: var(--en-ink) !important;
+.en-section {
+  width: min(var(--en-max), calc(100% - 56px));
+  margin: 0 auto;
+  padding: 120px 0;
 }
-
-
-/* CTA description */
-
-.en-products-page .cta-description {
-
-  max-width: 520px !important;
-
-  margin: 28px 0 34px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 15px !important;
-
-  font-weight: 400 !important;
-
-  line-height: 1.7 !important;
-
-  color: var(--en-muted) !important;
+.en-section + .en-section { border-top: 1px solid var(--en-line); }
+.en-split { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(50px, 9vw, 150px); align-items: start; }
+.en-section h2 {
+  margin: 0; max-width: 720px;
+  font: 400 clamp(42px, 5.5vw, 76px)/.98 "Playfair Display", serif;
+  letter-spacing: -.035em; color: var(--en-ivory);
 }
+.en-copy { max-width: 650px; color: var(--en-muted); font: 400 15px/1.85 "DM Sans", sans-serif; }
+.en-copy p { margin: 0 0 20px; }
+.en-copy p:last-child { margin-bottom: 0; }
 
-
-/* =========================================================
-   09 — CTA LINK
-========================================================= */
-
-.en-products-page .cta-link {
-
-  display: inline-flex !important;
-
-  align-items: center !important;
-
-  gap: 12px !important;
-
-  padding: 0 0 8px !important;
-
-  border-bottom:
-    1px solid var(--en-accent) !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 12px !important;
-
-  font-weight: 600 !important;
-
-  line-height: 1 !important;
-
-  letter-spacing: .08em !important;
-
-  text-transform: uppercase !important;
-
-  text-decoration: none !important;
-
-  color: var(--en-ink) !important;
-
-  cursor: pointer !important;
-
-  transition:
-    color .3s ease,
-    gap .3s ease !important;
+.en-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 52px; }
+.en-card {
+  min-height: 280px; padding: 30px; box-sizing: border-box;
+  border: 1px solid var(--en-line); background: linear-gradient(145deg, var(--en-panel-strong), var(--en-panel));
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease;
 }
+.en-card:hover { transform: translateY(-7px); border-color: rgba(183,154,97,.48); background: rgba(255,255,255,.095); }
+.en-card .num { font: 500 10px/1 "DM Sans", sans-serif; letter-spacing: .16em; color: var(--en-gold-soft); }
+.en-card h3 { margin: 50px 0 12px; font: 400 34px/1 "Playfair Display", serif; color: var(--en-ivory); }
+.en-card p { margin: 0; font: 400 13px/1.7 "DM Sans", sans-serif; color: var(--en-muted); }
+.en-card-link { margin-top: 26px; font: 600 10px/1 "DM Sans", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--en-gold-soft); text-decoration: none; }
 
-
-.en-products-page .cta-link span {
-
-  display: inline-block !important;
-
-  transition:
-    transform .3s ease !important;
+.en-band {
+  width: 100%; padding: 125px max(28px, calc((100% - var(--en-max)) / 2)); box-sizing: border-box;
+  background: linear-gradient(120deg, #101c19, #0a1211 55%, #12140f);
+  border-top: 1px solid var(--en-line); border-bottom: 1px solid var(--en-line);
 }
+.en-band-inner { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: end; }
+.en-band h2 { margin: 0; max-width: 800px; font: 400 clamp(45px, 6vw, 86px)/.95 "Playfair Display", serif; letter-spacing: -.04em; }
+.en-band p { max-width: 560px; margin: 0; font: 400 15px/1.8 "DM Sans", sans-serif; color: var(--en-muted); }
 
+.en-cta { text-align: center; padding: 145px 28px; }
+.en-cta h2 { margin: 0 auto 32px; max-width: 900px; }
+.en-cta .en-lead { margin: 0 auto 34px; }
 
-.en-products-page .cta-link:hover {
+/* Product landing */
+.en-products .en-hero { min-height: 720px; }
+.en-product-grid { margin-top: 54px; }
+.en-product-card { min-height: 350px; }
+.en-product-card h3 { font-size: clamp(32px, 3.5vw, 48px); }
 
-  color: var(--en-accent) !important;
-
-  gap: 18px !important;
+/* Detail pages */
+.en-detail-hero { min-height: 700px; }
+.en-detail-hero.seafood {
+  background:
+    linear-gradient(90deg, rgba(5,13,16,.94) 0%, rgba(5,13,16,.7) 45%, rgba(5,13,16,.32) 100%),
+    url("../products/images/seafood/seafood-hero.jpg") center/cover no-repeat;
 }
+.en-detail-hero.produce { background: radial-gradient(circle at 78% 40%, rgba(104,133,70,.2), transparent 28%), linear-gradient(130deg,#08100e,#17211a); }
+.en-detail-hero.seasonal { background: radial-gradient(circle at 78% 40%, rgba(183,154,97,.2), transparent 28%), linear-gradient(130deg,#0d100d,#1c1b15); }
+.en-detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 50px; }
+.en-detail-card { min-height: 310px; }
 
-
-.en-products-page .cta-link:hover span {
-
-  transform: translateX(3px) !important;
+.en-feature {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 520px;
+  width: min(var(--en-max), calc(100% - 56px)); margin: 0 auto;
 }
+.en-feature-media { min-height: 520px; background: center/cover no-repeat; }
+.en-feature-media.seafood { background-image: url("../products/images/seafood/fish/dorada.jpg"); }
+.en-feature-copy { display: flex; flex-direction: column; justify-content: center; padding: 70px; background: var(--en-bg-soft); border: 1px solid var(--en-line); }
+.en-feature-copy h2 { margin-bottom: 22px; }
 
+/* Footer */
+.en-footer { padding: 60px max(28px, calc((100% - var(--en-max)) / 2)); border-top: 1px solid var(--en-line); background: #070d0c; }
+.en-footer-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+.en-footer img { width: 112px; height: auto; display: block; margin-bottom: 16px; }
+.en-footer p, .en-footer span { margin: 0; font: 400 10px/1.6 "DM Sans", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: rgba(244,240,231,.45); }
+.en-footer-meta { display: flex; flex-direction: column; gap: 7px; text-align: right; }
 
-/* =========================================================
-   10 — FOOTER
-========================================================= */
-
-.site-footer {
-
-  position: relative !important;
-
-  z-index: 2 !important;
-
-  width: 100% !important;
-
-  box-sizing: border-box !important;
-
-  padding: 58px 0 !important;
-
-  background: #0e1512 !important;
-
-  color: rgba(244, 241, 234, .72) !important;
-}
-
-
-.site-footer-inner {
-
-  width: min(1180px, calc(100% - 96px)) !important;
-
-  margin: 0 auto !important;
-
-  display: flex !important;
-
-  align-items: flex-end !important;
-
-  justify-content: space-between !important;
-
-  gap: 40px !important;
-}
-
-
-/* Footer brand */
-
-.site-footer-brand img {
-
-  display: block !important;
-
-  width: 110px !important;
-
-  height: auto !important;
-
-  margin: 0 0 18px !important;
-}
-
-
-.site-footer-brand p {
-
-  margin: 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 11px !important;
-
-  line-height: 1.5 !important;
-
-  letter-spacing: .08em !important;
-
-  color:
-    rgba(244, 241, 234, .45) !important;
-}
-
-
-/* Footer metadata */
-
-.site-footer-meta {
-
-  display: flex !important;
-
-  flex-direction: column !important;
-
-  align-items: flex-end !important;
-
-  gap: 7px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  line-height: 1.4 !important;
-
-  letter-spacing: .14em !important;
-
-  text-transform: uppercase !important;
-
-  color:
-    rgba(244, 241, 234, .48) !important;
-}
-
-
-/* =========================================================
-   11 — TABLET
-========================================================= */
+/* Focus / accessibility */
+.en-page a:focus-visible, .en-page button:focus-visible { outline: 2px solid var(--en-gold-soft); outline-offset: 4px; }
+.en-page button { cursor: pointer; }
+.en-page a { cursor: pointer; }
 
 @media (max-width: 900px) {
-
-  .en-products-page .products-hero,
-  .en-products-page .products-overview,
-  .en-products-page .products-cta,
-  .site-footer-inner {
-
-    width:
-      min(100% - 56px, 720px) !important;
-  }
-
-
-  .en-products-page .products-overview {
-
-    grid-template-columns: 1fr !important;
-
-    gap: 14px !important;
-  }
-
-
-  .en-products-page .product-card {
-
-    min-height: 255px !important;
-  }
+  .en-hero { min-height: 720px; padding-bottom: 80px; }
+  .en-grid, .en-detail-grid { grid-template-columns: 1fr; }
+  .en-card, .en-detail-card { min-height: 250px; }
+  .en-split, .en-band-inner, .en-feature { grid-template-columns: 1fr; }
+  .en-band-inner { gap: 36px; }
+  .en-feature { width: min(100% - 40px, 720px); }
+  .en-feature-media { min-height: 360px; }
+  .en-feature-copy { padding: 48px 34px; }
 }
-
-
-/* =========================================================
-   12 — MOBILE
-========================================================= */
 
 @media (max-width: 700px) {
-
-  .en-products-page {
-
-    padding-top: 76px !important;
-  }
-
-
-  .en-products-page .products-hero,
-  .en-products-page .products-overview,
-  .en-products-page .products-cta {
-
-    width: calc(100% - 40px) !important;
-  }
-
-
-  /* Hero */
-
-  .en-products-page .products-hero {
-
-    padding: 68px 0 75px !important;
-  }
-
-
-  .en-products-page .products-hero h1 {
-
-    font-size:
-      clamp(44px, 13vw, 68px) !important;
-  }
-
-
-  .en-products-page .hero-description {
-
-    margin-top: 28px !important;
-
-    font-size: 14px !important;
-
-    line-height: 1.7 !important;
-  }
-
-
-  /* Cards */
-
-  .en-products-page .products-overview {
-
-    padding: 55px 0 !important;
-
-    grid-template-columns: 1fr !important;
-  }
-
-
-  .en-products-page .product-card {
-
-    min-height: 230px !important;
-
-    padding: 28px !important;
-  }
-
-
-  .en-products-page .product-number {
-
-    margin-bottom: 45px !important;
-  }
-
-
-  /* CTA */
-
-  .en-products-page .products-cta {
-
-    padding: 70px 0 90px !important;
-  }
-
-
-  .en-products-page .products-cta h2 {
-
-    font-size:
-      clamp(40px, 11vw, 58px) !important;
-  }
-
-
-  /* Footer */
-
-  .site-footer {
-
-    padding: 45px 0 !important;
-  }
-
-
-  .site-footer-inner {
-
-    width: calc(100% - 40px) !important;
-
-    flex-direction: column !important;
-
-    align-items: flex-start !important;
-
-    gap: 30px !important;
-  }
-
-
-  .site-footer-meta {
-
-    align-items: flex-start !important;
-  }
+  .en-section { width: calc(100% - 40px); padding: 82px 0; }
+  .en-hero { min-height: 680px; padding: 145px 20px 65px; }
+  .en-hero h1, .en-title { font-size: clamp(48px, 15vw, 72px); }
+  .en-lead { font-size: 14px; line-height: 1.72; }
+  .en-actions { margin-top: 30px; }
+  .en-button { width: 100%; }
+  .en-section h2 { font-size: clamp(40px, 12vw, 58px); }
+  .en-grid, .en-detail-grid { margin-top: 38px; }
+  .en-card { min-height: 235px; padding: 26px; }
+  .en-card h3 { margin-top: 40px; font-size: 31px; }
+  .en-band { padding: 85px 20px; }
+  .en-band h2 { font-size: clamp(43px, 12vw, 62px); }
+  .en-cta { padding: 95px 20px; }
+  .en-footer { padding: 45px 20px; }
+  .en-footer-inner { align-items: flex-start; flex-direction: column; }
+  .en-footer-meta { text-align: left; }
 }
-
-
-/* =========================================================
-   13 — REDUCED MOTION
-========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
-  .en-products-page .product-card,
-  .en-products-page .cta-link,
-  .en-products-page .cta-link span {
-
-    transition: none !important;
-  }
-}
-/* =========================================================
-   FINAL — ENGLISH PAGE ISOLATION
-   Do not interfere with luxury navigation
-========================================================= */
-
-
-/* ---------------------------------------------------------
-   POINTER
---------------------------------------------------------- */
-
-.en-page,
-.en-page .en-products-page,
-.en-page .product-card,
-.en-page .products-hero,
-.en-page .products-overview,
-.en-page .products-cta,
-.en-page .site-footer {
-  cursor: default !important;
-}
-
-
-.en-page a,
-.en-page button,
-.en-page .cta-link,
-.en-page .language-switcher a {
-  cursor: pointer !important;
-}
-
-
-/* ---------------------------------------------------------
-   NAVIGATION — NEVER STYLE FROM EN.CSS
---------------------------------------------------------- */
-
-.en-page #luxuryHeader,
-.en-page #luxuryHeader *,
-.en-page #navOverlay,
-.en-page #navOverlay *,
-.en-page #menuToggleBtn,
-.en-page #menuToggleBtn * {
-  cursor: auto;
-}
-
-
-/* The actual menu button */
-
-.en-page #menuToggleBtn {
-  cursor: pointer !important;
-}
-
-
-/* Navigation links */
-
-.en-page #navOverlay a {
-  cursor: pointer !important;
-}
-
-
-/* ---------------------------------------------------------
-   HEADER POSITION
-   EN.CSS must not move the header
---------------------------------------------------------- */
-
-.en-page #luxuryHeader {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-
-  width: 100% !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  transform: none !important;
-}
-
-
-/* ---------------------------------------------------------
-   OVERLAY POSITION
---------------------------------------------------------- */
-
-.en-page #navOverlay {
-  position: fixed !important;
-
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: 0 !important;
-
-  width: 100vw !important;
-  height: 100vh !important;
-
-  margin: 0 !important;
-
-  box-sizing: border-box !important;
-}
-
-
-/* ---------------------------------------------------------
-   IMPORTANT:
-   ENGLISH CONTENT MUST NEVER SIT ABOVE NAV
---------------------------------------------------------- */
-
-.en-page .en-products-page,
-.en-page .site-footer {
-  z-index: 1 !important;
-}
-
-
-.en-page #luxuryHeader {
-  z-index: 9999 !important;
-}
-
-
-.en-page #navOverlay {
-  z-index: 9998 !important;
-}
-
-
-/* ---------------------------------------------------------
-   OPEN MENU
---------------------------------------------------------- */
-
-.en-page.nav-open #navOverlay,
-body.nav-open #navOverlay {
-  pointer-events: auto !important;
-}
-
-
-/* ---------------------------------------------------------
-   X MUST REMAIN ABOVE EVERYTHING
---------------------------------------------------------- */
-
-body.nav-open #luxuryHeader {
-  z-index: 10000 !important;
-}
-
-
-body.nav-open #luxuryHeader .header-inner {
-  z-index: 10001 !important;
-}
-
-
-body.nav-open #luxuryHeader #menuToggleBtn {
-  position: relative !important;
-
-  z-index: 10002 !important;
-
-  display: flex !important;
-
-  visibility: visible !important;
-
-  opacity: 1 !important;
-
-  pointer-events: auto !important;
-
-  cursor: pointer !important;
-}
-
-
-/* X — first */
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
-  position: absolute !important;
-
-  display: block !important;
-
-  width: 27px !important;
-  height: 1px !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  transform: rotate(45deg) !important;
-
-  background: #f4f1ea !important;
-}
-
-
-/* X — middle */
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
-  opacity: 0 !important;
-  visibility: hidden !important;
-
-  transform: scaleX(0) !important;
-}
-
-
-/* X — third */
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
-  position: absolute !important;
-
-  display: block !important;
-
-  width: 27px !important;
-  height: 1px !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  transform: rotate(-45deg) !important;
-
-  background: #f4f1ea !important;
+  .en-page *, .en-page *::before, .en-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
