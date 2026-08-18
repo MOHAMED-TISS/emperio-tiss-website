@@ -1,1 +1,598 @@
+/* =========================================================
+   EMPERIO TISS — ENGLISH VISUAL SYSTEM
+   Editorial / Marine / Luxury B2B
+========================================================= */
 
+:root {
+  --en-bg: #08100f;
+  --en-bg-soft: #0d1715;
+  --en-text: #f3f0e8;
+  --en-muted: rgba(243,240,232,.62);
+  --en-soft: rgba(243,240,232,.38);
+  --en-line: rgba(243,240,232,.14);
+  --en-gold: #c9a961;
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--en-bg);
+  color: var(--en-text);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  cursor: pointer !important;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#luxuryHeader {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  background: transparent !important;
+
+  z-index: 99999 !important;
+
+  pointer-events: none !important;
+}
+
+#luxuryHeader .header-inner {
+  width: min(calc(100% - 96px), 1400px) !important;
+
+  height: 92px !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  box-sizing: border-box !important;
+}
+
+#luxuryHeader .site-logo {
+  pointer-events: auto !important;
+  display: block !important;
+}
+
+#luxuryHeader .site-logo img {
+  display: block !important;
+  width: 132px !important;
+  height: auto !important;
+}
+
+
+/* =========================================================
+   MENU BUTTON — ALWAYS VISIBLE
+========================================================= */
+
+#luxuryHeader #menuToggleBtn {
+  position: relative !important;
+
+  width: 56px !important;
+  height: 56px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 5px !important;
+
+  background: rgba(8,16,15,.18) !important;
+
+  border: 1px solid rgba(243,240,232,.28) !important;
+  border-radius: 50% !important;
+
+  pointer-events: auto !important;
+  cursor: pointer !important;
+
+  z-index: 100000 !important;
+
+  transition:
+    border-color .3s ease,
+    background .3s ease,
+    transform .3s ease !important;
+}
+
+#luxuryHeader #menuToggleBtn:hover {
+  border-color: var(--en-gold) !important;
+  background: rgba(201,169,97,.10) !important;
+  transform: scale(1.04) !important;
+}
+
+#luxuryHeader #menuToggleBtn span {
+  display: block !important;
+
+  width: 27px !important;
+  height: 1px !important;
+
+  flex: 0 0 1px !important;
+
+  background: var(--en-text) !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform-origin: center !important;
+
+  transition:
+    transform .4s cubic-bezier(.22,1,.36,1),
+    opacity .2s ease !important;
+}
+
+#luxuryHeader #menuToggleBtn span:nth-child(2) {
+  width: 19px !important;
+}
+
+
+/* =========================================================
+   OPEN → X
+========================================================= */
+
+body.nav-open #luxuryHeader #menuToggleBtn {
+  border-color: var(--en-gold) !important;
+  background: rgba(201,169,97,.10) !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span {
+  position: absolute !important;
+
+  width: 28px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
+  transform: rotate(45deg) !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: scaleX(0) !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
+  transform: rotate(-45deg) !important;
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.products-hero,
+.hero {
+  min-height: 88vh;
+
+  padding:
+    180px
+    max(48px, calc((100vw - 1400px) / 2))
+    100px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 78% 32%,
+      rgba(201,169,97,.10),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #08100f 0%,
+      #0d1715 100%
+    );
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: .20em;
+  text-transform: uppercase;
+
+  color: var(--en-gold);
+}
+
+.products-hero h1,
+.hero h1 {
+  max-width: 1000px;
+
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(58px, 7vw, 112px);
+
+  font-weight: 400;
+
+  line-height: .92;
+
+  letter-spacing: -.045em;
+
+  color: var(--en-text);
+}
+
+.products-hero > p:last-child,
+.hero-text {
+  max-width: 650px;
+
+  margin: 34px 0 0;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  color: var(--en-muted);
+}
+
+
+/* =========================================================
+   CONTENT SECTIONS
+========================================================= */
+
+.home-intro,
+.home-markets,
+.products-overview,
+.product-grid {
+  width: min(calc(100% - 96px), 1400px);
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+.home-intro,
+.home-markets {
+  min-height: 55vh;
+
+  padding: 120px 0;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10vw;
+
+  align-items: center;
+
+  border-top: 1px solid var(--en-line);
+}
+
+.home-intro h2,
+.home-markets h2 {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(42px, 5vw, 76px);
+
+  font-weight: 400;
+
+  line-height: .98;
+
+  letter-spacing: -.035em;
+}
+
+.home-intro p,
+.home-markets p {
+  max-width: 560px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  color: var(--en-muted);
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.products-overview,
+.product-grid {
+  padding: 110px 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 1px;
+
+  background: var(--en-line);
+}
+
+.product-card {
+  min-height: 390px;
+
+  padding: 42px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  background: var(--en-bg-soft);
+
+  transition:
+    background .4s ease,
+    transform .4s cubic-bezier(.22,1,.36,1);
+}
+
+.product-card:hover {
+  background: #13201d;
+
+  transform: translateY(-8px);
+}
+
+.product-number {
+  margin-bottom: auto;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  color: var(--en-gold);
+}
+
+.product-card h2,
+.product-card h3 {
+  margin: 0 0 18px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 38px;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+.product-card p {
+  margin: 0 0 26px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: var(--en-muted);
+}
+
+.product-card > span:last-child {
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  color: var(--en-text);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.home-cta,
+.products-cta {
+  min-height: 65vh;
+
+  padding:
+    120px
+    max(48px, calc((100vw - 1400px) / 2));
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(201,169,97,.09),
+      transparent 35%
+    );
+
+  border-top: 1px solid var(--en-line);
+}
+
+.home-cta h2,
+.products-cta h2 {
+  max-width: 900px;
+
+  margin: 0 0 35px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(46px, 6vw, 88px);
+
+  font-weight: 400;
+
+  line-height: .95;
+
+  letter-spacing: -.04em;
+}
+
+.home-cta a,
+.products-cta a {
+  width: fit-content;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid var(--en-gold);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  color: var(--en-text);
+
+  cursor: pointer !important;
+
+  transition:
+    color .3s ease,
+    border-color .3s ease;
+}
+
+.home-cta a:hover,
+.products-cta a:hover {
+  color: var(--en-gold);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #luxuryHeader .header-inner {
+    width: calc(100% - 44px) !important;
+    height: 76px !important;
+  }
+
+  #luxuryHeader .site-logo img {
+    width: 108px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .products-hero,
+  .hero {
+    min-height: 85vh;
+
+    padding:
+      140px 28px 70px;
+  }
+
+  .products-hero h1,
+  .hero h1 {
+    font-size: clamp(48px, 13vw, 70px);
+  }
+
+  .products-hero > p:last-child,
+  .hero-text {
+    font-size: 15px;
+  }
+
+  .home-intro,
+  .home-markets {
+    width: calc(100% - 56px);
+
+    padding: 80px 0;
+
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .products-overview,
+  .product-grid {
+    width: calc(100% - 56px);
+
+    padding: 70px 0;
+
+    grid-template-columns: 1fr;
+
+    background: transparent;
+
+    gap: 12px;
+  }
+
+  .product-card {
+    min-height: 330px;
+  }
+
+  .home-cta,
+  .products-cta {
+    padding: 90px 28px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+}
