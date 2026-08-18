@@ -596,3 +596,185 @@ main {
   }
 
 }
+/* =========================================================
+   ENGLISH PRODUCTS — FINAL OVERRIDE
+   Must load after products.css
+========================================================= */
+
+html body {
+  background: #08100f !important;
+  color: #f4f1ea !important;
+}
+
+/* ---------- HEADER ---------- */
+
+#luxuryHeader {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+
+  z-index: 99999 !important;
+
+  pointer-events: none !important;
+}
+
+#luxuryHeader .header-inner {
+  width: min(1400px, calc(100% - 96px)) !important;
+  height: 92px !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+#luxuryHeader .site-logo {
+  pointer-events: auto !important;
+}
+
+#luxuryHeader #menuToggleBtn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  z-index: 100000 !important;
+}
+
+/* ---------- MENU LINES ---------- */
+
+#luxuryHeader #menuToggleBtn span {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ---------- OPEN X ---------- */
+
+body.nav-open #luxuryHeader #menuToggleBtn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1),
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+
+/* =========================================================
+   PRODUCT PAGE — REMOVE OLD TEMPLATE FEEL
+========================================================= */
+
+.products-page,
+.product-page,
+main {
+  background: transparent !important;
+}
+
+
+/* Hero */
+
+.products-hero {
+  position: relative !important;
+
+  min-height: 85vh !important;
+
+  padding:
+    170px
+    max(48px, calc((100vw - 1400px) / 2))
+    90px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(201,169,97,.10),
+      transparent 32%
+    ),
+    #08100f !important;
+}
+
+.products-hero h1 {
+  max-width: 1000px !important;
+
+  margin: 0 !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: clamp(58px, 7vw, 110px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: .92 !important;
+
+  letter-spacing: -.045em !important;
+
+  color: #f4f1ea !important;
+}
+
+.products-hero p {
+  max-width: 620px !important;
+
+  margin-top: 30px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 16px !important;
+
+  line-height: 1.75 !important;
+
+  color: rgba(244,241,234,.62) !important;
+}
+
+
+/* =========================================================
+   POINTER
+========================================================= */
+
+a,
+button,
+#menuToggleBtn,
+.product-card,
+.nav-overlay-links a {
+  cursor: pointer !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #luxuryHeader .header-inner {
+    width: calc(100% - 44px) !important;
+    height: 76px !important;
+  }
+
+  .products-hero {
+    min-height: 82vh !important;
+
+    padding:
+      140px 28px 70px !important;
+  }
+
+  .products-hero h1 {
+    font-size: clamp(48px, 13vw, 72px) !important;
+  }
+}
