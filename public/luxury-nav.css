@@ -386,3 +386,127 @@ body.nav-open #navOverlay .nav-overlay-links a {
   }
 
 }
+/* =========================================================
+   EMPERIO TISS — DESKTOP MENU BUTTON
+   Editorial 3-line menu / no hamburger icon
+========================================================= */
+
+@media (min-width: 701px) {
+
+  #luxuryHeader #menuToggleBtn {
+    position: relative !important;
+
+    width: 82px !important;
+    height: 42px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+
+    gap: 6px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+    background: transparent !important;
+
+    cursor: pointer !important;
+  }
+
+  /* Three elegant lines */
+  #luxuryHeader #menuToggleBtn span {
+    display: block !important;
+
+    height: 1px !important;
+
+    background: currentColor !important;
+
+    transform-origin: right center !important;
+
+    transition:
+      width .45s cubic-bezier(.22,1,.36,1),
+      opacity .3s ease,
+      transform .4s cubic-bezier(.22,1,.36,1) !important;
+  }
+
+  #luxuryHeader #menuToggleBtn span:nth-child(1) {
+    width: 42px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn span:nth-child(2) {
+    width: 30px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn span:nth-child(3) {
+    width: 18px !important;
+  }
+
+
+  /* Hover */
+  #luxuryHeader #menuToggleBtn:hover span:nth-child(1) {
+    width: 30px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn:hover span:nth-child(2) {
+    width: 42px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn:hover span:nth-child(3) {
+    width: 26px !important;
+  }
+
+
+  /* =======================================================
+     OPEN STATE
+     Do NOT transform into X.
+     Keep the three-line identity but fade them out.
+  ======================================================= */
+
+  body.nav-open #luxuryHeader #menuToggleBtn span {
+    opacity: 0 !important;
+
+    transform: translateX(12px) !important;
+  }
+
+
+  /* =======================================================
+     MENU LABEL
+  ======================================================= */
+
+  #luxuryHeader #menuToggleBtn::before {
+
+    content: "MENU";
+
+    position: absolute;
+
+    right: 0;
+    bottom: -17px;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 8px;
+    font-weight: 500;
+
+    letter-spacing: .22em;
+
+    color: currentColor;
+
+    opacity: .65;
+
+    transition:
+      opacity .3s ease,
+      letter-spacing .3s ease;
+  }
+
+  #luxuryHeader #menuToggleBtn:hover::before {
+    opacity: 1;
+    letter-spacing: .28em;
+  }
+
+  body.nav-open #luxuryHeader #menuToggleBtn::before {
+    content: "CLOSE";
+  }
+
+}
