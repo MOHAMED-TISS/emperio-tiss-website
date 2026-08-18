@@ -42,11 +42,11 @@
 #luxuryHeader .header-inner {
   position: relative !important;
 
-  width: 100% !important;
+  width: min(100% - 96px, 1400px) !important;
   height: 92px !important;
 
-  padding: 0 64px !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
 
   box-sizing: border-box !important;
 
