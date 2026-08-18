@@ -1,203 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Company — EMPERIO TISS</title>
-
-  <meta
-    name="description"
-    content="Learn about EMPERIO TISS, a Madrid-based international food trading company connecting seafood, produce and global markets."
-  >
-
+  <meta name="description" content="Learn about EMPERIO TISS, a Madrid-based international food trading company connecting seafood, produce and global markets.">
   <link rel="stylesheet" href="../../../style.css">
   <link rel="stylesheet" href="../../../luxury-nav.css">
 </head>
-
-<body>
-
+<body class="en-page">
 <div id="pageCurtain" class="is-hidden"></div>
-
-<header id="luxuryHeader">
+<header id="luxuryHeader" class="site-header">
   <div class="header-inner">
-
-    <a href="/en/" class="site-logo" aria-label="EMPERIO TISS">
-      <img src="../../../logo.png" alt="EMPERIO TISS">
-    </a>
-
-    <button
-      id="menuToggleBtn"
-      type="button"
-      aria-label="Open menu"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
+    <a href="/en/" class="site-logo" aria-label="EMPERIO TISS Home"><img src="../../../logo.png" alt="EMPERIO TISS"></a>
+    <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
   </div>
 </header>
-
-
-<nav id="navOverlay" aria-label="Main navigation">
-
-  <div class="nav-overlay-links">
-
-    <a href="/en/">
-      <span class="idx">01</span>
-      <span>Home</span>
-    </a>
-
-    <a href="/en/about/" class="active">
-      <span class="idx">02</span>
-      <span>Company</span>
-    </a>
-
-    <a href="/en/products/">
-      <span class="idx">03</span>
-      <span>Products</span>
-    </a>
-
-    <a href="/en/markets/">
-      <span class="idx">04</span>
-      <span>Markets</span>
-    </a>
-
-    <a href="/en/contact/">
-      <span class="idx">05</span>
-      <span>Contact</span>
-    </a>
-
+<div id="navOverlay" class="nav-overlay" aria-hidden="true">
+  <div class="nav-overlay-inner">
+    <nav class="nav-overlay-links" aria-label="Main navigation">
+      <a href="/en/"><span class="idx">01</span><span>Home</span></a>
+      <a href="/en/about/" class="active" aria-current="page"><span class="idx">02</span><span>Company</span></a>
+      <a href="/en/products/"><span class="idx">03</span><span>Products</span></a>
+      <a href="/en/markets/"><span class="idx">04</span><span>Markets</span></a>
+      <a href="/en/contact/"><span class="idx">05</span><span>Contact</span></a>
+    </nav>
+    <aside class="nav-overlay-side"><div class="nav-overlay-brand"><strong>EMPERIO TISS S.L.</strong><span>SEAFOOD · FRUITS &amp; VEGETABLES · GLOBAL MARKETS</span><span>MADRID · SPAIN</span></div></aside>
+    <div class="nav-overlay-foot"><div class="nav-overlay-lang" aria-label="Languages"><a href="/en/" class="current">EN</a><span class="language-separator">·</span><a href="/">ES</a><span class="language-separator">·</span><a href="/fr/">FR</a><span class="language-separator">·</span><a href="/ar/">AR</a></div><div class="nav-overlay-contact"><a href="/en/contact/">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span></div></div>
   </div>
-
-  <div class="nav-overlay-foot">
-    <div>
-      <span>EN</span>
-      <span>ES</span>
-      <span>FR</span>
-      <span>AR</span>
-    </div>
-  </div>
-
-</nav>
-
-
+</div>
 <main class="about-page">
-
-  <section class="products-hero">
-
-    <p class="eyebrow">
-      EMPERIO TISS · COMPANY
-    </p>
-
-    <h1>
-      Connecting supply<br>
-      with opportunity.
-    </h1>
-
-    <p>
-      EMPERIO TISS is a Madrid-based international
-      food trading company focused on seafood,
-      fruits and vegetables and selected seasonal products.
-    </p>
-
-  </section>
-
-
-  <section class="home-intro">
-
-    <div>
-
-      <p class="eyebrow">
-        OUR ROLE
-      </p>
-
-      <h2>
-        We connect markets,
-        not just products.
-      </h2>
-
-    </div>
-
-    <div>
-
-      <p>
-        International food trade depends on more than
-        finding a product. It requires understanding
-        supply, timing, specifications, logistics and
-        the needs of the destination market.
-      </p>
-
-      <p>
-        EMPERIO TISS works across these points to create
-        practical connections between suppliers and
-        professional buyers.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <section class="home-markets">
-
-    <div>
-
-      <p class="eyebrow">
-        OUR APPROACH
-      </p>
-
-      <h2>
-        Sourcing.<br>
-        Coordination.<br>
-        Distribution.
-      </h2>
-
-    </div>
-
-    <div>
-
-      <p>
-        We focus on reliable commercial relationships,
-        clear specifications and coordinated supply.
-      </p>
-
-      <p>
-        Our position in Madrid provides a strategic
-        connection between European markets and
-        suppliers across the Mediterranean, Africa
-        and neighbouring regions.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <section class="home-cta">
-
-    <p class="eyebrow">
-      WORK WITH US
-    </p>
-
-    <h2>
-      Let's build the right
-      supply connection.
-    </h2>
-
-    <a href="/en/contact/">
-      Contact EMPERIO TISS →
-    </a>
-
-  </section>
-
+  <section class="products-hero"><p class="eyebrow">EMPERIO TISS · COMPANY</p><h1>Connecting supply<br>with opportunity.</h1><p>EMPERIO TISS is a Madrid-based international food trading company focused on seafood, fruits and vegetables and selected seasonal products.</p></section>
+  <section class="home-intro"><div><p class="eyebrow">OUR ROLE</p><h2>We connect markets, not just products.</h2></div><div><p>International food trade depends on more than finding a product. It requires understanding supply, timing, specifications, logistics and the needs of the destination market.</p><p>EMPERIO TISS works across these points to create practical connections between suppliers and professional buyers.</p></div></section>
+  <section class="home-markets"><div><p class="eyebrow">OUR APPROACH</p><h2>Sourcing.<br>Coordination.<br>Distribution.</h2></div><div><p>We focus on reliable commercial relationships, clear specifications and coordinated supply.</p><p>Our position in Madrid provides a strategic connection between European markets and suppliers across the Mediterranean, Africa and neighbouring regions.</p></div></section>
+  <section class="home-cta"><p class="eyebrow">WORK WITH US</p><h2>Let's build the right supply connection.</h2><a href="/en/contact/">Contact EMPERIO TISS →</a></section>
 </main>
-
-
 <script src="../../../luxury-nav.js" defer></script>
-
 </body>
 </html>
