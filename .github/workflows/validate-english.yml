@@ -1,0 +1,64 @@
+name: Validate English site
+
+on:
+  pull_request:
+    paths:
+      - 'public/en/**'
+      - 'public/luxury-nav.js'
+      - 'public/luxury-nav.css'
+      - 'public/products.css'
+      - '.github/workflows/validate-english.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/en/**'
+      - 'public/luxury-nav.js'
+      - 'public/luxury-nav.css'
+      - 'public/products.css'
+
+jobs:
+  english-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate English HTML structure and local routes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          from urllib.parse import urlparse
+
+          root = Path('public')
+          pages = sorted((root / 'en').rglob('*.html'))
+          expected = {
+              'index.html',
+              'about/index.html',
+              'contact/index.html',
+              'markets/index.html',
+              'products/index.html',
+              'products/seafood.html',
+              'products/fruits-vegetables.html',
+              'products/seasonal.html',
+          }
+          actual = {p.relative_to(root / 'en').as_posix() for p in pages}
+          assert actual == expected, f'English route set mismatch: {sorted(actual)}'
+
+          for page in pages:
+              text = page.read_text(encoding='utf-8')
+              assert '<html lang="en">' in text, f'{page}: missing lang=en'
+              assert '<body class="en-page">' in text, f'{page}: missing body.en-page'
+              assert text.count('id="menuToggleBtn"') == 1, f'{page}: menu button count'
+              assert text.count('id="navOverlay"') == 1, f'{page}: nav overlay count'
+              assert text.count('luxury-nav.js') == 1, f'{page}: navigation script count'
+              for href in re.findall(r'(?:href|src)="([^"]+)"', text):
+                  if href.startswith(('http://', 'https://', 'mailto:', 'tel:', '#', '//')):
+                      continue
+                  clean = href.split('#', 1)[0].split('?', 1)[0]
+                  target = (page.parent / clean).resolve() if not clean.startswith('/') else (root / clean.lstrip('/')).resolve()
+                  assert target.exists(), f'{page}: missing local target {href} -> {target}'
+
+          css = (root / 'en' / 'en.css').read_text(encoding='utf-8')
+          assert '.en-hero' in css and '.en-card' in css and '.en-footer' in css
+          assert '../products/images/seafood/seafood-hero.jpg' in css
+          print(f'Validated {len(pages)} English pages, local assets/routes, navigation hooks and shared CSS.')
+          PY
