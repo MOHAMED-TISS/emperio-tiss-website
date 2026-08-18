@@ -778,3 +778,393 @@ button,
     font-size: clamp(48px, 13vw, 72px) !important;
   }
 }
+/* =========================================================
+   EN PRODUCTS — FRUITS & VEGETABLES
+   FINAL PAGE SCOPE
+========================================================= */
+
+body:has(.en-products-page) {
+  background: #08100f !important;
+}
+
+
+/* =========================================================
+   HEADER — CENTERED CONTENT
+========================================================= */
+
+body:has(.en-products-page) #luxuryHeader .header-inner {
+  width: min(1400px, calc(100% - 96px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.en-products-page .products-hero {
+
+  width: 100% !important;
+  min-height: 88vh !important;
+
+  margin: 0 !important;
+
+  padding:
+    170px
+    max(48px, calc((100vw - 1400px) / 2))
+    110px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(201,169,97,.10),
+      transparent 34%
+    ),
+    #08100f !important;
+}
+
+
+.en-products-page .products-hero .eyebrow {
+  margin: 0 0 28px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 10px !important;
+
+  letter-spacing: .22em !important;
+
+  color: #c9a961 !important;
+}
+
+
+.en-products-page .products-hero h1 {
+
+  max-width: 1050px !important;
+
+  margin: 0 !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: clamp(60px, 7vw, 112px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: .90 !important;
+
+  letter-spacing: -.045em !important;
+
+  color: #f4f1ea !important;
+}
+
+
+.en-products-page .hero-description {
+
+  max-width: 620px !important;
+
+  margin: 36px 0 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 16px !important;
+
+  line-height: 1.8 !important;
+
+  color: rgba(244,241,234,.60) !important;
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.en-products-page .products-overview {
+
+  width: 100% !important;
+
+  margin: 0 !important;
+
+  padding:
+    0
+    max(48px, calc((100vw - 1400px) / 2))
+    120px !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 1px !important;
+
+  background: #18201e !important;
+}
+
+
+.en-products-page .product-card {
+
+  min-height: 430px !important;
+
+  margin: 0 !important;
+
+  padding: 42px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  justify-content: space-between !important;
+
+  background: #0d1715 !important;
+
+  border: 0 !important;
+
+  border-radius: 0 !important;
+
+  transition:
+    background .4s ease,
+    transform .45s cubic-bezier(.22,1,.36,1) !important;
+}
+
+
+.en-products-page .product-card:hover {
+
+  background: #13201d !important;
+
+  transform: translateY(-8px) !important;
+
+  cursor: pointer !important;
+}
+
+
+.en-products-page .product-number {
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  letter-spacing: .18em !important;
+
+  color: #c9a961 !important;
+}
+
+
+.en-products-page .product-card-content {
+  margin-top: auto !important;
+}
+
+
+.en-products-page .product-card h2 {
+
+  margin: 0 0 20px !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: clamp(34px, 3vw, 48px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: -.03em !important;
+
+  color: #f4f1ea !important;
+}
+
+
+.en-products-page .product-card p {
+
+  max-width: 360px !important;
+
+  margin: 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.75 !important;
+
+  color: rgba(244,241,234,.52) !important;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.en-products-page .products-cta {
+
+  min-height: 70vh !important;
+
+  margin: 0 !important;
+
+  padding:
+    130px
+    max(48px, calc((100vw - 1400px) / 2)) !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  justify-content: center !important;
+
+  background:
+    radial-gradient(
+      circle at 70% 45%,
+      rgba(201,169,97,.09),
+      transparent 35%
+    ),
+    #08100f !important;
+
+  border-top: 1px solid rgba(244,241,234,.12) !important;
+}
+
+
+.en-products-page .products-cta h2 {
+
+  max-width: 900px !important;
+
+  margin: 0 !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: clamp(48px, 6vw, 88px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: .95 !important;
+
+  letter-spacing: -.04em !important;
+
+  color: #f4f1ea !important;
+}
+
+
+.en-products-page .cta-description {
+
+  max-width: 560px !important;
+
+  margin: 30px 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 15px !important;
+
+  line-height: 1.8 !important;
+
+  color: rgba(244,241,234,.55) !important;
+}
+
+
+.en-products-page .cta-link {
+
+  width: fit-content !important;
+
+  padding-bottom: 9px !important;
+
+  border-bottom: 1px solid #c9a961 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 10px !important;
+
+  letter-spacing: .16em !important;
+
+  text-transform: uppercase !important;
+
+  color: #f4f1ea !important;
+
+  cursor: pointer !important;
+
+  transition:
+    color .3s ease,
+    border-color .3s ease !important;
+}
+
+
+.en-products-page .cta-link:hover {
+
+  color: #c9a961 !important;
+
+  border-color: #e4c98a !important;
+}
+
+
+.en-products-page .cta-link span {
+
+  margin-left: 12px !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  body:has(.en-products-page)
+  #luxuryHeader .header-inner {
+
+    width: calc(100% - 44px) !important;
+
+    height: 76px !important;
+  }
+
+
+  .en-products-page .products-hero {
+
+    min-height: 82vh !important;
+
+    padding:
+      140px 28px 80px !important;
+  }
+
+
+  .en-products-page .products-hero h1 {
+
+    font-size:
+      clamp(48px, 13vw, 72px) !important;
+  }
+
+
+  .en-products-page .products-overview {
+
+    padding:
+      0 28px 80px !important;
+
+    grid-template-columns: 1fr !important;
+
+    background: #08100f !important;
+
+    gap: 10px !important;
+  }
+
+
+  .en-products-page .product-card {
+
+    min-height: 330px !important;
+
+    padding: 32px !important;
+  }
+
+
+  .en-products-page .products-cta {
+
+    min-height: 70vh !important;
+
+    padding: 90px 28px !important;
+  }
+
+}
