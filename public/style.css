@@ -2227,270 +2227,264 @@ button:focus {
 
 }
 /* =========================================================
-   EMPERIO TISS
-   PREMIUM LIGHT GLASS HEADER
+   EMPERIO TISS — NEW EDITORIAL HEADER
+   Luxury / Mediterranean / International
 ========================================================= */
 
 .site-header {
   position: absolute !important;
-  top: 20px !important;
+  top: 0 !important;
   left: 0 !important;
   width: 100% !important;
+  height: auto !important;
 
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 
-  z-index: 1000 !important;
+  z-index: 9999 !important;
 }
 
 
 /* =========================================================
-   GLASS
+   HEADER INNER
 ========================================================= */
 
 .site-header .header-inner {
   position: relative !important;
 
-  width: min(1320px, calc(100% - 80px)) !important;
-  height: 72px !important;
+  width: calc(100% - 96px) !important;
+  max-width: 1500px !important;
+
+  height: 94px !important;
 
   margin: 0 auto !important;
-  padding: 0 24px !important;
+  padding: 0 !important;
 
   display: flex !important;
   align-items: center !important;
 
+  border-bottom: 1px solid rgba(255,255,255,.18) !important;
+
   background:
     linear-gradient(
-      110deg,
-      rgba(246, 243, 235, 0.72),
-      rgba(235, 231, 219, 0.48),
-      rgba(220, 210, 188, 0.42)
+      180deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015)
     ) !important;
 
-  border: 1px solid rgba(255,255,255,.72) !important;
-
-  border-radius: 14px !important;
-
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.13),
-    inset 0 1px 0 rgba(255,255,255,.85),
-    inset 0 -1px 0 rgba(120,100,65,.08) !important;
-
-  backdrop-filter:
-    blur(20px)
-    saturate(125%) !important;
-
-  -webkit-backdrop-filter:
-    blur(20px)
-    saturate(125%) !important;
-
-  overflow: hidden !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
 }
 
 
 /* =========================================================
-   SUBTLE WATER REFLECTION
-========================================================= */
-
-.site-header .header-inner::before {
-  content: "" !important;
-
-  position: absolute !important;
-
-  top: -55px !important;
-  left: 8% !important;
-
-  width: 84% !important;
-  height: 80px !important;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(255,255,255,.48) 0%,
-      rgba(255,255,255,.15) 42%,
-      transparent 72%
-    ) !important;
-
-  transform: rotate(-2deg) !important;
-
-  pointer-events: none !important;
-}
-
-
-/* =========================================================
-   LOGO
+   LOGO — LEFT
 ========================================================= */
 
 .site-header .site-logo {
   position: relative !important;
-  z-index: 2 !important;
-
-  flex-shrink: 0 !important;
-}
-
-.site-header .site-logo img {
-  width: 142px !important;
-  height: auto !important;
-
-  display: block !important;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.site-header .main-nav {
-  position: relative !important;
-  z-index: 2 !important;
-
-  margin-left: auto !important;
+  z-index: 5 !important;
 
   display: flex !important;
   align-items: center !important;
 
-  gap: 27px !important;
+  width: 190px !important;
+}
+
+
+/* If logo is dark, make it light */
+
+.site-header .site-logo img {
+  width: 145px !important;
+  height: auto !important;
+
+  display: block !important;
+
+  filter:
+    brightness(0)
+    invert(1)
+    drop-shadow(0 2px 5px rgba(0,0,0,.25)) !important;
+
+  opacity: .96 !important;
+}
+
+
+/* =========================================================
+   NAVIGATION — CENTER
+========================================================= */
+
+.site-header .main-nav {
+  position: absolute !important;
+
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 34px !important;
+
+  white-space: nowrap !important;
 }
 
 
 .site-header .main-nav > a {
   position: relative !important;
 
-  color: #25241f !important;
+  color: rgba(255,255,255,.86) !important;
 
   background: transparent !important;
+  border: none !important;
+
+  padding: 8px 0 !important;
 
   font-family: "DM Sans", sans-serif !important;
 
   font-size: 10px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 
-  letter-spacing: .115em !important;
-
+  letter-spacing: .16em !important;
   text-transform: uppercase !important;
+
   text-decoration: none !important;
 
-  white-space: nowrap !important;
-
-  text-shadow:
-    0 1px 1px rgba(255,255,255,.7) !important;
-
   transition:
-    color .25s ease,
-    opacity .25s ease !important;
+    color .3s ease,
+    opacity .3s ease !important;
 }
 
 
 .site-header .main-nav > a:hover,
 .site-header .main-nav > a.active {
-  color: #997333 !important;
+  color: #dfc27e !important;
 }
 
 
-/* Remove old underline */
+/* elegant dot instead of underline */
 
 .site-header .main-nav > a::after {
-  display: none !important;
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 50% !important;
+  bottom: -8px !important;
+
+  width: 3px !important;
+  height: 3px !important;
+
+  border-radius: 50% !important;
+
+  background: #dfc27e !important;
+
+  opacity: 0 !important;
+
+  transform: translateX(-50%) !important;
+
+  transition: opacity .3s ease !important;
+}
+
+
+.site-header .main-nav > a:hover::after,
+.site-header .main-nav > a.active::after {
+  opacity: 1 !important;
 }
 
 
 /* =========================================================
-   LANGUAGES
+   LANGUAGE NAV
 ========================================================= */
 
 .site-header .language-nav {
   display: flex !important;
   align-items: center !important;
 
-  gap: 9px !important;
+  gap: 11px !important;
 
-  margin-left: 2px !important;
-  padding-left: 17px !important;
+  margin-left: 4px !important;
+  padding-left: 20px !important;
 
   border-left:
-    1px solid rgba(45,42,35,.20) !important;
+    1px solid rgba(255,255,255,.20) !important;
 }
 
 
 .site-header .language-nav a {
-  color: #625e55 !important;
-
-  font-family: "DM Sans", sans-serif !important;
+  color: rgba(255,255,255,.48) !important;
 
   font-size: 8px !important;
   font-weight: 600 !important;
 
-  letter-spacing: .08em !important;
+  letter-spacing: .12em !important;
 
   text-decoration: none !important;
+
+  transition: color .3s ease !important;
 }
 
 
-.site-header .language-nav a.current,
-.site-header .language-nav a:hover {
-  color: #997333 !important;
+.site-header .language-nav a:hover,
+.site-header .language-nav a.current {
+  color: #dfc27e !important;
 }
 
 
 /* =========================================================
-   CTA
+   CTA — RIGHT
 ========================================================= */
 
 .site-header .header-cta {
   position: relative !important;
-  z-index: 2 !important;
+  z-index: 5 !important;
+
+  margin-left: auto !important;
 
   display: flex !important;
   align-items: center !important;
-  gap: 9px !important;
+  gap: 13px !important;
 
-  margin-left: 20px !important;
+  padding: 12px 0 12px 20px !important;
 
-  padding: 11px 15px !important;
+  color: #dfc27e !important;
 
-  color: #3b301e !important;
+  background: transparent !important;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(222,196,139,.95),
-      rgba(194,157,88,.92)
-    ) !important;
+  border: none !important;
+  border-left: 1px solid rgba(223,194,126,.45) !important;
 
-  border:
-    1px solid rgba(255,255,255,.75) !important;
-
-  border-radius: 9px !important;
+  border-radius: 0 !important;
 
   font-family: "DM Sans", sans-serif !important;
 
-  font-size: 8px !important;
-  font-weight: 700 !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
 
-  letter-spacing: .105em !important;
-
+  letter-spacing: .15em !important;
   text-transform: uppercase !important;
 
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.65),
-    0 5px 14px rgba(90,65,25,.10) !important;
-
-  white-space: nowrap !important;
+  box-shadow: none !important;
 
   transition:
-    transform .25s ease,
-    box-shadow .25s ease !important;
+    color .3s ease,
+    padding-left .3s ease !important;
 }
 
 
 .site-header .header-cta:hover {
-  transform: translateY(-1px) !important;
+  color: #fff !important;
 
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.8),
-    0 8px 20px rgba(90,65,25,.16) !important;
+  background: transparent !important;
+
+  transform: none !important;
+
+  padding-left: 25px !important;
+}
+
+
+.site-header .header-cta strong {
+  font-size: 14px !important;
+  font-weight: 400 !important;
 }
 
 
@@ -2503,19 +2497,30 @@ button:focus {
    MOBILE
 ========================================================= */
 
-@media (max-width: 1050px) {
-
-  .site-header {
-    top: 12px !important;
-  }
+@media (max-width: 1100px) {
 
   .site-header .header-inner {
-    width: calc(100% - 32px) !important;
-    height: 66px !important;
+    width: calc(100% - 48px) !important;
+  }
 
-    padding: 0 18px !important;
+  .site-header .main-nav {
+    gap: 22px !important;
+  }
+}
 
-    border-radius: 12px !important;
+
+@media (max-width: 900px) {
+
+  .site-header .header-inner {
+    width: calc(100% - 36px) !important;
+    height: 78px !important;
+
+    border-bottom-color:
+      rgba(255,255,255,.14) !important;
+  }
+
+  .site-header .site-logo {
+    width: auto !important;
   }
 
   .site-header .site-logo img {
@@ -2526,32 +2531,35 @@ button:focus {
     display: none !important;
   }
 
-  .site-header .mobile-menu {
-    position: relative !important;
-    z-index: 5 !important;
+  .site-header .header-cta {
+    display: none !important;
+  }
 
+  .site-header .mobile-menu {
     display: flex !important;
 
-    width: 40px !important;
-    height: 40px !important;
+    margin-left: auto !important;
+
+    width: 42px !important;
+    height: 42px !important;
 
     align-items: center !important;
     justify-content: center !important;
     flex-direction: column !important;
     gap: 6px !important;
 
-    background: rgba(255,255,255,.25) !important;
+    background: rgba(255,255,255,.08) !important;
 
     border:
-      1px solid rgba(255,255,255,.55) !important;
+      1px solid rgba(255,255,255,.28) !important;
 
-    border-radius: 9px !important;
+    border-radius: 50% !important;
   }
 
   .site-header .mobile-menu span {
-    width: 19px !important;
+    width: 18px !important;
     height: 1px !important;
 
-    background: #5d492b !important;
+    background: #dfc27e !important;
   }
 }
