@@ -2227,201 +2227,159 @@ button:focus {
 
 }
 /* =========================================================
-   EMPERIO TISS — LUXURY HEADER OVERRIDE
-   Place at the END of style.css
+   EMPERIO TISS — FLOATING GLASS HEADER
 ========================================================= */
 
 .site-header {
   position: fixed !important;
-  top: 0 !important;
+  top: 22px !important;
   left: 0 !important;
   width: 100% !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
   z-index: 9999 !important;
 
-  background: #07151f !important;
-
-  border-bottom: 1px solid rgba(201, 169, 107, 0.28) !important;
-
-  box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.28) !important;
-
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  pointer-events: none !important;
 }
 
+
+/* GLASS CONTAINER */
+
 .site-header .header-inner {
-  height: 88px !important;
-  max-width: 1440px !important;
+  width: calc(100% - 48px) !important;
+  max-width: 1380px !important;
+
+  height: 76px !important;
+
   margin: 0 auto !important;
-  padding: 0 42px !important;
+  padding: 0 28px !important;
 
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
+
+  background: rgba(22, 22, 20, 0.72) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 12px 45px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+
+  backdrop-filter: blur(22px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(120%) !important;
+
+  pointer-events: auto !important;
 }
 
-/* LOGO */
 
-.site-header .site-logo {
-  display: flex !important;
-  align-items: center !important;
-}
+/* =========================================================
+   LOGO
+========================================================= */
 
 .site-header .site-logo img {
-  width: 155px !important;
-  height: auto !important;
-  display: block !important;
-  transition: opacity .3s ease, transform .3s ease !important;
+  width: 150px !important;
 }
 
-.site-header .site-logo:hover img {
-  opacity: .88 !important;
-  transform: translateY(-1px) !important;
-}
 
-/* NAV */
-
-.site-header .main-nav {
-  display: flex !important;
-  align-items: center !important;
-  gap: 32px !important;
-}
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .site-header .main-nav > a {
-  position: relative !important;
+  color: #ffffff !important;
 
-  color: rgba(255,255,255,.76) !important;
-  background: transparent !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
 
-  text-decoration: none !important;
+  letter-spacing: 0.13em !important;
 
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  letter-spacing: .13em !important;
-  text-transform: uppercase !important;
-
-  transition:
-    color .3s ease,
-    transform .3s ease !important;
+  text-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.35) !important;
 }
 
 .site-header .main-nav > a:hover,
 .site-header .main-nav > a.active {
-  color: #c9a96b !important;
+  color: #d8bc82 !important;
 }
 
-/* GOLD LINE */
+
+/* GOLD UNDERLINE */
 
 .site-header .main-nav > a::after {
-  content: "" !important;
-
-  position: absolute !important;
-  left: 0 !important;
-  bottom: -9px !important;
-
-  width: 0 !important;
-  height: 1px !important;
-
-  background: #c9a96b !important;
-
-  transition: width .35s ease !important;
+  background: #d8bc82 !important;
 }
 
-.site-header .main-nav > a:hover::after,
-.site-header .main-nav > a.active::after {
-  width: 100% !important;
-}
 
-/* LANGUAGE */
+/* =========================================================
+   LANGUAGES
+========================================================= */
 
 .site-header .language-nav {
-  display: flex !important;
-  align-items: center !important;
-  gap: 11px !important;
-
-  margin-left: 3px !important;
-  padding-left: 22px !important;
-
-  border-left: 1px solid rgba(255,255,255,.14) !important;
+  border-left: 1px solid rgba(255,255,255,.22) !important;
 }
 
 .site-header .language-nav a {
-  color: rgba(255,255,255,.42) !important;
+  color: rgba(255,255,255,.65) !important;
 
   font-size: 9px !important;
-  font-weight: 600 !important;
-  letter-spacing: .12em !important;
-
-  text-decoration: none !important;
-
-  transition: color .3s ease !important;
 }
 
 .site-header .language-nav a:hover,
 .site-header .language-nav a.current {
-  color: #c9a96b !important;
+  color: #d8bc82 !important;
 }
 
-/* CTA */
+
+/* =========================================================
+   CTA
+========================================================= */
 
 .site-header .header-cta {
-  display: flex !important;
-  align-items: center !important;
-  gap: 13px !important;
+  color: #151512 !important;
 
-  padding: 13px 19px !important;
+  background: #d8bc82 !important;
 
-  color: #07151f !important;
-  background: #c9a96b !important;
+  border: 1px solid #d8bc82 !important;
 
-  border: 1px solid #c9a96b !important;
+  font-weight: 700 !important;
 
-  font-size: 9px !important;
-  font-weight: 600 !important;
-  letter-spacing: .11em !important;
-  text-transform: uppercase !important;
-
-  transition:
-    background .3s ease,
-    color .3s ease,
-    transform .3s ease,
-    box-shadow .3s ease !important;
-}
-
-.site-header .header-cta::after {
-  display: none !important;
+  box-shadow:
+    0 5px 18px rgba(216,188,130,.14) !important;
 }
 
 .site-header .header-cta:hover {
+  color: #d8bc82 !important;
   background: transparent !important;
-  color: #c9a96b !important;
-
-  transform: translateY(-2px) !important;
-
-  box-shadow:
-    0 10px 30px rgba(201,169,107,.12) !important;
 }
 
-.site-header .header-cta strong {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-}
 
-/* MOBILE */
-
-.site-header .mobile-menu {
-  display: none !important;
-}
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 900px) {
 
+  .site-header {
+    top: 12px !important;
+  }
+
   .site-header .header-inner {
-    height: 76px !important;
-    padding: 0 22px !important;
+    width: calc(100% - 24px) !important;
+    height: 68px !important;
+
+    padding: 0 18px !important;
+
+    border-radius: 15px !important;
   }
 
   .site-header .site-logo img {
-    width: 135px !important;
+    width: 130px !important;
   }
 
   .site-header .main-nav {
@@ -2431,121 +2389,17 @@ button:focus {
   .site-header .mobile-menu {
     display: flex !important;
 
-    width: 44px !important;
-    height: 44px !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
-    gap: 6px !important;
+    width: 42px !important;
+    height: 42px !important;
 
     background: transparent !important;
-    border: 1px solid rgba(201,169,107,.35) !important;
+
+    border: 1px solid rgba(216,188,130,.45) !important;
+
+    border-radius: 10px !important;
   }
 
   .site-header .mobile-menu span {
-    width: 20px !important;
-    height: 1px !important;
-    background: #c9a96b !important;
+    background: #d8bc82 !important;
   }
-}
-/* =========================================================
-   EMPERIO TISS — REFINED LUXURY HEADER
-========================================================= */
-
-.site-header {
-  background: rgba(18, 18, 16, 0.82) !important;
-
-  border-bottom: 1px solid rgba(201, 169, 107, 0.18) !important;
-
-  box-shadow:
-    0 8px 35px rgba(0, 0, 0, 0.16) !important;
-
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-}
-
-
-/* HEADER INNER */
-
-.site-header .header-inner {
-  height: 86px !important;
-}
-
-
-/* NAVIGATION */
-
-.site-header .main-nav > a {
-  color: rgba(245, 242, 235, 0.72) !important;
-
-  font-size: 10px !important;
-  font-weight: 500 !important;
-
-  letter-spacing: 0.14em !important;
-
-  transition:
-    color .3s ease,
-    opacity .3s ease !important;
-}
-
-.site-header .main-nav > a:hover,
-.site-header .main-nav > a.active {
-  color: #d4b878 !important;
-}
-
-
-/* GOLD DETAIL */
-
-.site-header .main-nav > a::after {
-  background: #d4b878 !important;
-}
-
-
-/* LANGUAGES */
-
-.site-header .language-nav {
-  border-left: 1px solid rgba(245, 242, 235, 0.14) !important;
-}
-
-.site-header .language-nav a {
-  color: rgba(245, 242, 235, 0.38) !important;
-
-  font-size: 9px !important;
-}
-
-.site-header .language-nav a:hover,
-.site-header .language-nav a.current {
-  color: #d4b878 !important;
-}
-
-
-/* BUSINESS CTA */
-
-.site-header .header-cta {
-  color: #171612 !important;
-
-  background: #d4b878 !important;
-
-  border: 1px solid #d4b878 !important;
-
-  letter-spacing: 0.12em !important;
-}
-
-.site-header .header-cta:hover {
-  color: #d4b878 !important;
-
-  background: transparent !important;
-
-  border-color: #d4b878 !important;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-  .site-header {
-    background: rgba(18, 18, 16, 0.94) !important;
-  }
-
 }
