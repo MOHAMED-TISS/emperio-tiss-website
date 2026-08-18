@@ -958,3 +958,29 @@ body.nav-open {
     transition: none !important;
   }
 }
+/* =========================================================
+   FINAL — MENU POINTER FIX
+========================================================= */
+
+#luxuryHeader,
+#luxuryHeader .header-inner {
+  pointer-events: none !important;
+}
+
+#luxuryHeader .site-logo,
+#luxuryHeader #menuToggleBtn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+#luxuryHeader #menuToggleBtn span {
+  pointer-events: none !important;
+}
+
+#navOverlay {
+  cursor: default !important;
+}
+
+#navOverlay a {
+  cursor: pointer !important;
+}
