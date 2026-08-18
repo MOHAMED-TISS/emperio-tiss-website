@@ -1,486 +1,105 @@
 /* =========================================================
-   EMPERIO TISS
-   ENGLISH VISUAL SYSTEM
-   Clean / Editorial / Marine / B2B
-========================================================= */
-
-
-/* =========================================================
-   01 — ENGLISH VARIABLES
+   EMPERIO TISS — ENGLISH PAGES
+   Editorial / Marine / Premium
+   Scope: English pages only
 ========================================================= */
 
 :root {
-
-  --en-paper: #f2efe7;
-  --en-paper-soft: #e9e5da;
-
-  --en-ink: #111715;
-  --en-ink-soft: #26302d;
-
-  --en-muted: rgba(17, 23, 21, .58);
-  --en-faint: rgba(17, 23, 21, .36);
-
-  --en-line: rgba(17, 23, 21, .14);
-
-  --en-gold: #a8874e;
-  --en-gold-light: #c9a961;
-
-  --en-white: #f7f4ed;
-
-  --en-ease: cubic-bezier(.22, 1, .36, 1);
+  --en-bg: #eef3f1;
+  --en-surface: rgba(255,255,255,.58);
+  --en-ink: #10201c;
+  --en-muted: #63716d;
+  --en-line: rgba(16,32,28,.14);
+  --en-accent: #a88952;
 }
 
 
 /* =========================================================
-   02 — BASE
+   PAGE
 ========================================================= */
 
-html {
-  margin: 0;
-  padding: 0;
-  background: var(--en-paper);
+body {
+  background: var(--en-bg);
+  color: var(--en-ink);
 }
 
-body {
-  margin: 0;
-  padding: 0;
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.fruits-vegetables-page {
+  position: relative;
+  z-index: 1;
 
   min-height: 100vh;
 
-  overflow-x: hidden;
+  padding-top: 150px;
+}
 
-  background: var(--en-paper);
 
-  color: var(--en-ink);
+/* =========================================================
+   HERO
+========================================================= */
+
+.fruits-vegetables-page .products-hero {
+
+  width: min(1180px, calc(100% - 96px));
+
+  margin: 0 auto;
+
+  padding: 90px 0 120px;
+
+  border-bottom: 1px solid var(--en-line);
+}
+
+
+.fruits-vegetables-page .eyebrow {
+
+  margin: 0 0 24px;
 
   font-family: "DM Sans", sans-serif;
 
-  cursor: default;
-}
-
-
-/* links */
-
-body a {
-  color: inherit;
-  text-decoration: none;
-}
-
-
-/* real clickable elements */
-
-body a,
-body button {
-  cursor: pointer !important;
-}
-
-
-/* =========================================================
-   03 — HEADER
-   SAME POSITIONING SYSTEM AS HOME
-========================================================= */
-
-#luxuryHeader {
-
-  position: fixed !important;
-
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-
-  width: 100% !important;
-
-  height: auto !important;
-
-  background: transparent !important;
-
-  border: 0 !important;
-
-  box-shadow: none !important;
-
-  z-index: 99999 !important;
-
-  pointer-events: none !important;
-}
-
-
-#luxuryHeader .header-inner {
-
-  width:
-    min(
-      1400px,
-      calc(100% - 96px)
-    ) !important;
-
-  height: 92px !important;
-
-  margin: 0 auto !important;
-
-  padding: 0 !important;
-
-  box-sizing: border-box !important;
-
-  display: flex !important;
-
-  align-items: center !important;
-
-  justify-content: space-between !important;
-
-  background: transparent !important;
-}
-
-
-/* logo */
-
-#luxuryHeader .site-logo {
-
-  display: block !important;
-
-  position: relative !important;
-
-  pointer-events: auto !important;
-
-  cursor: pointer !important;
-
-  z-index: 100001 !important;
-}
-
-
-#luxuryHeader .site-logo img {
-
-  display: block !important;
-
-  width: 132px !important;
-
-  height: auto !important;
-}
-
-
-/* =========================================================
-   04 — MENU BUTTON
-   KEEP COMMON NAVIGATION BEHAVIOUR
-========================================================= */
-
-#luxuryHeader #menuToggleBtn {
-
-  position: relative !important;
-
-  width: 58px !important;
-  height: 58px !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  display: flex !important;
-
-  flex-direction: column !important;
-
-  align-items: center !important;
-  justify-content: center !important;
-
-  gap: 5px !important;
-
-  box-sizing: border-box !important;
-
-  background: rgba(17,23,21,.035) !important;
-
-  border:
-    1px solid rgba(17,23,21,.22) !important;
-
-  border-radius: 50% !important;
-
-  outline: none !important;
-
-  pointer-events: auto !important;
-
-  cursor: pointer !important;
-
-  z-index: 100002 !important;
-
-  transition:
-    background .35s ease,
-    border-color .35s ease,
-    transform .35s var(--en-ease) !important;
-}
-
-
-#luxuryHeader #menuToggleBtn:hover {
-
-  background:
-    rgba(168,135,78,.10) !important;
-
-  border-color:
-    var(--en-gold) !important;
-
-  transform:
-    scale(1.04) !important;
-}
-
-
-/* lines */
-
-#luxuryHeader #menuToggleBtn span {
-
-  display: block !important;
-
-  width: 27px !important;
-
-  height: 1px !important;
-
-  flex: 0 0 1px !important;
-
-  background:
-    var(--en-ink) !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  pointer-events: none !important;
-
-  transform-origin: center !important;
-
-  transition:
-    transform .4s var(--en-ease),
-    opacity .25s ease,
-    width .3s ease !important;
-}
-
-
-#luxuryHeader #menuToggleBtn span:nth-child(2) {
-
-  width: 19px !important;
-}
-
-
-/* =========================================================
-   05 — OPEN STATE
-   THREE LINES → X
-========================================================= */
-
-body.nav-open #luxuryHeader #menuToggleBtn {
-
-  background:
-    rgba(168,135,78,.10) !important;
-
-  border-color:
-    var(--en-gold) !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-}
-
-
-body.nav-open #luxuryHeader #menuToggleBtn span {
-
-  position: absolute !important;
-
-  width: 28px !important;
-
-  background:
-    var(--en-ink) !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-}
-
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
-
-  transform:
-    rotate(45deg) !important;
-}
-
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
-
-  opacity: 0 !important;
-
-  visibility: hidden !important;
-
-  transform:
-    scaleX(0) !important;
-}
-
-
-body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
-
-  transform:
-    rotate(-45deg) !important;
-}
-
-
-/* =========================================================
-   06 — MAIN
-========================================================= */
-
-.en-page,
-.en-products-page {
-
-  position: relative;
-
-  z-index: 1;
-
-  width: 100%;
-
-  min-height: 100vh;
-
-  background: var(--en-paper);
-}
-
-
-/* =========================================================
-   07 — FRUITS & VEGETABLES HERO
-========================================================= */
-
-.en-products-page .products-hero {
-
-  position: relative;
-
-  width: 100%;
-
-  min-height: 88vh;
-
-  margin: 0;
-
-  padding:
-    170px
-    max(48px, calc((100vw - 1400px) / 2))
-    100px;
-
-  box-sizing: border-box;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  overflow: hidden;
-
-  background:
-
-    radial-gradient(
-      circle at 82% 22%,
-      rgba(201,169,97,.16),
-      transparent 30%
-    ),
-
-    linear-gradient(
-      135deg,
-      #f2efe7 0%,
-      #eeeae0 100%
-    );
-}
-
-
-/* subtle marine detail */
-
-.en-products-page .products-hero::after {
-
-  content: "";
-
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  right: -180px;
-  bottom: -220px;
-
-  border:
-    1px solid rgba(37,70,65,.10);
-
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   08 — HERO EYEBROW
-========================================================= */
-
-.en-products-page .products-hero .eyebrow {
-
-  position: relative;
-
-  z-index: 2;
-
-  margin: 0 0 30px;
-
-  font-family:
-    "DM Sans",
-    sans-serif;
-
   font-size: 10px;
+  font-weight: 600;
 
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: .22em;
+  letter-spacing: .20em;
 
   text-transform: uppercase;
 
-  color: var(--en-gold);
+  color: var(--en-accent);
 }
 
 
-/* =========================================================
-   09 — HERO TITLE
-========================================================= */
+.fruits-vegetables-page .products-hero h1 {
 
-.en-products-page .products-hero h1 {
-
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 1050px;
+  max-width: 900px;
 
   margin: 0;
 
-  font-family:
-    "Playfair Display",
-    serif;
+  font-family: "Playfair Display", serif;
 
-  font-size:
-    clamp(58px, 7vw, 110px);
+  font-size: clamp(52px, 7vw, 104px);
 
   font-weight: 400;
 
-  line-height: .91;
+  line-height: .94;
 
-  letter-spacing: -.045em;
+  letter-spacing: -.035em;
 
   color: var(--en-ink);
 }
 
 
-/* =========================================================
-   10 — HERO DESCRIPTION
-========================================================= */
+.fruits-vegetables-page .products-hero > p:last-child {
 
-.en-products-page .products-hero p:last-child {
-
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 620px;
+  max-width: 590px;
 
   margin: 38px 0 0;
 
-  font-family:
-    "DM Sans",
-    sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 16px;
-
-  font-weight: 400;
 
   line-height: 1.8;
 
@@ -489,304 +108,165 @@ body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
 
 
 /* =========================================================
-   11 — PRODUCTS OVERVIEW
+   OVERVIEW
 ========================================================= */
 
-.en-products-page .products-overview {
+.fruits-vegetables-page .products-overview {
 
-  width: 100%;
+  width: min(1180px, calc(100% - 96px));
 
-  margin: 0;
+  margin: 0 auto;
 
-  padding:
-    0
-    max(48px, calc((100vw - 1400px) / 2))
-    120px;
-
-  box-sizing: border-box;
+  padding: 80px 0;
 
   display: grid;
 
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 1px;
-
-  background:
-    var(--en-line);
+  gap: 20px;
 }
 
 
 /* =========================================================
-   12 — PRODUCT CARD
+   PRODUCT CARDS
 ========================================================= */
 
-.en-products-page .product-card {
+.fruits-vegetables-page .product-card {
 
   position: relative;
 
-  min-height: 430px;
+  min-height: 300px;
 
-  margin: 0;
-
-  padding: 42px;
+  padding: 34px;
 
   box-sizing: border-box;
 
-  display: flex;
+  background: var(--en-surface);
 
-  flex-direction: column;
+  border: 1px solid var(--en-line);
 
-  justify-content: space-between;
-
-  background:
-    var(--en-paper-soft);
-
-  border: 0;
-
-  border-radius: 0;
-
-  cursor: default;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   transition:
-    background .45s ease,
-    transform .5s var(--en-ease);
+    transform .45s cubic-bezier(.22,1,.36,1),
+    background .35s ease,
+    border-color .35s ease;
 }
 
 
-.en-products-page .product-card:hover {
+.fruits-vegetables-page .product-card:hover {
 
-  background:
-    #e2ddd1;
+  transform: translateY(-8px);
 
-  transform:
-    translateY(-7px);
+  background: rgba(255,255,255,.78);
+
+  border-color: rgba(168,137,82,.42);
 }
 
 
-/* gold corner line */
-
-.en-products-page .product-card::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 0;
-  height: 1px;
-
-  background:
-    var(--en-gold);
-
-  transition:
-    width .5s var(--en-ease);
-}
-
-
-.en-products-page .product-card:hover::before {
-
-  width: 100%;
-}
-
-
-/* =========================================================
-   13 — PRODUCT NUMBER
-========================================================= */
-
-.en-products-page .product-number {
+.fruits-vegetables-page .product-number {
 
   display: block;
 
-  margin: 0;
+  margin-bottom: 70px;
 
-  font-family:
-    "DM Sans",
-    sans-serif;
-
-  font-size: 9px;
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: .18em;
-
-  color: var(--en-gold);
-}
-
-
-/* =========================================================
-   14 — CARD CONTENT
-========================================================= */
-
-.en-products-page .product-card-content {
-
-  margin-top: auto;
-}
-
-
-.en-products-page .product-card h2 {
-
-  margin: 0 0 20px;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(34px, 3vw, 48px);
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  letter-spacing: -.03em;
-
-  color: var(--en-ink);
-}
-
-
-.en-products-page .product-card p {
-
-  max-width: 360px;
-
-  margin: 0;
-
-  font-family:
-    "DM Sans",
-    sans-serif;
-
-  font-size: 14px;
-
-  line-height: 1.75;
-
-  color: var(--en-muted);
-}
-
-
-/* =========================================================
-   15 — CTA
-========================================================= */
-
-.en-products-page .products-cta {
-
-  position: relative;
-
-  min-height: 68vh;
-
-  margin: 0;
-
-  padding:
-    130px
-    max(48px, calc((100vw - 1400px) / 2));
-
-  box-sizing: border-box;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  overflow: hidden;
-
-  background:
-
-    radial-gradient(
-      circle at 76% 45%,
-      rgba(201,169,97,.13),
-      transparent 32%
-    ),
-
-    var(--en-paper);
-}
-
-
-/* =========================================================
-   16 — CTA EYEBROW
-========================================================= */
-
-.en-products-page .products-cta .eyebrow {
-
-  margin: 0 0 26px;
-
-  font-family:
-    "DM Sans",
-    sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   font-size: 10px;
 
-  font-weight: 500;
+  letter-spacing: .16em;
 
-  line-height: 1;
-
-  letter-spacing: .22em;
-
-  text-transform: uppercase;
-
-  color: var(--en-gold);
+  color: var(--en-accent);
 }
 
 
-/* =========================================================
-   17 — CTA TITLE
-========================================================= */
+.fruits-vegetables-page .product-card h2 {
 
-.en-products-page .products-cta h2 {
+  margin: 0 0 18px;
 
-  max-width: 900px;
+  font-family: "Playfair Display", serif;
 
-  margin: 0;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(48px, 6vw, 88px);
+  font-size: clamp(28px, 3vw, 42px);
 
   font-weight: 400;
 
-  line-height: .94;
-
-  letter-spacing: -.04em;
+  line-height: 1;
 
   color: var(--en-ink);
 }
 
 
-/* =========================================================
-   18 — CTA TEXT
-========================================================= */
+.fruits-vegetables-page .product-card p {
 
-.en-products-page .products-cta p:not(.eyebrow) {
+  max-width: 340px;
 
-  max-width: 560px;
+  margin: 0;
 
-  margin: 30px 0;
+  font-family: "DM Sans", sans-serif;
 
-  font-family:
-    "DM Sans",
-    sans-serif;
+  font-size: 14px;
 
-  font-size: 15px;
-
-  line-height: 1.8;
+  line-height: 1.7;
 
   color: var(--en-muted);
 }
 
 
 /* =========================================================
-   19 — CTA LINK
+   CTA
 ========================================================= */
 
-.en-products-page .products-cta a {
+.fruits-vegetables-page .products-cta {
 
-  width: fit-content;
+  width: min(1180px, calc(100% - 96px));
+
+  margin: 0 auto;
+
+  padding: 100px 0 140px;
+
+  border-top: 1px solid var(--en-line);
+}
+
+
+.fruits-vegetables-page .products-cta h2 {
+
+  max-width: 760px;
+
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(42px, 5vw, 72px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -.025em;
+
+  color: var(--en-ink);
+}
+
+
+.fruits-vegetables-page .products-cta > p:not(.eyebrow) {
+
+  max-width: 520px;
+
+  margin: 28px 0 34px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  color: var(--en-muted);
+}
+
+
+.fruits-vegetables-page .products-cta a {
 
   display: inline-flex;
 
@@ -794,272 +274,187 @@ body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
 
   gap: 12px;
 
-  padding-bottom: 9px;
+  padding-bottom: 8px;
 
-  border-bottom:
-    1px solid var(--en-gold);
+  border-bottom: 1px solid var(--en-accent);
 
-  font-family:
-    "DM Sans",
-    sans-serif;
+  font-family: "DM Sans", sans-serif;
 
-  font-size: 10px;
+  font-size: 12px;
 
-  font-weight: 500;
+  font-weight: 600;
 
-  line-height: 1;
-
-  letter-spacing: .16em;
+  letter-spacing: .08em;
 
   text-transform: uppercase;
+
+  text-decoration: none;
 
   color: var(--en-ink);
 
-  cursor: pointer !important;
-
   transition:
     color .3s ease,
-    border-color .3s ease;
+    gap .3s ease;
 }
 
 
-.en-products-page .products-cta a:hover {
+.fruits-vegetables-page .products-cta a:hover {
 
-  color:
-    var(--en-gold);
+  color: var(--en-accent);
 
-  border-color:
-    var(--en-gold-light);
+  gap: 18px;
 }
 
 
 /* =========================================================
-   20 — REAL PAGE FOOTER
+   FOOTER
+   Keep compatible with existing site footer
 ========================================================= */
 
-.en-products-page::after {
+.fruits-vegetables-page + footer,
+body > footer {
 
-  content:
-    "EMPERIO TISS S.L.  ·  SEAFOOD · FRUITS & VEGETABLES · GLOBAL MARKETS  ·  MADRID · SPAIN";
+  position: relative;
 
-  display: block;
+  z-index: 2;
 
   width: 100%;
 
-  padding:
-    28px
-    max(48px, calc((100vw - 1400px) / 2));
-
-  box-sizing: border-box;
-
-  border-top:
-    1px solid var(--en-line);
-
-  background:
-    var(--en-paper);
-
-  font-family:
-    "DM Sans",
-    sans-serif;
-
-  font-size: 8px;
-
-  font-weight: 400;
-
-  line-height: 1.6;
-
-  letter-spacing: .14em;
-
-  text-transform: uppercase;
-
-  color: var(--en-faint);
+  margin-top: 0;
 }
 
 
 /* =========================================================
-   21 — NAVIGATION OVERLAY
-   CONTENT REMAINS CONTROLLED BY luxury-nav.css
+   DO NOT MODIFY GLOBAL CURSOR
+=========================================================
+
+   Cursor / pointer is intentionally NOT defined here.
+   luxury-nav.css and style.css remain responsible for it.
+
 ========================================================= */
 
-#navOverlay {
-
-  cursor: default !important;
-}
-
-
-#navOverlay a {
-
-  cursor: pointer !important;
-}
-
 
 /* =========================================================
-   22 — LANGUAGE LINKS
+   TABLET
 ========================================================= */
 
-#navOverlay .language-switcher a {
+@media (max-width: 900px) {
 
-  cursor: pointer !important;
+  .fruits-vegetables-page .products-hero,
+  .fruits-vegetables-page .products-overview,
+  .fruits-vegetables-page .products-cta {
+
+    width: min(100% - 56px, 720px);
+  }
+
+
+  .fruits-vegetables-page .products-overview {
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+
+  .fruits-vegetables-page .product-card {
+
+    min-height: 240px;
+  }
+
+
+  .fruits-vegetables-page .product-number {
+
+    margin-bottom: 45px;
+  }
 }
 
 
 /* =========================================================
-   23 — PAGE CURTAIN
-========================================================= */
-
-#pageCurtain {
-
-  pointer-events: none !important;
-}
-
-
-/* =========================================================
-   24 — MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
 
+  .fruits-vegetables-page {
 
-  /* header */
-
-  #luxuryHeader .header-inner {
-
-    width:
-      calc(100% - 44px) !important;
-
-    height: 76px !important;
+    padding-top: 100px;
   }
 
 
-  #luxuryHeader .site-logo img {
+  .fruits-vegetables-page .products-hero,
+  .fruits-vegetables-page .products-overview,
+  .fruits-vegetables-page .products-cta {
 
-    width: 108px !important;
+    width: calc(100% - 40px);
   }
 
 
-  #luxuryHeader #menuToggleBtn {
+  .fruits-vegetables-page .products-hero {
 
-    width: 48px !important;
-    height: 48px !important;
+    padding: 65px 0 75px;
   }
 
 
-  #luxuryHeader #menuToggleBtn span {
+  .fruits-vegetables-page .products-hero h1 {
 
-    width: 22px !important;
+    font-size: clamp(44px, 13vw, 68px);
   }
 
 
-  #luxuryHeader #menuToggleBtn span:nth-child(2) {
+  .fruits-vegetables-page .products-hero > p:last-child {
 
-    width: 16px !important;
+    margin-top: 28px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
   }
 
 
-  /* hero */
+  .fruits-vegetables-page .products-overview {
 
-  .en-products-page .products-hero {
+    padding: 55px 0;
 
-    min-height: 82vh;
-
-    padding:
-      135px 28px 80px;
+    grid-template-columns: 1fr;
   }
 
 
-  .en-products-page .products-hero h1 {
+  .fruits-vegetables-page .product-card {
 
-    font-size:
-      clamp(48px, 13vw, 72px);
+    min-height: 230px;
 
-    line-height: .93;
+    padding: 28px;
   }
 
 
-  .en-products-page .products-hero p:last-child {
+  .fruits-vegetables-page .product-number {
 
-    max-width: 100%;
-
-    font-size: 15px;
+    margin-bottom: 45px;
   }
 
 
-  /* product grid */
+  .fruits-vegetables-page .products-cta {
 
-  .en-products-page .products-overview {
-
-    padding:
-      0 28px 80px;
-
-    grid-template-columns:
-      1fr;
-
-    gap: 8px;
-
-    background:
-      var(--en-paper);
+    padding: 70px 0 90px;
   }
 
 
-  .en-products-page .product-card {
+  .fruits-vegetables-page .products-cta h2 {
 
-    min-height: 330px;
-
-    padding: 32px;
-  }
-
-
-  .en-products-page .product-card h2 {
-
-    font-size:
-      clamp(34px, 10vw, 46px);
-  }
-
-
-  /* CTA */
-
-  .en-products-page .products-cta {
-
-    min-height: 65vh;
-
-    padding:
-      90px 28px;
-  }
-
-
-  .en-products-page .products-cta h2 {
-
-    font-size:
-      clamp(46px, 12vw, 68px);
-  }
-
-
-  /* footer */
-
-  .en-products-page::after {
-
-    padding:
-      24px 28px;
-
-    font-size: 7px;
-
-    letter-spacing: .11em;
+    font-size: clamp(40px, 11vw, 58px);
   }
 }
 
 
 /* =========================================================
-   25 — REDUCED MOTION
+   REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-  #luxuryHeader #menuToggleBtn,
-  #luxuryHeader #menuToggleBtn span,
-  .en-products-page .product-card,
-  .en-products-page .product-card::before,
-  .en-products-page .products-cta a {
+  .fruits-vegetables-page .product-card,
+  .fruits-vegetables-page .products-cta a {
 
-    transition: none !important;
+    transition: none;
   }
 }
