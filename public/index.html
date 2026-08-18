@@ -27,14 +27,14 @@
   >
 
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="header-emperio-tiss.css">
+  <link rel="stylesheet" href="luxury-nav.css">
 </head>
 
 
 <body>
 
 <!-- =========================================================
-     HEADER
+     HEADER — barra mínima + overlay de navegación
 ========================================================= -->
 
 <header class="site-header">
@@ -52,77 +52,46 @@
       >
     </a>
 
-
-    <nav class="main-nav" aria-label="Navegación principal">
-
-      <a
-        href="index.html"
-        class="active"
-      >
-        Inicio
-      </a>
-
-      <a href="about/about.html">
-        Empresa 
-      </a>
-
-      <a href="products/index.html">
-        Productos 
-      </a>
-
-      <a href="markets/markets.html">
-        Mercados 
-      </a>
-
-      <a href="contact/">
-        Contacto
-      </a>
-
-
-      <div class="language-nav">
-
-        <a
-          href="es/index.html"
-          class="current"
-        >
-          ES
-        </a>
-
-        <a href="index.html">
-          EN
-        </a>
-
-        <a href="fr/index.html">
-          FR
-        </a>
-
-        <a href="ar/index.html">
-          AR
-        </a>
-
-      </div>
-
-
-      <a
-        href="#contact"
-        class="header-cta"
-      >
-        <span>Consulta empresarial</span>
-        ↗
-      </a>
-
-    </nav>
-
-
     <button
       class="mobile-menu"
       type="button"
       aria-label="Abrir menú"
       aria-expanded="false"
+      aria-controls="navOverlay"
     >
       <span></span>
       <span></span>
     </button>
+
+  </div>
+
+
+  <!-- OVERLAY — pantalla completa, abre/cierra con luxury-nav.js -->
+  <div class="nav-overlay" id="navOverlay">
+
+    <nav class="nav-overlay-links" aria-label="Navegación principal">
+      <a href="index.html" class="active"><span class="idx">01</span> Inicio</a>
+      <a href="about/about.html"><span class="idx">02</span> Empresa</a>
+      <a href="products/index.html"><span class="idx">03</span> Productos</a>
+      <a href="markets/markets.html"><span class="idx">04</span> Mercados</a>
+      <a href="contact/"><span class="idx">05</span> Contacto</a>
+    </nav>
+
+    <div class="nav-overlay-foot">
+
+      <div class="nav-overlay-lang">
+        <a href="es/index.html" class="current">ES</a>
+        <a href="index.html">EN</a>
+        <a href="fr/index.html">FR</a>
+        <a href="ar/index.html">AR</a>
+      </div>
+
+      <div class="nav-overlay-contact">
+        <a href="#contact">Consulta empresarial ↗</a><br>
+        Madrid · Europa · África · Mediterráneo
+      </div>
+
+    </div>
 
   </div>
 
@@ -812,6 +781,7 @@
 </button>
 
 
+<script src="luxury-nav.js" defer></script>
 <script src="script.js"></script>
 
 </body>
