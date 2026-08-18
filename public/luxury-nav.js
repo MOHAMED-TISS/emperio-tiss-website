@@ -40,26 +40,65 @@
     return url.origin === window.location.origin;
   }
 
-  function initPageTransitions(curtain) {
-    document.addEventListener("click", function (e) {
-      var link = e.target.closest("a");
-      if (!link || !isInternalLink(link)) return;
+ function initPageTransitions(curtain) {
+  document.addEventListener("click", function (e) {
 
-      var url = new URL(link.href, window.location.href);
-      // no interceptar anclas dentro de la misma página (#contact, etc.)
-      if (url.pathname === window.location.pathname && url.hash) return;
+    var link = e.target.closest("a");
 
-      e.preventDefault();
+    if (!link || !isInternalLink(link)) return;
 
-      document.body.classList.remove("nav-open");
-      curtain.classList.remove("is-hidden");
-      curtain.classList.add("is-covering");
+    var url = new URL(link.href, window.location.href);
 
-      window.setTimeout(function () {
-        window.location.href = link.href;
-      }, CURTAIN_MS);
-    });
-  }
+    // No interceptar anclas de la misma página
+    if (
+      url.pathname === window.location.pathname &&
+      url.hash
+    ) {
+      return;
+    }
+
+    e.preventDefault();
+
+    /* =====================================================
+       CLOSE MENU FIRST
+    ===================================================== */
+
+    document.body.classList.remove("nav-open");
+
+    var menuButton =
+      document.getElementById("menuToggleBtn");
+
+    if (menuButton) {
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+    }
+
+
+    /* =====================================================
+       PAGE TRANSITION
+    ===================================================== */
+
+    curtain.classList.remove("is-hidden");
+    curtain.classList.add("is-covering");
+
+
+    /* =====================================================
+       NAVIGATE
+    ===================================================== */
+
+    window.setTimeout(function () {
+      window.location.href = link.href;
+    }, CURTAIN_MS);
+
+  });
+}
 
   /* ---------- 3. Overlay de navegación pantalla completa ---------- */
 
