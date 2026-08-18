@@ -779,34 +779,52 @@ button,
   }
 }
 /* =========================================================
-   EN PRODUCTS — FRUITS & VEGETABLES
-   FINAL PAGE SCOPE
+   EMPERIO TISS — ENGLISH
+   FRUITS & VEGETABLES
+   VISUAL OVERRIDE
+========================================================= */
+
+
+/* =========================================================
+   01 — PAGE
 ========================================================= */
 
 body:has(.en-products-page) {
-  background: #08100f !important;
+  background: #f3f0e8 !important;
+  color: #101513 !important;
 }
 
 
 /* =========================================================
-   HEADER — CENTERED CONTENT
+   02 — HEADER
 ========================================================= */
+
+body:has(.en-products-page) #luxuryHeader {
+  pointer-events: none !important;
+}
 
 body:has(.en-products-page) #luxuryHeader .header-inner {
   width: min(1400px, calc(100% - 96px)) !important;
+
   margin-left: auto !important;
   margin-right: auto !important;
+
   padding: 0 !important;
+}
+
+body:has(.en-products-page) #luxuryHeader .site-logo,
+body:has(.en-products-page) #luxuryHeader #menuToggleBtn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
 }
 
 
 /* =========================================================
-   HERO
+   03 — HERO
 ========================================================= */
 
 .en-products-page .products-hero {
 
-  width: 100% !important;
   min-height: 88vh !important;
 
   margin: 0 !important;
@@ -814,7 +832,7 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
   padding:
     170px
     max(48px, calc((100vw - 1400px) / 2))
-    110px !important;
+    100px !important;
 
   box-sizing: border-box !important;
 
@@ -824,26 +842,37 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   background:
     radial-gradient(
-      circle at 80% 25%,
-      rgba(201,169,97,.10),
-      transparent 34%
+      circle at 82% 22%,
+      rgba(201,169,97,.13),
+      transparent 30%
     ),
-    #08100f !important;
+    #f3f0e8 !important;
 }
 
 
+/* =========================================================
+   04 — EYEBROW
+========================================================= */
+
 .en-products-page .products-hero .eyebrow {
-  margin: 0 0 28px !important;
+
+  margin: 0 0 30px !important;
 
   font-family: "DM Sans", sans-serif !important;
 
   font-size: 10px !important;
 
+  font-weight: 500 !important;
+
   letter-spacing: .22em !important;
 
-  color: #c9a961 !important;
+  color: #9c7940 !important;
 }
 
+
+/* =========================================================
+   05 — HERO TITLE
+========================================================= */
 
 .en-products-page .products-hero h1 {
 
@@ -853,23 +882,27 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   font-family: "Playfair Display", serif !important;
 
-  font-size: clamp(60px, 7vw, 112px) !important;
+  font-size: clamp(58px, 7vw, 108px) !important;
 
   font-weight: 400 !important;
 
-  line-height: .90 !important;
+  line-height: .92 !important;
 
   letter-spacing: -.045em !important;
 
-  color: #f4f1ea !important;
+  color: #111715 !important;
 }
 
 
+/* =========================================================
+   06 — HERO TEXT
+========================================================= */
+
 .en-products-page .hero-description {
 
-  max-width: 620px !important;
+  max-width: 610px !important;
 
-  margin: 36px 0 0 !important;
+  margin: 38px 0 0 !important;
 
   font-family: "DM Sans", sans-serif !important;
 
@@ -877,17 +910,15 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   line-height: 1.8 !important;
 
-  color: rgba(244,241,234,.60) !important;
+  color: rgba(16,21,19,.62) !important;
 }
 
 
 /* =========================================================
-   PRODUCT GRID
+   07 — PRODUCT AREA
 ========================================================= */
 
 .en-products-page .products-overview {
-
-  width: 100% !important;
 
   margin: 0 !important;
 
@@ -896,8 +927,6 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
     max(48px, calc((100vw - 1400px) / 2))
     120px !important;
 
-  box-sizing: border-box !important;
-
   display: grid !important;
 
   grid-template-columns:
@@ -905,13 +934,17 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   gap: 1px !important;
 
-  background: #18201e !important;
+  background: rgba(16,21,19,.12) !important;
 }
 
 
+/* =========================================================
+   08 — PRODUCT CARD
+========================================================= */
+
 .en-products-page .product-card {
 
-  min-height: 430px !important;
+  min-height: 420px !important;
 
   margin: 0 !important;
 
@@ -925,27 +958,31 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   justify-content: space-between !important;
 
-  background: #0d1715 !important;
+  background: #ebe7dc !important;
 
   border: 0 !important;
 
   border-radius: 0 !important;
 
+  cursor: pointer !important;
+
   transition:
-    background .4s ease,
+    background .45s ease,
     transform .45s cubic-bezier(.22,1,.36,1) !important;
 }
 
 
 .en-products-page .product-card:hover {
 
-  background: #13201d !important;
+  background: #e4dfd1 !important;
 
-  transform: translateY(-8px) !important;
-
-  cursor: pointer !important;
+  transform: translateY(-6px) !important;
 }
 
+
+/* =========================================================
+   09 — NUMBER
+========================================================= */
 
 .en-products-page .product-number {
 
@@ -955,11 +992,16 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   letter-spacing: .18em !important;
 
-  color: #c9a961 !important;
+  color: #a78650 !important;
 }
 
 
+/* =========================================================
+   10 — CARD CONTENT
+========================================================= */
+
 .en-products-page .product-card-content {
+
   margin-top: auto !important;
 }
 
@@ -978,7 +1020,7 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   letter-spacing: -.03em !important;
 
-  color: #f4f1ea !important;
+  color: #111715 !important;
 }
 
 
@@ -994,17 +1036,17 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   line-height: 1.75 !important;
 
-  color: rgba(244,241,234,.52) !important;
+  color: rgba(16,21,19,.58) !important;
 }
 
 
 /* =========================================================
-   CTA
+   11 — CTA
 ========================================================= */
 
 .en-products-page .products-cta {
 
-  min-height: 70vh !important;
+  min-height: 65vh !important;
 
   margin: 0 !important;
 
@@ -1020,15 +1062,24 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   justify-content: center !important;
 
-  background:
-    radial-gradient(
-      circle at 70% 45%,
-      rgba(201,169,97,.09),
-      transparent 35%
-    ),
-    #08100f !important;
+  background: #f3f0e8 !important;
 
-  border-top: 1px solid rgba(244,241,234,.12) !important;
+  border-top:
+    1px solid rgba(16,21,19,.12) !important;
+}
+
+
+.en-products-page .products-cta .eyebrow {
+
+  margin: 0 0 25px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 10px !important;
+
+  letter-spacing: .22em !important;
+
+  color: #9c7940 !important;
 }
 
 
@@ -1048,7 +1099,7 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   letter-spacing: -.04em !important;
 
-  color: #f4f1ea !important;
+  color: #111715 !important;
 }
 
 
@@ -1064,27 +1115,38 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   line-height: 1.8 !important;
 
-  color: rgba(244,241,234,.55) !important;
+  color: rgba(16,21,19,.58) !important;
 }
 
+
+/* =========================================================
+   12 — CTA LINK
+========================================================= */
 
 .en-products-page .cta-link {
 
   width: fit-content !important;
 
+  display: inline-flex !important;
+  align-items: center !important;
+
   padding-bottom: 9px !important;
 
-  border-bottom: 1px solid #c9a961 !important;
+  border-bottom: 1px solid #a78650 !important;
 
   font-family: "DM Sans", sans-serif !important;
 
   font-size: 10px !important;
 
+  font-weight: 500 !important;
+
   letter-spacing: .16em !important;
 
   text-transform: uppercase !important;
 
-  color: #f4f1ea !important;
+  color: #111715 !important;
+
+  text-decoration: none !important;
 
   cursor: pointer !important;
 
@@ -1096,9 +1158,9 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
 .en-products-page .cta-link:hover {
 
-  color: #c9a961 !important;
+  color: #9c7940 !important;
 
-  border-color: #e4c98a !important;
+  border-color: #c9a961 !important;
 }
 
 
@@ -1109,7 +1171,54 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
 
 /* =========================================================
-   MOBILE
+   13 — REAL PAGE FOOTER
+========================================================= */
+
+.en-products-page::after {
+
+  content:
+    "EMPERIO TISS S.L.  ·  SEAFOOD · FRUITS & VEGETABLES · GLOBAL MARKETS  ·  MADRID · SPAIN";
+
+  display: block !important;
+
+  padding:
+    30px
+    max(48px, calc((100vw - 1400px) / 2)) !important;
+
+  border-top:
+    1px solid rgba(16,21,19,.12) !important;
+
+  box-sizing: border-box !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 8px !important;
+
+  letter-spacing: .14em !important;
+
+  text-transform: uppercase !important;
+
+  color: rgba(16,21,19,.42) !important;
+
+  background: #f3f0e8 !important;
+}
+
+
+/* =========================================================
+   14 — POINTER / INTERACTION
+========================================================= */
+
+.en-products-page a,
+.en-products-page button,
+.en-products-page .product-card,
+body:has(.en-products-page) #menuToggleBtn {
+
+  cursor: pointer !important;
+}
+
+
+/* =========================================================
+   15 — MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
@@ -1128,7 +1237,7 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
     min-height: 82vh !important;
 
     padding:
-      140px 28px 80px !important;
+      135px 28px 80px !important;
   }
 
 
@@ -1146,9 +1255,9 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
     grid-template-columns: 1fr !important;
 
-    background: #08100f !important;
+    background: transparent !important;
 
-    gap: 10px !important;
+    gap: 8px !important;
   }
 
 
@@ -1162,9 +1271,19 @@ body:has(.en-products-page) #luxuryHeader .header-inner {
 
   .en-products-page .products-cta {
 
-    min-height: 70vh !important;
+    min-height: 65vh !important;
 
-    padding: 90px 28px !important;
+    padding:
+      90px 28px !important;
+  }
+
+
+  .en-products-page::after {
+
+    padding:
+      25px 28px !important;
+
+    line-height: 1.8 !important;
   }
 
 }
