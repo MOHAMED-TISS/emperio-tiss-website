@@ -681,3 +681,209 @@ body {
     transition: none !important;
   }
 }
+/* =========================================================
+   FINAL — ENGLISH PAGE ISOLATION
+   Do not interfere with luxury navigation
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   POINTER
+--------------------------------------------------------- */
+
+.en-page,
+.en-page .en-products-page,
+.en-page .product-card,
+.en-page .products-hero,
+.en-page .products-overview,
+.en-page .products-cta,
+.en-page .site-footer {
+  cursor: default !important;
+}
+
+
+.en-page a,
+.en-page button,
+.en-page .cta-link,
+.en-page .language-switcher a {
+  cursor: pointer !important;
+}
+
+
+/* ---------------------------------------------------------
+   NAVIGATION — NEVER STYLE FROM EN.CSS
+--------------------------------------------------------- */
+
+.en-page #luxuryHeader,
+.en-page #luxuryHeader *,
+.en-page #navOverlay,
+.en-page #navOverlay *,
+.en-page #menuToggleBtn,
+.en-page #menuToggleBtn * {
+  cursor: auto;
+}
+
+
+/* The actual menu button */
+
+.en-page #menuToggleBtn {
+  cursor: pointer !important;
+}
+
+
+/* Navigation links */
+
+.en-page #navOverlay a {
+  cursor: pointer !important;
+}
+
+
+/* ---------------------------------------------------------
+   HEADER POSITION
+   EN.CSS must not move the header
+--------------------------------------------------------- */
+
+.en-page #luxuryHeader {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  transform: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   OVERLAY POSITION
+--------------------------------------------------------- */
+
+.en-page #navOverlay {
+  position: fixed !important;
+
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* ---------------------------------------------------------
+   IMPORTANT:
+   ENGLISH CONTENT MUST NEVER SIT ABOVE NAV
+--------------------------------------------------------- */
+
+.en-page .en-products-page,
+.en-page .site-footer {
+  z-index: 1 !important;
+}
+
+
+.en-page #luxuryHeader {
+  z-index: 9999 !important;
+}
+
+
+.en-page #navOverlay {
+  z-index: 9998 !important;
+}
+
+
+/* ---------------------------------------------------------
+   OPEN MENU
+--------------------------------------------------------- */
+
+.en-page.nav-open #navOverlay,
+body.nav-open #navOverlay {
+  pointer-events: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   X MUST REMAIN ABOVE EVERYTHING
+--------------------------------------------------------- */
+
+body.nav-open #luxuryHeader {
+  z-index: 10000 !important;
+}
+
+
+body.nav-open #luxuryHeader .header-inner {
+  z-index: 10001 !important;
+}
+
+
+body.nav-open #luxuryHeader #menuToggleBtn {
+  position: relative !important;
+
+  z-index: 10002 !important;
+
+  display: flex !important;
+
+  visibility: visible !important;
+
+  opacity: 1 !important;
+
+  pointer-events: auto !important;
+
+  cursor: pointer !important;
+}
+
+
+/* X — first */
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
+  position: absolute !important;
+
+  display: block !important;
+
+  width: 27px !important;
+  height: 1px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: rotate(45deg) !important;
+
+  background: #f4f1ea !important;
+}
+
+
+/* X — middle */
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+
+  transform: scaleX(0) !important;
+}
+
+
+/* X — third */
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
+  position: absolute !important;
+
+  display: block !important;
+
+  width: 27px !important;
+  height: 1px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: rotate(-45deg) !important;
+
+  background: #f4f1ea !important;
+}
