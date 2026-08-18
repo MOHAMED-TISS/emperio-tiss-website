@@ -11,10 +11,26 @@
   --en-max: 1240px;
 }
 
-.en-page { background: var(--en-bg) !important; color: var(--en-ivory) !important; overflow-x: hidden; cursor: auto !important; }
+/* Cursor behavior — applies to every English page and subpage */
+html,
+body,
+.en-page {
+  cursor: auto !important;
+}
+
+a,
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+select,
+summary,
+#menuToggleBtn {
+  cursor: pointer !important;
+}
+
 .en-page main { position: relative; z-index: 1; }
-.en-page a { color: inherit; cursor: pointer !important; }
-.en-page button { cursor: pointer !important; }
+.en-page a { color: inherit; }
 .en-page .site-header { z-index: 10000; }
 
 .en-hero { position: relative; min-height: min(860px, 100svh); display: flex; align-items: flex-end; padding: 170px max(28px, calc((100% - var(--en-max)) / 2)) 105px; box-sizing: border-box; overflow: hidden; background: radial-gradient(circle at 82% 28%, rgba(183,154,97,.16), transparent 28%), radial-gradient(circle at 12% 72%, rgba(31,91,79,.18), transparent 34%), linear-gradient(135deg, #08100f 0%, #0d1816 58%, #101d1a 100%); }
