@@ -510,3 +510,139 @@ body.nav-open #navOverlay .nav-overlay-links a {
   }
 
 }
+/* =========================================================
+   EMPERIO TISS — PREMIUM MENU BUTTON
+========================================================= */
+
+@media (min-width: 701px) {
+
+  #luxuryHeader #menuToggleBtn {
+    position: relative !important;
+
+    width: 54px !important;
+    height: 54px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 5px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+    outline: none !important;
+
+    background: transparent !important;
+
+    cursor: pointer !important;
+
+    z-index: 10001 !important;
+  }
+
+
+  /* THREE LINES */
+
+  #luxuryHeader #menuToggleBtn span {
+    display: block !important;
+
+    width: 30px !important;
+    height: 1px !important;
+
+    background: currentColor !important;
+
+    transform-origin: center !important;
+
+    transition:
+      transform .45s cubic-bezier(.22,1,.36,1),
+      opacity .25s ease,
+      width .35s ease !important;
+  }
+
+
+  /* subtle asymmetry */
+
+  #luxuryHeader #menuToggleBtn span:nth-child(1) {
+    width: 30px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn span:nth-child(2) {
+    width: 22px !important;
+  }
+
+  #luxuryHeader #menuToggleBtn span:nth-child(3) {
+    width: 30px !important;
+  }
+
+
+  /* HOVER */
+
+  #luxuryHeader #menuToggleBtn:hover span:nth-child(2) {
+    width: 30px !important;
+  }
+
+
+  /* =======================================================
+     OPEN → X
+  ======================================================= */
+
+  body.nav-open #luxuryHeader #menuToggleBtn {
+    gap: 0 !important;
+  }
+
+  body.nav-open #luxuryHeader #menuToggleBtn span {
+    width: 30px !important;
+    opacity: 1 !important;
+  }
+
+  body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
+    transform: translateY(1px) rotate(45deg) !important;
+  }
+
+  body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+
+  body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
+    transform: translateY(-1px) rotate(-45deg) !important;
+  }
+
+
+  /* =======================================================
+     SMALL MENU LABEL
+  ======================================================= */
+
+  #luxuryHeader #menuToggleBtn::after {
+    content: "MENU";
+
+    position: absolute;
+
+    top: calc(100% + 7px);
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 7px;
+    line-height: 1;
+
+    letter-spacing: .22em;
+
+    opacity: .55;
+
+    white-space: nowrap;
+
+    transition: opacity .3s ease;
+  }
+
+  body.nav-open #luxuryHeader #menuToggleBtn::after {
+    content: "CLOSE";
+    opacity: .8;
+  }
+
+}
