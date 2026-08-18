@@ -916,3 +916,80 @@ body.nav-open #navOverlay::after {
     transition: none !important;
   }
 }
+/* =========================================================
+   FINAL FIX — MENU BUTTON ALWAYS VISIBLE
+========================================================= */
+
+#luxuryHeader #menuToggleBtn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  pointer-events: auto !important;
+
+  z-index: 10001 !important;
+}
+
+/* CLOSED — 3 lines */
+
+#luxuryHeader #menuToggleBtn span {
+  display: block !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  background: var(--et-ivory) !important;
+
+  transition:
+    transform .35s ease,
+    opacity .2s ease,
+    width .25s ease !important;
+}
+
+
+/* OPEN — X */
+
+body.nav-open #luxuryHeader #menuToggleBtn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+}
+
+
+/* First line */
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
+  position: absolute !important;
+
+  width: 27px !important;
+  height: 1px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: rotate(45deg) !important;
+}
+
+
+/* Middle line */
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+
+  transform: scaleX(0) !important;
+}
+
+
+/* Third line */
+
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
+  position: absolute !important;
+
+  width: 27px !important;
+  height: 1px !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  transform: rotate(-45deg) !important;
+}
