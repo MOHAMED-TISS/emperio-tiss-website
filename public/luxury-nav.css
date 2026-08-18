@@ -752,3 +752,126 @@ body.nav-open #navOverlay::after {
     transition: none !important;
   }
 }
+/* =========================================================
+   LANGUAGE SWITCHER — MENU
+========================================================= */
+
+#navOverlay .nav-overlay-lang {
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 12px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  letter-spacing: .16em !important;
+
+  line-height: 1 !important;
+}
+
+
+/* LANGUAGE LABEL */
+
+#navOverlay .language-label {
+
+  margin-right: 8px !important;
+
+  color: var(--et-muted) !important;
+
+  font-size: 8px !important;
+
+  letter-spacing: .18em !important;
+}
+
+
+/* LANGUAGES */
+
+#navOverlay .nav-overlay-lang a {
+
+  display: inline-block !important;
+
+  width: auto !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  color: var(--et-muted) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  font-weight: 500 !important;
+
+  letter-spacing: .16em !important;
+
+  text-decoration: none !important;
+
+  opacity: 1 !important;
+
+  transform: none !important;
+
+  transition:
+    color .3s ease,
+    opacity .3s ease !important;
+}
+
+
+/* REMOVE MENU HOVER LINE */
+
+#navOverlay .nav-overlay-lang a::after {
+
+  display: none !important;
+
+}
+
+
+/* HOVER */
+
+#navOverlay .nav-overlay-lang a:hover {
+
+  color: var(--et-ivory) !important;
+
+}
+
+
+/* CURRENT */
+
+#navOverlay .nav-overlay-lang a.current {
+
+  color: var(--et-gold-bright) !important;
+
+}
+
+
+/* SEPARATORS */
+
+#navOverlay .language-separator {
+
+  color: var(--et-line) !important;
+
+  font-size: 8px !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #navOverlay .nav-overlay-lang {
+
+    padding-top: 18px !important;
+
+    margin-top: 20px !important;
+
+    border-top: 1px solid var(--et-line) !important;
+
+    width: 100% !important;
+  }
+
+}
