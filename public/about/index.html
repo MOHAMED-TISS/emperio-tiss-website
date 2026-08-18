@@ -1993,44 +1993,6 @@
 
 </footer>
 
-
-<!-- =========================================================
-     MOBILE MENU
-========================================================= -->
-
-<script>
-
-  const menuToggle =
-    document.querySelector(".menu-toggle");
-
-  const nav =
-    document.querySelector(".site-header .nav");
-
-
-  if (menuToggle && nav) {
-
-    menuToggle.addEventListener("click", () => {
-
-      const isOpen =
-        menuToggle.getAttribute("aria-expanded") === "true";
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
-      );
-
-      nav.classList.toggle(
-        "is-open",
-        !isOpen
-      );
-
-    });
-
-  }
-
-</script>
-
-
 <script src="../luxury-nav.js" defer></script>
 <script src="../script.js"></script>
 </body>
