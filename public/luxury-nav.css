@@ -212,7 +212,7 @@ body.nav-open {
 #pageCurtain {
   position: fixed !important;
   inset: 0 !important;
-  z-index: 10000 !important;
+  z-index: 9000 !important;
 
   background: var(--et-ink) !important;
 
@@ -273,4 +273,36 @@ body.nav-open #luxuryHeader #menuToggleBtn span {
 #luxuryHeader #menuToggleBtn {
   position: relative !important;
   z-index: 10001 !important;
+}
+/* =========================================================
+   FORCE NAVIGATION CONTENT VISIBILITY
+========================================================= */
+
+#navOverlay {
+  z-index: 9998 !important;
+}
+
+#navOverlay .nav-overlay-links {
+  position: relative !important;
+  z-index: 100 !important;
+  display: flex !important;
+  visibility: visible !important;
+}
+
+#navOverlay .nav-overlay-links a {
+  display: flex !important;
+  visibility: visible !important;
+  color: #f4f1ea !important;
+}
+
+body.nav-open #navOverlay .nav-overlay-links a {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+#navOverlay .nav-overlay-links a .idx {
+  color: #c9a961 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
