@@ -312,8 +312,10 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
 
   align-items: center !important;
 
-  overflow: hidden !important;
+overflow-x: hidden !important;
+overflow-y: auto !important;
 
+-webkit-overflow-scrolling: touch !important;
   background:
     radial-gradient(
       circle at 85% 10%,
@@ -666,21 +668,23 @@ body.nav-open #navOverlay::after {
   }
 
 
-  #navOverlay {
+#navOverlay {
 
-    padding: 105px 28px 35px !important;
+  padding: 105px 28px 35px !important;
 
-    display: flex !important;
+  display: flex !important;
 
-    flex-direction: column !important;
+  flex-direction: column !important;
 
-    align-items: flex-start !important;
+  align-items: flex-start !important;
 
-    justify-content: flex-start !important;
+  justify-content: flex-start !important;
 
-    overflow-y: auto !important;
-  }
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 
+  -webkit-overflow-scrolling: touch !important;
+}
 
   #navOverlay .nav-overlay-links {
 
