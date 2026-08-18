@@ -1,7 +1,7 @@
 /* =========================================================
    EMPERIO TISS
    LUXURY NAVIGATION SYSTEM
-   CLEAN VERSION
+   FINAL CLEAN VERSION
 ========================================================= */
 
 :root {
@@ -28,12 +28,11 @@
   width: 100% !important;
   height: auto !important;
 
-  background: transparent !important;
+  z-index: 10000 !important;
 
+  background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
-
-  z-index: 10000 !important;
 
   pointer-events: none !important;
 }
@@ -42,17 +41,19 @@
 #luxuryHeader .header-inner {
   position: relative !important;
 
-  width: min(100% - 96px, 1400px) !important;
+  width: min(calc(100% - 96px), 1400px) !important;
+
   height: 92px !important;
 
   margin: 0 auto !important;
   padding: 0 !important;
 
-  box-sizing: border-box !important;
-
   display: flex !important;
+
   align-items: center !important;
   justify-content: space-between !important;
+
+  box-sizing: border-box !important;
 
   background: transparent !important;
 }
@@ -64,6 +65,7 @@
 
 #luxuryHeader .site-logo {
   position: relative !important;
+
   z-index: 10002 !important;
 
   pointer-events: auto !important;
@@ -82,7 +84,7 @@
 
 
 /* =========================================================
-   HIDE OLD NAV
+   OLD NAVIGATION
 ========================================================= */
 
 #luxuryHeader .main-nav > a,
@@ -94,7 +96,6 @@
 
 /* =========================================================
    MENU BUTTON
-   CLOSED = 3 LINES
 ========================================================= */
 
 #luxuryHeader #menuToggleBtn {
@@ -106,18 +107,19 @@
   width: 58px !important;
   height: 58px !important;
 
-  padding: 0 !important;
   margin: 0 !important;
-
-  box-sizing: border-box !important;
+  padding: 0 !important;
 
   display: flex !important;
 
   flex-direction: column !important;
+
   align-items: center !important;
   justify-content: center !important;
 
   gap: 5px !important;
+
+  box-sizing: border-box !important;
 
   border: 1px solid var(--et-line) !important;
   border-radius: 50% !important;
@@ -138,10 +140,17 @@
 
 
 #luxuryHeader #menuToggleBtn:hover {
+
   border-color: var(--et-gold) !important;
-  background: rgba(201,169,97,.07) !important;
+
+  background:
+    rgba(201,169,97,.07) !important;
 }
 
+
+/* =========================================================
+   BUTTON LINES
+========================================================= */
 
 #luxuryHeader #menuToggleBtn span {
 
@@ -177,21 +186,8 @@
 
 
 /* =========================================================
-   OPEN = X
-
-   IMPORTANT:
-   The button itself NEVER disappears.
+   OPEN → X
 ========================================================= */
-
-body.nav-open #luxuryHeader {
-  z-index: 10000 !important;
-}
-
-
-body.nav-open #luxuryHeader .header-inner {
-  z-index: 10001 !important;
-}
-
 
 body.nav-open #luxuryHeader #menuToggleBtn {
 
@@ -222,7 +218,6 @@ body.nav-open #luxuryHeader #menuToggleBtn span {
 
 
 body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
-
   transform: rotate(45deg) !important;
 }
 
@@ -237,13 +232,12 @@ body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
 
 
 body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
-
   transform: rotate(-45deg) !important;
 }
 
 
 /* =========================================================
-   MENU / CLOSE LABEL
+   LABEL
 ========================================================= */
 
 #luxuryHeader #menuToggleBtn::after {
@@ -277,53 +271,62 @@ body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(3) {
 
 
 body.nav-open #luxuryHeader #menuToggleBtn::after {
+
   content: "CLOSE";
+
   color: var(--et-gold-bright);
+
   opacity: .85;
 }
 
 
 /* =========================================================
-   FULLSCREEN MENU
-   DESKTOP — FIXED + SCROLLABLE
+   FULLSCREEN OVERLAY
 ========================================================= */
 
 #navOverlay {
 
   position: fixed !important;
 
-  inset: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
 
-  width: 100vw !important;
-  height: 100vh !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  min-height: 100dvh !important;
 
   box-sizing: border-box !important;
 
   z-index: 9999 !important;
 
-  padding: 120px 8vw 55px !important;
+  padding:
+    120px
+    8vw
+    55px !important;
 
   display: grid !important;
 
   grid-template-columns:
-    minmax(420px, 1fr)
-    minmax(250px, 320px) !important;
+    minmax(420px,1fr)
+    minmax(250px,320px) !important;
 
   column-gap: 8vw !important;
 
   align-items: center !important;
 
-  /*
-   * IMPORTANT:
-   * Desktop menu itself can scroll if content
-   * becomes taller than the viewport.
-   */
   overflow-x: hidden !important;
+
   overflow-y: auto !important;
+
+  overscroll-behavior: contain !important;
 
   -webkit-overflow-scrolling: touch !important;
 
   background:
+
     radial-gradient(
       circle at 85% 10%,
       rgba(201,169,97,.11),
@@ -347,8 +350,11 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
   transform: translateY(-12px) !important;
 
   transition:
+
     opacity .45s ease,
+
     transform .45s var(--et-ease),
+
     visibility 0s linear .45s !important;
 }
 
@@ -368,95 +374,52 @@ body.nav-open #navOverlay {
   transform: translateY(0) !important;
 
   transition:
+
     opacity .45s ease,
+
     transform .45s var(--et-ease),
+
     visibility 0s linear 0s !important;
 }
 
 
 /* =========================================================
-   IMPORTANT
-   DO NOT LOCK THE PAGE SCROLL
+   BODY LOCK
+   Correct: body doesn't scroll while menu is open.
+   Overlay handles scrolling.
 ========================================================= */
 
 body.nav-open {
 
-  overflow: visible !important;
+  overflow: hidden !important;
 
 }
 
 
-/* =========================================================
-   DESKTOP — KEEP MENU CONTENT INSIDE VIEW
-========================================================= */
-
-@media (min-width: 701px) {
-
-  #navOverlay {
-
-    min-height: 100vh !important;
-
-    max-height: 100vh !important;
-
-    overflow-y: auto !important;
-
-    overflow-x: hidden !important;
-
-    scrollbar-width: thin !important;
-
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-  body.nav-open {
-
-    overflow: hidden !important;
-
-  }
-
-  #navOverlay {
-
-    padding: 105px 28px 35px !important;
-
-    display: flex !important;
-
-    flex-direction: column !important;
-
-    align-items: flex-start !important;
-
-    justify-content: flex-start !important;
-
-    overflow-x: hidden !important;
-
-    overflow-y: auto !important;
-
-    -webkit-overflow-scrolling: touch !important;
-
-  }
-
-}
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 #navOverlay .nav-overlay-links {
 
+  position: relative !important;
+
+  z-index: 10 !important;
+
   width: 100% !important;
 
   display: flex !important;
+
   flex-direction: column !important;
+
   align-items: flex-start !important;
+
+  justify-content: center !important;
 
   gap: 4px !important;
 
   margin: 0 !important;
+
   padding: 0 !important;
 }
 
@@ -473,12 +436,16 @@ body.nav-open {
 
   width: max-content !important;
 
-  padding: 8px 0 !important;
   margin: 0 !important;
+
+  padding: 8px 0 !important;
+
+  box-sizing: border-box !important;
 
   font-family: "Playfair Display", serif !important;
 
-  font-size: clamp(40px,4.2vw,64px) !important;
+  font-size:
+    clamp(40px,4.2vw,64px) !important;
 
   font-weight: 400 !important;
 
@@ -497,36 +464,53 @@ body.nav-open {
   transform: translateY(15px) !important;
 
   transition:
+
     color .3s ease,
+
     opacity .45s var(--et-ease),
+
     transform .45s var(--et-ease) !important;
 }
 
 
+/* =========================================================
+   OPEN ANIMATION
+========================================================= */
+
 body.nav-open #navOverlay .nav-overlay-links a {
 
   opacity: 1 !important;
+
   transform: translateY(0) !important;
 }
 
 
-body.nav-open #navOverlay .nav-overlay-links a:nth-child(1) {
+body.nav-open
+#navOverlay .nav-overlay-links a:nth-child(1) {
   transition-delay: .06s !important;
 }
 
-body.nav-open #navOverlay .nav-overlay-links a:nth-child(2) {
+
+body.nav-open
+#navOverlay .nav-overlay-links a:nth-child(2) {
   transition-delay: .11s !important;
 }
 
-body.nav-open #navOverlay .nav-overlay-links a:nth-child(3) {
+
+body.nav-open
+#navOverlay .nav-overlay-links a:nth-child(3) {
   transition-delay: .16s !important;
 }
 
-body.nav-open #navOverlay .nav-overlay-links a:nth-child(4) {
+
+body.nav-open
+#navOverlay .nav-overlay-links a:nth-child(4) {
   transition-delay: .21s !important;
 }
 
-body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) {
+
+body.nav-open
+#navOverlay .nav-overlay-links a:nth-child(5) {
   transition-delay: .26s !important;
 }
 
@@ -549,11 +533,15 @@ body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) {
   letter-spacing: .13em !important;
 
   color: var(--et-muted) !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
 }
 
 
 /* =========================================================
-   HOVER LINE
+   UNDERLINE
 ========================================================= */
 
 #navOverlay .nav-overlay-links a::after {
@@ -563,9 +551,11 @@ body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) {
   position: absolute;
 
   left: 42px;
+
   bottom: 2px;
 
   width: 0;
+
   height: 1px;
 
   background: var(--et-gold) !important;
@@ -609,13 +599,15 @@ body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) {
   width: 250px !important;
 
   align-self: end !important;
+
   justify-self: end !important;
 
   padding-left: 22px !important;
 
   box-sizing: border-box !important;
 
-  border-left: 1px solid var(--et-line) !important;
+  border-left:
+    1px solid var(--et-line) !important;
 
   white-space: pre !important;
 
@@ -636,7 +628,9 @@ body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) {
   transform: translateY(10px) !important;
 
   transition:
+
     opacity .5s ease .2s,
+
     transform .5s var(--et-ease) .2s !important;
 }
 
@@ -658,13 +652,83 @@ body.nav-open #navOverlay::after {
   position: absolute !important;
 
   left: 8vw !important;
+
   right: 8vw !important;
+
   bottom: 30px !important;
+
+  z-index: 20 !important;
 
   display: flex !important;
 
   align-items: center !important;
+
   justify-content: space-between !important;
+}
+
+
+/* =========================================================
+   LANGUAGE SWITCHER
+========================================================= */
+
+#navOverlay .nav-overlay-lang {
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 12px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  letter-spacing: .16em !important;
+
+  line-height: 1 !important;
+}
+
+
+#navOverlay .nav-overlay-lang a {
+
+  display: inline-block !important;
+
+  width: auto !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  color: var(--et-muted) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 9px !important;
+
+  font-weight: 500 !important;
+
+  letter-spacing: .16em !important;
+
+  text-decoration: none !important;
+
+  opacity: 1 !important;
+
+  transform: none !important;
+}
+
+
+#navOverlay .nav-overlay-lang a::after {
+  display: none !important;
+}
+
+
+#navOverlay .nav-overlay-lang a:hover {
+  color: var(--et-ivory) !important;
+}
+
+
+#navOverlay .nav-overlay-lang a.current {
+  color: var(--et-gold-bright) !important;
 }
 
 
@@ -717,6 +781,8 @@ body.nav-open #navOverlay::after {
 
   #luxuryHeader .header-inner {
 
+    width: 100% !important;
+
     height: 76px !important;
 
     padding: 0 22px !important;
@@ -731,66 +797,76 @@ body.nav-open #navOverlay::after {
   #luxuryHeader #menuToggleBtn {
 
     width: 48px !important;
+
     height: 48px !important;
   }
 
 
   #luxuryHeader #menuToggleBtn span:nth-child(1),
   #luxuryHeader #menuToggleBtn span:nth-child(3) {
-
     width: 22px !important;
   }
 
 
   #luxuryHeader #menuToggleBtn span:nth-child(2) {
-
     width: 16px !important;
   }
 
 
-#navOverlay {
+  #navOverlay {
 
-  padding: 105px 28px 35px !important;
+    padding:
+      105px
+      28px
+      35px !important;
 
-  display: flex !important;
+    display: flex !important;
 
-  flex-direction: column !important;
+    flex-direction: column !important;
 
-  align-items: flex-start !important;
+    align-items: flex-start !important;
 
-  justify-content: flex-start !important;
+    justify-content: flex-start !important;
 
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
+    overflow-x: hidden !important;
 
-  -webkit-overflow-scrolling: touch !important;
-}
+    overflow-y: auto !important;
+
+    -webkit-overflow-scrolling: touch !important;
+  }
+
 
   #navOverlay .nav-overlay-links {
 
     width: 100% !important;
+
+    gap: 0 !important;
   }
 
 
   #navOverlay .nav-overlay-links a {
 
-    grid-template-columns: 30px auto !important;
+    grid-template-columns:
+      30px auto !important;
 
     width: 100% !important;
 
-    font-size: clamp(30px,9vw,46px) !important;
+    padding: 10px 0 !important;
+
+    font-size:
+      clamp(30px,9vw,46px) !important;
   }
 
 
   #navOverlay .nav-overlay-links .idx {
 
     width: 30px !important;
+
     min-width: 30px !important;
   }
 
 
   #navOverlay .nav-overlay-links a::after {
-
     left: 30px !important;
   }
 
@@ -805,18 +881,37 @@ body.nav-open #navOverlay::after {
     position: relative !important;
 
     left: auto !important;
+
     right: auto !important;
+
     bottom: auto !important;
 
     width: 100% !important;
 
     margin-top: auto !important;
 
+    padding-top: 25px !important;
+
+    display: flex !important;
+
     flex-direction: column !important;
 
     align-items: flex-start !important;
 
     gap: 14px !important;
+  }
+
+
+  #navOverlay .nav-overlay-lang {
+
+    width: 100% !important;
+
+    padding-top: 18px !important;
+
+    margin-top: 5px !important;
+
+    border-top:
+      1px solid var(--et-line) !important;
   }
 }
 
@@ -835,127 +930,4 @@ body.nav-open #navOverlay::after {
 
     transition: none !important;
   }
-}
-/* =========================================================
-   LANGUAGE SWITCHER — MENU
-========================================================= */
-
-#navOverlay .nav-overlay-lang {
-
-  display: flex !important;
-  align-items: center !important;
-
-  gap: 12px !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  letter-spacing: .16em !important;
-
-  line-height: 1 !important;
-}
-
-
-/* LANGUAGE LABEL */
-
-#navOverlay .language-label {
-
-  margin-right: 8px !important;
-
-  color: var(--et-muted) !important;
-
-  font-size: 8px !important;
-
-  letter-spacing: .18em !important;
-}
-
-
-/* LANGUAGES */
-
-#navOverlay .nav-overlay-lang a {
-
-  display: inline-block !important;
-
-  width: auto !important;
-
-  padding: 0 !important;
-  margin: 0 !important;
-
-  color: var(--et-muted) !important;
-
-  font-family: "DM Sans", sans-serif !important;
-
-  font-size: 9px !important;
-
-  font-weight: 500 !important;
-
-  letter-spacing: .16em !important;
-
-  text-decoration: none !important;
-
-  opacity: 1 !important;
-
-  transform: none !important;
-
-  transition:
-    color .3s ease,
-    opacity .3s ease !important;
-}
-
-
-/* REMOVE MENU HOVER LINE */
-
-#navOverlay .nav-overlay-lang a::after {
-
-  display: none !important;
-
-}
-
-
-/* HOVER */
-
-#navOverlay .nav-overlay-lang a:hover {
-
-  color: var(--et-ivory) !important;
-
-}
-
-
-/* CURRENT */
-
-#navOverlay .nav-overlay-lang a.current {
-
-  color: var(--et-gold-bright) !important;
-
-}
-
-
-/* SEPARATORS */
-
-#navOverlay .language-separator {
-
-  color: var(--et-line) !important;
-
-  font-size: 8px !important;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-  #navOverlay .nav-overlay-lang {
-
-    padding-top: 18px !important;
-
-    margin-top: 20px !important;
-
-    border-top: 1px solid var(--et-line) !important;
-
-    width: 100% !important;
-  }
-
 }
