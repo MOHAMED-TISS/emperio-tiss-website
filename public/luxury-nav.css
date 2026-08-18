@@ -328,3 +328,333 @@ body.nav-open {
     transition: none !important;
   }
 }
+/* =========================================================
+   EMPERIO TISS — NAV OVERLAY + PAGE TRANSITIONS
+   Estilo editorial de lujo (ref: isradesign.com)
+   Fuentes: Playfair Display + DM Sans (ya cargadas)
+
+   INSTALACIÓN (en cada página, en <head>, tras style.css):
+   <link rel="stylesheet" href="luxury-nav.css">
+   Y antes de </body>:
+   <script src="luxury-nav.js" defer></script>
+========================================================= */
+
+:root {
+  --et-black: #0a0a0a;
+  --et-ink: #0e1512;
+  --et-ivory: #f4f1ea;
+  --et-gold: #c9a961;
+  --et-gold-bright: #e4c98a;
+  --et-hairline: rgba(244,241,234,.16);
+}
+
+/* =========================================================
+   HEADER — BARRA MÍNIMA (logo + botón menú, siempre)
+========================================================= */
+
+#luxuryHeader {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  z-index: 9999 !important;
+  mix-blend-mode: normal !important;
+}
+
+#luxuryHeader .header-inner {
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 92px !important;
+  margin: 0 !important;
+  padding: 0 48px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#luxuryHeader .site-logo {
+  position: relative !important;
+  z-index: 5 !important;
+  width: auto !important;
+}
+
+#luxuryHeader .site-logo img {
+  width: 132px !important;
+  height: auto !important;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) !important;
+}
+
+/* ocultar el nav clásico en línea: todo vive ahora en el overlay */
+#luxuryHeader .main-nav > a,
+#luxuryHeader .language-nav,
+#luxuryHeader .header-cta {
+  display: none !important;
+}
+
+#luxuryHeader .main-nav {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+
+/* =========================================================
+   BOTÓN MENÚ — visible siempre (desktop + mobile)
+========================================================= */
+
+#luxuryHeader #menuToggleBtn {
+  display: flex !important;
+  position: relative !important;
+  z-index: 5 !important;
+
+  margin-left: 0 !important;
+
+  width: 54px !important;
+  height: 54px !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+
+  background: transparent !important;
+  border: 1px solid var(--et-hairline) !important;
+  border-radius: 50% !important;
+
+  cursor: pointer !important;
+  transition: border-color .3s ease, background .3s ease !important;
+}
+
+#luxuryHeader #menuToggleBtn:hover {
+  border-color: var(--et-gold) !important;
+  background: rgba(201,169,97,.08) !important;
+}
+
+#luxuryHeader #menuToggleBtn span {
+  width: 18px !important;
+  height: 1px !important;
+  background: var(--et-ivory) !important;
+  transition: transform .35s ease, opacity .25s ease, background .3s ease !important;
+}
+
+#luxuryHeader #menuToggleBtn:hover span {
+  background: var(--et-gold-bright) !important;
+}
+
+/* estado abierto: transforma en X */
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(1) {
+  transform: translateY(3.5px) rotate(45deg) !important;
+}
+body.nav-open #luxuryHeader #menuToggleBtn span:nth-child(2) {
+  transform: translateY(-3.5px) rotate(-45deg) !important;
+}
+
+
+/* =========================================================
+   OVERLAY — PANTALLA COMPLETA
+========================================================= */
+
+#navOverlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9998 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+
+  padding: 140px 64px 56px !important;
+
+  background:
+    radial-gradient(circle at 85% 10%, rgba(201,169,97,.10), transparent 55%),
+    var(--et-ink) !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-12px) !important;
+
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1), visibility 0s linear .55s !important;
+}
+
+body.nav-open #navOverlay {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1), visibility 0s linear 0s !important;
+}
+
+#navOverlay .nav-overlay-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+#navOverlay .nav-overlay-links a {
+  position: relative !important;
+
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 18px !important;
+
+  font-family: "Playfair Display", serif !important;
+  font-size: clamp(38px, 6vw, 72px) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+
+  color: rgba(244,241,234,.55) !important;
+  text-decoration: none !important;
+
+  padding: 10px 0 !important;
+
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  transition: color .3s ease, opacity .5s ease, transform .5s ease !important;
+}
+
+body.nav-open #navOverlay .nav-overlay-links a {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* stagger de entrada */
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(1) { transition-delay: .12s !important; }
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(2) { transition-delay: .18s !important; }
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(3) { transition-delay: .24s !important; }
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(4) { transition-delay: .30s !important; }
+body.nav-open #navOverlay .nav-overlay-links a:nth-child(5) { transition-delay: .36s !important; }
+
+#navOverlay .nav-overlay-links a .idx {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: .08em !important;
+  color: var(--et-gold) !important;
+}
+
+#navOverlay .nav-overlay-links a:hover,
+#navOverlay .nav-overlay-links a.active {
+  color: var(--et-ivory) !important;
+}
+
+#navOverlay .nav-overlay-links a:hover .idx,
+#navOverlay .nav-overlay-links a.active .idx {
+  color: var(--et-gold-bright) !important;
+}
+
+/* pie del overlay: idioma + contacto */
+#navOverlay .nav-overlay-foot {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 24px !important;
+
+  padding-top: 32px !important;
+  border-top: 1px solid var(--et-hairline) !important;
+
+  opacity: 0 !important;
+  transform: translateY(16px) !important;
+  transition: opacity .5s ease .40s, transform .5s ease .40s !important;
+}
+
+body.nav-open #navOverlay .nav-overlay-foot {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+#navOverlay .nav-overlay-lang {
+  display: flex !important;
+  gap: 14px !important;
+}
+
+#navOverlay .nav-overlay-lang a {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: .1em !important;
+  color: rgba(244,241,234,.5) !important;
+  text-decoration: none !important;
+}
+
+#navOverlay .nav-overlay-lang a:hover,
+#navOverlay .nav-overlay-lang a.current {
+  color: var(--et-gold-bright) !important;
+}
+
+#navOverlay .nav-overlay-contact {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: rgba(244,241,234,.65) !important;
+  text-align: right !important;
+}
+
+#navOverlay .nav-overlay-contact a {
+  color: var(--et-gold-bright) !important;
+  text-decoration: none !important;
+}
+
+/* bloquear scroll del body cuando el overlay está abierto */
+body.nav-open {
+  overflow: hidden !important;
+}
+
+@media (max-width: 700px) {
+  #navOverlay { padding: 120px 28px 40px !important; }
+  #navOverlay .nav-overlay-links a { font-size: 15vw !important; }
+  #navOverlay .nav-overlay-foot { flex-direction: column !important; align-items: flex-start !important; }
+  #navOverlay .nav-overlay-contact { text-align: left !important; }
+}
+
+
+/* =========================================================
+   CORTINA DE TRANSICIÓN ENTRE PÁGINAS
+========================================================= */
+
+#pageCurtain {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+
+  background: var(--et-ink) !important;
+
+  transform: scaleY(1) !important;
+  transform-origin: top !important;
+
+  pointer-events: none !important;
+
+  transition: transform .65s cubic-bezier(.76,0,.24,1) !important;
+}
+
+/* al cargar la página: la cortina se retira hacia arriba */
+#pageCurtain.is-hidden {
+  transform: scaleY(0) !important;
+  transform-origin: bottom !important;
+}
+
+/* al salir de la página: la cortina cubre hacia abajo */
+#pageCurtain.is-covering {
+  transform: scaleY(1) !important;
+  transform-origin: bottom !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pageCurtain,
+  #navOverlay,
+  #navOverlay .nav-overlay-links a,
+  #navOverlay .nav-overlay-foot,
+  #luxuryHeader #menuToggleBtn span {
+    transition: none !important;
+  }
+}
