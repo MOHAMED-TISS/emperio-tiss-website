@@ -1,26 +1,33 @@
 /* =========================================================
-   EMPERIO TISS — ENGLISH PAGES
-   FRUITS & VEGETABLES
-   Editorial / Marine / Premium
-   PAGE-SCOPED — DOES NOT MODIFY NAVIGATION
+   EMPERIO TISS — ENGLISH PRODUCTS
+   Fruits & Vegetables
+   Editorial / Premium / Marine
+   Scope: .en-products-page + footer
+   Does NOT control luxury navigation
+========================================================= */
+
+
+/* =========================================================
+   01 — VARIABLES
 ========================================================= */
 
 :root {
-  --en-bg: #eef3f1;
-  --en-surface: rgba(255, 255, 255, .62);
-  --en-surface-hover: rgba(255, 255, 255, .84);
+  --en-bg: #edf3f1;
+  --en-surface: rgba(255, 255, 255, .60);
+  --en-surface-hover: rgba(255, 255, 255, .82);
 
   --en-ink: #10201c;
-  --en-muted: #63716d;
+  --en-muted: #64736e;
 
   --en-line: rgba(16, 32, 28, .13);
 
   --en-accent: #a88952;
+  --en-accent-light: #c7aa70;
 }
 
 
 /* =========================================================
-   01 — PAGE BACKGROUND
+   02 — PAGE
 ========================================================= */
 
 body {
@@ -29,21 +36,24 @@ body {
 }
 
 
-/* =========================================================
-   02 — MAIN
-========================================================= */
+/* Only the English products page */
 
-.fruits-vegetables-page {
-  position: relative;
-  z-index: 1;
+.en-products-page {
+  position: relative !important;
 
-  width: 100%;
+  z-index: 1 !important;
 
-  min-height: auto;
+  width: 100% !important;
 
-  padding-top: 92px;
+  min-height: auto !important;
 
-  background: var(--en-bg);
+  padding-top: 92px !important;
+
+  box-sizing: border-box !important;
+
+  background: var(--en-bg) !important;
+
+  color: var(--en-ink) !important;
 }
 
 
@@ -51,74 +61,86 @@ body {
    03 — HERO
 ========================================================= */
 
-.fruits-vegetables-page .products-hero {
-  width: min(1180px, calc(100% - 96px));
+.en-products-page .products-hero {
 
-  margin: 0 auto;
+  width: min(1180px, calc(100% - 96px)) !important;
 
-  padding: 110px 0 115px;
+  margin: 0 auto !important;
 
-  border-bottom: 1px solid var(--en-line);
+  padding: 105px 0 115px !important;
+
+  box-sizing: border-box !important;
+
+  border-bottom:
+    1px solid var(--en-line) !important;
 }
 
 
-/* eyebrow */
+/* Eyebrow */
 
-.fruits-vegetables-page .eyebrow {
-  margin: 0 0 26px;
+.en-products-page .eyebrow {
 
-  font-family: "DM Sans", sans-serif;
+  margin: 0 0 26px !important;
 
-  font-size: 10px;
-  font-weight: 600;
+  font-family: "DM Sans", sans-serif !important;
 
-  line-height: 1;
+  font-size: 10px !important;
 
-  letter-spacing: .20em;
+  font-weight: 600 !important;
 
-  text-transform: uppercase;
+  line-height: 1 !important;
 
-  color: var(--en-accent);
+  letter-spacing: .20em !important;
+
+  text-transform: uppercase !important;
+
+  color: var(--en-accent) !important;
 }
 
 
-/* title */
+/* Hero title */
 
-.fruits-vegetables-page .products-hero h1 {
-  max-width: 920px;
+.en-products-page .products-hero h1 {
 
-  margin: 0;
+  max-width: 920px !important;
 
-  font-family: "Playfair Display", serif;
+  margin: 0 !important;
 
-  font-size: clamp(52px, 7vw, 104px);
+  font-family: "Playfair Display", serif !important;
 
-  font-weight: 400;
+  font-size: clamp(
+    52px,
+    7vw,
+    104px
+  ) !important;
 
-  line-height: .94;
+  font-weight: 400 !important;
 
-  letter-spacing: -.035em;
+  line-height: .94 !important;
 
-  color: var(--en-ink);
+  letter-spacing: -.035em !important;
+
+  color: var(--en-ink) !important;
 }
 
 
-/* introduction */
+/* Hero description */
 
-.fruits-vegetables-page .products-hero > p:last-child {
-  max-width: 590px;
+.en-products-page .hero-description {
 
-  margin: 38px 0 0;
+  max-width: 590px !important;
 
-  font-family: "DM Sans", sans-serif;
+  margin: 38px 0 0 !important;
 
-  font-size: 16px;
+  font-family: "DM Sans", sans-serif !important;
 
-  font-weight: 400;
+  font-size: 16px !important;
 
-  line-height: 1.8;
+  font-weight: 400 !important;
 
-  color: var(--en-muted);
+  line-height: 1.8 !important;
+
+  color: var(--en-muted) !important;
 }
 
 
@@ -126,19 +148,22 @@ body {
    04 — PRODUCTS OVERVIEW
 ========================================================= */
 
-.fruits-vegetables-page .products-overview {
-  width: min(1180px, calc(100% - 96px));
+.en-products-page .products-overview {
 
-  margin: 0 auto;
+  width: min(1180px, calc(100% - 96px)) !important;
 
-  padding: 82px 0;
+  margin: 0 auto !important;
 
-  display: grid;
+  padding: 82px 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
 
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+    repeat(3, minmax(0, 1fr)) !important;
 
-  gap: 18px;
+  gap: 18px !important;
 }
 
 
@@ -146,402 +171,513 @@ body {
    05 — PRODUCT CARD
 ========================================================= */
 
-.fruits-vegetables-page .product-card {
-  position: relative;
+.en-products-page .product-card {
 
-  min-height: 310px;
+  position: relative !important;
 
-  padding: 34px;
+  min-height: 315px !important;
 
-  box-sizing: border-box;
+  padding: 34px !important;
 
-  background: var(--en-surface);
+  box-sizing: border-box !important;
 
-  border: 1px solid var(--en-line);
+  display: flex !important;
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  flex-direction: column !important;
+
+  background: var(--en-surface) !important;
+
+  border:
+    1px solid var(--en-line) !important;
+
+  backdrop-filter: blur(16px) !important;
+
+  -webkit-backdrop-filter: blur(16px) !important;
 
   transition:
     transform .45s cubic-bezier(.22,1,.36,1),
     background .35s ease,
-    border-color .35s ease;
+    border-color .35s ease !important;
 }
 
 
-.fruits-vegetables-page .product-card:hover {
-  transform: translateY(-7px);
+/* Card hover */
 
-  background: var(--en-surface-hover);
+.en-products-page .product-card:hover {
 
-  border-color: rgba(168, 137, 82, .42);
-}
+  transform: translateY(-7px) !important;
 
+  background:
+    var(--en-surface-hover) !important;
 
-/* number */
-
-.fruits-vegetables-page .product-number {
-  display: block;
-
-  margin-bottom: 72px;
-
-  font-family: "DM Sans", sans-serif;
-
-  font-size: 10px;
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: .16em;
-
-  color: var(--en-accent);
-}
-
-
-/* heading */
-
-.fruits-vegetables-page .product-card h2 {
-  margin: 0 0 18px;
-
-  font-family: "Playfair Display", serif;
-
-  font-size: clamp(28px, 3vw, 42px);
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  letter-spacing: -.02em;
-
-  color: var(--en-ink);
-}
-
-
-/* text */
-
-.fruits-vegetables-page .product-card p {
-  max-width: 340px;
-
-  margin: 0;
-
-  font-family: "DM Sans", sans-serif;
-
-  font-size: 14px;
-
-  line-height: 1.7;
-
-  color: var(--en-muted);
+  border-color:
+    rgba(168, 137, 82, .42) !important;
 }
 
 
 /* =========================================================
-   06 — CTA
+   06 — PRODUCT NUMBER
 ========================================================= */
 
-.fruits-vegetables-page .products-cta {
-  width: min(1180px, calc(100% - 96px));
+.en-products-page .product-number {
 
-  margin: 0 auto;
+  display: block !important;
 
-  padding: 105px 0 130px;
+  margin: 0 0 65px !important;
 
-  border-top: 1px solid var(--en-line);
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 10px !important;
+
+  font-weight: 500 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: .16em !important;
+
+  color: var(--en-accent) !important;
 }
 
 
-.fruits-vegetables-page .products-cta h2 {
-  max-width: 760px;
+/* =========================================================
+   07 — CARD CONTENT
+========================================================= */
 
-  margin: 0;
+.en-products-page .product-card-content {
 
-  font-family: "Playfair Display", serif;
-
-  font-size: clamp(42px, 5vw, 72px);
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  letter-spacing: -.025em;
-
-  color: var(--en-ink);
+  margin-top: auto !important;
 }
 
 
-.fruits-vegetables-page .products-cta > p:not(.eyebrow) {
-  max-width: 520px;
+/* Card heading */
 
-  margin: 28px 0 34px;
+.en-products-page .product-card h2 {
 
-  font-family: "DM Sans", sans-serif;
+  margin: 0 0 18px !important;
 
-  font-size: 15px;
+  font-family: "Playfair Display", serif !important;
 
-  line-height: 1.7;
+  font-size: clamp(
+    28px,
+    3vw,
+    42px
+  ) !important;
 
-  color: var(--en-muted);
+  font-weight: 400 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: -.02em !important;
+
+  color: var(--en-ink) !important;
 }
 
 
-/* CTA LINK */
+/* Card paragraph */
 
-.fruits-vegetables-page .products-cta a {
-  display: inline-flex;
+.en-products-page .product-card p {
 
-  align-items: center;
+  max-width: 340px !important;
 
-  gap: 12px;
+  margin: 0 !important;
 
-  padding-bottom: 8px;
+  font-family: "DM Sans", sans-serif !important;
 
-  border-bottom: 1px solid var(--en-accent);
+  font-size: 14px !important;
 
-  font-family: "DM Sans", sans-serif;
+  font-weight: 400 !important;
 
-  font-size: 12px;
+  line-height: 1.7 !important;
 
-  font-weight: 600;
+  color: var(--en-muted) !important;
+}
 
-  line-height: 1;
 
-  letter-spacing: .08em;
+/* =========================================================
+   08 — CTA
+========================================================= */
 
-  text-transform: uppercase;
+.en-products-page .products-cta {
 
-  text-decoration: none;
+  width: min(1180px, calc(100% - 96px)) !important;
 
-  color: var(--en-ink);
+  margin: 0 auto !important;
 
-  cursor: pointer;
+  padding: 105px 0 130px !important;
+
+  box-sizing: border-box !important;
+
+  border-top:
+    1px solid var(--en-line) !important;
+}
+
+
+/* CTA eyebrow */
+
+.en-products-page .products-cta .eyebrow {
+
+  margin-bottom: 26px !important;
+}
+
+
+/* CTA title */
+
+.en-products-page .products-cta h2 {
+
+  max-width: 760px !important;
+
+  margin: 0 !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: clamp(
+    42px,
+    5vw,
+    72px
+  ) !important;
+
+  font-weight: 400 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: -.025em !important;
+
+  color: var(--en-ink) !important;
+}
+
+
+/* CTA description */
+
+.en-products-page .cta-description {
+
+  max-width: 520px !important;
+
+  margin: 28px 0 34px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 15px !important;
+
+  font-weight: 400 !important;
+
+  line-height: 1.7 !important;
+
+  color: var(--en-muted) !important;
+}
+
+
+/* =========================================================
+   09 — CTA LINK
+========================================================= */
+
+.en-products-page .cta-link {
+
+  display: inline-flex !important;
+
+  align-items: center !important;
+
+  gap: 12px !important;
+
+  padding: 0 0 8px !important;
+
+  border-bottom:
+    1px solid var(--en-accent) !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 12px !important;
+
+  font-weight: 600 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: .08em !important;
+
+  text-transform: uppercase !important;
+
+  text-decoration: none !important;
+
+  color: var(--en-ink) !important;
+
+  cursor: pointer !important;
 
   transition:
     color .3s ease,
-    gap .3s ease;
+    gap .3s ease !important;
 }
 
 
-.fruits-vegetables-page .products-cta a:hover {
-  color: var(--en-accent);
+.en-products-page .cta-link span {
 
-  gap: 18px;
+  display: inline-block !important;
+
+  transition:
+    transform .3s ease !important;
+}
+
+
+.en-products-page .cta-link:hover {
+
+  color: var(--en-accent) !important;
+
+  gap: 18px !important;
+}
+
+
+.en-products-page .cta-link:hover span {
+
+  transform: translateX(3px) !important;
 }
 
 
 /* =========================================================
-   07 — FOOTER
+   10 — FOOTER
 ========================================================= */
 
 .site-footer {
-  position: relative;
 
-  z-index: 2;
+  position: relative !important;
 
-  width: 100%;
+  z-index: 2 !important;
 
-  box-sizing: border-box;
+  width: 100% !important;
 
-  padding: 58px 0;
+  box-sizing: border-box !important;
 
-  background: #0e1512;
+  padding: 58px 0 !important;
 
-  color: rgba(244, 241, 234, .72);
+  background: #0e1512 !important;
+
+  color: rgba(244, 241, 234, .72) !important;
 }
 
 
 .site-footer-inner {
-  width: min(1180px, calc(100% - 96px));
 
-  margin: 0 auto;
+  width: min(1180px, calc(100% - 96px)) !important;
 
-  display: flex;
+  margin: 0 auto !important;
 
-  align-items: flex-end;
+  display: flex !important;
 
-  justify-content: space-between;
+  align-items: flex-end !important;
 
-  gap: 40px;
+  justify-content: space-between !important;
+
+  gap: 40px !important;
 }
 
 
-/* brand */
+/* Footer brand */
 
 .site-footer-brand img {
-  display: block;
 
-  width: 110px;
-  height: auto;
+  display: block !important;
 
-  margin: 0 0 18px;
+  width: 110px !important;
+
+  height: auto !important;
+
+  margin: 0 0 18px !important;
 }
 
 
 .site-footer-brand p {
-  margin: 0;
 
-  font-family: "DM Sans", sans-serif;
+  margin: 0 !important;
 
-  font-size: 11px;
+  font-family: "DM Sans", sans-serif !important;
 
-  line-height: 1.5;
+  font-size: 11px !important;
 
-  letter-spacing: .08em;
+  line-height: 1.5 !important;
 
-  color: rgba(244, 241, 234, .45);
+  letter-spacing: .08em !important;
+
+  color:
+    rgba(244, 241, 234, .45) !important;
 }
 
 
-/* metadata */
+/* Footer metadata */
 
 .site-footer-meta {
-  display: flex;
 
-  flex-direction: column;
+  display: flex !important;
 
-  align-items: flex-end;
+  flex-direction: column !important;
 
-  gap: 7px;
+  align-items: flex-end !important;
 
-  font-family: "DM Sans", sans-serif;
+  gap: 7px !important;
 
-  font-size: 9px;
+  font-family: "DM Sans", sans-serif !important;
 
-  line-height: 1.4;
+  font-size: 9px !important;
 
-  letter-spacing: .14em;
+  line-height: 1.4 !important;
 
-  text-transform: uppercase;
+  letter-spacing: .14em !important;
 
-  color: rgba(244, 241, 234, .48);
+  text-transform: uppercase !important;
+
+  color:
+    rgba(244, 241, 234, .48) !important;
 }
 
 
 /* =========================================================
-   08 — TABLET
+   11 — TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
 
-  .fruits-vegetables-page .products-hero,
-  .fruits-vegetables-page .products-overview,
-  .fruits-vegetables-page .products-cta,
+  .en-products-page .products-hero,
+  .en-products-page .products-overview,
+  .en-products-page .products-cta,
   .site-footer-inner {
 
-    width: min(100% - 56px, 720px);
+    width:
+      min(100% - 56px, 720px) !important;
   }
 
 
-  .fruits-vegetables-page .products-overview {
-    grid-template-columns: 1fr;
+  .en-products-page .products-overview {
 
-    gap: 14px;
+    grid-template-columns: 1fr !important;
+
+    gap: 14px !important;
   }
 
 
-  .fruits-vegetables-page .product-card {
-    min-height: 250px;
+  .en-products-page .product-card {
+
+    min-height: 255px !important;
   }
 }
 
 
 /* =========================================================
-   09 — MOBILE
+   12 — MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
 
-  .fruits-vegetables-page {
-    padding-top: 76px;
+  .en-products-page {
+
+    padding-top: 76px !important;
   }
 
 
-  .fruits-vegetables-page .products-hero,
-  .fruits-vegetables-page .products-overview,
-  .fruits-vegetables-page .products-cta {
+  .en-products-page .products-hero,
+  .en-products-page .products-overview,
+  .en-products-page .products-cta {
 
-    width: calc(100% - 40px);
+    width: calc(100% - 40px) !important;
   }
 
 
-  .fruits-vegetables-page .products-hero {
-    padding: 68px 0 75px;
+  /* Hero */
+
+  .en-products-page .products-hero {
+
+    padding: 68px 0 75px !important;
   }
 
 
-  .fruits-vegetables-page .products-hero h1 {
-    font-size: clamp(44px, 13vw, 68px);
+  .en-products-page .products-hero h1 {
+
+    font-size:
+      clamp(44px, 13vw, 68px) !important;
   }
 
 
-  .fruits-vegetables-page .products-hero > p:last-child {
-    margin-top: 28px;
+  .en-products-page .hero-description {
 
-    font-size: 14px;
+    margin-top: 28px !important;
 
-    line-height: 1.7;
+    font-size: 14px !important;
+
+    line-height: 1.7 !important;
   }
 
 
-  .fruits-vegetables-page .products-overview {
-    padding: 55px 0;
+  /* Cards */
 
-    grid-template-columns: 1fr;
+  .en-products-page .products-overview {
+
+    padding: 55px 0 !important;
+
+    grid-template-columns: 1fr !important;
   }
 
 
-  .fruits-vegetables-page .product-card {
-    min-height: 230px;
+  .en-products-page .product-card {
 
-    padding: 28px;
+    min-height: 230px !important;
+
+    padding: 28px !important;
   }
 
 
-  .fruits-vegetables-page .product-number {
-    margin-bottom: 45px;
+  .en-products-page .product-number {
+
+    margin-bottom: 45px !important;
   }
 
 
-  .fruits-vegetables-page .products-cta {
-    padding: 70px 0 90px;
+  /* CTA */
+
+  .en-products-page .products-cta {
+
+    padding: 70px 0 90px !important;
   }
 
 
-  .fruits-vegetables-page .products-cta h2 {
-    font-size: clamp(40px, 11vw, 58px);
+  .en-products-page .products-cta h2 {
+
+    font-size:
+      clamp(40px, 11vw, 58px) !important;
   }
 
+
+  /* Footer */
 
   .site-footer {
-    padding: 45px 0;
+
+    padding: 45px 0 !important;
   }
 
 
   .site-footer-inner {
-    width: calc(100% - 40px);
 
-    flex-direction: column;
+    width: calc(100% - 40px) !important;
 
-    align-items: flex-start;
+    flex-direction: column !important;
 
-    gap: 30px;
+    align-items: flex-start !important;
+
+    gap: 30px !important;
   }
 
 
   .site-footer-meta {
-    align-items: flex-start;
+
+    align-items: flex-start !important;
   }
 }
 
 
 /* =========================================================
-   10 — REDUCED MOTION
+   13 — REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-  .fruits-vegetables-page .product-card,
-  .fruits-vegetables-page .products-cta a {
+  .en-products-page .product-card,
+  .en-products-page .cta-link,
+  .en-products-page .cta-link span {
 
-    transition: none;
+    transition: none !important;
   }
 }
