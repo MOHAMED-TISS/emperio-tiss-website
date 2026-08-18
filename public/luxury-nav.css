@@ -1,23 +1,29 @@
 /* =========================================================
-   EMPERIO TISS — HEADER DE LUJO / EDITORIAL
-   Mediterráneo · Internacional · Confianza
-   Fuentes: Playfair Display (display) + DM Sans (utilitaria)
-   — ya cargadas en tu <head>, no requiere import nuevo.
+   EMPERIO TISS — NAV OVERLAY + PAGE TRANSITIONS
+   Estilo editorial de lujo (ref: isradesign.com)
+   Fuentes: Playfair Display + DM Sans (ya cargadas)
 
-   INSTALACIÓN: en <head>, justo DESPUÉS de style.css:
-   <link rel="stylesheet" href="header-emperio-tiss.css">
+   INSTALACIÓN (en cada página, en <head>, tras style.css):
+   <link rel="stylesheet" href="luxury-nav.css">
+   Y antes de </body>:
+   <script src="luxury-nav.js" defer></script>
 ========================================================= */
 
 :root {
   --et-black: #0a0a0a;
+  --et-ink: #0e1512;
   --et-ivory: #f4f1ea;
   --et-gold: #c9a961;
   --et-gold-bright: #e4c98a;
   --et-hairline: rgba(244,241,234,.16);
 }
 
+/* =========================================================
+   HEADER — BARRA MÍNIMA (logo + botón menú, siempre)
+========================================================= */
+
 .site-header {
-  position: absolute !important;
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
@@ -28,315 +34,297 @@
   box-shadow: none !important;
 
   z-index: 9999 !important;
+  mix-blend-mode: normal !important;
 }
-
-
-/* =========================================================
-   SCRIM — asegura contraste del texto sobre CUALQUIER imagen
-   (antes el header dependía del fondo; ahora siempre es legible)
-========================================================= */
-
-.site-header::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  height: 160px !important;
-
-  background: linear-gradient(
-    180deg,
-    rgba(10,10,10,.55) 0%,
-    rgba(10,10,10,.28) 55%,
-    rgba(10,10,10,0) 100%
-  ) !important;
-
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
-
-/* =========================================================
-   HEADER INNER
-========================================================= */
 
 .site-header .header-inner {
   position: relative !important;
-  z-index: 1 !important;
-
   width: 100% !important;
   max-width: none !important;
-
-  height: 100px !important;
-
+  height: 92px !important;
   margin: 0 !important;
   padding: 0 48px !important;
 
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
+  justify-content: space-between !important;
 
   background: transparent !important;
-  border-radius: 0 !important;
+  border: none !important;
   box-shadow: none !important;
-
-  border-bottom: 1px solid var(--et-hairline) !important;
 }
-
-
-/* =========================================================
-   LOGO — LEFT
-   Se corrige el bug: ya NO se fuerza a blanco sólido.
-   Se conserva el color/detalle real del logo, con una
-   sombra sutil para legibilidad sobre imágenes claras u oscuras.
-========================================================= */
 
 .site-header .site-logo {
   position: relative !important;
   z-index: 5 !important;
-
-  display: flex !important;
-  align-items: center !important;
-
-  width: 190px !important;
+  width: auto !important;
 }
 
 .site-header .site-logo img {
-  width: 148px !important;
+  width: 132px !important;
   height: auto !important;
-
-  display: block !important;
-
-  /* legibilidad sin destruir el color/detalle original */
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) !important;
-  opacity: 1 !important;
 }
 
-/* Si el logo original es oscuro y necesita versión clara,
-   usar un asset alternativo en vez de invertir por CSS:
-   <img src="logo-light.svg" class="logo-on-dark"> */
-.site-header .site-logo img.logo-on-dark {
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)) brightness(0) invert(1) !important;
-}
-
-
-/* =========================================================
-   NAVIGATION — CENTER
-========================================================= */
-
-.site-header .main-nav {
-  position: relative !important;
-  left: auto !important;
-  transform: none !important;
-
-  flex: 1 !important;
-
-  display: flex !important;
-  align-items: center !important;
-
-  gap: 34px !important;
-  margin-left: 56px !important;
-
-  white-space: nowrap !important;
-}
-
-/* idioma + CTA están anidados dentro de main-nav en el HTML real:
-   el margin-left:auto de .language-nav (ver más abajo) empuja
-   ambos bloques al borde derecho del header */
-
-.site-header .main-nav > a {
-  position: relative !important;
-
-  color: rgba(244,241,234,.90) !important;
-
-  background: transparent !important;
-  border: none !important;
-
-  padding: 8px 0 !important;
-
-  font-family: "DM Sans", sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-
-  letter-spacing: .18em !important;
-  text-transform: uppercase !important;
-
-  text-decoration: none !important;
-
-  transition: color .3s ease, opacity .3s ease !important;
-}
-
-.site-header .main-nav > a:hover,
-.site-header .main-nav > a.active {
-  color: var(--et-gold-bright) !important;
-}
-
-/* línea dorada fina en vez del punto — más editorial */
-.site-header .main-nav > a::after {
-  content: "" !important;
-  position: absolute !important;
-
-  left: 0 !important;
-  right: 0 !important;
-  bottom: -9px !important;
-
-  height: 1px !important;
-
-  background: var(--et-gold) !important;
-
-  transform: scaleX(0) !important;
-  transform-origin: center !important;
-
-  transition: transform .35s ease !important;
-}
-
-.site-header .main-nav > a:hover::after,
-.site-header .main-nav > a.active::after {
-  transform: scaleX(1) !important;
-}
-
-
-/* =========================================================
-   LANGUAGE NAV
-========================================================= */
-
-.site-header .language-nav {
-  display: flex !important;
-  align-items: center !important;
-
-  gap: 11px !important;
-
-  margin-left: auto !important;
-  padding-left: 22px !important;
-
-  border-left: 1px solid var(--et-hairline) !important;
-}
-
-.site-header .language-nav a {
-  color: rgba(244,241,234,.50) !important;
-
-  font-family: "DM Sans", sans-serif !important;
-  font-size: 9px !important;
-  font-weight: 600 !important;
-
-  letter-spacing: .12em !important;
-
-  text-decoration: none !important;
-
-  transition: color .3s ease !important;
-}
-
-.site-header .language-nav a:hover,
-.site-header .language-nav a.current {
-  color: var(--et-gold-bright) !important;
-}
-
-
-/* =========================================================
-   CTA — RIGHT
-========================================================= */
-
+/* ocultar el nav clásico en línea: todo vive ahora en el overlay */
+.site-header .main-nav > a,
+.site-header .language-nav,
 .site-header .header-cta {
-  position: relative !important;
-  z-index: 5 !important;
-
-  margin-left: auto !important;
-
-  display: flex !important;
-  align-items: center !important;
-  gap: 13px !important;
-
-  padding: 12px 0 12px 22px !important;
-
-  color: var(--et-gold-bright) !important;
-
-  background: transparent !important;
-
-  border: none !important;
-  border-left: 1px solid rgba(201,169,97,.5) !important;
-
-  font-family: "Playfair Display", serif !important;
-  font-style: italic !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
-
-  letter-spacing: .01em !important;
-  text-transform: none !important;
-
-  transition: color .3s ease, padding-left .3s ease !important;
-}
-
-.site-header .header-cta:hover {
-  color: #fff !important;
-  padding-left: 27px !important;
-}
-
-.site-header .header-cta span {
-  font-family: "DM Sans", sans-serif !important;
-  font-style: normal !important;
-  font-size: 10px !important;
-  font-weight: 600 !important;
-  letter-spacing: .1em !important;
-  text-transform: uppercase !important;
-}
-
-.site-header .header-cta::after {
   display: none !important;
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 1100px) {
-  .site-header .header-inner {
-    width: calc(100% - 48px) !important;
-  }
-  .site-header .main-nav {
-    gap: 24px !important;
-  }
+.site-header .main-nav {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-@media (max-width: 900px) {
-  .site-header .header-inner {
-    width: calc(100% - 36px) !important;
-    height: 80px !important;
-    border-bottom-color: rgba(244,241,234,.12) !important;
-  }
 
-  .site-header .site-logo {
-    width: auto !important;
-  }
+/* =========================================================
+   BOTÓN MENÚ — visible siempre (desktop + mobile)
+========================================================= */
 
-  .site-header .site-logo img {
-    width: 128px !important;
-  }
+.site-header .mobile-menu {
+  display: flex !important;
+  position: relative !important;
+  z-index: 5 !important;
 
-  .site-header .main-nav,
-  .site-header .header-cta {
-    display: none !important;
-  }
+  margin-left: 0 !important;
 
-  .site-header .mobile-menu {
-    display: flex !important;
+  width: 54px !important;
+  height: 54px !important;
 
-    margin-left: auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  gap: 6px !important;
 
-    width: 42px !important;
-    height: 42px !important;
+  background: transparent !important;
+  border: 1px solid var(--et-hairline) !important;
+  border-radius: 50% !important;
 
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
-    gap: 6px !important;
+  cursor: pointer !important;
+  transition: border-color .3s ease, background .3s ease !important;
+}
 
-    background: rgba(244,241,234,.08) !important;
-    border: 1px solid rgba(244,241,234,.28) !important;
-    border-radius: 50% !important;
-  }
+.site-header .mobile-menu:hover {
+  border-color: var(--et-gold) !important;
+  background: rgba(201,169,97,.08) !important;
+}
 
+.site-header .mobile-menu span {
+  width: 18px !important;
+  height: 1px !important;
+  background: var(--et-ivory) !important;
+  transition: transform .35s ease, opacity .25s ease, background .3s ease !important;
+}
+
+.site-header .mobile-menu:hover span {
+  background: var(--et-gold-bright) !important;
+}
+
+/* estado abierto: transforma en X */
+body.nav-open .site-header .mobile-menu span:nth-child(1) {
+  transform: translateY(3.5px) rotate(45deg) !important;
+}
+body.nav-open .site-header .mobile-menu span:nth-child(2) {
+  transform: translateY(-3.5px) rotate(-45deg) !important;
+}
+
+
+/* =========================================================
+   OVERLAY — PANTALLA COMPLETA
+========================================================= */
+
+.nav-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9998 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+
+  padding: 140px 64px 56px !important;
+
+  background:
+    radial-gradient(circle at 85% 10%, rgba(201,169,97,.10), transparent 55%),
+    var(--et-ink) !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-12px) !important;
+
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1), visibility 0s linear .55s !important;
+}
+
+body.nav-open .nav-overlay {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1), visibility 0s linear 0s !important;
+}
+
+.nav-overlay-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.nav-overlay-links a {
+  position: relative !important;
+
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 18px !important;
+
+  font-family: "Playfair Display", serif !important;
+  font-size: clamp(38px, 6vw, 72px) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+
+  color: rgba(244,241,234,.55) !important;
+  text-decoration: none !important;
+
+  padding: 10px 0 !important;
+
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  transition: color .3s ease, opacity .5s ease, transform .5s ease !important;
+}
+
+body.nav-open .nav-overlay-links a {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* stagger de entrada */
+body.nav-open .nav-overlay-links a:nth-child(1) { transition-delay: .12s !important; }
+body.nav-open .nav-overlay-links a:nth-child(2) { transition-delay: .18s !important; }
+body.nav-open .nav-overlay-links a:nth-child(3) { transition-delay: .24s !important; }
+body.nav-open .nav-overlay-links a:nth-child(4) { transition-delay: .30s !important; }
+body.nav-open .nav-overlay-links a:nth-child(5) { transition-delay: .36s !important; }
+
+.nav-overlay-links a .idx {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: .08em !important;
+  color: var(--et-gold) !important;
+}
+
+.nav-overlay-links a:hover,
+.nav-overlay-links a.active {
+  color: var(--et-ivory) !important;
+}
+
+.nav-overlay-links a:hover .idx,
+.nav-overlay-links a.active .idx {
+  color: var(--et-gold-bright) !important;
+}
+
+/* pie del overlay: idioma + contacto */
+.nav-overlay-foot {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 24px !important;
+
+  padding-top: 32px !important;
+  border-top: 1px solid var(--et-hairline) !important;
+
+  opacity: 0 !important;
+  transform: translateY(16px) !important;
+  transition: opacity .5s ease .40s, transform .5s ease .40s !important;
+}
+
+body.nav-open .nav-overlay-foot {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.nav-overlay-lang {
+  display: flex !important;
+  gap: 14px !important;
+}
+
+.nav-overlay-lang a {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: .1em !important;
+  color: rgba(244,241,234,.5) !important;
+  text-decoration: none !important;
+}
+
+.nav-overlay-lang a:hover,
+.nav-overlay-lang a.current {
+  color: var(--et-gold-bright) !important;
+}
+
+.nav-overlay-contact {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  color: rgba(244,241,234,.65) !important;
+  text-align: right !important;
+}
+
+.nav-overlay-contact a {
+  color: var(--et-gold-bright) !important;
+  text-decoration: none !important;
+}
+
+/* bloquear scroll del body cuando el overlay está abierto */
+body.nav-open {
+  overflow: hidden !important;
+}
+
+@media (max-width: 700px) {
+  .nav-overlay { padding: 120px 28px 40px !important; }
+  .nav-overlay-links a { font-size: 15vw !important; }
+  .nav-overlay-foot { flex-direction: column !important; align-items: flex-start !important; }
+  .nav-overlay-contact { text-align: left !important; }
+}
+
+
+/* =========================================================
+   CORTINA DE TRANSICIÓN ENTRE PÁGINAS
+========================================================= */
+
+.page-curtain {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000 !important;
+
+  background: var(--et-ink) !important;
+
+  transform: scaleY(1) !important;
+  transform-origin: top !important;
+
+  pointer-events: none !important;
+
+  transition: transform .65s cubic-bezier(.76,0,.24,1) !important;
+}
+
+/* al cargar la página: la cortina se retira hacia arriba */
+.page-curtain.is-hidden {
+  transform: scaleY(0) !important;
+  transform-origin: bottom !important;
+}
+
+/* al salir de la página: la cortina cubre hacia abajo */
+.page-curtain.is-covering {
+  transform: scaleY(1) !important;
+  transform-origin: bottom !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-curtain,
+  .nav-overlay,
+  .nav-overlay-links a,
+  .nav-overlay-foot,
   .site-header .mobile-menu span {
-    width: 18px !important;
-    height: 1px !important;
-    background: var(--et-gold) !important;
+    transition: none !important;
   }
 }
