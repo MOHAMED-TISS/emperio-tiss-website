@@ -22,6 +22,7 @@
   >
 
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../luxury-nav.css">
 
   <style>
 
@@ -1199,14 +1200,14 @@
      HEADER
 ========================================================= -->
 
-<header class="lux-header">
+<header class="site-header">
 
-  <div class="lux-container lux-nav">
+  <div class="header-inner">
 
     <a
       href="../index.html"
-      class="lux-logo"
-      aria-label="EMPERIO TISS"
+      class="site-logo"
+      aria-label="EMPERIO TISS - Inicio"
     >
       <img
         src="../logo.png"
@@ -1214,35 +1215,46 @@
       >
     </a>
 
+    <button
+      class="mobile-menu"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="navOverlay"
+    >
+      <span></span>
+      <span></span>
+    </button>
 
-    <nav class="lux-navigation">
-
-      <a href="../index.html">Home</a>
-
-      <a href="../markets/markets.html">Markets</a>
-
-      <a href="./index.html">Products</a>
-
-      <a href="../about/about.html">About</a>
-
-      <a href="../contact/">Contact</a>
+  </div>
 
 
-      <div class="lux-languages">
-        <a class="active" href="#">EN</a>
-        <a href="#">FR</a>
-        <a href="#">ES</a>
+  <!-- OVERLAY — pantalla completa, abre/cierra con luxury-nav.js -->
+  <div class="nav-overlay" id="navOverlay">
+
+    <nav class="nav-overlay-links" aria-label="Navegación principal">
+      <a href="../index.html"><span class="idx">01</span> Inicio</a>
+      <a href="../about/index.html"><span class="idx">02</span> Empresa</a>
+      <a href="../products/index.html" class="active"><span class="idx">03</span> Productos</a>
+      <a href="../markets/index.html"><span class="idx">04</span> Mercados</a>
+      <a href="../contact/index.html"><span class="idx">05</span> Contacto</a>
+    </nav>
+
+    <div class="nav-overlay-foot">
+
+      <div class="nav-overlay-lang">
+        <a href="../es/index.html" class="current">ES</a>
+        <a href="../index.html">EN</a>
+        <a href="../fr/index.html">FR</a>
+        <a href="../ar/index.html">AR</a>
       </div>
 
+      <div class="nav-overlay-contact">
+        <a href="../index.html#contact">Consulta empresarial ↗</a><br>
+        Madrid · Europa · África · Mediterráneo
+      </div>
 
-      <a
-        class="lux-enquiry"
-        href="../contact/"
-      >
-        Business enquiry
-      </a>
-
-    </nav>
+    </div>
 
   </div>
 
