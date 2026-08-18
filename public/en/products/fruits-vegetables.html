@@ -9,16 +9,28 @@
 
   <meta
     name="description"
-    content="EMPERIO TISS supplies fruits and vegetables for professional buyers and international food markets."
+    content="EMPERIO TISS supplies selected fruits and vegetables for professional buyers and international food markets."
   >
 
-<link rel="stylesheet" href="../../style.css">
-<link rel="stylesheet" href="../../luxury-nav.css">
-<link rel="stylesheet" href="../../products.css">
-<link rel="stylesheet" href="../en.css">
+  <!-- GLOBAL -->
+  <link rel="stylesheet" href="../../style.css">
+
+  <!-- NAVIGATION -->
+  <link rel="stylesheet" href="../../luxury-nav.css">
+
+  <!-- PRODUCTS SYSTEM -->
+  <link rel="stylesheet" href="../../products.css">
+
+  <!-- ENGLISH VISUAL LAYER — MUST BE LAST -->
+  <link rel="stylesheet" href="../en.css">
 </head>
 
+
 <body>
+
+<!-- =========================================================
+     PAGE CURTAIN
+========================================================= -->
 
 <div id="pageCurtain" class="is-hidden"></div>
 
@@ -31,9 +43,17 @@
 
   <div class="header-inner">
 
-    <a href="/en/" class="site-logo" aria-label="EMPERIO TISS">
-      <img src="../../logo.png" alt="EMPERIO TISS">
+    <a
+      href="/en/"
+      class="site-logo"
+      aria-label="EMPERIO TISS — Home"
+    >
+      <img
+        src="../../logo.png"
+        alt="EMPERIO TISS"
+      >
     </a>
+
 
     <button
       id="menuToggleBtn"
@@ -52,10 +72,13 @@
 
 
 <!-- =========================================================
-     NAVIGATION
+     FULLSCREEN NAVIGATION
 ========================================================= -->
 
-<nav id="navOverlay" aria-label="Main navigation">
+<nav
+  id="navOverlay"
+  aria-label="Main navigation"
+>
 
   <div class="nav-overlay-links">
 
@@ -69,7 +92,10 @@
       <span>Company</span>
     </a>
 
-    <a href="/en/products/" class="active">
+    <a
+      href="/en/products/"
+      class="active"
+    >
       <span class="idx">03</span>
       <span>Products</span>
     </a>
@@ -86,23 +112,31 @@
 
   </div>
 
+
   <div class="nav-overlay-foot">
-    <div>
-      <span>EN</span>
-      <span>ES</span>
-      <span>FR</span>
-      <span>AR</span>
+
+    <div class="language-switcher">
+      <a href="/en/">EN</a>
+      <a href="/">ES</a>
+      <a href="/fr/">FR</a>
+      <a href="/ar/">AR</a>
     </div>
+
   </div>
 
 </nav>
 
 
 <!-- =========================================================
-     CONTENT
+     MAIN
 ========================================================= -->
 
-<main class="fruits-vegetables-page">
+<main class="en-products-page">
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================= -->
 
   <section class="products-hero">
 
@@ -111,67 +145,102 @@
     </p>
 
     <h1>
-      Produce selected<br>
+      Produce selected
+      <br>
       for the right market.
     </h1>
 
-    <p>
-      We work with seasonal and year-round produce,
-      matching product availability with the needs
-      of professional buyers and distribution markets.
+    <p class="hero-description">
+      We source seasonal and year-round produce,
+      matching availability, quality and commercial
+      requirements with professional buyers and
+      destination markets.
     </p>
 
   </section>
 
 
+  <!-- =======================================================
+       PRODUCT CATEGORIES
+  ======================================================= -->
+
   <section class="products-overview">
 
+
     <article class="product-card">
 
-      <span class="product-number">01</span>
+      <span class="product-number">
+        01
+      </span>
 
-      <h2>Citrus</h2>
+      <div class="product-card-content">
 
-      <p>
-        Citrus varieties selected according to
-        season, quality, market demand and
-        commercial specifications.
-      </p>
+        <h2>
+          Citrus
+        </h2>
+
+        <p>
+          Selected citrus varieties based on season,
+          quality, market demand and commercial
+          specifications.
+        </p>
+
+      </div>
 
     </article>
 
 
     <article class="product-card">
 
-      <span class="product-number">02</span>
+      <span class="product-number">
+        02
+      </span>
 
-      <h2>Fresh Produce</h2>
+      <div class="product-card-content">
 
-      <p>
-        Fruits and vegetables sourced for
-        wholesale distribution and professional
-        food markets.
-      </p>
+        <h2>
+          Fresh Produce
+        </h2>
+
+        <p>
+          Fruits and vegetables sourced for wholesale
+          distribution and professional food markets.
+        </p>
+
+      </div>
 
     </article>
 
 
     <article class="product-card">
 
-      <span class="product-number">03</span>
+      <span class="product-number">
+        03
+      </span>
 
-      <h2>Selected Produce</h2>
+      <div class="product-card-content">
 
-      <p>
-        Products developed around availability,
-        seasonality and destination-market
-        requirements.
-      </p>
+        <h2>
+          Selected Produce
+        </h2>
+
+        <p>
+          Produce developed around availability,
+          seasonality and the requirements of each
+          destination market.
+        </p>
+
+      </div>
 
     </article>
+
 
   </section>
 
+
+  <!-- =======================================================
+       SOURCING CTA
+  ======================================================= -->
 
   <section class="products-cta">
 
@@ -180,24 +249,37 @@
     </p>
 
     <h2>
-      Need a specific fruit or vegetable?
+      Looking for a specific
+      fruit or vegetable?
     </h2>
 
-    <p>
+    <p class="cta-description">
       Tell us the product, destination,
       required volume and delivery period.
     </p>
 
-    <a href="/en/contact/">
-      Send an enquiry →
+    <a
+      href="/en/contact/"
+      class="cta-link"
+    >
+      Send an enquiry
+      <span>→</span>
     </a>
 
   </section>
 
+
 </main>
 
 
-<script src="../../luxury-nav.js" defer></script>
+<!-- =========================================================
+     NAVIGATION JS
+========================================================= -->
+
+<script
+  src="../../luxury-nav.js"
+  defer
+></script>
 
 </body>
 </html>
