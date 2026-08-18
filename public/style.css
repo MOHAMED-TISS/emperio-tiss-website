@@ -2227,189 +2227,13 @@ button:focus {
 
 }
 /* =========================================================
-   EMPERIO TISS — FLOATING GLASS HEADER
-========================================================= */
-
-.site-header {
-  position: fixed !important;
-  top: 22px !important;
-  left: 0 !important;
-  width: 100% !important;
-
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-
-  z-index: 9999 !important;
-
-  pointer-events: none !important;
-}
-
-
-/* GLASS CONTAINER */
-
-.site-header .header-inner {
-  width: calc(100% - 48px) !important;
-  max-width: 1380px !important;
-
-  height: 76px !important;
-
-  margin: 0 auto !important;
-  padding: 0 28px !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-
-  background: rgba(22, 22, 20, 0.72) !important;
-
-  border: 1px solid rgba(255, 255, 255, 0.13) !important;
-
-  border-radius: 18px !important;
-
-  box-shadow:
-    0 12px 45px rgba(0, 0, 0, 0.20),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-
-  backdrop-filter: blur(22px) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(120%) !important;
-
-  pointer-events: auto !important;
-}
-
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.site-header .site-logo img {
-  width: 150px !important;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.site-header .main-nav > a {
-  color: #ffffff !important;
-
-  font-size: 10px !important;
-  font-weight: 600 !important;
-
-  letter-spacing: 0.13em !important;
-
-  text-shadow:
-    0 1px 8px rgba(0, 0, 0, 0.35) !important;
-}
-
-.site-header .main-nav > a:hover,
-.site-header .main-nav > a.active {
-  color: #d8bc82 !important;
-}
-
-
-/* GOLD UNDERLINE */
-
-.site-header .main-nav > a::after {
-  background: #d8bc82 !important;
-}
-
-
-/* =========================================================
-   LANGUAGES
-========================================================= */
-
-.site-header .language-nav {
-  border-left: 1px solid rgba(255,255,255,.22) !important;
-}
-
-.site-header .language-nav a {
-  color: rgba(255,255,255,.65) !important;
-
-  font-size: 9px !important;
-}
-
-.site-header .language-nav a:hover,
-.site-header .language-nav a.current {
-  color: #d8bc82 !important;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.site-header .header-cta {
-  color: #151512 !important;
-
-  background: #d8bc82 !important;
-
-  border: 1px solid #d8bc82 !important;
-
-  font-weight: 700 !important;
-
-  box-shadow:
-    0 5px 18px rgba(216,188,130,.14) !important;
-}
-
-.site-header .header-cta:hover {
-  color: #d8bc82 !important;
-  background: transparent !important;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .site-header {
-    top: 12px !important;
-  }
-
-  .site-header .header-inner {
-    width: calc(100% - 24px) !important;
-    height: 68px !important;
-
-    padding: 0 18px !important;
-
-    border-radius: 15px !important;
-  }
-
-  .site-header .site-logo img {
-    width: 130px !important;
-  }
-
-  .site-header .main-nav {
-    display: none !important;
-  }
-
-  .site-header .mobile-menu {
-    display: flex !important;
-
-    width: 42px !important;
-    height: 42px !important;
-
-    background: transparent !important;
-
-    border: 1px solid rgba(216,188,130,.45) !important;
-
-    border-radius: 10px !important;
-  }
-
-  .site-header .mobile-menu span {
-    background: #d8bc82 !important;
-  }
-}
-/* =========================================================
-   EMPERIO TISS — LIGHT GLASS / WATER HEADER
+   EMPERIO TISS
+   PREMIUM LIGHT GLASS HEADER
 ========================================================= */
 
 .site-header {
   position: absolute !important;
-  top: 18px !important;
+  top: 20px !important;
   left: 0 !important;
   width: 100% !important;
 
@@ -2417,58 +2241,57 @@ button:focus {
   border: none !important;
   box-shadow: none !important;
 
-  z-index: 9999 !important;
+  z-index: 1000 !important;
 }
 
 
 /* =========================================================
-   GLASS PANEL
+   GLASS
 ========================================================= */
 
 .site-header .header-inner {
   position: relative !important;
 
-  width: min(1420px, calc(100% - 48px)) !important;
-  height: 78px !important;
+  width: min(1320px, calc(100% - 80px)) !important;
+  height: 72px !important;
 
   margin: 0 auto !important;
-  padding: 0 30px !important;
+  padding: 0 24px !important;
 
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
-
-  overflow: hidden !important;
 
   background:
     linear-gradient(
-      135deg,
-      rgba(255,255,255,.46),
-      rgba(255,255,255,.18) 45%,
-      rgba(238,228,207,.24)
+      110deg,
+      rgba(246, 243, 235, 0.72),
+      rgba(235, 231, 219, 0.48),
+      rgba(220, 210, 188, 0.42)
     ) !important;
 
-  border: 1px solid rgba(255,255,255,.52) !important;
+  border: 1px solid rgba(255,255,255,.72) !important;
 
-  border-radius: 22px !important;
+  border-radius: 14px !important;
 
   box-shadow:
-    0 18px 50px rgba(35,31,23,.12),
-    inset 0 1px 0 rgba(255,255,255,.70),
-    inset 0 -1px 0 rgba(255,255,255,.12) !important;
+    0 12px 35px rgba(0,0,0,.13),
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 -1px 0 rgba(120,100,65,.08) !important;
 
   backdrop-filter:
-    blur(24px)
-    saturate(135%) !important;
+    blur(20px)
+    saturate(125%) !important;
 
   -webkit-backdrop-filter:
-    blur(24px)
-    saturate(135%) !important;
+    blur(20px)
+    saturate(125%) !important;
+
+  overflow: hidden !important;
 }
 
 
 /* =========================================================
-   WATER / LIGHT REFLECTION
+   SUBTLE WATER REFLECTION
 ========================================================= */
 
 .site-header .header-inner::before {
@@ -2476,46 +2299,21 @@ button:focus {
 
   position: absolute !important;
 
-  top: -80px !important;
-  left: -10% !important;
+  top: -55px !important;
+  left: 8% !important;
 
-  width: 120% !important;
-  height: 120px !important;
+  width: 84% !important;
+  height: 80px !important;
 
   background:
     radial-gradient(
       ellipse,
       rgba(255,255,255,.48) 0%,
-      rgba(255,255,255,.18) 35%,
-      transparent 70%
+      rgba(255,255,255,.15) 42%,
+      transparent 72%
     ) !important;
 
-  transform: rotate(-3deg) !important;
-
-  pointer-events: none !important;
-}
-
-
-.site-header .header-inner::after {
-  content: "" !important;
-
-  position: absolute !important;
-
-  left: 8% !important;
-  right: 8% !important;
-  bottom: 0 !important;
-
-  height: 1px !important;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.75),
-      rgba(205,177,120,.55),
-      rgba(255,255,255,.75),
-      transparent
-    ) !important;
+  transform: rotate(-2deg) !important;
 
   pointer-events: none !important;
 }
@@ -2528,54 +2326,70 @@ button:focus {
 .site-header .site-logo {
   position: relative !important;
   z-index: 2 !important;
+
+  flex-shrink: 0 !important;
 }
 
 .site-header .site-logo img {
-  width: 150px !important;
+  width: 142px !important;
   height: auto !important;
+
+  display: block !important;
 }
 
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 .site-header .main-nav {
   position: relative !important;
   z-index: 2 !important;
 
+  margin-left: auto !important;
+
   display: flex !important;
   align-items: center !important;
 
-  gap: 30px !important;
+  gap: 27px !important;
 }
 
 
 .site-header .main-nav > a {
-  color: #332f29 !important;
+  position: relative !important;
+
+  color: #25241f !important;
+
+  background: transparent !important;
+
+  font-family: "DM Sans", sans-serif !important;
 
   font-size: 10px !important;
   font-weight: 600 !important;
 
-  letter-spacing: .12em !important;
+  letter-spacing: .115em !important;
+
   text-transform: uppercase !important;
+  text-decoration: none !important;
+
+  white-space: nowrap !important;
 
   text-shadow:
-    0 1px 1px rgba(255,255,255,.55) !important;
+    0 1px 1px rgba(255,255,255,.7) !important;
 
   transition:
-    color .3s ease,
-    transform .3s ease !important;
+    color .25s ease,
+    opacity .25s ease !important;
 }
 
 
 .site-header .main-nav > a:hover,
 .site-header .main-nav > a.active {
-  color: #9b773b !important;
-
-  transform: translateY(-1px) !important;
+  color: #997333 !important;
 }
 
+
+/* Remove old underline */
 
 .site-header .main-nav > a::after {
   display: none !important;
@@ -2589,33 +2403,39 @@ button:focus {
 .site-header .language-nav {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
 
-  padding-left: 20px !important;
+  gap: 9px !important;
+
+  margin-left: 2px !important;
+  padding-left: 17px !important;
 
   border-left:
-    1px solid rgba(80,70,55,.18) !important;
+    1px solid rgba(45,42,35,.20) !important;
 }
 
 
 .site-header .language-nav a {
-  color: rgba(45,41,35,.55) !important;
+  color: #625e55 !important;
+
+  font-family: "DM Sans", sans-serif !important;
 
   font-size: 8px !important;
   font-weight: 600 !important;
 
-  letter-spacing: .10em !important;
+  letter-spacing: .08em !important;
+
+  text-decoration: none !important;
 }
 
 
 .site-header .language-nav a.current,
 .site-header .language-nav a:hover {
-  color: #9b773b !important;
+  color: #997333 !important;
 }
 
 
 /* =========================================================
-   CTA — GLASS GOLD
+   CTA
 ========================================================= */
 
 .site-header .header-cta {
@@ -2624,45 +2444,53 @@ button:focus {
 
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 9px !important;
 
-  padding: 11px 16px !important;
+  margin-left: 20px !important;
 
-  color: #514126 !important;
+  padding: 11px 15px !important;
+
+  color: #3b301e !important;
 
   background:
     linear-gradient(
       135deg,
-      rgba(224,196,140,.75),
-      rgba(194,157,91,.62)
+      rgba(222,196,139,.95),
+      rgba(194,157,88,.92)
     ) !important;
 
   border:
-    1px solid rgba(255,255,255,.58) !important;
+    1px solid rgba(255,255,255,.75) !important;
 
-  border-radius: 12px !important;
+  border-radius: 9px !important;
 
-  font-size: 9px !important;
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 8px !important;
   font-weight: 700 !important;
 
-  letter-spacing: .10em !important;
+  letter-spacing: .105em !important;
+
+  text-transform: uppercase !important;
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.65),
-    0 5px 18px rgba(120,90,40,.10) !important;
+    0 5px 14px rgba(90,65,25,.10) !important;
+
+  white-space: nowrap !important;
 
   transition:
-    transform .3s ease,
-    box-shadow .3s ease !important;
+    transform .25s ease,
+    box-shadow .25s ease !important;
 }
 
 
 .site-header .header-cta:hover {
-  transform: translateY(-2px) !important;
+  transform: translateY(-1px) !important;
 
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.8),
-    0 9px 25px rgba(120,90,40,.18) !important;
+    0 8px 20px rgba(90,65,25,.16) !important;
 }
 
 
@@ -2682,11 +2510,16 @@ button:focus {
   }
 
   .site-header .header-inner {
-    width: calc(100% - 28px) !important;
-    height: 68px !important;
-    padding: 0 20px !important;
+    width: calc(100% - 32px) !important;
+    height: 66px !important;
 
-    border-radius: 18px !important;
+    padding: 0 18px !important;
+
+    border-radius: 12px !important;
+  }
+
+  .site-header .site-logo img {
+    width: 125px !important;
   }
 
   .site-header .main-nav {
@@ -2707,109 +2540,18 @@ button:focus {
     flex-direction: column !important;
     gap: 6px !important;
 
-    background: rgba(255,255,255,.20) !important;
+    background: rgba(255,255,255,.25) !important;
 
     border:
-      1px solid rgba(255,255,255,.5) !important;
+      1px solid rgba(255,255,255,.55) !important;
 
-    border-radius: 10px !important;
+    border-radius: 9px !important;
   }
 
   .site-header .mobile-menu span {
     width: 19px !important;
     height: 1px !important;
 
-    background: #806536 !important;
+    background: #5d492b !important;
   }
-}
-/* =========================================================
-   HEADER — STRONGER GLASS CONTRAST
-========================================================= */
-
-/* More solid glass surface */
-.site-header .header-inner {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.72),
-      rgba(248,243,232,.58) 50%,
-      rgba(232,220,198,.62)
-    ) !important;
-
-  backdrop-filter:
-    blur(30px)
-    saturate(145%) !important;
-
-  -webkit-backdrop-filter:
-    blur(30px)
-    saturate(145%) !important;
-
-  border-color:
-    rgba(255,255,255,.78) !important;
-
-  box-shadow:
-    0 18px 50px rgba(35,31,23,.15),
-    inset 0 1px 0 rgba(255,255,255,.90),
-    inset 0 -1px 0 rgba(130,105,65,.10) !important;
-}
-
-
-/* =========================================================
-   NAVIGATION — HIGH CONTRAST
-========================================================= */
-
-.site-header .main-nav > a {
-  color: #171613 !important;
-
-  font-weight: 700 !important;
-
-  text-shadow:
-    0 1px 0 rgba(255,255,255,.85) !important;
-}
-
-.site-header .main-nav > a:hover,
-.site-header .main-nav > a.active {
-  color: #8a672e !important;
-}
-
-
-/* =========================================================
-   LANGUAGES
-========================================================= */
-
-.site-header .language-nav {
-  border-left-color:
-    rgba(35,31,24,.25) !important;
-}
-
-.site-header .language-nav a {
-  color: #4b463d !important;
-
-  font-weight: 700 !important;
-}
-
-.site-header .language-nav a.current,
-.site-header .language-nav a:hover {
-  color: #8a672e !important;
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.site-header .header-cta {
-  color: #302510 !important;
-
-  font-weight: 700 !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e1c98f,
-      #c5a15b
-    ) !important;
-
-  border-color:
-    rgba(255,255,255,.85) !important;
 }
