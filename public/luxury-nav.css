@@ -285,6 +285,7 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
 
 /* =========================================================
    FULLSCREEN MENU
+   DESKTOP — FIXED + SCROLLABLE
 ========================================================= */
 
 #navOverlay {
@@ -305,32 +306,42 @@ body.nav-open #luxuryHeader #menuToggleBtn::after {
   display: grid !important;
 
   grid-template-columns:
-    minmax(420px,1fr)
-    minmax(250px,320px) !important;
+    minmax(420px, 1fr)
+    minmax(250px, 320px) !important;
 
   column-gap: 8vw !important;
 
   align-items: center !important;
 
-overflow-x: hidden !important;
-overflow-y: auto !important;
+  /*
+   * IMPORTANT:
+   * Desktop menu itself can scroll if content
+   * becomes taller than the viewport.
+   */
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 
--webkit-overflow-scrolling: touch !important;
+  -webkit-overflow-scrolling: touch !important;
+
   background:
     radial-gradient(
       circle at 85% 10%,
       rgba(201,169,97,.11),
       transparent 42%
     ),
+
     radial-gradient(
       circle at 20% 85%,
       rgba(32,72,66,.16),
       transparent 42%
     ),
+
     var(--et-ink) !important;
 
   opacity: 0 !important;
+
   visibility: hidden !important;
+
   pointer-events: none !important;
 
   transform: translateY(-12px) !important;
@@ -342,10 +353,16 @@ overflow-y: auto !important;
 }
 
 
+/* =========================================================
+   OPEN
+========================================================= */
+
 body.nav-open #navOverlay {
 
   opacity: 1 !important;
+
   visibility: visible !important;
+
   pointer-events: auto !important;
 
   transform: translateY(0) !important;
@@ -357,11 +374,74 @@ body.nav-open #navOverlay {
 }
 
 
+/* =========================================================
+   IMPORTANT
+   DO NOT LOCK THE PAGE SCROLL
+========================================================= */
+
 body.nav-open {
-  overflow: hidden !important;
+
+  overflow: visible !important;
+
 }
 
 
+/* =========================================================
+   DESKTOP — KEEP MENU CONTENT INSIDE VIEW
+========================================================= */
+
+@media (min-width: 701px) {
+
+  #navOverlay {
+
+    min-height: 100vh !important;
+
+    max-height: 100vh !important;
+
+    overflow-y: auto !important;
+
+    overflow-x: hidden !important;
+
+    scrollbar-width: thin !important;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  body.nav-open {
+
+    overflow: hidden !important;
+
+  }
+
+  #navOverlay {
+
+    padding: 105px 28px 35px !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+
+    justify-content: flex-start !important;
+
+    overflow-x: hidden !important;
+
+    overflow-y: auto !important;
+
+    -webkit-overflow-scrolling: touch !important;
+
+  }
+
+}
 /* =========================================================
    NAVIGATION
 ========================================================= */
