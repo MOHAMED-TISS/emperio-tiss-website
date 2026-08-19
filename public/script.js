@@ -4,14 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const path = window.location.pathname.toLowerCase();
   const body = document.body;
 
-  /* Page identity drives subtle, product-specific visual treatment. */
   if (path.includes("seafood")) body.classList.add("et-seafood");
   else if (path.includes("fruits-vegetables")) body.classList.add("et-produce");
   else if (path.includes("seasonal")) body.classList.add("et-seasonal");
   else if (path.includes("news")) body.classList.add("et-news");
   else body.classList.add("et-corporate");
 
-  /* Global header: same geometry everywhere, readable on every hero. */
   const style = document.createElement("style");
   style.id = "et-global-header-v2";
   style.textContent = `
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     #navOverlay .nav-overlay-links{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:2px!important;margin:0!important;padding:0!important}
     #navOverlay .nav-overlay-links a{display:flex!important;align-items:baseline!important;gap:18px!important;width:max-content!important;padding:5px 0!important;color:#f5efe2!important;text-decoration:none!important;font:400 clamp(36px,5vw,66px)/1 "Playfair Display",serif!important;letter-spacing:-.025em!important;opacity:0!important;transform:translateY(16px)!important;transition:opacity .42s ease,transform .42s ease,color .25s ease!important}
     body.nav-open #navOverlay .nav-overlay-links a{opacity:1!important;transform:none!important}
-    #navOverlay .nav-overlay-links a:nth-child(1){transition-delay:.04s!important}#navOverlay .nav-overlay-links a:nth-child(2){transition-delay:.09s!important}#navOverlay .nav-overlay-links a:nth-child(3){transition-delay:.14s!important}#navOverlay .nav-overlay-links a:nth-child(4){transition-delay:.19s!important}#navOverlay .nav-overlay-links a:nth-child(5){transition-delay:.24s!important}#navOverlay .nav-overlay-links a:nth-child(6){transition-delay:.29s!important}
     #navOverlay .nav-overlay-links a:hover{color:#dfc88c!important;transform:translateX(8px)!important}
     #navOverlay .idx{width:28px!important;min-width:28px!important;color:#c9a35f!important;font:600 9px/1 "DM Sans",sans-serif!important;letter-spacing:.12em!important}
     #navOverlay .nav-overlay-side{display:none!important}
@@ -43,22 +40,16 @@ document.addEventListener("DOMContentLoaded", () => {
     body.et-produce #luxuryHeader .header-inner{background:linear-gradient(135deg,rgba(13,39,27,.95),rgba(39,72,42,.88))!important;border-color:rgba(201,181,126,.30)!important}
     body.et-seasonal #luxuryHeader .header-inner{background:linear-gradient(135deg,rgba(28,39,31,.95),rgba(67,91,70,.88))!important;border-color:rgba(219,203,160,.30)!important}
     body.et-news #luxuryHeader .header-inner{background:linear-gradient(135deg,rgba(27,25,21,.96),rgba(67,54,37,.88))!important;border-color:rgba(219,191,132,.32)!important}
-    body.et-seafood .et-page-accent{color:#a9d8d7!important}body.et-produce .et-page-accent{color:#9bbf78!important}body.et-seasonal .et-page-accent{color:#d0bc8a!important}
     #pageCurtain,.page-curtain{pointer-events:none!important;opacity:0!important;visibility:hidden!important;transform:translateY(-100%)!important;z-index:2147483005!important}
     #pageCurtain.is-covering,.page-curtain.is-covering{opacity:1!important;visibility:visible!important;transform:translateY(0)!important}
     @media(max-width:700px){#luxuryHeader{height:76px!important}#luxuryHeader .header-inner{width:calc(100% - 20px)!important;height:58px!important;margin-top:8px!important;padding-left:12px!important;border-radius:18px!important}#luxuryHeader .site-logo img{max-width:104px!important;max-height:38px!important}#luxuryHeader #menuToggleBtn{width:44px!important;height:44px!important;flex-basis:44px!important}#navOverlay .nav-overlay-inner{padding:96px 24px 24px!important}#navOverlay .nav-overlay-links a{width:100%!important;font-size:clamp(30px,9vw,45px)!important;gap:10px!important;padding:7px 0!important}#navOverlay .idx{width:24px!important;min-width:24px!important;font-size:8px!important}#navOverlay .nav-overlay-foot{flex-direction:column!important;align-items:flex-start!important}.nav-overlay-contact{align-items:flex-start!important}}
   `;
   document.head.appendChild(style);
 
-  /* Build a single navigation overlay when a legacy page does not have one. */
   let overlay = document.getElementById("navOverlay");
   const english = path.startsWith("/en/") || path === "/en" || path.includes("/en/");
-  const labels = english
-    ? ["Home","Company","Products","Markets","News","Contact"]
-    : ["Inicio","Empresa","Productos","Mercados","Noticias","Contacto"];
-  const links = english
-    ? ["/en/index.html","/en/about/index.html","/en/products/index.html","/en/markets/index.html","/en/news/index.html","/en/contact/index.html"]
-    : ["/index.html","/about/index.html","/products/index.html","/markets/index.html","/news/index.html","/contact/index.html"];
+  const labels = english ? ["Home","Company","Products","Markets","News","Contact"] : ["Inicio","Empresa","Productos","Mercados","Noticias","Contacto"];
+  const links = english ? ["/en/index.html","/en/about/index.html","/en/products/index.html","/en/markets/index.html","/en/news/index.html","/en/contact/index.html"] : ["/index.html","/about/index.html","/products/index.html","/markets/index.html","/news/index.html","/contact/index.html"];
 
   if (!overlay) {
     overlay = document.createElement("div");
@@ -69,12 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(overlay);
   } else {
     const nav = overlay.querySelector(".nav-overlay-links");
-    if (nav) {
-      const current = nav.querySelectorAll("a");
-      if (current.length < 6 || !Array.from(current).some(a => /News|Noticias/.test(a.textContent))) {
-        nav.innerHTML = labels.map((label,i)=>`<a href="${links[i]}"><span class="idx">${String(i+1).padStart(2,"0")}</span><span>${label}</span></a>`).join("");
-      }
-    }
+    if (nav) nav.innerHTML = labels.map((label,i)=>`<a href="${links[i]}"><span class="idx">${String(i+1).padStart(2,"0")}</span><span>${label}</span></a>`).join("");
   }
 
   const button = document.getElementById("menuToggleBtn") || document.querySelector(".mobile-menu");
@@ -86,14 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay.setAttribute("aria-hidden", String(!open));
       document.documentElement.style.overflow = open ? "hidden" : "";
     });
-    overlay.addEventListener("click", e => {
-      if (e.target === overlay) {
-        body.classList.remove("nav-open");
-        button.setAttribute("aria-expanded", "false");
-        overlay.setAttribute("aria-hidden", "true");
-        document.documentElement.style.overflow = "";
-      }
-    });
     overlay.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
       body.classList.remove("nav-open");
       button.setAttribute("aria-expanded", "false");
@@ -102,13 +80,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
   }
 
-  /* Header state on scroll. */
+  /* Remove disallowed positioning language from rendered copy without altering product content. */
+  const replacements = [
+    [/comercio internacional/gi, "operaciones internacionales"],
+    [/relaciones comerciales/gi, "relaciones profesionales"],
+    [/conecta productos, productores y compradores/gi, "ofrece productos seleccionados y soluciones profesionales"],
+    [/conectar productos, productores y compradores/gi, "ofrecer productos seleccionados y soluciones profesionales"],
+    [/del origen al mercado/gi, "food moves. markets connect."],
+    [/from origin to market\. with purpose\.?/gi, "Food moves. Markets connect."],
+    [/trade/gi, "operations"],
+    [/trading/gi, "operations"]
+  ];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  textNodes.forEach(node => {
+    if (!node.nodeValue.trim()) return;
+    let value = node.nodeValue;
+    replacements.forEach(([pattern,replacement]) => { value = value.replace(pattern,replacement); });
+    if (value !== node.nodeValue) node.nodeValue = value;
+  });
+
   const header = document.querySelector("#luxuryHeader,.site-header");
   const updateHeader = () => { if (header) header.classList.toggle("scrolled", window.scrollY > 30); };
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive:true });
 
-  /* Smooth internal links. */
   document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener("click", event => {
     const id = link.getAttribute("href");
     if (!id || id === "#") return;
@@ -118,12 +115,10 @@ document.addEventListener("DOMContentLoaded", () => {
     target.scrollIntoView({ behavior:"smooth", block:"start" });
   }));
 
-  /* Premium pointer, disabled for touch and when reduced motion is requested. */
   if (window.matchMedia("(pointer:fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const pointer = document.createElement("div");
     pointer.className = "premium-pointer";
     document.body.appendChild(pointer);
-    body.classList.add("et-pointer-enabled");
     document.addEventListener("mousemove", e => { pointer.style.left=`${e.clientX}px`; pointer.style.top=`${e.clientY}px`; });
     document.querySelectorAll("a,button").forEach(el => {
       el.addEventListener("mouseenter",()=>pointer.classList.add("active"));
