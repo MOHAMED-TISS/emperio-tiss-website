@@ -1,0 +1,284 @@
+/* EMPERIO TISS — temporary subpage visual system
+   Uses the approved Home visual language until individual product worlds are redesigned. */
+
+/* ---------- Spanish secondary pages ---------- */
+.es-page {
+  background: #f3f0e8;
+}
+
+.es-page .es-header {
+  top: 12px;
+  left: 20px;
+  right: 20px;
+  width: auto;
+  height: auto;
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.es-page .es-header-inner {
+  width: min(1240px, calc(100% - 40px));
+  height: 76px;
+  padding: 0 14px 0 24px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: rgba(5,24,20,.78);
+  backdrop-filter: blur(24px) saturate(125%);
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  box-shadow: 0 14px 45px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.es-page .es-logo img {
+  width: 132px;
+  max-height: 68px;
+  object-fit: contain;
+}
+
+.es-page .es-menu {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  overflow: visible;
+  margin-right: 0;
+}
+
+.es-page .es-menu::after {
+  content: 'MENÚ';
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 5px);
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.9);
+  font: 600 7px/1 "DM Sans", Arial, sans-serif;
+  letter-spacing: .16em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.es-page .es-hero {
+  min-height: min(820px, 92vh);
+  padding: 190px 0 105px;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  background-color: #061b16;
+  background-image:
+    linear-gradient(90deg, rgba(3,20,16,.96) 0%, rgba(3,20,16,.80) 42%, rgba(3,20,16,.42) 72%, rgba(3,20,16,.58) 100%),
+    linear-gradient(180deg, rgba(3,20,16,.12), rgba(3,20,16,.84)),
+    url('/products/images/seafood/fish/dorada.jpg');
+  background-position: center, center, center;
+  background-size: cover, cover, cover;
+  background-repeat: no-repeat;
+}
+
+.es-page .es-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 180px;
+  background: linear-gradient(transparent, rgba(3,20,16,.45));
+  pointer-events: none;
+  z-index: -1;
+}
+
+.es-page .es-container {
+  width: min(1180px, calc(100% - 64px));
+}
+
+.es-page .es-hero .es-container {
+  position: relative;
+  z-index: 2;
+}
+
+.es-page .es-hero h1 {
+  max-width: 780px;
+  font-size: clamp(62px, 8.4vw, 126px);
+  line-height: .86;
+  text-wrap: balance;
+  text-shadow: 0 8px 35px rgba(0,0,0,.28);
+}
+
+.es-page .es-lead {
+  max-width: 610px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.es-page .es-actions {
+  align-items: center;
+}
+
+.es-page .es-btn {
+  min-height: 50px;
+  white-space: nowrap;
+}
+
+/* Overlay: keep every navigation line isolated and readable. */
+.es-page .nav-overlay-inner {
+  padding: clamp(90px, 11vh, 130px) clamp(28px, 6vw, 90px) 34px;
+}
+
+.es-page .nav-overlay-links {
+  gap: clamp(12px, 2vh, 22px);
+}
+
+.es-page .nav-overlay-links a {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-height: 1.05em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.es-page .nav-overlay-links a > span:last-child {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.es-page .nav-overlay-foot {
+  gap: 24px;
+}
+
+/* Prevent text collisions throughout secondary pages. */
+.es-page h1,
+.es-page h2,
+.es-page h3,
+.es-page p,
+.es-page a,
+.es-page strong,
+.es-page span {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.es-page .es-grid > *,
+.es-page .es-card,
+.es-page .es-list-row,
+.es-page .es-footer-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .es-page .es-header {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .es-page .es-header-inner {
+    width: calc(100% - 16px);
+    height: 68px;
+    padding-left: 17px;
+  }
+
+  .es-page .es-logo img {
+    width: 116px;
+    max-height: 58px;
+  }
+
+  .es-page .es-hero {
+    min-height: 760px;
+    padding: 155px 0 80px;
+    align-items: flex-end;
+  }
+
+  .es-page .es-container {
+    width: calc(100% - 40px);
+  }
+
+  .es-page .es-hero h1 {
+    font-size: clamp(54px, 15vw, 82px);
+    line-height: .88;
+  }
+
+  .es-page .es-lead {
+    font-size: 14px;
+  }
+
+  .es-page .es-actions {
+    align-items: stretch;
+  }
+
+  .es-page .es-btn {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .es-page .nav-overlay-links a {
+    gap: 12px;
+  }
+}
+
+/* ---------- English Products page ---------- */
+.products-page .products-hero {
+  min-height: min(820px, 92vh);
+  padding: 150px 0 55px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background-color: #061b16;
+  background-image:
+    linear-gradient(90deg, rgba(3,20,16,.96) 0%, rgba(3,20,16,.80) 42%, rgba(3,20,16,.42) 72%, rgba(3,20,16,.58) 100%),
+    linear-gradient(180deg, rgba(3,20,16,.12), rgba(3,20,16,.84)),
+    url('/products/images/seafood/fish/dorada.jpg');
+  background-position: center, center, center;
+  background-size: cover, cover, cover;
+}
+
+.products-page .products-hero-title h1 {
+  color: #fff;
+  text-shadow: 0 8px 35px rgba(0,0,0,.3);
+}
+
+.products-page .products-hero-title em {
+  color: #c9a35f;
+}
+
+.products-page .products-hero-copy p {
+  color: rgba(255,255,255,.82);
+}
+
+.products-page .products-hero-bottom {
+  color: rgba(255,255,255,.58);
+  border-top-color: rgba(255,255,255,.18);
+}
+
+.products-page .hero-location,
+.products-page .products-hero .eyebrow {
+  color: #d7b86e;
+}
+
+.products-page .button.secondary {
+  border-color: rgba(255,255,255,.35);
+  color: #fff;
+}
+
+.products-page .products-hero-grid {
+  align-items: center;
+}
+
+.products-page .products-hero-copy,
+.products-page .products-hero-title {
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .products-page .products-hero {
+    min-height: 760px;
+    padding: 145px 0 55px;
+  }
+
+  .products-page .products-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    min-height: 0;
+  }
+
+  .products-page .products-hero-title h1 {
+    font-size: clamp(58px, 15vw, 92px);
+  }
+}
