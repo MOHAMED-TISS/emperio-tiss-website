@@ -1,0 +1,170 @@
+name: Apply sitewide visual polish
+
+on:
+  push:
+    branches: [fix/sitewide-elegant-visual-system]
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply visual system
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat >> public/style.css <<'CSS'
+
+/* =========================================================
+   SITEWIDE VISUAL POLISH — IVORY / CHAMPAGNE
+   Shared across Home, About, Markets, Contact and Products.
+========================================================= */
+
+:root {
+  --et-ivory: #f7f2e8;
+  --et-ivory-soft: #fbf8f1;
+  --et-champagne: #c9a35f;
+  --et-champagne-light: #dfc88f;
+  --et-deep: #16352a;
+  --et-deep-soft: #234b3d;
+  --et-text: #173128;
+  --et-muted: #5f6d64;
+  --et-ease: cubic-bezier(.22,1,.36,1);
+}
+
+/* ---- global readability / cursor ---- */
+html { scroll-behavior: smooth; }
+body {
+  background: var(--et-ivory);
+  color: var(--et-text);
+}
+body, a, button { cursor: default; }
+a, button, [role="button"] { cursor: pointer; }
+
+/* ---- restrained typography ---- */
+.hero h1 { font-size: clamp(64px, 9vw, 138px) !important; line-height: .84 !important; }
+.intro-content h2 { font-size: clamp(48px, 6.5vw, 88px) !important; line-height: .9 !important; }
+h1 { font-size: clamp(42px, 6vw, 84px); }
+h2 { font-size: clamp(34px, 4.5vw, 62px); }
+h3 { font-size: clamp(22px, 3vw, 36px); }
+p { line-height: 1.72; }
+
+/* ---- shared header: lighter, thinner, quieter ---- */
+.site-header { top: 10px !important; padding: 0 16px !important; }
+.header-inner {
+  height: 64px !important;
+  padding: 0 14px 0 20px !important;
+  border: 1px solid rgba(201,163,95,.24) !important;
+  background: rgba(250,247,239,.82) !important;
+  backdrop-filter: blur(20px) saturate(115%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(115%) !important;
+  box-shadow: 0 8px 28px rgba(25,43,34,.09), inset 0 1px rgba(255,255,255,.8) !important;
+}
+.site-header.scrolled .header-inner {
+  background: rgba(251,248,241,.96) !important;
+  box-shadow: 0 10px 32px rgba(25,43,34,.11) !important;
+}
+.site-logo { width: 128px !important; height: 58px !important; }
+.site-logo img { width: 86px !important; max-height: 54px !important; }
+.main-nav { gap: 21px !important; font-size: 11px !important; }
+.main-nav > a:not(.header-cta) { color: var(--et-text) !important; }
+.language-nav a { color: #5f665f !important; }
+.header-cta { min-height: 40px !important; padding: 0 16px !important; background: var(--et-deep) !important; color: var(--et-ivory) !important; border-color: var(--et-deep) !important; }
+.header-cta:hover { background: #285241 !important; }
+
+/* ---- shared section rhythm: fewer hard color breaks ---- */
+.intro-section,
+.products-worlds,
+.products-origin,
+.products-specifications,
+.fv-section,
+.lux-intro,
+.seasonal-calendar {
+  background: var(--et-ivory-soft) !important;
+}
+.intro-section { padding: 120px 0 !important; }
+
+/* ---- home hero: special but controlled ---- */
+.hero {
+  background:
+    linear-gradient(90deg, rgba(7,31,24,.82), rgba(7,31,24,.30)),
+    radial-gradient(circle at 80% 25%, rgba(201,163,95,.18), transparent 35%),
+    linear-gradient(125deg,#0b3025,#164636) !important;
+}
+.hero-kicker p { color: var(--et-champagne-light) !important; }
+.hero-line-gold { color: var(--et-champagne-light) !important; }
+.button-light { background: var(--et-ivory) !important; border-color: var(--et-ivory) !important; }
+.button-outline:hover { background: rgba(201,163,95,.10) !important; border-color: var(--et-champagne-light) !important; }
+
+/* ---- contextual product accents, without hard color segmentation ---- */
+.products-page,
+.fv-page,
+.seasonal-page { background: var(--et-ivory) !important; color: var(--et-text) !important; }
+.products-page .products-cta { background: linear-gradient(135deg,#174436,#285a47) !important; }
+.lux-hero { background-color: #173d35 !important; }
+.lux-intro { color: var(--et-text) !important; }
+.lux-range { background: linear-gradient(135deg,#1d4d42,#2c6454) !important; }
+.fv-page .fv-hero { background-color: #e7e2d4 !important; }
+.fv-page .fv-card { background: rgba(255,255,255,.52) !important; border-color: rgba(201,163,95,.22) !important; }
+.seasonal-page .seasonal-calendar { border-color: rgba(201,163,95,.20) !important; }
+
+/* ---- shared glass / cards ---- */
+.es-card,
+.products-world,
+.fv-card,
+.lux-product,
+.season-row {
+  border-color: rgba(201,163,95,.20) !important;
+  box-shadow: 0 10px 35px rgba(23,49,40,.06) !important;
+}
+
+/* ---- readable image overlays ---- */
+.hero::after,
+.lux-hero::after,
+.es-hero::after,
+.fv-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(6,28,22,.10), rgba(6,28,22,.42));
+  z-index: 0;
+}
+.hero > *, .lux-hero > *, .es-hero > *, .fv-hero > * { position: relative; z-index: 1; }
+
+/* ---- smooth transitions ---- */
+a, button, .button, .header-cta, .products-world, .fv-card, .lux-product, .season-row {
+  transition-timing-function: var(--et-ease) !important;
+}
+
+/* ---- no grey palette ---- */
+[style*="#6d756f"], [style*="#657069"], [style*="#536058"] { color: var(--et-muted) !important; }
+
+@media (max-width: 900px) {
+  .site-header { top: 8px !important; padding: 0 10px !important; }
+  .header-inner { height: 58px !important; width: calc(100% - 12px) !important; }
+  .main-nav, .header-cta, .language-nav { display: none !important; }
+  .mobile-menu { display: flex !important; }
+  .hero { padding-top: 125px !important; }
+  .hero h1 { font-size: clamp(54px, 14vw, 92px) !important; }
+  .intro-content h2 { font-size: clamp(42px, 11vw, 68px) !important; }
+}
+CSS
+
+          node tests/site-visual-contract.js
+
+      - name: Commit generated polish
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/style.css tests/site-visual-contract.js
+          if git diff --cached --quiet; then
+            echo 'No generated changes.'
+          else
+            git commit -m 'style: unify sitewide ivory champagne visual system'
+            git push
+          fi
