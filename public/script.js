@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded',function(){
     [/conecta productos, productores y compradores/gi,'ofrece productos seleccionados y soluciones profesionales'],
     [/conectar productos, productores y compradores/gi,'ofrecer productos seleccionados y soluciones profesionales'],
     [/\btrading\b/gi,'operations'],
-    [/\btrade\b/gi,'operations']
+    [/\btrade\b/gi,'operations'],
+    [/\bverduras?\b/gi,'hortalizas']
   ];
   var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),nodes=[];
   while(walker.nextNode())nodes.push(walker.currentNode);
