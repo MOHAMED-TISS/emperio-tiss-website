@@ -1,15 +1,34 @@
-/* =========================================================
-   EMPERIO TISS — NAV OVERLAY + PAGE TRANSITIONS
-   Vanilla JS, sin dependencias. Funciona en sitio multi-página
-   (cada .html es una carga real, no SPA).
-========================================================= */
-
+/* EMPERIO TISS — shared navigation, safe multi-page transitions */
 (function () {
   "use strict";
 
-  var CURTAIN_MS = 650; // debe coincidir con la transición CSS de .page-curtain
+  var CURTAIN_MS = 360;
 
-  /* ---------- 1. Cortina: ocultar al cargar la página ---------- */
+  function ensureMenuStructure() {
+    var button = document.getElementById("menuToggleBtn");
+    if (!button) return null;
+
+    button.classList.add("menu-ready");
+    button.setAttribute("type", "button");
+    button.setAttribute("aria-controls", "navOverlay");
+    if (!button.getAttribute("aria-label")) button.setAttribute("aria-label", "Abrir menú");
+
+    var spans = button.querySelectorAll("span");
+    while (spans.length < 3) {
+      button.appendChild(document.createElement("span"));
+      spans = button.querySelectorAll("span");
+    }
+    return button;
+  }
+
+  function setMenuState(button, open) {
+    document.body.classList.toggle("nav-open", open);
+    if (button) {
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+      button.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      button.classList.toggle("is-open", open);
+    }
+  }
 
   function initCurtain() {
     var curtain = document.getElementById("pageCurtain");
@@ -19,7 +38,6 @@
       curtain.className = "page-curtain";
       document.body.appendChild(curtain);
     }
-    // fuerza reflow para que la transición de salida se dispare
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         curtain.classList.add("is-hidden");
@@ -28,113 +46,100 @@
     return curtain;
   }
 
-  /* ---------- 2. Interceptar clics en enlaces internos ---------- */
-
   function isInternalLink(link) {
     if (!link || !link.href) return false;
-    if (link.target === "_blank") return false;
-    if (link.hasAttribute("download")) return false;
-    if (link.href.indexOf("mailto:") === 0) return false;
-    if (link.href.indexOf("tel:") === 0) return false;
-    var url = new URL(link.href, window.location.href);
-    return url.origin === window.location.origin;
+    if (link.target === "_blank" || link.hasAttribute("download")) return false;
+    if (/^(mailto:|tel:|javascript:)/i.test(link.href)) return false;
+    try {
+      var url = new URL(link.href, window.location.href);
+      return url.origin === window.location.origin;
+    } catch (_) {
+      return false;
+    }
   }
 
- function initPageTransitions(curtain) {
-  document.addEventListener("click", function (e) {
+  function initTransitions(curtain, menuButton) {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest("a");
+      if (!link || !isInternalLink(link)) return;
 
-    var link = e.target.closest("a");
+      var url = new URL(link.href, window.location.href);
+      var samePage = url.pathname === window.location.pathname;
 
-    if (!link || !isInternalLink(link)) return;
-
-    var url = new URL(link.href, window.location.href);
-
-    // No interceptar anclas de la misma página
-    if (
-      url.pathname === window.location.pathname &&
-      url.hash
-    ) {
-      return;
-    }
-
-    e.preventDefault();
-
-    /* =====================================================
-       CLOSE MENU FIRST
-    ===================================================== */
-
-    document.body.classList.remove("nav-open");
-
-    var menuButton =
-      document.getElementById("menuToggleBtn");
-
-    if (menuButton) {
-      menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuButton.setAttribute(
-        "aria-label",
-        "Open menu"
-      );
-    }
-
-
-    /* =====================================================
-       PAGE TRANSITION
-    ===================================================== */
-
-    curtain.classList.remove("is-hidden");
-    curtain.classList.add("is-covering");
-
-
-    /* =====================================================
-       NAVIGATE
-    ===================================================== */
-
-    window.setTimeout(function () {
-      window.location.href = link.href;
-    }, CURTAIN_MS);
-
-  });
-}
-
-  /* ---------- 3. Overlay de navegación pantalla completa ---------- */
-
-  function initNavOverlay() {
-    var trigger = document.getElementById("menuToggleBtn");
-    var overlay = document.getElementById("navOverlay");
-    if (!trigger || !overlay) return;
-
-    trigger.addEventListener("click", function () {
-      document.body.classList.toggle("nav-open");
-      var isOpen = document.body.classList.contains("nav-open");
-      trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-
-    // cerrar con ESC
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        document.body.classList.remove("nav-open");
-        trigger.setAttribute("aria-expanded", "false");
+      if (samePage && url.hash) {
+        setMenuState(menuButton, false);
+        return;
       }
+
+      if (samePage && !url.hash) {
+        event.preventDefault();
+        setMenuState(menuButton, false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      event.preventDefault();
+      setMenuState(menuButton, false);
+      curtain.classList.remove("is-hidden");
+      curtain.classList.add("is-covering");
+
+      window.setTimeout(function () {
+        window.location.assign(url.href);
+      }, CURTAIN_MS);
+    });
+  }
+
+  function initNav(menuButton) {
+    var overlay = document.getElementById("navOverlay");
+    if (!menuButton || !overlay) return;
+
+    menuButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setMenuState(menuButton, !document.body.classList.contains("nav-open"));
     });
 
-    // cerrar al hacer clic en un link del overlay (la cortina de transición
-    // ya se encarga de la salida visual)
-    overlay.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        document.body.classList.remove("nav-open");
+    overlay.addEventListener("click", function (event) {
+      if (event.target === overlay) setMenuState(menuButton, false);
+    });
+
+    overlay.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setMenuState(menuButton, false);
       });
     });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setMenuState(menuButton, false);
+    });
   }
 
-  /* ---------- Init ---------- */
+  function sanitizeLanguageLinks() {
+    document.querySelectorAll('a[href*="/fr/"], a[href*="/ar/"]').forEach(function (link) {
+      /* FR/AR pages are not part of the current production tree. Never expose dead routes. */
+      link.remove();
+    });
+  }
+
+  function closeOnRestore() {
+    window.addEventListener("pageshow", function () {
+      var button = document.getElementById("menuToggleBtn");
+      setMenuState(button, false);
+      var curtain = document.getElementById("pageCurtain");
+      if (curtain) {
+        curtain.classList.remove("is-covering");
+        curtain.classList.add("is-hidden");
+      }
+    });
+  }
 
   document.addEventListener("DOMContentLoaded", function () {
+    sanitizeLanguageLinks();
+    var menuButton = ensureMenuStructure();
     var curtain = initCurtain();
-    initPageTransitions(curtain);
-    initNavOverlay();
+    initTransitions(curtain, menuButton);
+    initNav(menuButton);
+    closeOnRestore();
+    setMenuState(menuButton, false);
   });
 })();
