@@ -1,20 +1,150 @@
-/* EMPERIO TISS — unified English navigation */
-(function(){'use strict';
-var D=document,W=window;
-function menu(){return D.getElementById('menuToggleBtn')||D.querySelector('.es-menu,.menu-toggle,.mobile-menu')}
-function overlay(){return D.getElementById('navOverlay')}
-function state(open){var b=menu(),o=overlay();D.body.classList.toggle('nav-open',open);D.documentElement.classList.toggle('menu-lock',open);D.body.classList.toggle('menu-lock',open);if(b){b.classList.toggle('is-open',open);b.setAttribute('aria-expanded',open?'true':'false');b.setAttribute('aria-label',open?'Close menu':'Open menu')}if(o)o.setAttribute('aria-hidden',open?'false':'true')}
-function normalizeHeader(){var b=menu();if(!b)return;b.id='menuToggleBtn';b.type='button';b.setAttribute('aria-controls','navOverlay');var spans=b.querySelectorAll('span:not(.et-menu-label)');while(spans.length<3){b.appendChild(D.createElement('span'));spans=b.querySelectorAll('span:not(.et-menu-label)')}if(!b.querySelector('.et-menu-label')){var l=D.createElement('span');l.className='et-menu-label';l.textContent='MENU';b.appendChild(l)}}
-function buildNav(){var o=overlay();if(!o)return;var labels=['Home','Company','Products','Markets','News','Contact'],links=['/en/index.html','/en/about/index.html','/en/products/index.html','/en/markets/index.html','/en/news/index.html','/en/contact/index.html'];var inner=o.querySelector('.nav-overlay-inner');if(!inner){inner=D.createElement('div');inner.className='nav-overlay-inner';while(o.firstChild)inner.appendChild(o.firstChild);o.appendChild(inner)}var nav=inner.querySelector('.nav-overlay-links');if(!nav){nav=D.createElement('nav');nav.className='nav-overlay-links';inner.prepend(nav)}nav.setAttribute('aria-label','Main navigation');nav.innerHTML=labels.map(function(label,i){return '<a href="'+links[i]+'"><span class="idx">'+String(i+1).padStart(2,'0')+'</span><span>'+label+'</span></a>'}).join('');var foot=inner.querySelector('.nav-overlay-foot');if(!foot){foot=D.createElement('div');foot.className='nav-overlay-foot';inner.appendChild(foot)}var lang=foot.querySelector('.nav-overlay-lang');if(!lang){lang=D.createElement('div');lang.className='nav-overlay-lang';foot.prepend(lang)}lang.innerHTML='<a class="current" href="/en/index.html">EN</a><span>·</span><a href="/index.html">ES</a>';var contact=foot.querySelector('.nav-overlay-contact');if(!contact){contact=D.createElement('div');contact.className='nav-overlay-contact';foot.appendChild(contact)}contact.innerHTML='<a href="/en/contact/index.html">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span>'}
-function pageIdentity(){var p=W.location.pathname.toLowerCase();D.body.setAttribute('data-site-page',p.indexOf('seafood')>-1?'seafood':p.indexOf('fruits-vegetables')>-1?'produce':p.indexOf('seasonal')>-1?'seasonal':p.indexOf('news')>-1?'news':'standard')}
-function languages(){var host=D.querySelector('#luxuryHeader .header-inner,.site-header .header-inner'),b=menu();if(!host||!b||host.querySelector('.et-language-switch'))return;var box=D.createElement('div');box.className='et-language-switch';var en=D.createElement('a');en.className='current';en.href='/en/index.html';en.textContent='EN';var sep=D.createElement('span');sep.className='sep';sep.textContent='·';var es=D.createElement('a');es.href='/index.html';es.textContent='ES';box.append(en,sep,es);host.insertBefore(box,b)}
-function subpageStyles(){var p=W.location.pathname.replace(/\/+$/,'');if(p==='/en'||p==='/en/index.html')return;if(D.getElementById('et-subpage-home-css'))return;var l=D.createElement('link');l.id='et-subpage-home-css';l.rel='stylesheet';l.href='/subpage-home.css?v=2';D.head.appendChild(l)}
-/* Load the subpage stylesheet before DOMContentLoaded. The previous implementation injected it only after first paint, which caused the old cream/white hero to flash or remain under cached CSS. */
-subpageStyles();
-function pointer(){if(!W.matchMedia||!W.matchMedia('(pointer:fine)').matches||D.querySelector('.premium-pointer'))return;var p=D.createElement('div');p.className='premium-pointer';D.body.appendChild(p);D.addEventListener('mousemove',function(e){p.style.left=e.clientX+'px';p.style.top=e.clientY+'px'},{passive:true})}
-function curtain(){var c=D.getElementById('pageCurtain');if(!c){c=D.createElement('div');c.id='pageCurtain';c.className='page-curtain';D.body.appendChild(c)}c.classList.remove('is-covering');c.classList.add('is-hidden');return c}
-function internal(a){if(!a||!a.href||a.target==='_blank'||a.hasAttribute('download'))return false;try{var u=new URL(a.href,W.location.href);return u.origin===W.location.origin&&!/^(mailto:|tel:|javascript:)/i.test(a.href)}catch(e){return false}}
-function transitions(c){D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!internal(a))return;var u=new URL(a.href,W.location.href);if(u.hash&&u.pathname===W.location.pathname){state(false);return}if(a.closest('#navOverlay')){e.preventDefault();state(false);c.classList.add('is-covering');setTimeout(function(){W.location.href=u.href},380)}})}
-function motion(){var els=D.querySelectorAll('main section,.product-row,.products-world,.products-world-grid,.fv-card,.lux-product,.season-row,.es-card,.market-grid article,.company-values>div,.footer-column');els.forEach(function(e){e.classList.add('et-reveal')});if(!('IntersectionObserver'in W)){els.forEach(function(e){e.classList.add('et-visible')});return}var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('et-visible');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px'});els.forEach(function(e){io.observe(e)})}
-D.addEventListener('DOMContentLoaded',function(){pageIdentity();normalizeHeader();buildNav();languages();var b=menu(),o=overlay(),c=curtain();if(b)b.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();state(!D.body.classList.contains('nav-open'))},true);if(o)o.addEventListener('click',function(e){if(e.target===o)state(false)});D.addEventListener('keydown',function(e){if(e.key==='Escape')state(false)});pointer();transitions(c);motion();state(false)});W.addEventListener('pageshow',function(){state(false);var c=D.getElementById('pageCurtain');if(c)c.classList.add('is-hidden')});
+/* EMPERIO TISS — clean English navigation
+   One responsibility: menu state + stable language switcher.
+   Page styles remain in their own stylesheets. */
+(function () {
+  'use strict';
+
+  const doc = document;
+  const win = window;
+
+  function getMenuButton() {
+    return doc.getElementById('menuToggleBtn') ||
+      doc.querySelector('.menu-toggle, .es-menu, .mobile-menu');
+  }
+
+  function getOverlay() {
+    return doc.getElementById('navOverlay');
+  }
+
+  function setMenu(open) {
+    const button = getMenuButton();
+    const overlay = getOverlay();
+
+    doc.body.classList.toggle('nav-open', open);
+    doc.documentElement.classList.toggle('menu-lock', open);
+    doc.body.classList.toggle('menu-lock', open);
+
+    if (button) {
+      button.classList.toggle('is-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    if (overlay) {
+      overlay.setAttribute('aria-hidden', String(!open));
+      overlay.classList.toggle('is-open', open);
+    }
+  }
+
+  function normalizeButton() {
+    const button = getMenuButton();
+    if (!button) return null;
+
+    button.id = 'menuToggleBtn';
+    button.type = 'button';
+    button.setAttribute('aria-controls', 'navOverlay');
+
+    let bars = button.querySelectorAll('span:not(.et-menu-label)');
+    while (bars.length < 3) {
+      button.appendChild(doc.createElement('span'));
+      bars = button.querySelectorAll('span:not(.et-menu-label)');
+    }
+
+    if (!button.querySelector('.et-menu-label')) {
+      const label = doc.createElement('span');
+      label.className = 'et-menu-label';
+      label.textContent = 'MENU';
+      button.appendChild(label);
+    }
+
+    return button;
+  }
+
+  function addLanguageBar() {
+    const header = doc.querySelector('#luxuryHeader .header-inner, .site-header .header-inner, .site-header .nav-wrap');
+    if (!header || header.querySelector('.et-language-switch')) return;
+
+    const current = win.location.pathname.toLowerCase();
+    const links = [
+      { label: 'ES', href: '/' },
+      { label: 'EN', href: '/en/index.html' },
+      { label: 'FR', href: '/fr/index.html' },
+      { label: 'AR', href: '/ar/index.html' }
+    ];
+
+    const box = doc.createElement('nav');
+    box.className = 'et-language-switch';
+    box.setAttribute('aria-label', 'Language');
+
+    links.forEach(function (item, index) {
+      const link = doc.createElement('a');
+      link.href = item.href;
+      link.textContent = item.label;
+
+      const isEnglish = current === '/en' || current.startsWith('/en/');
+      const isFrench = current === '/fr' || current.startsWith('/fr/');
+      const isArabic = current === '/ar' || current.startsWith('/ar/');
+      const active =
+        (item.label === 'EN' && isEnglish) ||
+        (item.label === 'FR' && isFrench) ||
+        (item.label === 'AR' && isArabic) ||
+        (item.label === 'ES' && !isEnglish && !isFrench && !isArabic);
+
+      if (active) link.classList.add('current');
+      box.appendChild(link);
+
+      if (index < links.length - 1) {
+        const separator = doc.createElement('span');
+        separator.textContent = '·';
+        separator.setAttribute('aria-hidden', 'true');
+        box.appendChild(separator);
+      }
+    });
+
+    const button = getMenuButton();
+    if (button) header.insertBefore(box, button);
+    else header.appendChild(box);
+  }
+
+  function bind() {
+    const button = normalizeButton();
+    const overlay = getOverlay();
+
+    if (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setMenu(!doc.body.classList.contains('nav-open'));
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', function (event) {
+        if (event.target === overlay) setMenu(false);
+      });
+
+      overlay.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          setMenu(false);
+        });
+      });
+    }
+
+    doc.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setMenu(false);
+    });
+
+    win.addEventListener('pageshow', function () {
+      setMenu(false);
+    });
+
+    addLanguageBar();
+    setMenu(false);
+  }
+
+  if (doc.readyState === 'loading') {
+    doc.addEventListener('DOMContentLoaded', bind, { once: true });
+  } else {
+    bind();
+  }
 })();
