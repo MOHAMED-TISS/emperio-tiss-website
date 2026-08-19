@@ -1,20 +1,108 @@
-/* EMPERIO TISS — unified global navigation */
-(function(){'use strict';
-var D=document,W=window;
-function menu(){return D.getElementById('menuToggleBtn')||D.querySelector('.es-menu,.menu-toggle,.mobile-menu')}
-function overlay(){return D.getElementById('navOverlay')}
-function isEN(){return /^\/en(?:\/|$)/.test(W.location.pathname)}
-function state(open){var b=menu(),o=overlay();D.body.classList.toggle('nav-open',open);D.documentElement.classList.toggle('menu-lock',open);D.body.classList.toggle('menu-lock',open);if(b){b.classList.toggle('is-open',open);b.setAttribute('aria-expanded',open?'true':'false');b.setAttribute('aria-label',open?(isEN()?'Close menu':'Cerrar menú'):(isEN()?'Open menu':'Abrir menú'))}if(o)o.setAttribute('aria-hidden',open?'false':'true')}
-function normalizeHeader(){var b=menu();if(!b)return;b.id='menuToggleBtn';b.type='button';b.setAttribute('aria-controls','navOverlay');var spans=b.querySelectorAll('span:not(.et-menu-label)');while(spans.length<3){b.appendChild(D.createElement('span'));spans=b.querySelectorAll('span:not(.et-menu-label)')}if(!b.querySelector('.et-menu-label')){var l=D.createElement('span');l.className='et-menu-label';l.textContent=isEN()?'MENU':'MENÚ';b.appendChild(l)}}
-function buildNav(){var o=overlay();if(!o)return;var en=isEN(),labels=en?['Home','Company','Products','Markets','News','Contact']:['Inicio','Empresa','Productos','Mercados','Noticias','Contacto'];var links=en?['/en/index.html','/en/about/index.html','/en/products/index.html','/en/markets/index.html','/en/news/index.html','/en/contact/index.html']:['/index.html','/about/index.html','/products/index.html','/markets/index.html','/news/index.html','/contact/index.html'];var inner=o.querySelector('.nav-overlay-inner');if(!inner){inner=D.createElement('div');inner.className='nav-overlay-inner';while(o.firstChild)inner.appendChild(o.firstChild);o.appendChild(inner)}var nav=inner.querySelector('.nav-overlay-links');if(!nav){nav=D.createElement('nav');nav.className='nav-overlay-links';inner.prepend(nav)}nav.setAttribute('aria-label',en?'Main navigation':'Navegación principal');nav.innerHTML=labels.map(function(label,i){return '<a href="'+links[i]+'"><span class="idx">'+String(i+1).padStart(2,'0')+'</span><span>'+label+'</span></a>'}).join('');var foot=inner.querySelector('.nav-overlay-foot');if(!foot){foot=D.createElement('div');foot.className='nav-overlay-foot';inner.appendChild(foot)}var lang=foot.querySelector('.nav-overlay-lang');if(lang)lang.innerHTML='<a class="current" href="'+(en?'/en/index.html':'/index.html')+'">'+(en?'EN':'ES')+'</a><span>·</span><a href="'+(en?'/index.html':'/en/index.html')+'">'+(en?'ES':'EN')+'</a>';else{lang=D.createElement('div');lang.className='nav-overlay-lang';lang.innerHTML='<a class="current" href="'+(en?'/en/index.html':'/index.html')+'">'+(en?'EN':'ES')+'</a><span>·</span><a href="'+(en?'/index.html':'/en/index.html')+'">'+(en?'ES':'EN')+'</a>';foot.prepend(lang)}var contact=foot.querySelector('.nav-overlay-contact');if(!contact){contact=D.createElement('div');contact.className='nav-overlay-contact';foot.appendChild(contact)}contact.innerHTML='<a href="'+(en?'/en/contact/index.html':'/contact/index.html')+'">'+(en?'Business enquiry ↗':'Consulta empresarial ↗')+'</a><span>Madrid · Europa · África · Mediterráneo</span>'}
-function pageIdentity(){var p=W.location.pathname.toLowerCase();D.body.setAttribute('data-site-page',p.indexOf('seafood')>-1?'seafood':p.indexOf('fruits-vegetables')>-1?'produce':p.indexOf('seasonal')>-1?'seasonal':p.indexOf('news')>-1?'news':'standard')}
-function languages(){var host=D.querySelector('#luxuryHeader .header-inner,.es-header-inner,.lux-container,.site-header .header-inner'),b=menu();if(!host||!b||host.querySelector('.et-language-switch'))return;var box=D.createElement('div');box.className='et-language-switch';var en=isEN();function make(t,href,current){var a=D.createElement('a');a.href=href;a.textContent=t;a.className=current?'current':'';return a}box.append(make(en?'EN':'ES',en?'/en/index.html':'/index.html',true),Object.assign(D.createElement('span'),{className:'sep',textContent:'·'}),make(en?'ES':'EN',en?'/index.html':'/en/index.html',false));host.insertBefore(box,b)}
-function subpageStyles(){var p=W.location.pathname.replace(/\/+$/,'');if(p===''||p==='/index.html'||p==='/en'||p==='/en/index.html')return;if(D.getElementById('et-subpage-home-css'))return;var l=D.createElement('link');l.id='et-subpage-home-css';l.rel='stylesheet';l.href='/subpage-home.css?v=1';D.head.appendChild(l)}
-function pointer(){if(!W.matchMedia||!W.matchMedia('(pointer:fine)').matches||D.querySelector('.premium-pointer'))return;D.body.classList.add('et-pointer-enabled');var p=D.createElement('div');p.className='premium-pointer';D.body.appendChild(p);D.addEventListener('mousemove',function(e){p.style.left=e.clientX+'px';p.style.top=e.clientY+'px'},{passive:true});D.addEventListener('mouseover',function(e){if(e.target.closest&&e.target.closest('a,button'))p.classList.add('active')});D.addEventListener('mouseout',function(e){var a=e.target.closest&&e.target.closest('a,button');if(a&&!a.contains(e.relatedTarget))p.classList.remove('active')})}
-function curtain(){var c=D.getElementById('pageCurtain');if(!c){c=D.createElement('div');c.id='pageCurtain';c.className='page-curtain';D.body.appendChild(c)}c.classList.remove('is-covering');return c}
-function internal(a){if(!a||!a.href||a.target==='_blank'||a.hasAttribute('download'))return false;try{var u=new URL(a.href,W.location.href);return u.origin===W.location.origin&&!/^(mailto:|tel:|javascript:)/i.test(a.href)}catch(e){return false}}
-function transitions(c){D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!internal(a))return;var u=new URL(a.href,W.location.href);if(u.hash&&u.pathname===W.location.pathname){state(false);return}if(a.closest('#navOverlay')){e.preventDefault();state(false);c.classList.add('is-covering');setTimeout(function(){W.location.href=u.href},380)}})}
-function motion(){var els=D.querySelectorAll('main section,.product-row,.products-world,.fv-card,.lux-product,.season-row,.es-card,.market-grid article,.company-values>div,.footer-column');els.forEach(function(e){e.classList.add('et-reveal')});if(!('IntersectionObserver'in W)){els.forEach(function(e){e.classList.add('et-visible')});return}var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('et-visible');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px'});els.forEach(function(e){io.observe(e)})}
-function heroMotion(){var h=D.querySelector('.hero');if(!h||!W.matchMedia||W.matchMedia('(prefers-reduced-motion: reduce)').matches)return;var ticking=false;W.addEventListener('scroll',function(){if(ticking)return;ticking=true;W.requestAnimationFrame(function(){h.style.backgroundPosition='center calc(50% + '+Math.min(W.scrollY*.08,35)+'px)';ticking=false})},{passive:true})}
-D.addEventListener('DOMContentLoaded',function(){subpageStyles();pageIdentity();normalizeHeader();buildNav();languages();var b=menu(),o=overlay(),c=curtain();if(b)b.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();state(!D.body.classList.contains('nav-open'))},true);if(o)o.addEventListener('click',function(e){if(e.target===o)state(false)});D.addEventListener('keydown',function(e){if(e.key==='Escape')state(false)});pointer();transitions(c);motion();heroMotion();state(false)});W.addEventListener('pageshow',function(){state(false);var c=D.getElementById('pageCurtain');if(c){c.classList.remove('is-covering');c.classList.add('is-hidden')}});
+/* EMPERIO TISS — clean global navigation */
+(function () {
+  'use strict';
+
+  const d = document;
+  const w = window;
+
+  const getMenu = () => d.getElementById('menuToggleBtn');
+  const getOverlay = () => d.getElementById('navOverlay');
+  const isEnglish = () => /^\/en(?:\/|$)/.test(w.location.pathname);
+
+  function setMenu(open) {
+    const button = getMenu();
+    const overlay = getOverlay();
+
+    d.body.classList.toggle('nav-open', open);
+    d.documentElement.classList.toggle('menu-lock', open);
+    d.body.classList.toggle('menu-lock', open);
+
+    if (button) {
+      button.classList.toggle('is-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open
+        ? (isEnglish() ? 'Close menu' : 'Cerrar menú')
+        : (isEnglish() ? 'Open menu' : 'Abrir menú'));
+    }
+
+    if (overlay) overlay.setAttribute('aria-hidden', String(!open));
+  }
+
+  function normalizeButton() {
+    const button = getMenu();
+    if (!button) return;
+
+    button.type = 'button';
+    button.setAttribute('aria-controls', 'navOverlay');
+
+    if (!button.querySelector('.et-menu-label')) {
+      const label = d.createElement('span');
+      label.className = 'et-menu-label';
+      label.textContent = isEnglish() ? 'MENU' : 'MENÚ';
+      button.appendChild(label);
+    }
+  }
+
+  function addLanguagePill() {
+    const host = d.querySelector('.es-header-inner, #luxuryHeader .header-inner, .site-header .header-inner');
+    const button = getMenu();
+    if (!host || !button || host.querySelector('.et-language-switch')) return;
+
+    const en = isEnglish();
+    const box = d.createElement('div');
+    box.className = 'et-language-switch';
+
+    const primary = d.createElement('a');
+    primary.className = 'current';
+    primary.href = en ? '/en/index.html' : '/index.html';
+    primary.textContent = en ? 'EN' : 'ES';
+
+    const separator = d.createElement('span');
+    separator.className = 'sep';
+    separator.textContent = '·';
+
+    const secondary = d.createElement('a');
+    secondary.href = en ? '/index.html' : '/en/index.html';
+    secondary.textContent = en ? 'ES' : 'EN';
+
+    box.append(primary, separator, secondary);
+    host.insertBefore(box, button);
+  }
+
+  function init() {
+    normalizeButton();
+    addLanguagePill();
+    setMenu(false);
+
+    const button = getMenu();
+    const overlay = getOverlay();
+
+    if (button && !button.dataset.navBound) {
+      button.dataset.navBound = 'true';
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        setMenu(!d.body.classList.contains('nav-open'));
+      });
+    }
+
+    if (overlay && !overlay.dataset.navBound) {
+      overlay.dataset.navBound = 'true';
+      overlay.addEventListener('click', function (event) {
+        if (event.target === overlay) setMenu(false);
+      });
+    }
+
+    d.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setMenu(false);
+    });
+
+    d.querySelectorAll('#navOverlay a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setMenu(false);
+      });
+    });
+  }
+
+  d.addEventListener('DOMContentLoaded', init);
+  w.addEventListener('pageshow', function () { setMenu(false); });
 })();
