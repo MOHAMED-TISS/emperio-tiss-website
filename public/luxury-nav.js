@@ -1,17 +1,173 @@
-/* EMPERIO TISS — one global navigation controller */
+/* EMPERIO TISS — global navigation + pointer + international page refinements */
 (function(){
   'use strict';
   const d=document,w=window;
+
   const menu=()=>d.getElementById('menuToggleBtn')||d.querySelector('.es-menu,.mobile-menu');
   const overlay=()=>d.getElementById('navOverlay');
   const lang=()=>{const p=w.location.pathname.toLowerCase();if(p.startsWith('/en/'))return 'EN';if(p.startsWith('/fr/'))return 'FR';if(p.startsWith('/ar/'))return 'AR';return 'ES'};
-  function identity(){const p=w.location.pathname.toLowerCase();let page='standard';if(p.includes('seafood'))page='seafood';else if(p.includes('fruits-vegetables'))page='produce';else if(p.includes('seasonal'))page='seasonal';else if(p.includes('/news'))page='news';d.body.dataset.sitePage=page;}
-  function set(open){const b=menu(),o=overlay();d.body.classList.toggle('nav-open',open);d.documentElement.classList.toggle('menu-lock',open);d.body.classList.toggle('menu-lock',open);if(b){b.classList.toggle('is-open',open);b.setAttribute('aria-expanded',String(open));const close=lang()==='EN'?'Close menu':lang()==='FR'?'Fermer le menu':lang()==='AR'?'إغلاق القائمة':'Cerrar menú';const openText=lang()==='EN'?'Open menu':lang()==='FR'?'Ouvrir le menu':lang()==='AR'?'فتح القائمة':'Abrir menú';b.setAttribute('aria-label',open?close:openText)}if(o)o.setAttribute('aria-hidden',String(!open));}
-  function languageBar(){const host=d.querySelector('#luxuryHeader .header-inner,.site-header .header-inner,.site-header .nav-wrap');if(!host||host.querySelector('.et-language-switch'))return;const current=lang();const links=[['ES','/'],['EN','/en/'],['FR','/fr/'],['AR','/ar/']];const box=d.createElement('nav');box.className='et-language-switch';box.setAttribute('aria-label','Language');links.forEach((x,i)=>{const a=d.createElement('a');a.href=x[1];a.textContent=x[0];if(x[0]===current)a.className='current';box.appendChild(a);if(i<links.length-1){const s=d.createElement('span');s.className='sep';s.textContent='·';box.appendChild(s)}});const b=menu();if(b)host.insertBefore(box,b);else host.appendChild(box);}
-  function ensureNews(){const nav=d.querySelector('#navOverlay .nav-overlay-links');if(!nav||nav.querySelector('a[href*="news"]'))return;const current=lang();const newsPath=current==='EN'?'/en/news/':current==='FR'?'/fr/news/':current==='AR'?'/ar/news/':'/news/';const a=d.createElement('a');a.href=newsPath;a.innerHTML='<span class="idx">05</span><span>'+(current==='EN'?'News':current==='FR'?'Actualités':current==='AR'?'أخبار':'Noticias')+'</span>';const contact=Array.from(nav.children).find(x=>/contact|contacto|اتصل/i.test(x.textContent||''));if(contact)nav.insertBefore(a,contact);else nav.appendChild(a);Array.from(nav.children).forEach((x,i)=>{const n=x.querySelector('.idx');if(n)n.textContent=String(i+1).padStart(2,'0')});}
-  function initPointer(){if(!w.matchMedia||w.matchMedia('(hover:none),(pointer:coarse)').matches)return;if(d.querySelector('.et-pointer'))return;const p=d.createElement('div');p.className='et-pointer';p.setAttribute('aria-hidden','true');d.body.appendChild(p);d.documentElement.classList.add('et-pointer-ready');let x=-100,y=-100,tx=-100,ty=-100,raf=0;const render=()=>{tx+=(x-tx)*.24;ty+=(y-ty)*.24;p.style.left=tx+'px';p.style.top=ty+'px';raf=requestAnimationFrame(render)};const move=e=>{x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(render)};w.addEventListener('mousemove',move,{passive:true});w.addEventListener('mousedown',()=>p.classList.add('is-down'));w.addEventListener('mouseup',()=>p.classList.remove('is-down'));d.addEventListener('mouseover',e=>{if(e.target.closest('a,button,[role="button"],input,select,textarea,.es-card,.products-world,.fv-card,.season-row'))p.classList.add('is-hover')});d.addEventListener('mouseout',e=>{if(e.target.closest('a,button,[role="button"],input,select,textarea,.es-card,.products-world,.fv-card,.season-row'))p.classList.remove('is-hover')});w.addEventListener('blur',()=>{p.style.opacity='0'});w.addEventListener('focus',()=>{p.style.opacity='1'})}
-  function refineActions(){if(d.documentElement.dataset.etActions==='1')return;d.documentElement.dataset.etActions='1';const style=d.createElement('style');style.id='et-refined-actions';style.textContent='.et-refined-action{position:relative;display:inline-flex;align-items:center;gap:.75em!important}.et-refined-action::after{content:"";display:inline-block;width:24px;height:1px;background:currentColor;opacity:.55;transform:translateX(0);transition:width .45s cubic-bezier(.165,.84,.44,1),opacity .3s ease}.et-refined-action:hover::after,.et-refined-action:focus-visible::after{width:34px;opacity:1}.product-arrow{font-size:0!important;width:34px;height:16px;position:relative;display:block!important}.product-arrow::after{content:"";position:absolute;right:0;top:50%;width:26px;height:1px;background:currentColor;opacity:.58;transition:width .4s ease,opacity .3s ease}.product-row:hover .product-arrow::after{width:34px;opacity:1}@media(max-width:900px){.et-refined-action::after{width:20px}.et-refined-action:hover::after,.et-refined-action:focus-visible::after{width:28px}.product-arrow{width:28px}.product-arrow::after{width:21px}.product-row:hover .product-arrow::after{width:28px}}';d.head.appendChild(style);const arrowChars=/[↗↖↘↙→←↑↓↔]/g;const walker=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{if(n.parentElement&&n.parentElement.closest('script,style,.et-pointer'))return;if(arrowChars.test(n.nodeValue)){n.nodeValue=n.nodeValue.replace(arrowChars,'')}});const selectors='.es-btn,.es-link,.text-link,.button,.product-row,.product-arrow,.nav-overlay-contact a';d.querySelectorAll(selectors).forEach(el=>el.classList.add('et-refined-action'));}
-  function init(){identity();initPointer();refineActions();const b=menu(),o=overlay();if(!b||!o)return;b.querySelectorAll('.et-menu-label').forEach(x=>x.remove());b.type='button';b.setAttribute('aria-controls','navOverlay');ensureNews();if(!b.dataset.navBound){b.dataset.navBound='1';b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();set(!d.body.classList.contains('nav-open'))})}if(!o.dataset.navBound){o.dataset.navBound='1';o.addEventListener('click',e=>{if(e.target===o)set(false)});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)))}if(!d.body.dataset.navKeys){d.body.dataset.navKeys='1';d.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})}languageBar();set(false)}
+
+  function identity(){
+    const p=w.location.pathname.toLowerCase();
+    let page='standard';
+    if(p.includes('seafood'))page='seafood';
+    else if(p.includes('fruits-vegetables'))page='produce';
+    else if(p.includes('seasonal'))page='seasonal';
+    else if(p.includes('/news'))page='news';
+    d.body.dataset.sitePage=page;
+  }
+
+  function set(open){
+    const b=menu(),o=overlay();
+    d.body.classList.toggle('nav-open',open);
+    d.documentElement.classList.toggle('menu-lock',open);
+    d.body.classList.toggle('menu-lock',open);
+    if(b){
+      b.classList.toggle('is-open',open);
+      b.setAttribute('aria-expanded',String(open));
+      const close=lang()==='EN'?'Close menu':lang()==='FR'?'Fermer le menu':lang()==='AR'?'إغلاق القائمة':'Cerrar menú';
+      const openText=lang()==='EN'?'Open menu':lang()==='FR'?'Ouvrir le menu':lang()==='AR'?'فتح القائمة':'Abrir menú';
+      b.setAttribute('aria-label',open?close:openText);
+    }
+    if(o)o.setAttribute('aria-hidden',String(!open));
+  }
+
+  function languageBar(){
+    const host=d.querySelector('#luxuryHeader .header-inner,.site-header .header-inner,.site-header .nav-wrap');
+    if(!host||host.querySelector('.et-language-switch'))return;
+    const current=lang();
+    const links=[['ES','/'],['EN','/en/'],['FR','/fr/'],['AR','/ar/']];
+    const box=d.createElement('nav');
+    box.className='et-language-switch';
+    box.setAttribute('aria-label','Language');
+    links.forEach((x,i)=>{
+      const a=d.createElement('a');a.href=x[1];a.textContent=x[0];if(x[0]===current)a.className='current';box.appendChild(a);
+      if(i<links.length-1){const s=d.createElement('span');s.className='sep';s.textContent='·';box.appendChild(s)}
+    });
+    const b=menu();if(b)host.insertBefore(box,b);else host.appendChild(box);
+  }
+
+  function ensureNews(){
+    const nav=d.querySelector('#navOverlay .nav-overlay-links');
+    if(!nav||nav.querySelector('a[href*="news"]'))return;
+    const current=lang();
+    const newsPath=current==='EN'?'/en/news/':current==='FR'?'/fr/news/':current==='AR'?'/ar/news/':'/news/';
+    const a=d.createElement('a');
+    a.href=newsPath;
+    a.innerHTML='<span class="idx">05</span><span>'+(current==='EN'?'News':current==='FR'?'Actualités':current==='AR'?'أخبار':'Noticias')+'</span>';
+    const contact=Array.from(nav.children).find(x=>/contact|contacto|اتصل/i.test(x.textContent||''));
+    if(contact)nav.insertBefore(a,contact);else nav.appendChild(a);
+    Array.from(nav.children).forEach((x,i)=>{const n=x.querySelector('.idx');if(n)n.textContent=String(i+1).padStart(2,'0')});
+  }
+
+  function pointerStyle(){
+    if(d.getElementById('et-pointer-style'))return;
+    const s=d.createElement('style');
+    s.id='et-pointer-style';
+    s.textContent=`
+      .et-pointer{position:fixed;left:-100px;top:-100px;width:12px;height:12px;border:1px solid rgba(201,163,95,.95);border-radius:50%;pointer-events:none;z-index:2147483647;transform:translate(-50%,-50%);opacity:.9;transition:width .22s ease,height .22s ease,background .22s ease,border-color .22s ease,opacity .2s ease;mix-blend-mode:difference}
+      .et-pointer::after{content:"";position:absolute;inset:3px;border-radius:50%;background:rgba(201,163,95,.75);transform:scale(0);transition:transform .22s ease}
+      .et-pointer.is-hover{width:34px;height:34px;background:rgba(201,163,95,.08);border-color:rgba(255,255,255,.95)}
+      .et-pointer.is-hover::after{transform:scale(1)}
+      .et-pointer.is-down{width:8px;height:8px}
+      .et-pointer-ready,.et-pointer-ready *,.et-pointer-ready a,.et-pointer-ready button{cursor:none!important}
+      @media (hover:none),(pointer:coarse){.et-pointer{display:none!important}.et-pointer-ready,.et-pointer-ready *{cursor:auto!important}}
+    `;
+    d.head.appendChild(s);
+  }
+
+  function initPointer(){
+    if(!w.matchMedia||w.matchMedia('(hover:none),(pointer:coarse)').matches)return;
+    if(d.querySelector('.et-pointer'))return;
+    pointerStyle();
+    const p=d.createElement('div');
+    p.className='et-pointer';
+    p.setAttribute('aria-hidden','true');
+    d.body.appendChild(p);
+    d.documentElement.classList.add('et-pointer-ready');
+    let x=-100,y=-100,tx=-100,ty=-100,raf=0;
+    const render=()=>{tx+=(x-tx)*.24;ty+=(y-ty)*.24;p.style.left=tx+'px';p.style.top=ty+'px';raf=requestAnimationFrame(render)};
+    const move=e=>{x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(render)};
+    w.addEventListener('mousemove',move,{passive:true});
+    w.addEventListener('mousedown',()=>p.classList.add('is-down'));
+    w.addEventListener('mouseup',()=>p.classList.remove('is-down'));
+    d.addEventListener('mouseover',e=>{if(e.target.closest('a,button,[role="button"],input,select,textarea,.es-card,.products-world,.fv-card,.season-row,.intl-card,.intl-btn'))p.classList.add('is-hover')});
+    d.addEventListener('mouseout',e=>{if(e.target.closest('a,button,[role="button"],input,select,textarea,.es-card,.products-world,.fv-card,.season-row,.intl-card,.intl-btn'))p.classList.remove('is-hover')});
+    w.addEventListener('blur',()=>{p.style.opacity='0'});
+    w.addEventListener('focus',()=>{p.style.opacity='0.9'});
+    render();
+  }
+
+  function refineActions(){
+    if(d.documentElement.dataset.etActions==='1')return;
+    d.documentElement.dataset.etActions='1';
+    const style=d.createElement('style');
+    style.id='et-refined-actions';
+    style.textContent='.et-refined-action{position:relative;display:inline-flex;align-items:center;gap:.75em!important}.et-refined-action::after{content:"";display:inline-block;width:24px;height:1px;background:currentColor;opacity:.55;transform:translateX(0);transition:width .45s cubic-bezier(.165,.84,.44,1),opacity .3s ease}.et-refined-action:hover::after,.et-refined-action:focus-visible::after{width:34px;opacity:1}.product-arrow{font-size:0!important;width:34px;height:16px;position:relative;display:block!important}.product-arrow::after{content:"";position:absolute;right:0;top:50%;width:26px;height:1px;background:currentColor;opacity:.58;transition:width .4s ease,opacity .3s ease}.product-row:hover .product-arrow::after{width:34px;opacity:1}@media(max-width:900px){.et-refined-action::after{width:20px}.et-refined-action:hover::after,.et-refined-action:focus-visible::after{width:28px}.product-arrow{width:28px}.product-arrow::after{width:21px}.product-row:hover .product-arrow::after{width:28px}}';
+    d.head.appendChild(style);
+    const arrowChars=/[↗↖↘↙→←↑↓↔]/g;
+    const walker=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(walker.nextNode())nodes.push(walker.currentNode);
+    nodes.forEach(n=>{if(n.parentElement&&n.parentElement.closest('script,style,.et-pointer'))return;if(arrowChars.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(arrowChars,'')});
+    const selectors='.es-btn,.es-link,.text-link,.button,.product-row,.product-arrow,.nav-overlay-contact a,.intl-btn';
+    d.querySelectorAll(selectors).forEach(el=>el.classList.add('et-refined-action'));
+  }
+
+  function englishProduceTerminology(){
+    if(lang()!=='EN'||d.documentElement.dataset.etProduce==='1')return;
+    d.documentElement.dataset.etProduce='1';
+    const replace=v=>v.replace(/Vegetables/g,'Produce').replace(/Vegetable/g,'Produce');
+    d.querySelectorAll('title,meta[name="description"],img[alt],[aria-label]').forEach(el=>{
+      if(el.tagName==='META')el.setAttribute('content',replace(el.getAttribute('content')||''));
+      else if(el.tagName==='IMG')el.setAttribute('alt',replace(el.getAttribute('alt')||''));
+      else if(el.tagName==='TITLE')el.textContent=replace(el.textContent);
+      else el.setAttribute('aria-label',replace(el.getAttribute('aria-label')||''));
+    });
+    const walker=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);
+    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+    nodes.forEach(n=>{if(n.parentElement&&n.parentElement.closest('script,style,.et-pointer'))return;n.nodeValue=replace(n.nodeValue)});
+  }
+
+  function pageVisualFixes(){
+    if(d.body.dataset.sitePage==='produce'){
+      const citrus=d.querySelector('.fv-product-main');
+      if(citrus)citrus.style.backgroundImage='url("https://images.unsplash.com/photo-1562244602-0f73795e5b16?auto=format&fit=crop&w=1800&q=88")';
+    }
+    if(d.body.dataset.sitePage==='seafood'){
+      const s=d.createElement('style');
+      s.id='et-seafood-layout-fix';
+      s.textContent=`
+        .intl-page[data-site-page="seafood"] .intl-container{width:min(1080px,calc(100% - 80px));margin-inline:auto!important;padding-inline:0!important}
+        .intl-page[data-site-page="seafood"] .intl-hero-inner{width:min(1080px,calc(100% - 80px));margin-inline:auto!important;max-width:1080px!important}
+        .intl-page[data-site-page="seafood"] .intl-grid{width:100%;max-width:1080px;margin-inline:auto!important;grid-template-columns:minmax(0,1fr) minmax(260px,.62fr);gap:clamp(42px,7vw,90px);align-items:start}
+        .intl-page[data-site-page="seafood"] .intl-grid>div{padding-right:12px}
+        @media(max-width:900px){.intl-page[data-site-page="seafood"] .intl-container,.intl-page[data-site-page="seafood"] .intl-hero-inner{width:calc(100% - 56px)}.intl-page[data-site-page="seafood"] .intl-grid{grid-template-columns:minmax(0,1fr);gap:0}.intl-page[data-site-page="seafood"] .intl-grid>div{padding:0}}
+        @media(max-width:600px){.intl-page[data-site-page="seafood"] .intl-container,.intl-page[data-site-page="seafood"] .intl-hero-inner{width:calc(100% - 40px)}}
+      `;
+      d.head.appendChild(s);
+    }
+  }
+
+  function init(){
+    identity();
+    initPointer();
+    refineActions();
+    englishProduceTerminology();
+    pageVisualFixes();
+    const b=menu(),o=overlay();
+    if(!b||!o)return;
+    b.querySelectorAll('.et-menu-label').forEach(x=>x.remove());
+    b.type='button';
+    b.setAttribute('aria-controls','navOverlay');
+    ensureNews();
+    if(!b.dataset.navBound){b.dataset.navBound='1';b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();set(!d.body.classList.contains('nav-open'))})}
+    if(!o.dataset.navBound){o.dataset.navBound='1';o.addEventListener('click',e=>{if(e.target===o)set(false)});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)))}
+    if(!d.body.dataset.navKeys){d.body.dataset.navKeys='1';d.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})}
+    languageBar();
+    set(false);
+  }
+
   if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
   w.addEventListener('pageshow',()=>set(false));
 })();
