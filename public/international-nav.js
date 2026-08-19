@@ -17,6 +17,19 @@ Object.keys(maps).forEach(from=>d.querySelectorAll('h1,h2').forEach(el=>{if(el.i
 replaceText({'موسمي':'منتجات موسمية','طلب مهني':'طلب تجاري','طلب B2B':'طلب توريد B2B'});
 }}
 function ensureLegal(){const footer=d.querySelector('.intl-footer');if(!footer||footer.querySelector('.intl-legal'))return;const labels=lang==='ar'?['إشعار قانوني','الخصوصية','ملفات تعريف الارتباط']:['Mentions légales','Confidentialité','Cookies'];const box=d.createElement('span');box.className='intl-legal';box.innerHTML='<a href="/legal/aviso-legal.html">'+labels[0]+'</a><span>·</span><a href="/legal/privacidad.html">'+labels[1]+'</a><span>·</span><a href="/legal/cookies.html">'+labels[2]+'</a>';footer.querySelector('.intl-footer-inner')?.appendChild(box);}
-function init(){initPointer();editorial();ensureLegal();b.type='button';b.addEventListener('click',()=>set(!d.body.classList.contains('nav-open')));o.addEventListener('click',e=>{if(e.target===o)set(false)});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));d.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});set(false)}
+function layoutFix(){const s=d.createElement('style');s.id='intl-layout-fix';s.textContent=`
+.intl-page .intl-container{width:min(1080px,calc(100% - 80px));margin-inline:auto}
+.intl-page .intl-hero-inner{max-width:1080px;margin-inline:auto}
+.intl-page .intl-grid{max-width:1080px;margin-inline:auto;grid-template-columns:minmax(0,.9fr) minmax(0,.72fr);gap:72px}
+.intl-page .intl-copy{max-width:470px}
+.intl-page .intl-cards{max-width:1080px;margin-inline:auto;margin-top:60px}
+.intl-page .intl-cta>.intl-container{max-width:1080px;margin-inline:auto}
+[dir=rtl] .intl-page .intl-grid{direction:rtl}
+[dir=rtl] .intl-page .intl-copy{justify-self:start;max-width:470px}
+[dir=rtl] .intl-page .intl-hero-inner,[dir=rtl] .intl-page .intl-cta>.intl-container{text-align:right}
+@media(max-width:800px){.intl-page .intl-container{width:calc(100% - 40px)}.intl-page .intl-grid{gap:34px}.intl-page .intl-copy{max-width:none}.intl-page .intl-cards{margin-top:42px}.intl-page .intl-hero-inner,.intl-page .intl-cta>.intl-container{width:calc(100% - 40px)}[dir=rtl] .intl-page .intl-copy{justify-self:stretch;max-width:none}}
+`;
+d.head.appendChild(s);}
+function init(){layoutFix();initPointer();editorial();ensureLegal();b.type='button';b.addEventListener('click',()=>set(!d.body.classList.contains('nav-open')));o.addEventListener('click',e=>{if(e.target===o)set(false)});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));d.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});set(false)}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();w.addEventListener('pageshow',()=>set(false));
 })();
