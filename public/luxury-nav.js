@@ -1,108 +1,15 @@
-/* EMPERIO TISS — clean global navigation */
-(function () {
+/* EMPERIO TISS — one global navigation controller */
+(function(){
   'use strict';
-
-  const d = document;
-  const w = window;
-
-  const getMenu = () => d.getElementById('menuToggleBtn');
-  const getOverlay = () => d.getElementById('navOverlay');
-  const isEnglish = () => /^\/en(?:\/|$)/.test(w.location.pathname);
-
-  function setMenu(open) {
-    const button = getMenu();
-    const overlay = getOverlay();
-
-    d.body.classList.toggle('nav-open', open);
-    d.documentElement.classList.toggle('menu-lock', open);
-    d.body.classList.toggle('menu-lock', open);
-
-    if (button) {
-      button.classList.toggle('is-open', open);
-      button.setAttribute('aria-expanded', String(open));
-      button.setAttribute('aria-label', open
-        ? (isEnglish() ? 'Close menu' : 'Cerrar menú')
-        : (isEnglish() ? 'Open menu' : 'Abrir menú'));
-    }
-
-    if (overlay) overlay.setAttribute('aria-hidden', String(!open));
-  }
-
-  function normalizeButton() {
-    const button = getMenu();
-    if (!button) return;
-
-    button.type = 'button';
-    button.setAttribute('aria-controls', 'navOverlay');
-
-    if (!button.querySelector('.et-menu-label')) {
-      const label = d.createElement('span');
-      label.className = 'et-menu-label';
-      label.textContent = isEnglish() ? 'MENU' : 'MENÚ';
-      button.appendChild(label);
-    }
-  }
-
-  function addLanguagePill() {
-    const host = d.querySelector('.es-header-inner, #luxuryHeader .header-inner, .site-header .header-inner');
-    const button = getMenu();
-    if (!host || !button || host.querySelector('.et-language-switch')) return;
-
-    const en = isEnglish();
-    const box = d.createElement('div');
-    box.className = 'et-language-switch';
-
-    const primary = d.createElement('a');
-    primary.className = 'current';
-    primary.href = en ? '/en/index.html' : '/index.html';
-    primary.textContent = en ? 'EN' : 'ES';
-
-    const separator = d.createElement('span');
-    separator.className = 'sep';
-    separator.textContent = '·';
-
-    const secondary = d.createElement('a');
-    secondary.href = en ? '/index.html' : '/en/index.html';
-    secondary.textContent = en ? 'ES' : 'EN';
-
-    box.append(primary, separator, secondary);
-    host.insertBefore(box, button);
-  }
-
-  function init() {
-    normalizeButton();
-    addLanguagePill();
-    setMenu(false);
-
-    const button = getMenu();
-    const overlay = getOverlay();
-
-    if (button && !button.dataset.navBound) {
-      button.dataset.navBound = 'true';
-      button.addEventListener('click', function (event) {
-        event.preventDefault();
-        setMenu(!d.body.classList.contains('nav-open'));
-      });
-    }
-
-    if (overlay && !overlay.dataset.navBound) {
-      overlay.dataset.navBound = 'true';
-      overlay.addEventListener('click', function (event) {
-        if (event.target === overlay) setMenu(false);
-      });
-    }
-
-    d.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') setMenu(false);
-    });
-
-    d.querySelectorAll('#navOverlay a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        setMenu(false);
-      });
-    });
-  }
-
-  d.addEventListener('DOMContentLoaded', init);
-  w.addEventListener('pageshow', function () { setMenu(false); });
+  const d=document,w=window;
+  const menu=()=>d.getElementById('menuToggleBtn')||d.querySelector('.es-menu,.mobile-menu');
+  const overlay=()=>d.getElementById('navOverlay');
+  const lang=()=>{const p=w.location.pathname.toLowerCase();return p.startsWith('/en/')||p==='/en/'?'EN':p.startsWith('/fr/')?'FR':p.startsWith('/ar/')?'AR':'ES'};
+  function identity(){const p=w.location.pathname.toLowerCase();let page='standard';if(p.includes('seafood'))page='seafood';else if(p.includes('fruits-vegetables'))page='produce';else if(p.includes('seasonal'))page='seasonal';else if(p.includes('/news'))page='news';d.body.dataset.sitePage=page;}
+  function close(){set(false)}
+  function set(open){const b=menu(),o=overlay();d.body.classList.toggle('nav-open',open);d.documentElement.classList.toggle('menu-lock',open);d.body.classList.toggle('menu-lock',open);if(b){b.classList.toggle('is-open',open);b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?(lang()==='EN'?'Close menu':'Cerrar menú'):(lang()==='EN'?'Open menu':'Abrir menú'));}if(o)o.setAttribute('aria-hidden',String(!open));}
+  function languageBar(){const host=d.querySelector('#luxuryHeader .header-inner,.site-header .header-inner,.site-header .nav-wrap');if(!host||host.querySelector('.et-language-switch'))return;const current=lang(),base=w.location.pathname.toLowerCase().startsWith('/en/')?'../':w.location.pathname.toLowerCase().startsWith('/fr/')?'../':w.location.pathname.toLowerCase().startsWith('/ar/')?'../':'';const links=current==='EN'?[['ES','../index.html'],['EN','index.html']]:[['ES','index.html'],['EN','en/index.html']];const box=d.createElement('nav');box.className='et-language-switch';box.setAttribute('aria-label','Language');links.forEach((x,i)=>{const a=d.createElement('a');a.href=x[1];a.textContent=x[0];if(x[0]===current)a.className='current';box.appendChild(a);if(i<links.length-1){const s=d.createElement('span');s.className='sep';s.textContent='·';box.appendChild(s)}});const b=menu();if(b)host.insertBefore(box,b);else host.appendChild(box);}
+  function init(){identity();const b=menu(),o=overlay();if(!b||!o)return;/* Never inject another MENU label or another set of bars. */b.querySelectorAll('.et-menu-label').forEach(x=>x.remove());b.type='button';b.setAttribute('aria-controls','navOverlay');if(!b.dataset.navBound){b.dataset.navBound='1';b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();set(!d.body.classList.contains('nav-open'))})}if(!o.dataset.navBound){o.dataset.navBound='1';o.addEventListener('click',e=>{if(e.target===o)close()});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',close))}if(!d.body.dataset.navKeys){d.body.dataset.navKeys='1';d.addEventListener('keydown',e=>{if(e.key==='Escape')close()})}languageBar();set(false)}
+  if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
+  w.addEventListener('pageshow',close);
 })();
