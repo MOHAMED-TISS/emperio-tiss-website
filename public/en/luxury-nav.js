@@ -1,140 +1,77 @@
-/* =========================================================
-   EMPERIO TISS — NAV OVERLAY + PAGE TRANSITIONS
-   Vanilla JS, sin dependencias. Funciona en sitio multi-página
-   (cada .html es una carga real, no SPA).
-========================================================= */
-
-(function () {
+/* EMPERIO TISS — navigation, page identity, transitions */
+(function(){
   "use strict";
+  var CURTAIN_MS=650;
 
-  var CURTAIN_MS = 650; // debe coincidir con la transición CSS de .page-curtain
+  function pageIdentity(){
+    var p=window.location.pathname.toLowerCase();
+    var type=p.indexOf("seafood")>-1?"seafood":p.indexOf("fruits-vegetables")>-1?"produce":p.indexOf("seasonal")>-1?"seasonal":"standard";
+    document.body.setAttribute("data-site-page",type);
+  }
 
-  /* ---------- 1. Cortina: ocultar al cargar la página ---------- */
+  function addNewsLink(){
+    var nav=document.querySelector("#navOverlay .nav-overlay-links");
+    if(!nav||nav.querySelector('[data-news-link]'))return;
+    var a=document.createElement("a");
+    a.href=window.location.pathname.indexOf("/products/")>-1?"../news/index.html":"news/index.html";
+    a.setAttribute("data-news-link","");
+    a.innerHTML='<span class="idx">05</span><span>News</span>';
+    var links=nav.querySelectorAll(":scope > a");
+    var contact=Array.prototype.find.call(links,function(x){return /contact/i.test(x.textContent)});
+    if(contact){
+      var all=Array.prototype.slice.call(links);
+      var n=all.indexOf(contact);
+      if(n>-1) nav.insertBefore(a,contact);
+      else nav.appendChild(a);
+    }else nav.appendChild(a);
+    nav.querySelectorAll(":scope > a").forEach(function(x,i){var idx=x.querySelector(".idx");if(idx)idx.textContent=String(i+1).padStart(2,"0")});
+  }
 
-  function initCurtain() {
-    var curtain = document.getElementById("pageCurtain");
-    if (!curtain) {
-      curtain = document.createElement("div");
-      curtain.id = "pageCurtain";
-      curtain.className = "page-curtain";
-      document.body.appendChild(curtain);
-    }
-    // fuerza reflow para que la transición de salida se dispare
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        curtain.classList.add("is-hidden");
-      });
+  function initCurtain(){
+    var c=document.getElementById("pageCurtain");
+    if(!c){c=document.createElement("div");c.id="pageCurtain";c.className="page-curtain";document.body.appendChild(c)}
+    c.classList.remove("is-covering");
+    c.classList.add("is-hidden");
+    return c;
+  }
+
+  function internal(link){
+    if(!link||!link.href||link.target==="_blank"||link.hasAttribute("download"))return false;
+    if(/^mailto:|^tel:/i.test(link.href))return false;
+    var u=new URL(link.href,location.href);return u.origin===location.origin;
+  }
+
+  function initTransitions(c){
+    document.addEventListener("click",function(e){
+      var link=e.target.closest("a");if(!internal(link))return;
+      var u=new URL(link.href,location.href);
+      if(u.pathname===location.pathname&&u.hash)return;
+      e.preventDefault();
+      document.body.classList.remove("nav-open");
+      var b=document.getElementById("menuToggleBtn");
+      if(b){b.setAttribute("aria-expanded","false");b.setAttribute("aria-label","Open menu")}
+      c.classList.remove("is-hidden");c.classList.add("is-covering");
+      setTimeout(function(){location.href=link.href},CURTAIN_MS);
     });
-    return curtain;
   }
 
-  /* ---------- 2. Interceptar clics en enlaces internos ---------- */
-
-  function isInternalLink(link) {
-    if (!link || !link.href) return false;
-    if (link.target === "_blank") return false;
-    if (link.hasAttribute("download")) return false;
-    if (link.href.indexOf("mailto:") === 0) return false;
-    if (link.href.indexOf("tel:") === 0) return false;
-    var url = new URL(link.href, window.location.href);
-    return url.origin === window.location.origin;
-  }
-
- function initPageTransitions(curtain) {
-  document.addEventListener("click", function (e) {
-
-    var link = e.target.closest("a");
-
-    if (!link || !isInternalLink(link)) return;
-
-    var url = new URL(link.href, window.location.href);
-
-    // No interceptar anclas de la misma página
-    if (
-      url.pathname === window.location.pathname &&
-      url.hash
-    ) {
-      return;
-    }
-
-    e.preventDefault();
-
-    /* =====================================================
-       CLOSE MENU FIRST
-    ===================================================== */
-
-    document.body.classList.remove("nav-open");
-
-    var menuButton =
-      document.getElementById("menuToggleBtn");
-
-    if (menuButton) {
-      menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuButton.setAttribute(
-        "aria-label",
-        "Open menu"
-      );
-    }
-
-
-    /* =====================================================
-       PAGE TRANSITION
-    ===================================================== */
-
-    curtain.classList.remove("is-hidden");
-    curtain.classList.add("is-covering");
-
-
-    /* =====================================================
-       NAVIGATE
-    ===================================================== */
-
-    window.setTimeout(function () {
-      window.location.href = link.href;
-    }, CURTAIN_MS);
-
-  });
-}
-
-  /* ---------- 3. Overlay de navegación pantalla completa ---------- */
-
-  function initNavOverlay() {
-    var trigger = document.getElementById("menuToggleBtn");
-    var overlay = document.getElementById("navOverlay");
-    if (!trigger || !overlay) return;
-
-    trigger.addEventListener("click", function () {
+  function initMenu(){
+    var trigger=document.getElementById("menuToggleBtn"),overlay=document.getElementById("navOverlay");
+    if(!trigger||!overlay)return;
+    trigger.addEventListener("click",function(){
       document.body.classList.toggle("nav-open");
-      var isOpen = document.body.classList.contains("nav-open");
-      trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      var open=document.body.classList.contains("nav-open");
+      trigger.setAttribute("aria-expanded",open?"true":"false");
+      trigger.setAttribute("aria-label",open?"Close menu":"Open menu");
     });
-
-    // cerrar con ESC
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        document.body.classList.remove("nav-open");
-        trigger.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    // cerrar al hacer clic en un link del overlay (la cortina de transición
-    // ya se encarga de la salida visual)
-    overlay.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        document.body.classList.remove("nav-open");
-      });
-    });
+    document.addEventListener("keydown",function(e){if(e.key==="Escape"){document.body.classList.remove("nav-open");trigger.setAttribute("aria-expanded","false")}});
   }
 
-  /* ---------- Init ---------- */
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var curtain = initCurtain();
-    initPageTransitions(curtain);
-    initNavOverlay();
+  document.addEventListener("DOMContentLoaded",function(){
+    pageIdentity();
+    addNewsLink();
+    var curtain=initCurtain();
+    initTransitions(curtain);
+    initMenu();
   });
 })();
