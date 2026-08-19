@@ -1,0 +1,188 @@
+/* EMPERIO TISS — Fruits & Vegetables / immersive scroll choreography
+   Inspired by the interaction language of RESN's Corn Revolution:
+   scroll becomes the timeline, imagery moves independently, typography enters
+   in sequence, and each product stage feels like one continuous story. */
+
+.fv-motion {
+  --fv-green:#173f2d;
+  --fv-green-dark:#071b14;
+  --fv-lime:#b7c77a;
+  --fv-cream:#f4efe3;
+  --fv-gold:#d0ad65;
+  position:relative;
+}
+
+.fv-motion .es-fruit-hero {
+  min-height:100svh;
+  height:100svh;
+  padding:0;
+  align-items:stretch;
+  overflow:hidden;
+  position:relative;
+}
+.fv-motion .es-fruit-hero::before {
+  background:
+    radial-gradient(circle at 70% 28%,rgba(193,218,111,.28),transparent 25%),
+    linear-gradient(115deg,#071c13 0%,#173d28 48%,#607542 100%);
+  transform:scale(1.06);
+  transition:transform 1.4s cubic-bezier(.165,.84,.44,1);
+}
+.fv-motion .es-fruit-hero::after {
+  background:linear-gradient(90deg,rgba(3,17,12,.82) 0%,rgba(3,17,12,.40) 48%,rgba(3,17,12,.08) 100%),linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62));
+}
+
+/* Fine moving grain/grid gives the page the same living-canvas feeling. */
+.fv-motion .es-fruit-hero .es-container::before {
+  content:"";
+  position:absolute;
+  inset:-20vh -10vw;
+  pointer-events:none;
+  opacity:.16;
+  background:linear-gradient(90deg,transparent 0 24%,rgba(255,255,255,.13) 24.1%,transparent 24.2% 49%,rgba(255,255,255,.08) 49.1%,transparent 49.2% 74%,rgba(255,255,255,.10) 74.1%,transparent 74.2%);
+  transform:translate3d(var(--fv-x,0),var(--fv-y,0),0) skewX(-8deg);
+  transition:transform .15s linear;
+}
+
+.fv-motion .es-fruit-hero .es-container {
+  position:relative;
+  z-index:2;
+  width:min(1180px,calc(100% - 64px));
+  min-height:100%;
+  padding-top:170px;
+  padding-bottom:95px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.fv-motion .es-kicker,
+.fv-motion .es-hero h1,
+.fv-motion .es-hero .es-lead,
+.fv-motion .es-hero .es-actions {
+  will-change:transform,opacity;
+}
+.fv-motion .es-kicker { transform:translate3d(0,28px,0); opacity:0; animation:fvEnter .9s .08s forwards cubic-bezier(.165,.84,.44,1); }
+.fv-motion .es-hero h1 { transform:translate3d(0,55px,0); opacity:0; animation:fvEnter 1.15s .18s forwards cubic-bezier(.165,.84,.44,1); }
+.fv-motion .es-hero .es-lead { transform:translate3d(0,40px,0); opacity:0; animation:fvEnter 1s .42s forwards cubic-bezier(.165,.84,.44,1); }
+.fv-motion .es-hero .es-actions { transform:translate3d(0,30px,0); opacity:0; animation:fvEnter .9s .62s forwards cubic-bezier(.165,.84,.44,1); }
+@keyframes fvEnter { to { opacity:1; transform:none; } }
+
+/* Scroll marker — deliberately minimal, like a chapter in an interactive story. */
+.fv-motion .fv-scroll-line {
+  position:absolute;
+  left:50%;
+  bottom:28px;
+  z-index:4;
+  width:1px;
+  height:74px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);
+  transform-origin:top;
+  animation:fvScroll 1.8s ease-in-out infinite;
+}
+.fv-motion .fv-scroll-line::before {
+  content:"SCROLL";
+  position:absolute;
+  bottom:0;
+  left:10px;
+  writing-mode:vertical-rl;
+  color:rgba(255,255,255,.5);
+  font:700 7px/1 "DM Sans",sans-serif;
+  letter-spacing:.18em;
+}
+@keyframes fvScroll { 0%,100%{transform:scaleY(.65);opacity:.35} 50%{transform:scaleY(1);opacity:1} }
+
+/* Story section: sticky left chapter + moving right-side cards. */
+.fv-motion .es-section:not(.dark) { position:relative; }
+.fv-motion .es-section .es-grid { position:relative; }
+.fv-motion .es-section .es-grid > div:first-child { position:sticky; top:145px; align-self:start; }
+.fv-motion .es-section .es-cards { perspective:1200px; }
+.fv-motion .es-card {
+  position:relative;
+  overflow:hidden;
+  transform:translate3d(0,28px,0) rotateX(2deg);
+  opacity:.78;
+  transition:transform .8s cubic-bezier(.165,.84,.44,1),opacity .8s ease,box-shadow .8s ease;
+}
+.fv-motion .es-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.42) 50%,transparent 65%);
+  transform:translateX(-120%);
+  transition:transform 1.1s cubic-bezier(.165,.84,.44,1);
+  pointer-events:none;
+}
+.fv-motion .es-card.is-inview { transform:translate3d(0,0,0) rotateX(0); opacity:1; box-shadow:0 28px 70px rgba(8,30,25,.12); }
+.fv-motion .es-card.is-inview::before { transform:translateX(120%); }
+.fv-motion .es-card:nth-child(2){ transition-delay:.08s; }
+.fv-motion .es-card:nth-child(3){ transition-delay:.16s; }
+
+/* Specification becomes a horizontal-scrolling-feeling sequence while staying accessible. */
+.fv-motion .es-section.dark { position:relative; overflow:hidden; }
+.fv-motion .es-section.dark::before {
+  content:"";
+  position:absolute;
+  width:60vw;
+  height:60vw;
+  max-width:850px;
+  max-height:850px;
+  right:-20vw;
+  top:-10vw;
+  border:1px solid rgba(183,199,122,.14);
+  border-radius:50%;
+  transform:translate3d(var(--fv-orbit,0),0,0);
+  pointer-events:none;
+}
+.fv-motion .es-list-row {
+  transform:translate3d(45px,0,0);
+  opacity:.35;
+  transition:transform .8s cubic-bezier(.165,.84,.44,1),opacity .7s ease,border-color .5s ease;
+}
+.fv-motion .es-list-row.is-inview { transform:none; opacity:1; }
+.fv-motion .es-list-row strong { transition:color .35s ease,transform .5s ease; }
+.fv-motion .es-list-row:hover strong { color:var(--fv-lime); transform:translateX(10px); }
+
+/* Final CTA gets the cinematic zoom/scale treatment. */
+.fv-motion .es-cta { position:relative; overflow:hidden; }
+.fv-motion .es-cta::before {
+  content:"";
+  position:absolute;
+  inset:-8%;
+  background:var(--cta-image) center/cover no-repeat;
+  opacity:.26;
+  transform:scale(1.12);
+  will-change:transform;
+  transition:transform .15s linear;
+}
+.fv-motion .es-cta::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(4,22,16,.96),rgba(4,22,16,.65),rgba(4,22,16,.35));
+  pointer-events:none;
+}
+.fv-motion .es-cta .es-container { position:relative; z-index:1; }
+.fv-motion .es-cta-inner > * { opacity:0; transform:translateY(28px); transition:opacity .9s ease,transform 1s cubic-bezier(.165,.84,.44,1); }
+.fv-motion .es-cta.is-inview .es-cta-inner > * { opacity:1; transform:none; }
+.fv-motion .es-cta.is-inview .es-cta-inner > *:nth-child(2){transition-delay:.08s}
+.fv-motion .es-cta.is-inview .es-cta-inner > *:nth-child(3){transition-delay:.16s}
+.fv-motion .es-cta.is-inview .es-cta-inner > *:nth-child(4){transition-delay:.24s}
+
+/* Pointer-driven parallax on desktop. */
+@media (hover:hover) and (pointer:fine) {
+  .fv-motion .es-fruit-hero:hover::before { transform:scale(1.095); }
+}
+
+@media(max-width:800px){
+  .fv-motion .es-fruit-hero .es-container { width:calc(100% - 32px); padding-top:125px; padding-bottom:70px; }
+  .fv-motion .es-section .es-grid > div:first-child { position:relative; top:auto; }
+  .fv-motion .es-card { transform:translate3d(0,18px,0); }
+  .fv-motion .es-list-row { transform:translate3d(18px,0,0); }
+  .fv-motion .fv-scroll-line { left:auto; right:28px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .fv-motion .es-kicker,.fv-motion .es-hero h1,.fv-motion .es-hero .es-lead,.fv-motion .es-hero .es-actions { animation:none; opacity:1; transform:none; }
+  .fv-motion .fv-scroll-line { animation:none; }
+  .fv-motion .es-card,.fv-motion .es-list-row,.fv-motion .es-cta-inner > * { transition:none!important; opacity:1!important; transform:none!important; }
+}
