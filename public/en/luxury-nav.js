@@ -1,6 +1,4 @@
-/* EMPERIO TISS — clean English navigation
-   One responsibility: menu state + stable language switcher.
-   Page styles remain in their own stylesheets. */
+/* EMPERIO TISS — clean English navigation */
 (function () {
   'use strict';
 
@@ -8,12 +6,21 @@
   const win = window;
 
   function getMenuButton() {
-    return doc.getElementById('menuToggleBtn') ||
-      doc.querySelector('.menu-toggle, .es-menu, .mobile-menu');
+    return doc.getElementById('menuToggleBtn') || doc.querySelector('.menu-toggle, .es-menu, .mobile-menu');
   }
 
   function getOverlay() {
     return doc.getElementById('navOverlay');
+  }
+
+  function setPageIdentity() {
+    const path = win.location.pathname.toLowerCase();
+    let page = 'standard';
+    if (path.includes('seafood')) page = 'seafood';
+    else if (path.includes('fruits-vegetables')) page = 'produce';
+    else if (path.includes('seasonal')) page = 'seasonal';
+    else if (path.includes('/news')) page = 'news';
+    doc.body.dataset.sitePage = page;
   }
 
   function setMenu(open) {
@@ -64,12 +71,14 @@
     const header = doc.querySelector('#luxuryHeader .header-inner, .site-header .header-inner, .site-header .nav-wrap');
     if (!header || header.querySelector('.et-language-switch')) return;
 
-    const current = win.location.pathname.toLowerCase();
+    const path = win.location.pathname.toLowerCase();
+    const currentLanguage = path.startsWith('/en/') || path === '/en/' ? 'EN' : path.startsWith('/fr/') ? 'FR' : path.startsWith('/ar/') ? 'AR' : 'ES';
+
     const links = [
-      { label: 'ES', href: '/' },
-      { label: 'EN', href: '/en/index.html' },
-      { label: 'FR', href: '/fr/index.html' },
-      { label: 'AR', href: '/ar/index.html' }
+      ['ES', '/'],
+      ['EN', '/en/index.html'],
+      ['FR', '/fr/index.html'],
+      ['AR', '/ar/index.html']
     ];
 
     const box = doc.createElement('nav');
@@ -78,23 +87,14 @@
 
     links.forEach(function (item, index) {
       const link = doc.createElement('a');
-      link.href = item.href;
-      link.textContent = item.label;
-
-      const isEnglish = current === '/en' || current.startsWith('/en/');
-      const isFrench = current === '/fr' || current.startsWith('/fr/');
-      const isArabic = current === '/ar' || current.startsWith('/ar/');
-      const active =
-        (item.label === 'EN' && isEnglish) ||
-        (item.label === 'FR' && isFrench) ||
-        (item.label === 'AR' && isArabic) ||
-        (item.label === 'ES' && !isEnglish && !isFrench && !isArabic);
-
-      if (active) link.classList.add('current');
+      link.href = item[1];
+      link.textContent = item[0];
+      if (item[0] === currentLanguage) link.className = 'current';
       box.appendChild(link);
 
       if (index < links.length - 1) {
         const separator = doc.createElement('span');
+        separator.className = 'sep';
         separator.textContent = '·';
         separator.setAttribute('aria-hidden', 'true');
         box.appendChild(separator);
@@ -107,6 +107,7 @@
   }
 
   function bind() {
+    setPageIdentity();
     const button = normalizeButton();
     const overlay = getOverlay();
 
@@ -122,11 +123,8 @@
       overlay.addEventListener('click', function (event) {
         if (event.target === overlay) setMenu(false);
       });
-
       overlay.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          setMenu(false);
-        });
+        link.addEventListener('click', function () { setMenu(false); });
       });
     }
 
@@ -134,17 +132,12 @@
       if (event.key === 'Escape') setMenu(false);
     });
 
-    win.addEventListener('pageshow', function () {
-      setMenu(false);
-    });
+    win.addEventListener('pageshow', function () { setMenu(false); });
 
     addLanguageBar();
     setMenu(false);
   }
 
-  if (doc.readyState === 'loading') {
-    doc.addEventListener('DOMContentLoaded', bind, { once: true });
-  } else {
-    bind();
-  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', bind, { once: true });
+  else bind();
 })();
