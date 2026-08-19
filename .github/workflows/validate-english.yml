@@ -24,22 +24,10 @@ jobs:
 
           root = Path('public')
           expected = {
-              'es': {
-                  'index.html','about/index.html','contact/index.html','markets/index.html','products/index.html',
-                  'products/seafood.html','products/fruits-vegetables.html','products/seasonal.html'
-              },
-              'en': {
+              lang: {
                   'index.html','about/index.html','contact/index.html','markets/index.html','news/index.html','products/index.html',
                   'products/seafood.html','products/fruits-vegetables.html','products/seasonal.html'
-              },
-              'fr': {
-                  'index.html','about/index.html','contact/index.html','markets/index.html','products/index.html',
-                  'products/seafood.html','products/fruits-vegetables.html','products/seasonal.html'
-              },
-              'ar': {
-                  'index.html','about/index.html','contact/index.html','markets/index.html','products/index.html',
-                  'products/seafood.html','products/fruits-vegetables.html','products/seasonal.html'
-              },
+              } for lang in ('es','en','fr','ar')
           }
 
           for language, routes in expected.items():
