@@ -15,7 +15,7 @@
     const p=d.createElement('div');p.className='et-pointer';p.setAttribute('aria-hidden','true');d.body.appendChild(p);
     d.documentElement.classList.add('et-pointer-ready');
     let x=-100,y=-100,tx=-100,ty=-100,raf=0;
-    const render=()=>{tx+= (x-tx)*.24;ty+=(y-ty)*.24;p.style.left=tx+'px';p.style.top=ty+'px';raf=requestAnimationFrame(render)};
+    const render=()=>{tx+=(x-tx)*.24;ty+=(y-ty)*.24;p.style.left=tx+'px';p.style.top=ty+'px';raf=requestAnimationFrame(render)};
     const move=e=>{x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(render)};
     w.addEventListener('mousemove',move,{passive:true});
     w.addEventListener('mousedown',()=>p.classList.add('is-down'));
@@ -24,7 +24,29 @@
     d.addEventListener('mouseout',e=>{if(e.target.closest('a,button,[role="button"],input,select,textarea,.es-card,.products-world,.fv-card,.season-row'))p.classList.remove('is-hover')});
     w.addEventListener('blur',()=>{p.style.opacity='0'});w.addEventListener('focus',()=>{p.style.opacity='1'});
   }
-  function init(){identity();initPointer();const b=menu(),o=overlay();if(!b||!o)return;b.querySelectorAll('.et-menu-label').forEach(x=>x.remove());b.type='button';b.setAttribute('aria-controls','navOverlay');ensureNews();if(!b.dataset.navBound){b.dataset.navBound='1';b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();set(!d.body.classList.contains('nav-open'))})}if(!o.dataset.navBound){o.dataset.navBound='1';o.addEventListener('click',e=>{if(e.target===o)set(false)});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)))}if(!d.body.dataset.navKeys){d.body.dataset.navKeys='1';d.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})}languageBar();set(false)}
+  function refineActions(){
+    if(d.documentElement.dataset.etActions==='1')return;
+    d.documentElement.dataset.etActions='1';
+    const style=d.createElement('style');
+    style.id='et-refined-actions';
+    style.textContent=`
+      .et-refined-action{position:relative;display:inline-flex;align-items:center;gap:.75em!important}
+      .et-refined-action::after{content:"";display:inline-block;width:24px;height:1px;background:currentColor;opacity:.55;transform:translateX(0);transition:width .45s cubic-bezier(.165,.84,.44,1),opacity .3s ease}
+      .et-refined-action:hover::after,.et-refined-action:focus-visible::after{width:34px;opacity:1}
+      .product-arrow{font-size:0!important;width:34px;height:16px;position:relative;display:block!important}
+      .product-arrow::after{content:"";position:absolute;right:0;top:50%;width:26px;height:1px;background:currentColor;opacity:.58;transition:width .4s ease,opacity .3s ease}
+      .product-row:hover .product-arrow::after{width:34px;opacity:1}
+      @media(max-width:900px){.et-refined-action::after{width:20px}.et-refined-action:hover::after,.et-refined-action:focus-visible::after{width:28px}.product-arrow{width:28px}.product-arrow::after{width:21px}.product-row:hover .product-arrow::after{width:28px}}
+    `;
+    d.head.appendChild(style);
+    const arrowChars=/[↗↖↘↙→←↑↓↔]/g;
+    const walker=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);
+    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+    nodes.forEach(n=>{if(n.parentElement&&n.parentElement.closest('script,style,.et-pointer'))return;if(arrowChars.test(n.nodeValue)){n.nodeValue=n.nodeValue.replace(arrowChars,'');}});
+    const selectors='.es-btn,.es-link,.text-link,.button,.product-row,.product-arrow,.nav-overlay-contact a';
+    d.querySelectorAll(selectors).forEach(el=>el.classList.add('et-refined-action'));
+  }
+  function init(){identity();initPointer();refineActions();const b=menu(),o=overlay();if(!b||!o)return;b.querySelectorAll('.et-menu-label').forEach(x=>x.remove());b.type='button';b.setAttribute('aria-controls','navOverlay');ensureNews();if(!b.dataset.navBound){b.dataset.navBound='1';b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();set(!d.body.classList.contains('nav-open'))})}if(!o.dataset.navBound){o.dataset.navBound='1';o.addEventListener('click',e=>{if(e.target===o)set(false)});o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)))}if(!d.body.dataset.navKeys){d.body.dataset.navKeys='1';d.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})}languageBar();set(false)}
   if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
   w.addEventListener('pageshow',()=>set(false));
 })();
