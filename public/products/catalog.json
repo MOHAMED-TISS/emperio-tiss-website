@@ -1,53 +1,11 @@
 {
-  "schemaVersion": "1.0",
-  "market": "B2B",
-  "families": [
-    {"id":"seafood","name":"Productos del mar","path":"/products/seafood.html","subcategories":["fish","shellfish","cephalopods"]},
-    {"id":"produce","name":"Frutas y hortalizas","path":"/products/fruits-vegetables.html","subcategories":["citrus","exotics","core-produce","vegetables"]},
-    {"id":"seasonal","name":"Productos de temporada","path":"/products/seasonal.html","subcategories":[]}
-  ],
-  "products": [
-    {
-      "id":"dorada",
-      "family":"seafood",
-      "category":"seafood",
-      "subcategory":"fish",
-      "commercialName":"Dorada",
-      "scientificName":"Sparus aurata",
-      "condition":["fresh"],
-      "origin":["Mediterranean / according to availability"],
-      "faoZone":["FAO 37"],
-      "calibre":["According to buyer specification"],
-      "quality":["Professional specification"],
-      "format":["Whole / according to destination"],
-      "packaging":["According to destination requirements"],
-      "availability":["Subject to season and availability"],
-      "image":"",
-      "status":"active"
-    },
-    {
-      "id":"octopus-vulgaris",
-      "family":"seafood",
-      "category":"seafood",
-      "subcategory":"cephalopods",
-      "commercialName":"Pulpo",
-      "scientificName":"Octopus vulgaris",
-      "condition":["fresh","frozen"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"availability":[],"image":"","status":"draft"
-    },
-    {
-      "id":"sardina",
-      "family":"seafood",
-      "category":"seafood",
-      "subcategory":"fish",
-      "commercialName":"Sardina",
-      "scientificName":"Sardina pilchardus",
-      "condition":["fresh"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"availability":[],"image":"","status":"draft"
-    },
-    {
-      "id":"clementina","family":"produce","category":"produce","subcategory":"citrus","commercialName":"Clementina","scientificName":"Citrus reticulata","condition":["fresh"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"variety":[],"campaign":[],"availability":[],"image":"","status":"draft"
-    },
-    {
-      "id":"navelina","family":"produce","category":"produce","subcategory":"citrus","commercialName":"Navelina","scientificName":"Citrus sinensis","condition":["fresh"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"variety":["Navelina"],"campaign":[],"availability":[],"image":"","status":"draft"
-    }
+  "schemaVersion":"1.0","market":"B2B",
+  "families":[{"id":"seafood","name":"Productos del mar","path":"/products/seafood.html","subcategories":["fish","shellfish","cephalopods"]},{"id":"produce","name":"Frutas y hortalizas","path":"/products/fruits-vegetables.html","subcategories":["citrus","exotics","core-produce","vegetables"]},{"id":"seasonal","name":"Productos de temporada","path":"/products/seasonal.html","subcategories":[]}],
+  "products":[
+    {"id":"dorada","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Dorada","scientificName":"Sparus aurata","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según especificación del comprador"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según requisitos del destino"],"availability":["Sujeto a temporada y disponibilidad"],"image":"","status":"active"},
+    {"id":"octopus-vulgaris","family":"seafood","category":"seafood","subcategory":"cephalopods","commercialName":"Pulpo","scientificName":"Octopus vulgaris","condition":["fresh","frozen"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"availability":[],"image":"","status":"draft"},
+    {"id":"sardina","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Sardina","scientificName":"Sardina pilchardus","condition":["fresh"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"availability":[],"image":"","status":"draft"},
+    {"id":"clementina","family":"produce","category":"produce","subcategory":"citrus","commercialName":"Clementina","scientificName":"Citrus reticulata","condition":["fresh"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"variety":[],"campaign":[],"availability":[],"image":"","status":"draft"},
+    {"id":"navelina","family":"produce","category":"produce","subcategory":"citrus","commercialName":"Navelina","scientificName":"Citrus sinensis","condition":["fresh"],"origin":[],"faoZone":[],"calibre":[],"quality":[],"format":[],"packaging":[],"variety":["Navelina"],"campaign":[],"availability":[],"image":"","status":"draft"}
   ]
 }
