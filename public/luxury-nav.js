@@ -5,11 +5,21 @@ const menu=()=>d.getElementById('menuToggleBtn')||d.querySelector('.es-menu,.int
 const overlay=()=>d.getElementById('navOverlay');
 const lang=()=>{const p=w.location.pathname.toLowerCase();if(p.startsWith('/en/'))return'EN';if(p.startsWith('/fr/'))return'FR';if(p.startsWith('/ar/'))return'AR';return'ES'};
 function normalizeInternationalNav(){
- const o=overlay(); if(!o)return;
- const inner=o.querySelector('.nav-overlay-inner,.intl-overlay-inner')||o.firstElementChild;
+ const o=overlay();if(!o)return;
+ let inner=o.querySelector('.nav-overlay-inner,.intl-overlay-inner');
+ let nav=o.querySelector('.nav-overlay-links,.intl-nav');
+ let foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');
+ if(!inner&&nav){
+   inner=d.createElement('div');
+   inner.className='nav-overlay-inner';
+   o.insertBefore(inner,nav);
+   inner.appendChild(nav);
+   if(foot)inner.appendChild(foot);
+ }
  if(inner)inner.classList.add('nav-overlay-inner');
- const nav=o.querySelector('.nav-overlay-links,.intl-nav'); if(nav)nav.classList.add('nav-overlay-links');
- const foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');
+ nav=o.querySelector('.nav-overlay-links,.intl-nav');
+ if(nav)nav.classList.add('nav-overlay-links');
+ foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');
  if(foot){foot.classList.add('nav-overlay-foot');const kids=Array.from(foot.children);if(kids[0])kids[0].classList.add('nav-overlay-lang');if(kids[1])kids[1].classList.add('nav-overlay-contact')}
  const b=menu();if(b&&b.classList.contains('intl-menu'))b.classList.add('es-menu');
 }
