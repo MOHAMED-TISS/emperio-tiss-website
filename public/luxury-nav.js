@@ -1,104 +1,38 @@
-/* EMPERIO TISS — one global navigation controller.
-   MENU/X has exactly one click owner. Page CSS may style it, but cannot own its state. */
+/* EMPERIO TISS — single global navigation controller. */
 (function(){
 'use strict';
 const d=document,w=window;
 
-function getMenu(){return d.getElementById('menuToggleBtn')||d.querySelector('.mobile-menu,.es-menu,.intl-menu');}
-function getOverlay(){return d.getElementById('navOverlay');}
-function getLang(){const p=(w.location.pathname||'').toLowerCase();if(p.startsWith('/en/'))return'EN';if(p.startsWith('/fr/'))return'FR';if(p.startsWith('/ar/'))return'AR';return'ES';}
-
+function getMenus(){return Array.from(d.querySelectorAll('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu')).filter(Boolean)}
+function getMenu(){const menus=getMenus();return menus.find(m=>{const r=m.getBoundingClientRect(),s=w.getComputedStyle(m);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'})||menus[0]||null}
+function getOverlay(){return d.getElementById('navOverlay')}
+function getLang(){const p=(w.location.pathname||'').toLowerCase();if(p.startsWith('/en/'))return'EN';if(p.startsWith('/fr/'))return'FR';if(p.startsWith('/ar/'))return'AR';return'ES'}
 function injectMenuCSS(){
  if(d.getElementById('et-menu-controller-css'))return;
  const s=d.createElement('style');s.id='et-menu-controller-css';
  s.textContent=`
-/* SINGLE SOURCE OF TRUTH FOR MENU → X */
+/* One visual state for every possible legacy menu button. */
 #luxuryHeader #menuToggleBtn,#luxuryHeader .mobile-menu,#luxuryHeader .es-menu,#luxuryHeader .intl-menu,.site-header .mobile-menu,.site-header .es-menu,.site-header .intl-menu{pointer-events:auto!important;cursor:pointer!important;position:relative!important;overflow:visible!important;}
 #luxuryHeader #menuToggleBtn span:not(.et-menu-label),#luxuryHeader .mobile-menu span:not(.et-menu-label),#luxuryHeader .es-menu span:not(.et-menu-label),#luxuryHeader .intl-menu span:not(.et-menu-label),.site-header .mobile-menu span:not(.et-menu-label),.site-header .es-menu span:not(.et-menu-label),.site-header .intl-menu span:not(.et-menu-label){position:absolute!important;left:50%!important;top:50%!important;width:21px!important;height:1px!important;margin:0!important;display:block!important;background:#f4f0e6!important;transform-origin:center!important;transition:none!important;}
-#luxuryHeader #menuToggleBtn span:nth-child(1),#luxuryHeader .mobile-menu span:nth-child(1),#luxuryHeader .es-menu span:nth-child(1),#luxuryHeader .intl-menu span:nth-child(1),.site-header .mobile-menu span:nth-child(1),.site-header .es-menu span:nth-child(1),.site-header .intl-menu span:nth-child(1){transform:translate(-50%,-50%) translateY(-6px)!important;}
-#luxuryHeader #menuToggleBtn span:nth-child(2),#luxuryHeader .mobile-menu span:nth-child(2),#luxuryHeader .es-menu span:nth-child(2),#luxuryHeader .intl-menu span:nth-child(2),.site-header .mobile-menu span:nth-child(2),.site-header .es-menu span:nth-child(2),.site-header .intl-menu span:nth-child(2){transform:translate(-50%,-50%)!important;}
-#luxuryHeader #menuToggleBtn span:nth-child(3),#luxuryHeader .mobile-menu span:nth-child(3),#luxuryHeader .es-menu span:nth-child(3),#luxuryHeader .intl-menu span:nth-child(3),.site-header .mobile-menu span:nth-child(3),.site-header .es-menu span:nth-child(3),.site-header .intl-menu span:nth-child(3){transform:translate(-50%,-50%) translateY(6px)!important;}
-#luxuryHeader #menuToggleBtn::after,#luxuryHeader .mobile-menu::after,#luxuryHeader .es-menu::after,#luxuryHeader .intl-menu::after,.site-header .mobile-menu::after,.site-header .es-menu::after,.site-header .intl-menu::after{content:"MENU";position:absolute;top:calc(100% + 9px);left:50%;transform:translateX(-50%);color:#f4f0e6;font:600 8px/1 "DM Sans",sans-serif;letter-spacing:.18em;opacity:.78;white-space:nowrap;pointer-events:none;}
-/* aria-expanded is the visual state; body.nav-open is the overlay state. Both are written together. */
-#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(1),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(1),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(1),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(1),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(1),.site-header .es-menu[aria-expanded="true"] span:nth-child(1),.site-header .intl-menu[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)!important;}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(2),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(2),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(2),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(2),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(2),.site-header .es-menu[aria-expanded="true"] span:nth-child(2),.site-header .intl-menu[aria-expanded="true"] span:nth-child(2){opacity:0!important;}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(3),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(3),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(3),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(3),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(3),.site-header .es-menu[aria-expanded="true"] span:nth-child(3),.site-header .intl-menu[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)!important;}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"]::after,#luxuryHeader .mobile-menu[aria-expanded="true"]::after,#luxuryHeader .es-menu[aria-expanded="true"]::after,#luxuryHeader .intl-menu[aria-expanded="true"]::after,.site-header .mobile-menu[aria-expanded="true"]::after,.site-header .es-menu[aria-expanded="true"]::after,.site-header .intl-menu[aria-expanded="true"]::after{content:"CLOSE"!important;color:#d2b16c!important;opacity:1!important;}
+#luxuryHeader #menuToggleBtn span:nth-child(1),#luxuryHeader .mobile-menu span:nth-child(1),#luxuryHeader .es-menu span:nth-child(1),#luxuryHeader .intl-menu span:nth-child(1),.site-header .mobile-menu span:nth-child(1),.site-header .es-menu span:nth-child(1),.site-header .intl-menu span:nth-child(1){transform:translate(-50%,-50%) translateY(-6px)!important}
+#luxuryHeader #menuToggleBtn span:nth-child(2),#luxuryHeader .mobile-menu span:nth-child(2),#luxuryHeader .es-menu span:nth-child(2),#luxuryHeader .intl-menu span:nth-child(2),.site-header .mobile-menu span:nth-child(2),.site-header .es-menu span:nth-child(2),.site-header .intl-menu span:nth-child(2){transform:translate(-50%,-50%)!important}
+#luxuryHeader #menuToggleBtn span:nth-child(3),#luxuryHeader .mobile-menu span:nth-child(3),#luxuryHeader .es-menu span:nth-child(3),#luxuryHeader .intl-menu span:nth-child(3),.site-header .mobile-menu span:nth-child(3),.site-header .es-menu span:nth-child(3),.site-header .intl-menu span:nth-child(3){transform:translate(-50%,-50%) translateY(6px)!important}
+#luxuryHeader #menuToggleBtn::after,#luxuryHeader .mobile-menu::after,#luxuryHeader .es-menu::after,#luxuryHeader .intl-menu::after,.site-header .mobile-menu::after,.site-header .es-menu::after,.site-header .intl-menu::after{content:"MENU";position:absolute;top:calc(100% + 9px);left:50%;transform:translateX(-50%);color:#f4f0e6;font:600 8px/1 "DM Sans",sans-serif;letter-spacing:.18em;opacity:.78;white-space:nowrap;pointer-events:none}
+#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(1),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(1),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(1),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(1),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(1),.site-header .es-menu[aria-expanded="true"] span:nth-child(1),.site-header .intl-menu[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)!important}
+#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(2),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(2),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(2),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(2),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(2),.site-header .es-menu[aria-expanded="true"] span:nth-child(2),.site-header .intl-menu[aria-expanded="true"] span:nth-child(2){opacity:0!important}
+#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(3),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(3),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(3),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(3),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(3),.site-header .es-menu[aria-expanded="true"] span:nth-child(3),.site-header .intl-menu[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)!important}
+#luxuryHeader #menuToggleBtn[aria-expanded="true"]::after,#luxuryHeader .mobile-menu[aria-expanded="true"]::after,#luxuryHeader .es-menu[aria-expanded="true"]::after,#luxuryHeader .intl-menu[aria-expanded="true"]::after,.site-header .mobile-menu[aria-expanded="true"]::after,.site-header .es-menu[aria-expanded="true"]::after,.site-header .intl-menu[aria-expanded="true"]::after{content:"CLOSE"!important;color:#d2b16c!important;opacity:1!important}
 `;
- d.head.appendChild(s);
+ d.head.appendChild(s)
 }
-
 function setOpen(open){
- const b=getMenu(),o=getOverlay();
- if(!b)return;
- b.setAttribute('aria-expanded',String(open));
- b.setAttribute('aria-label',open?'Close menu':'Open menu');
- b.classList.toggle('is-open',open);
- d.body.classList.toggle('nav-open',open);
- d.documentElement.classList.toggle('menu-lock',open);
- d.body.classList.toggle('menu-lock',open);
- if(o)o.setAttribute('aria-hidden',String(!open));
+ const menus=getMenus(),o=getOverlay();
+ menus.forEach(b=>{b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'Close menu':'Open menu');b.classList.toggle('is-open',open);});
+ d.body.classList.toggle('nav-open',open);d.documentElement.classList.toggle('menu-lock',open);d.body.classList.toggle('menu-lock',open);if(o)o.setAttribute('aria-hidden',String(!open));
 }
-
-function normalizeOverlay(){
- const o=getOverlay();if(!o)return;
- let inner=o.querySelector('.nav-overlay-inner,.intl-overlay-inner');
- let links=o.querySelector('.nav-overlay-links,.intl-nav');
- let foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');
- if(!inner&&links){inner=d.createElement('div');inner.className='nav-overlay-inner';o.insertBefore(inner,links);inner.appendChild(links);if(foot)inner.appendChild(foot);}
- if(inner)inner.classList.add('nav-overlay-inner');
- links=o.querySelector('.nav-overlay-links,.intl-nav');if(links)links.classList.add('nav-overlay-links');
- foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');
- if(foot){foot.classList.add('nav-overlay-foot');const kids=Array.from(foot.children);if(kids[0])kids[0].classList.add('nav-overlay-lang');if(kids[1])kids[1].classList.add('nav-overlay-contact');}
-}
-
-function ensureProductsSubmenu(){
- const o=getOverlay();if(!o)return;
- const nav=o.querySelector('.nav-overlay-links');if(!nav||nav.querySelector('.et-products-menu'))return;
- const current=getLang();
- const labels=current==='EN'?['Seafood','Fruits','Vegetables','Seasonal']:current==='FR'?['Produits de la mer','Fruits','Horticulture','Saisonniers']:current==='AR'?['المأكولات البحرية','الفواكه','الخضروات','المنتجات الموسمية']:['Productos del mar','Frutas','Hortalizas','Productos de temporada'];
- const base=current==='EN'?'/en/products/':current==='FR'?'/fr/products/':current==='AR'?'/ar/products/':'/products/';
- const group=d.createElement('div');group.className='nav-products-group et-products-menu';
- [['01',labels[0],'seafood/'],['02',labels[1],'fruits/'],['03',labels[2],'vegetables/'],['04',labels[3],'seasonal.html']].forEach(item=>{const a=d.createElement('a');a.href=base+item[2];a.innerHTML='<span class="idx">'+item[0]+'</span><span>'+item[1]+'</span>';group.appendChild(a);});
- const parent=Array.from(nav.children).find(x=>x.matches('a')&&/^(productos|products|produits|المنتجات)$/i.test((x.textContent||'').replace(/^\d+\s*/,'').trim()));
- if(!parent)return;
- parent.classList.add('has-products-menu');parent.dataset.productsParent='true';parent.setAttribute('aria-haspopup','true');parent.setAttribute('aria-expanded','false');parent.after(group);
- const toggle=e=>{e.preventDefault();e.stopPropagation();const expanded=nav.classList.toggle('products-expanded');parent.setAttribute('aria-expanded',String(expanded));};
- parent.addEventListener('click',toggle);
- parent.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){toggle(e);}});
-}
-
-function installSingleController(){
- if(d.documentElement.dataset.etNavController==='1')return;
- d.documentElement.dataset.etNavController='1';
- document.addEventListener('click',function(e){
-   const b=e.target.closest&&e.target.closest('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');
-   if(b){
-     e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
-     const open=b.getAttribute('aria-expanded')==='true';
-     setOpen(!open);
-     return;
-   }
-   const o=getOverlay();
-   if(o&&e.target===o){e.preventDefault();e.stopPropagation();setOpen(false);}
- },true);
- document.addEventListener('keydown',function(e){
-   if(e.key==='Escape'&&d.body.classList.contains('nav-open')){e.preventDefault();setOpen(false);}
- },true);
- window.addEventListener('pageshow',function(){setOpen(false);},{once:true});
-}
-
-function init(){
- injectMenuCSS();
- normalizeOverlay();
- ensureProductsSubmenu();
- const b=getMenu(),o=getOverlay();
- if(!b||!o)return;
- b.setAttribute('type','button');
- b.setAttribute('aria-controls','navOverlay');
- setOpen(false);
- installSingleController();
-}
-
-if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
+function normalizeOverlay(){const o=getOverlay();if(!o)return;let inner=o.querySelector('.nav-overlay-inner,.intl-overlay-inner'),links=o.querySelector('.nav-overlay-links,.intl-nav'),foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');if(!inner&&links){inner=d.createElement('div');inner.className='nav-overlay-inner';o.insertBefore(inner,links);inner.appendChild(links);if(foot)inner.appendChild(foot)}if(inner)inner.classList.add('nav-overlay-inner');links=o.querySelector('.nav-overlay-links,.intl-nav');if(links)links.classList.add('nav-overlay-links');foot=o.querySelector('.nav-overlay-foot,.intl-overlay-foot');if(foot){foot.classList.add('nav-overlay-foot');const kids=Array.from(foot.children);if(kids[0])kids[0].classList.add('nav-overlay-lang');if(kids[1])kids[1].classList.add('nav-overlay-contact')}}
+function ensureProductsSubmenu(){const o=getOverlay();if(!o)return;const nav=o.querySelector('.nav-overlay-links');if(!nav||nav.querySelector('.et-products-menu'))return;const current=getLang(),labels=current==='EN'?['Seafood','Fruits','Vegetables','Seasonal']:current==='FR'?['Produits de la mer','Fruits','Horticulture','Saisonniers']:current==='AR'?['المأكولات البحرية','الفواكه','الخضروات','المنتجات الموسمية']:['Productos del mar','Frutas','Hortalizas','Productos de temporada'],base=current==='EN'?'/en/products/':current==='FR'?'/fr/products/':current==='AR'?'/ar/products/':'/products/',group=d.createElement('div');group.className='nav-products-group et-products-menu';[['01',labels[0],'seafood/'],['02',labels[1],'fruits/'],['03',labels[2],'vegetables/'],['04',labels[3],'seasonal.html']].forEach(item=>{const a=d.createElement('a');a.href=base+item[2];a.innerHTML='<span class="idx">'+item[0]+'</span><span>'+item[1]+'</span>';group.appendChild(a)});const parent=Array.from(nav.children).find(x=>x.matches('a')&&/^(productos|products|produits|المنتجات)$/i.test((x.textContent||'').replace(/^\d+\s*/,'').trim()));if(!parent)return;parent.classList.add('has-products-menu');parent.dataset.productsParent='true';parent.setAttribute('aria-haspopup','true');parent.setAttribute('aria-expanded','false');parent.after(group);const toggle=e=>{e.preventDefault();e.stopPropagation();const expanded=nav.classList.toggle('products-expanded');parent.setAttribute('aria-expanded',String(expanded))};parent.addEventListener('click',toggle);parent.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){toggle(e)}})}
+function installSingleController(){if(d.documentElement.dataset.etNavController==='1')return;d.documentElement.dataset.etNavController='1';d.addEventListener('click',function(e){const b=e.target.closest&&e.target.closest('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');if(b){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();const open=b.getAttribute('aria-expanded')==='true';setOpen(!open);return}const o=getOverlay();if(o&&e.target===o){e.preventDefault();e.stopPropagation();setOpen(false)}},true);d.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.body.classList.contains('nav-open')){e.preventDefault();setOpen(false)}},true)}
+function init(){injectMenuCSS();normalizeOverlay();ensureProductsSubmenu();const b=getMenu(),o=getOverlay();if(!b||!o)return;b.setAttribute('type','button');b.setAttribute('aria-controls','navOverlay');setOpen(false);installSingleController()}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init()
 })();
