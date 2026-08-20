@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0",
+  "market": "B2B",
+  "families": [
+    {"id":"seafood","name":"Productos del mar","path":"/products/seafood.html","subcategories":["fish","shellfish","cephalopods"]},
+    {"id":"produce","name":"Frutas y hortalizas","path":"/products/fruits-vegetables.html","subcategories":["citrus","exotics","core-produce","vegetables"]},
+    {"id":"seasonal","name":"Productos de temporada","path":"/products/seasonal.html","subcategories":[]}
+  ],
+  "products": [
+    {
+      "id":"octopus-vulgaris",
+      "family":"seafood",
+      "subcategory":"cephalopods",
+      "commercialName":"Pulpo",
+      "scientificName":"Octopus vulgaris",
+      "condition":["fresh","frozen"],
+      "origin":[],
+      "faoZone":[],
+      "calibre":[],
+      "quality":[],
+      "format":[],
+      "packaging":[],
+      "availability":[],
+      "image":"",
+      "status":"draft"
+    },
+    {
+      "id":"sardina",
+      "family":"seafood",
+      "subcategory":"fish",
+      "commercialName":"Sardina",
+      "scientificName":"Sardina pilchardus",
+      "condition":["fresh"],
+      "origin":[],
+      "faoZone":[],
+      "calibre":[],
+      "quality":[],
+      "format":[],
+      "packaging":[],
+      "availability":[],
+      "image":"",
+      "status":"draft"
+    },
+    {
+      "id":"clementina",
+      "family":"produce",
+      "subcategory":"citrus",
+      "commercialName":"Clementina",
+      "scientificName":"Citrus reticulata",
+      "condition":["fresh"],
+      "origin":[],
+      "faoZone":[],
+      "calibre":[],
+      "quality":[],
+      "format":[],
+      "packaging":[],
+      "variety":[],
+      "campaign":[],
+      "availability":[],
+      "image":"",
+      "status":"draft"
+    },
+    {
+      "id":"navelina",
+      "family":"produce",
+      "subcategory":"citrus",
+      "commercialName":"Navelina",
+      "scientificName":"Citrus sinensis",
+      "condition":["fresh"],
+      "origin":[],
+      "faoZone":[],
+      "calibre":[],
+      "quality":[],
+      "format":[],
+      "packaging":[],
+      "variety":["Navelina"],
+      "campaign":[],
+      "availability":[],
+      "image":"",
+      "status":"draft"
+    }
+  ]
+}
