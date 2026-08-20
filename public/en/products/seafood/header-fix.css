@@ -1,0 +1,12 @@
+/* Seafood page header correction — scoped to this page only */
+.seafood-page .intl-header-inner{min-height:76px;height:76px;padding:0 28px;display:flex;align-items:center;}
+.seafood-page .intl-logo{display:flex;align-items:center;height:100%;line-height:0;flex:0 0 auto;}
+.seafood-page .intl-logo img{display:block;width:auto;height:42px;max-width:190px;object-fit:contain;}
+.seafood-page .intl-lang{margin-left:auto;margin-right:24px;display:flex;align-items:center;white-space:nowrap;}
+.seafood-page .intl-menu{flex:0 0 46px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;}
+@media (max-width:700px){
+  .seafood-page .intl-header-inner{height:68px;min-height:68px;padding:0 18px;}
+  .seafood-page .intl-logo img{height:34px;max-width:155px;}
+  .seafood-page .intl-lang{margin-right:10px;font-size:.82rem;}
+  .seafood-page .intl-menu{width:42px;height:42px;}
+}
