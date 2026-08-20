@@ -9,6 +9,12 @@
 .products-page .mobile-menu{position:absolute!important;right:28px!important;top:14px!important;width:52px!important;height:52px!important;min-width:52px!important;flex:0 0 52px!important;margin:0!important;padding:0!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important}
 .products-page .mobile-menu span{width:20px!important;height:1px!important}
 .products-page .mobile-menu:after{top:calc(100% + 8px)!important;font-size:7px!important;letter-spacing:.16em!important}
+/* Products has its own button class; explicitly bind the open-state X here.
+   This prevents page-scoped mobile-menu rules from ever defeating the global X. */
+body.products-page.nav-open #luxuryHeader .mobile-menu span:nth-child(1){transform:rotate(45deg)!important}
+body.products-page.nav-open #luxuryHeader .mobile-menu span:nth-child(2){opacity:0!important}
+body.products-page.nav-open #luxuryHeader .mobile-menu span:nth-child(3){transform:rotate(-45deg)!important}
+body.products-page.nav-open #luxuryHeader .mobile-menu:after{content:"CLOSE"!important;color:#d2b16c!important;opacity:1!important}
 .products-page .products-hero-title h1{font-size:clamp(56px,7.2vw,108px)!important;line-height:.88!important;letter-spacing:-.045em!important}
 .products-page .products-hero-copy p{font-size:15px!important;line-height:1.72!important}
 .products-page .products-hero-top,.products-page .products-hero-bottom,.products-page .eyebrow{font-size:8px!important;line-height:1.2!important;letter-spacing:.18em!important}
