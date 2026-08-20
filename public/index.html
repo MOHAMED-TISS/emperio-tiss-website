@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,17 +12,27 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="luxury-nav.css">
   <style>
-    /* Supporting copy: cleaner, more contemporary B2B typography. */
-    .hero-description span {
-      display: block;
-      margin-top: 8px;
-      font-family: "Manrope", Arial, sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.9;
-      letter-spacing: .005em;
-      color: rgba(255,255,255,.72);
-      text-wrap: pretty;
+    .hero-description span{display:block;margin-top:8px;font-family:"Manrope",Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.9;letter-spacing:.005em;color:rgba(255,255,255,.72);text-wrap:pretty}
+    /* Hero collision fix: keep the CTA block and bottom metadata in separate vertical zones. */
+    .hero{min-height:100svh;padding-top:145px;padding-bottom:82px}
+    .hero-grid{min-height:0;align-items:center}
+    .hero-content{padding-bottom:22px}
+    .hero-actions{position:relative;z-index:5;flex-wrap:wrap}
+    .hero-bottom{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);width:min(1240px,calc(100% - 80px));margin:0}
+    .hero-side{align-self:center}
+    @media(max-width:900px){
+      .hero{min-height:100svh;padding-top:125px;padding-bottom:92px}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-side{display:none}
+      .hero-bottom{bottom:28px;width:calc(100% - 48px);font-size:7px;gap:11px}
+      .hero-bottom i{width:24px}
+    }
+    @media(max-width:560px){
+      .hero{padding-top:115px;padding-bottom:90px}
+      .hero-description{margin-top:38px}
+      .hero-actions{margin-top:25px;gap:9px}
+      .hero-bottom{width:calc(100% - 34px);bottom:22px;gap:8px;justify-content:center}
+      .hero-bottom i{width:18px}
     }
   </style>
 </head>
@@ -45,9 +54,7 @@
     </nav>
     <aside class="nav-overlay-side"><div class="nav-overlay-brand"><strong>EMPERIO TISS S.L.</strong><span>SEAFOOD · FRUITS &amp; VEGETABLES · GLOBAL MARKETS</span><span>MADRID · SPAIN</span></div></aside>
     <div class="nav-overlay-foot">
-      <div class="nav-overlay-lang" aria-label="Idiomas">
-        <a href="index.html" class="current" aria-current="page">ES</a><span class="language-separator">·</span><a href="en/index.html">EN</a><span class="language-separator">·</span><a href="fr/index.html">FR</a><span class="language-separator">·</span><a href="ar/index.html">AR</a>
-      </div>
+      <div class="nav-overlay-lang" aria-label="Idiomas"><a href="index.html" class="current" aria-current="page">ES</a><span class="language-separator">·</span><a href="en/index.html">EN</a><span class="language-separator">·</span><a href="fr/index.html">FR</a><span class="language-separator">·</span><a href="ar/index.html">AR</a></div>
       <div class="nav-overlay-contact"><a href="index.html#contact">Consulta empresarial ↗</a><span>Madrid · Europa · África · Mediterráneo</span></div>
     </div>
   </div>
