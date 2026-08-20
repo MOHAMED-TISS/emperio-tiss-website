@@ -1,8 +1,12 @@
 (function(){'use strict';
+const labels={fish:'Pescados',shellfish:'Mariscos',cephalopods:'Cefalópodos',citrus:'Cítricos',exotics:'Exóticos','core-produce':'Otros productos',vegetables:'Hortalizas'};
 window.EMPERIO_TISS_PRODUCT_CARD=function(product){
- if(!product)return '';
- const condition=(product.condition||[]).join(' · ');
- const meta=[condition,product.origin&&product.origin[0],product.calibre&&product.calibre[0]].filter(Boolean).join(' · ');
+ if(!product||product.status!=='active')return '';
+ const condition=(product.condition||[]).map(v=>v==='fresh'?'Fresco':v==='frozen'?'Congelado':v).join(' · ');
+ const origin=product.origin&&product.origin[0];
+ const calibre=product.calibre&&product.calibre[0];
+ const meta=[condition,origin,calibre].filter(Boolean).join(' · ');
  const href='/products/product.html?id='+encodeURIComponent(product.id);
- return '<article class="product-card" data-product-id="'+product.id+'"><div class="product-card-media">'+(product.image?'<img src="'+product.image+'" alt="'+product.commercialName+'" loading="lazy">':'<span>EMPERIO TISS</span>')+'</div><div class="product-card-body"><p class="product-card-category">'+product.subcategory.replace(/-/g,' ')+'</p><h3>'+product.commercialName+'</h3><p class="product-card-scientific">'+product.scientificName+'</p><p class="product-card-meta">'+meta+'</p><a href="'+href+'">Ver ficha <span>•</span></a></div></article>';
+ const category=labels[product.subcategory]||product.subcategory||'';
+ return '<article class="product-card" data-product-id="'+product.id+'"><div class="product-card-media">'+(product.image?'<img src="'+product.image+'" alt="'+product.commercialName+'" loading="lazy">':'<span class="product-card-placeholder">EMPERIO TISS</span>')+'</div><div class="product-card-body"><p class="product-card-category">'+category+'</p><h3>'+product.commercialName+'</h3><p class="product-card-scientific"><em>'+product.scientificName+'</em></p>'+(meta?'<p class="product-card-meta">'+meta+'</p>':'')+'<a class="product-card-link" href="'+href+'">Ver ficha <span aria-hidden="true">•</span></a></div></article>';
 };})();
