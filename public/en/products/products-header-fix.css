@@ -1,4 +1,5 @@
-/* EMPERIO TISS — Products landing header + typography refinement. */
+/* EMPERIO TISS — Products landing refinement.
+   Menu layout intentionally inherits the global luxury-nav system. */
 .products-page .site-header{height:82px!important;z-index:10000!important}
 .products-page .header-inner{height:82px!important;min-height:82px!important;width:min(1180px,calc(100% - 56px));padding:14px 0!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:0!important}
 .products-page .site-logo{width:118px!important;height:52px!important;min-width:118px!important;padding:7px 12px!important;margin:0!important;border-radius:16px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 118px!important;line-height:0!important}
@@ -7,13 +8,6 @@
 .products-page .mobile-menu{position:absolute!important;right:28px!important;top:14px!important;width:52px!important;height:52px!important;min-width:52px!important;flex:0 0 52px!important;margin:0!important;padding:0!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important}
 .products-page .mobile-menu span{width:20px!important;height:1px!important}
 .products-page .mobile-menu:after{top:calc(100% + 8px)!important;font-size:7px!important;letter-spacing:.16em!important}
-
-/* Menu: keep every index + label as one indivisible navigation row. */
-.products-page #navOverlay .nav-overlay-links>a{display:flex!important;flex-direction:row!important;align-items:baseline!important;flex-wrap:nowrap!important;gap:22px!important;width:max-content!important;max-width:100%!important;white-space:nowrap!important;box-sizing:border-box!important}
-.products-page #navOverlay .nav-overlay-links>a .idx{display:block!important;position:static!important;width:30px!important;min-width:30px!important;max-width:30px!important;flex:0 0 30px!important;margin:0!important;padding:0!important;white-space:nowrap!important;text-align:left!important}
-.products-page #navOverlay .nav-overlay-links>a>span:not(.idx){display:block!important;min-width:0!important;white-space:nowrap!important}
-.products-page #navOverlay .nav-overlay-links>a::after{left:52px!important}
-.products-page #navOverlay .nav-overlay-links{align-items:flex-start!important}
 
 .products-page .products-hero-title h1{font-size:clamp(56px,7.2vw,108px)!important;line-height:.88!important;letter-spacing:-.045em!important}
 .products-page .products-hero-copy p{font-size:15px!important;line-height:1.72!important}
@@ -34,9 +28,6 @@
   .products-page .et-language-switch{right:76px!important;top:22px!important;height:26px!important;padding:0 8px!important;gap:6px!important;font-size:7px!important}
   .products-page .mobile-menu{right:16px!important;top:10px!important;width:44px!important;height:44px!important;min-width:44px!important;flex-basis:44px!important}
   .products-page .mobile-menu span{width:18px!important}
-  .products-page #navOverlay .nav-overlay-links>a{width:100%!important;max-width:100%!important;gap:12px!important;white-space:nowrap!important;font-size:clamp(34px,10vw,52px)!important;padding:6px 0!important}
-  .products-page #navOverlay .nav-overlay-links>a .idx{width:22px!important;min-width:22px!important;max-width:22px!important;flex-basis:22px!important;font-size:8px!important}
-  .products-page #navOverlay .nav-overlay-links>a::after{left:34px!important}
   .products-page .products-hero-title h1{font-size:clamp(48px,12vw,76px)!important;line-height:.9!important}
   .products-page .products-hero-copy p{font-size:14px!important;line-height:1.7!important}
   .products-page .section-introduction h2,.products-page .products-cta h2{font-size:clamp(42px,11vw,64px)!important}
@@ -48,9 +39,6 @@
   .products-page .et-language-switch{right:68px!important;top:21px!important;padding:0 7px!important;gap:5px!important;font-size:6.5px!important}
   .products-page .mobile-menu{right:14px!important;top:9px!important;width:40px!important;height:40px!important;min-width:40px!important;flex-basis:40px!important}
   .products-page .mobile-menu span{width:16px!important}
-  .products-page #navOverlay .nav-overlay-links>a{gap:10px!important;font-size:clamp(32px,9.8vw,48px)!important}
-  .products-page #navOverlay .nav-overlay-links>a .idx{width:20px!important;min-width:20px!important;max-width:20px!important;flex-basis:20px!important;font-size:7px!important}
-  .products-page #navOverlay .nav-overlay-links>a::after{left:30px!important}
   .products-page .products-hero-title h1{font-size:clamp(42px,13vw,62px)!important}
   .products-page .products-hero-copy p{font-size:13.5px!important}
 }
