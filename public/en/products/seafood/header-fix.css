@@ -1,12 +1,44 @@
-/* Seafood page header correction — scoped to this page only */
-.seafood-page .intl-header-inner{min-height:76px;height:76px;padding:0 28px;display:flex;align-items:center;}
-.seafood-page .intl-logo{display:flex;align-items:center;height:100%;line-height:0;flex:0 0 auto;}
-.seafood-page .intl-logo img{display:block;width:auto;height:42px;max-width:190px;object-fit:contain;}
-.seafood-page .intl-lang{margin-left:auto;margin-right:24px;display:flex;align-items:center;white-space:nowrap;}
-.seafood-page .intl-menu{flex:0 0 46px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;}
-@media (max-width:700px){
-  .seafood-page .intl-header-inner{height:68px;min-height:68px;padding:0 18px;}
-  .seafood-page .intl-logo img{height:34px;max-width:155px;}
-  .seafood-page .intl-lang{margin-right:10px;font-size:.82rem;}
-  .seafood-page .intl-menu{width:42px;height:42px;}
+/* EMPERIO TISS — Seafood header + typography refinement. Scoped only to .seafood-page. */
+.seafood-page .intl-header{height:82px!important;z-index:10000!important}
+.seafood-page .intl-header-inner{height:82px!important;min-height:82px!important;padding:14px 28px!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:0!important}
+.seafood-page .intl-logo{position:relative!important;left:auto!important;top:auto!important;width:118px!important;height:52px!important;min-width:118px!important;padding:7px 12px!important;margin:0!important;border-radius:16px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 118px!important;line-height:0!important}
+.seafood-page .intl-logo img{display:block!important;width:auto!important;height:auto!important;max-width:88px!important;max-height:34px!important;object-fit:contain!important}
+.seafood-page .intl-lang{position:absolute!important;right:92px!important;top:27px!important;height:28px!important;margin:0!important;padding:0 11px!important;gap:7px!important;display:flex!important;align-items:center!important;white-space:nowrap!important;font-size:8px!important;line-height:1!important}
+.seafood-page .intl-menu{position:absolute!important;right:28px!important;top:14px!important;width:52px!important;height:52px!important;min-width:52px!important;flex:0 0 52px!important;margin:0!important;padding:0!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.seafood-page .intl-menu span{left:16px!important;width:20px!important;height:1px!important}
+.seafood-page .intl-menu::after{top:calc(100% + 8px)!important;font-size:7px!important;letter-spacing:.16em!important}
+.seafood-page .intl-hero h1{font-size:clamp(56px,7.2vw,108px)!important;line-height:.88!important;letter-spacing:-.045em!important;max-width:760px!important;margin:18px 0 22px!important}
+.seafood-page .intl-lead{max-width:610px!important;font-size:15px!important;line-height:1.72!important;letter-spacing:0!important}
+.seafood-page .intl-kicker,.seafood-page .intl-label{font-size:8px!important;line-height:1.2!important;letter-spacing:.18em!important}
+.seafood-page .intl-section h2{font-size:clamp(48px,5.8vw,82px)!important;line-height:.9!important;letter-spacing:-.045em!important}
+.seafood-page .intl-copy{font-size:14px!important;line-height:1.78!important;max-width:560px!important}
+.seafood-page .intl-card h3{font-size:30px!important;line-height:1!important;letter-spacing:-.035em!important}
+.seafood-page .intl-card p{font-size:12.5px!important;line-height:1.65!important}
+.seafood-page .intl-row strong{font-size:14px!important;line-height:1.3!important}
+.seafood-page .intl-row em{font-size:11px!important;line-height:1.45!important}
+.seafood-page .intl-cta h2{font-size:clamp(48px,5.8vw,82px)!important;line-height:.9!important;letter-spacing:-.045em!important}
+.seafood-page .intl-cta p{font-size:14px!important;line-height:1.75!important}
+.seafood-page .intl-footer-logo{width:100px!important;height:42px!important;margin-bottom:5px!important}
+.seafood-page .intl-footer-logo img{height:27px!important;max-height:27px!important;max-width:92px!important;width:auto!important}
+@media(max-width:800px){
+.seafood-page .intl-header,.seafood-page .intl-header-inner{height:70px!important;min-height:70px!important}
+.seafood-page .intl-header-inner{padding:10px 16px!important}
+.seafood-page .intl-logo{width:104px!important;height:46px!important;min-width:104px!important;flex-basis:104px!important;padding:6px 10px!important;border-radius:14px!important}
+.seafood-page .intl-logo img{max-width:78px!important;max-height:29px!important}
+.seafood-page .intl-lang{right:76px!important;top:22px!important;height:26px!important;padding:0 8px!important;gap:6px!important;font-size:7px!important}
+.seafood-page .intl-menu{right:16px!important;top:10px!important;width:44px!important;height:44px!important;min-width:44px!important;flex-basis:44px!important}
+.seafood-page .intl-menu span{left:13px!important;width:18px!important}
+.seafood-page .intl-hero h1{font-size:clamp(48px,12vw,76px)!important;line-height:.9!important}
+.seafood-page .intl-lead{font-size:14px!important;line-height:1.7!important}
+.seafood-page .intl-section h2,.seafood-page .intl-cta h2{font-size:clamp(42px,11vw,64px)!important}
+}
+@media(max-width:480px){
+.seafood-page .intl-header-inner{padding:9px 14px!important}
+.seafood-page .intl-logo{width:94px!important;height:43px!important;min-width:94px!important;flex-basis:94px!important}
+.seafood-page .intl-logo img{max-width:70px!important;max-height:26px!important}
+.seafood-page .intl-lang{right:68px!important;top:21px!important;padding:0 7px!important;gap:5px!important;font-size:6.5px!important}
+.seafood-page .intl-menu{right:14px!important;top:9px!important;width:40px!important;height:40px!important;min-width:40px!important;flex-basis:40px!important}
+.seafood-page .intl-menu span{left:12px!important;width:16px!important}
+.seafood-page .intl-hero h1{font-size:clamp(42px,13vw,62px)!important}
+.seafood-page .intl-lead{font-size:13.5px!important}
 }
