@@ -1,3 +1,0 @@
-(function(){'use strict';
-const required={seafood:['commercialName','scientificName','condition','origin','faoZone','calibre','quality','format','packaging','availability'],produce:['commercialName','scientificName','condition','origin','calibre','quality','format','packaging','variety','campaign','availability'],seasonal:['commercialName','condition','origin','quality','format','packaging','campaign','availability']};
-window.EMPERIO_TISS_VALIDATE_CATALOG=function(data){const errors=[];(data.products||[]).forEach(p=>{(required[p.family]||[]).forEach(k=>{if(!(k in p))errors.push(p.id+': missing '+k)})});return errors};})();
