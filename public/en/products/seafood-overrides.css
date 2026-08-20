@@ -1,16 +1,53 @@
-/* EMPERIO TISS — Seafood EN isolated visual layer. No curtain, no custom cursor. */
-:root{--sea-ivory:#eee4d2;--sea-champagne:#d8c39a;--sea-gold:#b89455;--sea-ink:#2d261f;--sea-paper:#f2eadb;--sea-espresso:#3a2b1e}
-html,body{background:var(--sea-paper)!important;color:var(--sea-ink)!important}
+/* EMPERIO TISS — EN Seafood page: isolated, readable, stable. */
+:root{--sea-paper:#f4ecdc;--sea-panel:#e8dcc5;--sea-ink:#29231d;--sea-muted:#514a40;--sea-gold:#9a7438;--sea-dark:#30271f}
+html,body{margin:0!important;padding:0!important;background:var(--sea-paper)!important;color:var(--sea-ink)!important}
 body.seafood-page{overflow-x:hidden!important}
-/* Never let the overlay become a page-blocking curtain. */
-.seafood-page .intl-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
-.seafood-page.nav-open .intl-overlay{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
-.seafood-page .intl-hero{background-color:var(--sea-ivory)!important;background-image:linear-gradient(90deg,rgba(53,39,25,.46),rgba(53,39,25,.20) 58%,rgba(53,39,25,.08)),url('https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=2400&q=88')!important;background-position:center!important;background-size:cover!important}
-.seafood-page .intl-hero:before{background:linear-gradient(90deg,rgba(239,228,207,.78),rgba(239,228,207,.48) 55%,rgba(239,228,207,.18))!important}
-.seafood-page h1,.seafood-page .intl-section h2,.seafood-page .profile h2{color:var(--sea-ink)!important}.seafood-page h1 em,.seafood-page .intl-section h2 em,.seafood-page .profile h2 em{color:var(--sea-gold)!important}.seafood-page .intl-lead{color:#4f463b!important}
-.seafood-page .intl-section{background:var(--sea-paper)!important;border-color:rgba(74,56,33,.14)!important}.seafood-page .intl-card{background:#eadfc9!important;border-color:rgba(74,56,33,.18)!important;box-shadow:0 18px 42px rgba(63,45,25,.10)!important;cursor:pointer!important}.seafood-page .intl-card:hover{background:#e4d3af!important;border-color:var(--sea-gold)!important}.seafood-page .intl-card h3{color:var(--sea-espresso)!important}.seafood-page .intl-card p,.seafood-page .intl-copy{color:#665d51!important}
-.seafood-page .profile{background:#e4d5b8!important;border-color:rgba(74,56,33,.15)!important}.seafood-page .profile:before{background:linear-gradient(90deg,rgba(231,218,191,.90),rgba(231,218,191,.70)),url('https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=2200&q=85') center/cover!important}.seafood-page .intl-row{background:rgba(246,237,220,.86)!important;border-color:rgba(74,56,33,.15)!important}.seafood-page .intl-row:hover{background:#eadfc9!important}.seafood-page .intl-row strong{color:var(--sea-espresso)!important}
-.seafood-page .intl-btn{background:rgba(239,228,207,.84)!important;border-color:rgba(184,148,85,.55)!important;color:var(--sea-ink)!important}.seafood-page .intl-btn.primary{background:var(--sea-gold)!important;border-color:var(--sea-gold)!important;color:#2f251b!important}.seafood-page .intl-kicker,.seafood-page .intl-label,.seafood-page .intl-card>span,.seafood-page .intl-row>span{color:var(--sea-gold)!important}
-.seafood-page .intl-footer{background:var(--sea-espresso)!important;color:rgba(246,237,220,.72)!important;border-top:1px solid rgba(184,148,85,.4)!important}.seafood-page .intl-footer a{color:#f2dfbd!important}
-.seafood-page .intl-menu{cursor:pointer!important;background:rgba(239,228,207,.88)!important;border-color:rgba(184,148,85,.65)!important}.seafood-page .intl-menu span{background:#3a2b1e!important}.seafood-page .intl-menu::after{color:#5c4931!important}.seafood-page .intl-card,.seafood-page .intl-card *,.seafood-page .intl-btn,.seafood-page .intl-btn *,.seafood-page .intl-footer a{cursor:pointer!important}
-@media(max-width:800px){.seafood-page .intl-hero{background-position:center!important}.seafood-page .intl-cards{grid-template-columns:1fr!important}.seafood-page .intl-container,.seafood-page .intl-hero-inner{width:min(100% - 32px,1180px)!important}}
+.seafood-page .intl-container{width:min(1180px,calc(100% - 64px))!important;max-width:1180px!important;margin-inline:auto!important;padding-inline:0!important;position:relative!important;left:auto!important;right:auto!important;transform:none!important;box-sizing:border-box!important}
+.seafood-page .intl-hero-inner{width:min(1180px,calc(100% - 64px))!important;margin-inline:auto!important;padding-top:165px!important;padding-bottom:90px!important}
+.seafood-page .intl-hero{min-height:760px!important;box-sizing:border-box!important;background-color:#bca98a!important;background-image:linear-gradient(90deg,rgba(245,237,220,.94),rgba(245,237,220,.72) 52%,rgba(245,237,220,.28)),url('https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=2400&q=88')!important;background-position:center!important;background-size:cover!important}
+.seafood-page .intl-hero:after{display:none!important}
+.seafood-page .intl-hero h1{color:#28221c!important;text-shadow:none!important}
+.seafood-page .intl-hero h1 em{color:var(--sea-gold)!important}
+.seafood-page .intl-lead{max-width:620px!important;color:#3f382f!important;font-weight:500!important;text-shadow:none!important}
+.seafood-page .intl-kicker,.seafood-page .intl-label{color:var(--sea-gold)!important}
+.seafood-page .intl-section{background:var(--sea-paper)!important;color:var(--sea-ink)!important}
+.seafood-page .intl-section h2{color:#29231d!important}
+.seafood-page .intl-section h2 em{color:var(--sea-gold)!important}
+.seafood-page .intl-copy{color:var(--sea-muted)!important;font-weight:500!important}
+.seafood-page .intl-card{background:var(--sea-panel)!important;border:1px solid rgba(63,48,30,.22)!important;color:var(--sea-ink)!important;box-shadow:0 14px 34px rgba(55,42,25,.09)!important}
+.seafood-page .intl-card h3{color:#33291f!important}
+.seafood-page .intl-card p{color:#51483d!important;font-weight:500!important}
+.seafood-page .intl-card a{display:inline-block!important;color:#765a2e!important;font-weight:700!important;text-decoration:underline!important;text-underline-offset:4px!important}
+.seafood-page .intl-card>span,.seafood-page .intl-row>span{color:var(--sea-gold)!important}
+.seafood-page .intl-section.dark{background:#30271f!important;color:#fff!important}
+.seafood-page .dark h2{color:#fff!important}
+.seafood-page .dark h2 em{color:#d3ad68!important}
+.seafood-page .dark .intl-copy{color:rgba(255,255,255,.82)!important}
+.seafood-page .dark .intl-row{border-color:rgba(255,255,255,.18)!important;background:rgba(255,255,255,.055)!important}
+.seafood-page .dark .intl-row strong{color:#fff!important}
+.seafood-page .dark .intl-row em{color:rgba(255,255,255,.74)!important}
+.seafood-page .intl-cta{background:linear-gradient(135deg,#30271f,#493728)!important;color:#fff!important}
+.seafood-page .intl-cta h2{color:#fff!important}
+.seafood-page .intl-cta h2 em{color:#d3ad68!important}
+.seafood-page .intl-cta p{color:rgba(255,255,255,.84)!important}
+.seafood-page .intl-btn{color:#30271f!important;background:#f1e5cf!important;border-color:#b89558!important}
+.seafood-page .intl-btn.primary{color:#211a13!important;background:#c39b58!important;border-color:#c39b58!important}
+.seafood-page .intl-footer{background:#241d17!important;color:rgba(255,255,255,.76)!important}
+/* Navigation: no JS-generated curtain, no pointer dependency. */
+.seafood-page .intl-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;position:fixed!important;inset:0!important;z-index:99999!important;overflow:auto!important;transform:none!important}
+.seafood-page.nav-open .intl-overlay{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;background:#090806!important}
+.seafood-page.nav-open{overflow:hidden!important}
+.seafood-page .intl-nav{position:absolute!important;left:max(32px,7vw)!important;right:auto!important;top:130px!important;margin:0!important;transform:none!important}
+.seafood-page .intl-nav a{color:#fff!important;text-shadow:none!important}
+.seafood-page .intl-nav a:hover{color:#d7b46f!important}
+.seafood-page .intl-nav .idx{color:#d7b46f!important}
+.seafood-page .intl-overlay-foot{color:rgba(255,255,255,.72)!important}
+.seafood-page .intl-overlay-foot a{color:#fff!important}
+.seafood-page .intl-menu{z-index:100001!important;pointer-events:auto!important;cursor:pointer!important;background:rgba(244,236,220,.94)!important;border:1px solid #b89558!important;box-shadow:0 8px 24px rgba(0,0,0,.18)!important}
+.seafood-page .intl-menu span{background:#30271f!important}
+.seafood-page.nav-open .intl-menu{background:#30271f!important;border-color:#c39b58!important}
+.seafood-page.nav-open .intl-menu span{background:#fff!important}
+.seafood-page .intl-lang{z-index:100002!important}
+.seafood-page a,.seafood-page button{cursor:pointer!important}
+@media(max-width:800px){.seafood-page .intl-container,.seafood-page .intl-hero-inner{width:calc(100% - 32px)!important}.seafood-page .intl-hero{min-height:720px!important}.seafood-page .intl-hero-inner{padding-top:135px!important;padding-bottom:64px!important}.seafood-page .intl-nav{left:24px!important;top:105px!important}.seafood-page .intl-overlay-foot{left:24px!important;right:24px!important}.seafood-page .intl-cards{grid-template-columns:1fr!important}.seafood-page .intl-row{grid-template-columns:50px 1fr!important;gap:12px!important;padding:14px 0!important}.seafood-page .intl-row em{grid-column:2!important}}
+@media(max-width:480px){.seafood-page .intl-container,.seafood-page .intl-hero-inner{width:calc(100% - 28px)!important}.seafood-page .intl-hero{background-position:62% center!important}.seafood-page .intl-lead{font-size:14px!important;line-height:1.7!important}}
