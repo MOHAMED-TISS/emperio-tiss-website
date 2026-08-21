@@ -5,6 +5,12 @@
 /products/seafood/fish.html /products/seafood/fish/ 301
 /products/seafood/shellfish.html /products/seafood/shellfish/ 301
 /products/seafood/cephalopods.html /products/seafood/cephalopods/ 301
+/products/produce/ /products/fruits/ 301
+/products/produce/index.html /products/fruits/ 301
+/products/produce/citrus.html /products/fruits/ 301
+/products/produce/exotics.html /products/fruits/ 301
+/products/produce/core-produce.html /products/vegetables/ 301
+/products/produce/vegetables.html /products/vegetables/ 301
 /en/products/seafood.html /en/products/seafood/ 301
 /en/products/fruits-vegetables.html /en/products/fruits/ 301
 /en/products/seasonal.html /en/products/seasonal/ 301
