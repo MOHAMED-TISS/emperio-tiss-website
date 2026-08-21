@@ -5,22 +5,19 @@
   const doc = document;
   const root = doc.documentElement;
   const body = doc.body;
-
   const get = (selector, scope = doc) => scope.querySelector(selector);
 
-  /* Native pointer: never hide the user's system cursor. */
+  /* Never replace or hide the native pointer. */
   root.classList.remove('et-pointer-ready');
   get('.et-pointer')?.remove();
 
-  /* Header scroll state */
+  /* Header state */
   const header = get('.site-header');
-  const updateHeader = () => {
-    header?.classList.toggle('scrolled', window.scrollY > 24);
-  };
+  const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 24);
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
-  /* Universal mobile navigation */
+  /* One authoritative navigation state. */
   const button = get('#menuToggleBtn, .mobile-menu');
   const overlay = get('#navOverlay, .nav-overlay');
 
@@ -28,6 +25,7 @@
     const setOpen = (open) => {
       body.classList.toggle('nav-open', open);
       body.classList.toggle('menu-open', open);
+      root.classList.toggle('menu-lock', open);
       button.classList.toggle('is-open', open);
       button.setAttribute('aria-expanded', String(open));
       button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -36,9 +34,9 @@
 
     button.addEventListener('click', (event) => {
       event.preventDefault();
-      event.stopImmediatePropagation();
-      setOpen(!body.classList.contains('nav-open') && !body.classList.contains('menu-open'));
-    }, true);
+      event.stopPropagation();
+      setOpen(!(body.classList.contains('nav-open') || body.classList.contains('menu-open')));
+    });
 
     overlay.addEventListener('click', (event) => {
       if (event.target === overlay) setOpen(false);
@@ -57,7 +55,7 @@
     }, { passive: true });
   }
 
-  /* Accessible language dropdowns using data attributes. */
+  /* Accessible language dropdowns. */
   doc.querySelectorAll('[data-language-toggle]').forEach((toggle) => {
     const menuId = toggle.getAttribute('aria-controls');
     const menu = menuId ? doc.getElementById(menuId) : get('[data-language-menu]', toggle.parentElement || doc);
