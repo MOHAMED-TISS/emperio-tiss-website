@@ -1,5 +1,5 @@
 /* Fish catalogue pilot — compact B2B presentation */
-.fish-catalog{padding-block:clamp(3.5rem,7vw,6rem);background:var(--et-cream,#f3f0e8)}
+.fish-catalog{padding-block:clamp(3.5rem,7vw,6rem);background:var(--et-cream,#f3f0e8);scroll-margin-top:24px}
 .fish-catalog__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
 .fish-catalog__toolbar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-block-end:1.75rem;flex-wrap:wrap}
 .fish-catalog__search{flex:1 1 280px;min-width:220px;border:1px solid rgba(16,37,28,.22);background:transparent;border-radius:0;padding:.9rem 1rem;font:400 .9rem/1.2 var(--et-sans,Arial,sans-serif);color:var(--et-ink,#10251c)}
@@ -41,7 +41,15 @@
 .fish-emblematic-card__note{margin:1rem 0 0;color:rgba(248,246,240,.62);font:.76rem/1.6 var(--et-sans,Arial,sans-serif)}
 .fish-emblematic-card__mark{margin-top:auto;padding-top:1.3rem;color:#d7b46f;font:600 .58rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.14em;text-transform:uppercase}
 
+/* Demo scroll cue */
+.fish-scroll-cue{display:flex;align-items:center;justify-content:center;gap:14px;width:max-content;margin:clamp(3rem,5vw,4.5rem) auto 0;color:rgba(248,246,240,.58);text-decoration:none;text-transform:uppercase;font:600 .62rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.18em;transition:color .25s ease;outline-offset:8px}
+.fish-scroll-cue:hover,.fish-scroll-cue:focus-visible{color:#d7b46f}
+.fish-scroll-cue i{display:block;width:48px;height:1px;background:rgba(248,246,240,.24)}
+.fish-scroll-cue b{display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(215,180,111,.55);border-radius:50%;font:400 17px/1 var(--et-sans,Arial,sans-serif);color:#d7b46f;animation:fish-scroll-cue-bob 1.7s ease-in-out infinite}
+@keyframes fish-scroll-cue-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(prefers-reduced-motion:reduce){.fish-scroll-cue b{animation:none}}
+
 @media(max-width:1050px){.fish-catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fish-emblematic__intro{grid-template-columns:1fr 1.5fr}.fish-emblematic__intro p{grid-column:2}.fish-emblematic__grid{grid-template-columns:1fr}.fish-emblematic-card{grid-template-columns:38% 62%;grid-template-rows:none}.fish-emblematic-card__media{min-height:260px}}
-@media(max-width:760px){.fish-catalog__inner,.fish-emblematic__inner{width:min(100%,calc(100% - 32px))}.fish-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fish-emblematic__intro{display:block}.fish-emblematic__intro h2{margin-block:.7rem 1rem}.fish-emblematic__intro p{max-width:520px}.fish-emblematic__grid{grid-template-columns:1fr}.fish-emblematic-card{grid-template-columns:1fr;grid-template-rows:220px auto}}
-@media(max-width:500px){.fish-catalog-grid{grid-template-columns:1fr}.fish-catalog-card__body{padding:1rem}.fish-catalog__toolbar{align-items:stretch;flex-direction:column}.fish-catalog__search{min-width:0;width:100%}.fish-emblematic{padding-block:4rem}.fish-emblematic__intro h2{font-size:2.8rem}}
+@media(max-width:760px){.fish-catalog__inner,.fish-emblematic__inner{width:min(100%,calc(100% - 32px))}.fish-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fish-emblematic__intro{display:block}.fish-emblematic__intro h2{margin-block:.7rem 1rem}.fish-emblematic__intro p{max-width:520px}.fish-emblematic__grid{grid-template-columns:1fr}.fish-emblematic-card{grid-template-columns:1fr;grid-template-rows:220px auto}.fish-scroll-cue{margin-top:2.75rem}}
+@media(max-width:500px){.fish-catalog-grid{grid-template-columns:1fr}.fish-catalog-card__body{padding:1rem}.fish-catalog__toolbar{align-items:stretch;flex-direction:column}.fish-catalog__search{min-width:0;width:100%}.fish-emblematic{padding-block:4rem}.fish-emblematic__intro h2{font-size:2.8rem}.fish-scroll-cue{gap:10px;font-size:.56rem}.fish-scroll-cue i{width:30px}.fish-scroll-cue b{width:26px;height:26px;font-size:16px}}
 [dir="rtl"] .fish-catalog-card__body,[dir="rtl"] .fish-catalog__toolbar,[dir="rtl"] .fish-catalog__filters,[dir="rtl"] .fish-emblematic__intro,[dir="rtl"] .fish-emblematic-card__body{direction:rtl}
