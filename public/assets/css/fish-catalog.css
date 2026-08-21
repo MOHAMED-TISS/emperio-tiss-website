@@ -21,7 +21,27 @@
 .fish-catalog-card__link{margin-top:auto;padding-top:.65rem;color:var(--et-ink,#10251c);text-decoration:none;font:700 .6rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.1em;text-transform:uppercase}
 .fish-catalog-card__link:hover{color:var(--et-gold,#c9a35f)}
 .fish-catalog__empty{grid-column:1/-1;padding:2rem;text-align:center;color:var(--et-muted,#6d756f)}
-@media(max-width:1050px){.fish-catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:760px){.fish-catalog__inner{width:min(100%,calc(100% - 32px))}.fish-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:500px){.fish-catalog-grid{grid-template-columns:1fr}.fish-catalog-card__body{padding:1rem}.fish-catalog__toolbar{align-items:stretch;flex-direction:column}.fish-catalog__search{min-width:0;width:100%}}
-[dir="rtl"] .fish-catalog-card__body,[dir="rtl"] .fish-catalog__toolbar,[dir="rtl"] .fish-catalog__filters{direction:rtl}
+
+/* Demo-only premium layer */
+.fish-emblematic{background:var(--et-green-950,#03140f);color:#f8f6f0;padding-block:clamp(5rem,10vw,9rem);overflow:hidden}
+.fish-emblematic__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+.fish-emblematic__intro{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr) minmax(220px,.55fr);gap:clamp(2rem,5vw,5rem);align-items:end;margin-block-end:clamp(3rem,6vw,5.5rem)}
+.fish-emblematic__intro .eyebrow{color:var(--et-gold,#c9a35f)}
+.fish-emblematic__intro h2{margin:0;font:400 clamp(2.8rem,6.3vw,6rem)/.92 var(--et-serif,Georgia,serif);letter-spacing:-.025em}
+.fish-emblematic__intro h2 em{font-style:italic;color:#d7b46f}
+.fish-emblematic__intro p{margin:0;max-width:360px;color:rgba(248,246,240,.66);font:400 .84rem/1.7 var(--et-sans,Arial,sans-serif)}
+.fish-emblematic__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(248,246,240,.16)}
+.fish-emblematic-card{display:grid;grid-template-rows:minmax(260px,30vw) auto;background:#0b2119;min-width:0}
+.fish-emblematic-card__media{display:grid;place-items:end start;padding:1.2rem;background:linear-gradient(135deg,#173d31 0%,#06120d 72%);color:rgba(248,246,240,.3);font:600 .56rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.16em;text-transform:uppercase}
+.fish-emblematic-card__body{padding:clamp(1.3rem,2.2vw,2rem);display:flex;flex-direction:column;min-height:250px}
+.fish-emblematic-card__kicker{color:var(--et-gold,#c9a35f);font:700 .56rem/1.2 var(--et-sans,Arial,sans-serif);letter-spacing:.14em;text-transform:uppercase}
+.fish-emblematic-card h3{margin:.7rem 0 .25rem;font:400 clamp(1.9rem,3vw,3.1rem)/.96 var(--et-serif,Georgia,serif)}
+.fish-emblematic-card__scientific{margin:0;color:rgba(248,246,240,.55);font:.8rem/1.5 var(--et-sans,Arial,sans-serif)}
+.fish-emblematic-card__meta{display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 0;padding-top:1rem;border-top:1px solid rgba(248,246,240,.14);color:rgba(248,246,240,.72);font:.64rem/1.4 var(--et-sans,Arial,sans-serif);text-transform:uppercase;letter-spacing:.08em}
+.fish-emblematic-card__note{margin:1rem 0 0;color:rgba(248,246,240,.62);font:.76rem/1.6 var(--et-sans,Arial,sans-serif)}
+.fish-emblematic-card__mark{margin-top:auto;padding-top:1.3rem;color:#d7b46f;font:600 .58rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.14em;text-transform:uppercase}
+
+@media(max-width:1050px){.fish-catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fish-emblematic__intro{grid-template-columns:1fr 1.5fr}.fish-emblematic__intro p{grid-column:2}.fish-emblematic__grid{grid-template-columns:1fr}.fish-emblematic-card{grid-template-columns:38% 62%;grid-template-rows:none}.fish-emblematic-card__media{min-height:260px}}
+@media(max-width:760px){.fish-catalog__inner,.fish-emblematic__inner{width:min(100%,calc(100% - 32px))}.fish-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fish-emblematic__intro{display:block}.fish-emblematic__intro h2{margin-block:.7rem 1rem}.fish-emblematic__intro p{max-width:520px}.fish-emblematic__grid{grid-template-columns:1fr}.fish-emblematic-card{grid-template-columns:1fr;grid-template-rows:220px auto}}
+@media(max-width:500px){.fish-catalog-grid{grid-template-columns:1fr}.fish-catalog-card__body{padding:1rem}.fish-catalog__toolbar{align-items:stretch;flex-direction:column}.fish-catalog__search{min-width:0;width:100%}.fish-emblematic{padding-block:4rem}.fish-emblematic__intro h2{font-size:2.8rem}}
+[dir="rtl"] .fish-catalog-card__body,[dir="rtl"] .fish-catalog__toolbar,[dir="rtl"] .fish-catalog__filters,[dir="rtl"] .fish-emblematic__intro,[dir="rtl"] .fish-emblematic-card__body{direction:rtl}
