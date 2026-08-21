@@ -3,6 +3,16 @@
   'use strict';
   const doc=document, root=doc.documentElement, body=doc.body;
   const get=(s,scope=doc)=>scope.querySelector(s);
+
+  /* Always apply the shared visual layer last so language/page modules cannot diverge visually. */
+  if(!doc.querySelector('link[data-et-site-pages]')){
+    const style=doc.createElement('link');
+    style.rel='stylesheet';
+    style.href='/assets/css/site-pages.css';
+    style.dataset.etSitePages='true';
+    (doc.head||doc.documentElement).appendChild(style);
+  }
+
   root.classList.remove('et-pointer-ready'); get('.et-pointer')?.remove();
   const header=get('.site-header,.p-header');
   const updateHeader=()=>header?.classList.toggle('scrolled',window.scrollY>24);
