@@ -13,10 +13,11 @@
 <link rel="stylesheet" href="/assets/css/seafood-es.css">
 </head>
 <body class="seafood-page">
-<header class="es-header">
-  <div class="es-header-inner">
-    <a class="es-logo" href="/" aria-label="EMPERIO TISS — Inicio"><img src="/logo.png" alt="EMPERIO TISS"></a>
-    <button id="menuToggleBtn" class="es-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay">
+<header class="site-header" id="luxuryHeader">
+  <div class="header-inner">
+    <a class="site-logo" href="/" aria-label="EMPERIO TISS — Inicio"><img src="/logo.png" alt="EMPERIO TISS"></a>
+    <nav class="et-language-switch" aria-label="Idiomas"><a href="/" class="current">ES</a><span>·</span><a href="/en/products/seafood.html">EN</a><span>·</span><a href="/fr/products/seafood.html">FR</a><span>·</span><a href="/ar/products/seafood.html">AR</a></nav>
+    <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -25,10 +26,10 @@
 <div id="navOverlay" class="nav-overlay" aria-hidden="true">
   <div class="nav-overlay-inner">
     <nav class="nav-overlay-links" aria-label="Navegación principal">
-      <a href="/"><span class="idx">01</span> Inicio</a>
-      <a href="/about/"><span class="idx">02</span> Empresa</a>
+      <a href="/"><span class="idx">01</span><span>Inicio</span></a>
+      <a href="/about/"><span class="idx">02</span><span>Empresa</span></a>
       <details class="nav-products">
-        <summary><span class="idx">03</span> Productos</summary>
+        <summary><span class="idx">03</span><span>Productos</span></summary>
         <div class="nav-subproducts">
           <a href="/products/seafood/">Productos del mar</a>
           <a href="/products/seafood/fish.html">Pescados</a>
@@ -39,8 +40,8 @@
           <a href="/products/seasonal.html">Temporada</a>
         </div>
       </details>
-      <a href="/markets/"><span class="idx">04</span> Mercados</a>
-      <a href="/contact/"><span class="idx">05</span> Contacto</a>
+      <a href="/markets/"><span class="idx">04</span><span>Mercados</span></a>
+      <a href="/contact/"><span class="idx">05</span><span>Contacto</span></a>
     </nav>
     <aside class="nav-overlay-side">
       <strong>EMPERIO TISS S.L.</strong>
@@ -48,7 +49,7 @@
       <span>MADRID · ESPAÑA</span>
     </aside>
     <div class="nav-overlay-foot">
-      <div class="nav-overlay-lang"><a class="current" href="/products/seafood/">ES</a><span>·</span><a href="/en/products/seafood.html">EN</a></div>
+      <div class="nav-overlay-lang"><a class="current" href="/">ES</a><span>·</span><a href="/en/products/seafood.html">EN</a><span>·</span><a href="/fr/products/seafood.html">FR</a><span>·</span><a href="/ar/products/seafood.html">AR</a></div>
       <div class="nav-overlay-contact"><a href="/contact/">Consulta empresarial</a><span>Madrid · Europa · África · Mediterráneo</span></div>
     </div>
   </div>
@@ -62,50 +63,10 @@
       <p class="es-lead">Pescados, mariscos y cefalópodos organizados por categoría y definidos por condición, origen, calibre, calidad, formato y disponibilidad.</p>
     </div>
   </section>
-
-  <section class="es-section">
-    <div class="es-container">
-      <div class="es-grid">
-        <div><p class="es-label">02 / CATEGORÍAS</p><h2>Seleccione<br><em>una familia.</em></h2></div>
-        <p class="es-copy">Acceda directamente a la categoría que necesita. Cada familia se presenta con sus especificaciones y referencias disponibles para compradores profesionales.</p>
-      </div>
-      <div class="es-cards">
-        <article class="es-card"><div><span class="es-card-num">01</span><h3>Pescados</h3><p>Principalmente frescos. Especie, nombre científico, origen, FAO, calibre, calidad, presentación y disponibilidad.</p></div><a class="es-link" href="/products/seafood/fish.html">Ver pescados <span>•</span></a></article>
-        <article class="es-card"><div><span class="es-card-num">02</span><h3>Mariscos</h3><p>Principalmente congelados. Especie, origen, calibre, formato, calidad, envase y disponibilidad.</p></div><a class="es-link" href="/products/seafood/shellfish.html">Ver mariscos <span>•</span></a></article>
-        <article class="es-card"><div><span class="es-card-num">03</span><h3>Cefalópodos</h3><p>Principalmente congelados. Especie, tamaño, origen, presentación, formato, envase y disponibilidad.</p></div><a class="es-link" href="/products/seafood/cephalopods.html">Ver cefalópodos <span>•</span></a></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="es-section dark">
-    <div class="es-container">
-      <div class="es-grid">
-        <div><p class="es-label">03 / ESPECIFICACIÓN</p><h2>El producto<br><em>va primero.</em></h2></div>
-        <p class="es-copy">La condición Fresh/Frozen no crea una categoría adicional: forma parte de la ficha técnica de cada producto y se comunica junto con origen, calibre, calidad, formato, volumen y destino.</p>
-      </div>
-      <div class="spec-band">
-        <div class="spec-row"><span>01</span><strong>Especie / referencia</strong><span>Nombre comercial y científico</span></div>
-        <div class="spec-row"><span>02</span><strong>Origen / procedencia</strong><span>País · región · FAO cuando corresponde</span></div>
-        <div class="spec-row"><span>03</span><strong>Calibre / calidad</strong><span>Tamaño · categoría · especificación</span></div>
-        <div class="spec-row"><span>04</span><strong>Condición / formato</strong><span>Fresco · congelado · presentación · envase</span></div>
-        <div class="spec-row"><span>05</span><strong>Volumen / disponibilidad</strong><span>Campaña · ventana · requerimiento</span></div>
-      </div>
-    </div>
-  </section>
+  <section class="es-section"><div class="es-container"><div class="es-grid"><div><p class="es-label">02 / CATEGORÍAS</p><h2>Seleccione<br><em>una familia.</em></h2></div><p class="es-copy">Acceda directamente a la categoría que necesita. Cada familia se presenta con sus especificaciones y referencias disponibles para compradores profesionales.</p></div><div class="es-cards"><article class="es-card"><div><span class="es-card-num">01</span><h3>Pescados</h3><p>Principalmente frescos. Especie, nombre científico, origen, FAO, calibre, calidad, presentación y disponibilidad.</p></div><a class="es-link" href="/products/seafood/fish.html">Ver pescados <span>•</span></a></article><article class="es-card"><div><span class="es-card-num">02</span><h3>Mariscos</h3><p>Principalmente congelados. Especie, origen, calibre, formato, calidad, envase y disponibilidad.</p></div><a class="es-link" href="/products/seafood/shellfish.html">Ver mariscos <span>•</span></a></article><article class="es-card"><div><span class="es-card-num">03</span><h3>Cefalópodos</h3><p>Principalmente congelados. Especie, tamaño, origen, presentación, formato, envase y disponibilidad.</p></div><a class="es-link" href="/products/seafood/cephalopods.html">Ver cefalópodos <span>•</span></a></article></div></div></section>
+  <section class="es-section dark"><div class="es-container"><div class="es-grid"><div><p class="es-label">03 / ESPECIFICACIÓN</p><h2>El producto<br><em>va primero.</em></h2></div><p class="es-copy">La condición Fresh/Frozen no crea una categoría adicional: forma parte de la ficha técnica de cada producto y se comunica junto con origen, calibre, calidad, formato, volumen y destino.</p></div><div class="spec-band"><div class="spec-row"><span>01</span><strong>Especie / referencia</strong><span>Nombre comercial y científico</span></div><div class="spec-row"><span>02</span><strong>Origen / procedencia</strong><span>País · región · FAO cuando corresponde</span></div><div class="spec-row"><span>03</span><strong>Calibre / calidad</strong><span>Tamaño · categoría · especificación</span></div><div class="spec-row"><span>04</span><strong>Condición / formato</strong><span>Fresco · congelado · presentación · envase</span></div><div class="spec-row"><span>05</span><strong>Volumen / disponibilidad</strong><span>Campaña · ventana · requerimiento</span></div></div></div></section>
 </main>
-
-<footer class="es-footer">
-  <div class="es-container">
-    <div class="es-footer-grid">
-      <div><img src="/logo.png" alt="EMPERIO TISS"><p>Tu socio de confianza en los mercados internacionales.</p></div>
-      <div><strong>Navegación</strong><a href="/">Inicio</a><a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a></div>
-      <div><strong>Productos</strong><a href="/products/seafood/">Productos del mar</a><a href="/products/fruits/">Frutas</a><a href="/products/vegetables/">Hortalizas</a><a href="/products/seasonal.html">Temporada</a></div>
-      <div><strong>Empresa</strong><a href="/contact/">Contacto</a><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/privacidad.html">Privacidad</a><a href="/legal/cookies.html">Cookies</a></div>
-    </div>
-    <div class="footer-legal"><p>© 2026 EMPERIO TISS SL. Todos los derechos reservados.</p><p>La información publicada tiene carácter informativo y no constituye una oferta contractual.</p></div>
-    <div class="footer-bottom"><span>EMPERIO TISS</span><span>EUROPA · ÁFRICA · MEDITERRÁNEO</span></div>
-  </div>
-</footer>
+<footer class="es-footer"><div class="es-container"><div class="es-footer-grid"><div><img src="/logo.png" alt="EMPERIO TISS"><p>Tu socio de confianza en los mercados internacionales.</p></div><div><strong>Navegación</strong><a href="/">Inicio</a><a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a></div><div><strong>Productos</strong><a href="/products/seafood/">Productos del mar</a><a href="/products/fruits/">Frutas</a><a href="/products/vegetables/">Hortalizas</a><a href="/products/seasonal.html">Temporada</a></div><div><strong>Empresa</strong><a href="/contact/">Contacto</a><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/privacidad.html">Privacidad</a><a href="/legal/cookies.html">Cookies</a></div></div><div class="footer-legal"><p>© 2026 EMPERIO TISS SL. Todos los derechos reservados.</p><p>La información publicada tiene carácter informativo y no constituye una oferta contractual.</p></div><div class="footer-bottom"><span>EMPERIO TISS</span><span>EUROPA · ÁFRICA · MEDITERRÁNEO</span></div></div></footer>
 <script src="/assets/js/global.js" defer></script>
 </body>
 </html>
