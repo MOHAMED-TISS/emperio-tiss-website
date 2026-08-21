@@ -8,7 +8,7 @@
   if(!doc.querySelector('link[data-et-site-pages]')){
     const style=doc.createElement('link');
     style.rel='stylesheet';
-    style.href='/assets/css/site-pages.css';
+    style.href='/assets/css/site-pages.css?v=20260821-1';
     style.dataset.etSitePages='true';
     (doc.head||doc.documentElement).appendChild(style);
   }
