@@ -2,12 +2,14 @@
   'use strict';
 
   const catalogUrl = '/assets/data/catalog.json';
+  const demoUrl = '/assets/data/fish-demo.json';
   const grid = document.getElementById('fishCatalogGrid');
   const search = document.getElementById('fishCatalogSearch');
   const count = document.getElementById('fishCatalogCount');
   const filters = [...document.querySelectorAll('[data-fish-filter]')];
   if (!grid || !search || !count) return;
 
+  const demoMode = new URLSearchParams(window.location.search).get('demo') === '1';
   let products = [];
   let activeFilter = 'all';
 
@@ -23,17 +25,21 @@
       first(product.origin),
       first(product.calibre)
     ].filter(Boolean).join(' · ');
+    const isDemo = product.status === 'demo';
+    const link = isDemo
+      ? '<span class="fish-catalog-card__link fish-catalog-card__link--demo">Visual test · no live fiche</span>'
+      : `<a class="fish-catalog-card__link" href="/products/product.html?id=${encodeURIComponent(product.id)}">View specification ↗</a>`;
 
-    return `<article class="fish-catalog-card" data-product-id="${esc(product.id)}">
+    return `<article class="fish-catalog-card${isDemo ? ' is-demo' : ''}" data-product-id="${esc(product.id)}">
       <div class="fish-catalog-card__media">
         ${product.image ? `<img src="${esc(product.image)}" alt="${esc(product.commercialName)}" loading="lazy">` : '<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}
       </div>
       <div class="fish-catalog-card__body">
-        <p class="fish-catalog-card__meta">${esc(product.subcategory || 'Fish')}</p>
+        <p class="fish-catalog-card__meta">${esc(isDemo ? 'DEMO · FISH' : (product.subcategory || 'Fish'))}</p>
         <h3 class="fish-catalog-card__title">${esc(product.commercialName)}</h3>
         <p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>
         ${meta ? `<p class="fish-catalog-card__spec">${esc(meta)}</p>` : ''}
-        <a class="fish-catalog-card__link" href="/products/product.html?id=${encodeURIComponent(product.id)}">View specification ↗</a>
+        ${link}
       </div>
     </article>`;
   }
@@ -46,8 +52,8 @@
       return matchesFilter && (!query || haystack.includes(query));
     });
 
-    count.textContent = `${visible.length} reference${visible.length === 1 ? '' : 's'}`;
-    grid.innerHTML = visible.length ? visible.map(card).join('') : '<p class="fish-catalog__empty">No active fish references match your search.</p>';
+    count.textContent = `${visible.length} reference${visible.length === 1 ? '' : 's'}${demoMode ? ' · demo' : ''}`;
+    grid.innerHTML = visible.length ? visible.map(card).join('') : '<p class="fish-catalog__empty">No fish references match your search.</p>';
   }
 
   filters.forEach((button) => {
@@ -59,13 +65,16 @@
   });
   search.addEventListener('input', render);
 
-  fetch(catalogUrl, { cache: 'no-cache' })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Catalog request failed: ${response.status}`);
-      return response.json();
-    })
-    .then((data) => {
-      products = (data.products || []).filter((product) => product.status === 'active' && product.family === 'seafood' && product.subcategory === 'fish');
+  const loadJson = (url) => fetch(url, { cache: 'no-cache' }).then((response) => {
+    if (!response.ok) throw new Error(`Catalog request failed: ${response.status}`);
+    return response.json();
+  });
+
+  Promise.all([loadJson(catalogUrl), demoMode ? loadJson(demoUrl) : Promise.resolve({ products: [] })])
+    .then(([data, demo]) => {
+      const live = (data.products || []).filter((product) => product.status === 'active' && product.family === 'seafood' && product.subcategory === 'fish');
+      const sample = demoMode ? (demo.products || []).filter((product) => product.status === 'demo' && product.family === 'seafood' && product.subcategory === 'fish') : [];
+      products = [...live, ...sample];
       render();
     })
     .catch((error) => {
