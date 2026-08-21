@@ -1,31 +1,13 @@
-/* EMPERIO TISS — English navigation controller */
-(function(){
-'use strict';
-const d=document,w=window;
-const menus=()=>Array.from(d.querySelectorAll('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu'));
-const menu=()=>menus().find(b=>{const r=b.getBoundingClientRect(),s=w.getComputedStyle(b);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'})||menus()[0]||null;
-const overlay=()=>d.getElementById('navOverlay');
-function injectFix(){if(d.getElementById('et-en-nav-fix'))return;const s=d.createElement('style');s.id='et-en-nav-fix';s.textContent=`
-/* EN NAVIGATION — one deterministic MENU/X state, native cursor restored */
-html.et-pointer-ready,html.et-pointer-ready body,html.et-pointer-ready a,html.et-pointer-ready button,html.et-pointer-ready [role="button"]{cursor:auto!important}
-.et-pointer{display:none!important}
-#luxuryHeader #menuToggleBtn,#luxuryHeader .mobile-menu,#luxuryHeader .es-menu,#luxuryHeader .intl-menu{pointer-events:auto!important;cursor:pointer!important;position:relative!important;overflow:visible!important}
-#luxuryHeader #menuToggleBtn span,#luxuryHeader .mobile-menu span,#luxuryHeader .es-menu span,#luxuryHeader .intl-menu span{position:absolute!important;left:50%!important;top:50%!important;width:22px!important;height:1px!important;margin:0!important;display:block!important;background:#f5efe2!important;transform-origin:center!important;transition:none!important}
-#luxuryHeader #menuToggleBtn span:nth-child(1),#luxuryHeader .mobile-menu span:nth-child(1),#luxuryHeader .es-menu span:nth-child(1),#luxuryHeader .intl-menu span:nth-child(1){transform:translate(-50%,-50%) translateY(-6px)!important}
-#luxuryHeader #menuToggleBtn span:nth-child(2),#luxuryHeader .mobile-menu span:nth-child(2),#luxuryHeader .es-menu span:nth-child(2),#luxuryHeader .intl-menu span:nth-child(2){transform:translate(-50%,-50%)!important}
-#luxuryHeader #menuToggleBtn span:nth-child(3),#luxuryHeader .mobile-menu span:nth-child(3),#luxuryHeader .es-menu span:nth-child(3),#luxuryHeader .intl-menu span:nth-child(3){transform:translate(-50%,-50%) translateY(6px)!important}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(1),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(1),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(1),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)!important}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(2),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(2),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(2),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(2){opacity:0!important}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"] span:nth-child(3),#luxuryHeader .mobile-menu[aria-expanded="true"] span:nth-child(3),#luxuryHeader .es-menu[aria-expanded="true"] span:nth-child(3),#luxuryHeader .intl-menu[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)!important}
-#luxuryHeader #menuToggleBtn::after,#luxuryHeader .mobile-menu::after,#luxuryHeader .es-menu::after,#luxuryHeader .intl-menu::after{content:"MENU";position:absolute!important;left:50%!important;top:calc(100% + 7px)!important;transform:translateX(-50%)!important;color:#f5efe2!important;font:700 8px/1 "DM Sans",sans-serif!important;letter-spacing:.16em!important;white-space:nowrap!important;pointer-events:none!important;opacity:1!important}
-#luxuryHeader #menuToggleBtn[aria-expanded="true"]::after,#luxuryHeader .mobile-menu[aria-expanded="true"]::after,#luxuryHeader .es-menu[aria-expanded="true"]::after,#luxuryHeader .intl-menu[aria-expanded="true"]::after{content:"CLOSE"!important;color:#dcc58c!important}
-`;
-d.head.appendChild(s);d.documentElement.classList.remove('et-pointer-ready')}
-function set(open){menus().forEach(b=>{b.classList.toggle('is-open',open);b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'Close menu':'Open menu')});d.body.classList.toggle('nav-open',open);d.documentElement.classList.toggle('menu-lock',open);d.body.classList.toggle('menu-lock',open);const o=overlay();if(o)o.setAttribute('aria-hidden',String(!open))}
-function identity(){const p=w.location.pathname.toLowerCase();let page='standard';if(p.includes('seafood'))page='seafood';else if(p.includes('fruits-vegetables')||p.includes('/fruits/'))page='produce';else if(p.includes('seasonal'))page='seasonal';else if(p.includes('/news'))page='news';d.body.dataset.sitePage=page}
-function languageBar(){const host=d.querySelector('#luxuryHeader .header-inner,.site-header .header-inner,.site-header .nav-wrap');if(!host||host.querySelector('.et-language-switch'))return;const box=d.createElement('nav');box.className='et-language-switch';box.setAttribute('aria-label','Language');[['ES','/'],['EN','/en/'],['FR','/fr/'],['AR','/ar/']].forEach((x,i)=>{const a=d.createElement('a');a.href=x[1];a.textContent=x[0];if(x[0]==='EN')a.className='current';box.appendChild(a);if(i<3){const s=d.createElement('span');s.className='sep';s.textContent='·';box.appendChild(s)}});const b=menu();if(b)host.insertBefore(box,b);else host.appendChild(box)}
-function ensureNews(){const nav=d.querySelector('#navOverlay .nav-overlay-links');if(!nav||nav.querySelector('a[href*="news"]'))return;const a=d.createElement('a');a.href='/en/news/';a.innerHTML='<span class="idx">05</span><span>News</span>';const contact=Array.from(nav.children).find(x=>/contact/i.test(x.textContent||''));if(contact)nav.insertBefore(a,contact);else nav.appendChild(a);Array.from(nav.children).forEach((x,i)=>{const n=x.querySelector('.idx');if(n)n.textContent=String(i+1).padStart(2,'0')})}
-function bind(){if(d.documentElement.dataset.etEnNavBound==='1')return;d.documentElement.dataset.etEnNavBound='1';d.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');if(b){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();set(b.getAttribute('aria-expanded')!=='true');return}const o=overlay();if(o&&e.target===o){e.preventDefault();e.stopPropagation();set(false)}},true);d.addEventListener('keydown',e=>{if(e.key==='Escape'&&d.body.classList.contains('nav-open')){e.preventDefault();set(false)}} ,true)}
-function init(){injectFix();identity();const b=menu(),o=overlay();if(!b||!o)return;b.type='button';b.setAttribute('aria-controls','navOverlay');ensureNews();languageBar();set(false);bind()}
-if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init,{once:true});else init();
+/* Compatibility shim: global interactions now live in /assets/js/global.js. */
+(() => {
+  const load = () => {
+    if (window.__ET_GLOBAL_LOADED__) return;
+    window.__ET_GLOBAL_LOADED__ = true;
+    const script = document.createElement('script');
+    script.src = '/assets/js/global.js';
+    script.defer = false;
+    document.head.appendChild(script);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, { once: true });
+  else load();
 })();
