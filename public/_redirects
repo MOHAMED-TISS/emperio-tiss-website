@@ -1,11 +1,25 @@
-# Canonical asset redirects — temporary compatibility for legacy HTML references
-/style.css /assets/css/global.css 200
-/script.js /assets/js/global.js 200
-/luxury-nav.css /assets/css/global.css 200
-/luxury-nav.js /assets/js/global.js 200
-/*/style.css /assets/css/global.css 200
-/*/script.js /assets/js/global.js 200
-/*/luxury-nav.css /assets/css/global.css 200
-/*/luxury-nav.js /assets/js/global.js 200
-/*/rtl-fix.css /assets/css/global.css 200
-/*/header-fix.css /assets/css/global.css 200
+# Canonical product-route redirects only
+/products/seafood.html /products/seafood/ 301
+/products/fruits-vegetables.html /products/fruits/ 301
+/products/seasonal.html /products/seasonal/ 301
+/products/seafood/fish.html /products/seafood/fish/ 301
+/products/seafood/shellfish.html /products/seafood/shellfish/ 301
+/products/seafood/cephalopods.html /products/seafood/cephalopods/ 301
+/products/produce/ /products/fruits/ 301
+/products/produce/index.html /products/fruits/ 301
+/products/produce/citrus.html /products/fruits/ 301
+/products/produce/exotics.html /products/fruits/ 301
+/products/produce/core-produce.html /products/vegetables/ 301
+/products/produce/vegetables.html /products/vegetables/ 301
+/en/products/seafood.html /en/products/seafood/ 301
+/en/products/fruits-vegetables.html /en/products/fruits/ 301
+/en/products/seasonal.html /en/products/seasonal/ 301
+/en/products/seafood/fish.html /en/products/seafood/fish/ 301
+/en/products/seafood/shellfish.html /en/products/seafood/shellfish/ 301
+/en/products/seafood/cephalopods.html /en/products/seafood/cephalopods/ 301
+/fr/products/seafood.html /fr/products/seafood/ 301
+/fr/products/fruits-vegetables.html /fr/products/fruits/ 301
+/fr/products/seasonal.html /fr/products/seasonal/ 301
+/ar/products/seafood.html /ar/products/seafood/ 301
+/ar/products/fruits-vegetables.html /ar/products/fruits/ 301
+/ar/products/seasonal.html /ar/products/seasonal/ 301
