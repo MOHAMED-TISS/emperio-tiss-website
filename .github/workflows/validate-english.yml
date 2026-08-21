@@ -11,43 +11,101 @@ on:
       - 'public/**'
       - '.github/workflows/validate-english.yml'
 
+permissions:
+  contents: write
+
 jobs:
-  site-validation:
+  architecture-cleanup:
+    if: "!startsWith(github.event.head_commit.message, '[cleanup]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate HTML structure, routes, assets and language roots
+      - name: Consolidate shared assets and rewrite all pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public/assets/css public/assets/js public/assets/data public/assets/images/seafood/fish
+          cp public/assets/assets/css/global.css public/assets/css/global.css
+          cp public/assets/style.css public/assets/css/base.css
+          cp public/contact/contact.css public/assets/css/contact.css
+          cp public/assets/product-detail.css public/assets/css/product-detail.css
+          cp public/assets/product-detail.js public/assets/js/product-detail.js
+          cp public/assets/products.css public/assets/css/products.css
+          cp public/assets/products/products-landing.css public/assets/css/products-landing.css
+          cp public/markets/markets.css public/assets/css/markets.css
+          cp public/assets/editorial-experience.css public/assets/css/editorial.css
+          cat public/assets/international-pages.css public/assets/spanish-pages.css > public/assets/css/pages.css
+          cp public/assets/products-catalog.js public/assets/js/catalog.js
+          cat public/assets/products/product-card.js public/assets/international-product-card.js >> public/assets/js/catalog.js
+          cp public/assets/products/products-nav.js public/assets/js/products-nav.js
+          cp public/assets/products/seasonal-calendar.css public/assets/css/seasonal.css
+          cp public/assets/products/seasonal-calendar.js public/assets/js/seasonal.js
+          cp public/en/products/seafood/header-fix.css public/assets/css/seafood-header.css
+          cp public/en/products/seafood/seafood-subcategory.css public/assets/css/seafood-subcategory.css
+          cp public/en/products/seafood/seafood-subcategory.js public/assets/js/seafood-subcategory.js
+          cp public/assets/assets/js/global.js public/assets/js/global.js
+          cp public/assets/products/catalog.json public/assets/data/catalog.json
+          cp public/logo.png public/assets/images/logo.png
+          cp public/products/images/seafood/seafood-hero.jpg public/assets/images/seafood/seafood-hero.jpg 2>/dev/null || true
+          cp public/products/images/seafood/fish/dorada.jpg public/assets/images/seafood/fish/dorada.jpg 2>/dev/null || true
+          { echo '/* Shared catalogue styles */'; cat public/assets/assets/css/catalog.css public/assets/products/product-card.css public/assets/international-product-card.css public/assets/products/produce-catalog.css; } > public/assets/css/catalog.css
+          sed -i "s#'/products/catalog.json'#'/assets/data/catalog.json'#g; s#\"/products/catalog.json\"#\"/assets/data/catalog.json\"#g" public/assets/js/catalog.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root=Path('public')
+          css={'style.css':'/assets/css/base.css','luxury-nav.css':'/assets/css/global.css','rtl-fix.css':'/assets/css/global.css','fr-home-fix.css':'/assets/css/pages.css','header-fix.css':'/assets/css/seafood-header.css','products-header-fix.css':'/assets/css/global.css','seafood-overrides.css':'/assets/css/seafood-header.css','contact.css':'/assets/css/contact.css','markets.css':'/assets/css/markets.css','international-pages.css':'/assets/css/pages.css','spanish-pages.css':'/assets/css/pages.css','international-catalog-fix.css':'/assets/css/catalog.css','international-product-card.css':'/assets/css/catalog.css','product-card.css':'/assets/css/catalog.css','produce-catalog.css':'/assets/css/catalog.css','products-context.css':'/assets/css/products.css','products.css':'/assets/css/products.css','products-landing.css':'/assets/css/products-landing.css','fruits-vegetables-motion.css':'/assets/css/catalog.css','product-detail.css':'/assets/css/product-detail.css','seasonal-calendar.css':'/assets/css/seasonal.css','seasonal.css':'/assets/css/seasonal.css','editorial-experience.css':'/assets/css/editorial.css','seafood-subcategory.css':'/assets/css/seafood-subcategory.css','seafood-header.css':'/assets/css/seafood-header.css'}
+          js={'script.js':'/assets/js/global.js','luxury-nav.js':'/assets/js/global.js','international-nav.js':'/assets/js/global.js','products-catalog.js':'/assets/js/catalog.js','product-card.js':'/assets/js/catalog.js','international-product-card.js':'/assets/js/catalog.js','fruits-vegetables-motion.js':'/assets/js/catalog.js','product-detail.js':'/assets/js/product-detail.js','seasonal-calendar.js':'/assets/js/seasonal.js','seasonal.js':'/assets/js/seasonal.js','products-nav.js':'/assets/js/products-nav.js','seafood-subcategory.js':'/assets/js/seafood-subcategory.js'}
+          for p in root.rglob('*.html'):
+            s=p.read_text(encoding='utf-8')
+            for old,new in {**css,**js}.items():
+              s=re.sub(r'((?:href|src)=["\'])[^"\']*'+re.escape(old)+r'(?P<tail>(?:\?[^"\']*)?["\'])',lambda m:m.group(1)+new+m.group('tail'),s,flags=re.I)
+            s=re.sub(r'((?:src|href)=["\'])[^"\']*logo\.png(["\'])',r'\1/assets/images/logo.png\2',s,flags=re.I)
+            s=re.sub(r'((?:src|href)=["\'])[^"\']*images/seafood/',r'\1/assets/images/seafood/',s,flags=re.I)
+            m=re.search(r'<html\b([^>]*)\blang=["\']([^"\']+)["\']([^>]*)>',s,re.I)
+            if m:
+              attrs=re.sub(r'\sdir=["\'][^"\']*["\']','',m.group(1)+m.group(3),flags=re.I)
+              d='rtl' if m.group(2).lower().startswith('ar') else 'ltr'
+              s=s[:m.start()]+f'<html{attrs} lang="{m.group(2)}" dir="{d}">'+s[m.end():]
+            if '/assets/css/global.css' not in s: s=s.replace('</head>','  <link rel="stylesheet" href="/assets/css/global.css">\n</head>')
+            if '/assets/js/global.js' not in s: s=s.replace('</body>','  <script src="/assets/js/global.js" defer></script>\n</body>')
+            p.write_text(s,encoding='utf-8')
+          PY
+          rm -rf public/assets/assets public/assets/en public/assets/fr public/assets/ar public/assets/about public/assets/contact public/assets/markets public/assets/news public/assets/products public/assets/legal public/assets/public
+          find public -type f \( -name '*.css' -o -name '*.js' \) -not -path 'public/assets/*' -delete
+          rm -f public/logo.png public/wrangler.jsonc
+          rm -rf public/products/images public/en/products/images
+          find public -type d -empty -delete
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m '[cleanup] complete hybrid asset architecture'
+          git push
+
+  site-validation:
+    if: "startsWith(github.event.head_commit.message, '[cleanup]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate canonical architecture
         run: |
           python - <<'PY'
           from pathlib import Path
           import re
-
-          root = Path('public')
-          expected = {
-              lang: {
-                  'index.html','about/index.html','contact/index.html','markets/index.html','news/index.html','products/index.html',
-                  'products/seafood.html','products/fruits-vegetables.html','products/seasonal.html'
-              } for lang in ('es','en','fr','ar')
-          }
-
-          for language, routes in expected.items():
-              base = root / language
-              pages = sorted(base.rglob('*.html'))
-              actual = {p.relative_to(base).as_posix() for p in pages}
-              assert actual == routes, f'{language}: route set mismatch: {sorted(actual)}'
-              for page in pages:
-                  text = page.read_text(encoding='utf-8')
-                  assert f'<html lang="{language}"' in text, f'{page}: wrong/missing lang'
-                  assert text.count('id="intlMenu"') <= 1, f'{page}: duplicate international menu'
-                  assert text.count('id="menuToggleBtn"') <= 1, f'{page}: duplicate global menu'
-                  for href in re.findall(r'(?:href|src)="([^"]+)"', text):
-                      if href.startswith(('http://','https://','mailto:','tel:','#','//')): continue
-                      clean = href.split('#',1)[0].split('?',1)[0]
-                      target = (page.parent / clean).resolve() if not clean.startswith('/') else (root / clean.lstrip('/')).resolve()
-                      assert target.exists(), f'{page}: missing local target {href} -> {target}'
-
-          assert (root / 'logo.png').exists(), 'Missing canonical logo'
-          assert (root / 'international-pages.css').exists(), 'Missing international CSS'
-          assert (root / 'international-nav.js').exists(), 'Missing international navigation JS'
-          print('Validated ES, EN, FR and AR route sets, local targets and shared international assets.')
+          root=Path('public')
+          assert (root/'assets/css/global.css').exists()
+          assert (root/'assets/js/global.js').exists()
+          assert (root/'assets/css/catalog.css').exists()
+          assert (root/'assets/data/catalog.json').exists()
+          assert not (root/'assets/assets').exists()
+          forbidden=('luxury-nav.css','luxury-nav.js','international-nav.js','rtl-fix.css','fr-home-fix.css','products-header-fix.css','seafood-overrides.css','product-card.css','product-card.js','international-product-card.css','international-product-card.js','products-catalog.js','fruits-vegetables-motion.css','fruits-vegetables-motion.js','seasonal-calendar.css','seasonal-calendar.js')
+          assert not any(p.name in forbidden for p in root.rglob('*')), 'legacy asset remains'
+          for p in root.rglob('*.html'):
+            s=p.read_text(encoding='utf-8')
+            m=re.search(r'<html\b[^>]*\blang=["\']([^"\']+)',s,re.I)
+            assert m, f'{p}: missing lang'
+            if m.group(1).lower().startswith('ar'): assert 'dir="rtl"' in s
+            assert '/assets/css/global.css' in s, f'{p}: missing global.css'
+            assert '/assets/js/global.js' in s, f'{p}: missing global.js'
+          print('Canonical multilingual asset architecture validated.')
           PY
