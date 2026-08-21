@@ -1,0 +1,11 @@
+# Canonical asset redirects — temporary compatibility for legacy HTML references
+/style.css /assets/css/global.css 200
+/script.js /assets/js/global.js 200
+/luxury-nav.css /assets/css/global.css 200
+/luxury-nav.js /assets/js/global.js 200
+/*/style.css /assets/css/global.css 200
+/*/script.js /assets/js/global.js 200
+/*/luxury-nav.css /assets/css/global.css 200
+/*/luxury-nav.js /assets/js/global.js 200
+/*/rtl-fix.css /assets/css/global.css 200
+/*/header-fix.css /assets/css/global.css 200
