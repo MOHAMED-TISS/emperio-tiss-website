@@ -24,7 +24,7 @@
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
   const productPath = /^\/(?:en\/|fr\/|ar\/)?products\//.test(path);
   if (productPath) {
-    loadCss('/assets/css/catalog.css?v=20260822-1', 'etCatalog');
+    loadCss('/assets/css/catalog.css?v=20260822-2', 'etCatalog');
     loadScript('/assets/js/products-catalog.js?v=20260822-1', 'etCatalogScript');
   }
 
