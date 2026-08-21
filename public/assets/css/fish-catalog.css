@@ -1,0 +1,27 @@
+/* Fish catalogue pilot — compact B2B presentation */
+.fish-catalog{padding-block:clamp(3.5rem,7vw,6rem);background:var(--et-cream,#f3f0e8)}
+.fish-catalog__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+.fish-catalog__toolbar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-block-end:1.75rem;flex-wrap:wrap}
+.fish-catalog__search{flex:1 1 280px;min-width:220px;border:1px solid rgba(16,37,28,.22);background:transparent;border-radius:0;padding:.9rem 1rem;font:400 .9rem/1.2 var(--et-sans,Arial,sans-serif);color:var(--et-ink,#10251c)}
+.fish-catalog__search::placeholder{color:var(--et-muted,#6d756f)}
+.fish-catalog__count{margin:0;font:600 .68rem/1.2 var(--et-sans,Arial,sans-serif);letter-spacing:.14em;text-transform:uppercase;color:var(--et-muted,#6d756f)}
+.fish-catalog__filters{display:flex;gap:.45rem;flex-wrap:wrap;margin-block-end:1.75rem}
+.fish-catalog__filter{border:1px solid rgba(16,37,28,.2);background:transparent;color:var(--et-ink,#10251c);padding:.6rem .85rem;border-radius:999px;font:600 .64rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.fish-catalog__filter[aria-pressed="true"]{background:var(--et-green-950,#03140f);border-color:var(--et-green-950,#03140f);color:#fff}
+.fish-catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(16,37,28,.14)}
+.fish-catalog-card{display:flex;min-width:0;min-height:0;background:var(--et-cream-light,#f8f6f0);overflow:hidden;flex-direction:column}
+.fish-catalog-card__media{aspect-ratio:1/0.8;background:#e9e6dd;overflow:hidden;display:grid;place-items:center}
+.fish-catalog-card__media img{display:block;width:100%;height:100%;object-fit:cover}
+.fish-catalog-card__placeholder{font:600 .62rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.14em;text-transform:uppercase;color:var(--et-gold,#c9a35f)}
+.fish-catalog-card__body{display:flex;flex:1;flex-direction:column;gap:.45rem;padding:1rem 1rem 1.05rem}
+.fish-catalog-card__meta{margin:0;color:var(--et-gold,#c9a35f);font:600 .58rem/1.25 var(--et-sans,Arial,sans-serif);letter-spacing:.12em;text-transform:uppercase}
+.fish-catalog-card__title{margin:0;font:400 clamp(1.05rem,1.45vw,1.45rem)/1.05 var(--et-serif,Georgia,serif);overflow-wrap:anywhere}
+.fish-catalog-card__scientific{margin:0;color:var(--et-muted,#6d756f);font:400 .74rem/1.5 var(--et-sans,Arial,sans-serif)}
+.fish-catalog-card__spec{margin:0;color:var(--et-muted,#6d756f);font:400 .7rem/1.5 var(--et-sans,Arial,sans-serif);overflow-wrap:anywhere}
+.fish-catalog-card__link{margin-top:auto;padding-top:.65rem;color:var(--et-ink,#10251c);text-decoration:none;font:700 .6rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.1em;text-transform:uppercase}
+.fish-catalog-card__link:hover{color:var(--et-gold,#c9a35f)}
+.fish-catalog__empty{grid-column:1/-1;padding:2rem;text-align:center;color:var(--et-muted,#6d756f)}
+@media(max-width:1050px){.fish-catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.fish-catalog__inner{width:min(100%,calc(100% - 32px))}.fish-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.fish-catalog-grid{grid-template-columns:1fr}.fish-catalog-card__body{padding:1rem}.fish-catalog__toolbar{align-items:stretch;flex-direction:column}.fish-catalog__search{min-width:0;width:100%}}
+[dir="rtl"] .fish-catalog-card__body,[dir="rtl"] .fish-catalog__toolbar,[dir="rtl"] .fish-catalog__filters{direction:rtl}

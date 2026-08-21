@@ -23,7 +23,8 @@
 
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
   const productPath = /^\/(?:en\/|fr\/|ar\/)?products\//.test(path);
-  if (productPath) {
+  const fishPilotPath = /^\/(?:en\/|fr\/|ar\/)?products\/seafood\/fish\/$/.test(path);
+  if (productPath && !fishPilotPath) {
     loadCss('/assets/css/catalog.css?v=20260822-2', 'etCatalog');
     loadScript('/assets/js/products-catalog.js?v=20260822-1', 'etCatalogScript');
   }
