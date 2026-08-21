@@ -24,7 +24,12 @@
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
   const productPath = /^\/(?:en\/|fr\/|ar\/)?products\//.test(path);
   const fishPilotPath = /^\/(?:en\/|fr\/|ar\/)?products\/seafood\/fish\/$/.test(path);
-  if (productPath && !fishPilotPath) {
+  const compactCatalog = doc.body?.dataset.compactCatalog === 'true';
+
+  if (compactCatalog) {
+    loadCss('/assets/css/compact-catalog.css?v=20260822-1', 'etCompactCatalog');
+    loadScript('/assets/js/compact-catalog.js?v=20260822-1', 'etCompactCatalogScript');
+  } else if (productPath && !fishPilotPath) {
     loadCss('/assets/css/catalog.css?v=20260822-2', 'etCatalog');
     loadScript('/assets/js/products-catalog.js?v=20260822-1', 'etCatalogScript');
   }
