@@ -1,0 +1,7 @@
+{
+  "products": [
+    {"id":"demo-emblematic-dorada","commercialName":"Dorada","scientificName":"Sparus aurata","origin":"Mediterranean · Demo selection","condition":"Fresh","note":"Selected emblematic reference","status":"demo"},
+    {"id":"demo-emblematic-red-mullet","commercialName":"Red Mullet","scientificName":"Mullus barbatus","origin":"Mediterranean · Demo selection","condition":"Fresh","note":"Selected emblematic reference","status":"demo"},
+    {"id":"demo-emblematic-turbot","commercialName":"Turbot","scientificName":"Scophthalmus maximus","origin":"North Atlantic · Demo selection","condition":"Fresh","note":"Selected emblematic reference","status":"demo"}
+  ]
+}
