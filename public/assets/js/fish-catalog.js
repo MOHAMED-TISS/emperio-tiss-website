@@ -29,11 +29,18 @@
       first(product.calibre)
     ].filter(Boolean).join(' · ');
     const isDemo = product.status === 'demo';
+    const images = Array.isArray(product.images) && product.images.length
+      ? product.images
+      : (product.image ? [product.image] : []);
+    const mainImage = images[0] || '';
+    const media = mainImage
+      ? `<div class="fish-catalog-card__gallery" data-gallery-card="${esc(product.id)}"><div class="fish-catalog-card__media"><img id="fish-image-${esc(product.id)}" src="${esc(mainImage)}" alt="${esc(product.commercialName)}" loading="lazy"></div>${images.length > 1 ? `<div class="fish-catalog-card__thumbs" role="group" aria-label="More images for ${esc(product.commercialName)}">${images.map((src, index) => `<button type="button" class="fish-catalog-card__thumb${index === 0 ? ' is-active' : ''}" data-gallery-src="${esc(src)}" data-gallery-target="fish-image-${esc(product.id)}" aria-label="View image ${index + 1}"><img src="${esc(src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}</div>`
+      : '<div class="fish-catalog-card__media"><span class="fish-catalog-card__placeholder">EMPERIO TISS</span></div>';
     const link = isDemo
       ? '<span class="fish-catalog-card__link fish-catalog-card__link--demo">Visual test · no live fiche</span>'
       : `<a class="fish-catalog-card__link" href="/products/product.html?id=${encodeURIComponent(product.id)}">View specification ↗</a>`;
 
-    return `<article class="fish-catalog-card${isDemo ? ' is-demo' : ''}" data-product-id="${esc(product.id)}"><div class="fish-catalog-card__media">${product.image ? `<img src="${esc(product.image)}" alt="${esc(product.commercialName)}" loading="lazy">` : '<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(isDemo ? 'DEMO · FISH' : (product.subcategory || 'Fish'))}</p><h3 class="fish-catalog-card__title">${esc(product.commercialName)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>${meta ? `<p class="fish-catalog-card__spec">${esc(meta)}</p>` : ''}${link}</div></article>`;
+    return `<article class="fish-catalog-card${isDemo ? ' is-demo' : ''}" data-product-id="${esc(product.id)}">${media}<div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(isDemo ? 'DEMO · FISH' : (product.subcategory || 'Fish'))}</p><h3 class="fish-catalog-card__title">${esc(product.commercialName)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>${meta ? `<p class="fish-catalog-card__spec">${esc(meta)}</p>` : ''}${link}</div></article>`;
   }
 
   function emblematicCard(product) {
@@ -50,6 +57,18 @@
     count.textContent = `${visible.length} reference${visible.length === 1 ? '' : 's'}${demoMode ? ' · demo' : ''}`;
     grid.innerHTML = visible.length ? visible.map(card).join('') : '<p class="fish-catalog__empty">No fish references match your search.</p>';
   }
+
+  grid.addEventListener('click', (event) => {
+    const thumb = event.target.closest('.fish-catalog-card__thumb');
+    if (!thumb) return;
+    const targetId = thumb.dataset.galleryTarget;
+    const src = thumb.dataset.gallerySrc;
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (!target || !src) return;
+    target.src = src;
+    thumb.closest('.fish-catalog-card__thumbs')?.querySelectorAll('.fish-catalog-card__thumb').forEach((item) => item.classList.remove('is-active'));
+    thumb.classList.add('is-active');
+  });
 
   filters.forEach((button) => button.addEventListener('click', () => {
     activeFilter = button.dataset.fishFilter || 'all';
