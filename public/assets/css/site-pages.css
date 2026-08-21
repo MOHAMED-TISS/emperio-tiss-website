@@ -1,0 +1,40 @@
+/* EMPERIO TISS — SHARED PAGE VISUAL LAYER */
+:root{--et-page-bg:#f3f0e8;--et-page-surface:#faf8f2;--et-page-deep:#061d17;--et-page-gold:#c9a35f;--et-page-ink:#10251c;--et-page-muted:#66736c;--et-page-line:rgba(16,37,28,.14);--et-page-radius:0;--et-page-container:1180px}
+
+/* Same visual grammar across ES / EN / FR / AR content pages. */
+.es-page,.intl-page,.ar-page,.about-page,.products-site,.news-page{background:var(--et-page-bg);color:var(--et-page-ink)}
+.es-page main,.intl-page main,.ar-page main,.about-page main,.products-site main,.news-page main{min-block-size:100vh}
+.es-page :is(h1,h2,h3),.intl-page :is(h1,h2,h3),.ar-page :is(h1,h2,h3),.about-page :is(h1,h2,h3),.products-site :is(h1,h2,h3),.news-page :is(h1,h2,h3){font-family:var(--et-serif);font-weight:400;letter-spacing:-.055em}
+.es-page :is(.es-container,.container),.intl-page :is(.intl-container,.container),.ar-page :is(.ar-container,.container),.about-page .container,.products-site .p-container,.news-page .container{width:min(var(--et-page-container),calc(100% - 64px));margin-inline:auto}
+
+/* Hero rhythm */
+.es-page .es-hero,.intl-page .intl-hero,.ar-page .ar-hero,.about-page .about-hero,.products-site .product-hero,.news-page .news-hero{min-block-size:88svh;padding-block:150px 82px;display:flex;align-items:flex-end}
+.es-page .es-hero h1,.intl-page .intl-hero h1,.ar-page .ar-hero h1,.about-page .about-hero h1,.products-site .product-hero h1,.news-page .news-hero h1{font-size:clamp(4rem,8.5vw,8.5rem);line-height:.88}
+
+/* Shared editorial sections */
+.es-page .es-section,.intl-page .intl-section,.ar-page .ar-section,.about-page .about-section,.products-site .p-section,.news-page .news-section{padding-block:110px}
+.es-page .es-grid,.intl-page .intl-grid,.ar-page .ar-grid,.about-page .about-section-head,.products-site .section-grid,.news-page .section-introduction{gap:72px}
+.es-page .es-cards,.intl-page .intl-cards,.ar-page .ar-cards,.about-page .about-regions,.products-site .cards,.news-page .news-cards{gap:14px}
+.es-page .es-card,.intl-page .intl-card,.ar-page .ar-card,.about-page .about-region,.products-site .card,.news-page .news-cards article{border:1px solid var(--et-page-line);border-radius:0;background:var(--et-page-surface)}
+
+/* Shared CTA language */
+.es-page .es-btn,.intl-page .intl-btn,.ar-page .ar-btn,.about-page .about-btn,.products-site .button,.news-page a[class*="button"]{min-height:48px;border-radius:999px;letter-spacing:.09em;font:700 10px/1 var(--et-sans);text-transform:uppercase}
+.es-page .es-btn.primary,.intl-page .intl-btn.primary,.ar-page .ar-btn.primary,.about-page .about-btn.primary,.products-site .button.primary{background:var(--et-page-deep);color:#fff;border-color:var(--et-page-deep)}
+
+/* Shared dark / cream alternation */
+.es-page .dark,.intl-page .dark,.ar-page .dark,.about-page .dark,.products-site .dark{background:var(--et-page-deep)}
+.es-page .es-copy,.intl-page .intl-copy,.ar-page .ar-copy,.about-page .about-section-head p,.products-site .section-copy,.news-page .section-introduction>p{color:var(--et-page-muted)}
+
+/* Shared footer */
+.es-page .es-footer,.intl-page .intl-footer,.ar-page .ar-footer,.about-page .about-footer,.products-site .footer,.news-page .site-footer{background:var(--et-page-deep);color:rgba(255,255,255,.62)}
+
+/* RTL uses the same spacing and scale, only direction changes. */
+[dir="rtl"] .nav-overlay-inner{direction:rtl}
+[dir="rtl"] .nav-overlay-foot{flex-direction:row-reverse}
+
+@media(max-width:800px){
+  .es-page :is(.es-container,.container),.intl-page :is(.intl-container,.container),.ar-page :is(.ar-container,.container),.about-page .container,.products-site .p-container,.news-page .container{width:calc(100% - 32px)}
+  .es-page .es-hero,.intl-page .intl-hero,.ar-page .ar-hero,.about-page .about-hero,.products-site .product-hero,.news-page .news-hero{min-block-size:80svh;padding-block:125px 64px}
+  .es-page .es-hero h1,.intl-page .intl-hero h1,.ar-page .ar-hero h1,.about-page .about-hero h1,.products-site .product-hero h1,.news-page .news-hero h1{font-size:clamp(3.2rem,15vw,6rem)}
+  .es-page .es-section,.intl-page .intl-section,.ar-page .ar-section,.about-page .about-section,.products-site .p-section,.news-page .news-section{padding-block:82px}
+}
