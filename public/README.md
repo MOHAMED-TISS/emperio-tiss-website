@@ -1,1 +1,0 @@
-Refactor note: the canonical multilingual frontend architecture lives under /assets/css and /assets/js. Product routes use directory indexes and legacy product URLs redirect to canonical paths.
