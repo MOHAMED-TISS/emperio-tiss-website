@@ -2,7 +2,7 @@
   'use strict';
   const body = document.body;
   const family = body?.dataset.catalogFamily || '';
-  const subcategory = body?.dataset.catalogSubcategory || '';
+  const subcategories = (body?.dataset.catalogSubcategories || body?.dataset.catalogSubcategory || '').split(',').map(v => v.trim()).filter(Boolean);
   const title = body?.dataset.catalogTitle || 'Catalogue';
   const grid = document.getElementById('compactCatalogGrid');
   const search = document.getElementById('compactCatalogSearch');
@@ -10,23 +10,22 @@
   const filters = [...document.querySelectorAll('[data-compact-filter]')];
   if (!family || !grid || !search || !count) return;
 
-  const lang = (document.documentElement.lang || 'en').slice(0,2).toLowerCase();
-  const labels = {
+  const i18n={
     es:{fresh:'Fresco',frozen:'Congelado',detail:'Ver ficha',empty:'No hay referencias activas.',all:'Todas'},
     en:{fresh:'Fresh',frozen:'Frozen',detail:'View specification',empty:'No active references.',all:'All'},
     fr:{fresh:'Frais',frozen:'Surgelé',detail:'Voir la fiche',empty:'Aucune référence active.',all:'Toutes'},
     ar:{fresh:'طازج',frozen:'مجمد',detail:'عرض المواصفات',empty:'لا توجد مراجع نشطة',all:'الكل'}
-  }[lang] || null;
-  const t = labels || labels.en;
-  const esc=(v)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const first=(v)=>Array.isArray(v)?(v.find(Boolean)||''):(v||'');
-  const cond=(v)=>v==='fresh'?t.fresh:v==='frozen'?t.frozen:v;
+  };
+  const t=i18n[(document.documentElement.lang||'en').slice(0,2).toLowerCase()]||i18n.en;
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const first=v=>Array.isArray(v)?(v.find(Boolean)||''):(v||'');
+  const cond=v=>v==='fresh'?t.fresh:v==='frozen'?t.frozen:v;
   let products=[]; let activeFilter='all';
 
   function matches(product){
     const filterOk=activeFilter==='all'||(product.condition||[]).includes(activeFilter);
     const q=search.value.trim().toLowerCase();
-    const hay=[product.commercialName,product.scientificName,first(product.origin),first(product.variety),first(product.campaign)].join(' ').toLowerCase();
+    const hay=[product.commercialName,product.scientificName,first(product.origin),first(product.variety),first(product.campaign),first(product.quality)].join(' ').toLowerCase();
     return filterOk&&(!q||hay.includes(q));
   }
   function card(product){
@@ -39,14 +38,10 @@
     count.textContent=`${visible.length} ${visible.length===1?'reference':'references'}`;
     grid.innerHTML=visible.length?visible.map(card).join(''):`<p class="compact-catalog__empty">${esc(t.empty)}</p>`;
   }
-  filters.forEach((button)=>button.addEventListener('click',()=>{
-    activeFilter=button.dataset.compactFilter||'all';
-    filters.forEach((item)=>item.setAttribute('aria-pressed',String(item===button)));
-    render();
-  }));
+  filters.forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.compactFilter||'all';filters.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));render();}));
   search.addEventListener('input',render);
   fetch('/assets/data/catalog.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`Catalog request failed: ${r.status}`);return r.json();}).then(data=>{
-    products=(data.products||[]).filter(p=>p.status==='active'&&p.family===family&&(!subcategory||p.subcategory===subcategory));
+    products=(data.products||[]).filter(p=>p.status==='active'&&p.family===family&&(!subcategories.length||subcategories.includes(p.subcategory)));
     render();
   }).catch(err=>{console.error('[EMPERIO TISS] Compact catalogue failed',err);grid.innerHTML=`<p class="compact-catalog__empty">${esc(t.empty)}</p>`;count.textContent='—';});
 })();
