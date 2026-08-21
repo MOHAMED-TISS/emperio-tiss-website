@@ -5,7 +5,6 @@
   const doc = document;
   const root = doc.documentElement;
   const body = doc.body;
-
   const get = (selector, scope = doc) => scope.querySelector(selector);
 
   /* Native pointer: never hide the user's system cursor. */
@@ -20,8 +19,9 @@
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
-  /* Universal mobile navigation */
-  const button = get('#menuToggleBtn, .mobile-menu');
+  /* Universal navigation: supports both canonical .mobile-menu and the
+     established .es-menu used by the Spanish editorial pages. */
+  const button = get('#menuToggleBtn, .mobile-menu, .es-menu');
   const overlay = get('#navOverlay, .nav-overlay');
 
   if (button && overlay) {
@@ -32,12 +32,14 @@
       button.setAttribute('aria-expanded', String(open));
       button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       overlay.setAttribute('aria-hidden', String(!open));
+      doc.documentElement.classList.toggle('menu-is-open', open);
     };
 
     button.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      setOpen(!body.classList.contains('nav-open') && !body.classList.contains('menu-open'));
+      const open = body.classList.contains('nav-open') || body.classList.contains('menu-open');
+      setOpen(!open);
     }, true);
 
     overlay.addEventListener('click', (event) => {
