@@ -15,13 +15,27 @@
 <link rel="stylesheet" href="products-header-fix.css">
 </head>
 <body class="products-page">
+
 <header class="site-header" id="luxuryHeader">
   <div class="header-inner">
-    <a class="site-logo" href="/en/" aria-label="EMPERIO TISS — Home"><img src="../../logo.png" alt="EMPERIO TISS"></a>
-    <nav class="et-language-switch" aria-label="Language"><a href="/">ES</a><span class="sep">·</span><a class="current" href="/en/">EN</a><span class="sep">·</span><a href="/fr/">FR</a><span class="sep">·</span><a href="/ar/">AR</a></nav>
-    <button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
+    <a class="site-logo" href="/en/" aria-label="EMPERIO TISS — Home">
+      <img src="../../logo.png" alt="EMPERIO TISS">
+    </a>
+    <nav class="et-language-switch" aria-label="Language">
+      <a href="/">ES</a><span class="sep">·</span>
+      <a class="current" href="/en/">EN</a><span class="sep">·</span>
+      <a href="/fr/">FR</a><span class="sep">·</span>
+      <a href="/ar/">AR</a>
+    </nav>
+    <button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+</header>
+
+<!-- Navigation MUST be outside the fixed header. The global controller owns its state. -->
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="nav-overlay-inner">
     <nav class="nav-overlay-links" aria-label="Main navigation">
       <a href="/en/"><span class="idx">01</span><span>Home</span></a>
       <a href="/en/about/"><span class="idx">02</span><span>Company</span></a>
@@ -31,11 +45,16 @@
       <a href="/en/contact/"><span class="idx">06</span><span>Contact</span></a>
     </nav>
     <div class="nav-overlay-foot">
-      <div class="nav-overlay-lang"><a href="/">ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a></div>
-      <div class="nav-overlay-contact"><a href="/en/contact/">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span></div>
+      <div class="nav-overlay-lang" aria-label="Languages">
+        <a href="/">ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a>
+      </div>
+      <div class="nav-overlay-contact">
+        <a href="/en/contact/">Business enquiry ↗</a>
+        <span>Madrid · Europe · Africa · Mediterranean</span>
+      </div>
     </div>
   </div>
-</header>
+</div>
 
 <main>
 <section class="products-hero">
