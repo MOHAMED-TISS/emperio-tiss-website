@@ -1,0 +1,18 @@
+/* EMPERIO TISS — Homepage hero editorial refinement */
+.home-page .hero-kicker{color:#dec487;letter-spacing:.24em;line-height:1.15;}
+.home-page .hero-kicker span{background:#d9c7a0;}
+.home-page h1{color:#d9c7a0;}
+.home-page .hero-description{max-width:640px;margin-top:44px;color:rgba(243,241,232,.9);font:400 16px/1.8 var(--et-sans);letter-spacing:.005em;}
+.home-page .hero-description strong{color:#f3f1e8;font:500 clamp(1.15rem,1.95vw,1.45rem)/1.32 var(--et-serif);letter-spacing:.008em;}
+.home-page .hero-description span{margin-top:15px;color:rgba(243,241,232,.62);font:400 13px/1.9 var(--et-sans);letter-spacing:.015em;}
+.home-page .hero-actions{gap:14px;margin-top:32px;}
+.home-page .button{border-color:rgba(217,199,160,.42);letter-spacing:.12em;}
+.home-page .button-light{background:#f3f1e8;color:#10251c;border-color:#d9c7a0;}
+.home-page .button-outline{color:#f3f1e8;background:rgba(4,29,22,.18);border-color:rgba(217,199,160,.48);}
+.home-page .button:hover{border-color:#dec487;box-shadow:0 10px 28px rgba(0,0,0,.16);}
+.home-page .hero-number{color:#dec487;}
+.home-page .hero-side-line{background:rgba(217,199,160,.3);}
+.home-page .hero-side p{color:rgba(243,241,232,.48);letter-spacing:.2em;}
+.home-page .hero-bottom{color:rgba(243,241,232,.52);}
+.home-page .hero-bottom i{background:rgba(217,199,160,.3);}
+@media(max-width:800px){.home-page .hero-description{font-size:15px;line-height:1.78}.home-page .hero-description strong{font-size:1.12rem}.home-page .hero-description span{font-size:12px}.home-page .hero-actions{margin-top:30px}}
