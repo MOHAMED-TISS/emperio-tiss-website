@@ -1,0 +1,49 @@
+name: Apply critical transparent header CSS
+
+on:
+  push:
+    branches: ["fix/critical-header-first-paint"]
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add critical header stylesheet to every HTML page
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('public')
+          href = '/assets/css/components/header-transparent.css?v=header-first-paint-1'
+          link = f'<link rel="stylesheet" href="{href}">'
+          changed = 0
+          for path in root.rglob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if href in text:
+                  continue
+              marker = '<link rel="stylesheet" href="/assets/css/global.css"'
+              if marker in text:
+                  text = text.replace(marker, link + marker, 1)
+              else:
+                  text = text.replace('</head>', link + '</head>', 1)
+              path.write_text(text, encoding='utf-8')
+              changed += 1
+          print(f'Updated {changed} HTML files')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public
+          git diff --cached --quiet || (git commit -m 'Fix header transparency first-paint across all pages' && git push)
+
+      - name: Remove migration workflow after completion
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/critical-header-migration.yml
+          git add .github/workflows/critical-header-migration.yml
+          git diff --cached --quiet || (git commit -m 'Remove temporary critical-header migration workflow' && git push)
