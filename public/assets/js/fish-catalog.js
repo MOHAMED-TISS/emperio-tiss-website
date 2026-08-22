@@ -3,8 +3,8 @@
 
   const catalogUrl = '/assets/data/catalog.json';
   const demoUrl = '/assets/data/fish-demo.json';
-  const realPhotoUrl = '/assets/data/fish-real-photo-demo.json';
   const emblematicUrl = '/assets/data/fish-emblematic-demo.json';
+  const realPhotoUrl = '/assets/data/fish-real-photo-demo.json';
   const grid = document.getElementById('fishCatalogGrid');
   const search = document.getElementById('fishCatalogSearch');
   const count = document.getElementById('fishCatalogCount');
@@ -17,16 +17,16 @@
   let products = [];
   let activeFilter = 'all';
 
-  const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (char) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', "'": '&#39;'
+  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[char]));
   const first = (value) => Array.isArray(value) ? value.find(Boolean) || '' : (value || '');
   const conditionLabel = (value) => value === 'fresh' ? 'Fresh' : value === 'frozen' ? 'Frozen' : value;
 
-  function normalizeImages(product) {
+  const normalizeImages = (product) => {
     const images = Array.isArray(product.images) ? product.images : (product.image ? [product.image] : []);
     return images.map((item) => typeof item === 'string' ? { src: item } : item).filter((item) => item?.src);
-  }
+  };
 
   function card(product) {
     const meta = [
@@ -38,7 +38,7 @@
     const images = normalizeImages(product);
     const mainImage = images[0]?.src || '';
     const media = mainImage
-      ? `<div class="fish-catalog-card__gallery" data-gallery-card="${esc(product.id)}"><div class="fish-catalog-card__media"><img id="fish-image-${esc(product.id)}" src="${esc(mainImage)}" alt="${esc(product.commercialName)}" loading="lazy"></div>${images.length > 1 ? `<div class="fish-catalog-card__thumbs" role="group" aria-label="More images for ${esc(product.commercialName)}">${images.map((item, index) => `<button type="button" class="fish-catalog-card__thumb${index === 0 ? ' is-active' : ''}" data-gallery-src="${esc(item.src)}" data-gallery-credit="${esc(item.credit || '')}" data-gallery-license="${esc(item.license || '')}" data-gallery-target="fish-image-${esc(product.id)}" aria-label="View image ${index + 1}"><img src="${esc(item.src)}" alt="" loading="lazy"></button>`).join('')}</div>${images.some((item) => item.credit) ? `<p class="fish-catalog-card__credit" id="fish-credit-${esc(product.id)}">${esc(images[0].credit || '')}${images[0].license ? ` · ${esc(images[0].license)}` : ''}</p>` : ''}</div>` : ''`
+      ? `<div class="fish-catalog-card__gallery"><div class="fish-catalog-card__media"><img id="fish-image-${esc(product.id)}" src="${esc(mainImage)}" alt="${esc(product.commercialName)}" loading="lazy"></div>${images.length > 1 ? `<div class="fish-catalog-card__thumbs" role="group" aria-label="More images for ${esc(product.commercialName)}">${images.map((item, index) => `<button type="button" class="fish-catalog-card__thumb${index === 0 ? ' is-active' : ''}" data-gallery-src="${esc(item.src)}" data-gallery-target="fish-image-${esc(product.id)}" aria-label="View image ${index + 1}"><img src="${esc(item.src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}</div>`
       : '<div class="fish-catalog-card__media"><span class="fish-catalog-card__placeholder">EMPERIO TISS</span></div>';
     const link = isDemo
       ? '<span class="fish-catalog-card__link fish-catalog-card__link--demo">Visual test · no live fiche</span>'
@@ -65,16 +65,12 @@
   grid.addEventListener('click', (event) => {
     const thumb = event.target.closest('.fish-catalog-card__thumb');
     if (!thumb) return;
-    const targetId = thumb.dataset.galleryTarget;
+    const target = document.getElementById(thumb.dataset.galleryTarget || '');
     const src = thumb.dataset.gallerySrc;
-    const target = targetId ? document.getElementById(targetId) : null;
     if (!target || !src) return;
     target.src = src;
-    const cardRoot = thumb.closest('.fish-catalog-card');
-    cardRoot?.querySelectorAll('.fish-catalog-card__thumb').forEach((item) => item.classList.remove('is-active'));
+    thumb.closest('.fish-catalog-card')?.querySelectorAll('.fish-catalog-card__thumb').forEach((item) => item.classList.remove('is-active'));
     thumb.classList.add('is-active');
-    const credit = cardRoot?.querySelector('.fish-catalog-card__credit');
-    if (credit) credit.textContent = `${thumb.dataset.galleryCredit || ''}${thumb.dataset.galleryLicense ? ` · ${thumb.dataset.galleryLicense}` : ''}`;
   });
 
   filters.forEach((button) => button.addEventListener('click', () => {
@@ -89,18 +85,20 @@
     return response.json();
   });
 
+  const optionalJson = (url, fallback) => loadJson(url).catch(() => fallback);
+
   Promise.all([
     loadJson(catalogUrl),
     demoMode ? loadJson(demoUrl) : Promise.resolve({ products: [] }),
-    demoMode ? loadJson(realPhotoUrl) : Promise.resolve({ products: {} }),
-    demoMode ? loadJson(emblematicUrl) : Promise.resolve({ products: [] })
+    demoMode ? optionalJson(realPhotoUrl, { products: {} }) : Promise.resolve({ products: {} }),
+    demoMode ? optionalJson(emblematicUrl, { products: [] }) : Promise.resolve({ products: [] })
   ]).then(([data, demo, realPhotos, emblematic]) => {
     const live = (data.products || []).filter((product) => product.status === 'active' && product.family === 'seafood' && product.subcategory === 'fish');
     const sample = demoMode ? (demo.products || []).filter((product) => product.status === 'demo' && product.family === 'seafood' && product.subcategory === 'fish') : [];
     products = [...live, ...sample];
 
-    if (demoMode) {
-      products = products.map((product) => realPhotos.products?.[product.id]?.length ? { ...product, images: realPhotos.products[product.id] } : product);
+    if (demoMode && realPhotos.products) {
+      products = products.map((product) => realPhotos.products[product.id]?.length ? { ...product, images: realPhotos.products[product.id] } : product);
     }
 
     if (demoMode && emblematicSection && emblematicGrid) {
