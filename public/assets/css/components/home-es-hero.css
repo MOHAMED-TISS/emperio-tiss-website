@@ -1,7 +1,7 @@
 /* EMPERIO TISS — ES homepage hero image */
 html[lang="es"] .home-page .hero{
-  background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Cuatro%20Torres%20de%20Madrid%20-%2020150306.jpg");
-  background-position:center 46%;
+  background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg");
+  background-position:center 50%;
   background-size:cover;
   background-repeat:no-repeat;
 }
