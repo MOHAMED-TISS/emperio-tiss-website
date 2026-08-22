@@ -76,7 +76,7 @@ jobs:
           git diff --cached --quiet || (git commit -m '[cleanup] migrate all pages to canonical assets' && git push)
 
   validate:
-    if: "github.event_name == 'push' && startsWith(github.event.head_commit.message, '[cleanup]')"
+    if: "github.event_name == 'pull_request' || (github.event_name == 'push' && startsWith(github.event.head_commit.message, '[cleanup]'))"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -86,7 +86,7 @@ jobs:
           from pathlib import Path
           import re
           root=Path('public')
-          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'assets/images/logo.png']:
+          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'logo.png']:
             assert p.exists(), f'Missing {p}'
           assert not (root/'assets/assets').exists()
           forbidden={'luxury-nav.css','luxury-nav.js','international-nav.js','rtl-fix.css','fr-home-fix.css','products-header-fix.css','seafood-overrides.css','product-card.css','product-card.js','international-product-card.css','international-product-card.js','products-catalog.js','fruits-vegetables-motion.css','fruits-vegetables-motion.js','seasonal-calendar.css','seasonal-calendar.js'}
