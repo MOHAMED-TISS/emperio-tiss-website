@@ -1,4 +1,18 @@
 /* EMPERIO TISS — transparent global header treatment */
+:root{
+  --et-serif:"Cormorant Garamond",Georgia,serif !important;
+  --et-sans:"DM Sans",Arial,sans-serif !important;
+  --et-ivory:#f3f1e8 !important;
+  --et-ivory-light:#f8f6f0 !important;
+  --et-marfil:#f3f1e8 !important;
+  --et-marfil-light:#f8f6f0 !important;
+  --et-cream:#f3f1e8 !important;
+  --et-cream-light:#f8f6f0 !important;
+  --et-gold:#d9c7a0 !important;
+  --et-champagne:#d9c7a0 !important;
+  --et-gold-light:#dec487 !important;
+  --et-ink:#102331 !important;
+}
 .header-inner{background:transparent!important;border:0!important;border-radius:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
 .site-logo,.et-language-switch,.language-nav{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(18px) saturate(120%);-webkit-backdrop-filter:blur(18px) saturate(120%);box-shadow:0 10px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.16)}
 .site-logo{inline-size:58px;block-size:58px;padding:0;border-radius:50%;display:grid;place-items:center;overflow:hidden}
