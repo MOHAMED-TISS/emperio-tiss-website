@@ -16,20 +16,55 @@ html[lang="es"] body.et-es-home .hero h1{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-white{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-gold{color:#dfc78f!important;font-style:italic}
 
-/* ES HOMEPAGE NAVIGATION — compact sizing and three-level product hierarchy */
+/* ES HOMEPAGE NAVIGATION — compact + explicit 3-level indentation */
 html[lang="es"] body.home-page #navOverlay .nav-overlay-links{gap:14px!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-links>a,
 html[lang="es"] body.home-page #navOverlay .nav-products>summary{font-size:30px!important;line-height:1.05!important;min-height:34px!important;margin:0!important;padding:0!important}
 html[lang="es"] body.home-page #navOverlay .nav-products{margin:0!important;padding:0!important}
 
-/* Level 2 — product categories */
-html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links{margin-top:8px!important;padding-left:36px!important;display:flex!important;flex-direction:column!important;gap:7px!important}
-html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>a,
-html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary{font-size:22px!important;line-height:1.08!important;margin:0!important;padding:0!important}
+/* LEVEL 1 — Productos is controlled by the main nav column */
+html[lang="es"] body.home-page #navOverlay .nav-products>summary{display:block!important}
 
-/* Level 3 — subcategory links */
-html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links{margin-top:5px!important;padding-left:32px!important;gap:5px!important}
-html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:18px!important;line-height:1.1!important;margin:0!important;padding:0!important}
+/* LEVEL 2 — direct product categories */
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+  margin-top:10px!important;
+  margin-left:52px!important;
+  padding-left:0!important;
+  border-left:1px solid rgba(217,199,160,.22)!important;
+}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>a,
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary{
+  display:block!important;
+  margin:0!important;
+  padding:0 0 0 22px!important;
+  font-size:22px!important;
+  line-height:1.08!important;
+}
+
+/* LEVEL 3 — seafood subcategories: visibly one further step in */
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details{
+  margin:0!important;
+  padding:0!important;
+}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:5px!important;
+  margin:6px 0 2px 28px!important;
+  padding:6px 0 6px 22px!important;
+  border-left:1px solid rgba(217,199,160,.16)!important;
+}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  font-size:18px!important;
+  line-height:1.1!important;
+}
+
 html[lang="es"] body.home-page #navOverlay .nav-overlay-links .idx{font-size:9px!important;line-height:1!important;margin-right:12px!important;letter-spacing:.12em!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-foot{gap:18px!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-lang{gap:8px!important}
@@ -38,9 +73,9 @@ html[lang="es"] body.home-page #navOverlay .nav-overlay-lang{gap:8px!important}
   html[lang="es"] body.home-page #navOverlay .nav-overlay-links{gap:11px!important}
   html[lang="es"] body.home-page #navOverlay .nav-overlay-links>a,
   html[lang="es"] body.home-page #navOverlay .nav-products>summary{font-size:26px!important;min-height:30px!important}
-  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links{gap:6px!important;margin-top:6px!important;padding-left:28px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links{gap:6px!important;margin-top:7px!important;margin-left:34px!important;border-left:1px solid rgba(217,199,160,.22)!important}
   html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>a,
-  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary{font-size:20px!important}
-  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links{gap:4px!important;padding-left:25px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary{font-size:20px!important;padding-left:18px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links{gap:4px!important;margin-left:20px!important;padding-left:18px!important}
   html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:17px!important}
 }
