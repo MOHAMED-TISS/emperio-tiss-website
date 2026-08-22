@@ -1,10 +1,12 @@
 /* EMPERIO TISS — HERO COMPONENTS */
 .page-hero{position:relative;isolation:isolate;min-height:100svh;display:grid;align-items:end;padding:150px 0 80px;color:var(--ivory,#f3f1e8)}
 .page-hero--fish{background-color:#031522;background-image:linear-gradient(180deg,rgba(2,18,30,.18) 0%,rgba(3,21,34,.42) 55%,rgba(4,29,49,.82) 100%),url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2400&q=90");background-position:center center;background-size:cover;background-repeat:no-repeat}
-.page-hero--fish::before,.page-hero--fish::after{content:none!important;display:none!important;background:none!important;background-image:none!important}
-.page-hero--fish .page-hero-inner{position:relative;z-index:1;width:min(1180px,calc(100% - 48px));margin:auto}
-.page-hero--fish h1{margin:24px 0;font-family:var(--et-serif,"Cormorant Garamond",Georgia,serif);font-weight:400;font-size:clamp(4rem,10vw,9rem);line-height:.88;letter-spacing:-.04em;max-width:900px;color:var(--ivory,#f3f1e8)}
-.page-hero--fish h1 em{color:#b8d5cc;font-style:italic}
-.page-hero--fish .eyebrow{font:600 11px/1 var(--et-sans,"DM Sans",Arial,sans-serif);letter-spacing:.18em;color:var(--et-gold,#d9c7a0);text-transform:uppercase}
-.page-hero--fish .lead{max-width:660px;font:400 clamp(17px,2vw,22px)/1.55 var(--et-sans,"DM Sans",Arial,sans-serif);color:rgba(245,241,232,.72)}
-@media(max-width:800px){.page-hero--fish{min-height:88svh;padding:125px 0 60px}.page-hero--fish h1{font-size:clamp(3.5rem,16vw,6rem)}}
+.page-hero--shellfish{background:radial-gradient(circle at 80% 25%,rgba(217,199,160,.18),transparent 28%),linear-gradient(135deg,#061b2a 0%,#0b3247 55%,#173e50 100%);background-position:center;background-size:cover;background-repeat:no-repeat}
+.page-hero--cephalopods{background:radial-gradient(circle at 25% 20%,rgba(137,176,170,.14),transparent 28%),linear-gradient(135deg,#061b25 0%,#103646 58%,#244f57 100%);background-position:center;background-size:cover;background-repeat:no-repeat}
+.page-hero--fish::before,.page-hero--fish::after,.page-hero--shellfish::before,.page-hero--shellfish::after,.page-hero--cephalopods::before,.page-hero--cephalopods::after{content:none!important;display:none!important;background:none!important;background-image:none!important}
+.page-hero--fish .page-hero-inner,.page-hero--shellfish .page-hero-inner,.page-hero--cephalopods .page-hero-inner{position:relative;z-index:1;width:min(1180px,calc(100% - 48px));margin:auto}
+.page-hero--fish h1,.page-hero--shellfish h1,.page-hero--cephalopods h1{margin:24px 0;font-family:var(--et-serif,"Cormorant Garamond",Georgia,serif);font-weight:400;font-size:clamp(4rem,10vw,9rem);line-height:.88;letter-spacing:-.04em;max-width:900px;color:var(--ivory,#f3f1e8)}
+.page-hero--fish h1 em,.page-hero--shellfish h1 em,.page-hero--cephalopods h1 em{color:#b8d5cc;font-style:italic}
+.page-hero--fish .eyebrow,.page-hero--shellfish .eyebrow,.page-hero--cephalopods .eyebrow{font:600 11px/1 var(--et-sans,"DM Sans",Arial,sans-serif);letter-spacing:.18em;color:var(--et-gold,#d9c7a0);text-transform:uppercase}
+.page-hero--fish .lead,.page-hero--shellfish .lead,.page-hero--cephalopods .lead{max-width:660px;font:400 clamp(17px,2vw,22px)/1.55 var(--et-sans,"DM Sans",Arial,sans-serif);color:rgba(245,241,232,.72)}
+@media(max-width:800px){.page-hero--fish,.page-hero--shellfish,.page-hero--cephalopods{min-height:88svh;padding:125px 0 60px}.page-hero--fish h1,.page-hero--shellfish h1,.page-hero--cephalopods h1{font-size:clamp(3.5rem,16vw,6rem)}}
