@@ -1,3 +1,4 @@
+@import url('./typography.css');
 /* EMPERIO TISS — CANONICAL DESIGN TOKENS / CHECKPOINT RESTORATION */
 :root{
   --et-serif:"Cormorant Garamond",Georgia,serif;
@@ -21,5 +22,4 @@
   --et-title-xl:clamp(4rem,10vw,9rem);
   --et-title-lg:clamp(3rem,6vw,6rem);
 }
-@import url('./typography.css');
 .nav-products-links a{font-family:var(--et-serif);font-size:inherit;color:inherit}
