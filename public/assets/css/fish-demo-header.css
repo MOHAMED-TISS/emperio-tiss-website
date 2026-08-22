@@ -6,6 +6,9 @@
   position:relative!important;
   isolation:isolate!important;
   overflow:hidden!important;
+  min-height:100svh!important;
+  display:flex!important;
+  align-items:center!important;
   background:
     radial-gradient(circle at 72% 28%, rgba(53,117,108,.28), transparent 34%),
     linear-gradient(90deg, rgba(3,17,15,.96) 0%, rgba(3,24,22,.80) 42%, rgba(3,24,22,.48) 72%, rgba(3,17,15,.72) 100%),
@@ -36,5 +39,8 @@
 @media(max-width:640px){
   .fish-catalog-pilot .site-header .site-logo{padding:4px!important}
   .fish-catalog-pilot .site-header .site-logo img{max-width:44px!important;max-height:44px!important}
-  .fish-catalog-pilot .page-hero{background-position:58% center!important}
+  .fish-catalog-pilot .page-hero{
+    min-height:100svh!important;
+    background-position:58% center!important;
+  }
 }
