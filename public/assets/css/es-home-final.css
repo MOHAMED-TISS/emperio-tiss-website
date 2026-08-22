@@ -1,12 +1,17 @@
-/* Legacy ES homepage layer retired.
-   The Spanish visual system is now implemented exclusively in
-   /assets/css/es-editorial-system.css.
+/* ES homepage critical first-paint layer.
+   Full design system: es-editorial-system.css
 */
-html[lang="es"] body.et-es-home .hero-glow,
-html[lang="es"] body.et-es-home .hero-glow-one,
-html[lang="es"] body.et-es-home .hero-glow-two,
-html[lang="es"] body.et-es-home .page-curtain,
-html[lang="es"] body.et-es-home .nav-curtain,
-html[lang="es"] body.et-es-home .transition-curtain,
-html[lang="es"] body.et-es-home .curtain-overlay,
-html[lang="es"] body.et-es-home #pageCurtain{display:none!important}
+html[lang="es"] body.home-page .hero-glow,
+html[lang="es"] body.home-page .hero-glow-one,
+html[lang="es"] body.home-page .hero-glow-two,
+html[lang="es"] body.home-page .page-curtain,
+html[lang="es"] body.home-page .nav-curtain,
+html[lang="es"] body.home-page .transition-curtain,
+html[lang="es"] body.home-page .curtain-overlay,
+html[lang="es"] body.home-page #pageCurtain{display:none!important}
+html[lang="es"] body.et-es-home .hero{position:relative;min-height:100svh;overflow:hidden;isolation:isolate;background:#151a16!important;color:#fff!important}
+html[lang="es"] body.et-es-home .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(8,12,10,.24),rgba(8,12,10,.12) 34%,rgba(8,12,10,.78)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg");background-size:cover;background-position:center}
+html[lang="es"] body.et-es-home .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,12,10,.58),rgba(8,12,10,.12) 58%,rgba(8,12,10,.20));pointer-events:none}
+html[lang="es"] body.et-es-home .hero h1{color:#fff!important}
+html[lang="es"] body.et-es-home .hero-line-white{color:#fff!important}
+html[lang="es"] body.et-es-home .hero-line-gold{color:#dfc78f!important;font-style:italic}
