@@ -1,0 +1,121 @@
+/* EMPERIO TISS — ES homepage editorial renovation */
+html[lang="es"] .home-page{
+  --home-gold:#d4b16c;
+  --home-ink:#10251c;
+  --home-green:#071d16;
+  --home-cream:#f5f1e8;
+}
+
+/* Remove the old decorative circles completely. */
+html[lang="es"] .home-page .hero-glow,
+html[lang="es"] .home-page .hero-glow-one,
+html[lang="es"] .home-page .hero-glow-two{display:none!important}
+
+html[lang="es"] .home-page .hero{
+  background-image:
+    linear-gradient(90deg,rgba(3,12,21,.94) 0%,rgba(4,17,29,.78) 40%,rgba(4,19,31,.42) 72%,rgba(2,10,18,.72) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg")!important;
+  background-position:center 46%!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  min-height:100svh;
+  padding-top:130px;
+}
+
+html[lang="es"] .home-page .hero:before{
+  background:linear-gradient(180deg,rgba(1,8,14,.20),rgba(2,11,20,.06) 46%,rgba(1,7,12,.54))!important;
+}
+
+html[lang="es"] .home-page .hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(4,14,23,.12),transparent 55%,rgba(4,14,23,.18));
+}
+
+/* Editorial hero reveal */
+html[lang="es"] .home-page.es-motion-ready .hero-kicker,
+html[lang="es"] .home-page.es-motion-ready .hero-line-white,
+html[lang="es"] .home-page.es-motion-ready .hero-line-gold,
+html[lang="es"] .home-page.es-motion-ready .hero-description,
+html[lang="es"] .home-page.es-motion-ready .hero-actions,
+html[lang="es"] .home-page.es-motion-ready .hero-side,
+html[lang="es"] .home-page.es-motion-ready .hero-bottom{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .8s ease,transform .9s cubic-bezier(.22,1,.36,1);
+}
+html[lang="es"] .home-page.es-motion-ready .hero-kicker{transition-delay:.18s}
+html[lang="es"] .home-page.es-motion-ready .hero-line-white:nth-child(1){transition-delay:.30s}
+html[lang="es"] .home-page.es-motion-ready .hero-line-gold{transition-delay:.42s}
+html[lang="es"] .home-page.es-motion-ready .hero-line-white:nth-child(3){transition-delay:.54s}
+html[lang="es"] .home-page.es-motion-ready .hero-description{transition-delay:.68s}
+html[lang="es"] .home-page.es-motion-ready .hero-actions{transition-delay:.80s}
+html[lang="es"] .home-page.es-motion-ready .hero-side{transition-delay:.60s}
+html[lang="es"] .home-page.es-motion-ready .hero-bottom{transition-delay:1s}
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-kicker,
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-line-white,
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-line-gold,
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-description,
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-actions,
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-side,
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-bottom{opacity:1;transform:none}
+
+html[lang="es"] .home-page .hero-line-gold{text-shadow:0 0 30px rgba(212,177,108,.14)}
+html[lang="es"] .home-page .hero-actions .button{backdrop-filter:blur(7px)}
+html[lang="es"] .home-page .hero-actions .button-outline:hover{background:rgba(212,177,108,.10);color:#fff}
+
+/* More editorial section rhythm */
+html[lang="es"] .home-page section:not(.hero){position:relative;overflow:hidden}
+html[lang="es"] .home-page .intro-section{padding-top:150px;padding-bottom:150px}
+html[lang="es"] .home-page .products-section{padding-top:135px;padding-bottom:145px}
+html[lang="es"] .home-page .markets-section{padding-top:145px;padding-bottom:145px}
+html[lang="es"] .home-page .company-section{padding-top:145px;padding-bottom:145px}
+html[lang="es"] .home-page .contact-section{padding-top:155px;padding-bottom:155px}
+
+html[lang="es"] .home-page .product-row{position:relative;overflow:hidden;transition:padding .45s cubic-bezier(.22,1,.36,1),background .45s ease}
+html[lang="es"] .home-page .product-row:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--home-gold);transition:width .55s cubic-bezier(.22,1,.36,1)}
+html[lang="es"] .home-page .product-row:hover:after{width:100%}
+html[lang="es"] .home-page .product-arrow{transition:transform .4s cubic-bezier(.22,1,.36,1)}
+html[lang="es"] .home-page .product-row:hover .product-arrow{transform:translateX(6px)}
+
+html[lang="es"] .home-page .market-grid article{transition:background .45s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+html[lang="es"] .home-page .market-grid article:hover{background:rgba(255,255,255,.035);transform:translateY(-5px)}
+html[lang="es"] .home-page .company-values div{transition:padding-left .4s ease,background .4s ease}
+html[lang="es"] .home-page .company-values div:hover{padding-left:10px;background:rgba(255,255,255,.18)}
+
+/* Scroll reveals */
+html[lang="es"] .home-page .es-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease var(--reveal-delay),transform .8s cubic-bezier(.22,1,.36,1) var(--reveal-delay)}
+html[lang="es"] .home-page .es-reveal.is-visible{opacity:1;transform:none}
+
+/* Elegant curtain: two clean editorial panels, no circles or flashes. */
+html[lang="es"] .home-page .es-page-curtain{position:fixed;inset:0;z-index:9999;display:grid;grid-template-columns:1fr 1fr;pointer-events:none;visibility:visible}
+html[lang="es"] .home-page .es-page-curtain span{display:block;background:#071d16;transform:scaleX(1);transform-origin:left center;transition:transform .55s cubic-bezier(.76,0,.24,1)}
+html[lang="es"] .home-page .es-page-curtain span+span{background:#10251c;transform-origin:right center}
+html[lang="es"] .home-page.es-page-enter .es-page-curtain span{transform:scaleX(0)}
+html[lang="es"] .home-page .es-page-curtain.is-leaving span{transform:scaleX(1);transition-duration:.36s}
+
+@media(max-width:800px){
+  html[lang="es"] .home-page .hero{background-position:center 48%!important;padding-top:118px}
+  html[lang="es"] .home-page .intro-section,
+  html[lang="es"] .home-page .products-section,
+  html[lang="es"] .home-page .markets-section,
+  html[lang="es"] .home-page .company-section,
+  html[lang="es"] .home-page .contact-section{padding-top:92px;padding-bottom:92px}
+  html[lang="es"] .home-page .es-page-curtain{grid-template-columns:1fr}
+  html[lang="es"] .home-page .es-page-curtain span+span{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html[lang="es"] .home-page .es-reveal,
+  html[lang="es"] .home-page.es-motion-ready .hero-kicker,
+  html[lang="es"] .home-page.es-motion-ready .hero-line-white,
+  html[lang="es"] .home-page.es-motion-ready .hero-line-gold,
+  html[lang="es"] .home-page.es-motion-ready .hero-description,
+  html[lang="es"] .home-page.es-motion-ready .hero-actions,
+  html[lang="es"] .home-page.es-motion-ready .hero-side,
+  html[lang="es"] .home-page.es-motion-ready .hero-bottom{opacity:1;transform:none;transition:none}
+  html[lang="es"] .home-page .es-page-curtain{display:none}
+}
