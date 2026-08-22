@@ -1,0 +1,29 @@
+/* EMPERIO TISS — CHECKPOINT EDITORIAL TYPOGRAPHY + PALETTE */
+:root{
+  --et-serif:"Cormorant Garamond",Georgia,serif;
+  --et-sans:"DM Sans",Arial,sans-serif;
+  --et-arabic:"Noto Sans Arabic",Tahoma,sans-serif;
+  --et-ivory:#f3f1e8;
+  --et-ivory-light:#f8f6f0;
+  --et-marfil:#f3f1e8;
+  --et-marfil-light:#f8f6f0;
+  --et-gold:#d9c7a0;
+  --et-champagne:#d9c7a0;
+  --et-gold-light:#dec487;
+  --et-ink:#102331;
+  --et-body-editorial:18px;
+  --et-body-lg:clamp(17px,2vw,22px);
+  --et-title-xl:clamp(4rem,10vw,9rem);
+  --et-title-lg:clamp(3rem,6vw,6rem);
+}
+body{color:var(--et-ink)}
+body h1,body h2,body h3,body h4,body .nav-overlay-links,body .nav-overlay-links *{font-family:var(--et-serif)}
+body p,body li{font-family:var(--et-sans)}
+.page-hero h1,.page-hero--fish h1,.page-hero--shellfish h1,.page-hero--cephalopods h1{font-family:var(--et-serif);font-weight:400;font-size:var(--et-title-xl);line-height:.88;letter-spacing:-.04em;color:var(--et-ivory)}
+.page-hero .lead,.page-hero--fish .lead,.page-hero--shellfish .lead,.page-hero--cephalopods .lead{font-family:var(--et-sans);font-weight:400;font-size:var(--et-body-lg);line-height:1.55}
+.page-hero .eyebrow,.page-hero--fish .eyebrow,.page-hero--shellfish .eyebrow,.page-hero--cephalopods .eyebrow{font-family:var(--et-sans);font-size:11px;font-weight:600;line-height:1;letter-spacing:.18em;color:var(--et-champagne);text-transform:uppercase}
+.nav-overlay-links>a,.nav-products>summary{font-family:var(--et-serif)!important;font-size:40px!important;font-weight:500!important;line-height:1.08!important}
+.nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-family:var(--et-serif)!important;font-size:35px!important;font-weight:500!important;line-height:1.08!important}
+.nav-products>.nav-products-links>details>.nav-products-links>a{font-family:var(--et-serif)!important;font-size:25px!important;font-weight:500!important;line-height:1.12!important}
+.nav-products>summary::after,.nav-products>.nav-products-links>details>summary::after{color:var(--et-champagne)!important}
+@media(max-width:800px){.nav-overlay-links>a,.nav-products>summary{font-size:35px!important}.nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-size:30px!important}.nav-products>.nav-products-links>details>.nav-products-links>a{font-size:23px!important}}
