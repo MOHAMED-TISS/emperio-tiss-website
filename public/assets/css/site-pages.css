@@ -1,3 +1,5 @@
+@import url('/assets/css/es-editorial-system.css?v=20260822-es-editorial-1');
+
 /* EMPERIO TISS — SHARED PAGE VISUAL LAYER */
 :root{--et-page-bg:#f3f0e8;--et-page-surface:#faf8f2;--et-page-deep:#061d17;--et-page-gold:#c9a35f;--et-page-ink:#10251c;--et-page-muted:#66736c;--et-page-line:rgba(16,37,28,.14);--et-page-radius:0;--et-page-container:1180px}
 
