@@ -49,9 +49,15 @@ jobs:
 
           html_files = list(root.rglob('*.html'))
           assert html_files, 'No HTML files found'
+          redirect_stubs = 0
 
           for path in html_files:
               text = path.read_text(encoding='utf-8')
+              is_redirect = bool(re.search(r'<meta[^>]+http-equiv=["\']refresh["\']', text, re.I)) and 'noindex' in text.lower()
+              if is_redirect:
+                  redirect_stubs += 1
+                  continue
+
               assert '/assets/css/global.css' in text, f'{path}: missing global.css'
               assert '/assets/js/global.js' in text, f'{path}: missing global.js'
               lang = re.search(r'<html\b[^>]*\blang=["\']([^"\']+)', text, re.I)
@@ -81,6 +87,7 @@ jobs:
           assert '.page-hero--fish' in hero_css
           assert '.page-hero--shellfish' in hero_css
           assert '.page-hero--cephalopods' in hero_css
-          print(f'Validated {len(html_files)} HTML files successfully.')
+
+          print(f'Validated {len(html_files) - redirect_stubs} full HTML pages and {redirect_stubs} redirect stubs successfully.')
           print('FINAL ARCHITECTURE VALIDATION PASSED')
           PY
