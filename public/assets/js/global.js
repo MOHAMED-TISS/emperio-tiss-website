@@ -29,6 +29,7 @@
   loadCss('/assets/css/components/nav.css?v=architecture-nav-4', 'etNavigation');
   loadCss('/assets/css/components/footer.css?v=architecture-footer-1', 'etFooter');
   loadScript('/assets/js/seo.js?v=architecture-seo-1', 'etSeo');
+  loadScript('/assets/js/nav-normalizer.js?v=architecture-nav-5', 'etNavNormalizer');
 
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
   const productPath = /^\/(?:en\/|fr\/|ar\/)?products\//.test(path);
