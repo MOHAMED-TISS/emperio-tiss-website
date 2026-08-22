@@ -1,0 +1,15 @@
+/* EMPERIO TISS — CANONICAL DESIGN TOKENS */
+:root{
+  --et-serif:"Cormorant Garamond",Georgia,serif;
+  --et-sans:"DM Sans",Arial,sans-serif;
+  --et-arabic:"Noto Sans Arabic",Tahoma,sans-serif;
+  --et-gold:#d9c7a0;
+  --et-gold-light:#dec487;
+  --et-ink:#10251c;
+  --et-cream:#f3f0e8;
+  --et-cream-light:#f8f6f0;
+  --marine-deep:#041d31;
+  --marine-mid:#07324d;
+}
+/* Remove the legacy small sans submenu contract. Navigation is owned by nav.css. */
+.nav-products-links a{font-family:var(--et-serif);font-size:inherit;color:inherit}
