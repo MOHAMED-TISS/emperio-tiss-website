@@ -22,9 +22,11 @@
     doc.head.appendChild(script);
   };
 
-  loadCss('/assets/css/components/nav.css?v=architecture-nav-2', 'etNavigation');
+  loadCss('/assets/css/components/tokens.css?v=architecture-tokens-1', 'etTokens');
+  loadCss('/assets/css/components/nav.css?v=architecture-nav-3', 'etNavigation');
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
+  loadScript('/assets/js/seo.js?v=architecture-seo-1', 'etSeo');
 
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
   const productPath = /^\/(?:en\/|fr\/|ar\/)?products\//.test(path);
