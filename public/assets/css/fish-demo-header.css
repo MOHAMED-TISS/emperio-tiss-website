@@ -2,7 +2,7 @@
 .fish-catalog-pilot .site-header .site-logo{padding:4px!important}
 .fish-catalog-pilot .site-header .site-logo img{max-width:48px!important;max-height:48px!important}
 
-/* Prototype hero: real seafood-market photography, kept as a reusable image layer */
+/* Prototype hero: luxury raw-fish photography with a dark editorial treatment */
 .fish-catalog-pilot .page-hero{
   position:relative!important;
   isolation:isolate!important;
@@ -11,8 +11,8 @@
   display:flex!important;
   align-items:center!important;
   background:
-    linear-gradient(90deg, rgba(3,17,15,.94) 0%, rgba(3,24,22,.72) 40%, rgba(3,24,22,.30) 72%, rgba(3,17,15,.58) 100%),
-    url('https://images.pexels.com/photos/35722251/pexels-photo-35722251.jpeg?auto=compress&cs=tinysrgb&w=2400') center/cover no-repeat!important;
+    linear-gradient(90deg, rgba(3,10,10,.96) 0%, rgba(3,13,14,.82) 38%, rgba(3,13,14,.36) 70%, rgba(3,10,10,.62) 100%),
+    url('https://images.pexels.com/photos/19993440/pexels-photo-19993440.jpeg?auto=compress&cs=tinysrgb&w=2400') center/cover no-repeat!important;
 }
 .fish-catalog-pilot .page-hero::before{
   content:"";
@@ -20,8 +20,8 @@
   inset:0!important;
   z-index:-1!important;
   background:
-    linear-gradient(180deg, rgba(2,15,14,.20) 0%, transparent 42%, rgba(2,13,12,.78) 100%),
-    radial-gradient(circle at 78% 50%, transparent 0 18%, rgba(2,13,12,.28) 62%, rgba(2,13,12,.58) 100%)!important;
+    linear-gradient(180deg, rgba(2,10,10,.18) 0%, transparent 42%, rgba(2,9,10,.82) 100%),
+    radial-gradient(circle at 78% 48%, transparent 0 18%, rgba(2,9,10,.22) 62%, rgba(2,9,10,.62) 100%)!important;
   pointer-events:none!important;
 }
 .fish-catalog-pilot .page-hero::after{
@@ -29,7 +29,7 @@
   position:absolute!important;
   inset:0!important;
   z-index:-1!important;
-  background:linear-gradient(115deg, transparent 28%, rgba(232,207,153,.08) 48%, transparent 62%)!important;
+  background:linear-gradient(115deg, transparent 28%, rgba(232,207,153,.09) 48%, transparent 62%)!important;
   mix-blend-mode:screen!important;
   opacity:.45!important;
   pointer-events:none!important;
