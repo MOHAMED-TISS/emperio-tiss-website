@@ -13,9 +13,6 @@
   --lux-ease:cubic-bezier(.2,.7,.2,1);
 }
 
-/* =========================
-   GLOBAL HOMEPAGE LANGUAGE SHELL
-   ========================= */
 body.home-page,body.intl-page,body.ar-page{
   --et-serif:"Cormorant Garamond",Georgia,serif;
   --et-cream:var(--lux-marfil);
@@ -36,87 +33,40 @@ body.ar-page h1,body.ar-page h2,body.ar-page h3{
 body.home-page p,body.home-page a,body.home-page button,
 body.intl-page p,body.intl-page a,body.intl-page button,
 body.ar-page p,body.ar-page a,body.ar-page button{font-family:"DM Sans",Arial,sans-serif}
-
-/* fine-grain luxury texture */
 body.home-page main,body.intl-page main,body.ar-page main{position:relative;isolation:isolate}
 body.home-page main::before,body.intl-page main::before,body.ar-page main::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:40;
-  opacity:.06;
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.06;
   background-image:radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 70% 55%,#000 0 1px,transparent 1.5px);
-  background-size:17px 17px,23px 23px;
-  mix-blend-mode:soft-light;
+  background-size:17px 17px,23px 23px;mix-blend-mode:soft-light;
 }
-
-/* =========================
-   FLOATING LUXURY HEADER
-   ========================= */
 body.home-page .header-inner,body.intl-page .header-inner,body.ar-page .header-inner{
-  background:transparent!important;
-  border:0!important;
-  box-shadow:none!important;
-  backdrop-filter:none!important;
-  padding:0 10px 0 0!important;
+  background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;padding:0 10px 0 0!important;
 }
 body.home-page .site-logo,body.intl-page .site-logo,body.ar-page .site-logo{
-  width:62px!important;height:62px!important;
-  border:1px solid rgba(255,255,255,.22)!important;
-  background:rgba(3,20,15,.46)!important;
-  backdrop-filter:blur(22px) saturate(140%)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(140%)!important;
-  box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.2)!important;
-  display:grid!important;place-items:center!important;
+  width:62px!important;height:62px!important;border:1px solid rgba(255,255,255,.22)!important;background:rgba(3,20,15,.46)!important;
+  backdrop-filter:blur(22px) saturate(140%)!important;-webkit-backdrop-filter:blur(22px) saturate(140%)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.2)!important;display:grid!important;place-items:center!important;
 }
-body.home-page .site-logo img,body.intl-page .site-logo img,body.ar-page .site-logo img{
-  width:52px!important;height:52px!important;max-width:none!important;max-height:none!important;object-fit:contain!important;
-}
+body.home-page .site-logo img,body.intl-page .site-logo img,body.ar-page .site-logo img{width:52px!important;height:52px!important;max-width:none!important;max-height:none!important;object-fit:contain!important}
 body.home-page .et-language-switch,body.intl-page .et-language-switch,body.ar-page .et-language-switch{
-  min-height:40px!important;padding:0 16px!important;border-radius:999px!important;
-  border:1px solid rgba(255,255,255,.2)!important;
-  background:rgba(3,20,15,.42)!important;
-  backdrop-filter:blur(22px) saturate(140%)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(140%)!important;
+  min-height:40px!important;padding:0 16px!important;border-radius:999px!important;border:1px solid rgba(255,255,255,.2)!important;
+  background:rgba(3,20,15,.42)!important;backdrop-filter:blur(22px) saturate(140%)!important;-webkit-backdrop-filter:blur(22px) saturate(140%)!important;
   box-shadow:0 14px 38px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.16)!important;
 }
 body.home-page .et-language-switch a,body.intl-page .et-language-switch a,body.ar-page .et-language-switch a{color:rgba(255,255,255,.78)!important;letter-spacing:.13em!important;font-size:10px!important}
 body.home-page .et-language-switch a.current,body.intl-page .et-language-switch a.current,body.ar-page .et-language-switch a.current{color:#fff!important}
-body.home-page .mobile-menu,body.intl-page .mobile-menu,body.ar-page .mobile-menu{
-  width:62px!important;height:62px!important;
-  background:rgba(3,20,15,.48)!important;
-  border:1px solid rgba(255,255,255,.22)!important;
-  box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.2)!important;
-}
+body.home-page .mobile-menu,body.intl-page .mobile-menu,body.ar-page .mobile-menu{width:62px!important;height:62px!important;background:rgba(3,20,15,.48)!important;border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.2)!important}
 
-/* =========================
-   ES / EN — CINEMATIC HERO
-   ========================= */
 body.home-page .hero{
-  min-height:100svh!important;
-  padding:170px 0 70px!important;
-  display:grid!important;
-  align-items:end!important;
-  overflow:hidden!important;
-  background:
-    radial-gradient(circle at 72% 18%,rgba(217,199,160,.18),transparent 23%),
-    radial-gradient(circle at 15% 70%,rgba(13,48,38,.92),transparent 42%),
-    linear-gradient(125deg,#02120d 0%,#06231a 45%,#0b3226 100%)!important;
+  min-height:100svh!important;padding:170px 0 70px!important;display:grid!important;align-items:end!important;overflow:hidden!important;
+  background:radial-gradient(circle at 72% 18%,rgba(217,199,160,.18),transparent 23%),radial-gradient(circle at 15% 70%,rgba(13,48,38,.92),transparent 42%),linear-gradient(125deg,#02120d 0%,#06231a 45%,#0b3226 100%)!important;
 }
-body.home-page .hero::after{
-  content:"";position:absolute;inset:8vh 5vw 8vh auto;width:min(46vw,720px);border:1px solid rgba(217,199,160,.25);border-radius:50%;transform:rotate(-15deg);opacity:.75;pointer-events:none;
-}
+body.home-page .hero::after{content:"";position:absolute;inset:8vh 5vw 8vh auto;width:min(46vw,720px);border:1px solid rgba(217,199,160,.25);border-radius:50%;transform:rotate(-15deg);opacity:.75;pointer-events:none}
 body.home-page .hero-grid{width:min(1240px,calc(100% - 96px))!important;min-height:calc(100svh - 250px)!important;grid-template-columns:minmax(0,1fr) 160px!important;gap:80px!important;align-items:end!important}
 body.home-page .hero-content{max-width:930px!important}
 body.home-page .hero-kicker{margin-bottom:34px!important;letter-spacing:.26em!important;color:rgba(255,255,255,.58)!important}
 body.home-page .hero-kicker span{width:58px!important;background:var(--lux-champagne)!important}
-body.home-page h1{
-  font-size:clamp(5rem,10.8vw,11rem)!important;
-  line-height:.78!important;
-  letter-spacing:-.065em!important;
-  margin:0!important;
-}
+body.home-page h1{font-size:clamp(5rem,10.8vw,11rem)!important;line-height:.78!important;letter-spacing:-.065em!important;margin:0!important}
 body.home-page .hero-line-white{color:#f7f3ea!important}
 body.home-page .hero-line-gold{color:var(--lux-champagne)!important}
 body.home-page .hero-description{max-width:620px!important;margin-top:48px!important;color:rgba(247,243,234,.84)!important;font-size:16px!important;line-height:1.8!important}
@@ -134,9 +84,6 @@ body.home-page .hero-side p{font-size:9px!important;line-height:2!important;lett
 body.home-page .hero-bottom{bottom:22px!important;color:rgba(255,255,255,.34)!important;letter-spacing:.24em!important}
 body.home-page .hero-bottom i{background:rgba(217,199,160,.32)!important}
 
-/* =========================
-   ES / EN — EDITORIAL SECTIONS
-   ========================= */
 body.home-page section:not(.hero){padding:135px 0!important}
 body.home-page .intro-section{background:var(--lux-marfil)!important}
 body.home-page .intro-section .container{width:min(1180px,calc(100% - 96px))!important;grid-template-columns:90px 1fr!important;gap:64px!important}
@@ -180,20 +127,9 @@ body.home-page .footer-column strong{color:var(--lux-champagne)!important}
 body.home-page .footer-column a{color:rgba(255,255,255,.48)!important}
 body.home-page .footer-bottom{color:rgba(217,199,160,.35)!important}
 
-/* =========================
-   FR / AR — SAME LUXURY LANGUAGE
-   ========================= */
-body.intl-page .intl-hero,body.ar-page .ar-hero{
-  min-height:100svh!important;padding:170px 0 82px!important;
-  background:
-    radial-gradient(circle at 77% 17%,rgba(217,199,160,.17),transparent 24%),
-    linear-gradient(125deg,#02120d,#08251b 50%,#0c3829)!important;
-}
+body.intl-page .intl-hero,body.ar-page .ar-hero{min-height:100svh!important;padding:170px 0 82px!important;background:radial-gradient(circle at 77% 17%,rgba(217,199,160,.17),transparent 24%),linear-gradient(125deg,#02120d,#08251b 50%,#0c3829)!important}
 body.intl-page .intl-hero::after,body.ar-page .ar-hero::after{border-color:rgba(217,199,160,.23)!important;opacity:.68}
-body.intl-page .intl-hero h1,body.ar-page .ar-hero h1{
-  font-size:clamp(4.8rem,9.2vw,9.5rem)!important;
-  line-height:.82!important;letter-spacing:-.065em!important;color:#f7f3ea!important;
-}
+body.intl-page .intl-hero h1,body.ar-page .ar-hero h1{font-size:clamp(4.8rem,9.2vw,9.5rem)!important;line-height:.82!important;letter-spacing:-.065em!important;color:#f7f3ea!important}
 body.intl-page .intl-hero h1 em,body.ar-page .ar-hero h1 em{color:var(--lux-champagne)!important}
 body.intl-page .intl-lead,body.ar-page .ar-lead{font-size:17px!important;line-height:1.85!important;color:rgba(247,243,234,.67)!important;max-width:720px!important}
 body.intl-page .intl-kicker,body.intl-page .intl-label,body.ar-page .ar-kicker,body.ar-page .ar-label{color:var(--lux-champagne)!important;letter-spacing:.23em!important}
@@ -212,9 +148,6 @@ body.intl-page .intl-cta h2,body.ar-page .ar-cta h2{color:var(--lux-ink)!importa
 body.intl-page .intl-cta>.intl-container>p:last-of-type,body.ar-page .ar-cta p{font-size:15px!important;color:#4d554f!important}
 body.intl-page .intl-footer,body.ar-page .ar-footer{background:#02110d!important;padding:72px 0 30px!important}
 
-/* =========================
-   MOBILE
-   ========================= */
 @media(max-width:800px){
   body.home-page .hero{padding-top:128px!important}
   body.home-page .hero-grid{width:calc(100% - 32px)!important;min-height:calc(100svh - 210px)!important;grid-template-columns:1fr!important}
@@ -241,3 +174,18 @@ body.intl-page .intl-footer,body.ar-page .ar-footer{background:#02110d!important
   body.home-page .hero-actions .button{justify-content:space-between!important}
   body.intl-page .intl-hero h1,body.ar-page .ar-hero h1{font-size:clamp(3.4rem,15vw,5.4rem)!important}
 }
+
+/* SPANISH HOMEPAGE — CUATRO TORRES MADRID */
+html[lang="es"] body.home-page .hero{
+  background-image:
+    linear-gradient(90deg,rgba(2,11,20,.94) 0%,rgba(3,18,30,.80) 38%,rgba(3,24,38,.54) 70%,rgba(2,11,20,.78) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Cuatro_Torres_de_Madrid_-_20150306.jpg")!important;
+  background-position:center 46%!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+}
+html[lang="es"] body.home-page .hero::before{background:linear-gradient(90deg,rgba(2,11,20,.24),rgba(3,18,30,.08) 58%,rgba(2,11,20,.24))!important}
+html[lang="es"] body.home-page .hero::after{border-color:rgba(217,199,160,.19)!important}
+html[lang="es"] body.home-page .hero-glow-one{background:rgba(217,199,160,.08)!important}
+html[lang="es"] body.home-page .hero-glow-two{background:rgba(243,241,232,.025)!important}
+@media(max-width:800px){html[lang="es"] body.home-page .hero{background-position:center 50%!important}}
