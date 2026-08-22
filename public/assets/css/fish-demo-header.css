@@ -16,26 +16,21 @@
 .fish-catalog-pilot .page-hero .lead{color:rgba(247,241,224,.82)!important}
 
 /* Luxury body type — titles remain on their existing type system */
-.fish-catalog-pilot .page-hero .lead,
-.fish-catalog-pilot .fish-catalog p,
-.fish-catalog-pilot .fish-emblematic-card__note,
-.fish-catalog-pilot .fish-emblematic__intro p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:18px!important;line-height:1.55!important;font-weight:400!important;letter-spacing:.005em!important}
+.fish-catalog-pilot .page-hero .lead,.fish-catalog-pilot .fish-catalog p,.fish-catalog-pilot .fish-emblematic-card__note,.fish-catalog-pilot .fish-emblematic__intro p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:18px!important;line-height:1.55!important;font-weight:400!important;letter-spacing:.005em!important}
 .fish-catalog-pilot .fish-catalog-card__scientific{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:17px!important;line-height:1.35!important;font-weight:500!important}
 .fish-catalog-pilot .fish-catalog-card__spec{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:16px!important;line-height:1.4!important}
-.fish-catalog-pilot .fish-catalog-card__meta,
-.fish-catalog-pilot .fish-catalog-card__link,
-.fish-catalog-pilot .fish-catalog__search,
-.fish-catalog-pilot .fish-catalog__filter{font-family:inherit!important;font-size:14px!important;line-height:1.35!important}
+.fish-catalog-pilot .fish-catalog-card__meta,.fish-catalog-pilot .fish-catalog-card__link,.fish-catalog-pilot .fish-catalog__search,.fish-catalog-pilot .fish-catalog__filter{font-family:inherit!important;font-size:14px!important;line-height:1.35!important}
 .fish-catalog-pilot .fish-emblematic-card__meta{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:16px!important;line-height:1.35!important}
 
-.fish-catalog-pilot .fish-catalog{background:#f3f6f8!important;color:#0b1d2b!important}
+/* Marine palette for the complete section below the hero */
+.fish-catalog-pilot .fish-catalog{background:#f7f3e9!important;color:#0b1d2b!important}
 .fish-catalog-pilot .fish-catalog h2,.fish-catalog-pilot .fish-catalog h2 em{color:#0b1d2b!important}
 .fish-catalog-pilot .fish-catalog h2 em{color:#9b7a3f!important}
-.fish-catalog-pilot .fish-catalog__search{border-color:rgba(11,42,63,.24)!important;color:#0b1d2b!important}
-.fish-catalog-pilot .fish-catalog__filter{border-color:rgba(11,42,63,.20)!important;color:#0b1d2b!important}
+.fish-catalog-pilot .fish-catalog__search{border-color:rgba(11,42,63,.24)!important;color:#0b1d2b!important;background:rgba(255,255,255,.42)!important}
+.fish-catalog-pilot .fish-catalog__filter{border-color:rgba(11,42,63,.20)!important;color:#0b1d2b!important;background:rgba(255,255,255,.34)!important}
 .fish-catalog-pilot .fish-catalog__filter[aria-pressed="true"]{background:#06233a!important;border-color:#06233a!important;color:#f7f1e0!important}
-.fish-catalog-pilot .fish-catalog-grid{background:rgba(11,42,63,.14)!important}
-.fish-catalog-pilot .fish-catalog-card{background:#f8fafb!important}
+.fish-catalog-pilot .fish-catalog-grid{background:rgba(11,42,63,.12)!important}
+.fish-catalog-pilot .fish-catalog-card{background:#fbf8f0!important;border-color:rgba(11,42,63,.12)!important}
 .fish-catalog-pilot .fish-catalog-card__placeholder,.fish-catalog-pilot .fish-catalog-card__meta{color:#9b7a3f!important}
 .fish-catalog-pilot .fish-catalog-card__link{color:#0b1d2b!important}
 .fish-catalog-pilot .fish-catalog-card__link:hover{color:#9b7a3f!important}
