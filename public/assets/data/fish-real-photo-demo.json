@@ -1,0 +1,29 @@
+{
+  "products": {
+    "demo-bass": [
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Dicentrarchus%20labrax%20(FDA%20208).jpg","credit":"U.S. Food and Drug Administration","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Dicentrarchus_labrax001.jpg","credit":"JoJan","license":"CC BY 3.0"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Dicentrarchus_labrax.jpeg","credit":"Dezidor","license":"CC BY 3.0"}
+    ],
+    "demo-sea-bream": [
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Sparus%20aurata%20(FDA%20209).jpg","credit":"U.S. Food and Drug Administration","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Sparus_aurata_Greece.jpg","credit":"Chris Taklis","license":"CC BY 4.0"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Sparus_aurata_France.jpg","credit":"Julien Renoult","license":"CC BY 4.0"}
+    ],
+    "demo-red-mullet": [
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/FMIB%2047022%20Mullus%20barbatus%20%28Red%20Mullet%29%2C%20with%20Thoracic%20ventral%20fins.jpeg","credit":"Freshwater and Marine Image Bank / University of Washington","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/FMIB%2046079%20Red%20Mullet.jpeg","credit":"Freshwater and Marine Image Bank / University of Washington","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Mullus%20barbatus%2C%2013460%20Saintes-Maries-de-la-Mer%2C%20France%20imported%20from%20iNaturalist%20photo%20254254784.jpg","credit":"iNaturalist contributor","license":"CC BY 4.0"}
+    ],
+    "demo-sardine": [
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Sardina%20pilchardus1.jpg","credit":"Etrusko25","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Sardina%20pilchardus.jpg","credit":"Etrusko25","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/FMIB%2046314%20Pilchard.jpeg","credit":"Freshwater and Marine Image Bank / University of Washington","license":"Public domain"}
+    ],
+    "demo-mackerel": [
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Fish%20scomber%20scombrus.jpg","credit":"Titus Tscharntke","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/FMIB%2041562%20Common%20Mackerel%20%28Scomber%20scombrus%29.jpeg","credit":"Freshwater and Marine Image Bank / University of Washington","license":"Public domain"},
+      {"src":"https://commons.wikimedia.org/wiki/Special:Redirect/file/FMIB%2050472%20Mackerel%20%28Scomber%20scombrus%29.jpeg","credit":"Freshwater and Marine Image Bank / University of Washington","license":"Public domain"}
+    ]
+  }
+}
