@@ -16,7 +16,7 @@ html[lang="es"] body.et-es-home .hero h1{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-white{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-gold{color:#dfc78f!important;font-style:italic}
 
-/* ES HOMEPAGE MENU — force the actual overlay to a dark curtain and the navigation to ivory. */
+/* ES HOMEPAGE MENU — dark curtain, ivory typography, deterministic X state. */
 html[lang="es"] body.home-page #navOverlay,
 html[lang="es"] body.home-page .nav-overlay{background:#050806!important;background-color:#050806!important;color:#f3f1e8!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-inner{background:transparent!important}
@@ -26,6 +26,19 @@ html[lang="es"] body.home-page #navOverlay .nav-products>summary,
 html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary,
 html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{color:#f3f1e8!important;-webkit-text-fill-color:#f3f1e8!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-links .idx{color:#f3f1e8!important;-webkit-text-fill-color:#f3f1e8!important}
+
+/* Deterministic menu control: aria-expanded is the single source of truth. */
+html[lang="es"] body.home-page #menuToggleBtn{position:relative!important;z-index:1205!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"]{background:rgba(0,0,0,.42)!important;border-color:rgba(243,241,232,.42)!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span{position:absolute!important;left:50%!important;top:50%!important;width:24px!important;height:2px!important;margin:0!important;background:#f3f1e8!important;transform-origin:center!important;opacity:1!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span:nth-child(2){transform:translate(-50%,-50%) scaleX(0)!important;opacity:0!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)!important}
+
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span{position:absolute!important;left:50%!important;width:24px!important;height:2px!important;margin:0!important;background:#f3f1e8!important;opacity:1!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span:nth-child(1){top:calc(50% - 7px)!important;transform:translateX(-50%)!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span:nth-child(2){top:50%!important;transform:translateX(-50%)!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span:nth-child(3){top:calc(50% + 7px)!important;transform:translateX(-50%)!important}
 
 /* ES HOMEPAGE NAVIGATION — Products is a primary item at exactly the same level as Inicio, Empresa, Mercados, Noticias and Contacto. */
 html[lang="es"] body.home-page #navOverlay .nav-overlay-links{gap:14px!important}
