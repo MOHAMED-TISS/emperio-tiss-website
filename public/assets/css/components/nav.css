@@ -6,19 +6,33 @@
 .nav-overlay-links .idx{font-family:"DM Sans",Arial,sans-serif}
 .nav-overlay-links>a,.nav-products>summary{font-family:var(--et-serif);font-size:40px;font-weight:500;line-height:1.08;letter-spacing:.025em}
 .nav-overlay-links>a,.nav-overlay-links>.nav-products{margin:0 0 18px;padding:0}
+
+/* Primary navigation: Products is a first-level item, exactly aligned with 01–02 and 04–06. */
+.nav-overlay-links>.nav-products{display:block!important;margin-inline-start:0!important;padding-inline-start:0!important}
 .nav-products>summary{list-style:none;display:flex;align-items:baseline;gap:1rem;cursor:pointer;margin:0;padding:0}
 .nav-products>summary::-webkit-details-marker,.nav-products-links>details>summary::-webkit-details-marker{display:none}
 .nav-products>summary::marker,.nav-products-links>details>summary::marker{content:""}
 .nav-products>summary::after{content:"+";color:#d9c7a0;font:400 28px/1 var(--et-serif);margin-inline-start:10px}
 .nav-products[open]>summary::after{content:"−"}
+
+/* Products children: one level in from the primary navigation. */
 .nav-products>.nav-products-links{display:none;flex-direction:column;gap:0;margin:0 0 12px;padding-inline-start:48px;border-inline-start:1px solid rgba(217,199,160,.18)}
 .nav-products[open]>.nav-products-links{display:flex}
 .nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-family:var(--et-serif)!important;font-size:35px!important;font-weight:500;line-height:1.08;letter-spacing:.025em;color:rgba(255,255,255,.86)!important;margin:0 0 15px;padding:0}
 .nav-products>.nav-products-links>details>summary{display:inline-flex;align-items:baseline;width:max-content;cursor:pointer}
 .nav-products>.nav-products-links>details>summary::after{content:"+";color:#d9c7a0;font:400 25px/1 var(--et-serif);margin-inline-start:10px}
 .nav-products>.nav-products-links>details[open]>summary::after{content:"−"}
+
+/* Seafood subcategories: a second, deeper level. */
 .nav-products>.nav-products-links>details>.nav-products-links{display:none;flex-direction:column;gap:0;margin:0 0 12px;padding-inline-start:72px;border-inline-start:1px solid rgba(217,199,160,.14)}
 .nav-products>.nav-products-links>details[open]>.nav-products-links{display:flex}
 .nav-products>.nav-products-links>details>.nav-products-links>a{font-family:var(--et-serif)!important;font-size:25px!important;font-weight:500;line-height:1.12;letter-spacing:.02em;color:rgba(255,255,255,.72)!important;margin:0 0 10px;padding:0}
 .nav-overlay-links .idx{font-size:.72rem;line-height:1;font-weight:500;letter-spacing:.08em;margin-inline-end:9px;opacity:.7}
-@media(max-width:800px){.nav-overlay-links>a,.nav-products>summary{font-size:35px}.nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-size:30px!important}.nav-products>.nav-products-links{padding-inline-start:32px}.nav-products>.nav-products-links>details>.nav-products-links{padding-inline-start:48px}.nav-products>.nav-products-links>details>.nav-products-links>a{font-size:23px!important}}
+
+@media(max-width:800px){
+  .nav-overlay-links>a,.nav-products>summary{font-size:35px}
+  .nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-size:30px!important}
+  .nav-products>.nav-products-links{padding-inline-start:32px}
+  .nav-products>.nav-products-links>details>.nav-products-links{padding-inline-start:48px}
+  .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:23px!important}
+}
