@@ -2,7 +2,7 @@
 .fish-catalog-pilot .site-header .site-logo{padding:4px!important}
 .fish-catalog-pilot .site-header .site-logo img{max-width:48px!important;max-height:48px!important}
 
-/* Prototype hero: luxury raw-fish photography with a dark editorial treatment */
+/* Prototype hero: premium seafood editorial photography */
 .fish-catalog-pilot .page-hero{
   position:relative!important;
   isolation:isolate!important;
@@ -11,8 +11,8 @@
   display:flex!important;
   align-items:center!important;
   background:
-    linear-gradient(90deg, rgba(3,10,10,.96) 0%, rgba(3,13,14,.82) 38%, rgba(3,13,14,.36) 70%, rgba(3,10,10,.62) 100%),
-    url('https://images.pexels.com/photos/19993440/pexels-photo-19993440.jpeg?auto=compress&cs=tinysrgb&w=2400') center/cover no-repeat!important;
+    linear-gradient(90deg, rgba(3,11,14,.95) 0%, rgba(3,15,19,.78) 36%, rgba(3,15,19,.28) 68%, rgba(3,11,14,.52) 100%),
+    url('https://assets.website-files.com/59f317b8f42fff00015a1b65/5a708cb97a266f000142655a_Wild%20Sea%20Bass%2C%20Samphire%2C%20Langoustine-no-lines-3542.jpg') center/cover no-repeat!important;
 }
 .fish-catalog-pilot .page-hero::before{
   content:"";
@@ -20,8 +20,8 @@
   inset:0!important;
   z-index:-1!important;
   background:
-    linear-gradient(180deg, rgba(2,10,10,.18) 0%, transparent 42%, rgba(2,9,10,.82) 100%),
-    radial-gradient(circle at 78% 48%, transparent 0 18%, rgba(2,9,10,.22) 62%, rgba(2,9,10,.62) 100%)!important;
+    linear-gradient(180deg, rgba(2,10,12,.16) 0%, transparent 42%, rgba(2,9,11,.78) 100%),
+    radial-gradient(circle at 78% 48%, transparent 0 18%, rgba(2,9,11,.20) 62%, rgba(2,9,11,.60) 100%)!important;
   pointer-events:none!important;
 }
 .fish-catalog-pilot .page-hero::after{
@@ -29,9 +29,9 @@
   position:absolute!important;
   inset:0!important;
   z-index:-1!important;
-  background:linear-gradient(115deg, transparent 28%, rgba(232,207,153,.09) 48%, transparent 62%)!important;
+  background:linear-gradient(115deg, transparent 25%, rgba(232,207,153,.08) 48%, transparent 64%)!important;
   mix-blend-mode:screen!important;
-  opacity:.45!important;
+  opacity:.42!important;
   pointer-events:none!important;
 }
 .fish-catalog-pilot .page-hero-inner{position:relative!important;z-index:1!important}
