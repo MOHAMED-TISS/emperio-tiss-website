@@ -1,7 +1,8 @@
 /* EMPERIO TISS — transparent global header treatment */
 .header-inner{background:transparent!important;border:0!important;border-radius:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
 .site-logo,.et-language-switch,.language-nav{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(18px) saturate(120%);-webkit-backdrop-filter:blur(18px) saturate(120%);box-shadow:0 10px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.16)}
-.site-logo{inline-size:150px;block-size:58px;padding-inline:14px;border-radius:999px}
+.site-logo{inline-size:58px;block-size:58px;padding:0;border-radius:50%;display:grid;place-items:center;overflow:hidden}
+.site-logo img{inline-size:42px!important;block-size:42px!important;max-block-size:none!important;max-inline-size:none!important;width:42px!important;height:42px!important;object-fit:contain!important;margin:0!important;display:block!important}
 .et-language-switch,.language-nav{min-block-size:38px;padding-inline:14px;border-radius:999px;gap:9px}
 .et-language-switch a,.language-nav a{color:#fff!important;opacity:.86}
 .et-language-switch a.current,.language-nav a.current{color:#fff!important;font-weight:700;opacity:1}
