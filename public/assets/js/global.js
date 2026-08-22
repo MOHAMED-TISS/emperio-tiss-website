@@ -30,7 +30,7 @@
   loadCss('/assets/css/components/footer.css?v=architecture-footer-1', 'etFooter');
   loadCss('/assets/css/components/header-transparent.css?v=header-transparent-1', 'etHeaderTransparent');
   loadScript('/assets/js/seo.js?v=architecture-seo-1', 'etSeo');
-  loadScript('/assets/js/nav-normalizer.js?v=architecture-nav-5', 'etNavNormalizer');
+  loadScript('/assets/js/nav-normalizer.js?v=architecture-nav-6', 'etNavNormalizer');
 
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
   const productPath = /^\/(?:en\/|fr\/|ar\/)?products\//.test(path);
