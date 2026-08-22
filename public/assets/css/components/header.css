@@ -1,0 +1,8 @@
+/* EMPERIO TISS — CANONICAL FLOATING HEADER */
+.seafood-subpage .site-header{position:fixed!important;inset:0 0 auto 0!important;z-index:1200!important;width:100%!important;background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:18px 48px!important;pointer-events:none!important}
+.seafood-subpage .site-header::before,.seafood-subpage .site-header::after{display:none!important;content:none!important}
+.seafood-subpage .site-header .header-inner{width:100%!important;max-width:1440px!important;margin:0 auto!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important}
+.seafood-subpage .site-header .site-logo,.seafood-subpage .site-header .mobile-menu,.seafood-subpage .site-header .et-language-switch{pointer-events:auto!important}
+.seafood-subpage .site-header .mobile-menu{visibility:visible!important;opacity:1!important;position:relative!important;cursor:pointer!important}
+@media(max-width:900px){.seafood-subpage .site-header{padding:16px 32px!important}}
+@media(max-width:640px){.seafood-subpage .site-header{padding:12px 18px!important}.seafood-subpage .site-header .mobile-menu,.seafood-subpage .site-header .site-logo{width:52px!important;height:52px!important}}
