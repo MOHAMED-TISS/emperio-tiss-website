@@ -16,9 +16,10 @@
   const demoMode = new URLSearchParams(window.location.search).get('demo') === '1';
   let products = [];
   let activeFilter = 'all';
+  let realPhotos = {};
 
-  const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (char) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', "'": '&#39;'
   }[char]));
   const first = (value) => Array.isArray(value) ? value.find(Boolean) || '' : (value || '');
   const conditionLabel = (value) => value === 'fresh' ? 'Fresh' : value === 'frozen' ? 'Frozen' : value;
@@ -41,8 +42,20 @@
     return `<article class="fish-catalog-card${isDemo ? ' is-demo' : ''}" data-product-id="${esc(product.id)}">${media}<div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(isDemo ? 'DEMO · FISH' : (product.subcategory || 'Fish'))}</p><h3 class="fish-catalog-card__title">${esc(product.commercialName)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>${meta ? `<p class="fish-catalog-card__spec">${esc(meta)}</p>` : ''}${link}</div></article>`;
   }
 
+  function emblematicPhotoSet(product) {
+    const map = {
+      'Sparus aurata': 'demo-sea-bream',
+      'Mullus barbatus': 'demo-red-mullet'
+    };
+    return realPhotos[map[product.scientificName]] || [];
+  }
+
   function emblematicCard(product) {
-    return `<article class="fish-emblematic-card"><div class="fish-emblematic-card__media"><span>EMPERIO TISS</span></div><div class="fish-emblematic-card__body"><span class="fish-emblematic-card__kicker">EMBLEMATIC · DEMO</span><h3>${esc(product.commercialName)}</h3><p class="fish-emblematic-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-emblematic-card__meta"><span>${esc(product.origin)}</span><span>${esc(product.condition)}</span></div><p class="fish-emblematic-card__note">${esc(product.note)}</p><span class="fish-emblematic-card__mark">Selected reference</span></div></article>`;
+    const images = emblematicPhotoSet(product);
+    const media = images.length
+      ? `<button type="button" class="fish-emblematic-card__media fish-emblematic-card__media--image" data-emblematic-open="${esc(product.id)}" ${images.map((item, index) => `data-image-${index}="${esc(item.src)}" data-credit-${index}="${esc(item.credit || '')}" data-license-${index}="${esc(item.license || '')}"`).join(' ')} aria-label="Open ${esc(product.commercialName)} images"><img src="${esc(images[0].src)}" alt="${esc(product.commercialName)}" loading="lazy"><span class="fish-emblematic-card__zoom-label">View larger ↗</span></button>`
+      : '<div class="fish-emblematic-card__media"><span>EMPERIO TISS</span></div>';
+    return `<article class="fish-emblematic-card">${media}<div class="fish-emblematic-card__body"><span class="fish-emblematic-card__kicker">EMBLEMATIC · DEMO</span><h3>${esc(product.commercialName)}</h3><p class="fish-emblematic-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-emblematic-card__meta"><span>${esc(product.origin)}</span><span>${esc(product.condition)}</span></div><p class="fish-emblematic-card__note">${esc(product.note)}</p><span class="fish-emblematic-card__mark">${images.length ? 'Selected reference · view image' : 'Selected reference'}</span></div></article>`;
   }
 
   function render() {
@@ -97,17 +110,35 @@
       modal.querySelector('[data-lightbox-prev]').hidden = currentImages.length < 2;
       modal.querySelector('[data-lightbox-next]').hidden = currentImages.length < 2;
     };
+    const openImages = (images, alt) => {
+      if (!images.length) return;
+      currentImages = images.map((item) => ({ ...item, alt }));
+      show(0);
+      modal.hidden = false;
+      document.body.classList.add('fish-lightbox-open');
+    };
+
     grid.addEventListener('click', (event) => {
       const trigger = event.target.closest('[data-gallery-open]');
       if (!trigger) return;
       const product = products.find((item) => item.id === trigger.dataset.galleryOpen);
-      const images = product ? normalizeImages(product) : [];
-      if (!images.length) return;
-      currentImages = images.map((item) => ({ ...item, alt: product.commercialName }));
-      show(0);
-      modal.hidden = false;
-      document.body.classList.add('fish-lightbox-open');
+      openImages(product ? normalizeImages(product) : [], product?.commercialName || 'Fish');
     });
+
+    if (emblematicGrid) {
+      emblematicGrid.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-emblematic-open]');
+        if (!trigger) return;
+        const images = [...Array(3).keys()].map((index) => trigger.dataset[`image-${index}`] ? {
+          src: trigger.dataset[`image-${index}`],
+          credit: trigger.dataset[`credit-${index}`] || '',
+          license: trigger.dataset[`license-${index}`] || ''
+        } : null).filter(Boolean);
+        const title = trigger.querySelector('img')?.alt || 'Emblematic Fish';
+        openImages(images, title);
+      });
+    }
+
     modal.addEventListener('click', (event) => {
       if (event.target.closest('[data-lightbox-close]')) close();
       if (event.target.closest('[data-lightbox-prev]')) show(currentIndex - 1);
@@ -136,16 +167,19 @@
   });
 
   if (demoMode && emblematicSection && emblematicGrid) {
-    loadJson(emblematicUrl).then((data) => {
+    loadJson(realPhotoUrl).then((data) => {
+      realPhotos = data.products || {};
+      return loadJson(emblematicUrl);
+    }).then((data) => {
       const selected = (data.products || []).filter((product) => product.status === 'demo').slice(0, 3);
       emblematicGrid.innerHTML = selected.map(emblematicCard).join('');
       emblematicSection.hidden = false;
-    }).catch((error) => console.warn('[EMPERIO TISS] Emblematic demo unavailable:', error));
-
-    loadJson(realPhotoUrl).then((data) => {
-      if (!data.products) return;
-      products = products.map((product) => data.products[product.id]?.length ? { ...product, images: data.products[product.id] } : product);
-      render();
-    }).catch(() => {});
+    }).catch(() => {
+      loadJson(emblematicUrl).then((data) => {
+        const selected = (data.products || []).filter((product) => product.status === 'demo').slice(0, 3);
+        emblematicGrid.innerHTML = selected.map(emblematicCard).join('');
+        emblematicSection.hidden = false;
+      }).catch(() => {});
+    });
   }
 })();
