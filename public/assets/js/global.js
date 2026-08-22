@@ -18,6 +18,7 @@
     doc.head.appendChild(script);
   };
 
+  loadCss('/assets/css/components/nav.css?v=architecture-nav-1', 'etNavigation');
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
 
@@ -33,6 +34,4 @@
     loadCss('/assets/css/catalog.css?v=20260822-2', 'etCatalog');
     loadScript('/assets/js/products-catalog.js?v=20260822-1', 'etCatalogScript');
   }
-
-  loadScript('/assets/js/global-core.js?v=20260821-2', 'etGlobalCore');
 })();
