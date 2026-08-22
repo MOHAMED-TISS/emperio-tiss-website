@@ -7,6 +7,11 @@
   const body = document.body;
   if (!body || !body.classList.contains('home-page')) return;
 
+  const style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = '/assets/css/home-es-renovation.css?v=20260822-1';
+  document.head.appendChild(style);
+
   body.classList.add('es-motion-ready');
 
   const curtain = document.createElement('div');
