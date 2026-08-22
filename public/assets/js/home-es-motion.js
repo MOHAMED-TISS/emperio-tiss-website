@@ -5,21 +5,11 @@
   const body = document.body;
   if (root.lang !== 'es' || !body || !body.classList.contains('home-page')) return;
 
-  /* Load the ES-only editorial motion layer once. */
-  if (!document.querySelector('link[data-es-home-motion]')) {
-    const style = document.createElement('link');
-    style.rel = 'stylesheet';
-    style.dataset.esHomeMotion = 'true';
-    style.href = '/assets/css/home-es-renovation.css?v=20260822-3';
-    document.head.appendChild(style);
-  }
-
   body.classList.add('es-motion-ready');
   body.classList.add('es-page-enter');
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  /* Reveal content progressively as it enters the viewport. */
   const revealTargets = document.querySelectorAll(
     '.home-page section:not(.hero) .eyebrow,' +
     '.home-page section:not(.hero) h2,' +
