@@ -15,6 +15,13 @@
 .nav-products>summary::after{content:"+";color:#d9c7a0;font:400 28px/1 var(--et-serif);margin-inline-start:10px}
 .nav-products[open]>summary::after{content:"−"}
 
+/* Menu control: three lines become a clear X whenever the menu is open. */
+#menuToggleBtn.is-open,.mobile-menu.is-open,.es-menu.is-open,.intl-menu.is-open{position:relative!important}
+#menuToggleBtn.is-open span,.mobile-menu.is-open span,.es-menu.is-open span,.intl-menu.is-open span{position:absolute!important;left:0!important;top:50%!important;width:100%!important;height:1px!important;background:#fff!important;transform-origin:center!important;transition:transform .22s ease!important}
+#menuToggleBtn.is-open span:nth-child(1),.mobile-menu.is-open span:nth-child(1),.es-menu.is-open span:nth-child(1),.intl-menu.is-open span:nth-child(1){transform:translateY(-50%) rotate(45deg)!important}
+#menuToggleBtn.is-open span:nth-child(2),.mobile-menu.is-open span:nth-child(2),.es-menu.is-open span:nth-child(2),.intl-menu.is-open span:nth-child(2){opacity:0!important;transform:translateY(-50%) scaleX(0)!important}
+#menuToggleBtn.is-open span:nth-child(3),.mobile-menu.is-open span:nth-child(3),.es-menu.is-open span:nth-child(3),.intl-menu.is-open span:nth-child(3){transform:translateY(-50%) rotate(-45deg)!important}
+
 /* Products children: one level in from the primary navigation. */
 .nav-products>.nav-products-links{display:none;flex-direction:column;gap:0;margin:0 0 12px;padding-inline-start:48px;border-inline-start:1px solid rgba(217,199,160,.18)}
 .nav-products[open]>.nav-products-links{display:flex}
