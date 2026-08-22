@@ -37,6 +37,7 @@
     else if(/\/products\//.test(path)) body.classList.add('et-es-product-detail');
     else body.classList.add('et-es-standard');
     loadCss('/assets/css/es-editorial-system.css?v=20260822-es-editorial-2','etSpanishEditorial');
+    loadCss('/assets/css/es-home-final.css?v=20260822-es-final-1','etSpanishEditorialFinal');
   }
 
   if(compactCatalog){loadCss('/assets/css/compact-catalog.css?v=20260822-1','etCompactCatalog');loadScript('/assets/js/compact-catalog.js?v=20260822-1','etCompactCatalogScript');}
