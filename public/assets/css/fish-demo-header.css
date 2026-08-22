@@ -2,7 +2,7 @@
 .fish-catalog-pilot .site-header .site-logo{padding:4px!important}
 .fish-catalog-pilot .site-header .site-logo img{max-width:48px!important;max-height:48px!important}
 
-/* Prototype hero: premium seafood editorial photography */
+/* Prototype hero: premium seafood editorial photography — marine blue treatment */
 .fish-catalog-pilot .page-hero{
   position:relative!important;
   isolation:isolate!important;
@@ -11,7 +11,7 @@
   display:flex!important;
   align-items:center!important;
   background:
-    linear-gradient(90deg, rgba(3,11,14,.95) 0%, rgba(3,15,19,.78) 36%, rgba(3,15,19,.28) 68%, rgba(3,11,14,.52) 100%),
+    linear-gradient(90deg, rgba(3,13,24,.96) 0%, rgba(4,24,42,.80) 36%, rgba(5,30,50,.30) 68%, rgba(3,13,24,.56) 100%),
     url('https://assets.website-files.com/59f317b8f42fff00015a1b65/5a708cb97a266f000142655a_Wild%20Sea%20Bass%2C%20Samphire%2C%20Langoustine-no-lines-3542.jpg') center/cover no-repeat!important;
 }
 .fish-catalog-pilot .page-hero::before{
@@ -20,8 +20,8 @@
   inset:0!important;
   z-index:-1!important;
   background:
-    linear-gradient(180deg, rgba(2,10,12,.16) 0%, transparent 42%, rgba(2,9,11,.78) 100%),
-    radial-gradient(circle at 78% 48%, transparent 0 18%, rgba(2,9,11,.20) 62%, rgba(2,9,11,.60) 100%)!important;
+    linear-gradient(180deg, rgba(3,13,24,.16) 0%, transparent 42%, rgba(2,12,24,.82) 100%),
+    radial-gradient(circle at 78% 48%, transparent 0 18%, rgba(4,29,49,.20) 62%, rgba(2,12,24,.64) 100%)!important;
   pointer-events:none!important;
 }
 .fish-catalog-pilot .page-hero::after{
@@ -35,6 +35,28 @@
   pointer-events:none!important;
 }
 .fish-catalog-pilot .page-hero-inner{position:relative!important;z-index:1!important}
+
+/* Demo marine-blue palette — scoped to ?demo=1 */
+.fish-catalog-pilot .fish-catalog{background:#f3f6f8!important;color:#0b1d2b!important}
+.fish-catalog-pilot .fish-catalog__search{border-color:rgba(11,42,63,.24)!important;color:#0b1d2b!important}
+.fish-catalog-pilot .fish-catalog__filter{border-color:rgba(11,42,63,.20)!important;color:#0b1d2b!important}
+.fish-catalog-pilot .fish-catalog__filter[aria-pressed="true"]{background:#06233a!important;border-color:#06233a!important;color:#fff!important}
+.fish-catalog-pilot .fish-catalog-grid{background:rgba(11,42,63,.14)!important}
+.fish-catalog-pilot .fish-catalog-card{background:#f8fafb!important}
+.fish-catalog-pilot .fish-catalog-card__placeholder,
+.fish-catalog-pilot .fish-catalog-card__meta{color:#9b7a3f!important}
+.fish-catalog-pilot .fish-catalog-card__link{color:#0b1d2b!important}
+.fish-catalog-pilot .fish-catalog-card__link:hover{color:#9b7a3f!important}
+.fish-catalog-pilot .fish-emblematic{background:linear-gradient(180deg,#041d31 0%,#07324d 100%)!important}
+.fish-catalog-pilot .fish-emblematic-card{background:#082943!important}
+.fish-catalog-pilot .fish-emblematic-card__media{background:linear-gradient(135deg,#174b69 0%,#031522 72%)!important}
+.fish-catalog-pilot .fish-emblematic-card__media--image{background:#031522!important}
+.fish-catalog-pilot .fish-emblematic-card__media--image::after{background:linear-gradient(180deg,rgba(3,21,34,.03) 25%,rgba(3,21,34,.54) 100%)!important}
+.fish-catalog-pilot .fish-emblematic-card__zoom-label{background:rgba(3,21,34,.62)!important}
+.fish-catalog-pilot .fish-lightbox__backdrop{background:rgba(3,18,30,.95)!important}
+.fish-catalog-pilot .fish-lightbox__close,
+.fish-catalog-pilot .fish-lightbox__prev,
+.fish-catalog-pilot .fish-lightbox__next{background:rgba(3,25,41,.72)!important}
 
 /* Demo-only: geometrically center all three menu spans in the 58px button */
 .fish-catalog-pilot .site-header .mobile-menu{position:relative!important;gap:0!important}
