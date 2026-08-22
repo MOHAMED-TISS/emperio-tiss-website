@@ -1,0 +1,15 @@
+/* EMPERIO TISS — SEAFOOD SHARED FOOTER */
+.site-footer{background:#03140f;color:rgba(255,255,255,.65);padding:64px 0 24px}
+.site-footer__inner{width:min(1180px,calc(100% - 80px));margin-inline:auto}
+.site-footer__grid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:42px;padding-bottom:52px}
+.site-footer__brand{max-width:300px}
+.site-footer__logo{display:block;width:88px;height:58px;object-fit:contain;object-position:left center}
+.site-footer__brand p{margin:16px 0 0;font:400 12px/1.7 var(--et-sans,Arial,sans-serif);color:rgba(255,255,255,.45)}
+.site-footer__column{display:flex;flex-direction:column;gap:10px}
+.site-footer__column strong{margin-bottom:6px;font:600 9px/1 var(--et-sans,Arial,sans-serif);letter-spacing:.15em;text-transform:uppercase;color:#d9c7a0}
+.site-footer__column a{font:400 11px/1.4 var(--et-sans,Arial,sans-serif);color:rgba(255,255,255,.55);transition:color .2s ease}
+.site-footer__column a:hover{color:#fff}
+.site-footer__bottom{display:flex;justify-content:space-between;gap:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font:600 8px/1 var(--et-sans,Arial,sans-serif);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+@media(max-width:800px){.site-footer__inner{width:calc(100% - 32px)}.site-footer__grid{grid-template-columns:1fr 1fr;gap:34px}.site-footer__brand{grid-column:1/-1}.site-footer{padding:54px 0 22px}.site-footer__bottom{display:block}.site-footer__bottom span{display:block;margin-top:10px}}
+@media(max-width:480px){.site-footer__grid{grid-template-columns:1fr}.site-footer__brand{grid-column:auto}}
+[dir="rtl"] .site-footer__logo{object-position:right center}[dir="rtl"] .site-footer__column{text-align:right}
