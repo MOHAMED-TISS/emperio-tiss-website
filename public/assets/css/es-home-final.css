@@ -15,3 +15,28 @@ html[lang="es"] body.et-es-home .hero::after{content:"";position:absolute;inset:
 html[lang="es"] body.et-es-home .hero h1{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-white{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-gold{color:#dfc78f!important;font-style:italic}
+
+/* ES HOMEPAGE NAVIGATION — compact sizing and controlled spacing */
+html[lang="es"] body.home-page #navOverlay .nav-overlay-links{gap:14px!important}
+html[lang="es"] body.home-page #navOverlay .nav-overlay-links>a,
+html[lang="es"] body.home-page #navOverlay .nav-products>summary{font-size:30px!important;line-height:1.05!important;min-height:34px!important;margin:0!important;padding:0!important}
+html[lang="es"] body.home-page #navOverlay .nav-products{margin:0!important;padding:0!important}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links{margin-top:8px!important;padding-left:28px!important;display:flex!important;flex-direction:column!important;gap:7px!important}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>a,
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary{font-size:22px!important;line-height:1.08!important;margin:0!important;padding:0!important}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links{margin-top:5px!important;padding-left:20px!important;gap:5px!important}
+html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:18px!important;line-height:1.1!important;margin:0!important;padding:0!important}
+html[lang="es"] body.home-page #navOverlay .nav-overlay-links .idx{font-size:9px!important;line-height:1!important;margin-right:12px!important;letter-spacing:.12em!important}
+html[lang="es"] body.home-page #navOverlay .nav-overlay-foot{gap:18px!important}
+html[lang="es"] body.home-page #navOverlay .nav-overlay-lang{gap:8px!important}
+
+@media(max-width:800px){
+  html[lang="es"] body.home-page #navOverlay .nav-overlay-links{gap:11px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-overlay-links>a,
+  html[lang="es"] body.home-page #navOverlay .nav-products>summary{font-size:26px!important;min-height:30px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links{gap:6px!important;margin-top:6px!important;padding-left:22px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>a,
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>summary{font-size:20px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links{gap:4px!important;padding-left:16px!important}
+  html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:17px!important}
+}
