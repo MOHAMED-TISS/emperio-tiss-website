@@ -6,7 +6,7 @@
   const body = doc.body;
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
 
-  const luxuryCss = '/assets/css/components/luxury-direction.css?v=20260822-1';
+  const luxuryCss = '/assets/css/components/luxury-direction-v2.css?v=20260822-2';
   if (!doc.querySelector('link[data-et-luxury-direction]')) {
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
@@ -18,9 +18,9 @@
   const normalizeDirectionalMarks = () => {
     const arrows = /[↗→←↔↓]/g;
     const variant = char => {
-      if (char === '↓') return 'luxury-direction--down';
-      if (char === '←') return 'luxury-direction--left';
-      if (char === '↔') return 'luxury-direction--both';
+      if (char === '↓') return 'luxury-direction-v2--down';
+      if (char === '←') return 'luxury-direction-v2--left';
+      if (char === '↔') return 'luxury-direction-v2--both';
       return '';
     };
 
@@ -41,7 +41,7 @@
       value.replace(arrows, (match, offset) => {
         if (offset > last) fragment.appendChild(doc.createTextNode(value.slice(last, offset)));
         const mark = doc.createElement('span');
-        mark.className = `luxury-direction ${variant(match)}`.trim();
+        mark.className = `luxury-direction-v2 ${variant(match)}`.trim();
         mark.setAttribute('aria-hidden', 'true');
         fragment.appendChild(mark);
         last = offset + match.length;
@@ -65,38 +65,10 @@
   const prefix = locale === 'es' ? '' : `/${locale}`;
 
   const labels = {
-    es: {
-      seafood: 'Productos del mar',
-      fruits: 'Frutas y hortalizas',
-      seasonal: 'Temporada',
-      fish: 'Pescados',
-      shellfish: 'Mariscos',
-      cephalopods: 'Cefalópodos'
-    },
-    en: {
-      seafood: 'Seafood',
-      fruits: 'Fruits & Vegetables',
-      seasonal: 'Seasonal',
-      fish: 'Fish',
-      shellfish: 'Shellfish',
-      cephalopods: 'Cephalopods'
-    },
-    fr: {
-      seafood: 'Produits de la mer',
-      fruits: 'Fruits & légumes',
-      seasonal: 'Produits de saison',
-      fish: 'Poissons',
-      shellfish: 'Coquillages',
-      cephalopods: 'Céphalopodes'
-    },
-    ar: {
-      seafood: 'المأكولات البحرية',
-      fruits: 'الفواكه والخضروات',
-      seasonal: 'المنتجات الموسمية',
-      fish: 'الأسماك',
-      shellfish: 'المحاريات',
-      cephalopods: 'رأسيات الأرجل'
-    }
+    es: { seafood: 'Productos del mar', fruits: 'Frutas y hortalizas', seasonal: 'Temporada', fish: 'Pescados', shellfish: 'Mariscos', cephalopods: 'Cefalópodos' },
+    en: { seafood: 'Seafood', fruits: 'Fruits & Vegetables', seasonal: 'Seasonal', fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods' },
+    fr: { seafood: 'Produits de la mer', fruits: 'Fruits & légumes', seasonal: 'Produits de saison', fish: 'Poissons', shellfish: 'Coquillages', cephalopods: 'Céphalopodes' },
+    ar: { seafood: 'المأكولات البحرية', fruits: 'الفواكه والخضروات', seasonal: 'المنتجات الموسمية', fish: 'الأسماك', shellfish: 'المحاريات', cephalopods: 'رأسيات الأرجل' }
   }[locale];
 
   const navProducts = doc.querySelector('.nav-products');
