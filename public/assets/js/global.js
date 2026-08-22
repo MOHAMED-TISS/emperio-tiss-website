@@ -45,6 +45,111 @@
     loadScript('/assets/js/products-catalog.js?v=20260822-1', 'etCatalogScript');
   }
 
+  /*
+   * CHECKPOINT VISUAL LOCK
+   * The repository intentionally loads several shared/page stylesheets at runtime.
+   * Their network completion order is nondeterministic, so token-only restoration can
+   * briefly win and then be replaced. This inline layer is appended after every dynamic
+   * CSS request and uses higher-specificity !important rules for the restored editorial
+   * typography and palette. It changes presentation only; no layout/content/JS behavior.
+   */
+  const checkpointStyle = doc.createElement('style');
+  checkpointStyle.dataset.etCheckpointVisualLock = 'true';
+  checkpointStyle.textContent = `
+    html body{
+      --et-serif:"Cormorant Garamond",Georgia,serif !important;
+      --et-sans:"DM Sans",Arial,sans-serif !important;
+      --et-ivory:#f3f1e8 !important;
+      --et-ivory-light:#f8f6f0 !important;
+      --et-marfil:#f3f1e8 !important;
+      --et-marfil-light:#f8f6f0 !important;
+      --et-cream:#f3f1e8 !important;
+      --et-cream-light:#f8f6f0 !important;
+      --et-gold:#d9c7a0 !important;
+      --et-champagne:#d9c7a0 !important;
+      --et-gold-light:#dec487 !important;
+      --et-ink:#102331 !important;
+      --et-body-editorial:18px !important;
+      --et-body-lg:clamp(17px,2vw,22px) !important;
+      --et-title-xl:clamp(4rem,10vw,9rem) !important;
+      --et-title-lg:clamp(3rem,6vw,6rem) !important;
+    }
+    html body :is(h1,h2,h3,h4){font-family:"Cormorant Garamond",Georgia,serif !important}
+    html body p,html body li{font-family:"DM Sans",Arial,sans-serif !important}
+    html body .page-hero :is(h1,h2),
+    html body .page-hero--fish h1,
+    html body .page-hero--shellfish h1,
+    html body .page-hero--cephalopods h1,
+    html body .product-hero h1,
+    html body .news-hero h1,
+    html body .contact-hero-title h1{
+      font-family:"Cormorant Garamond",Georgia,serif !important;
+      font-weight:400 !important;
+      font-size:clamp(4rem,10vw,9rem) !important;
+      line-height:.88 !important;
+      letter-spacing:-.04em !important;
+      color:#f3f1e8 !important;
+    }
+    html body .page-hero .lead,
+    html body .page-hero--fish .lead,
+    html body .page-hero--shellfish .lead,
+    html body .page-hero--cephalopods .lead{
+      font-family:"DM Sans",Arial,sans-serif !important;
+      font-weight:400 !important;
+      font-size:clamp(17px,2vw,22px) !important;
+      line-height:1.55 !important;
+    }
+    html body .page-hero .eyebrow,
+    html body .page-hero--fish .eyebrow,
+    html body .page-hero--shellfish .eyebrow,
+    html body .page-hero--cephalopods .eyebrow{
+      font-family:"DM Sans",Arial,sans-serif !important;
+      font-size:11px !important;
+      font-weight:600 !important;
+      letter-spacing:.18em !important;
+      color:#d9c7a0 !important;
+      text-transform:uppercase !important;
+    }
+    html body .nav-overlay-links>a,
+    html body .nav-products>summary{
+      font-family:"Cormorant Garamond",Georgia,serif !important;
+      font-size:40px !important;
+      font-weight:500 !important;
+      line-height:1.08 !important;
+    }
+    html body .nav-products>.nav-products-links>a,
+    html body .nav-products>.nav-products-links>details>summary{
+      font-family:"Cormorant Garamond",Georgia,serif !important;
+      font-size:35px !important;
+      font-weight:500 !important;
+      line-height:1.08 !important;
+    }
+    html body .nav-products>.nav-products-links>details>.nav-products-links>a{
+      font-family:"Cormorant Garamond",Georgia,serif !important;
+      font-size:25px !important;
+      font-weight:500 !important;
+      line-height:1.12 !important;
+    }
+    html body .nav-products>summary::after,
+    html body .nav-products>.nav-products-links>details>summary::after{
+      color:#d9c7a0 !important;
+    }
+    @media(max-width:800px){
+      html body .page-hero--fish h1,
+      html body .page-hero--shellfish h1,
+      html body .page-hero--cephalopods h1,
+      html body .product-hero h1,
+      html body .news-hero h1,
+      html body .contact-hero-title h1{font-size:clamp(3.5rem,16vw,6rem) !important}
+      html body .nav-overlay-links>a,
+      html body .nav-products>summary{font-size:35px !important}
+      html body .nav-products>.nav-products-links>a,
+      html body .nav-products>.nav-products-links>details>summary{font-size:30px !important}
+      html body .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:23px !important}
+    }
+  `;
+  doc.head.appendChild(checkpointStyle);
+
   const locale = (() => {
     const lang = (root.lang || 'es').toLowerCase();
     if (lang.startsWith('ar')) return 'ar';
