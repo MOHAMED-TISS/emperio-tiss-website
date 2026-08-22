@@ -104,6 +104,41 @@
   text-decoration:none!important;
 }
 
+/* Header controls: remove the full-width capsule; each control keeps its own floating surface. */
+.site-header{padding-inline:20px!important}
+.header-inner{
+  width:min(var(--et-container),calc(100% - 40px))!important;
+  min-height:70px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  box-shadow:none!important;
+}
+.site-logo{
+  inline-size:112px!important;
+  block-size:58px!important;
+  justify-content:center!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  border-radius:999px!important;
+  background:rgba(0,0,0,.22)!important;
+  backdrop-filter:blur(18px) saturate(120%)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(120%)!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.12)!important;
+}
+.site-logo img{inline-size:78px!important;max-block-size:48px!important}
+.et-language-switch,.language-nav{
+  padding:.72rem 1rem!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  border-radius:999px!important;
+  background:rgba(0,0,0,.22)!important;
+  backdrop-filter:blur(18px) saturate(120%)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(120%)!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.12)!important;
+}
+
 @media(max-width:800px){
   .nav-overlay-links{gap:.72rem}
   .nav-overlay-links > a,
@@ -115,4 +150,7 @@
   .nav-products > .nav-products-links > .nav-seafood > summary{font-size:clamp(1.12rem,5.3vw,1.4rem)!important}
   .nav-products > .nav-products-links > .nav-seafood > .nav-products-links{gap:.24rem;margin:.28rem 0 .4rem 1.65rem!important;padding-inline-start:.8rem!important}
   .nav-products > .nav-products-links > .nav-seafood > .nav-products-links > a{font-size:clamp(.94rem,4.3vw,1.12rem)!important}
+  .site-logo{inline-size:102px!important;block-size:54px!important}
+  .site-logo img{inline-size:72px!important;max-block-size:44px!important}
+  .et-language-switch,.language-nav{padding:.62rem .82rem!important}
 }
