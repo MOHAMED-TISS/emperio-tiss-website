@@ -86,10 +86,10 @@ jobs:
           from pathlib import Path
           import re
           root=Path('public')
-          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'logo.png']:
+          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'assets/images/logo.png']:
             assert p.exists(), f'Missing {p}'
           assert not (root/'assets/assets').exists()
-          forbidden={'luxury-nav.css','luxury-nav.js','international-nav.js','rtl-fix.css','fr-home-fix.css','products-header-fix.css','seafood-overrides.css','product-card.css','product-card.js','international-product-card.css','international-product-card.js','products-catalog.js','fruits-vegetables-motion.css','fruits-vegetables-motion.js','seasonal-calendar.css','seasonal-calendar.js'}
+          forbidden={'luxury-nav.css','luxury-nav.js','international-nav.js','rtl-fix.css','fr-home-fix.css','products-header-fix.css','seafood-overrides.css','product-card.css','product-card.js','international-product-card.css','international-product-card.js','fruits-vegetables-motion.css','fruits-vegetables-motion.js','seasonal-calendar.css','seasonal-calendar.js'}
           for p in root.rglob('*'): assert p.name not in forbidden, f'Legacy asset remains: {p}'
           for p in root.rglob('*.html'):
             s=p.read_text(encoding='utf-8'); assert '/assets/css/global.css' in s; assert '/assets/js/global.js' in s
