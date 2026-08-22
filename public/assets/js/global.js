@@ -20,6 +20,6 @@
 
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
-  loadCss('/assets/css/canonical-nav.css?v=20260822-canonical-4', 'etCanonicalNav');
-  loadScript('/assets/js/global-core.js?v=20260822-canonical-4', 'etGlobalCore');
+  loadCss('/assets/css/canonical-nav.css?v=20260822-canonical-5', 'etCanonicalNav');
+  loadScript('/assets/js/global-core.js?v=20260822-canonical-5', 'etGlobalCore');
 })();
