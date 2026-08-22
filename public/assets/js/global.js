@@ -22,10 +22,11 @@
     doc.head.appendChild(script);
   };
 
-  loadCss('/assets/css/components/tokens.css?v=architecture-tokens-1', 'etTokens');
-  loadCss('/assets/css/components/nav.css?v=architecture-nav-3', 'etNavigation');
+  /* Legacy dynamic styles first; canonical components last so they own the final cascade. */
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
+  loadCss('/assets/css/components/tokens.css?v=architecture-tokens-2', 'etTokens');
+  loadCss('/assets/css/components/nav.css?v=architecture-nav-4', 'etNavigation');
   loadScript('/assets/js/seo.js?v=architecture-seo-1', 'etSeo');
 
   const path = window.location.pathname.replace(/\/+$/, '/') || '/';
