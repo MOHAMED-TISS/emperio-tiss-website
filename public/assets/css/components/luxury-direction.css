@@ -1,0 +1,11 @@
+/* EMPERIO TISS — SITE-WIDE LUXURY DIRECTION MARKS */
+.luxury-direction{display:inline-block;position:relative;inline-size:1.05em;block-size:1.05em;margin-inline-start:.42em;vertical-align:-.08em;color:#d9c7a0;flex:0 0 1.05em;}
+.luxury-direction::before,.luxury-direction::after{content:"";position:absolute;display:block;background:currentColor;transform-origin:center;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .25s ease;}
+.luxury-direction::before{inline-size:.68em;block-size:1px;inset-inline-start:.08em;inset-block-start:.62em;transform:rotate(-35deg);}
+.luxury-direction::after{inline-size:.42em;block-size:1px;inset-inline-end:.08em;inset-block-start:.29em;transform:rotate(55deg);}
+a:hover .luxury-direction::before{transform:rotate(-28deg) translateX(.06em)}
+a:hover .luxury-direction::after{transform:rotate(62deg) translateX(.05em)}
+.luxury-direction--down{transform:rotate(90deg)}
+.luxury-direction--left{transform:scaleX(-1)}
+.luxury-direction--both::before{transform:rotate(0)}
+.luxury-direction--both::after{transform:rotate(90deg)}
