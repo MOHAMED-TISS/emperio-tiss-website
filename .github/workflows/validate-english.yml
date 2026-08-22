@@ -1,100 +1,86 @@
-name: Validate and migrate multilingual site
+name: Validate multilingual site
 
 on:
   push:
-    branches: [main]
+    branches: [main, test/website-architecture-cleanup]
     paths: ['public/**', '.github/workflows/validate-english.yml']
   pull_request:
     paths: ['public/**', '.github/workflows/validate-english.yml']
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  migrate:
-    if: "github.event_name == 'push' && !startsWith(github.event.head_commit.message, '[cleanup]')"
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Consolidate CSS and JS and rewrite HTML
+
+      - name: Validate repository architecture
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p public/assets/css public/assets/js public/assets/data public/assets/images
-          [ -f public/logo.png ] && cp -f public/logo.png public/assets/images/logo.png || true
-          [ -f public/products/catalog.json ] && cp -f public/products/catalog.json public/assets/data/catalog.json || true
-          cp -f public/assets/css/global.css public/assets/css/global.css
-          cp -f public/assets/js/global.js public/assets/js/global.js
-          declare -A CSS=(
-            [style.css]=base.css [luxury-nav.css]=global.css [rtl-fix.css]=global.css
-            [fr-home-fix.css]=pages.css [header-fix.css]=seafood-header.css
-            [products-header-fix.css]=global.css [seafood-overrides.css]=seafood-header.css
-            [international-pages.css]=pages.css [spanish-pages.css]=pages.css
-            [international-catalog-fix.css]=catalog.css [international-product-card.css]=catalog.css
-            [product-card.css]=catalog.css [produce-catalog.css]=catalog.css
-            [products-context.css]=products.css [products.css]=products.css
-            [products-landing.css]=products-landing.css [fruits-vegetables-motion.css]=catalog.css
-            [product-detail.css]=product-detail.css [seasonal-calendar.css]=seasonal.css
-            [seasonal.css]=seasonal.css [editorial-experience.css]=editorial.css
-            [seafood-subcategory.css]=seafood-subcategory.css [markets.css]=markets.css [contact.css]=contact.css
-          )
-          declare -A JS=(
-            [script.js]=global.js [luxury-nav.js]=global.js [international-nav.js]=global.js
-            [products-catalog.js]=catalog.js [product-card.js]=catalog.js [international-product-card.js]=catalog.js
-            [fruits-vegetables-motion.js]=catalog.js [product-detail.js]=product-detail.js
-            [seasonal-calendar.js]=seasonal.js [seasonal.js]=seasonal.js [products-nav.js]=products-nav.js
-            [seafood-subcategory.js]=seafood-subcategory.js
-          )
-          for f in $(find public -type f -name '*.css' -not -path 'public/assets/*'); do
-            n=$(basename "$f"); t=${CSS[$n]:-$(echo "$n" | sed 's/[^A-Za-z0-9_.-]/-/g')}; [ -f "public/assets/css/$t" ] || cp "$f" "public/assets/css/$t"; done
-          for f in $(find public -type f -name '*.js' -not -path 'public/assets/*'); do
-            n=$(basename "$f"); t=${JS[$n]:-$(echo "$n" | sed 's/[^A-Za-z0-9_.-]/-/g')}; [ -f "public/assets/js/$t" ] || cp "$f" "public/assets/js/$t"; done
           python3 - <<'PY'
           from pathlib import Path
           import re
-          root=Path('public'); css=root/'assets/css'; js=root/'assets/js'
-          names={p.name:f'/assets/css/{p.name}' for p in css.glob('*.css')}
-          names.update({p.name:f'/assets/js/{p.name}' for p in js.glob('*.js')})
-          for p in root.rglob('*.html'):
-            s=p.read_text(encoding='utf-8')
-            for name,target in names.items():
-              s=re.sub(r'((?:href|src)=["\'])[^"\']*'+re.escape(name)+r'(?=["\'])',r'\1'+target,s,flags=re.I)
-            s=re.sub(r'((?:href|src)=["\'])[^"\']*logo\.png(["\'])',r'\1/assets/images/logo.png\2',s,flags=re.I)
-            m=re.search(r'<html\b([^>]*)\blang=["\']([^"\']+)["\']([^>]*)>',s,re.I)
-            if m:
-              attrs=re.sub(r'\sdir=["\'][^"\']*["\']','',m.group(1)+m.group(3),flags=re.I)
-              d='rtl' if m.group(2).lower().startswith('ar') else 'ltr'
-              s=s[:m.start()]+f'<html{attrs} lang="{m.group(2)}" dir="{d}">'+s[m.end():]
-            if '/assets/css/global.css' not in s: s=s.replace('</head>','<link rel="stylesheet" href="/assets/css/global.css">\n</head>',1)
-            if '/assets/js/global.js' not in s: s=s.replace('</body>','<script src="/assets/js/global.js" defer></script>\n</body>',1)
-            p.write_text(s,encoding='utf-8')
-          PY
-          find public -type f \( -name '*.css' -o -name '*.js' \) -not -path 'public/assets/*' -delete
-          find public -type d -empty -delete
-          git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git diff --cached --quiet || (git commit -m '[cleanup] migrate all pages to canonical assets' && git push)
 
-  validate:
-    if: "github.event_name == 'pull_request' || (github.event_name == 'push' && startsWith(github.event.head_commit.message, '[cleanup]'))"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Final architecture validation
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          root=Path('public')
-          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'assets/images/logo.png']:
-            assert p.exists(), f'Missing {p}'
-          assert not (root/'assets/assets').exists()
-          forbidden={'luxury-nav.css','luxury-nav.js','international-nav.js','rtl-fix.css','fr-home-fix.css','products-header-fix.css','seafood-overrides.css','product-card.css','product-card.js','international-product-card.css','international-product-card.js','fruits-vegetables-motion.css','fruits-vegetables-motion.js','seasonal-calendar.css','seasonal-calendar.js'}
-          for p in root.rglob('*'): assert p.name not in forbidden, f'Legacy asset remains: {p}'
-          for p in root.rglob('*.html'):
-            s=p.read_text(encoding='utf-8'); assert '/assets/css/global.css' in s; assert '/assets/js/global.js' in s
-            m=re.search(r'<html\b[^>]*\blang=["\']([^"\']+)',s,re.I); assert m, p
-            if m.group(1).lower().startswith('ar'): assert re.search(r'dir=["\']rtl["\']',s,re.I), p
-            for ref in re.findall(r'(?:href|src)=["\'](/assets/[^"\']+)',s,re.I): assert (root/ref.lstrip('/')).exists(), f'{p}: {ref}'
-          print('FINAL VALIDATION PASSED')
+          root = Path('public')
+          required = [
+              root / 'assets/css/global.css',
+              root / 'assets/js/global.js',
+              root / 'assets/js/nav-normalizer.js',
+              root / 'assets/js/seo.js',
+              root / 'logo.png',
+          ]
+          for path in required:
+              assert path.exists(), f'Missing required file: {path}'
+
+          forbidden_files = {
+              'fish-demo-header.css',
+              'fish-footer.css',
+              'fish-header-float.css',
+              'product-nav-prototype.css',
+              'global-core.js',
+              'rtl-fix.css',
+          }
+          for path in root.rglob('*'):
+              if path.is_file():
+                  assert path.name not in forbidden_files, f'Legacy file remains: {path}'
+
+          html_files = list(root.rglob('*.html'))
+          assert html_files, 'No HTML files found'
+
+          for path in html_files:
+              text = path.read_text(encoding='utf-8')
+              assert '/assets/css/global.css' in text, f'{path}: missing global.css'
+              assert '/assets/js/global.js' in text, f'{path}: missing global.js'
+              lang = re.search(r'<html\b[^>]*\blang=["\']([^"\']+)', text, re.I)
+              assert lang, f'{path}: missing html lang'
+              if lang.group(1).lower().startswith('ar'):
+                  assert re.search(r'<html\b[^>]*\bdir=["\']rtl["\']', text, re.I), f'{path}: missing RTL dir'
+              for ref in re.findall(r'(?:href|src)=["\'](/assets/[^"\']+)', text, re.I):
+                  assert (root / ref.lstrip('/')).exists(), f'{path}: missing asset {ref}'
+
+          fish = root / 'en/products/seafood/fish/index.html'
+          fish_text = fish.read_text(encoding='utf-8')
+          assert 'fish-catalog-pilot' not in fish_text, 'Fish pilot class remains'
+          assert fish_text.count('<style>') == 0, 'Fish still contains page-level style block'
+          assert 'page-hero--fish' in fish_text, 'Fish hero modifier missing'
+
+          global_text = (root / 'assets/js/global.js').read_text(encoding='utf-8')
+          assert 'nav-normalizer.js' in global_text, 'Canonical nav normalizer is not loaded'
+          assert 'footer.css' in global_text, 'Canonical footer component is not loaded'
+
+          nav_css = (root / 'assets/css/components/nav.css').read_text(encoding='utf-8')
+          assert 'font-size:40px' in nav_css
+          assert 'font-size:35px' in nav_css
+          assert 'font-size:25px' in nav_css
+          assert '.nav-products>.nav-products-links>details>summary::after' in nav_css
+
+          hero_css = (root / 'assets/css/components/hero.css').read_text(encoding='utf-8')
+          assert '.page-hero--fish' in hero_css
+          assert '.page-hero--shellfish' in hero_css
+          assert '.page-hero--cephalopods' in hero_css
+          print(f'Validated {len(html_files)} HTML files successfully.')
+          print('FINAL ARCHITECTURE VALIDATION PASSED')
           PY
