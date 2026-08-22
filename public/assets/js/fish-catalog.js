@@ -14,6 +14,12 @@
   if (!grid || !search || !count) return;
 
   const demoMode = new URLSearchParams(window.location.search).get('demo') === '1';
+  if (demoMode) {
+    const demoHeader = document.createElement('link');
+    demoHeader.rel = 'stylesheet';
+    demoHeader.href = '/assets/css/fish-demo-header.css?v=20260822-1';
+    document.head.appendChild(demoHeader);
+  }
   let products = [];
   let activeFilter = 'all';
   let realPhotos = {};
