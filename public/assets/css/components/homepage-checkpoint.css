@@ -1,0 +1,152 @@
+/* EMPERIO TISS — HOMEPAGE CHECKPOINT VISUAL SYSTEM */
+
+/* Shared homepage typography/palette only. Loaded last on ES / EN / FR / AR homepages. */
+.home-page,
+.intl-page,
+.ar-page{
+  --et-serif:"Cormorant Garamond",Georgia,serif;
+  --et-sans:"DM Sans",Arial,sans-serif;
+  --et-ivory:#f3f1e8;
+  --et-ivory-light:#f8f6f0;
+  --et-marfil:#f3f1e8;
+  --et-marfil-light:#f8f6f0;
+  --et-cream:#f3f1e8;
+  --et-cream-light:#f8f6f0;
+  --et-gold:#d9c7a0;
+  --et-champagne:#d9c7a0;
+  --et-gold-light:#dec487;
+  --et-ink:#102331;
+}
+
+.home-page main,
+.intl-page main,
+.ar-page main{
+  font-family:var(--et-sans);
+}
+
+.home-page main :is(h1,h2,h3,h4),
+.intl-page main :is(h1,h2,h3,h4),
+.ar-page main :is(h1,h2,h3,h4){
+  font-family:var(--et-serif)!important;
+  font-weight:400!important;
+}
+
+.home-page main p,
+.intl-page main p,
+.ar-page main p{
+  font-family:var(--et-sans)!important;
+  font-size:clamp(15px,1.5vw,18px)!important;
+  line-height:1.6!important;
+}
+
+/* Hero / principal title */
+.home-page .hero h1,
+.intl-page .intl-hero h1,
+.ar-page .ar-hero h1{
+  font-family:var(--et-serif)!important;
+  font-size:clamp(4rem,10vw,9rem)!important;
+  line-height:.88!important;
+  letter-spacing:-.04em!important;
+  font-weight:400!important;
+}
+
+.home-page .hero-description strong,
+.home-page .hero-description span,
+.intl-page .intl-lead,
+.ar-page .ar-lead{
+  font-family:var(--et-sans)!important;
+}
+
+.home-page .hero-description strong{
+  font-size:clamp(17px,2vw,22px)!important;
+  line-height:1.3!important;
+}
+
+.home-page .hero-line-gold,
+.home-page h2 em,
+.home-page .hero-number,
+.home-page .eyebrow,
+.home-page .product-number,
+.home-page .product-arrow,
+.intl-page .intl-kicker,
+.intl-page .intl-label,
+.intl-page .intl-hero h1 em,
+.intl-page .intl-section h2 em,
+.intl-page .intl-cta h2 em,
+.ar-page .ar-kicker,
+.ar-page .ar-label,
+.ar-page .ar-hero h1 em,
+.ar-page .ar-section h2 em,
+.ar-page .ar-cta h2 em{
+  color:var(--et-champagne)!important;
+}
+
+.home-page .intro-section,
+.home-page .products-section,
+.home-page .company-section{
+  background:var(--et-ivory)!important;
+}
+
+.home-page .intro-lead,
+.home-page .large-copy,
+.home-page .product-row h3,
+.home-page .market-grid h3,
+.intl-page .intl-hero h1,
+.intl-page .intl-section h2,
+.intl-page .intl-cta h2,
+.intl-page .intl-card h3,
+.ar-page .ar-hero h1,
+.ar-page .ar-section h2,
+.ar-page .ar-cta h2,
+.ar-page .ar-card h3{
+  font-family:var(--et-serif)!important;
+}
+
+.home-page h2,
+.intl-page .intl-section h2,
+.intl-page .intl-cta h2,
+.ar-page .ar-section h2,
+.ar-page .ar-cta h2{
+  font-size:clamp(3rem,6vw,6rem)!important;
+  line-height:.92!important;
+  letter-spacing:-.04em!important;
+}
+
+.home-page .intro-lead,
+.home-page .large-copy{
+  font-size:clamp(17px,2vw,22px)!important;
+  line-height:1.55!important;
+}
+
+.home-page .hero-description span,
+.intl-page .intl-lead,
+.ar-page .ar-lead{
+  font-size:clamp(17px,2vw,22px)!important;
+  line-height:1.55!important;
+}
+
+.home-page .eyebrow,
+.intl-page .intl-kicker,
+.intl-page .intl-label,
+.ar-page .ar-kicker,
+.ar-page .ar-label{
+  font-family:var(--et-sans)!important;
+  font-size:11px!important;
+  font-weight:600!important;
+  letter-spacing:.18em!important;
+}
+
+@media(max-width:800px){
+  .home-page .hero h1,
+  .intl-page .intl-hero h1,
+  .ar-page .ar-hero h1{
+    font-size:clamp(3.5rem,16vw,6rem)!important;
+  }
+  .home-page h2,
+  .intl-page .intl-section h2,
+  .intl-page .intl-cta h2,
+  .ar-page .ar-section h2,
+  .ar-page .ar-cta h2{
+    font-size:clamp(3rem,14vw,5.8rem)!important;
+  }
+}
