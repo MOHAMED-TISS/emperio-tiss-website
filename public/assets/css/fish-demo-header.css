@@ -1,0 +1,4 @@
+/* Fish demo — slightly larger header logo, contained inside the existing button */
+.fish-catalog-pilot .site-header .site-logo{padding:4px!important}
+.fish-catalog-pilot .site-header .site-logo img{max-width:48px!important;max-height:48px!important}
+@media(max-width:640px){.fish-catalog-pilot .site-header .site-logo{padding:4px!important}.fish-catalog-pilot .site-header .site-logo img{max-width:44px!important;max-height:44px!important}}
