@@ -7,6 +7,9 @@
 .nav-overlay-links>a,.nav-products>summary{font-family:var(--et-serif);font-size:40px;font-weight:500;line-height:1.08;letter-spacing:.025em}
 .nav-overlay-links>a,.nav-overlay-links>.nav-products{margin:0 0 18px;padding:0}
 
+/* ES homepage: deeper, near-black menu curtain while preserving the existing editorial palette. */
+html[lang="es"] body.home-page .nav-overlay{background:#010806!important;color:#fff}
+
 /* Primary navigation: Products is a first-level item, exactly aligned with 01–02 and 04–06. */
 .nav-overlay-links>.nav-products{display:block!important;margin-inline-start:0!important;padding-inline-start:0!important}
 .nav-products>summary{list-style:none;display:flex;align-items:baseline;gap:1rem;cursor:pointer;margin:0;padding:0}
