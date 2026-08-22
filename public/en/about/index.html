@@ -8,7 +8,7 @@
   <link rel="icon" href="/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/about-en.css">
 </head>
@@ -16,33 +16,37 @@
 <header class="site-header" id="luxuryHeader">
   <div class="header-inner">
     <a class="site-logo" href="/en/" aria-label="EMPERIO TISS — Home"><img src="/logo.png" alt="EMPERIO TISS" width="44" height="34"></a>
-    <nav class="et-language-switch" aria-label="Language"><a href="/" >ES</a><span class="sep">·</span><a href="/en/" class="current">EN</a><span class="sep">·</span><a href="/fr/">FR</a><span class="sep">·</span><a href="/ar/">AR</a></nav>
+    <nav class="et-language-switch" aria-label="Language"><a href="/">ES</a><span class="sep">·</span><a href="/en/" class="current">EN</a><span class="sep">·</span><a href="/fr/">FR</a><span class="sep">·</span><a href="/ar/">AR</a></nav>
     <button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
   </div>
   <div class="nav-overlay" id="navOverlay" aria-hidden="true">
-    <nav class="nav-overlay-links" aria-label="Main navigation">
-      <a href="/en/"><span class="idx">01</span><span>Home</span></a>
-      <a href="/en/about/" class="active"><span class="idx">02</span><span>Company</span></a>
-      <details>
-        <summary><span class="idx">03</span><span>Products</span><span aria-hidden="true">+</span></summary>
-        <div class="subnav">
-          <a href="/en/products/">All products</a>
-          <a href="/en/products/seafood/">Seafood</a>
-          <a href="/en/products/seafood/fish/">Fish</a>
-          <a href="/en/products/seafood/shellfish/">Shellfish</a>
-          <a href="/en/products/seafood/cephalopods/">Cephalopods</a>
-          <a href="/en/products/fruits/">Fruits</a>
-          <a href="/en/products/vegetables/">Vegetables</a>
-          <a href="/en/products/seasonal/">Seasonal</a>
-        </div>
-      </details>
-      <a href="/en/markets/"><span class="idx">04</span><span>Markets</span></a>
-      <a href="/en/news/"><span class="idx">05</span><span>News</span></a>
-      <a href="/en/contact/"><span class="idx">06</span><span>Contact</span></a>
-    </nav>
-    <div class="nav-overlay-foot">
-      <div class="nav-overlay-lang"><a href="/">ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a></div>
-      <div class="nav-overlay-contact"><a href="/en/contact/">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span></div>
+    <div class="nav-overlay-inner">
+      <nav class="nav-overlay-links" aria-label="Main navigation">
+        <a href="/en/"><span class="idx">01</span><span>Home</span></a>
+        <a href="/en/about/" class="active"><span class="idx">02</span><span>Company</span></a>
+        <details class="nav-products">
+          <summary><span class="idx">03</span><span>Products</span></summary>
+          <div class="nav-products-links">
+            <details>
+              <summary>Seafood</summary>
+              <div class="nav-products-links">
+                <a href="/en/products/seafood/fish/">Fish</a>
+                <a href="/en/products/seafood/shellfish/">Shellfish</a>
+                <a href="/en/products/seafood/cephalopods/">Cephalopods</a>
+              </div>
+            </details>
+            <a href="/en/products/fruits/">Fruits &amp; Vegetables</a>
+            <a href="/en/products/seasonal/">Seasonal</a>
+          </div>
+        </details>
+        <a href="/en/markets/"><span class="idx">04</span><span>Markets</span></a>
+        <a href="/en/news/"><span class="idx">05</span><span>News</span></a>
+        <a href="/en/contact/"><span class="idx">06</span><span>Contact</span></a>
+      </nav>
+      <div class="nav-overlay-foot">
+        <div class="nav-overlay-lang"><a href="/">ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a></div>
+        <div class="nav-overlay-contact"><a href="/en/contact/">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span></div>
+      </div>
     </div>
   </div>
 </header>
