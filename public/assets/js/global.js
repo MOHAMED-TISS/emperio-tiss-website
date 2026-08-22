@@ -6,7 +6,7 @@
   const loadCss = (href, key) => { if (doc.querySelector(`link[data-${key}]`)) return; const link=doc.createElement('link'); link.rel='stylesheet'; link.href=href; link.dataset[key]='true'; doc.head.appendChild(link); };
   const loadScript = (src, key) => { if (doc.querySelector(`script[data-${key}]`)) return; const script=doc.createElement('script'); script.src=src; script.defer=true; script.dataset[key]='true'; doc.head.appendChild(script); };
 
-  loadCss('/assets/css/site-pages.css?v=20260822-es-editorial-2','etSitePages');
+  loadCss('/assets/css/site-pages.css?v=20260822-es-editorial-3','etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1','etUnifiedPages');
   loadCss('/assets/css/components/tokens.css?v=architecture-tokens-2','etTokens');
   loadCss('/assets/css/components/nav.css?v=architecture-nav-4','etNavigation');
@@ -36,8 +36,7 @@
     else if(/\/products\/seafood\/(fish|shellfish|cephalopods)\/$/.test(path)) body.classList.add('et-es-product-detail','et-es-seafood');
     else if(/\/products\//.test(path)) body.classList.add('et-es-product-detail');
     else body.classList.add('et-es-standard');
-    loadCss('/assets/css/es-editorial-system.css?v=20260822-es-editorial-2','etSpanishEditorial');
-    loadCss('/assets/css/es-home-final.css?v=20260822-es-final-1','etSpanishEditorialFinal');
+    loadCss('/assets/css/es-editorial-system.css?v=20260822-isra-es-1','etSpanishEditorial');
   }
 
   if(compactCatalog){loadCss('/assets/css/compact-catalog.css?v=20260822-1','etCompactCatalog');loadScript('/assets/js/compact-catalog.js?v=20260822-1','etCompactCatalogScript');}
