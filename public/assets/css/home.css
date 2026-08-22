@@ -16,3 +16,19 @@
 @media(max-width:800px){.home-page .hero{padding-top:125px}.home-page .hero-grid{width:calc(100% - 32px);min-height:calc(100svh - 210px);grid-template-columns:1fr}.home-page .hero-side{display:none}.home-page h1{font-size:clamp(3.8rem,16vw,6rem)}.home-page .hero-description{margin-top:34px}.home-page .hero-actions{flex-direction:column;align-items:stretch}.home-page .hero-actions .button{justify-content:space-between}.home-page .hero-bottom{width:calc(100% - 32px);bottom:22px;gap:9px;font-size:7px}.home-page .hero-bottom i{width:16px}.home-page section:not(.hero){padding:82px 0}.home-page .intro-section .container,.home-page .products-section .container,.home-page .markets-section .container,.home-page .company-section .container,.home-page .contact-section .container{width:calc(100% - 32px)}.home-page .intro-section .container{grid-template-columns:1fr;gap:20px}.home-page .intro-bottom,.home-page .company-grid{grid-template-columns:1fr;gap:38px;margin-top:42px}.home-page .section-heading,.home-page .markets-top{display:block}.home-page .section-intro,.home-page .markets-description{margin-top:24px}.home-page .market-grid{grid-template-columns:1fr 1fr}.home-page .market-grid article{border-top:1px solid rgba(255,255,255,.14)}.home-page .market-grid article:nth-child(odd){border-inline-start:0}.home-page .footer-main{grid-template-columns:1fr 1fr;gap:38px}.home-page .footer-brand{grid-column:1/-1}.home-page .footer-legal{display:block}.home-page .footer-legal p{max-width:none;margin-bottom:10px}.home-page .footer-bottom{display:block}.home-page .footer-bottom span{display:block;margin-top:8px}}
 @media(max-width:480px){.home-page .market-grid{grid-template-columns:1fr}.home-page .market-grid article{border-inline-start:0!important}.home-page .product-row{grid-template-columns:34px 1fr 24px;gap:12px;padding:24px 0}.home-page .product-row h3{font-size:1.55rem}.home-page .product-row p{font-size:8px}.home-page .footer-main{grid-template-columns:1fr}.home-page .footer-brand{grid-column:auto}}
 [dir="rtl"] .home-page .hero-side{text-align:left;align-items:flex-start}[dir="rtl"] .home-page .footer-logo{object-position:right center}[dir="rtl"] .home-page .market-grid article{border-inline-start:0;border-inline-end:1px solid rgba(255,255,255,.14)}
+
+/* ES HOMEPAGE — CINEMATIC BARCELONA PORT HERO */
+html[lang="es"] .home-page .hero{
+  background-image:
+    linear-gradient(90deg,rgba(2,13,25,.90) 0%,rgba(3,16,28,.72) 38%,rgba(3,16,28,.34) 66%,rgba(2,10,19,.72) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/7/74/Port_of_Barcelona_at_Night.jpg");
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+html[lang="es"] .home-page .hero:before{
+  background:linear-gradient(90deg,rgba(2,13,25,.30),rgba(3,16,28,.08) 58%,rgba(2,10,19,.22));
+}
+html[lang="es"] .home-page .hero-glow-one{background:rgba(217,199,160,.12)}
+html[lang="es"] .home-page .hero-glow-two{background:rgba(243,241,232,.045)}
+html[lang="es"] .home-page .hero-bottom{color:rgba(243,241,232,.58)}
