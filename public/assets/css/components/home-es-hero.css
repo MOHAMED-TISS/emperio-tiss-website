@@ -1,25 +1,53 @@
-/* EMPERIO TISS — ES homepage hero image */
+/* EMPERIO TISS — ES HERO / EDITORIAL IMAGE LAYER */
 html[lang="es"] .home-page .hero{
-  background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg");
-  background-position:center 50%;
-  background-size:cover;
-  background-repeat:no-repeat;
+  position:relative;
+  isolation:isolate;
+  min-height:100svh;
+  overflow:hidden;
+  background-color:#061a14!important;
+  background-image:
+    linear-gradient(90deg,rgba(3,13,21,.94) 0%,rgba(3,17,27,.72) 42%,rgba(3,17,27,.28) 72%,rgba(2,10,17,.58) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg")!important;
+  background-position:center 48%!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
 }
+
+/* No circles, blobs or competing decorative hero layers. */
+html[lang="es"] .home-page .hero-glow,
+html[lang="es"] .home-page .hero-glow-one,
+html[lang="es"] .home-page .hero-glow-two{display:none!important}
 
 html[lang="es"] .home-page .hero:before{
-  background:
-    linear-gradient(90deg,rgba(2,11,20,.92) 0%,rgba(3,18,30,.78) 38%,rgba(3,24,38,.52) 70%,rgba(2,11,20,.72) 100%);
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.10) 0%,transparent 48%,rgba(0,0,0,.60) 100%)!important;
 }
-
 html[lang="es"] .home-page .hero:after{
   content:"";
   position:absolute;
   inset:0;
-  pointer-events:none;
   z-index:-1;
-  background:linear-gradient(180deg,rgba(4,29,49,.18) 0%,rgba(4,29,49,.04) 52%,rgba(2,10,18,.42) 100%);
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(3,13,21,.12),transparent 60%,rgba(3,13,21,.18));
 }
 
+html[lang="es"] .home-page .hero-grid{min-height:calc(100svh - 206px)}
+html[lang="es"] .home-page .hero-content{max-width:880px}
+html[lang="es"] .home-page .hero-kicker{letter-spacing:.22em}
+html[lang="es"] .home-page .hero-kicker span{width:36px}
+html[lang="es"] .home-page .hero h1{margin-top:22px;max-width:850px}
+html[lang="es"] .home-page .hero-line-white,
+html[lang="es"] .home-page .hero-line-gold{display:block}
+html[lang="es"] .home-page .hero-line-gold{color:#c9a76a;text-shadow:none}
+html[lang="es"] .home-page .hero-description{max-width:650px;margin-top:42px}
+html[lang="es"] .home-page .hero-actions{margin-top:34px}
+html[lang="es"] .home-page .hero-bottom{letter-spacing:.22em}
+
 @media(max-width:800px){
-  html[lang="es"] .home-page .hero{background-position:center 50%;}
+  html[lang="es"] .home-page .hero{min-height:100svh;padding-top:112px;background-position:center 50%!important}
+  html[lang="es"] .home-page .hero-grid{min-height:calc(100svh - 198px)}
 }
