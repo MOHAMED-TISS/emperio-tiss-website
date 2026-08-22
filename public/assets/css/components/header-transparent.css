@@ -6,3 +6,7 @@
 .et-language-switch,.language-nav{min-block-size:38px;padding-inline:14px;border-radius:999px;gap:9px}
 .et-language-switch a,.language-nav a{color:#fff!important;opacity:.86}
 .et-language-switch a.current,.language-nav a.current{color:#fff!important;font-weight:700;opacity:1}
+/* Homepages: enlarge the brand mark while keeping the 58px control unchanged. */
+body.home-page .site-logo img,
+body.intl-page:has(.intl-hero) .site-logo img,
+body.ar-page:has(.ar-hero) .site-logo img{inline-size:50px!important;block-size:50px!important;width:50px!important;height:50px!important}
