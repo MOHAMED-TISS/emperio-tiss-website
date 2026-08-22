@@ -1,0 +1,13 @@
+/* EMPERIO TISS — CANONICAL NAVIGATION HIERARCHY */
+.nav-products > .nav-products-links > .nav-seafood > .nav-products-links{display:none;margin-inline-start:2.25rem;margin-block:.45rem .65rem;padding-inline-start:1.25rem;gap:.3rem;flex-direction:column;border-inline-start:1px solid rgba(255,255,255,.16)}
+.nav-products > .nav-products-links > .nav-seafood[open] > .nav-products-links{display:flex}
+.nav-products > .nav-products-links > .nav-seafood > summary{list-style:none;display:flex;align-items:baseline;cursor:pointer;color:inherit;font:inherit}
+.nav-products > .nav-products-links > .nav-seafood > summary::-webkit-details-marker{display:none}
+.nav-products > .nav-products-links > .nav-seafood > summary::after{content:'+';font:500 .8em/1 var(--et-sans);color:var(--et-gold);margin-inline-start:.35em}
+.nav-products > .nav-products-links > .nav-seafood[open] > summary::after{content:'−'}
+.nav-products > .nav-products-links > .nav-seafood > .nav-products-links a{font:500 clamp(.95rem,1.8vw,1.2rem)/1.2 var(--et-sans)!important}
+.nav-products > .nav-products-links > a{margin-block:.1rem}
+
+@media(max-width:800px){
+  .nav-products > .nav-products-links > .nav-seafood > .nav-products-links{margin-inline-start:1.25rem;padding-inline-start:1rem}
+}
