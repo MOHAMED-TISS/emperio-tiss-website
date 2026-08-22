@@ -9,7 +9,7 @@
   loadCss('/assets/css/site-pages.css?v=20260822-es-editorial-3','etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1','etUnifiedPages');
   loadCss('/assets/css/components/tokens.css?v=architecture-tokens-2','etTokens');
-  loadCss('/assets/css/components/nav.css?v=architecture-nav-5','etNavigation');
+  loadCss('/assets/css/components/nav.css?v=architecture-nav-8','etNavigation');
   loadCss('/assets/css/components/footer.css?v=architecture-footer-1','etFooter');
   loadCss('/assets/css/components/header-transparent.css?v=header-transparent-1','etHeaderTransparent');
   loadScript('/assets/js/seo.js?v=architecture-seo-1','etSeo');
