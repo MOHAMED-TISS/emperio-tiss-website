@@ -1,0 +1,4 @@
+/* EMPERIO TISS — transparent global header treatment */
+.header-inner{background:transparent!important;border:0!important;border-radius:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
+.et-language-switch a,.language-nav a{color:#fff!important;opacity:.82}
+.et-language-switch a.current,.language-nav a.current{color:#fff!important;opacity:1}
