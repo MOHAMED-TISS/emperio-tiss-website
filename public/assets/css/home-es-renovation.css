@@ -1,120 +1,159 @@
-/* EMPERIO TISS — ES homepage editorial renovation */
+/* EMPERIO TISS — ES homepage / clean editorial system */
 html[lang="es"] .home-page{
-  --home-gold:#d4b16c;
-  --home-ink:#10251c;
-  --home-green:#071d16;
-  --home-cream:#f5f1e8;
+  --et-ink:#0b1915;
+  --et-marine:#071b16;
+  --et-cream:#f3efe6;
+  --et-white:#fffdf8;
+  --et-gold:#c9a76a;
+  --et-line:rgba(11,25,21,.16);
+  --et-ease:cubic-bezier(.22,1,.36,1);
 }
 
-/* Remove the old decorative circles completely. */
+/* Remove the old ornamental treatment. */
 html[lang="es"] .home-page .hero-glow,
 html[lang="es"] .home-page .hero-glow-one,
 html[lang="es"] .home-page .hero-glow-two{display:none!important}
 
+/* HERO — photographic, quiet, editorial. */
 html[lang="es"] .home-page .hero{
-  background-image:
-    linear-gradient(90deg,rgba(3,12,21,.94) 0%,rgba(4,17,29,.78) 40%,rgba(4,19,31,.42) 72%,rgba(2,10,18,.72) 100%),
-    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg")!important;
-  background-position:center 46%!important;
-  background-size:cover!important;
-  background-repeat:no-repeat!important;
+  position:relative;
+  isolation:isolate;
   min-height:100svh;
-  padding-top:130px;
+  padding-top:120px;
+  overflow:hidden;
+  background-image:
+    linear-gradient(90deg,rgba(4,13,18,.92) 0%,rgba(4,16,21,.70) 38%,rgba(4,16,21,.28) 70%,rgba(4,13,18,.46) 100%),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_view_of_Madrid%2C_Spain_at_night_-_50317258357.jpg")!important;
+  background-size:cover!important;
+  background-position:center 48%!important;
+  background-repeat:no-repeat!important;
 }
-
 html[lang="es"] .home-page .hero:before{
-  background:linear-gradient(180deg,rgba(1,8,14,.20),rgba(2,11,20,.06) 46%,rgba(1,7,12,.54))!important;
-}
-
-html[lang="es"] .home-page .hero:after{
   content:"";
   position:absolute;
   inset:0;
   z-index:-1;
+  background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,transparent 52%,rgba(0,0,0,.58) 100%)!important;
   pointer-events:none;
-  background:linear-gradient(90deg,rgba(4,14,23,.12),transparent 55%,rgba(4,14,23,.18));
 }
+html[lang="es"] .home-page .hero:after{display:none!important}
+html[lang="es"] .home-page .hero-grid{min-height:calc(100svh - 120px);align-items:center}
+html[lang="es"] .home-page .hero-content{max-width:900px}
+html[lang="es"] .home-page .hero-kicker{letter-spacing:.22em}
+html[lang="es"] .home-page .hero-kicker span{width:34px}
+html[lang="es"] .home-page .hero h1{max-width:850px;margin-top:22px}
+html[lang="es"] .home-page .hero-line-white,
+html[lang="es"] .home-page .hero-line-gold{display:block}
+html[lang="es"] .home-page .hero-line-gold{color:var(--et-gold);text-shadow:none}
+html[lang="es"] .home-page .hero-description{max-width:650px;margin-top:34px}
+html[lang="es"] .home-page .hero-description strong{display:block;margin-bottom:10px;font-weight:500;letter-spacing:.03em}
+html[lang="es"] .home-page .hero-actions{margin-top:34px}
+html[lang="es"] .home-page .hero-side{opacity:.78}
+html[lang="es"] .home-page .hero-bottom{letter-spacing:.22em}
 
-/* Editorial hero reveal */
-html[lang="es"] .home-page.es-motion-ready .hero-kicker,
-html[lang="es"] .home-page.es-motion-ready .hero-line-white,
-html[lang="es"] .home-page.es-motion-ready .hero-line-gold,
-html[lang="es"] .home-page.es-motion-ready .hero-description,
-html[lang="es"] .home-page.es-motion-ready .hero-actions,
+/* Hero entrance — slow and precise. */
+html[lang="es"] .home-page.es-motion-ready .hero-content > *,
 html[lang="es"] .home-page.es-motion-ready .hero-side,
 html[lang="es"] .home-page.es-motion-ready .hero-bottom{
   opacity:0;
-  transform:translateY(22px);
-  transition:opacity .8s ease,transform .9s cubic-bezier(.22,1,.36,1);
+  transform:translateY(26px);
+  transition:opacity .9s ease,transform 1s var(--et-ease);
 }
-html[lang="es"] .home-page.es-motion-ready .hero-kicker{transition-delay:.18s}
-html[lang="es"] .home-page.es-motion-ready .hero-line-white:nth-child(1){transition-delay:.30s}
-html[lang="es"] .home-page.es-motion-ready .hero-line-gold{transition-delay:.42s}
-html[lang="es"] .home-page.es-motion-ready .hero-line-white:nth-child(3){transition-delay:.54s}
-html[lang="es"] .home-page.es-motion-ready .hero-description{transition-delay:.68s}
-html[lang="es"] .home-page.es-motion-ready .hero-actions{transition-delay:.80s}
-html[lang="es"] .home-page.es-motion-ready .hero-side{transition-delay:.60s}
-html[lang="es"] .home-page.es-motion-ready .hero-bottom{transition-delay:1s}
-html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-kicker,
-html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-line-white,
-html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-line-gold,
-html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-description,
-html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-actions,
+html[lang="es"] .home-page.es-motion-ready .hero-kicker{transition-delay:.16s}
+html[lang="es"] .home-page.es-motion-ready h1{transition-delay:.28s}
+html[lang="es"] .home-page.es-motion-ready .hero-description{transition-delay:.44s}
+html[lang="es"] .home-page.es-motion-ready .hero-actions{transition-delay:.58s}
+html[lang="es"] .home-page.es-motion-ready .hero-side{transition-delay:.48s}
+html[lang="es"] .home-page.es-motion-ready .hero-bottom{transition-delay:.76s}
+html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-content > *,
 html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-side,
 html[lang="es"] .home-page.es-motion-ready.es-page-enter .hero-bottom{opacity:1;transform:none}
 
-html[lang="es"] .home-page .hero-line-gold{text-shadow:0 0 30px rgba(212,177,108,.14)}
-html[lang="es"] .home-page .hero-actions .button{backdrop-filter:blur(7px)}
-html[lang="es"] .home-page .hero-actions .button-outline:hover{background:rgba(212,177,108,.10);color:#fff}
-
-/* More editorial section rhythm */
+/* Sections — generous whitespace, fewer visual containers. */
 html[lang="es"] .home-page section:not(.hero){position:relative;overflow:hidden}
-html[lang="es"] .home-page .intro-section{padding-top:150px;padding-bottom:150px}
-html[lang="es"] .home-page .products-section{padding-top:135px;padding-bottom:145px}
-html[lang="es"] .home-page .markets-section{padding-top:145px;padding-bottom:145px}
-html[lang="es"] .home-page .company-section{padding-top:145px;padding-bottom:145px}
-html[lang="es"] .home-page .contact-section{padding-top:155px;padding-bottom:155px}
+html[lang="es"] .home-page .intro-section{padding:180px 0 170px;background:var(--et-cream)}
+html[lang="es"] .home-page .products-section{padding:170px 0;background:var(--et-white)}
+html[lang="es"] .home-page .markets-section{padding:180px 0;background:var(--et-marine);color:var(--et-white)}
+html[lang="es"] .home-page .company-section{padding:180px 0;background:var(--et-cream)}
+html[lang="es"] .home-page .contact-section{padding:190px 0;background:var(--et-white)}
 
-html[lang="es"] .home-page .product-row{position:relative;overflow:hidden;transition:padding .45s cubic-bezier(.22,1,.36,1),background .45s ease}
-html[lang="es"] .home-page .product-row:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--home-gold);transition:width .55s cubic-bezier(.22,1,.36,1)}
+html[lang="es"] .home-page .section-index{opacity:.48}
+html[lang="es"] .home-page .eyebrow{letter-spacing:.20em}
+html[lang="es"] .home-page h2{letter-spacing:-.025em}
+html[lang="es"] .home-page h2 em{font-weight:400}
+
+/* Products — typography first, no cards. */
+html[lang="es"] .home-page .product-list{margin-top:72px;border-top:1px solid var(--et-line)}
+html[lang="es"] .home-page .product-row{
+  display:grid;
+  grid-template-columns:72px 1fr 50px;
+  align-items:center;
+  min-height:142px;
+  padding:18px 0;
+  border-bottom:1px solid var(--et-line);
+  background:transparent!important;
+  transition:padding-left .55s var(--et-ease),padding-right .55s var(--et-ease);
+}
+html[lang="es"] .home-page .product-row:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--et-gold);transition:width .65s var(--et-ease)}
+html[lang="es"] .home-page .product-row:hover{padding-left:18px;padding-right:18px}
 html[lang="es"] .home-page .product-row:hover:after{width:100%}
-html[lang="es"] .home-page .product-arrow{transition:transform .4s cubic-bezier(.22,1,.36,1)}
-html[lang="es"] .home-page .product-row:hover .product-arrow{transform:translateX(6px)}
+html[lang="es"] .home-page .product-number{font-size:.72rem;letter-spacing:.14em;opacity:.48}
+html[lang="es"] .home-page .product-row h3{font-size:clamp(1.65rem,3vw,2.7rem);font-weight:500;letter-spacing:-.025em}
+html[lang="es"] .home-page .product-row p{margin-top:8px;opacity:.58}
+html[lang="es"] .home-page .product-arrow{font-size:1.5rem;transition:transform .45s var(--et-ease),color .3s ease}
+html[lang="es"] .home-page .product-row:hover .product-arrow{transform:translateX(8px);color:var(--et-gold)}
 
-html[lang="es"] .home-page .market-grid article{transition:background .45s ease,transform .45s cubic-bezier(.22,1,.36,1)}
-html[lang="es"] .home-page .market-grid article:hover{background:rgba(255,255,255,.035);transform:translateY(-5px)}
-html[lang="es"] .home-page .company-values div{transition:padding-left .4s ease,background .4s ease}
-html[lang="es"] .home-page .company-values div:hover{padding-left:10px;background:rgba(255,255,255,.18)}
+/* Markets — large statement + restrained grid. */
+html[lang="es"] .home-page .markets-title h2{font-size:clamp(3rem,8vw,8rem);line-height:.94;letter-spacing:-.055em}
+html[lang="es"] .home-page .markets-title h2 span{font-size:.45em;color:var(--et-gold);vertical-align:middle;margin:0 .08em}
+html[lang="es"] .home-page .market-grid{margin-top:90px;border-top:1px solid rgba(255,255,255,.18)}
+html[lang="es"] .home-page .market-grid article{padding:32px 20px 34px 0;border-bottom:1px solid rgba(255,255,255,.18);background:transparent!important;transform:none!important}
+html[lang="es"] .home-page .market-grid article:hover{padding-left:10px}
+html[lang="es"] .home-page .market-grid article span{opacity:.48}
+html[lang="es"] .home-page .market-grid article h3{font-size:1.6rem;margin-top:20px;font-weight:500}
+html[lang="es"] .home-page .market-grid article p{max-width:380px;margin-top:10px;opacity:.62}
 
-/* Scroll reveals */
-html[lang="es"] .home-page .es-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease var(--reveal-delay),transform .8s cubic-bezier(.22,1,.36,1) var(--reveal-delay)}
+/* Company — one strong statement, almost no decoration. */
+html[lang="es"] .home-page .large-copy{font-size:clamp(1.45rem,2.7vw,2.45rem);line-height:1.28;letter-spacing:-.025em}
+html[lang="es"] .home-page .company-values div{border-top:1px solid var(--et-line);background:transparent!important;transition:padding-left .45s var(--et-ease)}
+html[lang="es"] .home-page .company-values div:hover{padding-left:12px}
+
+/* Scroll reveal. */
+html[lang="es"] .home-page .es-reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease var(--reveal-delay),transform .9s var(--et-ease) var(--reveal-delay)}
 html[lang="es"] .home-page .es-reveal.is-visible{opacity:1;transform:none}
 
-/* Elegant curtain: two clean editorial panels, no circles or flashes. */
-html[lang="es"] .home-page .es-page-curtain{position:fixed;inset:0;z-index:9999;display:grid;grid-template-columns:1fr 1fr;pointer-events:none;visibility:visible}
-html[lang="es"] .home-page .es-page-curtain span{display:block;background:#071d16;transform:scaleX(1);transform-origin:left center;transition:transform .55s cubic-bezier(.76,0,.24,1)}
-html[lang="es"] .home-page .es-page-curtain span+span{background:#10251c;transform-origin:right center}
+/* Curtain — clean vertical editorial wipe; never visible after entrance. */
+html[lang="es"] .home-page .es-page-curtain{
+  position:fixed;inset:0;z-index:99999;display:grid;grid-template-columns:50% 50%;pointer-events:none;overflow:hidden;
+}
+html[lang="es"] .home-page .es-page-curtain span{
+  display:block;background:var(--et-marine);transform:scaleX(1);transition:transform .72s var(--et-ease);
+}
+html[lang="es"] .home-page .es-page-curtain span:first-child{transform-origin:left center}
+html[lang="es"] .home-page .es-page-curtain span:last-child{background:#102a22;transform-origin:right center}
 html[lang="es"] .home-page.es-page-enter .es-page-curtain span{transform:scaleX(0)}
-html[lang="es"] .home-page .es-page-curtain.is-leaving span{transform:scaleX(1);transition-duration:.36s}
+html[lang="es"] .home-page .es-page-curtain.is-leaving span{transform:scaleX(1);transition-duration:.42s}
 
 @media(max-width:800px){
-  html[lang="es"] .home-page .hero{background-position:center 48%!important;padding-top:118px}
+  html[lang="es"] .home-page .hero{min-height:100svh;padding-top:112px;background-position:center 50%!important}
+  html[lang="es"] .home-page .hero-grid{min-height:calc(100svh - 112px)}
+  html[lang="es"] .home-page .hero-side{display:none}
+  html[lang="es"] .home-page .hero-bottom{font-size:.65rem}
   html[lang="es"] .home-page .intro-section,
   html[lang="es"] .home-page .products-section,
   html[lang="es"] .home-page .markets-section,
   html[lang="es"] .home-page .company-section,
-  html[lang="es"] .home-page .contact-section{padding-top:92px;padding-bottom:92px}
+  html[lang="es"] .home-page .contact-section{padding:105px 0}
+  html[lang="es"] .home-page .product-row{grid-template-columns:45px 1fr 35px;min-height:125px}
+  html[lang="es"] .home-page .product-row:hover{padding-left:8px;padding-right:8px}
+  html[lang="es"] .home-page .market-grid{margin-top:60px}
   html[lang="es"] .home-page .es-page-curtain{grid-template-columns:1fr}
-  html[lang="es"] .home-page .es-page-curtain span+span{display:none}
+  html[lang="es"] .home-page .es-page-curtain span:last-child{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){
   html[lang="es"] .home-page .es-reveal,
-  html[lang="es"] .home-page.es-motion-ready .hero-kicker,
-  html[lang="es"] .home-page.es-motion-ready .hero-line-white,
-  html[lang="es"] .home-page.es-motion-ready .hero-line-gold,
-  html[lang="es"] .home-page.es-motion-ready .hero-description,
-  html[lang="es"] .home-page.es-motion-ready .hero-actions,
+  html[lang="es"] .home-page.es-motion-ready .hero-content > *,
   html[lang="es"] .home-page.es-motion-ready .hero-side,
   html[lang="es"] .home-page.es-motion-ready .hero-bottom{opacity:1;transform:none;transition:none}
   html[lang="es"] .home-page .es-page-curtain{display:none}
