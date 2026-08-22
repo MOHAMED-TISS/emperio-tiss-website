@@ -1,0 +1,14 @@
+/* Product prototype navigation — shared, visible from first paint. */
+.product-nav-prototype .site-header{position:fixed!important;inset:0 0 auto 0!important;z-index:1200!important;width:100%!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:18px 48px!important;pointer-events:none!important}
+.product-nav-prototype .site-header .header-inner{width:100%!important;max-width:1440px!important;margin:0 auto!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important}
+.product-nav-prototype .site-header .site-logo,.product-nav-prototype .site-header .mobile-menu,.product-nav-prototype .site-header .et-language-switch{pointer-events:auto!important}
+.product-nav-prototype .site-header .mobile-menu{display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:0!important;width:58px!important;height:58px!important;margin:0!important;padding:0!important;box-sizing:border-box!important;visibility:visible!important;opacity:1!important;position:relative!important;cursor:pointer!important}
+.product-nav-prototype .site-header .mobile-menu span{display:block!important;position:static!important;inset:auto!important;width:22px!important;height:1px!important;margin:0!important;flex:0 0 1px!important;align-self:center!important;background:#f0d8a5!important;border-radius:2px!important;opacity:1!important;transform-origin:center!important;transition:transform .35s ease,opacity .25s ease!important}
+.product-nav-prototype .site-header .mobile-menu span:nth-child(1){transform:translateY(-6px)!important}
+.product-nav-prototype .site-header .mobile-menu span:nth-child(2){transform:none!important}
+.product-nav-prototype .site-header .mobile-menu span:nth-child(3){transform:translateY(6px)!important}
+.product-nav-prototype .site-header .mobile-menu[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg)!important}
+.product-nav-prototype .site-header .mobile-menu[aria-expanded="true"] span:nth-child(2){opacity:0!important}
+.product-nav-prototype .site-header .mobile-menu[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg)!important}
+@media(max-width:900px){.product-nav-prototype .site-header{padding:16px 32px!important}}
+@media(max-width:640px){.product-nav-prototype .site-header{padding:12px 18px!important}.product-nav-prototype .site-header .mobile-menu,.product-nav-prototype .site-header .site-logo{width:52px!important;height:52px!important}}
