@@ -16,7 +16,7 @@ html[lang="es"] body.et-es-home .hero h1{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-white{color:#fff!important}
 html[lang="es"] body.et-es-home .hero-line-gold{color:#dfc78f!important;font-style:italic}
 
-/* ES HOMEPAGE MENU — dark curtain, ivory typography, deterministic X state. */
+/* ES HOMEPAGE MENU — dark curtain, ivory typography, stable X state. */
 html[lang="es"] body.home-page #navOverlay,
 html[lang="es"] body.home-page .nav-overlay{background:#050806!important;background-color:#050806!important;color:#f3f1e8!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-inner{background:transparent!important}
@@ -27,15 +27,24 @@ html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>det
 html[lang="es"] body.home-page #navOverlay .nav-products>.nav-products-links>details>.nav-products-links>a{color:#f3f1e8!important;-webkit-text-fill-color:#f3f1e8!important}
 html[lang="es"] body.home-page #navOverlay .nav-overlay-links .idx{color:#f3f1e8!important;-webkit-text-fill-color:#f3f1e8!important}
 
-/* Deterministic menu control: aria-expanded is the single source of truth. */
+/* Single geometry for the ES homepage menu button. The open state follows body/overlay state so no later generic rule can move the lines. */
 html[lang="es"] body.home-page #menuToggleBtn{position:relative!important;z-index:1205!important}
-html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"]{background:rgba(0,0,0,.42)!important;border-color:rgba(243,241,232,.42)!important}
-html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span{position:absolute!important;left:50%!important;top:50%!important;width:24px!important;height:2px!important;margin:0!important;background:#f3f1e8!important;transform-origin:center!important;opacity:1!important}
+html[lang="es"] body.home-page body.nav-open #menuToggleBtn,
+html[lang="es"] body.home-page body.menu-open #menuToggleBtn,
+html[lang="es"] body.home-page #navOverlay[aria-hidden="false"] + * #menuToggleBtn{z-index:1205!important}
+html[lang="es"] body.home-page body.nav-open #menuToggleBtn span,
+html[lang="es"] body.home-page body.menu-open #menuToggleBtn span,
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span{position:absolute!important;left:50%!important;top:50%!important;width:24px!important;height:2px!important;margin:0!important;background:#f3f1e8!important;opacity:1!important;visibility:visible!important;transform-origin:center!important;transition:none!important}
+html[lang="es"] body.home-page body.nav-open #menuToggleBtn span:nth-child(1),
+html[lang="es"] body.home-page body.menu-open #menuToggleBtn span:nth-child(1),
 html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)!important}
+html[lang="es"] body.home-page body.nav-open #menuToggleBtn span:nth-child(2),
+html[lang="es"] body.home-page body.menu-open #menuToggleBtn span:nth-child(2),
 html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span:nth-child(2){transform:translate(-50%,-50%) scaleX(0)!important;opacity:0!important}
+html[lang="es"] body.home-page body.nav-open #menuToggleBtn span:nth-child(3),
+html[lang="es"] body.home-page body.menu-open #menuToggleBtn span:nth-child(3),
 html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)!important}
-
-html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span{position:absolute!important;left:50%!important;width:24px!important;height:2px!important;margin:0!important;background:#f3f1e8!important;opacity:1!important}
+html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span{position:absolute!important;left:50%!important;width:24px!important;height:2px!important;margin:0!important;background:#f3f1e8!important;opacity:1!important;visibility:visible!important}
 html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span:nth-child(1){top:calc(50% - 7px)!important;transform:translateX(-50%)!important}
 html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span:nth-child(2){top:50%!important;transform:translateX(-50%)!important}
 html[lang="es"] body.home-page #menuToggleBtn[aria-expanded="false"] span:nth-child(3){top:calc(50% + 7px)!important;transform:translateX(-50%)!important}
