@@ -28,7 +28,10 @@
 .fish-catalog-pilot .site-header .et-language-switch a,.fish-catalog-pilot .site-header .et-language-switch span{color:#f0d8a5!important;text-decoration:none!important;font:600 10px/1 var(--et-sans,Arial,sans-serif)!important;letter-spacing:.12em!important}
 .fish-catalog-pilot .site-header .et-language-switch a:hover,.fish-catalog-pilot .site-header .et-language-switch a.current{color:#fff4d8!important}
 .fish-catalog-pilot .site-header .mobile-menu{order:2!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:5px!important;width:58px!important;height:58px!important;margin:0!important;padding:0!important;border:1px solid rgba(232,207,153,.38)!important;border-radius:18px!important;background:rgba(3,20,15,.38)!important;box-shadow:0 10px 32px rgba(0,0,0,.14)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;cursor:pointer!important}
-.fish-catalog-pilot .site-header .mobile-menu span{display:block!important;width:22px!important;height:1px!important;margin:0!important;flex:0 0 1px!important;background:#f0d8a5!important;border-radius:2px!important;opacity:1!important;transition:transform .35s ease,opacity .25s ease,width .35s ease!important}
+.fish-catalog-pilot .site-header .mobile-menu span{
+  display:block!important;width:22px!important;height:1px!important;margin-inline:auto!important;flex:0 0 1px!important;align-self:center!important;
+  background:#f0d8a5!important;border-radius:2px!important;opacity:1!important;transform-origin:center!important;position:relative!important;inset-inline:auto!important;left:auto!important;right:auto!important;
+  transition:transform .35s ease,opacity .25s ease,width .35s ease!important}
 .fish-catalog-pilot .site-header .mobile-menu:hover span{width:24px!important}
 .fish-catalog-pilot .site-header .mobile-menu[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)!important}
 .fish-catalog-pilot .site-header .mobile-menu[aria-expanded="true"] span:nth-child(2){opacity:0!important}
