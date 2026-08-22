@@ -1,15 +1,25 @@
-/* EMPERIO TISS — CANONICAL DESIGN TOKENS */
+/* EMPERIO TISS — CANONICAL DESIGN TOKENS / CHECKPOINT RESTORATION */
 :root{
   --et-serif:"Cormorant Garamond",Georgia,serif;
   --et-sans:"DM Sans",Arial,sans-serif;
   --et-arabic:"Noto Sans Arabic",Tahoma,sans-serif;
-  --et-gold:#d9c7a0;
-  --et-gold-light:#dec487;
-  --et-ink:#10251c;
-  --et-cream:#f3f0e8;
+  --et-ivory:#f3f1e8;
+  --et-ivory-light:#f8f6f0;
+  --et-marfil:#f3f1e8;
+  --et-marfil-light:#f8f6f0;
+  --et-cream:#f3f1e8;
   --et-cream-light:#f8f6f0;
+  --et-gold:#d9c7a0;
+  --et-champagne:#d9c7a0;
+  --et-gold-light:#dec487;
+  --et-ink:#102331;
+  --et-muted:#6d756f;
   --marine-deep:#041d31;
   --marine-mid:#07324d;
+  --et-body-editorial:18px;
+  --et-body-lg:clamp(17px,2vw,22px);
+  --et-title-xl:clamp(4rem,10vw,9rem);
+  --et-title-lg:clamp(3rem,6vw,6rem);
 }
-/* Remove the legacy small sans submenu contract. Navigation is owned by nav.css. */
+@import url('./typography.css');
 .nav-products-links a{font-family:var(--et-serif);font-size:inherit;color:inherit}
