@@ -13,10 +13,14 @@
     ar:[['/ar/products/','كل المنتجات'],['/ar/products/seafood/','المأكولات البحرية'],['/ar/products/seafood/fish/','الأسماك'],['/ar/products/seafood/shellfish/','القشريات'],['/ar/products/seafood/cephalopods/','الرخويات'],['/ar/products/fruits/','الفواكه'],['/ar/products/vegetables/','الخضروات'],['/ar/products/seasonal/','المنتجات الموسمية']],
     es:[['/products/','Todos los productos'],['/products/seafood/','Productos del mar'],['/products/seafood/fish/','Pescados'],['/products/seafood/shellfish/','Mariscos'],['/products/seafood/cephalopods/','Cefalópodos'],['/products/fruits/','Frutas'],['/products/vegetables/','Hortalizas'],['/products/seasonal/','Temporada']]
   };
-  const productLinks=get('.nav-products-links');
-  if(productLinks){
-    const existing=new Set([...productLinks.querySelectorAll('a')].map(a=>a.getAttribute('href')));
-    (productTree[lang]||productTree.en).forEach(([href,label])=>{if(existing.has(href))return;const a=doc.createElement('a');a.href=href;a.textContent=label;productLinks.appendChild(a);});
+  // The Fish demo owns its navigation tree. Do not let the shared product-tree
+  // injector append the legacy flat list (All products / Fruits / Vegetables etc.).
+  if(!body.classList.contains('fish-catalog-pilot')){
+    const productLinks=get('.nav-products-links');
+    if(productLinks){
+      const existing=new Set([...productLinks.querySelectorAll('a')].map(a=>a.getAttribute('href')));
+      (productTree[lang]||productTree.en).forEach(([href,label])=>{if(existing.has(href))return;const a=doc.createElement('a');a.href=href;a.textContent=label;productLinks.appendChild(a);});
+    }
   }
   const configs=[
     {button:'#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu',overlay:'#navOverlay,.nav-overlay,.intl-overlay'},
