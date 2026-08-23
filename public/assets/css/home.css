@@ -17,6 +17,8 @@
 @media(max-width:480px){.home-page .market-grid{grid-template-columns:1fr}.home-page .market-grid article{border-inline-start:0!important}.home-page .product-row{grid-template-columns:34px 1fr 24px;gap:12px;padding:24px 0}.home-page .product-row h3{font-size:1.55rem}.home-page .product-row p{font-size:8px}.home-page .footer-main{grid-template-columns:1fr}.home-page .footer-brand{grid-column:auto}}
 [dir="rtl"] .home-page .hero-side{text-align:left;align-items:flex-start}[dir="rtl"] .home-page .footer-logo{object-position:right center}[dir="rtl"] .home-page .market-grid article{border-inline-start:0;border-inline-end:1px solid rgba(255,255,255,.14)}
 
+/* First-paint stabilization: keep header compositing identical before JS runs. */
+.home-page .site-header,.home-page .header-inner{backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(0);isolation:isolate}
 /* First-paint arrow stabilization: hide legacy glyphs and draw the shared fine-line arrow via CSS. */
 .home-page .button > span:last-child,.home-page .text-link > span:last-child,.home-page .product-arrow{font-size:0!important;line-height:0!important;width:1.2em;min-width:1.2em;display:inline-flex;align-items:center;justify-content:center}
 .home-page .button > span:last-child::before,.home-page .text-link > span:last-child::before,.home-page .product-arrow::after{content:"";display:block;width:11px;height:7px;background:currentColor;clip-path:polygon(0 43%,78% 43%,58% 0,100% 50%,58% 100%,78% 57%,0 57%);transition:transform .28s var(--et-ease)}
