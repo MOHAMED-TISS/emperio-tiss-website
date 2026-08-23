@@ -4,8 +4,8 @@
   const categoryButtons = [...document.querySelectorAll('[data-fish-category]')];
   if (!conditionButtons.length || !categoryButtons.length) return;
 
-  // Current Fish catalogue availability matrix:
-  // White fish = fresh; Special fish = fresh; Blue fish = fresh + frozen.
+  // Definitive Fish catalogue rule:
+  // every fish reference is fresh; only Salmon and Mackerel are also frozen.
   const compatible = {
     white: ['fresh', 'all'],
     blue: ['fresh', 'frozen', 'all'],
@@ -24,8 +24,11 @@
       const allowed = condition === 'all' || (compatible[value] || []).includes(condition);
       button.disabled = !allowed;
       button.setAttribute('aria-disabled', String(!allowed));
-      if (!allowed) button.title = condition === 'frozen' ? 'Not available for frozen fish' : 'Not available for this combination';
-      else button.removeAttribute('title');
+      if (!allowed) {
+        button.title = condition === 'frozen'
+          ? 'Only Salmon and Mackerel are available frozen.'
+          : 'Not available for this combination';
+      } else button.removeAttribute('title');
     });
 
     if (category !== 'all' && !(compatible[category] || []).includes(condition)) {
