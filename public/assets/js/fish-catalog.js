@@ -32,7 +32,7 @@
   let activeFilter = 'all';
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const conditions = value => String(value || '').split('/').map(item => item.trim().toLowerCase()).filter(Boolean);
+  const conditions = value => String(value || '').toLowerCase().split('/').map(item => item.trim()).filter(Boolean).map(item => item === 'fresco' ? 'fresh' : item === 'congelado' ? 'frozen' : item);
   const detail = (label,value) => `<div class="fish-catalog-card__detail"><span>${label}</span><strong>${esc(value)}</strong></div>`;
 
   const card = product => `<article class="fish-catalog-card" data-product-id="${esc(product.id)}">
@@ -90,7 +90,7 @@
       const nextFilter = button.dataset.fishFilter || 'all';
       activeFilter = nextFilter === 'fresh' || nextFilter === 'frozen' ? nextFilter : 'all';
       filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      window.requestAnimationFrame(render);
+      render();
     });
   });
 
