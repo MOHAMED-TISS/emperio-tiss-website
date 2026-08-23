@@ -34,4 +34,5 @@
   }
 
   loadScript('/assets/js/global-core.js?v=20260823-taxonomy-4', 'etGlobalCore');
+  loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
 })();
