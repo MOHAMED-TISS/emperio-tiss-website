@@ -18,6 +18,7 @@
   loadCss('/assets/css/canonical-nav.css?v=20260823-taxonomy-5', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   loadCss('/assets/css/nav-consistency.css?v=20260823-nav-1', 'etNavConsistency');
+  loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-1', 'etCatalogueTypeScale');
 
   // Catalogue image protection. This is intentionally scoped to catalogue
   // imagery only; navigation, text, forms and the rest of the site remain
