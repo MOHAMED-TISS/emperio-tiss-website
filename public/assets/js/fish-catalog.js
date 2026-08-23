@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+
   const products = [
     ['dorada','Dorada','Sparus aurata','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],
     ['lubina','Lubina','Dicentrarchus labrax','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],
@@ -27,9 +28,11 @@
   const count = document.getElementById('fishCatalogCount');
   if (!grid || !search || !count) return;
 
-  const filters = [...document.querySelectorAll('[data-fish-filter]')];
+  const filters = Array.from(document.querySelectorAll('[data-fish-filter]'));
   let activeFilter = 'all';
-  const esc = value => String(value ?? '').replace(/[&<>\"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[char]));
+
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const conditions = value => String(value || '').split('/').map(item => item.trim().toLowerCase()).filter(Boolean);
   const detail = (label,value) => `<div class="fish-catalog-card__detail"><span>${label}</span><strong>${esc(value)}</strong></div>`;
 
   const card = product => `<article class="fish-catalog-card" data-product-id="${esc(product.id)}">
@@ -54,22 +57,43 @@
   </article>`;
 
   function render() {
-    const query = search.value.trim().toLowerCase();
+    const query = String(search.value || '').trim().toLowerCase();
     const visible = products.filter(product => {
-      const condition = product.condition.toLowerCase();
-      const matchesFilter = activeFilter === 'all' || condition.includes(activeFilter);
+      const productConditions = conditions(product.condition);
+      const matchesFilter = activeFilter === 'all' || productConditions.includes(activeFilter);
       const haystack = [product.commercialName,product.scientificName,product.group,product.type,product.origin,product.faoZone].join(' ').toLowerCase();
       return matchesFilter && (!query || haystack.includes(query));
     });
     count.textContent = `${visible.length} ${visible.length === 1 ? 'referencia' : 'referencias'}`;
-    grid.innerHTML = visible.length ? visible.map(card).join('') : '<p class="fish-catalog__empty">No hay referencias que coincidan con la búsqueda.</p>';
+    grid.replaceChildren();
+    if (!visible.length) {
+      const empty = document.createElement('p');
+      empty.className = 'fish-catalog__empty';
+      empty.textContent = 'No hay referencias que coincidan con la búsqueda.';
+      grid.appendChild(empty);
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    const template = document.createElement('template');
+    visible.forEach(product => {
+      template.innerHTML = card(product).trim();
+      fragment.appendChild(template.content.firstElementChild);
+    });
+    grid.appendChild(fragment);
   }
 
-  filters.forEach(button => button.addEventListener('click', () => {
-    activeFilter = button.dataset.fishFilter || 'all';
-    filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    render();
-  }));
+  filters.forEach(button => {
+    button.type = 'button';
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      const nextFilter = button.dataset.fishFilter || 'all';
+      activeFilter = nextFilter === 'fresh' || nextFilter === 'frozen' ? nextFilter : 'all';
+      filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      window.requestAnimationFrame(render);
+    });
+  });
+
   search.addEventListener('input', render);
   render();
 })();
