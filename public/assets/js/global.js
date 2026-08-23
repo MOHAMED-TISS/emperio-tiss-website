@@ -15,6 +15,6 @@
   };
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
-  loadCss('/assets/css/canonical-nav.css?v=20260823-taxonomy-3', 'etCanonicalNav');
-  loadScript('/assets/js/global-core.js?v=20260823-taxonomy-3', 'etGlobalCore');
+  loadCss('/assets/css/canonical-nav.css?v=20260823-catalogue-1', 'etCanonicalNav');
+  loadScript('/assets/js/global-core.js?v=20260823-catalogue-4', 'etGlobalCore');
 })();
