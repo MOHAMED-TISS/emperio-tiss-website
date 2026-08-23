@@ -1,0 +1,48 @@
+/* EMPERIO TISS — EN/FR catalogue filter contrast */
+html[lang="en"] .fish-catalog__filter,
+html[lang="fr"] .fish-catalog__filter,
+html[lang="en"] .compact-catalog__filter,
+html[lang="fr"] .compact-catalog__filter,
+html[lang="en"] .seafood-catalog__filter,
+html[lang="fr"] .seafood-catalog__filter{
+  color:#173127;
+  background:#f7f5ef;
+  border-color:rgba(16,37,28,.28);
+  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
+  font-weight:700;
+  font-size:.64rem;
+  line-height:1;
+  letter-spacing:.11em;
+  text-shadow:none;
+}
+html[lang="en"] .fish-catalog__filter:hover,
+html[lang="fr"] .fish-catalog__filter:hover,
+html[lang="en"] .compact-catalog__filter:hover,
+html[lang="fr"] .compact-catalog__filter:hover,
+html[lang="en"] .seafood-catalog__filter:hover,
+html[lang="fr"] .seafood-catalog__filter:hover{
+  color:#0b241b;
+  border-color:rgba(16,37,28,.48);
+  background:#fbfaf6;
+}
+html[lang="en"] .fish-catalog__filter[aria-pressed="true"],
+html[lang="fr"] .fish-catalog__filter[aria-pressed="true"],
+html[lang="en"] .compact-catalog__filter[aria-pressed="true"],
+html[lang="fr"] .compact-catalog__filter[aria-pressed="true"],
+html[lang="en"] .seafood-catalog__filter[aria-pressed="true"],
+html[lang="fr"] .seafood-catalog__filter[aria-pressed="true"]{
+  color:#fff;
+  background:#03140f;
+  border-color:#03140f;
+  font-weight:700;
+  text-shadow:none;
+}
+html[lang="en"] .fish-catalog__filter:focus-visible,
+html[lang="fr"] .fish-catalog__filter:focus-visible,
+html[lang="en"] .compact-catalog__filter:focus-visible,
+html[lang="fr"] .compact-catalog__filter:focus-visible,
+html[lang="en"] .seafood-catalog__filter:focus-visible,
+html[lang="fr"] .seafood-catalog__filter:focus-visible{
+  outline:2px solid #c9a35f;
+  outline-offset:3px;
+}
