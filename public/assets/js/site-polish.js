@@ -28,15 +28,33 @@
   `;
   doc.head.appendChild(style);
 
-  const ensureEsUniversalFooter=()=>{
-    if(!(doc.documentElement.lang||'').toLowerCase().startsWith('es'))return;
+  const ensureUniversalFooter=()=>{
+    const lang=(doc.documentElement.lang||'').slice(0,2).toLowerCase();
+    if(lang!=='es' && lang!=='fr') return;
+
     doc.querySelectorAll('footer:not(.et-universal-footer)').forEach(footer=>footer.remove());
-    if(doc.querySelector('.et-universal-footer'))return;
+    if(doc.querySelector('.et-universal-footer')) return;
+
+    const isFr=lang==='fr';
+    const copy=isFr ? {
+      tagline:'Votre partenaire de confiance sur les marchés internationaux.',
+      nav:'Navigation',home:'Accueil',company:'Entreprise',products:'Produits',markets:'Marchés',news:'Actualités',contact:'Contact',
+      seafood:'Produits de la mer',fish:'Poissons',shellfish:'Fruits de mer & Crustacés',cephalopods:'Céphalopodes',fruits:'Fruits',vegetables:'Légumes',seasonal:'Saison',
+      inquiry:'Demande B2B',legal:'Mentions légales',privacy:'Politique de confidentialité',cookies:'Politique relative aux cookies',
+      disclaimer:'Les informations publiées sont fournies à titre informatif et ne constituent pas une offre contractuelle.',region:'MADRID · ESPAGNE · EUROPE · AFRIQUE · MÉDITERRANÉE'
+    } : {
+      tagline:'Tu socio de confianza en los mercados internacionales.',
+      nav:'Navegación',home:'Inicio',company:'Empresa',products:'Productos',markets:'Mercados',news:'Noticias',contact:'Contacto',
+      seafood:'Productos del mar',fish:'Pescados',shellfish:'Mariscos & Crustáceos',cephalopods:'Cefalópodos',fruits:'Frutas',vegetables:'Hortalizas',seasonal:'Temporada',
+      inquiry:'Consulta empresarial',legal:'Aviso legal',privacy:'Política de privacidad',cookies:'Política de cookies',
+      disclaimer:'La información publicada tiene carácter informativo y no constituye una oferta contractual.',region:'MADRID · ESPAÑA · EUROPA · ÁFRICA · MEDITERRÁNEO'
+    };
+    const base=isFr?'/fr/':'/';
     const footer=doc.createElement('footer');
     footer.className='et-universal-footer';
-    footer.innerHTML=`<div class="et-footer-container"><div class="et-footer-main"><div class="et-footer-brand"><img class="et-footer-logo" src="/logo.png" alt="EMPERIO TISS"><p>Tu socio de confianza en los mercados internacionales.</p></div><div class="et-footer-column"><strong>Navegación</strong><a href="/">Inicio</a><a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a><a href="/news/">Noticias</a><a href="/contact/">Contacto</a></div><div class="et-footer-column"><strong>Productos</strong><a href="/products/seafood/">Productos del mar</a><a href="/products/seafood/fish/">Pescados</a><a href="/products/seafood/shellfish/">Mariscos &amp; Crustáceos</a><a href="/products/seafood/cephalopods/">Cefalópodos</a><a href="/products/fruits/">Frutas</a><a href="/products/vegetables/">Hortalizas</a><a href="/products/seasonal/">Temporada</a></div><div class="et-footer-column"><strong>Empresa</strong><a href="/contact/">Consulta empresarial</a><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/privacidad.html">Política de privacidad</a><a href="/legal/cookies.html">Política de cookies</a></div></div><div class="et-footer-legal"><p>© 2026 <span class="et-footer-company">EMPERIO TISS S.L.</span> Todos los derechos reservados.</p><p>La información publicada tiene carácter informativo y no constituye una oferta contractual.</p></div><div class="et-footer-bottom"><span>EMPERIO TISS S.L.</span><span>MADRID · ESPAÑA · EUROPA · ÁFRICA · MEDITERRÁNEO</span></div></div>`;
+    footer.innerHTML=`<div class="et-footer-container"><div class="et-footer-main"><div class="et-footer-brand"><img class="et-footer-logo" src="/logo.png" alt="EMPERIO TISS"><p>${copy.tagline}</p></div><div class="et-footer-column"><strong>${copy.nav}</strong><a href="${base}">${copy.home}</a><a href="${base}about/">${copy.company}</a><a href="${base}products/">${copy.products}</a><a href="${base}markets/">${copy.markets}</a><a href="${base}news/">${copy.news}</a><a href="${base}contact/">${copy.contact}</a></div><div class="et-footer-column"><strong>${copy.products}</strong><a href="${base}products/seafood/">${copy.seafood}</a><a href="${base}products/seafood/fish/">${copy.fish}</a><a href="${base}products/seafood/shellfish/">${copy.shellfish}</a><a href="${base}products/seafood/cephalopods/">${copy.cephalopods}</a><a href="${base}products/fruits/">${copy.fruits}</a><a href="${base}products/vegetables/">${copy.vegetables}</a><a href="${base}products/seasonal/">${copy.seasonal}</a></div><div class="et-footer-column"><strong>${copy.company}</strong><a href="${base}contact/">${copy.inquiry}</a><a href="${base}legal/aviso-legal.html">${copy.legal}</a><a href="${base}legal/privacidad.html">${copy.privacy}</a><a href="${base}legal/cookies.html">${copy.cookies}</a></div></div><div class="et-footer-legal"><p>© 2026 <span class="et-footer-company">EMPERIO TISS S.L.</span> Tous droits réservés.</p><p>${copy.disclaimer}</p></div><div class="et-footer-bottom"><span>EMPERIO TISS S.L.</span><span>${copy.region}</span></div></div>`;
     doc.body.appendChild(footer);
   };
 
-  ensureEsUniversalFooter();
+  ensureUniversalFooter();
 })();
