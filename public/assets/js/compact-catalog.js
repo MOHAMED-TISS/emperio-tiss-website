@@ -45,14 +45,14 @@
     const params=new URLSearchParams({id:product.id});
     if(lang==='en')params.set('lang','en');
     if(dedicatedSubcategory)params.set('source',dedicatedSubcategory);
-    const href=`/products/product.html?${params.toString()}`;
+    const href=`${lang==='en'?'/en/products/product.html':'/products/product.html'}?${params.toString()}`;
     const media=images.length?`<button class="compact-catalog-card__media" type="button" data-gallery='${esc(JSON.stringify(images))}' aria-label="${esc(displayName)}"><img src="${esc(images[0])}" alt="${esc(displayName)}" loading="lazy" draggable="false"></button>`:'<div class="compact-catalog-card__media"><span class="compact-catalog-card__placeholder">EMPERIO TISS</span></div>';
     return `<article class="compact-catalog-card" data-product-id="${esc(product.id)}">${media}<div class="compact-catalog-card__body"><p class="compact-catalog-card__meta">${esc(displayType)}</p><h3 class="compact-catalog-card__title">${esc(displayName)}</h3><p class="compact-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>${meta?`<p class="compact-catalog-card__spec">${esc(meta)}</p>`:''}<a class="compact-catalog-card__link" href="${href}">${esc(t.detail)} ↗</a></div></article>`;
   }
   function syncFilterAvailability(){
     const hasFresh=products.some(p=>(p.condition||[]).includes('fresh'));const hasFrozen=products.some(p=>(p.condition||[]).includes('frozen'));
     filters.forEach(button=>{const value=button.dataset.compactFilter||'all';const available=value==='all'||(value==='fresh'?hasFresh:hasFrozen);button.disabled=!available;button.setAttribute('aria-disabled',String(!available));});
-    if(frozenSeafoodFamily){const fresh=filters.find(b=>b.dataset.compactFilter==='fresh');if(fresh){fresh.disabled=true;fresh.setAttribute('aria-disabled','true');fresh.title=t.fresh+' not available for this catalogue';}const frozen=filters.find(b=>b.dataset.compactFilter==='frozen');if(frozen){frozen.disabled=false;frozen.removeAttribute('title');}activeFilter='frozen';filters.forEach(item=>item.setAttribute('aria-pressed',String((item.dataset.compactFilter||'all')===activeFilter)));}
+    if(frozenSeafoodFamily){const fresh=filters.find(b=>b.dataset.compactFilter==='fresh');if(fresh){fresh.disabled=true;fresh.setAttribute('aria-disabled','true');fresh.title=t.fresh+' not available for this catalogue';}const frozen=filters.find(b=>b.dataset.compactFilter==='frozen');if(frozen){frozen.disabled=false;frozen.removeAttribute('title');}activeFilter='frozen';filters.forEach(item=>item.setAttribute('aria-pressed',String((item.dataset.compact-filter||'all')===activeFilter)));}
   }
   function render(){const visible=products.filter(matches);count.textContent=`${visible.length} ${visible.length===1?'reference':'references'}`;grid.innerHTML=visible.length?visible.map(card).join(''):`<p class="compact-catalog__empty">${esc(t.empty)}</p>`;grid.querySelectorAll('[data-gallery]').forEach(button=>button.addEventListener('click',()=>showGallery(JSON.parse(button.dataset.gallery))));syncFilterAvailability();}
   filters.forEach(button=>{button.type='button';button.addEventListener('click',()=>{if(button.disabled)return;activeFilter=button.dataset.compactFilter||'all';filters.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));render();});});
