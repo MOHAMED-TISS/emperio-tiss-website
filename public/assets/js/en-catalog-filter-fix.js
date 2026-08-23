@@ -2,8 +2,20 @@
   'use strict';
   if ((document.documentElement.lang || '').slice(0,2).toLowerCase() !== 'en') return;
 
-  let syncing = false;
+  // Normalize the international Fish renderer's uppercase FRESH/FROZEN
+  // condition data against the lowercase filter state.
+  const nativeIncludes = Array.prototype.includes;
+  if (!Array.prototype.__etFishConditionNormalized) {
+    Object.defineProperty(Array.prototype, '__etFishConditionNormalized', {value:true, enumerable:false});
+    Array.prototype.includes = function(searchElement, fromIndex) {
+      if ((searchElement === 'fresh' || searchElement === 'frozen') && this.length && this.every(v => v === 'FRESH' || v === 'FROZEN')) {
+        return nativeIncludes.call(this, String(searchElement).toUpperCase(), fromIndex);
+      }
+      return nativeIncludes.call(this, searchElement, fromIndex);
+    };
+  }
 
+  let syncing = false;
   const getPressed = selector => document.querySelector(`${selector}[aria-pressed="true"]`);
 
   const syncFish = () => {
