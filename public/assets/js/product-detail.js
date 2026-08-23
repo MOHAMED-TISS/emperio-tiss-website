@@ -19,11 +19,54 @@
   const lang = dictionaries[requestedLang] ? requestedLang : 'es';
   const t = dictionaries[lang];
   const order = ['condition','origin','faoZone','calibre','quality','format','packaging','availability','variety','campaign','brix','maturity','glazing','processing','freezing','harvest','destination'];
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const pretty = (key,value) => key === 'condition'
-    ? (Array.isArray(value)?value:[value]).map(item=>item==='fresh'?t.fresh:item==='frozen'?t.frozen:item).join(' · ')
-    : Array.isArray(value) ? value.filter(Boolean).join(' · ') : String(value ?? '');
+  const esc = value => String(value ?? '').replace(/[&<>\"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[char]));
   const first = value => Array.isArray(value) ? (value.find(Boolean) || '') : (value || '');
+
+  const enTechnicalTranslations = {
+    'Túnez':'Tunisia',
+    'Según disponibilidad':'As available',
+    'Según mercado':'According to market',
+    'Especificación profesional':'Professional specification',
+    'Según campaña y disponibilidad':'According to campaign and availability',
+    'Según programa de suministro':'According to supply programme',
+    'Según origen':'According to origin',
+    'Según especie y programa de suministro':'According to species and supply programme',
+    'Mediterráneo / según disponibilidad':'Mediterranean / as available',
+    'Atlántico / Mediterráneo según disponibilidad':'Atlantic / Mediterranean, as available',
+    'FAO 27 / FAO 37 según origen':'FAO 27 / FAO 37 according to origin',
+    'Según disponibilidad':'As available',
+    'Entero / según destino':'Whole / according to destination',
+    'Entera / según destino':'Whole / according to destination',
+    'Entero / según referencia':'Whole / according to reference',
+    'Entera / según referencia':'Whole / according to reference',
+    'Flor / según referencia':'Flower / according to reference',
+    'Bloque / según referencia':'Block / according to reference',
+    'Entero / envuelto':'Whole / wrapped',
+    'Limpia / IQF':'Cleaned / IQF',
+    'Entero / según destino':'Whole / according to destination'
+  };
+
+  const translateEnValue = value => {
+    const translateOne = item => {
+      const raw = String(item ?? '');
+      if (enTechnicalTranslations[raw]) return enTechnicalTranslations[raw];
+      return raw
+        .replace(/\bTúnez\b/g,'Tunisia')
+        .replace(/Según campaña y disponibilidad/g,'According to campaign and availability')
+        .replace(/Según disponibilidad/g,'As available')
+        .replace(/Según mercado/g,'According to market')
+        .replace(/Especificación profesional/g,'Professional specification')
+        .replace(/Según programa de suministro/g,'According to supply programme')
+        .replace(/Según origen/g,'According to origin');
+    };
+    return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' · ') : translateOne(value);
+  };
+
+  const pretty = (key,value) => {
+    if (key === 'condition') return (Array.isArray(value)?value:[value]).map(item=>item==='fresh'?t.fresh:item==='frozen'?t.frozen:item).join(' · ');
+    return lang==='en' && source ? translateEnValue(value) : Array.isArray(value) ? value.filter(Boolean).join(' · ') : String(value ?? '');
+  };
+
   const backHref = lang === 'en' ? '/en/products/' : lang === 'fr' ? '/fr/products/' : lang === 'ar' ? '/ar/products/' : '/products/';
 
   const dedicatedUrls = {
@@ -31,7 +74,7 @@
     cephalopods:'/assets/data/cephalopods-catalog-es.json'
   };
   const enNames = {moruno:'Mediterranean red shrimp',cigala:'Norway lobster','gamba-blanca':'Deep-water rose shrimp','langostino-tigre':'Tiger prawn','pulpo-flor':'Flower octopus','pulpo-bloque':'Block octopus','calamar-envuelto':'Wrapped squid','sepia-limpia-iqf':'Cleaned cuttlefish IQF'};
-  const enTypes = {moruno:'Mediterranean',cigala:'Mediterranean','gamba-blanca':'Mediterranean','langostino-tigre':'Prawn','pulpo-flor':'Octopus','pulpo-bloque':'Octopus','calamar-envuelto':'Squid','sepia-limpia-iqf':'Cuttlefish'};
+  const enTypes = {moruno:'Mediterranean',cigala:'Mediterranean','gamba-blanca':'Mediterranean','langostino-tigre':'Prawn','pulpo-flor':'Octopus','pulpo-bloque':'Block octopus','calamar-envuelto':'Squid','sepia-limpia-iqf':'Cuttlefish'};
 
   async function getCatalog(){
     const url = dedicatedUrls[source] || '/assets/data/catalog.json';
