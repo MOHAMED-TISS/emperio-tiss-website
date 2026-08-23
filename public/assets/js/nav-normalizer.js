@@ -65,10 +65,30 @@
   const prefix = locale === 'es' ? '' : `/${locale}`;
 
   const labels = {
-    es: { seafood: 'Productos del mar', fruits: 'Frutas y hortalizas', seasonal: 'Temporada', fish: 'Pescados', shellfish: 'Mariscos', cephalopods: 'Cefalópodos' },
-    en: { seafood: 'Seafood', fruits: 'Fruits & Vegetables', seasonal: 'Seasonal', fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods' },
-    fr: { seafood: 'Produits de la mer', fruits: 'Fruits & légumes', seasonal: 'Produits de saison', fish: 'Poissons', shellfish: 'Coquillages', cephalopods: 'Céphalopodes' },
-    ar: { seafood: 'المأكولات البحرية', fruits: 'الفواكه والخضروات', seasonal: 'المنتجات الموسمية', fish: 'الأسماك', shellfish: 'المحاريات', cephalopods: 'رأسيات الأرجل' }
+    es: {
+      seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos / Crustáceos',
+      mediterranean: 'Del Mediterráneo', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre',
+      cephalopods: 'Cefalópodos', fruitsVegetables: 'Frutas y hortalizas', fruits: 'Frutas', citrus: 'Cítricos', exoticFruit: 'Frutas exóticas', otherFruit: 'Otras frutas',
+      vegetables: 'Hortalizas', seasonal: 'Temporada', seasonalSelection: 'Selección de temporada'
+    },
+    en: {
+      seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish / Crustaceans',
+      mediterranean: 'Mediterranean', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre',
+      cephalopods: 'Cephalopods', fruitsVegetables: 'Fruits & Vegetables', fruits: 'Fruit', citrus: 'Citrus', exoticFruit: 'Exotic fruit', otherFruit: 'Other fruit',
+      vegetables: 'Vegetables', seasonal: 'Seasonal', seasonalSelection: 'Seasonal selection'
+    },
+    fr: {
+      seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Fruits de mer / Crustacés',
+      mediterranean: 'Méditerranée', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre',
+      cephalopods: 'Céphalopodes', fruitsVegetables: 'Fruits & légumes', fruits: 'Fruits', citrus: 'Agrumes', exoticFruit: 'Fruits exotiques', otherFruit: 'Autres fruits',
+      vegetables: 'Légumes', seasonal: 'Produits de saison', seasonalSelection: 'Sélection de saison'
+    },
+    ar: {
+      seafood: 'المأكولات البحرية', fish: 'الأسماك', shellfish: 'المأكولات البحرية / القشريات',
+      mediterranean: 'من البحر المتوسط', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre',
+      cephalopods: 'رأسيات الأرجل', fruitsVegetables: 'الفواكه والخضروات', fruits: 'الفواكه', citrus: 'الحمضيات', exoticFruit: 'الفواكه الاستوائية', otherFruit: 'فواكه أخرى',
+      vegetables: 'الخضروات', seasonal: 'المنتجات الموسمية', seasonalSelection: 'اختيارات موسمية'
+    }
   }[locale];
 
   const navProducts = doc.querySelector('.nav-products');
@@ -83,12 +103,43 @@
         <summary>${labels.seafood}</summary>
         <div class="nav-products-links">
           <a href="${prefix}/products/seafood/fish/"${current('fish') ? ' aria-current="page"' : ''}>${labels.fish}</a>
-          <a href="${prefix}/products/seafood/shellfish/"${current('shellfish') ? ' aria-current="page"' : ''}>${labels.shellfish}</a>
+          <details class="nav-shellfish">
+            <summary>${labels.shellfish}</summary>
+            <div class="nav-products-links nav-products-links--level-3">
+              <details class="nav-shellfish-mediterranean">
+                <summary>${labels.mediterranean}</summary>
+                <div class="nav-products-links nav-products-links--level-4">
+                  <span class="nav-product-leaf">${labels.moruno}</span>
+                  <span class="nav-product-leaf">${labels.cigala}</span>
+                  <span class="nav-product-leaf">${labels.whitePrawn}</span>
+                  <span class="nav-product-leaf">${labels.tigerPrawn}</span>
+                </div>
+              </details>
+            </div>
+          </details>
           <a href="${prefix}/products/seafood/cephalopods/"${current('cephalopods') ? ' aria-current="page"' : ''}>${labels.cephalopods}</a>
         </div>
       </details>
-      <a href="${prefix}/products/fruits/">${labels.fruits}</a>
-      <a href="${prefix}/products/seasonal/">${labels.seasonal}</a>
+      <details class="nav-produce">
+        <summary>${labels.fruitsVegetables}</summary>
+        <div class="nav-products-links">
+          <details class="nav-fruits">
+            <summary>${labels.fruits}</summary>
+            <div class="nav-products-links nav-products-links--level-3">
+              <span class="nav-product-leaf">${labels.citrus}</span>
+              <span class="nav-product-leaf">${labels.exoticFruit}</span>
+              <span class="nav-product-leaf">${labels.otherFruit}</span>
+            </div>
+          </details>
+          <a href="${prefix}/products/vegetables/">${labels.vegetables}</a>
+        </div>
+      </details>
+      <details class="nav-seasonal">
+        <summary>${labels.seasonal}</summary>
+        <div class="nav-products-links nav-products-links--level-3">
+          <a href="${prefix}/products/seasonal/">${labels.seasonalSelection}</a>
+        </div>
+      </details>
     `;
     body.dataset.navNormalized = 'true';
   }
