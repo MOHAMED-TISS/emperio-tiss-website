@@ -32,17 +32,18 @@
 
   const update = () => {
     const cards = Array.from(grid.querySelectorAll('.fish-catalog-card[data-product-id]'));
-    let visible = 0;
+    if (!cards.length) return;
 
+    let visible = 0;
     cards.forEach(card => {
       const id = card.dataset.productId || '';
       const show = active === 'all' || categoryById[id] === active;
-      card.hidden = !show;
+      card.style.display = show ? '' : 'none';
       card.setAttribute('aria-hidden', String(!show));
       if (show) visible += 1;
     });
 
-    if (count && cards.length) {
+    if (count) {
       count.textContent = `${visible} ${visible === 1 ? 'referencia' : 'referencias'}`;
     }
   };
@@ -58,7 +59,11 @@
     });
   });
 
-  const observer = new MutationObserver(update);
+  // Re-apply the category after the catalogue re-renders due to search or Fresh/Frozen.
+  const observer = new MutationObserver(() => {
+    window.requestAnimationFrame(update);
+  });
   observer.observe(grid, { childList: true });
+
   update();
 })();
