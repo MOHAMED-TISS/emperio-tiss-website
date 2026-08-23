@@ -4,9 +4,9 @@
   if (!grid) return;
 
   const selected = [
+    { id: 'salmon', name: 'Salmón', scientific: 'Salmo salar', group: 'Pez de escama', note: 'Noruega · fresco / congelado · según disponibilidad' },
     { id: 'merluza-pijota', name: 'Merluza / Pijota', scientific: 'Merluccius spp.', group: 'Pez de escama', note: 'Atlántico / Mediterráneo · fresco · según disponibilidad' },
-    { id: 'lubina', name: 'Lubina', scientific: 'Dicentrarchus labrax', group: 'Pez de escama', note: 'Mediterráneo / Atlántico · fresco · según disponibilidad' },
-    { id: 'atun', name: 'Atún', scientific: 'Thunnus spp.', group: 'Pez de escama', note: 'Origen según especie · fresco · según disponibilidad' }
+    { id: 'lubina', name: 'Lubina', scientific: 'Dicentrarchus labrax', group: 'Pez de escama', note: 'Mediterráneo / Atlántico · fresco · según disponibilidad' }
   ];
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
