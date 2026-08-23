@@ -1,0 +1,7 @@
+/* Spanish fish catalogue — technical B2B detail layer. Menu/navigation intentionally untouched. */
+.fish-catalog-card__details{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(16,37,28,.12);margin-top:.35rem;padding-top:.5rem;gap:0 .8rem}
+.fish-catalog-card__detail{display:flex;flex-direction:column;gap:.16rem;padding:.38rem 0;border-bottom:1px solid rgba(16,37,28,.08);min-width:0}
+.fish-catalog-card__detail span{font:600 .49rem/1.2 var(--et-sans,Arial,sans-serif);letter-spacing:.11em;text-transform:uppercase;color:var(--et-muted,#6d756f)}
+.fish-catalog-card__detail strong{font:500 .62rem/1.35 var(--et-sans,Arial,sans-serif);color:var(--et-ink,#10251c);overflow-wrap:anywhere}
+.fish-catalog-card__meta{margin-bottom:.05rem}
+@media(max-width:760px){.fish-catalog-card__details{grid-template-columns:1fr}.fish-catalog-card__detail{padding:.34rem 0}}
