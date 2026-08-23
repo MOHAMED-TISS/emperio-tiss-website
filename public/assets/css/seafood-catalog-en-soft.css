@@ -16,7 +16,8 @@
 .compact-catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px);background:transparent}
 .compact-catalog-card{background:rgba(255,255,255,.8);display:flex;flex-direction:column;min-width:0;border:0;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(16,35,49,.025);transition:transform .42s cubic-bezier(.22,.61,.36,1),box-shadow .42s cubic-bezier(.22,.61,.36,1),background .42s ease}
 .compact-catalog-card:hover{transform:translateY(-3px);background:#fff;box-shadow:0 12px 28px rgba(16,35,49,.055)}
-.compact-catalog-card__media{position:relative;aspect-ratio:1.25/1;background:linear-gradient(135deg,#dfe5e1,#edf0eb);display:grid;place-items:center;overflow:hidden}
+.compact-catalog-card__media{position:relative;aspect-ratio:1.25/1;background:linear-gradient(135deg,#dfe5e1,#edf0eb);display:grid;place-items:center;overflow:hidden;border:0;padding:0;margin:0;outline:none;appearance:none;-webkit-appearance:none;box-shadow:none}
+.compact-catalog-card__media:focus,.compact-catalog-card__media:focus-visible{outline:none;box-shadow:none}
 .compact-catalog-card__media img{display:block;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none;transition:opacity .38s ease,transform .65s cubic-bezier(.22,.61,.36,1),filter .4s ease}
 .compact-catalog-card__media:hover img{transform:scale(1.02);filter:saturate(1.015)}
 .compact-catalog-card__placeholder{font:600 .6rem var(--et-sans,Arial,sans-serif);letter-spacing:.15em;text-transform:uppercase;color:#9b8060}
