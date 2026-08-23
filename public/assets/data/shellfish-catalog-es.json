@@ -1,0 +1,10 @@
+{
+  "schemaVersion":"1.0",
+  "language":"es",
+  "products":[
+    {"id":"moruno","commercialName":"Moruno","scientificName":"Aristeus antennatus","group":"Mariscos / Crustáceos","type":"Del Mediterráneo","condition":["fresh","frozen"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"]},
+    {"id":"cigala","commercialName":"Cigala","scientificName":"Nephrops norvegicus","group":"Mariscos / Crustáceos","type":"Del Mediterráneo","condition":["fresh","frozen"],"origin":["Mediterráneo / Atlántico según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"]},
+    {"id":"gamba-blanca","commercialName":"Gamba blanca","scientificName":"Parapenaeus longirostris","group":"Mariscos / Crustáceos","type":"Del Mediterráneo","condition":["fresh","frozen"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"]},
+    {"id":"langostino-tigre","commercialName":"Langostino tigre","scientificName":"Penaeus monodon","group":"Mariscos / Crustáceos","type":"Del Mediterráneo","condition":["frozen"],"origin":["Según programa de suministro"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según programa y disponibilidad"]}
+  ]
+}
