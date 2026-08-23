@@ -10,16 +10,23 @@
   const conditions=v=>String(v||'').toLowerCase().split('/').map(x=>x.trim()).filter(Boolean).map(x=>x==='fresco'?'fresh':x==='congelado'?'frozen':x);
   const detail=(label,value)=>`<div class="fish-catalog-card__detail"><span>${label}</span><strong>${esc(value)}</strong></div>`;
   const style=document.createElement('style');style.textContent=`
-    .fish-catalog-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 30px rgba(0,0,0,.12);transition:transform .25s ease,background .25s ease,box-shadow .25s ease;border-radius:14px;overflow:hidden}
-    .fish-catalog-card:hover{background:rgba(255,255,255,.045);box-shadow:0 14px 38px rgba(0,0,0,.16);transform:translateY(-2px)}
-    .fish-catalog-card__media{position:relative;cursor:pointer;overflow:hidden;padding:0;border:0;width:100%;display:block;background:rgba(255,255,255,.025);aspect-ratio:4/3}
+    /* Fish catalogue: deterministic contrast, independent of stylesheet/load order. */
+    body.fish-catalog-pilot .fish-catalog-card{background:#fff!important;color:#102331!important;border:1px solid rgba(16,35,49,.08)!important;box-shadow:0 8px 30px rgba(16,35,49,.08)!important}
+    body.fish-catalog-pilot .fish-catalog-card__body{background:#fff!important;color:#102331!important}
+    body.fish-catalog-pilot .fish-catalog-card__title{color:#102331!important;text-shadow:none!important;opacity:1!important}
+    body.fish-catalog-pilot .fish-catalog-card__meta{color:#8a683c!important;opacity:1!important}
+    body.fish-catalog-pilot .fish-catalog-card__scientific{color:#53615e!important;opacity:1!important}
+    body.fish-catalog-pilot .fish-catalog-card__detail{border-color:rgba(16,35,49,.10)!important;color:#102331!important}
+    body.fish-catalog-pilot .fish-catalog-card__detail span{color:#66726e!important}
+    body.fish-catalog-pilot .fish-catalog-card__detail strong{color:#1b2f3c!important}
+    .fish-catalog-card{transition:transform .25s ease,box-shadow .25s ease!important;border-radius:14px;overflow:hidden}
+    .fish-catalog-card:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(16,35,49,.12)!important}
+    .fish-catalog-card__media{position:relative;cursor:pointer;overflow:hidden;padding:0;border:0;width:100%;display:block;background:#edf0eb;aspect-ratio:4/3}
     .fish-catalog-card__media img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;transition:opacity .22s ease,transform .35s ease}
-    .fish-catalog-card__media img.is-changing{opacity:.25}
-    .fish-catalog-card__media:hover img{transform:scale(1.015)}
+    .fish-catalog-card__media img.is-changing{opacity:.25}.fish-catalog-card__media:hover img{transform:scale(1.015)}
     .fish-card-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(10,24,31,.42);backdrop-filter:blur(6px);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s ease,background .2s ease}
     .fish-catalog-card__media:hover .fish-card-nav,.fish-catalog-card__media:focus-within .fish-card-nav{opacity:1}.fish-card-nav:hover{background:rgba(10,24,31,.7)}.fish-card-nav--prev{left:12px}.fish-card-nav--next{right:12px}
     .fish-card-counter{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:2;padding:4px 9px;border-radius:999px;background:rgba(10,24,31,.46);backdrop-filter:blur(5px);color:#fff;font:500 11px/1.2 sans-serif;letter-spacing:.08em;pointer-events:none}
-    .fish-catalog-card__body{background:transparent}.fish-catalog-card__detail{border-color:rgba(255,255,255,.07)!important}
     .fish-gallery{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:30px;background:rgba(7,16,22,.94)}.fish-gallery[hidden]{display:none}.fish-gallery__panel{position:relative;width:min(92vw,1200px);height:min(88vh,850px);display:flex;align-items:center;justify-content:center}.fish-gallery__image{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}.fish-gallery button{position:absolute;border:0;background:rgba(255,255,255,.13);color:#fff;width:48px;height:48px;border-radius:50%;font-size:30px;cursor:pointer}.fish-gallery__prev{left:8px}.fish-gallery__next{right:8px}.fish-gallery__close{right:8px;top:8px}.fish-gallery__counter{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);color:#fff;font:500 13px sans-serif;letter-spacing:.08em}`;document.head.appendChild(style);
   const lightbox=document.createElement('div');lightbox.className='fish-gallery';lightbox.hidden=true;lightbox.innerHTML='<div class="fish-gallery__panel"><img class="fish-gallery__image" alt=""><button class="fish-gallery__prev" type="button" aria-label="Previous">‹</button><button class="fish-gallery__next" type="button" aria-label="Next">›</button><button class="fish-gallery__close" type="button" aria-label="Close">×</button><span class="fish-gallery__counter"></span></div>';document.body.appendChild(lightbox);
   const lbImage=lightbox.querySelector('.fish-gallery__image'),prev=lightbox.querySelector('.fish-gallery__prev'),next=lightbox.querySelector('.fish-gallery__next'),close=lightbox.querySelector('.fish-gallery__close'),counter=lightbox.querySelector('.fish-gallery__counter');let gallery=[],index=0;
