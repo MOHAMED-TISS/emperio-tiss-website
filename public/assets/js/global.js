@@ -34,5 +34,5 @@
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1','etCatalogPolish');
   loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1','etSitePolish');
   loadScript('/assets/js/fish-filter-crossing.js?v=20260823-fish-filter-2','etFishFilterCrossing');
-  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260823-en-filter-1','etEnCatalogFilterFix');
+  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260823-en-filter-2','etEnCatalogFilterFix');
 })();
