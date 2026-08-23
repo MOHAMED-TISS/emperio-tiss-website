@@ -42,4 +42,19 @@
   doc.body.insertAdjacentHTML('beforeend', footer);
   body.classList.add('international-shell');
   body.classList.toggle('international-shell-ar', lang === 'ar');
+
+  if (lang === 'ar') {
+    const style = doc.createElement('style');
+    style.textContent = `
+      html[lang="ar"] #menuToggleBtn.mobile-menu{position:relative!important;display:grid!important;place-items:center!important;inline-size:58px!important;block-size:58px!important;padding:0!important;direction:ltr!important}
+      html[lang="ar"] #menuToggleBtn.mobile-menu span{position:absolute!important;left:50%!important;top:50%!important;margin:0!important;transform-origin:center!important}
+      html[lang="ar"] #menuToggleBtn.mobile-menu span:nth-child(1){transform:translate(-50%,-7px)!important}
+      html[lang="ar"] #menuToggleBtn.mobile-menu span:nth-child(2){transform:translate(-50%,-50%)!important}
+      html[lang="ar"] #menuToggleBtn.mobile-menu span:nth-child(3){transform:translate(-50%,5px)!important}
+      html[lang="ar"] body.nav-open #menuToggleBtn.mobile-menu span:nth-child(1),html[lang="ar"] body.menu-open #menuToggleBtn.mobile-menu span:nth-child(1),html[lang="ar"] #menuToggleBtn.mobile-menu[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)!important}
+      html[lang="ar"] body.nav-open #menuToggleBtn.mobile-menu span:nth-child(2),html[lang="ar"] body.menu-open #menuToggleBtn.mobile-menu span:nth-child(2),html[lang="ar"] #menuToggleBtn.mobile-menu[aria-expanded="true"] span:nth-child(2){transform:translate(-50%,-50%) scaleX(0)!important;opacity:0!important}
+      html[lang="ar"] body.nav-open #menuToggleBtn.mobile-menu span:nth-child(3),html[lang="ar"] body.menu-open #menuToggleBtn.mobile-menu span:nth-child(3),html[lang="ar"] #menuToggleBtn.mobile-menu[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)!important}
+    `;
+    doc.head.appendChild(style);
+  }
 })();
