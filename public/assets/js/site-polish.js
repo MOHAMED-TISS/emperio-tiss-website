@@ -28,6 +28,16 @@
   `;
   doc.head.appendChild(style);
 
+  const removeLegacyArrows=()=>{
+    doc.querySelectorAll('a,button,.product-arrow,.text-link,.es-link,.intl-link,.ar-link,.product-card__link').forEach(el=>{
+      const walker=doc.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+      const nodes=[];let node;
+      while((node=walker.nextNode()))nodes.push(node);
+      nodes.forEach(textNode=>{textNode.nodeValue=(textNode.nodeValue||'').replace(/[↗↖↘↙→←•]/g,'');});
+    });
+  };
+  removeLegacyArrows();
+
   const ensureUniversalFooter=()=>{
     const lang=(doc.documentElement.lang||'').slice(0,2).toLowerCase();
     if(lang!=='es' && lang!=='fr') return;
