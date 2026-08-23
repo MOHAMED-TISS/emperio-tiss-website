@@ -1,99 +1,24 @@
 (() => {
   'use strict';
-
   const products = [
-    ['dorada','Dorada','Sparus aurata','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],
-    ['lubina','Lubina','Dicentrarchus labrax','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['merluza-pijota','Merluza / Pijota','Merluccius spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Según programa de suministro','Según origen'],
-    ['mujol','Mújol','Mugil cephalus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37 según origen'],
-    ['rape','Rape','Lophius spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Atlántico / Mediterráneo según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['san-pedro','San Pedro','Zeus faber','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['mero-amarillo','Mero amarillo','Epinephelus spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Según origen disponible','Según origen'],
-    ['pargo','Pargo','Lutjanus spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Según programa de suministro','Según origen'],
-    ['denton','Dentón','Dentex dentex','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],
-    ['sama','Sama','Dentex spp.','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],
-    ['sargo','Sargo','Diplodus spp.','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['rascacio','Rascacio','Scorpaena spp.','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],
-    ['caballa','Caballa','Scomber spp.','Pez de escama','Azul / graso','Fresco / Congelado','Atlántico / Mediterráneo según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['salmonete','Salmonete','Mullus spp.','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['atun','Atún','Thunnus spp.','Pez de escama','Azul / graso','Fresco / Congelado','Según especie y programa de suministro','Según origen'],
-    ['pez-limon','Pez limón','Seriola dumerili','Pez de escama','Azul / graso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],
-    ['boqueron','Boquerón','Engraulis encrasicolus','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],
-    ['pez-sable','Pez sable','Trichiurus spp.','Pescados especiales','Especial','Fresco / Congelado','Según programa de suministro','Según origen'],
-    ['pez-espada','Pez espada','Xiphias gladius','Pescados especiales','Especial','Fresco / Congelado','Según programa de suministro','Según origen']
-  ].map(([id,commercialName,scientificName,group,type,condition,origin,faoZone]) => ({id,commercialName,scientificName,group,type,condition,origin,faoZone}));
-
-  const grid = document.getElementById('fishCatalogGrid');
-  const search = document.getElementById('fishCatalogSearch');
-  const count = document.getElementById('fishCatalogCount');
-  if (!grid || !search || !count) return;
-
-  const filters = Array.from(document.querySelectorAll('[data-fish-filter]'));
-  let activeFilter = 'all';
-
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const conditions = value => String(value || '').toLowerCase().split('/').map(item => item.trim()).filter(Boolean).map(item => item === 'fresco' ? 'fresh' : item === 'congelado' ? 'frozen' : item);
-  const detail = (label,value) => `<div class="fish-catalog-card__detail"><span>${label}</span><strong>${esc(value)}</strong></div>`;
-
-  const card = product => `<article class="fish-catalog-card" data-product-id="${esc(product.id)}">
-    <div class="fish-catalog-card__media"><span class="fish-catalog-card__placeholder">EMPERIO TISS</span></div>
-    <div class="fish-catalog-card__body">
-      <p class="fish-catalog-card__meta">${esc(product.group)}</p>
-      <h3 class="fish-catalog-card__title">${esc(product.commercialName)}</h3>
-      <p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>
-      <div class="fish-catalog-card__details">
-        ${detail('Familia',product.group)}
-        ${detail('Tipo',product.type)}
-        ${detail('Estado',product.condition)}
-        ${detail('Origen',product.origin)}
-        ${detail('Zona FAO',product.faoZone)}
-        ${detail('Calibre','Según disponibilidad')}
-        ${detail('Calidad','Especificación profesional')}
-        ${detail('Presentación','Según destino')}
-        ${detail('Embalaje','Según mercado')}
-        ${detail('Disponibilidad','Según disponibilidad')}
-      </div>
-    </div>
-  </article>`;
-
-  function render() {
-    const query = String(search.value || '').trim().toLowerCase();
-    const visible = products.filter(product => {
-      const productConditions = conditions(product.condition);
-      const matchesFilter = activeFilter === 'all' || productConditions.includes(activeFilter);
-      const haystack = [product.commercialName,product.scientificName,product.group,product.type,product.origin,product.faoZone].join(' ').toLowerCase();
-      return matchesFilter && (!query || haystack.includes(query));
-    });
-    count.textContent = `${visible.length} ${visible.length === 1 ? 'referencia' : 'referencias'}`;
-    grid.replaceChildren();
-    if (!visible.length) {
-      const empty = document.createElement('p');
-      empty.className = 'fish-catalog__empty';
-      empty.textContent = 'No hay referencias que coincidan con la búsqueda.';
-      grid.appendChild(empty);
-      return;
-    }
-    const fragment = document.createDocumentFragment();
-    const template = document.createElement('template');
-    visible.forEach(product => {
-      template.innerHTML = card(product).trim();
-      fragment.appendChild(template.content.firstElementChild);
-    });
-    grid.appendChild(fragment);
-  }
-
-  filters.forEach(button => {
-    button.type = 'button';
-    button.addEventListener('click', event => {
-      event.preventDefault();
-      event.stopPropagation();
-      const nextFilter = button.dataset.fishFilter || 'all';
-      activeFilter = nextFilter === 'fresh' || nextFilter === 'frozen' ? nextFilter : 'all';
-      filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      render();
-    });
-  });
-
-  search.addEventListener('input', render);
-  render();
+    ['dorada','Dorada','Sparus aurata','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],['lubina','Lubina','Dicentrarchus labrax','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],['merluza-pijota','Merluza / Pijota','Merluccius spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Según programa de suministro','Según origen'],['mujol','Mújol','Mugil cephalus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37 según origen'],['rape','Rape','Lophius spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Atlántico / Mediterráneo según disponibilidad','FAO 27 / FAO 37 según origen'],['san-pedro','San Pedro','Zeus faber','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],['mero-amarillo','Mero amarillo','Epinephelus spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Según origen disponible','Según origen'],['pargo','Pargo','Lutjanus spp.','Pez de escama','Blanco / semigraso','Fresco / Congelado','Según programa de suministro','Según origen'],['denton','Dentón','Dentex dentex','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],['sama','Sama','Dentex spp.','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],['sargo','Sargo','Diplodus spp.','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],['rascacio','Rascacio','Scorpaena spp.','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],['caballa','Caballa','Scomber spp.','Pez de escama','Azul / graso','Fresco / Congelado','Atlántico / Mediterráneo según disponibilidad','FAO 27 / FAO 37 según origen'],['salmonete','Salmonete','Mullus spp.','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],['atun','Atún','Thunnus spp.','Pez de escama','Azul / graso','Fresco / Congelado','Según especie y programa de suministro','Según origen'],['pez-limon','Pez limón','Seriola dumerili','Pez de escama','Azul / graso','Fresco','Mediterráneo / según disponibilidad','FAO 37'],['boqueron','Boquerón','Engraulis encrasicolus','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico según disponibilidad','FAO 27 / FAO 37 según origen'],['pez-sable','Pez sable','Trichiurus spp.','Pescados especiales','Especial','Fresco / Congelado','Según programa de suministro','Según origen'],['pez-espada','Pez espada','Xiphias gladius','Pescados especiales','Especial','Fresco / Congelado','Según programa de suministro','Según origen']
+  ].map(([id,commercialName,scientificName,group,type,condition,origin,faoZone])=>({id,commercialName,scientificName,group,type,condition,origin,faoZone}));
+  const grid=document.getElementById('fishCatalogGrid'),search=document.getElementById('fishCatalogSearch'),count=document.getElementById('fishCatalogCount');
+  if(!grid||!search||!count)return;
+  const filters=Array.from(document.querySelectorAll('[data-fish-filter]')); let activeFilter='all',imageMap={};
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const conditions=v=>String(v||'').toLowerCase().split('/').map(x=>x.trim()).filter(Boolean).map(x=>x==='fresco'?'fresh':x==='congelado'?'frozen':x);
+  const detail=(label,value)=>`<div class="fish-catalog-card__detail"><span>${label}</span><strong>${esc(value)}</strong></div>`;
+  const style=document.createElement('style');style.textContent='.fish-catalog-card__media{cursor:zoom-in;overflow:hidden}.fish-catalog-card__media img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}.fish-gallery{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:30px;background:rgba(7,16,22,.94)}.fish-gallery[hidden]{display:none}.fish-gallery__panel{position:relative;width:min(92vw,1200px);height:min(88vh,850px);display:flex;align-items:center;justify-content:center}.fish-gallery__image{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}.fish-gallery button{position:absolute;border:0;background:rgba(255,255,255,.13);color:#fff;width:48px;height:48px;border-radius:50%;font-size:30px;cursor:pointer}.fish-gallery__prev{left:8px}.fish-gallery__next{right:8px}.fish-gallery__close{right:8px;top:8px}.fish-gallery__counter{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);color:#fff;font:500 13px sans-serif;letter-spacing:.08em}';document.head.appendChild(style);
+  const lightbox=document.createElement('div');lightbox.className='fish-gallery';lightbox.hidden=true;lightbox.innerHTML='<div class="fish-gallery__panel"><img class="fish-gallery__image" alt=""><button class="fish-gallery__prev" type="button" aria-label="Previous">‹</button><button class="fish-gallery__next" type="button" aria-label="Next">›</button><button class="fish-gallery__close" type="button" aria-label="Close">×</button><span class="fish-gallery__counter"></span></div>';document.body.appendChild(lightbox);
+  const lbImage=lightbox.querySelector('.fish-gallery__image'),prev=lightbox.querySelector('.fish-gallery__prev'),next=lightbox.querySelector('.fish-gallery__next'),close=lightbox.querySelector('.fish-gallery__close'),counter=lightbox.querySelector('.fish-gallery__counter');let gallery=[],index=0;
+  const updateGallery=()=>{lbImage.src=gallery[index];counter.textContent=`${index+1} / ${gallery.length}`;const multi=gallery.length>1;prev.hidden=!multi;next.hidden=!multi;};
+  const openGallery=images=>{if(!images?.length)return;gallery=images;index=0;lightbox.hidden=false;document.body.style.overflow='hidden';updateGallery();};
+  const closeGallery=()=>{lightbox.hidden=true;document.body.style.overflow='';lbImage.removeAttribute('src');};
+  const move=step=>{if(gallery.length<2)return;index=(index+step+gallery.length)%gallery.length;updateGallery();};
+  prev.onclick=()=>move(-1);next.onclick=()=>move(1);close.onclick=closeGallery;lightbox.onclick=e=>{if(e.target===lightbox)closeGallery()};document.addEventListener('keydown',e=>{if(lightbox.hidden)return;if(e.key==='Escape')closeGallery();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)});
+  const card=product=>{const images=imageMap[product.id]||[];return `<article class="fish-catalog-card" data-product-id="${esc(product.id)}"><button class="fish-catalog-card__media" type="button" data-images='${esc(JSON.stringify(images))}' aria-label="${esc(product.commercialName)}">${images.length?`<img src="${esc(images[0])}" alt="${esc(product.commercialName)}" loading="lazy" draggable="false">`:'<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}</button><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(product.group)}</p><h3 class="fish-catalog-card__title">${esc(product.commercialName)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-catalog-card__details">${detail('Familia',product.group)}${detail('Tipo',product.type)}${detail('Estado',product.condition)}${detail('Origen',product.origin)}${detail('Zona FAO',product.faoZone)}${detail('Calibre','Según disponibilidad')}${detail('Calidad','Especificación profesional')}${detail('Presentación','Según destino')}${detail('Embalaje','Según mercado')}${detail('Disponibilidad','Según disponibilidad')}</div></div></article>`};
+  function render(){const q=String(search.value||'').trim().toLowerCase();const visible=products.filter(p=>{const ok=activeFilter==='all'||conditions(p.condition).includes(activeFilter);const hay=[p.commercialName,p.scientificName,p.group,p.type,p.origin,p.faoZone].join(' ').toLowerCase();return ok&&(!q||hay.includes(q))});count.textContent=`${visible.length} ${visible.length===1?'referencia':'referencias'}`;grid.innerHTML=visible.length?visible.map(card).join(''):'<p class="fish-catalog__empty">No hay referencias que coincidan con la búsqueda.</p>';grid.querySelectorAll('[data-images]').forEach(b=>b.addEventListener('click',()=>openGallery(JSON.parse(b.dataset.images))));}
+  filters.forEach(button=>{button.type='button';button.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const f=button.dataset.fishFilter||'all';activeFilter=f==='fresh'||f==='frozen'?f:'all';filters.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));render()})});search.addEventListener('input',render);
+  fetch('/assets/data/product-images.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(data=>{imageMap=data||{};render()}).catch(()=>render());
 })();
