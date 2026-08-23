@@ -15,8 +15,9 @@
   };
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
-  loadCss('/assets/css/canonical-nav.css?v=20260823-taxonomy-4', 'etCanonicalNav');
+  loadCss('/assets/css/canonical-nav.css?v=20260823-taxonomy-5', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
+  loadCss('/assets/css/nav-consistency.css?v=20260823-nav-1', 'etNavConsistency');
 
   // Spanish Fish catalogue: keep the page operational even if the catalogue JSON is temporarily unavailable.
   if ((doc.documentElement.lang || '').toLowerCase().startsWith('es') && doc.body?.classList.contains('fish-catalog-pilot')) {
@@ -33,6 +34,6 @@
     });
   }
 
-  loadScript('/assets/js/global-core.js?v=20260823-taxonomy-4', 'etGlobalCore');
+  loadScript('/assets/js/global-core.js?v=20260823-taxonomy-5', 'etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
 })();
