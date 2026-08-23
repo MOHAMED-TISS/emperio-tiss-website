@@ -4,149 +4,17 @@
   if (!grid) return;
 
   const selected = [
-    {
-      id: 'dorada',
-      name: 'Dorada',
-      scientific: 'Sparus aurata',
-      group: 'Pez de escama',
-      note: 'Mediterráneo · fresco · según disponibilidad'
-    },
-    {
-      id: 'denton',
-      name: 'Dentón',
-      scientific: 'Dentex dentex',
-      group: 'Pez de escama',
-      note: 'Mediterráneo · fresco · según disponibilidad'
-    },
-    {
-      id: 'san-pedro',
-      name: 'San Pedro',
-      scientific: 'Zeus faber',
-      group: 'Pez de escama',
-      note: 'Mediterráneo / Atlántico · fresco · según disponibilidad'
-    }
+    { id: 'merluza-pijota', name: 'Merluza / Pijota', scientific: 'Merluccius spp.', group: 'Pez de escama', note: 'Atlántico / Mediterráneo · fresco · según disponibilidad' },
+    { id: 'lubina', name: 'Lubina', scientific: 'Dicentrarchus labrax', group: 'Pez de escama', note: 'Mediterráneo / Atlántico · fresco · según disponibilidad' },
+    { id: 'atun', name: 'Atún', scientific: 'Thunnus spp.', group: 'Pez de escama', note: 'Origen según especie · fresco · según disponibilidad' }
   ];
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-  let gallery = [];
-  let galleryIndex = 0;
-  let lightbox = null;
-  let lightboxImage = null;
-  let lightboxCounter = null;
-  let lightboxPrev = null;
-  let lightboxNext = null;
-  let lightboxClose = null;
-
-  const ensureLightbox = () => {
-    if (lightbox) return;
-    lightbox = document.createElement('div');
-    lightbox.className = 'fish-gallery fish-emblematic-gallery';
-    lightbox.hidden = true;
-    lightbox.innerHTML = `
-      <div class="fish-gallery__panel">
-        <img class="fish-gallery__image" alt="" draggable="false">
-        <button class="fish-gallery__prev" type="button" aria-label="Previous image">‹</button>
-        <button class="fish-gallery__next" type="button" aria-label="Next image">›</button>
-        <button class="fish-gallery__close" type="button" aria-label="Close">×</button>
-        <span class="fish-gallery__counter"></span>
-      </div>`;
-    document.body.appendChild(lightbox);
-
-    lightboxImage = lightbox.querySelector('.fish-gallery__image');
-    lightboxCounter = lightbox.querySelector('.fish-gallery__counter');
-    lightboxPrev = lightbox.querySelector('.fish-gallery__prev');
-    lightboxNext = lightbox.querySelector('.fish-gallery__next');
-    lightboxClose = lightbox.querySelector('.fish-gallery__close');
-
-    const move = step => {
-      if (gallery.length < 2) return;
-      galleryIndex = (galleryIndex + step + gallery.length) % gallery.length;
-      updateLightbox();
-    };
-
-    lightboxPrev.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); move(-1); });
-    lightboxNext.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); move(1); });
-    lightboxClose.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); closeLightbox(); });
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => {
-      if (lightbox.hidden) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') move(-1);
-      if (e.key === 'ArrowRight') move(1);
-    });
-  };
-
-  const updateLightbox = () => {
-    if (!lightboxImage || !gallery.length) return;
-    lightboxImage.src = gallery[galleryIndex];
-    lightboxCounter.textContent = `${galleryIndex + 1} / ${gallery.length}`;
-    const multi = gallery.length > 1;
-    lightboxPrev.hidden = !multi;
-    lightboxNext.hidden = !multi;
-  };
-
-  const openLightbox = (images, name) => {
-    if (!images.length) return;
-    ensureLightbox();
-    gallery = images;
-    galleryIndex = 0;
-    lightboxImage.alt = name;
-    lightbox.hidden = false;
-    document.body.style.overflow = 'hidden';
-    updateLightbox();
-  };
-
-  const closeLightbox = () => {
-    if (!lightbox) return;
-    lightbox.hidden = true;
-    document.body.style.overflow = '';
-    if (lightboxImage) lightboxImage.removeAttribute('src');
-  };
-
-  const bindCards = imageMap => {
-    grid.querySelectorAll('.fish-emblematic-card__media--image').forEach(media => {
-      const id = media.closest('.fish-emblematic-card')?.dataset.productId;
-      const product = selected.find(item => item.id === id);
-      const images = imageMap[id] || [];
-      if (!product || !images.length) return;
-      media.setAttribute('role', 'button');
-      media.setAttribute('tabindex', '0');
-      media.setAttribute('aria-label', `Ver imágenes de ${product.name}`);
-      const activate = event => {
-        if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
-        event.preventDefault();
-        openLightbox(images, product.name);
-      };
-      media.addEventListener('click', activate);
-      media.addEventListener('keydown', activate);
-    });
-  };
-
-  const render = imageMap => {
-    grid.innerHTML = selected.map((product, i) => {
-      const images = imageMap[product.id] || [];
-      const image = images[0] || '';
-      return `<article class="fish-emblematic-card" data-product-id="${esc(product.id)}">
-        <div class="fish-emblematic-card__media${image ? ' fish-emblematic-card__media--image' : ''}">
-          ${image ? `<img src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '<span>EMPERIO TISS</span>'}
-          ${image ? '<span class="fish-emblematic-card__zoom-label">Ver imagen</span>' : ''}
-        </div>
-        <div class="fish-emblematic-card__body">
-          <span class="fish-emblematic-card__kicker">0${i + 1} / SELECCIÓN</span>
-          <h3>${esc(product.name)}</h3>
-          <p class="fish-emblematic-card__scientific"><em>${esc(product.scientific)}</em></p>
-          <div class="fish-emblematic-card__meta"><span>${esc(product.group)}</span><span>${esc(product.note.split('·')[0].trim())}</span></div>
-          <p class="fish-emblematic-card__note">${esc(product.note)}</p>
-          <span class="fish-emblematic-card__mark">Referencia profesional</span>
-        </div>
-      </article>`;
-    }).join('');
-    bindCards(imageMap);
-  };
-
-  fetch('/assets/data/product-images.json', { cache: 'no-cache' })
-    .then(response => response.ok ? response.json() : {})
-    .then(data => render(data || {}))
-    .catch(() => render({}));
+  let gallery = [], galleryIndex = 0, lightbox = null, lightboxImage = null, lightboxCounter = null, lightboxPrev = null, lightboxNext = null, lightboxClose = null;
+  const ensureLightbox = () => { if (lightbox) return; lightbox = document.createElement('div'); lightbox.className='fish-gallery fish-emblematic-gallery'; lightbox.hidden=true; lightbox.innerHTML='<div class="fish-gallery__panel"><img class="fish-gallery__image" alt="" draggable="false"><button class="fish-gallery__prev" type="button" aria-label="Previous image">‹</button><button class="fish-gallery__next" type="button" aria-label="Next image">›</button><button class="fish-gallery__close" type="button" aria-label="Close">×</button><span class="fish-gallery__counter"></span></div>'; document.body.appendChild(lightbox); lightboxImage=lightbox.querySelector('.fish-gallery__image'); lightboxCounter=lightbox.querySelector('.fish-gallery__counter'); lightboxPrev=lightbox.querySelector('.fish-gallery__prev'); lightboxNext=lightbox.querySelector('.fish-gallery__next'); lightboxClose=lightbox.querySelector('.fish-gallery__close'); const move=step=>{if(gallery.length<2)return;galleryIndex=(galleryIndex+step+gallery.length)%gallery.length;updateLightbox();}; lightboxPrev.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();move(-1);}); lightboxNext.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();move(1);}); lightboxClose.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeLightbox();}); lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();}); document.addEventListener('keydown',e=>{if(lightbox.hidden)return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);}); };
+  const updateLightbox=()=>{if(!lightboxImage||!gallery.length)return;lightboxImage.src=gallery[galleryIndex];lightboxCounter.textContent=`${galleryIndex+1} / ${gallery.length}`;const multi=gallery.length>1;lightboxPrev.hidden=!multi;lightboxNext.hidden=!multi;};
+  const openLightbox=(images,name)=>{if(!images.length)return;ensureLightbox();gallery=images;galleryIndex=0;lightboxImage.alt=name;lightbox.hidden=false;document.body.style.overflow='hidden';updateLightbox();};
+  const closeLightbox=()=>{if(!lightbox)return;lightbox.hidden=true;document.body.style.overflow='';if(lightboxImage)lightboxImage.removeAttribute('src');};
+  const render=imageMap=>{grid.innerHTML=selected.map((product,i)=>{const images=imageMap[product.id]||[];const image=images[0]||'';return `<article class="fish-emblematic-card" data-product-id="${esc(product.id)}"><div class="fish-emblematic-card__media${image?' fish-emblematic-card__media--image':''}">${image?`<img src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">`:'<span>EMPERIO TISS</span>'}${image?'<span class="fish-emblematic-card__zoom-label">Ver imagen</span>':''}</div><div class="fish-emblematic-card__body"><span class="fish-emblematic-card__kicker">0${i+1} / SELECCIÓN</span><h3>${esc(product.name)}</h3><p class="fish-emblematic-card__scientific"><em>${esc(product.scientific)}</em></p><div class="fish-emblematic-card__meta"><span>${esc(product.group)}</span><span>${esc(product.note.split('·')[0].trim())}</span></div><p class="fish-emblematic-card__note">${esc(product.note)}</p><span class="fish-emblematic-card__mark">Referencia profesional</span></div></article>`;}).join(''); grid.querySelectorAll('.fish-emblematic-card__media--image').forEach(media=>{const id=media.closest('.fish-emblematic-card')?.dataset.productId;const product=selected.find(item=>item.id===id);const images=imageMap[id]||[];if(!product||!images.length)return;media.setAttribute('role','button');media.setAttribute('tabindex','0');media.setAttribute('aria-label',`Ver imágenes de ${product.name}`);const activate=event=>{if(event.type==='keydown'&&event.key!=='Enter'&&event.key!==' ')return;event.preventDefault();openLightbox(images,product.name);};media.addEventListener('click',activate);media.addEventListener('keydown',activate);});};
+  fetch('/assets/data/product-images.json',{cache:'no-cache'}).then(response=>response.ok?response.json():{}).then(data=>render(data||{})).catch(()=>render({}));
 })();
