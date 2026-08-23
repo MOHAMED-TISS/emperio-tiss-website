@@ -18,19 +18,27 @@
 /* Products children: one level in from the primary navigation. */
 .nav-products>.nav-products-links{display:none;flex-direction:column;gap:0;margin:0 0 12px;padding-inline-start:48px;border-inline-start:1px solid rgba(217,199,160,.18)}
 .nav-products[open]>.nav-products-links{display:flex}
-.nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-family:var(--et-serif)!important;font-size:35px!important;font-weight:500;line-height:1.08;letter-spacing:.025em;color:#000!important;-webkit-text-fill-color:#000!important;margin:0 0 15px;padding:0}
+.nav-products>.nav-products-links>a,
+.nav-products>.nav-products-links>details>summary{font-family:var(--et-serif)!important;font-size:35px!important;font-weight:500;line-height:1.08;letter-spacing:.025em;color:#000!important;-webkit-text-fill-color:#000!important;margin:0 0 15px;padding:0}
 .nav-products>.nav-products-links>details>summary{display:inline-flex;align-items:baseline;width:max-content;cursor:pointer}
 .nav-products>.nav-products-links>details>summary::after{content:"+";color:#d9c7a0;font:400 25px/1 var(--et-serif);margin-inline-start:10px}
 .nav-products>.nav-products-links>details[open]>summary::after{content:"−"}
 
-/* Seafood subcategories: explicitly black, matching the other Products children. */
+/* Level 3: nested commercial groupings such as Shellfish → Mediterranean. */
 .nav-products>.nav-products-links>details>.nav-products-links{display:none;flex-direction:column;gap:0;margin:0 0 12px;padding-inline-start:72px;border-inline-start:1px solid rgba(217,199,160,.14)}
 .nav-products>.nav-products-links>details[open]>.nav-products-links{display:flex}
 .nav-products>.nav-products-links>details>.nav-products-links>a,
-.nav-products>.nav-products-links>details>.nav-products-links>a:visited,
-.nav-products>.nav-products-links>details>.nav-products-links>a:hover,
-.nav-products>.nav-products-links>details>.nav-products-links>a:focus,
-.nav-products>.nav-products-links>details>.nav-products-links>a:active{font-family:var(--et-serif)!important;font-size:25px!important;font-weight:500!important;line-height:1.12;letter-spacing:.02em;color:#000!important;-webkit-text-fill-color:#000!important;margin:0 0 10px;padding:0}
+.nav-products>.nav-products-links>details>.nav-products-links>details>summary,
+.nav-products>.nav-products-links>details>.nav-products-links>.nav-product-leaf{font-family:var(--et-serif)!important;font-size:25px!important;font-weight:500!important;line-height:1.12;letter-spacing:.02em;color:#000!important;-webkit-text-fill-color:#000!important;margin:0 0 10px;padding:0}
+.nav-products>.nav-products-links>details>.nav-products-links>details>summary{display:inline-flex;align-items:baseline;width:max-content;cursor:pointer}
+.nav-products>.nav-products-links>details>.nav-products-links>details>summary::after{content:"+";color:#d9c7a0;font:400 20px/1 var(--et-serif);margin-inline-start:8px}
+.nav-products>.nav-products-links>details>.nav-products-links>details[open]>summary::after{content:"−"}
+
+/* Level 4: product leaves inside a commercial grouping. */
+.nav-products>.nav-products-links>details>.nav-products-links>details>.nav-products-links{display:none;flex-direction:column;gap:0;margin:0 0 8px;padding-inline-start:48px;border-inline-start:1px solid rgba(217,199,160,.10)}
+.nav-products>.nav-products-links>details>.nav-products-links>details[open]>.nav-products-links{display:flex}
+.nav-products .nav-product-leaf{display:block!important}
+
 .nav-overlay-links .idx{font-size:.72rem;line-height:1;font-weight:500;letter-spacing:.08em;margin-inline-end:9px;opacity:.7}
 
 @media(max-width:800px){
@@ -38,5 +46,8 @@
   .nav-products>.nav-products-links>a,.nav-products>.nav-products-links>details>summary{font-size:30px!important}
   .nav-products>.nav-products-links{padding-inline-start:32px}
   .nav-products>.nav-products-links>details>.nav-products-links{padding-inline-start:48px}
-  .nav-products>.nav-products-links>details>.nav-products-links>a{font-size:23px!important}
+  .nav-products>.nav-products-links>details>.nav-products-links>a,
+  .nav-products>.nav-products-links>details>.nav-products-links>details>summary,
+  .nav-products>.nav-products-links>details>.nav-products-links>.nav-product-leaf{font-size:23px!important}
+  .nav-products>.nav-products-links>details>.nav-products-links>details>.nav-products-links{padding-inline-start:32px}
 }
