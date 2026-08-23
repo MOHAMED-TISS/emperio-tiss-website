@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.3",
+  "market": "B2B",
+  "families": [
+    {"id":"seafood","name":"Productos del mar","path":"/products/seafood/","subcategories":["fish","shellfish","cephalopods"],"groups":{"shellfish":["mediterranean"]}},
+    {"id":"produce","name":"Frutas y hortalizas","path":"/products/fruits/","subcategories":["citrus","exotics","core-produce","vegetables"]},
+    {"id":"seasonal","name":"Productos de temporada","path":"/products/seasonal/","subcategories":["seasonal-selection"]}
+  ],
+  "products": [
+    {"id":"dorada","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Dorada","scientificName":"Sparus aurata","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"calibre":["Según especificación del comprador"],"image":"","status":"active"},
+    {"id":"moruno","family":"seafood","category":"seafood","subcategory":"shellfish","catalogGroup":"mediterranean","commercialName":"Moruno","scientificName":"","condition":["fresh"],"origin":["Mediterráneo"],"availability":["Según disponibilidad"],"image":"","status":"active"},
+    {"id":"cigala","family":"seafood","category":"seafood","subcategory":"shellfish","catalogGroup":"mediterranean","commercialName":"Cigala","scientificName":"","condition":["fresh"],"origin":["Mediterráneo"],"availability":["Según disponibilidad"],"image":"","status":"active"},
+    {"id":"gamba-blanca","family":"seafood","category":"seafood","subcategory":"shellfish","catalogGroup":"mediterranean","commercialName":"Gamba blanca","scientificName":"","condition":["fresh"],"origin":["Mediterráneo"],"availability":["Según disponibilidad"],"image":"","status":"active"},
+    {"id":"langostino-tigre","family":"seafood","category":"seafood","subcategory":"shellfish","catalogGroup":"mediterranean","commercialName":"Langostino tigre","scientificName":"","condition":["fresh"],"origin":["Mediterráneo"],"availability":["Según disponibilidad"],"image":"","status":"active"},
+    {"id":"langostino-vannamei","family":"seafood","category":"seafood","subcategory":"shellfish","commercialName":"Langostino vannamei","scientificName":"Litopenaeus vannamei","condition":["frozen"],"origin":["Según programa de suministro"],"calibre":["Según talla comercial"],"image":"","status":"active"},
+    {"id":"octopus-vulgaris","family":"seafood","category":"seafood","subcategory":"cephalopods","commercialName":"Pulpo","scientificName":"Octopus vulgaris","condition":["frozen"],"origin":["Atlántico / Mediterráneo según disponibilidad"],"calibre":["Según especificación del comprador"],"image":"","status":"active"},
+    {"id":"clementina","family":"produce","category":"produce","subcategory":"citrus","commercialName":"Clementina","scientificName":"Citrus reticulata","condition":["fresh"],"origin":["España / Marruecos según campaña"],"calibre":["Según especificación del comprador"],"image":"","status":"active"},
+    {"id":"navelina","family":"produce","category":"produce","subcategory":"citrus","commercialName":"Navelina","scientificName":"Citrus sinensis","condition":["fresh"],"origin":["España / según campaña"],"calibre":["Según especificación del comprador"],"image":"","status":"active"},
+    {"id":"mango","family":"produce","category":"produce","subcategory":"exotics","commercialName":"Mango","scientificName":"Mangifera indica","condition":["fresh"],"origin":["Según temporada y programa de suministro"],"image":"","status":"active"},
+    {"id":"apple","family":"produce","category":"produce","subcategory":"core-produce","commercialName":"Manzana","scientificName":"Malus domestica","condition":["fresh"],"origin":["Según programa de suministro"],"image":"","status":"active"},
+    {"id":"tomato","family":"produce","category":"produce","subcategory":"vegetables","commercialName":"Tomate","scientificName":"Solanum lycopersicum","condition":["fresh"],"origin":["Según programa de suministro"],"image":"","status":"active"},
+    {"id":"clementina-seasonal","family":"seasonal","category":"seasonal","subcategory":"seasonal-selection","commercialName":"Clementina de campaña","scientificName":"Citrus reticulata","condition":["fresh"],"origin":["Según campaña y origen disponible"],"image":"","status":"active"},
+    {"id":"sardina","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Sardina","scientificName":"Sardina pilchardus","condition":["fresh"],"origin":[],"image":"","status":"draft"}
+  ]
+}
