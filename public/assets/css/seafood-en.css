@@ -1,6 +1,6 @@
 /* EMPERIO TISS — EN Seafood landing marine system */
 body.seafood-page.products-site{--sea:#041d31;--sea-deep:#02111d;--sea-blue:#07324d;--sea-soft:#eef3f6;--sea-line:rgba(4,29,49,.14);background:var(--sea-soft);color:#102331}
-body.seafood-page.products-site .product-hero{min-height:94svh;background:linear-gradient(115deg,rgba(2,17,29,.9),rgba(4,29,49,.68) 50%,rgba(7,50,77,.22) 100%),url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2400&q=90") center/cover no-repeat}
+body.seafood-page.products-site .product-hero{min-height:94svh;background:linear-gradient(115deg,rgba(2,17,29,.82),rgba(4,29,49,.48) 52%,rgba(7,50,77,.12) 100%),url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2400&q=90") center/cover no-repeat}
 body.seafood-page.products-site .hero-copy p{color:rgba(245,241,232,.82)}
 body.seafood-page.products-site .p-section{background:#eef3f6}body.seafood-page.products-site .p-section.dark{background:var(--sea);color:#fff}
 body.seafood-page.products-site .card{background:#f8fafb}body.seafood-page.products-site .p-section.dark .card{background:#0a3550}body.seafood-page.products-site .card p{color:#617783}body.seafood-page.products-site .dark .card p{color:rgba(255,255,255,.66)}
