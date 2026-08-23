@@ -1,8 +1,8 @@
 (() => {
   'use strict';
   const doc = document;
-  const root = doc.documentElement;
-  const body = doc.body;
+  const root = document.documentElement;
+  const body = document.body;
   const get = (s, scope = doc) => scope.querySelector(s);
   root.classList.remove('et-pointer-ready');
   get('.et-pointer')?.remove();
@@ -14,10 +14,10 @@
 
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const nav = {
-    es: { prefix: '', home: 'Inicio', company: 'Empresa', products: 'Productos', seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada', markets: 'Mercados', news: 'Noticias', contact: 'Contacto' },
-    en: { prefix: '/en', home: 'Home', company: 'Company', products: 'Products', seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods', fruits: 'Fruits', vegetables: 'Vegetables', seasonal: 'Seasonal', markets: 'Markets', news: 'News', contact: 'Contact' },
-    fr: { prefix: '/fr', home: 'Accueil', company: 'Entreprise', products: 'Produits', seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Coquillages', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Produits de saison', markets: 'Marchés', news: 'Actualités', contact: 'Contact' },
-    ar: { prefix: '/ar', home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', seafood: 'المأكولات البحرية', fish: 'الأسماك', shellfish: 'المحاريات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'المنتجات الموسمية', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا' }
+    es: { prefix: '', home: 'Inicio', company: 'Empresa', products: 'Productos', seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos / Crustáceos', mediterranean: 'Del Mediterráneo', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre', cephalopods: 'Cefalópodos', fruitsVegetables: 'Frutas y hortalizas', fruits: 'Frutas', citrus: 'Cítricos', exoticFruit: 'Frutas exóticas', otherFruit: 'Otras frutas', vegetables: 'Hortalizas', seasonal: 'Temporada', seasonalSelection: 'Selección de temporada', markets: 'Mercados', news: 'Noticias', contact: 'Contacto' },
+    en: { prefix: '/en', home: 'Home', company: 'Company', products: 'Products', seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish / Crustaceans', mediterranean: 'Mediterranean', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre', cephalopods: 'Cephalopods', fruitsVegetables: 'Fruits & Vegetables', fruits: 'Fruit', citrus: 'Citrus', exoticFruit: 'Exotic fruit', otherFruit: 'Other fruit', vegetables: 'Vegetables', seasonal: 'Seasonal', seasonalSelection: 'Seasonal selection', markets: 'Markets', news: 'News', contact: 'Contact' },
+    fr: { prefix: '/fr', home: 'Accueil', company: 'Entreprise', products: 'Produits', seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Fruits de mer / Crustacés', mediterranean: 'Méditerranée', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre', cephalopods: 'Céphalopodes', fruitsVegetables: 'Fruits & légumes', fruits: 'Fruits', citrus: 'Agrumes', exoticFruit: 'Fruits exotiques', otherFruit: 'Autres fruits', vegetables: 'Légumes', seasonal: 'Produits de saison', seasonalSelection: 'Sélection de saison', markets: 'Marchés', news: 'Actualités', contact: 'Contact' },
+    ar: { prefix: '/ar', home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', seafood: 'المأكولات البحرية', fish: 'الأسماك', shellfish: 'المأكولات البحرية / القشريات', mediterranean: 'من البحر المتوسط', moruno: 'Moruno', cigala: 'Cigala', whitePrawn: 'Gamba blanca', tigerPrawn: 'Langostino tigre', cephalopods: 'رأسيات الأرجل', fruitsVegetables: 'الفواكه والخضروات', fruits: 'الفواكه', citrus: 'الحمضيات', exoticFruit: 'الفواكه الاستوائية', otherFruit: 'فواكه أخرى', vegetables: 'الخضروات', seasonal: 'المنتجات الموسمية', seasonalSelection: 'اختيارات موسمية', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا' }
   }[lang] || null;
   if (!nav) return;
 
@@ -54,6 +54,19 @@
     return a;
   };
 
+  const summary = label => {
+    const s = doc.createElement('summary');
+    s.textContent = label;
+    return s;
+  };
+
+  const leaf = label => {
+    const s = doc.createElement('span');
+    s.className = 'nav-product-leaf';
+    s.textContent = label;
+    return s;
+  };
+
   const buildPrimary = (idx, label, suffix) => {
     const a = link(label, suffix);
     const n = doc.createElement('span');
@@ -68,38 +81,76 @@
   const buildProducts = () => {
     const details = doc.createElement('details');
     details.className = 'nav-products';
-    if (/\/products\/seafood\/(?:fish|shellfish|cephalopods)?\/$/.test(path)) details.open = true;
+    if (/\/products\/(?:seafood|fruits|vegetables|seasonal)\//.test(path)) details.open = true;
 
-    const summary = doc.createElement('summary');
     const n = doc.createElement('span');
     n.className = 'idx';
     n.textContent = '03';
     const t = doc.createElement('span');
     t.textContent = nav.products;
-    summary.append(n, t);
-    details.appendChild(summary);
+    const productSummary = doc.createElement('summary');
+    productSummary.append(n, t);
+    details.appendChild(productSummary);
 
     const productsLinks = doc.createElement('div');
     productsLinks.className = 'nav-products-links';
 
     const seafood = doc.createElement('details');
     seafood.className = 'nav-seafood';
-    if (/\/products\/seafood\/(?:fish|shellfish|cephalopods)\/$/.test(path)) seafood.open = true;
-    const seafoodSummary = doc.createElement('summary');
-    seafoodSummary.textContent = nav.seafood;
-    seafood.appendChild(seafoodSummary);
+    if (/\/products\/seafood\//.test(path)) seafood.open = true;
+    seafood.appendChild(summary(nav.seafood));
 
     const seafoodLinks = doc.createElement('div');
     seafoodLinks.className = 'nav-products-links nav-seafood-links';
     seafoodLinks.appendChild(link(nav.fish, '/products/seafood/fish/'));
-    seafoodLinks.appendChild(link(nav.shellfish, '/products/seafood/shellfish/'));
+
+    const shellfish = doc.createElement('details');
+    shellfish.className = 'nav-shellfish';
+    if (/\/products\/seafood\/shellfish\//.test(path)) shellfish.open = true;
+    shellfish.appendChild(summary(nav.shellfish));
+
+    const shellfishLinks = doc.createElement('div');
+    shellfishLinks.className = 'nav-products-links nav-products-links--level-3';
+    const mediterranean = doc.createElement('details');
+    mediterranean.className = 'nav-shellfish-mediterranean';
+    mediterranean.appendChild(summary(nav.mediterranean));
+    const mediterraneanLinks = doc.createElement('div');
+    mediterraneanLinks.className = 'nav-products-links nav-products-links--level-4';
+    mediterraneanLinks.append(leaf(nav.moruno), leaf(nav.cigala), leaf(nav.whitePrawn), leaf(nav.tigerPrawn));
+    mediterranean.appendChild(mediterraneanLinks);
+    shellfishLinks.appendChild(mediterranean);
+    shellfish.appendChild(shellfishLinks);
+    seafoodLinks.appendChild(shellfish);
     seafoodLinks.appendChild(link(nav.cephalopods, '/products/seafood/cephalopods/'));
     seafood.appendChild(seafoodLinks);
-
     productsLinks.appendChild(seafood);
-    productsLinks.appendChild(link(nav.fruits, '/products/fruits/'));
-    productsLinks.appendChild(link(nav.vegetables, '/products/vegetables/'));
-    productsLinks.appendChild(link(nav.seasonal, '/products/seasonal/'));
+
+    const produce = doc.createElement('details');
+    produce.className = 'nav-produce';
+    produce.appendChild(summary(nav.fruitsVegetables));
+    const produceLinks = doc.createElement('div');
+    produceLinks.className = 'nav-products-links';
+    const fruits = doc.createElement('details');
+    fruits.className = 'nav-fruits';
+    fruits.appendChild(summary(nav.fruits));
+    const fruitLinks = doc.createElement('div');
+    fruitLinks.className = 'nav-products-links nav-products-links--level-3';
+    fruitLinks.append(leaf(nav.citrus), leaf(nav.exoticFruit), leaf(nav.otherFruit));
+    fruits.appendChild(fruitLinks);
+    produceLinks.appendChild(fruits);
+    produceLinks.appendChild(link(nav.vegetables, '/products/vegetables/'));
+    produce.appendChild(produceLinks);
+    productsLinks.appendChild(produce);
+
+    const seasonal = doc.createElement('details');
+    seasonal.className = 'nav-seasonal';
+    seasonal.appendChild(summary(nav.seasonal));
+    const seasonalLinks = doc.createElement('div');
+    seasonalLinks.className = 'nav-products-links nav-products-links--level-3';
+    seasonalLinks.appendChild(link(nav.seasonalSelection, '/products/seasonal/'));
+    seasonal.appendChild(seasonalLinks);
+    productsLinks.appendChild(seasonal);
+
     details.appendChild(productsLinks);
     return details;
   };
