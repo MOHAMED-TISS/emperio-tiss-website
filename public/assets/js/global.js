@@ -19,6 +19,7 @@
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   loadCss('/assets/css/nav-consistency.css?v=20260823-nav-1', 'etNavConsistency');
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
+  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
 
   const catalogueImageSelector = ['.fish-catalog-card img','.catalog-card img','.catalog-product img','.fish-gallery__image','.fish-lightbox__image','[data-catalog] img','.compact-catalog img','.seafood-catalog img','.fish-emblematic-card img'].join(',');
   const protectCatalogueImages = (root = doc) => { root.querySelectorAll(catalogueImageSelector).forEach((img) => { img.setAttribute('draggable','false'); img.setAttribute('oncontextmenu','return false'); img.setAttribute('ondragstart','return false'); img.setAttribute('onselectstart','return false'); img.style.userSelect='none'; img.style.webkitUserDrag='none'; img.style.webkitTouchCallout='none'; }); };
