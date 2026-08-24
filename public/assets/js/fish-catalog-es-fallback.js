@@ -19,7 +19,8 @@
     ['pez-limon','Pez limón','Seriola dumerili','Pez de escama','Azul / graso','fresh'],
     ['boqueron','Boquerón','Engraulis encrasicolus','Pez de escama','Azul / graso','fresh'],
     ['pez-sable','Pez sable','Trichiurus spp.','Pescados especiales','Especial','fresh|frozen'],
-    ['pez-espada','Pez espada','Xiphias gladius','Pescados especiales','Especial','fresh|frozen']
+    ['pez-espada','Pez espada','Xiphias gladius','Pescados especiales','Especial','fresh|frozen'],
+    ['bottarga','Bottarga congelada','Según especificación del producto','Pescados especiales','Especial','frozen']
   ].map(([id, commercialName, scientificName, group, type, condition]) => ({
     id, commercialName, scientificName, group, type,
     condition: condition.split('|'),
