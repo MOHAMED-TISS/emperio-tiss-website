@@ -211,7 +211,7 @@
       } finally {
         button.disabled = false;
       }
-    });
+    }, true);
   };
 
   const initContact = () => {
