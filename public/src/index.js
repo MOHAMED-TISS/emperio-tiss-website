@@ -12,6 +12,7 @@ function json(data, status = 200) {
     headers: {
       'content-type': 'application/json; charset=utf-8',
       'cache-control': 'no-store',
+      'x-content-type-options': 'nosniff',
     },
   });
 }
@@ -32,10 +33,7 @@ function escapeHtml(value) {
 async function verifyTurnstile(token, secret, remoteip) {
   if (!secret || !token) return { success: false };
 
-  const body = new URLSearchParams({
-    secret,
-    response: token,
-  });
+  const body = new URLSearchParams({ secret, response: token });
   if (remoteip) body.set('remoteip', remoteip);
 
   const response = await fetch(TURNSTILE_VERIFY_URL, {
@@ -50,22 +48,23 @@ async function verifyTurnstile(token, secret, remoteip) {
 
 async function handleContact(request, env) {
   const origin = request.headers.get('origin');
-  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
     return json({ ok: false, error: 'Origen no autorizado.' }, 403);
   }
 
   const form = await request.formData();
-  const honeypot = normalize(form.get('_honey'), 200);
-  if (honeypot) return json({ ok: false, error: 'Solicitud rechazada.' }, 400);
+  if (normalize(form.get('_honey'), 200)) {
+    return json({ ok: false, error: 'Solicitud rechazada.' }, 400);
+  }
 
-  const turnstileToken = normalize(form.get('cf-turnstile-response'), 5000);
   const verification = await verifyTurnstile(
-    turnstileToken,
+    normalize(form.get('cf-turnstile-response'), 5000),
     env.TURNSTILE_SECRET_KEY,
     request.headers.get('CF-Connecting-IP'),
   );
 
-  if (!verification.success) {
+  const hostnameAllowed = verification.hostname === 'emperio-tiss.com' || verification.hostname === 'www.emperio-tiss.com';
+  if (!verification.success || !hostnameAllowed || verification.action !== 'contact') {
     return json({ ok: false, error: 'No se pudo verificar la protección anti-bot. Inténtalo de nuevo.' }, 403);
   }
 
@@ -108,7 +107,7 @@ async function handleContact(request, env) {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      from: env.CONTACT_FROM || 'EMPERIO TISS <onboarding@resend.dev>',
+      from: 'EMPERIO TISS <no-reply@emperio-tiss.com>',
       to: ['info@emperio-tiss.com'],
       reply_to: email,
       subject: `Nueva consulta B2B — ${empresa} — ${producto}`,
@@ -126,18 +125,14 @@ async function handleContact(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-
     if (url.pathname === '/api/contact') {
-      if (request.method !== 'POST') {
-        return json({ ok: false, error: 'Method Not Allowed' }, 405);
-      }
+      if (request.method !== 'POST') return json({ ok: false, error: 'Method Not Allowed' }, 405);
       try {
         return await handleContact(request, env);
       } catch {
         return json({ ok: false, error: 'No se pudo procesar la consulta.' }, 500);
       }
     }
-
     return env.ASSETS.fetch(request);
   },
 };
