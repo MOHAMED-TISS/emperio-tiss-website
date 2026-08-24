@@ -116,55 +116,12 @@
   initDynamicParts();
   new MutationObserver(initDynamicParts).observe(doc.body,{childList:true,subtree:true});
 
-  const initContactTurnstile = () => {
-    if (window.location.pathname !== '/contact/') return;
-    const form = doc.getElementById('contactForm');
-    const widget = form?.querySelector('.cf-turnstile');
-    if (!form || !widget || form.dataset.etContactTurnstileInit === 'true') return;
-
-    const start = () => {
-      if (!window.turnstile || typeof window.turnstile.render !== 'function') return false;
-      if (form.dataset.etContactTurnstileInit === 'true') return true;
-
-      form.dataset.etContactTurnstileInit = 'true';
-      widget.innerHTML = '';
-
-      const tokenInput = doc.createElement('input');
-      tokenInput.type = 'hidden';
-      tokenInput.name = 'cf-turnstile-response';
-      tokenInput.id = 'contactTurnstileToken';
-      tokenInput.value = '';
-      form.appendChild(tokenInput);
-
-      const widgetId = window.turnstile.render(widget, {
-        sitekey: '0x4AAAAAAEaIn_beKLMv4VjA',
-        action: 'contact',
-        theme: 'auto',
-        callback: (token) => { tokenInput.value = token || ''; },
-        'expired-callback': () => { tokenInput.value = ''; },
-        'error-callback': () => { tokenInput.value = ''; },
-      });
-
-      form.dataset.turnstileWidgetId = String(widgetId);
-      return true;
-    };
-
-    if (start()) return;
-
-    let attempts = 0;
-    const waitForTurnstile = window.setInterval(() => {
-      attempts += 1;
-      if (start() || attempts >= 100) window.clearInterval(waitForTurnstile);
-    }, 100);
-  };
-
-  const bindContactForm = () => {
-    if (window.location.pathname !== '/contact/') return;
+  const initContactForm = () => {
+    if (!/^\/contact\/?$/.test(window.location.pathname)) return;
     const form = doc.getElementById('contactForm');
     const status = doc.getElementById('contactFormStatus');
     const button = form?.querySelector('.form-submit');
-    const tokenInput = doc.getElementById('contactTurnstileToken');
-    if (!form || !status || !button || !tokenInput || form.dataset.etSubmitBound === 'true') return;
+    if (!form || !status || !button || form.dataset.etSubmitBound === 'true') return;
 
     form.dataset.etSubmitBound = 'true';
     form.addEventListener('submit', async (event) => {
@@ -172,15 +129,8 @@
       event.stopImmediatePropagation();
       if (!form.reportValidity()) return;
 
-      const widgetId = form.dataset.turnstileWidgetId;
-      const token = widgetId && window.turnstile ? window.turnstile.getResponse(widgetId) : tokenInput.value;
-      tokenInput.value = token || '';
-      if (!tokenInput.value) {
-        status.textContent = 'Completa la verificación de seguridad antes de enviar.';
-        status.dataset.state = 'error';
-        initContactTurnstile();
-        return;
-      }
+      const honey = form.querySelector('input[name="_honey"]');
+      if (honey?.value) return;
 
       button.disabled = true;
       status.textContent = 'Enviando consulta…';
@@ -194,18 +144,12 @@
         });
         const result = await response.json().catch(() => ({}));
         if (!response.ok || !result.ok) {
-          const codes = Array.isArray(result.turnstileErrors) ? result.turnstileErrors.join(', ') : '';
-          const suffix = codes ? ` (${codes})` : '';
-          throw new Error((result.error || 'No se pudo enviar la consulta.') + suffix);
+          throw new Error(result.error || 'No se pudo enviar la consulta.');
         }
         form.reset();
-        tokenInput.value = '';
-        if (window.turnstile && widgetId) window.turnstile.reset(widgetId);
         status.textContent = 'Consulta enviada correctamente. Gracias.';
         status.dataset.state = 'success';
       } catch (error) {
-        tokenInput.value = '';
-        if (window.turnstile && widgetId) window.turnstile.reset(widgetId);
         status.textContent = error.message || 'No se pudo enviar la consulta. Inténtalo de nuevo.';
         status.dataset.state = 'error';
       } finally {
@@ -214,15 +158,6 @@
     }, true);
   };
 
-  const initContact = () => {
-    initContactTurnstile();
-    bindContactForm();
-  };
-
-  initContact();
-  window.setTimeout(initContact, 150);
-  window.setTimeout(initContact, 500);
-  window.setTimeout(initContact, 1200);
-  window.setTimeout(initContact, 2500);
-  window.addEventListener('load', initContact, { once: true });
+  initContactForm();
+  window.addEventListener('load', initContactForm, { once: true });
 })();
