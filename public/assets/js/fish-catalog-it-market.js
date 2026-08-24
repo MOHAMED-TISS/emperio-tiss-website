@@ -27,7 +27,7 @@
     });
 
     const intro = target.closest('.fish-emblematic')?.querySelector('.fish-emblematic__intro p');
-    if (intro) intro.textContent = 'Selezione orientata al mercato italiano, priorizzando referenze de alto interés comercial, continuidad de suministro y posicionamiento premium.';
+    if (intro) intro.textContent = 'Selezione orientata al mercato italiano, con priorità a referenze ad alta rilevanza commerciale, continuità di fornitura e posizionamento premium.';
     return true;
   };
 
