@@ -42,7 +42,7 @@
 .site-header .site-logo,
 .site-header .et-whatsapp,
 .site-header .et-language-switch,
-.site-header .language-nav {
+.site-header .mobile-menu {
   box-sizing: border-box;
   pointer-events: auto;
   color: #fff;
@@ -117,8 +117,7 @@
   transform: translateY(-1px);
 }
 
-.site-header .et-language-switch,
-.site-header .language-nav {
+.site-header .et-language-switch {
   order: 3;
   flex: 0 0 52px;
   width: 52px;
@@ -156,8 +155,7 @@
   z-index: 1300;
 }
 
-.site-header .mobile-menu,
-.site-header .es-menu {
+.site-header .mobile-menu {
   order: 4;
   flex: 0 0 58px;
   width: 58px;
@@ -218,8 +216,7 @@
     height: 16px;
   }
 
-  .site-header .et-language-switch,
-  .site-header .language-nav {
+  .site-header .et-language-switch {
     flex-basis: 46px;
     width: 46px;
     min-width: 46px;
@@ -227,8 +224,7 @@
     padding: 2px;
   }
 
-  .site-header .mobile-menu,
-  .site-header .es-menu {
+  .site-header .mobile-menu {
     flex-basis: 54px;
     width: 54px;
     height: 54px;
@@ -250,15 +246,13 @@
     max-width: 62px;
   }
 
-  .site-header .mobile-menu,
-  .site-header .es-menu {
+  .site-header .mobile-menu {
     flex-basis: 50px;
     width: 50px;
     height: 50px;
   }
 
-  .site-header .et-language-switch,
-  .site-header .language-nav {
+  .site-header .et-language-switch {
     flex-basis: 42px;
     width: 42px;
     min-width: 42px;
