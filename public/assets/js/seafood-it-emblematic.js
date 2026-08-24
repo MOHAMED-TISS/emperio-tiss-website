@@ -11,21 +11,57 @@
 
   const data = isShellfish ? {
     kicker: 'SELEZIONE EMBLEMATICA',
-    title: 'Referenze core<br><em>per il mercato italiano.</em>',
-    intro: 'Una selezione orientata al mercato italiano, con priorità a crostacei mediterranei, continuità di fornitura e posizionamento premium.',
+    title: 'Crostacei selezionati<br><em>per il mercato italiano.</em>',
+    intro: 'Una selezione costruita sulle referenze disponibili, con focus su crostacei ad alto valore, origine mediterranea e formati adatti alla ristorazione e al sourcing professionale.',
     items: [
-      { name:'Moruno', scientific:'Aristeus antennatus', category:'Crostaceo', note:'Mediterraneo · surgelato · secondo disponibilità', image:'/assets/products/incoming/Moruno(1).jpeg' },
-      { name:'Scampo', scientific:'Nephrops norvegicus', category:'Crostaceo', note:'Mediterraneo · surgelato · secondo calibro e disponibilità', image:'/assets/products/incoming/Cigala.jpeg' },
-      { name:'Gambero bianco', scientific:'Parapenaeus longirostris', category:'Gambero', note:'Mediterraneo · surgelato · calibrato secondo destinazione', image:'/assets/products/incoming/Gamba Blanca.jpeg' }
+      {
+        name: 'Moruno',
+        scientific: 'Aristeus antennatus',
+        category: 'Crostaceo · Mediterraneo',
+        note: 'Surgelato · origine Tunisia · FAO 37.2 · secondo calibro e disponibilità',
+        image: '/assets/products/incoming/Moruno(1).jpeg'
+      },
+      {
+        name: 'Cigala',
+        scientific: 'Nephrops norvegicus',
+        category: 'Crostaceo · Premium',
+        note: 'Surgelata · origine Tunisia · FAO 37.2 · formato professionale',
+        image: '/assets/products/incoming/Cigala.jpeg'
+      },
+      {
+        name: 'Gamba blanca',
+        scientific: 'Parapenaeus longirostris',
+        category: 'Gambero · Mediterraneo',
+        note: 'Surgelata · origine Tunisia · FAO 37.2 · calibrata secondo destinazione',
+        image: '/assets/products/incoming/Gamba Blanca.jpeg'
+      }
     ]
   } : {
     kicker: 'SELEZIONE EMBLEMATICA',
-    title: 'Referenze core<br><em>per il mercato italiano.</em>',
-    intro: 'Una selezione orientata al mercato italiano, con priorità a cefalopodi versatili, formati professionali e continuità di fornitura.',
+    title: 'Cefalopodi selezionati<br><em>per il mercato italiano.</em>',
+    intro: 'Tre referenze professionali con forte rilevanza per il consumo italiano di cefalopodi: polpo, calamaro e seppia, con formati pronti per diversi impieghi.',
     items: [
-      { name:'Polpo fiore', scientific:'Octopus vulgaris', category:'Polpo', note:'Surgelato · formato flor · secondo campagna e disponibilità', image:'/assets/products/incoming/Pulpo Flor.jpg' },
-      { name:'Calamaro avvolto', scientific:'Illex / Loligo spp.', category:'Calamaro', note:'Surgelato · intero / avvolto · secondo programma', image:'/assets/products/incoming/Calamar.jpg' },
-      { name:'Seppia pulita IQF', scientific:'Sepia spp.', category:'Seppia', note:'Surgelato · pulita / IQF · formato professionale', image:'/assets/products/incoming/Sepia Limpia.jpg' }
+      {
+        name: 'Polpo fiore',
+        scientific: 'Octopus vulgaris',
+        category: 'Polpo · Premium',
+        note: 'Surgelato · formato fiore · Atl./Medit. secondo disponibilità · ideale per ristorazione',
+        image: '/assets/products/incoming/Pulpo Flor.jpg'
+      },
+      {
+        name: 'Calamaro avvolto',
+        scientific: 'Illex / Loligo spp.',
+        category: 'Calamaro · Professionale',
+        note: 'Surgelato · intero / avvolto · secondo programma di fornitura',
+        image: '/assets/products/incoming/Calamar.jpg'
+      },
+      {
+        name: 'Sepia pulita IQF',
+        scientific: 'Sepia spp.',
+        category: 'Seppia · IQF',
+        note: 'Surgelata · pulita / IQF · formati professionali secondo disponibilità',
+        image: '/assets/products/incoming/Sepia Limpia.jpg'
+      }
     ]
   };
 
@@ -46,7 +82,13 @@
     if (paragraph) paragraph.textContent = data.intro;
   }
 
-  const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+  const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '\"': '&quot;',
+    "'": '&#39;'
+  }[c]));
 
   grid.innerHTML = data.items.map((item, index) => `
     <article class="fish-emblematic-card">
@@ -58,10 +100,19 @@
         <span class="fish-emblematic-card__kicker">0${index + 1} / ${esc(data.kicker)}</span>
         <h3>${esc(item.name)}</h3>
         <p class="fish-emblematic-card__scientific"><em>${esc(item.scientific)}</em></p>
-        <div class="fish-emblematic-card__meta"><span>${esc(item.category)}</span><span>Mercato italiano</span></div>
+        <div class="fish-emblematic-card__meta">
+          <span>${esc(item.category)}</span>
+          <span>Mercato Italia</span>
+        </div>
         <p class="fish-emblematic-card__note">${esc(item.note)}</p>
         <span class="fish-emblematic-card__mark">Referenza professionale</span>
       </div>
     </article>
   `).join('');
+
+  grid.querySelectorAll('img').forEach(img => {
+    img.addEventListener('contextmenu', e => e.preventDefault(), true);
+    img.addEventListener('dragstart', e => e.preventDefault(), true);
+    img.addEventListener('selectstart', e => e.preventDefault(), true);
+  });
 })();
