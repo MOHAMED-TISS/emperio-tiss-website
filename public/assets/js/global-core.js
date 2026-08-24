@@ -116,33 +116,46 @@
   initDynamicParts();
   new MutationObserver(initDynamicParts).observe(doc.body,{childList:true,subtree:true});
 
-  // Explicit Turnstile binding for the ES contact form.
   const initContactTurnstile = () => {
-    if (window.location.pathname !== '/contact/' || !window.turnstile) return;
+    if (window.location.pathname !== '/contact/') return;
     const form = doc.getElementById('contactForm');
     const widget = form?.querySelector('.cf-turnstile');
-    if (!form || !widget || widget.dataset.etBound === 'true') return;
+    if (!form || !widget || form.dataset.etContactTurnstileInit === 'true') return;
 
-    widget.dataset.etBound = 'true';
-    widget.innerHTML = '';
+    const start = () => {
+      if (!window.turnstile || typeof window.turnstile.render !== 'function') return false;
+      if (form.dataset.etContactTurnstileInit === 'true') return true;
 
-    const tokenInput = doc.createElement('input');
-    tokenInput.type = 'hidden';
-    tokenInput.name = 'cf-turnstile-response';
-    tokenInput.id = 'contactTurnstileToken';
-    tokenInput.value = '';
-    form.appendChild(tokenInput);
+      form.dataset.etContactTurnstileInit = 'true';
+      widget.innerHTML = '';
 
-    const widgetId = window.turnstile.render(widget, {
-      sitekey: '0x4AAAAAAEaIn_beKLMv4VjA',
-      action: 'contact',
-      theme: 'auto',
-      callback: (token) => { tokenInput.value = token || ''; },
-      'expired-callback': () => { tokenInput.value = ''; },
-      'error-callback': () => { tokenInput.value = ''; },
-    });
+      const tokenInput = doc.createElement('input');
+      tokenInput.type = 'hidden';
+      tokenInput.name = 'cf-turnstile-response';
+      tokenInput.id = 'contactTurnstileToken';
+      tokenInput.value = '';
+      form.appendChild(tokenInput);
 
-    form.dataset.turnstileWidgetId = String(widgetId);
+      const widgetId = window.turnstile.render(widget, {
+        sitekey: '0x4AAAAAAEaIn_beKLMv4VjA',
+        action: 'contact',
+        theme: 'auto',
+        callback: (token) => { tokenInput.value = token || ''; },
+        'expired-callback': () => { tokenInput.value = ''; },
+        'error-callback': () => { tokenInput.value = ''; },
+      });
+
+      form.dataset.turnstileWidgetId = String(widgetId);
+      return true;
+    };
+
+    if (start()) return;
+
+    let attempts = 0;
+    const waitForTurnstile = window.setInterval(() => {
+      attempts += 1;
+      if (start() || attempts >= 100) window.clearInterval(waitForTurnstile);
+    }, 100);
   };
 
   const bindContactForm = () => {
@@ -165,6 +178,7 @@
       if (!tokenInput.value) {
         status.textContent = 'Completa la verificación de seguridad antes de enviar.';
         status.dataset.state = 'error';
+        initContactTurnstile();
         return;
       }
 
@@ -208,5 +222,7 @@
   initContact();
   window.setTimeout(initContact, 150);
   window.setTimeout(initContact, 500);
+  window.setTimeout(initContact, 1200);
+  window.setTimeout(initContact, 2500);
   window.addEventListener('load', initContact, { once: true });
 })();
