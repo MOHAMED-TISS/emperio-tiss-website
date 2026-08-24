@@ -5,6 +5,8 @@
   const root = doc.documentElement;
   const body = doc.body;
   const get = (selector, scope = doc) => scope.querySelector(selector);
+  const overlaySelector = '#navOverlay,.nav-overlay,.intl-overlay';
+  const buttonSelector = '#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu';
 
   root.classList.remove('et-pointer-ready');
   get('.et-pointer')?.remove();
@@ -33,7 +35,15 @@
   const L = paths[lang] ? lang : 'en';
   const idx = (n, text) => `<span class="idx">${n}</span><span>${text}</span>`;
 
+  const normalizeMenuOverlays = () => {
+    doc.querySelectorAll(overlaySelector).forEach((overlay) => {
+      const ownerHeader = overlay.closest('.site-header,.p-header,.et-header-inner,.header-inner');
+      if (ownerHeader && overlay.parentElement !== body) body.appendChild(overlay);
+    });
+  };
+
   const buildNavigation = () => {
+    normalizeMenuOverlays();
     const nav = get('.nav-overlay-links');
     if (!nav || nav.dataset.etNavigationBuilt === 'true') return;
 
@@ -65,6 +75,7 @@
   };
 
   const setMenuOpen = (button, overlay, open) => {
+    normalizeMenuOverlays();
     body.classList.toggle('nav-open', open);
     body.classList.toggle('menu-open', open);
     root.classList.toggle('menu-is-open', open);
@@ -75,15 +86,16 @@
   };
 
   const closeMenu = () => {
-    const button = get('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');
-    const overlay = get('#navOverlay,.nav-overlay,.intl-overlay');
+    const button = get(buttonSelector);
+    const overlay = get(overlaySelector);
     if (button && overlay) setMenuOpen(button, overlay, false);
   };
 
   doc.addEventListener('click', (event) => {
-    const button = event.target.closest('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');
+    const button = event.target.closest(buttonSelector);
     if (button) {
-      const overlay = get('#navOverlay,.nav-overlay,.intl-overlay');
+      normalizeMenuOverlays();
+      const overlay = get(overlaySelector);
       if (!overlay) return;
       event.preventDefault();
       event.stopPropagation();
@@ -92,7 +104,7 @@
       return;
     }
 
-    const overlay = event.target.closest('#navOverlay,.nav-overlay,.intl-overlay');
+    const overlay = event.target.closest(overlaySelector);
     if (!overlay) return;
     if (event.target === overlay || event.target.closest('.nav-overlay-close,.intl-overlay-close')) {
       closeMenu();
@@ -110,6 +122,7 @@
   }, { passive: true });
 
   const initDynamicParts = () => {
+    normalizeMenuOverlays();
     buildNavigation();
   };
 
