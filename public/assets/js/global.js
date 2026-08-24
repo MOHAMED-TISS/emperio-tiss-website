@@ -110,9 +110,10 @@
   loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
   loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
-  loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
+  if (window.location.pathname !== '/contact/' && window.location.pathname !== '/contact') {
+    loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
+  }
   loadScript('/assets/js/fish-filter-crossing.js?v=20260823-fish-filter-2', 'etFishFilterCrossing');
   loadScript('/assets/js/en-catalog-filter-fix.js?v=20260823-en-filter-2', 'etEnCatalogFilterFix');
   if (lang === 'it') loadScript('/assets/js/fish-catalog-it-market.js?v=20260824-3', 'etItalianFishMarket');
-  if (window.location.pathname === '/contact/' || window.location.pathname === '/contact') loadScript('/assets/js/contact-form-guard.js?v=20260824-1', 'etContactFormGuard');
 })();
