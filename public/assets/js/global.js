@@ -23,6 +23,7 @@
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
+  if (lang === 'it') loadCss('/assets/css/italian-catalog-visual.css?v=20260824-1', 'etItalianCatalogVisual');
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) loadScript('/assets/js/international-shell.js?v=20260824-4', 'etInternationalShell');
 
@@ -111,4 +112,5 @@
   loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
   loadScript('/assets/js/fish-filter-crossing.js?v=20260823-fish-filter-2', 'etFishFilterCrossing');
   loadScript('/assets/js/en-catalog-filter-fix.js?v=20260823-en-filter-2', 'etEnCatalogFilterFix');
+  if (lang === 'it') loadScript('/assets/js/fish-catalog-it-market.js?v=20260824-1', 'etItalianFishMarket');
 })();
