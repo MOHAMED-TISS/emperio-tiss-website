@@ -49,21 +49,36 @@
 
   const ensureHeaderWhatsApp = () => {
     const header = doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
-    if (!header || header.querySelector('.et-whatsapp')) return;
+    if (!header) return;
 
-    const link = doc.createElement('a');
-    link.className = 'et-whatsapp';
-    link.href = whatsappHref;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', socialCopy.whatsapp);
-    link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
+    const container = header.querySelector('.header-inner') || header;
+    let link = container.querySelector('.et-whatsapp');
+    if (!link) {
+      link = header.querySelector('.et-whatsapp');
+    }
 
-    const language = header.querySelector('.et-language-switch,.language-nav');
-    const menu = header.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
-    if (language) header.insertBefore(link, language);
-    else if (menu) header.insertBefore(link, menu);
-    else header.appendChild(link);
+    if (!link) {
+      link = doc.createElement('a');
+      link.className = 'et-whatsapp';
+      link.href = whatsappHref;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', socialCopy.whatsapp);
+      link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
+    }
+
+    const language = container.querySelector('.et-language-switch,.language-nav');
+    const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
+    const reference = language || menu || null;
+
+    if (link.parentElement !== container) {
+      container.insertBefore(link, reference);
+      return;
+    }
+
+    if (reference && link.nextElementSibling !== reference) {
+      container.insertBefore(link, reference);
+    }
   };
 
   const ensureFooterLinkedIn = () => {
