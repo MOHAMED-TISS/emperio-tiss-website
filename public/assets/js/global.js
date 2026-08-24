@@ -24,7 +24,7 @@
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
 
-  if (['en', 'fr', 'ar', 'it'].includes(lang)) loadScript('/assets/js/international-shell.js?v=20260824-3', 'etInternationalShell');
+  if (['en', 'fr', 'ar', 'it'].includes(lang)) loadScript('/assets/js/international-shell.js?v=20260824-4', 'etInternationalShell');
 
   const socialCopy = {
     es: { whatsapp: 'Contactar por WhatsApp', linkedin: 'LinkedIn' },
@@ -106,7 +106,7 @@
 
   loadScript('/assets/js/language-dropdown.js?v=20260824-5', 'etLanguageDropdown');
   loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
-  loadScript('/assets/js/global-core.js?v=20260823-taxonomy-5', 'etGlobalCore');
+  loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
   loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
   loadScript('/assets/js/fish-filter-crossing.js?v=20260823-fish-filter-2', 'etFishFilterCrossing');
