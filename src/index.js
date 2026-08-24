@@ -3,7 +3,6 @@ const ALLOWED_ORIGINS = new Set([
   'https://www.emperio-tiss.com',
 ]);
 
-const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
 function json(data, status = 200) {
@@ -30,22 +29,6 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
-async function verifyTurnstile(token, secret, remoteip) {
-  if (!secret || !token) return { success: false, 'error-codes': ['missing-input'] };
-
-  const body = new URLSearchParams({ secret, response: token });
-  if (remoteip) body.set('remoteip', remoteip);
-
-  const response = await fetch(TURNSTILE_VERIFY_URL, {
-    method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    body,
-  });
-
-  if (!response.ok) return { success: false, 'error-codes': [`siteverify-http-${response.status}`] };
-  return response.json();
-}
-
 async function handleContact(request, env) {
   const origin = request.headers.get('origin');
   if (!origin || !ALLOWED_ORIGINS.has(origin)) {
@@ -55,25 +38,6 @@ async function handleContact(request, env) {
   const form = await request.formData();
   if (normalize(form.get('_honey'), 200)) {
     return json({ ok: false, error: 'Solicitud rechazada.' }, 400);
-  }
-
-  const verification = await verifyTurnstile(
-    normalize(form.get('cf-turnstile-response'), 5000),
-    env.TURNSTILE_SECRET_KEY,
-    request.headers.get('CF-Connecting-IP'),
-  );
-
-  const hostnameAllowed = verification.hostname === 'emperio-tiss.com' || verification.hostname === 'www.emperio-tiss.com';
-  const actionAllowed = verification.action === 'contact';
-  if (!verification.success || !hostnameAllowed || !actionAllowed) {
-    const errors = Array.isArray(verification['error-codes']) ? verification['error-codes'].slice(0, 5).join(',') : 'none';
-    const hostname = verification.hostname || 'none';
-    const action = verification.action || 'none';
-    return json({
-      ok: false,
-      error: `TURNSTILE_FAILED | codes=${errors} | hostname=${hostname} | action=${action}`,
-      code: 'TURNSTILE_FAILED',
-    }, 403);
   }
 
   const nombre = normalize(form.get('nombre'), 120);
