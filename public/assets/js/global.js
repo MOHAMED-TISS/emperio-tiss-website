@@ -50,10 +50,11 @@
   const linkedinIcon = '<span aria-hidden="true" class="et-linkedin-mark">in</span>';
 
   const ensureHeaderWhatsApp = () => {
-    const header = doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
+    const header = doc.querySelector('.site-header,.et-header-inner,.p-header-inner,.es-header-inner');
     if (!header) return;
 
-    let link = header.querySelector('.et-whatsapp');
+    const container = header.querySelector('.header-inner') || header;
+    let link = container.querySelector('.et-whatsapp');
     if (!link) {
       link = doc.createElement('a');
       link.className = 'et-whatsapp';
@@ -62,23 +63,19 @@
       link.rel = 'noopener noreferrer';
       link.setAttribute('aria-label', socialCopy.whatsapp);
       link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
+    } else if (link.parentElement !== container) {
+      container.appendChild(link);
     }
 
-    const language = header.querySelector('.et-language-switch,.language-nav');
-    const menu = header.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
-    const previous = link.previousElementSibling;
+    const language = container.querySelector('.et-language-switch,.language-nav');
+    const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
 
-    if (language && link.parentElement === header && language.previousElementSibling !== link) {
-      header.insertBefore(link, language);
+    if (language) {
+      container.insertBefore(link, language);
+    } else if (menu) {
+      container.insertBefore(link, menu);
     } else if (!link.parentElement) {
-      if (language) header.insertBefore(link, language);
-      else if (menu) header.insertBefore(link, menu);
-      else header.appendChild(link);
-    }
-
-    if (previous && previous !== link) {
-      /* Keep the canonical sequence when legacy pages inserted WhatsApp elsewhere. */
-      if (language && language.previousElementSibling !== link) header.insertBefore(link, language);
+      container.appendChild(link);
     }
   };
 
