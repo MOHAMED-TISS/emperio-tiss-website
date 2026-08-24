@@ -1,6 +1,7 @@
 /* Fish catalogue — menu typography only.
    Header layout and controls are owned exclusively by header-final.css.
 */
+@import url("/assets/css/header-final.css?v=20260824-10");
 
 .fish-catalog-pilot .nav-overlay{background:#041d31!important;background-image:none!important;color:#f3f1e8!important}
 .fish-catalog-pilot .nav-overlay-inner{background:transparent!important}
