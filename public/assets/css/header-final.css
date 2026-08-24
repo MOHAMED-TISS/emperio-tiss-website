@@ -13,19 +13,6 @@
   --et-pill-blur: blur(16px) saturate(118%);
 }
 
-html[lang="en"] body:not(.international-shell) > header,
-html[lang="fr"] body:not(.international-shell) > header,
-html[lang="ar"] body:not(.international-shell) > header {
-  visibility: hidden;
-  opacity: 0;
-}
-
-/* Prevent a partial legacy header from flashing before the four canonical controls exist. */
-.site-header:not(:has(.et-whatsapp)) {
-  visibility: hidden;
-  opacity: 0;
-}
-
 .site-header {
   position: fixed;
   top: 12px;
