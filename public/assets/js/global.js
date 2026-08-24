@@ -27,6 +27,71 @@
     loadScript('/assets/js/international-shell.js?v=20260823-intl-shell-1', 'etInternationalShell');
   }
 
+  /* Global contact/social actions — injected after every shared shell or legacy header/footer is present. */
+  const socialCopy = {
+    es: { whatsapp:'Contactar por WhatsApp', linkedin:'LinkedIn' },
+    en: { whatsapp:'Contact us on WhatsApp', linkedin:'LinkedIn' },
+    fr: { whatsapp:'Contacter sur WhatsApp', linkedin:'LinkedIn' },
+    ar: { whatsapp:'تواصل معنا عبر واتساب', linkedin:'LinkedIn' }
+  }[lang] || { whatsapp:'Contact us on WhatsApp', linkedin:'LinkedIn' };
+  const whatsappHref = 'https://wa.me/34614270684';
+  const linkedinHref = 'https://www.linkedin.com/company/emperiotiss/';
+  const whatsappIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 3.5A10.9 10.9 0 0 0 13 1.1 10.9 10.9 0 0 0 3.2 17.4L2 22l4.7-1.2A10.9 10.9 0 1 0 20.5 3.5Zm-7.4 17.2a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-2.8.7.8-2.7-.2-.3a9.1 9.1 0 1 1 7.1 3.7Zm5-6.8c-.3-.2-1.8-.9-2-.9-.3-.1-.4-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.6-1.3-3.7-2.9-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6 0-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1.1 1.9-1.1 3 0 .7.2 1.3.5 1.9.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.5.6.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3Z"/></svg>';
+  const linkedinIcon = '<span aria-hidden="true" class="et-linkedin-mark">in</span>';
+
+  const ensureSocialStyles = () => {
+    if (doc.getElementById('et-social-actions-style')) return;
+    const style = doc.createElement('style');
+    style.id = 'et-social-actions-style';
+    style.textContent = `
+      .et-whatsapp,.et-linkedin{box-sizing:border-box;text-decoration:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;border-radius:999px!important;transition:transform .28s cubic-bezier(.165,.84,.44,1),background-color .28s ease,border-color .28s ease,box-shadow .28s ease,color .28s ease!important;font-family:var(--et-sans,"DM Sans",Arial,sans-serif)!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important}
+      .et-whatsapp{height:38px!important;padding:0 14px!important;margin-inline-start:auto!important;border:1px solid rgba(16,37,28,.16)!important;background:rgba(255,255,255,.46)!important;color:#1b3a2f!important;font-size:9px!important;letter-spacing:.08em!important;text-transform:uppercase!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
+      .et-whatsapp svg{width:15px!important;height:15px!important;fill:currentColor!important;flex:none!important}
+      .et-whatsapp:hover{transform:translateY(-1px)!important;background:rgba(255,255,255,.8)!important;border-color:rgba(201,163,95,.55)!important;box-shadow:0 8px 22px rgba(6,29,23,.12)!important}
+      .et-linkedin{min-height:34px!important;padding:0 12px!important;border:1px solid rgba(255,255,255,.17)!important;background:rgba(255,255,255,.05)!important;color:rgba(255,255,255,.82)!important;font-size:9px!important;letter-spacing:.08em!important}
+      .et-linkedin:hover{transform:translateY(-1px)!important;background:rgba(201,163,95,.12)!important;border-color:rgba(201,163,95,.55)!important;color:#fff!important;box-shadow:0 8px 20px rgba(0,0,0,.12)!important}
+      .et-linkedin-mark{display:inline-grid!important;place-items:center!important;width:18px!important;height:18px!important;border-radius:4px!important;background:currentColor!important;color:#061613!important;font-size:11px!important;font-weight:800!important;line-height:1!important;letter-spacing:-.06em!important}
+      .et-universal-footer .et-footer-bottom .et-linkedin{margin-inline-start:auto!important}
+      [dir="rtl"] .et-whatsapp{margin-inline-start:auto!important;margin-inline-end:0!important}
+      @media(max-width:800px){.et-whatsapp{width:38px!important;height:38px!important;padding:0!important;margin-inline-start:8px!important;font-size:0!important;gap:0!important}.et-whatsapp svg{width:16px!important;height:16px!important}.et-linkedin{min-height:32px!important;padding:0 10px!important}.et-footer-bottom .et-linkedin{margin-inline-start:0!important}}
+    `;
+    doc.head.appendChild(style);
+  };
+
+  const ensureHeaderWhatsApp = (root = doc) => {
+    const header = root.querySelector('.site-header .header-inner,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
+    if (!header || header.querySelector('.et-whatsapp')) return;
+    const link = doc.createElement('a');
+    link.className = 'et-whatsapp';
+    link.href = whatsappHref;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.setAttribute('aria-label', socialCopy.whatsapp);
+    link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
+    const menu = header.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
+    if (menu) header.insertBefore(link, menu); else header.appendChild(link);
+  };
+
+  const ensureFooterLinkedIn = (root = doc) => {
+    const footer = root.querySelector('footer');
+    if (!footer || footer.querySelector('.et-linkedin')) return;
+    const link = doc.createElement('a');
+    link.className = 'et-linkedin';
+    link.href = linkedinHref;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.setAttribute('aria-label', socialCopy.linkedin);
+    link.innerHTML = `${linkedinIcon}<span>${socialCopy.linkedin}</span>`;
+    const footerBottom = footer.querySelector('.et-footer-bottom,.et-footer-legal,.footer-band-inner,.ar-footer-inner');
+    if (footerBottom) footerBottom.appendChild(link); else footer.appendChild(link);
+  };
+
+  ensureSocialStyles();
+  const enhanceSocialActions = () => { ensureHeaderWhatsApp(); ensureFooterLinkedIn(); };
+  enhanceSocialActions();
+  const socialObserver = new MutationObserver(() => enhanceSocialActions());
+  socialObserver.observe(doc.body, { childList:true, subtree:true });
+
   const catalogueImageSelector = ['.fish-catalog-card img','.catalog-card img','.catalog-product img','.fish-gallery__image','.fish-lightbox__image','[data-catalog] img','.compact-catalog img','.seafood-catalog img','.fish-emblematic-card img'].join(',');
   const protectCatalogueImages = (root = doc) => { root.querySelectorAll(catalogueImageSelector).forEach((img) => { img.setAttribute('draggable','false'); img.setAttribute('oncontextmenu','return false'); img.setAttribute('ondragstart','return false'); img.setAttribute('onselectstart','return false'); img.style.userSelect='none'; img.style.webkitUserDrag='none'; img.style.webkitTouchCallout='none'; }); };
   protectCatalogueImages();
