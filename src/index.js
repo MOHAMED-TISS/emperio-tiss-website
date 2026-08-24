@@ -66,13 +66,13 @@ async function handleContact(request, env) {
   const hostnameAllowed = verification.hostname === 'emperio-tiss.com' || verification.hostname === 'www.emperio-tiss.com';
   const actionAllowed = verification.action === 'contact';
   if (!verification.success || !hostnameAllowed || !actionAllowed) {
+    const errors = Array.isArray(verification['error-codes']) ? verification['error-codes'].slice(0, 5).join(',') : 'none';
+    const hostname = verification.hostname || 'none';
+    const action = verification.action || 'none';
     return json({
       ok: false,
-      error: 'No se pudo verificar la protección anti-bot. Inténtalo de nuevo.',
+      error: `TURNSTILE_FAILED | codes=${errors} | hostname=${hostname} | action=${action}`,
       code: 'TURNSTILE_FAILED',
-      turnstileErrors: Array.isArray(verification['error-codes']) ? verification['error-codes'].slice(0, 5) : [],
-      hostname: verification.hostname || null,
-      action: verification.action || null,
     }, 403);
   }
 
