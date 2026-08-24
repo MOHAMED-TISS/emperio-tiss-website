@@ -59,6 +59,9 @@ jobs:
             s=p.read_text(encoding='utf-8')
             for name,target in names.items():
               s=re.sub(r'((?:href|src)=["\'])[^"\']*'+re.escape(name)+r'(?=["\'])',r'\1'+target,s,flags=re.I)
+            s=re.sub(r'((?:href|src)=["\'])[^"\']*header-final\.css(?:\?[^"\']*)?(["\'])',r'\1/assets/css/header-final.css?v=20260824-3\2',s,flags=re.I)
+            if '/assets/css/header-final.css?v=20260824-3' not in s:
+              s=s.replace('</head>','<link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">\n</head>',1)
             s=re.sub(r'((?:href|src)=["\'])[^"\']*logo\.png(["\'])',r'\1/assets/images/logo.png\2',s,flags=re.I)
             m=re.search(r'<html\b([^>]*)\blang=["\']([^"\']+)["\']([^>]*)>',s,re.I)
             if m:
@@ -86,15 +89,21 @@ jobs:
           from pathlib import Path
           import re
           root=Path('public')
-          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'assets/images/logo.png']:
+          for p in [root/'assets/css/global.css',root/'assets/js/global.js',root/'assets/images/logo.png',root/'assets/css/header-final.css']:
             assert p.exists(), f'Missing {p}'
           assert not (root/'assets/assets').exists()
           forbidden={'luxury-nav.css','luxury-nav.js','international-nav.js','rtl-fix.css','fr-home-fix.css','products-header-fix.css','seafood-overrides.css','product-card.css','product-card.js','international-product-card.css','international-product-card.js','products-catalog.js','fruits-vegetables-motion.css','fruits-vegetables-motion.js','seasonal-calendar.css','seasonal-calendar.js'}
           for p in root.rglob('*'): assert p.name not in forbidden, f'Legacy asset remains: {p}'
+          header_selectors=(
+            r'\.site-header\b|\.site-logo\b|\.et-whatsapp\b|\.et-language-switch\b|\.language-nav\b|\.mobile-menu\b|\.es-menu\b'
+          )
+          for css_path in [root/'assets/css/global.css',root/'assets/css/home.css']:
+            text=css_path.read_text(encoding='utf-8')
+            assert not re.search(header_selectors,text), f'Header selector remains in {css_path}'
           for p in root.rglob('*.html'):
-            s=p.read_text(encoding='utf-8'); assert '/assets/css/global.css' in s; assert '/assets/js/global.js' in s
+            s=p.read_text(encoding='utf-8'); assert '/assets/css/global.css' in s; assert '/assets/css/header-final.css?v=20260824-3' in s; assert '/assets/js/global.js' in s
             m=re.search(r'<html\b[^>]*\blang=["\']([^"\']+)',s,re.I); assert m, p
             if m.group(1).lower().startswith('ar'): assert re.search(r'dir=["\']rtl["\']',s,re.I), p
-            for ref in re.findall(r'(?:href|src)=["\'](/assets/[^"\']+)',s,re.I): assert (root/ref.lstrip('/')).exists(), f'{p}: {ref}'
+            for ref in re.findall(r'(?:href|src)=["\'](/assets/[^"\']+)',s,re.I): assert (root/ref.lstrip('/').split('?')[0]).exists(), f'{p}: {ref}'
           print('FINAL VALIDATION PASSED')
           PY
