@@ -25,7 +25,8 @@
     ['pez-limon','Ricciola','Seriola dumerili','blue','Pesce di scaglia','Azzurro / grasso','Fresco','Mediterraneo / secondo disponibilità','FAO 37'],
     ['boqueron','Acciuga','Engraulis encrasicolus','blue','Pesce di scaglia','Azzurro / grasso','Fresco','Mediterraneo / Atlantico secondo disponibilità','FAO 27 / FAO 37'],
     ['pez-sable','Pesce sciabola','Trichiurus spp.','special','Pesci speciali','Speciale','Fresco','Secondo programma di fornitura','Secondo origine'],
-    ['pez-espada','Pesce spada','Xiphias gladius','special','Pesci speciali','Speciale','Fresco','Secondo programma di fornitura','Secondo origine']
+    ['pez-espada','Pesce spada','Xiphias gladius','special','Pesci speciali','Speciale','Fresco','Secondo programma di fornitura','Secondo origine'],
+    ['bottarga','Bottarga congelata','Secondo specifica del prodotto','special','Pescados speciali','Speciale','Surgelato','Secondo origine','Secondo zona FAO']
   ].map(([id,name,scientific,category,family,type,state,origin,fao]) => ({id,name,scientific,category,family,type,state,origin,fao}));
 
   const labels = { all:'Tutte', fresh:'Fresco', frozen:'Surgelato', allCats:'Tutte le categorie', white:'Pesce bianco', blue:'Pesce azzurro', special:'Pesci speciali', refs:'referenze', ref:'referenza', none:'Nessuna referenza corrisponde alla ricerca.', previous:'Precedente', next:'Successiva', close:'Chiudi' };
