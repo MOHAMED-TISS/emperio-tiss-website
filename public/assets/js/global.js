@@ -2,10 +2,28 @@
   'use strict';
   const doc = document;
   const unwrapHeaderInner=()=>{doc.querySelectorAll('.site-header>.header-inner').forEach(inner=>{while(inner.firstChild) inner.parentNode.insertBefore(inner.firstChild,inner); inner.remove();});};
+  const enforceHeaderControls=()=>{
+    doc.querySelectorAll('.site-header .et-language-switch,.site-header .language-nav').forEach(el=>{
+      el.style.setProperty('width','52px','important');
+      el.style.setProperty('min-width','52px','important');
+      el.style.setProperty('height','38px','important');
+      el.style.setProperty('margin-inline-start','10px','important');
+      el.style.setProperty('padding','3px','important');
+      el.style.setProperty('border','1px solid rgba(255,255,255,.24)','important');
+      el.style.setProperty('border-radius','999px','important');
+      el.style.setProperty('background','rgba(0,0,0,.24)','important');
+      el.style.setProperty('box-shadow','0 8px 22px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.10)','important');
+      el.style.setProperty('backdrop-filter','blur(14px) saturate(115%)','important');
+      el.style.setProperty('-webkit-backdrop-filter','blur(14px) saturate(115%)','important');
+      el.style.setProperty('overflow','visible','important');
+    });
+    doc.querySelectorAll('.site-header').forEach(el=>el.style.setProperty('padding-inline','24px','important'));
+  };
   const loadCss = (href, key) => { if (doc.querySelector(`link[data-${key}]`)) return; const link = doc.createElement('link'); link.rel='stylesheet'; link.href=href; link.dataset[key]='true'; doc.head.appendChild(link); };
   const loadScript = (src, key) => { if (doc.querySelector(`script[data-${key}]`)) return; const script=doc.createElement('script'); script.src=src; script.async=false; script.dataset[key]='true'; doc.head.appendChild(script); };
   const lang=(doc.documentElement.lang||'en').slice(0,2).toLowerCase();
   unwrapHeaderInner();
+  enforceHeaderControls();
   loadCss('/assets/css/site-pages.css?v=20260821-3','etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260821-1','etUnifiedPages');
   loadCss('/assets/css/canonical-nav.css?v=20260823-taxonomy-5','etCanonicalNav');
@@ -25,18 +43,19 @@
   style.textContent=`
     .site-header .et-whatsapp,.et-header-inner .et-whatsapp,.header-inner .et-whatsapp,.p-header-inner .et-whatsapp,.es-header-inner .et-whatsapp{pointer-events:auto!important}
     .et-whatsapp,.et-linkedin{box-sizing:border-box;text-decoration:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;border-radius:999px!important;cursor:pointer!important;position:relative!important;z-index:1202!important;pointer-events:auto!important;transition:transform .28s ease,background-color .28s ease,border-color .28s ease,box-shadow .28s ease,color .28s ease!important;font-family:var(--et-sans,"DM Sans",Arial,sans-serif)!important;font-weight:700!important;line-height:1!important;white-space:nowrap!important}
-    .et-whatsapp{height:38px!important;padding:0 14px!important;margin-inline-start:0!important;border:1px solid rgba(16,37,28,.16)!important;background:rgba(255,255,255,.46)!important;color:#1b3a2f!important;font-size:9px!important;letter-spacing:.08em!important;text-transform:uppercase!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
-    .et-whatsapp svg{width:15px!important;height:15px!important;fill:currentColor!important;flex:none!important;pointer-events:none!important}
-    .et-whatsapp:hover{transform:translateY(-1px)!important;background:rgba(255,255,255,.8)!important;border-color:rgba(201,163,95,.55)!important;box-shadow:0 8px 22px rgba(6,29,23,.12)!important}
+    .et-whatsapp{height:38px!important;padding:0 14px!important;margin-inline-start:auto!important;border:1px solid rgba(255,255,255,.22)!important;background:rgba(0,0,0,.24)!important;color:#fff!important;font-size:9px!important;letter-spacing:.08em!important;text-transform:uppercase!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
+    .et-whatsapp svg{width:15px!important;height:15px!important;fill:#25D366!important;color:#25D366!important;flex:none!important;pointer-events:none!important}
+    .et-whatsapp:hover{transform:translateY(-1px)!important;background:rgba(0,0,0,.30)!important;border-color:rgba(255,255,255,.34)!important;box-shadow:0 8px 22px rgba(0,0,0,.12)!important}
     .et-linkedin{min-height:34px!important;padding:0 12px!important;border:1px solid rgba(255,255,255,.17)!important;background:rgba(255,255,255,.05)!important;color:rgba(255,255,255,.82)!important;font-size:9px!important;letter-spacing:.08em!important}
     .et-linkedin:hover{transform:translateY(-1px)!important;background:rgba(201,163,95,.12)!important;border-color:rgba(201,163,95,.55)!important;color:#fff!important;box-shadow:0 8px 20px rgba(0,0,0,.12)!important}
     .et-linkedin-mark{display:inline-grid!important;place-items:center!important;width:18px!important;height:18px!important;border-radius:4px!important;background:currentColor!important;color:#061613!important;font-size:11px!important;font-weight:800!important;line-height:1!important;letter-spacing:-.06em!important;pointer-events:none!important}
-    @media(max-width:800px){.et-whatsapp{width:38px!important;height:38px!important;padding:0!important;margin-inline-start:0!important;font-size:0!important;gap:0!important}.et-whatsapp svg{width:16px!important;height:16px!important}.et-linkedin{min-height:32px!important;padding:0 10px!important}}
+    @media(max-width:800px){.site-header{padding-inline:12px!important}.et-whatsapp{width:38px!important;height:38px!important;padding:0!important;margin-inline-start:auto!important;font-size:0!important;gap:0!important}.et-whatsapp svg{width:16px!important;height:16px!important}.et-linkedin{min-height:32px!important;padding:0 10px!important}}
   `;
   doc.head.appendChild(style);
 
   const ensureHeaderWhatsApp=()=>{
     unwrapHeaderInner();
+    enforceHeaderControls();
     const header=doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
     if(!header||header.querySelector('.et-whatsapp')) return;
     const link=doc.createElement('a');
@@ -49,7 +68,7 @@
     const link=doc.createElement('a'); link.className='et-linkedin'; link.href=linkedinHref; link.target='_blank'; link.rel='noopener noreferrer'; link.setAttribute('aria-label',socialCopy.linkedin); link.innerHTML=`${linkedinIcon}<span>${socialCopy.linkedin}</span>`;
     const bottom=footer.querySelector('.et-footer-bottom,.et-footer-legal,.footer-band-inner,.ar-footer-inner'); if(bottom) bottom.appendChild(link); else footer.appendChild(link);
   };
-  const enhance=()=>{unwrapHeaderInner();ensureHeaderWhatsApp();ensureFooterLinkedIn();};
+  const enhance=()=>{unwrapHeaderInner();ensureHeaderWhatsApp();ensureFooterLinkedIn();enforceHeaderControls();};
   enhance();
   const observer=new MutationObserver(enhance); observer.observe(doc.body,{childList:true,subtree:true});
 
@@ -61,7 +80,7 @@
   doc.addEventListener('selectstart',event=>{if(event.target.closest(catalogueImageSelector))event.preventDefault();},true);
   new MutationObserver(()=>protectCatalogueImages()).observe(doc.documentElement,{childList:true,subtree:true});
 
-  loadScript('/assets/js/language-dropdown.js?v=20260824-1','etLanguageDropdown');
+  loadScript('/assets/js/language-dropdown.js?v=20260824-2','etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20260823-taxonomy-5','etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1','etCatalogPolish');
   loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1','etSitePolish');
