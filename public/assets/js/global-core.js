@@ -21,14 +21,16 @@
     es: { home: 'Inicio', company: 'Empresa', products: 'Productos', seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos & Crustáceos', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada', markets: 'Mercados', news: 'Noticias', contact: 'Contacto', open: 'Abrir menú', close: 'Cerrar menú' },
     en: { home: 'Home', company: 'Company', products: 'Products', seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish & Crustaceans', cephalopods: 'Cephalopods', fruits: 'Fruits', vegetables: 'Vegetables', seasonal: 'Seasonal', markets: 'Markets', news: 'News', contact: 'Contact', open: 'Open menu', close: 'Close menu' },
     fr: { home: 'Accueil', company: 'Entreprise', products: 'Produits', seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Fruits de mer & Crustacés', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Saison', markets: 'Marchés', news: 'Actualités', contact: 'Contact', open: 'Ouvrir le menu', close: 'Fermer le menu' },
-    ar: { home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', seafood: 'منتجات البحر', fish: 'الأسماك', shellfish: 'المأكولات البحرية والقشريات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'الموسمية', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا', open: 'فتح القائمة', close: 'إغلاق القائمة' }
+    ar: { home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', seafood: 'منتجات البحر', fish: 'الأسماك', shellfish: 'المأكولات البحرية والقشريات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'الموسمية', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا', open: 'فتح القائمة', close: 'إغلاق القائمة' },
+    it: { home: 'Home', company: 'Azienda', products: 'Prodotti', seafood: 'Prodotti del mare', fish: 'Pesce', shellfish: 'Molluschi & crostacei', cephalopods: 'Cefalopodi', fruits: 'Frutta', vegetables: 'Ortaggi', seasonal: 'Stagionale', markets: 'Mercati', news: 'Notizie', contact: 'Contatti', open: 'Apri il menu', close: 'Chiudi il menu' }
   };
 
   const paths = {
-    es: { home: '/', company: '/about/', seafood: '/products/seafood/', fish: '/products/seafood/fish/', shellfish: '/products/seafood/shellfish/', cephalopods: '/products/seafood/cephalopods/', fruits: '/products/fruits/', vegetables: '/products/vegetables/', seasonal: '/products/seasonal/', markets: '/markets/', news: '/news/', contact: '/contact/' },
-    en: { home: '/en/', company: '/en/about/', seafood: '/en/products/seafood/', fish: '/en/products/seafood/fish/', shellfish: '/en/products/seafood/shellfish/', cephalopods: '/en/products/seafood/cephalopods/', fruits: '/en/products/fruits/', vegetables: '/en/products/vegetables/', seasonal: '/en/products/seasonal/', markets: '/en/markets/', news: '/en/news/', contact: '/en/contact/' },
-    fr: { home: '/fr/', company: '/fr/about/', seafood: '/fr/products/seafood/', fish: '/fr/products/seafood/fish/', shellfish: '/fr/products/seafood/shellfish/', cephalopods: '/fr/products/seafood/cephalopods/', fruits: '/fr/products/fruits/', vegetables: '/fr/products/vegetables/', seasonal: '/fr/products/seasonal/', markets: '/fr/markets/', news: '/fr/news/', contact: '/fr/contact/' },
-    ar: { home: '/ar/', company: '/ar/about/', seafood: '/ar/products/seafood/', fish: '/ar/products/seafood/fish/', shellfish: '/ar/products/seafood/shellfish/', cephalopods: '/ar/products/seafood/cephalopods/', fruits: '/ar/products/fruits/', vegetables: '/ar/products/vegetables/', seasonal: '/ar/products/seasonal/', markets: '/ar/markets/', news: '/ar/news/', contact: '/ar/contact/' }
+    es: { home: '/', company: '/about/', products: '/products/', seafood: '/products/seafood/', fish: '/products/seafood/fish/', shellfish: '/products/seafood/shellfish/', cephalopods: '/products/seafood/cephalopods/', fruits: '/products/fruits/', vegetables: '/products/vegetables/', seasonal: '/products/seasonal/', markets: '/markets/', news: '/news/', contact: '/contact/' },
+    en: { home: '/en/', company: '/en/about/', products: '/en/products/', seafood: '/en/products/seafood/', fish: '/en/products/seafood/fish/', shellfish: '/en/products/seafood/shellfish/', cephalopods: '/en/products/seafood/cephalopods/', fruits: '/en/products/fruits/', vegetables: '/en/products/vegetables/', seasonal: '/en/products/seasonal/', markets: '/en/markets/', news: '/en/news/', contact: '/en/contact/' },
+    fr: { home: '/fr/', company: '/fr/about/', products: '/fr/products/', seafood: '/fr/products/seafood/', fish: '/fr/products/seafood/fish/', shellfish: '/fr/products/seafood/shellfish/', cephalopods: '/fr/products/seafood/cephalopods/', fruits: '/fr/products/fruits/', vegetables: '/fr/products/vegetables/', seasonal: '/fr/products/seasonal/', markets: '/fr/markets/', news: '/fr/news/', contact: '/fr/contact/' },
+    ar: { home: '/ar/', company: '/ar/about/', products: '/ar/products/', seafood: '/ar/products/seafood/', fish: '/ar/products/seafood/fish/', shellfish: '/ar/products/seafood/shellfish/', cephalopods: '/ar/products/seafood/cephalopods/', fruits: '/ar/products/fruits/', vegetables: '/ar/products/vegetables/', seasonal: '/ar/products/seasonal/', markets: '/ar/markets/', news: '/ar/news/', contact: '/ar/contact/' },
+    it: { home: '/it/', company: '/it/about/', products: '/it/products/', seafood: '/it/products/seafood/', fish: '/it/products/seafood/fish/', shellfish: '/it/products/seafood/shellfish/', cephalopods: '/it/products/seafood/cephalopods/', fruits: '/it/products/fruits/', vegetables: '/it/products/vegetables/', seasonal: '/it/products/seasonal/', markets: '/it/markets/', news: '/it/news/', contact: '/it/contact/' }
   };
 
   const T = labels[lang] || labels.en;
@@ -45,8 +47,7 @@
   const buildNavigation = () => {
     normalizeMenuOverlays();
     const nav = get('.nav-overlay-links');
-    if (!nav || nav.dataset.etNavigationBuilt === 'true') return;
-
+    if (!nav) return;
     nav.innerHTML = `
       <a href="${paths[L].home}">${idx('01', T.home)}</a>
       <a href="${paths[L].company}">${idx('02', T.company)}</a>
