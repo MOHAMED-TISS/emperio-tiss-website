@@ -1,98 +1,31 @@
 /* EMPERIO TISS — IT catalogue visual parity with ES */
-html[lang="it"] body :is(.seafood-catalog,.fish-catalog,.compact-catalog){
-  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
-}
-html[lang="it"] :is(.seafood-catalog__head h2,.compact-catalog__head h2,.fish-catalog__head h2,.fish-catalog h2){
-  font-family:var(--et-serif,"Playfair Display",Georgia,serif);
-  font-weight:400;
-  letter-spacing:-.025em;
-}
-html[lang="it"] :is(.seafood-catalog__head p,.compact-catalog__head p,.fish-catalog__count,.fish-catalog__toolbar,.seafood-catalog-count,.compact-catalog__count){
-  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
-}
-html[lang="it"] .seafood-catalog__inner,
-html[lang="it"] .fish-catalog__inner,
-html[lang="it"] .compact-catalog__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
-html[lang="it"] .seafood-catalog-card h3,
-html[lang="it"] .fish-catalog-card__title,
-html[lang="it"] .compact-catalog-card__title{
-  font-family:var(--et-serif,"Playfair Display",Georgia,serif);
-  font-weight:400;
-}
-html[lang="it"] .seafood-catalog-card__detail,
-html[lang="it"] .seafood-catalog-card__scientific,
-html[lang="it"] .fish-catalog-card__scientific,
-html[lang="it"] .fish-catalog-card__detail,
-html[lang="it"] .compact-catalog-card__scientific,
-html[lang="it"] .compact-catalog-card__spec{
-  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
-}
-html[lang="it"] :is(.seafood-catalog-search,.compact-catalog__search,.fish-catalog__search){
-  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
-}
-html[lang="it"] :is(.seafood-catalog-card,.compact-catalog-card,.fish-catalog-card){
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
+html[lang="it"] body :is(.seafood-catalog,.fish-catalog,.compact-catalog){font-family:var(--et-sans,"DM Sans",Arial,sans-serif)}
+html[lang="it"] :is(.seafood-catalog__head h2,.compact-catalog__head h2,.fish-catalog__head h2,.fish-catalog h2){font-family:var(--et-serif,"Playfair Display",Georgia,serif);font-weight:400;letter-spacing:-.025em}
+html[lang="it"] :is(.seafood-catalog__head p,.compact-catalog__head p,.fish-catalog__count,.fish-catalog__toolbar,.seafood-catalog-count,.compact-catalog__count){font-family:var(--et-sans,"DM Sans",Arial,sans-serif)}
+html[lang="it"] .seafood-catalog__inner,html[lang="it"] .fish-catalog__inner,html[lang="it"] .compact-catalog__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+html[lang="it"] .seafood-catalog-card h3,html[lang="it"] .fish-catalog-card__title,html[lang="it"] .compact-catalog-card__title{font-family:var(--et-serif,"Playfair Display",Georgia,serif);font-weight:400}
+html[lang="it"] .seafood-catalog-card__detail,html[lang="it"] .seafood-catalog-card__scientific,html[lang="it"] .fish-catalog-card__scientific,html[lang="it"] .fish-catalog-card__detail,html[lang="it"] .compact-catalog-card__scientific,html[lang="it"] .compact-catalog-card__spec{font-family:var(--et-sans,"DM Sans",Arial,sans-serif)}
+html[lang="it"] :is(.seafood-catalog-search,.compact-catalog__search,.fish-catalog__search){font-family:var(--et-sans,"DM Sans",Arial,sans-serif)}
+html[lang="it"] :is(.seafood-catalog-card,.compact-catalog-card,.fish-catalog-card){-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 /* Italian emblematic selection — compact premium geometry */
-html[lang="it"] .fish-emblematic__grid{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(14px,1.4vw,18px);
-}
-html[lang="it"] .fish-emblematic-card{
-  border-radius:14px;
-}
-html[lang="it"] .fish-emblematic-card__media{
-  min-height:0;
-  aspect-ratio:1.42 / 1;
-}
-html[lang="it"] .fish-emblematic-card__body{
-  padding:1.05rem 1.15rem 1.15rem;
-}
-html[lang="it"] .fish-emblematic-card__kicker{
-  font-size:.56rem;
-  letter-spacing:.11em;
-}
-html[lang="it"] .fish-emblematic-card h3{
-  margin:.42rem 0 .22rem;
-  font-size:clamp(1.28rem,1.65vw,1.72rem);
-  line-height:1.02;
-}
-html[lang="it"] .fish-emblematic-card__scientific{
-  font-size:.78rem;
-  margin:0 0 .75rem;
-}
-html[lang="it"] .fish-emblematic-card__meta{
-  font-size:.62rem;
-  gap:.45rem;
-  padding-top:.65rem;
-}
-html[lang="it"] .fish-emblematic-card__note{
-  font-size:.68rem;
-  line-height:1.45;
-  margin-top:.7rem;
-}
-html[lang="it"] .fish-emblematic-card__mark{
-  font-size:.54rem;
-  letter-spacing:.11em;
-  margin-top:.7rem;
-}
-html[lang="it"] .fish-emblematic-card__counter{
-  right:9px;
-  bottom:9px;
-  min-width:34px;
-  height:21px;
-  padding:0 7px;
-  font-size:8px;
-}
-@media(max-width:900px){
-  html[lang="it"] .fish-emblematic__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:600px){
-  html[lang="it"] .fish-emblematic__grid{grid-template-columns:1fr;gap:12px}
-  html[lang="it"] .fish-emblematic-card__media{aspect-ratio:1.6 / 1}
-}
-@media(max-width:560px){
-  html[lang="it"] :is(.seafood-catalog__inner,.fish-catalog__inner,.compact-catalog__inner){width:calc(100% - 32px)}
-}
+html[lang="it"] .fish-emblematic{padding-block:3.25rem!important}
+html[lang="it"] .fish-emblematic__inner{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+html[lang="it"] .fish-emblematic__intro{grid-template-columns:minmax(0,.8fr) minmax(0,1.15fr) minmax(190px,.48fr);gap:2rem;margin-block-end:2.2rem}
+html[lang="it"] .fish-emblematic__intro h2{font-size:clamp(2.1rem,4vw,4.2rem);line-height:.94}
+html[lang="it"] .fish-emblematic__intro p{font-size:.76rem;line-height:1.55;max-width:300px}
+html[lang="it"] .fish-emblematic__grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:none!important;gap:14px!important;background:transparent!important}
+html[lang="it"] .fish-emblematic-card{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:190px auto!important;min-height:0!important;border-radius:14px}
+html[lang="it"] .fish-emblematic-card__media{min-height:0!important;height:190px!important;aspect-ratio:auto!important;padding:0!important}
+html[lang="it"] .fish-emblematic-card__media--image{height:190px!important}
+html[lang="it"] .fish-emblematic-card__body{min-height:0!important;padding:1rem 1.05rem 1.05rem!important}
+html[lang="it"] .fish-emblematic-card__kicker{font-size:.52rem!important;letter-spacing:.1em!important}
+html[lang="it"] .fish-emblematic-card h3{margin:.38rem 0 .18rem!important;font-size:1.38rem!important;line-height:1!important}
+html[lang="it"] .fish-emblematic-card__scientific{font-size:.72rem!important;margin:0 0 .55rem!important}
+html[lang="it"] .fish-emblematic-card__meta{font-size:.57rem!important;gap:.4rem!important;padding-top:.55rem!important;margin-top:.1rem!important}
+html[lang="it"] .fish-emblematic-card__note{font-size:.62rem!important;line-height:1.4!important;margin-top:.55rem!important}
+html[lang="it"] .fish-emblematic-card__mark{font-size:.5rem!important;letter-spacing:.1em!important;margin-top:.55rem!important;padding-top:0!important}
+html[lang="it"] .fish-emblematic-card__counter{right:8px!important;bottom:8px!important;min-width:31px!important;height:20px!important;padding:0 6px!important;font-size:8px!important}
+@media(max-width:900px){html[lang="it"] .fish-emblematic{padding-block:2.75rem!important}html[lang="it"] .fish-emblematic__intro{grid-template-columns:1fr 1fr;margin-block-end:1.8rem}html[lang="it"] .fish-emblematic__intro p{grid-column:2}html[lang="it"] .fish-emblematic__grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}html[lang="it"] .fish-emblematic-card{grid-template-columns:1fr!important;grid-template-rows:175px auto!important}html[lang="it"] .fish-emblematic-card__media,html[lang="it"] .fish-emblematic-card__media--image{height:175px!important}}
+@media(max-width:600px){html[lang="it"] .fish-emblematic{padding-block:2.25rem!important}html[lang="it"] .fish-emblematic__inner{width:calc(100% - 32px)}html[lang="it"] .fish-emblematic__intro{display:block;margin-block-end:1.5rem}html[lang="it"] .fish-emblematic__intro h2{margin:.55rem 0 .8rem}html[lang="it"] .fish-emblematic__grid{grid-template-columns:1fr!important;gap:12px!important}html[lang="it"] .fish-emblematic-card{grid-template-rows:160px auto!important}html[lang="it"] .fish-emblematic-card__media,html[lang="it"] .fish-emblematic-card__media--image{height:160px!important}}
+@media(max-width:560px){html[lang="it"] :is(.seafood-catalog__inner,.fish-catalog__inner,.compact-catalog__inner){width:calc(100% - 32px)}}
