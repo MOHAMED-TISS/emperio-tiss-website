@@ -76,12 +76,6 @@
     nav.dataset.etNavigationBuilt='true';
   };
 
-  const primeItalianNavigation = () => {
-    if (lang !== 'it') return;
-    const nav = get('.nav-overlay-links');
-    nav?.removeAttribute('data-et-navigation-built');
-  };
-
   const setMenuOpen = (button,overlay,open) => {
     normalizeMenuOverlays();
     body.classList.toggle('nav-open',open);
@@ -118,7 +112,7 @@
   doc.addEventListener('keydown',(event)=>{if(event.key==='Escape')closeMenu();});
   window.addEventListener('resize',()=>{if(window.innerWidth>900)closeMenu();},{passive:true});
 
-  const initDynamicParts=()=>{normalizeMenuOverlays();primeItalianNavigation();buildNavigation();};
+  const initDynamicParts=()=>{normalizeMenuOverlays();buildNavigation();};
   initDynamicParts();
   new MutationObserver(initDynamicParts).observe(doc.body,{childList:true,subtree:true});
 })();
