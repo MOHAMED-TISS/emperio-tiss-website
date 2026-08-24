@@ -35,7 +35,7 @@
 
   const buildNavigation = () => {
     const nav = get('.nav-overlay-links');
-    if (!nav) return;
+    if (!nav || nav.dataset.etNavigationBuilt === 'true') return;
 
     nav.innerHTML = `
       <a href="${paths[L].home}">${idx('01', T.home)}</a>
@@ -59,16 +59,9 @@
       <a href="${paths[L].markets}">${idx('04', T.markets)}</a>
       <a href="${paths[L].news}">${idx('05', T.news)}</a>
       <a href="${paths[L].contact}">${idx('06', T.contact)}</a>`;
+
     nav.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-  };
-
-  buildNavigation();
-
-  const resolveMenu = (target) => {
-    const button = target.closest('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');
-    if (!button) return null;
-    const overlay = get('#navOverlay,.nav-overlay,.intl-overlay');
-    return overlay ? { button, overlay } : null;
+    nav.dataset.etNavigationBuilt = 'true';
   };
 
   const setMenuOpen = (button, overlay, open) => {
@@ -87,27 +80,25 @@
     if (button && overlay) setMenuOpen(button, overlay, false);
   };
 
-  // Delegated click handling: works for static ES headers and dynamically created EN/FR/AR headers.
   doc.addEventListener('click', (event) => {
-    const resolved = resolveMenu(event.target);
-    if (resolved) {
+    const button = event.target.closest('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu');
+    if (button) {
+      const overlay = get('#navOverlay,.nav-overlay,.intl-overlay');
+      if (!overlay) return;
       event.preventDefault();
       event.stopPropagation();
-      const { button, overlay } = resolved;
       const open = body.classList.contains('nav-open') || body.classList.contains('menu-open');
       setMenuOpen(button, overlay, !open);
       return;
     }
 
     const overlay = event.target.closest('#navOverlay,.nav-overlay,.intl-overlay');
-    if (overlay) {
-      if (event.target === overlay || event.target.closest('.nav-overlay-close,.intl-overlay-close')) {
-        closeMenu();
-        return;
-      }
-      const link = event.target.closest('a');
-      if (link) closeMenu();
+    if (!overlay) return;
+    if (event.target === overlay || event.target.closest('.nav-overlay-close,.intl-overlay-close')) {
+      closeMenu();
+      return;
     }
+    if (event.target.closest('a')) closeMenu();
   }, true);
 
   doc.addEventListener('keydown', (event) => {
@@ -118,10 +109,10 @@
     if (window.innerWidth > 900) closeMenu();
   }, { passive: true });
 
-  // Handles menu buttons/overlays inserted after this script initializes.
-  const refreshInternationalNavigation = new MutationObserver(() => {
-    if (!get('.nav-overlay-links') || !get('#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu')) return;
+  const initDynamicParts = () => {
     buildNavigation();
-  });
-  refreshInternationalNavigation.observe(doc.body, { childList: true, subtree: true });
+  };
+
+  initDynamicParts();
+  new MutationObserver(initDynamicParts).observe(doc.body, { childList: true, subtree: true });
 })();
