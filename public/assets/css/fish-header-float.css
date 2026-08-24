@@ -1,25 +1,4 @@
-/* Fish catalogue — menu typography only.
-   Header layout and controls are owned exclusively by header-final.css.
+/* Fish catalogue — header shell only.
+   Header layout and menu presentation are owned by the shared site system.
 */
 @import url("/assets/css/header-final.css?v=20260824-10");
-
-.fish-catalog-pilot .nav-overlay{background:#041d31!important;background-image:none!important;color:#f3f1e8!important}
-.fish-catalog-pilot .nav-overlay-inner{background:transparent!important}
-.fish-catalog-pilot .nav-overlay,.fish-catalog-pilot .nav-overlay *{font-family:"DM Sans",Arial,sans-serif!important}
-.fish-catalog-pilot .nav-overlay-links>a,
-.fish-catalog-pilot .nav-products>summary,
-.fish-catalog-pilot .nav-products>details>summary,
-.fish-catalog-pilot .nav-products>.nav-products-links>a{font:500 18px/1.3 "DM Sans",Arial,sans-serif!important;letter-spacing:.01em!important;color:#f3f1e8!important}
-.fish-catalog-pilot .nav-overlay-links>a .idx,.fish-catalog-pilot .nav-products>summary .idx{font:500 11px/1 "DM Sans",Arial,sans-serif!important;letter-spacing:.12em!important;color:#d9c7a0!important}
-.fish-catalog-pilot .nav-products-links{display:flex!important;flex-direction:column!important;gap:10px!important;margin:0!important;padding:8px 0 10px 34px!important}
-.fish-catalog-pilot .nav-products>details{margin:0!important;padding:0!important}
-.fish-catalog-pilot .nav-products>details>summary{cursor:pointer!important;list-style:none!important}
-.fish-catalog-pilot .nav-products>details>summary::-webkit-details-marker{display:none!important}
-.fish-catalog-pilot .nav-products>details .nav-products-links{gap:7px!important;padding:7px 0 4px 22px!important}
-.fish-catalog-pilot .nav-products>details .nav-products-links>a{font:400 16px/1.3 "DM Sans",Arial,sans-serif!important;letter-spacing:.01em!important;color:rgba(243,241,232,.82)!important}
-.fish-catalog-pilot .nav-products>details .nav-products-links>a[aria-current="page"]{color:#d9c7a0!important;font-weight:500!important}
-
-@media(max-width:640px){
-  .fish-catalog-pilot .nav-overlay-links>a,.fish-catalog-pilot .nav-products>summary,.fish-catalog-pilot .nav-products>details>summary,.fish-catalog-pilot .nav-products>.nav-products-links>a{font-size:18px!important}
-  .fish-catalog-pilot .nav-products>details .nav-products-links>a{font-size:15px!important}
-}
