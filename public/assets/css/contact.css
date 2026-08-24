@@ -2,7 +2,14 @@
 .contact-form{display:grid;gap:1rem}
 .contact-form__row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .contact-form label{display:grid;gap:.45rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
-.contact-form input,.contact-form textarea,.contact-form select{width:100%;border:1px solid rgba(16,37,28,.2);background:rgba(255,255,255,.55);padding:.9rem 1rem;border-radius:.25rem;color:inherit}
+.contact-form label>span{color:var(--es-muted,#69746d)}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;border:1px solid rgba(16,37,28,.2);background:rgba(255,255,255,.55);padding:.9rem 1rem;border-radius:.25rem;color:inherit;font:400 .9rem/1.4 var(--et-sans,"DM Sans",Arial,sans-serif);box-sizing:border-box}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(105,116,109,.72)}
 .contact-form textarea{min-height:170px;resize:vertical}
-.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:2px solid var(--et-gold,#c9a35f);outline-offset:1px}
-@media(max-width:700px){.contact-form__row{grid-template-columns:1fr}}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:2px solid var(--et-gold,#c9a35f);outline-offset:1px;border-color:rgba(199,162,96,.55);background:rgba(255,255,255,.78)}
+.es-page .es-form-wrap{margin-top:55px;padding:clamp(24px,4vw,44px);background:#faf8f1;border:1px solid rgba(19,37,31,.1);box-shadow:0 18px 55px rgba(19,37,31,.06)}
+.es-page .es-form-wrap .contact-form{max-width:980px}
+.es-page .form-required-notice{margin-bottom:.5rem;color:var(--es-muted,#69746d);font-size:.68rem;line-height:1.6}
+.es-page .required-star{color:var(--es-gold,#c7a260);font-weight:700}
+.es-page .form-submit{margin-top:.35rem;justify-self:start;cursor:pointer;font-family:var(--et-sans,"DM Sans",Arial,sans-serif)}
+@media(max-width:700px){.contact-form__row{grid-template-columns:1fr}.es-page .es-form-wrap{margin-top:40px;padding:20px}.es-page .form-submit{width:100%;justify-content:center}}
