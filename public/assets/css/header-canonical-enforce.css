@@ -1,0 +1,195 @@
+/* EMPERIO TISS — FINAL CANONICAL HEADER ENFORCEMENT
+   Loaded last by global.js so legacy page/catalogue CSS cannot replace the site header.
+   Order: Logo → WhatsApp → Language → Menu.
+*/
+:root{--et-header-gutter:48px}
+
+.site-header{
+  position:fixed!important;
+  top:12px!important;
+  left:50%!important;
+  right:auto!important;
+  width:min(1240px,calc(100% - (var(--et-header-gutter)*2)))!important;
+  height:76px!important;
+  margin:0!important;
+  padding:0!important;
+  transform:translateX(-50%)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:0!important;
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  pointer-events:none!important;
+  direction:ltr!important;
+  z-index:1100!important;
+}
+
+.site-header>.header-inner{display:contents!important}
+
+.site-header .site-logo,
+.site-header .et-whatsapp,
+.site-header .et-language-switch,
+.site-header .mobile-menu{
+  box-sizing:border-box!important;
+  pointer-events:auto!important;
+}
+
+.site-header .site-logo{
+  order:1!important;
+  flex:0 0 112px!important;
+  width:112px!important;
+  height:58px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0 12px!important;
+  margin:0!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  border-radius:999px!important;
+  background:rgba(0,0,0,.24)!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.10)!important;
+  backdrop-filter:blur(16px) saturate(118%)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(118%)!important;
+  text-decoration:none!important;
+}
+
+.site-header .site-logo img{
+  display:block!important;
+  width:78px!important;
+  max-width:78px!important;
+  max-height:48px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  visibility:visible!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+.site-header .et-whatsapp{
+  order:2!important;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  height:40px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  padding:0 15px!important;
+  margin:0 0 0 auto!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  border-radius:999px!important;
+  background:rgba(0,0,0,.20)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  font:600 9px/1 var(--et-sans,"DM Sans",Arial,sans-serif)!important;
+  letter-spacing:.075em!important;
+  text-transform:uppercase!important;
+}
+.site-header .et-whatsapp svg{width:15px!important;height:15px!important;flex:0 0 auto!important;fill:#25D366!important;color:#25D366!important}
+
+.site-header .et-language-switch{
+  order:3!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  padding:0!important;
+  margin:0 10px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  position:relative!important;
+  overflow:visible!important;
+  direction:ltr!important;
+}
+.site-header .et-language-switch a,
+.site-header .et-language-switch span{
+  color:#fff!important;
+  text-decoration:none!important;
+  font:600 8px/1 var(--et-sans,"DM Sans",Arial,sans-serif)!important;
+  letter-spacing:.09em!important;
+}
+.site-header .et-language-switch a.current,
+.site-header .et-language-switch a[aria-current="page"]{opacity:1!important}
+.site-header .et-language-switch a:not(.current):not([aria-current="page"]){opacity:.78!important}
+
+.site-header .mobile-menu{
+  order:4!important;
+  flex:0 0 58px!important;
+  width:58px!important;
+  height:58px!important;
+  display:grid!important;
+  place-items:center!important;
+  margin:0!important;
+  padding:0!important;
+  position:relative!important;
+  border:1px solid rgba(255,255,255,.30)!important;
+  border-radius:50%!important;
+  background:rgba(0,0,0,.28)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+  z-index:1201!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+.site-header .mobile-menu span{
+  position:absolute!important;
+  display:block!important;
+  width:21px!important;
+  height:2px!important;
+  background:#fff!important;
+  border-radius:2px!important;
+  left:50%!important;
+  top:50%!important;
+  margin-left:-10.5px!important;
+  margin-top:-1px!important;
+  transform-origin:center!important;
+  transition:transform .28s ease,opacity .18s ease!important;
+}
+.site-header .mobile-menu span:nth-child(1){transform:translateY(-6px)!important}
+.site-header .mobile-menu span:nth-child(2){transform:translateY(0)!important}
+.site-header .mobile-menu span:nth-child(3){transform:translateY(6px)!important}
+body.nav-open .site-header .mobile-menu span:nth-child(1),body.menu-open .site-header .mobile-menu span:nth-child(1),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg)!important}
+body.nav-open .site-header .mobile-menu span:nth-child(2),body.menu-open .site-header .mobile-menu span:nth-child(2),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(2){transform:scaleX(0)!important;opacity:0!important}
+body.nav-open .site-header .mobile-menu span:nth-child(3),body.menu-open .site-header .mobile-menu span:nth-child(3),.site-header .mobile-menu[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg)!important}
+
+/* Legacy fish catalogue headers used a completely different floating system.
+   This compatibility layer makes those pages obey the same four-control header. */
+body.fish-catalog-pilot .site-header,
+body.fish-catalog-pilot .site-header .header-inner,
+body.fish-catalog-pilot .site-header .site-logo,
+body.fish-catalog-pilot .site-header .mobile-menu,
+body.fish-catalog-pilot .site-header .et-language-switch{z-index:1201!important}
+
+@media(max-width:800px){
+  :root{--et-header-gutter:16px}
+  .site-header{top:10px!important;width:calc(100% - (var(--et-header-gutter)*2))!important;height:64px!important}
+  .site-header .site-logo{flex-basis:88px!important;width:88px!important;height:52px!important;padding:0 8px!important}
+  .site-header .site-logo img{width:68px!important;max-width:68px!important;max-height:42px!important}
+  .site-header .et-whatsapp{width:38px!important;height:38px!important;padding:0!important;font-size:0!important;gap:0!important}
+  .site-header .et-whatsapp svg{width:16px!important;height:16px!important}
+  .site-header .et-language-switch{margin:0 8px!important}
+  .site-header .mobile-menu{flex-basis:54px!important;width:54px!important;height:54px!important}
+}
+@media(max-width:380px){
+  :root{--et-header-gutter:10px}
+  .site-header .site-logo{flex-basis:78px!important;width:78px!important}
+  .site-header .site-logo img{width:62px!important;max-width:62px!important}
+  .site-header .et-language-switch{margin-inline:6px!important}
+  .site-header .mobile-menu{flex-basis:50px!important;width:50px!important;height:50px!important}
+}
+html[lang="ar"] .site-header,html[lang="ar"] .header-inner,html[lang="ar"] .et-language-switch{direction:ltr!important}
