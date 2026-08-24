@@ -7,20 +7,12 @@
 
   const loadCss = (href, key) => {
     if (doc.querySelector(`link[data-${key}]`)) return;
-    const link = doc.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.dataset[key] = 'true';
-    doc.head.appendChild(link);
+    const link = doc.createElement('link'); link.rel = 'stylesheet'; link.href = href; link.dataset[key] = 'true'; doc.head.appendChild(link);
   };
 
   const loadScript = (src, key) => {
     if (doc.querySelector(`script[data-${key}]`)) return;
-    const script = doc.createElement('script');
-    script.src = src;
-    script.async = false;
-    script.dataset[key] = 'true';
-    doc.head.appendChild(script);
+    const script = doc.createElement('script'); script.src = src; script.async = false; script.dataset[key] = 'true'; doc.head.appendChild(script);
   };
 
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
@@ -32,15 +24,14 @@
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
 
-  if (['en', 'fr', 'ar'].includes(lang)) {
-    loadScript('/assets/js/international-shell.js?v=20260824-2', 'etInternationalShell');
-  }
+  if (['en', 'fr', 'ar', 'it'].includes(lang)) loadScript('/assets/js/international-shell.js?v=20260824-3', 'etInternationalShell');
 
   const socialCopy = {
     es: { whatsapp: 'Contactar por WhatsApp', linkedin: 'LinkedIn' },
     en: { whatsapp: 'Contact us on WhatsApp', linkedin: 'LinkedIn' },
     fr: { whatsapp: 'Contacter sur WhatsApp', linkedin: 'LinkedIn' },
-    ar: { whatsapp: 'تواصل معنا عبر واتساب', linkedin: 'LinkedIn' }
+    ar: { whatsapp: 'تواصل معنا عبر واتساب', linkedin: 'LinkedIn' },
+    it: { whatsapp: 'Contattaci su WhatsApp', linkedin: 'LinkedIn' }
   }[lang] || { whatsapp: 'Contact us on WhatsApp', linkedin: 'LinkedIn' };
 
   const whatsappHref = 'https://wa.me/34614270684';
@@ -52,89 +43,60 @@
     if (!document.body.classList.contains('fish-catalog-pilot')) return;
     const legacyStyle = Array.from(doc.querySelectorAll('style')).find((style) => style.textContent.includes('body.fish-catalog-pilot .site-header'));
     if (legacyStyle) {
-      const text = legacyStyle.textContent;
-      const start = text.indexOf('body.fish-catalog-pilot .site-header');
-      const end = text.indexOf('.page-hero,.seafood-subpage .page-hero');
+      const text = legacyStyle.textContent; const start = text.indexOf('body.fish-catalog-pilot .site-header'); const end = text.indexOf('.page-hero,.seafood-subpage .page-hero');
       if (start >= 0 && end > start) legacyStyle.textContent = `${text.slice(0, start)}${text.slice(end)}`;
     }
-
     const oldHeader = doc.querySelector('.fish-catalog-pilot > .site-header');
     const existingOverlay = doc.querySelector('#navOverlay');
-    const header = doc.createElement('header');
-    header.className = 'site-header';
-    header.id = 'luxuryHeader';
-    header.innerHTML = `
-      <div class="header-inner">
-        <a href="/" class="site-logo" aria-label="EMPERIO TISS - Inicio">
-          <img src="/logo.png" alt="EMPERIO TISS" width="94" height="62">
-        </a>
-        <a href="${whatsappHref}" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${socialCopy.whatsapp}">
-          ${whatsappIcon}<span>${socialCopy.whatsapp}</span>
-        </a>
-        <nav class="et-language-switch" aria-label="Idiomas">
-          <a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a>
-        </nav>
-        <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay">
-          <span></span><span></span><span></span>
-        </button>
-      </div>`;
-
-    if (oldHeader) oldHeader.replaceWith(header);
-    else doc.body.insertAdjacentElement('afterbegin', header);
-
-    const overlay = existingOverlay || doc.querySelector('#navOverlay');
-    if (overlay && overlay.parentElement !== doc.body) doc.body.appendChild(overlay);
+    const header = doc.createElement('header'); header.className = 'site-header'; header.id = 'luxuryHeader';
+    header.innerHTML = `<div class="header-inner"><a href="/" class="site-logo" aria-label="EMPERIO TISS - Inicio"><img src="/logo.png" alt="EMPERIO TISS" width="94" height="62"></a><a href="${whatsappHref}" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${socialCopy.whatsapp}">${whatsappIcon}<span>${socialCopy.whatsapp}</span></a><nav class="et-language-switch" aria-label="Idiomas"><a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a></nav><button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button></div>`;
+    if (oldHeader) oldHeader.replaceWith(header); else doc.body.insertAdjacentElement('afterbegin', header);
+    const overlay = existingOverlay || doc.querySelector('#navOverlay'); if (overlay && overlay.parentElement !== doc.body) doc.body.appendChild(overlay);
   };
 
   rebuildFishHeader();
 
+  const italianHref = () => {
+    let pathname = window.location.pathname || '/';
+    for (const prefix of ['/en', '/fr', '/ar']) if (pathname === prefix || pathname.startsWith(`${prefix}/`)) pathname = pathname.slice(prefix.length) || '/';
+    if (!pathname.startsWith('/')) pathname = `/${pathname}`;
+    return `/it${pathname === '/' ? '/' : pathname}`;
+  };
+
+  const ensureItalianLanguageLinks = () => {
+    const href = italianHref();
+    doc.querySelectorAll('.et-language-switch,.language-nav,.nav-overlay-lang').forEach((switcher) => {
+      if (switcher.querySelector('a[href^="/it/"]')) return;
+      const link = doc.createElement('a'); link.href = href; link.textContent = 'IT';
+      if (lang === 'it') { link.className = 'current'; link.setAttribute('aria-current', 'page'); }
+      const trailing = Array.from(switcher.children).reverse().find((el) => el.tagName === 'A');
+      if (trailing) { const sep = doc.createElement('span'); sep.textContent = '·'; trailing.insertAdjacentElement('afterend', sep); sep.insertAdjacentElement('afterend', link); }
+      else switcher.appendChild(link);
+    });
+  };
+
   const ensureHeaderWhatsApp = () => {
-    const header = doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
-    if (!header) return;
-    const container = header.querySelector('.header-inner') || header;
-    let link = container.querySelector('.et-whatsapp');
-    if (!link) link = header.querySelector('.et-whatsapp');
-    if (!link) {
-      link = doc.createElement('a');
-      link.className = 'et-whatsapp';
-      link.href = whatsappHref;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.setAttribute('aria-label', socialCopy.whatsapp);
-      link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
-    }
-    const language = container.querySelector('.et-language-switch,.language-nav');
-    const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
-    const reference = language || menu || null;
-    if (link.parentElement !== container) {
-      container.insertBefore(link, reference);
-      return;
-    }
+    const header = doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner'); if (!header) return;
+    const container = header.querySelector('.header-inner') || header; let link = container.querySelector('.et-whatsapp'); if (!link) link = header.querySelector('.et-whatsapp');
+    if (!link) { link = doc.createElement('a'); link.className = 'et-whatsapp'; link.href = whatsappHref; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.setAttribute('aria-label', socialCopy.whatsapp); link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`; }
+    const language = container.querySelector('.et-language-switch,.language-nav'); const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu'); const reference = language || menu || null;
+    if (link.parentElement !== container) { container.insertBefore(link, reference); return; }
     if (reference && link.nextElementSibling !== reference) container.insertBefore(link, reference);
   };
 
   const ensureFooterLinkedIn = () => {
-    const footer = doc.querySelector('footer');
-    if (!footer || footer.querySelector('.et-linkedin')) return;
-    const link = doc.createElement('a');
-    link.className = 'et-linkedin';
-    link.href = linkedinHref;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', socialCopy.linkedin);
-    link.innerHTML = `${linkedinIcon}<span>${socialCopy.linkedin}</span>`;
-    const bottom = footer.querySelector('.et-footer-bottom,.et-footer-legal,.footer-band-inner,.ar-footer-inner');
-    if (bottom) bottom.appendChild(link); else footer.appendChild(link);
+    const footer = doc.querySelector('footer'); if (!footer || footer.querySelector('.et-linkedin')) return;
+    const link = doc.createElement('a'); link.className = 'et-linkedin'; link.href = linkedinHref; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.setAttribute('aria-label', socialCopy.linkedin); link.innerHTML = `${linkedinIcon}<span>${socialCopy.linkedin}</span>`;
+    const bottom = footer.querySelector('.et-footer-bottom,.et-footer-legal,.footer-band-inner,.ar-footer-inner'); if (bottom) bottom.appendChild(link); else footer.appendChild(link);
   };
 
-  const enhance = () => { ensureHeaderWhatsApp(); ensureFooterLinkedIn(); };
+  const enhance = () => { ensureHeaderWhatsApp(); ensureItalianLanguageLinks(); ensureFooterLinkedIn(); };
   enhance();
   new MutationObserver(enhance).observe(doc.body, { childList: true, subtree: true });
 
   const catalogueImageSelector = ['.fish-catalog-card img','.catalog-card img','.catalog-product img','.fish-gallery__image','.fish-lightbox__image','[data-catalog] img','.compact-catalog img','.seafood-catalog img','.fish-emblematic-card img'].join(',');
   const protectCatalogueImages = (rootElement = doc) => rootElement.querySelectorAll(catalogueImageSelector).forEach((img) => {
-    img.setAttribute('draggable', 'false'); img.setAttribute('oncontextmenu', 'return false'); img.setAttribute('ondragstart', 'return false'); img.setAttribute('onselectstart', 'return false');
-    img.style.userSelect = 'none'; img.style.webkitUserDrag = 'none'; img.style.webkitTouchCallout = 'none';
+    img.setAttribute('draggable', 'false'); img.setAttribute('oncontextmenu', 'return false'); img.setAttribute('ondragstart', 'return false'); img.setAttribute('onselectstart', 'return false'); img.style.userSelect = 'none'; img.style.webkitUserDrag = 'none'; img.style.webkitTouchCallout = 'none';
   });
   protectCatalogueImages();
   doc.addEventListener('contextmenu', (event) => { if (event.target.closest(catalogueImageSelector)) event.preventDefault(); }, true);
