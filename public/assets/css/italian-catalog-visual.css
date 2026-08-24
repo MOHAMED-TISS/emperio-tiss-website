@@ -8,24 +8,42 @@ html[lang="it"] .seafood-catalog-card__detail,html[lang="it"] .seafood-catalog-c
 html[lang="it"] :is(.seafood-catalog-search,.compact-catalog__search,.fish-catalog__search){font-family:var(--et-sans,"DM Sans",Arial,sans-serif)}
 html[lang="it"] :is(.seafood-catalog-card,.compact-catalog-card,.fish-catalog-card){-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
-/* Italian emblematic selection — compact premium geometry */
-html[lang="it"] .fish-emblematic{padding-block:3.25rem!important}
+/* IT seafood subpages — first-screen hero */
+html[lang="it"] body.seafood-subpage .page-hero,html[lang="it"] body.fish-catalog-pilot .page-hero{min-height:100svh;height:100svh;padding:140px 0 72px;box-sizing:border-box;display:grid;align-items:end}
+html[lang="it"] body.seafood-subpage .page-hero-inner{width:min(1180px,calc(100% - 48px));margin-inline:auto;position:relative;z-index:2}
+html[lang="it"] body.seafood-subpage .page-hero .eyebrow{color:#e8cf99!important}
+html[lang="it"] body.seafood-subpage .page-hero h1{color:#f8f6f0!important;text-shadow:0 3px 22px rgba(0,0,0,.42)}
+html[lang="it"] body.seafood-subpage .page-hero h1 em{color:#e8cf99!important}
+html[lang="it"] body.seafood-subpage .page-hero .lead{color:rgba(248,246,240,.9)!important;text-shadow:0 2px 14px rgba(0,0,0,.34)}
+
+/* Italian emblematic selection — compact premium geometry + readable contrast */
+html[lang="it"] .fish-emblematic{padding-block:3.25rem!important;color:#f8f6f0!important;background:radial-gradient(circle at 22% 18%,rgba(39,83,65,.28),transparent 34%),radial-gradient(circle at 82% 72%,rgba(199,163,95,.08),transparent 28%),linear-gradient(180deg,#061b14 0%,#082119 48%,#061811 100%)!important}
 html[lang="it"] .fish-emblematic__inner{width:min(1180px,calc(100% - 48px));margin-inline:auto}
 html[lang="it"] .fish-emblematic__intro{grid-template-columns:minmax(0,.8fr) minmax(0,1.15fr) minmax(190px,.48fr);gap:2rem;margin-block-end:2.2rem}
-html[lang="it"] .fish-emblematic__intro h2{font-size:clamp(2.1rem,4vw,4.2rem);line-height:.94}
-html[lang="it"] .fish-emblematic__intro p{font-size:.76rem;line-height:1.55;max-width:300px}
+html[lang="it"] .fish-emblematic__intro .eyebrow{color:#e8cf99!important}
+html[lang="it"] .fish-emblematic__intro h2{font-size:clamp(2.1rem,4vw,4.2rem);line-height:.94;color:#f8f6f0!important;text-shadow:0 2px 18px rgba(0,0,0,.22)}
+html[lang="it"] .fish-emblematic__intro h2 em{color:#e8cf99!important}
+html[lang="it"] .fish-emblematic__intro p{font-size:.76rem;line-height:1.55;max-width:300px;color:rgba(248,246,240,.76)!important}
 html[lang="it"] .fish-emblematic__grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:none!important;gap:14px!important;background:transparent!important}
 html[lang="it"] .fish-emblematic-card{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:190px auto!important;min-height:0!important;border-radius:14px}
 html[lang="it"] .fish-emblematic-card__media{min-height:0!important;height:190px!important;aspect-ratio:auto!important;padding:0!important}
 html[lang="it"] .fish-emblematic-card__media--image{height:190px!important}
-html[lang="it"] .fish-emblematic-card__body{min-height:0!important;padding:1rem 1.05rem 1.05rem!important}
-html[lang="it"] .fish-emblematic-card__kicker{font-size:.52rem!important;letter-spacing:.1em!important}
-html[lang="it"] .fish-emblematic-card h3{margin:.38rem 0 .18rem!important;font-size:1.38rem!important;line-height:1!important}
-html[lang="it"] .fish-emblematic-card__scientific{font-size:.72rem!important;margin:0 0 .55rem!important}
-html[lang="it"] .fish-emblematic-card__meta{font-size:.57rem!important;gap:.4rem!important;padding-top:.55rem!important;margin-top:.1rem!important}
-html[lang="it"] .fish-emblematic-card__note{font-size:.62rem!important;line-height:1.4!important;margin-top:.55rem!important}
-html[lang="it"] .fish-emblematic-card__mark{font-size:.5rem!important;letter-spacing:.1em!important;margin-top:.55rem!important;padding-top:0!important}
+html[lang="it"] .fish-emblematic-card__body{min-height:0!important;padding:1rem 1.05rem 1.05rem!important;color:#f8f6f0!important}
+html[lang="it"] .fish-emblematic-card__kicker{font-size:.52rem!important;letter-spacing:.1em!important;color:#e8cf99!important}
+html[lang="it"] .fish-emblematic-card h3{margin:.38rem 0 .18rem!important;font-size:1.38rem!important;line-height:1!important;color:#f8f6f0!important}
+html[lang="it"] .fish-emblematic-card__scientific{font-size:.72rem!important;margin:0 0 .55rem!important;color:rgba(248,246,240,.58)!important}
+html[lang="it"] .fish-emblematic-card__meta{font-size:.57rem!important;gap:.4rem!important;padding-top:.55rem!important;margin-top:.1rem!important;color:rgba(248,246,240,.72)!important;border-color:rgba(232,207,153,.14)!important}
+html[lang="it"] .fish-emblematic-card__note{font-size:.62rem!important;line-height:1.4!important;margin-top:.55rem!important;color:rgba(248,246,240,.62)!important}
+html[lang="it"] .fish-emblematic-card__mark{font-size:.5rem!important;letter-spacing:.1em!important;margin-top:.55rem!important;padding-top:0!important;color:#e8cf99!important}
 html[lang="it"] .fish-emblematic-card__counter{right:8px!important;bottom:8px!important;min-width:31px!important;height:20px!important;padding:0 6px!important;font-size:8px!important}
+
+/* ES-style transition cue between emblematic selection and catalogue */
+html[lang="it"] .fish-scroll-cue{position:relative;display:flex;align-items:center;justify-content:center;gap:16px;width:max-content;margin:2.6rem auto 0;padding:12px 0 4px;color:rgba(244,229,192,.82)!important;text-decoration:none;text-transform:uppercase;font:600 .6rem/1 var(--et-sans,"DM Sans",Arial,sans-serif);letter-spacing:.22em}
+html[lang="it"] .fish-scroll-cue::before{content:"";position:absolute;inset:0 -18px;border-top:1px solid rgba(227,199,139,.24);border-bottom:1px solid rgba(227,199,139,.11)}
+html[lang="it"] .fish-scroll-cue i{display:block;width:54px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,199,139,.78))}
+html[lang="it"] .fish-scroll-cue b{position:relative;display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(227,199,139,.66);border-radius:50%;font:400 16px/1 var(--et-sans,"DM Sans",Arial,sans-serif);color:#f0d8a5}
+
 @media(max-width:900px){html[lang="it"] .fish-emblematic{padding-block:2.75rem!important}html[lang="it"] .fish-emblematic__intro{grid-template-columns:1fr 1fr;margin-block-end:1.8rem}html[lang="it"] .fish-emblematic__intro p{grid-column:2}html[lang="it"] .fish-emblematic__grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}html[lang="it"] .fish-emblematic-card{grid-template-columns:1fr!important;grid-template-rows:175px auto!important}html[lang="it"] .fish-emblematic-card__media,html[lang="it"] .fish-emblematic-card__media--image{height:175px!important}}
-@media(max-width:600px){html[lang="it"] .fish-emblematic{padding-block:2.25rem!important}html[lang="it"] .fish-emblematic__inner{width:calc(100% - 32px)}html[lang="it"] .fish-emblematic__intro{display:block;margin-block-end:1.5rem}html[lang="it"] .fish-emblematic__intro h2{margin:.55rem 0 .8rem}html[lang="it"] .fish-emblematic__grid{grid-template-columns:1fr!important;gap:12px!important}html[lang="it"] .fish-emblematic-card{grid-template-rows:160px auto!important}html[lang="it"] .fish-emblematic-card__media,html[lang="it"] .fish-emblematic-card__media--image{height:160px!important}}
+@media(max-width:700px){html[lang="it"] body.seafood-subpage .page-hero,html[lang="it"] body.fish-catalog-pilot .page-hero{min-height:100svh;height:100svh;padding:120px 0 52px}}
+@media(max-width:600px){html[lang="it"] .fish-emblematic{padding-block:2.25rem!important}html[lang="it"] .fish-emblematic__inner{width:calc(100% - 32px)}html[lang="it"] .fish-emblematic__intro{display:block;margin-block-end:1.5rem}html[lang="it"] .fish-emblematic__intro h2{margin:.55rem 0 .8rem}html[lang="it"] .fish-emblematic__grid{grid-template-columns:1fr!important;gap:12px!important}html[lang="it"] .fish-emblematic-card{grid-template-rows:160px auto!important}html[lang="it"] .fish-emblematic-card__media,html[lang="it"] .fish-emblematic-card__media--image{height:160px!important}html[lang="it"] .fish-scroll-cue{margin-top:2.2rem}}
 @media(max-width:560px){html[lang="it"] :is(.seafood-catalog__inner,.fish-catalog__inner,.compact-catalog__inner){width:calc(100% - 32px)}}
