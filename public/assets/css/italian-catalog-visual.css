@@ -1,0 +1,48 @@
+/* EMPERIO TISS — IT catalogue visual parity with ES */
+html[lang="it"] body :is(.seafood-catalog,.fish-catalog,.compact-catalog){
+  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
+}
+
+html[lang="it"] :is(.seafood-catalog__head h2,.compact-catalog__head h2,.fish-catalog__head h2,.fish-catalog h2){
+  font-family:var(--et-serif,"Playfair Display",Georgia,serif);
+  font-weight:400;
+  letter-spacing:-.025em;
+}
+
+html[lang="it"] :is(.seafood-catalog__head p,.compact-catalog__head p,.fish-catalog__count,.fish-catalog__toolbar,.seafood-catalog-count,.compact-catalog__count){
+  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
+}
+
+/* Seafood / shellfish / cephalopods — ES catalogue geometry */
+html[lang="it"] .seafood-catalog__inner,
+html[lang="it"] .fish-catalog__inner,
+html[lang="it"] .compact-catalog__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+
+html[lang="it"] .seafood-catalog-card h3,
+html[lang="it"] .fish-catalog-card__title,
+html[lang="it"] .compact-catalog-card__title{
+  font-family:var(--et-serif,"Playfair Display",Georgia,serif);
+  font-weight:400;
+}
+
+html[lang="it"] .seafood-catalog-card__detail,
+html[lang="it"] .seafood-catalog-card__scientific,
+html[lang="it"] .fish-catalog-card__scientific,
+html[lang="it"] .fish-catalog-card__detail,
+html[lang="it"] .compact-catalog-card__scientific,
+html[lang="it"] .compact-catalog-card__spec{
+  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
+}
+
+html[lang="it"] :is(.seafood-catalog-search,.compact-catalog__search,.fish-catalog__search){
+  font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
+}
+
+html[lang="it"] :is(.seafood-catalog-card,.compact-catalog-card,.fish-catalog-card){
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+@media(max-width:560px){
+  html[lang="it"] :is(.seafood-catalog__inner,.fish-catalog__inner,.compact-catalog__inner){width:calc(100% - 32px)}
+}
