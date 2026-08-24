@@ -43,6 +43,7 @@
     grid.querySelectorAll('.fish-emblematic-card__media--image').forEach(media => {
       const images = JSON.parse(media.dataset.images || '[]');
       const button = media.querySelector('.fish-emblematic-card__image-button');
+      const counter = media.querySelector('.fish-emblematic-card__counter');
       if (!button || !images.length || button.dataset.itGalleryBound === 'true') return;
       button.dataset.itGalleryBound = 'true';
       button.addEventListener('click', event => {
@@ -50,7 +51,17 @@
         event.stopPropagation();
         openGallery(images);
       });
+      const blockImageActions = event => event.preventDefault();
+      button.addEventListener('contextmenu', blockImageActions);
+      button.addEventListener('dragstart', blockImageActions);
+      button.addEventListener('selectstart', blockImageActions);
+      media.addEventListener('contextmenu', blockImageActions, true);
+      media.addEventListener('dragstart', blockImageActions, true);
       media.style.cursor = 'zoom-in';
+      if (counter) counter.textContent = `1 / ${images.length}`;
+      media.addEventListener('pointerdown', () => {
+        if (counter) counter.textContent = `1 / ${images.length}`;
+      }, { passive: true });
     });
   };
 
@@ -60,7 +71,7 @@
       const image = images[0] || '';
       return `<article class="fish-emblematic-card" data-product-id="${esc(item.id)}">
         <div class="fish-emblematic-card__media${image ? ' fish-emblematic-card__media--image' : ''}" data-images='${esc(JSON.stringify(images))}'>
-          ${image ? `<button type="button" class="fish-emblematic-card__image-button" aria-label="Vedi immagine — ${esc(item.name)}"><img src="${esc(image)}" alt="${esc(item.name)}" loading="lazy" draggable="false"></button><span class="fish-emblematic-card__zoom-label">Vedi immagine</span>` : '<span>EMPERIO TISS</span>'}
+          ${image ? `<button type="button" class="fish-emblematic-card__image-button" aria-label="Vedi immagine — ${esc(item.name)}"><img src="${esc(image)}" alt="${esc(item.name)}" loading="lazy" draggable="false"></button><span class="fish-emblematic-card__zoom-label">Vedi immagine</span><span class="fish-emblematic-card__counter" aria-hidden="true">1 / ${images.length}</span>` : '<span>EMPERIO TISS</span>'}
         </div>
         <div class="fish-emblematic-card__body">
           <span class="fish-emblematic-card__kicker">0${index + 1} / SELEZIONE EMBLEMATICA</span>
