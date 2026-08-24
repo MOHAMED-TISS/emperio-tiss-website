@@ -115,4 +115,98 @@
   const initDynamicParts=()=>{normalizeMenuOverlays();buildNavigation();};
   initDynamicParts();
   new MutationObserver(initDynamicParts).observe(doc.body,{childList:true,subtree:true});
+
+  // Explicit Turnstile binding for the ES contact form.
+  const initContactTurnstile = () => {
+    if (window.location.pathname !== '/contact/' || !window.turnstile) return;
+    const form = doc.getElementById('contactForm');
+    const widget = form?.querySelector('.cf-turnstile');
+    if (!form || !widget || widget.dataset.etBound === 'true') return;
+
+    widget.dataset.etBound = 'true';
+    widget.innerHTML = '';
+
+    const tokenInput = doc.createElement('input');
+    tokenInput.type = 'hidden';
+    tokenInput.name = 'cf-turnstile-response';
+    tokenInput.id = 'contactTurnstileToken';
+    tokenInput.value = '';
+    form.appendChild(tokenInput);
+
+    const widgetId = window.turnstile.render(widget, {
+      sitekey: '0x4AAAAAAEaIn_beKLMv4VjA',
+      action: 'contact',
+      theme: 'auto',
+      callback: (token) => { tokenInput.value = token || ''; },
+      'expired-callback': () => { tokenInput.value = ''; },
+      'error-callback': () => { tokenInput.value = ''; },
+    });
+
+    form.dataset.turnstileWidgetId = String(widgetId);
+  };
+
+  const bindContactForm = () => {
+    if (window.location.pathname !== '/contact/') return;
+    const form = doc.getElementById('contactForm');
+    const status = doc.getElementById('contactFormStatus');
+    const button = form?.querySelector('.form-submit');
+    const tokenInput = doc.getElementById('contactTurnstileToken');
+    if (!form || !status || !button || !tokenInput || form.dataset.etSubmitBound === 'true') return;
+
+    form.dataset.etSubmitBound = 'true';
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (!form.reportValidity()) return;
+
+      const widgetId = form.dataset.turnstileWidgetId;
+      const token = widgetId && window.turnstile ? window.turnstile.getResponse(widgetId) : tokenInput.value;
+      tokenInput.value = token || '';
+      if (!tokenInput.value) {
+        status.textContent = 'Completa la verificación de seguridad antes de enviar.';
+        status.dataset.state = 'error';
+        return;
+      }
+
+      button.disabled = true;
+      status.textContent = 'Enviando consulta…';
+      status.dataset.state = 'pending';
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) {
+          const codes = Array.isArray(result.turnstileErrors) ? result.turnstileErrors.join(', ') : '';
+          const suffix = codes ? ` (${codes})` : '';
+          throw new Error((result.error || 'No se pudo enviar la consulta.') + suffix);
+        }
+        form.reset();
+        tokenInput.value = '';
+        if (window.turnstile && widgetId) window.turnstile.reset(widgetId);
+        status.textContent = 'Consulta enviada correctamente. Gracias.';
+        status.dataset.state = 'success';
+      } catch (error) {
+        tokenInput.value = '';
+        if (window.turnstile && widgetId) window.turnstile.reset(widgetId);
+        status.textContent = error.message || 'No se pudo enviar la consulta. Inténtalo de nuevo.';
+        status.dataset.state = 'error';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  };
+
+  const initContact = () => {
+    initContactTurnstile();
+    bindContactForm();
+  };
+
+  initContact();
+  window.setTimeout(initContact, 150);
+  window.setTimeout(initContact, 500);
+  window.addEventListener('load', initContact, { once: true });
 })();
