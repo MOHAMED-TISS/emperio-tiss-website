@@ -23,7 +23,8 @@
   doc.body.insertAdjacentHTML('afterbegin',header+overlay);
   const nav=doc.querySelector('.nav-overlay-links');
   nav.innerHTML=`<a href="${href.home}"><span class="idx">01</span><span>${cfg.home}</span></a><a href="${href.company}"><span class="idx">02</span><span>${cfg.company}</span></a><details class="nav-products"><summary><span class="idx">03</span><span>${cfg.products}</span></summary><div class="nav-products-links"><a href="${href.products}">${cfg.products}</a><a href="${href.seafood}">${cfg.seafood}</a><a href="${href.fish}">${cfg.fish}</a><a href="${href.shellfish}">${cfg.shellfish}</a><a href="${href.cephalopods}">${cfg.cephalopods}</a><a href="${href.fruits}">${cfg.fruits}</a><a href="${href.vegetables}">${cfg.vegetables}</a><a href="${href.seasonal}">${cfg.seasonal}</a></div></details><a href="${href.markets}"><span class="idx">04</span><span>${cfg.markets}</span></a><a href="${href.news}"><span class="idx">05</span><span>${cfg.news}</span></a><a href="${href.contact}"><span class="idx">06</span><span>${cfg.contact}</span></a>`;
-  nav.dataset.etNavigationBuilt='true'; nav.setAttribute('dir','ltr');
+  nav.removeAttribute('data-et-navigation-built');
+  nav.setAttribute('dir','ltr');
   doc.body.insertAdjacentHTML('beforeend',footer);
   body.classList.add('international-shell');
 })();
