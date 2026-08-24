@@ -19,7 +19,7 @@
 
   const apply = () => {
     const root = document.body;
-    if (!root) return false;
+    if (!root) return;
 
     root.querySelectorAll('.fish-catalog__filter').forEach(el => {
       const v = el.textContent.trim();
@@ -33,22 +33,23 @@
       const v = el.textContent.trim();
       if (names[v] && names[v] !== v) el.textContent = names[v];
     });
-
     root.querySelectorAll('.fish-catalog-card__details strong,.fish-emblematic-card__note').forEach(el => {
       replaceText(el, Object.entries(map));
     });
-
     const count = document.getElementById('fishCatalogCount');
     if (count) replaceText(count, [['references','referenze'],['reference','referenza']]);
-
-    return !!root.querySelector('.fish-catalog-card,.fish-emblematic-card');
   };
 
-  const done = apply();
-  if (done) return;
+  const hasCards = () => !!document.querySelector('.fish-catalog-card,.fish-emblematic-card');
+  if (hasCards()) {
+    apply();
+    return;
+  }
 
   const observer = new MutationObserver(() => {
-    if (apply()) observer.disconnect();
+    if (!hasCards()) return;
+    observer.disconnect();
+    apply();
   });
   observer.observe(document.body, { childList: true, subtree: true });
 })();
