@@ -1,0 +1,143 @@
+const ALLOWED_ORIGINS = new Set([
+  'https://emperio-tiss.com',
+  'https://www.emperio-tiss.com',
+]);
+
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const RESEND_API_URL = 'https://api.resend.com/emails';
+
+function json(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store',
+    },
+  });
+}
+
+function normalize(value, max = 4000) {
+  return String(value ?? '').trim().slice(0, max);
+}
+
+function escapeHtml(value) {
+  return normalize(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+async function verifyTurnstile(token, secret, remoteip) {
+  if (!secret || !token) return { success: false };
+
+  const body = new URLSearchParams({
+    secret,
+    response: token,
+  });
+  if (remoteip) body.set('remoteip', remoteip);
+
+  const response = await fetch(TURNSTILE_VERIFY_URL, {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+
+  if (!response.ok) return { success: false };
+  return response.json();
+}
+
+async function handleContact(request, env) {
+  const origin = request.headers.get('origin');
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return json({ ok: false, error: 'Origen no autorizado.' }, 403);
+  }
+
+  const form = await request.formData();
+  const honeypot = normalize(form.get('_honey'), 200);
+  if (honeypot) return json({ ok: false, error: 'Solicitud rechazada.' }, 400);
+
+  const turnstileToken = normalize(form.get('cf-turnstile-response'), 5000);
+  const verification = await verifyTurnstile(
+    turnstileToken,
+    env.TURNSTILE_SECRET_KEY,
+    request.headers.get('CF-Connecting-IP'),
+  );
+
+  if (!verification.success) {
+    return json({ ok: false, error: 'No se pudo verificar la protección anti-bot. Inténtalo de nuevo.' }, 403);
+  }
+
+  const nombre = normalize(form.get('nombre'), 120);
+  const empresa = normalize(form.get('empresa'), 160);
+  const email = normalize(form.get('email'), 254);
+  const telefono = normalize(form.get('telefono'), 80);
+  const producto = normalize(form.get('producto'), 120);
+  const destino = normalize(form.get('destino'), 160);
+  const mensaje = normalize(form.get('mensaje'), 4000);
+
+  if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje) {
+    return json({ ok: false, error: 'Completa todos los campos obligatorios.' }, 400);
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return json({ ok: false, error: 'Introduce un email válido.' }, 400);
+  }
+
+  if (!env.RESEND_API_KEY) {
+    return json({ ok: false, error: 'El servicio de email no está configurado.' }, 500);
+  }
+
+  const html = `
+    <h2>Nueva consulta B2B — EMPERIO TISS</h2>
+    <p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>
+    <p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p>
+    <p><strong>Producto:</strong> ${escapeHtml(producto)}</p>
+    <p><strong>Destino:</strong> ${escapeHtml(destino)}</p>
+    <p><strong>Necesidad:</strong></p>
+    <p>${escapeHtml(mensaje).replaceAll('\n', '<br>')}</p>
+  `;
+
+  const resendResponse = await fetch(RESEND_API_URL, {
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: env.CONTACT_FROM || 'EMPERIO TISS <onboarding@resend.dev>',
+      to: ['info@emperio-tiss.com'],
+      reply_to: email,
+      subject: `Nueva consulta B2B — ${empresa} — ${producto}`,
+      html,
+    }),
+  });
+
+  if (!resendResponse.ok) {
+    return json({ ok: false, error: 'No se pudo enviar la consulta. Inténtalo de nuevo.' }, 502);
+  }
+
+  return json({ ok: true });
+}
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/api/contact') {
+      if (request.method !== 'POST') {
+        return json({ ok: false, error: 'Method Not Allowed' }, 405);
+      }
+      try {
+        return await handleContact(request, env);
+      } catch {
+        return json({ ok: false, error: 'No se pudo procesar la consulta.' }, 500);
+      }
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};
