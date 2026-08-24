@@ -2,29 +2,23 @@
 html[lang="it"] body :is(.seafood-catalog,.fish-catalog,.compact-catalog){
   font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
 }
-
 html[lang="it"] :is(.seafood-catalog__head h2,.compact-catalog__head h2,.fish-catalog__head h2,.fish-catalog h2){
   font-family:var(--et-serif,"Playfair Display",Georgia,serif);
   font-weight:400;
   letter-spacing:-.025em;
 }
-
 html[lang="it"] :is(.seafood-catalog__head p,.compact-catalog__head p,.fish-catalog__count,.fish-catalog__toolbar,.seafood-catalog-count,.compact-catalog__count){
   font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
 }
-
-/* Seafood / shellfish / cephalopods — ES catalogue geometry */
 html[lang="it"] .seafood-catalog__inner,
 html[lang="it"] .fish-catalog__inner,
 html[lang="it"] .compact-catalog__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
-
 html[lang="it"] .seafood-catalog-card h3,
 html[lang="it"] .fish-catalog-card__title,
 html[lang="it"] .compact-catalog-card__title{
   font-family:var(--et-serif,"Playfair Display",Georgia,serif);
   font-weight:400;
 }
-
 html[lang="it"] .seafood-catalog-card__detail,
 html[lang="it"] .seafood-catalog-card__scientific,
 html[lang="it"] .fish-catalog-card__scientific,
@@ -33,16 +27,72 @@ html[lang="it"] .compact-catalog-card__scientific,
 html[lang="it"] .compact-catalog-card__spec{
   font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
 }
-
 html[lang="it"] :is(.seafood-catalog-search,.compact-catalog__search,.fish-catalog__search){
   font-family:var(--et-sans,"DM Sans",Arial,sans-serif);
 }
-
 html[lang="it"] :is(.seafood-catalog-card,.compact-catalog-card,.fish-catalog-card){
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
 
+/* Italian emblematic selection — compact premium geometry */
+html[lang="it"] .fish-emblematic__grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(14px,1.4vw,18px);
+}
+html[lang="it"] .fish-emblematic-card{
+  border-radius:14px;
+}
+html[lang="it"] .fish-emblematic-card__media{
+  min-height:0;
+  aspect-ratio:1.42 / 1;
+}
+html[lang="it"] .fish-emblematic-card__body{
+  padding:1.05rem 1.15rem 1.15rem;
+}
+html[lang="it"] .fish-emblematic-card__kicker{
+  font-size:.56rem;
+  letter-spacing:.11em;
+}
+html[lang="it"] .fish-emblematic-card h3{
+  margin:.42rem 0 .22rem;
+  font-size:clamp(1.28rem,1.65vw,1.72rem);
+  line-height:1.02;
+}
+html[lang="it"] .fish-emblematic-card__scientific{
+  font-size:.78rem;
+  margin:0 0 .75rem;
+}
+html[lang="it"] .fish-emblematic-card__meta{
+  font-size:.62rem;
+  gap:.45rem;
+  padding-top:.65rem;
+}
+html[lang="it"] .fish-emblematic-card__note{
+  font-size:.68rem;
+  line-height:1.45;
+  margin-top:.7rem;
+}
+html[lang="it"] .fish-emblematic-card__mark{
+  font-size:.54rem;
+  letter-spacing:.11em;
+  margin-top:.7rem;
+}
+html[lang="it"] .fish-emblematic-card__counter{
+  right:9px;
+  bottom:9px;
+  min-width:34px;
+  height:21px;
+  padding:0 7px;
+  font-size:8px;
+}
+@media(max-width:900px){
+  html[lang="it"] .fish-emblematic__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  html[lang="it"] .fish-emblematic__grid{grid-template-columns:1fr;gap:12px}
+  html[lang="it"] .fish-emblematic-card__media{aspect-ratio:1.6 / 1}
+}
 @media(max-width:560px){
   html[lang="it"] :is(.seafood-catalog__inner,.fish-catalog__inner,.compact-catalog__inner){width:calc(100% - 32px)}
 }
