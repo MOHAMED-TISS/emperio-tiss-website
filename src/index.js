@@ -31,7 +31,7 @@ function escapeHtml(value) {
 }
 
 async function verifyTurnstile(token, secret, remoteip) {
-  if (!secret || !token) return { success: false, errorCodes: ['missing-input'] };
+  if (!secret || !token) return { success: false, 'error-codes': ['missing-input'] };
 
   const body = new URLSearchParams({ secret, response: token });
   if (remoteip) body.set('remoteip', remoteip);
@@ -42,7 +42,7 @@ async function verifyTurnstile(token, secret, remoteip) {
     body,
   });
 
-  if (!response.ok) return { success: false, errorCodes: [`siteverify-http-${response.status}`] };
+  if (!response.ok) return { success: false, 'error-codes': [`siteverify-http-${response.status}`] };
   return response.json();
 }
 
@@ -64,11 +64,15 @@ async function handleContact(request, env) {
   );
 
   const hostnameAllowed = verification.hostname === 'emperio-tiss.com' || verification.hostname === 'www.emperio-tiss.com';
-  if (!verification.success || !hostnameAllowed || verification.action !== 'contact') {
+  const actionAllowed = verification.action === 'contact';
+  if (!verification.success || !hostnameAllowed || !actionAllowed) {
     return json({
       ok: false,
       error: 'No se pudo verificar la protección anti-bot. Inténtalo de nuevo.',
       code: 'TURNSTILE_FAILED',
+      turnstileErrors: Array.isArray(verification['error-codes']) ? verification['error-codes'].slice(0, 5) : [],
+      hostname: verification.hostname || null,
+      action: verification.action || null,
     }, 403);
   }
 
@@ -121,12 +125,11 @@ async function handleContact(request, env) {
 
   if (!resendResponse.ok) {
     const responseText = await resendResponse.text().catch(() => '');
-    const detail = responseText.slice(0, 300);
     return json({
       ok: false,
       error: 'No se pudo enviar la consulta. Inténtalo de nuevo.',
       code: `RESEND_${resendResponse.status}`,
-      detail,
+      detail: responseText.slice(0, 300),
     }, 502);
   }
 
