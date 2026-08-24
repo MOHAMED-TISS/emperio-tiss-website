@@ -5,7 +5,7 @@
   loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1','etUniversalFooter');
   const style=document.createElement('style');
   style.textContent=`
-    :is(.button,.es-btn,.intl-btn,.ar-btn,.about-btn,.cta-button,.contact-button,.inquiry-button){border-radius:999px!important;min-height:50px;padding-inline:22px;display:inline-flex;align-items:center;justify-content:center;gap:14px;font-family:var(--et-sans,"DM Sans",sans-serif)!important;font-size:10px!important;font-weight:700!important;letter-spacing:.1em!important;line-height:1!important;text-transform:uppercase;transition:transform .28s cubic-bezier(.165,.84,.44,1),background-color .28s ease,border-color .28s ease,box-shadow .28s ease,color .28s ease}
+    :is(.button,.es-btn,.intl-btn,.ar-btn,.about-btn,.cta-button,.contact-button,.inquiry-button){border-radius:999px!important;min-height:50px;padding-inline:22px;display:inline-flex;align-items:center;justify-content:center;gap:14px;font-family:var(--et-sans,"DM Sans",sans-serif)!important;font-size:10px!important;font-weight:700!important;letter-spacing:.1em!important;line-height:1!important;text-transform:uppercase;transition:transform .28s cubic-bezier(.165,.84,.44,1),background-color .28s ease,border-color .28s ease,box-shadow .28s ease}
     :is(.button,.es-btn,.intl-btn,.ar-btn,.about-btn,.cta-button,.contact-button,.inquiry-button):hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(6,29,23,.14)}
     :is(.button,.es-btn,.intl-btn,.ar-btn,.about-btn,.cta-button,.contact-button,.inquiry-button):focus-visible{outline:2px solid #c9a35f;outline-offset:3px}
     :is(.button,.es-btn,.intl-btn,.ar-btn,.about-btn,.cta-button,.contact-button,.inquiry-button)>span:last-child,:is(.text-link,.es-link,.intl-link,.ar-link,.product-card__link)>span:last-child,.product-arrow{font-size:0!important;line-height:0!important;width:1.2em;min-width:1.2em;display:inline-flex;align-items:center;justify-content:center}
@@ -30,4 +30,105 @@
     doc.body.appendChild(footer);
   };
   ensureUniversalFooter();
+
+  const initSecureContactForm = () => {
+    if (window.location.pathname !== '/contact/' || !window.turnstile) return;
+    const form = doc.getElementById('contactForm');
+    const status = doc.getElementById('contactFormStatus');
+    const button = form?.querySelector('.form-submit');
+    if (!form || !status || !button || form.dataset.etSecureTurnstile === 'true') return;
+    form.dataset.etSecureTurnstile = 'true';
+
+    const visibleWidget = form.querySelector('.cf-turnstile');
+    if (visibleWidget) visibleWidget.style.display = 'none';
+
+    const mount = doc.createElement('div');
+    mount.className = 'cf-turnstile-execute';
+    mount.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;';
+    form.appendChild(mount);
+
+    let widgetId = null;
+    let resolving = false;
+    let resolveToken = null;
+    let rejectToken = null;
+
+    const ensureWidget = () => {
+      if (widgetId !== null || !window.turnstile) return;
+      widgetId = window.turnstile.render(mount, {
+        sitekey: '0x4AAAAAAEaIn_beKLMv4VjA',
+        action: 'contact',
+        execution: 'execute',
+        appearance: 'interaction-only',
+        callback: (token) => {
+          resolving = false;
+          if (resolveToken) { const resolve = resolveToken; resolveToken = null; rejectToken = null; resolve(token); }
+        },
+        'expired-callback': () => {
+          resolving = false;
+          if (rejectToken) { const reject = rejectToken; resolveToken = null; rejectToken = null; reject(new Error('La verificación de seguridad ha caducado.')); }
+        },
+        'error-callback': (code) => {
+          resolving = false;
+          if (rejectToken) { const reject = rejectToken; resolveToken = null; rejectToken = null; reject(new Error(`Turnstile error: ${code || 'unknown'}`)); }
+        },
+      });
+    };
+
+    const getToken = async () => {
+      ensureWidget();
+      if (widgetId === null) throw new Error('No se pudo inicializar la verificación de seguridad.');
+      if (resolving) throw new Error('La verificación de seguridad ya está en curso.');
+      resolving = true;
+      return new Promise((resolve, reject) => {
+        resolveToken = resolve;
+        rejectToken = reject;
+        window.turnstile.execute(widgetId);
+      });
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (!form.reportValidity() || button.disabled) return;
+      button.disabled = true;
+      status.textContent = 'Verificando seguridad…';
+      status.dataset.state = 'pending';
+      try {
+        const token = await getToken();
+        let input = form.querySelector('#contactTurnstileToken');
+        if (!input) { input = doc.createElement('input'); input.type='hidden'; input.id='contactTurnstileToken'; input.name='cf-turnstile-response'; form.appendChild(input); }
+        input.value = token;
+        status.textContent = 'Enviando consulta…';
+        const response = await fetch('/api/contact', { method:'POST', body:new FormData(form), headers:{ Accept:'application/json' } });
+        const result = await response.json().catch(()=>({}));
+        if (!response.ok || !result.ok) {
+          const codes = Array.isArray(result.turnstileErrors) ? result.turnstileErrors.join(', ') : '';
+          throw new Error((result.error || 'No se pudo enviar la consulta.') + (codes ? ` (${codes})` : ''));
+        }
+        status.textContent = 'Consulta enviada correctamente. Gracias.';
+        status.dataset.state = 'success';
+        form.reset();
+        input.value='';
+        if (widgetId !== null) window.turnstile.reset(widgetId);
+      } catch (error) {
+        status.textContent = error.message || 'No se pudo enviar la consulta. Inténtalo de nuevo.';
+        status.dataset.state = 'error';
+        const input = form.querySelector('#contactTurnstileToken'); if (input) input.value='';
+        if (widgetId !== null) window.turnstile.reset(widgetId);
+      } finally {
+        button.disabled = false;
+      }
+    }, true);
+
+    ensureWidget();
+  };
+
+  const bootContact = () => {
+    if (window.turnstile) initSecureContactForm();
+    else window.setTimeout(bootContact, 200);
+  };
+  if (window.location.pathname === '/contact/') {
+    bootContact();
+    window.addEventListener('load', bootContact, {once:true});
+  }
 })();
