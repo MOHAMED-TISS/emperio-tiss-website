@@ -11,6 +11,49 @@
   ];
   const esc = v => String(v ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
 
+  const openGallery = images => {
+    if (!images.length) return;
+    const viewer = doc.querySelector('.it-fish-gallery');
+    if (!viewer) return;
+    const image = viewer.querySelector('.it-fish-gallery__image');
+    const counter = viewer.querySelector('.it-fish-gallery__counter');
+    const prev = viewer.querySelector('.it-fish-gallery__prev');
+    const next = viewer.querySelector('.it-fish-gallery__next');
+    const close = viewer.querySelector('.it-fish-gallery__close');
+    if (!image) return;
+
+    let index = 0;
+    const update = () => {
+      image.src = images[index];
+      if (counter) counter.textContent = `${index + 1} / ${images.length}`;
+      if (prev) prev.hidden = images.length < 2;
+      if (next) next.hidden = images.length < 2;
+    };
+
+    if (prev) prev.onclick = () => { index = (index - 1 + images.length) % images.length; update(); };
+    if (next) next.onclick = () => { index = (index + 1) % images.length; update(); };
+    if (close) close.onclick = () => { viewer.hidden = true; doc.body.style.overflow = ''; };
+
+    viewer.hidden = false;
+    doc.body.style.overflow = 'hidden';
+    update();
+  };
+
+  const bindImages = () => {
+    grid.querySelectorAll('.fish-emblematic-card__media--image').forEach(media => {
+      const images = JSON.parse(media.dataset.images || '[]');
+      const button = media.querySelector('.fish-emblematic-card__image-button');
+      if (!button || !images.length || button.dataset.itGalleryBound === 'true') return;
+      button.dataset.itGalleryBound = 'true';
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        openGallery(images);
+      });
+      media.style.cursor = 'zoom-in';
+    });
+  };
+
   const render = imageMap => {
     grid.innerHTML = items.map((item, index) => {
       const images = imageMap[item.id] || [];
@@ -29,6 +72,7 @@
         </div>
       </article>`;
     }).join('');
+    bindImages();
   };
 
   const intro = grid.closest('.fish-emblematic')?.querySelector('.fish-emblematic__intro p');
