@@ -30,8 +30,6 @@
   loadCss('/assets/css/nav-consistency.css?v=20260823-nav-1', 'etNavConsistency');
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
-  loadCss('/assets/css/header-final.css?v=20260824-3', 'etHeaderFinal');
-  loadCss('/assets/css/header-canonical-enforce.css?v=20260824-1', 'etHeaderCanonicalEnforce');
 
   if (['en', 'fr', 'ar'].includes(lang)) {
     loadScript('/assets/js/international-shell.js?v=20260824-2', 'etInternationalShell');
@@ -50,33 +48,22 @@
   const linkedinIcon = '<span aria-hidden="true" class="et-linkedin-mark">in</span>';
 
   const ensureHeaderWhatsApp = () => {
-    const header = doc.querySelector('.site-header,.et-header-inner,.p-header-inner,.es-header-inner');
-    if (!header) return;
+    const header = doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
+    if (!header || header.querySelector('.et-whatsapp')) return;
 
-    const container = header.querySelector('.header-inner') || header;
-    let link = container.querySelector('.et-whatsapp');
-    if (!link) {
-      link = doc.createElement('a');
-      link.className = 'et-whatsapp';
-      link.href = whatsappHref;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.setAttribute('aria-label', socialCopy.whatsapp);
-      link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
-    } else if (link.parentElement !== container) {
-      container.appendChild(link);
-    }
+    const link = doc.createElement('a');
+    link.className = 'et-whatsapp';
+    link.href = whatsappHref;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.setAttribute('aria-label', socialCopy.whatsapp);
+    link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
 
-    const language = container.querySelector('.et-language-switch,.language-nav');
-    const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
-
-    if (language) {
-      container.insertBefore(link, language);
-    } else if (menu) {
-      container.insertBefore(link, menu);
-    } else if (!link.parentElement) {
-      container.appendChild(link);
-    }
+    const language = header.querySelector('.et-language-switch,.language-nav');
+    const menu = header.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
+    if (language) header.insertBefore(link, language);
+    else if (menu) header.insertBefore(link, menu);
+    else header.appendChild(link);
   };
 
   const ensureFooterLinkedIn = () => {
