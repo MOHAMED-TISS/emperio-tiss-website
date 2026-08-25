@@ -16,7 +16,15 @@
   color:#fff;
 }
 .es-page.about-page .es-hero .es-kicker{color:#e0be79}
-.es-page.about-page .es-hero .es-lead{color:rgba(255,255,255,.90)}
+.es-page.about-page .es-hero .es-lead{
+  color:rgba(255,255,255,.94);
+  font-family:var(--et-serif);
+  font-size:18px;
+  line-height:1.82;
+  letter-spacing:.008em;
+  font-weight:400;
+  max-width:720px;
+}
 .es-page.about-page .es-hero h1{color:#fff}
 .es-page.about-page .es-hero h1 em{color:#e0be79}
 
@@ -169,7 +177,10 @@
     padding-bottom:64px;
     background-position:center 42%;
   }
-  .es-page.about-page .es-hero .es-lead{font-size:15px;line-height:1.72}
+  .es-page.about-page .es-hero .es-lead{
+    font-size:16px;
+    line-height:1.78;
+  }
   .es-page.about-page .es-section .es-copy,
   .es-page.about-page .about-values-head .es-copy,
   .es-page.about-page .about-values-grid p,
