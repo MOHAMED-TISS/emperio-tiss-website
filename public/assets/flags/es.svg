@@ -1,1 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" role="img" aria-label="Bandera de España"><image href="https://commons.wikimedia.org/wiki/Special:Redirect/file/Flag_of_Spain.svg" x="0" y="0" width="750" height="500" preserveAspectRatio="none"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Bandera de España">
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C60B1E"/><stop offset="1" stop-color="#AA151B"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6C72D"/><stop offset="1" stop-color="#F1BF00"/></linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F8F8F8"/><stop offset="1" stop-color="#E7E7E7"/></linearGradient>
+    <filter id="shadow" x="-40%" y="-20%" width="180%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="600" height="400" fill="url(#red)"/>
+  <rect y="100" width="600" height="200" fill="url(#gold)"/>
+  <g transform="translate(218 106)" filter="url(#shadow)">
+    <path d="M37 0 L31 12 L25 6 L20 13 L14 6 L8 12 L6 0 Z" fill="#F1BF00" stroke="#8B6914" stroke-width="1.6"/>
+    <path d="M7 12 Q21 20 37 12 L36 18 Q21 26 8 18 Z" fill="#C60B1E" stroke="#8B6914" stroke-width="1.2"/>
+    <path d="M5 22 H39 V65 Q38 83 22 93 Q6 83 5 65 Z" fill="url(#shield)" stroke="#8A5A00" stroke-width="2.2"/>
+    <path d="M6 23 H22 V44 H6 Z" fill="#B7182B"/>
+    <path d="M9 28 H19 V39 H9 Z" fill="#F1BF00" stroke="#8B6914" stroke-width="1"/>
+    <path d="M10 31 H18 M10 34 H18 M10 37 H18" stroke="#8B6914" stroke-width="1"/>
+    <path d="M12 29 V38 M15 29 V38" stroke="#8B6914" stroke-width="1"/>
+    <path d="M8 28 H20" stroke="#F1BF00" stroke-width="1.7"/>
+    <path d="M22 23 H38 V44 H22 Z" fill="#F8F8F8"/>
+    <path d="M30 27 C34 29 34 33 31 34 C35 36 32 40 29 39 C26 40 25 37 27 35 C23 34 25 30 29 31 C28 29 29 28 30 27 Z" fill="#7A1F8F" stroke="#6B176D" stroke-width=".8"/>
+    <path d="M6 44 H22 V65 H6 Z" fill="#F1BF00"/>
+    <path d="M9 44 H11 V65 H9 Z M13 44 H15 V65 H13 Z M17 44 H19 V65 H17 Z" fill="#AA151B"/>
+    <path d="M22 44 H38 V65 H22 Z" fill="#AA151B"/>
+    <path d="M30 46 V63 M24 54 H36 M25 48 L35 60 M35 48 L25 60" stroke="#F1BF00" stroke-width="1.8" fill="none"/>
+    <path d="M16 65 H28 Q22 80 16 65 Z" fill="#F1BF00" stroke="#8B6914" stroke-width="1"/>
+    <path d="M18 68 Q22 65 26 68 L24 76 Q22 78 20 76 Z" fill="#AA151B"/>
+    <path d="M18 67 Q22 63 26 67" fill="none" stroke="#3D7B35" stroke-width="1.5"/>
+    <g stroke="#9A9A9A" stroke-width="2" fill="#F1BF00">
+      <path d="M2 42 Q0 57 3 73 H7 Q8 56 6 42 Z"/>
+      <path d="M38 42 Q36 57 39 73 H43 Q44 56 42 42 Z"/>
+    </g>
+    <g font-family="Arial, sans-serif" font-size="5.4" font-weight="700" fill="#C60B1E">
+      <text x="-1" y="54">PLUS</text>
+      <text x="38" y="54">ULTRA</text>
+    </g>
+    <path d="M13 84 Q22 91 31 84" fill="none" stroke="#8B6914" stroke-width="2"/>
+  </g>
+</svg>
