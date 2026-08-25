@@ -1,0 +1,39 @@
+/* EMPERIO TISS — About hero full-viewport background layer */
+.es-page.about-page main > .es-hero{
+  background:none!important;
+  overflow:visible!important;
+  position:relative!important;
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+.es-page.about-page main > .es-hero::before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background-image:
+    linear-gradient(125deg,rgba(3,18,14,.90) 0%,rgba(5,27,21,.80) 52%,rgba(7,31,24,.68) 100%),
+    url('https://images.pexels.com/photos/33560727/pexels-photo-33560727.jpeg?auto=compress&cs=tinysrgb&w=2200');
+  background-size:cover;
+  background-position:center 44%;
+  background-repeat:no-repeat;
+  pointer-events:none;
+  z-index:0;
+}
+
+.es-page.about-page main > .es-hero > .es-container{
+  position:relative!important;
+  z-index:1!important;
+}
+
+@media(max-width:800px){
+  .es-page.about-page main > .es-hero::before{
+    background-position:center 42%;
+  }
+}
