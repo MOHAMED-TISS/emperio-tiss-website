@@ -35,6 +35,14 @@
     it:{home:'/it/',company:'/it/about/',products:'/it/products/',seafood:'/it/products/seafood/',fish:'/it/products/seafood/fish/',shellfish:'/it/products/seafood/shellfish/',cephalopods:'/it/products/seafood/cephalopods/',fruits:'/it/products/fruits/',vegetables:'/it/products/vegetables/',seasonal:'/it/products/seasonal/',markets:'/it/markets/',news:'/it/news/',contact:'/it/contact/'}
   };
 
+  const contactCopy = {
+    es:{sending:'Enviando consulta…',success:'Consulta enviada correctamente. Gracias.',error:'No se pudo enviar la consulta. Inténtalo de nuevo.'},
+    en:{sending:'Sending enquiry…',success:'Enquiry sent successfully. Thank you.',error:'Could not send the enquiry. Please try again.'},
+    fr:{sending:'Envoi de la demande…',success:'Demande envoyée avec succès. Merci.',error:'Impossible d’envoyer la demande. Veuillez réessayer.'},
+    it:{sending:'Invio della richiesta…',success:'Richiesta inviata correttamente. Grazie.',error:'Impossibile inviare la richiesta. Riprova.'},
+    ar:{sending:'جارٍ إرسال الطلب…',success:'تم إرسال الطلب بنجاح. شكرًا لكم.',error:'تعذر إرسال الطلب. حاولوا مرة أخرى.'}
+  }[lang] || {sending:'Sending enquiry…',success:'Enquiry sent successfully. Thank you.',error:'Could not send the enquiry. Please try again.'};
+
   const L = paths[lang] ? lang : 'en';
   const P = paths[L];
   const idx = (n,text) => `<span class="idx">${n}</span><span>${text}</span>`;
@@ -117,7 +125,7 @@
   new MutationObserver(initDynamicParts).observe(doc.body,{childList:true,subtree:true});
 
   const initContactForm = () => {
-    if (!/^\/contact\/?$/.test(window.location.pathname)) return;
+    if (!/^\/(en|fr|it|ar)\/contact\/?$/.test(window.location.pathname) && !/^\/contact\/?$/.test(window.location.pathname)) return;
     const form = doc.getElementById('contactForm');
     const status = doc.getElementById('contactFormStatus');
     const button = form?.querySelector('.form-submit');
@@ -133,7 +141,7 @@
       if (honey?.value) return;
 
       button.disabled = true;
-      status.textContent = 'Enviando consulta…';
+      status.textContent = contactCopy.sending;
       status.dataset.state = 'pending';
 
       try {
@@ -143,14 +151,12 @@
           headers: { Accept: 'application/json' },
         });
         const result = await response.json().catch(() => ({}));
-        if (!response.ok || !result.ok) {
-          throw new Error(result.error || 'No se pudo enviar la consulta.');
-        }
+        if (!response.ok || !result.ok) throw new Error(result.error || contactCopy.error);
         form.reset();
-        status.textContent = 'Consulta enviada correctamente. Gracias.';
+        status.textContent = contactCopy.success;
         status.dataset.state = 'success';
       } catch (error) {
-        status.textContent = error.message || 'No se pudo enviar la consulta. Inténtalo de nuevo.';
+        status.textContent = error.message || contactCopy.error;
         status.dataset.state = 'error';
       } finally {
         button.disabled = false;
