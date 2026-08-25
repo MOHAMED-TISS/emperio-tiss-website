@@ -1,68 +1,98 @@
 /* EMPERIO TISS — About page atmospheric photography */
 /* Visual rhythm: image / clean / image / clean / image / clean / image / clean */
 
-/* 01 / Hero — image */
+/* 01 / Hero — full first viewport */
 .es-page.about-page .es-hero{
+  min-height:100svh !important;
+  height:auto;
+  padding-top:150px;
+  padding-bottom:88px;
   background-image:
-    linear-gradient(120deg,rgba(3,18,14,.82) 0%,rgba(5,27,21,.68) 48%,rgba(7,31,24,.56) 100%),
+    linear-gradient(125deg,rgba(3,18,14,.90) 0%,rgba(5,27,21,.80) 52%,rgba(7,31,24,.68) 100%),
     url('https://images.pexels.com/photos/33560727/pexels-photo-33560727.jpeg?auto=compress&cs=tinysrgb&w=2200');
   background-size:cover;
   background-position:center 44%;
   background-attachment:scroll;
+  color:#fff;
 }
+.es-page.about-page .es-hero .es-kicker{color:#e0be79}
+.es-page.about-page .es-hero .es-lead{color:rgba(255,255,255,.90)}
+.es-page.about-page .es-hero h1{color:#fff}
+.es-page.about-page .es-hero h1 em{color:#e0be79}
 
 /* 02 / Vision — clean */
 .es-page.about-page main > .es-section:nth-of-type(2){background-image:none}
+.es-page.about-page main > .es-section:nth-of-type(2) .es-label{color:#806027}
+.es-page.about-page main > .es-section:nth-of-type(2) h2{color:#10251f}
+.es-page.about-page main > .es-section:nth-of-type(2) h2 em{color:#806027}
+.es-page.about-page main > .es-section:nth-of-type(2) .es-copy{color:#3f4d47}
 
-/* 03 / Mission — image */
+/* 03 / Mission — image; !important defeats shared dark background reset */
 .es-page.about-page main > .es-section:nth-of-type(3){
   color:#fff;
   background-image:
-    linear-gradient(120deg,rgba(5,26,20,.84),rgba(7,39,30,.68)),
+    linear-gradient(120deg,rgba(4,23,18,.92),rgba(7,39,30,.80)),
     url('https://images.pexels.com/photos/33560717/pexels-photo-33560717.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
-  background-size:cover !important;
-  background-position:center 48% !important;
+  background-size:cover;
+  background-position:center 48%;
 }
-.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:rgba(255,255,255,.90)}
 .es-page.about-page main > .es-section:nth-of-type(3) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(3) .es-label{color:#e0be79}
+.es-page.about-page main > .es-section:nth-of-type(3) h2 em{color:#e0be79}
 
 /* 04 / Values — clean */
 .es-page.about-page main > .es-section:nth-of-type(4),
 .es-page.about-page .about-values{background-image:none}
+.es-page.about-page main > .es-section:nth-of-type(4) .es-label,
+.es-page.about-page .about-values .es-label{color:#806027}
+.es-page.about-page .about-values-head .es-copy{color:#3f4d47}
+.es-page.about-page .about-values-grid span{color:#765722}
+.es-page.about-page .about-values-grid h3{color:#10251f}
+.es-page.about-page .about-values-grid p{color:#46544e}
 
-/* 05 / Responsibility — image */
+/* 05 / Responsibility — image; !important defeats shared dark background reset */
 .es-page.about-page main > .es-section:nth-of-type(5){
   color:#fff;
   background-image:
-    linear-gradient(120deg,rgba(4,27,21,.88),rgba(7,43,33,.72)),
+    linear-gradient(120deg,rgba(4,23,18,.93),rgba(7,39,30,.82)),
     url('https://images.pexels.com/photos/33560723/pexels-photo-33560723.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
-  background-size:cover !important;
-  background-position:center 50% !important;
+  background-size:cover;
+  background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:rgba(255,255,255,.90)}
 .es-page.about-page main > .es-section:nth-of-type(5) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(5) .es-label{color:#e0be79}
+.es-page.about-page main > .es-section:nth-of-type(5) h2 em{color:#e0be79}
 
 /* 06 / People + Innovation — clean */
 .es-page.about-page main > .es-section:nth-of-type(6){background-image:none}
+.es-page.about-page main > .es-section:nth-of-type(6) .es-label{color:#806027}
+.es-page.about-page main > .es-section:nth-of-type(6) h2{color:#10251f}
+.es-page.about-page main > .es-section:nth-of-type(6) h2 em{color:#806027}
+.es-page.about-page main > .es-section:nth-of-type(6) .es-copy{color:#3f4d47}
 
-/* 07 / Where we are going — image */
+/* 07 / Where we are going — image; !important defeats shared dark background reset */
 .es-page.about-page main > .es-section:nth-of-type(7){
   color:#fff;
   background-image:
-    linear-gradient(120deg,rgba(4,24,19,.90),rgba(7,39,30,.72)),
+    linear-gradient(120deg,rgba(4,22,17,.94),rgba(7,38,29,.83)),
     url('https://images.pexels.com/photos/29054878/pexels-photo-29054878.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
-  background-size:cover !important;
-  background-position:center 50% !important;
+  background-size:cover;
+  background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:rgba(255,255,255,.90)}
 .es-page.about-page main > .es-section:nth-of-type(7) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(7) .es-label{color:#e0be79}
+.es-page.about-page main > .es-section:nth-of-type(7) h2 em{color:#e0be79}
 
 /* 08 / Central idea — clean */
 .es-page.about-page .about-idea,
 .es-page.about-page main > .es-cta{background-image:none}
+.es-page.about-page .about-idea .es-label{color:#e0be79}
+.es-page.about-page .about-idea h2{color:#fff}
+.es-page.about-page .about-idea h2 em{color:#e0be79}
+.es-page.about-page .about-idea .es-lead{color:rgba(255,255,255,.90)}
 
 /* Shared image treatment */
 .es-page.about-page main > .es-section:nth-of-type(3),
@@ -78,7 +108,7 @@
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at 78% 20%,rgba(199,162,96,.10),transparent 24%);
+  background:radial-gradient(circle at 78% 20%,rgba(224,190,121,.08),transparent 24%);
   pointer-events:none;
   z-index:0;
 }
@@ -87,7 +117,13 @@
 .es-page.about-page main > .es-section:nth-of-type(7) .es-container{position:relative;z-index:1}
 
 @media(max-width:800px){
-  .es-page.about-page .es-hero{background-position:center 42%}
+  .es-page.about-page .es-hero{
+    min-height:100svh !important;
+    padding-top:124px;
+    padding-bottom:64px;
+    background-position:center 42%;
+  }
+  .es-page.about-page .es-hero .es-lead{font-size:15px;line-height:1.72}
   .es-page.about-page main > .es-section:nth-of-type(3),
   .es-page.about-page main > .es-section:nth-of-type(5),
   .es-page.about-page main > .es-section:nth-of-type(7){background-position:center center}
