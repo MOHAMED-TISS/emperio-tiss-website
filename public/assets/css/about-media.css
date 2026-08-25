@@ -270,3 +270,29 @@
   .es-page.about-page .es-actions .es-btn,
   .es-page.about-page .es-actions .es-btn::before{transition:none}
 }
+
+/* Corporate photography refresh — verified free Pexels imagery */
+.es-page.about-page .es-hero{
+  background-image:
+    linear-gradient(125deg,rgba(3,18,14,.92) 0%,rgba(5,27,21,.82) 52%,rgba(7,31,24,.70) 100%),
+    url('https://images.pexels.com/photos/20520583/pexels-photo-20520583.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
+  background-position:center 46%;
+}
+.es-page.about-page main > .es-section:nth-of-type(3){
+  background-image:
+    linear-gradient(120deg,rgba(4,23,18,.93),rgba(7,39,30,.82)),
+    url('https://images.pexels.com/photos/6392038/pexels-photo-6392038.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
+  background-position:center 50%;
+}
+.es-page.about-page main > .es-section:nth-of-type(5){
+  background-image:
+    linear-gradient(120deg,rgba(4,23,18,.94),rgba(7,39,30,.84)),
+    url('https://images.pexels.com/photos/13768204/pexels-photo-13768204.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
+  background-position:center 52%;
+}
+.es-page.about-page main > .es-section:nth-of-type(7){
+  background-image:
+    linear-gradient(120deg,rgba(4,22,17,.95),rgba(7,38,29,.84)),
+    url('https://images.pexels.com/photos/32281093/pexels-photo-32281093.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
+  background-position:center 50%;
+}
