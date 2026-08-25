@@ -27,7 +27,7 @@
 .es-page.about-page main > .es-section:nth-of-type(2) h2 em{color:#806027}
 .es-page.about-page main > .es-section:nth-of-type(2) .es-copy{color:#3f4d47}
 
-/* 03 / Mission — image; !important defeats shared dark background reset */
+/* 03 / Mission — image */
 .es-page.about-page main > .es-section:nth-of-type(3){
   color:#fff;
   background-image:
@@ -36,7 +36,7 @@
   background-size:cover;
   background-position:center 48%;
 }
-.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:rgba(255,255,255,.90)}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:#f4f0e6}
 .es-page.about-page main > .es-section:nth-of-type(3) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(3) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(3) h2 em{color:#e0be79}
@@ -51,7 +51,7 @@
 .es-page.about-page .about-values-grid h3{color:#10251f}
 .es-page.about-page .about-values-grid p{color:#46544e}
 
-/* 05 / Responsibility — image; !important defeats shared dark background reset */
+/* 05 / Responsibility — image */
 .es-page.about-page main > .es-section:nth-of-type(5){
   color:#fff;
   background-image:
@@ -60,7 +60,7 @@
   background-size:cover;
   background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:rgba(255,255,255,.90)}
+.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:#f4f0e6}
 .es-page.about-page main > .es-section:nth-of-type(5) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(5) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(5) h2 em{color:#e0be79}
@@ -72,7 +72,7 @@
 .es-page.about-page main > .es-section:nth-of-type(6) h2 em{color:#806027}
 .es-page.about-page main > .es-section:nth-of-type(6) .es-copy{color:#3f4d47}
 
-/* 07 / Where we are going — image; !important defeats shared dark background reset */
+/* 07 / Where we are going — image */
 .es-page.about-page main > .es-section:nth-of-type(7){
   color:#fff;
   background-image:
@@ -81,18 +81,25 @@
   background-size:cover;
   background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:rgba(255,255,255,.90)}
+.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:#f4f0e6}
 .es-page.about-page main > .es-section:nth-of-type(7) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(7) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(7) h2 em{color:#e0be79}
 
-/* 08 / Central idea — clean */
+/* 08 / Central idea — ivory background + dark content */
 .es-page.about-page .about-idea,
-.es-page.about-page main > .es-cta{background-image:none}
-.es-page.about-page .about-idea .es-label{color:#e0be79}
-.es-page.about-page .about-idea h2{color:#fff}
-.es-page.about-page .about-idea h2 em{color:#e0be79}
-.es-page.about-page .about-idea .es-lead{color:rgba(255,255,255,.90)}
+.es-page.about-page main > .es-cta{
+  background:linear-gradient(180deg,#f4f0e6 0%,#f7f3ea 100%) !important;
+  color:#10251f;
+}
+.es-page.about-page .about-idea:before{background:radial-gradient(circle at 78% 22%,rgba(199,162,96,.10),transparent 24%),radial-gradient(circle at 18% 80%,rgba(19,37,31,.035),transparent 28%)}
+.es-page.about-page .about-idea .es-label{color:#806027}
+.es-page.about-page .about-idea h2{color:#10251f}
+.es-page.about-page .about-idea h2 em{color:#806027}
+.es-page.about-page .about-idea .es-lead{color:#3f4d47}
+.es-page.about-page .about-idea .es-btn{border-color:rgba(16,37,31,.28);color:#10251f}
+.es-page.about-page .about-idea .es-btn.primary{background:#10251f;color:#f4f0e6;border-color:#10251f}
+.es-page.about-page .about-idea .es-btn:not(.primary):hover{background:rgba(16,37,31,.06);border-color:rgba(16,37,31,.46)}
 
 /* Shared image treatment */
 .es-page.about-page main > .es-section:nth-of-type(3),
