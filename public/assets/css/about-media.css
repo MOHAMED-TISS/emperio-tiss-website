@@ -36,7 +36,7 @@
   background-size:cover;
   background-position:center 48%;
 }
-.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:#f4f0e6}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:#f4f0e6 !important}
 .es-page.about-page main > .es-section:nth-of-type(3) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(3) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(3) h2 em{color:#e0be79}
@@ -60,7 +60,7 @@
   background-size:cover;
   background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:#f4f0e6}
+.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:#f4f0e6 !important}
 .es-page.about-page main > .es-section:nth-of-type(5) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(5) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(5) h2 em{color:#e0be79}
@@ -81,7 +81,7 @@
   background-size:cover;
   background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:#f4f0e6}
+.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:#f4f0e6 !important}
 .es-page.about-page main > .es-section:nth-of-type(7) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(7) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(7) h2 em{color:#e0be79}
@@ -101,7 +101,7 @@
 .es-page.about-page .about-idea .es-btn.primary{background:#10251f;color:#f4f0e6;border-color:#10251f}
 .es-page.about-page .about-idea .es-btn:not(.primary):hover{background:rgba(16,37,31,.06);border-color:rgba(16,37,31,.46)}
 
-/* Shared image treatment */
+/* Shared image treatment — photographic layer behind, content layer in front */
 .es-page.about-page main > .es-section:nth-of-type(3),
 .es-page.about-page main > .es-section:nth-of-type(5),
 .es-page.about-page main > .es-section:nth-of-type(7){
@@ -121,7 +121,34 @@
 }
 .es-page.about-page main > .es-section:nth-of-type(3) .es-container,
 .es-page.about-page main > .es-section:nth-of-type(5) .es-container,
-.es-page.about-page main > .es-section:nth-of-type(7) .es-container{position:relative;z-index:1}
+.es-page.about-page main > .es-section:nth-of-type(7) .es-container{
+  position:relative;
+  z-index:3;
+}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-container > *,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-container > *,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-container > *{
+  position:relative;
+  z-index:4;
+}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-grid,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-grid,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-grid{
+  position:relative;
+  z-index:5;
+}
+.es-page.about-page main > .es-section:nth-of-type(3) h2,
+.es-page.about-page main > .es-section:nth-of-type(3) .es-copy,
+.es-page.about-page main > .es-section:nth-of-type(3) .es-label,
+.es-page.about-page main > .es-section:nth-of-type(5) h2,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-copy,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-label,
+.es-page.about-page main > .es-section:nth-of-type(7) h2,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-copy,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-label{
+  position:relative;
+  z-index:6;
+}
 
 @media(max-width:800px){
   .es-page.about-page .es-hero{
