@@ -53,6 +53,7 @@
         height: 16px;
       }
       .site-header .et-language-current { gap: 7px; }
+      .site-header .et-language-current i { display: none !important; }
       .site-header .et-language-dropdown a {
         gap: 7px;
         justify-content: flex-start;
@@ -125,11 +126,7 @@
       button.setAttribute('aria-expanded', 'false');
       button.setAttribute('aria-label', `Change language: ${flagMap[active]?.label || active}`);
       button.title = `Change language: ${flagMap[active]?.label || active}`;
-      button.append(makeFlag(active), (() => {
-        const chevron = doc.createElement('i');
-        chevron.setAttribute('aria-hidden', 'true');
-        return chevron;
-      })());
+      button.append(makeFlag(active));
 
       const menu = doc.createElement('div');
       menu.className = 'et-language-dropdown';
