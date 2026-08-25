@@ -1,0 +1,59 @@
+/* EMPERIO TISS — Empresa atmospheric background photography */
+.es-page.about-page .es-hero{
+  background-image:
+    linear-gradient(120deg,rgba(3,18,14,.82) 0%,rgba(5,27,21,.68) 48%,rgba(7,31,24,.56) 100%),
+    url('https://images.pexels.com/photos/33560727/pexels-photo-33560727.jpeg?auto=compress&cs=tinysrgb&w=2200');
+  background-size:cover;
+  background-position:center 44%;
+  background-attachment:scroll;
+}
+.es-page.about-page main > .es-section:nth-of-type(2){
+  color:#fff;
+  background-image:
+    linear-gradient(120deg,rgba(5,26,20,.84),rgba(7,39,30,.68)),
+    url('https://images.pexels.com/photos/28435910/pexels-photo-28435910.jpeg?auto=compress&cs=tinysrgb&w=2200');
+  background-size:cover;
+  background-position:center 45%;
+}
+.es-page.about-page main > .es-section:nth-of-type(2) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(2) h2{color:#fff}
+.es-page.about-page main > .es-section:nth-of-type(2) .es-label{color:#e0be79}
+.es-page.about-page main > .es-section:nth-of-type(5){
+  background-image:
+    linear-gradient(120deg,rgba(4,27,21,.88),rgba(7,43,33,.72)),
+    url('https://images.pexels.com/photos/18929148/pexels-photo-18929148.jpeg?auto=compress&cs=tinysrgb&w=2200');
+  background-size:cover;
+  background-position:center 50%;
+}
+.es-page.about-page main > .es-section:nth-of-type(7){
+  background-image:
+    linear-gradient(120deg,rgba(4,24,19,.9),rgba(7,39,30,.72)),
+    url('https://images.pexels.com/photos/29054878/pexels-photo-29054878.jpeg?auto=compress&cs=tinysrgb&w=2200');
+  background-size:cover;
+  background-position:center 48%;
+}
+.es-page.about-page main > .es-section:nth-of-type(2),
+.es-page.about-page main > .es-section:nth-of-type(5),
+.es-page.about-page main > .es-section:nth-of-type(7){
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.es-page.about-page main > .es-section:nth-of-type(2)::before,
+.es-page.about-page main > .es-section:nth-of-type(5)::before,
+.es-page.about-page main > .es-section:nth-of-type(7)::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 78% 20%,rgba(199,162,96,.10),transparent 24%);
+  pointer-events:none;
+  z-index:-1;
+}
+.es-page.about-page .about-values,
+.es-page.about-page .about-idea{background-image:none}
+@media(max-width:800px){
+  .es-page.about-page .es-hero{background-position:center 42%}
+  .es-page.about-page main > .es-section:nth-of-type(2),
+  .es-page.about-page main > .es-section:nth-of-type(5),
+  .es-page.about-page main > .es-section:nth-of-type(7){background-position:center center}
+}
