@@ -37,5 +37,21 @@
   </main>
   <footer class="es-footer"><div class="es-container"><div class="es-footer-grid"><div><img src="/logo.png" alt="EMPERIO TISS"><p>Una empresa preparada para evolucionar.</p></div><div><strong>Navegación</strong><a href="/">Inicio</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a><a href="/contact/">Contacto</a></div><div><strong>Legal</strong><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/privacidad.html">Privacidad</a><a href="/legal/cookies.html">Cookies</a></div></div><div class="es-footer-bottom"><span>© 2026 EMPERIO TISS S.L.</span><span>MADRID · ESPAÑA</span></div></div></footer>
   <script src="/assets/js/global.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const addAboutContact=()=>{
+        const nav=document.querySelector('.about-page .nav-overlay-links');
+        if(!nav || nav.querySelector('.about-menu-contact')) return;
+        const a=document.createElement('a');
+        a.className='about-menu-contact';
+        a.href='/contact/';
+        a.innerHTML='<span class="idx">06</span><span>Contacto</span>';
+        nav.appendChild(a);
+      };
+      addAboutContact();
+      const observer=new MutationObserver(addAboutContact);
+      observer.observe(document.body,{childList:true,subtree:true});
+    });
+  </script>
 </body>
 </html>
