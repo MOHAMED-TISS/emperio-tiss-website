@@ -1,7 +1,6 @@
 /* EMPERIO TISS — About page atmospheric photography */
 /* Visual rhythm: image / clean / image / clean / image / clean / image / clean */
 
-/* 01 / Hero — full first viewport */
 .es-page.about-page .es-hero{
   min-height:100svh !important;
   height:auto;
@@ -38,6 +37,81 @@
   line-height:1.82;
   letter-spacing:.008em;
   font-weight:400;
+}
+
+/* Premium contact / action buttons */
+.es-page.about-page .es-actions{gap:16px;margin-top:34px}
+.es-page.about-page .es-actions .es-btn{
+  position:relative;
+  min-height:56px;
+  padding:0 28px;
+  border-radius:999px;
+  overflow:hidden;
+  isolation:isolate;
+  font-family:var(--et-sans);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s cubic-bezier(.22,.61,.36,1),background-color .45s cubic-bezier(.22,.61,.36,1),color .45s cubic-bezier(.22,.61,.36,1),border-color .45s cubic-bezier(.22,.61,.36,1);
+}
+.es-page.about-page .es-actions .es-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 18%,rgba(255,255,255,.34) 48%,transparent 78%);
+  transform:translateX(-135%);
+  transition:transform .8s cubic-bezier(.22,.61,.36,1);
+  z-index:-1;
+}
+.es-page.about-page .es-actions .es-btn:hover::before{transform:translateX(135%)}
+.es-page.about-page .es-actions .es-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 18px 38px rgba(0,0,0,.22)}
+.es-page.about-page .es-actions .es-btn:active{transform:translateY(-1px) scale(.99);box-shadow:0 8px 18px rgba(0,0,0,.16)}
+.es-page.about-page .es-actions .es-btn:focus-visible{outline:2px solid #e0be79;outline-offset:4px}
+
+/* Hero buttons — primary contact action */
+.es-page.about-page .es-hero .es-actions .es-btn.primary{
+  background:linear-gradient(135deg,#f6f2e8 0%,#e7d6ad 100%);
+  color:#10251f;
+  border-color:rgba(246,242,232,.95);
+  box-shadow:0 10px 26px rgba(0,0,0,.20),0 0 0 1px rgba(224,190,121,.14);
+}
+.es-page.about-page .es-hero .es-actions .es-btn.primary:hover{
+  box-shadow:0 20px 44px rgba(0,0,0,.28),0 0 0 1px rgba(224,190,121,.42),0 0 28px rgba(224,190,121,.16);
+}
+.es-page.about-page .es-hero .es-actions .es-btn:not(.primary){
+  color:#fff;
+  background:rgba(8,35,27,.42);
+  border-color:rgba(255,255,255,.58);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  backdrop-filter:blur(8px);
+}
+.es-page.about-page .es-hero .es-actions .es-btn:not(.primary):hover{
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.86);
+}
+
+/* Buttons inside photographic sections */
+.es-page.about-page main > .es-section:nth-of-type(3) .es-actions .es-btn,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-actions .es-btn,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-actions .es-btn{
+  color:#fff;
+  background:rgba(5,28,22,.54);
+  border-color:rgba(244,240,230,.72);
+  box-shadow:0 10px 26px rgba(0,0,0,.20);
+  backdrop-filter:blur(8px);
+}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-actions .es-btn.primary,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-actions .es-btn.primary,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-actions .es-btn.primary{
+  background:linear-gradient(135deg,#f6f2e8 0%,#e7d6ad 100%);
+  color:#10251f;
+  border-color:#f6f2e8;
+}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-actions .es-btn:hover,
+.es-page.about-page main > .es-section:nth-of-type(5) .es-actions .es-btn:hover,
+.es-page.about-page main > .es-section:nth-of-type(7) .es-actions .es-btn:hover{
+  border-color:#fff;
 }
 
 /* 02 / Vision — clean */
@@ -177,10 +251,7 @@
     padding-bottom:64px;
     background-position:center 42%;
   }
-  .es-page.about-page .es-hero .es-lead{
-    font-size:16px;
-    line-height:1.78;
-  }
+  .es-page.about-page .es-hero .es-lead,
   .es-page.about-page .es-section .es-copy,
   .es-page.about-page .about-values-head .es-copy,
   .es-page.about-page .about-values-grid p,
@@ -188,7 +259,14 @@
     font-size:16px;
     line-height:1.78;
   }
+  .es-page.about-page .es-actions{gap:12px;margin-top:28px}
+  .es-page.about-page .es-actions .es-btn{min-height:52px;padding:0 22px;font-size:10px}
   .es-page.about-page main > .es-section:nth-of-type(3),
   .es-page.about-page main > .es-section:nth-of-type(5),
   .es-page.about-page main > .es-section:nth-of-type(7){background-position:center center}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .es-page.about-page .es-actions .es-btn,
+  .es-page.about-page .es-actions .es-btn::before{transition:none}
 }
