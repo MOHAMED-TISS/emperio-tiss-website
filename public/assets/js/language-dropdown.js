@@ -17,11 +17,7 @@
 
   const languageHref = (code, pathname) => {
     if (code === 'ES') return pathname;
-    if (code === 'EN') return `/en${pathname === '/' ? '/' : pathname}`;
-    if (code === 'FR') return `/fr${pathname === '/' ? '/' : pathname}`;
-    if (code === 'IT') return `/it${pathname === '/' ? '/' : pathname}`;
-    if (code === 'AR') return `/ar${pathname === '/' ? '/' : pathname}`;
-    return pathname;
+    return `/${code.toLowerCase()}${pathname === '/' ? '/' : pathname}`;
   };
 
   const closeAll = () => {
@@ -32,42 +28,36 @@
     });
   };
 
-  const normalizeSwitcher = (nav) => {
-    if (!nav.closest('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner')) return;
+  const enhance = () => {
     const pathname = normalizePath();
     const active = (root.lang || 'en').slice(0, 2).toUpperCase();
     const codes = ['ES', 'EN', 'FR', 'IT', 'AR'];
-    const currentHrefs = new Map([...nav.querySelectorAll(':scope > a')].map((a) => [a.textContent.trim().toUpperCase(), a.href]));
 
-    const links = codes.map((code) => {
-      const a = doc.createElement('a');
-      a.href = currentHrefs.get(code) || languageHref(code, pathname);
-      a.textContent = code;
-      if (code === active) {
-        a.className = 'current';
-        a.setAttribute('aria-current', 'page');
-      }
-      return a;
-    });
-
-    nav.querySelectorAll(':scope > button,.et-language-dropdown,:scope > a,:scope > span').forEach((node) => node.remove());
-    links.forEach((link, index) => {
-      if (index) {
-        const sep = doc.createElement('span');
-        sep.textContent = '·';
-        nav.appendChild(sep);
-      }
-      nav.appendChild(link);
-    });
-    nav.dataset.etLanguageNormalized = 'true';
-  };
-
-  const enhance = () => {
-    doc.querySelectorAll('.et-language-switch').forEach(normalizeSwitcher);
     doc.querySelectorAll('.et-language-switch').forEach((nav) => {
-      if (nav.dataset.etLanguageReady === 'true') return;
-      const links = [...nav.querySelectorAll(':scope > a')];
-      if (links.length !== 5) return;
+      if (!nav.closest('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner')) return;
+      if (nav.dataset.etLanguageReady === 'true' || nav.querySelector('.et-language-current')) return;
+
+      const existing = new Map([...nav.querySelectorAll(':scope > a')].map((a) => [a.textContent.trim().toUpperCase(), a.href]));
+      const links = codes.map((code) => {
+        const link = doc.createElement('a');
+        link.href = existing.get(code) || languageHref(code, pathname);
+        link.textContent = code;
+        if (code === active) {
+          link.className = 'current';
+          link.setAttribute('aria-current', 'page');
+        }
+        return link;
+      });
+
+      nav.replaceChildren(...links.reduce((nodes, link, index) => {
+        if (index) {
+          const sep = doc.createElement('span');
+          sep.textContent = '·';
+          nodes.push(sep);
+        }
+        nodes.push(link);
+        return nodes;
+      }, []));
 
       const current = links.find((link) => link.classList.contains('current')) || links[0];
       const alternatives = links.filter((link) => link !== current);
