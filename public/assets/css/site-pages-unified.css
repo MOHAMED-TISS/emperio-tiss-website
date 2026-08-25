@@ -15,4 +15,67 @@ body.es-page h1,body.es-page h2,body.es-page h3,body.intl-page h1,body.intl-page
 .es-page .es-footer,.intl-page .intl-footer,.ar-page .ar-footer,.about-page .about-footer,.products-site .footer,.news-page .site-footer{background:var(--et-deep)!important;color:rgba(255,255,255,.62)!important}
 .es-page .es-copy,.intl-page .intl-copy,.ar-page .ar-copy,.about-page .about-section-head p,.products-site .section-copy,.news-page .section-introduction>p{color:var(--et-muted)!important}
 [dir=rtl] .es-page,[dir=rtl] .intl-page,[dir=rtl] .ar-page,[dir=rtl] .about-page,[dir=rtl] .products-site,[dir=rtl] .news-page{direction:rtl!important}
-@media(max-width:800px){.es-container,.intl-container,.ar-container,.about-page .container,.products-site .p-container,.news-page .container,.es-page .container,.intl-page .container,.ar-page .container{width:calc(100% - 32px)!important}.es-page .es-hero,.intl-page .intl-hero,.ar-page .ar-hero,.about-page .about-hero,.products-site .product-hero,.news-page .news-hero{min-height:80svh!important;padding:125px 0 64px!important}.es-page .es-hero h1,.intl-page .intl-hero h1,.ar-page .ar-hero h1,.about-page .about-hero h1,.products-site .product-hero h1,.news-page .news-hero h1{font-size:clamp(3.2rem,15vw,6rem)!important}.es-page .es-section,.intl-page .intl-section,.ar-page .ar-section,.about-page .about-section,.products-site .p-section,.news-page .news-section{padding:82px 0!important}}
+
+/* GLOBAL EDITORIAL CONTENT TYPOGRAPHY — titles remain unchanged */
+.es-page .es-copy,.intl-page .intl-copy,.ar-page .ar-copy,.about-page .about-section-head p,.products-site .section-copy,.news-page .section-introduction>p,.es-page .es-lead,.intl-page .intl-lead,.ar-page .ar-lead,.about-page .about-section-head .lead,.products-site .lead,.news-page .lead,.es-page .es-card p,.intl-page .intl-card p,.ar-page .ar-card p,.products-site .card p,.news-page .news-cards article p{
+  font-family:var(--et-serif)!important;
+  font-size:18px!important;
+  line-height:1.82!important;
+  letter-spacing:.008em!important;
+  font-weight:400!important;
+}
+
+/* GLOBAL CONTACT / CTA BUTTON SYSTEM */
+.es-page .es-btn,.intl-page .intl-btn,.ar-page .ar-btn,.about-page .about-btn,.products-site .button,.news-page a[class*=button],.es-page a[href*="contact"],.intl-page a[href*="contact"],.ar-page a[href*="contact"],.about-page a[href*="contact"],.products-site a[href*="contact"],.news-page a[href*="contact"]{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:9px!important;
+  min-height:52px!important;
+  padding:0 24px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(201,163,95,.62)!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,#f7f1e4 0%,#e6ca96 52%,#c9a35f 100%)!important;
+  color:#10251c!important;
+  box-shadow:0 10px 28px rgba(6,29,23,.16),inset 0 1px 0 rgba(255,255,255,.72)!important;
+  font:700 10px/1 var(--et-sans)!important;
+  letter-spacing:.11em!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  transition:transform .36s cubic-bezier(.22,.61,.36,1),box-shadow .36s cubic-bezier(.22,.61,.36,1),background-position .5s ease,filter .36s ease!important;
+  background-size:180% 180%!important;
+  background-position:0 50%!important;
+}
+.es-page .es-btn::before,.intl-page .intl-btn::before,.ar-page .ar-btn::before,.about-page .about-btn::before,.products-site .button::before,.news-page a[class*=button]::before,.es-page a[href*="contact"]::before,.intl-page a[href*="contact"]::before,.ar-page a[href*="contact"]::before,.about-page a[href*="contact"]::before,.products-site a[href*="contact"]::before,.news-page a[href*="contact"]::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(105deg,transparent 18%,rgba(255,255,255,.62) 42%,transparent 64%)!important;
+  transform:translateX(-120%)!important;
+  transition:transform .72s cubic-bezier(.22,.61,.36,1)!important;
+  pointer-events:none!important;
+}
+.es-page .es-btn:hover,.intl-page .intl-btn:hover,.ar-page .ar-btn:hover,.about-page .about-btn:hover,.products-site .button:hover,.news-page a[class*=button]:hover,.es-page a[href*="contact"]:hover,.intl-page a[href*="contact"]:hover,.ar-page a[href*="contact"]:hover,.about-page a[href*="contact"]:hover,.products-site a[href*="contact"]:hover,.news-page a[href*="contact"]:hover{
+  transform:translateY(-4px) scale(1.025)!important;
+  box-shadow:0 16px 36px rgba(6,29,23,.24),inset 0 1px 0 rgba(255,255,255,.86)!important;
+  background-position:100% 50%!important;
+  filter:saturate(1.05)!important;
+}
+.es-page .es-btn:hover::before,.intl-page .intl-btn:hover::before,.ar-page .ar-btn:hover::before,.about-page .about-btn:hover::before,.products-site .button:hover::before,.news-page a[class*=button]:hover::before,.es-page a[href*="contact"]:hover::before,.intl-page a[href*="contact"]:hover::before,.ar-page a[href*="contact"]:hover::before,.about-page a[href*="contact"]:hover::before,.products-site a[href*="contact"]:hover::before,.news-page a[href*="contact"]:hover::before{transform:translateX(120%)!important}
+.es-page .es-btn:active,.intl-page .intl-btn:active,.ar-page .ar-btn:active,.about-page .about-btn:active,.products-site .button:active,.news-page a[class*=button]:active,.es-page a[href*="contact"]:active,.intl-page a[href*="contact"]:active,.ar-page a[href*="contact"]:active,.about-page a[href*="contact"]:active,.products-site a[href*="contact"]:active,.news-page a[href*="contact"]:active{transform:translateY(-1px) scale(.99)!important}
+.es-page .es-btn:focus-visible,.intl-page .intl-btn:focus-visible,.ar-page .ar-btn:focus-visible,.about-page .about-btn:focus-visible,.products-site .button:focus-visible,.news-page a[class*=button]:focus-visible,.es-page a[href*="contact"]:focus-visible,.intl-page a[href*="contact"]:focus-visible,.ar-page a[href*="contact"]:focus-visible,.about-page a[href*="contact"]:focus-visible,.products-site a[href*="contact"]:focus-visible,.news-page a[href*="contact"]:focus-visible{outline:2px solid #c9a35f!important;outline-offset:4px!important}
+
+@media(max-width:800px){
+  .es-page .es-hero,.intl-page .intl-hero,.ar-page .ar-hero,.about-page .about-hero,.products-site .product-hero,.news-page .news-hero{min-height:80svh!important;padding:125px 0 64px!important}
+  .es-page .es-hero h1,.intl-page .intl-hero h1,.ar-page .ar-hero h1,.about-page .about-hero h1,.products-site .product-hero h1,.news-page .news-hero h1{font-size:clamp(3.2rem,15vw,6rem)!important}
+  .es-page .es-section,.intl-page .intl-section,.ar-page .ar-section,.about-page .about-section,.products-site .p-section,.news-page .news-section{padding:82px 0!important}
+  .es-page .es-copy,.intl-page .intl-copy,.ar-page .ar-copy,.about-page .about-section-head p,.products-site .section-copy,.news-page .section-introduction>p,.es-page .es-lead,.intl-page .intl-lead,.ar-page .ar-lead,.about-page .about-section-head .lead,.products-site .lead,.news-page .lead,.es-page .es-card p,.intl-page .intl-card p,.ar-page .ar-card p,.products-site .card p,.news-page .news-cards article p{font-size:16px!important;line-height:1.78!important}
+  .es-page .es-btn,.intl-page .intl-btn,.ar-page .ar-btn,.about-page .about-btn,.products-site .button,.news-page a[class*=button],.es-page a[href*="contact"],.intl-page a[href*="contact"],.ar-page a[href*="contact"],.about-page a[href*="contact"],.products-site a[href*="contact"],.news-page a[href*="contact"]{min-height:50px!important;padding:0 20px!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .es-page .es-btn,.intl-page .intl-btn,.ar-page .ar-btn,.about-page .about-btn,.products-site .button,.news-page a[class*=button],.es-page a[href*="contact"],.intl-page a[href*="contact"],.ar-page a[href*="contact"],.about-page a[href*="contact"],.products-site a[href*="contact"],.news-page a[href*="contact"]{transition:none!important}
+  .es-page .es-btn::before,.intl-page .intl-btn::before,.ar-page .ar-btn::before,.about-page .about-btn::before,.products-site .button::before,.news-page a[class*=button]::before,.es-page a[href*="contact"]::before,.intl-page a[href*="contact"]::before,.ar-page a[href*="contact"]::before,.about-page a[href*="contact"]::before,.products-site a[href*="contact"]::before,.news-page a[href*="contact"]::before{display:none!important}
+}
