@@ -13,10 +13,11 @@
   content:"";
   position:absolute;
   top:0;
+  right:0;
   bottom:0;
-  left:50%;
-  width:100vw;
-  transform:translateX(-50%);
+  left:0;
+  width:100%!important;
+  transform:none!important;
   background-image:
     linear-gradient(125deg,rgba(3,18,14,.90) 0%,rgba(5,27,21,.80) 52%,rgba(7,31,24,.68) 100%),
     url('https://images.pexels.com/photos/33560727/pexels-photo-33560727.jpeg?auto=compress&cs=tinysrgb&w=2200');
