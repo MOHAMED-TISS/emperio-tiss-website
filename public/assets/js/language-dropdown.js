@@ -20,6 +20,19 @@
     return `/${code.toLowerCase()}${pathname === '/' ? '/' : pathname}`;
   };
 
+  const installSwitcherGuard = () => {
+    if (doc.getElementById('et-language-switcher-guard')) return;
+    const style = doc.createElement('style');
+    style.id = 'et-language-switcher-guard';
+    style.textContent = `
+      .site-header .et-language-switch > a,
+      .site-header .et-language-switch > span { display: none !important; }
+      .site-header .et-language-switch > .et-language-current { display: inline-flex !important; }
+      .site-header .et-language-switch > .et-language-dropdown { display: flex !important; }
+    `;
+    doc.head.appendChild(style);
+  };
+
   const closeAll = () => {
     doc.querySelectorAll('.et-language-switch.is-open').forEach((nav) => {
       nav.classList.remove('is-open');
@@ -29,6 +42,7 @@
   };
 
   const enhance = () => {
+    installSwitcherGuard();
     const pathname = normalizePath();
     const active = (root.lang || 'en').slice(0, 2).toUpperCase();
     const codes = ['ES', 'EN', 'FR', 'IT', 'AR'];
