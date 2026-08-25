@@ -30,7 +30,7 @@
 
   if (lang === 'it' && !doc.querySelector('script[data-etItalianLanguageSwitcher]')) {
     const script = doc.createElement('script');
-    script.src = '/assets/js/italian-language-switcher.js?v=20260824-1';
+    script.src = '/assets/js/italian-language-switcher.js?v=20260825-flags-2';
     script.async = false;
     script.dataset.etItalianLanguageSwitcher = 'true';
     doc.head.appendChild(script);
