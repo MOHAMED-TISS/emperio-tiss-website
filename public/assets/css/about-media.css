@@ -1,4 +1,7 @@
-/* EMPERIO TISS — Empresa atmospheric background photography */
+/* EMPERIO TISS — About page atmospheric photography */
+/* Visual rhythm: image / clean / image / clean / image / clean / image / clean */
+
+/* 01 / Hero — image */
 .es-page.about-page .es-hero{
   background-image:
     linear-gradient(120deg,rgba(3,18,14,.82) 0%,rgba(5,27,21,.68) 48%,rgba(7,31,24,.56) 100%),
@@ -7,7 +10,14 @@
   background-position:center 44%;
   background-attachment:scroll;
 }
+
+/* 02 / Vision — clean */
 .es-page.about-page main > .es-section:nth-of-type(2){
+  background-image:none;
+}
+
+/* 03 / Mission — image */
+.es-page.about-page main > .es-section:nth-of-type(3){
   color:#fff;
   background-image:
     linear-gradient(120deg,rgba(5,26,20,.84),rgba(7,39,30,.68)),
@@ -15,31 +25,58 @@
   background-size:cover;
   background-position:center 45%;
 }
-.es-page.about-page main > .es-section:nth-of-type(2) .es-copy{color:rgba(255,255,255,.82)}
-.es-page.about-page main > .es-section:nth-of-type(2) h2{color:#fff}
-.es-page.about-page main > .es-section:nth-of-type(2) .es-label{color:#e0be79}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(3) h2{color:#fff}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-label{color:#e0be79}
+
+/* 04 / Values — clean */
+.es-page.about-page main > .es-section:nth-of-type(4),
+.es-page.about-page .about-values{background-image:none}
+
+/* 05 / Responsibility — image */
 .es-page.about-page main > .es-section:nth-of-type(5){
+  color:#fff;
   background-image:
     linear-gradient(120deg,rgba(4,27,21,.88),rgba(7,43,33,.72)),
     url('https://images.pexels.com/photos/18929148/pexels-photo-18929148.jpeg?auto=compress&cs=tinysrgb&w=2200');
   background-size:cover;
   background-position:center 50%;
 }
+.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(5) h2{color:#fff}
+.es-page.about-page main > .es-section:nth-of-type(5) .es-label{color:#e0be79}
+
+/* 06 / People + Innovation — clean */
+.es-page.about-page main > .es-section:nth-of-type(6){
+  background-image:none;
+}
+
+/* 07 / Where we are going — image */
 .es-page.about-page main > .es-section:nth-of-type(7){
+  color:#fff;
   background-image:
-    linear-gradient(120deg,rgba(4,24,19,.9),rgba(7,39,30,.72)),
+    linear-gradient(120deg,rgba(4,24,19,.90),rgba(7,39,30,.72)),
     url('https://images.pexels.com/photos/29054878/pexels-photo-29054878.jpeg?auto=compress&cs=tinysrgb&w=2200');
   background-size:cover;
   background-position:center 48%;
 }
-.es-page.about-page main > .es-section:nth-of-type(2),
+.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:rgba(255,255,255,.82)}
+.es-page.about-page main > .es-section:nth-of-type(7) h2{color:#fff}
+.es-page.about-page main > .es-section:nth-of-type(7) .es-label{color:#e0be79}
+
+/* 08 / Central idea — clean */
+.es-page.about-page .about-idea,
+.es-page.about-page main > .es-cta{background-image:none}
+
+/* Shared image treatment */
+.es-page.about-page main > .es-section:nth-of-type(3),
 .es-page.about-page main > .es-section:nth-of-type(5),
 .es-page.about-page main > .es-section:nth-of-type(7){
   position:relative;
   overflow:hidden;
   isolation:isolate;
 }
-.es-page.about-page main > .es-section:nth-of-type(2)::before,
+.es-page.about-page main > .es-section:nth-of-type(3)::before,
 .es-page.about-page main > .es-section:nth-of-type(5)::before,
 .es-page.about-page main > .es-section:nth-of-type(7)::before{
   content:"";
@@ -49,11 +86,10 @@
   pointer-events:none;
   z-index:-1;
 }
-.es-page.about-page .about-values,
-.es-page.about-page .about-idea{background-image:none}
+
 @media(max-width:800px){
   .es-page.about-page .es-hero{background-position:center 42%}
-  .es-page.about-page main > .es-section:nth-of-type(2),
+  .es-page.about-page main > .es-section:nth-of-type(3),
   .es-page.about-page main > .es-section:nth-of-type(5),
   .es-page.about-page main > .es-section:nth-of-type(7){background-position:center center}
 }
