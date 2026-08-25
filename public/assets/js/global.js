@@ -106,7 +106,7 @@
   doc.addEventListener('selectstart', (event) => { if (event.target.closest(catalogueImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectCatalogueImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  loadScript('/assets/js/language-dropdown.js?v=20260824-5', 'etLanguageDropdown');
+  loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
   loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
