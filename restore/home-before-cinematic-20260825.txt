@@ -1,0 +1,2 @@
+Restoring point reference: commit b1a89289f4b7c8d41265e7b79966fbe046e76aad
+State: Home with El Umbral intro + El Punto de Origen, before cinematic scroll-system extension.
