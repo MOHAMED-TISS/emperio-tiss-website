@@ -12,6 +12,33 @@
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/es-pages.css">
   <link rel="stylesheet" href="/assets/css/about-media.css?v=20260825-3">
+  <style>
+    /* About hero — force the photographic hero to occupy the complete first viewport. */
+    .es-page.about-page main > .es-hero{
+      min-height:100svh!important;
+      height:100svh!important;
+      max-height:100svh!important;
+      box-sizing:border-box!important;
+      display:flex!important;
+      align-items:flex-end!important;
+      overflow:hidden!important;
+      padding-top:150px!important;
+      padding-bottom:88px!important;
+      background-size:cover!important;
+      background-position:center center!important;
+      background-repeat:no-repeat!important;
+    }
+    @media(max-width:800px){
+      .es-page.about-page main > .es-hero{
+        min-height:100svh!important;
+        height:100svh!important;
+        max-height:100svh!important;
+        padding-top:124px!important;
+        padding-bottom:64px!important;
+        background-position:center center!important;
+      }
+    }
+  </style>
 </head>
 <body class="es-page about-page">
   <header class="site-header" id="luxuryHeader"><div class="header-inner"><a class="site-logo" href="/" aria-label="EMPERIO TISS - Inicio"><img src="/logo.png" alt="EMPERIO TISS" width="94" height="62"></a><nav class="et-language-switch" aria-label="Idiomas"><a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/it/">IT</a><span>·</span><a href="/ar/">AR</a></nav><button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button></div></header>
