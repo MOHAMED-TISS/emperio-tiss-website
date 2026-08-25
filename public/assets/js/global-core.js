@@ -2,8 +2,8 @@
   'use strict';
 
   const doc = document;
-  const root = doc.documentElement;
-  const body = doc.body;
+  const root = document.documentElement;
+  const body = document.body;
   const get = (selector, scope = doc) => scope.querySelector(selector);
   const overlaySelector = '#navOverlay,.nav-overlay,.intl-overlay';
   const buttonSelector = '#menuToggleBtn,.mobile-menu,.es-menu,.intl-menu';
@@ -18,13 +18,13 @@
 
   const lang = (root.lang || 'en').slice(0, 2).toLowerCase();
   const labels = {
-    es:{home:'Inicio',company:'Empresa',products:'Productos',seafood:'Productos del mar',fish:'Pescados',shellfish:'Mariscos & Crustáceos',cephalopods:'Cefalópodos',fruits:'Frutas',vegetables:'Hortalizas',seasonal:'Temporada',markets:'Mercados',news:'Noticias',contact:'Contacto',open:'Abrir menú',close:'Cerrar menú'},
-    en:{home:'Home',company:'Company',products:'Products',seafood:'Seafood',fish:'Fish',shellfish:'Shellfish & Crustaceans',cephalopods:'Cephalopods',fruits:'Fruits',vegetables:'Vegetables',seasonal:'Seasonal',markets:'Markets',news:'News',contact:'Contact',open:'Open menu',close:'Close menu'},
-    fr:{home:'Accueil',company:'Entreprise',products:'Produits',seafood:'Produits de la mer',fish:'Poissons',shellfish:'Fruits de mer & Crustacés',cephalopods:'Céphalopodes',fruits:'Fruits',vegetables:'Légumes',seasonal:'Saison',markets:'Marchés',news:'Actualités',contact:'Contact',open:'Ouvrir le menu',close:'Fermer le menu'},
-    ar:{home:'الرئيسية',company:'الشركة',products:'المنتجات',seafood:'منتجات البحر',fish:'الأسماك',shellfish:'المأكولات البحرية والقشريات',cephalopods:'رأسيات الأرجل',fruits:'الفواكه',vegetables:'الخضروات',seasonal:'الموسمية',markets:'الأسواق',news:'الأخبار',contact:'اتصل بنا',open:'فتح القائمة',close:'إغلاق القائمة'},
-    it:{home:'Home',company:'Azienda',products:'Prodotti',seafood:'Prodotti del mare',fish:'Pesce',shellfish:'Molluschi & crostacei',cephalopods:'Cefalopodi',fruits:'Frutta',vegetables:'Ortaggi',seasonal:'Stagionale',markets:'Mercati',news:'Notizie',contact:'Contatti',open:'Apri il menu',close:'Chiudi il menu'}
+    es:{home:'Inicio',company:'Nuestra propuesta',products:'Productos',seafood:'Productos del mar',fish:'Pescados',shellfish:'Mariscos & Crustáceos',cephalopods:'Cefalópodos',fruits:'Frutas',vegetables:'Hortalizas',seasonal:'Temporada',markets:'Mercados',news:'Noticias',contact:'Contacto',open:'Abrir menú',close:'Cerrar menú'},
+    en:{home:'Home',company:'Our approach',products:'Products',seafood:'Seafood',fish:'Fish',shellfish:'Shellfish & Crustaceans',cephalopods:'Cephalopods',fruits:'Fruits',vegetables:'Vegetables',seasonal:'Seasonal',markets:'Markets',news:'News',contact:'Contact',open:'Open menu',close:'Close menu'},
+    fr:{home:'Accueil',company:'Notre approche',products:'Produits',seafood:'Produits de la mer',fish:'Poissons',shellfish:'Fruits de mer & Crustacés',cephalopods:'Céphalopodes',fruits:'Fruits',vegetables:'Légumes',seasonal:'Saison',markets:'Marchés',news:'Actualités',contact:'Contact',open:'Ouvrir le menu',close:'Fermer le menu'},
+    ar:{home:'الرئيسية',company:'نهجنا',products:'المنتجات',seafood:'منتجات البحر',fish:'الأسماك',shellfish:'المأكولات البحرية والقشريات',cephalopods:'رأسيات الأرجل',fruits:'الفواكه',vegetables:'الخضروات',seasonal:'الموسمية',markets:'الأسواق',news:'الأخبار',contact:'اتصل بنا',open:'فتح القائمة',close:'إغلاق القائمة'},
+    it:{home:'Home',company:'La nostra proposta',products:'Prodotti',seafood:'Prodotti del mare',fish:'Pesce',shellfish:'Molluschi & crostacei',cephalopods:'Cefalopodi',fruits:'Frutta',vegetables:'Ortaggi',seasonal:'Stagionale',markets:'Mercati',news:'Notizie',contact:'Contatti',open:'Apri il menu',close:'Chiudi il menu'}
   }[lang] || {
-    home:'Home',company:'Company',products:'Products',seafood:'Seafood',fish:'Fish',shellfish:'Shellfish & Crustaceans',cephalopods:'Cephalopods',fruits:'Fruits',vegetables:'Vegetables',seasonal:'Seasonal',markets:'Markets',news:'News',contact:'Contact',open:'Open menu',close:'Close menu'
+    home:'Home',company:'Our approach',products:'Products',seafood:'Seafood',fish:'Fish',shellfish:'Shellfish & Crustaceans',cephalopods:'Cephalopods',fruits:'Fruits',vegetables:'Vegetables',seasonal:'Seasonal',markets:'Markets',news:'News',contact:'Contact',open:'Open menu',close:'Close menu'
   };
 
   const paths = {
