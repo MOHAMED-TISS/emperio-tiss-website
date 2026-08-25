@@ -20,12 +20,24 @@
 .es-page.about-page .es-hero h1{color:#fff}
 .es-page.about-page .es-hero h1 em{color:#e0be79}
 
+/* Global editorial body typography — titles remain unchanged */
+.es-page.about-page .es-section .es-copy,
+.es-page.about-page .about-values-head .es-copy,
+.es-page.about-page .about-values-grid p,
+.es-page.about-page .about-idea .es-lead{
+  font-family:var(--et-serif);
+  font-size:18px;
+  line-height:1.82;
+  letter-spacing:.008em;
+  font-weight:400;
+}
+
 /* 02 / Vision — clean */
 .es-page.about-page main > .es-section:nth-of-type(2){background-image:none}
 .es-page.about-page main > .es-section:nth-of-type(2) .es-label{color:#806027}
 .es-page.about-page main > .es-section:nth-of-type(2) h2{color:#10251f}
 .es-page.about-page main > .es-section:nth-of-type(2) h2 em{color:#806027}
-.es-page.about-page main > .es-section:nth-of-type(2) .es-copy{color:#3f4d47}
+.es-page.about-page main > .es-section:nth-of-type(2) .es-copy{color:#3f4d47;max-width:590px}
 
 /* 03 / Mission — image */
 .es-page.about-page main > .es-section:nth-of-type(3){
@@ -36,15 +48,7 @@
   background-size:cover;
   background-position:center 48%;
 }
-.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{
-  color:#f4f0e6 !important;
-  font-family:var(--et-serif);
-  font-size:18px;
-  line-height:1.82;
-  letter-spacing:.008em;
-  font-weight:400;
-  max-width:590px;
-}
+.es-page.about-page main > .es-section:nth-of-type(3) .es-copy{color:#f4f0e6 !important;max-width:590px}
 .es-page.about-page main > .es-section:nth-of-type(3) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(3) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(3) h2 em{color:#e0be79}
@@ -54,10 +58,10 @@
 .es-page.about-page .about-values{background-image:none}
 .es-page.about-page main > .es-section:nth-of-type(4) .es-label,
 .es-page.about-page .about-values .es-label{color:#806027}
-.es-page.about-page .about-values-head .es-copy{color:#3f4d47}
+.es-page.about-page .about-values-head .es-copy{color:#3f4d47;max-width:560px}
 .es-page.about-page .about-values-grid span{color:#765722}
 .es-page.about-page .about-values-grid h3{color:#10251f}
-.es-page.about-page .about-values-grid p{color:#46544e}
+.es-page.about-page .about-values-grid p{color:#46544e;max-width:260px}
 
 /* 05 / Responsibility — image */
 .es-page.about-page main > .es-section:nth-of-type(5){
@@ -68,15 +72,7 @@
   background-size:cover;
   background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{
-  color:#f4f0e6 !important;
-  font-family:var(--et-serif);
-  font-size:18px;
-  line-height:1.82;
-  letter-spacing:.008em;
-  font-weight:400;
-  max-width:590px;
-}
+.es-page.about-page main > .es-section:nth-of-type(5) .es-copy{color:#f4f0e6 !important;max-width:590px}
 .es-page.about-page main > .es-section:nth-of-type(5) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(5) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(5) h2 em{color:#e0be79}
@@ -86,7 +82,7 @@
 .es-page.about-page main > .es-section:nth-of-type(6) .es-label{color:#806027}
 .es-page.about-page main > .es-section:nth-of-type(6) h2{color:#10251f}
 .es-page.about-page main > .es-section:nth-of-type(6) h2 em{color:#806027}
-.es-page.about-page main > .es-section:nth-of-type(6) .es-copy{color:#3f4d47}
+.es-page.about-page main > .es-section:nth-of-type(6) .es-copy{color:#3f4d47;max-width:590px}
 
 /* 07 / Where we are going — image */
 .es-page.about-page main > .es-section:nth-of-type(7){
@@ -97,15 +93,7 @@
   background-size:cover;
   background-position:center 50%;
 }
-.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{
-  color:#f4f0e6 !important;
-  font-family:var(--et-serif);
-  font-size:18px;
-  line-height:1.82;
-  letter-spacing:.008em;
-  font-weight:400;
-  max-width:590px;
-}
+.es-page.about-page main > .es-section:nth-of-type(7) .es-copy{color:#f4f0e6 !important;max-width:590px}
 .es-page.about-page main > .es-section:nth-of-type(7) h2{color:#fff}
 .es-page.about-page main > .es-section:nth-of-type(7) .es-label{color:#e0be79}
 .es-page.about-page main > .es-section:nth-of-type(7) h2 em{color:#e0be79}
@@ -120,15 +108,7 @@
 .es-page.about-page .about-idea .es-label{color:#806027}
 .es-page.about-page .about-idea h2{color:#10251f}
 .es-page.about-page .about-idea h2 em{color:#806027}
-.es-page.about-page .about-idea .es-lead{
-  color:#3f4d47;
-  font-family:var(--et-serif);
-  font-size:18px;
-  line-height:1.82;
-  letter-spacing:.008em;
-  font-weight:400;
-  max-width:690px;
-}
+.es-page.about-page .about-idea .es-lead{color:#3f4d47;max-width:690px}
 .es-page.about-page .about-idea .es-btn{border-color:rgba(16,37,31,.28);color:#10251f}
 .es-page.about-page .about-idea .es-btn.primary{background:#10251f;color:#f4f0e6;border-color:#10251f}
 .es-page.about-page .about-idea .es-btn:not(.primary):hover{background:rgba(16,37,31,.06);border-color:rgba(16,37,31,.46)}
@@ -190,14 +170,14 @@
     background-position:center 42%;
   }
   .es-page.about-page .es-hero .es-lead{font-size:15px;line-height:1.72}
-  .es-page.about-page main > .es-section:nth-of-type(3),
-  .es-page.about-page main > .es-section:nth-of-type(5),
-  .es-page.about-page main > .es-section:nth-of-type(7){background-position:center center}
-  .es-page.about-page main > .es-section:nth-of-type(3) .es-copy,
-  .es-page.about-page main > .es-section:nth-of-type(5) .es-copy,
-  .es-page.about-page main > .es-section:nth-of-type(7) .es-copy,
+  .es-page.about-page .es-section .es-copy,
+  .es-page.about-page .about-values-head .es-copy,
+  .es-page.about-page .about-values-grid p,
   .es-page.about-page .about-idea .es-lead{
     font-size:16px;
     line-height:1.78;
   }
+  .es-page.about-page main > .es-section:nth-of-type(3),
+  .es-page.about-page main > .es-section:nth-of-type(5),
+  .es-page.about-page main > .es-section:nth-of-type(7){background-position:center center}
 }
