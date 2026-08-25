@@ -79,7 +79,7 @@
       </details>
       <a href="${P.markets}">${idx('04',labels.markets)}</a>
       <a href="${P.news}">${idx('05',labels.news)}</a>
-      <a href="${P.contact}">${idx('06',labels.contact)}</a>`;
+      <a class="about-menu-contact" href="${P.contact}">${idx('06',labels.contact)}</a>`;
     nav.setAttribute('dir',lang==='ar'?'rtl':'ltr');
     nav.dataset.etNavigationBuilt='true';
   };
