@@ -21,11 +21,11 @@
   };
 
   const flagMap = {
-    ES: { src: '/assets/flags/es.svg', label: 'Español' },
-    EN: { src: '/assets/flags/en.svg', label: 'English' },
-    FR: { src: '/assets/flags/fr.svg', label: 'Français' },
-    IT: { src: '/assets/flags/it.svg', label: 'Italiano' },
-    AR: { src: '/assets/flags/ar.svg', label: 'العربية' }
+    ES: { src: '/assets/flags/es.svg?v=20260825-2', label: 'Español' },
+    EN: { src: '/assets/flags/en.svg?v=20260825-2', label: 'English' },
+    FR: { src: '/assets/flags/fr.svg?v=20260825-2', label: 'Français' },
+    IT: { src: '/assets/flags/it.svg?v=20260825-2', label: 'Italiano' },
+    AR: { src: '/assets/flags/ar.svg?v=20260825-2', label: 'العربية' }
   };
 
   const installSwitcherGuard = () => {
@@ -37,7 +37,6 @@
       .site-header .et-language-switch > span { display: none !important; }
       .site-header .et-language-switch > .et-language-current { display: inline-flex !important; }
       .site-header .et-language-switch > .et-language-dropdown { display: flex !important; }
-
       .site-header .et-language-current,
       .site-header .et-language-dropdown a { color: #fff; }
       .site-header .et-language-flag {
@@ -53,17 +52,13 @@
         width: 24px;
         height: 16px;
       }
-      .site-header .et-language-current {
-        gap: 7px;
-      }
+      .site-header .et-language-current { gap: 7px; }
       .site-header .et-language-dropdown a {
         gap: 7px;
         justify-content: flex-start;
         padding-inline: 8px;
       }
-      .site-header .et-language-dropdown a .et-language-name {
-        display: none;
-      }
+      .site-header .et-language-dropdown a .et-language-name { display: none; }
       .site-header .et-language-flag[aria-hidden="true"] { pointer-events:none; }
     `;
     doc.head.appendChild(style);
