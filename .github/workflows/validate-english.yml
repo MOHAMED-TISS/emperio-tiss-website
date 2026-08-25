@@ -23,8 +23,6 @@ jobs:
           mkdir -p public/assets/css public/assets/js public/assets/data public/assets/images
           [ -f public/logo.png ] && cp -f public/logo.png public/assets/images/logo.png || true
           [ -f public/products/catalog.json ] && cp -f public/products/catalog.json public/assets/data/catalog.json || true
-          cp -f public/assets/css/global.css public/assets/css/global.css
-          cp -f public/assets/js/global.js public/assets/js/global.js
           declare -A CSS=(
             [style.css]=base.css [luxury-nav.css]=global.css [rtl-fix.css]=global.css
             [fr-home-fix.css]=pages.css [header-fix.css]=seafood-header.css
