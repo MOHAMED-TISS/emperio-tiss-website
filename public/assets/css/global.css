@@ -6,3 +6,60 @@
 *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--et-cream);color:var(--et-ink);font-family:var(--et-sans);overflow-x:hidden}body.menu-is-open,body.nav-open,body.menu-open{overflow:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}button,input,textarea,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button,a,[role="button"]{cursor:pointer}.container{width:min(var(--et-container),calc(100% - 80px));margin-inline:auto}
 
 .nav-overlay{position:fixed;inset:0;z-index:1050;display:block;background:var(--et-green-950);color:var(--et-white);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility .28s ease}.nav-overlay-inner{position:relative;min-height:100%;height:100%;padding-block:8rem 2rem;padding-inline:max(2rem,7vw);display:flex;flex-direction:column;justify-content:space-between}.nav-overlay-links{display:flex;flex-direction:column;justify-content:center;gap:.5rem;min-block-size:0}.nav-overlay-links a{display:flex;align-items:baseline;gap:1rem;color:var(--et-white);font-family:var(--et-serif);font-size:clamp(2.4rem,6vw,5rem);line-height:1}.nav-overlay-links .idx{inline-size:2rem;flex:none;color:var(--et-gold);font-family:var(--et-sans);font-size:.7rem}.nav-overlay-foot{display:flex;justify-content:space-between;gap:2rem;padding-block-start:1.5rem;border-block-start:1px solid rgba(255,255,255,.15)}.nav-overlay-lang{display:flex;gap:.5rem}.nav-overlay-lang .current{color:var(--et-gold)}.nav-overlay-contact{display:flex;flex-direction:column;gap:.25rem;text-align:end;font-size:.7rem;color:rgba(255,255,255,.55)}body.nav-open .nav-overlay,body.menu-open .nav-overlay,.nav-overlay[aria-hidden="false"]{opacity:1;visibility:visible;pointer-events:auto}
+
+/* HOMEPAGE — same editorial body text and contact CTA language as About; headings intentionally excluded */
+.home-page .intro-lead,
+.home-page .intro-copy,
+.home-page .section-intro,
+.home-page .markets-description,
+.home-page .markets-title p,
+.home-page .market-grid article p,
+.home-page .large-copy,
+.home-page .contact-text,
+.home-page .footer-brand p{font-family:var(--et-serif)!important;font-size:18px!important;line-height:1.82!important;letter-spacing:.008em;font-weight:400}
+.home-page .intro-copy,
+.home-page .section-intro,
+.home-page .markets-description,
+.home-page .markets-title p,
+.home-page .market-grid article p,
+.home-page .contact-text{color:var(--home-muted)}
+.home-page .large-copy{color:var(--home-ink)}
+.home-page .hero-description span{font-family:var(--et-serif)!important;font-size:18px!important;line-height:1.82!important;letter-spacing:.008em;font-weight:400;color:rgba(255,255,255,.94)!important}
+
+/* Homepage contact / CTA buttons — premium About treatment */
+.home-page .hero-actions .button,
+.home-page .large-button{position:relative;isolation:isolate;overflow:hidden;min-height:56px!important;padding:0 26px!important;border-radius:999px!important;border:1px solid rgba(201,163,95,.58)!important;font:700 11px/1 var(--et-sans)!important;letter-spacing:.11em!important;text-transform:uppercase!important;transition:transform .42s var(--et-ease),box-shadow .42s var(--et-ease),background .42s var(--et-ease),border-color .42s var(--et-ease),color .42s var(--et-ease)!important;box-shadow:0 10px 28px rgba(0,0,0,.16)}
+.home-page .hero-actions .button::before,
+.home-page .large-button::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,rgba(255,255,255,.0) 20%,rgba(255,255,255,.42) 48%,rgba(255,255,255,0) 70%);transform:translateX(-125%);transition:transform .8s var(--et-ease);pointer-events:none}
+.home-page .hero-actions .button-light,
+.home-page .large-button{background:linear-gradient(135deg,#f8f4ea 0%,#dec487 100%)!important;color:#10251c!important;border-color:#dec487!important}
+.home-page .hero-actions .button-outline{background:rgba(6,29,23,.28)!important;color:#fff!important;border-color:rgba(224,196,135,.76)!important;backdrop-filter:blur(8px)}
+.home-page .hero-actions .button:hover,
+.home-page .large-button:hover{transform:translateY(-4px) scale(1.018);box-shadow:0 18px 42px rgba(0,0,0,.24),0 0 0 1px rgba(224,196,135,.16)}
+.home-page .hero-actions .button:hover::before,
+.home-page .large-button:hover::before{transform:translateX(125%)}
+.home-page .hero-actions .button:active,
+.home-page .large-button:active{transform:translateY(-1px) scale(.99)}
+.home-page .hero-actions .button:focus-visible,
+.home-page .large-button:focus-visible{outline:2px solid #e0c27e;outline-offset:4px}
+.home-page .hero-actions .button > span:last-child,
+.home-page .large-button > span:last-child{transition:transform .35s var(--et-ease)}
+.home-page .hero-actions .button:hover > span:last-child,
+.home-page .large-button:hover > span:last-child{transform:translateX(4px)}
+
+@media(max-width:800px){
+  .home-page .intro-lead,
+  .home-page .intro-copy,
+  .home-page .section-intro,
+  .home-page .markets-description,
+  .home-page .markets-title p,
+  .home-page .market-grid article p,
+  .home-page .large-copy,
+  .home-page .contact-text,
+  .home-page .footer-brand p,
+  .home-page .hero-description span{font-size:16px!important;line-height:1.78!important}
+  .home-page .hero-actions .button,
+  .home-page .large-button{min-height:58px!important;padding-inline:22px!important}
+}
+
+@media(prefers-reduced-motion:reduce){.home-page .hero-actions .button,.home-page .large-button,.home-page .hero-actions .button::before,.home-page .hero-actions .button > span:last-child,.home-page .large-button::before,.home-page .large-button > span:last-child{transition:none!important}}
