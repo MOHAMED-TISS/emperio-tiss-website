@@ -4,10 +4,11 @@ import fs from 'node:fs';
 
 const html = fs.readFileSync('public/products/seafood/fish/index.html', 'utf8');
 
-test('fish page uses the premium editorial layer', () => {
-  assert.match(html, /fish-editorial\.css/);
-  assert.match(html, /fish-editorial-hero/);
-  assert.match(html, /fish-editorial-grid/);
+test('fish page uses the premium editorial visual layer', () => {
+  assert.match(html, /href="\/assets\/css\/fish-editorial\.css/);
+  assert.match(html, /class="page-hero"/);
+  assert.match(html, /class="fish-emblematic"/);
+  assert.match(html, /class="fish-catalog"/);
 });
 
 test('fish page keeps the existing product catalogue hooks', () => {
