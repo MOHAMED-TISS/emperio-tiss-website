@@ -1,47 +1,42 @@
-/* EMPERIO TISS — Fish Editorial / About visual system — NAVY VARIANT */
-:root{--fish-green:#071e35;--fish-green-2:#0d2d4a;--fish-ivory:#f3efe6;--fish-gold:#c7a260;--fish-muted:#69746d;--fish-line:rgba(7,30,53,.16);--fish-white:#f7f3ea;--fish-navy:#071e35;--fish-navy-2:#0d2d4a;--fish-champagne:#c7a260}
+/* EMPERIO TISS — Fish Editorial / About visual system — NAVY + IVORY CONTINUOUS */
+:root{--fish-navy:#071e35;--fish-navy-2:#0d2d4a;--fish-ivory:#f3efe6;--fish-gold:#c7a260;--fish-muted:#69747d;--fish-line:rgba(7,30,53,.16)}
 body.fish-catalog-pilot{background:var(--fish-ivory);color:var(--fish-navy);font-family:"DM Sans",sans-serif}
 body.fish-catalog-pilot .page-hero{min-height:100svh!important;padding:0!important;display:flex!important;align-items:flex-end!important;position:relative!important;overflow:hidden!important;background:var(--fish-navy)!important;color:var(--fish-ivory)!important;isolation:isolate!important}
-/* Approved hero image — Mediterranean fishing harbour at night. */
 body.fish-catalog-pilot .page-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:url("https://static.wixstatic.com/media/846d71_2334947d9e844f089d5f752e28aeeff5~mv2_d_3000_2001_s_2.jpg/v1/fill/w_2400,h_1602,al_c,q_90/846d71_2334947d9e844f089d5f752e28aeeff5~mv2_d_3000_2001_s_2.jpg") center/cover no-repeat!important;transform:scale(1.015)!important;filter:saturate(.82) contrast(1.04)!important}
-/* Neutral readability only — no green tint. */
 body.fish-catalog-pilot .page-hero::before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:linear-gradient(90deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.10) 46%,rgba(0,0,0,.02) 100%),linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.48) 100%)!important}
 body.fish-catalog-pilot .page-hero-inner{position:relative!important;z-index:2!important;width:min(1240px,calc(100% - 64px))!important;margin:0 auto!important;padding:0 0 clamp(72px,10vw,140px)!important}
-body.fish-catalog-pilot .page-hero-inner::before{content:"SEAFOOD / PESCADOS"!important;position:static!important;display:block!important;width:auto!important;height:auto!important;min-height:0!important;margin:0 0 24px!important;padding:0!important;transform:none!important;background:none!important;background-image:none!important;z-index:auto!important;pointer-events:auto!important;color:var(--fish-champagne)!important;font:600 10px/1 "DM Sans",sans-serif!important;letter-spacing:.22em!important;text-transform:uppercase!important}
+body.fish-catalog-pilot .page-hero-inner::before{content:"SEAFOOD / PESCADOS"!important;display:block!important;margin:0 0 24px!important;color:var(--fish-gold)!important;font:600 10px/1 "DM Sans",sans-serif!important;letter-spacing:.22em!important;text-transform:uppercase!important}
 body.fish-catalog-pilot .page-hero h1{max-width:920px!important;margin:0!important;font-family:"Playfair Display",Georgia,serif!important;font-weight:400!important;font-size:clamp(4.6rem,10.5vw,10rem)!important;line-height:.9!important;letter-spacing:-.045em!important;color:var(--fish-ivory)!important}
-body.fish-catalog-pilot .page-hero h1 em{display:inline-block!important;color:var(--fish-champagne)!important;font-style:italic!important;margin-left:clamp(22px,7vw,120px)!important}
+body.fish-catalog-pilot .page-hero h1 em{color:#d8c28f!important;font-style:italic!important;margin-left:clamp(22px,7vw,120px)!important}
 body.fish-catalog-pilot .page-hero .eyebrow{display:none!important}
-body.fish-catalog-pilot .page-hero .lead{max-width:610px!important;margin:34px 0 0 clamp(22px,7vw,120px)!important;color:rgba(243,239,230,.9)!important;font:400 clamp(16px,1.4vw,19px)/1.7 "DM Sans",sans-serif!important;text-shadow:0 1px 18px rgba(0,0,0,.35)!important}
-/* About contact-button rule: rectangular primary, ivory face, navy ink, subtle lift/shadow. */
-body.fish-catalog-pilot .page-hero .hero-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important;padding:0 20px!important;margin:30px 0 0 clamp(22px,7vw,120px)!important;border:1px solid var(--fish-ivory)!important;border-radius:0!important;background:var(--fish-ivory)!important;color:#10251f!important;font:700 10px/1 "DM Sans",sans-serif!important;letter-spacing:.08em!important;text-transform:uppercase!important;text-decoration:none!important;box-shadow:none!important;transition:transform .3s cubic-bezier(.22,.61,.36,1),background .3s cubic-bezier(.22,.61,.36,1),border-color .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s cubic-bezier(.22,.61,.36,1),color .3s cubic-bezier(.22,.61,.36,1)!important}
-body.fish-catalog-pilot .page-hero .hero-cta span{color:var(--fish-navy)!important;font-size:16px!important;line-height:1!important;transition:transform .3s cubic-bezier(.22,.61,.36,1)!important}
-body.fish-catalog-pilot .page-hero .hero-cta:hover{gap:10px!important;transform:translateY(-2px)!important;background:#f8f3e8!important;border-color:#f8f3e8!important;color:#10251f!important;box-shadow:0 10px 26px rgba(7,30,53,.20)!important}
-body.fish-catalog-pilot .page-hero .hero-cta:hover span{color:var(--fish-champagne)!important;transform:translateX(2px)!important}
-body.fish-catalog-pilot .fish-emblematic{background:var(--fish-navy)!important;color:var(--fish-ivory)!important;padding:clamp(90px,12vw,170px) 0!important}
-body.fish-catalog-pilot .fish-emblematic__inner{width:min(1240px,calc(100% - 64px))!important}
-body.fish-catalog-pilot .fish-emblematic__intro h2,body.fish-catalog-pilot .catalog-head h2{font-family:"Playfair Display",Georgia,serif!important;font-weight:400!important}
-body.fish-catalog-pilot .fish-emblematic__intro h2 em,body.fish-catalog-pilot .catalog-head h2 em{color:var(--fish-champagne)!important}
-body.fish-catalog-pilot .fish-emblematic-card{background:linear-gradient(160deg,var(--fish-navy-2),#051526)!important;border-color:rgba(199,162,96,.14)!important;box-shadow:0 18px 55px rgba(0,0,0,.16)!important}
-body.fish-catalog-pilot .fish-emblematic-card__media{background:linear-gradient(145deg,#163b59,#071e35 58%,#041321 100%)!important}
-body.fish-catalog-pilot .fish-emblematic-card__media:hover,.body.fish-catalog-pilot .fish-emblematic-card:hover .fish-emblematic-card__media{background:linear-gradient(145deg,#1a486c,#0b2d4b 58%,#051727 100%)!important}
-body.fish-catalog-pilot .fish-emblematic-card__body{background:linear-gradient(180deg,rgba(7,30,53,.18),rgba(4,19,33,.42))!important}
-body.fish-catalog-pilot .fish-emblematic-card__kicker,body.fish-catalog-pilot .fish-emblematic-card__mark{color:var(--fish-champagne)!important}
-body.fish-catalog-pilot .fish-emblematic-card__meta{border-top-color:rgba(199,162,96,.12)!important}
-body.fish-catalog-pilot .fish-catalog{background:var(--fish-ivory)!important;color:var(--fish-navy)!important;padding:clamp(90px,12vw,160px) 0!important}
-body.fish-catalog-pilot .fish-catalog__inner{width:min(1240px,calc(100% - 64px))!important}
-body.fish-catalog-pilot .catalog-head h2{color:var(--fish-navy)!important}
-body.fish-catalog-pilot .catalog-head>p{color:var(--fish-muted)!important}
-body.fish-catalog-pilot .fish-catalog__toolbar{border-color:var(--fish-line)!important}
-body.fish-catalog-pilot .fish-catalog__search{color:var(--fish-navy)!important;border-color:rgba(7,30,53,.26)!important;font-family:"DM Sans",sans-serif!important}
-body.fish-catalog-pilot .fish-catalog__filter{color:var(--fish-muted)!important;font-family:"DM Sans",sans-serif!important;border-color:rgba(7,30,53,.12)!important}
+body.fish-catalog-pilot .page-hero .lead{max-width:610px!important;margin:34px 0 0 clamp(22px,7vw,120px)!important;color:rgba(243,239,230,.9)!important;font:400 clamp(16px,1.4vw,19px)/1.7 "DM Sans",sans-serif!important}
+body.fish-catalog-pilot .page-hero .hero-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important;padding:0 20px!important;margin:30px 0 0 clamp(22px,7vw,120px)!important;border:1px solid var(--fish-ivory)!important;border-radius:0!important;background:var(--fish-ivory)!important;color:#10251f!important;font:700 10px/1 "DM Sans",sans-serif!important;letter-spacing:.08em!important;text-transform:uppercase!important;text-decoration:none!important;transition:transform .3s cubic-bezier(.22,.61,.36,1),background .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s cubic-bezier(.22,.61,.36,1)!important}
+body.fish-catalog-pilot .page-hero .hero-cta span{color:var(--fish-gold)!important;font-size:16px!important}
+body.fish-catalog-pilot .page-hero .hero-cta:hover{transform:translateY(-2px)!important;background:#f8f3e8!important;border-color:#f8f3e8!important;box-shadow:0 10px 26px rgba(7,30,53,.20)!important}
+/* One continuous ivory body: emblematic + catalogue read as a single page, not two colour blocks. */
+body.fish-catalog-pilot .fish-emblematic{background:linear-gradient(180deg,#f3efe6 0%,#f5f1e8 100%)!important;color:var(--fish-navy)!important;padding:clamp(110px,12vw,160px) 0!important}
+body.fish-catalog-pilot .fish-catalog{background:linear-gradient(180deg,#f5f1e8 0%,#f3efe6 100%)!important;color:var(--fish-navy)!important;padding:clamp(70px,10vw,140px) 0!important}
+body.fish-catalog-pilot .fish-emblematic__inner,body.fish-catalog-pilot .fish-catalog__inner{width:min(1240px,calc(100% - 64px))!important}
+body.fish-catalog-pilot .fish-emblematic__intro h2,body.fish-catalog-pilot .catalog-head h2{font-family:"Playfair Display",Georgia,serif!important;font-weight:400!important;color:var(--fish-navy)!important}
+body.fish-catalog-pilot .fish-emblematic__intro h2 em,body.fish-catalog-pilot .catalog-head h2 em{color:var(--fish-gold)!important}
+body.fish-catalog-pilot .fish-emblematic__intro p,body.fish-catalog-pilot .catalog-head>p{color:var(--fish-muted)!important}
+body.fish-catalog-pilot .fish-catalog__toolbar{border-color:var(--fish-line)!important;background:rgba(255,255,255,.34)!important}
+body.fish-catalog-pilot .fish-catalog__search{color:var(--fish-navy)!important;border-color:rgba(7,30,53,.22)!important;background:rgba(255,255,255,.52)!important;font-family:"DM Sans",sans-serif!important}
+body.fish-catalog-pilot .fish-catalog__filter{color:var(--fish-muted)!important;border-color:rgba(7,30,53,.12)!important;font-family:"DM Sans",sans-serif!important}
 body.fish-catalog-pilot .fish-catalog__filter[aria-pressed="true"]{background:var(--fish-navy)!important;color:var(--fish-ivory)!important;border-color:var(--fish-navy)!important}
 body.fish-catalog-pilot .fish-catalog-card{background:#faf7ef!important;border-color:rgba(7,30,53,.09)!important;color:var(--fish-navy)!important}
-body.fish-catalog-pilot .fish-catalog-card__meta{color:var(--fish-champagne)!important}
+body.fish-catalog-pilot .fish-catalog-card__meta{color:var(--fish-gold)!important}
 body.fish-catalog-pilot .fish-catalog-card__title{font-family:"Playfair Display",Georgia,serif!important;font-weight:500!important;color:var(--fish-navy)!important}
 body.fish-catalog-pilot .fish-catalog-card__link{color:var(--fish-navy)!important}
-body.fish-catalog-pilot .fish-catalog-card__link:hover{color:var(--fish-champagne)!important}
-body.fish-catalog-pilot .fish-scroll-cue{color:rgba(243,239,230,.78)!important}
-body.fish-catalog-pilot .fish-scroll-cue::before{border-color:rgba(199,162,96,.22)!important}
-body.fish-catalog-pilot .fish-scroll-cue i{background:linear-gradient(90deg,transparent,rgba(199,162,96,.72))!important}
-body.fish-catalog-pilot .fish-scroll-cue b{border-color:rgba(199,162,96,.72)!important;color:var(--fish-champagne)!important}
+body.fish-catalog-pilot .fish-catalog-card__link:hover{color:var(--fish-gold)!important}
+/* Navy product cards are accents within the ivory page, not separate sections. */
+body.fish-catalog-pilot .fish-emblematic-card{background:linear-gradient(160deg,var(--fish-navy-2),#051526)!important;border-color:rgba(199,162,96,.14)!important;box-shadow:0 18px 55px rgba(0,0,0,.16)!important}
+body.fish-catalog-pilot .fish-emblematic-card__media{background:linear-gradient(145deg,#163b59,#071e35 58%,#041321 100%)!important}
+body.fish-catalog-pilot .fish-emblematic-card__body{background:linear-gradient(180deg,rgba(7,30,53,.18),rgba(4,19,33,.42))!important}
+body.fish-catalog-pilot .fish-emblematic-card__kicker,body.fish-catalog-pilot .fish-emblematic-card__mark{color:var(--fish-gold)!important}
+body.fish-catalog-pilot .fish-emblematic-card__meta{border-top-color:rgba(199,162,96,.12)!important}
+body.fish-catalog-pilot .fish-scroll-cue{color:var(--fish-navy)!important}
+body.fish-catalog-pilot .fish-scroll-cue::before{border-color:rgba(7,30,53,.14)!important}
+body.fish-catalog-pilot .fish-scroll-cue b{border-color:rgba(199,162,96,.72)!important;color:var(--fish-gold)!important}
+body.fish-catalog-pilot .fish-site-footer{background:#06182a!important;color:rgba(243,239,230,.65)!important}
 @media(max-width:760px){body.fish-catalog-pilot .page-hero-inner,body.fish-catalog-pilot .fish-emblematic__inner,body.fish-catalog-pilot .fish-catalog__inner{width:calc(100% - 32px)!important}body.fish-catalog-pilot .page-hero h1{font-size:clamp(4rem,18vw,6.8rem)!important}body.fish-catalog-pilot .page-hero h1 em,body.fish-catalog-pilot .page-hero .lead,body.fish-catalog-pilot .page-hero .hero-cta{margin-left:24px!important}}
