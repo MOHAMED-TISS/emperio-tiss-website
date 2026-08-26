@@ -1,18 +1,10 @@
 {
-  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "$schema": "https://developers.cloudflare.com/workers/configuration/schema.json",
   "name": "emperio-tiss-website",
   "main": "./src/index.js",
   "compatibility_date": "2026-08-15",
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"
-  },
-  "d1_databases": [
-    {
-      "binding": "NEWS_DB",
-      "database_name": "emperio-news",
-      "database_id": "YOUR_D1_DATABASE_ID",
-      "migrations_dir": "./migrations"
-    }
-  ]
+  }
 }
