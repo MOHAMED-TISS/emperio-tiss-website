@@ -1,29 +1,22 @@
-/* Fish emblematic — softer luxury finish */
-.fish-emblematic{background:radial-gradient(circle at 22% 18%,rgba(39,83,65,.24),transparent 34%),radial-gradient(circle at 82% 72%,rgba(199,163,95,.07),transparent 28%),linear-gradient(180deg,#061b14 0%,#082119 48%,#061811 100%);}
-.fish-emblematic__inner{position:relative}
-.fish-emblematic__intro{position:relative}
-.fish-emblematic__intro::after{content:"";position:absolute;left:0;right:0;bottom:-1.7rem;height:1px;background:linear-gradient(90deg,rgba(232,207,153,.32),rgba(232,207,153,.08),transparent);opacity:.75}
+/* EMPERIO TISS — Emblematic selection — navy / ivory / champagne */
+.fish-emblematic{background:#f3efe6!important;color:#071e35!important}
+.fish-emblematic__inner{position:relative}.fish-emblematic__intro{position:relative}.fish-emblematic__intro::after{content:"";position:absolute;left:0;right:0;bottom:-1.7rem;height:1px;background:linear-gradient(90deg,rgba(199,162,96,.48),rgba(199,162,96,.14),transparent);opacity:1}
 .fish-emblematic__grid{gap:clamp(12px,1.8vw,22px);background:transparent;align-items:stretch}
-.fish-emblematic-card{position:relative;border:1px solid rgba(232,207,153,.10);border-radius:18px;overflow:hidden;background:linear-gradient(160deg,rgba(18,52,40,.92),rgba(6,23,17,.98));box-shadow:0 18px 55px rgba(0,0,0,.14);transition:transform .65s cubic-bezier(.2,.65,.25,1),box-shadow .65s ease,border-color .5s ease}
-.fish-emblematic-card::before{content:"";position:absolute;inset:1px;border-radius:17px;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.045),transparent 34%,rgba(232,207,153,.025) 72%,transparent);z-index:1}
-.fish-emblematic-card:hover{transform:translateY(-7px);border-color:rgba(232,207,153,.26);box-shadow:0 28px 75px rgba(0,0,0,.23)}
-.fish-emblematic-card__media{min-height:300px;background:radial-gradient(circle at 70% 30%,rgba(48,101,78,.28),transparent 36%),linear-gradient(145deg,#173d31 0%,#0a2119 58%,#06120d 100%);transition:background .65s ease;position:relative}
-.fish-emblematic-card:hover .fish-emblematic-card__media{background:radial-gradient(circle at 70% 30%,rgba(70,125,98,.34),transparent 40%),linear-gradient(145deg,#1a4436 0%,#0b251c 58%,#06120d 100%)}
-.fish-emblematic-card__media--image img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.96);transition:transform 1.1s cubic-bezier(.2,.65,.25,1),filter .7s ease;user-select:none;-webkit-user-drag:none}
-.fish-emblematic-card:hover .fish-emblematic-card__media--image img,.fish-emblematic-card__media--image:focus-visible img{transform:scale(1.045);filter:saturate(1) contrast(1)}
-.fish-emblematic-card__counter{position:absolute;right:12px;bottom:12px;z-index:3;min-width:42px;height:24px;padding:0 9px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(4,18,13,.28);backdrop-filter:blur(10px) saturate(120%);-webkit-backdrop-filter:blur(10px) saturate(120%);box-shadow:0 5px 16px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.08);color:rgba(248,246,240,.86);font:500 9px/1 var(--et-sans,"DM Sans",Arial,sans-serif);letter-spacing:.08em;pointer-events:none;transition:opacity .25s ease,background .25s ease,border-color .25s ease}
-.fish-emblematic-card:hover .fish-emblematic-card__counter{background:rgba(4,18,13,.40);border-color:rgba(255,255,255,.25);color:#fff}
-.fish-emblematic-card__image-button{display:block;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;appearance:none;-webkit-appearance:none;touch-action:manipulation}
-.fish-emblematic-card__image-button img{pointer-events:none}
-.fish-emblematic-card__body{position:relative;z-index:2;padding:clamp(1.45rem,2.35vw,2.25rem);background:linear-gradient(180deg,rgba(9,31,23,.18),rgba(3,18,13,.34))}
-.fish-emblematic-card__kicker{color:#e4ca92;opacity:.86}
-.fish-emblematic-card h3{letter-spacing:-.018em}
-.fish-emblematic-card__scientific{color:rgba(248,246,240,.48)}
-.fish-emblematic-card__meta{border-top:1px solid rgba(232,207,153,.09);color:rgba(248,246,240,.62)}
-.fish-emblematic-card__note{color:rgba(248,246,240,.56)}
-.fish-emblematic-card__mark{color:#e8cf99;opacity:.82}
-.fish-emblematic .fish-scroll-cue{margin-top:clamp(3.5rem,6vw,5rem);opacity:.82}
-.fish-emblematic .fish-scroll-cue::before{border-color:rgba(232,207,153,.14);box-shadow:0 10px 35px rgba(0,0,0,.08)}
+.fish-emblematic-card{position:relative;border:1px solid rgba(199,162,96,.24);border-radius:18px;overflow:hidden;background:#071e35!important;box-shadow:0 18px 55px rgba(7,30,53,.16);transition:transform .65s cubic-bezier(.2,.65,.25,1),box-shadow .65s ease,border-color .5s ease;color:#f3efe6}
+.fish-emblematic-card::before{content:"";position:absolute;inset:1px;border-radius:17px;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.05),transparent 34%,rgba(199,162,96,.04) 72%,transparent);z-index:1}
+.fish-emblematic-card:hover{transform:translateY(-7px);border-color:rgba(199,162,96,.52);box-shadow:0 28px 75px rgba(7,30,53,.24)}
+.fish-emblematic-card__media{min-height:300px;background:#0d2d4a!important;position:relative}
+.fish-emblematic-card:hover .fish-emblematic-card__media{background:#123a5b!important}
+.fish-emblematic-card__media--image img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1);transition:transform 1.1s cubic-bezier(.2,.65,.25,1),filter .7s ease;user-select:none;-webkit-user-drag:none}
+.fish-emblematic-card:hover .fish-emblematic-card__media--image img,.fish-emblematic-card__media--image:focus-visible img{transform:scale(1.045);filter:saturate(1) contrast(1.04)}
+.fish-emblematic-card__body{position:relative;z-index:2;padding:clamp(1.45rem,2.35vw,2.25rem);background:#071e35!important;color:#f3efe6}
+.fish-emblematic-card__kicker{display:block;color:#d8c28f!important;opacity:1!important;font:600 10px/1 "DM Sans",sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.fish-emblematic-card h3{margin:.7rem 0 .35rem;color:#f3efe6!important;font-family:"Playfair Display",Georgia,serif;letter-spacing:-.018em;font-weight:500}
+.fish-emblematic-card__scientific{margin:0;color:#d8c28f!important;opacity:1!important;font-family:"Playfair Display",Georgia,serif;font-size:1rem}
+.fish-emblematic-card__meta{border-top:1px solid rgba(199,162,96,.28)!important;color:#f3efe6!important;opacity:.9;padding-top:1rem;margin-top:1rem}
+.fish-emblematic-card__meta span:first-child{color:#d8c28f!important;font-weight:600}.fish-emblematic-card__meta span:last-child{color:#f3efe6!important;opacity:.9}
+.fish-emblematic-card__note{color:#f3efe6!important;opacity:.76!important}.fish-emblematic-card__mark{color:#c7a260!important;opacity:1!important;font-weight:600}
+.fish-emblematic .fish-scroll-cue{margin-top:clamp(3.5rem,6vw,5rem);color:#071e35!important;opacity:1}.fish-emblematic .fish-scroll-cue::before{border-color:rgba(199,162,96,.3);box-shadow:0 10px 35px rgba(7,30,53,.08)}
 @media(max-width:1050px){.fish-emblematic-card{border-radius:16px}.fish-emblematic-card::before{border-radius:15px}}
-@media(max-width:760px){.fish-emblematic__intro::after{bottom:-1.25rem}.fish-emblematic__grid{gap:14px}.fish-emblematic-card{border-radius:16px}.fish-emblematic-card::before{border-radius:15px}.fish-emblematic-card__media{min-height:240px}.fish-emblematic-card__body{padding:1.35rem 1.25rem}.fish-emblematic-card__counter{right:10px;bottom:10px;height:22px;min-width:40px;padding-inline:8px;font-size:8px}}
+@media(max-width:760px){.fish-emblematic__intro::after{bottom:-1.25rem}.fish-emblematic__grid{gap:14px}.fish-emblematic-card{border-radius:16px}.fish-emblematic-card::before{border-radius:15px}.fish-emblematic-card__media{min-height:240px}.fish-emblematic-card__body{padding:1.35rem 1.25rem}.fish-emblematic-card__scientific{font-size:.95rem}}
 @media(prefers-reduced-motion:reduce){.fish-emblematic-card,.fish-emblematic-card__media,.fish-emblematic-card__media--image img{transition:none}.fish-emblematic-card:hover{transform:none}}
