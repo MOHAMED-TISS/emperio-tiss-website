@@ -1,0 +1,7 @@
+(()=>{'use strict';const root=document.querySelector('.news-current');if(!root)return;
+const msg=(form,text,ok=false)=>{const el=form.querySelector('.news-form-status');if(el){el.textContent=text;el.style.color=ok?'#2d5e45':''}};
+root.querySelectorAll('.news-filters button').forEach(btn=>btn.addEventListener('click',()=>{root.querySelectorAll('.news-filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;root.querySelectorAll('.news-card').forEach(card=>{card.hidden=f!=='all'&&card.dataset.topic!==f})}));
+const postForm=(form,url)=>{form.addEventListener('submit',async e=>{e.preventDefault();const button=form.querySelector('button');if(button)button.disabled=true;try{const body=new FormData(form);const r=await fetch(url,{method:'POST',body,headers:{Accept:'application/json'}});const data=await r.json().catch(()=>({}));if(!r.ok||!data.ok)throw new Error(data.error||'Unable to complete request.');msg(form,data.message||'Request received.',true);form.reset()}catch(err){msg(form,err.message||'Unable to complete request.')}finally{if(button)button.disabled=false}})};
+const newsletter=root.querySelector('[data-newsletter-form]');if(newsletter)postForm(newsletter,'/api/newsletter/subscribe');
+const privateForm=root.querySelector('[data-private-form]');if(privateForm)postForm(privateForm,'/api/private/request-access');
+})();
