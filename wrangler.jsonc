@@ -6,5 +6,13 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "NEWS_DB",
+      "database_name": "emperio-news",
+      "database_id": "YOUR_D1_DATABASE_ID",
+      "migrations_dir": "./migrations"
+    }
+  ]
 }
