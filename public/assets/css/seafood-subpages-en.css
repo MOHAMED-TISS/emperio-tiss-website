@@ -1,7 +1,8 @@
 /* EMPERIO TISS — Seafood subpages — shared legacy layer
    Fish editorial page is controlled by fish-editorial.css. */
 .seafood-subpage{--marine:#071e35;--marine-2:#0d2d4a;--marine-soft:#f3efe6;--marine-ink:#071e35;--marine-gold:#c7a260;background:var(--marine-soft);color:var(--marine-ink);min-height:100vh}
-.seafood-subpage .page-hero{min-height:100svh;display:flex;align-items:flex-end;padding:0;background:var(--marine)!important;color:#f3efe6}
+/* Legacy hero background intentionally neutral: fish-editorial.css owns the photograph, focus treatment and hero geometry. */
+.seafood-subpage .page-hero{min-height:100svh;display:flex;align-items:flex-end;padding:0;background:transparent!important;color:#f3efe6}
 .seafood-subpage .page-hero-inner{width:min(1240px,calc(100% - 64px));margin:auto}
 .seafood-subpage .eyebrow{font:600 11px/1 var(--et-sans);letter-spacing:.18em;color:var(--marine-gold);text-transform:uppercase}
 .seafood-subpage h1{color:#f3efe6}.seafood-subpage h1 em{color:#d8c28f}.seafood-subpage .lead{color:rgba(243,239,230,.88)}
