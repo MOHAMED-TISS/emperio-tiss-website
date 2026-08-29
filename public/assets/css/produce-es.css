@@ -1,4 +1,4 @@
-/* EMPERIO TISS — Produce catalogues demo. Two distinct editorial gestures: fruit = harvest/origin; vegetables = structured selection. */
+/* EMPERIO TISS — Produce catalogues. Fruit = harvest/origin; vegetables = structured selection. Variety metadata is intentionally secondary to the product name. */
 .produce-page{background:#F4F0E6;color:#0B1E33;--produce-accent:#7A8B5C;--produce-navy:#0B1E33;--produce-ivory:#F4F0E6;--produce-gold:#C9A24B}
 .produce-page .page-hero{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:end;padding:150px 0 82px;background:var(--produce-navy);color:#fff;overflow:hidden}
 .produce-page .page-hero::before{content:"";position:absolute;inset:10% 0 auto 58%;height:1px;background:rgba(201,162,75,.7);transform:rotate(-28deg);transform-origin:left center;opacity:.8}
@@ -26,6 +26,8 @@
 .produce-page .product-card__group,.produce-page .product-card__meta{color:var(--produce-accent);font-weight:600}
 .produce-page .product-card__title{color:var(--produce-navy);font-size:clamp(1.55rem,2.2vw,2.3rem)}
 .produce-page .product-card__description{color:#69716c;font-family:var(--et-serif);font-size:.88rem;line-height:1.7}
+.produce-page .product-card__varieties{margin:0;color:#59625d;font:500 .72rem/1.65 var(--et-sans);letter-spacing:.025em}
+.produce-page .product-card__varieties span{margin-right:.45rem;color:var(--produce-accent);font-size:.58rem;font-weight:700;letter-spacing:.14em}
 .produce-page .product-card__link{color:var(--produce-navy);transition:color .35s var(--et-ease),transform .35s var(--et-ease)}
 .produce-page .product-card__link:hover{color:var(--produce-gold);transform:translateX(3px)}
 .produce-page .product-card__image-button{position:relative;width:100%;height:100%;padding:0;border:0;background:transparent;display:block;overflow:hidden}
@@ -35,12 +37,10 @@
 .produce-page .footer-band-inner{width:min(1180px,calc(100% - 48px));margin:auto;display:flex;justify-content:space-between;gap:24px}
 .produce-page .footer-band img{width:auto!important;height:auto!important;max-width:110px!important;max-height:42px!important;object-fit:contain!important}
 .produce-page .footer-band a{color:#dec487}
-/* FRUIT — quieter harvest composition */
 .produce-fruits-page .page-hero::before{top:68%;left:45%;width:70%;background:rgba(122,139,92,.8);transform:rotate(-12deg)}
 .produce-fruits-page .page-hero::after{content:"HARVEST";right:-2vw;top:38%;font:500 clamp(4rem,10vw,9rem)/.8 var(--et-serif);letter-spacing:-.04em;writing-mode:vertical-rl;color:rgba(255,255,255,.035)}
 .produce-fruits-page .catalog-section{background:#f7f3e9}
 .produce-fruits-page .catalog-head h2 em{color:var(--produce-accent)}
-/* VEGETABLES — more architectural selection system */
 .produce-vegetables-page .page-hero::before{top:31%;left:52%;width:55%;background:rgba(122,139,92,.75);transform:rotate(24deg)}
 .produce-vegetables-page .page-hero::after{content:"02";top:18%;right:8vw}
 .produce-vegetables-page .catalog-section{background:#F4F0E6}
