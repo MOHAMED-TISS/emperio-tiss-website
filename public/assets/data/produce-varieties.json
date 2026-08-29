@@ -1,0 +1,25 @@
+{
+  "schemaVersion":"1.0",
+  "products":[
+    {"id":"clementina","varieties":["Clemenules","Oronules","Marisol"]},
+    {"id":"mandarina","commercialName":"Mandarina","scientificName":"Citrus reticulata","subcategory":"citrus","varieties":["Nadorcott","Orri","Tango","Nova"],"origin":["España / Marruecos según campaña"]},
+    {"id":"orange","commercialName":"Naranja","scientificName":"Citrus sinensis","subcategory":"citrus","varieties":["Navelina","Lane Late","Navel Late","Valencia Late"],"origin":["España / Marruecos según campaña"]},
+    {"id":"mango","varieties":["Kent","Keitt","Osteen","Tommy Atkins"],"origin":["España / Marruecos / según temporada"]},
+    {"id":"pineapple","commercialName":"Piña","scientificName":"Ananas comosus","subcategory":"exotics","varieties":["MD2","Sweet Cayenne"],"origin":["Según temporada y programa de suministro"]},
+    {"id":"avocado","commercialName":"Aguacate","scientificName":"Persea americana","subcategory":"exotics","varieties":["Hass","Fuerte","Reed"],"origin":["España / Marruecos / según programa"]},
+    {"id":"dates","commercialName":"Dátiles","scientificName":"Phoenix dactylifera","subcategory":"exotics","varieties":["Medjool","Deglet Nour"],"origin":["Marruecos / según programa de suministro"]},
+    {"id":"melon","commercialName":"Melón","scientificName":"Cucumis melo","subcategory":"core-produce","varieties":["Piel de Sapo","Galia","Cantalupo","Charentais"],"origin":["España / Marruecos según temporada"]},
+    {"id":"watermelon","commercialName":"Sandía","scientificName":"Citrullus lanatus","subcategory":"core-produce","varieties":["Sin semillas","Con semillas","Mini"],"origin":["España / Marruecos según temporada"]},
+    {"id":"apple","varieties":["Gala","Golden","Granny Smith","Fuji"]},
+    {"id":"tomato","varieties":["Rama","Pera","Cherry","Beef","Redondo"]},
+    {"id":"pepper","varieties":["California","Italiano","Lamuyo","Palermo"]},
+    {"id":"cucumber","varieties":["Almería","Español","Francés"]},
+    {"id":"zucchini","varieties":["Verde","Mini"]},
+    {"id":"aubergine","varieties":["Negra","Rayada","Mini"]},
+    {"id":"green-bean","varieties":["Perona","Bobby","Plana"]},
+    {"id":"broccoli","varieties":["Convencional","Calabrese"]},
+    {"id":"cauliflower","varieties":["Blanca","Mini"]},
+    {"id":"potato","varieties":["Agria","Monalisa","Spunta","Red Pontiac"]},
+    {"id":"garlic","varieties":["Morado","Blanco","Spring"]}
+  ]
+}
