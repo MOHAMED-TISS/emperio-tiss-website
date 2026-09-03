@@ -1,0 +1,6 @@
+SAFE BACKUP MARKER
+
+The complete repository state immediately before removing the GitHub Actions Cloudflare deployment workflow is preserved in branch:
+backup/pre-catalogue-availability-2026-09-04
+
+This marker belongs only to the temporary safety snapshot and is not part of the website runtime.
