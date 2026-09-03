@@ -71,6 +71,7 @@ jobs:
           names.update({p.name:f'/assets/js/{p.name}' for p in js.glob('*.js')})
           for p in root.rglob('*.html'):
             s=p.read_text(encoding='utf-8')
+            # Normalize legacy asset references, including cache-busting query strings.
             for name,target in names.items():
               s=re.sub(r'((?:href|src)=["\'])[^"\']*'+re.escape(name)+r'(?:\?[^"\']*)?(?=["\'])',r'\1'+target,s,flags=re.I)
             s=re.sub(r'((?:href|src)=["\'])[^"\']*header-final\.css(?:\?[^"\']*)?(["\'])',r'\1/assets/css/header-final.css?v=20260824-3\2',s,flags=re.I)
