@@ -45,8 +45,8 @@
 .produce-vegetables-page .page-hero::before{top:68%;left:45%;width:70%;background:rgba(122,139,92,.8);transform:rotate(-12deg)}
 .produce-vegetables-page .page-hero::after{content:"HARVEST";right:-2vw;top:38%;font:500 clamp(4rem,10vw,9rem)/.8 var(--et-serif);letter-spacing:-.04em;writing-mode:vertical-rl;color:rgba(255,255,255,.035)}
 .produce-vegetables-page .catalog-section{background:#f7f3e9}
-/* Valencia huerta hero — open sky, green field, local Mediterranean origin. */
-.produce-vegetables-page .page-hero{background-image:linear-gradient(180deg,rgba(11,30,51,.36) 0%,rgba(11,30,51,.22) 42%,rgba(11,30,51,.76) 100%),url("https://images.unsplash.com/photo-1760740516377-264362f7ba57?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=2400");background-size:cover;background-position:center 56%}
+/* Selected vegetables hero — Pexels photo 33319743. */
+.produce-vegetables-page .page-hero{background-image:linear-gradient(180deg,rgba(11,30,51,.36) 0%,rgba(11,30,51,.22) 42%,rgba(11,30,51,.76) 100%),url("https://images.pexels.com/photos/33319743/pexels-photo-33319743/free-photo-of-composicion-con-pimienta-ajo-eneldo-verde-y-especias.jpeg?auto=compress&dpr=1&h=750&w=1260");background-size:cover;background-position:center 56%}
 .produce-vegetables-page .catalog-head{grid-template-columns:minmax(0,1fr) minmax(280px,.6fr)}
 .produce-vegetables-page .product-catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr));background:rgba(11,30,51,.13);gap:1px}
 .produce-vegetables-page .product-card{border:0;background:#f8f6f0}
