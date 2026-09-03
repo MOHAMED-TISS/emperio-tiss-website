@@ -90,6 +90,21 @@ jobs:
           PY
 
           find public -type f \( -name '*.css' -o -name '*.js' \) -not -path 'public/assets/*' -delete
+
+          # Remove legacy asset filenames that may already exist inside assets.
+          # They have canonical replacements defined in the mappings above.
+          legacy_assets=(
+            'luxury-nav.css' 'luxury-nav.js' 'international-nav.js' 'rtl-fix.css'
+            'fr-home-fix.css' 'products-header-fix.css' 'seafood-overrides.css'
+            'product-card.css' 'product-card.js' 'international-product-card.css'
+            'international-product-card.js' 'products-catalog.js'
+            'fruits-vegetables-motion.css' 'fruits-vegetables-motion.js'
+            'seasonal-calendar.css' 'seasonal-calendar.js'
+          )
+          for asset in "${legacy_assets[@]}"; do
+            rm -f "public/assets/css/$asset" "public/assets/js/$asset"
+          done
+
           find public -type d -empty -delete
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
