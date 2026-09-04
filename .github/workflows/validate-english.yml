@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: canonical-assets-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   migrate:
     if: "github.event_name == 'push' && !startsWith(github.event.head_commit.message, '[cleanup]')"
@@ -20,6 +24,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
           mkdir -p public/assets/css public/assets/js public/assets/data public/assets/images
           [ -f public/logo.png ] && cp -f public/logo.png public/assets/images/logo.png || true
           [ -f public/products/catalog.json ] && cp -f public/products/catalog.json public/assets/data/catalog.json || true
