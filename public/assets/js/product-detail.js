@@ -85,12 +85,28 @@
     return data;
   }
 
+  async function enrichProduceProduct(product){
+    if(source || product?.subcategory !== 'vegetables') return product;
+    try {
+      const response = await fetch('/assets/data/produce-varieties.json',{cache:'no-cache'});
+      if(!response.ok) return product;
+      const extension = await response.json();
+      const addition = Array.isArray(extension.products) ? extension.products.find(item=>item.id===product.id) : null;
+      if(addition?.varieties?.length) product.varieties = addition.varieties;
+      return product;
+    } catch {
+      return product;
+    }
+  }
+
   async function render(){
     const id = params.get('id');
     if(!id){ root.innerHTML=`<div class="product-detail-error"><h1>${esc(t.missing)}</h1><a href="${backHref}">${esc(t.back)}</a></div>`; return; }
     const data = await getCatalog();
     const product = data.products.find(item=>item.id===id && (source ? true : item.status==='active'));
     if(!product){ root.innerHTML=`<div class="product-detail-error"><h1>${esc(t.unavailable)}</h1><a href="${backHref}">${esc(t.back)}</a></div>`; return; }
+
+    await enrichProduceProduct(product);
 
     if(lang==='en' && source){
       product.commercialName = enNames[product.id] || product.commercialName;
