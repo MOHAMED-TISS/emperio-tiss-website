@@ -1,4 +1,4 @@
-.produce-fruits-page .fruit-special-catalog{padding:clamp(4.5rem,8vw,8rem) 0 7rem;background:#f5f1e7;color:#142b3a;overflow:hidden}
+.produce-fruits-page .fruit-special-catalog{padding:clamp(4.5rem,8vw,8rem) 0 7rem;background:#f9f6f0;color:#142b3a;overflow:hidden}
 .produce-fruits-page .fruit-special-shell{width:min(1180px,calc(100% - 48px));margin:0 auto}
 .produce-fruits-page .fruit-special-head{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.7fr);gap:clamp(2rem,6vw,6rem);align-items:end;padding-bottom:clamp(3rem,6vw,5rem);border-bottom:1px solid rgba(20,43,58,.14)}
 .produce-fruits-page .fruit-special-kicker{display:block;font:600 .61rem/1 'DM Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#a57a35}
@@ -9,24 +9,58 @@
 .produce-fruits-page .citrus-family-tab{position:relative;padding:1.35rem 1rem 1.2rem;border:0;border-right:1px solid rgba(20,43,58,.09);background:transparent;text-align:left;cursor:pointer;color:#607077;transition:color .35s ease,background .35s ease}
 .produce-fruits-page .citrus-family-tab:last-child{border-right:0}
 .produce-fruits-page .citrus-family-tab::after{content:'';position:absolute;left:1rem;right:1rem;bottom:-1px;height:2px;background:#bd924d;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.22,.8,.22,1)}
-.produce-fruits-page .citrus-family-tab.is-active{background:rgba(255,255,255,.25);color:#142b3a}
+.produce-fruits-page .citrus-family-tab.is-active{background:rgba(255,255,255,.4);color:#142b3a}
 .produce-fruits-page .citrus-family-tab.is-active::after{transform:scaleX(1)}
 .produce-fruits-page .citrus-family-tab .num{display:block;font:600 .53rem/1 'DM Sans',sans-serif;letter-spacing:.16em;color:#bd924d;margin-bottom:.52rem}
 .produce-fruits-page .citrus-family-tab strong{display:block;font:400 clamp(1.15rem,1.8vw,1.5rem)/1.05 'Playfair Display',Georgia,serif}
 .produce-fruits-page .citrus-family-tab small{display:block;margin-top:.35rem;font:500 .55rem/1.35 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#7a8588}
-.produce-fruits-page .citrus-orchard{position:relative;display:grid;grid-template-columns:1.05fr 1.4fr;gap:clamp(2.5rem,6vw,6rem);padding:clamp(3rem,6vw,5rem) 0 2rem}
-.produce-fruits-page .citrus-botanical{position:relative;min-height:590px;border:1px solid rgba(20,43,58,.10);background:radial-gradient(circle at 50% 34%,rgba(255,255,255,.86),rgba(239,232,215,.66) 54%,rgba(218,208,188,.42));overflow:hidden;isolation:isolate;box-shadow:0 28px 70px rgba(20,43,58,.08),inset 0 1px 0 rgba(255,255,255,.72);perspective:1200px}
-.produce-fruits-page .citrus-botanical::before{content:'';position:absolute;inset:8% 7%;border:1px solid rgba(165,122,53,.13);border-radius:48% 52% 50% 50%;transform:rotate(-5deg);pointer-events:none}
-.produce-fruits-page .citrus-botanical::after{content:'CITRUS / ORCHARD';position:absolute;right:1.1rem;bottom:1rem;font:600 .48rem/1 'DM Sans',sans-serif;letter-spacing:.18em;color:rgba(20,43,58,.42);writing-mode:vertical-rl;transform:rotate(180deg)}
-.produce-fruits-page .citrus-3d{position:absolute;inset:2% 3% 11%;width:94%;height:87%;display:block;filter:drop-shadow(0 24px 26px rgba(31,54,47,.12));opacity:0;transform:scale(.965) translateY(14px);transition:opacity 1.15s ease,transform 1.15s cubic-bezier(.2,.75,.2,1);touch-action:none;cursor:grab}
-.produce-fruits-page .citrus-3d:active{cursor:grabbing}
-.produce-fruits-page .citrus-botanical.is-3d-visible .citrus-3d{opacity:1;transform:none}
-.produce-fruits-page .citrus-botanical.is-3d-fallback .citrus-3d{opacity:1}
-.produce-fruits-page .citrus-sign{position:absolute;left:1.2rem;top:1.2rem;padding:.42rem .55rem;border:1px solid rgba(165,122,53,.35);font:600 .48rem/1 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8f672d;z-index:3}
-.produce-fruits-page .citrus-selection{position:absolute;left:9%;right:9%;bottom:4.2%;display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;z-index:4;padding-top:.3rem}
-.produce-fruits-page .citrus-selection-chip{display:flex;align-items:center;gap:.45rem;padding:.52rem .55rem;border-top:1px solid rgba(20,43,58,.13);color:#4e5d61;font:500 .57rem/1.1 'DM Sans',sans-serif;cursor:pointer;transition:color .25s ease,border-color .25s ease,transform .25s ease;background:rgba(245,241,231,.36);backdrop-filter:blur(7px)}
-.produce-fruits-page .citrus-selection-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:#bd924d;flex:none;box-shadow:0 0 0 4px rgba(189,146,77,.09)}
-.produce-fruits-page .citrus-selection-chip:hover,.produce-fruits-page .citrus-selection-chip.is-active{color:#142b3a;border-color:#bd924d;transform:translateX(3px);background:rgba(255,255,255,.58)}
+
+.produce-fruits-page .citrus-orchard{position:relative;display:grid;grid-template-columns:1.04fr 1.42fr;gap:clamp(2.5rem,6vw,6rem);padding:clamp(3rem,6vw,5rem) 0 2rem}
+.produce-fruits-page .citrus-botanical{position:relative;min-height:640px;overflow:visible}
+.produce-fruits-page .citrus-tree-scene{position:relative;min-height:640px;overflow:hidden;background:#dae2d7;isolation:isolate;box-shadow:0 28px 70px rgba(20,43,58,.13)}
+.produce-fruits-page .citrus-tree-photo{position:absolute;inset:0;z-index:0}
+.produce-fruits-page .citrus-tree-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:58% 53%;transform:scale(1.07);filter:saturate(.9) contrast(.95) brightness(1.04);transition:transform 1.1s cubic-bezier(.2,.78,.2,1),filter .55s ease}
+.produce-fruits-page .citrus-tree-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(249,246,240,.12),rgba(10,30,22,.12)),linear-gradient(90deg,rgba(249,246,240,.2),rgba(249,246,240,0) 34%,rgba(8,25,20,.12));pointer-events:none}
+.produce-fruits-page .citrus-tree-ambient{position:absolute;inset:0;z-index:2;background:radial-gradient(circle at 52% 42%,rgba(255,255,255,0) 0,rgba(11,31,24,.22) 100%);mix-blend-mode:multiply;opacity:.44;pointer-events:none}
+.produce-fruits-page .citrus-tree-title{position:absolute;left:1.2rem;top:1.15rem;z-index:7;display:grid;gap:.36rem;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.25)}
+.produce-fruits-page .citrus-tree-title span{font:600 .46rem/1 'DM Sans',sans-serif;letter-spacing:.18em}
+.produce-fruits-page .citrus-tree-title strong{font:400 1.05rem/1 'Playfair Display',Georgia,serif}
+.produce-fruits-page .citrus-tree-hint{position:absolute;right:1.1rem;top:1.1rem;z-index:7;padding:.44rem .55rem;border:1px solid rgba(255,255,255,.52);background:rgba(17,40,31,.18);backdrop-filter:blur(8px);color:#fff;font:600 .43rem/1 'DM Sans',sans-serif;letter-spacing:.14em}
+.produce-fruits-page .citrus-tree-focus{position:absolute;inset:0;z-index:3;background:rgba(9,27,21,.48);opacity:0;pointer-events:none;transition:opacity .42s ease}
+.produce-fruits-page .citrus-tree-scene.is-focused .citrus-tree-focus{opacity:1}
+.produce-fruits-page .citrus-tree-scene.is-focused .citrus-tree-photo img{transform:scale(1.1);filter:saturate(.62) contrast(.91) brightness(.92) blur(.7px)}
+
+.produce-fruits-page .citrus-hotspot{position:absolute;z-index:10;width:54px;height:54px;margin:0;padding:0;border:0;background:transparent;cursor:pointer;outline:none}
+.produce-fruits-page .citrus-hotspot--top{top:18%;left:54%}
+.produce-fruits-page .citrus-hotspot--left{top:48%;left:15%}
+.produce-fruits-page .citrus-hotspot--right{top:44%;right:15%}
+.produce-fruits-page .citrus-hotspot-pulse{position:absolute;inset:0;border:1px solid rgba(255,255,255,.78);border-radius:50%;animation:citrusTreePulse 2.35s ease-out infinite}
+.produce-fruits-page .citrus-hotspot-core{position:absolute;left:13px;top:13px;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff 0,#ffd28e 18%,#f27405 52%,#ce5800 100%);border:3px solid rgba(255,255,255,.92);box-shadow:0 7px 23px rgba(0,0,0,.23);transition:transform .28s ease,box-shadow .28s ease}
+.produce-fruits-page .citrus-hotspot-label{position:absolute;top:59px;left:50%;transform:translateX(-50%);padding:.34rem .46rem;white-space:nowrap;border:1px solid rgba(255,255,255,.5);background:rgba(13,37,28,.3);backdrop-filter:blur(8px);color:#fff;font:600 .45rem/1 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 7px rgba(0,0,0,.25);transition:opacity .25s ease,transform .25s ease}
+.produce-fruits-page .citrus-hotspot:hover .citrus-hotspot-core,.produce-fruits-page .citrus-hotspot:focus-visible .citrus-hotspot-core,.produce-fruits-page .citrus-hotspot.is-active .citrus-hotspot-core{transform:scale(1.18);box-shadow:0 0 0 8px rgba(242,116,5,.16),0 11px 28px rgba(0,0,0,.28)}
+.produce-fruits-page .citrus-hotspot:hover .citrus-hotspot-label,.produce-fruits-page .citrus-hotspot:focus-visible .citrus-hotspot-label,.produce-fruits-page .citrus-hotspot.is-active .citrus-hotspot-label{transform:translate(-50%,2px);opacity:1}
+
+.produce-fruits-page .citrus-product-popover{position:absolute;left:34px;top:34px;width:min(292px,29vw);padding:1.15rem 1.1rem 1rem;display:grid;gap:.58rem;text-align:left;background:rgba(255,255,255,.97);border:1px solid rgba(20,43,58,.12);box-shadow:0 26px 64px rgba(12,30,29,.24);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#142b3a;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px) scale(.97);transition:opacity .28s ease,transform .36s cubic-bezier(.22,.8,.22,1),visibility .28s ease}
+.produce-fruits-page .citrus-hotspot--left .citrus-product-popover{left:38px;top:-27px}
+.produce-fruits-page .citrus-hotspot--right .citrus-product-popover{left:auto;right:38px;top:-27px}
+.produce-fruits-page .citrus-hotspot--top .citrus-product-popover{left:34px;top:38px}
+.produce-fruits-page .citrus-hotspot:hover .citrus-product-popover,.produce-fruits-page .citrus-hotspot:focus-visible .citrus-product-popover,.produce-fruits-page .citrus-hotspot.is-active .citrus-product-popover{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+.produce-fruits-page .citrus-popover-kicker{font:600 .44rem/1 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a77c39}
+.produce-fruits-page .citrus-product-popover>strong{font:400 1.62rem/1.02 'Playfair Display',Georgia,serif}
+.produce-fruits-page .citrus-popover-copy{font:400 .66rem/1.55 'DM Sans',sans-serif;color:#657277}
+.produce-fruits-page .citrus-popover-price{display:flex;align-items:baseline;gap:.4rem}
+.produce-fruits-page .citrus-popover-price b{font:700 1.14rem/1 'DM Sans',sans-serif}
+.produce-fruits-page .citrus-popover-price small{font:500 .5rem/1 'DM Sans',sans-serif;color:#788487}
+.produce-fruits-page .citrus-cart-button{display:flex;align-items:center;justify-content:center;width:100%;padding:.68rem .8rem;margin-top:.08rem;background:#f27405;color:#fff;font:700 .52rem/1 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.produce-fruits-page .citrus-cart-button:hover{background:#d96300;transform:translateY(-2px)}
+.produce-fruits-page .citrus-cart-button.is-added{background:#173447}
+.produce-fruits-page .citrus-tree-footer{position:absolute;left:1.1rem;right:1.1rem;bottom:1rem;z-index:7;display:flex;justify-content:space-between;color:rgba(255,255,255,.88);font:600 .43rem/1 'DM Sans',sans-serif;letter-spacing:.17em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.32)}
+
+.produce-fruits-page .citrus-selection{position:absolute;left:5%;right:5%;bottom:1.1rem;z-index:8;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem;padding:0 .1rem}
+.produce-fruits-page .citrus-selection-chip{display:flex;align-items:center;gap:.4rem;min-height:31px;padding:.46rem .5rem;border:1px solid rgba(255,255,255,.44);background:rgba(249,246,240,.2);backdrop-filter:blur(9px);color:#fff;text-align:left;font:600 .49rem/1.12 'DM Sans',sans-serif;cursor:pointer;transition:background .23s ease,border-color .23s ease,transform .23s ease,color .23s ease}
+.produce-fruits-page .citrus-selection-chip::before{content:'';width:6px;height:6px;flex:none;border-radius:50%;background:#f2c17c;box-shadow:0 0 0 4px rgba(242,193,124,.14)}
+.produce-fruits-page .citrus-selection-chip:hover,.produce-fruits-page .citrus-selection-chip.is-active{background:rgba(255,255,255,.82);border-color:#fff;color:#142b3a;transform:translateY(-2px)}
+
 .produce-fruits-page .citrus-detail{display:grid;align-content:start;gap:1.3rem}
 .produce-fruits-page .citrus-detail-head{display:flex;justify-content:space-between;gap:2rem;align-items:flex-start}
 .produce-fruits-page .citrus-detail-index{font:600 .51rem/1 'DM Sans',sans-serif;letter-spacing:.17em;color:#bd924d}
@@ -36,17 +70,16 @@
 .produce-fruits-page .citrus-status{white-space:nowrap;padding:.42rem .58rem;border:1px solid rgba(67,94,75,.22);color:#506652;font:600 .49rem/1 'DM Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase}
 .produce-fruits-page .citrus-detail-copy{margin:0;max-width:46rem;color:#5e6c70;font:400 .78rem/1.7 'DM Sans',sans-serif}
 .produce-fruits-page .citrus-technical{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(20,43,58,.13);border-left:1px solid rgba(20,43,58,.13);margin-top:.5rem}
-.produce-fruits-page .citrus-tech-item{min-height:90px;padding:1rem;border-right:1px solid rgba(20,43,58,.13);border-bottom:1px solid rgba(20,43,58,.13);background:rgba(255,255,255,.17)}
+.produce-fruits-page .citrus-tech-item{min-height:90px;padding:1rem;border-right:1px solid rgba(20,43,58,.13);border-bottom:1px solid rgba(20,43,58,.13);background:rgba(255,255,255,.42)}
 .produce-fruits-page .citrus-tech-item label{display:block;margin-bottom:.45rem;font:600 .48rem/1 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a77c39}
 .produce-fruits-page .citrus-tech-item span{display:block;color:#263d47;font:500 .7rem/1.45 'DM Sans',sans-serif}
-.produce-fruits-page .citrus-campaign{padding:1.1rem 1.2rem;border:1px solid rgba(20,43,58,.13);background:rgba(255,255,255,.2)}
+.produce-fruits-page .citrus-campaign{padding:1.1rem 1.2rem;border:1px solid rgba(20,43,58,.13);background:rgba(255,255,255,.42)}
 .produce-fruits-page .citrus-campaign-head{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:.9rem}
 .produce-fruits-page .citrus-campaign-head span{font:600 .49rem/1 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a77c39}
 .produce-fruits-page .citrus-campaign-head strong{font:500 .61rem/1 'DM Sans',sans-serif;color:#536368}
 .produce-fruits-page .citrus-timeline{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
-.produce-fruits-page .citrus-month{min-height:30px;display:grid;place-items:center;border:1px solid rgba(20,43,58,.08);font:600 .42rem/1 'DM Sans',sans-serif;color:#839096;background:rgba(20,43,58,.025);transition:transform .25s ease,background .25s ease,color .25s ease}
+.produce-fruits-page .citrus-month{min-height:30px;display:grid;place-items:center;border:1px solid rgba(20,43,58,.08);font:600 .42rem/1 'DM Sans',sans-serif;color:#839096;background:rgba(20,43,58,.025)}
 .produce-fruits-page .citrus-month.is-active{background:rgba(189,146,77,.18);border-color:rgba(189,146,77,.4);color:#795f30}
-.produce-fruits-page .citrus-month:hover{transform:translateY(-2px)}
 .produce-fruits-page .citrus-actions{display:flex;align-items:center;gap:1rem;margin-top:.5rem}
 .produce-fruits-page .citrus-actions a{display:inline-flex;align-items:center;gap:.55rem;padding:.82rem 1rem;background:#173447;color:#f4efe5;text-decoration:none;font:600 .58rem/1 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;transition:transform .25s ease,background .25s ease}
 .produce-fruits-page .citrus-actions a:hover{transform:translateY(-2px);background:#21485f}
@@ -56,11 +89,14 @@
 .produce-fruits-page .fruit-other-head span{font:600 .52rem/1 'DM Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#a77c39}
 .produce-fruits-page .fruit-other-head h3{margin:.4rem 0 0;font:400 clamp(1.9rem,3vw,3rem)/1 'Playfair Display',Georgia,serif}
 .produce-fruits-page .fruit-other-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
-.produce-fruits-page .fruit-other-card{position:relative;padding:1.25rem 1.2rem 1.35rem;border:1px solid rgba(20,43,58,.12);background:rgba(255,255,255,.16);transition:transform .25s ease,background .25s ease,border-color .25s ease}
-.produce-fruits-page .fruit-other-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.34);border-color:rgba(189,146,77,.38)}
+.produce-fruits-page .fruit-other-card{position:relative;padding:1.25rem 1.2rem 1.35rem;border:1px solid rgba(20,43,58,.12);background:rgba(255,255,255,.4);transition:transform .25s ease,background .25s ease,border-color .25s ease}
+.produce-fruits-page .fruit-other-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.72);border-color:rgba(189,146,77,.38)}
 .produce-fruits-page .fruit-other-card .index{font:600 .47rem/1 'DM Sans',sans-serif;letter-spacing:.15em;color:#bd924d}
 .produce-fruits-page .fruit-other-card h4{margin:.45rem 0 .5rem;font:400 1.34rem/1.05 'Playfair Display',Georgia,serif}
 .produce-fruits-page .fruit-other-card p{margin:0;color:#6e7b80;font:400 .62rem/1.55 'DM Sans',sans-serif}
-@media(max-width:980px){.produce-fruits-page .fruit-special-head{grid-template-columns:1fr}.produce-fruits-page .citrus-orchard{grid-template-columns:1fr}.produce-fruits-page .citrus-botanical{min-height:560px}.produce-fruits-page .fruit-other-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:640px){.produce-fruits-page .fruit-special-shell{width:min(100% - 28px,560px)}.produce-fruits-page .fruit-special-catalog{padding-block:3.25rem 4.5rem}.produce-fruits-page .fruit-special-head{gap:1.35rem}.produce-fruits-page .fruit-special-head h2{font-size:clamp(3rem,15vw,5rem)}.produce-fruits-page .citrus-family-switcher{grid-template-columns:1fr}.produce-fruits-page .citrus-family-tab{border-right:0;border-bottom:1px solid rgba(20,43,58,.08)}.produce-fruits-page .citrus-family-tab:last-child{border-bottom:0}.produce-fruits-page .citrus-family-tab::after{left:0;right:auto;bottom:0;width:32%;transform:scaleX(0)}.produce-fruits-page .citrus-family-tab.is-active::after{transform:scaleX(1)}.produce-fruits-page .citrus-botanical{min-height:470px}.produce-fruits-page .citrus-3d{inset:4% 2% 14%;width:96%;height:82%}.produce-fruits-page .citrus-selection{left:5%;right:5%;bottom:4%}.produce-fruits-page .citrus-selection-chip{font-size:.54rem}.produce-fruits-page .citrus-detail-head{display:block}.produce-fruits-page .citrus-status{display:inline-flex;margin-top:1rem}.produce-fruits-page .citrus-technical{grid-template-columns:1fr}.produce-fruits-page .citrus-timeline{gap:2px}.produce-fruits-page .citrus-month{min-height:36px;font-size:.35rem}.produce-fruits-page .citrus-actions{display:grid;grid-template-columns:1fr;gap:.65rem}.produce-fruits-page .fruit-other-head{display:block}.produce-fruits-page .fruit-other-grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){.produce-fruits-page .citrus-3d{transition:none}.produce-fruits-page .citrus-family-tab::after,.produce-fruits-page .citrus-family-tab,.produce-fruits-page .citrus-selection-chip,.produce-fruits-page .fruit-other-card,.produce-fruits-page .citrus-actions a{transition:none}}
+
+@keyframes citrusTreePulse{0%{transform:scale(.68);opacity:.78}70%{transform:scale(1.42);opacity:0}100%{transform:scale(1.42);opacity:0}}
+@media(max-width:980px){.produce-fruits-page .fruit-special-head{grid-template-columns:1fr}.produce-fruits-page .citrus-orchard{grid-template-columns:1fr}.produce-fruits-page .citrus-tree-scene{min-height:600px}.produce-fruits-page .fruit-other-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.produce-fruits-page .fruit-special-shell{width:min(100% - 28px,560px)}.produce-fruits-page .fruit-special-catalog{padding-block:3.25rem 4.5rem}.produce-fruits-page .fruit-special-head{gap:1.35rem}.produce-fruits-page .fruit-special-head h2{font-size:clamp(3rem,15vw,5rem)}.produce-fruits-page .citrus-family-switcher{grid-template-columns:1fr}.produce-fruits-page .citrus-family-tab{border-right:0;border-bottom:1px solid rgba(20,43,58,.08)}.produce-fruits-page .citrus-family-tab:last-child{border-bottom:0}.produce-fruits-page .citrus-family-tab::after{left:0;right:auto;bottom:0;width:32%;transform:scaleX(0)}.produce-fruits-page .citrus-family-tab.is-active::after{transform:scaleX(1)}.produce-fruits-page .citrus-botanical,.produce-fruits-page .citrus-tree-scene{min-height:530px}.produce-fruits-page .citrus-tree-photo img{object-position:63% 50%}.produce-fruits-page .citrus-hotspot--top{top:18%;left:53%}.produce-fruits-page .citrus-hotspot--left{top:48%;left:7%}.produce-fruits-page .citrus-hotspot--right{top:49%;right:6%}.produce-fruits-page .citrus-hotspot--left .citrus-product-popover,.produce-fruits-page .citrus-hotspot--right .citrus-product-popover,.produce-fruits-page .citrus-hotspot--top .citrus-product-popover{position:fixed;left:50%;right:auto;top:auto;bottom:14px;width:min(300px,calc(100vw - 28px));transform:translate(-50%,12px) scale(.97);z-index:50}.produce-fruits-page .citrus-hotspot:hover .citrus-product-popover,.produce-fruits-page .citrus-hotspot:focus-visible .citrus-product-popover,.produce-fruits-page .citrus-hotspot.is-active .citrus-product-popover{transform:translate(-50%,0) scale(1)}.produce-fruits-page .citrus-selection{left:4%;right:4%;bottom:.85rem}.produce-fruits-page .citrus-selection-chip{font-size:.46rem}.produce-fruits-page .citrus-detail-head{display:block}.produce-fruits-page .citrus-status{display:inline-flex;margin-top:1rem}.produce-fruits-page .citrus-technical{grid-template-columns:1fr}.produce-fruits-page .citrus-actions{display:grid;grid-template-columns:1fr;gap:.65rem}.produce-fruits-page .fruit-other-head{display:block}.produce-fruits-page .fruit-other-grid{grid-template-columns:1fr}.produce-fruits-page .citrus-tree-hint{font-size:.39rem}}
+@media(max-width:420px){.produce-fruits-page .citrus-tree-scene{min-height:600px}.produce-fruits-page .citrus-hotspot--left{left:4%}.produce-fruits-page .citrus-hotspot--right{right:3%}.produce-fruits-page .citrus-selection{grid-template-columns:1fr 1fr}.produce-fruits-page .citrus-selection-chip{min-height:34px}}
+@media(prefers-reduced-motion:reduce){.produce-fruits-page .citrus-hotspot-pulse{animation:none}.produce-fruits-page .citrus-tree-photo img,.produce-fruits-page .citrus-tree-focus,.produce-fruits-page .citrus-hotspot-core,.produce-fruits-page .citrus-hotspot-label,.produce-fruits-page .citrus-product-popover,.produce-fruits-page .citrus-selection-chip,.produce-fruits-page .citrus-family-tab::after{transition:none}}
