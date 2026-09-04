@@ -30,15 +30,18 @@ test('citrus popovers no longer expose retail price or cart UI', () => {
   assert.doesNotMatch(js, /Añadir al carrito|Add to cart|Ajouter au panier|Aggiungi al carrello/);
 });
 
-test('citrus presentation has the enlarged tree, larger type and contrast overrides', () => {
-  assert.match(overridesCss, /citrus-tree-scene\{[^}]*min-height:800px !important/);
-  assert.match(overridesCss, /citrus-orchard\{[^}]*grid-template-columns:1\.34fr 1fr !important/);
-  assert.match(overridesCss, /citrus-tree-title strong\{[^}]*font-size:1\.35rem !important/);
-  assert.match(overridesCss, /citrus-product-popover>strong\{[^}]*font-size:1\.9rem !important/);
-  assert.match(overridesCss, /citrus-popover-copy\{[^}]*font-size:\.78rem !important/);
+test('citrus presentation keeps the image dominant and moves all navigation below it', () => {
+  assert.match(overridesCss, /fruit-special-shell\{[^}]*display:grid !important/);
+  assert.match(overridesCss, /citrus-orchard\{display:contents !important/);
+  assert.match(overridesCss, /citrus-botanical\{[^}]*grid-column:1 !important;grid-row:2 !important/);
+  assert.match(overridesCss, /citrus-selection\{[^}]*position:static !important/);
+  assert.match(overridesCss, /citrus-selection::before\{[^}]*VARIEDADES \/ REFERENCIAS/);
+  assert.match(overridesCss, /citrus-family-switcher\{[^}]*grid-row:4 !important/);
+  assert.match(overridesCss, /citrus-detail\{[^}]*grid-row:5 !important/);
+  assert.match(overridesCss, /citrus-tree-scene::after\{[^}]*REFERENCIAS · VER DEBAJO/);
+  assert.match(overridesCss, /citrus-hotspot-label\{[^}]*opacity:0 !important/);
   assert.match(overridesCss, /citrus-popover-price[^}]*display:none !important/);
   assert.match(overridesCss, /citrus-cart-button[^}]*display:none !important/);
-  assert.match(overridesCss, /citrus-hotspot-label\{[^}]*text-shadow/);
   assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.5/);
   assert.match(baseCss, /background:#f9f6f0/);
 });
