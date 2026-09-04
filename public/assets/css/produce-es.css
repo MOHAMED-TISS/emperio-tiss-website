@@ -92,3 +92,61 @@
 .produce-vegetables-page .catalog-section strong{color:var(--veg-green)}
 .produce-vegetables-page a:focus-visible,.produce-vegetables-page button:focus-visible{outline:2px solid var(--veg-spice);outline-offset:4px}
 @media(max-width:640px){.produce-vegetables-page .page-hero{background-position:center 58%}.produce-vegetables-page .product-card{box-shadow:0 8px 24px rgba(32,56,44,.05)}}
+
+/* FRUITS — typography aligned with the About page editorial system.
+   Playfair Display carries headings and readable editorial copy; DM Sans remains
+   reserved for navigation, labels, metadata and compact technical controls. */
+.produce-fruits-page .page-hero h1,
+.produce-fruits-page .catalog-head h2,
+.produce-fruits-page .product-card__title,
+.produce-fruits-page .fruit-special-head h2,
+.produce-fruits-page .citrus-detail h3,
+.produce-fruits-page .citrus-product-popover > strong,
+.produce-fruits-page .citrus-family-tab strong{
+  font-family:var(--et-serif);
+  font-weight:400;
+}
+.produce-fruits-page .page-hero .lead,
+.produce-fruits-page .catalog-head > p,
+.produce-fruits-page .fruit-special-intro,
+.produce-fruits-page .citrus-detail-copy,
+.produce-fruits-page .product-card__description{
+  font-family:var(--et-serif);
+  font-size:18px;
+  line-height:1.82;
+  letter-spacing:.008em;
+  font-weight:400;
+}
+.produce-fruits-page .page-hero .lead{font-size:clamp(17px,2vw,21px);line-height:1.58}
+.produce-fruits-page .eyebrow,
+.produce-fruits-page .hero-note,
+.produce-fruits-page .fruit-special-kicker,
+.produce-fruits-page .citrus-family-tab .num,
+.produce-fruits-page .citrus-family-tab small,
+.produce-fruits-page .citrus-tree-title span,
+.produce-fruits-page .citrus-tree-hint,
+.produce-fruits-page .citrus-hotspot-label,
+.produce-fruits-page .citrus-tree-footer,
+.produce-fruits-page .citrus-popover-kicker,
+.produce-fruits-page .citrus-popover-copy,
+.produce-fruits-page .citrus-popover-price,
+.produce-fruits-page .citrus-cart-button,
+.produce-fruits-page .citrus-detail-index,
+.produce-fruits-page .citrus-detail-scientific,
+.produce-fruits-page .citrus-status,
+.produce-fruits-page .citrus-tech-item label,
+.produce-fruits-page .citrus-tech-item span,
+.produce-fruits-page .citrus-campaign-head span,
+.produce-fruits-page .citrus-campaign-head strong,
+.produce-fruits-page .citrus-selection-chip,
+.produce-fruits-page .product-card__varieties,
+.produce-fruits-page .product-card__image-count{
+  font-family:var(--et-sans);
+}
+@media(max-width:800px){
+  .produce-fruits-page .catalog-head > p,
+  .produce-fruits-page .fruit-special-intro,
+  .produce-fruits-page .citrus-detail-copy,
+  .produce-fruits-page .product-card__description{font-size:16px;line-height:1.78}
+  .produce-fruits-page .page-hero .lead{font-size:16px;line-height:1.78}
+}
