@@ -5,7 +5,9 @@
 .produce-fruits-page .catalog-section>.catalog-inner{width:min(1180px,calc(100% - 48px));margin:0 auto}
 /* The section background is the only photograph. */
 .produce-fruits-page .citrus-tree-photo,.produce-fruits-page .citrus-tree-vignette,.produce-fruits-page .citrus-tree-ambient{display:none!important}
-.produce-fruits-page .citrus-tree-scene{background:transparent!important;box-shadow:none!important;border:0!important}
+/* Interactive scene becomes a transparent positioning layer, not a visual container. */
+.produce-fruits-page .citrus-botanical{position:relative!important}
+.produce-fruits-page .citrus-tree-scene{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;overflow:visible!important;background:transparent!important;box-shadow:none!important;border:0!important;border-radius:0!important;outline:0!important;isolation:isolate}
 /* Transparent editorial hierarchy: no solid content cards. */
 .produce-fruits-page .fruit-special-shell{position:relative;isolation:isolate;padding:clamp(5.5rem,9vw,9rem) 0 clamp(6rem,9vw,9rem)}
 .produce-fruits-page .fruit-special-head,.produce-fruits-page .citrus-family-switcher,.produce-fruits-page .citrus-detail,.produce-fruits-page .citrus-tech-item,.produce-fruits-page .citrus-campaign{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
