@@ -2,7 +2,7 @@
   "schemaVersion":"1.0",
   "products":[
     {"id":"clementina","varieties":["Clemenules","Oronules","Marisol"]},
-    {"id":"mandarina","commercialName":"Mandarina","scientificName":"Citrus reticulata","subcategory":"citrus","varieties":["Nadorcott","Orri","Tango","Nova"],"origin":["España / Marruecos según campaña"]},
+    {"id":"mandarina","commercialName":"Mandarina","scientificName":"Citrus reticulata","subcategory":"citrus","varieties":["Nadorcott","Orri","Tango","Nova","Berkane"],"origin":["España / Marruecos según campaña"]},
     {"id":"orange","commercialName":"Naranja","scientificName":"Citrus sinensis","subcategory":"citrus","varieties":["Navelina","Lane Late","Navel Late","Valencia Late"],"origin":["España / Marruecos según campaña"]},
     {"id":"mango","varieties":["Kent","Keitt","Osteen","Tommy Atkins"],"origin":["España / Marruecos / según temporada"]},
     {"id":"pineapple","commercialName":"Piña","scientificName":"Ananas comosus","subcategory":"exotics","varieties":["MD2","Sweet Cayenne"],"origin":["Según temporada y programa de suministro"]},
