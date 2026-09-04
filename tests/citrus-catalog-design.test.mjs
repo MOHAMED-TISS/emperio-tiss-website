@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 const js = fs.readFileSync('public/assets/js/fruit-catalog.js', 'utf8');
+const css = fs.readFileSync('public/assets/css/citrus-catalog.css', 'utf8');
 const page = fs.readFileSync('public/products/fruits/index.html', 'utf8');
 const data = JSON.parse(fs.readFileSync('public/assets/data/fruit-catalog-v1.json', 'utf8'));
 
@@ -19,8 +20,22 @@ test('citrus orchard uses a real tree image and three product hotspots', () => {
   assert.match(js, /citrus-hotspot--top/);
   assert.match(js, /citrus-hotspot--left/);
   assert.match(js, /citrus-hotspot--right/);
-  assert.match(js, /Añadir al carrito|Add to cart|Ajouter au panier|Aggiungi al carrello/);
   assert.match(js, /is-focused/);
+});
+
+test('citrus popovers no longer expose retail price or cart UI', () => {
+  assert.doesNotMatch(js, /citrus-popover-price/);
+  assert.doesNotMatch(js, /citrus-cart-button/);
+  assert.doesNotMatch(js, /Añadir al carrito|Add to cart|Ajouter au panier|Aggiungi al carrello/);
+});
+
+test('citrus visual system reserves enough space and readable type for the tree and cards', () => {
+  assert.match(css, /citrus-tree-scene\{[^}]*min-height:760px/);
+  assert.match(css, /citrus-tree-title strong\{[^}]*font:[^}]*1\.35rem/);
+  assert.match(css, /citrus-product-popover>strong\{[^}]*font:[^}]*1\.9rem/);
+  assert.match(css, /citrus-popover-copy\{[^}]*font:[^}]*\.78rem/);
+  assert.match(css, /citrus-product-popover\{[^}]*background:#fff/);
+  assert.match(css, /citrus-hotspot-label\{[^}]*text-shadow/);
 });
 
 test('fruit page loads the catalogue renderer before the fruit presenter', () => {
