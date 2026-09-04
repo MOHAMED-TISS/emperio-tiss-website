@@ -10,6 +10,7 @@ on:
 permissions:
   contents: write
 
+# Keep migration and validation runs serialized so bot commits cannot race.
 concurrency:
   group: canonical-assets-${{ github.ref }}
   cancel-in-progress: false
