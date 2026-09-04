@@ -1,6 +1,6 @@
 /* CITRUS — one photograph, full section, no duplicate image container. */
 .produce-fruits-page .catalog-section{position:relative!important;isolation:isolate!important;margin:0!important;padding:0!important;overflow:visible!important;background:#18251d url('https://images.unsplash.com/photo-1647249240005-4bb82d61b000?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=2400') center 48%/cover no-repeat!important}
-.produce-fruits-page .catalog-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,24,17,.38),rgba(8,24,17,.24) 48%,rgba(8,24,17,.42))}
+.produce-fruits-page .catalog-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,24,17,.48),rgba(8,24,17,.34) 48%,rgba(8,24,17,.52))}
 .produce-fruits-page .catalog-section>.catalog-inner,.produce-fruits-page .catalog-section #fruitCatalog{position:relative;z-index:1}
 .produce-fruits-page .catalog-section>.catalog-inner{width:min(1180px,calc(100% - 48px));margin:0 auto}
 /* The section background is the only photograph. */
@@ -9,18 +9,22 @@
 /* Transparent editorial hierarchy: no solid content cards. */
 .produce-fruits-page .fruit-special-shell{position:relative;isolation:isolate;padding:clamp(5.5rem,9vw,9rem) 0 clamp(6rem,9vw,9rem)}
 .produce-fruits-page .fruit-special-head,.produce-fruits-page .citrus-family-switcher,.produce-fruits-page .citrus-detail,.produce-fruits-page .citrus-tech-item,.produce-fruits-page .citrus-campaign{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-.produce-fruits-page .fruit-special-head{border-bottom-color:rgba(255,255,255,.34)}
-.produce-fruits-page .fruit-special-kicker,.produce-fruits-page .citrus-detail-index,.produce-fruits-page .citrus-tech-item label,.produce-fruits-page .citrus-campaign-head span{color:#e0bc72!important}
-.produce-fruits-page .fruit-special-head h2,.produce-fruits-page .fruit-special-intro,.produce-fruits-page .citrus-detail h3,.produce-fruits-page .citrus-detail-copy,.produce-fruits-page .citrus-detail-scientific,.produce-fruits-page .citrus-family-tab,.produce-fruits-page .citrus-family-tab strong,.produce-fruits-page .citrus-family-tab small,.produce-fruits-page .citrus-tech-item span,.produce-fruits-page .citrus-campaign-head strong,.produce-fruits-page .citrus-campaign-note{color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.72),0 1px 4px rgba(0,0,0,.55)}
-.produce-fruits-page .citrus-family-switcher{border-bottom-color:rgba(255,255,255,.34)}
-.produce-fruits-page .citrus-family-tab{border-right-color:rgba(255,255,255,.22)!important}
-.produce-fruits-page .citrus-family-tab.is-active{background:rgba(8,28,20,.24)!important}
-.produce-fruits-page .citrus-technical{border-color:rgba(255,255,255,.28)!important}
-.produce-fruits-page .citrus-tech-item{border-color:rgba(255,255,255,.28)!important}
-.produce-fruits-page .citrus-campaign{border-color:rgba(255,255,255,.28)!important}
-.produce-fruits-page .citrus-status{color:#fff!important;border-color:rgba(255,255,255,.55)!important;background:rgba(8,28,20,.22)!important}
-.produce-fruits-page .citrus-selection-chip{background:rgba(8,28,20,.48)!important;border-color:rgba(255,255,255,.58)!important;color:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-.produce-fruits-page .citrus-selection-chip:hover,.produce-fruits-page .citrus-selection-chip.is-active{background:rgba(20,43,58,.88)!important;border-color:#fff!important;color:#fff!important}
+.produce-fruits-page .fruit-special-head{border-bottom-color:rgba(255,255,255,.48)}
+.produce-fruits-page .fruit-special-kicker,.produce-fruits-page .citrus-detail-index,.produce-fruits-page .citrus-tech-item label,.produce-fruits-page .citrus-campaign-head span{color:#f0c978!important;text-shadow:0 2px 12px rgba(0,0,0,.78)}
+.produce-fruits-page .fruit-special-head h2{font-size:clamp(2.2rem,4vw,3.8rem)!important;line-height:1.02!important;font-weight:600!important;color:#fff!important;text-shadow:0 3px 24px rgba(0,0,0,.9),0 1px 6px rgba(0,0,0,.7)!important}
+.produce-fruits-page .fruit-special-intro{font-size:clamp(1rem,1.25vw,1.16rem)!important;line-height:1.75!important;font-weight:500!important;color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.88),0 1px 5px rgba(0,0,0,.7)!important}
+.produce-fruits-page .citrus-detail h3{font-size:clamp(1.35rem,2vw,1.8rem)!important;font-weight:600!important;color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.9),0 1px 5px rgba(0,0,0,.7)!important}
+.produce-fruits-page .citrus-detail-copy,.produce-fruits-page .citrus-detail-scientific,.produce-fruits-page .citrus-tech-item span,.produce-fruits-page .citrus-campaign-head strong,.produce-fruits-page .citrus-campaign-note{color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.9),0 1px 5px rgba(0,0,0,.7)!important}
+.produce-fruits-page .citrus-family-switcher{border-bottom-color:rgba(255,255,255,.48)}
+.produce-fruits-page .citrus-family-tab{border-right-color:rgba(255,255,255,.3)!important;color:#fff!important;text-shadow:0 2px 14px rgba(0,0,0,.8)!important}
+.produce-fruits-page .citrus-family-tab strong,.produce-fruits-page .citrus-family-tab small{color:#fff!important;text-shadow:0 2px 14px rgba(0,0,0,.8)!important}
+.produce-fruits-page .citrus-family-tab.is-active{background:rgba(8,28,20,.38)!important;box-shadow:inset 0 -2px 0 #f0c978!important}
+.produce-fruits-page .citrus-technical{border-color:rgba(255,255,255,.38)!important}
+.produce-fruits-page .citrus-tech-item{border-color:rgba(255,255,255,.34)!important}
+.produce-fruits-page .citrus-campaign{border-color:rgba(255,255,255,.34)!important}
+.produce-fruits-page .citrus-status{color:#fff!important;border-color:rgba(255,255,255,.7)!important;background:rgba(8,28,20,.34)!important;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.produce-fruits-page .citrus-selection-chip{background:rgba(8,28,20,.58)!important;border-color:rgba(255,255,255,.72)!important;color:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;text-shadow:0 1px 7px rgba(0,0,0,.7)}
+.produce-fruits-page .citrus-selection-chip:hover,.produce-fruits-page .citrus-selection-chip.is-active{background:rgba(20,43,58,.94)!important;border-color:#fff!important;color:#fff!important}
 .produce-fruits-page .citrus-product-popover{background:#f4f1e2!important}
 /* Independent visual section for Other references. */
 .produce-fruits-page .catalog-other-section{position:relative!important;z-index:2!important;margin:0!important;padding:clamp(5rem,8vw,8rem) 0!important;background:#f0eee3!important;background-image:none!important;border-top:1px solid rgba(20,43,58,.12);overflow:hidden!important}
