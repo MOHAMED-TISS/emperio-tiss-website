@@ -4,101 +4,148 @@
   const DATA_URL = '/assets/data/fruit-catalog-v1.json';
   const lang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
   const labels = {
-    es: { catalogue:'CATÁLOGO', title:'Frutas', subtitle:'Por familia.', note:'Una selección definida por origen, variedad, calibre, calidad y programa de suministro.', varieties:'Variedades', origin:'Origen', calibre:'Calibre', campaign:'Campaña', format:'Formato', availability:'Disponibilidad', other:'Selección adicional', fresh:'Fresco', request:'Solicitar referencia' },
-    en: { catalogue:'CATALOGUE', title:'Fruit', subtitle:'By family.', note:'A selection defined by origin, variety, calibre, quality and supply programme.', varieties:'Varieties', origin:'Origin', calibre:'Calibre', campaign:'Campaign', format:'Format', availability:'Availability', other:'Additional selection', fresh:'Fresh', request:'Request reference' },
-    fr: { catalogue:'CATALOGUE', title:'Fruits', subtitle:'Par famille.', note:'Une sélection définie par l’origine, la variété, le calibre, la qualité et le programme d’approvisionnement.', varieties:'Variétés', origin:'Origine', calibre:'Calibre', campaign:'Campagne', format:'Format', availability:'Disponibilité', other:'Sélection complémentaire', fresh:'Frais', request:'Demander la référence' },
-    it: { catalogue:'CATALOGO', title:'Frutta', subtitle:'Per famiglia.', note:'Una selezione definita da origine, varietà, calibro, qualità e programma di fornitura.', varieties:'Varietà', origin:'Origine', calibre:'Calibro', campaign:'Campagna', format:'Formato', availability:'Disponibilità', other:'Selezione aggiuntiva', fresh:'Fresco', request:'Richiedi referenza' },
-    ar: { catalogue:'الكتالوج', title:'الفواكه', subtitle:'حسب الفئة.', note:'مجموعة مختارة وفق المنشأ والصنف والمقاس والجودة وبرنامج التوريد.', varieties:'الأصناف', origin:'المنشأ', calibre:'المقاس', campaign:'الموسم', format:'التنسيق', availability:'التوفر', other:'اختيارات إضافية', fresh:'طازج', request:'طلب المرجع' }
+    es: { catalogue:'CÍTRICOS', title:'Del árbol', subtitle:'al mercado.', intro:'Una selección profesional construida alrededor de variedad, origen, calibre y ventana comercial.', families:['Clementinas','Mandarinas','Naranjas de mesa'], familyNotes:['Primeras variedades y programas tempranos.','Selección de mandarinas para programas profesionales.','Variedades de mesa para distintos periodos de campaña.'], technical:'Especificación técnica', origin:'Origen', species:'Especie', condition:'Condición', calibre:'Calibre', quality:'Calidad', format:'Formato', packaging:'Envase', campaign:'Campaña', availability:'Disponibilidad', status:'Estado', active:'Referencia activa', reference:'Referencia', request:'Solicitar referencia', select:'Seleccionar variedad', fresh:'Fresco', campaignHint:'Ventana orientativa · sujeta a campaña y programa', other:'Selección adicional', otherIntro:'Otras referencias disponibles dentro del programa de frutas.' },
+    en: { catalogue:'CITRUS', title:'From tree', subtitle:'to market.', intro:'A professional selection built around variety, origin, calibre and commercial window.', families:['Clementines','Mandarins','Table oranges'], familyNotes:['Early varieties and early-season programmes.','Mandarin selection for professional programmes.','Table varieties covering different campaign windows.'], technical:'Technical specification', origin:'Origin', species:'Species', condition:'Condition', calibre:'Calibre', quality:'Quality', format:'Format', packaging:'Packaging', campaign:'Campaign', availability:'Availability', status:'Status', active:'Active reference', reference:'Reference', request:'Request reference', select:'Select variety', fresh:'Fresh', campaignHint:'Indicative window · subject to season and supply programme', other:'Additional selection', otherIntro:'Other references available within the fruit programme.' },
+    fr: { catalogue:'AGRUMES', title:'De l’arbre', subtitle:'au marché.', intro:'Une sélection professionnelle structurée autour de la variété, de l’origine, du calibre et de la fenêtre commerciale.', families:['Clémentines','Mandarines','Oranges de table'], familyNotes:['Variétés précoces et programmes de début de campagne.','Sélection de mandarines pour programmes professionnels.','Variétés de table couvrant différentes périodes de campagne.'], technical:'Spécification technique', origin:'Origine', species:'Espèce', condition:'Condition', calibre:'Calibre', quality:'Qualité', format:'Format', packaging:'Conditionnement', campaign:'Campagne', availability:'Disponibilité', status:'Statut', active:'Référence active', reference:'Référence', request:'Demander la référence', select:'Sélectionner la variété', fresh:'Frais', campaignHint:'Fenêtre indicative · selon campagne et programme', other:'Sélection complémentaire', otherIntro:'Autres références disponibles dans le programme fruits.' },
+    it: { catalogue:'AGRUMI', title:'Dall’albero', subtitle:'al mercato.', intro:'Una selezione professionale costruita intorno a varietà, origine, calibro e finestra commerciale.', families:['Clementine','Mandarini','Arance da tavola'], familyNotes:['Varietà precoci e programmi di inizio campagna.','Selezione di mandarini per programmi professionali.','Varietà da tavola per differenti periodi di campagna.'], technical:'Specifiche tecniche', origin:'Origine', species:'Specie', condition:'Condizione', calibre:'Calibro', quality:'Qualità', format:'Formato', packaging:'Imballaggio', campaign:'Campagna', availability:'Disponibilità', status:'Stato', active:'Referenza attiva', reference:'Referenza', request:'Richiedi referenza', select:'Seleziona varietà', fresh:'Fresco', campaignHint:'Finestra indicativa · secondo campagna e programma', other:'Selezione aggiuntiva', otherIntro:'Altre referenze disponibili nel programma frutta.' },
+    ar: { catalogue:'الحمضيات', title:'من الشجرة', subtitle:'إلى السوق.', intro:'مجموعة مهنية مبنية على الصنف والمنشأ والحجم والنافذة التجارية.', families:['كلمنتين','يوسفي','برتقال مائدة'], familyNotes:['أصناف مبكرة وبرامج بداية الموسم.','مجموعة من أصناف اليوسفي للبرامج المهنية.','أصناف مائدة تغطي فترات مختلفة من الموسم.'], technical:'المواصفات الفنية', origin:'المنشأ', species:'النوع', condition:'الحالة', calibre:'الحجم', quality:'الجودة', format:'التنسيق', packaging:'التعبئة', campaign:'الموسم', availability:'التوفر', status:'الحالة', active:'مرجع نشط', reference:'المرجع', request:'طلب المرجع', select:'اختر الصنف', fresh:'طازج', campaignHint:'فترة إرشادية · حسب الموسم وبرنامج التوريد', other:'اختيارات إضافية', otherIntro:'مراجع أخرى متاحة ضمن برنامج الفواكه.' }
   };
   const t = labels[lang] || labels.es;
-  const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
-  const first = value => Array.isArray(value) ? (value.find(Boolean) || '') : (value || '');
+  const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+  const first = (value) => Array.isArray(value) ? (value.find(Boolean) || '') : (value || '');
+  const unique = (values) => [...new Set((values || []).filter(Boolean))];
+  const familyIds = ['clementina','mandarina','orange'];
 
   function ensureStyles() {
-    if (document.getElementById('etCitrusTreeStyles')) return;
-    const style = document.createElement('style');
-    style.id = 'etCitrusTreeStyles';
-    style.textContent = `
-      .produce-fruits-page .fruit-special-catalog{padding:clamp(4.5rem,9vw,8rem) 0;background:#f6f3eb;overflow:hidden}
-      .produce-fruits-page .fruit-special-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:3rem;align-items:end;margin-bottom:4rem}
-      .produce-fruits-page .fruit-special-head h2{font-family:var(--et-serif,Georgia,serif);font-weight:400;font-size:clamp(3rem,7vw,6rem);line-height:.9;margin:.4rem 0 0;color:#102331}
-      .produce-fruits-page .fruit-special-head h2 em{font-style:italic}
-      .produce-fruits-page .fruit-special-note{margin:0;color:#65706b;line-height:1.75;max-width:34rem}
-      .produce-fruits-page .citrus-tree-wrap{position:relative;max-width:1120px;margin:0 auto;padding:1rem 0 4rem;min-height:690px}
-      .produce-fruits-page .citrus-tree-svg{position:absolute;inset:45px 0 30px;width:100%;height:620px;pointer-events:none;overflow:visible}
-      .produce-fruits-page .citrus-trunk,.produce-fruits-page .citrus-branch{fill:none;stroke:#243b31;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.72;stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1.8s cubic-bezier(.22,.8,.22,1)}
-      .produce-fruits-page .citrus-branch{stroke:#657761;stroke-width:.8;transition-delay:.22s}
-      .produce-fruits-page .citrus-tree-wrap.is-visible .citrus-trunk,.produce-fruits-page .citrus-tree-wrap.is-visible .citrus-branch{stroke-dashoffset:0}
-      .produce-fruits-page .citrus-node{position:absolute;text-align:center;z-index:2;transform:translate(-50%,-50%);opacity:0;transition:opacity .7s ease,transform .9s cubic-bezier(.22,.8,.22,1)}
-      .produce-fruits-page .citrus-tree-wrap.is-visible .citrus-node{opacity:1;transform:translate(-50%,-50%)}
-      .produce-fruits-page .citrus-family{width:220px}
-      .produce-fruits-page .citrus-family .index{display:block;font:600 .56rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.18em;color:#b38b4c;margin-bottom:.45rem}
-      .produce-fruits-page .citrus-family h3{margin:0;font:400 1.55rem/1.05 var(--et-serif,Georgia,serif);color:#102331}
-      .produce-fruits-page .citrus-family p{margin:.45rem auto 0;font:400 .58rem/1.4 var(--et-sans,Arial,sans-serif);letter-spacing:.1em;text-transform:uppercase;color:#7a847d}
-      .produce-fruits-page .citrus-variety{width:150px}
-      .produce-fruits-page .citrus-variety button{border:0;background:transparent;padding:.35rem .25rem;cursor:pointer;color:#243b31;font:500 .76rem/1.2 var(--et-sans,Arial,sans-serif);letter-spacing:.03em;transition:color .25s ease,transform .25s ease}
-      .produce-fruits-page .citrus-variety button:before{content:'·';display:block;color:#b38b4c;font-size:1.2rem;line-height:.7;margin-bottom:.25rem}
-      .produce-fruits-page .citrus-variety button:hover,.produce-fruits-page .citrus-variety button:focus-visible{color:#a87935;transform:translateY(-2px);outline:none}
-      .produce-fruits-page .citrus-detail{max-width:860px;margin:1rem auto 0;min-height:130px;border-top:1px solid rgba(16,35,49,.15);border-bottom:1px solid rgba(16,35,49,.12);padding:1.35rem 0;display:grid;grid-template-columns:1.2fr 2fr;gap:2rem;align-items:start;opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
-      .produce-fruits-page .citrus-detail.is-open{opacity:1;transform:none}
-      .produce-fruits-page .citrus-detail h4{margin:0;font:400 1.45rem/1 var(--et-serif,Georgia,serif);color:#102331}
-      .produce-fruits-page .citrus-detail h4 em{font-style:italic}
-      .produce-fruits-page .citrus-detail p{margin:.45rem 0 0;color:#748078;font:400 .65rem/1.5 var(--et-sans,Arial,sans-serif)}
-      .produce-fruits-page .citrus-specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-      .produce-fruits-page .citrus-spec label{display:block;font:600 .5rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.13em;text-transform:uppercase;color:#b38b4c;margin-bottom:.4rem}
-      .produce-fruits-page .citrus-spec span{font:400 .68rem/1.45 var(--et-sans,Arial,sans-serif);color:#263a32}
-      .produce-fruits-page .fruit-other{margin-top:6rem;padding-top:2rem;border-top:1px solid rgba(16,35,49,.12)}
-      .produce-fruits-page .fruit-other h3{margin:0 0 1.4rem;font:400 2rem/1 var(--et-serif,Georgia,serif);color:#102331}
-      .produce-fruits-page .fruit-other-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-      .produce-fruits-page .fruit-other-card{padding:1.3rem;border:1px solid rgba(16,35,49,.11);background:rgba(255,255,255,.28)}
-      .produce-fruits-page .fruit-other-card span{font:600 .53rem/1 var(--et-sans,Arial,sans-serif);letter-spacing:.14em;text-transform:uppercase;color:#b38b4c}
-      .produce-fruits-page .fruit-other-card h4{margin:.5rem 0;font:400 1.3rem/1.05 var(--et-serif,Georgia,serif);color:#102331}
-      .produce-fruits-page .fruit-other-card p{margin:0;color:#707a74;font:400 .62rem/1.55 var(--et-sans,Arial,sans-serif)}
-      @media(max-width:900px){.produce-fruits-page .citrus-tree-wrap{min-height:900px}.produce-fruits-page .citrus-tree-svg{height:830px}.produce-fruits-page .citrus-family{width:190px}.produce-fruits-page .citrus-variety{width:125px}.produce-fruits-page .citrus-detail{grid-template-columns:1fr}.produce-fruits-page .fruit-other-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(max-width:640px){.produce-fruits-page .fruit-special-catalog{padding-block:3.5rem}.produce-fruits-page .fruit-special-head{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2rem}.produce-fruits-page .citrus-tree-wrap{min-height:1120px;padding-bottom:2rem}.produce-fruits-page .citrus-tree-svg{display:none}.produce-fruits-page .citrus-node{position:relative!important;left:auto!important;top:auto!important;transform:none!important;width:auto;margin:0 auto;opacity:1!important}.produce-fruits-page .citrus-family{margin:2.2rem auto 0}.produce-fruits-page .citrus-variety{display:inline-block;width:46%;margin:.3rem 1%}.produce-fruits-page .citrus-family h3{font-size:1.65rem}.produce-fruits-page .citrus-detail{margin-top:1rem}.produce-fruits-page .citrus-specs{grid-template-columns:1fr}.produce-fruits-page .fruit-other-grid{grid-template-columns:1fr}.produce-fruits-page .fruit-other{margin-top:3.5rem}}
-    `;
-    document.head.appendChild(style);
+    if (document.getElementById('etCitrusCatalogCss')) return;
+    const link = document.createElement('link');
+    link.id = 'etCitrusCatalogCss';
+    link.rel = 'stylesheet';
+    link.href = '/assets/css/citrus-catalog.css?v=20260904.2';
+    document.head.appendChild(link);
   }
 
-  const citrusGeometry = {
-    family: [
-      {x:50,y:22}, {x:27,y:49}, {x:73,y:49}
-    ],
-    variety: [
-      {x:17,y:70},{x:24,y:70},{x:31,y:70},
-      {x:63,y:70},{x:70,y:70},{x:77,y:70},{x:84,y:70},{x:70,y:84},
-      {x:40,y:91},{x:47,y:91},{x:54,y:91},{x:61,y:91}
-    ]
-  };
+  function getFamilyData(products) {
+    return familyIds.map((id, index) => {
+      const product = products.find((item) => item.id === id);
+      return product ? {...product, familyIndex:index} : null;
+    }).filter(Boolean);
+  }
 
-  function citrusTree(products) {
-    const clementina = products.find(p => p.id === 'clementina');
-    const mandarina = products.find(p => p.id === 'mandarina');
-    const orange = products.find(p => p.id === 'orange');
-    const families = [clementina, mandarina, orange].filter(Boolean);
-    const branches = `<path class="citrus-trunk" d="M560 610 C560 500 555 405 560 300 C565 220 560 150 560 75"/><path class="citrus-branch" d="M560 300 C505 260 420 230 310 205 C270 195 245 175 215 145"/><path class="citrus-branch" d="M560 300 C615 260 700 230 810 205 C850 195 875 175 905 145"/><path class="citrus-branch" d="M560 430 C470 390 380 370 260 355 C220 350 185 330 155 305"/><path class="citrus-branch" d="M560 430 C650 390 740 370 860 355 C900 350 935 330 965 305"/>`;
-    const familyNodes = families.map((p,i) => `<div class="citrus-node citrus-family" style="left:${citrusGeometry.family[i].x}%;top:${citrusGeometry.family[i].y}%"><span class="index">0${i+1}</span><h3>${esc(p.commercialName || (i===0?'Clementinas':i===1?'Mandarinas':'Naranjas de mesa'))}</h3><p>${esc(first(p.scientificName))}</p></div>`).join('');
-    const varietyNodes = [];
-    families.forEach((p,fi) => (p.varieties || []).forEach((v,vi) => {
-      let pos;
-      if(fi===0) pos=citrusGeometry.variety[vi] || {x:27,y:70+vi*7};
-      else if(fi===1) pos=citrusGeometry.variety[3+vi] || {x:63+vi*7,y:70};
-      else pos=citrusGeometry.variety[9+vi] || {x:40+vi*7,y:91};
-      varietyNodes.push(`<div class="citrus-node citrus-variety" style="left:${pos.x}%;top:${pos.y}%"><button type="button" data-citrus-variety="${esc(v)}" data-citrus-product="${esc(p.id)}">${esc(v)}</button></div>`);
-    }));
-    return `<div class="citrus-tree-wrap"><svg class="citrus-tree-svg" viewBox="0 0 1120 650" aria-hidden="true">${branches}</svg>${familyNodes}${varietyNodes.join('')}</div>`;
+  function botanicalSvg(activeId) {
+    const highlight = activeId === 'mandarina' ? 'mandarina' : activeId === 'orange' ? 'orange' : 'clementina';
+    return `<svg viewBox="0 0 620 620" role="img" aria-label="Citrus botanical illustration" preserveAspectRatio="xMidYMid meet">
+      <circle cx="310" cy="310" r="230" fill="none" stroke="rgba(165,122,53,.10)" stroke-width="1"/>
+      <circle cx="310" cy="310" r="170" fill="none" stroke="rgba(20,43,58,.06)" stroke-width="1" stroke-dasharray="2 8"/>
+      <path class="citrus-stem" d="M312 560 C309 485 314 416 306 350 C300 296 288 250 307 190 C321 147 321 112 310 70"/>
+      <path class="citrus-twig" d="M307 348 C256 315 211 286 146 277 C117 273 91 260 66 236"/>
+      <path class="citrus-twig" d="M306 349 C361 318 414 286 474 279 C514 274 543 259 568 230"/>
+      <path class="citrus-twig" d="M310 233 C260 214 226 184 195 146 C180 128 164 117 143 111"/>
+      <path class="citrus-twig" d="M315 222 C366 205 406 176 438 141 C454 123 469 114 490 109"/>
+      <path class="citrus-leaf" d="M158 275 C141 251 115 245 92 252 C109 274 134 282 158 275Z"/>
+      <path class="citrus-leaf" d="M464 278 C482 254 508 248 531 256 C514 277 489 285 464 278Z"/>
+      <path class="citrus-leaf" d="M195 147 C179 127 157 118 137 123 C150 145 173 156 195 147Z"/>
+      <path class="citrus-leaf" d="M438 141 C456 122 479 114 497 120 C482 142 461 151 438 141Z"/>
+      <g opacity=".82">
+        <circle cx="142" cy="271" r="12" fill="none" stroke="#bd924d" stroke-width="1.2"/>
+        <circle cx="478" cy="273" r="12" fill="none" stroke="#bd924d" stroke-width="1.2"/>
+        <circle cx="205" cy="148" r="10" fill="none" stroke="#bd924d" stroke-width="1.2"/>
+        <circle cx="433" cy="145" r="10" fill="none" stroke="#bd924d" stroke-width="1.2"/>
+      </g>
+      <g class="citrus-orchard-mark citrus-orchard-mark--${highlight}"><circle cx="310" cy="99" r="17" fill="none" stroke="#bd924d" stroke-width="1.35"/><circle cx="310" cy="99" r="29" fill="rgba(189,146,77,.06)" stroke="rgba(189,146,77,.18)" stroke-width="1"/></g>
+      <text x="310" y="597" text-anchor="middle" fill="rgba(20,43,58,.38)" font-family="DM Sans,Arial,sans-serif" font-size="9" letter-spacing="3">FROM ORIGIN · TO MARKET</text>
+    </svg>`;
+  }
+
+  function familyTabs(families, activeIndex) {
+    return `<div class="citrus-family-switcher" role="tablist" aria-label="${esc(t.select)}">${families.map((product,index) => `
+      <button class="citrus-family-tab${index===activeIndex?' is-active':''}" type="button" role="tab" aria-selected="${index===activeIndex}" data-family-index="${index}">
+        <span class="num">0${index+1}</span><strong>${esc(t.families[index])}</strong><small>${esc(t.familyNotes[index])}</small>
+      </button>`).join('')}</div>`;
+  }
+
+  function varietyList(product, activeVariety) {
+    return `<div class="citrus-selection" role="list" aria-label="${esc(t.families[product.familyIndex])}">${(product.varieties||[]).map((variety) => `
+      <button class="citrus-selection-chip${variety===activeVariety?' is-active':''}" type="button" role="listitem" data-citrus-variety="${esc(variety)}" data-citrus-product="${esc(product.id)}" aria-pressed="${variety===activeVariety}">${esc(variety)}</button>`).join('')}</div>`;
+  }
+
+  function specs(product) {
+    const fields = [
+      [t.origin, first(product.origin) || '—'],
+      [t.species, first(product.scientificName) || '—'],
+      [t.condition, first(product.condition) === 'fresh' ? t.fresh : (first(product.condition) || '—')],
+      [t.calibre, first(product.calibre) || 'Según especificación del comprador'],
+      [t.quality, first(product.quality) || 'Especificación profesional'],
+      [t.format, first(product.format) || 'Según destino'],
+      [t.packaging, first(product.packaging) || 'Según mercado'],
+      [t.status, t.active]
+    ];
+    return `<div class="citrus-technical">${fields.map(([label,value]) => `<div class="citrus-tech-item"><label>${esc(label)}</label><span>${esc(value)}</span></div>`).join('')}</div>`;
+  }
+
+  function campaign(product) {
+    const raw = first(product.availability) || first(product.campaign) || t.campaignHint;
+    return `<div class="citrus-campaign"><div class="citrus-campaign-head"><span>${esc(t.campaign)}</span><strong>${esc(raw)}</strong></div><div class="citrus-timeline">${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((month,index) => `<span class="citrus-month${index < 8 ? ' is-active':''}" title="${month}">${month}</span>`).join('')}</div><p class="citrus-campaign-note">${esc(t.campaignHint)}</p></div>`;
   }
 
   function detail(product, variety) {
-    const origin = first(product.origin) || 'Según campaña';
-    const calibre = first(product.calibre) || 'Según especificación del comprador';
-    const campaign = first(product.availability) || 'Según campaña y programa';
-    const format = first(product.format) || 'Según destino';
-    return `<div class="citrus-detail is-open"><div><h4>${esc(variety)} <em>· ${esc(product.commercialName)}</em></h4><p>${esc(first(product.scientificName))}</p></div><div class="citrus-specs"><div class="citrus-spec"><label>${esc(t.origin)}</label><span>${esc(origin)}</span></div><div class="citrus-spec"><label>${esc(t.calibre)}</label><span>${esc(calibre)}</span></div><div class="citrus-spec"><label>${esc(t.campaign)}</label><span>${esc(campaign)}</span></div><div class="citrus-spec"><label>${esc(t.format)}</label><span>${esc(format)}</span></div></div></div>`;
+    const requestHref = `/contact/?product=${encodeURIComponent(product.id)}&variety=${encodeURIComponent(variety)}`;
+    return `<section class="citrus-detail" aria-live="polite">
+      <div class="citrus-detail-head"><div><span class="citrus-detail-index">${esc(t.technical)}</span><h3>${esc(variety)}<br><em>${esc(product.commercialName)}</em></h3><p class="citrus-detail-scientific"><em>${esc(first(product.scientificName))}</em></p></div><span class="citrus-status">${esc(t.active)}</span></div>
+      <p class="citrus-detail-copy">${esc(t.intro)}</p>
+      ${specs(product)}
+      ${campaign(product)}
+      <div class="citrus-actions"><a href="${requestHref}">${esc(t.request)} ↗</a><span class="note">${esc(t.reference)} · ${esc(product.id)} · ${esc(variety)}</span></div>
+    </section>`;
   }
 
   function otherCards(products) {
-    return products.filter(p => p.subcategory !== 'citrus' && p.status === 'active').map(p => `<article class="fruit-other-card"><span>${esc(first(p.subcategory))}</span><h4>${esc(p.commercialName)}</h4><p>${esc((p.varieties || []).join(' · '))}</p></article>`).join('');
+    const others = products.filter((product) => product.subcategory !== 'citrus' && product.status === 'active');
+    if (!others.length) return '';
+    return `<section class="fruit-other"><div class="fruit-other-head"><div><span>${esc(t.other)}</span><h3>${esc(t.otherIntro)}</h3></div></div><div class="fruit-other-grid">${others.map((product,index) => `<article class="fruit-other-card"><span class="index">${String(index+1).padStart(2,'0')}</span><h4>${esc(product.commercialName)}</h4><p>${esc(unique(product.varieties).join(' · ') || first(product.origin) || '')}</p></article>`).join('')}</div></section>`;
+  }
+
+  function render(target, products, activeIndex = 0, activeVariety) {
+    const families = getFamilyData(products);
+    const product = families[activeIndex] || families[0];
+    if (!product) return;
+    const variety = activeVariety || product.varieties?.[0] || product.commercialName;
+    target.innerHTML = `<div class="fruit-special-shell">
+      <header class="fruit-special-head"><div><span class="fruit-special-kicker">${esc(t.catalogue)}</span><h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2></div><p class="fruit-special-intro">${esc(t.intro)}</p></header>
+      ${familyTabs(families, product.familyIndex)}
+      <div class="citrus-orchard">
+        <div class="citrus-botanical" data-botanical><span class="citrus-sign">${String(product.familyIndex+1).padStart(2,'0')} / ${esc(t.families[product.familyIndex])}</span>${botanicalSvg(product.id)}${varietyList(product,variety)}</div>
+        ${detail(product,variety)}
+      </div>
+      ${otherCards(products)}
+    </div>`;
+    const botanical = target.querySelector('[data-botanical]');
+    requestAnimationFrame(() => botanical?.classList.add('is-visible'));
+    bind(target, products);
+  }
+
+  function bind(root, products) {
+    root.querySelectorAll('[data-family-index]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const index = Number(button.dataset.familyIndex || 0);
+        render(root, products, index);
+      });
+    });
+    root.querySelectorAll('[data-citrus-variety]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const product = products.find((item) => item.id === button.dataset.citrusProduct);
+        if (!product) return;
+        const wrap = button.closest('.citrus-orchard');
+        const detailNode = wrap?.querySelector('.citrus-detail');
+        if (!detailNode) return;
+        const shell = root.querySelector('.fruit-special-shell');
+        const variety = button.dataset.citrusVariety || product.varieties?.[0] || product.commercialName;
+        root.querySelectorAll('.citrus-selection-chip').forEach((item) => item.classList.toggle('is-active', item === button));
+        root.querySelectorAll('.citrus-selection-chip').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        detailNode.outerHTML = detail(product, variety);
+        shell?.querySelector('.citrus-detail')?.scrollIntoView({behavior:'smooth', block:'nearest'});
+      });
+    });
   }
 
   async function init() {
@@ -107,27 +154,15 @@
     ensureStyles();
     try {
       const response = await fetch(DATA_URL, {cache:'no-cache'});
-      if (!response.ok) throw new Error(`Fruit catalogue request failed: ${response.status}`);
+      if (!response.ok) throw new Error(`Fruit catalog request failed: ${response.status}`);
       const data = await response.json();
-      const products = Array.isArray(data.products) ? data.products : [];
-      const citrus = products.filter(p => p.subcategory === 'citrus' && p.status === 'active');
-      target.className = 'fruit-special-catalog';
-      target.innerHTML = `<div class="fruit-special-head"><div><span class="eyebrow">${esc(t.catalogue)}</span><h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2></div><p class="fruit-special-note">${esc(t.note)}</p></div>${citrusTree(citrus)}<div id="citrusDetail" aria-live="polite"></div><div class="fruit-other"><h3>${esc(t.other)}</h3><div class="fruit-other-grid">${otherCards(products)}</div></div>`;
-      const detailTarget = target.querySelector('#citrusDetail');
-      target.querySelectorAll('[data-citrus-variety]').forEach(button => button.addEventListener('click', () => {
-        const product = citrus.find(p => p.id === button.dataset.citrusProduct);
-        if (!product) return;
-        detailTarget.innerHTML = detail(product, button.dataset.citrusVariety);
-        detailTarget.scrollIntoView({behavior:'smooth', block:'nearest'});
-      }));
-      const tree = target.querySelector('.citrus-tree-wrap');
-      if (tree && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting){ tree.classList.add('is-visible'); observer.disconnect(); } }), {threshold:.15});
-        observer.observe(tree);
-      } else if (tree) tree.classList.add('is-visible');
+      const products = Array.isArray(data.products) ? data.products.filter((product) => product.status === 'active') : [];
+      if (!products.length) throw new Error('Fruit catalog is empty');
+      window.__ET_CATALOG_PRODUCTS = products;
+      render(target, products, 0);
       document.documentElement.dataset.fruitCatalogReady = 'true';
     } catch (error) {
-      console.error('[EMPERIO TISS] Fruit catalogue failed:', error);
+      console.error('[EMPERIO TISS] Fruit catalog failed:', error);
       document.documentElement.dataset.fruitCatalogReady = 'false';
     }
   }
