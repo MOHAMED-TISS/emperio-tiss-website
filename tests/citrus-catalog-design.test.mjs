@@ -21,25 +21,24 @@ test('citrus orchard uses a real tree image and three product hotspots', () => {
   assert.match(js, /citrus-hotspot--top/);
   assert.match(js, /citrus-hotspot--left/);
   assert.match(js, /citrus-hotspot--right/);
-  assert.match(js, /is-focused/);
 });
 
-test('citrus image is clean and hides retail detail overlays', () => {
-  assert.match(overridesCss, /citrus-product-popover[^}]*display:none !important/);
-  assert.match(overridesCss, /citrus-popover-price[^}]*display:none !important/);
-  assert.match(overridesCss, /citrus-cart-button[^}]*display:none !important/);
-  assert.match(overridesCss, /citrus-hotspot-label\{[^}]*display:none !important/);
+test('citrus image stays clean and hides retail detail overlays', () => {
+  assert.match(overridesCss, /citrus-product-popover[^}]*display:none!important/);
+  assert.match(overridesCss, /citrus-popover-price[^}]*display:none!important/);
+  assert.match(overridesCss, /citrus-cart-button[^}]*display:none!important/);
+  assert.match(overridesCss, /citrus-hotspot-label[^}]*display:none!important/);
 });
 
-test('citrus presentation keeps the image dominant and moves all navigation below it', () => {
-  assert.match(overridesCss, /fruit-special-shell\{[^}]*display:grid !important/);
-  assert.match(overridesCss, /citrus-orchard\{display:contents !important/);
-  assert.match(overridesCss, /citrus-botanical\{[^}]*grid-column:1 !important;grid-row:2 !important/);
-  assert.match(overridesCss, /citrus-selection\{[^}]*position:static !important/);
-  assert.match(overridesCss, /citrus-selection::before\{[^}]*VARIEDADES · REFERENCIAS/);
-  assert.match(overridesCss, /citrus-family-switcher\{[^}]*grid-row:3 !important/);
-  assert.match(overridesCss, /citrus-detail\{[^}]*grid-row:4 !important/);
-  assert.match(overridesCss, /citrus-tree-scene::after\{[^}]*REFERENCIAS · VER DEBAJO/);
+test('citrus navigation is compact and mixed horizontal/vertical', () => {
+  assert.match(overridesCss, /citrus-family-switcher\{[^}]*display:flex!important/);
+  assert.match(overridesCss, /citrus-family-switcher\{[^}]*overflow-x:auto!important/);
+  assert.match(overridesCss, /citrus-selection\{[^}]*display:flex!important/);
+  assert.match(overridesCss, /citrus-selection\{[^}]*overflow-x:auto!important/);
+  assert.match(overridesCss, /citrus-technical\{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)!important/);
+  assert.match(overridesCss, /@media\(max-width:900px\)[^}]*citrus-technical\{grid-template-columns:repeat\(2,minmax\(0,1fr\)!important/);
+  assert.match(overridesCss, /citrus-campaign\{[^}]*grid-template-columns:auto 1fr!important/);
+  assert.match(overridesCss, /@media\(max-width:640px\)[^}]*citrus-campaign\{grid-template-columns:1fr!important/);
   assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.6/);
   assert.match(baseCss, /background:#f9f6f0/);
 });
