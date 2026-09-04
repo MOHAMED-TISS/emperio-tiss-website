@@ -24,10 +24,11 @@ test('citrus orchard uses a real tree image and three product hotspots', () => {
   assert.match(js, /is-focused/);
 });
 
-test('citrus popovers no longer expose retail price or cart UI', () => {
+test('citrus image is clean and contains no retail detail popovers', () => {
+  assert.doesNotMatch(js, /citrus-product-popover/);
   assert.doesNotMatch(js, /citrus-popover-price/);
   assert.doesNotMatch(js, /citrus-cart-button/);
-  assert.doesNotMatch(js, /Añadir al carrito|Add to cart|Ajouter au panier|Aggiungi al carrello/);
+  assert.match(js, /scrollIntoView/);
 });
 
 test('citrus presentation keeps the image dominant and moves all navigation below it', () => {
@@ -36,8 +37,8 @@ test('citrus presentation keeps the image dominant and moves all navigation belo
   assert.match(overridesCss, /citrus-botanical\{[^}]*grid-column:1 !important;grid-row:2 !important/);
   assert.match(overridesCss, /citrus-selection\{[^}]*position:static !important/);
   assert.match(overridesCss, /citrus-selection::before\{[^}]*VARIEDADES \/ REFERENCIAS/);
-  assert.match(overridesCss, /citrus-family-switcher\{[^}]*grid-row:4 !important/);
-  assert.match(overridesCss, /citrus-detail\{[^}]*grid-row:5 !important/);
+  assert.match(overridesCss, /citrus-family-switcher\{[^}]*grid-row:3 !important/);
+  assert.match(overridesCss, /citrus-detail\{[^}]*grid-row:4 !important/);
   assert.match(overridesCss, /citrus-tree-scene::after\{[^}]*REFERENCIAS · VER DEBAJO/);
   assert.match(overridesCss, /citrus-hotspot-label\{[^}]*opacity:0 !important/);
   assert.match(overridesCss, /citrus-popover-price[^}]*display:none !important/);
