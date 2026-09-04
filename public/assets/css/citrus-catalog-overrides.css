@@ -1,110 +1,99 @@
-/* Citrus catalogue — clean editorial layer system.
-   Keep the native two-column composition intact; only define the background hierarchy. */
 .produce-fruits-page .catalog-section{
+  background:#f0eee3;
+  position:relative;
+  isolation:isolate;
+}
+
+/* Citrus is one photographic section: the orchard image exists only here, as its background. */
+.produce-fruits-page .citrus-catalog-section{
   position:relative;
   isolation:isolate;
   background:#b8c0ad url('https://images.unsplash.com/photo-1647249240005-4bb82d61b000?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=2400') center 42% / cover no-repeat;
 }
 
-/* One restrained botanical veil over the photograph. */
-.produce-fruits-page .catalog-section::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  background:linear-gradient(180deg,rgba(31,52,40,.08),rgba(31,52,40,.16));
-}
-
-.produce-fruits-page .catalog-section > .catalog-inner,
-.produce-fruits-page .catalog-section #fruitCatalog{
+.produce-fruits-page .citrus-catalog-section > .fruit-special-shell{
   position:relative;
   z-index:1;
 }
 
-/* The orchard photograph belongs to the catalogue section, not to another
-   translucent copy of itself inside the tree panel. */
-.produce-fruits-page .citrus-tree-photo img{
-  opacity:1;
-  filter:saturate(.98) contrast(1.04) brightness(.98);
-}
-.produce-fruits-page .citrus-tree-photo{
-  opacity:1;
-}
-
-/* Keep the native tree overlays functional, but lighter against the full photo. */
-.produce-fruits-page .citrus-tree-vignette{
-  background:linear-gradient(180deg,rgba(8,25,19,.02),rgba(8,25,19,.13));
-}
+/* No second photograph, veil or opaque panel inside Citrus. */
+.produce-fruits-page .citrus-tree-photo,
+.produce-fruits-page .citrus-tree-photo img,
+.produce-fruits-page .citrus-tree-vignette,
 .produce-fruits-page .citrus-tree-ambient{
-  opacity:.22;
-}
-.produce-fruits-page .citrus-tree-focus{
-  background:rgba(9,27,21,.34);
+  display:none!important;
 }
 
-/* Editorial controls remain readable without becoming floating glass cards. */
+.produce-fruits-page .citrus-tree-scene{
+  background:transparent;
+  box-shadow:none;
+}
+
 .produce-fruits-page .fruit-special-head,
 .produce-fruits-page .citrus-family-switcher,
-.produce-fruits-page .citrus-detail{
-  background:rgba(244,241,226,.96);
+.produce-fruits-page .citrus-detail,
+.produce-fruits-page .citrus-tech-item,
+.produce-fruits-page .citrus-campaign{
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
 }
 
-.produce-fruits-page .citrus-family-tab.is-active{
-  background:#f8f5e9;
+.produce-fruits-page .fruit-special-head,
+.produce-fruits-page .citrus-family-switcher{
+  border-color:rgba(255,255,255,.32);
+}
+
+.produce-fruits-page .citrus-tech-item,
+.produce-fruits-page .citrus-campaign{
+  border-color:rgba(20,43,58,.24);
 }
 
 .produce-fruits-page .citrus-selection-chip{
-  background:rgba(244,241,226,.92);
-  border-color:rgba(20,43,58,.18);
-  color:#263d47;
+  background:rgba(20,43,58,.58);
+  border-color:rgba(255,255,255,.5);
+  color:#fff;
   backdrop-filter:none;
   -webkit-backdrop-filter:none;
 }
 .produce-fruits-page .citrus-selection-chip:hover,
 .produce-fruits-page .citrus-selection-chip.is-active{
   background:#142b3a;
-  border-color:#142b3a;
+  border-color:#fff;
   color:#fff;
 }
 
-.produce-fruits-page .citrus-tech-item,
-.produce-fruits-page .citrus-campaign{
-  background:#f7f4e9;
+.produce-fruits-page .citrus-product-popover{
+  background:#f4f1e2;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
 }
 
-/* Otras referencias is deliberately independent from the orchard image. */
+/* Separate section: no Citrus background can continue underneath it. */
 .produce-fruits-page .fruit-other{
   position:relative;
-  z-index:2;
+  z-index:3;
+  margin:0;
+  padding:clamp(5rem,8vw,8rem) 0;
   background:#f0eee3;
-  background-image:none;
+  background-image:none!important;
+  border-top:1px solid rgba(20,43,58,.12);
   box-shadow:none;
   backdrop-filter:none;
   -webkit-backdrop-filter:none;
-  margin-top:clamp(4rem,7vw,7rem);
-  border-top:1px solid rgba(20,43,58,.12);
 }
 
-/* Never suppress the native interaction layer. */
-.produce-fruits-page .citrus-hotspot-label,
-.produce-fruits-page .citrus-product-popover,
-.produce-fruits-page .citrus-popover-price,
-.produce-fruits-page .citrus-cart-button,
-.produce-fruits-page .citrus-tree-title,
-.produce-fruits-page .citrus-tree-hint,
-.produce-fruits-page .citrus-tree-footer{
-  display:initial;
+.produce-fruits-page .fruit-other .fruit-other-head,
+.produce-fruits-page .fruit-other .fruit-other-grid{
+  width:min(1180px,calc(100% - 48px));
+  margin-left:auto;
+  margin-right:auto;
 }
 
 @media(max-width:900px){
-  .produce-fruits-page .catalog-section{
-    background-position:58% 40%;
-  }
+  .produce-fruits-page .citrus-catalog-section{background-position:58% 40%;}
 }
-
 @media(max-width:640px){
-  .produce-fruits-page .catalog-section{
-    background-position:58% 38%;
-  }
+  .produce-fruits-page .citrus-catalog-section{background-position:58% 38%;}
 }
