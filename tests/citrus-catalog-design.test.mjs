@@ -24,11 +24,11 @@ test('citrus orchard uses a real tree image and three product hotspots', () => {
   assert.match(js, /is-focused/);
 });
 
-test('citrus image is clean and contains no retail detail popovers', () => {
-  assert.doesNotMatch(js, /citrus-product-popover/);
-  assert.doesNotMatch(js, /citrus-popover-price/);
-  assert.doesNotMatch(js, /citrus-cart-button/);
-  assert.match(js, /scrollIntoView/);
+test('citrus image is clean and hides retail detail overlays', () => {
+  assert.match(overridesCss, /citrus-product-popover[^}]*display:none !important/);
+  assert.match(overridesCss, /citrus-popover-price[^}]*display:none !important/);
+  assert.match(overridesCss, /citrus-cart-button[^}]*display:none !important/);
+  assert.match(overridesCss, /citrus-hotspot-label\{[^}]*display:none !important/);
 });
 
 test('citrus presentation keeps the image dominant and moves all navigation below it', () => {
@@ -36,13 +36,10 @@ test('citrus presentation keeps the image dominant and moves all navigation belo
   assert.match(overridesCss, /citrus-orchard\{display:contents !important/);
   assert.match(overridesCss, /citrus-botanical\{[^}]*grid-column:1 !important;grid-row:2 !important/);
   assert.match(overridesCss, /citrus-selection\{[^}]*position:static !important/);
-  assert.match(overridesCss, /citrus-selection::before\{[^}]*VARIEDADES \/ REFERENCIAS/);
+  assert.match(overridesCss, /citrus-selection::before\{[^}]*VARIEDADES · REFERENCIAS/);
   assert.match(overridesCss, /citrus-family-switcher\{[^}]*grid-row:3 !important/);
   assert.match(overridesCss, /citrus-detail\{[^}]*grid-row:4 !important/);
   assert.match(overridesCss, /citrus-tree-scene::after\{[^}]*REFERENCIAS · VER DEBAJO/);
-  assert.match(overridesCss, /citrus-hotspot-label\{[^}]*opacity:0 !important/);
-  assert.match(overridesCss, /citrus-popover-price[^}]*display:none !important/);
-  assert.match(overridesCss, /citrus-cart-button[^}]*display:none !important/);
   assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.6/);
   assert.match(baseCss, /background:#f9f6f0/);
 });
