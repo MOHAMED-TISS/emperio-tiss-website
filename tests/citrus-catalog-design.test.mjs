@@ -42,7 +42,7 @@ test('citrus presentation keeps the image dominant and moves all navigation belo
   assert.match(overridesCss, /citrus-hotspot-label\{[^}]*opacity:0 !important/);
   assert.match(overridesCss, /citrus-popover-price[^}]*display:none !important/);
   assert.match(overridesCss, /citrus-cart-button[^}]*display:none !important/);
-  assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.5/);
+  assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.6/);
   assert.match(baseCss, /background:#f9f6f0/);
 });
 
