@@ -24,16 +24,16 @@ body.fish-catalog-pilot .fish-scroll-cue:hover{transform:translateY(-4px) scale(
 body.fish-catalog-pilot .fish-scroll-cue:focus-visible{outline:2px solid var(--fish-gold)!important;outline-offset:4px!important}
 body.fish-catalog-pilot .fish-scroll-cue i{display:none!important}
 body.fish-catalog-pilot .fish-scroll-cue b{color:var(--fish-gold)!important;font-size:16px!important;font-weight:500!important}
-/* Seafood category navigation — local to Fish, aligned with its editorial navy/ivory/champagne system. */
-body.fish-catalog-pilot .seafood-category-nav{width:100%;display:flex;align-items:center;gap:clamp(28px,5vw,78px);padding:0 max(32px,calc((100% - 1240px)/2));min-height:88px;background:var(--fish-navy);color:var(--fish-ivory);border-top:1px solid rgba(216,194,143,.16);border-bottom:1px solid rgba(216,194,143,.18);box-sizing:border-box}
-body.fish-catalog-pilot .seafood-category-nav__label{flex:0 0 auto;font:600 9px/1 "DM Sans",sans-serif;letter-spacing:.18em;color:rgba(243,239,230,.55);white-space:nowrap}
-body.fish-catalog-pilot .seafood-category-nav__links{display:flex;align-items:stretch;gap:clamp(26px,4vw,62px);height:88px;min-width:0}
-body.fish-catalog-pilot .seafood-category-nav__links a{position:relative;display:inline-flex;align-items:center;gap:10px;height:100%;padding:0 0 1px;color:rgba(243,239,230,.62);font:600 11px/1 "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color .35s cubic-bezier(.16,1,.3,1)}
-body.fish-catalog-pilot .seafood-category-nav__links a span{font:500 9px/1 "DM Sans",sans-serif;letter-spacing:.08em;color:var(--fish-gold);opacity:.72}
-body.fish-catalog-pilot .seafood-category-nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--fish-gold);transform:scaleX(0);transform-origin:left center;transition:transform .45s cubic-bezier(.65,0,.35,1)}
+/* Seafood category navigation — Fish uses the same distinct container as every seafood category. */
+body.fish-catalog-pilot .seafood-category-nav{width:min(1240px,calc(100% - 64px));margin:38px auto 64px;display:flex;align-items:center;gap:clamp(34px,5vw,82px);padding:0 42px;min-height:104px;background:var(--fish-navy);color:var(--fish-ivory);border:1px solid rgba(199,162,96,.34);box-shadow:0 18px 44px rgba(7,30,53,.12);box-sizing:border-box}
+body.fish-catalog-pilot .seafood-category-nav__label{flex:0 0 auto;font:600 10px/1 "DM Sans",sans-serif;letter-spacing:.2em;color:var(--fish-gold);white-space:nowrap}
+body.fish-catalog-pilot .seafood-category-nav__links{display:flex;align-items:stretch;gap:clamp(34px,4.5vw,68px);height:104px;min-width:0}
+body.fish-catalog-pilot .seafood-category-nav__links a{position:relative;display:inline-flex;align-items:center;gap:11px;height:100%;padding:0 0 1px;color:rgba(243,239,230,.66);font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color .35s cubic-bezier(.16,1,.3,1)}
+body.fish-catalog-pilot .seafood-category-nav__links a span{font:500 10px/1 "DM Sans",sans-serif;letter-spacing:.1em;color:var(--fish-gold);opacity:.9}
+body.fish-catalog-pilot .seafood-category-nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--fish-gold);transform:scaleX(0);transform-origin:left center;transition:transform .45s cubic-bezier(.65,0,.35,1)}
 body.fish-catalog-pilot .seafood-category-nav__links a:hover,.fish-catalog-pilot .seafood-category-nav__links a:focus-visible,.fish-catalog-pilot .seafood-category-nav__links a.is-active{color:var(--fish-ivory)}
 body.fish-catalog-pilot .seafood-category-nav__links a.is-active::after{transform:scaleX(1)}
-body.fish-catalog-pilot .seafood-category-nav__links a:focus-visible{outline:1px solid var(--fish-gold);outline-offset:7px}
+body.fish-catalog-pilot .seafood-category-nav__links a:focus-visible{outline:1px solid var(--fish-gold);outline-offset:8px}
 /* Sections return to their normal independent layout; no overlap, gradient or pseudo-element transition. */
 body.fish-catalog-pilot .page-hero{margin-bottom:0!important;padding-bottom:0!important}
 body.fish-catalog-pilot .fish-emblematic{position:relative!important;z-index:auto!important;margin-top:0!important;padding:clamp(110px,12vw,160px) 0!important;background:#f3efe6!important;color:var(--fish-navy)!important}
@@ -42,10 +42,11 @@ body.fish-catalog-pilot .fish-catalog{position:relative!important;margin-top:0!i
 body.fish-catalog-pilot .fish-catalog::before{content:none!important}
 .fish-catalog-pilot .fish-emblematic__inner,.fish-catalog-pilot .fish-catalog__inner{position:relative!important;z-index:auto!important}
 @media(max-width:760px){body.fish-catalog-pilot .page-hero-inner,.fish-catalog-pilot .fish-emblematic__inner,.fish-catalog-pilot .fish-catalog__inner{width:calc(100% - 32px)!important}.fish-catalog-pilot .page-hero h1{font-size:clamp(4rem,18vw,6.8rem)!important}.fish-catalog-pilot .page-hero::before{left:-15%!important;bottom:0!important;width:125%!important;height:68%!important}.fish-catalog-pilot .page-hero-inner::after{left:-12%!important;width:125%!important;bottom:4%!important}.fish-catalog-pilot .page-hero .hero-cta{min-height:52px!important;padding:0 22px!important;margin-left:0!important}.fish-catalog-pilot .fish-scroll-cue{min-height:52px!important;padding:0 22px!important;font-size:10px!important}
-body.fish-catalog-pilot .seafood-category-nav{display:block;min-height:0;padding:0 16px;overflow:hidden}
-body.fish-catalog-pilot .seafood-category-nav__label{display:block;padding:18px 0 10px;font-size:8px}
-body.fish-catalog-pilot .seafood-category-nav__links{height:64px;gap:30px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain}
+body.fish-catalog-pilot .seafood-category-nav{width:calc(100% - 32px);margin:20px 16px 44px;padding:0 20px;display:block;min-height:0;overflow:hidden}
+body.fish-catalog-pilot .seafood-category-nav__label{display:block;padding:20px 0 12px;font-size:8px}
+body.fish-catalog-pilot .seafood-category-nav__links{height:70px;gap:32px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain}
 body.fish-catalog-pilot .seafood-category-nav__links::-webkit-scrollbar{display:none}
-body.fish-catalog-pilot .seafood-category-nav__links a{height:64px;font-size:10px}
+body.fish-catalog-pilot .seafood-category-nav__links a{height:70px;font-size:11px}
+body.fish-catalog-pilot .seafood-category-nav__links a::after{height:2px}
 }
 @media(prefers-reduced-motion:reduce){body.fish-catalog-pilot .page-hero .hero-cta,.fish-catalog-pilot .fish-scroll-cue,.fish-catalog-pilot .seafood-category-nav__links a,.fish-catalog-pilot .seafood-category-nav__links a::after{transition:none!important}.fish-catalog-pilot .page-hero .hero-cta::before,.fish-catalog-pilot .fish-scroll-cue::before{display:none!important}.fish-catalog-pilot .page-hero .hero-cta:hover,.fish-catalog-pilot .fish-scroll-cue:hover{transform:none!important}}
