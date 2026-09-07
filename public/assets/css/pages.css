@@ -7,3 +7,7 @@ html[lang="fr"] .intl-hero .intl-actions{margin-top:30px;gap:12px;align-items:ce
 html[lang="fr"] .intl-hero .intl-btn{white-space:nowrap}
 @media(max-width:900px){html[lang="fr"] .intl-hero-inner{width:calc(100% - 56px)}html[lang="fr"] .intl-hero h1{max-width:760px;font-size:clamp(52px,11vw,88px);line-height:.98}html[lang="fr"] .intl-hero .intl-lead{max-width:640px;margin-top:30px}}
 @media(max-width:600px){html[lang="fr"] .intl-hero-inner{width:calc(100% - 40px)}html[lang="fr"] .intl-hero h1{font-size:clamp(43px,12vw,68px);line-height:1.02;letter-spacing:-.03em}html[lang="fr"] .intl-hero .intl-lead{margin-top:24px;font-size:14px;line-height:1.8}html[lang="fr"] .intl-hero .intl-actions{margin-top:24px;align-items:flex-start;flex-direction:column}html[lang="fr"] .intl-hero .intl-btn{width:max-content;max-width:100%}}
+
+/* FULL-SCREEN HERO SYSTEM — shared ES page opening scenes occupy the first viewport. */
+.es-page .es-hero{min-height:100vh;min-height:100svh}
+@media(max-width:800px){.es-page .es-hero{min-height:100vh;min-height:100svh}}
