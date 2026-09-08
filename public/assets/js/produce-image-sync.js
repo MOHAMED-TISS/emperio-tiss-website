@@ -10,9 +10,24 @@
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[char]));
 
+  const naturalImageCompare = (a, b) => {
+    const filename = value => String(value || '').split('/').pop().replace(/\.[^.]+$/, '').trim();
+    const parse = value => {
+      const match = value.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/);
+      return { base: (match?.[1] || value).trim().toLocaleLowerCase(), number: match?.[2] ? Number(match[2]) : 0, hasNumber: !!match?.[2] };
+    };
+    const left = parse(filename(a));
+    const right = parse(filename(b));
+    const baseCompare = left.base.localeCompare(right.base, undefined, { numeric: true, sensitivity: 'base' });
+    if (baseCompare !== 0) return baseCompare;
+    if (left.hasNumber !== right.hasNumber) return left.hasNumber ? 1 : -1;
+    if (left.number !== right.number) return left.number - right.number;
+    return filename(a).localeCompare(filename(b), undefined, { numeric: true, sensitivity: 'base' });
+  };
+
   function normaliseEntry(entry) {
     const values = Array.isArray(entry) ? entry : (entry ? [entry] : []);
-    return [...new Set(values.filter(value => typeof value === 'string' && value.startsWith(INTAKE_PREFIX)))];
+    return [...new Set(values.filter(value => typeof value === 'string' && value.startsWith(INTAKE_PREFIX)))].sort(naturalImageCompare);
   }
 
   function imageMap(manifest) {
