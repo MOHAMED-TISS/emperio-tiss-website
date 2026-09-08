@@ -47,7 +47,10 @@
     .then(([catalog,priority,imageMap]) => {
       const marketOrder = priority?.priority?.[`${family}/${subcategory}`]?.[lang] || [];
       const orderIndex = new Map(marketOrder.map((id,i)=>[id,i]));
-      const products = (catalog.products || []).filter(p => p.status !== 'inactive' && p.family === family && p.subcategory === subcategory);
+      const allowedSubcategories = subcategory === 'fruits'
+        ? new Set(['fruits','citrus','exotics','core-produce'])
+        : new Set([subcategory]);
+      const products = (catalog.products || []).filter(p => p.status !== 'inactive' && p.family === family && allowedSubcategories.has(p.subcategory));
       if (!products.length) return;
       products.sort((a,b) => {
         const ai=orderIndex.has(a.id)?orderIndex.get(a.id):99999, bi=orderIndex.has(b.id)?orderIndex.get(b.id):99999;
@@ -62,7 +65,7 @@
     if (existing) return;
     document.documentElement.classList.add('market-catalogue-active');
     if (!document.querySelector('link[data-market-catalogue-css]')) {
-      const link=document.createElement('link'); link.rel='stylesheet'; link.href='/assets/css/catalogue-market-unified.css?v=20260909.1'; link.dataset.marketCatalogueCss='true'; document.head.appendChild(link);
+      const link=document.createElement('link'); link.rel='stylesheet'; link.href='/assets/css/catalogue-market-unified.css?v=20260909.2'; link.dataset.marketCatalogueCss='true'; document.head.appendChild(link);
     }
     document.querySelectorAll('.compact-catalog').forEach(el=>{el.hidden=true;el.setAttribute('aria-hidden','true')});
     document.querySelectorAll('.fish-catalog').forEach(el=>{el.hidden=true;el.setAttribute('aria-hidden','true')});
