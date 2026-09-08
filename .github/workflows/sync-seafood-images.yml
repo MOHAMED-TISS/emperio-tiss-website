@@ -3,7 +3,8 @@ name: Sync seafood catalogue images
 on:
   push:
     paths:
-      - 'public/assets/products/incoming/seafood/**'
+      - 'public/assets/products/incoming/**'
+      - 'public/assets/data/catalog-v1.3.json'
       - '.github/workflows/sync-seafood-images.yml'
   workflow_dispatch:
 
@@ -24,38 +25,70 @@ jobs:
         run: |
           import json
           import re
+          import unicodedata
           from pathlib import Path
 
-          incoming = Path('public/assets/products/incoming/seafood')
+          incoming = Path('public/assets/products/incoming')
           manifest_path = Path('public/assets/data/product-images.json')
+          catalog_path = Path('public/assets/data/catalog-v1.3.json')
 
           try:
               manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
           except Exception:
               manifest = {}
 
+          catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+          products = [p for p in catalog.get('products', []) if p.get('family') == 'seafood' and p.get('status') == 'active']
+
+          def normalise(value):
+              value = unicodedata.normalize('NFKD', str(value or '')).encode('ascii', 'ignore').decode().lower()
+              value = re.sub(r'\.[^.]+$', '', value)
+              value = re.sub(r'\(\s*\d+\s*\)|[-_ ]?\d+$', '', value)
+              value = re.sub(r'[^a-z0-9]+', ' ', value)
+              return re.sub(r'\s+', ' ', value).strip()
+
+          aliases = {}
+          for product in products:
+              product_id = product.get('id')
+              if not product_id:
+                  continue
+              names = [product_id, product.get('commercialName'), *(product.get('varieties') or [])]
+              for name in names:
+                  key = normalise(name)
+                  if key:
+                      aliases[key] = product_id
+
           allowed = {'.jpg', '.jpeg', '.png', '.webp'}
           grouped = {}
 
-          for path in sorted(incoming.iterdir() if incoming.exists() else []):
+          def natural_key(path):
+              stem = re.sub(r'\.[^.]+$', '', path.name).strip()
+              match = re.match(r'^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$', stem)
+              base = (match.group(1) if match else stem).strip().lower()
+              number = int(match.group(2)) if match and match.group(2) else 0
+              has_number = 1 if match and match.group(2) else 0
+              return (base, has_number, number, stem.lower())
+
+          for path in sorted(incoming.iterdir() if incoming.exists() else [], key=natural_key):
               if not path.is_file() or path.suffix.lower() not in allowed:
                   continue
-              stem = path.stem.lower().strip()
-              stem = re.sub(r'\s+', '-', stem)
-              stem = re.sub(r'[^a-z0-9_-]+', '-', stem)
-              stem = re.sub(r'-{2,}', '-', stem).strip('-_')
-              stem = re.sub(r'-\d+$', '', stem)
-              grouped.setdefault(stem, []).append('/assets/products/incoming/seafood/' + path.name)
+              key = normalise(path.stem)
+              product_id = aliases.get(key)
+              if not product_id:
+                  continue
+              grouped.setdefault(product_id, []).append('/assets/products/incoming/' + path.name)
 
-          # Remove paths previously generated from this intake folder.
+          # Remove paths generated from the seafood incoming folder, preserving all other catalogue families.
+          seafood_prefix = '/assets/products/incoming/'
           for product_id, images in list(manifest.items()):
-              remaining = [img for img in images if '/assets/products/incoming/seafood/' not in img]
+              if not isinstance(images, list):
+                  images = [images] if images else []
+              remaining = [img for img in images if not (isinstance(img, str) and img.startswith(seafood_prefix))]
               if remaining:
                   manifest[product_id] = remaining
               else:
                   del manifest[product_id]
 
-          # Add the current contents of the intake folder.
           for product_id, images in grouped.items():
               manifest[product_id] = images
 
