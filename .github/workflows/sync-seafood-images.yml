@@ -42,16 +42,20 @@ jobs:
                   continue
               stem = path.stem.lower().strip()
               stem = re.sub(r'\s+', '-', stem)
-              stem = re.sub(r'[^a-z0-9áéíóúüñ_-]+', '-', stem)
+              stem = re.sub(r'[^a-z0-9_-]+', '-', stem)
               stem = re.sub(r'-{2,}', '-', stem).strip('-_')
               stem = re.sub(r'-\d+$', '', stem)
               grouped.setdefault(stem, []).append('/assets/products/incoming/seafood/' + path.name)
 
-          # Only replace entries represented by this intake folder.
-          for product_id in list(manifest):
-              if product_id in grouped:
-                  manifest[product_id] = grouped[product_id]
+          # Remove paths previously generated from this intake folder.
+          for product_id, images in list(manifest.items()):
+              remaining = [img for img in images if '/assets/products/incoming/seafood/' not in img]
+              if remaining:
+                  manifest[product_id] = remaining
+              else:
+                  del manifest[product_id]
 
+          # Add the current contents of the intake folder.
           for product_id, images in grouped.items():
               manifest[product_id] = images
 
