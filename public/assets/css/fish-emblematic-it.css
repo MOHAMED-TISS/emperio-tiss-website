@@ -1,0 +1,22 @@
+/* IT fish emblematic — Spanish-master visual parity */
+html[lang="it"] .fish-emblematic{background:#f3efe6!important;color:#071e35!important;padding-block:clamp(5rem,10vw,9rem)!important;overflow:hidden}
+html[lang="it"] .fish-emblematic__inner{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+html[lang="it"] .fish-emblematic__intro{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr) minmax(220px,.55fr);gap:clamp(2rem,5vw,5rem);align-items:end;margin-block-end:clamp(3rem,6vw,5.5rem)}
+html[lang="it"] .fish-emblematic__intro .eyebrow{color:#c7a260!important}
+html[lang="it"] .fish-emblematic__intro h2{margin:0;font:400 clamp(2.8rem,6.3vw,6rem)/.92 var(--et-serif,Georgia,serif)!important;letter-spacing:-.025em;color:#071e35!important}
+html[lang="it"] .fish-emblematic__intro h2 em{font-style:italic;color:#c7a260!important}
+html[lang="it"] .fish-emblematic__intro p{margin:0;max-width:360px;color:#6d756f!important;font:400 .84rem/1.7 var(--et-sans,Arial,sans-serif)!important}
+html[lang="it"] .fish-emblematic__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1px!important;background:rgba(16,37,28,.14)!important}
+html[lang="it"] .fish-emblematic-card{display:grid!important;grid-template-rows:minmax(260px,30vw) auto!important;background:#071e35!important;min-width:0;border:0!important;border-radius:0!important;box-shadow:none!important;color:#f3efe6!important}
+html[lang="it"] .fish-emblematic-card__media{min-height:0!important;background:#0d2d4a!important}
+html[lang="it"] .fish-emblematic-card__media--image{height:100%!important;padding:0!important;border:0!important}
+html[lang="it"] .fish-emblematic-card__body{padding:clamp(1.3rem,2.2vw,2rem)!important;display:flex!important;flex-direction:column!important;min-height:250px!important;background:#071e35!important}
+html[lang="it"] .fish-emblematic-card__kicker{color:#e8cf99!important;font:700 .56rem/1.2 var(--et-sans,Arial,sans-serif)!important;letter-spacing:.14em;text-transform:uppercase}
+html[lang="it"] .fish-emblematic-card h3{margin:.7rem 0 .25rem!important;font:400 clamp(1.9rem,3vw,3.1rem)/.96 var(--et-serif,Georgia,serif)!important;color:#f3efe6!important}
+html[lang="it"] .fish-emblematic-card__scientific{margin:0;color:rgba(248,246,240,.55)!important;font:.8rem/1.5 var(--et-sans,Arial,sans-serif)!important}
+html[lang="it"] .fish-emblematic-card__meta{display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 0;padding-top:1rem;border-top:1px solid rgba(248,246,240,.14)!important;color:rgba(248,246,240,.72)!important;font:.64rem/1.4 var(--et-sans,Arial,sans-serif)!important;text-transform:uppercase;letter-spacing:.08em}
+html[lang="it"] .fish-emblematic-card__note{margin:1rem 0 0;color:rgba(248,246,240,.62)!important;font:.76rem/1.6 var(--et-sans,Arial,sans-serif)!important}
+html[lang="it"] .fish-emblematic-card__mark{margin-top:auto;padding-top:1.3rem;color:#e8cf99!important;font:600 .58rem/1 var(--et-sans,Arial,sans-serif)!important;letter-spacing:.14em;text-transform:uppercase}
+html[lang="it"] .fish-emblematic .fish-scroll-cue{color:#071e35!important;margin-top:clamp(3rem,5vw,4.5rem)}
+@media(max-width:1050px){html[lang="it"] .fish-emblematic__intro{grid-template-columns:1fr 1.5fr}html[lang="it"] .fish-emblematic__intro p{grid-column:2}html[lang="it"] .fish-emblematic__grid{grid-template-columns:1fr!important}html[lang="it"] .fish-emblematic-card{grid-template-columns:38% 62%!important;grid-template-rows:none!important}html[lang="it"] .fish-emblematic-card__media{min-height:260px!important}}
+@media(max-width:760px){html[lang="it"] .fish-emblematic__intro{display:block}html[lang="it"] .fish-emblematic__intro h2{margin-block:.7rem 1rem}html[lang="it"] .fish-emblematic__intro p{max-width:520px}html[lang="it"] .fish-emblematic-card{grid-template-columns:1fr!important;grid-template-rows:220px auto!important}}
