@@ -1,0 +1,73 @@
+name: Sync seafood catalogue images
+
+on:
+  push:
+    paths:
+      - 'public/assets/products/incoming/seafood/**'
+      - '.github/workflows/sync-seafood-images.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build seafood image manifest
+        shell: python
+        run: |
+          import json
+          import re
+          from pathlib import Path
+
+          incoming = Path('public/assets/products/incoming/seafood')
+          manifest_path = Path('public/assets/data/product-images.json')
+
+          try:
+              manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          except Exception:
+              manifest = {}
+
+          allowed = {'.jpg', '.jpeg', '.png', '.webp'}
+          grouped = {}
+
+          for path in sorted(incoming.iterdir() if incoming.exists() else []):
+              if not path.is_file() or path.suffix.lower() not in allowed:
+                  continue
+              stem = path.stem.lower().strip()
+              stem = re.sub(r'\s+', '-', stem)
+              stem = re.sub(r'[^a-z0-9áéíóúüñ_-]+', '-', stem)
+              stem = re.sub(r'-{2,}', '-', stem).strip('-_')
+              stem = re.sub(r'-\d+$', '', stem)
+              grouped.setdefault(stem, []).append('/assets/products/incoming/seafood/' + path.name)
+
+          # Only replace entries represented by this intake folder.
+          for product_id in list(manifest):
+              if product_id in grouped:
+                  manifest[product_id] = grouped[product_id]
+
+          for product_id, images in grouped.items():
+              manifest[product_id] = images
+
+          manifest_path.write_text(
+              json.dumps(dict(sorted(manifest.items())), ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+
+      - name: Commit generated manifest
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/assets/data/product-images.json
+          if git diff --cached --quiet; then
+            echo 'No manifest changes.'
+            exit 0
+          fi
+          git commit -m 'Auto-sync seafood catalogue images'
+          git push
