@@ -12,6 +12,23 @@
 
   const esc = v => String(v ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
 
+  const naturalImageCompare = (a, b) => {
+    const filename = value => String(value || '').split('/').pop().replace(/\.[^.]+$/, '').trim();
+    const parse = value => {
+      const match = value.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/);
+      return { base: (match?.[1] || value).trim().toLocaleLowerCase(), number: match?.[2] ? Number(match[2]) : 0, hasNumber: !!match?.[2] };
+    };
+    const left = parse(filename(a));
+    const right = parse(filename(b));
+    const baseCompare = left.base.localeCompare(right.base, undefined, { numeric: true, sensitivity: 'base' });
+    if (baseCompare !== 0) return baseCompare;
+    if (left.hasNumber !== right.hasNumber) return left.hasNumber ? 1 : -1;
+    if (left.number !== right.number) return left.number - right.number;
+    return filename(a).localeCompare(filename(b), undefined, { numeric: true, sensitivity: 'base' });
+  };
+
+  const sortImages = images => [...new Set(Array.isArray(images) ? images.filter(Boolean) : [])].sort(naturalImageCompare);
+
   const installImageProtection = () => {
     if (doc.documentElement.dataset.itEmblematicProtection === 'true') return;
     doc.documentElement.dataset.itEmblematicProtection = 'true';
@@ -84,7 +101,8 @@
 
   const bindImages = () => {
     grid.querySelectorAll('.fish-emblematic-card__media--image').forEach(media => {
-      const images = JSON.parse(media.dataset.images || '[]');
+      const images = sortImages(JSON.parse(media.dataset.images || '[]'));
+      media.dataset.images = JSON.stringify(images);
       const button = media.querySelector('.fish-emblematic-card__image-button');
       const counter = media.querySelector('.fish-emblematic-card__counter');
       const image = media.querySelector('img');
@@ -129,7 +147,7 @@
 
   const render = imageMap => {
     grid.innerHTML = items.map((item, index) => {
-      const images = imageMap[item.id] || [];
+      const images = sortImages(imageMap[item.id] || []);
       const image = images[0] || '';
       return `<article class="fish-emblematic-card" data-product-id="${esc(item.id)}">
         <div class="fish-emblematic-card__media${image ? ' fish-emblematic-card__media--image' : ''}" data-images='${esc(JSON.stringify(images))}'>
