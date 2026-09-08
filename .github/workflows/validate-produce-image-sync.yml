@@ -1,0 +1,28 @@
+name: Validate produce image sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/assets/js/produce-image-sync.js'
+      - 'public/products/fruits/index.html'
+      - 'public/products/vegetables/index.html'
+      - 'tests/produce-image-sync.test.mjs'
+      - '.github/workflows/validate-produce-image-sync.yml'
+  pull_request:
+    paths:
+      - 'public/assets/js/produce-image-sync.js'
+      - 'public/products/fruits/index.html'
+      - 'public/products/vegetables/index.html'
+      - 'tests/produce-image-sync.test.mjs'
+      - '.github/workflows/validate-produce-image-sync.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: node --check public/assets/js/produce-image-sync.js
+      - name: Run produce image sync tests
+        run: node --test tests/produce-image-sync.test.mjs
