@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0",
+  "lastReviewed": "2026-09-09",
+  "locales": {
+    "es": {"market":"Spain / Mediterranean wholesale","direction":"ltr"},
+    "en": {"market":"UK / English-speaking professional buyers","direction":"ltr"},
+    "fr": {"market":"France / French-speaking professional buyers","direction":"ltr"},
+    "it": {"market":"Italy / Italian professional buyers","direction":"ltr"},
+    "ar": {"market":"GCC / Middle East professional buyers","direction":"rtl"}
+  },
+  "priority": {
+    "seafood/fish": {
+      "es": ["dorada","lubina","merluza-pijota","rape","san-pedro","mujol","denton","sargo","pargo","caballa","salmonete","atun","pez-limon","boqueron","salmon","mero-amarillo","sama","rascacio","pez-sable","pez-espada"],
+      "en": ["salmon","atun","merluza-pijota","lubina","caballa","pez-sable","rape","san-pedro","dorada","pez-espada","salmonete","boqueron","mujol","denton","sargo","pargo","pez-limon","mero-amarillo","sama","rascacio"],
+      "fr": ["salmon","merluza-pijota","dorada","lubina","san-pedro","rape","mero-amarillo","caballa","salmonete","atun","sargo","denton","pez-espada","boqueron","mujol","pez-limon","pargo","sama","rascacio","pez-sable"],
+      "it": ["dorada","lubina","salmon","pez-espada","atun","merluza-pijota","san-pedro","rape","caballa","salmonete","boqueron","mujol","denton","sargo","pez-limon","pargo","mero-amarillo","sama","rascacio","pez-sable"],
+      "ar": ["dorada","lubina","salmon","atun","mero-amarillo","caballa","pez-espada","san-pedro","rape","merluza-pijota","salmonete","boqueron","pez-limon","sargo","denton","pargo","mujol","sama","rascacio","pez-sable"]
+    },
+    "seafood/shellfish": {
+      "es": ["gamba-blanca","cigala","moruno","langostino-tigre","langostino-vannamei"],
+      "en": ["langostino-vannamei","gamba-blanca","langostino-tigre","cigala","moruno"],
+      "fr": ["gamba-blanca","cigala","moruno","langostino-vannamei","langostino-tigre"],
+      "it": ["gamba-blanca","cigala","langostino-vannamei","langostino-tigre","moruno"],
+      "ar": ["langostino-vannamei","gamba-blanca","langostino-tigre","cigala","moruno"]
+    },
+    "seafood/cephalopods": {
+      "es": ["pulpo-flor","pulpo-natural","pulpo-bandeja","calamar-envuelto","puntilla-extra","almendrita","tiras-sepia-limpia","sepia-limpia-iqf"],
+      "en": ["pulpo-natural","calamar-envuelto","puntilla-extra","pulpo-flor","sepia-limpia-iqf","tiras-sepia-limpia","almendrita","pulpo-bandeja"],
+      "fr": ["pulpo-natural","calamar-envuelto","pulpo-flor","sepia-limpia-iqf","tiras-sepia-limpia","puntilla-extra","almendrita","pulpo-bandeja"],
+      "it": ["pulpo-natural","calamar-envuelto","puntilla-extra","pulpo-flor","sepia-limpia-iqf","tiras-sepia-limpia","almendrita","pulpo-bandeja"],
+      "ar": ["pulpo-natural","calamar-envuelto","pulpo-flor","puntilla-extra","sepia-limpia-iqf","tiras-sepia-limpia","almendrita","pulpo-bandeja"]
+    },
+    "produce/fruits": {
+      "es": ["clementina","navelina","mango","apple"],
+      "en": ["apple","clementina","navelina","mango"],
+      "fr": ["apple","clementina","navelina","mango"],
+      "it": ["clementina","apple","navelina","mango"],
+      "ar": ["clementina","mango","navelina","apple"]
+    },
+    "produce/vegetables": {
+      "es": ["tomato","tomato-cherry-round","tomato-cherry-long","pepper","cucumber","zucchini","aubergine","green-bean"],
+      "en": ["tomato","pepper","cucumber","zucchini","aubergine","green-bean","tomato-cherry-round","tomato-cherry-long"],
+      "fr": ["tomato","pepper","zucchini","cucumber","aubergine","green-bean","tomato-cherry-round","tomato-cherry-long"],
+      "it": ["tomato","zucchini","aubergine","pepper","cucumber","green-bean","tomato-cherry-round","tomato-cherry-long"],
+      "ar": ["tomato","pepper","cucumber","aubergine","zucchini","green-bean","mango","tomato-cherry-round","tomato-cherry-long"]
+    }
+  },
+  "names": {
+    "dorada":{"en":"Sea bream","fr":"Daurade royale","it":"Orata","ar":"الدنيس"},
+    "lubina":{"en":"Sea bass","fr":"Bar","it":"Branzino","ar":"القاروص"},
+    "merluza-pijota":{"en":"Hake","fr":"Merlu","it":"Nasello","ar":"النازلي"},
+    "rape":{"en":"Monkfish","fr":"Baudroie","it":"Rana pescatrice","ar":"سمك الراهب"},
+    "san-pedro":{"en":"John Dory","fr":"Saint-Pierre","it":"San Pietro","ar":"سمك القديس بطرس"},
+    "mujol":{"en":"Mullet","fr":"Mulet","it":"Cefalo","ar":"البوري"},
+    "denton":{"en":"Dentex","fr":"Denté","it":"Dentice","ar":"السنغاري"},
+    "sargo":{"en":"White seabream","fr":"Sar commun","it":"Sarago","ar":"السارغو"},
+    "pargo":{"en":"Snapper","fr":"Vivaneau","it":"Dentice / Pargo","ar":"النهاش"},
+    "caballa":{"en":"Mackerel","fr":"Maquereau","it":"Sgombro","ar":"الماكريل"},
+    "salmonete":{"en":"Red mullet","fr":"Rouget","it":"Triglia","ar":"البربوني"},
+    "atun":{"en":"Tuna","fr":"Thon","it":"Tonno","ar":"التونة"},
+    "salmon":{"en":"Salmon","fr":"Saumon","it":"Salmone","ar":"السلمون"},
+    "pez-limon":{"en":"Greater amberjack","fr":"Sériole couronnée","it":"Ricciola","ar":"الكنعد"},
+    "boqueron":{"en":"Anchovy","fr":"Anchois","it":"Acciuga","ar":"الأنشوفة"},
+    "pez-sable":{"en":"Cutlassfish","fr":"Sabre","it":"Pesce sciabola","ar":"سمك أبو سيف الشريطي"},
+    "pez-espada":{"en":"Swordfish","fr":"Espadon","it":"Pesce spada","ar":"أبو سيف"},
+    "mero-amarillo":{"en":"Yellow grouper","fr":"Mérou jaune","it":"Cernia gialla","ar":"الهامور"},
+    "sama":{"en":"Sama","fr":"Sama","it":"Sama","ar":"السما"},
+    "rascacio":{"en":"Scorpionfish","fr":"Rascasse","it":"Scorfano","ar":"سمك العقرب"},
+    "moruno":{"en":"Blue and red shrimp","fr":"Crevette rouge","it":"Gambero rosso","ar":"الروبيان الأحمر"},
+    "cigala":{"en":"Norway lobster","fr":"Langoustine","it":"Scampo","ar":"اللانغوستين"},
+    "gamba-blanca":{"en":"Deep-water rose shrimp","fr":"Crevette rose","it":"Gambero rosa","ar":"الجمبري الأبيض"},
+    "langostino-tigre":{"en":"Black tiger prawn","fr":"Crevette tigrée","it":"Gambero tigre","ar":"الروبيان النمر"},
+    "langostino-vannamei":{"en":"Vannamei prawn","fr":"Crevette vannamei","it":"Gambero vannamei","ar":"روبيان فانامي"},
+    "pulpo-flor":{"en":"Flower octopus","fr":"Poulpe fleur","it":"Polpo fiore","ar":"أخطبوط الزهرة"},
+    "pulpo-natural":{"en":"Whole octopus","fr":"Poulpe entier","it":"Polpo intero","ar":"الأخطبوط الكامل"},
+    "pulpo-bandeja":{"en":"Tray-packed octopus","fr":"Poulpe en barquette","it":"Polpo in vaschetta","ar":"أخطبوط في صينية"},
+    "calamar-envuelto":{"en":"Wrapped squid","fr":"Calmar enveloppé","it":"Calamaro avvolto","ar":"حبار ملفوف"},
+    "puntilla-extra":{"en":"Baby squid","fr":"Petits calamars","it":"Totanetti","ar":"حبار صغير"},
+    "almendrita":{"en":"Almendrita squid","fr":"Petit calmar","it":"Calamaretto","ar":"حبار اللوز"},
+    "tiras-sepia-limpia":{"en":"Cleaned cuttlefish strips","fr":"Lanières de seiche nettoyée","it":"Strisce di seppia pulita","ar":"شرائح حبار السيبيا المنظف"},
+    "sepia-limpia-iqf":{"en":"IQF cleaned cuttlefish","fr":"Seiche nettoyée IQF","it":"Seppia pulita IQF","ar":"سيبيا منظفة IQF"},
+    "clementina":{"en":"Clementine","fr":"Clémentine","it":"Clementina","ar":"الكلمنتينا"},
+    "navelina":{"en":"Navelina orange","fr":"Orange Navelina","it":"Arancia Navelina","ar":"برتقال نافيلينا"},
+    "mango":{"en":"Mango","fr":"Mangue","it":"Mango","ar":"مانجو"},
+    "apple":{"en":"Apple","fr":"Pomme","it":"Mela","ar":"تفاح"},
+    "tomato":{"en":"Tomato","fr":"Tomate","it":"Pomodoro","ar":"طماطم"},
+    "tomato-cherry-round":{"en":"Round cherry tomato","fr":"Tomate cerise ronde","it":"Pomodoro ciliegino tondo","ar":"طماطم كرزية مستديرة"},
+    "tomato-cherry-long":{"en":"Long cherry tomato","fr":"Tomate cerise allongée","it":"Pomodoro ciliegino allungato","ar":"طماطم كرزية طويلة"},
+    "pepper":{"en":"Pepper","fr":"Poivron","it":"Peperone","ar":"فلفل حلو"},
+    "cucumber":{"en":"Cucumber","fr":"Concombre","it":"Cetriolo","ar":"خيار"},
+    "zucchini":{"en":"Courgette","fr":"Courgette","it":"Zucchina","ar":"كوسا"},
+    "aubergine":{"en":"Aubergine","fr":"Aubergine","it":"Melanzana","ar":"باذنجان"},
+    "green-bean":{"en":"Green bean","fr":"Haricot vert","it":"Fagiolino","ar":"فاصوليا خضراء"}
+  }
+}
