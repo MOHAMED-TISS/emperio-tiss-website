@@ -1,0 +1,37 @@
+name: Validate multilingual market catalogues
+
+on:
+  push:
+    paths:
+      - 'public/assets/data/catalogue-market-priority.json'
+      - 'public/assets/data/catalog-v1.3.json'
+      - 'public/assets/js/market-catalogue.js'
+      - 'public/assets/js/international-shell.js'
+      - 'public/assets/css/catalogue-market-unified.css'
+      - 'tests/market-catalogue.test.mjs'
+      - '.github/workflows/validate-market-catalogues.yml'
+  pull_request:
+    paths:
+      - 'public/assets/data/catalogue-market-priority.json'
+      - 'public/assets/data/catalog-v1.3.json'
+      - 'public/assets/js/market-catalogue.js'
+      - 'public/assets/js/international-shell.js'
+      - 'public/assets/css/catalogue-market-unified.css'
+      - 'tests/market-catalogue.test.mjs'
+      - '.github/workflows/validate-market-catalogues.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Syntax check
+        run: |
+          node --check public/assets/js/market-catalogue.js
+          node --check public/assets/js/international-shell.js
+      - name: Catalogue tests
+        run: node --test tests/market-catalogue.test.mjs
