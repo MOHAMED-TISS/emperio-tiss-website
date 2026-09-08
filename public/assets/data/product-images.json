@@ -91,7 +91,8 @@
     "/assets/products/incoming/Pez limón.jpg"
   ],
   "pez-sable": [
-    "/assets/products/incoming/Pez sable.webp"
+    "/assets/products/incoming/Pez sable.webp",
+    "/assets/products/incoming/Pez sable 1.jpg"
   ],
   "rascacio": [
     "/assets/products/incoming/Rascacio 1.jpg",
@@ -99,5 +100,11 @@
   ],
   "sargo": [
     "/assets/products/incoming/Sargo.jpg"
+  ],
+  "mujol": [
+    "/assets/products/incoming/Mújol.webp"
+  ],
+  "rape": [
+    "/assets/products/incoming/Rape.jpg"
   ]
 }
