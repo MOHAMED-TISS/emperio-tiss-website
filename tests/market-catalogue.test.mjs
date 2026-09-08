@@ -6,7 +6,6 @@ const config = JSON.parse(fs.readFileSync('public/assets/data/catalogue-market-p
 const renderer = fs.readFileSync('public/assets/js/market-catalogue.js', 'utf8');
 const shellRenderer = fs.readFileSync('public/assets/js/market-catalogue-shell.js', 'utf8');
 const css = fs.readFileSync('public/assets/css/catalogue-market-unified.css', 'utf8');
-const shellCss = fs.readFileSync('public/assets/css/catalogue-market-shell.css', 'utf8');
 const shell = fs.readFileSync('public/assets/js/international-shell.js', 'utf8');
 const catalog = JSON.parse(fs.readFileSync('public/assets/data/catalog.json', 'utf8'));
 
@@ -37,10 +36,12 @@ test('renderer uses the complete catalogue and handles legacy fruit subcategorie
   assert.match(renderer, /new Set\(\['fruits','citrus','exotics','core-produce'\]\)/);
 });
 
-test('international editorial shell normalizes hero and seafood navigation', () => {
-  assert.match(shellRenderer, /market-page-hero/);
+test('international shell applies the Spanish category CSS baseline and seafood navigation', () => {
   assert.match(shellRenderer, /seafood-category-nav/);
-  assert.match(shellRenderer, /dir='rtl'/);
+  assert.match(shellRenderer, /seafood-subpages-es\.css/);
+  assert.match(shellRenderer, /produce-es\.css/);
+  assert.match(shellRenderer, /fish-editorial\.css/);
+  assert.match(shellRenderer, /body\.classList\.add\('market-catalogue-page'\)/);
 });
 
 test('renderer is language-aware and supports RTL', () => {
@@ -49,19 +50,20 @@ test('renderer is language-aware and supports RTL', () => {
   assert.match(renderer, /market-catalogue/);
 });
 
-test('international shell loads the shared editorial shell and catalogue layer', () => {
+test('international shell loads the shared catalogue layers', () => {
   assert.match(shell, /market-catalogue-shell\.js/);
   assert.match(shell, /market-catalogue\.js/);
   assert.match(shell, /data-etMarketCatalogueShell/);
   assert.match(shell, /data-etMarketCatalogue/);
 });
 
-test('unified catalogue CSS contains RTL and responsive rules', () => {
+test('unified catalogue CSS matches Spanish catalogue geometry and contains RTL/responsive rules', () => {
+  assert.match(css, /width:min\(1240px,calc\(100% - 48px\)\)/);
+  assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
+  assert.match(css, /border-radius:18px/);
   assert.match(css, /html\[dir=rtl\]/);
-  assert.match(css, /@media\(max-width:900px\)/);
-  assert.match(css, /@media\(max-width:620px\)/);
-  assert.match(shellCss, /market-page-hero/);
-  assert.match(shellCss, /market-seafood-nav/);
+  assert.match(css, /@media\(max-width:850px\)/);
+  assert.match(css, /@media\(max-width:560px\)/);
 });
 
 test('natural image ordering contract is numeric and base-first', () => {
