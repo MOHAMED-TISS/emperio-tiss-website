@@ -6,15 +6,33 @@
   const i18n = {
     es: {labels:{fish:'Pescados',shellfish:'Mariscos / Crustáceos',cephalopods:'Cefalópodos',citrus:'Cítricos',exotics:'Frutas exóticas','core-produce':'Otras frutas',vegetables:'Hortalizas','seasonal-selection':'Temporada',mediterranean:'Del Mediterráneo'},fresh:'Fresco',frozen:'Congelado',detail:'Ver ficha',empty:'No hay referencias activas en esta categoría.',catalogue:'CATÁLOGO',all:'Referencias seleccionadas.',seafood:'Productos del mar',seasonal:'Temporada',previous:'Imagen anterior',next:'Imagen siguiente',close:'Cerrar'},
     en: {labels:{fish:'Fish',shellfish:'Shellfish / Crustaceans',cephalopods:'Cephalopods',citrus:'Citrus',exotics:'Exotic fruit','core-produce':'Other fruit',vegetables:'Vegetables','seasonal-selection':'Seasonal',mediterranean:'Mediterranean'},fresh:'Fresh',frozen:'Frozen',detail:'View specification',empty:'No active references in this category.',catalogue:'CATALOGUE',all:'Selected references.',seafood:'Seafood',seasonal:'Seasonal',previous:'Previous image',next:'Next image',close:'Close'},
-    fr: {labels:{fish:'Poissons',shellfish:'Fruits de mer / Crustacés',cephalopods:'Céphalopodes',citrus:'Agrumes',exotics:'Fruits exotiques','core-produce':'Autres fruits',vegetables:'Légumes','seasonal-selection':'Saisonnier',mediterranean:'Méditerranée'},fresh:'Frais',frozen:'Surgelé',detail:'Voir la fiche',empty:'Aucune référence active dans cette catégorie.',catalogue:'CATALOGUE',all:'Références sélectionnées.',seafood:'Produits de la mer',seasonal:'Saisonnier',previous:'Image précédente',next:'Image suivante',close:'Fermer'},
+    fr: {labels:{fish:'Poissons',shellfish:'Fruits de mer / Crustacés',cephalopods:'Céphalopodes',citrus:'Agrumes',exotics:'Fruits exotiques','core-produce':'Autres fruits','vegetables':'Légumes','seasonal-selection':'Saisonnier',mediterranean:'Méditerranée'},fresh:'Frais',frozen:'Surgelé',detail:'Voir la fiche',empty:'Aucune référence active dans cette catégorie.',catalogue:'CATALOGUE',all:'Références sélectionnées.',seafood:'Produits de la mer',seasonal:'Saisonnier',previous:'Image précédente',next:'Image suivante',close:'Fermer'},
     ar: {labels:{fish:'أسماك',shellfish:'المأكولات البحرية / القشريات',cephalopods:'رأسيات الأرجل',citrus:'حمضيات',exotics:'فواكه استوائية','core-produce':'فواكه أخرى',vegetables:'خضروات','seasonal-selection':'موسمي',mediterranean:'البحر المتوسط'},fresh:'طازج',frozen:'مجمد',detail:'عرض المواصفات',empty:'لا توجد مراجع نشطة في هذه الفئة.',catalogue:'الكتالوج',all:'مراجع مختارة.',seafood:'منتجات البحر',seasonal:'موسمي',previous:'الصورة السابقة',next:'الصورة التالية',close:'إغلاق'}
   };
 
   const lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();
   const t=i18n[lang]||i18n.es;
-  const esc=(value)=>String(value??'').replace(/[&<>"']/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const esc=(value)=>String(value??'').replace(/[&<>\"']/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[char]));
   const first=(value)=>Array.isArray(value)?value.find(Boolean)||'':(value||'');
-  const images=(product)=>[...new Set((Array.isArray(product.images)?product.images:(product.image?[product.image]:[])).filter(Boolean))];
+
+  // Natural filename ordering: base image first, then numbered variants (1, 2, 10...),
+  // regardless of whether the separator is a space, hyphen, underscore or parentheses.
+  const naturalImageCompare=(a,b)=>{
+    const name=value=>String(value||'').split('/').pop().replace(/\.[^.]+$/,'').trim();
+    const parse=nameValue=>{
+      const match=nameValue.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/);
+      return {base:(match?.[1]||nameValue).trim().toLocaleLowerCase(), number:match?.[2] ? Number(match[2]) : 0, hasNumber:!!match?.[2]};
+    };
+    const left=parse(name(a));
+    const right=parse(name(b));
+    const baseCompare=left.base.localeCompare(right.base,undefined,{numeric:true,sensitivity:'base'});
+    if(baseCompare!==0)return baseCompare;
+    if(left.hasNumber!==right.hasNumber)return left.hasNumber?1:-1;
+    if(left.number!==right.number)return left.number-right.number;
+    return name(a).localeCompare(name(b),undefined,{numeric:true,sensitivity:'base'});
+  };
+
+  const images=(product)=>[...new Set((Array.isArray(product.images)?product.images:(product.image?[product.image]:[])).filter(Boolean))].sort(naturalImageCompare);
   const normalizeCondition=(values)=>(values||[]).map((value)=>value==='fresh'?t.fresh:value==='frozen'?t.frozen:value).join(' · ');
 
   let lightboxImages=[];
@@ -61,7 +79,7 @@
   function renderRequestedCatalogs(data){window.__ET_CATALOG_PRODUCTS=data.products;const products=data.products.filter(product=>product.status==='active');document.querySelectorAll('[data-catalog-family]').forEach(element=>{const family=element.dataset.catalogFamily;const subcategories=(element.dataset.catalogSubcategories||'').split(',').map(value=>value.trim()).filter(Boolean);renderInto(element,products.filter(product=>product.family===family&&(!subcategories.length||subcategories.includes(product.subcategory))));});}
   function routeContext(){const parts=window.location.pathname.split('/').filter(Boolean);const productsIndex=parts.indexOf('products');return productsIndex>=0?parts.slice(productsIndex+1):[];}
   function autoCatalogTarget(){if(document.querySelector('[data-catalog-family]'))return null;const rest=routeContext();if(!rest.length)return null;let family=null,subcategories=[],title='',eyebrow=t.catalogue;if(rest[0]==='seafood'){family='seafood';if(rest[1]==='fish'){subcategories=['fish'];title=t.labels.fish;}else if(rest[1]==='shellfish'){subcategories=['shellfish'];title=t.labels.shellfish;}else if(rest[1]==='cephalopods'){subcategories=['cephalopods'];title=t.labels.cephalopods;}else title=t.seafood;}else if(rest[0]==='seasonal'){family='seasonal';subcategories=['seasonal-selection'];title=t.seasonal;}if(!family)return null;const main=document.querySelector('main');if(!main)return null;const section=document.createElement('section');section.className='catalog-section auto-catalog-section';section.innerHTML=`<div class="catalog-inner"><div class="catalog-head"><div><span class="eyebrow">${esc(eyebrow)}</span><h2>${esc(title)}<br><em>${esc(t.all)}</em></h2></div><p>${esc(t.detail)}</p></div><div class="product-catalog-grid" data-catalog-family="${esc(family)}" data-catalog-subcategories="${esc(subcategories.join(','))}"></div></div>`;main.appendChild(section);return section.querySelector('[data-catalog-family]');}
-  async function init(){const injected=autoCatalogTarget();const targets=document.querySelectorAll('[data-catalog-family]');if(!targets.length&&!injected)return;try{const data=await loadCatalog();renderRequestedCatalogs(data);document.documentElement.dataset.catalogReady='true';}catch(error){console.error('[EMPERIO TISS] Catalog load failed:',error);document.querySelectorAll('[data-catalog-family]').forEach(element=>{element.innerHTML=`<p class="catalog-empty">${esc(t.empty)}</p>`;});document.documentElement.dataset.catalogReady='false';}}
-  window.EMPERIO_TISS_CATALOG={loadCatalog,renderInto,card};
+  async function init(){const injected=autoCatalogTarget();const targets=document.querySelectorAll('[data-catalog-family]');if(!targets.length&&!injected)return null;try{const data=await loadCatalog();renderRequestedCatalogs(data);document.documentElement.dataset.catalogReady='true';}catch(error){console.error('[EMPERIO TISS] Catalog load failed:',error);document.querySelectorAll('[data-catalog-family]').forEach(element=>{element.innerHTML=`<p class="catalog-empty">${esc(t.empty)}</p>`;});document.documentElement.dataset.catalogReady='false';}}
+  window.EMPERIO_TISS_CATALOG={loadCatalog,renderInto,card,naturalImageCompare};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
