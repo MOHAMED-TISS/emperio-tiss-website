@@ -44,6 +44,15 @@ test('international shell applies the Spanish category CSS baseline and seafood 
   assert.match(shellRenderer, /body\.classList\.add\('market-catalogue-page'\)/);
 });
 
+test('international product heroes are rebuilt from the Spanish page-hero architecture', () => {
+  assert.match(shellRenderer, /hero\.classList\.remove\('product-hero'\)/);
+  assert.match(shellRenderer, /hero\.classList\.add\('page-hero','market-page-hero'\)/);
+  assert.match(shellRenderer, /page-hero-inner/);
+  assert.match(shellRenderer, /heroes\[subcategory\]/);
+  assert.match(shellRenderer, /t\.produce\[subcategory\]/);
+  assert.match(shellRenderer, /Fishing_Boat_on_the_Sea\.jpg/);
+});
+
 test('renderer is language-aware and supports RTL', () => {
   assert.match(renderer, /lang === 'ar'/);
   assert.match(renderer, /document\.documentElement\.classList\.add/);
