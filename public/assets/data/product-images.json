@@ -80,5 +80,24 @@
     "/assets/products/incoming/Bottarga(1).jpg",
     "/assets/products/incoming/Bottarga(2).jpg",
     "/assets/products/incoming/Bottarga(3).jpg"
+  ],
+  "boqueron": [
+    "/assets/products/incoming/Boquerón.jpg"
+  ],
+  "pargo": [
+    "/assets/products/incoming/Pargo.jpg"
+  ],
+  "pez-limon": [
+    "/assets/products/incoming/Pez limón.jpg"
+  ],
+  "pez-sable": [
+    "/assets/products/incoming/Pez sable.webp"
+  ],
+  "rascacio": [
+    "/assets/products/incoming/Rascacio 1.jpg",
+    "/assets/products/incoming/Rascacio.jpg"
+  ],
+  "sargo": [
+    "/assets/products/incoming/Sargo.jpg"
   ]
 }
