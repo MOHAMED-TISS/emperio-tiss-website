@@ -5,6 +5,13 @@
     body = doc.body;
   const lang = (root.lang || 'en').slice(0, 2).toLowerCase();
   if (!['en', 'fr', 'ar', 'it'].includes(lang)) return;
+
+  /* Fish is a dedicated canonical catalogue and must never be replaced by the
+     market-priority international catalogue shell. ES already follows this
+     path; keep all multilingual Fish pages on the same implementation. */
+  const fishPath = /\/products\/seafood\/fish(?:\/|$)/.test((location.pathname || '/').replace(/\/+/g, '/'));
+  if (fishPath) return;
+
   root.lang = lang;
   if (lang === 'ar') root.dir = 'rtl';
   const cfg = {
