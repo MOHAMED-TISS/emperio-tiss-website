@@ -107,3 +107,13 @@ test('natural image ordering contract is numeric and base-first', () => {
     'Naranja 10.jpg'
   ]);
 });
+
+test('Italian catalogue translates Spanish technical values in the shared renderer', () => {
+  assert.match(renderer, /itTechnicalTranslations/);
+  assert.match(renderer, /Mediterraneo \/ secondo disponibilità/);
+  assert.match(renderer, /Secondo disponibilità/);
+  assert.match(renderer, /Specifica professionale/);
+  assert.match(renderer, /Intero \/ secondo destinazione/);
+  assert.match(renderer, /Secondo requisiti della destinazione/);
+  assert.match(renderer, /Secondo mercato/);
+});
