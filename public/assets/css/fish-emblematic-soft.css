@@ -5,7 +5,7 @@
 .fish-emblematic__intro h2 span{display:block!important;white-space:nowrap!important}
 .fish-emblematic__intro h2 em{display:inline;font-style:italic}
 .fish-emblematic__grid{gap:clamp(14px,1.8vw,22px);background:transparent;align-items:stretch}
-.fish-emblematic-card{position:relative;border:0!important;border-radius:18px;overflow:hidden;background:#071e35!important;box-shadow:0 18px 55px rgba(7,30,53,.16);transition:transform .65s cubic-bezier(.2,.65,.25,1),box-shadow .65s ease;color:#f3efe6}
+.fish-emblematic-card{position:relative;border:0!important;border-radius:18px;overflow:hidden;background:#071e35!important;box-shadow:0 18px 55px rgba(7,30,53,.16);transition:transform .65s cubic-bezier(.2,.65,.25,1),box-shadow .65s ease;color:#f3efe6;grid-template-rows:auto auto!important}
 .fish-emblematic-card::before{content:none!important}
 .fish-emblematic-card:hover{transform:translateY(-7px);box-shadow:0 28px 75px rgba(7,30,53,.24)}
 /* Tighter image frame: stronger product presence with less empty blue field. */
@@ -35,7 +35,7 @@ body.fish-catalog-pilot .fish-gallery__next{right:8px;top:50%;transform:translat
 body.fish-catalog-pilot .fish-gallery__close{right:8px;top:8px}
 body.fish-catalog-pilot .fish-gallery__counter{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);color:#f3efe6;font:500 13px/1 "DM Sans",sans-serif;letter-spacing:.08em}
 
-@media(max-width:1050px){.fish-emblematic-card{border-radius:16px}.fish-emblematic__intro h2{font-size:clamp(2.8rem,5.2vw,4.7rem)}}
-@media(max-width:760px){.fish-emblematic__intro::after{bottom:-1.25rem}.fish-emblematic__grid{gap:14px}.fish-emblematic-card{border-radius:16px}.fish-emblematic__intro h2{font-size:clamp(2.15rem,8.9vw,4rem)!important}.fish-emblematic__intro h2 span{white-space:nowrap!important}.fish-emblematic-card__media,.fish-emblematic-card__media--image{height:clamp(200px,52vw,270px)!important}.fish-emblematic-card__body{padding:.35rem 1.25rem 1.35rem}.fish-emblematic-card h3{margin:.38rem 0 .28rem}.fish-emblematic-card__scientific{font-size:.95rem}.fish-gallery{padding:16px!important}.fish-gallery__panel{width:96vw!important;height:82vh!important}.fish-gallery__image{max-width:92vw!important;max-height:72vh!important}}
+@media(max-width:1050px){.fish-emblematic-card{border-radius:16px;grid-template-rows:none!important}.fish-emblematic__intro h2{font-size:clamp(2.8rem,5.2vw,4.7rem)}}
+@media(max-width:760px){.fish-emblematic__intro::after{bottom:-1.25rem}.fish-emblematic__grid{gap:14px}.fish-emblematic-card{border-radius:16px;grid-template-rows:auto auto!important}.fish-emblematic__intro h2{font-size:clamp(2.15rem,8.9vw,4rem)!important}.fish-emblematic__intro h2 span{white-space:nowrap!important}.fish-emblematic-card__media,.fish-emblematic-card__media--image{height:clamp(200px,52vw,270px)!important}.fish-emblematic-card__body{padding:.35rem 1.25rem 1.35rem}.fish-emblematic-card h3{margin:.38rem 0 .28rem}.fish-emblematic-card__scientific{font-size:.95rem}.fish-gallery{padding:16px!important}.fish-gallery__panel{width:96vw!important;height:82vh!important}.fish-gallery__image{max-width:92vw!important;max-height:72vh!important}}
 @media(max-width:420px){.fish-emblematic__intro h2{font-size:clamp(1.9rem,8.7vw,3.3rem)!important}.fish-emblematic-card__media,.fish-emblematic-card__media--image{height:215px!important}.fish-gallery button{width:42px!important;height:42px!important}}
 @media(prefers-reduced-motion:reduce){.fish-emblematic-card,.fish-emblematic-card__media,.fish-emblematic-card__media--image img{transition:none}.fish-emblematic-card:hover{transform:none}}
