@@ -1,8 +1,8 @@
-@import url("/assets/css/fish-catalog.css?v=fish-unified-20260909-2");
-@import url("/assets/css/fish-catalog-es.css?v=fish-unified-20260909-2");
-@import url("/assets/css/fish-emblematic-soft.css?v=fish-unified-20260909-2");
-@import url("/assets/css/fish-catalog-soft.css?v=fish-unified-20260909-2");
-@import url("/assets/css/fish-footer.css?v=fish-unified-20260909-2");
+@import url("/assets/css/fish-catalog.css?v=fish-unified-20260909-3");
+@import url("/assets/css/fish-catalog-es.css?v=fish-unified-20260909-3");
+@import url("/assets/css/fish-emblematic-soft.css?v=fish-unified-20260909-3");
+@import url("/assets/css/fish-catalog-soft.css?v=fish-unified-20260909-3");
+@import url("/assets/css/fish-footer.css?v=fish-unified-20260909-3");
 
 /* EMPERIO TISS — FISH HERO / CLEAN SECTION BOUNDARIES */
 :root{--fish-navy:#071e35;--fish-ivory:#f3efe6;--fish-gold:#c7a260;--fish-champagne:#d8c28f}
