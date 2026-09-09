@@ -26,18 +26,107 @@ jobs:
         with:
           node-version: 20
 
-      - name: Format source and configuration files
+      - name: Install formatting tools
         run: |
-          npx --yes prettier@3.6.2 --write \
-            "**/*.html" \
-            "**/*.css" \
-            "**/*.js" \
-            "**/*.mjs" \
-            "**/*.json" \
-            "**/*.jsonc" \
-            "**/*.yml" \
-            "**/*.yaml" \
-            --ignore-unknown
+          npm init -y
+          npm install --no-save prettier@3.6.2 js-beautify@1.15.4 sql-formatter@15.6.4
+
+      - name: Format repository source and configuration files
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const prettier = require('prettier');
+          const { html: beautifyHtml } = require('js-beautify');
+          const { format: formatSql } = require('sql-formatter');
+
+          const root = process.cwd();
+          const prettierExtensions = new Set([
+            '.css',
+            '.js',
+            '.mjs',
+            '.json',
+            '.jsonc',
+            '.yml',
+            '.yaml',
+          ]);
+          const htmlExtensions = new Set(['.html']);
+          const sqlExtensions = new Set(['.sql']);
+          const ignoredDirectories = new Set([
+            '.git',
+            'node_modules',
+          ]);
+
+          function walk(directory) {
+            const results = [];
+
+            for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+              if (entry.isDirectory() && ignoredDirectories.has(entry.name)) {
+                continue;
+              }
+
+              const fullPath = path.join(directory, entry.name);
+
+              if (entry.isDirectory()) {
+                results.push(...walk(fullPath));
+                continue;
+              }
+
+              results.push(fullPath);
+            }
+
+            return results;
+          }
+
+          async function formatFile(filePath) {
+            const extension = path.extname(filePath).toLowerCase();
+            const source = fs.readFileSync(filePath, 'utf8');
+            let formatted = source;
+
+            if (prettierExtensions.has(extension)) {
+              formatted = await prettier.format(source, {
+                filepath: filePath,
+                useTabs: false,
+                tabWidth: 2,
+                singleQuote: true,
+                trailingComma: 'all',
+                printWidth: 100,
+              });
+            } else if (htmlExtensions.has(extension)) {
+              formatted = beautifyHtml(source, {
+                indent_size: 2,
+                indent_inner_html: true,
+                wrap_line_length: 0,
+                wrap_attributes: 'auto',
+                end_with_newline: true,
+                extra_liners: '',
+              });
+            } else if (sqlExtensions.has(extension)) {
+              formatted = `${formatSql(source, {
+                language: 'sqlite',
+                tabWidth: 2,
+                keywordCase: 'upper',
+              }).trim()}\n`;
+            } else {
+              return;
+            }
+
+            if (formatted !== source) {
+              fs.writeFileSync(filePath, formatted, 'utf8');
+            }
+          }
+
+          (async () => {
+            const files = walk(root);
+
+            for (const filePath of files) {
+              await formatFile(filePath);
+            }
+          })().catch((error) => {
+            console.error(error);
+            process.exitCode = 1;
+          });
+          NODE
 
       - name: Remove temporary formatter workflow
         run: rm -f .github/workflows/format-code-once.yml
