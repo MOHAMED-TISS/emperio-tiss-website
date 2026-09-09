@@ -206,7 +206,6 @@ jobs:
             exit 0
           fi
 
-          git add -u -- '*.html' '*.css' '*.js' '*.mjs' '*.json' '*.jsonc' '*.sql' '*.yaml' '*.yml'
-          git add -u -- 'public/**' 'src/**' 'tests/**' 'migrations/**' 'wrangler.jsonc'
+          git add -u
           git commit -m "chore: format repository source code"
           git push origin main
