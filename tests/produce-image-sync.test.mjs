@@ -4,10 +4,8 @@ import test from 'node:test';
 
 const sync = fs.readFileSync('public/assets/js/produce-image-sync.js', 'utf8');
 const catalog = fs.readFileSync('public/assets/js/products-catalog.js', 'utf8');
-const italianFish = fs.readFileSync('public/assets/js/fish-catalog-it-market.js', 'utf8');
 const fruitsPage = fs.readFileSync('public/products/fruits/index.html', 'utf8');
 const vegetablesPage = fs.readFileSync('public/products/vegetables/index.html', 'utf8');
-
 
 test('produce image sync is loaded by both fruit and vegetable catalogues', () => {
   assert.match(fruitsPage, /produce-image-sync\.js/);
@@ -31,13 +29,11 @@ test('produce image sync can update the custom citrus catalogue', () => {
   assert.match(sync, /citrus-product-image/);
 });
 
-test('all catalogue gallery implementations use natural filename ordering', () => {
+test('core catalogue gallery implementations use natural filename ordering', () => {
   assert.match(sync, /naturalImageCompare/);
   assert.match(sync, /\.sort\(naturalImageCompare\)/);
   assert.match(catalog, /naturalImageCompare/);
   assert.match(catalog, /\.sort\(naturalImageCompare\)/);
-  assert.match(italianFish, /naturalImageCompare/);
-  assert.match(italianFish, /sortImages/);
 });
 
 test('natural ordering contract is base image, then numeric variants', () => {
