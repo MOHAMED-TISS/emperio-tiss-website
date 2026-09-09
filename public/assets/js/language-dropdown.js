@@ -21,11 +21,26 @@
   };
 
   const flagMap = {
-    ES: { src: '/assets/flags/es.svg?v=20260825-2', label: 'Español' },
-    EN: { src: '/assets/flags/en.svg?v=20260825-2', label: 'English' },
-    FR: { src: '/assets/flags/fr.svg?v=20260825-2', label: 'Français' },
-    IT: { src: '/assets/flags/it.svg?v=20260825-2', label: 'Italiano' },
-    AR: { src: '/assets/flags/ar.svg?v=20260825-2', label: 'العربية' }
+    ES: {
+      src: '/assets/flags/es.svg?v=20260825-2',
+      label: 'Español'
+    },
+    EN: {
+      src: '/assets/flags/en.svg?v=20260825-2',
+      label: 'English'
+    },
+    FR: {
+      src: '/assets/flags/fr.svg?v=20260825-2',
+      label: 'Français'
+    },
+    IT: {
+      src: '/assets/flags/it.svg?v=20260825-2',
+      label: 'Italiano'
+    },
+    AR: {
+      src: '/assets/flags/ar.svg?v=20260825-2',
+      label: 'العربية'
+    }
   };
 
   const installSwitcherGuard = () => {
@@ -98,10 +113,15 @@
     const codes = ['ES', 'EN', 'FR', 'IT', 'AR'];
 
     doc.querySelectorAll('.et-language-switch').forEach((nav) => {
-      if (!nav.closest('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner')) return;
-      if (nav.dataset.etLanguageReady === 'true' || nav.querySelector('.et-language-current')) return;
+      if (!nav.closest(
+          '.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner'))
+        return;
+      if (nav.dataset.etLanguageReady === 'true' || nav.querySelector(
+          '.et-language-current')) return;
 
-      const existing = new Map([...nav.querySelectorAll(':scope > a')].map((a) => [a.textContent.trim().toUpperCase(), a.href]));
+      const existing = new Map([...nav.querySelectorAll(':scope > a')].map((a) => [a
+        .textContent.trim().toUpperCase(), a.href
+      ]));
       const links = codes.map((code) => {
         const link = doc.createElement('a');
         link.href = existing.get(code) || languageHref(code, pathname);
@@ -124,7 +144,8 @@
       button.className = 'et-language-current';
       button.setAttribute('aria-haspopup', 'true');
       button.setAttribute('aria-expanded', 'false');
-      button.setAttribute('aria-label', `Change language: ${flagMap[active]?.label || active}`);
+      button.setAttribute('aria-label',
+        `Change language: ${flagMap[active]?.label || active}`);
       button.title = `Change language: ${flagMap[active]?.label || active}`;
       button.append(makeFlag(active));
 
@@ -161,7 +182,10 @@
   };
 
   enhance();
-  new MutationObserver(enhance).observe(doc.documentElement, { childList: true, subtree: true });
+  new MutationObserver(enhance).observe(doc.documentElement, {
+    childList: true,
+    subtree: true
+  });
   doc.addEventListener('click', (event) => {
     if (!event.target.closest('.et-language-switch')) closeAll();
   });

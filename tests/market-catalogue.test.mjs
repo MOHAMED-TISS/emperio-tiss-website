@@ -2,20 +2,24 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-const config = JSON.parse(fs.readFileSync('public/assets/data/catalogue-market-priority.json', 'utf8'));
+const config = JSON.parse(fs.readFileSync('public/assets/data/catalogue-market-priority.json',
+  'utf8'));
 const renderer = fs.readFileSync('public/assets/js/market-catalogue.js', 'utf8');
 const shellRenderer = fs.readFileSync('public/assets/js/market-catalogue-shell.js', 'utf8');
 const css = fs.readFileSync('public/assets/css/catalogue-market-unified.css', 'utf8');
 const shell = fs.readFileSync('public/assets/js/international-shell.js', 'utf8');
 const catalog = JSON.parse(fs.readFileSync('public/assets/data/catalog.json', 'utf8'));
 
-const categories = ['seafood/fish','seafood/shellfish','seafood/cephalopods','produce/fruits','produce/vegetables'];
-const locales = ['es','en','fr','it','ar'];
+const categories = ['seafood/fish', 'seafood/shellfish', 'seafood/cephalopods', 'produce/fruits',
+  'produce/vegetables'
+];
+const locales = ['es', 'en', 'fr', 'it', 'ar'];
 
 test('market priority defines every target category for every international locale', () => {
   for (const category of categories) {
-    for (const locale of ['en','fr','it','ar']) {
-      assert.ok(Array.isArray(config.priority[category]?.[locale]), `${category}/${locale} priority missing`);
+    for (const locale of ['en', 'fr', 'it', 'ar']) {
+      assert.ok(Array.isArray(config.priority[category]?.[locale]),
+        `${category}/${locale} priority missing`);
     }
   }
 });
@@ -66,7 +70,8 @@ test('international shell loads the shared catalogue layers', () => {
   assert.match(shell, /data-etMarketCatalogue/);
 });
 
-test('unified catalogue CSS matches Spanish catalogue geometry and contains RTL/responsive rules', () => {
+test('unified catalogue CSS matches Spanish catalogue geometry and contains RTL/responsive rules',
+() => {
   assert.match(css, /width:min\(1240px,calc\(100% - 48px\)\)/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
   assert.match(css, /border-radius:18px/);
@@ -77,10 +82,28 @@ test('unified catalogue CSS matches Spanish catalogue geometry and contains RTL/
 
 test('natural image ordering contract is numeric and base-first', () => {
   const file = value => String(value).split('/').pop().replace(/\.[^.]+$/, '').trim();
-  const compare = (a,b) => {
-    const parse = value => { const f=file(value); const m=f.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/); return {base:(m?.[1]||f).trim(),n:m?.[2]?Number(m[2]):0,numbered:!!m?.[2]}; };
-    const x=parse(a),y=parse(b); const base=x.base.localeCompare(y.base,undefined,{numeric:true,sensitivity:'base'}); if(base)return base; if(x.numbered!==y.numbered)return x.numbered?1:-1; return x.n-y.n;
+  const compare = (a, b) => {
+    const parse = value => {
+      const f = file(value);
+      const m = f.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/);
+      return {
+        base: (m?.[1] || f).trim(),
+        n: m?.[2] ? Number(m[2]) : 0,
+        numbered: !!m?.[2]
+      };
+    };
+    const x = parse(a),
+      y = parse(b);
+    const base = x.base.localeCompare(y.base, undefined, {
+      numeric: true,
+      sensitivity: 'base'
+    });
+    if (base) return base;
+    if (x.numbered !== y.numbered) return x.numbered ? 1 : -1;
+    return x.n - y.n;
   };
-  const input=['Naranja 10.jpg','Naranja 2.jpg','Naranja.jpg','Naranja 1.jpg'];
-  assert.deepEqual(input.sort(compare),['Naranja.jpg','Naranja 1.jpg','Naranja 2.jpg','Naranja 10.jpg']);
+  const input = ['Naranja 10.jpg', 'Naranja 2.jpg', 'Naranja.jpg', 'Naranja 1.jpg'];
+  assert.deepEqual(input.sort(compare), ['Naranja.jpg', 'Naranja 1.jpg', 'Naranja 2.jpg',
+    'Naranja 10.jpg'
+  ]);
 });

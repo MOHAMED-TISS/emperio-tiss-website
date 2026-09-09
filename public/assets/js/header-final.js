@@ -49,9 +49,14 @@
       if (!style.textContent.includes('.es-page.about-page .nav-overlay-contact')) return;
 
       style.textContent = style.textContent
-        .replace(/\.es-page\.about-page \.nav-overlay-contact\{display:none!important\}\s*/g, '')
-        .replace(/\.es-page\.about-page \.nav-overlay-links > a:last-child\{color:var\(--et-gold\)!important\}\s*/g, '')
-        .replace(/\.es-page\.about-page \.nav-overlay-links > a:last-child:hover\{color:#fff!important\}\s*/g, '');
+        .replace(
+          /\.es-page\.about-page \.nav-overlay-contact\{display:none!important\}\s*/g, '')
+        .replace(
+          /\.es-page\.about-page \.nav-overlay-links > a:last-child\{color:var\(--et-gold\)!important\}\s*/g,
+          '')
+        .replace(
+          /\.es-page\.about-page \.nav-overlay-links > a:last-child:hover\{color:#fff!important\}\s*/g,
+          '');
     });
   };
 

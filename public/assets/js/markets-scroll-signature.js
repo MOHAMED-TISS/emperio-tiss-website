@@ -1,1 +1,18 @@
-(()=>{'use strict';const root=document.querySelector('.markets-current'),signature=document.querySelector('.current-scroll-signature');if(!root||!signature)return;let hidden=false;const onScroll=()=>{if(hidden)return;if(window.scrollY>40){signature.classList.add('scrolled');hidden=true;window.removeEventListener('scroll',onScroll)}};window.addEventListener('scroll',onScroll,{passive:true});})();
+(() => {
+  'use strict';
+  const root = document.querySelector('.markets-current'),
+    signature = document.querySelector('.current-scroll-signature');
+  if (!root || !signature) return;
+  let hidden = false;
+  const onScroll = () => {
+    if (hidden) return;
+    if (window.scrollY > 40) {
+      signature.classList.add('scrolled');
+      hidden = true;
+      window.removeEventListener('scroll', onScroll)
+    }
+  };
+  window.addEventListener('scroll', onScroll, {
+    passive: true
+  });
+})();

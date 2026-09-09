@@ -35,10 +35,14 @@ test('citrus navigation is compact and mixed horizontal/vertical', () => {
   assert.match(overridesCss, /citrus-family-switcher\{[^}]*overflow-x:auto!important/);
   assert.match(overridesCss, /citrus-selection\{[^}]*display:flex!important/);
   assert.match(overridesCss, /citrus-selection\{[^}]*overflow-x:auto!important/);
-  assert.match(overridesCss, /citrus-technical\{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)!important/);
-  assert.match(overridesCss, /@media\(max-width:900px\)[^}]*citrus-technical\{grid-template-columns:repeat\(2,minmax\(0,1fr\)!important/);
+  assert.match(overridesCss,
+    /citrus-technical\{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)!important/);
+  assert.match(overridesCss,
+    /@media\(max-width:900px\)[^}]*citrus-technical\{grid-template-columns:repeat\(2,minmax\(0,1fr\)!important/
+    );
   assert.match(overridesCss, /citrus-campaign\{[^}]*grid-template-columns:auto 1fr!important/);
-  assert.match(overridesCss, /@media\(max-width:640px\)[^}]*citrus-campaign\{grid-template-columns:1fr!important/);
+  assert.match(overridesCss,
+    /@media\(max-width:640px\)[^}]*citrus-campaign\{grid-template-columns:1fr!important/);
   assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.6/);
   assert.match(baseCss, /background:#f9f6f0/);
 });

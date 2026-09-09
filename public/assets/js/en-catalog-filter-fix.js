@@ -1,14 +1,18 @@
 (() => {
   'use strict';
-  if ((document.documentElement.lang || '').slice(0,2).toLowerCase() !== 'en') return;
+  if ((document.documentElement.lang || '').slice(0, 2).toLowerCase() !== 'en') return;
 
   // Normalize the international Fish renderer's uppercase FRESH/FROZEN
   // condition data against the lowercase filter state.
   const nativeIncludes = Array.prototype.includes;
   if (!Array.prototype.__etFishConditionNormalized) {
-    Object.defineProperty(Array.prototype, '__etFishConditionNormalized', {value:true, enumerable:false});
+    Object.defineProperty(Array.prototype, '__etFishConditionNormalized', {
+      value: true,
+      enumerable: false
+    });
     Array.prototype.includes = function(searchElement, fromIndex) {
-      if ((searchElement === 'fresh' || searchElement === 'frozen') && this.length && this.every(v => v === 'FRESH' || v === 'FROZEN')) {
+      if ((searchElement === 'fresh' || searchElement === 'frozen') && this.length && this
+        .every(v => v === 'FRESH' || v === 'FROZEN')) {
         return nativeIncludes.call(this, String(searchElement).toUpperCase(), fromIndex);
       }
       return nativeIncludes.call(this, searchElement, fromIndex);
@@ -26,7 +30,8 @@
     const condition = getPressed('[data-fish-filter]')?.dataset.fishFilter || 'all';
     let category = getPressed('[data-fish-category]')?.dataset.fishCategory || 'all';
 
-    const allowedForCondition = value => condition !== 'frozen' || value === 'all' || value === 'blue';
+    const allowedForCondition = value => condition !== 'frozen' || value === 'all' || value ===
+      'blue';
     categoryButtons.forEach(button => {
       const value = button.dataset.fishCategory || 'all';
       const allowed = allowedForCondition(value);
@@ -56,8 +61,10 @@
 
   const syncCompact = () => {
     const body = document.body;
-    const subcategory = body?.dataset.catalogSubcategory || body?.dataset.catalogSubcategories || '';
-    const isFrozenSeafood = body?.dataset.catalogFamily === 'seafood' && /(^|,)(shellfish|cephalopods)(,|$)/.test(subcategory);
+    const subcategory = body?.dataset.catalogSubcategory || body?.dataset
+      .catalogSubcategories || '';
+    const isFrozenSeafood = body?.dataset.catalogFamily === 'seafood' &&
+      /(^|,)(shellfish|cephalopods)(,|$)/.test(subcategory);
     if (!isFrozenSeafood) return;
 
     const filters = [...document.querySelectorAll('[data-compact-filter]')];
@@ -81,13 +88,19 @@
   };
 
   document.addEventListener('click', event => {
-    if (event.target.closest('[data-fish-filter],[data-fish-category],[data-compact-filter]')) {
+    if (event.target.closest(
+      '[data-fish-filter],[data-fish-category],[data-compact-filter]')) {
       window.requestAnimationFrame(sync);
       window.setTimeout(sync, 50);
     }
   }, true);
 
   const observer = new MutationObserver(sync);
-  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-pressed'] });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['aria-pressed']
+  });
   sync();
 })();

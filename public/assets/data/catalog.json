@@ -2,29 +2,688 @@
   "schemaVersion": "1.3",
   "market": "B2B",
   "families": [
-    {"id":"seafood","name":"Productos del mar","path":"/products/seafood/","subcategories":["fish","shellfish","cephalopods"]},
-    {"id":"produce","name":"Frutas y hortalizas","path":"/products/fruits/","subcategories":["citrus","exotics","core-produce","vegetables"]},
-    {"id":"seasonal","name":"Productos de temporada","path":"/products/seasonal/","subcategories":[]}
+    {
+      "id": "seafood",
+      "name": "Productos del mar",
+      "path": "/products/seafood/",
+      "subcategories": [
+        "fish",
+        "shellfish",
+        "cephalopods"
+      ]
+    },
+    {
+      "id": "produce",
+      "name": "Frutas y hortalizas",
+      "path": "/products/fruits/",
+      "subcategories": [
+        "citrus",
+        "exotics",
+        "core-produce",
+        "vegetables"
+      ]
+    },
+    {
+      "id": "seasonal",
+      "name": "Productos de temporada",
+      "path": "/products/seasonal/",
+      "subcategories": []
+    }
   ],
   "products": [
-    {"id":"dorada","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Dorada","scientificName":"Sparus aurata","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según requisitos del destino"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"lubina","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Lubina","scientificName":"Dicentrarchus labrax","condition":["fresh"],"origin":["Mediterráneo / Atlántico según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según requisitos del destino"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"merluza-pijota","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Merluza / Pijota","scientificName":"Merluccius spp.","condition":["fresh","frozen"],"origin":["Según programa de suministro"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / eviscerada / según destino"],"packaging":["Según mercado"],"availability":["Según campaña y disponibilidad"],"image":"","status":"active"},
-    {"id":"mujol","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Mújol","scientificName":"Mugil cephalus","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"rape","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Rape","scientificName":"Lophius spp.","condition":["fresh","frozen"],"origin":["Atlántico / Mediterráneo según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / cola / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"san-pedro","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"San Pedro","scientificName":"Zeus faber","condition":["fresh"],"origin":["Mediterráneo / Atlántico según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"mero-amarillo","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Mero amarillo","scientificName":"Epinephelus spp.","condition":["fresh","frozen"],"origin":["Según origen disponible"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / porciones según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"pargo","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Pargo","scientificName":"Lutjanus spp.","condition":["fresh","frozen"],"origin":["Según programa de suministro"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"denton","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Dentón","scientificName":"Dentex dentex","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"sama","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Sama","scientificName":"Dentex spp.","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"sargo","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Sargo","scientificName":"Diplodus spp.","condition":["fresh"],"origin":["Mediterráneo / Atlántico según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"rascacio","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Rascacio","scientificName":"Scorpaena spp.","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"caballa","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Caballa","scientificName":"Scomber spp.","condition":["fresh","frozen"],"origin":["Atlántico / Mediterráneo según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entera / según destino"],"packaging":["Según mercado"],"availability":["Según campaña y disponibilidad"],"image":"","status":"active"},
-    {"id":"salmonete","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Salmonete","scientificName":"Mullus spp.","condition":["fresh"],"origin":["Mediterráneo / Atlántico según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"atun","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Atún","scientificName":"Thunnus spp.","condition":["fresh","frozen"],"origin":["Según especie y programa de suministro"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / lomo / según destino"],"packaging":["Según mercado"],"availability":["Según programa y disponibilidad"],"image":"","status":"active"},
-    {"id":"pez-limon","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Pez limón","scientificName":"Seriola dumerili","condition":["fresh"],"origin":["Mediterráneo / según disponibilidad"],"faoZone":["FAO 37"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"boqueron","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Boquerón","scientificName":"Engraulis encrasicolus","condition":["fresh"],"origin":["Mediterráneo / Atlántico según disponibilidad"],"faoZone":["FAO 27 / FAO 37 según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"pez-sable","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Pez sable","scientificName":"Trichiurus spp.","condition":["fresh","frozen"],"origin":["Según programa de suministro"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / según destino"],"packaging":["Según mercado"],"availability":["Según disponibilidad"],"image":"","status":"active"},
-    {"id":"pez-espada","family":"seafood","category":"seafood","subcategory":"fish","commercialName":"Pez espada","scientificName":"Xiphias gladius","condition":["fresh","frozen"],"origin":["Según programa de suministro"],"faoZone":["Según origen"],"calibre":["Según disponibilidad"],"quality":["Especificación profesional"],"format":["Entero / lomo / según destino"],"packaging":["Según mercado"],"availability":["Según programa y disponibilidad"],"image":"","status":"active"}
+    {
+      "id": "dorada",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Dorada",
+      "scientificName": "Sparus aurata",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 37"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / según destino"
+      ],
+      "packaging": [
+        "Según requisitos del destino"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "lubina",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Lubina",
+      "scientificName": "Dicentrarchus labrax",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / Atlántico según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / según destino"
+      ],
+      "packaging": [
+        "Según requisitos del destino"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "merluza-pijota",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Merluza / Pijota",
+      "scientificName": "Merluccius spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Según programa de suministro"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / eviscerada / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "mujol",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Mújol",
+      "scientificName": "Mugil cephalus",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "rape",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Rape",
+      "scientificName": "Lophius spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Atlántico / Mediterráneo según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / cola / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "san-pedro",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "San Pedro",
+      "scientificName": "Zeus faber",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / Atlántico según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "mero-amarillo",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Mero amarillo",
+      "scientificName": "Epinephelus spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Según origen disponible"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / porciones según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "pargo",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Pargo",
+      "scientificName": "Lutjanus spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Según programa de suministro"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "denton",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Dentón",
+      "scientificName": "Dentex dentex",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 37"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "sama",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Sama",
+      "scientificName": "Dentex spp.",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 37"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "sargo",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Sargo",
+      "scientificName": "Diplodus spp.",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / Atlántico según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "rascacio",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Rascacio",
+      "scientificName": "Scorpaena spp.",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 37"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "caballa",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Caballa",
+      "scientificName": "Scomber spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Atlántico / Mediterráneo según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "salmonete",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Salmonete",
+      "scientificName": "Mullus spp.",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / Atlántico según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "atun",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Atún",
+      "scientificName": "Thunnus spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Según especie y programa de suministro"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / lomo / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según programa y disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "pez-limon",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Pez limón",
+      "scientificName": "Seriola dumerili",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 37"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "boqueron",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Boquerón",
+      "scientificName": "Engraulis encrasicolus",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / Atlántico según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "pez-sable",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Pez sable",
+      "scientificName": "Trichiurus spp.",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Según programa de suministro"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "pez-espada",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Pez espada",
+      "scientificName": "Xiphias gladius",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Según programa de suministro"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / lomo / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según programa y disponibilidad"
+      ],
+      "image": "",
+      "status": "active"
+    }
   ]
 }

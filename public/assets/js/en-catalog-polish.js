@@ -1,7 +1,9 @@
 (() => {
   'use strict';
   const body = document.body;
-  const isTarget = body?.dataset.catalogFamily === 'seafood' && /(^|,)(shellfish|cephalopods)(,|$)/.test(body.dataset.catalogSubcategory || body.dataset.catalogSubcategories || '');
+  const isTarget = body?.dataset.catalogFamily === 'seafood' &&
+    /(^|,)(shellfish|cephalopods)(,|$)/.test(body.dataset.catalogSubcategory || body.dataset
+      .catalogSubcategories || '');
   if (!isTarget) return;
 
   const catalog = document.querySelector('.compact-catalog');
@@ -17,8 +19,12 @@
   }, true);
 
   const markCards = () => {
-    catalog.querySelectorAll('.compact-catalog-card').forEach(card => card.classList.add('is-ready'));
+    catalog.querySelectorAll('.compact-catalog-card').forEach(card => card.classList.add(
+      'is-ready'));
   };
   markCards();
-  new MutationObserver(markCards).observe(catalog, { childList: true, subtree: true });
+  new MutationObserver(markCards).observe(catalog, {
+    childList: true,
+    subtree: true
+  });
 })();

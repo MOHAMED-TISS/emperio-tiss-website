@@ -5,7 +5,9 @@
 
   root.classList.add('markets-vibrant-ready');
 
-  const reveal = root.querySelectorAll('.markets-intro-copy, .markets-region-row, .markets-country-layout, .markets-africa-inner, .markets-mediterranean-inner, .markets-middleeast-grid, .markets-alliance-inner');
+  const reveal = root.querySelectorAll(
+    '.markets-intro-copy, .markets-region-row, .markets-country-layout, .markets-africa-inner, .markets-mediterranean-inner, .markets-middleeast-grid, .markets-alliance-inner'
+    );
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -14,7 +16,10 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    }, {
+      threshold: 0.14,
+      rootMargin: '0px 0px -8% 0px'
+    });
     reveal.forEach(el => io.observe(el));
   } else reveal.forEach(el => el.classList.add('is-visible'));
 
@@ -39,7 +44,10 @@
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
       event.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     });
   });
 })();

@@ -7,27 +7,43 @@
   const READY_TIMEOUT = 100;
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[char]));
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  } [char]));
 
   const naturalImageCompare = (a, b) => {
-    const filename = value => String(value || '').split('/').pop().replace(/\.[^.]+$/, '').trim();
+    const filename = value => String(value || '').split('/').pop().replace(/\.[^.]+$/, '')
+    .trim();
     const parse = value => {
       const match = value.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/);
-      return { base: (match?.[1] || value).trim().toLocaleLowerCase(), number: match?.[2] ? Number(match[2]) : 0, hasNumber: !!match?.[2] };
+      return {
+        base: (match?.[1] || value).trim().toLocaleLowerCase(),
+        number: match?.[2] ? Number(match[2]) : 0,
+        hasNumber: !!match?.[2]
+      };
     };
     const left = parse(filename(a));
     const right = parse(filename(b));
-    const baseCompare = left.base.localeCompare(right.base, undefined, { numeric: true, sensitivity: 'base' });
+    const baseCompare = left.base.localeCompare(right.base, undefined, {
+      numeric: true,
+      sensitivity: 'base'
+    });
     if (baseCompare !== 0) return baseCompare;
     if (left.hasNumber !== right.hasNumber) return left.hasNumber ? 1 : -1;
     if (left.number !== right.number) return left.number - right.number;
-    return filename(a).localeCompare(filename(b), undefined, { numeric: true, sensitivity: 'base' });
+    return filename(a).localeCompare(filename(b), undefined, {
+      numeric: true,
+      sensitivity: 'base'
+    });
   };
 
   function normaliseEntry(entry) {
     const values = Array.isArray(entry) ? entry : (entry ? [entry] : []);
-    return [...new Set(values.filter(value => typeof value === 'string' && value.startsWith(INTAKE_PREFIX)))].sort(naturalImageCompare);
+    return [...new Set(values.filter(value => typeof value === 'string' && value.startsWith(
+      INTAKE_PREFIX)))].sort(naturalImageCompare);
   }
 
   function imageMap(manifest) {
@@ -75,9 +91,12 @@
     const box = document.createElement('div');
     box.id = 'etProduceImageLightbox';
     box.setAttribute('aria-hidden', 'true');
-    box.innerHTML = '<button class="close" type="button" aria-label="Cerrar">×</button><button class="prev" type="button" aria-label="Imagen anterior">‹</button><img alt=""><button class="next" type="button" aria-label="Imagen siguiente">›</button><span class="count"></span>';
+    box.innerHTML =
+      '<button class="close" type="button" aria-label="Cerrar">×</button><button class="prev" type="button" aria-label="Imagen anterior">‹</button><img alt=""><button class="next" type="button" aria-label="Imagen siguiente">›</button><span class="count"></span>';
     document.body.appendChild(box);
-    box.addEventListener('click', event => { if (event.target === box) closeLightbox(); });
+    box.addEventListener('click', event => {
+      if (event.target === box) closeLightbox();
+    });
     box.querySelector('.close').addEventListener('click', closeLightbox);
     box.querySelector('.prev').addEventListener('click', () => showLightbox(lightboxIndex - 1));
     box.querySelector('.next').addEventListener('click', () => showLightbox(lightboxIndex + 1));
@@ -126,9 +145,12 @@
   function renderCardImage(card, images) {
     const media = card.querySelector('.product-card__media');
     if (!media || !images.length) return;
-    const productName = card.querySelector('.product-card__title')?.textContent?.trim() || productIdFromCard(card);
-    media.innerHTML = `<button class="produce-image-button" type="button" aria-label="Ver imágenes de ${esc(productName)}"><img src="${esc(images[0])}" alt="${esc(productName)}" loading="lazy" draggable="false">${images.length > 1 ? `<span class="produce-image-count">${images.length} imágenes</span>` : ''}<span class="produce-image-source">Fruits &amp; Vegetables · Catalogue image</span></button>`;
-    media.querySelector('button').addEventListener('click', () => openLightbox(images, productName));
+    const productName = card.querySelector('.product-card__title')?.textContent?.trim() ||
+      productIdFromCard(card);
+    media.innerHTML =
+      `<button class="produce-image-button" type="button" aria-label="Ver imágenes de ${esc(productName)}"><img src="${esc(images[0])}" alt="${esc(productName)}" loading="lazy" draggable="false">${images.length > 1 ? `<span class="produce-image-count">${images.length} imágenes</span>` : ''}<span class="produce-image-source">Fruits &amp; Vegetables · Catalogue image</span></button>`;
+    media.querySelector('button').addEventListener('click', () => openLightbox(images,
+      productName));
   }
 
   function renderBaseCards(map) {
@@ -143,18 +165,22 @@
       const id = section.querySelector('.citrus-family-product strong')?.textContent?.trim();
       const images = map.get(id);
       if (!id || !images || section.querySelector('.citrus-product-image')) return;
-      const productName = section.querySelector('.citrus-family-title h3')?.textContent?.trim() || id;
+      const productName = section.querySelector('.citrus-family-title h3')?.textContent
+      ?.trim() || id;
       const figure = document.createElement('figure');
       figure.className = 'citrus-product-image';
-      figure.innerHTML = `<button type="button" aria-label="Ver imágenes de ${esc(productName)}"><img src="${esc(images[0])}" alt="${esc(productName)}" loading="lazy" draggable="false">${images.length > 1 ? `<span class="produce-image-count">${images.length} imágenes</span>` : ''}<span class="produce-image-source">Fruits &amp; Vegetables · Catalogue image</span></button>`;
-      figure.querySelector('button').addEventListener('click', () => openLightbox(images, productName));
+      figure.innerHTML =
+        `<button type="button" aria-label="Ver imágenes de ${esc(productName)}"><img src="${esc(images[0])}" alt="${esc(productName)}" loading="lazy" draggable="false">${images.length > 1 ? `<span class="produce-image-count">${images.length} imágenes</span>` : ''}<span class="produce-image-source">Fruits &amp; Vegetables · Catalogue image</span></button>`;
+      figure.querySelector('button').addEventListener('click', () => openLightbox(images,
+        productName));
       const layout = section.querySelector('.citrus-family-layout');
       if (layout) layout.insertAdjacentElement('beforebegin', figure);
     });
   }
 
   async function waitForCatalogue(attempt = 0) {
-    if (document.querySelector('.product-card[data-product-id]') || document.querySelector('.citrus-family-block')) return true;
+    if (document.querySelector('.product-card[data-product-id]') || document.querySelector(
+        '.citrus-family-block')) return true;
     if (attempt >= 50) return false;
     await new Promise(resolve => setTimeout(resolve, READY_TIMEOUT));
     return waitForCatalogue(attempt + 1);
@@ -164,7 +190,9 @@
     if (!document.body.classList.contains('produce-page')) return;
     ensureStyles();
     try {
-      const response = await fetch(MANIFEST_URL, { cache: 'no-cache' });
+      const response = await fetch(MANIFEST_URL, {
+        cache: 'no-cache'
+      });
       if (!response.ok) throw new Error(`Image manifest request failed: ${response.status}`);
       const manifest = await response.json();
       const map = imageMap(manifest);
@@ -175,7 +203,11 @@
       if (window.__ET_CATALOG_PRODUCTS) {
         window.__ET_CATALOG_PRODUCTS = window.__ET_CATALOG_PRODUCTS.map(product => {
           const images = map.get(product.id);
-          return images ? { ...product, image: images[0], images } : product;
+          return images ? {
+            ...product,
+            image: images[0],
+            images
+          } : product;
         });
       }
       renderBaseCards(map);
@@ -187,6 +219,8 @@
     }
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {
+    once: true
+  });
   else init();
 })();

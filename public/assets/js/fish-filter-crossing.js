@@ -13,7 +13,8 @@
     all: ['fresh', 'frozen', 'all']
   };
 
-  const selected = selector => document.querySelector(`${selector}[aria-pressed="true"]`)?.dataset[selector.includes('category') ? 'fishCategory' : 'fishFilter'] || 'all';
+  const selected = selector => document.querySelector(`${selector}[aria-pressed="true"]`)
+    ?.dataset[selector.includes('category') ? 'fishCategory' : 'fishFilter'] || 'all';
 
   const sync = () => {
     const condition = selected('[data-fish-filter]');
@@ -25,9 +26,9 @@
       button.disabled = !allowed;
       button.setAttribute('aria-disabled', String(!allowed));
       if (!allowed) {
-        button.title = condition === 'frozen'
-          ? 'Only Salmon and Mackerel are available frozen.'
-          : 'Not available for this combination';
+        button.title = condition === 'frozen' ?
+          'Only Salmon and Mackerel are available frozen.' :
+          'Not available for this combination';
       } else button.removeAttribute('title');
     });
 
@@ -47,7 +48,9 @@
     });
   };
 
-  conditionButtons.forEach(button => button.addEventListener('click', () => requestAnimationFrame(sync)));
-  categoryButtons.forEach(button => button.addEventListener('click', () => requestAnimationFrame(sync)));
+  conditionButtons.forEach(button => button.addEventListener('click', () => requestAnimationFrame(
+    sync)));
+  categoryButtons.forEach(button => button.addEventListener('click', () => requestAnimationFrame(
+    sync)));
   sync();
 })();

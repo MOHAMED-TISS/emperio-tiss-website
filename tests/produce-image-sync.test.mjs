@@ -12,11 +12,12 @@ test('produce image sync is loaded by both fruit and vegetable catalogues', () =
   assert.match(vegetablesPage, /produce-image-sync\.js/);
 });
 
-test('produce image sync reads the shared image manifest and only applies produce intake images', () => {
-  assert.match(sync, /\/assets\/data\/product-images\.json/);
-  assert.match(sync, /\/assets\/products\/fruits-vegetables\/incoming\//);
-  assert.match(sync, /data-product-id/);
-});
+test('produce image sync reads the shared image manifest and only applies produce intake images',
+() => {
+    assert.match(sync, /\/assets\/data\/product-images\.json/);
+    assert.match(sync, /\/assets\/products\/fruits-vegetables\/incoming\//);
+    assert.match(sync, /data-product-id/);
+  });
 
 test('produce image sync supports galleries and keeps the primary image first', () => {
   assert.match(sync, /Array\.isArray\(entry\)/);
@@ -41,17 +42,29 @@ test('natural ordering contract is base image, then numeric variants', () => {
     const filename = value => String(value).split('/').pop().replace(/\.[^.]+$/, '').trim();
     const parse = value => {
       const match = value.match(/^(.*?)(?:\s*[-_ ]?\(?\s*(\d+)\s*\)?)?$/);
-      return { base: (match?.[1] || value).trim().toLocaleLowerCase(), number: match?.[2] ? Number(match[2]) : 0, hasNumber: !!match?.[2] };
+      return {
+        base: (match?.[1] || value).trim().toLocaleLowerCase(),
+        number: match?.[2] ? Number(match[2]) : 0,
+        hasNumber: !!match?.[2]
+      };
     };
     const left = parse(filename(a));
     const right = parse(filename(b));
-    const baseCompare = left.base.localeCompare(right.base, undefined, { numeric: true, sensitivity: 'base' });
+    const baseCompare = left.base.localeCompare(right.base, undefined, {
+      numeric: true,
+      sensitivity: 'base'
+    });
     if (baseCompare !== 0) return baseCompare;
     if (left.hasNumber !== right.hasNumber) return left.hasNumber ? 1 : -1;
     if (left.number !== right.number) return left.number - right.number;
-    return filename(a).localeCompare(filename(b), undefined, { numeric: true, sensitivity: 'base' });
+    return filename(a).localeCompare(filename(b), undefined, {
+      numeric: true,
+      sensitivity: 'base'
+    });
   };
 
   const input = ['Naranja 10.jpg', 'Naranja 2.jpg', 'Naranja.jpg', 'Naranja 1.jpg'];
-  assert.deepEqual(input.sort(natural), ['Naranja.jpg', 'Naranja 1.jpg', 'Naranja 2.jpg', 'Naranja 10.jpg']);
+  assert.deepEqual(input.sort(natural), ['Naranja.jpg', 'Naranja 1.jpg', 'Naranja 2.jpg',
+    'Naranja 10.jpg'
+  ]);
 });

@@ -31,30 +31,45 @@ function escapeHtml(value) {
 }
 
 async function verifyTurnstile(token, secret, remoteip) {
-  if (!secret || !token) return { success: false };
+  if (!secret || !token) return {
+    success: false
+  };
 
-  const body = new URLSearchParams({ secret, response: token });
+  const body = new URLSearchParams({
+    secret,
+    response: token
+  });
   if (remoteip) body.set('remoteip', remoteip);
 
   const response = await fetch(TURNSTILE_VERIFY_URL, {
     method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
     body,
   });
 
-  if (!response.ok) return { success: false };
+  if (!response.ok) return {
+    success: false
+  };
   return response.json();
 }
 
 async function handleContact(request, env) {
   const origin = request.headers.get('origin');
   if (!origin || !ALLOWED_ORIGINS.has(origin)) {
-    return json({ ok: false, error: 'Origen no autorizado.' }, 403);
+    return json({
+      ok: false,
+      error: 'Origen no autorizado.'
+    }, 403);
   }
 
   const form = await request.formData();
   if (normalize(form.get('_honey'), 200)) {
-    return json({ ok: false, error: 'Solicitud rechazada.' }, 400);
+    return json({
+      ok: false,
+      error: 'Solicitud rechazada.'
+    }, 400);
   }
 
   const verification = await verifyTurnstile(
@@ -63,9 +78,13 @@ async function handleContact(request, env) {
     request.headers.get('CF-Connecting-IP'),
   );
 
-  const hostnameAllowed = verification.hostname === 'emperio-tiss.com' || verification.hostname === 'www.emperio-tiss.com';
+  const hostnameAllowed = verification.hostname === 'emperio-tiss.com' || verification
+    .hostname === 'www.emperio-tiss.com';
   if (!verification.success || !hostnameAllowed || verification.action !== 'contact') {
-    return json({ ok: false, error: 'No se pudo verificar la protección anti-bot. Inténtalo de nuevo.' }, 403);
+    return json({
+      ok: false,
+      error: 'No se pudo verificar la protección anti-bot. Inténtalo de nuevo.'
+    }, 403);
   }
 
   const nombre = normalize(form.get('nombre'), 120);
@@ -77,15 +96,24 @@ async function handleContact(request, env) {
   const mensaje = normalize(form.get('mensaje'), 4000);
 
   if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje) {
-    return json({ ok: false, error: 'Completa todos los campos obligatorios.' }, 400);
+    return json({
+      ok: false,
+      error: 'Completa todos los campos obligatorios.'
+    }, 400);
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return json({ ok: false, error: 'Introduce un email válido.' }, 400);
+    return json({
+      ok: false,
+      error: 'Introduce un email válido.'
+    }, 400);
   }
 
   if (!env.RESEND_API_KEY) {
-    return json({ ok: false, error: 'El servicio de email no está configurado.' }, 500);
+    return json({
+      ok: false,
+      error: 'El servicio de email no está configurado.'
+    }, 500);
   }
 
   const html = `
@@ -116,21 +144,32 @@ async function handleContact(request, env) {
   });
 
   if (!resendResponse.ok) {
-    return json({ ok: false, error: 'No se pudo enviar la consulta. Inténtalo de nuevo.' }, 502);
+    return json({
+      ok: false,
+      error: 'No se pudo enviar la consulta. Inténtalo de nuevo.'
+    }, 502);
   }
 
-  return json({ ok: true });
+  return json({
+    ok: true
+  });
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/api/contact') {
-      if (request.method !== 'POST') return json({ ok: false, error: 'Method Not Allowed' }, 405);
+      if (request.method !== 'POST') return json({
+        ok: false,
+        error: 'Method Not Allowed'
+      }, 405);
       try {
         return await handleContact(request, env);
       } catch {
-        return json({ ok: false, error: 'No se pudo procesar la consulta.' }, 500);
+        return json({
+          ok: false,
+          error: 'No se pudo procesar la consulta.'
+        }, 500);
       }
     }
     return env.ASSETS.fetch(request);

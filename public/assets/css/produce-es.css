@@ -1,97 +1,599 @@
 /* EMPERIO TISS — Produce catalogues. Fruit and vegetables share one catalogue language; category accent remains olive for produce. Variety metadata stays secondary. */
-.produce-page{background:#F4F0E6;color:#0B1E33;--produce-accent:#7A8B5C;--produce-navy:#0B1E33;--produce-ivory:#F4F0E6;--produce-gold:#C9A24B}
-.produce-page .page-hero{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:end;padding:150px 0 82px;background:var(--produce-navy);color:#fff;overflow:hidden}
-.produce-page .page-hero::before{content:"";position:absolute;inset:10% 0 auto 58%;height:1px;background:rgba(201,162,75,.7);transform:rotate(-28deg);transform-origin:left center;opacity:.8}
-.produce-page .page-hero::after{content:"01";position:absolute;right:5vw;top:28%;font:400 clamp(7rem,18vw,16rem)/.8 var(--et-serif);color:rgba(255,255,255,.035);pointer-events:none}
-.produce-page .page-hero-inner{position:relative;z-index:1;width:min(1180px,calc(100% - 48px));margin:auto}
-.produce-page .eyebrow{font:600 11px/1 var(--et-sans);letter-spacing:.18em;color:var(--produce-gold);text-transform:uppercase}
-.produce-page h1{margin:24px 0 28px;font:400 clamp(4rem,10vw,9rem)/.84 var(--et-serif);letter-spacing:-.045em}
-.produce-page h1 em{color:#dce4cf}
-.produce-page .lead{max-width:680px;margin:0;font:400 clamp(17px,2vw,21px)/1.58 var(--et-serif);color:rgba(255,255,255,.82);letter-spacing:.008em}
-.produce-page .hero-note{display:block;margin-top:38px;padding-top:15px;border-top:1px solid rgba(255,255,255,.16);font:600 9px/1 var(--et-sans);letter-spacing:.2em;color:rgba(255,255,255,.58)}
-.produce-page .catalog-section{position:relative;padding:clamp(90px,11vw,145px) 0;background:var(--produce-ivory)}
-.produce-page .catalog-inner{width:min(1180px,calc(100% - 48px));margin:auto}
-.produce-page .catalog-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.6fr);gap:clamp(2rem,7vw,7rem);align-items:end;margin-bottom:clamp(44px,6vw,72px)}
-.produce-page .catalog-head::after{content:"";position:absolute;left:0;right:0;margin-top:180px;height:1px;background:rgba(11,30,51,.09)}
-.produce-page h2{margin:0;font:400 clamp(3.2rem,6.5vw,6.8rem)/.88 var(--et-serif);letter-spacing:-.04em;color:var(--produce-navy)}
-.produce-page h2 em{color:var(--produce-accent)}
-.produce-page .catalog-head p{max-width:520px;margin:0;font:400 17px/1.8 var(--et-serif);color:#59625d}
-.produce-page .product-catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(11,30,51,.13)}
-.produce-page .product-card{background:#f8f6f0;box-shadow:none;transition:transform .45s var(--et-ease),box-shadow .45s var(--et-ease)}
-.produce-page .product-card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(11,30,51,.08);z-index:2}
-.produce-page .product-card__media{aspect-ratio:4/3;background:#e8e5dc}
-.produce-page .product-card__media img{transition:transform .7s var(--et-ease)}
-.produce-page .product-card:hover .product-card__media img{transform:scale(1.035)}
-.produce-page .product-card__body{gap:.7rem;padding:clamp(1.3rem,2.2vw,1.7rem)}
-.produce-page .product-card__group,.produce-page .product-card__meta{color:var(--produce-accent);font-weight:600}
-.produce-page .product-card__title{color:var(--produce-navy);font-size:clamp(1.55rem,2.2vw,2.3rem)}
-.produce-page .product-card__description{color:#69716c;font-family:var(--et-serif);font-size:.88rem;line-height:1.7}
-.produce-page .product-card__varieties{margin:0;color:#59625d;font:500 .72rem/1.65 var(--et-sans);letter-spacing:.025em}
-.produce-page .product-card__varieties span{margin-right:.45rem;color:var(--produce-accent);font-size:.58rem;font-weight:700;letter-spacing:.14em}
-.produce-page .product-card__link{color:var(--produce-navy);transition:color .35s var(--et-ease),transform .35s var(--et-ease)}
-.produce-page .product-card__link:hover{color:var(--produce-gold);transform:translateX(3px)}
-.produce-page .product-card__image-button{position:relative;width:100%;height:100%;padding:0;border:0;background:transparent;display:block;overflow:hidden}
-.produce-page .product-card__image-count{position:absolute;right:12px;bottom:12px;padding:7px 9px;background:rgba(11,30,51,.78);color:#fff;font:600 8px/1 var(--et-sans);letter-spacing:.12em;text-transform:uppercase}
-.produce-page .product-card__placeholder{color:var(--produce-accent);background:#e9e6dd;font-size:9px}
-.produce-page .footer-band{padding:34px 0;background:var(--produce-navy);color:#fff}
-.produce-page .footer-band-inner{width:min(1180px,calc(100% - 48px));margin:auto;display:flex;justify-content:space-between;gap:24px}
-.produce-page .footer-band img{width:auto!important;height:auto!important;max-width:110px!important;max-height:42px!important;object-fit:contain!important}
-.produce-page .footer-band a{color:#dec487}
-.produce-fruits-page .page-hero::before{top:68%;left:45%;width:70%;background:rgba(122,139,92,.8);transform:rotate(-12deg)}
-.produce-fruits-page .page-hero::after{content:"HARVEST";right:-2vw;top:38%;font:500 clamp(4rem,10vw,9rem)/.8 var(--et-serif);letter-spacing:-.04em;writing-mode:vertical-rl;color:rgba(255,255,255,.035)}
-.produce-fruits-page .catalog-section{background:#f7f3e9}
-.produce-fruits-page .catalog-head h2 em{color:var(--produce-accent)}
+.produce-page {
+  background: #F4F0E6;
+  color: #0B1E33;
+  --produce-accent: #7A8B5C;
+  --produce-navy: #0B1E33;
+  --produce-ivory: #F4F0E6;
+  --produce-gold: #C9A24B
+}
+
+.produce-page .page-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  padding: 150px 0 82px;
+  background: var(--produce-navy);
+  color: #fff;
+  overflow: hidden
+}
+
+.produce-page .page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 10% 0 auto 58%;
+  height: 1px;
+  background: rgba(201, 162, 75, .7);
+  transform: rotate(-28deg);
+  transform-origin: left center;
+  opacity: .8
+}
+
+.produce-page .page-hero::after {
+  content: "01";
+  position: absolute;
+  right: 5vw;
+  top: 28%;
+  font: 400 clamp(7rem, 18vw, 16rem)/.8 var(--et-serif);
+  color: rgba(255, 255, 255, .035);
+  pointer-events: none
+}
+
+.produce-page .page-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 48px));
+  margin: auto
+}
+
+.produce-page .eyebrow {
+  font: 600 11px/1 var(--et-sans);
+  letter-spacing: .18em;
+  color: var(--produce-gold);
+  text-transform: uppercase
+}
+
+.produce-page h1 {
+  margin: 24px 0 28px;
+  font: 400 clamp(4rem, 10vw, 9rem)/.84 var(--et-serif);
+  letter-spacing: -.045em
+}
+
+.produce-page h1 em {
+  color: #dce4cf
+}
+
+.produce-page .lead {
+  max-width: 680px;
+  margin: 0;
+  font: 400 clamp(17px, 2vw, 21px)/1.58 var(--et-serif);
+  color: rgba(255, 255, 255, .82);
+  letter-spacing: .008em
+}
+
+.produce-page .hero-note {
+  display: block;
+  margin-top: 38px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  font: 600 9px/1 var(--et-sans);
+  letter-spacing: .2em;
+  color: rgba(255, 255, 255, .58)
+}
+
+.produce-page .catalog-section {
+  position: relative;
+  padding: clamp(90px, 11vw, 145px) 0;
+  background: var(--produce-ivory)
+}
+
+.produce-page .catalog-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: auto
+}
+
+.produce-page .catalog-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .6fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: end;
+  margin-bottom: clamp(44px, 6vw, 72px)
+}
+
+.produce-page .catalog-head::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 180px;
+  height: 1px;
+  background: rgba(11, 30, 51, .09)
+}
+
+.produce-page h2 {
+  margin: 0;
+  font: 400 clamp(3.2rem, 6.5vw, 6.8rem)/.88 var(--et-serif);
+  letter-spacing: -.04em;
+  color: var(--produce-navy)
+}
+
+.produce-page h2 em {
+  color: var(--produce-accent)
+}
+
+.produce-page .catalog-head p {
+  max-width: 520px;
+  margin: 0;
+  font: 400 17px/1.8 var(--et-serif);
+  color: #59625d
+}
+
+.produce-page .product-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(11, 30, 51, .13)
+}
+
+.produce-page .product-card {
+  background: #f8f6f0;
+  box-shadow: none;
+  transition: transform .45s var(--et-ease), box-shadow .45s var(--et-ease)
+}
+
+.produce-page .product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(11, 30, 51, .08);
+  z-index: 2
+}
+
+.produce-page .product-card__media {
+  aspect-ratio: 4/3;
+  background: #e8e5dc
+}
+
+.produce-page .product-card__media img {
+  transition: transform .7s var(--et-ease)
+}
+
+.produce-page .product-card:hover .product-card__media img {
+  transform: scale(1.035)
+}
+
+.produce-page .product-card__body {
+  gap: .7rem;
+  padding: clamp(1.3rem, 2.2vw, 1.7rem)
+}
+
+.produce-page .product-card__group,
+.produce-page .product-card__meta {
+  color: var(--produce-accent);
+  font-weight: 600
+}
+
+.produce-page .product-card__title {
+  color: var(--produce-navy);
+  font-size: clamp(1.55rem, 2.2vw, 2.3rem)
+}
+
+.produce-page .product-card__description {
+  color: #69716c;
+  font-family: var(--et-serif);
+  font-size: .88rem;
+  line-height: 1.7
+}
+
+.produce-page .product-card__varieties {
+  margin: 0;
+  color: #59625d;
+  font: 500 .72rem/1.65 var(--et-sans);
+  letter-spacing: .025em
+}
+
+.produce-page .product-card__varieties span {
+  margin-right: .45rem;
+  color: var(--produce-accent);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .14em
+}
+
+.produce-page .product-card__link {
+  color: var(--produce-navy);
+  transition: color .35s var(--et-ease), transform .35s var(--et-ease)
+}
+
+.produce-page .product-card__link:hover {
+  color: var(--produce-gold);
+  transform: translateX(3px)
+}
+
+.produce-page .product-card__image-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: block;
+  overflow: hidden
+}
+
+.produce-page .product-card__image-count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 7px 9px;
+  background: rgba(11, 30, 51, .78);
+  color: #fff;
+  font: 600 8px/1 var(--et-sans);
+  letter-spacing: .12em;
+  text-transform: uppercase
+}
+
+.produce-page .product-card__placeholder {
+  color: var(--produce-accent);
+  background: #e9e6dd;
+  font-size: 9px
+}
+
+.produce-page .footer-band {
+  padding: 34px 0;
+  background: var(--produce-navy);
+  color: #fff
+}
+
+.produce-page .footer-band-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px
+}
+
+.produce-page .footer-band img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 110px !important;
+  max-height: 42px !important;
+  object-fit: contain !important
+}
+
+.produce-page .footer-band a {
+  color: #dec487
+}
+
+.produce-fruits-page .page-hero::before {
+  top: 68%;
+  left: 45%;
+  width: 70%;
+  background: rgba(122, 139, 92, .8);
+  transform: rotate(-12deg)
+}
+
+.produce-fruits-page .page-hero::after {
+  content: "HARVEST";
+  right: -2vw;
+  top: 38%;
+  font: 500 clamp(4rem, 10vw, 9rem)/.8 var(--et-serif);
+  letter-spacing: -.04em;
+  writing-mode: vertical-rl;
+  color: rgba(255, 255, 255, .035)
+}
+
+.produce-fruits-page .catalog-section {
+  background: #f7f3e9
+}
+
+.produce-fruits-page .catalog-head h2 em {
+  color: var(--produce-accent)
+}
+
 /* Vegetables intentionally inherits the exact fruit catalogue layout. Only the category motif changes. */
-.produce-vegetables-page .page-hero::before{top:68%;left:45%;width:70%;background:rgba(122,139,92,.8);transform:rotate(-12deg)}
-.produce-vegetables-page .page-hero::after{content:"HARVEST";right:-2vw;top:38%;font:500 clamp(4rem,10vw,9rem)/.8 var(--et-serif);letter-spacing:-.04em;writing-mode:vertical-rl;color:rgba(255,255,255,.035)}
-.produce-vegetables-page .catalog-section{background:#f7f3e9}
+.produce-vegetables-page .page-hero::before {
+  top: 68%;
+  left: 45%;
+  width: 70%;
+  background: rgba(122, 139, 92, .8);
+  transform: rotate(-12deg)
+}
+
+.produce-vegetables-page .page-hero::after {
+  content: "HARVEST";
+  right: -2vw;
+  top: 38%;
+  font: 500 clamp(4rem, 10vw, 9rem)/.8 var(--et-serif);
+  letter-spacing: -.04em;
+  writing-mode: vertical-rl;
+  color: rgba(255, 255, 255, .035)
+}
+
+.produce-vegetables-page .catalog-section {
+  background: #f7f3e9
+}
+
 /* Selected vegetables hero — Pexels photo 33319743. */
-.produce-vegetables-page .page-hero{background-image:linear-gradient(180deg,rgba(11,30,51,.36) 0%,rgba(11,30,51,.22) 42%,rgba(11,30,51,.76) 100%),url("https://images.pexels.com/photos/33319743/pexels-photo-33319743/free-photo-of-composicion-con-pimienta-ajo-eneldo-verde-y-especias.jpeg?auto=compress&dpr=1&h=750&w=1260");background-size:cover;background-position:center 56%}
-.produce-vegetables-page .catalog-head{grid-template-columns:minmax(0,1fr) minmax(280px,.6fr)}
-.produce-vegetables-page .product-catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr));background:rgba(11,30,51,.13);gap:1px}
-.produce-vegetables-page .product-card{border:0;background:#f8f6f0}
-.produce-vegetables-page .product-card__media{aspect-ratio:4/3;background:#e8e5dc}
-.produce-vegetables-page .product-card__body{padding:clamp(1.3rem,2.2vw,1.7rem)}
-.produce-vegetables-page .product-card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(11,30,51,.08)}
-.produce-vegetables-page .product-card__title{font-size:clamp(1.55rem,2.2vw,2.3rem)}
-.produce-vegetables-page .product-card__link{border:0;padding:0;width:auto}
-@media(max-width:980px){.produce-page .catalog-head{grid-template-columns:1fr}.produce-page .product-catalog-grid,.produce-vegetables-page .product-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:640px){.produce-page .page-hero{min-height:100vh;min-height:100svh;padding:125px 0 58px}.produce-page .page-hero::before{left:20%;width:100%}.produce-page h1{font-size:clamp(3.5rem,17vw,5.5rem)}.produce-page .catalog-inner{width:min(100%,calc(100% - 32px))}.produce-page .catalog-head{grid-template-columns:1fr;gap:24px}.produce-page .catalog-head::after{display:none}.produce-page .product-catalog-grid,.produce-vegetables-page .product-catalog-grid{grid-template-columns:1fr;gap:18px}.produce-page .product-card{border-top:1px solid rgba(11,30,51,.12)}.produce-page .product-card__media,.produce-vegetables-page .product-card__media{aspect-ratio:5/4}.produce-page .catalog-section{padding:78px 0}.produce-page .footer-band-inner{flex-direction:column}.produce-vegetables-page .page-hero{background-position:center 58%}}
-@media(prefers-reduced-motion:reduce){.produce-page .product-card,.produce-page .product-card__media img,.produce-page .product-card__link{transition:none!important}}
+.produce-vegetables-page .page-hero {
+  background-image: linear-gradient(180deg, rgba(11, 30, 51, .36) 0%, rgba(11, 30, 51, .22) 42%, rgba(11, 30, 51, .76) 100%), url("https://images.pexels.com/photos/33319743/pexels-photo-33319743/free-photo-of-composicion-con-pimienta-ajo-eneldo-verde-y-especias.jpeg?auto=compress&dpr=1&h=750&w=1260");
+  background-size: cover;
+  background-position: center 56%
+}
+
+.produce-vegetables-page .catalog-head {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .6fr)
+}
+
+.produce-vegetables-page .product-catalog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: rgba(11, 30, 51, .13);
+  gap: 1px
+}
+
+.produce-vegetables-page .product-card {
+  border: 0;
+  background: #f8f6f0
+}
+
+.produce-vegetables-page .product-card__media {
+  aspect-ratio: 4/3;
+  background: #e8e5dc
+}
+
+.produce-vegetables-page .product-card__body {
+  padding: clamp(1.3rem, 2.2vw, 1.7rem)
+}
+
+.produce-vegetables-page .product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(11, 30, 51, .08)
+}
+
+.produce-vegetables-page .product-card__title {
+  font-size: clamp(1.55rem, 2.2vw, 2.3rem)
+}
+
+.produce-vegetables-page .product-card__link {
+  border: 0;
+  padding: 0;
+  width: auto
+}
+
+@media(max-width:980px) {
+  .produce-page .catalog-head {
+    grid-template-columns: 1fr
+  }
+
+  .produce-page .product-catalog-grid,
+  .produce-vegetables-page .product-catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+}
+
+@media(max-width:640px) {
+  .produce-page .page-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 125px 0 58px
+  }
+
+  .produce-page .page-hero::before {
+    left: 20%;
+    width: 100%
+  }
+
+  .produce-page h1 {
+    font-size: clamp(3.5rem, 17vw, 5.5rem)
+  }
+
+  .produce-page .catalog-inner {
+    width: min(100%, calc(100% - 32px))
+  }
+
+  .produce-page .catalog-head {
+    grid-template-columns: 1fr;
+    gap: 24px
+  }
+
+  .produce-page .catalog-head::after {
+    display: none
+  }
+
+  .produce-page .product-catalog-grid,
+  .produce-vegetables-page .product-catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 18px
+  }
+
+  .produce-page .product-card {
+    border-top: 1px solid rgba(11, 30, 51, .12)
+  }
+
+  .produce-page .product-card__media,
+  .produce-vegetables-page .product-card__media {
+    aspect-ratio: 5/4
+  }
+
+  .produce-page .catalog-section {
+    padding: 78px 0
+  }
+
+  .produce-page .footer-band-inner {
+    flex-direction: column
+  }
+
+  .produce-vegetables-page .page-hero {
+    background-position: center 58%
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  .produce-page .product-card,
+  .produce-page .product-card__media img,
+  .produce-page .product-card__link {
+    transition: none !important
+  }
+}
 
 /* HORTALIZAS — visual palette derived from the selected Pexels hero: deep greens, herb olive, pepper red, warm spice and garlic ivory. */
-.produce-vegetables-page{--veg-ink:#18251D;--veg-deep:#20382C;--veg-green:#49653F;--veg-herb:#6F8150;--veg-olive:#8A955E;--veg-red:#A94B3B;--veg-spice:#D0A044;--veg-ivory:#F4EFE3;--veg-paper:#FBF9F3;--veg-line:rgba(32,56,44,.14);background:var(--veg-ivory);color:var(--veg-ink)}
-.produce-vegetables-page .page-hero{background-image:linear-gradient(180deg,rgba(15,25,19,.18) 0%,rgba(19,34,25,.22) 35%,rgba(20,37,27,.84) 100%),url("https://images.pexels.com/photos/33319743/pexels-photo-33319743/free-photo-of-composicion-con-pimienta-ajo-eneldo-verde-y-especias.jpeg?auto=compress&dpr=1&h=750&w=1260");background-color:var(--veg-deep);background-size:cover;background-position:center 56%}
-.produce-vegetables-page .page-hero::before{background:linear-gradient(90deg,rgba(208,160,68,.8),rgba(111,129,80,.38));opacity:.86}
-.produce-vegetables-page .page-hero::after{color:rgba(244,239,227,.06)}
-.produce-vegetables-page .eyebrow{color:#E1C06B}
-.produce-vegetables-page h1 em{color:#D8E1C9}
-.produce-vegetables-page .lead{color:rgba(250,248,239,.88)}
-.produce-vegetables-page .hero-note{border-top-color:rgba(244,239,227,.2);color:rgba(244,239,227,.64)}
-.produce-vegetables-page .catalog-section{background:var(--veg-ivory)}
-.produce-vegetables-page .catalog-head::after{background:var(--veg-line)}
-.produce-vegetables-page h2{color:var(--veg-deep)}
-.produce-vegetables-page h2 em{color:var(--veg-green)}
-.produce-vegetables-page .catalog-head p{color:#4F5D53}
-.produce-vegetables-page .product-catalog-grid{background:var(--veg-line)}
-.produce-vegetables-page .product-card{background:var(--veg-paper);border:0;box-shadow:0 8px 24px rgba(32,56,44,.035)}
-.produce-vegetables-page .product-card:hover{box-shadow:0 18px 40px rgba(32,56,44,.10)}
-.produce-vegetables-page .product-card__media{background:#E7E4D8}
-.produce-vegetables-page .product-card__group,.produce-vegetables-page .product-card__meta{color:var(--veg-herb)}
-.produce-vegetables-page .product-card__title{color:var(--veg-ink)}
-.produce-vegetables-page .product-card__description{color:#58645B}
-.produce-vegetables-page .product-card__varieties{color:#5C685E}
-.produce-vegetables-page .product-card__varieties span{color:var(--veg-red)}
-.produce-vegetables-page .product-card__link{color:var(--veg-green)}
-.produce-vegetables-page .product-card__link:hover{color:var(--veg-red)}
-.produce-vegetables-page .product-card__image-count{background:rgba(24,37,29,.88)}
-.produce-vegetables-page .product-card__placeholder{color:var(--veg-green);background:#E8E5D9}
-.produce-vegetables-page .footer-band{background:var(--veg-deep);color:#F8F5EA}
-.produce-vegetables-page .footer-band a{color:#DCC47C}
-.produce-vegetables-page .catalog-head h2 em{color:var(--veg-green)}
-.produce-vegetables-page .catalog-section strong{color:var(--veg-green)}
-.produce-vegetables-page a:focus-visible,.produce-vegetables-page button:focus-visible{outline:2px solid var(--veg-spice);outline-offset:4px}
-@media(max-width:640px){.produce-vegetables-page .page-hero{background-position:center 58%}.produce-vegetables-page .product-card{box-shadow:0 8px 24px rgba(32,56,44,.05)}}
+.produce-vegetables-page {
+  --veg-ink: #18251D;
+  --veg-deep: #20382C;
+  --veg-green: #49653F;
+  --veg-herb: #6F8150;
+  --veg-olive: #8A955E;
+  --veg-red: #A94B3B;
+  --veg-spice: #D0A044;
+  --veg-ivory: #F4EFE3;
+  --veg-paper: #FBF9F3;
+  --veg-line: rgba(32, 56, 44, .14);
+  background: var(--veg-ivory);
+  color: var(--veg-ink)
+}
+
+.produce-vegetables-page .page-hero {
+  background-image: linear-gradient(180deg, rgba(15, 25, 19, .18) 0%, rgba(19, 34, 25, .22) 35%, rgba(20, 37, 27, .84) 100%), url("https://images.pexels.com/photos/33319743/pexels-photo-33319743/free-photo-of-composicion-con-pimienta-ajo-eneldo-verde-y-especias.jpeg?auto=compress&dpr=1&h=750&w=1260");
+  background-color: var(--veg-deep);
+  background-size: cover;
+  background-position: center 56%
+}
+
+.produce-vegetables-page .page-hero::before {
+  background: linear-gradient(90deg, rgba(208, 160, 68, .8), rgba(111, 129, 80, .38));
+  opacity: .86
+}
+
+.produce-vegetables-page .page-hero::after {
+  color: rgba(244, 239, 227, .06)
+}
+
+.produce-vegetables-page .eyebrow {
+  color: #E1C06B
+}
+
+.produce-vegetables-page h1 em {
+  color: #D8E1C9
+}
+
+.produce-vegetables-page .lead {
+  color: rgba(250, 248, 239, .88)
+}
+
+.produce-vegetables-page .hero-note {
+  border-top-color: rgba(244, 239, 227, .2);
+  color: rgba(244, 239, 227, .64)
+}
+
+.produce-vegetables-page .catalog-section {
+  background: var(--veg-ivory)
+}
+
+.produce-vegetables-page .catalog-head::after {
+  background: var(--veg-line)
+}
+
+.produce-vegetables-page h2 {
+  color: var(--veg-deep)
+}
+
+.produce-vegetables-page h2 em {
+  color: var(--veg-green)
+}
+
+.produce-vegetables-page .catalog-head p {
+  color: #4F5D53
+}
+
+.produce-vegetables-page .product-catalog-grid {
+  background: var(--veg-line)
+}
+
+.produce-vegetables-page .product-card {
+  background: var(--veg-paper);
+  border: 0;
+  box-shadow: 0 8px 24px rgba(32, 56, 44, .035)
+}
+
+.produce-vegetables-page .product-card:hover {
+  box-shadow: 0 18px 40px rgba(32, 56, 44, .10)
+}
+
+.produce-vegetables-page .product-card__media {
+  background: #E7E4D8
+}
+
+.produce-vegetables-page .product-card__group,
+.produce-vegetables-page .product-card__meta {
+  color: var(--veg-herb)
+}
+
+.produce-vegetables-page .product-card__title {
+  color: var(--veg-ink)
+}
+
+.produce-vegetables-page .product-card__description {
+  color: #58645B
+}
+
+.produce-vegetables-page .product-card__varieties {
+  color: #5C685E
+}
+
+.produce-vegetables-page .product-card__varieties span {
+  color: var(--veg-red)
+}
+
+.produce-vegetables-page .product-card__link {
+  color: var(--veg-green)
+}
+
+.produce-vegetables-page .product-card__link:hover {
+  color: var(--veg-red)
+}
+
+.produce-vegetables-page .product-card__image-count {
+  background: rgba(24, 37, 29, .88)
+}
+
+.produce-vegetables-page .product-card__placeholder {
+  color: var(--veg-green);
+  background: #E8E5D9
+}
+
+.produce-vegetables-page .footer-band {
+  background: var(--veg-deep);
+  color: #F8F5EA
+}
+
+.produce-vegetables-page .footer-band a {
+  color: #DCC47C
+}
+
+.produce-vegetables-page .catalog-head h2 em {
+  color: var(--veg-green)
+}
+
+.produce-vegetables-page .catalog-section strong {
+  color: var(--veg-green)
+}
+
+.produce-vegetables-page a:focus-visible,
+.produce-vegetables-page button:focus-visible {
+  outline: 2px solid var(--veg-spice);
+  outline-offset: 4px
+}
+
+@media(max-width:640px) {
+  .produce-vegetables-page .page-hero {
+    background-position: center 58%
+  }
+
+  .produce-vegetables-page .product-card {
+    box-shadow: 0 8px 24px rgba(32, 56, 44, .05)
+  }
+}
 
 /* FRUITS — typography aligned with the About page editorial system.
    Playfair Display carries headings and readable editorial copy; DM Sans remains
@@ -101,23 +603,29 @@
 .produce-fruits-page .product-card__title,
 .produce-fruits-page .fruit-special-head h2,
 .produce-fruits-page .citrus-detail h3,
-.produce-fruits-page .citrus-product-popover > strong,
-.produce-fruits-page .citrus-family-tab strong{
-  font-family:var(--et-serif);
-  font-weight:400;
+.produce-fruits-page .citrus-product-popover>strong,
+.produce-fruits-page .citrus-family-tab strong {
+  font-family: var(--et-serif);
+  font-weight: 400;
 }
+
 .produce-fruits-page .page-hero .lead,
-.produce-fruits-page .catalog-head > p,
+.produce-fruits-page .catalog-head>p,
 .produce-fruits-page .fruit-special-intro,
 .produce-fruits-page .citrus-detail-copy,
-.produce-fruits-page .product-card__description{
-  font-family:var(--et-serif);
-  font-size:18px;
-  line-height:1.82;
-  letter-spacing:.008em;
-  font-weight:400;
+.produce-fruits-page .product-card__description {
+  font-family: var(--et-serif);
+  font-size: 18px;
+  line-height: 1.82;
+  letter-spacing: .008em;
+  font-weight: 400;
 }
-.produce-fruits-page .page-hero .lead{font-size:clamp(17px,2vw,21px);line-height:1.58}
+
+.produce-fruits-page .page-hero .lead {
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.58
+}
+
 .produce-fruits-page .eyebrow,
 .produce-fruits-page .hero-note,
 .produce-fruits-page .fruit-special-kicker,
@@ -140,13 +648,22 @@
 .produce-fruits-page .citrus-campaign-head strong,
 .produce-fruits-page .citrus-selection-chip,
 .produce-fruits-page .product-card__varieties,
-.produce-fruits-page .product-card__image-count{
-  font-family:var(--et-sans);
+.produce-fruits-page .product-card__image-count {
+  font-family: var(--et-sans);
 }
-@media(max-width:800px){
-  .produce-fruits-page .catalog-head > p,
+
+@media(max-width:800px) {
+
+  .produce-fruits-page .catalog-head>p,
   .produce-fruits-page .fruit-special-intro,
   .produce-fruits-page .citrus-detail-copy,
-  .produce-fruits-page .product-card__description{font-size:16px;line-height:1.78}
-  .produce-fruits-page .page-hero .lead{font-size:16px;line-height:1.78}
+  .produce-fruits-page .product-card__description {
+    font-size: 16px;
+    line-height: 1.78
+  }
+
+  .produce-fruits-page .page-hero .lead {
+    font-size: 16px;
+    line-height: 1.78
+  }
 }

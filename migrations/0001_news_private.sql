@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS private_offers (
   last_sent_at INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_subscribers_language ON subscribers(language);
-CREATE INDEX IF NOT EXISTS idx_clients_status ON clients(status);
-CREATE INDEX IF NOT EXISTS idx_offers_status_valid_until ON private_offers(status, valid_until);
+CREATE INDEX IF NOT EXISTS idx_subscribers_language ON subscribers (language);
+
+CREATE INDEX IF NOT EXISTS idx_clients_status ON clients (status);
+
+CREATE INDEX IF NOT EXISTS idx_offers_status_valid_until ON private_offers (status, valid_until);

@@ -1,6 +1,7 @@
 (() => {
   'use strict';
-  if (!document.querySelector('.fish-catalog-card, .seafood-catalog-card, .product-card, [data-catalog-family]')) return;
+  if (!document.querySelector(
+      '.fish-catalog-card, .seafood-catalog-card, .product-card, [data-catalog-family]')) return;
 
   const style = document.createElement('style');
   style.textContent = `
@@ -27,20 +28,46 @@
   `;
   document.head.appendChild(style);
 
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  } [c]));
 
   function addControls(media, images, getImage, setImage) {
     if (!media || images.length < 2 || media.querySelector('.catalog-inline-nav')) return;
     const prev = document.createElement('button');
-    prev.type = 'button'; prev.className = 'catalog-inline-nav catalog-inline-nav--prev'; prev.setAttribute('aria-label','Imagen anterior'); prev.textContent = '‹';
+    prev.type = 'button';
+    prev.className = 'catalog-inline-nav catalog-inline-nav--prev';
+    prev.setAttribute('aria-label', 'Imagen anterior');
+    prev.textContent = '‹';
     const next = document.createElement('button');
-    next.type = 'button'; next.className = 'catalog-inline-nav catalog-inline-nav--next'; next.setAttribute('aria-label','Imagen siguiente'); next.textContent = '›';
-    const counter = document.createElement('span'); counter.className = 'catalog-inline-count'; counter.textContent = `1 / ${images.length}`;
+    next.type = 'button';
+    next.className = 'catalog-inline-nav catalog-inline-nav--next';
+    next.setAttribute('aria-label', 'Imagen siguiente');
+    next.textContent = '›';
+    const counter = document.createElement('span');
+    counter.className = 'catalog-inline-count';
+    counter.textContent = `1 / ${images.length}`;
     let index = 0;
-    const go = step => { index = (index + step + images.length) % images.length; setImage(images[index]); counter.textContent = `${index + 1} / ${images.length}`; };
-    prev.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); go(-1); });
-    next.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); go(1); });
-    media.append(prev,next,counter);
+    const go = step => {
+      index = (index + step + images.length) % images.length;
+      setImage(images[index]);
+      counter.textContent = `${index + 1} / ${images.length}`;
+    };
+    prev.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      go(-1);
+    });
+    next.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      go(1);
+    });
+    media.append(prev, next, counter);
   }
 
   function enhanceGeneric(root = document) {
@@ -55,25 +82,45 @@
       const img = button.querySelector('img');
       if (!img) return;
       media.dataset.inlineGalleryReady = 'true';
-      addControls(media, images, () => img.src, src => { img.style.opacity = '.35'; window.setTimeout(() => { img.src = src; img.style.opacity = '1'; }, 90); });
+      addControls(media, images, () => img.src, src => {
+        img.style.opacity = '.35';
+        window.setTimeout(() => {
+          img.src = src;
+          img.style.opacity = '1';
+        }, 90);
+      });
     });
   }
 
   function enhanceSeafood(root = document) {
     root.querySelectorAll('.seafood-catalog-card__media[data-image-list]').forEach(media => {
       if (media.dataset.inlineGalleryReady) return;
-      let images=[];
-      try { images = JSON.parse(media.dataset.imageList || '[]'); } catch (_) {}
+      let images = [];
+      try {
+        images = JSON.parse(media.dataset.imageList || '[]');
+      } catch (_) {}
       if (images.length < 2) return;
       const img = media.querySelector('img');
       if (!img) return;
       media.dataset.inlineGalleryReady = 'true';
-      addControls(media, images, () => img.src, src => { img.style.opacity='.35'; window.setTimeout(() => { img.src=src; img.style.opacity='1'; },90); });
+      addControls(media, images, () => img.src, src => {
+        img.style.opacity = '.35';
+        window.setTimeout(() => {
+          img.src = src;
+          img.style.opacity = '1';
+        }, 90);
+      });
     });
   }
 
-  const enhance = () => { enhanceGeneric(); enhanceSeafood(); };
+  const enhance = () => {
+    enhanceGeneric();
+    enhanceSeafood();
+  };
   enhance();
   const observer = new MutationObserver(enhance);
-  observer.observe(document.body, {childList:true, subtree:true});
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 })();

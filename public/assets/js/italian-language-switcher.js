@@ -6,11 +6,31 @@
   if ((root.lang || '').slice(0, 2).toLowerCase() !== 'it') return;
 
   const flagMap = {
-    ES: { src: '/assets/flags/es.svg?v=20260825-2', label: 'Español', href: '/' },
-    EN: { src: '/assets/flags/en.svg?v=20260825-2', label: 'English', href: '/en/' },
-    FR: { src: '/assets/flags/fr.svg?v=20260825-2', label: 'Français', href: '/fr/' },
-    AR: { src: '/assets/flags/ar.svg?v=20260825-2', label: 'العربية', href: '/ar/' },
-    IT: { src: '/assets/flags/it.svg?v=20260825-2', label: 'Italiano', href: '/it/' }
+    ES: {
+      src: '/assets/flags/es.svg?v=20260825-2',
+      label: 'Español',
+      href: '/'
+    },
+    EN: {
+      src: '/assets/flags/en.svg?v=20260825-2',
+      label: 'English',
+      href: '/en/'
+    },
+    FR: {
+      src: '/assets/flags/fr.svg?v=20260825-2',
+      label: 'Français',
+      href: '/fr/'
+    },
+    AR: {
+      src: '/assets/flags/ar.svg?v=20260825-2',
+      label: 'العربية',
+      href: '/ar/'
+    },
+    IT: {
+      src: '/assets/flags/it.svg?v=20260825-2',
+      label: 'Italiano',
+      href: '/it/'
+    }
   };
 
   const currentPath = window.location.pathname || '/';
@@ -18,7 +38,8 @@
   const routeFor = (code) => {
     const base = flagMap[code].href;
     if (code === 'IT') return `/it${itPath === '/' ? '/' : itPath}`;
-    return base === '/' ? (itPath === '/' ? '/' : itPath) : `${base}${itPath === '/' ? '' : itPath}`;
+    return base === '/' ? (itPath === '/' ? '/' : itPath) :
+      `${base}${itPath === '/' ? '' : itPath}`;
   };
 
   const makeFlag = (code) => {
@@ -105,5 +126,8 @@
   const observer = new MutationObserver(() => {
     if (init()) observer.disconnect();
   });
-  observer.observe(doc.body, { childList: true, subtree: true });
+  observer.observe(doc.body, {
+    childList: true,
+    subtree: true
+  });
 })();
