@@ -8,9 +8,11 @@
 <link rel="alternate" hreflang="es" href="https://emperio-tiss.com/products/seafood/fish/"><link rel="alternate" hreflang="en" href="https://emperio-tiss.com/en/products/seafood/fish/"><link rel="alternate" hreflang="fr" href="https://emperio-tiss.com/fr/products/seafood/fish/"><link rel="alternate" hreflang="ar" href="https://emperio-tiss.com/ar/products/seafood/fish/"><link rel="alternate" hreflang="it" href="https://emperio-tiss.com/it/products/seafood/fish/"><link rel="alternate" hreflang="x-default" href="https://emperio-tiss.com/products/seafood/fish/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="EMPERIO TISS"><meta property="og:title" content="Pescados | EMPERIO TISS"><meta property="og:description" content="Pescados seleccionados para compradores profesionales, definidos por especie, origen, calibre, calidad y disponibilidad."><meta property="og:url" content="https://emperio-tiss.com/products/seafood/fish/"><meta property="og:image" content="https://emperio-tiss.com/images/seafood/seafood-hero.jpg"><meta property="og:locale" content="es_ES"><meta property="og:locale:alternate" content="en_GB"><meta property="og:locale:alternate" content="fr_FR"><meta property="og:locale:alternate" content="ar_AR"><meta property="og:locale:alternate" content="it_IT">
 <link rel="icon" href="/assets/images/logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"><link rel="stylesheet" href="/assets/css/global.css?v=fish-clean-2"><link rel="stylesheet" href="/assets/css/seafood-subpages-en.css?v=fish-clean-2"><link rel="stylesheet" href="/assets/css/fish-editorial.css?v=fish-hero-20260907-2"><link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">
-<style>body.fish-catalog-pilot .page-hero{background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Fishing_Boat_on_the_Sea.jpg/3840px-Fishing_Boat_on_the_Sea.jpg")!important}
-body.fish-catalog-pilot .fish-catalog-card__media{position:relative!important;cursor:zoom-in!important}
-body.fish-catalog-pilot .fish-catalog-card__media img.fish-card-image{position:relative!important;z-index:10!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;cursor:zoom-in!important;pointer-events:none!important;user-select:none!important;-webkit-user-drag:none!important}
+<style>
+body.fish-catalog-pilot .page-hero{background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Fishing_Boat_on_the_Sea.jpg/3840px-Fishing_Boat_on_the_Sea.jpg")!important}
+body.fish-catalog-pilot .fish-catalog-card__media{position:relative!important}
+body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image-button{display:block!important;position:relative!important;z-index:2!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;cursor:zoom-in!important;overflow:hidden!important;text-align:left!important;pointer-events:auto!important}
+body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image-button .fish-card-image{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;cursor:zoom-in!important;pointer-events:auto!important}
 body.fish-catalog-pilot .fish-catalog-card__media::before,body.fish-catalog-pilot .fish-catalog-card__media::after{pointer-events:none!important}
 </style>
 </head>
@@ -23,27 +25,4 @@ body.fish-catalog-pilot .fish-catalog-card__media::before,body.fish-catalog-pilo
 <section class="fish-catalog" id="fishCatalog" aria-labelledby="fishCatalogTitle"><div class="fish-catalog__inner"><div class="catalog-head"><div><span class="eyebrow">CATÁLOGO</span><h2 id="fishCatalogTitle">Pescados<br><em>por referencia.</em></h2></div><p>Información técnica y comercial para sourcing profesional. Busque o filtre las referencias activas.</p></div><div class="fish-catalog__toolbar"><input class="fish-catalog__search" id="fishCatalogSearch" type="search" placeholder="Buscar especie o producto..." aria-label="Buscar pescado"><p class="fish-catalog__count" id="fishCatalogCount">0 referencias</p></div><div class="fish-catalog__filters fish-catalog__filters--condition" role="group" aria-label="Filtros por condición"><button type="button" class="fish-catalog__filter" data-fish-filter="all" aria-pressed="true">Todos</button><button type="button" class="fish-catalog__filter" data-fish-filter="fresh" aria-pressed="false">Fresco</button><button type="button" class="fish-catalog__filter" data-fish-filter="frozen" aria-pressed="false">Congelado</button></div><div class="fish-catalog__filters fish-catalog__filters--category" role="group" aria-label="Filtros por categoría"><button type="button" class="fish-catalog__filter" data-fish-category="all" aria-pressed="true">Todas las categorías</button><button type="button" class="fish-catalog__filter" data-fish-category="white" aria-pressed="false">Pez blanco</button><button type="button" class="fish-catalog__filter" data-fish-category="blue" aria-pressed="false">Pez azul</button><button type="button" class="fish-catalog__filter" data-fish-category="special" aria-pressed="false">Pescados especiales</button></div><div class="fish-catalog-grid" id="fishCatalogGrid" aria-live="polite"></div></div></section></main>
 <footer class="fish-site-footer"><div class="container"><div class="footer-main"><div class="footer-brand"><img src="/assets/images/logo.png" alt="EMPERIO TISS" class="footer-logo"><p>Tu socio de confianza en los mercados internacionales.</p></div></div><div class="footer-bottom"><span>EMPERIO TISS</span><span>EUROPA · ÁFRICA · MEDITERRÁNEO</span></div></div></footer>
 <script src="/assets/js/global.js?v=fish-clean-2" defer></script><script src="/assets/js/fish-catalog.js?v=fish-es-click-20260909-2" defer></script><script src="/assets/js/fish-calibre-display.js?v=1" defer></script><script src="/assets/js/fish-emblematic.js?v=1"></script>
-<script>
-window.addEventListener('load',function(){
-  const grid=document.getElementById('fishCatalogGrid');
-  const viewer=document.querySelector('.fish-gallery');
-  if(!grid||!viewer)return;
-  const panel=viewer.querySelector('.fish-gallery__panel');
-  const vimg=viewer.querySelector('.fish-gallery__image');
-  const counter=viewer.querySelector('.fish-gallery__counter');
-  const prev=viewer.querySelector('.fish-gallery__prev');
-  const next=viewer.querySelector('.fish-gallery__next');
-  const close=viewer.querySelector('.fish-gallery__close');
-  let images=[],index=0;
-  const paint=()=>{if(!images.length)return;vimg.src=images[index];counter.textContent=(index+1)+' / '+images.length;prev.hidden=images.length<2;next.hidden=images.length<2};
-  const open=media=>{try{images=JSON.parse(media.dataset.images||'[]').filter(Boolean)}catch(e){images=[]}if(!images.length)return;index=0;viewer.hidden=false;viewer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';paint();panel&&panel.focus()};
-  const shut=()=>{viewer.hidden=true;viewer.setAttribute('aria-hidden','true');document.body.style.overflow='';vimg.removeAttribute('src')};
-  grid.addEventListener('click',function(e){if(e.target.closest('.fish-card-nav'))return;const media=e.target.closest('.fish-catalog-card__media');if(!media||!media.dataset.images)return;e.preventDefault();e.stopImmediatePropagation();open(media)},true);
-  prev&&prev.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();index=(index-1+images.length)%images.length;paint()});
-  next&&next.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();index=(index+1)%images.length;paint()});
-  close&&close.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();shut()});
-  viewer.addEventListener('click',function(e){if(e.target===viewer)shut()});
-  document.addEventListener('keydown',function(e){if(viewer.hidden)return;if(e.key==='Escape')shut();if(e.key==='ArrowLeft'&&images.length>1){index=(index-1+images.length)%images.length;paint()}if(e.key==='ArrowRight'&&images.length>1){index=(index+1)%images.length;paint()}});
-});
-</script>
 </body></html>
