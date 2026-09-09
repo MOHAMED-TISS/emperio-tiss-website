@@ -9,11 +9,11 @@
   if (!grid || !search || !count) return;
 
   const labels = {
-    es: { all:'Todos', fresh:'Fresco', allCats:'Todas las categorías', white:'Pez blanco', blue:'Pez azul', special:'Pescados especiales', refs:'referencias', ref:'referencia', none:'No hay referencias que coincidan con la búsqueda.', family:'Familia', type:'Tipo', state:'Estado', origin:'Origen', fao:'Zona FAO', calibre:'Calibre', quality:'Calidad', presentation:'Presentación', packaging:'Embalaje', availability:'Disponibilidad', according:'Según disponibilidad', destination:'Según destino', market:'Según mercado', professional:'Especificación profesional' },
-    en: { all:'All', fresh:'Fresh', allCats:'All categories', white:'White fish', blue:'Blue fish', special:'Special fish', refs:'references', ref:'reference', none:'No references match your search.', family:'Family', type:'Type', state:'Condition', origin:'Origin', fao:'FAO area', calibre:'Calibre', quality:'Quality', presentation:'Presentation', packaging:'Packaging', availability:'Availability', according:'According to availability', destination:'According to destination', market:'According to market', professional:'Professional specification' },
-    fr: { all:'Toutes', fresh:'Frais', allCats:'Toutes les catégories', white:'Poisson blanc', blue:'Poisson bleu', special:'Poissons spéciaux', refs:'références', ref:'référence', none:'Aucune référence ne correspond à votre recherche.', family:'Famille', type:'Type', state:'État', origin:'Origine', fao:'Zone FAO', calibre:'Calibre', quality:'Qualité', presentation:'Présentation', packaging:'Conditionnement', availability:'Disponibilité', according:'Selon disponibilité', destination:'Selon destination', market:'Selon marché', professional:'Spécification professionnelle' },
-    it: { all:'Tutte', fresh:'Fresco', allCats:'Tutte le categorie', white:'Pesce bianco', blue:'Pesce azzurro', special:'Pesci speciali', refs:'referenze', ref:'referenza', none:'Nessuna referenza corrisponde alla ricerca.', family:'Famiglia', type:'Tipo', state:'Stato', origin:'Origine', fao:'Zona FAO', calibre:'Calibro', quality:'Qualità', presentation:'Presentazione', packaging:'Imballaggio', availability:'Disponibilità', according:'Secondo disponibilità', destination:'Secondo destinazione', market:'Secondo mercato', professional:'Specificazione professionale' },
-    ar: { all:'الكل', fresh:'طازج', allCats:'جميع الفئات', white:'سمك أبيض', blue:'سمك أزرق', special:'أسماك خاصة', refs:'مراجع', ref:'مرجع', none:'لا توجد مراجع مطابقة للبحث.', family:'الفئة', type:'النوع', state:'الحالة', origin:'المنشأ', fao:'منطقة FAO', calibre:'المقاس', quality:'الجودة', presentation:'التقديم', packaging:'التعبئة', availability:'التوفر', according:'حسب التوفر', destination:'حسب الوجهة', market:'حسب السوق', professional:'مواصفة مهنية' }
+    es: { all:'Todos', fresh:'Fresco', frozen:'Congelado', allCats:'Todas las categorías', white:'Pez blanco', blue:'Pez azul', special:'Pescados especiales', refs:'referencias', ref:'referencia', none:'No hay referencias que coincidan con la búsqueda.', family:'Familia', type:'Tipo', state:'Estado', origin:'Origen', fao:'Zona FAO', calibre:'Calibre', quality:'Calidad', presentation:'Presentación', packaging:'Embalaje', availability:'Disponibilidad', according:'Según disponibilidad', destination:'Según destino', market:'Según mercado', professional:'Especificación profesional' },
+    en: { all:'All', fresh:'Fresh', frozen:'Frozen', allCats:'All categories', white:'White fish', blue:'Blue fish', special:'Special fish', refs:'references', ref:'reference', none:'No references match your search.', family:'Family', type:'Type', state:'Condition', origin:'Origin', fao:'FAO area', calibre:'Calibre', quality:'Quality', presentation:'Presentation', packaging:'Packaging', availability:'Availability', according:'According to availability', destination:'According to destination', market:'According to market', professional:'Professional specification' },
+    fr: { all:'Toutes', fresh:'Frais', frozen:'Congelé', allCats:'Toutes les catégories', white:'Poisson blanc', blue:'Poisson bleu', special:'Poissons spéciaux', refs:'références', ref:'référence', none:'Aucune référence ne correspond à votre recherche.', family:'Famille', type:'Type', state:'État', origin:'Origine', fao:'Zone FAO', calibre:'Calibre', quality:'Qualité', presentation:'Présentation', packaging:'Conditionnement', availability:'Disponibilité', according:'Selon disponibilité', destination:'Selon destination', market:'Selon marché', professional:'Spécification professionnelle' },
+    it: { all:'Tutte', fresh:'Fresco', frozen:'Congelato', allCats:'Tutte le categorie', white:'Pesce bianco', blue:'Pesce azzurro', special:'Pesci speciali', refs:'referenze', ref:'referenza', none:'Nessuna referenza corrisponde alla ricerca.', family:'Famiglia', type:'Tipo', state:'Stato', origin:'Origine', fao:'Zona FAO', calibre:'Calibro', quality:'Qualità', presentation:'Presentazione', packaging:'Imballaggio', availability:'Disponibilità', according:'Secondo disponibilità', destination:'Secondo destinazione', market:'Secondo mercato', professional:'Specificazione professionale' },
+    ar: { all:'الكل', fresh:'طازج', frozen:'مجمد', allCats:'جميع الفئات', white:'سمك أبيض', blue:'سمك أزرق', special:'أسماك خاصة', refs:'مراجع', ref:'مرجع', none:'لا توجد مراجع مطابقة للبحث.', family:'الفئة', type:'النوع', state:'الحالة', origin:'المنشأ', fao:'منطقة FAO', calibre:'المقاس', quality:'الجودة', presentation:'التقديم', packaging:'التعبئة', availability:'التوفر', according:'حسب التوفر', destination:'حسب الوجهة', market:'حسب السوق', professional:'مواصفة مهنية' }
   }[lang] || {};
 
   const names = {
@@ -36,10 +36,24 @@
     sardina:{es:'Sardina',en:'European sardine',fr:'Sardine',it:'Sardina',ar:'السردين'},
     sole:{es:'Lenguado',en:'Common sole',fr:'Sole commune',it:'Sogliola',ar:'سمك موسى'},
     'pez-espada':{es:'Pez espada',en:'Swordfish',fr:'Espadon',it:'Pesce spada',ar:'أبو سيف'},
-    mujol:{es:'Mújol',en:'Mullet',fr:'Mulet',it:'Cefalo',ar:'البوري'}
+    mujol:{es:'Mújol',en:'Mullet',fr:'Mulet',it:'Cefalo',ar:'البوري'},
+    bacalao:{es:'Bacalao',en:'Atlantic cod',fr:'Cabillaud',it:'Merluzzo',ar:'سمك القد الأطلسي'},
+    abadejo:{es:'Abadejo / Pollock',en:'Saithe',fr:'Lieu noir',it:'Carbonaro',ar:'سايث / بولوك الأطلسي'},
+    eglefino:{es:'Eglefino',en:'Haddock',fr:'Églefin',it:'Eglefino',ar:'الإيغليفين'},
+    'pollock-alaska':{es:'Abadejo de Alaska',en:'Alaska pollock',fr:'Colin d’Alaska',it:'Pollock d’Alaska',ar:'بولوك ألاسكا'},
+    bacaladilla:{es:'Bacaladilla',en:'Blue whiting',fr:'Merlan bleu',it:'Potassolo',ar:'السمك الأزرق الصغير'},
+    'caballa-atlantica':{es:'Caballa atlántica',en:'Atlantic mackerel',fr:'Maquereau de l’Atlantique',it:'Sgombro atlantico',ar:'الماكريل الأطلسي'},
+    jurel:{es:'Jurel atlántico',en:'Atlantic horse mackerel',fr:'Chinchard d’Europe',it:'Suro',ar:'سمك الحصان الأطلسي'},
+    'merluza-argentina':{es:'Merluza argentina',en:'Argentine hake',fr:'Merlu austral / argentine',it:'Nasello argentino',ar:'النازلي الأرجنتيني'},
+    'merluza-cabo':{es:'Merluza del Cabo',en:'Cape hake',fr:'Merlu du Cap',it:'Nasello del Capo',ar:'نازلي الرأس'},
+    'pez-rojo':{es:'Pez rojo',en:'Redfish',fr:'Sébaște / poisson rouge',it:'Pesce rosso',ar:'سمك أحمر'},
+    salmon:{es:'Salmón',en:'Atlantic salmon',fr:'Saumon atlantique',it:'Salmone atlantico',ar:'السلمون الأطلسي'},
+    'atun-amarillo':{es:'Atún de aleta amarilla',en:'Yellowfin tuna',fr:'Thon albacore jaune / albacore à nageoires jaunes',it:'Tonno a pinne gialle',ar:'التونة صفراء الزعانف'},
+    'atun-blanco':{es:'Atún blanco',en:'Albacore tuna',fr:'Thon germon',it:'Alalunga',ar:'التونة البيضاء'},
+    'pez-espada-congelado':{es:'Pez espada congelado',en:'Frozen swordfish',fr:'Espadon congelé',it:'Pesce spada congelato',ar:'أبو سيف مجمد'}
   };
 
-  const products = [
+  const baseProducts = [
     ['dorada','Sparus aurata','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['lubina','Dicentrarchus labrax','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['merluza-pijota','Merluccius merluccius','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
@@ -60,26 +74,48 @@
     ['sole','Solea solea','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['pez-espada','Xiphias gladius','Pescados especiales','Especial','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['mujol','Mugil cephalus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37']
-  ].map(([id,scientificName,group,type,condition,origin,faoZone]) => ({ id,scientificName,group,type,condition,origin,faoZone,name:(names[id]||{})[lang]||names[id]?.es||id }));
+  ];
+
+  // GCC-oriented frozen references. These are visible only on the Arabic catalogue.
+  const frozenArProducts = [
+    ['bacalao','Gadus morhua','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 21 / FAO 27'],
+    ['abadejo','Pollachius virens','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
+    ['eglefino','Melanogrammus aeglefinus','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
+    ['pollock-alaska','Gadus chalcogrammus','Pez de escama','Blanco / semigraso','Congelado','Abastecimiento internacional vía España','FAO 61 / FAO 67'],
+    ['bacaladilla','Micromesistius poutassou','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
+    ['caballa-atlantica','Scomber scombrus','Pez de escama','Azul / graso','Congelado','Atlántico / abastecimiento español','FAO 27'],
+    ['jurel','Trachurus trachurus','Pez de escama','Azul / graso','Congelado','Atlántico / abastecimiento español','FAO 27'],
+    ['merluza-argentina','Merluccius hubbsi','Pez de escama','Blanco / semigraso','Congelado','Abastecimiento internacional vía España','FAO 41'],
+    ['merluza-cabo','Merluccius capensis / Merluccius paradoxus','Pez de escama','Blanco / semigraso','Congelado','Abastecimiento internacional vía España','FAO 47'],
+    ['pez-rojo','Sebastes spp.','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 21 / FAO 27'],
+    ['salmon','Salmo salar','Pez de escama','Azul / graso','Congelado','Abastecimiento internacional vía España','FAO 27'],
+    ['atun-amarillo','Thunnus albacares','Pez de escama','Azul / graso','Congelado','Abastecimiento internacional vía España','FAO 34 / FAO 37 / FAO 51'],
+    ['atun-blanco','Thunnus alalunga','Pez de escama','Azul / graso','Congelado','Atlántico / abastecimiento español','FAO 27'],
+    ['pez-espada-congelado','Xiphias gladius','Pescados especiales','Especial','Congelado','Atlántico / Mediterráneo','FAO 27 / FAO 37']
+  ];
+
+  const products = (lang === 'ar' ? [...baseProducts, ...frozenArProducts] : baseProducts)
+    .map(([id,scientificName,group,type,condition,origin,faoZone]) => ({ id,scientificName,group,type,condition,origin,faoZone,name:(names[id]||{})[lang]||names[id]?.es||id }));
 
   const marketOrder = {
     es:['dorada','lubina','merluza-pijota','rape','caballa','sardina','boqueron','salmonete','atun','pez-espada','san-pedro','denton','sargo','sole','pez-limon','mujol','pargo','mero','sama','rascacio'],
     en:['atun','merluza-pijota','caballa','lubina','dorada','pez-espada','boqueron','rape','sardina','sole','salmonete','pez-limon','san-pedro','denton','sargo','mujol','pargo','mero','sama','rascacio'],
     fr:['merluza-pijota','lubina','dorada','sardina','caballa','salmonete','rape','boqueron','pez-espada','sole','atun','san-pedro','denton','sargo','pez-limon','mujol','pargo','mero','sama','rascacio'],
     it:['dorada','lubina','merluza-pijota','pez-espada','atun','boqueron','caballa','rape','salmonete','pez-limon','sardina','sole','san-pedro','denton','sargo','mujol','pargo','mero','sama','rascacio'],
-    ar:['atun','dorada','lubina','pez-limon','pez-espada','caballa','sardina','boqueron','salmonete','merluza-pijota','rape','sole','san-pedro','mero','pargo','denton','sargo','mujol','sama','rascacio']
+    ar:['atun','dorada','lubina','pez-limon','pez-espada','caballa','sardina','boqueron','salmonete','merluza-pijota','rape','sole','san-pedro','mero','pargo','denton','sargo','mujol','sama','rascacio','bacalao','abadejo','caballa-atlantica','jurel','bacaladilla','eglefino','pollock-alaska','merluza-argentina','merluza-cabo','pez-rojo','salmon','atun-amarillo','atun-blanco','pez-espada-congelado']
   };
   const rank = new Map((marketOrder[lang] || marketOrder.es).map((id,i) => [id,i]));
   const categoryOf = p => p.group === 'Pescados especiales' ? 'special' : p.type.startsWith('Azul') ? 'blue' : 'white';
-  const esc = v => String(v ?? '').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+  const esc = v => String(v ?? '').replace(/[&<>\\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\\"':'&quot;',"'":'&#39;'}[c]));
 
-  // The commercial Fish catalogue is fresh-only. Hide obsolete frozen controls
-  // without changing the canonical page markup shared across languages.
-  document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
-    button.hidden = true;
-    button.disabled = true;
-    button.setAttribute('aria-hidden','true');
-  });
+  // Frozen trade is a GCC-specific Arabic catalogue extension.
+  if (lang !== 'ar') {
+    document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
+      button.hidden = true;
+      button.disabled = true;
+      button.setAttribute('aria-hidden','true');
+    });
+  }
 
   let imageMap = {};
   let condition = 'all';
@@ -87,10 +123,11 @@
 
   const details = p => {
     const cat = categoryOf(p);
+    const state = p.condition === 'Congelado' ? labels.frozen : labels.fresh;
     const vals = [
       [labels.family,cat==='white'?labels.white:cat==='blue'?labels.blue:labels.special],
       [labels.type,p.type],
-      [labels.state,labels.fresh],
+      [labels.state,state],
       [labels.origin,p.origin],
       [labels.fao,p.faoZone],
       [labels.calibre,labels.according],
@@ -135,7 +172,7 @@
     const visible=products.filter(p=>{
       const cat=categoryOf(p);
       const hay=[p.name,p.id,p.scientificName,p.group,p.type,p.origin,p.faoZone].join(' ').toLowerCase();
-      return (condition==='all'||p.condition.toLowerCase().includes('fresco')) && (category==='all'||cat===category) && (!q||hay.includes(q));
+      return (condition==='all'||p.condition.toLowerCase().includes(condition==='fresh'?'fresco':'congelado')) && (category==='all'||cat===category) && (!q||hay.includes(q));
     }).sort((a,b)=>(rank.get(a.id)??9999)-(rank.get(b.id)??9999));
     count.textContent=`${visible.length} ${visible.length===1?labels.ref:labels.refs}`;
     grid.innerHTML=visible.length?visible.map(p=>{
