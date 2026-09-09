@@ -212,6 +212,7 @@
         .replace(/Según mercado/g, 'Secondo mercato')
         .replace(/Especificación profesional/g, 'Specifica professionale')
         .replace(/Según programa de suministro/g, 'Secondo programma di fornitura')
+        .replace(/Según especie y programma di suministro/g, 'Secondo specie e programma di fornitura')
         .replace(/Según especie y programa de suministro/g, 'Secondo specie e programma di fornitura')
         .replace(/Según origen/g, 'Secondo origine')
         .replace(/Mediterráneo/g, 'Mediterraneo')
@@ -285,7 +286,8 @@
     let state = 'all';
     const translatedName = p => priority?.names?.[p.id]?.[lang] || p.commercialName || p.id;
     const translateValue = value => lang === 'it' ? translateItValue(value) : value;
-    const categoryLabel = p => translateValue(p.catalogGroup || p.category || p.subcategory || subcategory);
+    const capitalizeCatalogueLabel = value => String(value ?? '').replace(/(^|[\s/-])([a-zà-ÿ])/giu, (_, prefix, letter) => `${prefix}${letter.toLocaleUpperCase()}`);
+    const categoryLabel = p => capitalizeCatalogueLabel(translateValue(p.catalogGroup || p.category || p.subcategory || subcategory));
     const conditionLabel = p => (p.condition || []).map(c => norm(c) === 'fresh' ? labels.fresh :
       norm(c) === 'frozen' ? labels.frozen : translateValue(c)).join(' / ') || labels.according;
     const details = p => [
