@@ -76,7 +76,6 @@
     ['mujol','Mugil cephalus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37']
   ];
 
-  // GCC-oriented frozen references. These are visible only on the Arabic catalogue.
   const frozenArProducts = [
     ['bacalao','Gadus morhua','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 21 / FAO 27'],
     ['abadejo','Pollachius virens','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
@@ -108,7 +107,6 @@
   const categoryOf = p => p.group === 'Pescados especiales' ? 'special' : p.type.startsWith('Azul') ? 'blue' : 'white';
   const esc = v => String(v ?? '').replace(/[&<>\\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\\"':'&quot;',"'":'&#39;'}[c]));
 
-  // Frozen trade is a GCC-specific Arabic catalogue extension.
   if (lang !== 'ar') {
     document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
       button.hidden = true;
@@ -159,12 +157,18 @@
     const imgs=JSON.parse(media.dataset.images||'[]');
     const img=media.querySelector('.fish-card-image');
     const counter=media.querySelector('.fish-card-counter');
-    if(!imgs.length)return;
+    if(!imgs.length || !img)return;
     let current=0;
-    const show=i=>{current=(i+imgs.length)%imgs.length;if(img)img.src=imgs[current];if(counter)counter.textContent=`${current+1} / ${imgs.length}`};
+    const show=i=>{current=(i+imgs.length)%imgs.length;img.src=imgs[current];if(counter)counter.textContent=`${current+1} / ${imgs.length}`};
     media.querySelector('.fish-card-nav--prev')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();show(current-1)});
     media.querySelector('.fish-card-nav--next')?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();show(current+1)});
-    media.addEventListener('click',e=>{if(!e.target.closest('.fish-card-nav'))openViewer(imgs)});
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='fish-card-image-button';
+    button.setAttribute('aria-label',`Ver ${img.alt || 'imagen del producto'}`);
+    button.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openViewer(imgs)});
+    img.parentNode.insertBefore(button,img);
+    button.appendChild(img);
   };
 
   const render = () => {
