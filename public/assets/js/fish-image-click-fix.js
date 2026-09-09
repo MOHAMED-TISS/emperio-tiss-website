@@ -87,9 +87,14 @@
     style.id = 'fish-direct-click-styles';
     style.textContent = `
       body.fish-catalog-pilot .fish-catalog-card__media { position: relative; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image { position: relative; z-index: 2; cursor: zoom-in; pointer-events: auto; }
-      body.fish-catalog-pilot .fish-catalog-card__zoom { position: relative; z-index: 2; pointer-events: auto; cursor: zoom-in; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav { z-index: 5; }
+      body.fish-catalog-pilot .fish-catalog-card__media,
+      body.fish-catalog-pilot .fish-catalog-card__media * { pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image { position: relative; z-index: 2; cursor: zoom-in; pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__zoom,
+      body.fish-catalog-pilot .fish-card-image-button { position: relative; z-index: 2; pointer-events: auto !important; cursor: zoom-in; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav { z-index: 5; pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media::before,
+      body.fish-catalog-pilot .fish-catalog-card__media::after { pointer-events: none !important; }
     `;
     document.head.appendChild(style);
   };
@@ -103,30 +108,26 @@
     }
   };
 
-  const imageTarget = (target) => {
+  const resolveHit = (target) => {
     if (!(target instanceof Element)) return null;
-    const image = target.closest('.fish-card-image');
-    if (!image) return null;
-    const media = image.closest('.fish-catalog-card__media');
+    const media = target.closest('.fish-catalog-card__media');
     if (!media) return null;
+    if (target.closest('.fish-card-nav')) return null;
+    const image = media.querySelector('.fish-card-image');
+    if (!image) return null;
     return { image, media };
   };
 
   document.addEventListener('click', (event) => {
-    const hit = imageTarget(event.target);
+    const hit = resolveHit(event.target);
     if (!hit) return;
-
-    const nav = event.target.closest('.fish-card-nav');
-    if (nav) return;
 
     const images = readImages(hit.media);
     if (!images.length) return;
 
     event.preventDefault();
-    event.stopPropagation();
     event.stopImmediatePropagation();
     open(images, hit.image.alt);
-    viewer.querySelector('.fish-gallery__panel')?.focus?.();
   }, true);
 
   ensureStyles();
