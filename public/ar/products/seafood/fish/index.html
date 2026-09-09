@@ -1,16 +1,50 @@
 <!doctype html>
-<html                      lang="ar" dir="rtl">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>الأسماك | EMPERIO TISS</title>
-    <meta name="description" content="أسماك مختارة وفق النوع والعيار والمنشأ والجودة والوجهة.">
+    <meta name="description" content="كتالوج أسماك مختارة للأسواق الخليجية: مراجع طازجة ومجمدة وفق النوع والمنشأ والمقاس والجودة والوجهة المهنية.">
+    <link rel="canonical" href="https://emperio-tiss.com/ar/products/seafood/fish/">
+    <link rel="alternate" hreflang="es" href="https://emperio-tiss.com/products/seafood/fish/">
+    <link rel="alternate" hreflang="en" href="https://emperio-tiss.com/en/products/seafood/fish/">
+    <link rel="alternate" hreflang="fr" href="https://emperio-tiss.com/fr/products/seafood/fish/">
+    <link rel="alternate" hreflang="ar" href="https://emperio-tiss.com/ar/products/seafood/fish/">
+    <link rel="alternate" hreflang="it" href="https://emperio-tiss.com/it/products/seafood/fish/">
+    <link rel="alternate" hreflang="x-default" href="https://emperio-tiss.com/products/seafood/fish/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="EMPERIO TISS">
+    <meta property="og:title" content="الأسماك | EMPERIO TISS">
+    <meta property="og:description" content="مراجع أسماك طازجة ومجمدة موجهة للعمليات التجارية في دول الخليج.">
+    <meta property="og:url" content="https://emperio-tiss.com/ar/products/seafood/fish/">
+    <meta property="og:image" content="https://emperio-tiss.com/images/seafood/seafood-hero.jpg">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="en_GB">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="it_IT">
     <link rel="icon" href="/assets/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/pages.css">
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">
+    <link rel="stylesheet" href="/assets/css/fish-catalog.css?v=fish-gcc-ar-20260909-1">
+    <link rel="stylesheet" href="/assets/css/fish-catalog-soft.css?v=fish-gcc-ar-20260909-1">
+    <style>
+      .ar-fish-catalog { background: #f3efe6; }
+      .ar-fish-catalog .fish-catalog__inner { max-width: 1240px; }
+      .ar-fish-catalog .catalog-head { direction: rtl; }
+      .ar-fish-catalog .fish-catalog__toolbar,
+      .ar-fish-catalog .fish-catalog__filters { direction: rtl; }
+      .ar-fish-catalog .fish-catalog__search { font-family: 'Noto Sans Arabic', sans-serif; text-align: right; }
+      .ar-fish-catalog .fish-catalog-card { direction: rtl; }
+      .ar-fish-catalog .fish-catalog-card__body { text-align: right; }
+      .ar-fish-catalog .fish-catalog-card__meta { letter-spacing: 0; }
+      .ar-fish-catalog .fish-catalog__filter { font-family: 'Noto Sans Arabic', sans-serif; letter-spacing: 0; text-transform: none; }
+      .ar-fish-catalog .fish-catalog-card__detail span { text-align: right; }
+      .ar-fish-gcc-note { margin: 0 0 1.5rem; max-width: 760px; color: #66706a; font: 500 .9rem/1.8 'Noto Sans Arabic', sans-serif; }
+    </style>
   </head>
   <body class="ar-page">
     <header class="site-header">
@@ -37,7 +71,7 @@
         <div class="ar-container ar-hero-inner">
           <p class="ar-kicker">المأكولات البحرية / 01</p>
           <h1>الأسماك<br><em>مختارة.</em></h1>
-          <p class="ar-lead">أسماك محددة وفق النوع والعيار والمنشأ والجودة والشكل والوجهة المهنية.</p>
+          <p class="ar-lead">مراجع مخصصة للعمليات المهنية في الخليج، مع فصل واضح بين التوريد الطازج والتوريد المجمد.</p>
         </div>
       </section>
       <section class="ar-section">
@@ -65,6 +99,23 @@
           </div>
         </div>
       </section>
+      <section class="fish-catalog ar-fish-catalog" id="fishCatalog" aria-labelledby="fishCatalogTitle">
+        <div class="fish-catalog__inner">
+          <div class="catalog-head">
+            <div><span class="eyebrow">الكتالوج</span>
+              <h2 id="fishCatalogTitle">الأسماك<br><em>حسب المرجع.</em></h2>
+            </div>
+            <p>مراجع تجارية وتقنية لأسواق الخليج، مع خيارات طازجة ومجمدة وفق المصدر والطلب والوجهة.</p>
+          </div>
+          <p class="ar-fish-gcc-note">المرجع المجمد أدناه مخصص لقنوات التوريد الدولية المناسبة للتصدير إلى دول الخليج، مع أولوية للمراجع التي تظهر في قنوات التصدير الإسبانية المعتمدة إلى السوق السعودي.</p>
+          <div class="fish-catalog__toolbar"><input class="fish-catalog__search" id="fishCatalogSearch" type="search" placeholder="ابحث عن النوع أو المنتج..." aria-label="البحث عن الأسماك">
+            <p class="fish-catalog__count" id="fishCatalogCount">0 مراجع</p>
+          </div>
+          <div class="fish-catalog__filters fish-catalog__filters--condition" role="group" aria-label="التصفية حسب الحالة"><button type="button" class="fish-catalog__filter" data-fish-filter="all" aria-pressed="true">الكل</button><button type="button" class="fish-catalog__filter" data-fish-filter="fresh" aria-pressed="false">طازج</button><button type="button" class="fish-catalog__filter" data-fish-filter="frozen" aria-pressed="false">مجمد</button></div>
+          <div class="fish-catalog__filters fish-catalog__filters--category" role="group" aria-label="التصفية حسب الفئة"><button type="button" class="fish-catalog__filter" data-fish-category="all" aria-pressed="true">جميع الفئات</button><button type="button" class="fish-catalog__filter" data-fish-category="white" aria-pressed="false">سمك أبيض</button><button type="button" class="fish-catalog__filter" data-fish-category="blue" aria-pressed="false">سمك أزرق</button><button type="button" class="fish-catalog__filter" data-fish-category="special" aria-pressed="false">أسماك خاصة</button></div>
+          <div class="fish-catalog-grid" id="fishCatalogGrid" aria-live="polite"></div>
+        </div>
+      </section>
       <section class="ar-cta">
         <div class="ar-container">
           <p class="ar-label">طلب B2B</p>
@@ -76,6 +127,7 @@
     <footer class="ar-footer">
       <div class="ar-container ar-footer-inner"><span>© 2026 EMPERIO TISS S.L.</span><span>مدريد · إسبانيا</span></div>
     </footer>
-    <script src="/assets/js/global.js" defer></script>
+    <script src="/assets/js/global.js?v=fish-gcc-ar-20260909-1" defer></script>
+    <script src="/assets/js/fish-catalog.js?v=fish-gcc-ar-20260909-1" defer></script>
   </body>
 </html>
