@@ -2,7 +2,6 @@
   'use strict';
 
   const state = { images: [], index: 0 };
-
   const viewer = document.createElement('div');
   viewer.className = 'fish-gallery fish-gallery--direct';
   viewer.hidden = true;
@@ -16,160 +15,152 @@
       <span class="fish-gallery__counter" aria-live="polite"></span>
     </div>`;
 
-  const vimg = viewer.querySelector('.fish-gallery__image');
+  const panel = viewer.querySelector('.fish-gallery__panel');
+  const image = viewer.querySelector('.fish-gallery__image');
   const counter = viewer.querySelector('.fish-gallery__counter');
 
-  const render = () => {
+  const getImages = (media) => {
+    try {
+      const value = JSON.parse(media?.dataset.images || '[]');
+      return Array.isArray(value) ? value.filter(Boolean) : [];
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const paint = () => {
     const total = state.images.length;
     if (!total) return;
-    vimg.src = state.images[state.index];
+    image.src = state.images[state.index];
     counter.textContent = `${state.index + 1} / ${total}`;
     viewer.querySelector('.fish-gallery__prev').hidden = total < 2;
     viewer.querySelector('.fish-gallery__next').hidden = total < 2;
   };
 
   const open = (images, alt) => {
+    if (!images.length) return;
     state.images = images;
     state.index = 0;
-    vimg.alt = alt || 'Fish image';
+    image.alt = alt || 'Fish image';
     viewer.hidden = false;
     viewer.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    render();
-    viewer.querySelector('.fish-gallery__panel')?.focus();
+    paint();
+    panel.focus();
   };
 
   const close = () => {
     viewer.hidden = true;
     viewer.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    vimg.removeAttribute('src');
+    image.removeAttribute('src');
+  };
+
+  const setCardTarget = (button, media, img) => {
+    const activate = (event) => {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      open(getImages(media), img.alt);
+    };
+    button.addEventListener('click', activate, false);
+    button.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') activate(event);
+    }, false);
+  };
+
+  const enhance = () => {
+    document.querySelectorAll('.fish-catalog-card__media').forEach((media) => {
+      const img = media.querySelector('.fish-card-image');
+      if (!img) return;
+      const images = getImages(media);
+      if (!images.length) return;
+
+      let button = media.querySelector('.fish-card-image-button');
+      if (!button) {
+        button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'fish-card-image-button';
+        button.setAttribute('aria-label', `View ${img.alt || 'fish image'}`);
+        button.appendChild(img);
+        media.insertBefore(button, media.firstChild);
+      }
+
+      if (button.dataset.fishClickBound !== 'true') {
+        button.dataset.fishClickBound = 'true';
+        setCardTarget(button, media, img);
+      }
+    });
   };
 
   viewer.querySelector('.fish-gallery__prev').addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
     state.index = (state.index - 1 + state.images.length) % state.images.length;
-    render();
+    paint();
   });
-
   viewer.querySelector('.fish-gallery__next').addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
     state.index = (state.index + 1) % state.images.length;
-    render();
+    paint();
   });
-
   viewer.querySelector('.fish-gallery__close').addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
     close();
   });
-
   viewer.addEventListener('click', (event) => {
     if (event.target === viewer) close();
   });
-
-  viewer.addEventListener('keydown', (event) => {
+  document.addEventListener('keydown', (event) => {
+    if (viewer.hidden) return;
     if (event.key === 'Escape') close();
     if (event.key === 'ArrowLeft' && state.images.length > 1) {
       event.preventDefault();
       state.index = (state.index - 1 + state.images.length) % state.images.length;
-      render();
+      paint();
     }
     if (event.key === 'ArrowRight' && state.images.length > 1) {
       event.preventDefault();
       state.index = (state.index + 1) % state.images.length;
-      render();
+      paint();
     }
   });
-
-  const readImages = (media) => {
-    try {
-      const images = JSON.parse(media.dataset.images || '[]');
-      return Array.isArray(images) ? images.filter(Boolean) : [];
-    } catch (_) {
-      return [];
-    }
-  };
-
-  const enhanceImages = (root = document) => {
-    root.querySelectorAll('.fish-catalog-card__media').forEach((media) => {
-      if (media.querySelector('.fish-card-image-button')) return;
-      const image = media.querySelector('.fish-card-image');
-      if (!image) return;
-      const images = readImages(media);
-      if (!images.length) return;
-
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'fish-card-image-button';
-      button.setAttribute('aria-label', `View ${image.alt || 'fish image'}`);
-      button.appendChild(image);
-      media.insertBefore(button, media.firstChild);
-    });
-  };
 
   const ensureStyles = () => {
     if (document.getElementById('fish-direct-click-styles')) return;
     const style = document.createElement('style');
     style.id = 'fish-direct-click-styles';
     style.textContent = `
-      body.fish-catalog-pilot .fish-catalog-card__media,
-      body.fish-catalog-pilot .fish-catalog-card__media * { pointer-events: auto !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media { position: relative !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image-button { position: relative !important; z-index: 2 !important; display: block !important; width: 100% !important; height: 100% !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: transparent !important; cursor: zoom-in !important; pointer-events: auto !important; overflow: hidden !important; text-align: inherit !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image { display: block !important; position: relative !important; z-index: 2 !important; width: 100% !important; height: 100% !important; cursor: zoom-in !important; pointer-events: auto !important; }
-      body.fish-catalog-pilot .fish-catalog-card__zoom { position: relative !important; z-index: 2 !important; pointer-events: auto !important; cursor: zoom-in !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav { z-index: 5 !important; pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media { position:relative !important; }
       body.fish-catalog-pilot .fish-catalog-card__media::before,
-      body.fish-catalog-pilot .fish-catalog-card__media::after { pointer-events: none !important; }
-
-      body.fish-catalog-pilot .fish-gallery { position: fixed !important; inset: 0 !important; z-index: 100000 !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: clamp(18px, 3vw, 40px) !important; background: rgba(3, 20, 15, .95) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; }
-      body.fish-catalog-pilot .fish-gallery[hidden] { display: none !important; }
-      body.fish-catalog-pilot .fish-gallery__panel { position: relative !important; z-index: 100001 !important; width: min(1180px, 94vw) !important; height: min(88vh, 860px) !important; display: flex !important; align-items: center !important; justify-content: center !important; outline: none !important; }
-      body.fish-catalog-pilot .fish-gallery__image { display: block !important; position: relative !important; z-index: 100002 !important; max-width: 100% !important; max-height: 80vh !important; width: auto !important; height: auto !important; object-fit: contain !important; user-select: none !important; -webkit-user-drag: none !important; pointer-events: auto !important; box-shadow: 0 24px 80px rgba(0, 0, 0, .4) !important; }
-      body.fish-catalog-pilot .fish-gallery button { position: absolute !important; z-index: 100003 !important; width: 48px !important; height: 48px !important; padding: 0 !important; border: 1px solid rgba(227, 199, 139, .52) !important; border-radius: 50% !important; background: rgba(3, 20, 15, .72) !important; color: #e8cf99 !important; cursor: pointer !important; font: 300 30px/1 Arial, sans-serif !important; pointer-events: auto !important; }
-      body.fish-catalog-pilot .fish-gallery__prev { left: 8px !important; top: 50% !important; transform: translateY(-50%) !important; }
-      body.fish-catalog-pilot .fish-gallery__next { right: 8px !important; top: 50% !important; transform: translateY(-50%) !important; }
-      body.fish-catalog-pilot .fish-gallery__close { right: 8px !important; top: 8px !important; }
-      body.fish-catalog-pilot .fish-gallery__counter { position: absolute !important; left: 50% !important; bottom: 8px !important; transform: translateX(-50%) !important; z-index: 100003 !important; color: #fff !important; font: 500 13px/1 Arial, sans-serif !important; letter-spacing: .08em !important; pointer-events: none !important; }
-      @media (max-width: 700px) { body.fish-catalog-pilot .fish-gallery__panel { width: 96vw !important; height: 82vh !important; } body.fish-catalog-pilot .fish-gallery__image { max-width: 92vw !important; max-height: 72vh !important; } }
+      body.fish-catalog-pilot .fish-catalog-card__media::after { pointer-events:none !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image-button { position:relative !important; z-index:2 !important; display:block !important; width:100% !important; height:100% !important; min-width:0 !important; min-height:0 !important; margin:0 !important; padding:0 !important; border:0 !important; background:transparent !important; cursor:zoom-in !important; pointer-events:auto !important; overflow:hidden !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image-button .fish-card-image { display:block !important; width:100% !important; height:100% !important; object-fit:cover !important; cursor:zoom-in !important; pointer-events:auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav { z-index:5 !important; pointer-events:auto !important; }
+      body.fish-catalog-pilot .fish-gallery { position:fixed !important; inset:0 !important; z-index:100000 !important; display:flex !important; align-items:center !important; justify-content:center !important; padding:24px !important; background:rgba(3,20,15,.96) !important; backdrop-filter:blur(10px) !important; -webkit-backdrop-filter:blur(10px) !important; }
+      body.fish-catalog-pilot .fish-gallery[hidden] { display:none !important; }
+      body.fish-catalog-pilot .fish-gallery__panel { position:relative !important; z-index:100001 !important; width:min(1180px,94vw) !important; height:min(88vh,860px) !important; display:flex !important; align-items:center !important; justify-content:center !important; outline:none !important; }
+      body.fish-catalog-pilot .fish-gallery__image { display:block !important; position:relative !important; z-index:100002 !important; max-width:100% !important; max-height:80vh !important; width:auto !important; height:auto !important; object-fit:contain !important; pointer-events:auto !important; user-select:none !important; -webkit-user-drag:none !important; box-shadow:0 24px 80px rgba(0,0,0,.4) !important; }
+      body.fish-catalog-pilot .fish-gallery button { position:absolute !important; z-index:100003 !important; width:48px !important; height:48px !important; padding:0 !important; border:1px solid rgba(227,199,139,.52) !important; border-radius:50% !important; background:rgba(3,20,15,.72) !important; color:#e8cf99 !important; cursor:pointer !important; font:300 30px/1 Arial,sans-serif !important; pointer-events:auto !important; }
+      body.fish-catalog-pilot .fish-gallery__prev { left:8px !important; top:50% !important; transform:translateY(-50%) !important; }
+      body.fish-catalog-pilot .fish-gallery__next { right:8px !important; top:50% !important; transform:translateY(-50%) !important; }
+      body.fish-catalog-pilot .fish-gallery__close { right:8px !important; top:8px !important; }
+      body.fish-catalog-pilot .fish-gallery__counter { position:absolute !important; left:50% !important; bottom:8px !important; transform:translateX(-50%) !important; z-index:100003 !important; color:#fff !important; font:500 13px/1 Arial,sans-serif !important; pointer-events:none !important; }
+      @media(max-width:700px){ body.fish-catalog-pilot .fish-gallery__panel{width:96vw !important;height:82vh !important;} body.fish-catalog-pilot .fish-gallery__image{max-width:92vw !important;max-height:72vh !important;} }
     `;
     document.head.appendChild(style);
   };
 
-  const resolveHit = (target) => {
-    if (!(target instanceof Element)) return null;
-    const button = target.closest('.fish-card-image-button');
-    if (!button) return null;
-    const media = button.closest('.fish-catalog-card__media');
-    if (!media) return null;
-    const image = button.querySelector('.fish-card-image');
-    if (!image) return null;
-    return { image, media };
-  };
-
-  const bind = () => {
-    enhanceImages();
-    if (!document.body) return;
-    document.addEventListener('click', (event) => {
-      const hit = resolveHit(event.target);
-      if (!hit) return;
-      const images = readImages(hit.media);
-      if (!images.length) return;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      open(images, hit.image.alt);
-    }, true);
-    new MutationObserver(() => enhanceImages()).observe(document.body, { childList: true, subtree: true });
+  const start = () => {
     ensureStyles();
+    enhance();
     document.body.appendChild(viewer);
+    new MutationObserver(enhance).observe(document.body, { childList:true, subtree:true });
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bind, { once: true });
-  } else {
-    bind();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
+  else start();
 })();
