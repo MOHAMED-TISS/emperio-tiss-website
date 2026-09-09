@@ -36,26 +36,38 @@ jobs:
           node <<'NODE'
           const fs = require('fs');
           const path = require('path');
-          const prettier = require('prettier');
-          const { html: beautifyHtml } = require('js-beautify');
-          const { format: formatSql } = require('sql-formatter');
 
           const root = process.cwd();
-          const prettierExtensions = new Set([
+          const ignoredDirectories = new Set(['.git', 'node_modules']);
+          const formattingTargets = new Set([
             '.css',
+            '.html',
             '.js',
-            '.mjs',
             '.json',
             '.jsonc',
-            '.yml',
+            '.mjs',
+            '.sql',
             '.yaml',
+            '.yml',
           ]);
-          const htmlExtensions = new Set(['.html']);
-          const sqlExtensions = new Set(['.sql']);
-          const ignoredDirectories = new Set([
-            '.git',
-            'node_modules',
-          ]);
+
+          async function loadTools() {
+            const prettierModule = await import('prettier');
+            const beautifyModule = await import('js-beautify');
+            const sqlFormatterModule = await import('sql-formatter');
+
+            return {
+              prettier: prettierModule.default ?? prettierModule,
+              beautifyHtml:
+                beautifyModule.html ?? beautifyModule.default?.html,
+              beautifyJs:
+                beautifyModule.js ?? beautifyModule.js_beautify ?? beautifyModule.default?.js,
+              beautifyCss:
+                beautifyModule.css ?? beautifyModule.css_beautify ?? beautifyModule.default?.css,
+              formatSql:
+                sqlFormatterModule.format ?? sqlFormatterModule.default?.format,
+            };
+          }
 
           function walk(directory) {
             const results = [];
@@ -69,58 +81,118 @@ jobs:
 
               if (entry.isDirectory()) {
                 results.push(...walk(fullPath));
-                continue;
+              } else if (formattingTargets.has(path.extname(entry.name).toLowerCase())) {
+                results.push(fullPath);
               }
-
-              results.push(fullPath);
             }
 
             return results;
           }
 
-          async function formatFile(filePath) {
+          function ensureTrailingNewline(value) {
+            return value.endsWith('\n') ? value : `${value}\n`;
+          }
+
+          async function formatFile(filePath, tools) {
             const extension = path.extname(filePath).toLowerCase();
             const source = fs.readFileSync(filePath, 'utf8');
             let formatted = source;
 
-            if (prettierExtensions.has(extension)) {
-              formatted = await prettier.format(source, {
-                filepath: filePath,
-                useTabs: false,
-                tabWidth: 2,
-                singleQuote: true,
-                trailingComma: 'all',
-                printWidth: 100,
-              });
-            } else if (htmlExtensions.has(extension)) {
-              formatted = beautifyHtml(source, {
-                indent_size: 2,
-                indent_inner_html: true,
-                wrap_line_length: 0,
-                wrap_attributes: 'auto',
-                end_with_newline: true,
-                extra_liners: '',
-              });
-            } else if (sqlExtensions.has(extension)) {
-              formatted = `${formatSql(source, {
-                language: 'sqlite',
-                tabWidth: 2,
-                keywordCase: 'upper',
-              }).trim()}\n`;
-            } else {
+            try {
+              switch (extension) {
+                case '.html':
+                  formatted = tools.beautifyHtml(source, {
+                    indent_size: 2,
+                    indent_inner_html: true,
+                    wrap_line_length: 0,
+                    wrap_attributes: 'auto',
+                    end_with_newline: true,
+                    extra_liners: '',
+                  });
+                  break;
+
+                case '.js':
+                case '.mjs':
+                  formatted = tools.beautifyJs(source, {
+                    indent_size: 2,
+                    indent_level: 0,
+                    max_preserve_newlines: 2,
+                    preserve_newlines: true,
+                    keep_array_indentation: false,
+                    space_in_empty_paren: false,
+                    end_with_newline: true,
+                    wrap_line_length: 100,
+                  });
+                  break;
+
+                case '.css':
+                  formatted = tools.beautifyCss(source, {
+                    indent_size: 2,
+                    end_with_newline: true,
+                    wrap_line_length: 100,
+                  });
+                  break;
+
+                case '.json':
+                  try {
+                    formatted = `${JSON.stringify(JSON.parse(source), null, 2)}\n`;
+                  } catch {
+                    formatted = tools.beautifyJs(source, {
+                      indent_size: 2,
+                      end_with_newline: true,
+                    });
+                  }
+                  break;
+
+                case '.jsonc':
+                case '.yaml':
+                case '.yml':
+                  try {
+                    formatted = await tools.prettier.format(source, {
+                      filepath: filePath,
+                      useTabs: false,
+                      tabWidth: 2,
+                      printWidth: 100,
+                    });
+                  } catch {
+                    console.warn(`Prettier skipped legacy config: ${filePath}`);
+                  }
+                  break;
+
+                case '.sql':
+                  try {
+                    formatted = ensureTrailingNewline(
+                      tools.formatSql(source, {
+                        language: 'sqlite',
+                        tabWidth: 2,
+                        keywordCase: 'preserve',
+                      }).trim(),
+                    );
+                  } catch {
+                    console.warn(`SQL formatter skipped: ${filePath}`);
+                  }
+                  break;
+
+                default:
+                  return;
+              }
+            } catch (error) {
+              console.warn(`Formatter skipped ${filePath}: ${error.message}`);
               return;
             }
 
             if (formatted !== source) {
               fs.writeFileSync(filePath, formatted, 'utf8');
+              console.log(`Formatted: ${filePath}`);
             }
           }
 
           (async () => {
+            const tools = await loadTools();
             const files = walk(root);
 
             for (const filePath of files) {
-              await formatFile(filePath);
+              await formatFile(filePath, tools);
             }
           })().catch((error) => {
             console.error(error);
