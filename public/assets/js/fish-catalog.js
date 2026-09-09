@@ -28,14 +28,15 @@
     sama:{es:'Sama',en:'Dentex',fr:'Dentex',it:'Dentice',ar:'السما'},
     sargo:{es:'Sargo',en:'White seabream',fr:'Sar commun',it:'Sarago',ar:'السارغو'},
     rascacio:{es:'Rascacio',en:'Scorpionfish',fr:'Rascasse',it:'Scorfano',ar:'سمك العقرب'},
-    caballa:{es:'Caballa',en:'Mackerel',fr:'Maquereau',it:'Scombro',ar:'الماكريل'},
+    caballa:{es:'Caballa',en:'Mackerel',fr:'Maquereau',it:'Sgombro',ar:'الماكريل'},
     salmonete:{es:'Salmonete',en:'Red mullet',fr:'Rouget',it:'Triglia',ar:'البربوني'},
     atun:{es:'Atún rojo',en:'Bluefin tuna',fr:'Thon rouge',it:'Tonno rosso',ar:'التونة زرقاء الزعانف'},
     'pez-limon':{es:'Pez limón / Seriola',en:'Greater amberjack',fr:'Sériole couronnée',it:'Ricciola',ar:'الكنعد'},
     boqueron:{es:'Boquerón',en:'European anchovy',fr:'Anchois',it:'Acciuga',ar:'الأنشوفة'},
     sardina:{es:'Sardina',en:'European sardine',fr:'Sardine',it:'Sardina',ar:'السردين'},
     sole:{es:'Lenguado',en:'Common sole',fr:'Sole commune',it:'Sogliola',ar:'سمك موسى'},
-    'pez-espada':{es:'Pez espada',en:'Swordfish',fr:'Espadon',it:'Pesce spada',ar:'أبو سيف'}
+    'pez-espada':{es:'Pez espada',en:'Swordfish',fr:'Espadon',it:'Pesce spada',ar:'أبو سيف'},
+    mujol:{es:'Mújol',en:'Mullet',fr:'Mulet',it:'Cefalo',ar:'البوري'}
   };
 
   const products = [
@@ -59,7 +60,7 @@
     ['sole','Solea solea','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['pez-espada','Xiphias gladius','Pescados especiales','Especial','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['mujol','Mugil cephalus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37']
-  ].map(([id,scientificName,group,type,condition,origin,faoZone])=>({id,scientificName,group,type,condition,origin,faoZone,name:(names[id]||{})[lang]||names[id]?.es||id}));
+  ].map(([id,scientificName,group,type,condition,origin,faoZone]) => ({ id,scientificName,group,type,condition,origin,faoZone,name:(names[id]||{})[lang]||names[id]?.es||id }));
 
   const marketOrder = {
     es:['dorada','lubina','merluza-pijota','rape','caballa','sardina','boqueron','salmonete','atun','pez-espada','san-pedro','denton','sargo','sole','pez-limon','mujol','pargo','mero','sama','rascacio'],
@@ -68,10 +69,17 @@
     it:['dorada','lubina','merluza-pijota','pez-espada','atun','boqueron','caballa','rape','salmonete','pez-limon','sardina','sole','san-pedro','denton','sargo','mujol','pargo','mero','sama','rascacio'],
     ar:['atun','dorada','lubina','pez-limon','pez-espada','caballa','sardina','boqueron','salmonete','merluza-pijota','rape','sole','san-pedro','mero','pargo','denton','sargo','mujol','sama','rascacio']
   };
-  const rank = new Map((marketOrder[lang] || marketOrder.es).map((id,i)=>[id,i]));
+  const rank = new Map((marketOrder[lang] || marketOrder.es).map((id,i) => [id,i]));
   const categoryOf = p => p.group === 'Pescados especiales' ? 'special' : p.type.startsWith('Azul') ? 'blue' : 'white';
-  const conditions = v => String(v).toLowerCase().split('/').map(x=>x.trim()).map(x=>x==='fresco'?'fresh':x);
   const esc = v => String(v ?? '').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+
+  // The commercial Fish catalogue is fresh-only. Hide obsolete frozen controls
+  // without changing the canonical page markup shared across languages.
+  document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
+    button.hidden = true;
+    button.disabled = true;
+    button.setAttribute('aria-hidden','true');
+  });
 
   let imageMap = {};
   let condition = 'all';
@@ -99,9 +107,9 @@
   viewer.hidden = true;
   viewer.innerHTML = '<div class="fish-gallery__panel"><img class="fish-gallery__image" alt=""><button class="fish-gallery__prev" type="button">‹</button><button class="fish-gallery__next" type="button">›</button><button class="fish-gallery__close" type="button">×</button><span class="fish-gallery__counter"></span></div>';
   document.body.appendChild(viewer);
-  const vimg = viewer.querySelector('.fish-gallery__image');
-  const vc = viewer.querySelector('.fish-gallery__counter');
-  let gallery=[], gi=0;
+  const vimg=viewer.querySelector('.fish-gallery__image');
+  const vc=viewer.querySelector('.fish-gallery__counter');
+  let gallery=[],gi=0;
   const updateViewer=()=>{vimg.src=gallery[gi];vc.textContent=`${gi+1} / ${gallery.length}`;viewer.querySelector('.fish-gallery__prev').hidden=gallery.length<2;viewer.querySelector('.fish-gallery__next').hidden=gallery.length<2};
   const openViewer=imgs=>{if(!imgs.length)return;gallery=imgs;gi=0;viewer.hidden=false;document.body.style.overflow='hidden';updateViewer()};
   const closeViewer=()=>{viewer.hidden=true;document.body.style.overflow='';vimg.removeAttribute('src')};
@@ -111,9 +119,9 @@
   viewer.onclick=e=>{if(e.target===viewer)closeViewer()};
 
   const bindMedia = media => {
-    const imgs = JSON.parse(media.dataset.images || '[]');
-    const img = media.querySelector('.fish-card-image');
-    const counter = media.querySelector('.fish-card-counter');
+    const imgs=JSON.parse(media.dataset.images||'[]');
+    const img=media.querySelector('.fish-card-image');
+    const counter=media.querySelector('.fish-card-counter');
     if(!imgs.length)return;
     let current=0;
     const show=i=>{current=(i+imgs.length)%imgs.length;if(img)img.src=imgs[current];if(counter)counter.textContent=`${current+1} / ${imgs.length}`};
@@ -127,29 +135,30 @@
     const visible=products.filter(p=>{
       const cat=categoryOf(p);
       const hay=[p.name,p.id,p.scientificName,p.group,p.type,p.origin,p.faoZone].join(' ').toLowerCase();
-      return (condition==='all'||conditions(p.condition).includes(condition))&&(category==='all'||cat===category)&&(!q||hay.includes(q));
+      return (condition==='all'||p.condition.toLowerCase().includes('fresco')) && (category==='all'||cat===category) && (!q||hay.includes(q));
     }).sort((a,b)=>(rank.get(a.id)??9999)-(rank.get(b.id)??9999));
     count.textContent=`${visible.length} ${visible.length===1?labels.ref:labels.refs}`;
     grid.innerHTML=visible.length?visible.map(p=>{
       const imgs=imageMap[p.id]||[];
       const img=imgs[0]||'';
       const mediaData=esc(JSON.stringify(imgs));
-      return `<article class="fish-catalog-card" data-product-id="${esc(p.id)}"><div class="fish-catalog-card__media" data-images='${mediaData}'>${img?`<img class="fish-card-image" src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" draggable="false">`:'<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}${imgs.length>1?`<button class="fish-card-nav fish-card-nav--prev" type="button">‹</button><button class="fish-card-nav fish-card-nav--next" type="button">›</button><span class="fish-card-counter">1 / ${imgs.length}</span>`:''}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(categoryOf(p)==='white'?labels.white:categoryOf(p)==='blue'?labels.blue:labels.special)}</p><h3 class="fish-catalog-card__title">${esc(p.name)}</h3><p class="fish-catalog-card__scientific"><em>${esc(p.scientificName)}</em></p><div class="fish-catalog-card__details">${details(p)}</div></div></article>`;
+      const cat=categoryOf(p);
+      return `<article class="fish-catalog-card" data-product-id="${esc(p.id)}"><div class="fish-catalog-card__media" data-images='${mediaData}'>${img?`<img class="fish-card-image" src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" draggable="false">`:'<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}${imgs.length>1?`<button class="fish-card-nav fish-card-nav--prev" type="button">‹</button><button class="fish-card-nav fish-card-nav--next" type="button">›</button><span class="fish-card-counter">1 / ${imgs.length}</span>`:''}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(cat==='white'?labels.white:cat==='blue'?labels.blue:labels.special)}</p><h3 class="fish-catalog-card__title">${esc(p.name)}</h3><p class="fish-catalog-card__scientific"><em>${esc(p.scientificName)}</em></p><div class="fish-catalog-card__details">${details(p)}</div></div></article>`;
     }).join(''):`<p class="fish-catalog__empty">${labels.none}</p>`;
     grid.querySelectorAll('.fish-catalog-card__media').forEach(bindMedia);
   };
 
-  document.querySelectorAll('[data-fish-filter]').forEach(b=>b.addEventListener('click',()=>{
-    condition=b.dataset.fishFilter||'all';
-    document.querySelectorAll('[data-fish-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  document.querySelectorAll('[data-fish-filter]').forEach(button=>button.addEventListener('click',()=>{
+    if(button.hidden||button.disabled)return;
+    condition=button.dataset.fishFilter||'all';
+    document.querySelectorAll('[data-fish-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
     render();
   }));
-  document.querySelectorAll('[data-fish-category]').forEach(b=>b.addEventListener('click',()=>{
-    category=b.dataset.fishCategory||'all';
-    document.querySelectorAll('[data-fish-category]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  document.querySelectorAll('[data-fish-category]').forEach(button=>button.addEventListener('click',()=>{
+    category=button.dataset.fishCategory||'all';
+    document.querySelectorAll('[data-fish-category]').forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
     render();
   }));
   search.addEventListener('input',render);
-
   fetch('/assets/data/product-images.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(images=>{imageMap=images||{};render()}).catch(()=>render());
 })();
