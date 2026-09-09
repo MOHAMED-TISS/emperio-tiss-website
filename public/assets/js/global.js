@@ -94,15 +94,22 @@
   enhance();
   new MutationObserver(enhance).observe(doc.body, { childList: true, subtree: true });
 
-  const catalogueImageSelector = ['.fish-catalog-card img','.catalog-card img','.catalog-product img','.fish-gallery__image','.fish-lightbox__image','[data-catalog] img','.compact-catalog img','.seafood-catalog img','.fish-emblematic-card img'].join(',');
-  const protectCatalogueImages = (rootElement = doc) => rootElement.querySelectorAll(catalogueImageSelector).forEach((img) => {
-    img.setAttribute('draggable', 'false'); img.setAttribute('oncontextmenu', 'return false'); img.setAttribute('ondragstart', 'return false'); img.setAttribute('onselectstart', 'return false'); img.style.userSelect = 'none'; img.style.webkitUserDrag = 'none'; img.style.webkitTouchCallout = 'none';
+  /* Protect every page image: disable context menu, drag and selection. */
+  const pageImageSelector = 'img';
+  const protectPageImages = (rootElement = doc) => rootElement.querySelectorAll(pageImageSelector).forEach((img) => {
+    img.setAttribute('draggable', 'false');
+    img.setAttribute('oncontextmenu', 'return false');
+    img.setAttribute('ondragstart', 'return false');
+    img.setAttribute('onselectstart', 'return false');
+    img.style.userSelect = 'none';
+    img.style.webkitUserDrag = 'none';
+    img.style.webkitTouchCallout = 'none';
   });
-  protectCatalogueImages();
-  doc.addEventListener('contextmenu', (event) => { if (event.target.closest(catalogueImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('dragstart', (event) => { const image = event.target.closest('img'); if (image && image.matches(catalogueImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('selectstart', (event) => { if (event.target.closest(catalogueImageSelector)) event.preventDefault(); }, true);
-  new MutationObserver(() => protectCatalogueImages()).observe(doc.documentElement, { childList: true, subtree: true });
+  protectPageImages();
+  doc.addEventListener('contextmenu', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
+  doc.addEventListener('dragstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
+  doc.addEventListener('selectstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
+  new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
