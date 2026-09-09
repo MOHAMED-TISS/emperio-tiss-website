@@ -178,6 +178,11 @@
   text-transform: uppercase
 }
 
+/* IT catalogue: keep market-priority sorting/data, but remove the visible image ticket. */
+html[lang="it"] .market-catalogue-card__priority {
+  display: none
+}
+
 .market-catalogue-card__body {
   padding: 1.35rem 1.35rem 1.5rem;
   display: flex;
