@@ -1,13 +1,12 @@
-@import url("/assets/css/fish-catalog.css?v=fish-unified-1");
-@import url("/assets/css/fish-catalog-es.css?v=fish-unified-1");
-@import url("/assets/css/fish-emblematic-soft.css?v=fish-unified-1");
-@import url("/assets/css/fish-catalog-soft.css?v=fish-unified-1");
-@import url("/assets/css/fish-footer.css?v=fish-unified-1");
+@import url("/assets/css/fish-catalog.css?v=fish-master-3");
+@import url("/assets/css/fish-catalog-es.css?v=fish-master-3");
+@import url("/assets/css/fish-emblematic-soft.css?v=fish-master-3");
+@import url("/assets/css/fish-catalog-soft.css?v=fish-master-3");
+@import url("/assets/css/fish-footer.css?v=fish-master-3");
 
 /* EMPERIO TISS — FISH HERO / CLEAN SECTION BOUNDARIES */
 :root{--fish-navy:#071e35;--fish-ivory:#f3efe6;--fish-gold:#c7a260;--fish-champagne:#d8c28f}
 body.fish-catalog-pilot{background:var(--fish-ivory)!important}
-/* Hero photograph: Fishing Boat on the Sea.jpg — Muhammad Amdad Hossain, CC BY-SA 4.0. Source: Wikimedia Commons. */
 body.fish-catalog-pilot .page-hero{position:relative!important;isolation:isolate!important;overflow:hidden!important;background-color:#071e35!important;background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Fishing_Boat_on_the_Sea.jpg/3840px-Fishing_Boat_on_the_Sea.jpg")!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
 body.fish-catalog-pilot .page-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,rgba(7,30,53,.88) 0%,rgba(7,30,53,.68) 38%,rgba(7,30,53,.28) 72%,rgba(7,30,53,.12) 100%)!important;pointer-events:none!important}
 body.fish-catalog-pilot .page-hero::before{content:none!important}
