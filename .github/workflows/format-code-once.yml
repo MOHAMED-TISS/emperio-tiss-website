@@ -38,7 +38,7 @@ jobs:
           const path = require('path');
 
           const root = process.cwd();
-          const ignoredDirectories = new Set(['.git', 'node_modules']);
+          const ignoredDirectories = new Set(['.git', 'node_modules', '.github']);
           const formattingTargets = new Set([
             '.css',
             '.html',
@@ -110,7 +110,6 @@ jobs:
                     extra_liners: '',
                   });
                   break;
-
                 case '.js':
                 case '.mjs':
                   formatted = tools.beautifyJs(source, {
@@ -124,7 +123,6 @@ jobs:
                     wrap_line_length: 100,
                   });
                   break;
-
                 case '.css':
                   formatted = tools.beautifyCss(source, {
                     indent_size: 2,
@@ -132,7 +130,6 @@ jobs:
                     wrap_line_length: 100,
                   });
                   break;
-
                 case '.json':
                   try {
                     formatted = `${JSON.stringify(JSON.parse(source), null, 2)}\n`;
@@ -143,7 +140,6 @@ jobs:
                     });
                   }
                   break;
-
                 case '.jsonc':
                 case '.yaml':
                 case '.yml':
@@ -158,7 +154,6 @@ jobs:
                     console.warn(`Prettier skipped legacy config: ${filePath}`);
                   }
                   break;
-
                 case '.sql':
                   try {
                     formatted = ensureTrailingNewline(
@@ -172,7 +167,6 @@ jobs:
                     console.warn(`SQL formatter skipped: ${filePath}`);
                   }
                   break;
-
                 default:
                   return;
               }
@@ -200,11 +194,10 @@ jobs:
           });
           NODE
 
-      - name: Remove temporary formatter workflow
-        run: rm -f .github/workflows/format-code-once.yml
-
       - name: Commit formatting changes
         run: |
+          rm -rf node_modules package.json package-lock.json
+          git restore -- .github/workflows/format-code-once.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -213,6 +206,7 @@ jobs:
             exit 0
           fi
 
-          git add -A
+          git add -u -- '*.html' '*.css' '*.js' '*.mjs' '*.json' '*.jsonc' '*.sql' '*.yaml' '*.yml'
+          git add -u -- 'public/**' 'src/**' 'tests/**' 'migrations/**' 'wrangler.jsonc'
           git commit -m "chore: format repository source code"
           git push origin main
