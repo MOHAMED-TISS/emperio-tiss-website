@@ -10,7 +10,7 @@
   }[lang]||{};
   const names={dorada:{es:'Dorada',en:'Sea bream',fr:'Daurade royale',it:'Orata'},lubina:{es:'Lubina',en:'Sea bass',fr:'Bar',it:'Branzino'},'merluza-pijota':{es:'Merluza / Pijota',en:'Hake',fr:'Merlu',it:'Nasello'},salmon:{es:'Salmón',en:'Salmon',fr:'Saumon',it:'Salmone'},atun:{es:'Atún',en:'Tuna',fr:'Thon',it:'Tonno'},'pez-limon':{es:'Pez limón',en:'Greater amberjack',fr:'Sériole couronnée',it:'Ricciola'},'pez-espada':{es:'Pez espada',en:'Swordfish',fr:'Espadon',it:'Pesce spada'},caballa:{es:'Caballa',en:'Mackerel',fr:'Maquereau',it:'Sgombro'}};
   const scientific={dorada:'Sparus aurata',lubina:'Dicentrarchus labrax','merluza-pijota':'Merluccius spp.',salmon:'Salmo salar',atun:'Thunnus spp.','pez-limon':'Seriola dumerili','pez-espada':'Xiphias gladius',caballa:'Scomber spp.'};
-  const category={dorada:'white',lubina:'white','merluza-pijota':'white',salmon:'blue',atun:'blue','pez-limon':'blue','pez-espada:'special',caballa:'blue'};
+  const category={dorada:'white',lubina:'white','merluza-pijota':'white',salmon:'blue',atun:'blue','pez-limon':'blue','pez-espada':'special',caballa:'blue'};
   const categoryLabel={es:{white:'Pez blanco',blue:'Pez azul',special:'Pescados especiales'},en:{white:'White fish',blue:'Blue fish',special:'Special fish'},fr:{white:'Poisson blanc',blue:'Poisson bleu',special:'Poissons spéciaux'},it:{white:'Pesce bianco',blue:'Pesce azzurro',special:'Pesci speciali'}}[lang]||{};
   const esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
   let imageMap={}; let viewer=null,viewerImage=null,viewerCounter=null,gallery=[],index=0;
