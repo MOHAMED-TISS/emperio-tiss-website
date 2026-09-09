@@ -84,94 +84,6 @@
     }
   });
 
-  const ensureStyles = () => {
-    if (document.getElementById('fish-direct-click-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'fish-direct-click-styles';
-    style.textContent = `
-      body.fish-catalog-pilot .fish-catalog-card__media,
-      body.fish-catalog-pilot .fish-catalog-card__media * { pointer-events: auto !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media { position: relative !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image { position: relative !important; z-index: 2 !important; cursor: zoom-in !important; pointer-events: auto !important; }
-      body.fish-catalog-pilot .fish-catalog-card__zoom,
-      body.fish-catalog-pilot .fish-card-image-button { position: relative !important; z-index: 2 !important; pointer-events: auto !important; cursor: zoom-in !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav { z-index: 5 !important; pointer-events: auto !important; }
-      body.fish-catalog-pilot .fish-catalog-card__media::before,
-      body.fish-catalog-pilot .fish-catalog-card__media::after { pointer-events: none !important; }
-
-      body.fish-catalog-pilot .fish-gallery {
-        position: fixed !important;
-        inset: 0 !important;
-        z-index: 100000 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: clamp(18px, 3vw, 40px) !important;
-        background: rgba(3, 20, 15, .95) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-      }
-      body.fish-catalog-pilot .fish-gallery[hidden] { display: none !important; }
-      body.fish-catalog-pilot .fish-gallery__panel {
-        position: relative !important;
-        z-index: 100001 !important;
-        width: min(1180px, 94vw) !important;
-        height: min(88vh, 860px) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        outline: none !important;
-      }
-      body.fish-catalog-pilot .fish-gallery__image {
-        display: block !important;
-        position: relative !important;
-        z-index: 100002 !important;
-        max-width: 100% !important;
-        max-height: 80vh !important;
-        width: auto !important;
-        height: auto !important;
-        object-fit: contain !important;
-        user-select: none !important;
-        -webkit-user-drag: none !important;
-        pointer-events: auto !important;
-        box-shadow: 0 24px 80px rgba(0, 0, 0, .4) !important;
-      }
-      body.fish-catalog-pilot .fish-gallery button {
-        position: absolute !important;
-        z-index: 100003 !important;
-        width: 48px !important;
-        height: 48px !important;
-        padding: 0 !important;
-        border: 1px solid rgba(227, 199, 139, .52) !important;
-        border-radius: 50% !important;
-        background: rgba(3, 20, 15, .72) !important;
-        color: #e8cf99 !important;
-        cursor: pointer !important;
-        font: 300 30px/1 Arial, sans-serif !important;
-        pointer-events: auto !important;
-      }
-      body.fish-catalog-pilot .fish-gallery__prev { left: 8px !important; top: 50% !important; transform: translateY(-50%) !important; }
-      body.fish-catalog-pilot .fish-gallery__next { right: 8px !important; top: 50% !important; transform: translateY(-50%) !important; }
-      body.fish-catalog-pilot .fish-gallery__close { right: 8px !important; top: 8px !important; }
-      body.fish-catalog-pilot .fish-gallery__counter {
-        position: absolute !important;
-        left: 50% !important;
-        bottom: 8px !important;
-        transform: translateX(-50%) !important;
-        z-index: 100003 !important;
-        color: #fff !important;
-        font: 500 13px/1 Arial, sans-serif !important;
-        letter-spacing: .08em !important;
-        pointer-events: none !important;
-      }
-      @media (max-width: 700px) {
-        body.fish-catalog-pilot .fish-gallery__panel { width: 96vw !important; height: 82vh !important; }
-        body.fish-catalog-pilot .fish-gallery__image { max-width: 92vw !important; max-height: 72vh !important; }
-      }
-    `;
-    document.head.appendChild(style);
-  };
-
   const readImages = (media) => {
     try {
       const images = JSON.parse(media.dataset.images || '[]');
@@ -181,28 +93,83 @@
     }
   };
 
+  const enhanceImages = (root = document) => {
+    root.querySelectorAll('.fish-catalog-card__media').forEach((media) => {
+      if (media.querySelector('.fish-card-image-button')) return;
+      const image = media.querySelector('.fish-card-image');
+      if (!image) return;
+      const images = readImages(media);
+      if (!images.length) return;
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'fish-card-image-button';
+      button.setAttribute('aria-label', `View ${image.alt || 'fish image'}`);
+      button.appendChild(image);
+      media.insertBefore(button, media.firstChild);
+    });
+  };
+
+  const ensureStyles = () => {
+    if (document.getElementById('fish-direct-click-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'fish-direct-click-styles';
+    style.textContent = `
+      body.fish-catalog-pilot .fish-catalog-card__media,
+      body.fish-catalog-pilot .fish-catalog-card__media * { pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media { position: relative !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image-button { position: relative !important; z-index: 2 !important; display: block !important; width: 100% !important; height: 100% !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: transparent !important; cursor: zoom-in !important; pointer-events: auto !important; overflow: hidden !important; text-align: inherit !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image { display: block !important; position: relative !important; z-index: 2 !important; width: 100% !important; height: 100% !important; cursor: zoom-in !important; pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__zoom { position: relative !important; z-index: 2 !important; pointer-events: auto !important; cursor: zoom-in !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav { z-index: 5 !important; pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-catalog-card__media::before,
+      body.fish-catalog-pilot .fish-catalog-card__media::after { pointer-events: none !important; }
+
+      body.fish-catalog-pilot .fish-gallery { position: fixed !important; inset: 0 !important; z-index: 100000 !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: clamp(18px, 3vw, 40px) !important; background: rgba(3, 20, 15, .95) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; }
+      body.fish-catalog-pilot .fish-gallery[hidden] { display: none !important; }
+      body.fish-catalog-pilot .fish-gallery__panel { position: relative !important; z-index: 100001 !important; width: min(1180px, 94vw) !important; height: min(88vh, 860px) !important; display: flex !important; align-items: center !important; justify-content: center !important; outline: none !important; }
+      body.fish-catalog-pilot .fish-gallery__image { display: block !important; position: relative !important; z-index: 100002 !important; max-width: 100% !important; max-height: 80vh !important; width: auto !important; height: auto !important; object-fit: contain !important; user-select: none !important; -webkit-user-drag: none !important; pointer-events: auto !important; box-shadow: 0 24px 80px rgba(0, 0, 0, .4) !important; }
+      body.fish-catalog-pilot .fish-gallery button { position: absolute !important; z-index: 100003 !important; width: 48px !important; height: 48px !important; padding: 0 !important; border: 1px solid rgba(227, 199, 139, .52) !important; border-radius: 50% !important; background: rgba(3, 20, 15, .72) !important; color: #e8cf99 !important; cursor: pointer !important; font: 300 30px/1 Arial, sans-serif !important; pointer-events: auto !important; }
+      body.fish-catalog-pilot .fish-gallery__prev { left: 8px !important; top: 50% !important; transform: translateY(-50%) !important; }
+      body.fish-catalog-pilot .fish-gallery__next { right: 8px !important; top: 50% !important; transform: translateY(-50%) !important; }
+      body.fish-catalog-pilot .fish-gallery__close { right: 8px !important; top: 8px !important; }
+      body.fish-catalog-pilot .fish-gallery__counter { position: absolute !important; left: 50% !important; bottom: 8px !important; transform: translateX(-50%) !important; z-index: 100003 !important; color: #fff !important; font: 500 13px/1 Arial, sans-serif !important; letter-spacing: .08em !important; pointer-events: none !important; }
+      @media (max-width: 700px) { body.fish-catalog-pilot .fish-gallery__panel { width: 96vw !important; height: 82vh !important; } body.fish-catalog-pilot .fish-gallery__image { max-width: 92vw !important; max-height: 72vh !important; } }
+    `;
+    document.head.appendChild(style);
+  };
+
   const resolveHit = (target) => {
     if (!(target instanceof Element)) return null;
-    const media = target.closest('.fish-catalog-card__media');
+    const button = target.closest('.fish-card-image-button');
+    if (!button) return null;
+    const media = button.closest('.fish-catalog-card__media');
     if (!media) return null;
-    if (target.closest('.fish-card-nav')) return null;
-    const image = media.querySelector('.fish-card-image');
+    const image = button.querySelector('.fish-card-image');
     if (!image) return null;
     return { image, media };
   };
 
-  document.addEventListener('click', (event) => {
-    const hit = resolveHit(event.target);
-    if (!hit) return;
+  const bind = () => {
+    enhanceImages();
+    if (!document.body) return;
+    document.addEventListener('click', (event) => {
+      const hit = resolveHit(event.target);
+      if (!hit) return;
+      const images = readImages(hit.media);
+      if (!images.length) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      open(images, hit.image.alt);
+    }, true);
+    new MutationObserver(() => enhanceImages()).observe(document.body, { childList: true, subtree: true });
+    ensureStyles();
+    document.body.appendChild(viewer);
+  };
 
-    const images = readImages(hit.media);
-    if (!images.length) return;
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    open(images, hit.image.alt);
-  }, true);
-
-  ensureStyles();
-  document.body.appendChild(viewer);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind, { once: true });
+  } else {
+    bind();
+  }
 })();
