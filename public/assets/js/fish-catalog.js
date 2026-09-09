@@ -317,6 +317,8 @@
     "'": '&#39;'
   } [c]));
   let imageMap = {};
+  let condition = 'all';
+  let category = 'all';
   const details = p => {
     const cat = categoryOf(p),
       vals = [
