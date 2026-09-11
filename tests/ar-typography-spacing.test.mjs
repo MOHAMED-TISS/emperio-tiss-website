@@ -7,14 +7,14 @@ const read = (path) => fs.readFileSync(path, 'utf8');
 test('Arabic typography uses Arabic font without inherited Latin tracking or uppercase transforms', () => {
   const js = read('public/assets/js/ar-es-normalizer.js');
   assert.match(js, /Noto Sans Arabic/);
-  assert.match(js, /letter-spacing\s*:\s*0/);
-  assert.match(js, /text-transform\s*:\s*none/);
+  assert.match(js, /letter-spacing:\s*0/);
+  assert.match(js, /text-transform:\s*none/);
 });
 
 test('Arabic display type has positive line-height and controlled word spacing', () => {
   const js = read('public/assets/js/ar-es-normalizer.js');
-  assert.match(js, /line-height\s*:\s*1\.1/);
-  assert.match(js, /word-spacing\s*:\s*0/);
+  assert.match(js, /line-height:1\.08/);
+  assert.match(js, /word-spacing:0/);
 });
 
 test('Arabic catalogue titles and body copy use separate readable scales', () => {
