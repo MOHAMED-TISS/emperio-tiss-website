@@ -20,7 +20,7 @@ test('Arabic runtime owns catalogue lightbox interactions and preserves page scr
 
 test('Arabic runtime translates common catalogue technical values', () => {
   const js = read('public/assets/js/ar-es-normalizer.js');
-  for (const text of ['تازج', 'مجمد', 'حسب التوفر', 'حسب الوجهة', 'حسب السوق', 'المنشأ', 'الجودة', 'التعبئة']) {
+  for (const text of ['طازج', 'مجمد', 'حسب التوفر', 'حسب الوجهة', 'حسب السوق', 'المنشأ', 'الجودة', 'التعبئة']) {
     assert.match(js, new RegExp(text));
   }
 });
