@@ -53,26 +53,40 @@
     const style = doc.createElement('style');
     style.id = 'et-ar-page-polish';
     style.textContent = `
+      html[lang="ar"] * { font-kerning: normal; }
+      html[lang="ar"] body,
+      html[lang="ar"] body * { word-spacing: 0 !important; }
+      html[lang="ar"] :is(h1,h2,h3,h4,p,a,li,button,input,textarea,select,label,span,strong,em) { letter-spacing: 0 !important; text-transform: none !important; }
+      html[lang="ar"] :is(h1,h2,h3,h4,p,a,li,button,input,textarea,select,label) { font-family:"Noto Sans Arabic",sans-serif !important; }
       html[lang="ar"] main > :is(.ar-hero,.es-hero,.hero,.page-hero,.current-stage), html[lang="ar"] #newsApp > :first-child { min-height:100vh !important; }
-      html[lang="ar"] :is(.es-hero,.ar-hero,.page-hero,.current-stage) { padding-top:clamp(138px,17vh,188px) !important; padding-bottom:clamp(78px,9vh,110px) !important; }
-      html[lang="ar"] :is(.es-hero,.ar-hero,.page-hero,.hero,.current-stage) :is(h1,h2) { font-family:"Noto Sans Arabic",sans-serif !important; font-size:clamp(3rem,7.4vw,7.2rem) !important; line-height:.98 !important; letter-spacing:-.035em !important; text-align:right !important; }
-      html[lang="ar"] :is(.es-section,.ar-section,.es-cta,.ar-cta) { padding-block:clamp(78px,9vw,120px) !important; }
-      html[lang="ar"] .es-page :is(.es-copy,.es-lead), html[lang="ar"] :is(.ar-copy,.ar-lead) { font-size:clamp(15px,1.45vw,17px) !important; line-height:1.95 !important; }
+      html[lang="ar"] :is(.es-hero,.ar-hero,.page-hero,.current-stage) { padding-top:clamp(132px,16vh,176px) !important; padding-bottom:clamp(72px,8vh,104px) !important; }
+      html[lang="ar"] :is(.es-hero,.ar-hero,.page-hero,.hero,.current-stage) :is(h1,h2) { font-size:clamp(3.1rem,7.2vw,6.8rem) !important; line-height:1.08 !important; font-weight:600 !important; text-align:right !important; }
+      html[lang="ar"] :is(.es-section,.ar-section,.es-cta,.ar-cta) { padding-block:clamp(76px,8.5vw,112px) !important; }
+      html[lang="ar"] .es-page :is(.es-copy,.es-lead), html[lang="ar"] :is(.ar-copy,.ar-lead) { font-size:clamp(15px,1.35vw,17px) !important; line-height:1.9 !important; font-weight:400 !important; }
+      html[lang="ar"] :is(.es-page .es-kicker,.es-page .es-label,.ar-kicker,.ar-label) { font-size:.68rem !important; line-height:1.5 !important; font-weight:600 !important; }
       html[lang="ar"] :is(.market-catalogue,.fish-catalog) { direction:rtl; text-align:right; }
       html[lang="ar"] :is(.market-catalogue__head,.fish-catalog .catalog-head) { text-align:right; }
-      html[lang="ar"] :is(.market-catalogue__title,.fish-catalog .catalog-head h2) { font-family:"Noto Sans Arabic",sans-serif !important; font-size:clamp(2.5rem,5.8vw,5.1rem) !important; line-height:1.04 !important; letter-spacing:-.035em !important; }
-      html[lang="ar"] :is(.market-catalogue__intro,.fish-catalog .catalog-head p,.ar-fish-gcc-note) { font-family:"Noto Sans Arabic",sans-serif !important; font-size:15px !important; line-height:1.95 !important; }
+      html[lang="ar"] :is(.market-catalogue__title,.fish-catalog .catalog-head h2) { font-family:"Noto Sans Arabic",sans-serif !important; font-size:clamp(2.6rem,6vw,5.4rem) !important; line-height:1.1 !important; font-weight:600 !important; }
+      html[lang="ar"] :is(.market-catalogue__intro,.fish-catalog .catalog-head p,.ar-fish-gcc-note) { font-family:"Noto Sans Arabic",sans-serif !important; font-size:clamp(15px,1.35vw,17px) !important; line-height:1.9 !important; }
       html[lang="ar"] :is(.market-catalogue-card__body,.fish-catalog-card__body) { text-align:right; }
-      html[lang="ar"] :is(.market-catalogue-card__name,.fish-catalog-card__name) { font-family:"Noto Sans Arabic",sans-serif !important; line-height:1.2 !important; }
-      html[lang="ar"] :is(.market-catalogue-card__detail,.fish-catalog-card__detail) { line-height:1.65 !important; }
+      html[lang="ar"] :is(.market-catalogue-card__name,.fish-catalog-card__name) { font-family:"Noto Sans Arabic",sans-serif !important; font-size:clamp(1.35rem,2.6vw,2.15rem) !important; line-height:1.2 !important; font-weight:600 !important; }
+      html[lang="ar"] :is(.market-catalogue-card__detail,.fish-catalog-card__detail) { font-size:.78rem !important; line-height:1.7 !important; }
+      html[lang="ar"] :is(.market-catalogue-card__meta,.fish-catalog-card__meta) { font-size:.65rem !important; line-height:1.5 !important; font-weight:600 !important; }
       html[lang="ar"] :is(.market-catalogue-card__media,.fish-catalog-card__media) { cursor:zoom-in !important; touch-action:manipulation; }
       html[lang="ar"] .et-ar-lightbox { position:fixed; inset:0; z-index:2147483647; display:grid; place-items:center; background:rgba(5,12,16,.96); padding:clamp(16px,4vw,40px); }
       html[lang="ar"] .et-ar-lightbox[hidden] { display:none; }
       html[lang="ar"] .et-ar-lightbox__img { max-width:min(92vw,1500px); max-height:84vh; width:auto; height:auto; object-fit:contain; }
       html[lang="ar"] .et-ar-lightbox__button { position:absolute; width:46px; height:46px; border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.08); color:#fff; border-radius:50%; font:400 25px/1 "DM Sans",sans-serif; cursor:pointer; }
-      html[lang="ar"] .et-ar-lightbox__close { top:18px; right:18px; } html[lang="ar"] .et-ar-lightbox__prev { top:50%; right:18px; transform:translateY(-50%); } html[lang="ar"] .et-ar-lightbox__next { top:50%; left:18px; transform:translateY(-50%); }
+      html[lang="ar"] .et-ar-lightbox__close { top:18px; right:18px; }
+      html[lang="ar"] .et-ar-lightbox__prev { top:50%; right:18px; transform:translateY(-50%); }
+      html[lang="ar"] .et-ar-lightbox__next { top:50%; left:18px; transform:translateY(-50%); }
       html[lang="ar"] .et-ar-lightbox__counter { position:absolute; left:50%; bottom:20px; transform:translateX(-50%); color:rgba(255,255,255,.72); font:500 11px/1 "DM Sans",sans-serif; direction:ltr; }
-      @media (max-width:800px) { html[lang="ar"] .es-page .es-grid { grid-template-columns:1fr !important; } html[lang="ar"] .es-page .es-cards { grid-template-columns:1fr !important; } html[lang="ar"] .market-catalogue__grid { grid-template-columns:1fr !important; } }
+      @media (max-width:800px) {
+        html[lang="ar"] .es-page .es-grid { grid-template-columns:1fr !important; }
+        html[lang="ar"] .es-page .es-cards { grid-template-columns:1fr !important; }
+        html[lang="ar"] .market-catalogue__grid { grid-template-columns:1fr !important; }
+        html[lang="ar"] :is(.es-hero,.ar-hero,.page-hero,.current-stage) :is(h1,h2) { font-size:clamp(2.55rem,12vw,4.2rem) !important; line-height:1.1 !important; }
+      }
     `;
     doc.head.appendChild(style);
   };
@@ -80,16 +94,14 @@
   const normalizeClasses = () => {
     if (body.classList.contains('home-page') || body.classList.contains('markets-current') || body.classList.contains('news-current')) return;
     body.classList.add('es-page');
-    for (const [from,to] of classMap) {
-      doc.querySelectorAll(`.${from}`).forEach((el) => el.classList.add(to));
-    }
+    for (const [from,to] of classMap) doc.querySelectorAll(`.${from}`).forEach((el) => el.classList.add(to));
   };
 
   const translateVisibleText = () => {
     const roots = doc.querySelectorAll('.market-catalogue-card,.fish-catalog-card,.market-catalogue__count,.market-catalogue__empty,.fish-catalog__count,.es-footer,.nav-overlay-foot');
     roots.forEach((scope) => {
       const walker = doc.createTreeWalker(scope, NodeFilter.SHOW_TEXT, { acceptNode(node) {
-        const parent = node.parentElement;
+        const parent=node.parentElement;
         if (!node.nodeValue?.trim() || !parent || /^(SCRIPT|STYLE)$/i.test(parent.tagName)) return NodeFilter.FILTER_REJECT;
         if (parent.closest('[data-latin="true"],.scientific-name')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
