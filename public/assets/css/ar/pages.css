@@ -1,8 +1,4 @@
-/* EMPERIO TISS — Arabic page compatibility layer.
-   The canonical Arabic presentation lives in ar-visual.css.
-   Keep this file dependency-safe for legacy Arabic pages without defining a second design system.
-*/
-
+/* EMPERIO TISS — Arabic page presentation layer. */
 html[lang="ar"] body.ar-page {
   direction: rtl;
   background: #f4f1e8;

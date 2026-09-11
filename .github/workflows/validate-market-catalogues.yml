@@ -10,10 +10,11 @@ on:
       - 'public/assets/css/catalogue-market-unified.css'
       - 'tests/market-catalogue.test.mjs'
       - 'public/ar/**'
-      - 'public/assets/css/ar-visual.css'
-      - 'public/assets/js/ar-es-normalizer.js'
+      - 'public/assets/css/ar/**'
+      - 'public/assets/js/ar/**'
       - 'tests/ar-es-design.test.mjs'
       - 'tests/ar-es-normalizer.test.mjs'
+      - 'tests/ar-language-separation.test.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   pull_request:
     paths:
@@ -24,10 +25,11 @@ on:
       - 'public/assets/css/catalogue-market-unified.css'
       - 'tests/market-catalogue.test.mjs'
       - 'public/ar/**'
-      - 'public/assets/css/ar-visual.css'
-      - 'public/assets/js/ar-es-normalizer.js'
+      - 'public/assets/css/ar/**'
+      - 'public/assets/js/ar/**'
       - 'tests/ar-es-design.test.mjs'
       - 'tests/ar-es-normalizer.test.mjs'
+      - 'tests/ar-language-separation.test.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   workflow_dispatch:
 
@@ -43,10 +45,15 @@ jobs:
         run: |
           node --check public/assets/js/market-catalogue.js
           node --check public/assets/js/international-shell.js
-          node --check public/assets/js/ar-es-normalizer.js
+          node --check public/assets/js/ar/es-normalizer.js
+          node --check public/assets/js/ar/content-geography.js
+          node --check public/assets/js/ar/catalogue-taxonomy.js
+          node --check public/assets/js/ar/loader.js
       - name: Catalogue tests
         run: node --test tests/market-catalogue.test.mjs
       - name: Arabic ES parity tests
         run: node --test tests/ar-es-design.test.mjs
       - name: Arabic normalizer tests
         run: node --test tests/ar-es-normalizer.test.mjs
+      - name: Arabic separation tests
+        run: node --test tests/ar-language-separation.test.mjs

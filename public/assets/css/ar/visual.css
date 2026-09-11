@@ -1,0 +1,51 @@
+/* EMPERIO TISS — Arabic-only visual adapter. */
+html[lang="ar"] { direction: rtl; }
+html[lang="ar"] body {
+  direction: rtl;
+  overflow-x: hidden;
+  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+html[lang="ar"] body :where(h1,h2,h3,h4,h5,h6,p,li,a,button,input,textarea,select,label,span,strong,em) {
+  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
+  letter-spacing: 0 !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+html[lang="ar"] :where(h1,h2,h3,h4,h5,h6) em { font-style: normal !important; font-weight: 500; }
+html[lang="ar"] :where(h1,h2) { line-height: 1.12 !important; }
+html[lang="ar"] :where(h3,h4,h5,h6) { line-height: 1.3 !important; }
+html[lang="ar"] :where(p,li,label,button,input,textarea,select) { line-height: 1.9; }
+html[lang="ar"] :where(.et-language-switch,.nav-overlay-lang,.latin-token,.scientific-name,.technical-value,[data-latin="true"]) {
+  font-family: var(--et-sans, "DM Sans", sans-serif) !important;
+  direction: ltr;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+}
+html[lang="ar"] .site-header,
+html[lang="ar"] .header-inner,
+html[lang="ar"] .et-language-switch { direction: ltr; }
+html[lang="ar"] .nav-overlay,
+html[lang="ar"] .nav-overlay-inner,
+html[lang="ar"] .nav-overlay-links,
+html[lang="ar"] .nav-overlay-foot,
+html[lang="ar"] .nav-products-links { direction: rtl; }
+html[lang="ar"] .nav-overlay-links,
+html[lang="ar"] .nav-overlay-links a,
+html[lang="ar"] .nav-overlay-links summary { text-align: right; }
+html[lang="ar"] :where(.es-page,.ar-page,.home-page,.intl-page,.market-catalogue-page,.markets-current,.news-current) { direction: rtl; }
+html[lang="ar"] :where(.es-page .es-container,.ar-page .ar-container,.home-page .container,.intl-page .intl-container,.market-catalogue-page .page-hero-inner) { text-align: right; }
+html[lang="ar"] .ar-footer,
+html[lang="ar"] .es-footer,
+html[lang="ar"] .intl-footer,
+html[lang="ar"] .es-footer-bottom,
+html[lang="ar"] .ar-footer-inner { direction: rtl; }
+@media (max-width: 800px) {
+  html[lang="ar"] .home-page h1,
+  html[lang="ar"] .es-page h1,
+  html[lang="ar"] .es-page h2 { letter-spacing: 0 !important; }
+}

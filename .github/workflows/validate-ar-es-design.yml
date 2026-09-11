@@ -4,22 +4,26 @@ on:
   push:
     paths:
       - 'public/ar/**'
-      - 'public/assets/css/ar-visual.css'
-      - 'public/assets/js/ar-es-normalizer.js'
+      - 'public/assets/css/ar/**'
+      - 'public/assets/js/ar/**'
       - 'public/assets/js/global.js'
       - 'public/assets/js/global-core.js'
       - 'tests/ar-es-design.test.mjs'
       - 'tests/ar-page-polish.test.mjs'
+      - 'tests/ar-es-normalizer.test.mjs'
+      - 'tests/ar-language-separation.test.mjs'
       - '.github/workflows/validate-ar-es-design.yml'
   pull_request:
     paths:
       - 'public/ar/**'
-      - 'public/assets/css/ar-visual.css'
-      - 'public/assets/js/ar-es-normalizer.js'
+      - 'public/assets/css/ar/**'
+      - 'public/assets/js/ar/**'
       - 'public/assets/js/global.js'
       - 'public/assets/js/global-core.js'
       - 'tests/ar-es-design.test.mjs'
       - 'tests/ar-page-polish.test.mjs'
+      - 'tests/ar-es-normalizer.test.mjs'
+      - 'tests/ar-language-separation.test.mjs'
       - '.github/workflows/validate-ar-es-design.yml'
   workflow_dispatch:
 
@@ -32,4 +36,4 @@ jobs:
         with:
           node-version: 20
       - name: Arabic ES design tests
-        run: node --test tests/ar-es-design.test.mjs tests/ar-page-polish.test.mjs
+        run: node --test tests/ar-es-design.test.mjs tests/ar-page-polish.test.mjs tests/ar-es-normalizer.test.mjs tests/ar-language-separation.test.mjs

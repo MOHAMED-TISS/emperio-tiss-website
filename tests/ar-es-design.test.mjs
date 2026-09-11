@@ -18,17 +18,18 @@ const arPages = [
   'public/ar/products/seasonal/index.html'
 ];
 
-test('Arabic pages remain RTL and do not load the obsolete Arabic stylesheet', () => {
+test('Arabic pages remain RTL and do not load obsolete Arabic CSS', () => {
   for (const file of arPages) {
     const html = read(file);
     assert.match(html, /lang="ar"\s+dir="rtl"/i, `${file} must be Arabic RTL`);
     assert.doesNotMatch(html, /ar-pages\.css/i, `${file} must not load the obsolete Arabic page stylesheet`);
+    assert.doesNotMatch(html, /\/assets\/css\/ar-visual\.css/i, `${file} must not load the obsolete Arabic visual stylesheet`);
   }
 });
 
 test('Arabic visual adapter only handles RTL and Arabic typography', () => {
-  const css = read('public/assets/css/ar-visual.css');
-  assert.match(css, /Arabic adapter for the canonical Spanish page design/i);
+  const css = read('public/assets/css/ar/visual.css');
+  assert.match(css, /Arabic-only visual adapter/i);
   assert.doesNotMatch(css, /background\s*:/i);
   assert.doesNotMatch(css, /min-height\s*:/i);
   assert.doesNotMatch(css, /grid-template-columns/i);
@@ -36,7 +37,7 @@ test('Arabic visual adapter only handles RTL and Arabic typography', () => {
 });
 
 test('Arabic runtime normalizer maps legacy AR classes to the ES classes', () => {
-  const js = read('public/assets/js/ar-es-normalizer.js');
+  const js = read('public/assets/js/ar/es-normalizer.js');
   for (const pair of [
     ['ar-page', 'es-page'],
     ['ar-hero', 'es-hero'],
@@ -74,16 +75,11 @@ test('Arabic Products landing mirrors the Spanish product structure', () => {
   assert.match(html, /class="contact-section"/);
 });
 
-test('Arabic commercial geography is normalized to MENA at render time', () => {
-  const neutralizer = read('public/assets/js/ar-content-neutralizer.js');
-  assert.match(neutralizer, /const MENA = 'منطقة الشرق الأوسط وشمال أفريقيا \(MENA\)'/);
-  assert.match(neutralizer, /السوق السعودي/g);
-  assert.match(neutralizer, /دول الخليج/g);
-  assert.match(neutralizer, /إسبانيا · فرنسا · إيطاليا · ألمانيا · هولندا/g);
-  assert.match(neutralizer, /المغرب · تونس · موريتانيا · غرب أفريقيا/g);
-  assert.match(neutralizer, /\.markets-section \.market-grid p/);
-  assert.match(neutralizer, /\.markets-current \.current-wordfield/);
-  assert.match(neutralizer, /\.markets-current \.current-region-list/);
-  assert.match(neutralizer, /\.market-catalogue__context \.market-catalogue__tag/);
-  assert.match(neutralizer, /\.ar-fish-gcc-note/);
+test('Arabic commercial geography adapter is regional', () => {
+  const geography = read('public/assets/js/ar/content-geography.js');
+  assert.match(geography, /const MENA = 'منطقة الشرق الأوسط وشمال أفريقيا \(MENA\)'/);
+  assert.match(geography, /السوق السعودي/g);
+  assert.match(geography, /دول الخليج/g);
+  assert.match(geography, /إسبانيا · فرنسا · إيطاليا · ألمانيا · هولندا/g);
+  assert.doesNotMatch(geography, /element\.textContent\s*=/);
 });

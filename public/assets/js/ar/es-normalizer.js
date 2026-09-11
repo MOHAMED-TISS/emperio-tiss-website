@@ -2,8 +2,8 @@
   'use strict';
 
   const doc = document;
-  const root = doc.documentElement;
-  const body = doc.body;
+  const root = document.documentElement;
+  const body = document.body;
   if (!body || !root.lang.toLowerCase().startsWith('ar')) return;
 
   const classMap = new Map([

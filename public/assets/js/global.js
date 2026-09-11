@@ -7,7 +7,7 @@
 
   const loadCss = (href, key) => {
     if (doc.querySelector(`link[data-${key}]`)) return;
-    const link = doc.createElement('link');
+    const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
     link.dataset[key] = 'true';
@@ -16,7 +16,7 @@
 
   const loadScript = (src, key) => {
     if (doc.querySelector(`script[data-${key}]`)) return;
-    const script = doc.createElement('script');
+    const script = document.createElement('script');
     script.src = src;
     script.async = false;
     script.dataset[key] = 'true';
@@ -33,8 +33,8 @@
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
-    loadCss('/assets/css/ar-visual.css?v=20260911-ar-fish-2', 'etArVisual');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
+    loadScript('/assets/js/ar/loader.js?v=20260912-ar-separation-1', 'etArLayerLoader');
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) {

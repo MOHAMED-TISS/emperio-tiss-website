@@ -5,7 +5,7 @@ import test from 'node:test';
 const read = (path) => fs.readFileSync(path, 'utf8');
 
 test('Arabic normalizer maps the legacy page classes onto the ES classes', () => {
-  const js = read('public/assets/js/ar-es-normalizer.js');
+  const js = read('public/assets/js/ar/es-normalizer.js');
   for (const pair of [
     ['ar-page', 'es-page'],
     ['ar-hero', 'es-hero'],
@@ -19,7 +19,12 @@ test('Arabic normalizer maps the legacy page classes onto the ES classes', () =>
   }
 });
 
-test('Arabic normalizer is loaded by the canonical site bootstrap', () => {
+test('Arabic normalizer is owned and loaded by the AR layer', () => {
+  const loader = read('public/assets/js/ar/loader.js');
+  assert.match(loader, /\/assets\/js\/ar\/es-normalizer\.js/);
+});
+
+ test('shared core no longer loads the Arabic normalizer directly', () => {
   const globalCore = read('public/assets/js/global-core.js');
-  assert.match(globalCore, /ar-es-normalizer\.js/);
+  assert.doesNotMatch(globalCore, /ar-es-normalizer\.js/);
 });
