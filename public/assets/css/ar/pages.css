@@ -1,0 +1,69 @@
+/* EMPERIO TISS — Arabic page presentation layer. */
+html[lang="ar"] body.ar-page {
+  direction: rtl;
+  background: #f4f1e8;
+  color: #10233a;
+  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
+}
+
+html[lang="ar"] body.ar-page main {
+  direction: rtl;
+}
+
+html[lang="ar"] .ar-page .ar-container {
+  width: min(1240px, calc(100% - 64px));
+  margin-inline: auto;
+}
+
+html[lang="ar"] .ar-page .ar-hero {
+  min-height: auto;
+  padding: 148px 0 104px;
+  background: linear-gradient(125deg, #06172b, #0b2540 58%, #10385a);
+  color: #fff;
+}
+
+html[lang="ar"] .ar-page .ar-section {
+  padding: 96px 0;
+  background: #f4f1e8;
+}
+
+html[lang="ar"] .ar-page .ar-section.dark {
+  background: #071b31;
+  color: #fff;
+}
+
+html[lang="ar"] .ar-page .ar-cta {
+  padding: 108px 0;
+  background: #d8c7a6;
+  color: #10233a;
+}
+
+html[lang="ar"] .ar-page .ar-footer,
+html[lang="ar"] .ar-footer {
+  background: #071b31 !important;
+  color: rgba(255,255,255,.72) !important;
+}
+
+@media (max-width: 900px) {
+  html[lang="ar"] .ar-page .ar-container {
+    width: calc(100% - 40px);
+  }
+
+  html[lang="ar"] .ar-page .ar-hero {
+    padding-block: 124px 74px;
+  }
+
+  html[lang="ar"] .ar-page .ar-section {
+    padding-block: 78px;
+  }
+}
+
+@media (max-width: 600px) {
+  html[lang="ar"] .ar-page .ar-container {
+    width: calc(100% - 32px);
+  }
+
+  html[lang="ar"] .ar-page .ar-hero {
+    padding-block: 108px 62px;
+  }
+}
