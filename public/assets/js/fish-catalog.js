@@ -99,7 +99,7 @@
   }));
 
   const categoryOf = p => p.group === 'Pescados especiales' ? 'special' : p.type.startsWith('Azul') ? 'blue' : 'white';
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
 
   if (lang !== 'ar') {
     document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
@@ -121,6 +121,7 @@
   viewer.innerHTML = '<div class="fish-gallery__panel"><img class="fish-gallery__image" alt=""><button class="fish-gallery__prev" type="button" aria-label="Previous">‹</button><button class="fish-gallery__next" type="button" aria-label="Next">›</button><button class="fish-gallery__close" type="button" aria-label="Close">×</button><span class="fish-gallery__counter"></span></div>';
   document.body.appendChild(viewer);
 
+  const viewerPanel = viewer.querySelector('.fish-gallery__panel');
   const viewerImage = viewer.querySelector('.fish-gallery__image');
   const viewerCounter = viewer.querySelector('.fish-gallery__counter');
   const viewerPrev = viewer.querySelector('.fish-gallery__prev');
@@ -147,15 +148,35 @@
   const closeViewer = () => {
     viewer.hidden = true;
     gallery = [];
+    galleryIndex = 0;
     document.body.style.overflow = '';
     viewerImage.removeAttribute('src');
   };
 
-  viewerPrev.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); galleryIndex = (galleryIndex - 1 + gallery.length) % gallery.length; paintViewer(); });
-  viewerNext.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); galleryIndex = (galleryIndex + 1) % gallery.length; paintViewer(); });
+  viewerPrev.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (gallery.length < 2) return;
+    galleryIndex = (galleryIndex - 1 + gallery.length) % gallery.length;
+    paintViewer();
+  });
+  viewerNext.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (gallery.length < 2) return;
+    galleryIndex = (galleryIndex + 1) % gallery.length;
+    paintViewer();
+  });
   viewer.querySelector('.fish-gallery__close').addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); closeViewer(); });
-  viewer.addEventListener('click', event => { if (event.target === viewer) closeViewer(); });
-  document.addEventListener('keydown', event => { if (viewer.hidden) return; if (event.key === 'Escape') closeViewer(); if (event.key === 'ArrowLeft') viewerPrev.click(); if (event.key === 'ArrowRight') viewerNext.click(); });
+  viewer.addEventListener('click', event => {
+    if (event.target === viewer || event.target === viewerPanel) closeViewer();
+  });
+  document.addEventListener('keydown', event => {
+    if (viewer.hidden) return;
+    if (event.key === 'Escape') closeViewer();
+    if (event.key === 'ArrowLeft' && gallery.length > 1) viewerPrev.click();
+    if (event.key === 'ArrowRight' && gallery.length > 1) viewerNext.click();
+  });
 
   const readImages = media => {
     try { return JSON.parse(media.dataset.images || '[]'); } catch { return []; }
@@ -194,7 +215,7 @@
       const image = images[0] || '';
       const mediaData = esc(JSON.stringify(images));
       const cat = categoryOf(product);
-      return `<article class="fish-catalog-card" data-product-id="${esc(product.id)}"><div class="fish-catalog-card__media" data-images='${mediaData}' tabindex="0" role="button" aria-label="${esc(labels.all === 'Todos' ? `Ver imágenes de ${product.name}` : `View images of ${product.name}`)}">${image ? `<img class="fish-card-image" src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}${images.length > 1 ? `<button class="fish-card-nav fish-card-nav--prev" type="button" aria-label="Previous image">‹</button><button class="fish-card-nav fish-card-nav--next" type="button" aria-label="Next image">›</button><span class="fish-card-counter">1 / ${images.length}</span>` : ''}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special)}</p><h3 class="fish-catalog-card__title">${esc(product.name)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-catalog-card__details">${details(product)}</div></div></article>`;
+      return `<article class="fish-catalog-card" data-product-id="${esc(product.id)}"><div class="fish-catalog-card__media" data-images='${mediaData}' data-image-index="0" tabindex="0" role="button" aria-label="${esc(labels.all === 'Todos' ? `Ver imágenes de ${product.name}` : `View images of ${product.name}`)}">${image ? `<img class="fish-card-image" src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}${images.length > 1 ? `<button class="fish-card-nav fish-card-nav--prev" type="button" aria-label="Previous image">‹</button><button class="fish-card-nav fish-card-nav--next" type="button" aria-label="Next image">›</button><span class="fish-card-counter">1 / ${images.length}</span>` : ''}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special)}</p><h3 class="fish-catalog-card__title">${esc(product.name)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-catalog-card__details">${details(product)}</div></div></article>`;
     }).join('') : `<p class="fish-catalog__empty">${labels.none}</p>`;
   };
 
@@ -207,8 +228,10 @@
       const image = media.querySelector('.fish-card-image');
       if (!images.length || !image) return;
       const direction = nav.classList.contains('fish-card-nav--next') ? 1 : -1;
-      const current = Math.max(0, images.indexOf(image.currentSrc ? image.currentSrc.replace(location.origin,'') : image.getAttribute('src')));
-      const next = (current + direction + images.length) % images.length;
+      const current = Number.parseInt(media.dataset.imageIndex || '0', 10);
+      const safeCurrent = Number.isInteger(current) && current >= 0 && current < images.length ? current : 0;
+      const next = (safeCurrent + direction + images.length) % images.length;
+      media.dataset.imageIndex = String(next);
       image.src = images[next];
       const counter = media.querySelector('.fish-card-counter');
       if (counter) counter.textContent = `${next + 1} / ${images.length}`;
