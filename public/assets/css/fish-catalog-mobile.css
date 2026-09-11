@@ -139,10 +139,20 @@
     min-width: 42px !important;
     min-height: 42px !important;
     border-width: 1px !important;
-    background: rgba(7, 30, 53, .88) !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .22) !important;
+    background: rgba(7, 30, 53, .42) !important;
+    border-color: rgba(216, 194, 143, .38) !important;
+    box-shadow: 0 5px 13px rgba(0, 0, 0, .12) !important;
     font-size: 23px !important;
     transform: translateY(-50%) !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:hover,
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:focus-visible {
+    background: rgba(7, 30, 53, .64) !important;
+    border-color: rgba(216, 194, 143, .62) !important;
+    box-shadow: 0 7px 16px rgba(0, 0, 0, .17) !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:active {
@@ -165,9 +175,11 @@
     max-width: calc(100% - 118px) !important;
     padding: 0 9px !important;
     border-radius: 999px !important;
-    background: rgba(7, 30, 53, .78) !important;
+    background: rgba(7, 30, 53, .58) !important;
     font-size: 9px !important;
     line-height: 1 !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__body {
@@ -236,6 +248,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    cursor: zoom-out !important;
   }
 
   body.fish-catalog-pilot .fish-gallery__image {
@@ -244,6 +257,7 @@
     width: auto !important;
     height: auto !important;
     object-fit: contain !important;
+    cursor: default !important;
   }
 
   body.fish-catalog-pilot .fish-gallery button {
@@ -251,8 +265,16 @@
     height: 44px !important;
     min-width: 44px !important;
     min-height: 44px !important;
-    background: rgba(7, 30, 53, .9) !important;
-    border-color: rgba(216, 194, 143, .65) !important;
+    background: rgba(7, 30, 53, .55) !important;
+    border-color: rgba(216, 194, 143, .45) !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery button:hover,
+  body.fish-catalog-pilot .fish-gallery button:focus-visible {
+    background: rgba(7, 30, 53, .7) !important;
+    border-color: rgba(216, 194, 143, .7) !important;
   }
 
   body.fish-catalog-pilot .fish-gallery__prev {
