@@ -17,6 +17,18 @@
   window.addEventListener('scroll', updateHeader, { passive: true });
 
   const lang = (root.lang || 'en').slice(0, 2).toLowerCase();
+
+  if (lang === 'ar') {
+    const key = 'etArEsNormalizer';
+    if (!doc.querySelector(`script[data-${key}]`)) {
+      const script = doc.createElement('script');
+      script.src = '/assets/js/ar-es-normalizer.js?v=20260911-2';
+      script.async = false;
+      script.dataset[key] = 'true';
+      doc.head.appendChild(script);
+    }
+  }
+
   const labels = {
     es: {
       home: 'Inicio', company: 'Nuestra propuesta', products: 'Productos', seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos & Crustáceos', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada', markets: 'Mercados', news: 'Noticias', contact: 'Contacto', open: 'Abrir menú', close: 'Cerrar menú'

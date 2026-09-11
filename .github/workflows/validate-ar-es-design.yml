@@ -1,0 +1,29 @@
+name: Validate Arabic ES design parity
+
+on:
+  push:
+    paths:
+      - 'public/ar/**'
+      - 'public/assets/css/ar-visual.css'
+      - 'public/assets/js/global.js'
+      - 'tests/ar-es-design.test.mjs'
+      - '.github/workflows/validate-ar-es-design.yml'
+  pull_request:
+    paths:
+      - 'public/ar/**'
+      - 'public/assets/css/ar-visual.css'
+      - 'public/assets/js/global.js'
+      - 'tests/ar-es-design.test.mjs'
+      - '.github/workflows/validate-ar-es-design.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Arabic ES design tests
+        run: node --test tests/ar-es-design.test.mjs
