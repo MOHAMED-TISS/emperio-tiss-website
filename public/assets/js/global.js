@@ -7,7 +7,7 @@
 
   const loadCss = (href, key) => {
     if (doc.querySelector(`link[data-${key}]`)) return;
-    const link = doc.createElement('link');
+    const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
     link.dataset[key] = 'true';
@@ -33,8 +33,8 @@
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
-    loadCss('/assets/css/ar-visual.css?v=20260911-ar-fish-2', 'etArVisual');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
+    loadScript('/assets/js/ar/loader.js?v=20260912-ar-separation-1', 'etArLayerLoader');
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) {
@@ -118,52 +118,28 @@
       link.rel = 'noopener noreferrer';
       link.setAttribute('aria-label', socialCopy.whatsapp);
       link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
+      container.insertBefore(link, container.querySelector('.et-language-switch,.language-nav') || container.firstChild);
     }
-    const language = container.querySelector('.et-language-switch,.language-nav');
-    const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
-    const reference = language || menu || null;
-    if (link.parentElement !== container) { container.insertBefore(link, reference); return; }
-    if (reference && link.nextElementSibling !== reference) container.insertBefore(link, reference);
   };
 
-  const ensureFooterLinkedIn = () => {
-    const footer = doc.querySelector('footer');
-    if (!footer || footer.querySelector('.et-linkedin')) return;
-    const link = doc.createElement('a');
-    link.className = 'et-linkedin';
-    link.href = linkedinHref;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', socialCopy.linkedin);
-    link.innerHTML = `${linkedinIcon}<span>${socialCopy.linkedin}</span>`;
-    const bottom = footer.querySelector('.et-footer-bottom,.et-footer-legal,.footer-band-inner,.ar-footer-inner');
-    if (bottom) bottom.appendChild(link); else footer.appendChild(link);
+  ensureItalianLanguageLinks();
+  ensureHeaderWhatsApp();
+
+  const setSocialLinks = () => {
+    doc.querySelectorAll('[data-social="whatsapp"] , .et-whatsapp').forEach((link) => {
+      link.href = whatsappHref;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', socialCopy.whatsapp);
+    });
+    doc.querySelectorAll('[data-social="linkedin"]').forEach((link) => {
+      link.href = linkedinHref;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', socialCopy.linkedin);
+      if (!link.querySelector('.et-linkedin-mark')) link.insertAdjacentHTML('afterbegin', linkedinIcon);
+    });
   };
 
-  const enhance = () => { ensureHeaderWhatsApp(); ensureItalianLanguageLinks(); ensureFooterLinkedIn(); };
-  enhance();
-  new MutationObserver(enhance).observe(doc.body, { childList: true, subtree: true });
-
-  const pageImageSelector = 'img';
-  const protectPageImages = (rootElement = doc) => rootElement.querySelectorAll(pageImageSelector).forEach((img) => {
-    img.setAttribute('draggable', 'false');
-    img.setAttribute('oncontextmenu', 'return false');
-    img.setAttribute('ondragstart', 'return false');
-    img.setAttribute('onselectstart', 'return false');
-    img.style.userSelect = 'none';
-    img.style.webkitUserDrag = 'none';
-    img.style.webkitTouchCallout = 'none';
-  });
-  protectPageImages();
-  doc.addEventListener('contextmenu', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('dragstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('selectstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
-
-  loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
-  loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
-  loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
-  loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
-  if (window.location.pathname !== '/contact/' && window.location.pathname !== '/contact') loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
-  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260823-en-filter-2', 'etEnCatalogFilterFix');
+  setSocialLinks();
 })();
