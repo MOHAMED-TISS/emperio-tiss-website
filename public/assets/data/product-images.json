@@ -27,8 +27,8 @@
   ],
   "denton": [
     "/assets/products/incoming/Denton.jpg",
-    "/assets/products/incoming/denton 2.jpg",
-    "/assets/products/incoming/denton1.jpg"
+    "/assets/products/incoming/denton1.jpg",
+    "/assets/products/incoming/denton 2.jpg"
   ],
   "dorada": [
     "/assets/products/incoming/dorada.jpg"
@@ -86,9 +86,9 @@
     "/assets/products/incoming/Rape.jpg"
   ],
   "rascacio": [
-    "/assets/products/incoming/Rascacio 1.jpg",
     "/assets/products/incoming/Rascacio.jpg",
-    "/assets/products/incoming/Rascacio2.jpg"
+    "/assets/products/incoming/Rascacio2.jpg",
+    "/assets/products/incoming/Rascacio 1.jpg"
   ],
   "salmon": [
     "/assets/products/incoming/Salmon.jpg"
@@ -108,11 +108,11 @@
   "sargo": [
     "/assets/products/incoming/Sargo.jpg"
   ],
+  "sepia-limpia-iqf": [
+    "/assets/products/incoming/Sepia Limpia.jpg",
+    "/assets/products/incoming/Sepia Limpia(1).jpg"
+  ],
   "sole": [
     "/assets/products/incoming/Lenguado.jpg"
-  ],
-  "sepia-limpia-iqf": [
-    "/assets/products/incoming/Sepia Limpia(1).jpg",
-    "/assets/products/incoming/Sepia Limpia.jpg"
   ]
 }
