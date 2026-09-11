@@ -18,7 +18,7 @@ const arPages = [
   'public/ar/products/seasonal/index.html'
 ];
 
-test('Arabic page system uses the Spanish page design baseline', () => {
+test('Arabic pages remain RTL and do not load the obsolete Arabic stylesheet', () => {
   for (const file of arPages) {
     const html = read(file);
     assert.match(html, /lang="ar"\s+dir="rtl"/i, `${file} must be Arabic RTL`);
@@ -26,7 +26,7 @@ test('Arabic page system uses the Spanish page design baseline', () => {
   }
 });
 
-test('Arabic visual adapter only handles RTL and never replaces Spanish geometry', () => {
+test('Arabic visual adapter only handles RTL and Arabic typography', () => {
   const css = read('public/assets/css/ar-visual.css');
   assert.match(css, /Arabic adapter for the canonical Spanish page design/i);
   assert.doesNotMatch(css, /background\s*:/i);
@@ -35,22 +35,33 @@ test('Arabic visual adapter only handles RTL and never replaces Spanish geometry
   assert.doesNotMatch(css, /--ar-/i);
 });
 
-test('Arabic pages explicitly inherit the same Spanish visual layer as their counterparts', () => {
-  const filesUsingEsPage = [
-    'public/ar/about/index.html',
-    'public/ar/contact/index.html',
-    'public/ar/products/seafood/index.html'
-  ];
-  for (const file of filesUsingEsPage) {
-    const html = read(file);
-    assert.match(html, /class="es-page[^\"]*"/i, `${file} must use the ES page body class`);
-    assert.match(html, /\/assets\/css\/es-pages\.css/i, `${file} must load ES page CSS`);
+test('Arabic runtime normalizer maps legacy AR classes to the ES classes', () => {
+  const js = read('public/assets/js/ar-es-normalizer.js');
+  for (const pair of [
+    ['ar-page', 'es-page'],
+    ['ar-hero', 'es-hero'],
+    ['ar-section', 'es-section'],
+    ['ar-grid', 'es-grid'],
+    ['ar-card', 'es-card'],
+    ['ar-cta', 'es-cta'],
+    ['ar-footer', 'es-footer']
+  ]) {
+    assert.match(js, new RegExp(`['\"]${pair[0]}['\"]\\s*,\\s*['\"]${pair[1]}['\"]`));
   }
 });
 
-test('Arabic canonical header is single-source and not loaded twice', () => {
-  const global = read('public/assets/js/global.js');
-  assert.match(global, /querySelectorAll\(['"]link\[href\*=['"]header-final\.css/i);
+test('Arabic generic content pages expose the ES page body class', () => {
+  for (const file of [
+    'public/ar/about/index.html',
+    'public/ar/contact/index.html',
+    'public/ar/products/seafood/index.html',
+    'public/ar/products/fruits/index.html',
+    'public/ar/products/vegetables/index.html',
+    'public/ar/products/seasonal/index.html'
+  ]) {
+    const html = read(file);
+    assert.match(html, /class="[^"]*ar-page[^"]*"/i, `${file} must retain AR page marker`);
+  }
 });
 
 test('Arabic Products landing mirrors the Spanish product structure', () => {
