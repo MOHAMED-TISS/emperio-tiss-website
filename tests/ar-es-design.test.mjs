@@ -8,6 +8,7 @@ const arPages = [
   'public/ar/contact/index.html',
   'public/ar/markets/index.html',
   'public/ar/news/index.html',
+  'public/ar/products/index.html',
   'public/ar/products/seafood/index.html',
   'public/ar/products/seafood/fish/index.html',
   'public/ar/products/seafood/shellfish/index.html',
@@ -25,15 +26,31 @@ test('Arabic page system uses the Spanish page design baseline', () => {
   }
 });
 
-test('Arabic visual adapter only handles RTL and delegates geometry to ES CSS', () => {
+test('Arabic visual adapter only handles RTL and never replaces Spanish geometry', () => {
   const css = read('public/assets/css/ar-visual.css');
   assert.match(css, /Arabic adapter for the canonical Spanish page design/i);
-  assert.match(css, /\.ar-page \.ar-hero/);
-  assert.match(css, /\.ar-page \.ar-section/);
-  assert.match(css, /\.ar-page \.ar-cards/);
-  assert.match(css, /\.ar-page \.ar-cta/);
-  assert.doesNotMatch(css, /--ar-deep\s*:/);
-  assert.doesNotMatch(css, /background:\s*var\(--ar-paper\)/);
+  assert.doesNotMatch(css, /background\s*:/i);
+  assert.doesNotMatch(css, /min-height\s*:/i);
+  assert.doesNotMatch(css, /grid-template-columns/i);
+  assert.doesNotMatch(css, /--ar-/i);
+});
+
+test('Arabic pages explicitly inherit the same Spanish visual layer as their counterparts', () => {
+  const filesUsingEsPage = [
+    'public/ar/about/index.html',
+    'public/ar/contact/index.html',
+    'public/ar/products/seafood/index.html'
+  ];
+  for (const file of filesUsingEsPage) {
+    const html = read(file);
+    assert.match(html, /class="es-page[^\"]*"/i, `${file} must use the ES page body class`);
+    assert.match(html, /\/assets\/css\/es-pages\.css/i, `${file} must load ES page CSS`);
+  }
+});
+
+test('Arabic canonical header is single-source and not loaded twice', () => {
+  const global = read('public/assets/js/global.js');
+  assert.match(global, /querySelectorAll\(['"]link\[href\*=['"]header-final\.css/i);
 });
 
 test('Arabic Products landing mirrors the Spanish product structure', () => {
