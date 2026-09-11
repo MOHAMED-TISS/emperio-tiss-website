@@ -6,7 +6,6 @@
 
   const MENA = 'منطقة الشرق الأوسط وشمال أفريقيا (MENA)';
   const countryPattern = /(?:إسبانيا|فرنسا|إيطاليا|ألمانيا|هولندا|المغرب|تونس|موريتانيا|السعودية|الإمارات|قطر|الكويت|البحرين|عُمان|الأردن|لبنان|مصر|ليبيا|الجزائر|تركيا|العراق|سوريا)/g;
-  const marketContextPattern = /(?:السوق|أسواق|وجهة|وجهات|عملاء|العملاء|المشترين|التصدير|التوريد)/;
 
   const replacements = [
     [/قنوات التصدير الإسبانية المعتمدة إلى السوق السعودي/g, `قنوات التوريد الدولية المناسبة إلى ${MENA}`],
@@ -36,38 +35,34 @@
   };
 
   const neutralizeMarketContainers = () => {
-    const selectors = [
-      '.markets-section .market-grid',
-      '.markets-section .markets-title',
-      '.markets-current .current-wordfield',
-      '.markets-current .current-region-list',
-      '.markets-current .current-movement-copy',
-      '.market-catalogue__context',
-      '.market-catalogue__intro',
-      '.market-catalogue__title',
-      '.fish-catalog .ar-fish-gcc-note',
-      '.ar-fish-gcc-note'
-    ];
-    document.querySelectorAll(selectors.join(',')).forEach((container) => {
-      const text = container.textContent || '';
-      if (!countryPattern.test(text)) {
-        countryPattern.lastIndex = 0;
-        return;
-      }
+    document.querySelectorAll('.markets-section .market-grid p').forEach((paragraph) => {
+      if (countryPattern.test(paragraph.textContent || '')) paragraph.textContent = MENA;
       countryPattern.lastIndex = 0;
-      const replacement = text
-        .replace(/إسبانيا · فرنسا · إيطاليا · ألمانيا · هولندا/g, MENA)
-        .replace(/المغرب · تونس · موريتانيا · غرب أفريقيا/g, MENA)
-        .replace(/إسبانيا وفرنسا وإيطاليا وألمانيا إلى المغرب وتونس وموريتانيا ووجهات جديدة/g, `داخل ${MENA} وعبر وجهات تجارية دولية`)
-        .replace(/من إسبانيا وفرنسا وإيطاليا وألمانيا إلى المغرب وتونس وموريتانيا ووجهات جديدة/g, `داخل ${MENA} وعبر وجهات تجارية دولية`);
-      const shouldCollapse = marketContextPattern.test(replacement);
-      if (!shouldCollapse) return;
-      container.textContent = replacement.replace(countryPattern, MENA);
+    });
+
+    document.querySelectorAll('.markets-current .current-wordfield').forEach((field) => {
+      if (countryPattern.test(field.textContent || '')) field.textContent = MENA;
+      countryPattern.lastIndex = 0;
+    });
+
+    document.querySelectorAll('.markets-current .current-region-list').forEach((list) => {
+      if (countryPattern.test(list.textContent || '')) list.textContent = MENA;
       countryPattern.lastIndex = 0;
     });
 
     document.querySelectorAll('.market-catalogue__context .market-catalogue__tag').forEach((tag) => {
       if (countryPattern.test(tag.textContent || '')) tag.textContent = MENA;
+      countryPattern.lastIndex = 0;
+    });
+
+    document.querySelectorAll('.markets-current .current-movement-copy, .markets-section .markets-title, .market-catalogue__intro, .market-catalogue__title, .ar-fish-gcc-note').forEach((container) => {
+      if (!countryPattern.test(container.textContent || '')) {
+        countryPattern.lastIndex = 0;
+        return;
+      }
+      countryPattern.lastIndex = 0;
+      const next = neutralizeString(container.textContent);
+      container.textContent = next.replace(countryPattern, MENA);
       countryPattern.lastIndex = 0;
     });
   };
