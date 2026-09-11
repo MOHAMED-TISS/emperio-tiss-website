@@ -1,0 +1,104 @@
+/* EMPERIO TISS — Arabic home refinements layered over the shared home visual system. */
+.ar-home {
+  font-family: "Noto Sans Arabic", var(--et-sans);
+}
+
+.ar-home h1,
+.ar-home h2,
+.ar-home h3,
+.ar-home .hero-description strong,
+.ar-home .large-copy {
+  font-family: "Noto Sans Arabic", var(--et-sans);
+}
+
+.ar-home .hero-grid {
+  direction: rtl;
+}
+
+.ar-home .hero-content {
+  text-align: right;
+}
+
+.ar-home .hero-kicker {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  letter-spacing: 0;
+}
+
+.ar-home .hero-kicker p,
+.ar-home .hero-side p,
+.ar-home .hero-bottom,
+.ar-home .eyebrow,
+.ar-home .section-index,
+.ar-home .hero-number {
+  font-family: "Noto Sans Arabic", var(--et-sans);
+  letter-spacing: 0;
+}
+
+.ar-home .hero-side {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ar-home .hero-bottom {
+  direction: rtl;
+  justify-content: flex-end;
+}
+
+.ar-home .intro-section .container,
+.ar-home .products-section .container,
+.ar-home .markets-section .container,
+.ar-home .company-section .container,
+.ar-home .contact-section .container {
+  direction: rtl;
+}
+
+.ar-home .intro-section .container {
+  grid-template-columns: 70px 1fr;
+}
+
+.ar-home .section-index {
+  text-align: left;
+}
+
+.ar-home .intro-bottom,
+.ar-home .section-heading,
+.ar-home .company-grid,
+.ar-home .markets-title,
+.ar-home .market-grid,
+.ar-home .product-row,
+.ar-home .company-values {
+  direction: rtl;
+}
+
+.ar-home .product-number,
+.ar-home .product-arrow,
+.ar-home .company-values span,
+.ar-home .market-grid article > span {
+  font-family: var(--et-sans);
+  direction: ltr;
+}
+
+.ar-home .text-link span,
+.ar-home .button span {
+  display: inline-block;
+  direction: ltr;
+}
+
+@media (max-width: 760px) {
+  .ar-home h1 {
+    letter-spacing: 0;
+    line-height: 1.02;
+  }
+
+  .ar-home .hero-description,
+  .ar-home .intro-lead,
+  .ar-home .intro-copy,
+  .ar-home .section-intro,
+  .ar-home .large-copy,
+  .ar-home .contact-text,
+  .ar-home .market-grid article p,
+  .ar-home .product-row p {
+    font-family: "Noto Sans Arabic", var(--et-sans);
+  }
+}
