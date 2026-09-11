@@ -81,7 +81,7 @@
     touch-action: manipulation !important;
   }
 
-  /* Product grid: generous but controlled vertical rhythm. */
+  /* Product grid: one clear card per row, with controlled rhythm. */
   body.fish-catalog-pilot .fish-catalog-grid {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
@@ -107,7 +107,7 @@
     background: #eef0ec !important;
   }
 
-  /* Tall, uniform product frame: reveal the complete source image. */
+  /* Product photography: fill the frame and keep the subject visually prominent. */
   body.fish-catalog-pilot .fish-catalog-card__media {
     width: 100% !important;
     height: auto !important;
@@ -120,14 +120,17 @@
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image {
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
     object-position: center center !important;
     background: #eef0ec !important;
   }
 
-  /* Multi-image navigation stays centered inside the taller image frame. */
+  /* Multi-image navigation stays centered in the image frame. */
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
     top: 50% !important;
     bottom: auto !important;
