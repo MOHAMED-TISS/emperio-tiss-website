@@ -73,3 +73,20 @@ test('Arabic Products landing mirrors the Spanish product structure', () => {
   assert.match(html, /class="company-section"/);
   assert.match(html, /class="contact-section"/);
 });
+
+test('Arabic content does not name countries, cities, or regions as target markets or destinations', () => {
+  const forbidden = [
+    'إسبانيا','فرنسا','إيطاليا','ألمانيا','هولندا','المغرب','تونس','موريتانيا',
+    'السعودية','الإمارات','قطر','الكويت','البحرين','عُمان','الأردن','لبنان',
+    'مصر','ليبيا','الجزائر','تركيا','العراق','سوريا','مدريد',
+    'إسبانيا عبر','السوق السعودي','الأسواق الخليجية','دول الخليج',
+    'عبر إسبانيا','التصدير الإسبانية'
+  ];
+  const targetFiles = arPages.filter((file) => !file.endsWith('/markets/index.html'));
+  for (const file of targetFiles) {
+    const html = read(file);
+    for (const term of forbidden) {
+      assert.doesNotMatch(html, new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), `${file} must not contain target geography term: ${term}`);
+    }
+  }
+});
