@@ -1,14 +1,39 @@
-/* Arabic visual tokens and RTL-only corrections. Typography is scoped: Arabic UI uses Noto Sans Arabic; Latin brand/product metadata keeps the canonical international stack. */
+/* Arabic visual system — one loaded RTL layer. */
 html[lang="ar"] body{direction:rtl;overflow-x:hidden;background:#f4f1e8;color:#10233a}
 html[lang="ar"] body{--et-deep:#071b31;--et-navy:#0b2540;--et-ink:#10233a;--et-paper:#f4f1e8;--et-ivory:#f4f1e8;--et-gold:#c9a35f;--et-muted:#69727b}
 html[lang="ar"] .site-header .header-inner,html[lang="ar"] .nav-overlay,html[lang="ar"] .nav-overlay-inner,html[lang="ar"] .nav-overlay-links,html[lang="ar"] .nav-overlay-foot{direction:rtl}
 html[lang="ar"] .et-language-switch{direction:ltr}
 html[lang="ar"] .nav-overlay-links,html[lang="ar"] .nav-products-links{text-align:right}
 html[lang="ar"] .nav-overlay-links a,html[lang="ar"] .nav-overlay-links summary,html[lang="ar"] .nav-products-links a{font-family:"Noto Sans Arabic",sans-serif;letter-spacing:0}
-html[lang="ar"] .ar-page .ar-hero,html[lang="ar"] .es-page .es-hero{background:linear-gradient(115deg,#06172b 0%,#0b2540 58%,#123b5c 100%)}
-html[lang="ar"] .ar-page .ar-hero:after,html[lang="ar"] .es-page .es-hero:after{display:none}
-html[lang="ar"] .ar-page .ar-section,html[lang="ar"] .es-page .es-section{background:#f4f1e8}
-html[lang="ar"] .ar-page .ar-section.dark,html[lang="ar"] .es-page .es-section.dark{background:#071b31}
+html[lang="ar"] .ar-page .ar-hero{background:linear-gradient(115deg,#06172b 0%,#0b2540 58%,#123b5c 100%)}
+html[lang="ar"] .ar-page .ar-hero:after{display:none}
+html[lang="ar"] .ar-page .ar-section{background:#f4f1e8}
+html[lang="ar"] .ar-page .ar-section.dark{background:#071b31}
 html[lang="ar"] .ar-page .ar-footer{background:#06172b}
-html[lang="ar"] .ar-page .ar-hero h1,html[lang="ar"] .ar-page .ar-section h2,html[lang="ar"] .ar-page .ar-cta h2,html[lang="ar"] .es-page .es-hero h1,html[lang="ar"] .es-page .es-section h2,html[lang="ar"] .es-page .es-cta h2{font-family:"Noto Sans Arabic",sans-serif;letter-spacing:-.035em}
-@media(max-width:760px){html[lang="ar"] .site-header .site-logo img{width:88px;height:auto}}
+html[lang="ar"] .ar-page .ar-hero h1,html[lang="ar"] .ar-page .ar-section h2,html[lang="ar"] .ar-page .ar-cta h2{font-family:"Noto Sans Arabic",sans-serif;letter-spacing:-.035em}
+html[lang="ar"] .ar-page .ar-container{width:min(1180px,calc(100% - 64px));margin-inline:auto}
+html[lang="ar"] .ar-page .ar-hero{min-height:min(78svh,820px);display:flex;align-items:flex-end;padding:clamp(150px,18vh,190px) 0 clamp(70px,9vh,105px);color:#fff;position:relative;overflow:hidden}
+html[lang="ar"] .ar-page .ar-hero-inner{position:relative;z-index:1;max-width:900px}
+html[lang="ar"] .ar-page .ar-kicker,html[lang="ar"] .ar-page .ar-label{margin:0 0 18px;color:#c9a35f;font-size:11px;line-height:1.5;font-weight:700;letter-spacing:0}
+html[lang="ar"] .ar-page .ar-hero h1,html[lang="ar"] .ar-page .ar-section h2,html[lang="ar"] .ar-page .ar-cta h2{margin:0;font-family:"Noto Sans Arabic",sans-serif;font-weight:500;font-size:clamp(3.2rem,7.2vw,6.8rem);line-height:1.08;letter-spacing:-.035em}
+html[lang="ar"] .ar-page h1 em,html[lang="ar"] .ar-page h2 em{color:#d8b976;font-style:normal}
+html[lang="ar"] .ar-page .ar-lead{max-width:700px;margin:28px 0 0;color:rgba(255,255,255,.78);font-size:17px;line-height:2}
+html[lang="ar"] .ar-page .ar-section{padding:clamp(78px,9vw,125px) 0;background:#f4f1e8}
+html[lang="ar"] .ar-page .ar-section.dark{background:#071b31;color:#fff}
+html[lang="ar"] .ar-page .ar-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:clamp(40px,7vw,90px);align-items:start}
+html[lang="ar"] .ar-page .ar-copy{color:#69727b;font-size:15px;line-height:2;max-width:580px}
+html[lang="ar"] .ar-page .dark .ar-copy{color:rgba(255,255,255,.68)}
+html[lang="ar"] .ar-page .ar-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(16,35,58,.14);margin-top:58px}
+html[lang="ar"] .ar-page .ar-card{min-height:285px;padding:30px;background:#fbf9f3;display:flex;flex-direction:column;justify-content:space-between}
+html[lang="ar"] .ar-page .dark .ar-card{background:#0b2947}
+html[lang="ar"] .ar-page .ar-card span{color:#c9a35f;font-size:11px}
+html[lang="ar"] .ar-page .ar-card h3{margin:35px 0 12px;font-family:"Noto Sans Arabic",sans-serif;font-size:25px;line-height:1.25;font-weight:600}
+html[lang="ar"] .ar-page .ar-card p{margin:0;color:#69727b;font-size:13px;line-height:1.9}
+html[lang="ar"] .ar-page .dark .ar-card p{color:rgba(255,255,255,.68)}
+html[lang="ar"] .ar-page .ar-card a{margin-top:20px;color:#c9a35f;font-size:11px;font-weight:700;text-decoration:none}
+html[lang="ar"] .ar-page .ar-cta{padding:clamp(80px,10vw,125px) 0;background:#d8c7a6}
+html[lang="ar"] .ar-page .ar-cta h2{color:#10233a;margin-top:15px}
+html[lang="ar"] .ar-page .ar-footer{padding:45px 0 22px;color:rgba(255,255,255,.65)}
+html[lang="ar"] .ar-page .ar-footer-inner{display:flex;justify-content:space-between;gap:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:11px}
+@media(max-width:800px){html[lang="ar"] .ar-page .ar-container{width:calc(100% - 32px)}html[lang="ar"] .ar-page .ar-hero{min-height:68svh;padding:125px 0 58px}html[lang="ar"] .ar-page .ar-hero h1,html[lang="ar"] .ar-page .ar-section h2,html[lang="ar"] .ar-page .ar-cta h2{font-size:clamp(2.8rem,13vw,4.8rem);line-height:1.12}html[lang="ar"] .ar-page .ar-lead{font-size:15px;line-height:1.95}html[lang="ar"] .ar-page .ar-grid{grid-template-columns:1fr;gap:25px}html[lang="ar"] .ar-page .ar-cards{grid-template-columns:1fr;margin-top:42px}html[lang="ar"] .ar-page .ar-card{min-height:220px}html[lang="ar"] .ar-page .ar-section{padding:72px 0}html[lang="ar"] .ar-page .ar-footer-inner{flex-direction:column;gap:9px}}
+html[lang="ar"] .es-page .es-hero{background:linear-gradient(115deg,#06172b 0%,#0b2540 58%,#123b5c 100%)}html[lang="ar"] .es-page .es-hero:after{display:none}html[lang="ar"] .es-page .es-section{background:#f4f1e8}html[lang="ar"] .es-page .es-section.dark{background:#071b31}html[lang="ar"] .es-page .es-hero h1,html[lang="ar"] .es-page .es-section h2,html[lang="ar"] .es-page .es-cta h2{font-family:"Noto Sans Arabic",sans-serif;letter-spacing:-.035em}@media(max-width:760px){html[lang="ar"] .site-header .site-logo img{width:88px;height:auto}}
