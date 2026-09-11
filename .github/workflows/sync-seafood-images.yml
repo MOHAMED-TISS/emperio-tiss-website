@@ -58,6 +58,13 @@ jobs:
                   if key:
                       aliases[key] = product_id
 
+          # Filename aliases for active Fish catalogue IDs that are already
+          # handled by the Fish renderer but may not yet exist in the
+          # central catalogue metadata.
+          filename_aliases = {
+              'lenguado': 'sole'
+          }
+
           allowed = {'.jpg', '.jpeg', '.png', '.webp'}
           grouped = {}
 
@@ -73,7 +80,7 @@ jobs:
               if not path.is_file() or path.suffix.lower() not in allowed:
                   continue
               key = normalise(path.stem)
-              product_id = aliases.get(key)
+              product_id = aliases.get(key) or filename_aliases.get(key)
               if not product_id:
                   continue
               grouped.setdefault(product_id, []).append('/assets/products/incoming/' + path.name)
@@ -97,8 +104,10 @@ jobs:
               encoding='utf-8'
           )
 
-      - name: Commit generated manifest
+      - name: Commit and push generated manifest
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add public/assets/data/product-images.json
@@ -107,4 +116,22 @@ jobs:
             exit 0
           fi
           git commit -m 'Auto-sync seafood catalogue images'
-          git push
+
+          # Another repository write can land between checkout and push.
+          # Rebase onto the current main tip before pushing so generated
+          # catalogue updates do not fail with a non-fast-forward error.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main; then
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+            else
+              git rebase --abort || true
+              echo 'Rebase conflict detected; retrying from current origin/main.'
+            fi
+            sleep $((attempt * 2))
+          done
+
+          echo 'Unable to push generated seafood manifest after 5 attempts.'
+          exit 1
