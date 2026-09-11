@@ -13,7 +13,8 @@
   ];
   const scripts = [
     '/assets/js/ar/es-normalizer.js',
-    '/assets/js/ar/content-geography.js'
+    '/assets/js/ar/content-geography.js',
+    '/assets/js/ar/catalogue-taxonomy.js'
   ];
 
   for (const href of css) {
