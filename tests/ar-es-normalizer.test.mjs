@@ -15,11 +15,11 @@ test('Arabic normalizer maps the legacy page classes onto the ES classes', () =>
     ['ar-cta', 'es-cta'],
     ['ar-footer', 'es-footer']
   ]) {
-    assert.match(js, new RegExp(`['\"]${pair[0]}['\"].*['\"]${pair[1]}['\"]`));
+    assert.match(js, new RegExp(`['\"]${pair[0]}['\"]\\s*,\\s*['\"]${pair[1]}['\"]`));
   }
 });
 
 test('Arabic normalizer is loaded by the canonical site bootstrap', () => {
-  const global = read('public/assets/js/global.js');
-  assert.match(global, /ar-es-normalizer\.js/);
+  const globalCore = read('public/assets/js/global-core.js');
+  assert.match(globalCore, /ar-es-normalizer\.js/);
 });
