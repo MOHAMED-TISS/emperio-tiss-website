@@ -77,3 +77,5 @@ html[lang="ar"] .ar-footer-inner { direction: rtl; }
   html[lang="ar"] .es-page h1,
   html[lang="ar"] .es-page h2 { letter-spacing: 0 !important; }
 }
+
+/* Keep Arabic composition independent from the Latin editorial tracking system. */
