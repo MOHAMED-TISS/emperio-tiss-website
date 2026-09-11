@@ -19,7 +19,7 @@
   const family = subcategory === 'fruits' || subcategory === 'vegetables' ? 'produce' : 'seafood';
   if (!targets.some(([f, s]) => f === family && s === subcategory)) return;
 
-  const CATALOG_URL = '/assets/data/catalog.json';
+  const CATALOG_URL = '/assets/data/catalog-v1.3.json';
   const PRIORITY_URL = '/assets/data/catalogue-market-priority.json';
   const IMAGES_URL = '/assets/data/product-images.json';
 
