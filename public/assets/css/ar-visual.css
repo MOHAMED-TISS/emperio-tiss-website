@@ -1,445 +1,66 @@
-/* EMPERIO TISS — Canonical Arabic RTL presentation
-   Single presentation layer for all Arabic pages.
-   Identity: navy / ivory / champagne-gold.
+/* EMPERIO TISS — Arabic adapter for the canonical Spanish page design.
+   ES geometry is authoritative. AR only supplies RTL and Arabic typography.
 */
+html[lang="ar"]{direction:rtl}
+html[lang="ar"] body{direction:rtl;overflow-x:hidden;font-family:"Noto Sans Arabic",var(--et-sans,"DM Sans",sans-serif)}
+html[lang="ar"] body :where(h1,h2,h3,h4,p,li,button,input,textarea,select,label){font-family:"Noto Sans Arabic",var(--et-sans,"DM Sans",sans-serif)}
+html[lang="ar"] :where(.et-language-switch,.nav-overlay-lang,.latin-token,.scientific-name,.technical-value,[data-latin="true"]){font-family:var(--et-sans,"DM Sans",sans-serif);direction:ltr}
 
-html[lang="ar"] {
-  direction: rtl;
-  --ar-ink: #10233a;
-  --ar-deep: #071b31;
-  --ar-navy: #0b2540;
-  --ar-paper: #f4f1e8;
-  --ar-ivory: #fbf9f3;
-  --ar-gold: #c9a35f;
-  --ar-muted: #69727b;
-  --ar-line: rgba(16, 35, 58, .14);
+/* Canonical header/overlay mechanics, mirrored only where RTL content is required. */
+html[lang="ar"] .site-header,html[lang="ar"] .header-inner{direction:ltr}
+html[lang="ar"] .et-language-switch{direction:ltr}
+html[lang="ar"] .nav-overlay,html[lang="ar"] .nav-overlay-inner,html[lang="ar"] .nav-overlay-links,html[lang="ar"] .nav-overlay-foot,html[lang="ar"] .nav-products-links{direction:rtl}
+html[lang="ar"] .nav-overlay-links,html[lang="ar"] .nav-overlay-links a,html[lang="ar"] .nav-overlay-links summary{text-align:right}
+
+/* AR legacy page classes use the same geometry as .es-* in es-pages.css. */
+html[lang="ar"] .ar-page .ar-container{width:min(1180px,calc(100% - 64px));margin-inline:auto}
+html[lang="ar"] .ar-page .ar-hero{min-height:88vh;display:flex;align-items:flex-end;padding:150px 0 90px;background:radial-gradient(circle at 80% 20%,rgba(199,162,96,.18),transparent 28%),linear-gradient(125deg,#071e17,#12382b 58%,#193f31);color:#fff;position:relative;overflow:hidden}
+html[lang="ar"] .ar-page .ar-hero:after{content:"";position:absolute;width:60vw;height:60vw;border:1px solid rgba(199,162,96,.18);border-radius:50%;left:-28vw;bottom:-36vw;pointer-events:none}
+html[lang="ar"] .ar-page :where(.ar-kicker,.ar-label){margin:0 0 20px;color:#c7a260;font-size:10px;font-weight:700;letter-spacing:0;text-transform:uppercase}
+html[lang="ar"] .ar-page :where(.ar-hero h1,.ar-section h2,.ar-cta h2){margin:0;font-size:clamp(3.6rem,8vw,8rem);line-height:1.02;letter-spacing:0;font-weight:500}
+html[lang="ar"] .ar-page :where(.ar-hero h1 em,.ar-section h2 em,.ar-cta h2 em){color:#d7bb7d;font-style:italic}
+html[lang="ar"] .ar-page .ar-lead{max-width:700px;margin:30px 0 0;color:rgba(255,255,255,.74);font-size:16px;line-height:1.85}
+html[lang="ar"] .ar-page .ar-section{padding:120px 0;background:#f3efe6;color:#13251f}
+html[lang="ar"] .ar-page .ar-section.dark{background:#061d17;color:#fff}
+html[lang="ar"] .ar-page .ar-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.65fr);gap:80px;align-items:end}
+html[lang="ar"] .ar-page .ar-copy{margin:0;color:#69746d;font-size:14px;line-height:1.95}
+html[lang="ar"] .ar-page .ar-section.dark .ar-copy{color:rgba(255,255,255,.64)}
+html[lang="ar"] .ar-page .ar-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(19,37,31,.14);margin-top:65px}
+html[lang="ar"] .ar-page .ar-card{min-height:300px;padding:28px;background:#faf8f1;display:flex;flex-direction:column;justify-content:space-between}
+html[lang="ar"] .ar-page .ar-section.dark .ar-card{background:#11382b}
+html[lang="ar"] .ar-page .ar-card>span{color:#c7a260;font-size:10px;letter-spacing:.14em}
+html[lang="ar"] .ar-page .ar-card h3{margin:55px 0 12px;font:500 34px/1 "Noto Sans Arabic",var(--et-sans,"DM Sans",sans-serif)}
+html[lang="ar"] .ar-page .ar-card p{margin:0;color:#69746d;font-size:13px;line-height:1.75}
+html[lang="ar"] .ar-page .ar-section.dark .ar-card p{color:rgba(255,255,255,.64)}
+html[lang="ar"] .ar-page .ar-card a{margin-top:20px;color:#c7a260;font-size:10px;font-weight:700;text-transform:uppercase}
+html[lang="ar"] .ar-page .ar-cta{padding:125px 0;background:#d8c7a6;color:#13251f}
+html[lang="ar"] .ar-page .ar-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+html[lang="ar"] .ar-page .ar-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid rgba(255,255,255,.35);color:#fff;font-size:10px;font-weight:700;letter-spacing:0;text-transform:uppercase}
+html[lang="ar"] .ar-page .ar-btn.primary{background:#f6f2e8;color:#13251f;border-color:#f6f2e8}
+
+/* Home uses the exact ES home geometry from home.css; only RTL direction is added here. */
+html[lang="ar"] .ar-home :where(.hero-grid,.intro-section .container,.products-section .container,.markets-section .container,.company-section .container,.contact-section .container,.intro-bottom,.section-heading,.company-grid,.markets-title,.market-grid,.product-row,.company-values){direction:rtl}
+html[lang="ar"] .ar-home :where(.hero-content,.hero-description,.intro-content,.section-heading,.markets-title,.company-grid,.contact-inner,.product-row,.market-grid article){text-align:right}
+
+/* Catalogue surfaces keep the ES catalogue system and only change reading direction. */
+html[lang="ar"] :where(.fish-catalog,.fish-catalog__inner,.fish-catalog__toolbar,.fish-catalog__filters,.fish-catalog-card,.market-catalogue-page,.market-catalogue-page .page-hero,.market-catalogue-page .page-hero-inner){direction:rtl}
+html[lang="ar"] :where(.fish-catalog__search,.fish-catalog__filter,.fish-catalog-card__body,.fish-catalog-card__detail span,.market-catalogue-page input,.market-catalogue-page button){font-family:"Noto Sans Arabic",var(--et-sans,"DM Sans",sans-serif)}
+html[lang="ar"] .fish-catalog__search,html[lang="ar"] .market-catalogue-page input{text-align:right}
+html[lang="ar"] :where(.fish-catalog__filter,.fish-catalog-card__meta){letter-spacing:0;text-transform:none}
+
+/* Existing specialised Markets/News experiences retain their JS behaviour, but inherit RTL typography. */
+html[lang="ar"] .markets-current :where(.current-stage,.current-bg,.current-title,.current-copy,.current-content){direction:rtl}
+html[lang="ar"] .markets-current .current-wrap{text-align:right}
+html[lang="ar"] .news-current :where(.news-section-head,.news-intelligence,.news-cta){direction:rtl;text-align:right}
+
+@media(max-width:900px){
+  html[lang="ar"] .ar-page .ar-container{width:calc(100% - 40px)}
+  html[lang="ar"] .ar-page .ar-hero{min-height:100svh;padding:124px 0 74px}
+  html[lang="ar"] .ar-page .ar-grid{grid-template-columns:1fr;gap:28px}
+  html[lang="ar"] .ar-page .ar-cards{grid-template-columns:1fr;margin-top:42px}
+  html[lang="ar"] .ar-page .ar-section{padding:78px 0}
 }
-
-html[lang="ar"] body {
-  direction: rtl;
-  background: var(--ar-paper);
-  color: var(--ar-ink);
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
-  overflow-x: hidden;
-}
-
-html[lang="ar"] body :where(h1,h2,h3,h4,p,li,button,input,textarea,select,label) {
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
-}
-
-html[lang="ar"] :where(.et-language-switch,.nav-overlay-lang,.latin-token,.scientific-name,.technical-value,[data-latin="true"]) {
-  font-family: var(--et-sans, "DM Sans", sans-serif);
-  direction: ltr;
-}
-
-html[lang="ar"] :where(main,.ar-page,.es-page,.news-current,.markets-current) {
-  direction: rtl;
-}
-
-/* Canonical header / overlay */
-html[lang="ar"] .site-header,
-html[lang="ar"] .header-inner {
-  direction: ltr;
-}
-
-html[lang="ar"] .et-language-switch {
-  direction: ltr;
-}
-
-html[lang="ar"] .nav-overlay,
-html[lang="ar"] .nav-overlay-inner,
-html[lang="ar"] .nav-overlay-links,
-html[lang="ar"] .nav-overlay-foot {
-  direction: rtl;
-}
-
-html[lang="ar"] .nav-overlay-links {
-  text-align: right;
-}
-
-html[lang="ar"] .nav-overlay-links a,
-html[lang="ar"] .nav-overlay-links summary {
-  direction: rtl;
-  text-align: right;
-}
-
-html[lang="ar"] .nav-products-links {
-  direction: rtl;
-  text-align: right;
-}
-
-html[lang="ar"] .nav-overlay-foot {
-  flex-direction: row-reverse;
-}
-
-/* Neutralize legacy green variables inherited from global/shared styles. */
-html[lang="ar"] body {
-  --et-green-950: #071b31;
-  --et-green-900: #0b2540;
-  --et-green-800: #0b2947;
-  --et-cream: #f4f1e8;
-  --et-cream-light: #fbf9f3;
-  --et-gold: #c9a35f;
-  --et-gold-light: #dec487;
-  --et-ink: #10233a;
-  --et-muted: #69727b;
-}
-
-html[lang="ar"] .nav-overlay,
-html[lang="ar"] .site-header,
-html[lang="ar"] .header-final,
-html[lang="ar"] .et-universal-footer {
-  background-color: var(--ar-deep) !important;
-}
-
-html[lang="ar"] .nav-overlay {
-  background-image: linear-gradient(135deg, #06172b 0%, #071b31 58%, #0b2947 100%) !important;
-}
-
-html[lang="ar"] .et-universal-footer {
-  color: rgba(255,255,255,.72) !important;
-}
-
-html[lang="ar"] .et-universal-footer a,
-html[lang="ar"] .et-universal-footer strong {
-  color: inherit;
-}
-
-html[lang="ar"] .et-footer-main,
-html[lang="ar"] .et-footer-legal,
-html[lang="ar"] .et-footer-bottom,
-html[lang="ar"] .et-footer-brand,
-html[lang="ar"] .et-footer-column {
-  direction: rtl;
-}
-
-html[lang="ar"] .et-footer-bottom {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-
-html[lang="ar"] .et-footer-legal {
-  text-align: right;
-}
-
-/* Shared page shell */
-html[lang="ar"] .ar-container,
-html[lang="ar"] .es-container,
-html[lang="ar"] .intl-container,
-html[lang="ar"] .container {
-  width: min(1240px, calc(100% - 64px));
-  margin-inline: auto;
-}
-
-html[lang="ar"] .ar-page .ar-hero,
-html[lang="ar"] .es-page .es-hero,
-html[lang="ar"] .news-current .news-hero {
-  min-height: auto !important;
-  padding: 148px 0 104px;
-  background: radial-gradient(circle at 18% 18%, rgba(201,163,95,.16), transparent 29%), linear-gradient(125deg, #06172b 0%, #0b2540 58%, #10385a 100%);
-}
-
-html[lang="ar"] .ar-page .ar-hero:after,
-html[lang="ar"] .es-page .es-hero:after,
-html[lang="ar"] .news-current .news-hero:after {
-  border-color: rgba(201,163,95,.16);
-}
-
-html[lang="ar"] .ar-page .ar-hero-inner,
-html[lang="ar"] .es-page .es-hero-inner,
-html[lang="ar"] .news-current .news-hero > * {
-  text-align: right;
-}
-
-html[lang="ar"] .ar-page .ar-kicker,
-html[lang="ar"] .ar-page .ar-label,
-html[lang="ar"] .es-page .es-kicker,
-html[lang="ar"] .es-page .es-label {
-  color: var(--ar-gold);
-  letter-spacing: 0;
-}
-
-html[lang="ar"] .ar-page .ar-hero h1,
-html[lang="ar"] .ar-page .ar-section h2,
-html[lang="ar"] .ar-page .ar-cta h2,
-html[lang="ar"] .es-page .es-hero h1,
-html[lang="ar"] .es-page .es-section h2,
-html[lang="ar"] .es-page .es-cta h2,
-html[lang="ar"] .news-current .news-hero h1,
-html[lang="ar"] .news-current :where(h2,h3) {
-  letter-spacing: 0;
-}
-
-html[lang="ar"] .ar-page .ar-hero h1,
-html[lang="ar"] .es-page .es-hero h1,
-html[lang="ar"] .news-current .news-hero h1 {
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
-  font-weight: 500;
-  line-height: 1.04;
-}
-
-html[lang="ar"] .ar-page .ar-section,
-html[lang="ar"] .es-page .es-section,
-html[lang="ar"] .news-current .news-section,
-html[lang="ar"] .markets-current {
-  background: var(--ar-paper);
-  color: var(--ar-ink);
-}
-
-html[lang="ar"] .ar-page .ar-section.dark,
-html[lang="ar"] .es-page .es-section.dark,
-html[lang="ar"] .news-current .news-subscribe,
-html[lang="ar"] .news-current .news-private,
-html[lang="ar"] .markets-current .current-stage {
-  background: var(--ar-deep);
-  color: #fff;
-}
-
-html[lang="ar"] .ar-page .ar-section,
-html[lang="ar"] .es-page .es-section {
-  padding: 96px 0;
-}
-
-html[lang="ar"] .ar-page .ar-grid,
-html[lang="ar"] .es-page .es-grid {
-  grid-template-columns: minmax(0, 1fr) minmax(260px, .65fr);
-  gap: 72px;
-}
-
-html[lang="ar"] .ar-page .ar-copy,
-html[lang="ar"] .es-page .es-copy,
-html[lang="ar"] .ar-page .ar-lead {
-  line-height: 1.95;
-}
-
-html[lang="ar"] .ar-page .ar-cards,
-html[lang="ar"] .es-page .es-cards {
-  gap: 1px;
-  margin-top: 56px;
-  background: rgba(16,35,58,.14);
-}
-
-html[lang="ar"] .ar-page .ar-card,
-html[lang="ar"] .es-page .es-card {
-  min-height: 300px;
-  padding: 30px;
-  background: var(--ar-ivory);
-}
-
-html[lang="ar"] .ar-page .ar-section.dark .ar-card,
-html[lang="ar"] .es-page .es-section.dark .es-card {
-  background: #0b2947;
-}
-
-html[lang="ar"] .ar-page .ar-card p,
-html[lang="ar"] .es-page .es-card p {
-  color: var(--ar-muted);
-}
-
-html[lang="ar"] .ar-page .ar-section.dark .ar-card p,
-html[lang="ar"] .es-page .es-section.dark .es-card p {
-  color: rgba(255,255,255,.66);
-}
-
-html[lang="ar"] .ar-page .ar-card span,
-html[lang="ar"] .es-page .es-card span {
-  color: var(--ar-gold);
-}
-
-html[lang="ar"] .ar-page .ar-cta,
-html[lang="ar"] .es-page .es-cta {
-  background: #d8c7a6;
-  color: var(--ar-ink);
-  padding: 108px 0;
-}
-
-html[lang="ar"] :where(.ar-btn,.es-btn,.intl-btn,.button,.cta-button,.contact-button,.inquiry-button) {
-  border-radius: 999px !important;
-  min-height: 52px;
-  padding-inline: 24px;
-  letter-spacing: 0 !important;
-}
-
-html[lang="ar"] :where(.ar-btn.primary,.es-btn.primary,.button-light,.large-button) {
-  background: linear-gradient(135deg, #f8f4ea, #dec487) !important;
-  color: var(--ar-ink) !important;
-  border-color: #dec487 !important;
-}
-
-/* Home */
-html[lang="ar"] .home-page .hero {
-  direction: rtl;
-  background: radial-gradient(circle at 72% 25%, rgba(201,163,95,.16), transparent 30%), linear-gradient(120deg, #041225 0%, #071b31 55%, #0b2947 100%);
-}
-
-html[lang="ar"] .home-page .hero-content,
-html[lang="ar"] .home-page .hero-description,
-html[lang="ar"] .home-page .intro-content,
-html[lang="ar"] .home-page .section-heading,
-html[lang="ar"] .home-page .markets-title,
-html[lang="ar"] .home-page .company-grid,
-html[lang="ar"] .home-page .contact-inner {
-  text-align: right;
-  direction: rtl;
-}
-
-html[lang="ar"] .home-page .product-row,
-html[lang="ar"] .home-page .market-grid article {
-  direction: rtl;
-  text-align: right;
-}
-
-html[lang="ar"] .home-page .markets-section,
-html[lang="ar"] .home-page .contact-section {
-  background: var(--ar-deep);
-}
-
-html[lang="ar"] .home-page .intro-section,
-html[lang="ar"] .home-page .products-section,
-html[lang="ar"] .home-page .company-section {
-  background: var(--ar-paper);
-}
-
-/* Markets */
-html[lang="ar"] .markets-current .current-stage,
-html[lang="ar"] .markets-current .current-bg,
-html[lang="ar"] .markets-current .current-title,
-html[lang="ar"] .markets-current .current-copy {
-  direction: rtl;
-}
-
-html[lang="ar"] .markets-current .current-word {
-  color: rgba(255,255,255,.055);
-}
-
-/* News */
-html[lang="ar"] .news-current {
-  background: var(--ar-paper);
-  color: var(--ar-ink);
-}
-
-html[lang="ar"] .news-current .news-hero {
-  background: radial-gradient(circle at 80% 20%, rgba(201,163,95,.12), transparent 28%), linear-gradient(135deg, #06172b, #0a2540 54%, #10385a);
-}
-
-html[lang="ar"] .news-current .news-section-head,
-html[lang="ar"] .news-current .news-intelligence,
-html[lang="ar"] .news-current .news-cta {
-  direction: rtl;
-  text-align: right;
-}
-
-/* Catalogue surfaces */
-html[lang="ar"] :where(.fish-catalog,.fish-catalog__inner,.fish-catalog__toolbar,.fish-catalog__filters,.fish-catalog-card) {
-  direction: rtl;
-}
-
-html[lang="ar"] .fish-catalog__toolbar,
-html[lang="ar"] .fish-catalog__filters {
-  text-align: right;
-}
-
-html[lang="ar"] .fish-catalog__search {
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
-  text-align: right;
-}
-
-html[lang="ar"] .fish-catalog-card__body,
-html[lang="ar"] .fish-catalog-card__detail span {
-  text-align: right;
-}
-
-html[lang="ar"] :where(.fish-catalog__filter,.fish-catalog-card__meta) {
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-html[lang="ar"] .ar-fish-catalog {
-  background: var(--ar-paper) !important;
-}
-
-html[lang="ar"] .ar-fish-gcc-note {
-  color: var(--ar-muted) !important;
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif) !important;
-  line-height: 1.9 !important;
-  text-align: right;
-}
-
-/* Remove visual residue from obsolete Arabic footer/page shells. */
-html[lang="ar"] .ar-footer,
-html[lang="ar"] .es-footer,
-html[lang="ar"] .intl-footer {
-  background: var(--ar-deep) !important;
-  color: rgba(255,255,255,.72) !important;
-}
-
-@media (max-width: 900px) {
-  html[lang="ar"] .ar-container,
-  html[lang="ar"] .es-container,
-  html[lang="ar"] .intl-container,
-  html[lang="ar"] .container {
-    width: calc(100% - 40px);
-  }
-
-  html[lang="ar"] .ar-page .ar-hero,
-  html[lang="ar"] .es-page .es-hero,
-  html[lang="ar"] .news-current .news-hero {
-    padding-block: 124px 74px;
-  }
-
-  html[lang="ar"] .ar-page .ar-grid,
-  html[lang="ar"] .es-page .es-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  html[lang="ar"] .ar-page .ar-cards,
-  html[lang="ar"] .es-page .es-cards {
-    grid-template-columns: 1fr;
-    margin-top: 42px;
-  }
-
-  html[lang="ar"] .ar-page .ar-section,
-  html[lang="ar"] .es-page .es-section {
-    padding-block: 78px;
-  }
-}
-
-@media (max-width: 600px) {
-  html[lang="ar"] .ar-container,
-  html[lang="ar"] .es-container,
-  html[lang="ar"] .intl-container,
-  html[lang="ar"] .container {
-    width: calc(100% - 32px);
-  }
-
-  html[lang="ar"] .ar-page .ar-hero,
-  html[lang="ar"] .es-page .es-hero,
-  html[lang="ar"] .news-current .news-hero {
-    padding-block: 108px 62px;
-  }
-
-  html[lang="ar"] .ar-page .ar-cta,
-  html[lang="ar"] .es-page .es-cta {
-    padding-block: 78px;
-  }
-
-  html[lang="ar"] .nav-overlay-inner {
-    padding-inline: 24px;
-  }
-
-  html[lang="ar"] .nav-overlay-links a,
-  html[lang="ar"] .nav-overlay-links summary {
-    font-size: clamp(2rem, 10vw, 3.4rem);
-  }
-
-  html[lang="ar"] .et-footer-main {
-    grid-template-columns: 1fr;
-  }
-
-  html[lang="ar"] .et-footer-bottom {
-    flex-direction: column;
-    gap: 8px;
-  }
+@media(max-width:600px){
+  html[lang="ar"] .ar-page .ar-container{width:calc(100% - 32px)}
+  html[lang="ar"] .ar-page :where(.ar-hero h1,.ar-section h2,.ar-cta h2){font-size:clamp(2.8rem,14vw,5rem)}
 }
