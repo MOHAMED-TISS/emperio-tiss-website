@@ -30,7 +30,7 @@
     const neutralizerKey = 'etArContentNeutralizer';
     if (!doc.querySelector(`script[data-${neutralizerKey}]`)) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/ar-content-neutralizer.js?v=20260911-1';
+      script.src = '/assets/js/ar-content-neutralizer.js?v=20260911-2';
       script.async = false;
       script.dataset[neutralizerKey] = 'true';
       doc.head.appendChild(script);
