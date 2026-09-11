@@ -5,6 +5,9 @@
   if (!(root.lang || '').toLowerCase().startsWith('ar')) return;
 
   const MENA = 'منطقة الشرق الأوسط وشمال أفريقيا (MENA)';
+  const countryPattern = /(?:إسبانيا|فرنسا|إيطاليا|ألمانيا|هولندا|المغرب|تونس|موريتانيا|السعودية|الإمارات|قطر|الكويت|البحرين|عُمان|الأردن|لبنان|مصر|ليبيا|الجزائر|تركيا|العراق|سوريا)/g;
+  const marketContextPattern = /(?:السوق|أسواق|وجهة|وجهات|عملاء|العملاء|المشترين|التصدير|التوريد)/;
+
   const replacements = [
     [/قنوات التصدير الإسبانية المعتمدة إلى السوق السعودي/g, `قنوات التوريد الدولية المناسبة إلى ${MENA}`],
     [/قنوات التصدير الإسبانية/g, `قنوات التوريد الدولية إلى ${MENA}`],
@@ -13,7 +16,7 @@
     [/المشترين في السعودية/g, `المشترين في ${MENA}`],
     [/سوق الشرق الأوسط/g, `سوق ${MENA}`],
     [/أسواق الشرق الأوسط/g, `أسواق ${MENA}`],
-    [/دول الخليج/g, `${MENA}`],
+    [/دول الخليج/g, MENA],
     [/أسواق الخليج/g, `أسواق ${MENA}`],
     [/الأسواق الخليجية/g, `أسواق ${MENA}`],
     [/السوق الخليجي/g, `سوق ${MENA}`],
@@ -30,6 +33,43 @@
     let next = String(value ?? '');
     for (const [pattern, replacement] of replacements) next = next.replace(pattern, replacement);
     return next;
+  };
+
+  const neutralizeMarketContainers = () => {
+    const selectors = [
+      '.markets-section .market-grid',
+      '.markets-section .markets-title',
+      '.markets-current .current-wordfield',
+      '.markets-current .current-region-list',
+      '.markets-current .current-movement-copy',
+      '.market-catalogue__context',
+      '.market-catalogue__intro',
+      '.market-catalogue__title',
+      '.fish-catalog .ar-fish-gcc-note',
+      '.ar-fish-gcc-note'
+    ];
+    document.querySelectorAll(selectors.join(',')).forEach((container) => {
+      const text = container.textContent || '';
+      if (!countryPattern.test(text)) {
+        countryPattern.lastIndex = 0;
+        return;
+      }
+      countryPattern.lastIndex = 0;
+      const replacement = text
+        .replace(/إسبانيا · فرنسا · إيطاليا · ألمانيا · هولندا/g, MENA)
+        .replace(/المغرب · تونس · موريتانيا · غرب أفريقيا/g, MENA)
+        .replace(/إسبانيا وفرنسا وإيطاليا وألمانيا إلى المغرب وتونس وموريتانيا ووجهات جديدة/g, `داخل ${MENA} وعبر وجهات تجارية دولية`)
+        .replace(/من إسبانيا وفرنسا وإيطاليا وألمانيا إلى المغرب وتونس وموريتانيا ووجهات جديدة/g, `داخل ${MENA} وعبر وجهات تجارية دولية`);
+      const shouldCollapse = marketContextPattern.test(replacement);
+      if (!shouldCollapse) return;
+      container.textContent = replacement.replace(countryPattern, MENA);
+      countryPattern.lastIndex = 0;
+    });
+
+    document.querySelectorAll('.market-catalogue__context .market-catalogue__tag').forEach((tag) => {
+      if (countryPattern.test(tag.textContent || '')) tag.textContent = MENA;
+      countryPattern.lastIndex = 0;
+    });
   };
 
   const neutralizeTextNodes = (scope) => {
@@ -65,6 +105,7 @@
   const run = () => {
     if (!document.body) return;
     neutralizeTextNodes(document.body);
+    neutralizeMarketContainers();
     neutralizeMetadata();
   };
 
@@ -90,6 +131,7 @@
         });
       }
     }
+    neutralizeMarketContainers();
     neutralizeMetadata();
   });
 
