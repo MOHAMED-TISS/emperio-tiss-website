@@ -73,9 +73,17 @@ test('legacy root Arabic adapter filenames have no runtime consumers', () => {
     '/assets/js/ar-content-neutralizer.js',
     '/assets/js/ar-catalogue-taxonomy.js'
   ];
-  const candidates = walk(repoRoot).filter((file) => !file.includes(`${path.sep}docs${path.sep}superpowers${path.sep}`));
+  const testFile = path.resolve('tests/ar-language-separation.test.mjs');
+  const candidates = walk(repoRoot).filter((file) => {
+    if (path.resolve(file) === testFile) return false;
+    return !file.includes(`${path.sep}docs${path.sep}superpowers${path.sep}`);
+  });
   for (const file of candidates) {
     const text = read(file);
-    for (const needle of forbidden) assert.doesNotMatch(text, new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `${file} still references ${needle}`);
+    for (const needle of forbidden) assert.doesNotMatch(
+      text,
+      new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')),
+      `${file} still references ${needle}`
+    );
   }
 });
