@@ -1,0 +1,232 @@
+/* EMPERIO TISS — Arabic visual finishing layer
+   Keeps the dedicated RTL layouts while aligning the Arabic experience
+   with the current navy / ivory / champagne-gold brand system.
+*/
+
+html[lang="ar"] body {
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+html[lang="ar"] body,
+html[lang="ar"] body * {
+  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
+}
+
+html[lang="ar"] body {
+  --et-deep: #071b31;
+  --et-navy: #0b2540;
+  --et-ink: #10233a;
+  --et-paper: #f4f1e8;
+  --et-ivory: #f4f1e8;
+  --et-gold: #c9a35f;
+  --et-muted: #69727b;
+
+  --home-ink: #10233a;
+  --home-deep: #071b31;
+  --home-green: #0b2540;
+  --home-cream: #f4f1e8;
+  --home-gold: #c9a35f;
+  --home-muted: #69727b;
+
+  --es-paper: #f4f1e8;
+  --es-deep: #071b31;
+  --es-gold: #c9a35f;
+  --es-ink: #10233a;
+  --es-muted: #69727b;
+
+  --ar-ink: #10233a;
+  --ar-deep: #071b31;
+  --ar-paper: #f4f1e8;
+  --ar-gold: #c9a35f;
+  --ar-muted: #69727b;
+
+  --mc-deep: #0b2540;
+  --mc-deeper: #071b31;
+  --mc-ivory: #f4f1e8;
+  --mc-sand: #ded0b7;
+  --mc-gold: #c9a35f;
+  --mc-ink: #10233a;
+  --mc-muted: #69727b;
+  --mc-line: rgba(201, 163, 95, .72);
+
+  --news-deep: #071b31;
+  --news-ivory: #f4f1e8;
+  --news-ink: #10233a;
+  --news-gold: #c9a35f;
+  --news-muted: #69727b;
+  --news-line: rgba(16, 35, 58, .14);
+
+  background: var(--et-paper);
+  color: var(--et-ink);
+}
+
+/* Shared RTL header language/navigation polish. */
+html[lang="ar"] .site-header .header-inner {
+  direction: rtl;
+}
+
+html[lang="ar"] .et-language-switch {
+  direction: ltr;
+}
+
+html[lang="ar"] .nav-overlay,
+html[lang="ar"] .nav-overlay-inner,
+html[lang="ar"] .nav-overlay-links,
+html[lang="ar"] .nav-overlay-foot {
+  direction: rtl;
+}
+
+html[lang="ar"] .nav-overlay-links {
+  text-align: right;
+}
+
+html[lang="ar"] .nav-products-links {
+  text-align: right;
+}
+
+/* Home — replace the legacy green opening with the current navy editorial tone. */
+html[lang="ar"] .home-page .hero {
+  background: radial-gradient(circle at 72% 25%, rgba(201, 163, 95, .16), transparent 30%), linear-gradient(120deg, #041225 0%, #071b31 55%, #0b2947 100%);
+}
+
+html[lang="ar"] .home-page .hero:before {
+  background: linear-gradient(90deg, rgba(4, 18, 37, .92), rgba(4, 18, 37, .42) 58%, rgba(4, 18, 37, .68));
+}
+
+html[lang="ar"] .home-page .intro-section,
+html[lang="ar"] .home-page .products-section,
+html[lang="ar"] .home-page .company-section {
+  background: var(--home-cream);
+}
+
+html[lang="ar"] .home-page .markets-section,
+html[lang="ar"] .home-page .contact-section {
+  background: var(--home-deep);
+}
+
+/* Arabic editorial page system. */
+html[lang="ar"] .ar-page .ar-hero {
+  background: radial-gradient(circle at 20% 18%, rgba(201, 163, 95, .14), transparent 28%), linear-gradient(125deg, #06172b, #0b2540 58%, #10385a);
+}
+
+html[lang="ar"] .ar-page .ar-hero:after {
+  border-color: rgba(201, 163, 95, .16);
+}
+
+html[lang="ar"] .ar-page .ar-section {
+  background: var(--ar-paper);
+}
+
+html[lang="ar"] .ar-page .ar-section.dark {
+  background: var(--ar-deep);
+}
+
+html[lang="ar"] .ar-page .ar-card {
+  background: #fbf9f3;
+}
+
+html[lang="ar"] .ar-page .ar-section.dark .ar-card {
+  background: #0b2947;
+}
+
+html[lang="ar"] .ar-page .ar-cta {
+  background: #d8c7a6;
+}
+
+html[lang="ar"] .ar-page .ar-footer {
+  background: #06172b;
+}
+
+/* About / Contact pages use the shared ES editorial structure. */
+html[lang="ar"] .es-page {
+  --es-paper: #f4f1e8;
+  --es-deep: #071b31;
+  --es-gold: #c9a35f;
+  --es-ink: #10233a;
+  --es-muted: #69727b;
+}
+
+html[lang="ar"] .es-page .es-hero {
+  background: radial-gradient(circle at 80% 20%, rgba(201, 163, 95, .16), transparent 28%), linear-gradient(125deg, #06172b, #0b2540 58%, #10385a);
+}
+
+html[lang="ar"] .es-page .es-hero:after {
+  border-color: rgba(201, 163, 95, .16);
+}
+
+html[lang="ar"] .es-page .es-section {
+  background: var(--es-paper);
+}
+
+html[lang="ar"] .es-page .es-section.dark {
+  background: var(--es-deep);
+}
+
+html[lang="ar"] .es-page .es-card {
+  background: #fbf9f3;
+}
+
+html[lang="ar"] .es-page .es-section.dark .es-card {
+  background: #0b2947;
+}
+
+html[lang="ar"] .es-page .es-cta {
+  background: #d8c7a6;
+}
+
+/* Markets current — preserve its scroll interaction, only change the palette. */
+html[lang="ar"] .markets-current {
+  background: var(--mc-ivory);
+  color: var(--mc-ink);
+}
+
+html[lang="ar"] .markets-current .current-stage {
+  background: linear-gradient(180deg, #06172b 0%, #08213a 30%, #0b2947 52%, #08213a 76%, #041225 100%);
+}
+
+html[lang="ar"] .markets-current .current-bg {
+  background: radial-gradient(circle at 50% 42%, rgba(201, 163, 95, .06), transparent 20%), radial-gradient(circle at 18% 76%, rgba(81, 114, 145, .08), transparent 26%), radial-gradient(circle at 84% 24%, rgba(255, 255, 255, .018), transparent 18%);
+}
+
+html[lang="ar"] .markets-current .current-word {
+  color: rgba(255, 255, 255, .055);
+}
+
+/* News — align the opening and dark bands to the same navy editorial system. */
+html[lang="ar"] .news-current {
+  background: var(--news-ivory);
+  color: var(--news-ink);
+}
+
+html[lang="ar"] .news-current .news-hero {
+  background: radial-gradient(circle at 80% 20%, rgba(201, 163, 95, .12), transparent 28%), linear-gradient(135deg, #06172b, #0a2540 54%, #10385a);
+}
+
+html[lang="ar"] .news-current .news-hero:after {
+  border-color: rgba(201, 163, 95, .14);
+}
+
+/* Arabic typography: avoid Playfair letter-spacing from Latin layouts. */
+html[lang="ar"] .ar-page .ar-hero h1,
+html[lang="ar"] .ar-page .ar-section h2,
+html[lang="ar"] .ar-page .ar-cta h2,
+html[lang="ar"] .es-page .es-hero h1,
+html[lang="ar"] .es-page .es-section h2,
+html[lang="ar"] .es-page .es-cta h2,
+html[lang="ar"] .news-current .news-hero h1,
+html[lang="ar"] .news-current .news-section-head h2,
+html[lang="ar"] .news-current .news-intelligence h2,
+html[lang="ar"] .news-current .news-subscribe h2,
+html[lang="ar"] .news-current .news-private h2,
+html[lang="ar"] .news-current .news-cta h2,
+html[lang="ar"] .markets-current .current-title {
+  letter-spacing: 0;
+}
+
+@media (max-width: 760px) {
+  html[lang="ar"] .site-header .site-logo img {
+    width: 88px;
+    height: auto;
+  }
+}
