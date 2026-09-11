@@ -17,36 +17,39 @@
           position: relative;
         }
 
+        /* Soft editorial controls: smooth corners instead of circular UI bubbles. */
         body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
-          width: 30px;
-          height: 30px;
-          min-width: 30px;
-          min-height: 30px;
+          width: 34px;
+          height: 28px;
+          min-width: 34px;
+          min-height: 28px;
           margin: 0;
           padding: 0;
-          border: 1px solid rgba(243,239,230,.55);
-          background: rgba(7,30,53,.24);
-          color: rgba(243,239,230,.94);
-          box-shadow: 0 4px 12px rgba(0,0,0,.10);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
-          font-size: 17px;
+          border: 1px solid rgba(243,239,230,.48);
+          border-radius: 10px;
+          background: rgba(7,30,53,.18);
+          color: rgba(243,239,230,.92);
+          box-shadow: 0 3px 10px rgba(0,0,0,.08);
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
+          font-size: 16px;
+          font-weight: 400;
           line-height: 1;
+          opacity: .86;
           transition: background .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease;
-          opacity: .9;
         }
 
         body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:hover,
         body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:focus-visible {
-          background: rgba(7,30,53,.40);
-          border-color: rgba(199,162,96,.72);
+          background: rgba(7,30,53,.34);
+          border-color: rgba(199,162,96,.68);
           color: #f3efe6;
           opacity: 1;
           outline: none;
         }
 
         body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:active {
-          transform: translateY(-50%) scale(.95);
+          transform: translateY(-50%) scale(.96);
         }
 
         body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--prev {
@@ -59,14 +62,15 @@
 
         body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
           bottom: 8px;
-          min-height: 21px;
+          min-height: 20px;
           padding: 0 7px;
-          border: 1px solid rgba(243,239,230,.24);
-          background: rgba(7,30,53,.24);
-          color: rgba(243,239,230,.94);
-          box-shadow: 0 3px 10px rgba(0,0,0,.08);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
+          border: 1px solid rgba(243,239,230,.22);
+          border-radius: 8px;
+          background: rgba(7,30,53,.18);
+          color: rgba(243,239,230,.92);
+          box-shadow: 0 3px 9px rgba(0,0,0,.06);
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
           font-size: 8px;
           line-height: 1;
           letter-spacing: .09em;
@@ -82,47 +86,47 @@
           justify-content: center;
           gap: 4px;
           width: auto;
-          max-width: calc(100% - 96px);
+          max-width: calc(100% - 112px);
           margin: 0;
           padding: 3px 5px;
-          border: 1px solid rgba(243,239,230,.20);
-          border-radius: 999px;
-          background: rgba(7,30,53,.18);
-          box-shadow: 0 3px 10px rgba(0,0,0,.07);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
+          border: 1px solid rgba(243,239,230,.18);
+          border-radius: 8px;
+          background: rgba(7,30,53,.14);
+          box-shadow: 0 3px 9px rgba(0,0,0,.05);
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
           transform: translateX(-50%);
         }
 
         body.fish-catalog-pilot .fish-catalog-card__thumb {
           flex: 0 0 auto;
-          width: 28px;
-          height: 20px;
-          min-width: 28px;
-          min-height: 20px;
+          width: 26px;
+          height: 19px;
+          min-width: 26px;
+          min-height: 19px;
           padding: 0;
-          border: 1px solid rgba(243,239,230,.32);
-          border-radius: 4px;
-          background: rgba(243,239,230,.10);
-          opacity: .62;
+          border: 1px solid rgba(243,239,230,.30);
+          border-radius: 5px;
+          background: rgba(243,239,230,.08);
+          opacity: .58;
           box-shadow: none;
           transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
         }
 
         body.fish-catalog-pilot .fish-catalog-card__thumb:hover {
-          opacity: .9;
-          border-color: rgba(243,239,230,.62);
+          opacity: .92;
+          border-color: rgba(243,239,230,.60);
           transform: translateY(-1px);
         }
 
         body.fish-catalog-pilot .fish-catalog-card__thumb.is-active {
           opacity: 1;
           border-color: #c7a260;
-          box-shadow: 0 0 0 1px rgba(199,162,96,.18);
+          box-shadow: 0 0 0 1px rgba(199,162,96,.16);
         }
 
         body.fish-catalog-pilot .fish-catalog-card__thumb img {
-          border-radius: 3px;
+          border-radius: 4px;
         }
       }
     `;
