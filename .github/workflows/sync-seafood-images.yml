@@ -58,12 +58,13 @@ jobs:
                   if key:
                       aliases[key] = product_id
 
-          # Filename aliases for active Fish catalogue IDs that are already
-          # handled by the Fish renderer but may not yet exist in the
-          # central catalogue metadata.
+          # Filename aliases for Fish catalogue IDs already handled by the
+          # shared renderer but not yet represented in the central catalogue.
           filename_aliases = {
               'lenguado': 'sole'
           }
+
+          known_generated_ids = set(aliases.values()) | set(filename_aliases.values())
 
           allowed = {'.jpg', '.jpeg', '.png', '.webp'}
           grouped = {}
@@ -85,16 +86,20 @@ jobs:
                   continue
               grouped.setdefault(product_id, []).append('/assets/products/incoming/' + path.name)
 
-          # Remove paths generated from the seafood incoming folder, preserving all other catalogue families.
+          # Refresh only mappings controlled by this sync job. Legacy or
+          # renderer-only seafood mappings not represented in catalog-v1.3
+          # are intentionally preserved instead of being deleted.
           seafood_prefix = '/assets/products/incoming/'
           for product_id, images in list(manifest.items()):
+              if product_id not in known_generated_ids:
+                  continue
               if not isinstance(images, list):
                   images = [images] if images else []
               remaining = [img for img in images if not (isinstance(img, str) and img.startswith(seafood_prefix))]
               if remaining:
                   manifest[product_id] = remaining
               else:
-                  del manifest[product_id]
+                  manifest.pop(product_id, None)
 
           for product_id, images in grouped.items():
               manifest[product_id] = images
