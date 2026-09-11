@@ -1,5 +1,416 @@
 (() => {
   'use strict';
+
+  /* Shared responsive Fish catalogue UI system.
+     Loaded by every Fish catalogue page, including Arabic where the
+     editorial stylesheet is intentionally not used. Keep this scoped to
+     Fish catalogue/gallery components so other site sections are untouched. */
+  if (!document.getElementById('fish-catalog-responsive-system')) {
+    const style = document.createElement('style');
+    style.id = 'fish-catalog-responsive-system';
+    style.textContent = `
+      .fish-catalog-grid,
+      .fish-catalog-card,
+      .fish-catalog-card__gallery,
+      .fish-catalog-card__media { box-sizing: border-box; }
+
+      .fish-catalog-card__media {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .fish-catalog-card__media .fish-card-image {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        pointer-events: auto;
+        object-fit: cover;
+      }
+
+      .fish-card-nav {
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        padding: 0;
+        border: 1px solid rgba(243,239,230,.62);
+        border-radius: 50%;
+        background: rgba(7,30,53,.84);
+        color: #f3efe6;
+        box-shadow: 0 8px 20px rgba(0,0,0,.18);
+        transform: translateY(-50%);
+        cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        font: 400 24px/1 "DM Sans", Arial, sans-serif;
+      }
+
+      .fish-card-nav:hover,
+      .fish-card-nav:focus-visible {
+        background: #071e35;
+        border-color: #c7a260;
+        color: #f3efe6;
+        outline: none;
+      }
+
+      .fish-card-nav:active { transform: translateY(-50%) scale(.96); }
+      .fish-card-nav--prev { left: 10px; }
+      .fish-card-nav--next { right: 10px; }
+
+      .fish-card-counter {
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        z-index: 5;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 28px;
+        max-width: calc(100% - 120px);
+        padding: 0 10px;
+        border: 1px solid rgba(243,239,230,.28);
+        border-radius: 999px;
+        background: rgba(7,30,53,.72);
+        color: #f3efe6;
+        transform: translateX(-50%);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        pointer-events: none;
+        font: 600 10px/1 "DM Sans", Arial, sans-serif;
+        letter-spacing: .08em;
+      }
+
+      .fish-catalog__toolbar { box-sizing: border-box; }
+      .fish-catalog__filters { min-width: 0; }
+      .fish-catalog__filter { flex: 0 0 auto; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+      .fish-catalog-card__link,
+      .fish-catalog .hero-cta,
+      .fish-catalog .catalog-cta,
+      .fish-catalog .view-catalog { max-width: 100%; box-sizing: border-box; }
+
+      .fish-gallery {
+        z-index: 10000 !important;
+        box-sizing: border-box;
+        overscroll-behavior: contain;
+      }
+
+      .fish-gallery__panel {
+        position: relative;
+        z-index: 1;
+        box-sizing: border-box;
+      }
+
+      .fish-gallery button {
+        z-index: 10 !important;
+        box-sizing: border-box;
+        min-width: 44px;
+        min-height: 44px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .fish-gallery__image {
+        position: relative;
+        z-index: 1;
+      }
+
+      @media (max-width: 760px) {
+        .fish-catalog { overflow: visible; }
+
+        .fish-catalog-grid {
+          grid-template-columns: 1fr !important;
+          gap: 14px !important;
+        }
+
+        .fish-catalog-card {
+          min-width: 0;
+          width: 100%;
+          transform: none;
+        }
+
+        .fish-catalog-card:hover {
+          transform: none;
+        }
+
+        .fish-catalog-card__gallery {
+          margin: 6px !important;
+          border-radius: 11px;
+        }
+
+        .fish-catalog-card__media {
+          width: 100%;
+          min-height: 0;
+          aspect-ratio: 16 / 10 !important;
+          border-radius: 11px;
+        }
+
+        .fish-catalog-card__body {
+          min-width: 0;
+          padding: 1rem 1rem 1.15rem !important;
+          gap: .55rem;
+        }
+
+        .fish-catalog-card__title {
+          font-size: clamp(1.35rem, 6vw, 1.9rem) !important;
+          line-height: 1.04 !important;
+          overflow-wrap: anywhere;
+        }
+
+        .fish-catalog-card__scientific { font-size: .8rem; line-height: 1.45; }
+
+        .fish-catalog-card__meta {
+          gap: .55rem;
+          flex-wrap: wrap;
+          min-width: 0;
+        }
+
+        .fish-card-nav {
+          width: 46px;
+          height: 46px;
+          top: 50%;
+          font-size: 25px;
+          box-shadow: 0 8px 18px rgba(0,0,0,.2);
+        }
+
+        .fish-card-nav--prev { left: 9px; }
+        .fish-card-nav--next { right: 9px; }
+
+        .fish-card-counter {
+          bottom: 9px;
+          min-height: 29px;
+          padding: 0 10px;
+        }
+
+        .fish-catalog-card__thumbs {
+          display: flex;
+          flex-wrap: nowrap;
+          gap: 7px;
+          max-width: 100%;
+          overflow-x: auto;
+          padding: 7px !important;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior-x: contain;
+        }
+
+        .fish-catalog-card__thumbs::-webkit-scrollbar { display: none; }
+        .fish-catalog-card__thumb { flex: 0 0 auto; }
+
+        .fish-catalog__toolbar {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          padding: 14px !important;
+          border-radius: 12px !important;
+        }
+
+        .fish-catalog__search {
+          width: 100% !important;
+          min-width: 0 !important;
+          min-height: 48px;
+          box-sizing: border-box;
+        }
+
+        .fish-catalog__filters {
+          display: flex;
+          flex-wrap: nowrap;
+          gap: 8px !important;
+          max-width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 2px 2px 4px;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior-x: contain;
+          scroll-snap-type: x proximity;
+        }
+
+        .fish-catalog__filters::-webkit-scrollbar { display: none; }
+
+        .fish-catalog__filter {
+          min-height: 46px;
+          min-width: max-content;
+          padding: .72rem 1rem !important;
+          scroll-snap-align: start;
+          white-space: nowrap;
+        }
+
+        .fish-catalog-card__link,
+        .fish-catalog .hero-cta,
+        .fish-catalog .catalog-cta,
+        .fish-catalog .view-catalog {
+          min-height: 48px !important;
+          padding: .78rem 1rem !important;
+          width: fit-content;
+          max-width: 100%;
+          white-space: normal;
+          text-align: center;
+        }
+
+        .fish-catalog-pilot .seafood-category-nav {
+          position: relative;
+          isolation: isolate;
+          box-sizing: border-box;
+        }
+
+        .fish-catalog-pilot .seafood-category-nav__links {
+          display: flex;
+          flex-wrap: nowrap;
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x proximity;
+          overscroll-behavior-x: contain;
+        }
+
+        .fish-catalog-pilot .seafood-category-nav__links::-webkit-scrollbar { display: none; }
+
+        .fish-catalog-pilot .seafood-category-nav__links a {
+          flex: 0 0 auto;
+          min-height: 48px;
+          scroll-snap-align: start;
+          touch-action: manipulation;
+        }
+
+        .fish-catalog-pilot .fish-scroll-cue {
+          max-width: 100%;
+          white-space: normal;
+          text-align: center;
+          box-sizing: border-box;
+        }
+
+        .fish-emblematic__intro h2,
+        .fish-emblematic__intro h2 span {
+          white-space: normal !important;
+          overflow-wrap: anywhere;
+        }
+
+        .fish-emblematic-card {
+          min-width: 0;
+        }
+
+        .fish-emblematic-card__media--image {
+          min-height: 0 !important;
+        }
+
+        .fish-emblematic-card__body {
+          min-height: auto !important;
+          padding: 1rem 1.1rem 1.25rem !important;
+        }
+
+        .fish-emblematic-card h3 {
+          font-size: clamp(1.8rem, 8vw, 2.55rem) !important;
+          line-height: .98 !important;
+        }
+
+        .fish-emblematic-card__meta {
+          flex-wrap: wrap;
+        }
+
+        .fish-gallery {
+          inset: 0 !important;
+          width: 100vw !important;
+          height: 100dvh !important;
+          padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)) !important;
+          overflow: hidden !important;
+          touch-action: none;
+        }
+
+        .fish-gallery__panel {
+          width: 100% !important;
+          height: 100% !important;
+          max-width: none !important;
+          max-height: none !important;
+        }
+
+        .fish-gallery__image {
+          max-width: calc(100vw - 74px) !important;
+          max-height: calc(100dvh - 132px) !important;
+          width: auto !important;
+          height: auto !important;
+          object-fit: contain !important;
+        }
+
+        .fish-gallery button {
+          width: 48px !important;
+          height: 48px !important;
+          font-size: 27px !important;
+          background: rgba(7,30,53,.86) !important;
+        }
+
+        .fish-gallery__prev { left: max(8px, env(safe-area-inset-left)) !important; top: 50% !important; }
+        .fish-gallery__next { right: max(8px, env(safe-area-inset-right)) !important; top: 50% !important; }
+        .fish-gallery__close { top: max(8px, env(safe-area-inset-top)) !important; right: max(8px, env(safe-area-inset-right)) !important; }
+
+        .fish-gallery__counter {
+          bottom: max(12px, env(safe-area-inset-bottom)) !important;
+          max-width: calc(100vw - 112px) !important;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .fish-catalog-pilot .page-hero-inner,
+        .fish-catalog-pilot .fish-emblematic__inner,
+        .fish-catalog-pilot .fish-catalog__inner {
+          width: calc(100% - 24px) !important;
+        }
+
+        .fish-catalog-card__media { aspect-ratio: 4 / 3 !important; }
+        .fish-card-nav { width: 44px; height: 44px; }
+        .fish-card-nav--prev { left: 7px; }
+        .fish-card-nav--next { right: 7px; }
+
+        .fish-catalog__filter { min-height: 44px; padding-inline: .9rem !important; }
+
+        .fish-gallery__image {
+          max-width: calc(100vw - 64px) !important;
+          max-height: calc(100dvh - 126px) !important;
+        }
+
+        .fish-gallery button {
+          width: 44px !important;
+          height: 44px !important;
+          font-size: 25px !important;
+        }
+      }
+
+      @media (hover: none) {
+        .fish-card-nav:hover,
+        .fish-catalog-card:hover,
+        .fish-catalog-card__link:hover,
+        .fish-catalog .hero-cta:hover,
+        .fish-catalog .catalog-cta:hover,
+        .fish-catalog .view-catalog:hover { transform: none !important; }
+      }
+
+      [dir="rtl"] .fish-card-nav--prev { right: 9px; left: auto; }
+      [dir="rtl"] .fish-card-nav--next { left: 9px; right: auto; }
+      [dir="rtl"] .fish-gallery__prev { right: 10px; left: auto; }
+      [dir="rtl"] .fish-gallery__next { left: 10px; right: auto; }
+
+      @media (max-width: 760px) {
+        [dir="rtl"] .fish-catalog-pilot .seafood-category-nav__links a,
+        [dir="rtl"] .fish-catalog__filter { scroll-snap-align: end; }
+        [dir="rtl"] .fish-card-nav--prev { right: 7px; left: auto; }
+        [dir="rtl"] .fish-card-nav--next { left: 7px; right: auto; }
+      }
+    `;
+    (document.head || document.documentElement).appendChild(style);
+  }
+
   const root=document.documentElement;
   const lang=(root.lang||'es').slice(0,2).toLowerCase();
   const grid=document.getElementById('fishEmblematicGrid');
