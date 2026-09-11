@@ -1,58 +1,58 @@
-/* EMPERIO TISS — Arabic adapter for the canonical Spanish page design.
-   ES geometry, spacing, components and colours remain authoritative.
-   This file only handles RTL reading order and Arabic typography.
-*/
-
-html[lang="ar"] {
-  direction: rtl;
-}
-
+/* EMPERIO TISS — Arabic adapter for the canonical Spanish page design. */
+html[lang="ar"] { direction: rtl; }
 html[lang="ar"] body {
   direction: rtl;
   overflow-x: hidden;
   font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-html[lang="ar"] body :where(h1,h2,h3,h4,p,li,button,input,textarea,select,label) {
+/* Arabic text must not inherit Latin editorial tracking, uppercase transforms or extra word spacing. */
+html[lang="ar"] body :where(h1,h2,h3,h4,h5,h6,p,li,a,button,input,textarea,select,label,span,strong,em) {
   font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: none !important;
+  font-kerning: normal;
 }
 
-/* Latin UI tokens stay left-to-right, exactly as on ES/EN/FR/IT. */
+/* Keep Arabic headings visually elegant without artificial italic treatment from Latin styles. */
+html[lang="ar"] :where(h1,h2,h3,h4,h5,h6) em {
+  font-style: normal !important;
+  font-weight: 500;
+}
+
+/* Arabic display/body rhythm. */
+html[lang="ar"] :where(h1,h2) { line-height: 1.08 !important; }
+html[lang="ar"] :where(h3,h4,h5,h6) { line-height: 1.25 !important; }
+html[lang="ar"] :where(p,li,label,button,input,textarea,select) { line-height: 1.9; }
+
+/* Latin UI/data remains LTR and retains its Latin typeface. */
 html[lang="ar"] :where(.et-language-switch,.nav-overlay-lang,.latin-token,.scientific-name,.technical-value,[data-latin="true"]) {
-  font-family: var(--et-sans, "DM Sans", sans-serif);
+  font-family: var(--et-sans, "DM Sans", sans-serif) !important;
   direction: ltr;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
 }
 
-/* The site header keeps the canonical ES left-to-right control order:
-   logo → WhatsApp → language → menu. */
+/* Header control order stays canonical: logo → WhatsApp → language → menu. */
 html[lang="ar"] .site-header,
 html[lang="ar"] .header-inner,
-html[lang="ar"] .et-language-switch {
-  direction: ltr;
-}
+html[lang="ar"] .et-language-switch { direction: ltr; }
 
 html[lang="ar"] .nav-overlay,
 html[lang="ar"] .nav-overlay-inner,
 html[lang="ar"] .nav-overlay-links,
 html[lang="ar"] .nav-overlay-foot,
-html[lang="ar"] .nav-products-links {
-  direction: rtl;
-}
-
+html[lang="ar"] .nav-products-links { direction: rtl; }
 html[lang="ar"] .nav-overlay-links,
 html[lang="ar"] .nav-overlay-links a,
-html[lang="ar"] .nav-overlay-links summary {
-  text-align: right;
-}
+html[lang="ar"] .nav-overlay-links summary { text-align: right; }
 
-/* Page content follows the same components as the ES pages; only content direction changes. */
-html[lang="ar"] :where(.es-page,.ar-page,.home-page,.intl-page,.market-catalogue-page,.markets-current,.news-current) {
-  direction: rtl;
-}
-
-html[lang="ar"] :where(.es-page .es-container,.ar-page .ar-container,.home-page .container,.intl-page .intl-container,.market-catalogue-page .page-hero-inner) {
-  text-align: right;
-}
+html[lang="ar"] :where(.es-page,.ar-page,.home-page,.intl-page,.market-catalogue-page,.markets-current,.news-current) { direction: rtl; }
+html[lang="ar"] :where(.es-page .es-container,.ar-page .ar-container,.home-page .container,.intl-page .intl-container,.market-catalogue-page .page-hero-inner) { text-align: right; }
 
 html[lang="ar"] .home-page .hero-grid,
 html[lang="ar"] .home-page .intro-section .container,
@@ -78,53 +78,24 @@ html[lang="ar"] .home-page .markets-title,
 html[lang="ar"] .home-page .company-grid,
 html[lang="ar"] .home-page .contact-inner,
 html[lang="ar"] .home-page .product-row,
-html[lang="ar"] .home-page .market-grid article {
-  text-align: right;
-}
+html[lang="ar"] .home-page .market-grid article { text-align: right; }
 
-html[lang="ar"] :where(.fish-catalog,.fish-catalog__inner,.fish-catalog__toolbar,.fish-catalog__filters,.fish-catalog-card,.market-catalogue-page) {
-  direction: rtl;
-}
-
-html[lang="ar"] :where(.fish-catalog__search,.fish-catalog__filter,.fish-catalog-card__body,.fish-catalog-card__detail span,.market-catalogue-page input,.market-catalogue-page button) {
-  font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif);
-}
-
+html[lang="ar"] :where(.fish-catalog,.fish-catalog__inner,.fish-catalog__toolbar,.fish-catalog__filters,.fish-catalog-card,.market-catalogue-page) { direction: rtl; }
+html[lang="ar"] :where(.fish-catalog__search,.fish-catalog__filter,.fish-catalog-card__body,.fish-catalog-card__detail span,.market-catalogue-page input,.market-catalogue-page button) { font-family: "Noto Sans Arabic", var(--et-sans, "DM Sans", sans-serif); }
 html[lang="ar"] .fish-catalog__search,
-html[lang="ar"] .market-catalogue-page input {
-  text-align: right;
-}
+html[lang="ar"] .market-catalogue-page input { text-align: right; }
+html[lang="ar"] :where(.fish-catalog__filter,.fish-catalog-card__meta) { letter-spacing: 0 !important; text-transform: none !important; }
 
-html[lang="ar"] :where(.fish-catalog__filter,.fish-catalog-card__meta) {
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-html[lang="ar"] .markets-current :where(.current-stage,.current-bg,.current-title,.current-copy,.current-content,.current-wrap) {
-  direction: rtl;
-  text-align: right;
-}
-
-html[lang="ar"] .news-current :where(.news-section-head,.news-intelligence,.news-cta) {
-  direction: rtl;
-  text-align: right;
-}
-
+html[lang="ar"] .markets-current :where(.current-stage,.current-bg,.current-title,.current-copy,.current-content,.current-wrap) { direction: rtl; text-align: right; }
+html[lang="ar"] .news-current :where(.news-section-head,.news-intelligence,.news-cta) { direction: rtl; text-align: right; }
 html[lang="ar"] .ar-footer,
 html[lang="ar"] .es-footer,
-html[lang="ar"] .intl-footer {
-  direction: rtl;
-}
-
+html[lang="ar"] .intl-footer,
 html[lang="ar"] .es-footer-bottom,
-html[lang="ar"] .ar-footer-inner {
-  direction: rtl;
-}
+html[lang="ar"] .ar-footer-inner { direction: rtl; }
 
 @media (max-width: 800px) {
   html[lang="ar"] .home-page h1,
   html[lang="ar"] .es-page h1,
-  html[lang="ar"] .es-page h2 {
-    letter-spacing: 0;
-  }
+  html[lang="ar"] .es-page h2 { letter-spacing: 0 !important; }
 }
