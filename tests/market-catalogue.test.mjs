@@ -8,7 +8,8 @@ const renderer = fs.readFileSync('public/assets/js/market-catalogue.js', 'utf8')
 const shellRenderer = fs.readFileSync('public/assets/js/market-catalogue-shell.js', 'utf8');
 const css = fs.readFileSync('public/assets/css/catalogue-market-unified.css', 'utf8');
 const shell = fs.readFileSync('public/assets/js/international-shell.js', 'utf8');
-const catalog = JSON.parse(fs.readFileSync('public/assets/data/catalog-v1.3.json', 'utf8'));
+const catalog = JSON.parse(fs.readFileSync('public/assets/data/catalog.json', 'utf8'));
+const extendedCatalog = JSON.parse(fs.readFileSync('public/assets/data/catalog-v1.3.json', 'utf8'));
 
 const categories = ['seafood/fish', 'seafood/shellfish', 'seafood/cephalopods', 'produce/fruits',
   'produce/vegetables'
@@ -24,8 +25,11 @@ test('market priority defines every target category for every international loca
   }
 });
 
-test('priority IDs exist in the complete B2B catalogue', () => {
-  const ids = new Set(catalog.products.map(p => p.id));
+test('priority IDs exist in the complete B2B catalogue sources', () => {
+  const ids = new Set([
+    ...(catalog.products || []).map(p => p.id),
+    ...(extendedCatalog.products || []).map(p => p.id)
+  ]);
   for (const category of categories) {
     for (const locale of locales) {
       for (const id of config.priority[category]?.[locale] || []) {
@@ -36,7 +40,8 @@ test('priority IDs exist in the complete B2B catalogue', () => {
 });
 
 test('renderer uses the complete catalogue and handles legacy fruit subcategories', () => {
-  assert.match(renderer, /CATALOG_URL\s*=\s*'\/assets\/data\/catalog-v1\.3\.json'/);
+  assert.match(renderer, /CATALOG_URL\s*=\s*'\/assets\/data\/catalog\.json'/);
+  assert.match(renderer, /CATALOG_EXTENDED_URL\s*=\s*'\/assets\/data\/catalog-v1\.3\.json'/);
   assert.match(renderer, /new Set\(\[\s*'fruits'\s*,\s*'citrus'\s*,\s*'exotics'\s*,\s*'core-produce'\s*\]\)/);
 });
 

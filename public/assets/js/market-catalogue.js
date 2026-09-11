@@ -19,7 +19,8 @@
   const family = subcategory === 'fruits' || subcategory === 'vegetables' ? 'produce' : 'seafood';
   if (!targets.some(([f, s]) => f === family && s === subcategory)) return;
 
-  const CATALOG_URL = '/assets/data/catalog-v1.3.json';
+  const CATALOG_URL = '/assets/data/catalog.json';
+  const CATALOG_EXTENDED_URL = '/assets/data/catalog-v1.3.json';
   const PRIORITY_URL = '/assets/data/catalogue-market-priority.json';
   const IMAGES_URL = '/assets/data/product-images.json';
 
@@ -225,17 +226,23 @@
 
   Promise.all([fetch(CATALOG_URL, {
     cache: 'no-cache'
+  }).then(r => r.json()), fetch(CATALOG_EXTENDED_URL, {
+    cache: 'no-cache'
   }).then(r => r.json()), fetch(PRIORITY_URL, {
     cache: 'no-cache'
   }).then(r => r.json()), fetch(IMAGES_URL, {
     cache: 'no-cache'
   }).then(r => r.ok ? r.json() : {})])
-    .then(([catalog, priority, imageMap]) => {
+    .then(([catalog, extendedCatalog, priority, imageMap]) => {
+      const productsById = new Map((catalog.products || []).filter(p => p?.id).map(p => [p.id, p]));
+      for (const product of extendedCatalog.products || []) {
+        if (product?.id && !productsById.has(product.id)) productsById.set(product.id, product);
+      }
       const marketOrder = priority?.priority?.[`${family}/${subcategory}`]?.[lang] || [];
       const orderIndex = new Map(marketOrder.map((id, i) => [id, i]));
       const allowedSubcategories = subcategory === 'fruits' ?
         new Set(['fruits', 'citrus', 'exotics', 'core-produce']) : new Set([subcategory]);
-      const products = (catalog.products || []).filter(p => p.status !== 'inactive' && p
+      const products = [...productsById.values()].filter(p => p.status !== 'inactive' && p
         .family === family && allowedSubcategories.has(p.subcategory));
       if (!products.length) return;
       products.sort((a, b) => {
