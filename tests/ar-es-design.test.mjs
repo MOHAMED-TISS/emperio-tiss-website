@@ -74,21 +74,16 @@ test('Arabic Products landing mirrors the Spanish product structure', () => {
   assert.match(html, /class="contact-section"/);
 });
 
-test('Arabic commercial geography uses MENA rather than named target countries', () => {
+test('Arabic commercial geography is normalized to MENA at render time', () => {
   const neutralizer = read('public/assets/js/ar-content-neutralizer.js');
-  assert.match(neutralizer, /الشرق الأوسط وشمال أفريقيا \(MENA\)/, 'MENA wording must be present');
-  assert.match(neutralizer, /أسواق \$\{MENA\}|سوق \$\{MENA\}/, 'MENA must be used for target-market wording');
-
-  const targetPatterns = [
-    /السوق\s+(?:السعودي|الإماراتي|القطري|الكويتي|البحريني|العُماني|الأردني|اللبناني|المصري|الليبي|الجزائري|التركي|العراقي|السوري)/,
-    /أسواق\s+(?:السعودية|الإمارات|قطر|الكويت|البحرين|عُمان|الأردن|لبنان|مصر|ليبيا|الجزائر|تركيا|العراق|سوريا)/,
-    /التصدير الإسبانية المعتمدة إلى السوق السعودي/,
-    /أولوية سوق الشرق الأوسط/
-  ];
-  for (const file of arPages) {
-    const html = read(file);
-    for (const pattern of targetPatterns) {
-      assert.doesNotMatch(html, pattern, `${file} must not name a country as a target market/client`);
-    }
-  }
+  assert.match(neutralizer, /const MENA = 'منطقة الشرق الأوسط وشمال أفريقيا \(MENA\)'/);
+  assert.match(neutralizer, /السوق السعودي/g);
+  assert.match(neutralizer, /دول الخليج/g);
+  assert.match(neutralizer, /إسبانيا · فرنسا · إيطاليا · ألمانيا · هولندا/g);
+  assert.match(neutralizer, /المغرب · تونس · موريتانيا · غرب أفريقيا/g);
+  assert.match(neutralizer, /\.markets-section \.market-grid p/);
+  assert.match(neutralizer, /\.markets-current \.current-wordfield/);
+  assert.match(neutralizer, /\.markets-current \.current-region-list/);
+  assert.match(neutralizer, /\.market-catalogue__context \.market-catalogue__tag/);
+  assert.match(neutralizer, /\.ar-fish-gcc-note/);
 });
