@@ -13,6 +13,7 @@ on:
       - 'public/assets/css/ar-visual.css'
       - 'public/assets/js/ar-es-normalizer.js'
       - 'tests/ar-es-design.test.mjs'
+      - 'tests/ar-es-normalizer.test.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   pull_request:
     paths:
@@ -26,6 +27,7 @@ on:
       - 'public/assets/css/ar-visual.css'
       - 'public/assets/js/ar-es-normalizer.js'
       - 'tests/ar-es-design.test.mjs'
+      - 'tests/ar-es-normalizer.test.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   workflow_dispatch:
 
@@ -46,3 +48,5 @@ jobs:
         run: node --test tests/market-catalogue.test.mjs
       - name: Arabic ES parity tests
         run: node --test tests/ar-es-design.test.mjs
+      - name: Arabic normalizer tests
+        run: node --test tests/ar-es-normalizer.test.mjs
