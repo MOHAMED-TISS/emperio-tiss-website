@@ -31,7 +31,10 @@
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
-  if (lang === 'ar') loadCss('/assets/css/ar-visual.css?v=20260911-1', 'etArVisual');
+  if (lang === 'ar') {
+    loadCss('/assets/css/ar-visual.css?v=20260911-2', 'etArVisual');
+    loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
+  }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) {
     loadScript('/assets/js/international-shell.js?v=20260824-5', 'etInternationalShell');
@@ -64,7 +67,10 @@
     const header = doc.createElement('header');
     header.className = 'site-header';
     header.id = 'luxuryHeader';
-    header.innerHTML = `<div class="header-inner"><a href="/" class="site-logo" aria-label="EMPERIO TISS - Inicio"><img src="/logo.png" alt="EMPERIO TISS" width="94" height="62"></a><a href="${whatsappHref}" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${socialCopy.whatsapp}">${whatsappIcon}<span>${socialCopy.whatsapp}</span></a><nav class="et-language-switch" aria-label="Idiomas"><a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a></nav><button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button></div>`;
+    const fishHomeAria = lang === 'ar' ? 'EMPERIO TISS — الرئيسية' : 'EMPERIO TISS - Inicio';
+    const fishMenuAria = lang === 'ar' ? 'فتح القائمة' : 'Abrir menú';
+    const fishLanguageAria = lang === 'ar' ? 'اللغة' : 'Idiomas';
+    header.innerHTML = `<div class="header-inner"><a href="/" class="site-logo" aria-label="${fishHomeAria}"><img src="/logo.png" alt="EMPERIO TISS" width="94" height="62"></a><a href="${whatsappHref}" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${socialCopy.whatsapp}">${whatsappIcon}<span>${socialCopy.whatsapp}</span></a><nav class="et-language-switch" aria-label="${fishLanguageAria}"><a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a></nav><button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="${fishMenuAria}" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button></div>`;
     if (oldHeader) oldHeader.replaceWith(header); else doc.body.insertAdjacentElement('afterbegin', header);
     const overlay = existingOverlay || doc.querySelector('#navOverlay');
     if (overlay && overlay.parentElement !== doc.body) doc.body.appendChild(overlay);
