@@ -36,8 +36,8 @@ test('priority IDs exist in the complete B2B catalogue', () => {
 });
 
 test('renderer uses the complete catalogue and handles legacy fruit subcategories', () => {
-  assert.match(renderer, /CATALOG_URL = '\/assets\/data\/catalog\.json'/);
-  assert.match(renderer, /new Set\(\['fruits','citrus','exotics','core-produce'\]\)/);
+  assert.match(renderer, /CATALOG_URL\s*=\s*'\/assets\/data\/catalog\.json'/);
+  assert.match(renderer, /new Set\(\[\s*'fruits'\s*,\s*'citrus'\s*,\s*'exotics'\s*,\s*'core-produce'\s*\]\)/);
 });
 
 test('international shell applies the Spanish category CSS baseline and seafood navigation', () => {
@@ -45,12 +45,12 @@ test('international shell applies the Spanish category CSS baseline and seafood 
   assert.match(shellRenderer, /seafood-subpages-es\.css/);
   assert.match(shellRenderer, /produce-es\.css/);
   assert.match(shellRenderer, /fish-editorial\.css/);
-  assert.match(shellRenderer, /body\.classList\.add\('market-catalogue-page'\)/);
+  assert.match(shellRenderer, /body\.classList\.add\(\s*'market-catalogue-page'\s*\)/);
 });
 
 test('international product heroes are rebuilt from the Spanish page-hero architecture', () => {
-  assert.match(shellRenderer, /hero\.classList\.remove\('product-hero'\)/);
-  assert.match(shellRenderer, /hero\.classList\.add\('page-hero','market-page-hero'\)/);
+  assert.match(shellRenderer, /hero\.classList\.remove\(\s*'product-hero'\s*\)/);
+  assert.match(shellRenderer, /hero\.classList\.add\(\s*'page-hero'\s*,\s*'market-page-hero'\s*\)/);
   assert.match(shellRenderer, /page-hero-inner/);
   assert.match(shellRenderer, /heroes\[subcategory\]/);
   assert.match(shellRenderer, /t\.produce\[subcategory\]/);
@@ -72,12 +72,12 @@ test('international shell loads the shared catalogue layers', () => {
 
 test('unified catalogue CSS matches Spanish catalogue geometry and contains RTL/responsive rules',
 () => {
-  assert.match(css, /width:min\(1240px,calc\(100% - 48px\)\)/);
-  assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
-  assert.match(css, /border-radius:18px/);
+  assert.match(css, /width:\s*min\(1240px\s*,\s*calc\(100%\s*-\s*48px\)\)/);
+  assert.match(css, /grid-template-columns:\s*repeat\(3\s*,\s*minmax\(0\s*,\s*1fr\)\)/);
+  assert.match(css, /border-radius:\s*18px/);
   assert.match(css, /html\[dir=rtl\]/);
-  assert.match(css, /@media\(max-width:850px\)/);
-  assert.match(css, /@media\(max-width:560px\)/);
+  assert.match(css, /@media\(max-width\s*:\s*850px\)/);
+  assert.match(css, /@media\(max-width\s*:\s*560px\)/);
 });
 
 test('natural image ordering contract is numeric and base-first', () => {
