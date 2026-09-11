@@ -1,11 +1,13 @@
 <!doctype html>
-<html                                                                     lang="it" dir="ltr">
+<html lang="it" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Prodotti stagionali | EMPERIO TISS</title>
     <meta name="description" content="Prodotti stagionali e campagne tra Europa, Africa e Mediterraneo.">
     <link rel="icon" href="/assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/products-en.css">
     <link rel="stylesheet" href="/assets/css/compact-catalog.css?v=20260822-1">
@@ -13,34 +15,28 @@
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">
   </head>
   <body class="products-site product-nav-prototype" data-compact-catalog="true" data-catalog-family="seasonal" data-catalog-title="Stagionale">
+    <header class="site-header" id="luxuryHeader">
+      <div class="header-inner">
+        <a class="site-logo" href="/it/" aria-label="EMPERIO TISS — Home"><img src="/assets/images/logo.png" alt="EMPERIO TISS" width="94" height="62"></a>
+        <nav class="et-language-switch" aria-label="Lingua"><a href="/">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a class="current" href="/it/" aria-current="page">IT</a></nav>
+        <button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
+      </div>
+    </header>
+    <div id="navOverlay" class="nav-overlay" aria-hidden="true">
+      <div class="nav-overlay-inner">
+        <nav class="nav-overlay-links" aria-label="Navigazione principale">
+          <a href="/it/"><span class="idx">01</span><span>Home</span></a><a href="/it/about/"><span class="idx">02</span><span>Azienda</span></a>
+          <details class="nav-products"><summary><span class="idx">03</span><span>Prodotti</span></summary><div class="nav-products-links"><a href="/it/products/">Tutti i prodotti</a><a href="/it/products/seafood/">Prodotti del mare</a><a href="/it/products/seafood/fish/">Pesce</a><a href="/it/products/seafood/shellfish/">Crostacei</a><a href="/it/products/seafood/cephalopods/">Cefalopodi</a><a href="/it/products/fruits/">Frutta</a><a href="/it/products/vegetables/">Ortaggi</a><a href="/it/products/seasonal/" aria-current="page">Stagionale</a></div></details>
+          <a href="/it/markets/"><span class="idx">04</span><span>Mercati</span></a><a href="/it/news/"><span class="idx">05</span><span>Notizie</span></a><a href="/it/contact/"><span class="idx">06</span><span>Contatti</span></a>
+        </nav>
+        <div class="nav-overlay-foot"><div class="nav-overlay-lang"><a href="/">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a class="current" href="/it/">IT</a></div><div class="nav-overlay-contact"><a href="/it/contact/">Richiesta commerciale ↗</a><span>Madrid · Europa · Africa · Mediterraneo</span></div></div>
+      </div>
+    </div>
     <main>
-      <section class="product-hero">
-        <div class="p-container hero-grid">
-          <div>
-            <p class="eyebrow">01 / STAGIONALE</p>
-            <h1>Il momento<br><em>conta.</em></h1>
-          </div>
-          <div class="hero-copy">
-            <p>Opportunità stagionali definite da raccolti, campagne, origini, cicli produttivi e mercati in evoluzione tra Europa, Africa e Mediterraneo.</p>
-          </div>
-        </div>
-      </section>
-      <section class="compact-catalog" aria-labelledby="catalogTitle">
-        <div class="compact-catalog__inner">
-          <div class="compact-catalog__head">
-            <div><span class="eyebrow">CATALOGO</span>
-              <h2>Referenze<br><em>stagionali.</em></h2>
-            </div>
-            <p>Referenze di campagna compatte. Cerca per prodotto, campagna o origine mantenendo visibile la finestra commerciale.</p>
-          </div>
-          <div class="compact-catalog__toolbar"><input id="compactCatalogSearch" class="compact-catalog__search" type="search" placeholder="Cerca campagna o prodotto..." aria-label="Cerca prodotti stagionali">
-            <p id="compactCatalogCount" class="compact-catalog__count">0 referenze</p>
-          </div>
-          <div class="compact-catalog__filters" role="group" aria-label="Filtri stagionali"><button type="button" class="compact-catalog__filter" data-compact-filter="all" aria-pressed="true">Tutti</button><button type="button" class="compact-catalog__filter" data-compact-filter="fresh" aria-pressed="false">Fresco</button><button type="button" class="compact-catalog__filter" data-compact-filter="frozen" aria-pressed="false">Surgelato</button></div>
-          <div id="compactCatalogGrid" class="compact-catalog-grid" aria-live="polite"></div>
-        </div>
-      </section>
+      <section class="product-hero"><div class="p-container hero-grid"><div><p class="eyebrow">01 / STAGIONALE</p><h1>Il momento<br><em>conta.</em></h1></div><div class="hero-copy"><p>Opportunità stagionali definite da raccolti, campagne, origini, cicli produttivi e mercati in evoluzione tra Europa, Africa e Mediterraneo.</p></div></div></section>
+      <section class="compact-catalog" aria-labelledby="catalogTitle"><div class="compact-catalog__inner"><div class="compact-catalog__head"><div><span class="eyebrow">CATALOGO</span><h2>Referenze<br><em>stagionali.</em></h2></div><p>Referenze di campagna compatte. Cerca per prodotto, campagna o origine mantenendo visibile la finestra commerciale.</p></div><div class="compact-catalog__toolbar"><input id="compactCatalogSearch" class="compact-catalog__search" type="search" placeholder="Cerca campagna o prodotto..." aria-label="Cerca prodotti stagionali"><p id="compactCatalogCount" class="compact-catalog__count">0 referenze</p></div><div class="compact-catalog__filters" role="group" aria-label="Filtri stagionali"><button type="button" class="compact-catalog__filter" data-compact-filter="all" aria-pressed="true">Tutti</button><button type="button" class="compact-catalog__filter" data-compact-filter="fresh" aria-pressed="false">Fresco</button><button type="button" class="compact-catalog__filter" data-compact-filter="frozen" aria-pressed="false">Surgelato</button></div><div id="compactCatalogGrid" class="compact-catalog-grid" aria-live="polite"></div></div></section>
     </main>
     <script src="/assets/js/global.js" defer></script>
+    <script src="/assets/js/compact-catalog.js" defer></script>
   </body>
 </html>
