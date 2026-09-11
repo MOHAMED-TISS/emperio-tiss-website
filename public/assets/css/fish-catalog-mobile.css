@@ -1,0 +1,398 @@
+/* EMPERIO TISS — Fish catalogue mobile visual system
+   Mobile-only refinement for all Fish catalogues.
+   Scoped to Fish components; desktop styles remain untouched. */
+
+@media (max-width: 760px) {
+  body.fish-catalog-pilot {
+    overflow-x: hidden;
+  }
+
+  body.fish-catalog-pilot .fish-catalog {
+    padding: 48px 0 64px !important;
+    overflow: visible !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__inner,
+  body.fish-catalog-pilot .fish-emblematic__inner {
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+  }
+
+  /* Compact research/search module. */
+  body.fish-catalog-pilot .fish-catalog__toolbar {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 0 10px !important;
+    padding: 10px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 5px 16px rgba(7, 30, 53, .05) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__search {
+    min-width: 0 !important;
+    width: 100% !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    margin: 0 !important;
+    padding: 0 12px !important;
+    border-radius: 9px !important;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__count {
+    margin: 0 !important;
+    padding-inline: 4px !important;
+    white-space: nowrap !important;
+    font-size: 9px !important;
+    letter-spacing: .08em !important;
+    line-height: 1.2 !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__filters {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    margin: 0 0 9px !important;
+    padding: 1px 1px 3px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__filter {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 0 12px !important;
+    border-radius: 999px !important;
+    font-size: 10px !important;
+    letter-spacing: .05em !important;
+    line-height: 1 !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Product grid: generous but controlled vertical rhythm. */
+  body.fish-catalog-pilot .fish-catalog-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+    background: transparent !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    transform: none !important;
+    box-shadow: 0 10px 28px rgba(7, 30, 53, .07) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__gallery {
+    position: relative !important;
+    margin: 6px !important;
+    border-radius: 11px !important;
+    overflow: hidden !important;
+  }
+
+  /* Balanced mobile product frame. */
+  body.fish-catalog-pilot .fish-catalog-card__media {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    isolation: isolate !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  /* Multi-image navigation becomes a bottom control rail instead of
+     competing with the image composition. */
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
+    top: auto !important;
+    bottom: 9px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-width: 1px !important;
+    background: rgba(7, 30, 53, .88) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .22) !important;
+    font-size: 22px !important;
+    transform: none !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:active {
+    transform: scale(.96) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--prev {
+    left: 8px !important;
+    right: auto !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--next {
+    right: 8px !important;
+    left: auto !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
+    bottom: 15px !important;
+    min-height: 26px !important;
+    max-width: calc(100% - 118px) !important;
+    padding: 0 9px !important;
+    border-radius: 999px !important;
+    background: rgba(7, 30, 53, .78) !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__body {
+    min-width: 0 !important;
+    padding: 13px 14px 15px !important;
+    gap: 7px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__meta {
+    margin: 0 !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+    letter-spacing: .08em !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__title {
+    margin: 0 !important;
+    font-size: clamp(1.35rem, 7vw, 1.8rem) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -.02em !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__scientific {
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__details {
+    margin-top: 3px !important;
+    padding-top: 0 !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__detail {
+    grid-template-columns: 31% minmax(0, 69%) !important;
+    column-gap: 8px !important;
+    padding: 7px 0 !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__detail span,
+  body.fish-catalog-pilot .fish-catalog-card__detail strong {
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Shared viewer: predictable mobile composition and controls. */
+  body.fish-catalog-pilot .fish-gallery {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)) !important;
+    background: rgba(4, 16, 28, .95) !important;
+    z-index: 10000 !important;
+    box-sizing: border-box !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery__panel {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery__image {
+    max-width: calc(100vw - 76px) !important;
+    max-height: calc(100dvh - 122px) !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery button {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    background: rgba(7, 30, 53, .9) !important;
+    border-color: rgba(216, 194, 143, .65) !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery__prev {
+    left: max(7px, env(safe-area-inset-left)) !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery__next {
+    right: max(7px, env(safe-area-inset-right)) !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery__close {
+    top: max(7px, env(safe-area-inset-top)) !important;
+    right: max(7px, env(safe-area-inset-right)) !important;
+  }
+
+  body.fish-catalog-pilot .fish-gallery__counter {
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    max-width: calc(100vw - 100px) !important;
+    font-size: 10px !important;
+  }
+
+  /* Category navigation stays compact and horizontally scrollable. */
+  body.fish-catalog-pilot .seafood-category-nav {
+    max-width: calc(100% - 28px) !important;
+    width: calc(100% - 28px) !important;
+    margin: 16px auto 34px !important;
+    padding: 8px !important;
+    border-radius: 13px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.fish-catalog-pilot .seafood-category-nav__links {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0 10px !important;
+    gap: 22px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.fish-catalog-pilot .seafood-category-nav__links::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.fish-catalog-pilot .seafood-category-nav__links a {
+    height: 48px !important;
+    min-height: 48px !important;
+    font-size: 10px !important;
+  }
+
+  body.fish-catalog-pilot .seafood-category-nav__links a::after {
+    bottom: 7px !important;
+  }
+
+  /* Emblematic section: prevent mobile heading/control collisions. */
+  body.fish-catalog-pilot .fish-emblematic__intro h2,
+  body.fish-catalog-pilot .fish-emblematic__intro h2 span {
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  body.fish-catalog-pilot .fish-emblematic-card__media,
+  body.fish-catalog-pilot .fish-emblematic-card__media--image {
+    height: clamp(198px, 58vw, 245px) !important;
+  }
+
+  body.fish-catalog-pilot .fish-scroll-cue {
+    max-width: 100% !important;
+    margin-top: 2.25rem !important;
+    padding-inline: 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Arabic: keep labels readable without reintroducing desktop spacing. */
+  body.fish-catalog-pilot[dir="rtl"] .fish-catalog__toolbar {
+    direction: rtl !important;
+  }
+
+  html[dir="rtl"] body.fish-catalog-pilot .fish-card-nav--prev {
+    right: 8px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body.fish-catalog-pilot .fish-card-nav--next {
+    left: 8px !important;
+    right: auto !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.fish-catalog-pilot .fish-catalog__inner,
+  body.fish-catalog-pilot .fish-emblematic__inner {
+    width: calc(100% - 24px) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog {
+    padding-top: 40px !important;
+    padding-bottom: 54px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__toolbar {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog__count {
+    justify-self: start !important;
+    padding: 0 2px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-grid {
+    gap: 14px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__body {
+    padding: 12px 13px 14px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__detail {
+    grid-template-columns: 30% minmax(0, 70%) !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    bottom: 8px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--prev {
+    left: 7px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--next {
+    right: 7px !important;
+  }
+
+  body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
+    bottom: 13px !important;
+    max-width: calc(100% - 106px) !important;
+  }
+}
