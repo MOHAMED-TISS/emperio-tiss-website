@@ -104,44 +104,46 @@
     margin: 6px !important;
     border-radius: 11px !important;
     overflow: hidden !important;
+    background: #eef0ec !important;
   }
 
-  /* Balanced mobile product frame. */
+  /* Tall, uniform product frame: reveal the complete source image. */
   body.fish-catalog-pilot .fish-catalog-card__media {
     width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
-    aspect-ratio: 16 / 10 !important;
+    aspect-ratio: 4 / 3 !important;
     overflow: hidden !important;
     position: relative !important;
     isolation: isolate !important;
+    background: #eef0ec !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-image {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #eef0ec !important;
   }
 
-  /* Multi-image navigation becomes a bottom control rail instead of
-     competing with the image composition. */
+  /* Multi-image navigation stays centered inside the taller image frame. */
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
-    top: auto !important;
-    bottom: 9px !important;
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
     border-width: 1px !important;
     background: rgba(7, 30, 53, .88) !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, .22) !important;
-    font-size: 22px !important;
-    transform: none !important;
+    font-size: 23px !important;
+    transform: translateY(-50%) !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:active {
-    transform: scale(.96) !important;
+    transform: translateY(-50%) scale(.96) !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--prev {
@@ -155,7 +157,7 @@
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
-    bottom: 15px !important;
+    bottom: 10px !important;
     min-height: 26px !important;
     max-width: calc(100% - 118px) !important;
     padding: 0 9px !important;
@@ -364,7 +366,7 @@
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media {
-    aspect-ratio: 16 / 10 !important;
+    aspect-ratio: 4 / 3 !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__body {
@@ -376,11 +378,10 @@
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
-    bottom: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav--prev {
@@ -392,7 +393,7 @@
   }
 
   body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
-    bottom: 13px !important;
-    max-width: calc(100% - 106px) !important;
+    bottom: 9px !important;
+    max-width: calc(100% - 112px) !important;
   }
 }
