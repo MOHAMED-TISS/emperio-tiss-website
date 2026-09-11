@@ -61,7 +61,8 @@ jobs:
           # Filename aliases for Fish catalogue IDs already handled by the
           # shared renderer but not yet represented in the central catalogue.
           filename_aliases = {
-              'lenguado': 'sole'
+              'lenguado': 'sole',
+              'mero amarillo': 'mero'
           }
 
           known_generated_ids = set(aliases.values()) | set(filename_aliases.values())
