@@ -23,6 +23,7 @@
     if (!doc.querySelector(`script[data-${key}]`)) {
       const script = doc.createElement('script');
       script.src = '/assets/js/ar-es-normalizer.js?v=20260911-2';
+      script.async = false;
       script.dataset[key] = 'true';
       doc.head.appendChild(script);
     }
