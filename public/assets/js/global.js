@@ -31,6 +31,7 @@
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260823-filter-contrast-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
+  if (lang === 'ar') loadCss('/assets/css/ar-visual.css?v=20260911-1', 'etArVisual');
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) {
     loadScript('/assets/js/international-shell.js?v=20260824-5', 'etInternationalShell');
