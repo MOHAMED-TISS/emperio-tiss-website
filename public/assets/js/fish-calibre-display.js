@@ -5,12 +5,12 @@
   // Do not observe or mutate the catalogue DOM: that caused an infinite
   // MutationObserver -> textContent -> MutationObserver loop and hung Chrome.
 
-  // Desktop Fish catalogue switcher refinement.
-  // Kept here because this file is already loaded by the Fish catalogue pages;
-  // the rules are explicitly desktop-only and do not alter the mobile system.
-  if (!document.getElementById('fish-desktop-switcher-system')) {
+  // Shared Fish catalogue switcher refinement.
+  // Desktop and mobile controls use the same soft editorial language:
+  // smooth rounded rectangles, translucency and restrained visual weight.
+  if (!document.getElementById('fish-switcher-visual-system')) {
     const style = document.createElement('style');
-    style.id = 'fish-desktop-switcher-system';
+    style.id = 'fish-switcher-visual-system';
     style.textContent = `
       @media (min-width: 761px) {
         body.fish-catalog-pilot .fish-catalog-card__gallery {
@@ -127,6 +127,74 @@
 
         body.fish-catalog-pilot .fish-catalog-card__thumb img {
           border-radius: 4px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        /* Same switcher language on mobile: smooth, compact, translucent controls. */
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
+          width: 34px !important;
+          height: 28px !important;
+          min-width: 34px !important;
+          min-height: 28px !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 1px solid rgba(243,239,230,.48) !important;
+          border-radius: 10px !important;
+          background: rgba(7,30,53,.18) !important;
+          color: rgba(243,239,230,.92) !important;
+          box-shadow: 0 3px 10px rgba(0,0,0,.08) !important;
+          backdrop-filter: blur(7px) !important;
+          -webkit-backdrop-filter: blur(7px) !important;
+          font-size: 16px !important;
+          font-weight: 400 !important;
+          line-height: 1 !important;
+          opacity: .86 !important;
+          transition: background .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease !important;
+        }
+
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:hover,
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:focus-visible {
+          background: rgba(7,30,53,.34) !important;
+          border-color: rgba(199,162,96,.68) !important;
+          color: #f3efe6 !important;
+          opacity: 1 !important;
+          outline: none !important;
+        }
+
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav:active {
+          transform: translateY(-50%) scale(.96) !important;
+        }
+
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
+          min-height: 20px !important;
+          padding: 0 7px !important;
+          border: 1px solid rgba(243,239,230,.22) !important;
+          border-radius: 8px !important;
+          background: rgba(7,30,53,.18) !important;
+          color: rgba(243,239,230,.92) !important;
+          box-shadow: 0 3px 9px rgba(0,0,0,.06) !important;
+          backdrop-filter: blur(7px) !important;
+          -webkit-backdrop-filter: blur(7px) !important;
+          font-size: 8px !important;
+        }
+      }
+
+      @media (max-width: 430px) {
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-nav {
+          width: 32px !important;
+          height: 27px !important;
+          min-width: 32px !important;
+          min-height: 27px !important;
+          border-radius: 9px !important;
+          font-size: 15px !important;
+        }
+
+        body.fish-catalog-pilot .fish-catalog-card__media .fish-card-counter {
+          min-height: 19px !important;
+          padding-inline: 6px !important;
+          border-radius: 7px !important;
+          font-size: 7px !important;
         }
       }
     `;
