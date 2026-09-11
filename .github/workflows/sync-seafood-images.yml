@@ -58,25 +58,21 @@ jobs:
                   if key:
                       aliases[key] = product_id
 
-          # Filename aliases for Fish catalogue IDs already handled by the
-          # shared renderer but not yet represented in the central catalogue.
           filename_aliases = {
               'lenguado': 'sole',
               'mero amarillo': 'mero'
           }
 
           known_generated_ids = set(aliases.values()) | set(filename_aliases.values())
-
           allowed = {'.jpg', '.jpeg', '.png', '.webp'}
+          seafood_prefix = '/assets/products/incoming/'
           grouped = {}
 
           def natural_key(path):
               stem = re.sub(r'\.[^.]+$', '', path.name).strip()
-              # Primary image: exact base filename (no numeric suffix).
-              # Next: directly-attached numeric suffixes (e.g. Atun1, Rascacio2).
-              # Finally: spaced / parenthesized numeric variants (legacy naming).
-              # This preserves the intended base -> numbered variant order and
-              # makes Rascacio.jpg -> Rascacio2.jpg -> Rascacio 1.jpg deterministic.
+              extension = path.suffix.lower()
+
+              # Exact base filename is always the primary image.
               if re.search(r'\(\s*\d+\s*\)$', stem):
                   style = 2
                   number = int(re.search(r'\(\s*(\d+)\s*\)$', stem).group(1))
@@ -93,7 +89,12 @@ jobs:
                   style = 0
                   number = 0
                   base = stem
-              return (base.lower(), style, number, stem.lower())
+
+              # Prefer JPG when two exact filenames differ only by extension;
+              # then JPEG, PNG, WEBP. This prevents filesystem order deciding
+              # which same-name image becomes the primary image.
+              extension_rank = {'.jpg': 0, '.jpeg': 1, '.png': 2, '.webp': 3}.get(extension, 9)
+              return (base.lower(), style, number, extension_rank, stem.lower(), extension)
 
           for path in sorted(incoming.iterdir() if incoming.exists() else [], key=natural_key):
               if not path.is_file() or path.suffix.lower() not in allowed:
@@ -102,12 +103,8 @@ jobs:
               product_id = aliases.get(key) or filename_aliases.get(key)
               if not product_id:
                   continue
-              grouped.setdefault(product_id, []).append('/assets/products/incoming/' + path.name)
+              grouped.setdefault(product_id, []).append(seafood_prefix + path.name)
 
-          # Refresh only mappings controlled by this sync job. Legacy or
-          # renderer-only seafood mappings not represented in catalog-v1.3
-          # are intentionally preserved instead of being deleted.
-          seafood_prefix = '/assets/products/incoming/'
           for product_id, images in list(manifest.items()):
               if product_id not in known_generated_ids:
                   continue
@@ -122,8 +119,6 @@ jobs:
           for product_id, images in grouped.items():
               manifest[product_id] = images
 
-          # Hard invariant: every generated seafood catalogue image must come
-          # from the designated incoming directory.
           for product_id, images in grouped.items():
               assert all(img.startswith(seafood_prefix) for img in images), f'Non-incoming seafood image in {product_id}'
 
@@ -145,9 +140,6 @@ jobs:
           fi
           git commit -m 'Auto-sync seafood catalogue images'
 
-          # Another repository write can land between checkout and push.
-          # Rebase onto the current main tip before pushing so generated
-          # catalogue updates do not fail with a non-fast-forward error.
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             if git rebase origin/main; then
