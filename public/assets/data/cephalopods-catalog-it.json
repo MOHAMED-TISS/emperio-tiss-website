@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.5",
+  "language": "it",
+  "products": [
+    {
+      "id": "pulpo-flor",
+      "commercialName": "Polpo fiore",
+      "scientificName": "Octopus vulgaris",
+      "group": "Cefalopodi",
+      "type": "Polpo",
+      "condition": ["frozen"],
+      "origin": ["Atlantico / Mediterraneo secondo disponibilità"],
+      "faoZone": ["FAO 27 / FAO 37 secondo origine"],
+      "calibre": ["Secondo disponibilità"],
+      "quality": ["Specifiche professionali"],
+      "format": ["Fiore / secondo riferimento"],
+      "packaging": ["Secondo mercato"],
+      "availability": ["Secondo campagna e disponibilità"],
+      "images": [
+        "/assets/products/incoming/Pulpo Flor.jpg",
+        "/assets/products/incoming/Pulpo flor (2).jpg"
+      ]
+    },
+    {
+      "id": "pulpo-bloque",
+      "commercialName": "Polpo a blocco",
+      "scientificName": "Octopus vulgaris",
+      "group": "Cefalopodi",
+      "type": "Polpo",
+      "condition": ["frozen"],
+      "origin": ["Atlantico / Mediterraneo secondo disponibilità"],
+      "faoZone": ["FAO 27 / FAO 37 secondo origine"],
+      "calibre": ["Secondo disponibilità"],
+      "quality": ["Specifiche professionali"],
+      "format": ["Blocco / secondo riferimento"],
+      "packaging": ["Secondo mercato"],
+      "availability": ["Secondo campagna e disponibilità"],
+      "images": [
+        "/assets/products/incoming/Pulpo.jpg",
+        "/assets/products/incoming/Pulpo(1).jpg",
+        "/assets/products/incoming/Pulpo(3).jpg"
+      ]
+    },
+    {
+      "id": "calamar-envuelto",
+      "commercialName": "Calamaro avvolto",
+      "scientificName": "Illex / Loligo spp.",
+      "group": "Cefalopodi",
+      "type": "Calamaro",
+      "condition": ["frozen"],
+      "origin": ["Secondo programma di fornitura"],
+      "faoZone": ["Secondo origine"],
+      "calibre": ["Secondo disponibilità"],
+      "quality": ["Specifiche professionali"],
+      "format": ["Intero / avvolto"],
+      "packaging": ["Secondo mercato"],
+      "availability": ["Secondo programma e disponibilità"],
+      "images": [
+        "/assets/products/incoming/Calamar.jpg",
+        "/assets/products/incoming/Calamar(1).jpg",
+        "/assets/products/incoming/Calamar(2).jpg"
+      ]
+    },
+    {
+      "id": "sepia-limpia-iqf",
+      "commercialName": "Seppia pulita IQF",
+      "scientificName": "Sepia spp.",
+      "group": "Cefalopodi",
+      "type": "Seppia",
+      "condition": ["frozen"],
+      "origin": ["Secondo programma di fornitura"],
+      "faoZone": ["Secondo origine"],
+      "calibre": ["Secondo disponibilità"],
+      "quality": ["Specifiche professionali"],
+      "format": ["Pulita / IQF"],
+      "packaging": ["Secondo mercato"],
+      "availability": ["Secondo disponibilità"],
+      "images": [
+        "/assets/products/incoming/Sepia Limpia.jpg",
+        "/assets/products/incoming/Sepia Limpia(1).jpg"
+      ]
+    },
+    {
+      "id": "bottarga",
+      "commercialName": "Bottarga surgelata",
+      "scientificName": "Secondo specifica del prodotto",
+      "group": "Cefalopodi",
+      "type": "Bottarga",
+      "condition": ["frozen"],
+      "origin": ["Secondo origine"],
+      "faoZone": ["Secondo zona FAO"],
+      "calibre": ["Secondo specifica del buyer"],
+      "quality": ["Specifiche professionali"],
+      "format": ["Secondo presentazione"],
+      "packaging": ["Secondo mercato"],
+      "availability": ["Secondo disponibilità"],
+      "images": [
+        "/assets/products/incoming/Bottarga(1).jpg",
+        "/assets/products/incoming/Bottarga.jpg",
+        "/assets/products/incoming/Bottarga(2).jpg",
+        "/assets/products/incoming/Bottarga(3).jpg"
+      ]
+    }
+  ]
+}
