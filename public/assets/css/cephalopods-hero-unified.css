@@ -1,0 +1,13 @@
+/* EMPERIO TISS — shared cephalopods hero background */
+.page-hero.intl-hero,
+.intl-hero,
+.ar-hero {
+  background-image: url("https://images.pexels.com/photos/9652994/pexels-photo-9652994.jpeg") !important;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ar-hero {
+  background-color: #071e35;
+}
