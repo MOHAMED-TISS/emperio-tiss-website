@@ -1,3 +1,0 @@
-Pre-filter consolidation checkpoint
-Main commit before this cleanup: ed2221f4c714f775c57f7d706f498b386e2fbf92
-Candidate: consolidate catalogue-filter-contrast-en-fr.css into catalog.css and remove the standalone stylesheet load.
