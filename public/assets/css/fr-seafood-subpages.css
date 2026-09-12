@@ -1,0 +1,69 @@
+/* FR seafood subpage visual restoration — shellfish & cephalopods only */
+html[lang="fr"] body.fr-seafood-visual {
+  background: #071e35;
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(76svh, 760px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #f3efe6;
+  background-color: #071e35;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+html[lang="fr"] body.fr-seafood-shellfish .intl-hero {
+  background-image: url("/assets/products/incoming/Moruno%281%29.jpeg");
+}
+
+html[lang="fr"] body.fr-seafood-cephalopods .intl-hero {
+  background-image: url("/assets/products/incoming/Pulpo%20Flor.jpg");
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, rgba(7, 30, 53, .90) 0%, rgba(7, 30, 53, .70) 42%, rgba(7, 30, 53, .24) 78%, rgba(7, 30, 53, .12) 100%);
+  pointer-events: none;
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(6rem, 12vw, 9rem) clamp(4rem, 8vw, 7rem);
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-kicker {
+  color: #d8c28f;
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-hero h1 {
+  color: #f3efe6;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, .40);
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-hero h1 em {
+  color: #d8c28f;
+}
+
+html[lang="fr"] body.fr-seafood-visual .intl-lead {
+  color: rgba(243, 239, 230, .94);
+  text-shadow: 0 2px 13px rgba(0, 0, 0, .36);
+}
+
+@media (max-width: 700px) {
+  html[lang="fr"] body.fr-seafood-visual .intl-hero {
+    min-height: 70svh;
+  }
+
+  html[lang="fr"] body.fr-seafood-visual .intl-hero-inner {
+    padding-block: 6rem 4rem;
+  }
+}

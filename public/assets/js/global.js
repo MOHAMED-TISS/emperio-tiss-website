@@ -28,6 +28,7 @@
   loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
+  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-filter-contrast-restore-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
@@ -163,5 +164,5 @@
   loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
   if (window.location.pathname !== '/contact/' && window.location.pathname !== '/contact') loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
-  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260823-en-filter-2', 'etEnCatalogFilterFix');
+  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260912-fr-filter-fix-1', 'etEnCatalogFilterFix');
 })();
