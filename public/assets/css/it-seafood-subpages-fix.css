@@ -1,0 +1,89 @@
+/* EMPERIO TISS — Italian Seafood subpage consistency */
+html[lang="it"] body.seafood-subpage .page-hero,
+html[lang="it"] body.seafood-subpage .intl-hero {
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+  height: 100vh !important;
+  height: 100svh !important;
+}
+
+html[lang="it"] .seafood-category-nav {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 26px 32px;
+  background: #f3efe6;
+  color: #071e35;
+  border-top: 1px solid rgba(7,30,53,.08);
+  border-bottom: 1px solid rgba(7,30,53,.08);
+}
+
+html[lang="it"] .seafood-category-nav__label {
+  font: 600 10px/1 var(--et-sans,"DM Sans",Arial,sans-serif);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #8d7750;
+  white-space: nowrap;
+}
+
+html[lang="it"] .seafood-category-nav__links {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+html[lang="it"] .seafood-category-nav__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 20px;
+  color: #071e35;
+  text-decoration: none;
+  border-left: 1px solid rgba(7,30,53,.12);
+  font: 500 12px/1 var(--et-sans,"DM Sans",Arial,sans-serif);
+  letter-spacing: .04em;
+  transition: color .25s ease, background-color .25s ease;
+}
+
+html[lang="it"] .seafood-category-nav__links a span {
+  color: #a98c57;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+html[lang="it"] .seafood-category-nav__links a:hover,
+html[lang="it"] .seafood-category-nav__links a.is-active {
+  color: #f3efe6;
+  background: #071e35;
+}
+
+html[lang="it"] .seafood-category-nav__links a:hover span,
+html[lang="it"] .seafood-category-nav__links a.is-active span {
+  color: #d8c28f;
+}
+
+@media (max-width: 700px) {
+  html[lang="it"] .seafood-category-nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  html[lang="it"] .seafood-category-nav__links {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  html[lang="it"] .seafood-category-nav__links a {
+    flex: 1;
+    justify-content: center;
+    padding: 0 8px;
+  }
+}
