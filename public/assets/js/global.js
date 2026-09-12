@@ -28,7 +28,7 @@
   loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
-  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-filter-contrast-restore-1', 'etCatalogueFilterContrast');
+  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-mobile-layout-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
@@ -118,51 +118,3 @@
       link.setAttribute('aria-label', socialCopy.whatsapp);
       link.innerHTML = `${whatsappIcon}<span>${socialCopy.whatsapp}</span>`;
     }
-    const language = container.querySelector('.et-language-switch,.language-nav');
-    const menu = container.querySelector('#menuToggleBtn,.mobile-menu,.es-menu,.p-menu');
-    const reference = language || menu || null;
-    if (link.parentElement !== container) { container.insertBefore(link, reference); return; }
-    if (reference && link.nextElementSibling !== reference) container.insertBefore(link, reference);
-  };
-
-  const ensureFooterLinkedIn = () => {
-    const footer = doc.querySelector('footer');
-    if (!footer || footer.querySelector('.et-linkedin')) return;
-    const link = doc.createElement('a');
-    link.className = 'et-linkedin';
-    link.href = linkedinHref;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', socialCopy.linkedin);
-    link.innerHTML = `${linkedinIcon}<span>${socialCopy.linkedin}</span>`;
-    const bottom = footer.querySelector('.et-footer-bottom,.et-footer-legal,.footer-band-inner,.ar-footer-inner');
-    if (bottom) bottom.appendChild(link); else footer.appendChild(link);
-  };
-
-  const enhance = () => { ensureHeaderWhatsApp(); ensureItalianLanguageLinks(); ensureFooterLinkedIn(); };
-  enhance();
-  new MutationObserver(enhance).observe(doc.body, { childList: true, subtree: true });
-
-  const pageImageSelector = 'img';
-  const protectPageImages = (rootElement = doc) => rootElement.querySelectorAll(pageImageSelector).forEach((img) => {
-    img.setAttribute('draggable', 'false');
-    img.setAttribute('oncontextmenu', 'return false');
-    img.setAttribute('ondragstart', 'return false');
-    img.setAttribute('onselectstart', 'return false');
-    img.style.userSelect = 'none';
-    img.style.webkitUserDrag = 'none';
-    img.style.webkitTouchCallout = 'none';
-  });
-  protectPageImages();
-  doc.addEventListener('contextmenu', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('dragstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('selectstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
-
-  loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
-  loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
-  loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
-  loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
-  if (window.location.pathname !== '/contact/' && window.location.pathname !== '/contact') loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
-  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260912-fr-filter-fix-1', 'etEnCatalogFilterFix');
-})();
