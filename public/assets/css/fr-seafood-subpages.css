@@ -6,7 +6,7 @@ html[lang="fr"] body.fr-seafood-visual {
 html[lang="fr"] body.fr-seafood-visual .intl-hero {
   position: relative;
   isolation: isolate;
-  min-height: min(76svh, 760px);
+  min-height: min(62svh, 640px);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -22,7 +22,7 @@ html[lang="fr"] body.fr-seafood-shellfish .intl-hero {
 }
 
 html[lang="fr"] body.fr-seafood-cephalopods .intl-hero {
-  background-image: url("/assets/products/incoming/Pulpo%20Flor.jpg");
+  background-image: none;
 }
 
 html[lang="fr"] body.fr-seafood-visual .intl-hero::after {
@@ -37,7 +37,7 @@ html[lang="fr"] body.fr-seafood-visual .intl-hero::after {
 html[lang="fr"] body.fr-seafood-visual .intl-hero-inner {
   position: relative;
   z-index: 1;
-  padding-block: clamp(6rem, 12vw, 9rem) clamp(4rem, 8vw, 7rem);
+  padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem);
 }
 
 html[lang="fr"] body.fr-seafood-visual .intl-kicker {
@@ -214,11 +214,11 @@ html[lang="fr"] body.fr-seafood-visual .seafood-category-nav__links a:focus-visi
 
 @media (max-width: 700px) {
   html[lang="fr"] body.fr-seafood-visual .intl-hero {
-    min-height: 70svh;
+    min-height: 58svh;
   }
 
   html[lang="fr"] body.fr-seafood-visual .intl-hero-inner {
-    padding-block: 6rem 4rem;
+    padding-block: 5rem 3rem;
   }
 }
 
