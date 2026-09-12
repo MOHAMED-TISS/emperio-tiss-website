@@ -1,0 +1,65 @@
+/* EMPERIO TISS — unified catalogue search control */
+
+:where(.fish-catalog__search, .compact-catalog__search, .seafood-catalog-search) {
+  box-sizing: border-box;
+  width: min(500px, 100%) !important;
+  max-width: 500px !important;
+  min-width: 0 !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  flex: 0 1 500px !important;
+  padding: 0 1rem !important;
+  border-radius: 999px !important;
+  font: 400 .78rem/1.2 var(--et-sans, "DM Sans", Arial, sans-serif) !important;
+  letter-spacing: .02em !important;
+}
+
+:where(.compact-catalog__search, .seafood-catalog-search, .fish-catalog__search)::placeholder {
+  opacity: .72;
+}
+
+:where(.compact-catalog__toolbar, .seafood-catalog__toolbar, .fish-catalog__toolbar) {
+  align-items: center;
+}
+
+.compact-catalog__toolbar {
+  grid-template-columns: minmax(0, 500px) auto !important;
+}
+
+:where(.fish-catalog__search, .seafood-catalog-search) {
+  margin-inline: 0 !important;
+}
+
+@media (max-width: 780px) {
+  :where(.fish-catalog__search, .compact-catalog__search, .seafood-catalog-search) {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    flex-basis: 100% !important;
+    padding-inline: .95rem !important;
+    font-size: .76rem !important;
+  }
+
+  .compact-catalog__toolbar {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .7rem !important;
+  }
+
+  :where(.fish-catalog__toolbar, .seafood-catalog__toolbar) {
+    gap: .7rem !important;
+  }
+}
+
+@media (max-width: 520px) {
+  :where(.fish-catalog__search, .compact-catalog__search, .seafood-catalog-search) {
+    height: 40px !important;
+    min-height: 40px !important;
+    padding-inline: .85rem !important;
+    font-size: .74rem !important;
+  }
+}
+
+[dir="rtl"] :where(.fish-catalog__search, .compact-catalog__search, .seafood-catalog-search) {
+  text-align: right;
+}
