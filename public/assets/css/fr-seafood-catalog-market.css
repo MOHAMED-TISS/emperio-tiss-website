@@ -1,177 +1,29 @@
 /* EMPERIO TISS — FR seafood catalogue
    Keeps the FR catalogue data/markup, while matching the market catalogue visual language. */
-.fr-seafood-visual .seafood-catalog {
-  background: #f3f1e8;
-  color: #102331;
-  padding: clamp(4rem, 8vw, 7rem) 0;
-}
-
-.fr-seafood-visual .seafood-catalog__inner {
-  width: min(1240px, calc(100% - 48px));
-  margin: 0 auto;
-}
-
-.fr-seafood-visual .seafood-catalog__head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, .65fr);
-  gap: 3rem;
-  align-items: end;
-  margin-bottom: 2.5rem;
-}
-
-.fr-seafood-visual .seafood-catalog__head .eyebrow {
-  color: #a07b45;
-  letter-spacing: .18em;
-}
-
-.fr-seafood-visual .seafood-catalog__head h2 {
-  margin: .5rem 0 0;
-  font: 400 clamp(2.8rem, 6vw, 5.5rem)/.9 var(--et-serif, "Playfair Display", Georgia, serif);
-  color: #102331;
-}
-
-.fr-seafood-visual .seafood-catalog__head > p {
-  max-width: 520px;
-  margin: 0;
-  color: #69736e;
-  font: 400 17px/1.8 var(--et-serif, "Playfair Display", Georgia, serif);
-}
-
-.fr-seafood-visual .seafood-catalog__toolbar {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  border: 0;
-  padding: 0;
-}
-
-.fr-seafood-visual .seafood-catalog-search {
-  flex: 1;
-  width: auto;
-  border: 1px solid rgba(16, 35, 49, .16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .42);
-  padding: .9rem 1rem;
-  color: #102331;
-  outline: none;
-}
-
-.fr-seafood-visual .seafood-catalog-search:focus {
-  border-color: rgba(16, 35, 49, .38);
-  box-shadow: 0 0 0 3px rgba(16, 35, 49, .06);
-}
-
-.fr-seafood-visual .seafood-catalog-count {
-  margin: 0;
-  color: #53615e;
-  white-space: nowrap;
-}
-
-.fr-seafood-visual .seafood-catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2vw, 28px);
-  background: transparent;
-}
-
-.fr-seafood-visual .seafood-catalog-card {
-  background: rgba(255, 255, 255, .72);
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  border: 1px solid rgba(16, 35, 49, .08);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 8px 28px rgba(16, 35, 49, .06);
-  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
-}
-
-.fr-seafood-visual .seafood-catalog-card:hover {
-  transform: translateY(-3px);
-  background: #fff;
-  box-shadow: 0 16px 38px rgba(16, 35, 49, .09);
-}
-
-.fr-seafood-visual .seafood-catalog-card__media {
-  position: relative;
-  aspect-ratio: 1.25 / 1;
-  background: linear-gradient(135deg, #dfe5e1, #edf0eb);
-  overflow: hidden;
-}
-
-.fr-seafood-visual .seafood-catalog-card__media img {
-  transition: opacity .22s ease, transform .35s ease;
-}
-
-.fr-seafood-visual .seafood-catalog-card__media:hover img {
-  transform: scale(1.015);
-}
-
-.fr-seafood-visual .seafood-catalog-card__body {
-  padding: 1.35rem 1.35rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: .45rem;
-  background: transparent;
-}
-
-.fr-seafood-visual .seafood-catalog-card__meta {
-  margin: 0;
-  color: #a07b45;
-  font: 700 .58rem var(--et-sans, "DM Sans", Arial, sans-serif);
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.fr-seafood-visual .seafood-catalog-card h3 {
-  margin: .2rem 0 0;
-  color: #102331;
-  font: 500 clamp(1.45rem, 2.4vw, 2.2rem)/1.05 var(--et-serif, "Playfair Display", Georgia, serif);
-  letter-spacing: -.01em;
-}
-
-.fr-seafood-visual .seafood-catalog-card__scientific {
-  margin: 0;
-  color: #53615e;
-  font: .76rem/1.4 var(--et-sans, "DM Sans", Arial, sans-serif);
-}
-
-.fr-seafood-visual .seafood-catalog-card__details {
-  margin-top: .8rem;
-  border-top: 1px solid rgba(16, 35, 49, .09);
-}
-
-.fr-seafood-visual .seafood-catalog-card__detail {
-  display: grid;
-  grid-template-columns: 34% 66%;
-  gap: .5rem;
-  padding: .52rem 0;
-  border-bottom: 1px solid rgba(16, 35, 49, .06);
-  font: .68rem/1.4 var(--et-sans, "DM Sans", Arial, sans-serif);
-}
-
-.fr-seafood-visual .seafood-catalog-card__detail span {
-  color: #66726e;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-}
-
-.fr-seafood-visual .seafood-catalog-card__detail strong {
-  color: #1b2f3c;
-  font-weight: 600;
-}
-
-@media (max-width: 850px) {
-  .fr-seafood-visual .seafood-catalog__head { grid-template-columns: 1fr; }
-  .fr-seafood-visual .seafood-catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 560px) {
-  .fr-seafood-visual .seafood-catalog__inner { width: calc(100% - 32px); }
-  .fr-seafood-visual .seafood-catalog-grid { grid-template-columns: 1fr; }
-  .fr-seafood-visual .seafood-catalog__toolbar { display: block; }
-  .fr-seafood-visual .seafood-catalog-search { width: 100%; margin-bottom: .7rem; }
-  .fr-seafood-visual .seafood-catalog-count { margin-top: .7rem; }
-  .fr-seafood-visual .seafood-catalog { padding: 72px 0; }
-}
+.fr-seafood-visual .seafood-catalog { background:#f3f1e8; color:#102331; padding:clamp(4rem,8vw,7rem) 0; }
+.fr-seafood-visual .seafood-catalog__inner { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
+.fr-seafood-visual .seafood-catalog__head { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.65fr); gap:3rem; align-items:end; margin-bottom:2.5rem; }
+.fr-seafood-visual .seafood-catalog__head .eyebrow { color:#a07b45; letter-spacing:.18em; }
+.fr-seafood-visual .seafood-catalog__head h2 { margin:.5rem 0 0; font:400 clamp(2.8rem,6vw,5.5rem)/.9 var(--et-serif,"Playfair Display",Georgia,serif); color:#102331; }
+.fr-seafood-visual .seafood-catalog__head h2 em { font-style:italic; color:#a07b45; }
+.fr-seafood-visual .seafood-catalog__head > p { max-width:520px; margin:0; color:#69736e; font:400 17px/1.8 var(--et-serif,"Playfair Display",Georgia,serif); }
+.fr-seafood-visual .seafood-catalog__toolbar { display:flex; gap:1rem; align-items:center; margin-bottom:1.5rem; border:0; padding:0; }
+.fr-seafood-visual .seafood-catalog-search { flex:1; width:auto; border:1px solid rgba(16,35,49,.16); border-radius:999px; background:rgba(255,255,255,.42); padding:.9rem 1rem; color:#102331; outline:none; font:400 .9rem var(--et-sans,"DM Sans",Arial,sans-serif); }
+.fr-seafood-visual .seafood-catalog-search:focus { border-color:rgba(16,35,49,.38); box-shadow:0 0 0 3px rgba(16,35,49,.06); }
+.fr-seafood-visual .seafood-catalog-count { margin:0; color:#53615e; font:600 .65rem var(--et-sans,"DM Sans",Arial,sans-serif); letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+.fr-seafood-visual .seafood-catalog-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2vw,28px); background:transparent; }
+.fr-seafood-visual .seafood-catalog-card { background:rgba(255,255,255,.72); display:flex; flex-direction:column; min-width:0; border:1px solid rgba(16,35,49,.08); border-radius:18px; overflow:hidden; box-shadow:0 8px 28px rgba(16,35,49,.06); transition:transform .25s ease,box-shadow .25s ease,background .25s ease; }
+.fr-seafood-visual .seafood-catalog-card:hover { transform:translateY(-3px); background:#fff; box-shadow:0 16px 38px rgba(16,35,49,.09); }
+.fr-seafood-visual .seafood-catalog-card__media { position:relative; aspect-ratio:1.25/1; background:linear-gradient(135deg,#dfe5e1,#edf0eb); overflow:hidden; }
+.fr-seafood-visual .seafood-catalog-card__media img { transition:opacity .22s ease,transform .35s ease; }
+.fr-seafood-visual .seafood-catalog-card__media:hover img { transform:scale(1.015); }
+.fr-seafood-visual .seafood-catalog-card__body { padding:1.35rem 1.35rem 1.5rem; display:flex; flex-direction:column; gap:.45rem; background:transparent; }
+.fr-seafood-visual .seafood-catalog-card__meta { margin:0; color:#a07b45; font:700 .58rem var(--et-sans,"DM Sans",Arial,sans-serif); letter-spacing:.13em; text-transform:uppercase; }
+.fr-seafood-visual .seafood-catalog-card h3 { margin:.2rem 0 0; color:#102331; font:500 clamp(1.45rem,2.4vw,2.2rem)/1.05 var(--et-serif,"Playfair Display",Georgia,serif); letter-spacing:-.01em; }
+.fr-seafood-visual .seafood-catalog-card__scientific { margin:0; color:#53615e; font:.76rem/1.4 var(--et-sans,"DM Sans",Arial,sans-serif); }
+.fr-seafood-visual .seafood-catalog-card__details { margin-top:.8rem; border-top:1px solid rgba(16,35,49,.09); }
+.fr-seafood-visual .seafood-catalog-card__detail { display:grid; grid-template-columns:34% 66%; gap:.5rem; padding:.52rem 0; border-bottom:1px solid rgba(16,35,49,.06); font:.68rem/1.4 var(--et-sans,"DM Sans",Arial,sans-serif); }
+.fr-seafood-visual .seafood-catalog-card__detail span { color:#66726e; text-transform:uppercase; letter-spacing:.06em; }
+.fr-seafood-visual .seafood-catalog-card__detail strong { color:#1b2f3c; font-weight:600; }
+@media(max-width:850px){.fr-seafood-visual .seafood-catalog__head{grid-template-columns:1fr}.fr-seafood-visual .seafood-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.fr-seafood-visual .seafood-catalog__inner{width:calc(100% - 32px)}.fr-seafood-visual .seafood-catalog-grid{grid-template-columns:1fr}.fr-seafood-visual .seafood-catalog__toolbar{display:block}.fr-seafood-visual .seafood-catalog-search{width:100%;margin-bottom:.7rem}.fr-seafood-visual .seafood-catalog-count{margin-top:.7rem}.fr-seafood-visual .seafood-catalog{padding:72px 0}}
