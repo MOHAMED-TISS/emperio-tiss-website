@@ -1,13 +1,11 @@
 /* EMPERIO TISS — shared cephalopods hero background */
-.page-hero.intl-hero,
-.intl-hero,
-.ar-hero {
+html[lang="es"] body.seafood-subpage .page-hero,
+html[lang="en"] body.seafood-subpage .page-hero,
+html[lang="it"] body.seafood-subpage .intl-hero,
+html[lang="fr"] body.fr-seafood-cephalopods .intl-hero,
+html[lang="ar"] body.ar-page .ar-hero {
   background-image: url("https://images.pexels.com/photos/9652994/pexels-photo-9652994.jpeg") !important;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.ar-hero {
-  background-color: #071e35;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
