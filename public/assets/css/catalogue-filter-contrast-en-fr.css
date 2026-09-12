@@ -114,3 +114,119 @@ html[lang="fr"] .seafood-catalog__filter:focus-visible {
 [dir="rtl"] :where(.fish-catalog__search, .compact-catalog__search, .seafood-catalog-search) {
   text-align: right;
 }
+
+/* Mobile editorial alignment — keep hero content visually centered across all catalog pages */
+@media (max-width: 800px) {
+  body.es-page .es-hero,
+  body.intl-page .intl-hero,
+  body.ar-page .ar-hero,
+  body.about-page .about-hero,
+  body.products-site .product-hero,
+  body.news-page .news-hero,
+  body.seafood-subpage .page-hero,
+  body.fish-catalog-pilot .page-hero {
+    text-align: center !important;
+    background-position: center center !important;
+  }
+
+  body.es-page .es-hero > .container,
+  body.es-page .es-hero > .es-container,
+  body.intl-page .intl-hero > .container,
+  body.intl-page .intl-hero > .intl-container,
+  body.ar-page .ar-hero > .container,
+  body.ar-page .ar-hero > .ar-container,
+  body.about-page .about-hero > .container,
+  body.products-site .product-hero > .p-container,
+  body.news-page .news-hero > .container,
+  body.seafood-subpage .page-hero > .container,
+  body.seafood-subpage .page-hero > .intl-container,
+  body.fish-catalog-pilot .page-hero > .container {
+    width: min(100% - 32px, 720px) !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+  }
+
+  body.es-page .es-hero .hero-content,
+  body.intl-page .intl-hero .hero-content,
+  body.ar-page .ar-hero .hero-content,
+  body.about-page .about-hero .hero-content,
+  body.products-site .product-hero .hero-content,
+  body.news-page .news-hero .hero-content,
+  body.seafood-subpage .page-hero .hero-content,
+  body.fish-catalog-pilot .page-hero .hero-content {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+  }
+
+  body.es-page .es-hero h1,
+  body.intl-page .intl-hero h1,
+  body.ar-page .ar-hero h1,
+  body.about-page .about-hero h1,
+  body.products-site .product-hero h1,
+  body.news-page .news-hero h1,
+  body.seafood-subpage .page-hero h1,
+  body.fish-catalog-pilot .page-hero h1,
+  body.es-page .es-hero p,
+  body.intl-page .intl-hero p,
+  body.ar-page .ar-hero p,
+  body.about-page .about-hero p,
+  body.products-site .product-hero p,
+  body.news-page .news-hero p,
+  body.seafood-subpage .page-hero p,
+  body.fish-catalog-pilot .page-hero p {
+    margin-inline: auto !important;
+  }
+}
+
+/* Buttons must size to their own content — never stretch to the parent width */
+.es-page .es-btn,
+.intl-page .intl-btn,
+.ar-page .ar-btn,
+.about-page .about-btn,
+.products-site .button,
+.news-page a[class*=button],
+.es-page a[href*="contact"],
+.intl-page a[href*="contact"],
+.ar-page a[href*="contact"],
+.about-page a[href*="contact"],
+.products-site a[href*="contact"],
+.news-page a[href*="contact"] {
+  width: max-content !important;
+  max-width: calc(100% - 32px) !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  align-self: center !important;
+}
+
+@media (max-width: 800px) {
+  .es-page .es-btn,
+  .intl-page .intl-btn,
+  .ar-page .ar-btn,
+  .about-page .about-btn,
+  .products-site .button,
+  .news-page a[class*=button],
+  .es-page a[href*="contact"],
+  .intl-page a[href*="contact"],
+  .ar-page a[href*="contact"],
+  .about-page a[href*="contact"],
+  .products-site a[href*="contact"],
+  .news-page a[href*="contact"] {
+    width: max-content !important;
+    max-width: calc(100vw - 40px) !important;
+    min-height: 48px !important;
+    padding-inline: 18px !important;
+    margin-inline: auto !important;
+  }
+}
+
+[dir="rtl"] .es-page .es-btn,
+[dir="rtl"] .intl-page .intl-btn,
+[dir="rtl"] .ar-page .ar-btn,
+[dir="rtl"] .about-page .about-btn,
+[dir="rtl"] .products-site .button,
+[dir="rtl"] .news-page a[class*=button] {
+  direction: rtl !important;
+}
