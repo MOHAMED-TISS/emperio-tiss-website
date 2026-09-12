@@ -1,3 +1,0 @@
-Pre-consolidation checkpoint
-Main commit before this cleanup: 6c0a0b5cd1cd1805026e53a7a428b423453665e9
-Candidate: consolidate about-hero-fullbleed.css into about-media.css and remove the redundant standalone stylesheet.
