@@ -1,0 +1,27 @@
+/* EMPERIO TISS — final FR seafood hero correction */
+html[lang="fr"] body.fr-seafood-visual .intl-hero {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  height: 100svh !important;
+  min-height: 100svh !important;
+  max-height: none !important;
+  box-sizing: border-box;
+}
+
+html[lang="fr"] body.fr-seafood-cephalopods .intl-hero {
+  background: #071e35 !important;
+  background-image: none !important;
+}
+
+html[lang="fr"] body.fr-seafood-cephalopods .intl-hero::after {
+  background: none !important;
+}
+
+@media (max-width: 700px) {
+  html[lang="fr"] body.fr-seafood-visual .intl-hero {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+  }
+} 
