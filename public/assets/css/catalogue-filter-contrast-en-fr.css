@@ -50,7 +50,7 @@ html[lang="fr"] .seafood-catalog__filter:focus-visible {
   outline-offset: 3px;
 }
 
-/* Unified catalogue search control — compact on desktop, proportional on mobile */
+/* Unified catalogue search control */
 :where(.fish-catalog__search, .compact-catalog__search, .seafood-catalog-search) {
   box-sizing: border-box;
   width: min(500px, 100%) !important;
@@ -115,7 +115,7 @@ html[lang="fr"] .seafood-catalog__filter:focus-visible {
   text-align: right;
 }
 
-/* Mobile editorial alignment — keep hero content visually centered across all catalog pages */
+/* Mobile editorial composition */
 @media (max-width: 800px) {
   body.es-page .es-hero,
   body.intl-page .intl-hero,
@@ -178,9 +178,51 @@ html[lang="fr"] .seafood-catalog__filter:focus-visible {
   body.fish-catalog-pilot .page-hero p {
     margin-inline: auto !important;
   }
+
+  /* Hero action groups: centered, compact and never stretched */
+  body.es-page .es-hero .hero-actions,
+  body.intl-page .intl-hero .hero-actions,
+  body.ar-page .ar-hero .hero-actions,
+  body.products-site .product-hero .hero-actions,
+  body.seafood-subpage .page-hero .hero-actions,
+  body.es-page .es-hero .actions,
+  body.intl-page .intl-hero .actions,
+  body.ar-page .ar-hero .actions,
+  body.products-site .product-hero .actions,
+  body.seafood-subpage .page-hero .actions {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-inline: auto !important;
+  }
+
+  /* Avoid accidental full-width mobile buttons */
+  body.es-page .es-hero a.button,
+  body.intl-page .intl-hero a.button,
+  body.ar-page .ar-hero a.button,
+  body.products-site .product-hero a.button,
+  body.seafood-subpage .page-hero a.button,
+  body.es-page .es-hero .button,
+  body.intl-page .intl-hero .button,
+  body.ar-page .ar-hero .button,
+  body.products-site .product-hero .button,
+  body.seafood-subpage .page-hero .button {
+    display: inline-flex !important;
+    width: fit-content !important;
+    max-width: calc(100vw - 40px) !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    align-self: center !important;
+    white-space: nowrap !important;
+    margin-inline: auto !important;
+  }
 }
 
-/* Buttons must size to their own content — never stretch to the parent width */
+/* Buttons size to their own content */
 .es-page .es-btn,
 .intl-page .intl-btn,
 .ar-page .ar-btn,
@@ -229,4 +271,60 @@ html[lang="fr"] .seafood-catalog__filter:focus-visible {
 [dir="rtl"] .products-site .button,
 [dir="rtl"] .news-page a[class*=button] {
   direction: rtl !important;
+}
+
+/* Final mobile catalogue controls: balanced rhythm and safe horizontal bounds */
+@media (max-width: 800px) {
+  :where(.fish-catalog, .compact-catalog, .seafood-catalog) {
+    overflow-x: clip;
+  }
+
+  :where(.fish-catalog__inner, .compact-catalog__inner, .seafood-catalog__inner) {
+    width: min(100% - 32px, 680px) !important;
+    margin-inline: auto !important;
+  }
+
+  :where(.fish-catalog__filters, .compact-catalog__filters, .seafood-catalog__filters) {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  :where(.fish-catalog__filter, .compact-catalog__filter, .seafood-catalog__filter) {
+    width: fit-content !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    padding-inline: .8rem !important;
+  }
+
+  :where(.fish-catalog__toolbar, .compact-catalog__toolbar, .seafood-catalog__toolbar) {
+    justify-content: center !important;
+    margin-inline: auto !important;
+  }
+
+  :where(.fish-catalog__count, .compact-catalog__count, .seafood-catalog-count) {
+    justify-self: center !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 520px) {
+  :where(.fish-catalog__inner, .compact-catalog__inner, .seafood-catalog__inner) {
+    width: calc(100% - 24px) !important;
+  }
+
+  :where(.fish-catalog__filters, .compact-catalog__filters, .seafood-catalog__filters) {
+    gap: 6px !important;
+  }
+
+  :where(.fish-catalog__filter, .compact-catalog__filter, .seafood-catalog__filter) {
+    padding: .52rem .7rem !important;
+    font-size: .58rem !important;
+    letter-spacing: .08em !important;
+  }
+}
+
+[dir="rtl"] :where(.fish-catalog__filters, .compact-catalog__filters, .seafood-catalog__filters) {
+  direction: rtl;
 }
