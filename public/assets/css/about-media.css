@@ -472,3 +472,45 @@
     url('https://images.pexels.com/photos/32281093/pexels-photo-32281093.jpeg?auto=compress&cs=tinysrgb&w=2200') !important;
   background-position: center 50%;
 }
+
+/* Consolidated former about-hero-fullbleed.css layer.
+   The current hero photography stays owned by this file; only its full-width structure is retained. */
+.es-page.about-page main>.es-hero {
+  background: none !important;
+  overflow: visible !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.es-page.about-page main>.es-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  transform: none !important;
+  background-image:
+    linear-gradient(125deg, rgba(3, 18, 14, .92) 0%, rgba(5, 27, 21, .82) 52%, rgba(7, 31, 24, .70) 100%),
+    url('https://images.pexels.com/photos/20520583/pexels-photo-20520583.jpeg?auto=compress&cs=tinysrgb&w=2200');
+  background-size: cover;
+  background-position: center 46%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.es-page.about-page main>.es-hero>.es-container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+@media(max-width:800px) {
+  .es-page.about-page main>.es-hero::before {
+    background-position: center 42%;
+  }
+}
