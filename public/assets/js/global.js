@@ -28,7 +28,7 @@
   loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
-  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-mobile-layout-2', 'etCatalogueFilterContrast');
+  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-mobile-ux-landscape-1', 'etCatalogueFilterContrast');
   loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
