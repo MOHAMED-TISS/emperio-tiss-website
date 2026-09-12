@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/css/seafood-catalog-es.css">
     <link rel="stylesheet" href="/assets/css/catalogue-type-scale-unified.css">
     <link rel="stylesheet" href="/assets/css/fr-seafood-subpages.css">
+    <link rel="stylesheet" href="/assets/css/fish-emblematic-soft.css?v=20260912-fr-emblematic-1">
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">
     <script data-etMarketCatalogue></script>
   </head>
@@ -50,7 +51,17 @@
           <a class="is-active" href="/fr/products/seafood/cephalopods/" aria-current="page"><span>03</span>Céphalopodes</a>
         </div>
       </nav>
-      <section class="seafood-catalog" data-seafood-catalog data-catalog-url="/assets/data/cephalopods-catalog-fr.json">
+      <section class="fish-emblematic" aria-labelledby="cephalopodsEmblematicTitle">
+        <div class="fish-emblematic__inner">
+          <div class="fish-emblematic__intro">
+            <span class="eyebrow">SÉLECTION EMBLÉMATIQUE</span>
+            <h2 id="cephalopodsEmblematicTitle">Céphalopodes sélectionnés<br><em>pour le marché français.</em></h2>
+            <p>Une sélection de références professionnelles avant le catalogue opérationnel.</p>
+          </div>
+          <div class="fish-emblematic__grid"></div>
+        </div>
+      </section>
+      <section class="seafood-catalog" data-seafood-catalog data-catalog-url="/assets/data/cephalopods-catalog-fr.json" id="cephalopodsCatalog">
         <div class="seafood-catalog__inner">
           <div class="seafood-catalog__head">
             <div><span class="eyebrow">CATALOGUE</span>
@@ -70,5 +81,6 @@
     </footer>
     <script src="/assets/js/global.js" defer></script>
     <script src="/assets/js/seafood-catalog-fr.js" defer></script>
+    <script src="/assets/js/seafood-fr-emblematic.js?v=20260912-fr-emblematic-1" defer></script>
   </body>
 </html>
