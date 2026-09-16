@@ -1,0 +1,1 @@
+ES homepage redesign prepared from the approved cinematic reference. Production changes are in public/index.html, public/assets/css/home-modern.css, and public/assets/js/home-modern.js. Temporary regression tests were run locally and intentionally not committed.
