@@ -16,7 +16,7 @@ Google documents that `Discovered – currently not indexed` means the URL has b
 
 1. Preserve the 65 sitemap URLs as the intended indexable/canonical URL set.
 2. Make canonicalization deterministic and self-referential for every intended canonical URL.
-3. Make hreflang reciprocal across ES/EN/FR/AR/IT for every equivalent page, plus `x-default` pointing to the Spanish version.
+3. Make hreflang reciprocal across ES/EN/FR/IT/AR for every equivalent page, plus `x-default` pointing to the Spanish equivalent.
 4. Ensure canonicalization signals do not contradict intentional legacy redirects.
 5. Avoid changing legacy `.html` redirect pages from their current `noindex` behavior.
 6. Add automated tests that detect missing or contradictory SEO metadata before deployment.
@@ -40,7 +40,7 @@ Spanish routes are the canonical `x-default` equivalents; English, French, Arabi
 
 ### 2. Response-level normalization
 
-The Cloudflare Worker in `src/index.js` already fronts the Pages asset binding through `env.ASSETS.fetch(request)`. For GET requests that resolve to HTML and match one of the 65 canonical routes, the Worker will normalize the document head with HTMLRewriter:
+The Cloudflare Worker in `src/index.js` already fronts the Pages asset binding through `env.ASSETS.fetch(request)`. The production entrypoint will become a thin wrapper in `src/seo-worker.js`; it delegates API and asset behavior to the existing Worker, then normalizes only successful HTML GET responses for the 65 canonical routes using Cloudflare HTMLRewriter:
 
 - remove existing `rel=canonical` tags;
 - remove existing hreflang alternate tags;
@@ -53,17 +53,17 @@ This creates a single runtime source of truth while preserving the page-specific
 
 ### 3. Automated validator
 
-Add `tests/test_seo_metadata.py` using only the Python standard library. It will read `public/sitemap.xml` and the intended HTML files and assert:
+Add Node.js built-in test runner coverage in `tests/seo-metadata.test.mjs` and `tests/seo-pages.test.mjs`. The tests will read `public/sitemap.xml` and the intended HTML files and assert:
 
 - exactly 65 sitemap URLs;
 - every sitemap URL maps to an existing canonical page file;
 - no sitemap target contains `noindex`;
 - every target contains a `<title>` and meta description;
 - every target's existing canonical, when present, points to itself;
-- every target's existing hreflang set, when present, is reciprocal and uses the expected URLs;
-- legacy redirect pages remain `noindex` and are excluded from the canonical target set.
+- every target's existing hreflang annotations, when present, use the expected URLs;
+- the route matrix excludes legacy `.html` compatibility routes.
 
-The test is intentionally source-level. Runtime normalization is separately validated through deterministic route-matrix tests in the Worker module.
+The source tests are complemented by unit coverage for the deterministic route metadata builder, including all five languages and `x-default`.
 
 ### 4. Internal consistency
 
