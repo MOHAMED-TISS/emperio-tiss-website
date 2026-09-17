@@ -10,7 +10,8 @@ const urls = [...SITEMAP.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]
 
 function htmlPathFor(url) {
   const pathname = new URL(url).pathname;
-  return path.join(ROOT, 'public', pathname === '/' ? 'index.html' : pathname.slice(1), 'index.html');
+  if (pathname === '/') return path.join(ROOT, 'public', 'index.html');
+  return path.join(ROOT, 'public', pathname.slice(1), 'index.html');
 }
 
 function canonicalFrom(html) {
@@ -72,10 +73,13 @@ test('existing static canonical and hreflang signals never contradict the route 
   }
 });
 
-test('all localized language roots are represented exactly 13 times', () => {
+test('all localized language groups are represented exactly 13 times', () => {
   for (const language of SEO_LANGUAGES) {
-    const base = language === 'es' ? 'https://emperio-tiss.com' : `https://emperio-tiss.com/${language}`;
-    const count = urls.filter(url => url === `${base}/` || url.startsWith(`${base}/`)).length;
+    const count = urls.filter(url => {
+      const pathname = new URL(url).pathname;
+      if (language === 'es') return !/^\/(en|fr|it|ar)(\/|$)/.test(pathname);
+      return pathname === `/${language}/` || pathname.startsWith(`/${language}/`);
+    }).length;
     assert.equal(count, 13, `${language} should have exactly 13 sitemap URLs`);
   }
 });
