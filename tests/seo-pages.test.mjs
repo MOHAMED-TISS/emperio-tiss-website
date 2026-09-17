@@ -15,13 +15,20 @@ function htmlPathFor(url) {
 }
 
 function canonicalFrom(html) {
-  return html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1] ?? null;
+  const direct = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i);
+  if (direct) return direct[1];
+  return html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i)?.[1] ?? null;
 }
 
 function hreflangFrom(html) {
   const entries = {};
-  const pattern = /<link[^>]+rel=["']alternate["'][^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi;
-  for (const match of html.matchAll(pattern)) entries[match[1].toLowerCase()] = match[2];
+  const patterns = [
+    /<link[^>]+rel=["']alternate["'][^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi,
+    /<link[^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["'][^>]+rel=["']alternate["']/gi
+  ];
+  for (const pattern of patterns) {
+    for (const match of html.matchAll(pattern)) entries[match[1].toLowerCase()] = match[2];
+  }
   return entries;
 }
 
@@ -37,40 +44,50 @@ test('SEO route matrix matches the 65-entry sitemap contract', () => {
 });
 
 test('every sitemap target has real HTML, title, description and no static noindex', () => {
+  const failures = [];
+
   for (const url of urls) {
     const file = htmlPathFor(url);
-    assert.equal(fs.existsSync(file), true, `missing HTML for ${url}`);
-    const html = fs.readFileSync(file, 'utf8');
+    if (!fs.existsSync(file)) {
+      failures.push(`${url}: missing HTML file`);
+      continue;
+    }
 
-    assert.match(html, /<title>\s*[^<]+\s*<\/title>/i, `missing title: ${url}`);
-    assert.match(
-      html,
-      /<meta\s+name=["']description["'][^>]+content=["'][^"']+/i,
-      `missing description: ${url}`
-    );
-    assert.doesNotMatch(
-      html,
-      /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i,
-      `noindex on canonical: ${url}`
-    );
+    const html = fs.readFileSync(file, 'utf8');
+    if (!/<title>\s*[^<]+\s*<\/title>/i.test(html)) failures.push(`${url}: missing title`);
+    if (!/<meta\s+name=["']description["'][^>]+content=["'][^"']+/i.test(html)) {
+      failures.push(`${url}: missing meta description`);
+    }
+    if (/<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) {
+      failures.push(`${url}: canonical target has static noindex`);
+    }
   }
+
+  assert.deepEqual(failures, [], failures.join('\n'));
 });
 
 test('existing static canonical and hreflang signals never contradict the route matrix', () => {
+  const failures = [];
+
   for (const url of urls) {
     const pathname = new URL(url).pathname;
     const expected = getSeoMeta(pathname);
     const html = fs.readFileSync(htmlPathFor(url), 'utf8');
     const canonical = canonicalFrom(html);
 
-    if (canonical) assert.equal(canonical, expected.canonical, `canonical mismatch: ${url}`);
+    if (canonical && canonical !== expected.canonical) {
+      failures.push(`${url}: canonical ${canonical} != ${expected.canonical}`);
+    }
 
-    const existingHreflang = hreflangFrom(html);
-    for (const [language, href] of Object.entries(existingHreflang)) {
-      assert.ok(expected.hreflang[language], `unknown hreflang ${language}: ${url}`);
-      assert.equal(href, expected.hreflang[language], `hreflang mismatch: ${url} -> ${language}`);
+    for (const [language, href] of Object.entries(hreflangFrom(html))) {
+      if (!expected.hreflang[language]) failures.push(`${url}: unknown hreflang ${language}`);
+      else if (href !== expected.hreflang[language]) {
+        failures.push(`${url}: hreflang ${language} ${href} != ${expected.hreflang[language]}`);
+      }
     }
   }
+
+  assert.deepEqual(failures, [], failures.join('\n'));
 });
 
 test('all localized language groups are represented exactly 13 times', () => {
