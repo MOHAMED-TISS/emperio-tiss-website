@@ -70,7 +70,7 @@
   overflow:hidden;
   background:
     linear-gradient(90deg,rgba(4,17,29,.92) 0%,rgba(4,17,29,.74) 38%,rgba(4,17,29,.30) 73%,rgba(4,17,29,.42) 100%),
-    url("https://upload.wikimedia.org/wikipedia/commons/b/b2/Sicilian_fishing_boats.jpg") center 58%/cover no-repeat;
+    url("/assets/images/home-origins.webp") center 58%/cover no-repeat;
   color:#fff;
 }
 .home-page .home-hero-media{
@@ -339,12 +339,15 @@
   border-radius:2px;
   transition:transform .5s cubic-bezier(.2,.7,.2,1);
 }
-.home-page .product-row::before{
+.home-page .product-row .product-image{
   content:"";
   position:absolute;
   inset:0;
   z-index:-2;
-  background:var(--product-image) center/cover no-repeat;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
   transform:scale(1.02);
   transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .5s ease;
 }
@@ -355,11 +358,8 @@
   z-index:-1;
   background:linear-gradient(180deg,rgba(4,17,29,.08) 12%,rgba(4,17,29,.25) 42%,rgba(4,17,29,.88) 100%);
 }
-.home-page .product-row:nth-child(1){--product-image:url("https://images.pexels.com/photos/4197494/pexels-photo-4197494.jpeg?auto=compress&cs=tinysrgb&w=1400")}
-.home-page .product-row:nth-child(2){--product-image:url("https://images.pexels.com/photos/6576750/pexels-photo-6576750.jpeg?auto=compress&dpr=1&w=1400")}
-.home-page .product-row:nth-child(3){--product-image:url("https://images.pexels.com/photos/33319743/pexels-photo-33319743.jpeg?auto=compress&dpr=1&w=1400")}
 .home-page .product-row:hover{transform:translateY(-8px);padding-inline:28px;background:#0a2032}
-.home-page .product-row:hover::before{transform:scale(1.08);filter:saturate(1.06)}
+.home-page .product-row:hover .product-image{transform:scale(1.08);filter:saturate(1.06)}
 .home-page .product-number{
   position:absolute;
   top:23px;
@@ -537,7 +537,7 @@
   position:relative;
   background:
     linear-gradient(112deg,rgba(4,17,29,.92),rgba(4,17,29,.58)),
-    url("https://images.pexels.com/photos/20520583/pexels-photo-20520583.jpeg?auto=compress&cs=tinysrgb&w=1800") center/cover no-repeat;
+    var(--hm-navy);
   color:#fff;
   text-align:center;
 }
