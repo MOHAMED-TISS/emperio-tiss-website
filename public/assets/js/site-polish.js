@@ -71,12 +71,12 @@
     const footer = doc.createElement('footer');
     footer.className = 'et-universal-footer';
     footer.innerHTML = `<div class="et-footer-container"><div class="et-footer-main"><div class="et-footer-brand"><img class="et-footer-logo" src="/logo.png" alt="EMPERIO TISS"><p>${copy.tagline}</p></div><div class="et-footer-column"><strong>${copy.nav}</strong><a href="${base}">${copy.home}</a><a href="${base}about/">${copy.company}</a><a href="${base}products/">${copy.products}</a><a href="${base}markets/">${copy.markets}</a><a href="${base}news/">${copy.news}</a><a href="${base}contact/">${copy.contact}</a></div><div class="et-footer-column"><strong>${copy.products}</strong><a href="${base}products/seafood/">${copy.seafood}</a><a href="${base}products/seafood/fish/">${copy.fish}</a><a href="${base}products/seafood/shellfish/">${copy.shellfish}</a><a href="${base}products/seafood/cephalopods/">${copy.cephalopods}</a><a href="${base}products/fruits/">${copy.fruits}</a><a href="${base}products/vegetables/">${copy.vegetables}</a><a href="${base}products/seasonal/">${copy.seasonal}</a></div><div class="et-footer-column"><strong>${copy.company}</strong><a href="${base}contact/">${copy.inquiry}</a><a href="/legal/aviso-legal.html">${copy.legal}</a><a href="/legal/privacidad.html">${copy.privacy}</a><a href="/legal/cookies.html">${copy.cookies}</a></div></div><div class="et-footer-legal"><p>© 2026 <span class="et-footer-company">EMPERIO TISS S.L.</span> ${copy.reserved}</p><p>${copy.disclaimer}</p></div><div class="et-footer-bottom"><span>EMPERIO TISS S.L.</span><span>${copy.region}</span></div></div>`;
-    // Keep the approved ocean logo confined to the Spanish homepage trial.
+    // Keep the adapted vector logo confined to the Spanish homepage trial.
     if (lang === 'es' && ['/', '/index.html'].includes(window.location.pathname)) {
       const logo = footer.querySelector('.et-footer-logo');
-      logo.src = '/assets/images/emperio-tiss-ocean-logo.webp';
-      logo.width = 798;
-      logo.height = 505;
+      logo.src = '/assets/images/emperio-tiss-logo.svg';
+      logo.width = 680;
+      logo.height = 430;
       logo.loading = 'lazy';
       logo.decoding = 'async';
     }
