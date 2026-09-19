@@ -51,11 +51,10 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
-.home-page.home-logo-trial .home-brand-name {
-  color: #F4F0E6;
-  font: 400 18px/1.2 var(--et-serif);
-  letter-spacing: .12em;
-  white-space: nowrap;
+.home-page.home-logo-trial .site-header .site-logo .home-brand-name {
+  width: 184px;
+  height: auto;
+  max-width: none;
 }
 .home-page.home-logo-trial .site-header :is(.et-whatsapp,.et-language-current,.mobile-menu) {
   min-width: 44px;
@@ -98,7 +97,7 @@
     gap: 8px;
     border-radius: 14px;
   }
-  .home-page.home-logo-trial .home-brand-name { font-size: 11px; letter-spacing: .07em; }
+  .home-page.home-logo-trial .site-header .site-logo .home-brand-name { width: 104px; }
   .home-page.home-logo-trial .site-header .et-whatsapp { width: 44px; padding: 0; font-size: 0; }
   .home-page.home-logo-trial .site-header .et-whatsapp span { display: none; }
 }
