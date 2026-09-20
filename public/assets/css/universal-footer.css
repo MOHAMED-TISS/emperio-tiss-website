@@ -1,6 +1,6 @@
 /* EMPERIO TISS — canonical universal footer */
 .et-universal-footer {
-  background: #03140f !important;
+  background: var(--footer-surface, #03140f) !important;
   color: rgba(255, 255, 255, .65) !important;
   padding: 70px 0 26px !important;
   font-family: var(--et-sans, "DM Sans", Arial, sans-serif) !important;

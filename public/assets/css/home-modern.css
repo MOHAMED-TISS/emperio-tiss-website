@@ -768,3 +768,50 @@
   .home-page .home-reveal,
   .home-page .home-stagger > *{opacity:1!important;transform:none!important}
 }
+
+/* ES evening glass: translucent navigation and a quiet editorial footer. */
+.home-page.home-logo-trial { --et-gold: #C9A24B; --et-serif: "Playfair Display", Georgia, serif; --footer-surface: #0B1E33; }
+.home-page.home-logo-trial .nav-overlay { background: rgba(11,30,51,.86); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); overflow-y: auto; }
+.home-page.home-logo-trial .nav-overlay-inner { width: min(1060px, calc(100% - 64px)); margin: auto; padding: 144px 36px 36px; height: auto; min-height: 100dvh; gap: 36px; }
+.home-page.home-logo-trial .nav-overlay-links { width: 100%; max-width: 760px; }
+.home-page.home-logo-trial .nav-overlay-links > a > span:not(.idx),
+.home-page.home-logo-trial .nav-products > summary > span:not(.idx) { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.18; color: #F4F0E6; }
+.home-page.home-logo-trial .nav-overlay-links > a:hover > span:not(.idx),
+.home-page.home-logo-trial .nav-overlay-links > a.active > span:not(.idx) { color: #C9A24B; }
+.home-page.home-logo-trial .nav-overlay-links > a,
+.home-page.home-logo-trial .nav-products > summary { min-height: 48px; }
+.home-page.home-logo-trial .nav-overlay-foot { border-color: rgba(201,162,75,.28); padding-top: 28px; align-items: center; }
+.home-page.home-logo-trial .nav-overlay-lang { gap: 12px; align-items: center; }
+.home-page.home-logo-trial .nav-overlay-lang a { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; letter-spacing: .1em; }
+.home-page.home-logo-trial .nav-overlay-contact { color: #d4d3cb; gap: 10px; font-size: 12px; }
+.home-page.home-logo-trial .nav-overlay-contact a { color: #C9A24B; font-size: 16px; }
+.home-page.home-logo-trial .nav-overlay :is(a,summary):focus-visible,
+.home-page.home-logo-trial .et-universal-footer a:focus-visible { outline: 2px solid #C9A24B; outline-offset: 5px; }
+.home-page.home-logo-trial .et-universal-footer { border-top: 1px solid rgba(201,162,75,.3); }
+.home-page.home-logo-trial .et-footer-container { width: min(1060px, calc(100% - 64px)); }
+.home-page.home-logo-trial .et-footer-main { grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 42px; padding-bottom: 52px; }
+.home-page.home-logo-trial .et-footer-brand { padding-right: 20px; }
+.home-page.home-logo-trial .et-footer-brand p { color: #c9cbd0; font-size: 13px; line-height: 1.8; }
+.home-page.home-logo-trial .et-footer-column { gap: 4px; }
+.home-page.home-logo-trial .et-footer-column strong { color: #C9A24B; font-size: 11px; letter-spacing: .16em; margin-bottom: 20px; }
+.home-page.home-logo-trial .et-footer-column a { color: #deddd7; font-size: 13px; line-height: 1.5; padding: 8px 0; }
+.home-page.home-logo-trial .et-footer-column a:hover { color: #C9A24B; transform: none; }
+.home-page.home-logo-trial .et-footer-legal { color: #b5bac1; font-size: 11px; line-height: 1.7; border-color: rgba(201,162,75,.22); padding: 26px 0; }
+.home-page.home-logo-trial .et-footer-company { color: #deddd7; }
+.home-page.home-logo-trial .et-footer-bottom { color: #C9A24B; font-size: 9px; line-height: 1.8; gap: 24px; border-top: 1px solid rgba(244,240,230,.09); }
+@media(max-width:800px) {
+ .home-page.home-logo-trial .nav-overlay-inner { width: calc(100% - 32px); padding: 112px 12px 28px; gap: 28px; }
+ .home-page.home-logo-trial .nav-overlay-foot { flex-direction: column; align-items: flex-start; gap: 16px; }
+ .home-page.home-logo-trial .nav-overlay-contact { text-align: left; }
+ .home-page.home-logo-trial .et-footer-container { width: calc(100% - 40px); }
+ .home-page.home-logo-trial .et-footer-main { grid-template-columns: 1fr 1fr; gap: 32px 22px; }
+ .home-page.home-logo-trial .et-footer-brand { grid-column: 1/-1; max-width: 360px; }
+ .home-page.home-logo-trial .et-footer-column a { min-height: 44px; }
+ .home-page.home-logo-trial .et-footer-column:last-child { grid-column: 1/-1; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .home-page.home-logo-trial .nav-overlay,
+ .home-page.home-logo-trial .et-footer-column a { transition: none; }
+}
+
+.home-page.home-logo-trial .nav-overlay :is(a,summary) { user-select: none; }
