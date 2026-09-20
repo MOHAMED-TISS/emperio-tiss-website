@@ -29,7 +29,7 @@
   width: auto;
   height: 64px;
   flex-direction: row;
-  gap: 14px;
+  gap: 16px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -37,8 +37,8 @@
   box-shadow: none;
   backdrop-filter: none;
 }
-.home-page.home-logo-trial .site-header .site-logo img { width: 42px; height: auto; max-height: none; max-width: none; }
-.home-page.home-logo-trial .site-header .site-logo .home-brand-name { width: 208px; height: auto; }
+.home-page.home-logo-trial .site-header .site-logo img { width: 40px; height: auto; max-height: none; max-width: none; }
+.home-page.home-logo-trial .site-header .site-logo .home-brand-name { width: 226px; height: auto; }
 .home-page.home-logo-trial .home-header-nav {
   order: 1;
   margin-left: auto;
@@ -101,8 +101,8 @@
   .home-page.home-logo-trial .site-header { top: 12px; width: calc(100% - 24px); height: 70px; padding: 8px 12px; gap: 6px; border-radius: 14px; background: rgba(11,30,51,.38); }
   .home-page.home-logo-trial .home-header-nav { display: none; }
   .home-page.home-logo-trial .site-header .site-logo { position: static; transform: none; width: auto; height: 54px; flex: 0 1 auto; flex-direction: row; gap: 9px; }
-  .home-page.home-logo-trial .site-header .site-logo img { width: 34px; }
-  .home-page.home-logo-trial .site-header .site-logo .home-brand-name { width: 112px; }
+  .home-page.home-logo-trial .site-header .site-logo img { width: 30px; }
+  .home-page.home-logo-trial .site-header .site-logo .home-brand-name { width: 132px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-page.home-logo-trial .site-header :is(.et-whatsapp,.et-language-current,.mobile-menu),
@@ -815,3 +815,11 @@
 }
 
 .home-page.home-logo-trial .nav-overlay :is(a,summary) { user-select: none; }
+
+/* Optical sizing: lighter outlined lettering and calm champagne highlights. */
+.home-page.home-logo-trial .site-header .home-brand-name { object-fit: contain; filter: none; }
+@media(max-width:400px) {
+ .home-page.home-logo-trial .site-header { gap: 4px; padding-inline: 10px; }
+ .home-page.home-logo-trial .site-header .site-logo { gap: 8px; }
+ .home-page.home-logo-trial .site-header :is(.et-whatsapp,.mobile-menu) { width: 40px; flex-basis: 40px; }
+}
