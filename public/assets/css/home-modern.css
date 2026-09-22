@@ -823,3 +823,16 @@
  .home-page.home-logo-trial .site-header .site-logo { gap: 8px; }
  .home-page.home-logo-trial .site-header :is(.et-whatsapp,.mobile-menu) { width: 40px; flex-basis: 40px; }
 }
+
+/* Approved metallic seal preview: preserve the complete curved wordmark. */
+.home-page.home-logo-trial .site-header { height: 120px; padding-block: 8px; }
+.home-page.home-logo-trial .site-header .site-logo { height: 104px; }
+.home-page.home-logo-trial .site-header .site-logo .home-metal-logo { width: 104px; height: 104px; border-radius: 0; object-fit: contain; }
+.home-page.home-logo-trial .et-footer-logo { border-radius: 16px; }
+.home-page.home-logo-trial .nav-overlay-inner { padding-top: 166px; }
+@media(max-width:800px) {
+ .home-page.home-logo-trial .site-header { height: 94px; padding-block: 5px; }
+ .home-page.home-logo-trial .site-header .site-logo { height: 82px; }
+ .home-page.home-logo-trial .site-header .site-logo .home-metal-logo { width: 82px; height: 82px; }
+ .home-page.home-logo-trial .nav-overlay-inner { padding-top: 128px; }
+}
