@@ -610,3 +610,7 @@ body.es-page {
     scroll-behavior: auto !important
   }
 }
+
+/* Keep the existing contact copy inside the narrow mobile column. */
+@media(max-width:480px){.es-page:has(#contactForm) .es-grid{grid-template-columns:minmax(0,1fr)} .es-page:has(#contactForm) .es-grid > *{min-width:0}}
+

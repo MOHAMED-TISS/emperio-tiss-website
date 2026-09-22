@@ -7,7 +7,7 @@
       catalogue: 'Catálogo de cítricos',
       title: 'Del árbol al',
       subtitle: 'mercado',
-      intro: 'Selección profesional de cítricos por origen, variedad y especificación. Una lectura clara de cada referencia.',
+      intro: 'Clementinas, mandarinas y naranjas de España y Marruecos, según campaña. Consulte la variedad y confirme las condiciones para su próximo pedido.',
       families: ['Clementinas', 'Mandarinas', 'Naranjas'],
       familyCopy: ['Cítricos tempranos y de mesa.',
         'Mandarinas seleccionadas para mercado profesional.',
@@ -25,10 +25,16 @@
       packaging: 'Embalaje',
       campaign: 'Campaña',
       campaignHint: 'Ventana orientativa · confirmar según origen y semana',
-      request: 'Solicitar referencia',
+      request: 'Consultar variedad',
       reference: 'Ref.',
       other: 'Otras referencias',
-      otherIntro: 'Más productos de la categoría'
+      otherIntro: 'Más allá de los cítricos',
+      details: 'Origen y condiciones',
+      availability: 'Disponibilidad por confirmar según origen, variedad y semana.',
+      requirements: 'Indíquenos calibre, presentación, volumen, destino y fecha de entrega para concretar su solicitud.',
+      consult: 'Consultar producto',
+      unavailable: 'No se pudo cargar el catálogo. Consulte la selección con nuestro equipo.',
+      selection: 'Explorar por familia'
     },
     en: {
       catalogue: 'Citrus catalogue',
@@ -150,7 +156,7 @@
     unique = v => [...new Set((v || []).filter(Boolean))];
 
   function ensureStyles() {
-    if (document.querySelector('link[data-citrus-catalog]')) return;
+    if (document.body.classList.contains('fruits-editorial') || document.querySelector('link[data-citrus-catalog]')) return;
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     l.href = '/assets/css/citrus-catalog.css?v=20260904.6';
@@ -169,7 +175,8 @@
   }
 
   function specs(p) {
-    const f = [
+    const editorial = document.body.classList.contains('fruits-editorial');
+    const f = editorial ? [[t.origin, first(p.origin)], [t.condition, t.fresh]] : [
       [t.origin, first(p.origin) || '—'],
       [t.species, first(p.scientificName) || '—'],
       [t.condition, first(p.condition) === 'fresh' ? t.fresh : (first(p.condition) || '—')],
@@ -183,6 +190,7 @@
   }
 
   function campaign(p) {
+    if (document.body.classList.contains('fruits-editorial')) return `<div class="citrus-campaign"><strong>${esc(t.campaign)}</strong><p>${esc(t.availability)}</p><p>${esc(t.requirements)}</p></div>`;
     const raw = first(p.availability) || first(p.campaign) || t.campaignHint;
     return `<div class="citrus-campaign"><div class="citrus-campaign-head"><span>${esc(t.campaign)}</span><strong>${esc(raw)}</strong></div><div class="citrus-timeline">${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((m,i)=>`<span class="citrus-month${i<8?' is-active':''}" title="${m}">${m}</span>`).join('')}</div><p class="citrus-campaign-note">${esc(t.campaignHint)}</p></div>`
   }
@@ -194,19 +202,19 @@
 
   function familySection(p, i) {
     const vars = unique(p.varieties);
-    return `<section class="citrus-family-block"><header class="citrus-family-heading"><div class="citrus-family-number">0${i+1}</div><div class="citrus-family-title"><span>${esc(t.catalogue)}</span><h3>${esc(t.families[i]||p.commercialName)}</h3><p>${esc(t.familyCopy?.[i]||'')}</p></div><div class="citrus-family-product"><small>${esc(t.reference)}</small><strong>${esc(p.id)}</strong><em>${esc(p.commercialName)}</em></div></header><div class="citrus-family-layout"><div class="citrus-varieties"><div class="citrus-list-label"><span>${esc(t.technical)}</span><strong>${String(vars.length).padStart(2,'0')} ${lang==='es'?'variedades':lang==='fr'?'variétés':lang==='it'?'varietà':lang==='ar'?'أصناف':'varieties'}</strong></div>${vars.map((v,j)=>varietyRow(p,v,j)).join('')}</div><aside class="citrus-family-spec"><div class="citrus-spec-title"><span>${esc(t.technical)}</span><strong>${esc(p.commercialName)}</strong></div>${specs(p)}${campaign(p)}</aside></div></section>`
+    return `<section class="citrus-family-block" id="family-${esc(p.id)}"><header class="citrus-family-heading"><div class="citrus-family-number">0${i+1}</div><div class="citrus-family-title"><span>${esc(t.catalogue)}</span><h3>${esc(t.families[i]||p.commercialName)}</h3><p>${esc(t.familyCopy?.[i]||'')}</p></div><div class="citrus-family-product"><small>${esc(t.reference)}</small><strong>${esc(p.id)}</strong><em>${esc(p.commercialName)}</em></div></header><div class="citrus-family-layout"><div class="citrus-varieties"><div class="citrus-list-label"><span>${esc(t.technical)}</span><strong>${String(vars.length).padStart(2,'0')} ${lang==='es'?'variedades':lang==='fr'?'variétés':lang==='it'?'varietà':lang==='ar'?'أصناف':'varieties'}</strong></div>${vars.map((v,j)=>varietyRow(p,v,j)).join('')}</div><details class="citrus-family-spec"><summary>${esc(t.details || t.technical)}</summary>${specs(p)}${campaign(p)}</details></div></section>`
   }
 
   function other(ps) {
     const os = ps.filter(p => p.subcategory !== 'citrus' && p.status === 'active');
     if (!os.length) return '';
-    return `<section class="fruit-other"><div class="fruit-other-head"><div><span>${esc(t.other)}</span><h3>${esc(t.otherIntro)}</h3></div></div><div class="fruit-other-grid">${os.map((p,i)=>`<article class="fruit-other-card"><span class="index">${String(i+1).padStart(2,'0')}</span><h4>${esc(p.commercialName)}</h4><p>${esc(unique(p.varieties).join(' · ')||first(p.origin)||'')}</p></article>`).join('')}</div></section>`
+    return `<section class="fruit-other"><div class="fruit-other-head"><div><span>${esc(t.other)}</span><h3>${esc(t.otherIntro)}</h3></div></div><div class="fruit-other-grid">${os.map((p,i)=>`<article class="fruit-other-card"><span class="index">${String(i+1).padStart(2,'0')}</span><h4>${esc(p.commercialName)}</h4><p>${esc(unique(p.varieties).join(' · ')||first(p.origin)||'')}</p><a class="fruit-other-request" href="/contact/?product=${encodeURIComponent(p.id)}">${esc(t.consult || t.request)} ↗</a></article>`).join('')}</div></section>`
   }
 
   function render(root, ps) {
     const fs = families(ps);
     root.innerHTML =
-      `<div class="fruit-special-shell"><header class="fruit-special-head"><div><span class="fruit-special-kicker">${esc(t.catalogue)}</span><h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2></div><p class="fruit-special-intro">${esc(t.intro)}</p></header><div class="citrus-orchard">${fs.map(familySection).join('')}</div></div>`
+      `<div class="fruit-special-shell"><header class="fruit-special-head"><div><span class="fruit-special-kicker">${esc(t.catalogue)}</span><h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2></div><p class="fruit-special-intro">${esc(t.intro)}</p></header><nav class="fruits-family-nav" aria-label="${esc(t.selection)}">${fs.map((p,i)=>`<a href="#family-${esc(p.id)}">${esc(t.families[i])}</a>`).join('')}<a href="#fruitOther">${esc(t.other)}</a></nav><div class="citrus-orchard">${fs.map(familySection).join('')}</div></div>`
   }
   async function init() {
     const root = document.getElementById('fruitCatalog'),
@@ -226,7 +234,7 @@
       if (otherTarget) otherTarget.innerHTML = other(ps)
     } catch (e) {
       console.error('[fruit-catalog]', e);
-      root.innerHTML = '<p class="catalog-error">Catalogue unavailable.</p>';
+      root.innerHTML = `<p class="catalog-error">${esc(t.unavailable || 'Catalogue unavailable.')} <a href="/contact/?product=frutas">Contacto</a></p>`;
       if (otherTarget) otherTarget.innerHTML = ''
     }
   }

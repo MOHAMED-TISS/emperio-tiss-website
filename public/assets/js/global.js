@@ -29,7 +29,7 @@
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
   loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-mobile-ux-landscape-1', 'etCatalogueFilterContrast');
-  loadCss('/assets/css/header-final.css?v=20260824-11', 'etHeaderFinalCanonical');
+  loadCss('/assets/css/header-final.css?v=20260922-shared-shell', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
@@ -37,7 +37,7 @@
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) {
-    loadScript('/assets/js/international-shell.js?v=20260824-5', 'etInternationalShell');
+    loadScript('/assets/js/international-shell.js?v=20260922-shared-shell', 'etInternationalShell');
   }
 
   const socialCopy = {
@@ -160,9 +160,9 @@
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
-  loadScript('/assets/js/header-final.js?v=20260824-1', 'etHeaderFinalScript');
-  loadScript('/assets/js/global-core.js?v=20260824-6', 'etGlobalCore');
+  loadScript('/assets/js/header-final.js?v=20260922-shared-shell', 'etHeaderFinalScript');
+  loadScript('/assets/js/global-core.js?v=20260922-fruit-inquiry', 'etGlobalCore');
   loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
-  if (window.location.pathname !== '/contact/' && window.location.pathname !== '/contact') loadScript('/assets/js/site-polish.js?v=20260823-site-polish-1', 'etSitePolish');
+  loadScript('/assets/js/site-polish.js?v=20260922-shared-shell', 'etSitePolish');
   loadScript('/assets/js/en-catalog-filter-fix.js?v=20260912-fr-filter-fix-1', 'etEnCatalogFilterFix');
 })();

@@ -147,6 +147,20 @@
     const button = form?.querySelector('.form-submit');
     if (!form || !status || !button || form.dataset.etSubmitBound === 'true') return;
     form.dataset.etSubmitBound = 'true';
+    // Carry a fruit selection into the Spanish inquiry without submitting it.
+    if (lang === 'es') {
+      const params = new URLSearchParams(location.search);
+      const names = {frutas:'Frutas',clementina:'Clementina',mandarina:'Mandarina',orange:'Naranja',mango:'Mango',pineapple:'Piña',avocado:'Aguacate',dates:'Dátiles',melon:'Melón',watermelon:'Sandía',apple:'Manzana'};
+      const product = names[params.get('product')];
+      const message = form.querySelector('[name="mensaje"]');
+      const select = form.querySelector('[name="producto"]');
+      if (product && message && !message.value) {
+        if (select) select.value = 'Frutas';
+        const variety = (params.get('variety') || '').slice(0,80);
+        message.value = product + (variety ? ' · ' + variety : '');
+      }
+    }
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();

@@ -537,3 +537,200 @@ html[lang="ar"] .et-language-switch {
     height: 54px !important;
   }
 }
+
+/* Shared ES-home shell across every locale and route. */
+/* ES glass signature: compact floating frame with a prominent gold wordmark. */
+body.et-brand-shell .site-header {
+  top: 22px;
+  width: min(920px, calc(100% - 48px));
+  height: 84px;
+  padding: 12px 24px;
+  gap: 14px;
+  border: 1px solid rgba(244,240,230,.16);
+  border-bottom-color: rgba(201,162,75,.18);
+  border-radius: 16px;
+  background: rgba(11,30,51,.24);
+  box-shadow: 0 8px 24px rgba(0,0,0,.1), inset 0 1px 0 rgba(244,240,230,.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+body.et-brand-shell .site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0 26px auto;
+  height: 1px;
+  background: rgba(244,240,230,.15);
+  pointer-events: none;
+}
+body.et-brand-shell .site-header .site-logo {
+  position: static;
+  transform: none;
+  order: 0;
+  flex: 0 0 auto;
+  width: auto;
+  height: 64px;
+  flex-direction: row;
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+body.et-brand-shell .site-header .site-logo img { width: 40px; height: auto; max-height: none; max-width: none; }
+body.et-brand-shell .site-header .site-logo .home-brand-name { width: 226px; height: auto; }
+body.et-brand-shell .home-header-nav {
+  order: 1;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  pointer-events: auto;
+}
+body.et-brand-shell .home-header-nav a {
+  position: relative;
+  padding: 14px 0;
+  color: #F4F0E6;
+  font: 500 10px/1.2 var(--et-sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+body.et-brand-shell .home-header-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  height: 1px;
+  background: #C9A24B;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+body.et-brand-shell .home-header-nav a:hover::after { transform: scaleX(1); }
+body.et-brand-shell .site-header :is(.et-whatsapp,.et-language-current,.mobile-menu) {
+  min-width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #F4F0E6;
+  box-shadow: none;
+  backdrop-filter: none;
+  transition: opacity .3s cubic-bezier(.16,1,.3,1);
+}
+body.et-brand-shell .site-header .et-whatsapp { margin-left: 8px; width: 44px; padding: 0; }
+body.et-brand-shell .site-header .et-whatsapp span { display: none; }
+body.et-brand-shell .site-header .et-whatsapp svg { fill: #C9A24B; color: #C9A24B; }
+body.et-brand-shell .site-header .et-language-switch { margin: 0; }
+body.et-brand-shell .site-header .mobile-menu { width: 44px; flex-basis: 44px; }
+body.et-brand-shell .site-header .mobile-menu { border: 1px solid rgba(201,162,75,.36); }
+body.et-brand-shell .site-header .mobile-menu span { background: #C9A24B; height: 1px; }
+body.et-brand-shell .site-header :is(.et-whatsapp,.et-language-current,.mobile-menu):hover { background: transparent; box-shadow: none; transform: none; opacity: .8; }
+body.et-brand-shell .site-header .et-language-dropdown { background: #0B1E33; border-color: rgba(201,162,75,.3); border-radius: 2px; }
+body.et-brand-shell .site-header :is(a,button):focus-visible { outline: 2px solid #C9A24B; outline-offset: 4px; }
+body.et-brand-shell .et-universal-footer .et-footer-logo,
+body.et-brand-shell .footer-logo { width: 260px; height: auto; max-width: 100%; max-height: none; object-fit: contain; }
+@media (max-width: 1100px) {
+  body.et-brand-shell .home-header-nav { display: none; }
+  body.et-brand-shell .site-header .et-whatsapp { margin-left: auto; }
+  body.et-brand-shell .site-header .et-whatsapp span { display: none; }
+  body.et-brand-shell .site-header .et-whatsapp { width: 44px; padding: 0; }}
+@media (max-width: 800px) {
+  body.et-brand-shell .site-header { top: 12px; width: calc(100% - 24px); height: 70px; padding: 8px 12px; gap: 6px; border-radius: 14px; background: rgba(11,30,51,.38); }
+  body.et-brand-shell .home-header-nav { display: none; }
+  body.et-brand-shell .site-header .site-logo { position: static; transform: none; width: auto; height: 54px; flex: 0 1 auto; flex-direction: row; gap: 9px; }
+  body.et-brand-shell .site-header .site-logo img { width: 30px; }
+  body.et-brand-shell .site-header .site-logo .home-brand-name { width: 132px; }}
+@media (prefers-reduced-motion: reduce) {
+  body.et-brand-shell .site-header :is(.et-whatsapp,.et-language-current,.mobile-menu),
+  body.et-brand-shell .home-header-nav a::after { transition: none; }}
+
+/* ES evening glass: translucent navigation and a quiet editorial footer. */
+body.et-brand-shell { --et-gold: #C9A24B; --et-serif: "Playfair Display", Georgia, serif; --footer-surface: #0B1E33; }
+body.et-brand-shell .nav-overlay { background: rgba(11,30,51,.86); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); overflow-y: auto; }
+body.et-brand-shell .nav-overlay-inner { width: min(1060px, calc(100% - 64px)); margin: auto; padding: 144px 36px 36px; height: auto; min-height: 100dvh; gap: 36px; }
+body.et-brand-shell .nav-overlay-links { width: 100%; max-width: 760px; }
+body.et-brand-shell .nav-overlay-links > a > span:not(.idx),
+body.et-brand-shell .nav-products > summary > span:not(.idx) { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.18; color: #F4F0E6; }
+body.et-brand-shell .nav-overlay-links > a:hover > span:not(.idx),
+body.et-brand-shell .nav-overlay-links > a.active > span:not(.idx) { color: #C9A24B; }
+body.et-brand-shell .nav-overlay-links > a,
+body.et-brand-shell .nav-products > summary { min-height: 48px; }
+body.et-brand-shell .nav-overlay-foot { border-color: rgba(201,162,75,.28); padding-top: 28px; align-items: center; }
+body.et-brand-shell .nav-overlay-lang { gap: 12px; align-items: center; }
+body.et-brand-shell .nav-overlay-lang a { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; letter-spacing: .1em; }
+body.et-brand-shell .nav-overlay-contact { color: #d4d3cb; gap: 10px; font-size: 12px; }
+body.et-brand-shell .nav-overlay-contact a { color: #C9A24B; font-size: 16px; }
+body.et-brand-shell .nav-overlay :is(a,summary):focus-visible,
+body.et-brand-shell .et-universal-footer a:focus-visible { outline: 2px solid #C9A24B; outline-offset: 5px; }
+body.et-brand-shell .et-universal-footer { border-top: 1px solid rgba(201,162,75,.3); }
+body.et-brand-shell .et-footer-container { width: min(1060px, calc(100% - 64px)); }
+body.et-brand-shell .et-footer-main { grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 42px; padding-bottom: 52px; }
+body.et-brand-shell .et-footer-brand { padding-right: 20px; }
+body.et-brand-shell .et-footer-brand p { color: #c9cbd0; font-size: 13px; line-height: 1.8; }
+body.et-brand-shell .et-footer-column { gap: 4px; }
+body.et-brand-shell .et-footer-column strong { color: #C9A24B; font-size: 11px; letter-spacing: .16em; margin-bottom: 20px; }
+body.et-brand-shell .et-footer-column a { color: #deddd7; font-size: 13px; line-height: 1.5; padding: 8px 0; }
+body.et-brand-shell .et-footer-column a:hover { color: #C9A24B; transform: none; }
+body.et-brand-shell .et-footer-legal { color: #b5bac1; font-size: 11px; line-height: 1.7; border-color: rgba(201,162,75,.22); padding: 26px 0; }
+body.et-brand-shell .et-footer-company { color: #deddd7; }
+body.et-brand-shell .et-footer-bottom { color: #C9A24B; font-size: 9px; line-height: 1.8; gap: 24px; border-top: 1px solid rgba(244,240,230,.09); }
+@media(max-width:800px) {
+ body.et-brand-shell .nav-overlay-inner { width: calc(100% - 32px); padding: 112px 12px 28px; gap: 28px; }
+ body.et-brand-shell .nav-overlay-foot { flex-direction: column; align-items: flex-start; gap: 16px; }
+ body.et-brand-shell .nav-overlay-contact { text-align: left; }
+ body.et-brand-shell .et-footer-container { width: calc(100% - 40px); }
+ body.et-brand-shell .et-footer-main { grid-template-columns: 1fr 1fr; gap: 32px 22px; }
+ body.et-brand-shell .et-footer-brand { grid-column: 1/-1; max-width: 360px; }
+ body.et-brand-shell .et-footer-column a { min-height: 44px; }
+ body.et-brand-shell .et-footer-column:last-child { grid-column: 1/-1; }}
+@media(prefers-reduced-motion:reduce) {
+ body.et-brand-shell .nav-overlay,
+ body.et-brand-shell .et-footer-column a { transition: none; }}
+
+body.et-brand-shell .nav-overlay :is(a,summary) { user-select: none; }
+
+/* Optical sizing: lighter outlined lettering and calm champagne highlights. */
+body.et-brand-shell .site-header .home-brand-name { object-fit: contain; filter: none; }
+@media(max-width:400px) {
+ body.et-brand-shell .site-header { gap: 4px; padding-inline: 10px; }
+ body.et-brand-shell .site-header .site-logo { gap: 8px; }
+ body.et-brand-shell .site-header :is(.et-whatsapp,.mobile-menu) { width: 40px; flex-basis: 40px; }}
+
+/* Approved metallic seal preview: preserve the complete curved wordmark. */
+body.et-brand-shell .site-header { height: 104px; padding: 6px 20px; gap: 10px; }
+body.et-brand-shell .site-header .site-logo { height: 92px; }
+body.et-brand-shell .site-header .site-logo .home-metal-logo { width: 92px; height: 92px; border-radius: 0; object-fit: contain; }
+body.et-brand-shell .et-footer-logo { border-radius: 16px; }
+body.et-brand-shell .nav-overlay-inner { padding-top: 166px; }
+@media(max-width:800px) {
+ body.et-brand-shell .site-header { height: 94px; padding-block: 5px; }
+ body.et-brand-shell .site-header .site-logo { height: 82px; }
+ body.et-brand-shell .site-header .site-logo .home-metal-logo { width: 82px; height: 82px; }
+ body.et-brand-shell .nav-overlay-inner { padding-top: 128px; }}
+
+/* Maritime opening: centered seal, balanced navigation and a quiet moving horizon. */
+body.et-brand-shell .site-header { background: rgba(11,30,51,.17); border-color: rgba(244,240,230,.12); }
+body.et-brand-shell .site-header .site-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+body.et-brand-shell .home-header-nav { margin-left: 0; margin-right: auto; }
+body.et-brand-shell .home-header-secondary { order: 1; display: flex; gap: 24px; pointer-events: auto; margin-left: auto; }
+body.et-brand-shell .home-header-secondary a { color: #F4F0E6; font: 500 10px/1.2 var(--et-sans); letter-spacing: .14em; text-transform: uppercase; padding: 14px 0; }
+body.et-brand-shell .home-header-secondary a:hover { color: #C9A24B; }
+@media(max-width:1100px) {
+ body.et-brand-shell .home-header-secondary { display: none; }
+ body.et-brand-shell .site-header .et-whatsapp { margin-left: 0; margin-right: auto; }}
+
+/* Compact masthead: consistent DM Sans navigation, restrained tracking. */
+body.et-brand-shell :is(.home-header-nav,.home-header-secondary) { gap: 18px; }
+body.et-brand-shell :is(.home-header-nav,.home-header-secondary) a { font-family: "DM Sans", Arial, sans-serif; font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .045em; text-transform: none; }
+body.et-brand-shell .site-header :is(button,.et-language-dropdown a) { font-family: "DM Sans", Arial, sans-serif; font-size: 12px; letter-spacing: .02em; }
+@media(max-width:800px) {
+ body.et-brand-shell .site-header { width: calc(100% - 32px); height: 88px; padding: 4px 10px; gap: 6px; }
+ body.et-brand-shell .site-header .site-logo { height: 78px; }
+ body.et-brand-shell .site-header .site-logo .home-metal-logo { width: 78px; height: 78px; }}
+body.et-brand-shell .site-header a { text-decoration:none; }
+body.et-brand-shell[dir="rtl"] .et-footer-brand { padding-right:0; padding-left:20px; }
+html[dir="rtl"] body.et-brand-shell .nav-overlay-contact { text-align:right; }
+body.et-brand-shell .et-footer-logo { object-position:center; }

@@ -71,7 +71,7 @@
       const l = doc.createElement('link');
       l.rel = 'stylesheet';
       l.href = href;
-      l.dataset[key] = 'true';
+      l.setAttribute(`data-${key}`, 'true');
       doc.head.appendChild(l)
     };
     if (seafood) {

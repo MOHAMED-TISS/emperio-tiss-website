@@ -28,9 +28,8 @@
     <link rel="stylesheet" href="/assets/css/produce-es.css">
     <link rel="stylesheet" href="/assets/css/catalog.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">
-    <link rel="stylesheet" href="/assets/css/citrus-catalog.css?v=20260904.4">
-    <link rel="stylesheet" href="/assets/css/citrus-catalog-overrides.css?v=20260904.8">
+    <link rel="stylesheet" href="/assets/css/header-final.css?v=20260922-shared-shell">
+    <link rel="stylesheet" href="/assets/css/citrus-catalog-overrides.css?v=20260922-origins">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -57,7 +56,7 @@
 
     </script>
   </head>
-  <body class="produce-page produce-fruits-page">
+  <body class="produce-page produce-fruits-page fruits-editorial">
     <header class="site-header">
       <div class="header-inner"><a class="site-logo" href="/"><img src="/assets/images/logo.png" alt="EMPERIO TISS"></a>
         <nav class="et-language-switch" aria-label="Idioma"><a class="current" href="/">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/it/">IT</a><span>·</span><a href="/ar/">AR</a></nav><button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
@@ -79,14 +78,15 @@
     </header>
     <main>
       <section class="page-hero">
+        <picture class="fruits-hero-photo"><source media="(max-width: 640px)" srcset="/assets/images/fruits-orchard-mobile.webp"><img src="/assets/images/fruits-orchard.webp" width="2000" height="1333" alt="" fetchpriority="high"></picture>
         <div class="page-hero-inner"><span class="eyebrow">PRODUCTO / 01 · FRUTAS</span>
-          <h1>Del origen<br><em>a la mesa.</em></h1>
-          <p class="lead">Frutas seleccionadas por variedad, origen, calibre, calidad, campaña y programa de suministro.</p><span class="hero-note">SELECCIÓN · ORIGEN · CAMPAÑA</span>
+          <h1>Frutas seleccionadas<br><em>para su mercado.</em></h1>
+          <p class="lead">Cítricos y otras frutas para compradores profesionales. Selección por origen, variedad y necesidades de suministro.</p><div class="fruits-actions"><a class="fruits-button" href="/contact/?product=frutas">Consultar disponibilidad <span aria-hidden="true">↗</span></a><a href="#fruitCatalog">Explorar la selección ↓</a></div><span class="hero-note">SELECCIÓN · ORIGEN · CAMPAÑA</span>
         </div>
       </section>
       <section class="catalog-section citrus-catalog-section">
         <div class="catalog-inner">
-          <div id="fruitCatalog"></div>
+          <div id="fruitCatalog"><p>Consulte nuestra selección de cítricos y otras frutas. <a href="/contact/?product=frutas">Contactar con el equipo</a></p></div>
         </div>
       </section>
       <section class="catalog-other-section">
@@ -98,9 +98,9 @@
     <footer class="footer-band">
       <div class="footer-band-inner"><a href="/products/">← Productos</a><img src="/assets/images/logo.png" alt="EMPERIO TISS"><span>© 2026 EMPERIO TISS S.L.</span></div>
     </footer>
-    <script src="/assets/js/global.js" defer></script>
+    <script src="/assets/js/global.js?v=20260922-shared-shell" defer></script>
     <script src="/assets/js/products-catalog.js?v=20260904.1" defer></script>
-    <script src="/assets/js/fruit-catalog.js?v=20260904.6" defer></script>
+    <script src="/assets/js/fruit-catalog.js?v=20260922-origins" defer></script>
     <script src="/assets/js/produce-image-sync.js?v=20260909.1" defer></script>
   </body>
 </html>
