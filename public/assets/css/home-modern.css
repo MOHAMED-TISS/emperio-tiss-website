@@ -1,7 +1,7 @@
 /* ES glass signature: compact floating frame with a prominent gold wordmark. */
 .home-page.home-logo-trial .site-header {
   top: 22px;
-  width: min(1060px, calc(100% - 64px));
+  width: min(920px, calc(100% - 48px));
   height: 84px;
   padding: 12px 24px;
   gap: 14px;
@@ -825,9 +825,9 @@
 }
 
 /* Approved metallic seal preview: preserve the complete curved wordmark. */
-.home-page.home-logo-trial .site-header { height: 120px; padding-block: 8px; }
-.home-page.home-logo-trial .site-header .site-logo { height: 104px; }
-.home-page.home-logo-trial .site-header .site-logo .home-metal-logo { width: 104px; height: 104px; border-radius: 0; object-fit: contain; }
+.home-page.home-logo-trial .site-header { height: 104px; padding: 6px 20px; gap: 10px; }
+.home-page.home-logo-trial .site-header .site-logo { height: 92px; }
+.home-page.home-logo-trial .site-header .site-logo .home-metal-logo { width: 92px; height: 92px; border-radius: 0; object-fit: contain; }
 .home-page.home-logo-trial .et-footer-logo { border-radius: 16px; }
 .home-page.home-logo-trial .nav-overlay-inner { padding-top: 166px; }
 @media(max-width:800px) {
@@ -858,4 +858,14 @@
 @media(max-width:800px) {
  .home-page.home-logo-trial .home-video-toggle { bottom: 20px; right: 20px; }
  .home-page.home-logo-trial .hero-bottom { display: none; }
+}
+
+/* Compact masthead: consistent DM Sans navigation, restrained tracking. */
+.home-page.home-logo-trial :is(.home-header-nav,.home-header-secondary) { gap: 18px; }
+.home-page.home-logo-trial :is(.home-header-nav,.home-header-secondary) a { font-family: "DM Sans", Arial, sans-serif; font-size: 12px; font-weight: 500; line-height: 1.4; letter-spacing: .045em; text-transform: none; }
+.home-page.home-logo-trial .site-header :is(button,.et-language-dropdown a) { font-family: "DM Sans", Arial, sans-serif; font-size: 12px; letter-spacing: .02em; }
+@media(max-width:800px) {
+ .home-page.home-logo-trial .site-header { width: calc(100% - 32px); height: 88px; padding: 4px 10px; gap: 6px; }
+ .home-page.home-logo-trial .site-header .site-logo { height: 78px; }
+ .home-page.home-logo-trial .site-header .site-logo .home-metal-logo { width: 78px; height: 78px; }
 }
