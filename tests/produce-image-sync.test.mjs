@@ -22,7 +22,7 @@ test('produce image sync reads the shared image manifest and only applies produc
 test('produce image sync supports galleries and keeps the primary image first', () => {
   assert.match(sync, /Array\.isArray\(entry\)/);
   assert.match(sync, /images\[0\]/);
-  assert.match(sync, /product-card__image-count/);
+  assert.match(sync, /produce-image-count/);
 });
 
 test('produce image sync can update the custom citrus catalogue', () => {
