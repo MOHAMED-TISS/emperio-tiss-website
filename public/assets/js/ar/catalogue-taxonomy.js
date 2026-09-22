@@ -7,10 +7,10 @@
   const patch = () => {
     document.querySelectorAll('.market-catalogue__title').forEach((title) => {
       const textNode = Array.from(title.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
-      if (textNode) textNode.nodeValue = `${expected} `;
+      if (textNode && textNode.nodeValue !== `${expected} `) textNode.nodeValue = `${expected} `;
     });
     const context = document.querySelectorAll('.market-catalogue__context .market-catalogue__tag');
-    if (context[1]) context[1].textContent = expected;
+    if (context[1] && context[1].textContent !== expected) context[1].textContent = expected;
   };
   patch();
   new MutationObserver(patch).observe(document.body, { childList: true, subtree: true });

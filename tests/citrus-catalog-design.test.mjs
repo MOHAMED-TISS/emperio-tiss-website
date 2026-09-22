@@ -8,43 +8,40 @@ const overridesCss = fs.readFileSync('public/assets/css/citrus-catalog-overrides
 const page = fs.readFileSync('public/products/fruits/index.html', 'utf8');
 const data = JSON.parse(fs.readFileSync('public/assets/data/fruit-catalog-v1.json', 'utf8'));
 
-test('citrus catalogue keeps the premium interactive structure', () => {
-  assert.match(js, /citrus-orchard/);
-  assert.match(js, /citrus-family-switcher/);
-  assert.match(js, /citrus-technical/);
-  assert.match(js, /citrus-campaign/);
-  assert.match(js, /data-citrus-variety/);
+// Exercise the renderer rather than asserting the retired visual layout's CSS strings.
+import vm from 'node:vm';
+async function renderCatalogue(products = data.products) {
+  const roots = {fruitCatalog: {innerHTML: ''}, fruitOther: {innerHTML: ''}};
+  let init;
+  vm.runInNewContext(js, {
+    document: {documentElement: {lang: 'es'}, body: {classList: {contains: () => true}},
+      getElementById: id => roots[id], addEventListener: (_, fn) => {init = fn;}},
+    window: {}, console, fetch: async () => ({ok: true, json: async () => ({products})})
+  });
+  await init();
+  return roots;
+}
+test('fruit inquiry links retain product and variety selection', async () => {
+  const roots = await renderCatalogue();
+  assert.match(roots.fruitCatalog.innerHTML, /product=clementina&variety=Clemenules/);
+  assert.match(roots.fruitOther.innerHTML, /contact\/\?product=/);
 });
-
-test('citrus orchard uses a real tree image and three product hotspots', () => {
-  assert.match(js, /images\.unsplash\.com\/photo-/);
-  assert.match(js, /citrus-hotspot--top/);
-  assert.match(js, /citrus-hotspot--left/);
-  assert.match(js, /citrus-hotspot--right/);
+test('unverified campaign months are not presented as availability', async () => {
+  const roots = await renderCatalogue();
+  assert.doesNotMatch(roots.fruitCatalog.innerHTML, /is-active|citrus-month/);
+  assert.match(roots.fruitCatalog.innerHTML, /Disponibilidad por confirmar/);
 });
-
-test('citrus image stays clean and hides retail detail overlays', () => {
-  assert.match(overridesCss, /citrus-product-popover[^}]*display:none!important/);
-  assert.match(overridesCss, /citrus-popover-price[^}]*display:none!important/);
-  assert.match(overridesCss, /citrus-cart-button[^}]*display:none!important/);
-  assert.match(overridesCss, /citrus-hotspot-label[^}]*display:none!important/);
+test('catalogue escapes product values before inserting HTML', async () => {
+  const products = structuredClone(data.products);
+  products.find(p => p.id === 'clementina').varieties = ['<script>bad</script>'];
+  const roots = await renderCatalogue(products);
+  assert.doesNotMatch(roots.fruitCatalog.innerHTML, /<script>/);
+  assert.match(roots.fruitCatalog.innerHTML, /&lt;script&gt;/);
 });
-
-test('citrus navigation is compact and mixed horizontal/vertical', () => {
-  assert.match(overridesCss, /citrus-family-switcher\{[^}]*display:flex!important/);
-  assert.match(overridesCss, /citrus-family-switcher\{[^}]*overflow-x:auto!important/);
-  assert.match(overridesCss, /citrus-selection\{[^}]*display:flex!important/);
-  assert.match(overridesCss, /citrus-selection\{[^}]*overflow-x:auto!important/);
-  assert.match(overridesCss,
-    /citrus-technical\{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)!important/);
-  assert.match(overridesCss,
-    /@media\(max-width:900px\)[^}]*citrus-technical\{grid-template-columns:repeat\(2,minmax\(0,1fr\)!important/
-    );
-  assert.match(overridesCss, /citrus-campaign\{[^}]*grid-template-columns:auto 1fr!important/);
-  assert.match(overridesCss,
-    /@media\(max-width:640px\)[^}]*citrus-campaign\{grid-template-columns:1fr!important/);
-  assert.match(page, /citrus-catalog-overrides\.css\?v=20260904\.6/);
-  assert.match(baseCss, /background:#f9f6f0/);
+test('conditions remain accessible through native disclosure controls', async () => {
+  const roots = await renderCatalogue();
+  assert.equal((roots.fruitCatalog.innerHTML.match(/<details /g) || []).length, 3);
+  assert.equal((roots.fruitCatalog.innerHTML.match(/<summary>/g) || []).length, 3);
 });
 
 test('fruit page loads the catalogue renderer before the fruit presenter', () => {

@@ -33,7 +33,7 @@
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
-    loadScript('/assets/js/ar/loader.js?v=20260912-ar-separation-1', 'etArLayerLoader');
+    loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang)) {

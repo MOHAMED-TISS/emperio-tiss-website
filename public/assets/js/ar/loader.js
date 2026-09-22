@@ -4,7 +4,7 @@
   if (!(document.documentElement.lang || '').toLowerCase().startsWith('ar')) return;
 
   const head = document.head;
-  const assetVersion = '20260912-ar-separation-1';
+  const assetVersion = '20260923-ar-idempotent';
   const css = [
     '/assets/css/ar/visual.css',
     '/assets/css/ar/home.css',

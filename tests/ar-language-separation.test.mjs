@@ -46,7 +46,7 @@ test('the Arabic loader owns the AR entry points', () => {
 
 test('shared runtime routes Arabic presentation through the AR loader', () => {
   const global = read('public/assets/js/global.js');
-  assert.match(global, /loadScript\('\/assets\/js\/ar\/loader\.js\?v=20260912-ar-separation-1', 'etArLayerLoader'\)/);
+  assert.match(global, /loadScript\('\/assets\/js\/ar\/loader\.js\?v=20260923-ar-idempotent', 'etArLayerLoader'\)/);
   assert.doesNotMatch(global, /\/assets\/css\/ar-visual\.css/);
 });
 
