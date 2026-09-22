@@ -37,11 +37,16 @@
 
   const ensureUniversalFooter = () => {
     const lang = (doc.documentElement.lang || '').slice(0, 2).toLowerCase();
-    if (!['es', 'fr', 'it', 'ar'].includes(lang)) return;
+    if (!['es', 'en', 'fr', 'it', 'ar'].includes(lang)) return;
     doc.querySelectorAll('footer:not(.et-universal-footer)').forEach(footer => footer.remove());
     if (doc.querySelector('.et-universal-footer')) return;
 
-    const copy = lang === 'fr' ? {
+    const copy = lang === 'en' ? {
+      tagline: 'Your trusted partner in international markets.', nav: 'Navigation', home: 'Home', company: 'Company', products: 'Products', markets: 'Markets', news: 'News', contact: 'Contact',
+      seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods', fruits: 'Fruit', vegetables: 'Vegetables', seasonal: 'Seasonal',
+      inquiry: 'Business enquiry', legal: 'Legal notice', privacy: 'Privacy policy', cookies: 'Cookie policy', reserved: 'All rights reserved.',
+      disclaimer: 'The information published is provided for information purposes and does not constitute a contractual offer.', region: 'MADRID · SPAIN · EUROPE · AFRICA · MEDITERRANEAN'
+    } : lang === 'fr' ? {
       tagline: 'Votre partenaire de confiance sur les marchés internationaux.',
       nav: 'Navigation', home: 'Accueil', company: 'Entreprise', products: 'Produits', markets: 'Marchés', news: 'Actualités', contact: 'Contact',
       seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Fruits de mer & Crustacés', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Produits de saison',
@@ -67,7 +72,7 @@
       disclaimer: 'La información publicada tiene carácter informativo y no constituye una oferta contractual.', region: 'MADRID · ESPAÑA · EUROPA · ÁFRICA · MEDITERRÁNEO'
     };
 
-    const base = lang === 'fr' ? '/fr/' : lang === 'it' ? '/it/' : lang === 'ar' ? '/ar/' : '/';
+    const base = lang === 'en' ? '/en/' : lang === 'fr' ? '/fr/' : lang === 'it' ? '/it/' : lang === 'ar' ? '/ar/' : '/';
     const footer = doc.createElement('footer');
     footer.className = 'et-universal-footer';
     footer.innerHTML = `<div class="et-footer-container"><div class="et-footer-main"><div class="et-footer-brand"><img class="et-footer-logo" src="/logo.png" alt="EMPERIO TISS"><p>${copy.tagline}</p></div><div class="et-footer-column"><strong>${copy.nav}</strong><a href="${base}">${copy.home}</a><a href="${base}about/">${copy.company}</a><a href="${base}products/">${copy.products}</a><a href="${base}markets/">${copy.markets}</a><a href="${base}news/">${copy.news}</a><a href="${base}contact/">${copy.contact}</a></div><div class="et-footer-column"><strong>${copy.products}</strong><a href="${base}products/seafood/">${copy.seafood}</a><a href="${base}products/seafood/fish/">${copy.fish}</a><a href="${base}products/seafood/shellfish/">${copy.shellfish}</a><a href="${base}products/seafood/cephalopods/">${copy.cephalopods}</a><a href="${base}products/fruits/">${copy.fruits}</a><a href="${base}products/vegetables/">${copy.vegetables}</a><a href="${base}products/seasonal/">${copy.seasonal}</a></div><div class="et-footer-column"><strong>${copy.company}</strong><a href="${base}contact/">${copy.inquiry}</a><a href="/legal/aviso-legal.html">${copy.legal}</a><a href="/legal/privacidad.html">${copy.privacy}</a><a href="/legal/cookies.html">${copy.cookies}</a></div></div><div class="et-footer-legal"><p>© 2026 <span class="et-footer-company">EMPERIO TISS S.L.</span> ${copy.reserved}</p><p>${copy.disclaimer}</p></div><div class="et-footer-bottom"><span>EMPERIO TISS S.L.</span><span>${copy.region}</span></div></div>`;
