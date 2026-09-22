@@ -52,21 +52,34 @@
     if (reduceMotion) grid.classList.add('is-visible');
   });
 
-  // Subtle pointer parallax on the hero image for desktop only.
-  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches && hero) {
-    let raf = 0;
-    hero.addEventListener('pointermove', (event) => {
-      const x = (event.clientX / window.innerWidth - 0.5) * 16;
-      const y = (event.clientY / window.innerHeight - 0.5) * 10;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        hero.style.setProperty('--hm-parallax-x', `${x}px`);
-        hero.style.setProperty('--hm-parallax-y', `${y}px`);
-      });
-    });
-    hero.addEventListener('pointerleave', () => {
-      hero.style.setProperty('--hm-parallax-x', '0px');
-      hero.style.setProperty('--hm-parallax-y', '0px');
-    });
+  // Load decorative video only when motion and data preferences allow it.
+  const video = page.querySelector('.home-hero-video');
+  const toggle = page.querySelector('.home-video-toggle');
+  if (video && toggle) {
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const connection = navigator.connection;
+    let userPaused = false;
+    let inView = true;
+    const allowed = () => !motion.matches && !connection?.saveData;
+    const syncLabel = () => {
+      toggle.textContent = video.paused ? 'Reproducir vídeo' : 'Pausar vídeo';
+      toggle.setAttribute('aria-label', video.paused ? 'Reproducir vídeo de fondo' : 'Pausar vídeo de fondo');
+    };
+    const update = () => {
+      if (!allowed() || userPaused || !inView || document.hidden) { video.pause(); return; }
+      if (!video.getAttribute('src')) video.src = window.innerWidth < 768 ? video.dataset.mobileSrc : video.dataset.desktopSrc;
+      video.muted = true;
+      toggle.hidden = false;
+      video.play().catch(syncLabel);
+    };
+    toggle.addEventListener('click', () => { userPaused = !video.paused; if (userPaused) video.pause(); else update(); });
+    video.addEventListener('play', syncLabel);
+    video.addEventListener('pause', syncLabel);
+    video.addEventListener('error', () => { toggle.hidden = true; video.removeAttribute('src'); video.load(); });
+    motion.addEventListener('change', () => { toggle.hidden = !allowed(); update(); });
+    connection?.addEventListener('change', () => { toggle.hidden = !allowed(); update(); });
+    document.addEventListener('visibilitychange', update);
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => { inView = entries[0].isIntersecting; update(); }, { threshold: 0 }).observe(hero);
+    else update();
   }
 })();

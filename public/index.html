@@ -54,15 +54,16 @@
   <link rel="stylesheet" href="/assets/css/global.css?v=20260824-4">
   <link rel="stylesheet" href="/assets/css/home.css?v=20260824-1">
   <link rel="stylesheet" href="/assets/css/header-final.css?v=20260824-3">
-  <link rel="stylesheet" href="/assets/css/home-modern.css?v=20260922-svg-metal">
+  <link rel="stylesheet" href="/assets/css/home-modern.css?v=20260922-ocean-video">
 </head>
 <body class="home-page home-logo-trial">
   <header class="site-header" id="luxuryHeader">
     <div class="header-inner">
-      <nav class="home-header-nav" aria-label="Accesos principales"><a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a></nav>
+      <nav class="home-header-nav" aria-label="Accesos principales"><a href="/about/">Empresa</a><a href="/products/">Productos</a></nav>
       <a href="/" class="site-logo" aria-label="EMPERIO TISS - Inicio">
         <img class="home-metal-logo" src="/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal" alt="EMPERIO TISS S.L." width="440" height="440" fetchpriority="high">
       </a>
+      <nav class="home-header-secondary" aria-label="Mercados y contacto"><a href="/markets/">Mercados</a><a href="/contact/">Contacto</a></nav>
       <a href="https://wa.me/34614270684" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 3.5A10.9 10.9 0 0 0 13 1.1 10.9 10.9 0 0 0 3.2 17.4L2 22l4.7-1.2A10.9 10.9 0 1 0 20.5 3.5Zm-7.4 17.2a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-2.8.7.8-2.7.8-2.7.2-.3a9.1 9.1 0 1 1 7.1 3.7Zm5-6.8c-.3-.2-1.8-.9-2-.9-.3-.1-.4-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.6-1.3-3.7-2.9-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6 0-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1.1 1.9-1.1 3 0 .7.2 1.3.5 1.9.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.5.6.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3Z"/></svg>
         <span>Contactar por WhatsApp</span>
@@ -105,7 +106,8 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <div class="home-hero-media" aria-hidden="true"></div>
+      <div class="home-hero-media" aria-hidden="true"><video class="home-hero-video" muted loop playsinline preload="none" poster="/assets/images/home-ocean-poster.webp" data-desktop-src="/assets/videos/home-ocean.mp4" data-mobile-src="/assets/videos/home-ocean-mobile.mp4"></video></div>
+      <button class="home-video-toggle" type="button" hidden aria-label="Pausar vídeo de fondo">Pausar vídeo</button>
       <div class="hero-grid">
         <div class="hero-content">
           <div class="hero-kicker"><span></span><p>SUMINISTRO ALIMENTARIO INTERNACIONAL</p></div>
@@ -269,6 +271,6 @@
 
   <script src="/assets/js/global.js?v=20260916-home-modern-1" defer></script>
   <script src="/assets/js/header-final.js?v=20260824-1" defer></script>
-  <script src="/assets/js/home-modern.js?v=20260916-1" defer></script>
+  <script src="/assets/js/home-modern.js?v=20260922-video" defer></script>
 </body>
 </html>

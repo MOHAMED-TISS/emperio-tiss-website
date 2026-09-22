@@ -836,3 +836,26 @@
  .home-page.home-logo-trial .site-header .site-logo .home-metal-logo { width: 82px; height: 82px; }
  .home-page.home-logo-trial .nav-overlay-inner { padding-top: 128px; }
 }
+
+/* Maritime opening: centered seal, balanced navigation and a quiet moving horizon. */
+.home-page.home-logo-trial .site-header { background: rgba(11,30,51,.17); border-color: rgba(244,240,230,.12); }
+.home-page.home-logo-trial .site-header .site-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+.home-page.home-logo-trial .home-header-nav { margin-left: 0; margin-right: auto; }
+.home-page.home-logo-trial .home-header-secondary { order: 1; display: flex; gap: 24px; pointer-events: auto; margin-left: auto; }
+.home-page.home-logo-trial .home-header-secondary a { color: #F4F0E6; font: 500 10px/1.2 var(--et-sans); letter-spacing: .14em; text-transform: uppercase; padding: 14px 0; }
+.home-page.home-logo-trial .home-header-secondary a:hover { color: #C9A24B; }
+.home-page.home-logo-trial .home-hero-media { z-index: 0; transform: none; }
+.home-page.home-logo-trial .home-hero-video { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.home-page.home-logo-trial .hero::before { z-index: 1; background: linear-gradient(90deg,rgba(11,30,51,.85),rgba(11,30,51,.55) 52%,rgba(11,30,51,.22)),linear-gradient(0deg,rgba(11,30,51,.6),transparent 40%); }
+.home-page.home-logo-trial .hero::after { display: none; }
+.home-page.home-logo-trial .home-video-toggle { position: absolute; right: 36px; bottom: 28px; z-index: 3; color: #F4F0E6; background: rgba(11,30,51,.6); border: 1px solid rgba(244,240,230,.35); border-radius: 24px; padding: 12px 18px; min-height: 44px; font: 500 11px var(--et-sans); cursor: pointer; }
+.home-page.home-logo-trial .home-video-toggle[hidden] { display: none; }
+.home-page.home-logo-trial .home-video-toggle:focus-visible { outline: 2px solid #C9A24B; outline-offset: 4px; }
+@media(max-width:1100px) {
+ .home-page.home-logo-trial .home-header-secondary { display: none; }
+ .home-page.home-logo-trial .site-header .et-whatsapp { margin-left: 0; margin-right: auto; }
+}
+@media(max-width:800px) {
+ .home-page.home-logo-trial .home-video-toggle { bottom: 20px; right: 20px; }
+ .home-page.home-logo-trial .hero-bottom { display: none; }
+}
