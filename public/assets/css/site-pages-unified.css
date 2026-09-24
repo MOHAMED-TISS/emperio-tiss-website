@@ -212,12 +212,12 @@ body.news-page h3 {
 .about-page .about-btn,
 .products-site .button,
 .news-page a[class*=button],
-.es-page a[href*="contact"],
-.intl-page a[href*="contact"],
-.ar-page a[href*="contact"],
-.about-page a[href*="contact"],
-.products-site a[href*="contact"],
-.news-page a[href*="contact"] {
+.es-page main a[href*="contact"],
+.intl-page main a[href*="contact"],
+.ar-page main a[href*="contact"],
+.about-page main a[href*="contact"],
+.products-site main a[href*="contact"],
+.news-page main a[href*="contact"] {
   position: relative !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -246,12 +246,12 @@ body.news-page h3 {
 .about-page .about-btn::before,
 .products-site .button::before,
 .news-page a[class*=button]::before,
-.es-page a[href*="contact"]::before,
-.intl-page a[href*="contact"]::before,
-.ar-page a[href*="contact"]::before,
-.about-page a[href*="contact"]::before,
-.products-site a[href*="contact"]::before,
-.news-page a[href*="contact"]::before {
+.es-page main a[href*="contact"]::before,
+.intl-page main a[href*="contact"]::before,
+.ar-page main a[href*="contact"]::before,
+.about-page main a[href*="contact"]::before,
+.products-site main a[href*="contact"]::before,
+.news-page main a[href*="contact"]::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
@@ -267,12 +267,12 @@ body.news-page h3 {
 .about-page .about-btn:hover,
 .products-site .button:hover,
 .news-page a[class*=button]:hover,
-.es-page a[href*="contact"]:hover,
-.intl-page a[href*="contact"]:hover,
-.ar-page a[href*="contact"]:hover,
-.about-page a[href*="contact"]:hover,
-.products-site a[href*="contact"]:hover,
-.news-page a[href*="contact"]:hover {
+.es-page main a[href*="contact"]:hover,
+.intl-page main a[href*="contact"]:hover,
+.ar-page main a[href*="contact"]:hover,
+.about-page main a[href*="contact"]:hover,
+.products-site main a[href*="contact"]:hover,
+.news-page main a[href*="contact"]:hover {
   transform: translateY(-4px) scale(1.025) !important;
   box-shadow: 0 16px 36px rgba(6, 29, 23, .24), inset 0 1px 0 rgba(255, 255, 255, .86) !important;
   background-position: 100% 50% !important;
@@ -285,12 +285,12 @@ body.news-page h3 {
 .about-page .about-btn:hover::before,
 .products-site .button:hover::before,
 .news-page a[class*=button]:hover::before,
-.es-page a[href*="contact"]:hover::before,
-.intl-page a[href*="contact"]:hover::before,
-.ar-page a[href*="contact"]:hover::before,
-.about-page a[href*="contact"]:hover::before,
-.products-site a[href*="contact"]:hover::before,
-.news-page a[href*="contact"]:hover::before {
+.es-page main a[href*="contact"]:hover::before,
+.intl-page main a[href*="contact"]:hover::before,
+.ar-page main a[href*="contact"]:hover::before,
+.about-page main a[href*="contact"]:hover::before,
+.products-site main a[href*="contact"]:hover::before,
+.news-page main a[href*="contact"]:hover::before {
   transform: translateX(120%) !important
 }
 
@@ -300,12 +300,12 @@ body.news-page h3 {
 .about-page .about-btn:active,
 .products-site .button:active,
 .news-page a[class*=button]:active,
-.es-page a[href*="contact"]:active,
-.intl-page a[href*="contact"]:active,
-.ar-page a[href*="contact"]:active,
-.about-page a[href*="contact"]:active,
-.products-site a[href*="contact"]:active,
-.news-page a[href*="contact"]:active {
+.es-page main a[href*="contact"]:active,
+.intl-page main a[href*="contact"]:active,
+.ar-page main a[href*="contact"]:active,
+.about-page main a[href*="contact"]:active,
+.products-site main a[href*="contact"]:active,
+.news-page main a[href*="contact"]:active {
   transform: translateY(-1px) scale(.99) !important
 }
 
@@ -315,12 +315,12 @@ body.news-page h3 {
 .about-page .about-btn:focus-visible,
 .products-site .button:focus-visible,
 .news-page a[class*=button]:focus-visible,
-.es-page a[href*="contact"]:focus-visible,
-.intl-page a[href*="contact"]:focus-visible,
-.ar-page a[href*="contact"]:focus-visible,
-.about-page a[href*="contact"]:focus-visible,
-.products-site a[href*="contact"]:focus-visible,
-.news-page a[href*="contact"]:focus-visible {
+.es-page main a[href*="contact"]:focus-visible,
+.intl-page main a[href*="contact"]:focus-visible,
+.ar-page main a[href*="contact"]:focus-visible,
+.about-page main a[href*="contact"]:focus-visible,
+.products-site main a[href*="contact"]:focus-visible,
+.news-page main a[href*="contact"]:focus-visible {
   outline: 2px solid #c9a35f !important;
   outline-offset: 4px !important
 }
@@ -382,12 +382,12 @@ body.news-page h3 {
   .about-page .about-btn,
   .products-site .button,
   .news-page a[class*=button],
-  .es-page a[href*="contact"],
-  .intl-page a[href*="contact"],
-  .ar-page a[href*="contact"],
-  .about-page a[href*="contact"],
-  .products-site a[href*="contact"],
-  .news-page a[href*="contact"] {
+  .es-page main a[href*="contact"],
+  .intl-page main a[href*="contact"],
+  .ar-page main a[href*="contact"],
+  .about-page main a[href*="contact"],
+  .products-site main a[href*="contact"],
+  .news-page main a[href*="contact"] {
     min-height: 50px !important;
     padding: 0 20px !important
   }
@@ -401,12 +401,12 @@ body.news-page h3 {
   .about-page .about-btn,
   .products-site .button,
   .news-page a[class*=button],
-  .es-page a[href*="contact"],
-  .intl-page a[href*="contact"],
-  .ar-page a[href*="contact"],
-  .about-page a[href*="contact"],
-  .products-site a[href*="contact"],
-  .news-page a[href*="contact"] {
+  .es-page main a[href*="contact"],
+  .intl-page main a[href*="contact"],
+  .ar-page main a[href*="contact"],
+  .about-page main a[href*="contact"],
+  .products-site main a[href*="contact"],
+  .news-page main a[href*="contact"] {
     transition: none !important
   }
 
@@ -416,12 +416,12 @@ body.news-page h3 {
   .about-page .about-btn::before,
   .products-site .button::before,
   .news-page a[class*=button]::before,
-  .es-page a[href*="contact"]::before,
-  .intl-page a[href*="contact"]::before,
-  .ar-page a[href*="contact"]::before,
-  .about-page a[href*="contact"]::before,
-  .products-site a[href*="contact"]::before,
-  .news-page a[href*="contact"]::before {
+  .es-page main a[href*="contact"]::before,
+  .intl-page main a[href*="contact"]::before,
+  .ar-page main a[href*="contact"]::before,
+  .about-page main a[href*="contact"]::before,
+  .products-site main a[href*="contact"]::before,
+  .news-page main a[href*="contact"]::before {
     display: none !important
   }
 }
