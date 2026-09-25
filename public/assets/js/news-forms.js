@@ -9,42 +9,48 @@
       privateOk: 'Solicitud recibida. Nuestro equipo revisará tu acceso.',
       config: 'El servicio está terminando de configurarse. Inténtalo de nuevo más tarde.',
       network: 'No hemos podido conectar con el servicio. Inténtalo de nuevo.',
-      invalid: 'Revisa los datos introducidos e inténtalo de nuevo.'
+      invalid: 'Revisa los datos introducidos e inténtalo de nuevo.',
+      categoryRequired: 'Selecciona al menos una categoría de producto.'
     },
     en: {
       newsletterOk: 'Check your email to confirm your subscription.',
       privateOk: 'Request received. Our team will review your access.',
       config: 'This service is being configured. Please try again later.',
       network: 'We could not connect to the service. Please try again.',
-      invalid: 'Please check your details and try again.'
+      invalid: 'Please check your details and try again.',
+      categoryRequired: 'Select at least one product category.'
     },
     fr: {
       newsletterOk: 'Consultez votre email pour confirmer votre inscription.',
       privateOk: 'Demande reçue. Notre équipe examinera votre accès.',
       config: 'Le service est en cours de configuration. Réessayez plus tard.',
       network: 'Impossible de joindre le service. Réessayez.',
-      invalid: 'Vérifiez vos informations et réessayez.'
+      invalid: 'Vérifiez vos informations et réessayez.',
+      categoryRequired: 'Sélectionnez au moins une catégorie de produit.'
     },
     it: {
       newsletterOk: 'Controlla la tua email per confermare l’iscrizione.',
       privateOk: 'Richiesta ricevuta. Il nostro team esaminerà il tuo accesso.',
       config: 'Il servizio è in fase di configurazione. Riprova più tardi.',
       network: 'Non è stato possibile contattare il servizio. Riprova.',
-      invalid: 'Controlla i dati inseriti e riprova.'
+      invalid: 'Controlla i dati inseriti e riprova.',
+      categoryRequired: 'Seleziona almeno una categoria di prodotto.'
     },
     ar: {
       newsletterOk: 'تحقق من بريدك الإلكتروني لتأكيد الاشتراك.',
       privateOk: 'تم استلام الطلب. سيراجع فريقنا طلب الوصول.',
       config: 'الخدمة قيد الإعداد. يرجى المحاولة لاحقاً.',
       network: 'تعذر الاتصال بالخدمة. يرجى المحاولة مرة أخرى.',
-      invalid: 'يرجى مراجعة البيانات والمحاولة مرة أخرى.'
+      invalid: 'يرجى مراجعة البيانات والمحاولة مرة أخرى.',
+      categoryRequired: 'اختر فئة منتج واحدة على الأقل.'
     }
   } [lang] || {
     newsletterOk: 'Check your email to confirm your subscription.',
     privateOk: 'Request received. Our team will review your access.',
     config: 'This service is being configured. Please try again later.',
     network: 'We could not connect to the service. Please try again.',
-    invalid: 'Please check your details and try again.'
+    invalid: 'Please check your details and try again.',
+    categoryRequired: 'Select at least one product category.'
   };
   const replaceForm = (selector) => {
     const old = root.querySelector(selector);
@@ -76,6 +82,11 @@
       const payload = new FormData(form);
       if (kind === 'newsletter' && !payload.get('consent')) {
         form.reportValidity();
+        return
+      }
+      if (kind === 'private' && !payload.getAll('categories').length) {
+        setStatus(form, copy.categoryRequired, false);
+        form.querySelector('input[name="categories"]')?.focus();
         return
       }
       if (button) {

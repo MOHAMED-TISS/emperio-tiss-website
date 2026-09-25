@@ -4,6 +4,7 @@ import fs from 'node:fs';
 const page = fs.readFileSync('public/private/admin/index.html', 'utf8');
 const script = fs.readFileSync('public/assets/js/private-admin.js', 'utf8');
 const newsScript = fs.readFileSync('public/assets/js/news-current.js', 'utf8');
+const newsForms = fs.readFileSync('public/assets/js/news-forms.js', 'utf8');
 
 assert.match(page, /data-admin-form/);
 assert.match(page, /data-client-form/);
@@ -25,6 +26,8 @@ assert.match(newsScript,/name="categories"/);
 assert.match(newsScript,/\['seafood','fruits','vegetables'\]/);
 assert.match(newsScript,/value="\$\{value\}"/);
 assert.match(newsScript,/value="\$\{L\}"/);
+assert.match(newsForms,/getAll\('categories'\)/);
+assert.match(newsForms,/categoryRequired/);
 for (const id of ['metricTotal','metricPending','metricApproved','metricRejected','requestTrend','requestTrendTable','countryChart','categoryChart']) {
   assert.match(page,new RegExp(`id=["']${id}["']`));
 }
