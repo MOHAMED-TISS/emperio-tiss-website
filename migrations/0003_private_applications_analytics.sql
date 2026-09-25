@@ -9,7 +9,6 @@ ALTER TABLE clients ADD COLUMN products_interest TEXT;
 ALTER TABLE clients ADD COLUMN privacy_accepted_at INTEGER;
 ALTER TABLE clients ADD COLUMN notification_status TEXT;
 ALTER TABLE clients ADD COLUMN notification_error TEXT;
-ALTER TABLE clients ADD COLUMN updated_at INTEGER;
 
 CREATE TABLE client_interests (
   email TEXT NOT NULL,
