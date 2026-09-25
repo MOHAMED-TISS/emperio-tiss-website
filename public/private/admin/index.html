@@ -8,7 +8,7 @@
     <link rel="icon" href="/assets/images/logo.png">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/news-current.css?v=20260925-private">
-    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260924-operations">
+    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260925-analytics">
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20260922-shared-shell">
   </head>
   <body class="news-current private-admin-page">
@@ -29,7 +29,22 @@
             <section class="admin-card admin-wide">
               <div class="admin-toolbar"><h2>Overview</h2><button id="refreshAdmin" type="button">Refresh</button><button id="lockAdmin" type="button">Lock panel</button></div>
               <p id="serviceStatus" class="admin-status" role="status"></p>
-              <p>Lists show the latest 200 records; campaign history shows the latest 50. Counts below refer to the records shown.</p>
+              <p>Live operational data from all private-access requests. Lists show the latest 200 records; campaign history shows the latest 50.</p>
+              <div class="admin-kpis" aria-label="Private access request totals">
+                <article><span>All requests</span><strong id="metricTotal">0</strong></article>
+                <article><span>Pending</span><strong id="metricPending">0</strong></article>
+                <article><span>Approved</span><strong id="metricApproved">0</strong></article>
+                <article><span>Rejected</span><strong id="metricRejected">0</strong></article>
+              </div>
+              <div class="admin-chart-grid">
+                <figure class="admin-chart admin-chart-wide">
+                  <figcaption><span>REQUEST FLOW</span><strong>Last 30 days</strong></figcaption>
+                  <div id="requestTrend" class="admin-trend" role="img" aria-label="No request data yet"></div>
+                  <div class="admin-table-scroll"><table id="requestTrendTable"><caption>Daily private access requests</caption><thead><tr><th scope="col">Date</th><th scope="col">Requests</th></tr></thead><tbody></tbody></table></div>
+                </figure>
+                <figure class="admin-chart"><figcaption><span>GEOGRAPHY</span><strong>Top countries</strong></figcaption><div id="countryChart" class="admin-bars"></div></figure>
+                <figure class="admin-chart"><figcaption><span>DEMAND</span><strong>Product categories</strong></figcaption><div id="categoryChart" class="admin-bars"></div></figure>
+              </div>
               <div class="admin-grid"><div><h3>Clients &amp; access requests</h3><div id="clientList" class="admin-list"></div></div><div><h3>Subscribers</h3><div id="subscriberList" class="admin-list"></div></div></div>
             </section>
             <section class="admin-card">
@@ -103,7 +118,7 @@
         </div>
       </section>
     </main>
-    <script src="/assets/js/private-admin.js?v=20260924-operations" defer></script>
+    <script src="/assets/js/private-admin.js?v=20260925-analytics" defer></script>
     <script src="/assets/js/global.js?v=20260922-shared-shell" defer></script>
   </body>
 </html>

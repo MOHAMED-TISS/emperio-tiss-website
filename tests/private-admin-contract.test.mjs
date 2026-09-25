@@ -25,5 +25,12 @@ assert.match(newsScript,/name="categories"/);
 assert.match(newsScript,/\['seafood','fruits','vegetables'\]/);
 assert.match(newsScript,/value="\$\{value\}"/);
 assert.match(newsScript,/value="\$\{L\}"/);
+for (const id of ['metricTotal','metricPending','metricApproved','metricRejected','requestTrend','requestTrendTable','countryChart','categoryChart']) {
+  assert.match(page,new RegExp(`id=["']${id}["']`));
+}
+assert.match(script,/renderAnalytics/);
+assert.match(script,/notification_status/);
+assert.match(script,/interest_categories/);
+assert.match(page,/private-admin\.js\?v=20260925-analytics/);
 
 console.log('private-admin contract: PASS');

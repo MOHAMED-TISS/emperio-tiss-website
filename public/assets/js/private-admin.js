@@ -66,18 +66,74 @@
     host.append(item);
   };
   const date = value => new Date(value*1000).toLocaleString();
+  const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
+  const categoryName = value => ({seafood:'Seafood',fruits:'Fruits',vegetables:'Vegetables'}[value] || value);
+  const renderBars = (host, rows, label) => {
+    host.replaceChildren();
+    if (!rows.length) {
+      const empty=document.createElement('p'); empty.className='admin-empty'; empty.textContent=`No ${label} data yet.`; host.append(empty); return
+    }
+    const max=Math.max(...rows.map(row=>number(row.count)),1);
+    for (const row of rows) {
+      const item=document.createElement('div'), head=document.createElement('div'), name=document.createElement('span'), value=document.createElement('strong'), progress=document.createElement('progress');
+      name.textContent=label==='category' ? categoryName(row.label) : row.label;
+      value.textContent=String(number(row.count));
+      head.append(name,value); progress.max=max; progress.value=number(row.count);
+      progress.setAttribute('aria-label',`${name.textContent}: ${value.textContent} requests`);
+      item.append(head,progress); host.append(item)
+    }
+  };
+  const renderTrend = rows => {
+    const host=byId('requestTrend'), body=byId('requestTrendTable').tBodies[0];
+    host.replaceChildren(); body.replaceChildren();
+    const values=rows.map(row=>number(row.count)), max=Math.max(...values,1), width=600, height=180, pad=18;
+    const ns='http://www.w3.org/2000/svg', svg=document.createElementNS(ns,'svg');
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`); svg.setAttribute('aria-hidden','true');
+    const points=rows.map((row,index)=>{
+      const x=pad+(index/Math.max(rows.length-1,1))*(width-pad*2), y=height-pad-(number(row.count)/max)*(height-pad*2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`
+    }).join(' ');
+    const line=document.createElementNS(ns,'polyline'); line.setAttribute('points',points); line.setAttribute('class','admin-trend-line'); svg.append(line); host.append(svg);
+    const total=values.reduce((sum,value)=>sum+value,0);
+    host.setAttribute('aria-label',`${total} private access requests during the last 30 days; peak ${Math.max(...values,0)} in one day.`);
+    for (const row of rows) {
+      const tr=document.createElement('tr'), day=document.createElement('th'), count=document.createElement('td');
+      day.scope='row'; day.textContent=row.day; count.textContent=String(number(row.count)); tr.append(day,count); body.append(tr)
+    }
+  };
+  const renderAnalytics = analytics => {
+    const summary=analytics?.summary || {};
+    byId('metricTotal').textContent=String(number(summary.total));
+    byId('metricPending').textContent=String(number(summary.pending));
+    byId('metricApproved').textContent=String(number(summary.approved));
+    byId('metricRejected').textContent=String(number(summary.rejected));
+    renderTrend(Array.isArray(analytics?.daily) ? analytics.daily : []);
+    renderBars(byId('countryChart'),Array.isArray(analytics?.countries) ? analytics.countries : [],'country');
+    renderBars(byId('categoryChart'),Array.isArray(analytics?.categories) ? analytics.categories : [],'category')
+  };
   async function refresh() {
     const current = generation;
     const d = await call('/api/private/admin/overview',undefined,'GET');
     if (current!==generation || !adminKey) return;
     emailConfigured=d.emailConfigured;
+    renderAnalytics(d.analytics);
     set(byId('serviceStatus'), emailConfigured ? 'Database connected · email secret configured. Confirm the sender domain is verified in Resend before sending.' : 'Database connected · email sending disabled: RESEND_API_KEY is missing.',emailConfigured);
     for (const id of ['clientList','subscriberList','offerList','campaignList']) byId(id).replaceChildren();
-    for (const c of d.clients) row(byId('clientList'),c.company || c.email,`${c.email} · ${c.language.toUpperCase()} · ${c.status}`,'Edit approval',()=>{
+    for (const c of d.clients) {
+      const categories=(c.interest_categories || '').split(',').filter(Boolean).map(categoryName).join(', ') || 'No categories (legacy record)';
+      const detail=[
+        `${c.status.toUpperCase()} · ${c.country || 'No country'} · ${c.language.toUpperCase()} · notification: ${c.notification_status || 'legacy'}`,
+        `CIF / Tax ID: ${c.tax_id || '—'} · Contact: ${c.contact_name || c.name || '—'}`,
+        `${c.email} · Mobile: ${c.mobile || '—'} · WhatsApp: ${c.whatsapp || '—'}`,
+        `Interests: ${categories}${c.products_interest ? ` · ${c.products_interest}` : ''}`,
+        `Address: ${c.address || '—'} · Requested: ${date(c.created_at)}`
+      ].join('\n');
+      row(byId('clientList'),c.company || c.email,detail,c.status==='pending'?'Review / approve':'Edit approval',()=>{
       const form=document.querySelector('[data-client-form]');
       for(const field of ['email','name','company','language']) form.elements[field].value=c[field]||'';
       form.elements.company.focus();
-    });
+      })
+    }
     for(const s of d.subscribers) row(byId('subscriberList'),s.email,`${s.language.toUpperCase()} · ${s.unsubscribed_at ? 'Unsubscribed' : s.confirmed_at ? 'Confirmed' : 'Awaiting confirmation'}`);
     const select=byId('offerSelect'); select.replaceChildren(new Option('Choose an active offer',''));
     for(const o of d.offers) {
