@@ -32,6 +32,13 @@
       contact: 'Hablar con EMPERIO TISS ↗',
       talk: 'Cuando hay una oportunidad real,<br><em>hablemos.</em>',
       consent: 'Acepto recibir comunicaciones comerciales y puedo cancelar mi suscripción en cualquier momento.',
+      application: {
+        taxId: 'CIF / Identificación fiscal', company: 'Nombre de la empresa', address: 'Dirección completa',
+        country: 'País (código ISO, ej. ES)', contact: 'Persona de contacto', mobile: 'Móvil',
+        whatsapp: 'WhatsApp', categories: 'Productos de interés', details: 'Productos concretos (opcional)',
+        privacy: 'Acepto que EMPERIO TISS trate estos datos para evaluar y responder a mi solicitud de acceso.',
+        categoryNames: ['Productos del mar','Frutas','Hortalizas'], categoryRequired: 'Selecciona al menos una categoría.'
+      },
       labels: ['MERCADO', 'PRODUCTO', 'ORIGEN', 'EMPERIO TISS'],
       stories: [
         ['La geografía vuelve a importar.',
@@ -74,6 +81,13 @@
       contact: 'Talk to EMPERIO TISS ↗',
       talk: "When there is a real opportunity,<br><em>let's talk.</em>",
       consent: 'I agree to receive commercial communications and can unsubscribe at any time.',
+      application: {
+        taxId: 'Tax ID / Company number', company: 'Company name', address: 'Full address',
+        country: 'Country (ISO code, e.g. GB)', contact: 'Contact person', mobile: 'Mobile',
+        whatsapp: 'WhatsApp', categories: 'Products of interest', details: 'Specific products (optional)',
+        privacy: 'I agree that EMPERIO TISS may process this data to assess and respond to my access request.',
+        categoryNames: ['Seafood','Fruits','Vegetables'], categoryRequired: 'Select at least one category.'
+      },
       labels: ['MARKET', 'PRODUCT', 'ORIGIN', 'EMPERIO TISS'],
       stories: [
         ['Geography matters again.',
@@ -117,6 +131,13 @@
       contact: 'Parler à EMPERIO TISS ↗',
       talk: "Quand une opportunité est réelle,<br><em>parlons-en.</em>",
       consent: "J'accepte de recevoir des communications commerciales et peux me désabonner à tout moment.",
+      application: {
+        taxId: 'Identifiant fiscal / SIREN', company: "Nom de l'entreprise", address: 'Adresse complète',
+        country: 'Pays (code ISO, ex. FR)', contact: 'Personne de contact', mobile: 'Mobile',
+        whatsapp: 'WhatsApp', categories: "Produits d'intérêt", details: 'Produits précis (facultatif)',
+        privacy: "J'accepte qu'EMPERIO TISS traite ces données afin d'évaluer et de répondre à ma demande d'accès.",
+        categoryNames: ['Produits de la mer','Fruits','Légumes'], categoryRequired: 'Sélectionnez au moins une catégorie.'
+      },
       labels: ['MARCHÉ', 'PRODUIT', 'ORIGINE', 'EMPERIO TISS'],
       stories: [
         ['La géographie compte à nouveau.',
@@ -161,6 +182,13 @@
       contact: 'Parla con EMPERIO TISS ↗',
       talk: "Quando c'è una vera opportunità,<br><em>parliamone.</em>",
       consent: "Accetto di ricevere comunicazioni commerciali e posso annullare l'iscrizione in qualsiasi momento.",
+      application: {
+        taxId: 'Partita IVA / Codice fiscale', company: "Nome dell'azienda", address: 'Indirizzo completo',
+        country: 'Paese (codice ISO, es. IT)', contact: 'Persona di contatto', mobile: 'Cellulare',
+        whatsapp: 'WhatsApp', categories: 'Prodotti di interesse', details: 'Prodotti specifici (facoltativo)',
+        privacy: "Accetto che EMPERIO TISS tratti questi dati per valutare e rispondere alla mia richiesta di accesso.",
+        categoryNames: ['Prodotti del mare','Frutta','Ortaggi'], categoryRequired: 'Seleziona almeno una categoria.'
+      },
       labels: ['MERCATO', 'PRODOTTO', 'ORIGINE', 'EMPERIO TISS'],
       stories: [
         ['La geografia torna a contare.',
@@ -205,6 +233,13 @@
       contact: 'تواصل مع EMPERIO TISS ↗',
       talk: 'عندما توجد فرصة حقيقية،<br><em>فلنتحدث.</em>',
       consent: 'أوافق على تلقي الاتصالات التجارية ويمكنني إلغاء الاشتراك في أي وقت.',
+      application: {
+        taxId: 'الرقم الضريبي للشركة', company: 'اسم الشركة', address: 'العنوان الكامل',
+        country: 'الدولة (رمز ISO مثل MA)', contact: 'جهة الاتصال', mobile: 'الهاتف المحمول',
+        whatsapp: 'واتساب', categories: 'المنتجات المطلوبة', details: 'منتجات محددة (اختياري)',
+        privacy: 'أوافق على معالجة EMPERIO TISS لهذه البيانات لتقييم طلب الوصول والرد عليه.',
+        categoryNames: ['المأكولات البحرية','الفواكه','الخضروات'], categoryRequired: 'اختر فئة واحدة على الأقل.'
+      },
       labels: ['السوق', 'المنتج', 'المنشأ', 'EMPERIO TISS'],
       stories: [
         ['الجغرافيا مهمة من جديد.',
@@ -256,7 +291,7 @@
       `<a href="${pfx}/"><span class="idx">01</span><span>${navLabels[0]}</span></a><a href="${pfx}/about/"><span class="idx">02</span><span>${navLabels[1]}</span></a><details class="nav-products"><summary><span class="idx">03</span><span>${navLabels[2]}</span></summary><div class="nav-products-links">${paths.map((x,i)=>`<a href="${pfx}/${x}">${prod[i]}</a>`).join('')}</div></details><a href="${pfx}/markets/"><span class="idx">04</span><span>${navLabels[3]}</span></a><a href="${pfx}/news/" class="active"><span class="idx">05</span><span>${navLabels[4]}</span></a><a href="${pfx}/contact/"><span class="idx">06</span><span>${navLabels[5]}</span></a>`
   }
   root.querySelector('#newsApp').innerHTML =
-    `<main><section class="news-hero"><div class="news-wrap"><div class="news-hero-meta"><span>01 / ${t.hero}</span><span>EUROPE · AFRICA · MEDITERRANEAN</span></div><div class="news-hero-grid"><div><p class="news-eyebrow">${t.hero}</p><h1>${t.h1}</h1><p class="news-lead">${t.lead}</p><a class="news-text-link" href="#market-signals">${t.latest} ↓</a></div><div class="news-hero-orbit"><span>ORIGIN</span><span>MARKET</span><span>DESTINATION</span></div></div></div></section><section class="news-feature-section"><div class="news-wrap"><div class="news-section-head"><div><p class="news-eyebrow">${t.latest.toUpperCase()}</p><h2>${t.latest} <em>+</em></h2></div><p>${t.desc}</p></div><article class="news-feature"><div class="news-feature-visual"><span>MARKET SIGNAL</span><b>01</b></div><div class="news-feature-copy"><span class="news-tag">${t.featureTag}</span><h3>${t.featureTitle}</h3><p>${t.featureText}</p><div class="news-feature-meta"><span>Origin · Market · Destination</span><a href="${P}/contact/">${t.contact}</a></div></div></article></div></section><section class="news-stream" id="market-signals"><div class="news-wrap"><div class="news-section-head compact"><div><p class="news-eyebrow">SIGNALS</p><h2>${t.latest} <em>+</em></h2></div><div class="news-filters">${t.filters.map((x,i)=>`<button class="${i===0?'active':''}" data-filter="${['all','market','product','origin','company'][i]}">${x}</button>`).join('')}</div></div><div class="news-card-grid">${t.stories.map((s,i)=>`<article class="news-card" data-topic="${s[2]}"><span class="news-card-index">${String(i+1).padStart(2,'0')}</span><span class="news-tag">${t.labels[i]}</span><h3>${s[0]}</h3><p>${s[1]}</p><a href="${P}/contact/">${t.contact}</a></article>`).join('')}</div></div></section><section class="news-intelligence"><div class="news-wrap news-intelligence-grid"><div><p class="news-eyebrow">MARKET INTELLIGENCE</p><h2>${t.intel}</h2></div><div class="news-observations">${t.obs.map((x,i)=>`<div><span>0${i+1}</span><strong>${['Origin','Destination','Opportunity'][i]}</strong><p>${x}</p></div>`).join('')}</div></div></section><section class="news-subscribe"><div class="news-wrap news-subscribe-grid"><div><p class="news-eyebrow">MARKET SIGNALS</p><h2>${t.newsletter}</h2><p>${t.newsletterText}</p></div><form class="news-form" data-newsletter-form><label>${t.email}<input type="email" name="email" required></label><label class="news-check"><input type="checkbox" name="consent" required><span>${t.consent}</span></label><input type="hidden" name="language" value="${L}"><input type="text" name="_honey" class="news-honey" tabindex="-1" autocomplete="off"><button type="submit">${t.subscribe}</button><p class="news-form-status" aria-live="polite"></p></form></div></section><section class="news-private"><div class="news-wrap news-private-grid"><div><p class="news-eyebrow">EMPERIO PRIVATE</p><h2>${t.private}</h2><p>${t.privateText}</p></div><form class="news-form private-form" data-private-form><label>${t.email}<input type="email" name="email" required></label><input type="text" name="_honey" class="news-honey" tabindex="-1" autocomplete="off"><button type="submit">${t.access}</button><p class="news-form-status" aria-live="polite"></p></form></div></section><section class="news-cta"><div class="news-wrap"><p class="news-eyebrow">B2B</p><h2>${t.talk}</h2><a class="news-solid-link" href="${P}/contact/">${t.contact}</a></div></section></main>`;
+    `<main><section class="news-hero"><div class="news-wrap"><div class="news-hero-meta"><span>01 / ${t.hero}</span><span>EUROPE · AFRICA · MEDITERRANEAN</span></div><div class="news-hero-grid"><div><p class="news-eyebrow">${t.hero}</p><h1>${t.h1}</h1><p class="news-lead">${t.lead}</p><a class="news-text-link" href="#market-signals">${t.latest} ↓</a></div><div class="news-hero-orbit"><span>ORIGIN</span><span>MARKET</span><span>DESTINATION</span></div></div></div></section><section class="news-feature-section"><div class="news-wrap"><div class="news-section-head"><div><p class="news-eyebrow">${t.latest.toUpperCase()}</p><h2>${t.latest} <em>+</em></h2></div><p>${t.desc}</p></div><article class="news-feature"><div class="news-feature-visual"><span>MARKET SIGNAL</span><b>01</b></div><div class="news-feature-copy"><span class="news-tag">${t.featureTag}</span><h3>${t.featureTitle}</h3><p>${t.featureText}</p><div class="news-feature-meta"><span>Origin · Market · Destination</span><a href="${P}/contact/">${t.contact}</a></div></div></article></div></section><section class="news-stream" id="market-signals"><div class="news-wrap"><div class="news-section-head compact"><div><p class="news-eyebrow">SIGNALS</p><h2>${t.latest} <em>+</em></h2></div><div class="news-filters">${t.filters.map((x,i)=>`<button class="${i===0?'active':''}" data-filter="${['all','market','product','origin','company'][i]}">${x}</button>`).join('')}</div></div><div class="news-card-grid">${t.stories.map((s,i)=>`<article class="news-card" data-topic="${s[2]}"><span class="news-card-index">${String(i+1).padStart(2,'0')}</span><span class="news-tag">${t.labels[i]}</span><h3>${s[0]}</h3><p>${s[1]}</p><a href="${P}/contact/">${t.contact}</a></article>`).join('')}</div></div></section><section class="news-intelligence"><div class="news-wrap news-intelligence-grid"><div><p class="news-eyebrow">MARKET INTELLIGENCE</p><h2>${t.intel}</h2></div><div class="news-observations">${t.obs.map((x,i)=>`<div><span>0${i+1}</span><strong>${['Origin','Destination','Opportunity'][i]}</strong><p>${x}</p></div>`).join('')}</div></div></section><section class="news-subscribe"><div class="news-wrap news-subscribe-grid"><div><p class="news-eyebrow">MARKET SIGNALS</p><h2>${t.newsletter}</h2><p>${t.newsletterText}</p></div><form class="news-form" data-newsletter-form><label>${t.email}<input type="email" name="email" required></label><label class="news-check"><input type="checkbox" name="consent" required><span>${t.consent}</span></label><input type="hidden" name="language" value="${L}"><input type="text" name="_honey" class="news-honey" tabindex="-1" autocomplete="off"><button type="submit">${t.subscribe}</button><p class="news-form-status" aria-live="polite"></p></form></div></section><section class="news-private"><div class="news-wrap news-private-grid"><div><p class="news-eyebrow">EMPERIO PRIVATE</p><h2>${t.private}</h2><p>${t.privateText}</p></div><form class="news-form private-form" data-private-form><div class="private-application-grid"><label>${t.application.taxId}<input type="text" name="tax_id" maxlength="80" autocomplete="off" required></label><label>${t.application.company}<input type="text" name="company" maxlength="160" autocomplete="organization" required></label><label class="private-field-wide">${t.application.address}<input type="text" name="address" maxlength="300" autocomplete="street-address" required></label><label>${t.application.country}<input type="text" name="country" minlength="2" maxlength="2" pattern="[A-Za-z]{2}" autocomplete="country" placeholder="ES" required></label><label>${t.application.contact}<input type="text" name="contact_name" maxlength="160" autocomplete="name" required></label><label>${t.application.mobile}<input type="tel" name="mobile" maxlength="40" autocomplete="tel" required></label><label>${t.email}<input type="email" name="email" maxlength="254" autocomplete="email" required></label><label>${t.application.whatsapp}<input type="tel" name="whatsapp" maxlength="40" autocomplete="tel" required></label><label class="private-field-wide">${t.application.details}<textarea name="products_interest" maxlength="1000" rows="3"></textarea></label></div><fieldset class="private-categories"><legend>${t.application.categories}</legend>${['seafood','fruits','vegetables'].map((value,i)=>`<label><input type="checkbox" name="categories" value="${value}"><span>${t.application.categoryNames[i]}</span></label>`).join('')}</fieldset><label class="news-check"><input type="checkbox" name="privacy" value="yes" required><span>${t.application.privacy}</span></label><input type="hidden" name="language" value="${L}"><input type="text" name="_honey" class="news-honey" tabindex="-1" autocomplete="off"><button type="submit">${t.access}</button><p class="news-form-status" aria-live="polite"></p></form></div></section><section class="news-cta"><div class="news-wrap"><p class="news-eyebrow">B2B</p><h2>${t.talk}</h2><a class="news-solid-link" href="${P}/contact/">${t.contact}</a></div></section></main>`;
   root.querySelectorAll('.news-filters button').forEach(btn => btn.addEventListener('click',
 () => {
     root.querySelectorAll('.news-filters button').forEach(b => b.classList.remove(
@@ -278,9 +313,13 @@
     const b = f.querySelector('button');
     if (b) b.disabled = true;
     try {
+      const data = new FormData(f);
+      if (f.matches('[data-private-form]') && !data.getAll('categories').length) {
+        throw new Error(t.application.categoryRequired)
+      }
       const r = await fetch(url, {
           method: 'POST',
-          body: new FormData(f),
+          body: data,
           headers: {
             Accept: 'application/json'
           }

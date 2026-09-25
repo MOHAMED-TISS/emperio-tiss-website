@@ -3,6 +3,7 @@ import fs from 'node:fs';
 
 const page = fs.readFileSync('public/private/admin/index.html', 'utf8');
 const script = fs.readFileSync('public/assets/js/private-admin.js', 'utf8');
+const newsScript = fs.readFileSync('public/assets/js/news-current.js', 'utf8');
 
 assert.match(page, /data-admin-form/);
 assert.match(page, /data-client-form/);
@@ -17,5 +18,12 @@ assert.match(script, /Authorization/);
 assert.match(script, /campaign_id/);
 assert.match(page, /sandbox=""/);
 assert.match(page, /confirmCampaign/);
+for (const field of ['tax_id','company','address','country','contact_name','mobile','email','whatsapp','products_interest','privacy']) {
+  assert.match(newsScript,new RegExp(`name=["']${field}["']`));
+}
+assert.match(newsScript,/name="categories"/);
+assert.match(newsScript,/\['seafood','fruits','vegetables'\]/);
+assert.match(newsScript,/value="\$\{value\}"/);
+assert.match(newsScript,/value="\$\{L\}"/);
 
 console.log('private-admin contract: PASS');

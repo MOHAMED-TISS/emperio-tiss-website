@@ -465,7 +465,7 @@
   text-transform: uppercase
 }
 
-.news-form input[type=email] {
+.news-form :is(input[type=email],input[type=text],input[type=tel],textarea) {
   height: 52px;
   border: 1px solid rgba(23, 48, 40, .18);
   background: rgba(255, 255, 255, .5);
@@ -473,6 +473,18 @@
   color: var(--news-ink);
   font: 400 15px var(--et-sans, DM Sans, sans-serif);
   outline: none
+}
+
+.news-form textarea {
+  min-height: 92px;
+  height: auto;
+  padding-block: 13px;
+  resize: vertical
+}
+
+.news-form :is(input,textarea):focus-visible {
+  border-color: var(--news-gold);
+  box-shadow: 0 0 0 2px rgba(201,162,75,.22)
 }
 
 .news-check {
@@ -525,11 +537,63 @@
   border: 0
 }
 
+.news-private-grid {
+  grid-template-columns: minmax(250px,.58fr) minmax(560px,1.42fr);
+  align-items: start
+}
+
+.private-application-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 16px
+}
+
+.private-field-wide {
+  grid-column: 1 / -1
+}
+
+.private-categories {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  margin: 2px 0 0;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.18)
+}
+
+.private-categories legend {
+  padding-inline: 6px;
+  color: rgba(255,255,255,.62);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase
+}
+
+.private-categories label {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.78);
+  cursor: pointer
+}
+
+.private-categories input,
+.news-private .news-check input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--news-gold)
+}
+
 .news-private .news-form label {
   color: rgba(255, 255, 255, .52)
 }
 
-.news-private .news-form input[type=email] {
+.news-private .news-form :is(input[type=email],input[type=text],input[type=tel],textarea) {
   background: rgba(255, 255, 255, .06);
   border-color: rgba(255, 255, 255, .18);
   color: #fff
@@ -635,6 +699,11 @@
   }
 
   .news-card-grid {
+    grid-template-columns: 1fr
+  }
+
+  .private-application-grid,
+  .private-categories {
     grid-template-columns: 1fr
   }
 
