@@ -22,8 +22,58 @@ function setup(mail = false) {
     headers:{...(authenticated ? {authorization:'Bearer test-secret'} : {}), origin:'https://emperio-tiss.com','content-type':'application/json'},
     ...(body === undefined ? {} : {body:JSON.stringify(body)})
   }),env);
-  return {sql,env,call};
+  const access = values => {
+    const form = new FormData();
+    for (const [key,value] of Object.entries(values)) {
+      for (const item of Array.isArray(value) ? value : [value]) form.append(key,item);
+    }
+    return worker.fetch(new Request('https://emperio-tiss.com/api/private/request-access', {
+      method:'POST', headers:{origin:'https://emperio-tiss.com'}, body:form
+    }),env);
+  };
+  return {sql,env,call,access};
 }
+
+const validApplication = {
+  tax_id:'B12345678', company:'Atlantic Foods SL', address:'Calle del Mar 8', country:'ES',
+  contact_name:'Ana López', mobile:'+34 600 111 222', email:'ana@example.com',
+  whatsapp:'+34 600 111 222', categories:['seafood','fruits'], products_interest:'Tuna and citrus',
+  language:'es', privacy:'yes'
+};
+
+test('private applications require complete company details and an allowed category', async () => {
+  const {access} = setup();
+  assert.equal((await access({email:'ana@example.com'})).status,400);
+  assert.equal((await access({...validApplication,categories:['seafood','seasonal']})).status,400);
+});
+
+test('private applications persist before notification and escape applicant content', async () => {
+  const {access,sql} = setup(true);
+  const originalFetch=globalThis.fetch; let payload;
+  globalThis.fetch=async (_url,options)=>{payload=JSON.parse(options.body);return new Response('{}');};
+  try {
+    const response=await access({...validApplication,company:'Atlantic <Foods> SL'});
+    assert.equal(response.status,200);
+    const row=sql.prepare('SELECT tax_id,company,country,contact_name,mobile,whatsapp,products_interest,notification_status FROM clients WHERE email=?').get(validApplication.email);
+    assert.deepEqual({...row},{tax_id:'B12345678',company:'Atlantic <Foods> SL',country:'ES',contact_name:'Ana López',mobile:'+34 600 111 222',whatsapp:'+34 600 111 222',products_interest:'Tuna and citrus',notification_status:'sent'});
+    assert.deepEqual(sql.prepare('SELECT category FROM client_interests WHERE email=? ORDER BY category').all(validApplication.email).map(row=>({...row})),[{category:'fruits'},{category:'seafood'}]);
+    assert.equal(payload.reply_to,validApplication.email);
+    assert.match(payload.html,/Atlantic &lt;Foods&gt; SL/);
+    assert.doesNotMatch(payload.html,/Atlantic <Foods> SL/);
+  } finally {globalThis.fetch=originalFetch;}
+});
+
+test('notification failure keeps the application and records delivery state', async () => {
+  const {access,sql}=setup(true);
+  const originalFetch=globalThis.fetch;
+  globalThis.fetch=async()=>new Response('{}',{status:503});
+  try {
+    const response=await access(validApplication);
+    assert.equal(response.status,200);
+    assert.equal((await response.json()).ok,true);
+    assert.deepEqual({...sql.prepare('SELECT status,notification_status FROM clients WHERE email=?').get(validApplication.email)},{status:'pending',notification_status:'failed'});
+  } finally {globalThis.fetch=originalFetch;}
+});
 
 test('admin lists require authentication and report database/mail health', async () => {
   const {call} = setup();

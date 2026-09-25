@@ -136,7 +136,8 @@ async function requestAccess(request, env) {
     error: 'Private access is being configured.'
   }, 503);
   const f = await request.formData(),
-    email = clean(f.get('email'), 254).toLowerCase();
+    email = clean(f.get('email'), 254).toLowerCase(),
+    language = ['es','en','fr','it','ar'].includes(clean(f.get('language'),2)) ? clean(f.get('language'),2) : 'en';
   if (clean(f.get('_honey'), 200)) return json({
     ok: false,
     error: 'Solicitud rechazada.'
@@ -148,45 +149,72 @@ async function requestAccess(request, env) {
   if (!(await allowRequest(request, env, email))) return json({ok:false,error:'Please wait before requesting access again.'},429);
   let client = await env.NEWS_DB.prepare("SELECT email,company,status FROM clients WHERE email=?")
     .bind(email).first();
-  if (!client) {
+  if (client?.status === 'approved') {
+    if (!env.RESEND_API_KEY) return json({ok:false,error:'Email service is not configured.'},503);
+    const raw = token(), hash = await sha(raw), exp = now() + 1800;
     await env.NEWS_DB.prepare(
-        "INSERT INTO clients(email,status,created_at) VALUES(?,'pending',?)").bind(email, now())
-      .run();
+        "INSERT OR REPLACE INTO auth_tokens(token_hash,type,email,expires_at) VALUES(?,?,?,?)")
+      .bind(hash, 'private', email, exp).run();
+    const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}`;
     try {
-      await resend(env, 'info@emperio-tiss.com', 'Private access request — EMPERIO TISS',
-        `<p>Pending private-client registration: <strong>${email}</strong></p>`)
-    } catch {}
-    return json({
-      ok: true,
-      message: 'Solicitud recibida. Nuestro equipo revisará tu acceso.'
-    })
+      await resend(env, email, 'Your EMPERIO PRIVATE access link',
+        `<p>Your EMPERIO PRIVATE access is ready.</p><p><a href="${link}">Enter EMPERIO PRIVATE</a></p><p>This link expires in 30 minutes.</p>`)
+    } catch (e) {
+      return json({ok:false,error:'No se pudo enviar el enlace privado.'},502)
+    }
+    return json({ok:true,message:'Te hemos enviado un enlace de acceso privado.'})
   }
-  if (client.status !== 'approved') return json({
-    ok: true,
-    message: 'Tu acceso está pendiente de aprobación.'
-  });
-  if (!env.RESEND_API_KEY) return json({ok:false,error:'Email service is not configured.'},503);
-  const raw = token(),
-    hash = await sha(raw),
-    exp = now() + 1800;
-  await env.NEWS_DB.prepare(
-      "INSERT OR REPLACE INTO auth_tokens(token_hash,type,email,expires_at) VALUES(?,?,?,?)")
-    .bind(hash, 'private', email, exp).run();
-  const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}`;
+  const application = {
+    taxId: clean(f.get('tax_id'),80),
+    company: clean(f.get('company'),160),
+    address: clean(f.get('address'),300),
+    country: clean(f.get('country'),2).toUpperCase(),
+    contactName: clean(f.get('contact_name'),160),
+    mobile: clean(f.get('mobile'),40),
+    whatsapp: clean(f.get('whatsapp'),40),
+    productsInterest: clean(f.get('products_interest'),1000)
+  };
+  const categories = [...new Set(f.getAll('categories').map(v => clean(v,20)))].sort();
+  const categorySet = new Set(['seafood','fruits','vegetables']);
+  const required = [application.taxId,application.company,application.address,application.country,
+    application.contactName,application.mobile,application.whatsapp];
+  if (required.some(v => !v) || !f.get('privacy') || !/^[A-Z]{2}$/.test(application.country) ||
+      application.mobile.replace(/\D/g,'').length < 7 || application.whatsapp.replace(/\D/g,'').length < 7 ||
+      !categories.length || categories.some(category => !categorySet.has(category))) {
+    return json({ok:false,error:'Completa todos los datos de empresa obligatorios.'},400)
+  }
+  const requestedAt = now(), categoryList = categories.join(',');
+  await env.NEWS_DB.batch([
+    env.NEWS_DB.prepare(`INSERT INTO clients(email,name,company,language,status,created_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,privacy_accepted_at,notification_status,notification_error)
+      VALUES(?,?,?,?,'pending',?,?,?,?,?,?,?,?,?,?,'pending',NULL)
+      ON CONFLICT(email) DO UPDATE SET name=excluded.name,company=excluded.company,language=excluded.language,status='pending',created_at=excluded.created_at,tax_id=excluded.tax_id,address=excluded.address,country=excluded.country,contact_name=excluded.contact_name,mobile=excluded.mobile,whatsapp=excluded.whatsapp,interest_categories=excluded.interest_categories,products_interest=excluded.products_interest,privacy_accepted_at=excluded.privacy_accepted_at,notification_status='pending',notification_error=NULL`)
+      .bind(email,application.contactName,application.company,language,requestedAt,application.taxId,application.address,
+        application.country,application.contactName,application.mobile,application.whatsapp,categoryList,
+        application.productsInterest,requestedAt),
+    env.NEWS_DB.prepare('DELETE FROM client_interests WHERE email=?').bind(email),
+    ...categories.map(category => env.NEWS_DB.prepare('INSERT INTO client_interests(email,category) VALUES(?,?)').bind(email,category))
+  ]);
+  const labels = {seafood:'Productos del mar',fruits:'Frutas',vegetables:'Hortalizas'};
+  const notification = `<h2>Nueva solicitud — EMPERIO PRIVATE</h2>
+    <p><strong>Empresa:</strong> ${escapeHtml(application.company)}</p>
+    <p><strong>CIF / Tax ID:</strong> ${escapeHtml(application.taxId)}</p>
+    <p><strong>Dirección:</strong> ${escapeHtml(application.address)}</p>
+    <p><strong>País:</strong> ${escapeHtml(application.country)}</p>
+    <p><strong>Persona de contacto:</strong> ${escapeHtml(application.contactName)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Móvil:</strong> ${escapeHtml(application.mobile)}</p>
+    <p><strong>WhatsApp:</strong> ${escapeHtml(application.whatsapp)}</p>
+    <p><strong>Categorías:</strong> ${categories.map(category => labels[category]).join(', ')}</p>
+    <p><strong>Productos concretos:</strong> ${escapeHtml(application.productsInterest || 'No indicado')}</p>
+    <p><a href="https://emperio-tiss.com/private/admin/">Revisar en Operations Desk</a></p>`;
   try {
-    await resend(env, email, 'Your EMPERIO PRIVATE access link',
-      `<p>Your EMPERIO PRIVATE access is ready.</p><p><a href="${link}">Enter EMPERIO PRIVATE</a></p><p>This link expires in 30 minutes.</p>`
-      )
-  } catch (e) {
-    return json({
-      ok: false,
-      error: 'No se pudo enviar el enlace privado.'
-    }, 502)
+    await resend(env,'info@emperio-tiss.com',`Nueva solicitud privada — ${application.company}`,notification,email,`private-request-${await sha(`${email}:${requestedAt}`)}`);
+    await env.NEWS_DB.prepare("UPDATE clients SET notification_status='sent',notification_error=NULL WHERE email=?").bind(email).run()
+  } catch (error) {
+    await env.NEWS_DB.prepare("UPDATE clients SET notification_status='failed',notification_error=? WHERE email=?")
+      .bind(clean(error?.message || 'EMAIL_FAILED',120),email).run()
   }
-  return json({
-    ok: true,
-    message: 'Te hemos enviado un enlace de acceso privado.'
-  })
+  return json({ok:true,message:'Solicitud recibida. Nuestro equipo revisará tu acceso.'})
 }
 async function privateVerify(request, env) {
   if (!dbOk(env)) return new Response('Private access is not configured.', {
