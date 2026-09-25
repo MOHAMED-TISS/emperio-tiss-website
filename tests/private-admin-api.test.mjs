@@ -81,6 +81,25 @@ test('admin lists require authentication and report database/mail health', async
   const data = await (await call('/api/private/admin/overview')).json();
   assert.equal(data.ok,true); assert.equal(data.emailConfigured,false);
   assert.deepEqual(data.clients,[]); assert.deepEqual(data.offers,[]);
+  assert.deepEqual(data.analytics.summary,{total:0,pending:0,approved:0,rejected:0});
+  assert.equal(data.analytics.daily.length,30);
+  assert.deepEqual(data.analytics.countries,[]);
+  assert.deepEqual(data.analytics.categories,[]);
+});
+test('admin overview aggregates requests by status, date, country, category and language', async () => {
+  const {call,sql}=setup();
+  const current=Math.floor(Date.now()/1000), yesterday=current-86400;
+  sql.prepare("INSERT INTO clients(email,company,language,status,created_at,country) VALUES(?,?,?,?,?,?)").run('one@example.com','One','es','pending',current,'ES');
+  sql.prepare("INSERT INTO clients(email,company,language,status,created_at,country,approved_at) VALUES(?,?,?,?,?,?,?)").run('two@example.com','Two','fr','approved',yesterday,'MA',current);
+  sql.prepare("INSERT INTO clients(email,company,language,status,created_at,country) VALUES(?,?,?,?,?,?)").run('three@example.com','Three','es','rejected',current,'ES');
+  sql.exec("INSERT INTO client_interests(email,category) VALUES('one@example.com','seafood'),('one@example.com','fruits'),('two@example.com','seafood')");
+  const data=await (await call('/api/private/admin/overview')).json();
+  assert.deepEqual(data.analytics.summary,{total:3,pending:1,approved:1,rejected:1});
+  assert.equal(data.analytics.daily.length,30);
+  assert.equal(data.analytics.daily.at(-1).count,2);
+  assert.deepEqual(data.analytics.countries.map(row=>({...row})),[{label:'ES',count:2},{label:'MA',count:1}]);
+  assert.deepEqual(data.analytics.categories.map(row=>({...row})),[{label:'seafood',count:2},{label:'fruits',count:1}]);
+  assert.deepEqual(data.analytics.languages.map(row=>({...row})),[{label:'es',count:2},{label:'fr',count:1}]);
 });
 test('offers reject blank titles and expired dates, then return their ID', async () => {
   const {call} = setup();

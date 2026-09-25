@@ -347,16 +347,42 @@ async function adminGuard(request,env) {
 }
 async function adminOverview(request,env) {
   const denied = await adminGuard(request,env); if (denied) return denied;
-  const [clients,offers,subscribers,campaigns] = await Promise.all([
-    env.NEWS_DB.prepare('SELECT email,name,company,language,status,created_at FROM clients ORDER BY created_at DESC LIMIT 200').all(),
+  const [clients,offers,subscribers,campaigns,summary,dailyRows,countries,categories,languages] = await Promise.all([
+    env.NEWS_DB.prepare('SELECT email,name,company,language,status,created_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,notification_status FROM clients ORDER BY created_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare('SELECT * FROM private_offers ORDER BY created_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare('SELECT email,language,consent_at,confirmed_at,unsubscribed_at FROM subscribers ORDER BY consent_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare(`SELECT c.*, (SELECT COUNT(*) FROM campaign_deliveries d WHERE d.campaign_id=c.id AND d.status='sent') AS sent,
       (SELECT COUNT(*) FROM campaign_deliveries d WHERE d.campaign_id=c.id AND d.status IN ('failed','sending')) AS failed,
       (SELECT COUNT(*) FROM campaign_deliveries d WHERE d.campaign_id=c.id AND d.status='pending') AS pending
-      FROM campaigns c ORDER BY created_at DESC LIMIT 50`).all()
+      FROM campaigns c ORDER BY created_at DESC LIMIT 50`).all(),
+    env.NEWS_DB.prepare(`SELECT COUNT(*) AS total,
+      COALESCE(SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END),0) AS pending,
+      COALESCE(SUM(CASE WHEN status='approved' THEN 1 ELSE 0 END),0) AS approved,
+      COALESCE(SUM(CASE WHEN status='rejected' THEN 1 ELSE 0 END),0) AS rejected FROM clients`).first(),
+    env.NEWS_DB.prepare("SELECT strftime('%Y-%m-%d',created_at,'unixepoch') AS day,COUNT(*) AS count FROM clients WHERE created_at>=unixepoch('now','-29 days','start of day') GROUP BY day ORDER BY day").all(),
+    env.NEWS_DB.prepare("SELECT country AS label,COUNT(*) AS count FROM clients WHERE country IS NOT NULL AND country<>'' GROUP BY country ORDER BY count DESC,label LIMIT 12").all(),
+    env.NEWS_DB.prepare("SELECT category AS label,COUNT(*) AS count FROM client_interests GROUP BY category ORDER BY count DESC,label").all(),
+    env.NEWS_DB.prepare("SELECT language AS label,COUNT(*) AS count FROM clients GROUP BY language ORDER BY count DESC,label").all()
   ]);
-  return json({ok:true,emailConfigured:Boolean(env.RESEND_API_KEY),clients:clients.results,offers:offers.results,subscribers:subscribers.results,campaigns:campaigns.results});
+  const dailyMap = new Map(dailyRows.results.map(row => [row.day,Number(row.count)]));
+  const daily = [];
+  const today = new Date();
+  today.setUTCHours(0,0,0,0);
+  for (let offset=29; offset>=0; offset--) {
+    const date = new Date(today);
+    date.setUTCDate(today.getUTCDate()-offset);
+    const day = date.toISOString().slice(0,10);
+    daily.push({day,count:dailyMap.get(day) || 0})
+  }
+  const countRows = result => result.results.map(row => ({label:row.label,count:Number(row.count)}));
+  return json({
+    ok:true,emailConfigured:Boolean(env.RESEND_API_KEY),clients:clients.results,offers:offers.results,
+    subscribers:subscribers.results,campaigns:campaigns.results,
+    analytics:{
+      summary:{total:Number(summary.total),pending:Number(summary.pending),approved:Number(summary.approved),rejected:Number(summary.rejected)},
+      daily,countries:countRows(countries),categories:countRows(categories),languages:countRows(languages)
+    }
+  });
 }
 async function saveCampaign(request,env) {
   const denied = await adminGuard(request,env); if (denied) return denied;
