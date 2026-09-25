@@ -3,6 +3,12 @@
   "name": "emperio-tiss-website",
   "main": "./src/seo-worker.js",
   "compatibility_date": "2026-08-15",
+  "d1_databases": [{
+    "binding": "NEWS_DB",
+    "database_name": "emperio-tiss-news",
+    "database_id": "3a5e5b55-15f5-4763-a9d9-da8875f6a758",
+    "migrations_dir": "migrations"
+  }],
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"

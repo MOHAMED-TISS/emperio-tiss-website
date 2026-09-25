@@ -1,5 +1,38 @@
 # Noticias + Market Signals + EMPERIO Private
 
+## Approved operational continuation — 2026-09-24
+User approved connecting D1, secure admin access, real client/offer/subscriber lists,
+campaign drafts, preview, explicit send confirmation, unsubscribe and campaign history.
+Edit existing admin assets and Worker; add an additive migration and behavioral tests.
+Keep the public News design and global shell unchanged. No live campaigns during tests.
+
+### Execution and verification
+- [x] Add D1 binding and additive schema; create an EU database and apply migrations.
+- [x] Test Worker authentication, validation, missing email configuration, double opt-in,
+  unsubscribe, audience language, campaign duplicate prevention, and provider failure.
+- [x] Implement database health, lists, drafts and recipient-by-recipient dispatch.
+  Claims prevent duplicate dispatch; interrupted/uncertain deliveries remain visible and
+  are never automatically resent. Sending pauses when the browser closes.
+- [x] Add admin preview and recipient confirmation; never expose private lists publicly.
+- [x] Generate an admin key, retain only a Windows-user-encrypted local copy outside
+  public, and upload it as a Worker secret. Resend key is user-supplied via Cloudflare.
+- [ ] Run Node tests, syntax checks, dry-run deploy, mobile/desktop browser checks;
+  commit, push, CI, deploy and authenticated read-only live verification.
+
+Verification ledger: 22 Node tests pass; local D1 migrations and Worker dry-run pass.
+Browser workflows pass at 375px and 1440px with no horizontal overflow or page errors.
+Review findings fixed: initial sends require an audience fingerprint; started campaign
+previews use frozen recipients; private offers support language segmentation.
+RESEND_API_KEY still requires user configuration; production sending cannot be claimed
+verified until the provider credential, sender domain and an authorized test email exist.
+
+### Review focus
+Concurrent send requests must not duplicate delivery; a missing mail secret must not
+consume consent tokens; unsubscribe must invalidate pending confirmations; revoked
+clients must lose sessions; database or provider errors must never look like success.
+Campaign content is immutable after sending starts. Maximum audience is 200 per campaign;
+larger audiences need a queue, not an unbounded Worker request.
+
 ## Goal
 Build a multilingual communication ecosystem for ES/EN/FR/IT/AR with three layers: editorial News/Market Signals, public newsletter subscription, and a private approved-client area for exclusive offers.
 

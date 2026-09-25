@@ -1,5 +1,42 @@
 # News / Market Signals / EMPERIO Private setup
 
+## Operational configuration — September 2026
+
+`wrangler.jsonc` now binds `NEWS_DB` to `emperio-tiss-news`. Apply both migrations
+with `npx wrangler d1 migrations apply NEWS_DB --remote`; do not create a second DB.
+The admin key is a Worker secret. A Windows-user-encrypted local copy is retained
+in ignored `output/admin-key.xml`; `output/Open-Admin.ps1` copies it to the clipboard
+and opens the panel. Neither file is deployed. Back up the key in a password manager.
+
+Email remains unavailable until `RESEND_API_KEY` is set on this Worker and the sender
+domain is verified in Resend. Configure it using `npx wrangler secret put RESEND_API_KEY`
+or the Cloudflare dashboard. Never put it in Git or chat. The configured From address
+is `EMPERIO TISS <no-reply@emperio-tiss.com>`.
+
+The panel lists the latest 200 clients, subscribers and offers, plus 50 campaigns.
+Publishing an offer returns its ID and adds it to the active-offer selector.
+Newsletter and offer distribution first save an immutable campaign draft, then require
+preview and explicit send confirmation. The server freezes the eligible audience at
+send start, checks consent again per recipient and claims each delivery atomically.
+Maximum 200 recipients per campaign. Keep the browser open; use Preview / details to
+resume pending deliveries after interruption. Failed or uncertain deliveries are never
+automatically retried. Review the provider logs before creating a replacement campaign.
+Provider acceptance is not inbox delivery. Tracking webhooks and public News article
+publishing are not implemented by this admin.
+
+All newsletters append a personal unsubscribe link. Opening it shows a confirmation
+form; POST removes consent and invalidates pending confirmation tokens. Double opt-in
+is required to reactivate. Delivery tests stub the provider; no live campaign is sent.
+
+Current API: `GET /api/private/admin/overview`, `POST /api/private/admin/campaigns`
+with `{subject,html,language}` or `{kind:"offer",offer_id}`, then
+`GET /api/private/admin/campaigns/preview?id=...`. Both sending endpoints now require
+`{campaign_id,confirm:true,audience_fingerprint}`, using `audienceFingerprint` from
+preview. An audience change requires a new preview. These replace the legacy payloads below.
+Run `node --test tests/private-admin-api.test.mjs tests/private-admin-contract.test.mjs`.
+
+## Historical initial setup (superseded by operational configuration above)
+
 The website now contains the front-end and Worker routes for:
 
 - Market Signals newsletter with email confirmation.

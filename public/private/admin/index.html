@@ -8,7 +8,7 @@
     <link rel="icon" href="/assets/images/logo.png">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/news-current.css?v=20260826-1">
-    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260826-1">
+    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260924-operations">
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20260922-shared-shell">
   </head>
   <body class="news-current private-admin-page">
@@ -26,6 +26,12 @@
             <p id="adminAuthStatus" class="admin-status" role="status" aria-live="polite"></p>
           </section>
           <div id="adminPanel" class="admin-panel" hidden>
+            <section class="admin-card admin-wide">
+              <div class="admin-toolbar"><h2>Overview</h2><button id="refreshAdmin" type="button">Refresh</button><button id="lockAdmin" type="button">Lock panel</button></div>
+              <p id="serviceStatus" class="admin-status" role="status"></p>
+              <p>Lists show the latest 200 records; campaign history shows the latest 50. Counts below refer to the records shown.</p>
+              <div class="admin-grid"><div><h3>Clients &amp; access requests</h3><div id="clientList" class="admin-list"></div></div><div><h3>Subscribers</h3><div id="subscriberList" class="admin-list"></div></div></div>
+            </section>
             <section class="admin-card">
               <div class="admin-card-head">
                 <div><span class="admin-kicker">CLIENT ACCESS</span>
@@ -56,17 +62,18 @@
             <section class="admin-card">
               <div class="admin-card-head">
                 <div><span class="admin-kicker">DISTRIBUTION</span>
-                  <h2>Send a private offer.</h2>
+                  <h2>Prepare a private offer.</h2>
                 </div>
               </div>
-              <form data-send-offer-form><label>Offer ID<input type="number" name="offer_id" min="1" required></label><button type="submit">Send to approved clients ↗</button>
+              <div id="offerList" class="admin-list"></div>
+              <form data-send-offer-form><label>Active offer<select name="offer_id" id="offerSelect" required><option value="">Choose an offer</option></select></label><label>Audience language<select name="language"><option value="">All approved clients</option><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="ar">العربية</option></select></label><button type="submit">Save distribution draft ↗</button>
                 <p class="admin-status" data-status></p>
               </form>
             </section>
             <section class="admin-card">
               <div class="admin-card-head">
                 <div><span class="admin-kicker">MARKET SIGNALS</span>
-                  <h2>Send a newsletter.</h2>
+                  <h2>Prepare Market Signals.</h2>
                 </div>
               </div>
               <form data-newsletter-form><label>Subject<input type="text" name="subject" maxlength="200" required></label><label>Language<select name="language">
@@ -76,15 +83,27 @@
                     <option value="fr">Français</option>
                     <option value="it">Italiano</option>
                     <option value="ar">العربية</option>
-                  </select></label><label>HTML content<textarea name="html" rows="12" required placeholder="<h2>Market Signals</h2><p>...</p>"></textarea></label><button type="submit">Send Market Signals ↗</button>
+                  </select></label><label>HTML content<textarea name="html" rows="12" maxlength="20000" required placeholder="<h2>Market Signals</h2><p>...</p>"></textarea></label><p>A personal unsubscribe link is added to every newsletter. Saving a draft does not send email.</p><button type="submit">Save newsletter draft ↗</button>
                 <p class="admin-status" data-status></p>
               </form>
+            </section>
+            <section class="admin-card admin-wide">
+              <h2>Campaigns &amp; delivery history</h2>
+              <p>Preview a saved draft to check the content and audience before sending. Keep this page open during distribution. Accepted means accepted by the email provider, not confirmed inbox delivery.</p>
+              <div id="campaignList" class="admin-list"></div>
+              <div id="campaignPreview" hidden>
+                <h3 id="previewSubject"></h3><p id="previewAudience"></p>
+                <iframe id="previewFrame" title="Email preview" sandbox="" referrerpolicy="no-referrer"></iframe>
+                <label class="admin-confirm"><input type="checkbox" id="confirmCampaign"> I reviewed the content and recipient count and approve this send.</label>
+                <button type="button" id="sendCampaign" disabled>Send approved campaign</button>
+                <p id="campaignStatus" class="admin-status" role="status" aria-live="polite"></p>
+              </div>
             </section>
           </div>
         </div>
       </section>
     </main>
-    <script src="/assets/js/private-admin.js?v=20260826-1" defer></script>
+    <script src="/assets/js/private-admin.js?v=20260924-operations" defer></script>
     <script src="/assets/js/global.js?v=20260922-shared-shell" defer></script>
   </body>
 </html>

@@ -14,6 +14,8 @@ assert.match(script, /\/api\/private\/admin\/offers/);
 assert.match(script, /\/api\/private\/admin\/send-offer/);
 assert.match(script, /\/api\/admin\/newsletter\/send/);
 assert.match(script, /Authorization/);
-assert.match(script, /Sent to/);
+assert.match(script, /campaign_id/);
+assert.match(page, /sandbox=""/);
+assert.match(page, /confirmCampaign/);
 
 console.log('private-admin contract: PASS');

@@ -1,0 +1,5 @@
+/.wrangler/
+/output/
+/.superdesign/
+/.dev.vars*
+/.env*

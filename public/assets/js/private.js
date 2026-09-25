@@ -3,6 +3,7 @@
   const host = document.querySelector('#private-offers'),
     status = document.querySelector('#private-status');
   if (!host) return;
+  const escape = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
   const set = (t, ok = false) => {
     if (status) {
       status.textContent = t;
@@ -23,7 +24,7 @@
         return
       }
       set(`Access verified for ${d.client}`, true);
-      const offers = d.offers || [];
+      const offers = (d.offers || []).map(offer => Object.fromEntries(Object.entries(offer).map(([key,value])=>[key,escape(value)])));
       host.innerHTML = offers.length ? offers.map((o, i) =>
         `<article class="news-card"><span class="news-card-index">${String(i+1).padStart(2,'0')}</span><span class="news-tag">${o.category||'PRIVATE OFFER'}</span><h3>${o.title}</h3><p><strong>Origin:</strong> ${o.origin||'—'}<br><strong>Destination:</strong> ${o.destination||'—'}<br><strong>Availability:</strong> ${o.availability||'—'}</p><p>${o.description||''}</p><a href="/en/contact/">Discuss this offer ↗</a></article>`
         ).join('') : '<p>No active private offers at the moment.</p>'

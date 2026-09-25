@@ -1,7 +1,8 @@
 .private-admin-page {
   min-height: 100vh;
-  background: #071a16;
-  color: #f4efe5
+  background: #0b1e33;
+  color: #f4f0e6;
+  --admin-gold: #c9a24b;
 }
 
 .admin-shell {
@@ -102,8 +103,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: rgba(255, 255, 255, .55);
-  font-size: 9px;
+  color: #f4f0e6;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase
@@ -197,8 +198,32 @@
   }
 }
 
+/* Operations desk: restrained navy surfaces, readable records, deliberate send flow. */
+.private-admin-page .admin-wide { grid-column: 1 / -1; }
+.private-admin-page .admin-card { min-width: 0; }
+.private-admin-page .admin-toolbar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.private-admin-page .admin-toolbar h2 { margin-right: auto; }
+.private-admin-page .admin-list { max-height: 360px; overflow: auto; overflow-wrap: anywhere; }
+.private-admin-page .admin-record { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid #ffffff26; }
+.private-admin-page .admin-record strong { font-size: 14px; }
+.private-admin-page .admin-card p { font-size: 14px; line-height: 1.65; color: #e0ded7; }
+.private-admin-page .admin-record p { font-size: 12px; margin: 5px 0 0; }
+.private-admin-page .admin-record button { flex-shrink: 0; }
+.private-admin-page .admin-status { font-size: 14px; color: #e5c98d; }
+.private-admin-page [data-state="success"] { color: #c6dbc5; }
+.private-admin-page select option { background: #0b1e33; color: #f4f0e6; }
+.private-admin-page :is(input,textarea,select,button,a):focus-visible { outline: 2px solid #f4f0e6; outline-offset: 3px; }
+.private-admin-page .admin-card .admin-confirm { display: flex; flex-direction: row; align-items: center; gap: 12px; font-size: 14px; font-weight: 400; letter-spacing: normal; text-transform: none; line-height: 1.6; margin: 20px 0; }
+.private-admin-page .admin-confirm input { width: 20px; min-height: 20px; flex-shrink: 0; }
+.private-admin-page iframe { width: 100%; height: 360px; background: #fff; border: 1px solid #c9a24b; }
+.private-admin-page [hidden] { display: none; }
+.private-admin-page .admin-panel { align-items: start; }
+@media(max-width:600px) {
+  .private-admin-page .admin-wrap { width: calc(100% - 28px); }
+  .private-admin-page .admin-card, .private-admin-page .admin-auth { padding: 18px; }
+  .private-admin-page .admin-record { align-items: flex-start; flex-direction: column; }
+  .private-admin-page .admin-head h1 { font-size: 3.3rem; line-height: 1; }
+}
 @media(prefers-reduced-motion:reduce) {
-  * {
-    scroll-behavior: auto !important
-  }
+  .private-admin-page { scroll-behavior: auto; }
 }

@@ -1,0 +1,18 @@
+name: Validate private admin
+on:
+  push:
+    paths: ['src/**', 'migrations/**', 'public/private/admin/**', 'public/assets/js/private*.js', 'public/assets/css/private-admin.css', 'tests/private-admin*.mjs', 'wrangler.jsonc', '.github/workflows/validate-private-admin.yml']
+  pull_request:
+    paths: ['src/**', 'migrations/**', 'public/private/admin/**', 'public/assets/js/private*.js', 'public/assets/css/private-admin.css', 'tests/private-admin*.mjs', 'wrangler.jsonc', '.github/workflows/validate-private-admin.yml']
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --check src/index.js
+      - run: node --check public/assets/js/private-admin.js
+      - run: node --check public/assets/js/private.js
+      - run: node --test tests/private-admin-api.test.mjs tests/private-admin-contract.test.mjs tests/seo-metadata.test.mjs tests/seo-pages.test.mjs
