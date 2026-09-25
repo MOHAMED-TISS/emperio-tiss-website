@@ -126,6 +126,29 @@ async function subscribe(request, env) {
     message: 'Revisa tu email para confirmar la suscripción.'
   })
 }
+const PRIVATE_MESSAGES = {
+  es:{invalidEmail:'Introduce un email válido.',validation:'Completa todos los datos de empresa obligatorios.',received:'Solicitud recibida. Nuestro equipo revisará tu acceso.',linkSent:'Te hemos enviado un enlace seguro de acceso privado.',mailMissing:'El servicio de email no está disponible.',linkFailed:'No se pudo enviar el enlace privado.'},
+  en:{invalidEmail:'Enter a valid email address.',validation:'Complete all required company details.',received:'Request received. Our team will review your access.',linkSent:'We sent your secure private access link.',mailMissing:'The email service is unavailable.',linkFailed:'We could not send the private access link.'},
+  fr:{invalidEmail:'Saisissez une adresse email valide.',validation:"Complétez toutes les informations obligatoires de l'entreprise.",received:"Demande reçue. Notre équipe examinera votre accès.",linkSent:"Nous avons envoyé votre lien sécurisé d'accès privé.",mailMissing:"Le service d'email est indisponible.",linkFailed:"Le lien d'accès privé n'a pas pu être envoyé."},
+  it:{invalidEmail:'Inserisci un indirizzo email valido.',validation:"Completa tutti i dati aziendali obbligatori.",received:"Richiesta ricevuta. Il nostro team esaminerà il tuo accesso.",linkSent:"Abbiamo inviato il link sicuro per l'accesso privato.",mailMissing:"Il servizio email non è disponibile.",linkFailed:"Non è stato possibile inviare il link di accesso privato."},
+  ar:{invalidEmail:'أدخل بريداً إلكترونياً صالحاً.',validation:'أكمل جميع بيانات الشركة المطلوبة.',received:'تم استلام الطلب. سيراجع فريقنا طلب الوصول.',linkSent:'أرسلنا رابط الوصول الخاص الآمن.',mailMissing:'خدمة البريد الإلكتروني غير متاحة.',linkFailed:'تعذر إرسال رابط الوصول الخاص.'}
+};
+async function sendPrivateAccessLink(env,email,language) {
+  const copy=PRIVATE_MESSAGES[language] || PRIVATE_MESSAGES.en;
+  if (!env.RESEND_API_KEY) return json({ok:false,error:copy.mailMissing,code:'EMAIL_UNAVAILABLE'},503);
+  const raw = token(), hash = await sha(raw), exp = now() + 1800;
+  await env.NEWS_DB.prepare(
+      "INSERT OR REPLACE INTO auth_tokens(token_hash,type,email,expires_at) VALUES(?,?,?,?)")
+    .bind(hash, 'private', email, exp).run();
+  const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}`;
+  try {
+    await resend(env, email, 'Your EMPERIO PRIVATE access link',
+      `<p>Your EMPERIO PRIVATE access is ready.</p><p><a href="${link}">Enter EMPERIO PRIVATE</a></p><p>This link expires in 30 minutes.</p>`)
+  } catch (e) {
+    return json({ok:false,error:copy.linkFailed,code:'ACCESS_EMAIL_FAILED'},502)
+  }
+  return json({ok:true,message:copy.linkSent,code:'ACCESS_LINK_SENT'})
+}
 async function requestAccess(request, env) {
   if (!originOk(request)) return json({
     ok: false,
@@ -138,31 +161,21 @@ async function requestAccess(request, env) {
   const f = await request.formData(),
     email = clean(f.get('email'), 254).toLowerCase(),
     language = ['es','en','fr','it','ar'].includes(clean(f.get('language'),2)) ? clean(f.get('language'),2) : 'en';
+  const copy = PRIVATE_MESSAGES[language];
   if (clean(f.get('_honey'), 200)) return json({
     ok: false,
     error: 'Solicitud rechazada.'
   }, 400);
   if (!emailOk(email)) return json({
     ok: false,
-    error: 'Introduce un email válido.'
+    error: copy.invalidEmail,
+    code: 'INVALID_EMAIL'
   }, 400);
   if (!(await allowRequest(request, env, email))) return json({ok:false,error:'Please wait before requesting access again.'},429);
   let client = await env.NEWS_DB.prepare("SELECT email,company,status FROM clients WHERE email=?")
     .bind(email).first();
   if (client?.status === 'approved') {
-    if (!env.RESEND_API_KEY) return json({ok:false,error:'Email service is not configured.'},503);
-    const raw = token(), hash = await sha(raw), exp = now() + 1800;
-    await env.NEWS_DB.prepare(
-        "INSERT OR REPLACE INTO auth_tokens(token_hash,type,email,expires_at) VALUES(?,?,?,?)")
-      .bind(hash, 'private', email, exp).run();
-    const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}`;
-    try {
-      await resend(env, email, 'Your EMPERIO PRIVATE access link',
-        `<p>Your EMPERIO PRIVATE access is ready.</p><p><a href="${link}">Enter EMPERIO PRIVATE</a></p><p>This link expires in 30 minutes.</p>`)
-    } catch (e) {
-      return json({ok:false,error:'No se pudo enviar el enlace privado.'},502)
-    }
-    return json({ok:true,message:'Te hemos enviado un enlace de acceso privado.'})
+    return sendPrivateAccessLink(env,email,language)
   }
   const application = {
     taxId: clean(f.get('tax_id'),80),
@@ -181,19 +194,23 @@ async function requestAccess(request, env) {
   if (required.some(v => !v) || !f.get('privacy') || !/^[A-Z]{2}$/.test(application.country) ||
       application.mobile.replace(/\D/g,'').length < 7 || application.whatsapp.replace(/\D/g,'').length < 7 ||
       !categories.length || categories.some(category => !categorySet.has(category))) {
-    return json({ok:false,error:'Completa todos los datos de empresa obligatorios.'},400)
+    return json({ok:false,error:copy.validation,code:'VALIDATION_FAILED'},400)
   }
   const requestedAt = now(), categoryList = categories.join(',');
-  await env.NEWS_DB.batch([
-    env.NEWS_DB.prepare(`INSERT INTO clients(email,name,company,language,status,created_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,privacy_accepted_at,notification_status,notification_error)
-      VALUES(?,?,?,?,'pending',?,?,?,?,?,?,?,?,?,?,'pending',NULL)
-      ON CONFLICT(email) DO UPDATE SET name=excluded.name,company=excluded.company,language=excluded.language,status='pending',created_at=excluded.created_at,tax_id=excluded.tax_id,address=excluded.address,country=excluded.country,contact_name=excluded.contact_name,mobile=excluded.mobile,whatsapp=excluded.whatsapp,interest_categories=excluded.interest_categories,products_interest=excluded.products_interest,privacy_accepted_at=excluded.privacy_accepted_at,notification_status='pending',notification_error=NULL`)
-      .bind(email,application.contactName,application.company,language,requestedAt,application.taxId,application.address,
+  const writes = await env.NEWS_DB.batch([
+    env.NEWS_DB.prepare(`INSERT INTO clients(email,name,company,language,status,created_at,updated_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,privacy_accepted_at,notification_status,notification_error)
+      VALUES(?,?,?,?,'pending',?,?,?,?,?,?,?,?,?,?,?,'pending',NULL)
+      ON CONFLICT(email) DO UPDATE SET name=excluded.name,company=excluded.company,language=excluded.language,status='pending',updated_at=excluded.updated_at,tax_id=excluded.tax_id,address=excluded.address,country=excluded.country,contact_name=excluded.contact_name,mobile=excluded.mobile,whatsapp=excluded.whatsapp,interest_categories=excluded.interest_categories,products_interest=excluded.products_interest,privacy_accepted_at=excluded.privacy_accepted_at,notification_status='pending',notification_error=NULL WHERE clients.status<>'approved'`)
+      .bind(email,application.contactName,application.company,language,requestedAt,requestedAt,application.taxId,application.address,
         application.country,application.contactName,application.mobile,application.whatsapp,categoryList,
         application.productsInterest,requestedAt),
-    env.NEWS_DB.prepare('DELETE FROM client_interests WHERE email=?').bind(email),
-    ...categories.map(category => env.NEWS_DB.prepare('INSERT INTO client_interests(email,category) VALUES(?,?)').bind(email,category))
+    env.NEWS_DB.prepare("DELETE FROM client_interests WHERE email=? AND EXISTS(SELECT 1 FROM clients WHERE email=? AND status<>'approved')").bind(email,email),
+    ...categories.map(category => env.NEWS_DB.prepare("INSERT INTO client_interests(email,category) SELECT ?,? WHERE EXISTS(SELECT 1 FROM clients WHERE email=? AND status<>'approved') ON CONFLICT(email,category) DO NOTHING").bind(email,category,email))
   ]);
+  if (!Number(writes[0]?.meta?.changes)) {
+    const current = await env.NEWS_DB.prepare('SELECT status FROM clients WHERE email=?').bind(email).first();
+    if (current?.status==='approved') return sendPrivateAccessLink(env,email,language)
+  }
   const labels = {seafood:'Productos del mar',fruits:'Frutas',vegetables:'Hortalizas'};
   const notification = `<h2>Nueva solicitud — EMPERIO PRIVATE</h2>
     <p><strong>Empresa:</strong> ${escapeHtml(application.company)}</p>
@@ -214,7 +231,7 @@ async function requestAccess(request, env) {
     await env.NEWS_DB.prepare("UPDATE clients SET notification_status='failed',notification_error=? WHERE email=?")
       .bind(clean(error?.message || 'EMAIL_FAILED',120),email).run()
   }
-  return json({ok:true,message:'Solicitud recibida. Nuestro equipo revisará tu acceso.'})
+  return json({ok:true,message:copy.received,code:'APPLICATION_RECEIVED'})
 }
 async function privateVerify(request, env) {
   if (!dbOk(env)) return new Response('Private access is not configured.', {
@@ -348,7 +365,7 @@ async function adminGuard(request,env) {
 async function adminOverview(request,env) {
   const denied = await adminGuard(request,env); if (denied) return denied;
   const [clients,offers,subscribers,campaigns,summary,dailyRows,countries,categories,languages] = await Promise.all([
-    env.NEWS_DB.prepare('SELECT email,name,company,language,status,created_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,notification_status FROM clients ORDER BY created_at DESC LIMIT 200').all(),
+    env.NEWS_DB.prepare('SELECT email,name,company,language,status,created_at,updated_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,notification_status FROM clients ORDER BY created_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare('SELECT * FROM private_offers ORDER BY created_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare('SELECT email,language,consent_at,confirmed_at,unsubscribed_at FROM subscribers ORDER BY consent_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare(`SELECT c.*, (SELECT COUNT(*) FROM campaign_deliveries d WHERE d.campaign_id=c.id AND d.status='sent') AS sent,

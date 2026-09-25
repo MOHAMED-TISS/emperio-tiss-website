@@ -126,7 +126,7 @@
         `CIF / Tax ID: ${c.tax_id || '—'} · Contact: ${c.contact_name || c.name || '—'}`,
         `${c.email} · Mobile: ${c.mobile || '—'} · WhatsApp: ${c.whatsapp || '—'}`,
         `Interests: ${categories}${c.products_interest ? ` · ${c.products_interest}` : ''}`,
-        `Address: ${c.address || '—'} · Requested: ${date(c.created_at)}`
+        `Address: ${c.address || '—'} · First request: ${date(c.created_at)}${c.updated_at ? ` · Updated: ${date(c.updated_at)}` : ''}`
       ].join('\n');
       row(byId('clientList'),c.company || c.email,detail,c.status==='pending'?'Review / approve':'Edit approval',()=>{
       const form=document.querySelector('[data-client-form]');

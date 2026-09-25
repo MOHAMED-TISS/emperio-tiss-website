@@ -136,4 +136,5 @@
   };
   submit(replaceForm('[data-newsletter-form]'), '/api/newsletter/subscribe', 'newsletter');
   submit(replaceForm('[data-private-form]'), '/api/private/request-access', 'private');
+  submit(replaceForm('[data-private-login-form]'), '/api/private/request-access', 'private-login');
 })();

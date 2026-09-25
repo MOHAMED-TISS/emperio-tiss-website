@@ -542,6 +542,12 @@
   align-items: start
 }
 
+.private-forms {
+  display: grid;
+  gap: 16px;
+  min-width: 0
+}
+
 .private-application-grid {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
@@ -587,6 +593,32 @@
   width: 17px;
   height: 17px;
   accent-color: var(--news-gold)
+}
+
+.news-private .private-login-form {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(210px,.62fr);
+  align-items: end;
+  background: #163a30;
+  border: 1px solid rgba(231,212,170,.25)
+}
+
+.private-login-copy,
+.private-login-form .news-form-status {
+  grid-column: 1 / -1
+}
+
+.private-login-copy strong {
+  display: block;
+  color: #f4f0e6;
+  font: 400 1.45rem/1.15 var(--et-serif,Playfair Display,serif)
+}
+
+.private-login-copy p {
+  margin: 5px 0 0;
+  color: rgba(255,255,255,.58);
+  font-size: 12px;
+  line-height: 1.6
 }
 
 .news-private .news-form label {
@@ -703,7 +735,8 @@
   }
 
   .private-application-grid,
-  .private-categories {
+  .private-categories,
+  .news-private .private-login-form {
     grid-template-columns: 1fr
   }
 

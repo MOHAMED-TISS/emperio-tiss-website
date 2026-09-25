@@ -4,7 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import fs from 'node:fs';
 import worker from '../src/index.js';
 
-function setup(mail = false) {
+function setup(mail = false, beforeBatch) {
   const sql = new DatabaseSync(':memory:');
   for (const f of fs.readdirSync('migrations').sort()) sql.exec(fs.readFileSync(`migrations/${f}`, 'utf8'));
   const db = { prepare(query) {
@@ -15,7 +15,10 @@ function setup(mail = false) {
       async all() { return { results: sql.prepare(query).all(...values) }; },
       async run() { const r = sql.prepare(query).run(...values); return {meta:{changes:Number(r.changes),last_row_id:Number(r.lastInsertRowid)}}; }
     }; return statement;
-  }, async batch(statements) { return Promise.all(statements.map(s => s.run())); } };
+  }, async batch(statements) {
+    if (beforeBatch) { const hook=beforeBatch; beforeBatch=null; hook(sql); }
+    return Promise.all(statements.map(s => s.run()));
+  } };
   const env = {NEWS_DB:db, ADMIN_API_KEY:'test-secret', ...(mail ? {RESEND_API_KEY:'fake'} : {})};
   const call = (path, body, authenticated = true) => worker.fetch(new Request(`https://emperio-tiss.com${path}`, {
     method: body === undefined ? 'GET' : 'POST',
@@ -43,7 +46,9 @@ const validApplication = {
 
 test('private applications require complete company details and an allowed category', async () => {
   const {access} = setup();
-  assert.equal((await access({email:'ana@example.com'})).status,400);
+  const incomplete=await access({email:'ana@example.com',language:'en'});
+  assert.equal(incomplete.status,400);
+  assert.deepEqual(await incomplete.json(),{ok:false,error:'Complete all required company details.',code:'VALIDATION_FAILED'});
   assert.equal((await access({...validApplication,categories:['seafood','seasonal']})).status,400);
 });
 
@@ -54,6 +59,7 @@ test('private applications persist before notification and escape applicant cont
   try {
     const response=await access({...validApplication,company:'Atlantic <Foods> SL'});
     assert.equal(response.status,200);
+    assert.equal((await response.clone().json()).code,'APPLICATION_RECEIVED');
     const row=sql.prepare('SELECT tax_id,company,country,contact_name,mobile,whatsapp,products_interest,notification_status FROM clients WHERE email=?').get(validApplication.email);
     assert.deepEqual({...row},{tax_id:'B12345678',company:'Atlantic <Foods> SL',country:'ES',contact_name:'Ana López',mobile:'+34 600 111 222',whatsapp:'+34 600 111 222',products_interest:'Tuna and citrus',notification_status:'sent'});
     assert.deepEqual(sql.prepare('SELECT category FROM client_interests WHERE email=? ORDER BY category').all(validApplication.email).map(row=>({...row})),[{category:'fruits'},{category:'seafood'}]);
@@ -61,6 +67,25 @@ test('private applications persist before notification and escape applicant cont
     assert.match(payload.html,/Atlantic &lt;Foods&gt; SL/);
     assert.doesNotMatch(payload.html,/Atlantic <Foods> SL/);
   } finally {globalThis.fetch=originalFetch;}
+});
+
+test('resubmission preserves first-request date and records the latest update', async () => {
+  const {access,sql}=setup();
+  sql.prepare("INSERT INTO clients(email,status,created_at) VALUES(?,'pending',123)").run(validApplication.email);
+  const response=await access(validApplication);
+  assert.equal(response.status,200);
+  const row=sql.prepare('SELECT created_at,updated_at FROM clients WHERE email=?').get(validApplication.email);
+  assert.equal(row.created_at,123);
+  assert.ok(row.updated_at>123);
+});
+
+test('a concurrent approval cannot be reset by an application update', async () => {
+  const {access,sql}=setup(false, db=>db.prepare("UPDATE clients SET status='approved',approved_at=999 WHERE email=?").run(validApplication.email));
+  sql.prepare("INSERT INTO clients(email,status,created_at) VALUES(?,'pending',123)").run(validApplication.email);
+  const response=await access(validApplication);
+  assert.equal(response.status,503);
+  assert.equal(sql.prepare('SELECT status FROM clients WHERE email=?').get(validApplication.email).status,'approved');
+  assert.equal(sql.prepare('SELECT COUNT(*) AS count FROM client_interests WHERE email=?').get(validApplication.email).count,0);
 });
 
 test('notification failure keeps the application and records delivery state', async () => {
@@ -72,6 +97,19 @@ test('notification failure keeps the application and records delivery state', as
     assert.equal(response.status,200);
     assert.equal((await response.json()).ok,true);
     assert.deepEqual({...sql.prepare('SELECT status,notification_status FROM clients WHERE email=?').get(validApplication.email)},{status:'pending',notification_status:'failed'});
+  } finally {globalThis.fetch=originalFetch;}
+});
+
+test('approved clients can request a localized magic link with email only', async () => {
+  const {access,sql}=setup(true);
+  sql.prepare("INSERT INTO clients(email,status,created_at) VALUES(?,'approved',1)").run('client@example.com');
+  const originalFetch=globalThis.fetch;
+  globalThis.fetch=async()=>new Response('{}');
+  try {
+    const response=await access({email:'client@example.com',language:'en'}), data=await response.json();
+    assert.equal(response.status,200);
+    assert.equal(data.code,'ACCESS_LINK_SENT');
+    assert.equal(data.message,'We sent your secure private access link.');
   } finally {globalThis.fetch=originalFetch;}
 });
 

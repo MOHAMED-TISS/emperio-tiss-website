@@ -28,6 +28,8 @@ assert.match(newsScript,/value="\$\{value\}"/);
 assert.match(newsScript,/value="\$\{L\}"/);
 assert.match(newsForms,/getAll\('categories'\)/);
 assert.match(newsForms,/categoryRequired/);
+assert.match(newsScript,/data-private-login-form/);
+assert.match(newsForms,/\[data-private-login-form\]/);
 for (const id of ['metricTotal','metricPending','metricApproved','metricRejected','requestTrend','requestTrendTable','countryChart','categoryChart']) {
   assert.match(page,new RegExp(`id=["']${id}["']`));
 }
