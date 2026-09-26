@@ -160,6 +160,55 @@ jobs:
           console.log('Brand foundation regression: PASS');
           NODE
 
+      - name: Home architecture regression
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const html = fs.readFileSync('public/index.html', 'utf8');
+          const css = fs.readFileSync('public/assets/css/home.css', 'utf8');
+          const js = fs.readFileSync('public/assets/js/home-modern.js', 'utf8');
+
+          const requiredHtml = [
+            'home-market-stage',
+            'home-market-word--europe',
+            'home-market-word--africa',
+            'home-market-word--med',
+            'home-market-word--middle-east',
+            '/assets/css/home.css?v=20260926-home-architecture-1',
+            '/assets/js/home-modern.js?v=20260926-home-architecture-1'
+          ];
+          for (const token of requiredHtml) {
+            if (!html.includes(token)) {
+              console.error('Home is missing required architecture token: ' + token);
+              process.exit(1);
+            }
+          }
+
+          for (const legacy of ['home-markets-map', 'home-modern.css', 'home-scroll-progress', 'home-stagger', '@keyframes hmDash']) {
+            if (html.includes(legacy) || css.includes(legacy) || js.includes(legacy)) {
+              console.error('Legacy Home layer still present: ' + legacy);
+              process.exit(1);
+            }
+          }
+
+          if (fs.existsSync('public/assets/css/home-modern.css')) {
+            console.error('home-modern.css must remain removed; home.css is the single Home visual authority');
+            process.exit(1);
+          }
+
+          if (!css.includes('EDITORIAL MERIDIAN') || !css.includes('@media (prefers-reduced-motion: reduce)')) {
+            console.error('Home concept documentation or reduced-motion contract is missing');
+            process.exit(1);
+          }
+
+          if (!js.includes("matchMedia('(min-width: 901px)')") || !js.includes('Desktop-only ambient hero video')) {
+            console.error('Home mobile video restraint is missing');
+            process.exit(1);
+          }
+
+          console.log('Home architecture regression: PASS');
+          NODE
+
       - name: Catalogue tests
         run: node --test tests/market-catalogue.test.mjs
       - name: Arabic ES parity tests
