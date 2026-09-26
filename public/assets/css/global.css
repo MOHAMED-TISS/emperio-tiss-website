@@ -1,20 +1,31 @@
 /* EMPERIO TISS — GLOBAL DESIGN SYSTEM */
 :root {
-  --et-green-950: #03140f;
-  --et-green-900: #061b14;
-  --et-green-800: #0d2c21;
-  --et-cream: #f3f0e8;
-  --et-cream-light: #f8f6f0;
-  --et-gold: #c9a35f;
-  --et-gold-light: #dec487;
-  --et-ink: #10251c;
-  --et-muted: #6d756f;
-  --et-white: #fff;
+  /* Canonical EMPERIO TISS brand foundation */
+  --et-navy: #0B1E33;
+  --et-ivory: #F4F0E6;
+  --et-champagne: #C9A24B;
+  --et-seafood-accent: #2C8C86;
+  --et-produce-accent: #7A8B5C;
+  --et-seasonal-accent: #C08A3E;
+
+  /* Compatibility aliases for active catalogue/legal layers. */
+  --et-green-950: var(--et-navy);
+  --et-green-900: var(--et-navy);
+  --et-green-800: var(--et-navy);
+  --et-cream: var(--et-ivory);
+  --et-cream-light: var(--et-ivory);
+  --et-gold: var(--et-champagne);
+  --et-gold-light: var(--et-champagne);
+  --et-ink: var(--et-navy);
+  --et-muted: rgba(11, 30, 51, .64);
+  --et-white: var(--et-ivory);
+
   --et-serif: "Playfair Display", Georgia, serif;
   --et-sans: "DM Sans", Arial, sans-serif;
   --et-container: 1240px;
   --et-header-height: 76px;
-  --et-ease: cubic-bezier(.165, .84, .44, 1)
+  --et-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --et-draw-ease: cubic-bezier(0.65, 0, 0.35, 1)
 }
 
 *,
@@ -80,12 +91,12 @@ a,
   inset: 0;
   z-index: 1050;
   display: block;
-  background: var(--et-green-950);
-  color: var(--et-white);
+  background: var(--et-navy);
+  color: var(--et-ivory);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity .28s ease, visibility .28s ease
+  transition: opacity .28s var(--et-ease)
 }
 
 .nav-overlay-inner {
@@ -111,7 +122,7 @@ a,
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  color: var(--et-white);
+  color: var(--et-ivory);
   font-family: var(--et-serif);
   font-size: clamp(2.4rem, 6vw, 5rem);
   line-height: 1
@@ -130,7 +141,7 @@ a,
   justify-content: space-between;
   gap: 2rem;
   padding-block-start: 1.5rem;
-  border-block-start: 1px solid rgba(255, 255, 255, .15)
+  border-block-start: 1px solid rgba(244, 240, 230, .15)
 }
 
 .nav-overlay-lang {
@@ -148,7 +159,7 @@ a,
   gap: .25rem;
   text-align: end;
   font-size: .7rem;
-  color: rgba(255, 255, 255, .55)
+  color: rgba(244, 240, 230, .55)
 }
 
 body.nav-open .nav-overlay,
@@ -195,7 +206,7 @@ body.menu-open .nav-overlay,
   line-height: 1.82 !important;
   letter-spacing: .008em;
   font-weight: 400;
-  color: rgba(255, 255, 255, .94) !important
+  color: rgba(244, 240, 230, .94) !important
 }
 
 .home-page .hero-actions .button,
@@ -206,7 +217,7 @@ body.menu-open .nav-overlay,
   min-height: 56px !important;
   padding: 0 26px !important;
   border-radius: 999px !important;
-  border: 1px solid rgba(201, 163, 95, .58) !important;
+  border: 1px solid rgba(201, 162, 75, .58) !important;
   font: 700 11px/1 var(--et-sans) !important;
   letter-spacing: .11em !important;
   text-transform: uppercase !important;
@@ -220,7 +231,7 @@ body.menu-open .nav-overlay,
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(110deg, rgba(255, 255, 255, .0) 20%, rgba(255, 255, 255, .42) 48%, rgba(255, 255, 255, 0) 70%);
+  background: linear-gradient(110deg, rgba(244, 240, 230, 0) 20%, rgba(244, 240, 230, .42) 48%, rgba(244, 240, 230, 0) 70%);
   transform: translateX(-125%);
   transition: transform .8s var(--et-ease);
   pointer-events: none
@@ -228,22 +239,22 @@ body.menu-open .nav-overlay,
 
 .home-page .hero-actions .button-light,
 .home-page .large-button {
-  background: linear-gradient(135deg, #f8f4ea 0%, #dec487 100%) !important;
-  color: #10251c !important;
-  border-color: #dec487 !important
+  background: linear-gradient(135deg, var(--et-ivory) 0%, var(--et-champagne) 100%) !important;
+  color: var(--et-navy) !important;
+  border-color: var(--et-champagne) !important
 }
 
 .home-page .hero-actions .button-outline {
-  background: rgba(6, 29, 23, .28) !important;
-  color: #fff !important;
-  border-color: rgba(224, 196, 135, .76) !important;
+  background: rgba(11, 30, 51, .28) !important;
+  color: var(--et-ivory) !important;
+  border-color: rgba(201, 162, 75, .76) !important;
   backdrop-filter: blur(8px)
 }
 
 .home-page .hero-actions .button:hover,
 .home-page .large-button:hover {
   transform: translateY(-4px) scale(1.018);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, .24), 0 0 0 1px rgba(224, 196, 135, .16)
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .24), 0 0 0 1px rgba(201, 162, 75, .16)
 }
 
 .home-page .hero-actions .button:hover::before,
@@ -258,7 +269,7 @@ body.menu-open .nav-overlay,
 
 .home-page .hero-actions .button:focus-visible,
 .home-page .large-button:focus-visible {
-  outline: 2px solid #e0c27e;
+  outline: 2px solid var(--et-champagne);
   outline-offset: 4px
 }
 
