@@ -1,11 +1,11 @@
 /* EMPERIO TISS — Spanish home visual system */
 .home-page {
-  --home-ink: #10251c;
-  --home-deep: #061b14;
-  --home-green: #0d2c21;
-  --home-cream: #f3f0e8;
-  --home-gold: #c9a35f;
-  --home-muted: #69736d;
+  --home-ink: #0B1E33;
+  --home-deep: #0B1E33;
+  --home-green: #0B1E33;
+  --home-cream: #F4F0E6;
+  --home-gold: #C9A24B;
+  --home-muted: rgba(11, 30, 51, .64);
   background: var(--home-cream);
   color: var(--home-ink)
 }
@@ -14,8 +14,8 @@
   position: relative;
   min-height: 100svh;
   overflow: hidden;
-  background: radial-gradient(circle at 72% 25%, rgba(201, 163, 95, .18), transparent 30%), linear-gradient(120deg, #03140f 0%, #082219 55%, #102e23 100%);
-  color: #fff;
+  background: radial-gradient(circle at 72% 25%, rgba(201, 163, 95, .18), transparent 30%), linear-gradient(120deg, #0B1E33 0%, #0B1E33 55%, #0B1E33 100%);
+  color: #F4F0E6;
   padding: 150px 0 90px;
   isolation: isolate
 }
@@ -49,7 +49,7 @@
   height: 280px;
   left: 34%;
   bottom: -160px;
-  background: rgba(255, 255, 255, .06)
+  background: rgba(244, 240, 230, .06)
 }
 
 .home-page .hero-grid {
@@ -102,7 +102,7 @@
   max-width: 610px;
   margin: 46px 0 0;
   font: 500 17px/1.65 var(--et-sans);
-  color: rgba(255, 255, 255, .9)
+  color: rgba(244, 240, 230, .9)
 }
 
 .home-page .hero-description strong {
@@ -114,7 +114,7 @@
 .home-page .hero-description span {
   display: block;
   margin-top: 12px;
-  color: rgba(255, 255, 255, .66);
+  color: rgba(244, 240, 230, .66);
   font: 400 14px/1.8 var(--et-sans)
 }
 
@@ -130,11 +130,11 @@
   gap: 22px;
   min-height: 52px;
   padding: 0 22px;
-  border: 1px solid rgba(255, 255, 255, .35);
+  border: 1px solid rgba(244, 240, 230, .35);
   font: 600 10px/1 var(--et-sans);
   letter-spacing: .08em;
   text-transform: uppercase;
-  transition: transform .25s ease, background .25s ease, border-color .25s ease
+  transition: transform .25s var(--et-ease), background .25s var(--et-ease), border-color .25s var(--et-ease)
 }
 
 .home-page .button span {
@@ -142,13 +142,13 @@
 }
 
 .home-page .button-light {
-  background: #f4f1e8;
-  color: #10251c
+  background: #F4F0E6;
+  color: #0B1E33
 }
 
 .home-page .button-outline {
   background: transparent;
-  color: #fff
+  color: #F4F0E6
 }
 
 .home-page .button:hover {
@@ -157,7 +157,7 @@
 }
 
 .home-page .button-light:hover {
-  background: #fff
+  background: #F4F0E6
 }
 
 .home-page .hero-side {
@@ -177,14 +177,14 @@
 .home-page .hero-side-line {
   width: 1px;
   height: 92px;
-  background: rgba(255, 255, 255, .24)
+  background: rgba(244, 240, 230, .24)
 }
 
 .home-page .hero-side p {
   margin: 0;
   font: 500 8px/1.8 var(--et-sans);
   letter-spacing: .18em;
-  color: rgba(255, 255, 255, .52)
+  color: rgba(244, 240, 230, .52)
 }
 
 .home-page .hero-bottom {
@@ -196,7 +196,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  color: rgba(255, 255, 255, .48);
+  color: rgba(244, 240, 230, .48);
   font: 600 8px/1 var(--et-sans);
   letter-spacing: .18em
 }
@@ -205,7 +205,7 @@
   display: block;
   width: 42px;
   height: 1px;
-  background: rgba(255, 255, 255, .22)
+  background: rgba(244, 240, 230, .22)
 }
 
 .home-page section:not(.hero) {
@@ -213,7 +213,7 @@
 }
 
 .home-page .intro-section {
-  background: #f3f0e8
+  background: #F4F0E6
 }
 
 .home-page .intro-section .container,
@@ -253,7 +253,7 @@
 }
 
 .home-page h2 em {
-  color: #9b793e
+  color: #C9A24B
 }
 
 .home-page .intro-bottom {
@@ -279,7 +279,7 @@
 }
 
 .home-page .products-section {
-  background: #faf8f2
+  background: #F4F0E6
 }
 
 .home-page .section-heading {
@@ -299,7 +299,7 @@
 }
 
 .home-page .product-list {
-  border-top: 1px solid rgba(16, 37, 28, .18)
+  border-top: 1px solid rgba(11, 30, 51, .18)
 }
 
 .home-page .product-row {
@@ -308,13 +308,13 @@
   align-items: center;
   gap: 30px;
   padding: 32px 8px;
-  border-bottom: 1px solid rgba(16, 37, 28, .18);
+  border-bottom: 1px solid rgba(11, 30, 51, .18);
   transition: padding .25s ease, background .25s ease
 }
 
 .home-page .product-row:hover {
   padding-inline: 18px;
-  background: #f2eee4
+  background: #F4F0E6
 }
 
 .home-page .product-number {
@@ -344,7 +344,7 @@
 
 .home-page .markets-section {
   background: var(--home-green);
-  color: #fff
+  color: #F4F0E6
 }
 
 .home-page .markets-top {
@@ -356,7 +356,7 @@
 .home-page .markets-description {
   max-width: 330px;
   margin: 0;
-  color: rgba(255, 255, 255, .58);
+  color: rgba(244, 240, 230, .58);
   font-size: 13px;
   line-height: 1.8
 }
@@ -367,7 +367,7 @@
 
 .home-page .markets-title h2 {
   font-size: clamp(3.2rem, 7vw, 7rem);
-  color: #fff
+  color: #F4F0E6
 }
 
 .home-page .markets-title h2 span {
@@ -378,20 +378,20 @@
 
 .home-page .markets-title p {
   margin: 18px 0 0;
-  color: rgba(255, 255, 255, .52);
+  color: rgba(244, 240, 230, .52);
   font-size: 13px
 }
 
 .home-page .market-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, .14);
-  border-bottom: 1px solid rgba(255, 255, 255, .14)
+  border-top: 1px solid rgba(244, 240, 230, .14);
+  border-bottom: 1px solid rgba(244, 240, 230, .14)
 }
 
 .home-page .market-grid article {
   padding: 30px 22px 34px;
-  border-inline-start: 1px solid rgba(255, 255, 255, .14)
+  border-inline-start: 1px solid rgba(244, 240, 230, .14)
 }
 
 .home-page .market-grid article:first-child {
@@ -410,7 +410,7 @@
 
 .home-page .market-grid p {
   margin: 0;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(244, 240, 230, .5);
   font-size: 11px;
   line-height: 1.7
 }
@@ -422,17 +422,17 @@
   font: 600 10px var(--et-sans);
   letter-spacing: .1em;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(16, 37, 28, .35);
+  border-bottom: 1px solid rgba(11, 30, 51, .35);
   padding-bottom: 9px
 }
 
 .home-page .light-link {
-  color: #fff;
-  border-color: rgba(255, 255, 255, .3)
+  color: #F4F0E6;
+  border-color: rgba(244, 240, 230, .3)
 }
 
 .home-page .company-section {
-  background: #e9e4d8
+  background: #F4F0E6
 }
 
 .home-page .company-grid {
@@ -450,12 +450,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 55px 0 20px;
-  border-top: 1px solid rgba(16, 37, 28, .18)
+  border-top: 1px solid rgba(11, 30, 51, .18)
 }
 
 .home-page .company-values div {
   padding: 20px 0;
-  border-bottom: 1px solid rgba(16, 37, 28, .18)
+  border-bottom: 1px solid rgba(11, 30, 51, .18)
 }
 
 .home-page .company-values span {
@@ -472,8 +472,8 @@
 }
 
 .home-page .contact-section {
-  background: #061b14;
-  color: #fff;
+  background: #0B1E33;
+  color: #F4F0E6;
   text-align: center
 }
 
@@ -483,14 +483,14 @@
 }
 
 .home-page .contact-section h2 {
-  color: #fff;
+  color: #F4F0E6;
   font-size: clamp(3rem, 6vw, 6rem)
 }
 
 .home-page .contact-text {
   max-width: 570px;
   margin: 28px auto 0;
-  color: rgba(255, 255, 255, .58);
+  color: rgba(244, 240, 230, .58);
   font-size: 14px;
   line-height: 1.8
 }
@@ -500,8 +500,8 @@
 }
 
 .home-page .site-footer {
-  background: #03140f;
-  color: rgba(255, 255, 255, .65);
+  background: #0B1E33;
+  color: rgba(244, 240, 230, .65);
   padding: 70px 0 26px
 }
 
@@ -528,7 +528,7 @@
 
 .home-page .footer-brand p {
   font: 400 12px/1.7 var(--et-sans);
-  color: rgba(255, 255, 255, .45);
+  color: rgba(244, 240, 230, .45);
   margin-top: 16px
 }
 
@@ -548,21 +548,21 @@
 
 .home-page .footer-column a {
   font-size: 11px;
-  color: rgba(255, 255, 255, .55)
+  color: rgba(244, 240, 230, .55)
 }
 
 .home-page .footer-column a:hover {
-  color: #fff
+  color: #F4F0E6
 }
 
 .home-page .footer-legal {
   padding: 18px 0;
-  border-top: 1px solid rgba(255, 255, 255, .1);
+  border-top: 1px solid rgba(244, 240, 230, .1);
   display: flex;
   justify-content: space-between;
   gap: 30px;
   font-size: 9px;
-  color: rgba(255, 255, 255, .35)
+  color: rgba(244, 240, 230, .35)
 }
 
 .home-page .footer-legal p {
@@ -576,7 +576,7 @@
   padding-top: 20px;
   font: 600 8px var(--et-sans);
   letter-spacing: .18em;
-  color: rgba(255, 255, 255, .28)
+  color: rgba(244, 240, 230, .28)
 }
 
 .home-page .accessibility-button {
@@ -586,9 +586,9 @@
   z-index: 900;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(16, 37, 28, .18);
+  border: 1px solid rgba(11, 30, 51, .18);
   border-radius: 50%;
-  background: #f8f6f0;
+  background: #F4F0E6;
   color: var(--home-gold);
   box-shadow: 0 8px 25px rgba(0, 0, 0, .12)
 }
@@ -675,7 +675,7 @@
   }
 
   .home-page .market-grid article {
-    border-top: 1px solid rgba(255, 255, 255, .14)
+    border-top: 1px solid rgba(244, 240, 230, .14)
   }
 
   .home-page .market-grid article:nth-child(odd) {
@@ -753,7 +753,7 @@
 
 [dir="rtl"] .home-page .market-grid article {
   border-inline-start: 0;
-  border-inline-end: 1px solid rgba(255, 255, 255, .14)
+  border-inline-end: 1px solid rgba(244, 240, 230, .14)
 }
 
 /* First-paint arrow stabilization: hide legacy glyphs and draw the shared fine-line arrow via CSS. */

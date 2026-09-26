@@ -41,15 +41,15 @@
     doc.head.appendChild(script);
   };
 
-  loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
-  loadCss('/assets/css/site-pages-unified.css?v=20260926-dependency-cleanup', 'etUnifiedPages');
+  loadCss('/assets/css/site-pages.css?v=20260926-brand-foundation-2', 'etSitePages');
+  loadCss('/assets/css/site-pages-unified.css?v=20260926-brand-foundation-2', 'etUnifiedPages');
   loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   if (isProductPath) {
     loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
     loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
   }
-  loadCss('/assets/css/header-final.css?v=20260922-shared-shell', 'etHeaderFinalCanonical');
+  loadCss('/assets/css/header-final.css?v=20260926-brand-foundation-2', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
@@ -180,7 +180,7 @@
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
-  loadScript('/assets/js/header-final.js?v=20260922-shared-shell', 'etHeaderFinalScript');
+  loadScript('/assets/js/header-final.js?v=20260926-brand-foundation-2', 'etHeaderFinalScript');
   loadScript('/assets/js/global-core.js?v=20260922-fruit-inquiry', 'etGlobalCore');
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');

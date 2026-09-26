@@ -1,10 +1,10 @@
 :root {
-  --pen-ink: #17231d;
-  --pen-deep: #071b15;
-  --pen-paper: #f2efe7;
-  --pen-gold: #b89655;
-  --pen-muted: #68736e;
-  --pen-line: rgba(23, 35, 29, .14)
+  --pen-ink: #0B1E33;
+  --pen-deep: #0B1E33;
+  --pen-paper: #F4F0E6;
+  --pen-gold: #C9A24B;
+  --pen-muted: rgba(11, 30, 51, .64);
+  --pen-line: rgba(11, 30, 51, .14)
 }
 
 body.products-site {
@@ -28,8 +28,8 @@ body.products-site {
   display: flex;
   align-items: flex-end;
   padding: 150px 0 90px;
-  background: radial-gradient(circle at 80% 20%, rgba(184, 150, 85, .18), transparent 28%), linear-gradient(125deg, #061812, #0d2c21 58%, #173d2d);
-  color: #fff;
+  background: radial-gradient(circle at 80% 20%, rgba(201, 162, 75, .18), transparent 28%), #0B1E33;
+  color: #F4F0E6;
   position: relative;
   overflow: hidden
 }
@@ -40,7 +40,7 @@ body.products-site {
   right: 4vw;
   bottom: -4vw;
   font: 500 30vw/.7 var(--et-serif);
-  color: rgba(255, 255, 255, .025)
+  color: rgba(244, 240, 230, .025)
 }
 
 .products-site .hero-grid {
@@ -77,7 +77,7 @@ body.products-site {
 
 .products-site h1 em,
 .products-site h2 em {
-  color: #c9ab70;
+  color: #C9A24B;
   font-style: italic
 }
 
@@ -89,7 +89,7 @@ body.products-site {
 }
 
 .products-site .product-hero .hero-copy p {
-  color: rgba(255, 255, 255, .72)
+  color: rgba(244, 240, 230, .72)
 }
 
 .products-site .actions {
@@ -104,7 +104,7 @@ body.products-site {
   align-items: center;
   min-height: 48px;
   padding: 0 18px;
-  border: 1px solid rgba(255, 255, 255, .3);
+  border: 1px solid rgba(244, 240, 230, .3);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .08em;
@@ -112,9 +112,9 @@ body.products-site {
 }
 
 .products-site .button.primary {
-  background: #f5f1e6;
+  background: #F4F0E6;
   color: var(--pen-ink);
-  border-color: #f5f1e6
+  border-color: #F4F0E6
 }
 
 .products-site .p-section {
@@ -124,7 +124,7 @@ body.products-site {
 
 .products-site .p-section.dark {
   background: var(--pen-deep);
-  color: #fff
+  color: #F4F0E6
 }
 
 .products-site .section-grid {
@@ -152,14 +152,14 @@ body.products-site {
 .products-site .card {
   min-height: 340px;
   padding: 30px;
-  background: #faf7ef;
+  background: #F4F0E6;
   display: flex;
   flex-direction: column;
   justify-content: space-between
 }
 
 .products-site .p-section.dark .card {
-  background: #103529
+  background: rgba(244, 240, 230, .055)
 }
 
 .products-site .card>span,
@@ -183,7 +183,7 @@ body.products-site {
 }
 
 .products-site .dark .card p {
-  color: rgba(255, 255, 255, .64)
+  color: rgba(244, 240, 230, .64)
 }
 
 .products-site .card a {
@@ -200,12 +200,12 @@ body.products-site {
   grid-template-columns: repeat(5, 1fr);
   gap: 0;
   margin-top: 65px;
-  border-top: 1px solid rgba(255, 255, 255, .14)
+  border-top: 1px solid rgba(244, 240, 230, .14)
 }
 
 .products-site .spec {
   padding: 25px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, .12)
+  border-bottom: 1px solid rgba(244, 240, 230, .12)
 }
 
 .products-site .spec strong {
@@ -217,14 +217,14 @@ body.products-site {
 .products-site .spec em {
   display: block;
   margin-top: 8px;
-  color: rgba(255, 255, 255, .45);
+  color: rgba(244, 240, 230, .45);
   font: 400 11px var(--et-sans);
   font-style: normal
 }
 
 .products-site .cta {
   padding: 125px 0;
-  background: #d8c7a6
+  background: #F4F0E6
 }
 
 .products-site .cta h2 {
@@ -235,7 +235,7 @@ body.products-site {
 
 .products-site .cta>p:not(.eyebrow) {
   max-width: 600px;
-  color: #4f5852;
+  color: rgba(11, 30, 51, .68);
   font-size: 14px;
   line-height: 1.85
 }
@@ -247,8 +247,8 @@ body.products-site {
 
 .products-site .footer {
   padding: 45px 0;
-  background: #061613;
-  color: rgba(255, 255, 255, .5);
+  background: #0B1E33;
+  color: rgba(244, 240, 230, .5);
   font-size: 10px
 }
 
@@ -273,7 +273,7 @@ body.products-site {
 }
 
 .products-site .p-subnav a {
-  color: rgba(255, 255, 255, .65);
+  color: rgba(244, 240, 230, .65);
   font-size: 12px
 }
 

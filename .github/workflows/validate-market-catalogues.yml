@@ -113,6 +113,46 @@ jobs:
           console.log('Runtime asset dependency audit: PASS');
           NODE
 
+      - name: Brand foundation regression
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const shared = [
+            'public/assets/css/home.css',
+            'public/assets/css/products-en.css',
+            'public/assets/css/site-pages.css',
+            'public/assets/css/site-pages-unified.css'
+          ];
+          const forbidden = /#(?:03140f|061b14|082219|0d2c21|10251c|102e23|061d17|071b15|17231d|173d2d|103529|c9a35f|b89655|c9ab70)\\b/i;
+          for (const file of shared) {
+            const css = fs.readFileSync(file, 'utf8');
+            if (forbidden.test(css)) {
+              console.error(file + ' still contains a legacy brand colour');
+              process.exit(1);
+            }
+          }
+          for (const file of [
+            'public/products/index.html',
+            'public/en/products/index.html',
+            'public/fr/products/index.html',
+            'public/it/products/index.html',
+            'public/ar/products/index.html'
+          ]) {
+            const html = fs.readFileSync(file, 'utf8');
+            for (const token of [
+              '/assets/css/global.css?v=20260926-brand-foundation-2',
+              '/assets/css/header-final.css?v=20260926-brand-foundation-2',
+              '/assets/js/global.js?v=20260926-brand-foundation-2'
+            ]) {
+              if (!html.includes(token)) {
+                console.error(file + ' is missing fresh shared asset key: ' + token);
+                process.exit(1);
+              }
+            }
+          }
+          console.log('Brand foundation regression: PASS');
+          NODE
+
       - name: Catalogue tests
         run: node --test tests/market-catalogue.test.mjs
       - name: Arabic ES parity tests

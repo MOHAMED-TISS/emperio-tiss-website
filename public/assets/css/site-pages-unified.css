@@ -1,12 +1,12 @@
 /* EMPERIO TISS — SINGLE SHARED PAGE VISUAL SYSTEM */
 :root {
-  --et-paper: #f3f0e8;
-  --et-surface: #faf8f2;
-  --et-deep: #061d17;
-  --et-ink: #10251c;
-  --et-muted: #66736c;
-  --et-gold: #c9a35f;
-  --et-line: rgba(16, 37, 28, .14);
+  --et-paper: #F4F0E6;
+  --et-surface: #F4F0E6;
+  --et-deep: #0B1E33;
+  --et-ink: #0B1E33;
+  --et-muted: rgba(11, 30, 51, .64);
+  --et-gold: #C9A24B;
+  --et-line: rgba(11, 30, 51, .14);
   --et-serif: "Playfair Display", Georgia, serif;
   --et-sans: "DM Sans", Arial, sans-serif
 }
@@ -140,7 +140,7 @@ body.news-page h3 {
 .about-page .about-section.dark,
 .products-site .p-section.dark {
   background: var(--et-deep) !important;
-  color: #fff !important
+  color: #F4F0E6 !important
 }
 
 .es-page .es-cta,
@@ -149,7 +149,7 @@ body.news-page h3 {
 .about-page .about-cta,
 .products-site .cta,
 .news-page .news-cta {
-  background: #d9c8a7 !important
+  background: #F4F0E6 !important
 }
 
 .es-page .es-footer,
@@ -159,7 +159,7 @@ body.news-page h3 {
 .products-site .footer,
 .news-page .site-footer {
   background: var(--et-deep) !important;
-  color: rgba(255, 255, 255, .62) !important
+  color: rgba(244, 240, 230, .62) !important
 }
 
 .es-page .es-copy,
@@ -228,14 +228,14 @@ body.news-page h3 {
   overflow: hidden !important;
   border: 1px solid rgba(201, 163, 95, .62) !important;
   border-radius: 999px !important;
-  background: linear-gradient(135deg, #f7f1e4 0%, #e6ca96 52%, #c9a35f 100%) !important;
-  color: #10251c !important;
-  box-shadow: 0 10px 28px rgba(6, 29, 23, .16), inset 0 1px 0 rgba(255, 255, 255, .72) !important;
+  background: linear-gradient(135deg, #F4F0E6 0%, #C9A24B 100%) !important;
+  color: #0B1E33 !important;
+  box-shadow: 0 10px 28px rgba(11, 30, 51, .16), inset 0 1px 0 rgba(244, 240, 230, .72) !important;
   font: 700 10px/1 var(--et-sans) !important;
   letter-spacing: .11em !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  transition: transform .36s cubic-bezier(.22, .61, .36, 1), box-shadow .36s cubic-bezier(.22, .61, .36, 1), background-position .5s ease, filter .36s ease !important;
+  transition: transform .36s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .36s cubic-bezier(0.16, 1, 0.3, 1), background-position .5s var(--et-ease), filter .36s ease !important;
   background-size: 180% 180% !important;
   background-position: 0 50% !important;
 }
@@ -255,9 +255,9 @@ body.news-page h3 {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  background: linear-gradient(105deg, transparent 18%, rgba(255, 255, 255, .62) 42%, transparent 64%) !important;
+  background: linear-gradient(105deg, transparent 18%, rgba(244, 240, 230, .62) 42%, transparent 64%) !important;
   transform: translateX(-120%) !important;
-  transition: transform .72s cubic-bezier(.22, .61, .36, 1) !important;
+  transition: transform .72s cubic-bezier(0.16, 1, 0.3, 1) !important;
   pointer-events: none !important;
 }
 
@@ -274,7 +274,7 @@ body.news-page h3 {
 .products-site main a[href*="contact"]:hover,
 .news-page main a[href*="contact"]:hover {
   transform: translateY(-4px) scale(1.025) !important;
-  box-shadow: 0 16px 36px rgba(6, 29, 23, .24), inset 0 1px 0 rgba(255, 255, 255, .86) !important;
+  box-shadow: 0 16px 36px rgba(11, 30, 51, .24), inset 0 1px 0 rgba(244, 240, 230, .86) !important;
   background-position: 100% 50% !important;
   filter: saturate(1.05) !important;
 }
@@ -321,7 +321,7 @@ body.news-page h3 {
 .about-page main a[href*="contact"]:focus-visible,
 .products-site main a[href*="contact"]:focus-visible,
 .news-page main a[href*="contact"]:focus-visible {
-  outline: 2px solid #c9a35f !important;
+  outline: 2px solid #C9A24B !important;
   outline-offset: 4px !important
 }
 
