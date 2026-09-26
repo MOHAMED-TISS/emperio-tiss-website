@@ -14,7 +14,7 @@
   position: relative;
   min-height: 100svh;
   overflow: hidden;
-  background: radial-gradient(circle at 72% 25%, rgba(201, 163, 95, .18), transparent 30%), linear-gradient(120deg, #0B1E33 0%, #0B1E33 55%, #0B1E33 100%);
+  background: radial-gradient(circle at 72% 25%, rgba(201, 162, 75, .18), transparent 30%), #0B1E33;
   color: #F4F0E6;
   padding: 150px 0 90px;
   isolation: isolate
@@ -24,7 +24,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(3, 20, 15, .9), rgba(3, 20, 15, .38) 58%, rgba(3, 20, 15, .62));
+  background: linear-gradient(90deg, rgba(11, 30, 51, .9), rgba(11, 30, 51, .38) 58%, rgba(11, 30, 51, .62));
   z-index: -1
 }
 
@@ -41,7 +41,7 @@
   height: 420px;
   right: -120px;
   top: 16%;
-  background: rgba(201, 163, 95, .13)
+  background: rgba(201, 162, 75, .13)
 }
 
 .home-page .hero-glow-two {
