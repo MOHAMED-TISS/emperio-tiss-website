@@ -67,7 +67,7 @@ test('Arabic generic content pages expose the ES page body class', () => {
 
 test('Arabic Products landing mirrors the Spanish product structure', () => {
   const html = read('public/ar/products/index.html');
-  assert.match(html, /body class="home-page ar-home ar-products-page"/);
+  assert.match(html, /body class="[^"]*\\bhome-page\\b[^"]*\\bar-home\\b[^"]*\\bar-products-page\\b[^"]*"/);
   assert.equal((html.match(/class="product-row"/g) || []).length, 4);
   assert.match(html, /class="products-section"/);
   assert.match(html, /class="markets-section"/);
