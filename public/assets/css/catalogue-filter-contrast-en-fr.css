@@ -153,16 +153,16 @@ html[lang="fr"] .seafood-catalog__filter:focus-visible {
 
 /* Buttons size to their own content */
 .es-page .es-btn, .intl-page .intl-btn, .ar-page .ar-btn, .about-page .about-btn, .products-site .button,
-.news-page a[class*=button], .es-page a[href*="contact"], .intl-page a[href*="contact"],
-.ar-page a[href*="contact"], .about-page a[href*="contact"], .products-site a[href*="contact"], .news-page a[href*="contact"] {
+.news-page a[class*=button], .es-page main a[href*="contact"], .intl-page main a[href*="contact"],
+.ar-page main a[href*="contact"], .about-page main a[href*="contact"], .products-site main a[href*="contact"], .news-page main a[href*="contact"] {
   width: max-content !important; max-width: calc(100% - 32px) !important; min-width: 0 !important;
   flex: 0 0 auto !important; white-space: nowrap !important; align-self: center !important;
 }
 
 @media (max-width: 800px) {
   .es-page .es-btn, .intl-page .intl-btn, .ar-page .ar-btn, .about-page .about-btn, .products-site .button,
-  .news-page a[class*=button], .es-page a[href*="contact"], .intl-page a[href*="contact"], .ar-page a[href*="contact"],
-  .about-page a[href*="contact"], .products-site a[href*="contact"], .news-page a[href*="contact"] {
+  .news-page a[class*=button], .es-page main a[href*="contact"], .intl-page main a[href*="contact"], .ar-page main a[href*="contact"],
+  .about-page main a[href*="contact"], .products-site main a[href*="contact"], .news-page main a[href*="contact"] {
     width: max-content !important; max-width: calc(100vw - 40px) !important; min-height: 48px !important;
     padding-inline: 18px !important; margin-inline: auto !important;
   }

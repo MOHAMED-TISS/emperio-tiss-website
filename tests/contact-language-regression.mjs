@@ -45,4 +45,12 @@ for (const [lang, path, prefix] of pages) {
   assert.match(html, /<option>Otro|<option>Other|<option>Autre|<option>Altro|<option>أخرى/);
 }
 
+const filterCss = fs.readFileSync('public/assets/css/catalogue-filter-contrast-en-fr.css', 'utf8');
+for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'products-site', 'news-page']) {
+  assert.doesNotMatch(filterCss, new RegExp(`\\.${pageClass} a\\[href\\*="contact"\\]`),
+    `${pageClass}: content CTA sizing must not capture the 06 contact link in the menu`);
+  assert.match(filterCss, new RegExp(`\\.${pageClass} main a\\[href\\*="contact"\\]`),
+    `${pageClass}: contact CTA sizing must stay scoped to main content`);
+}
+
 console.log('contact-language-regression: PASS');
