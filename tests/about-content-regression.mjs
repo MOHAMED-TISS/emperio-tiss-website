@@ -51,7 +51,7 @@ for (const [lang, path] of pages) {
 }
 
 const italianAbout = fs.readFileSync('public/it/about/index.html', 'utf8');
-assert.match(italianAbout, /class="es-page about-page it-about-redesign"/);
+assert.match(italianAbout, /class="es-page about-page it-about-redesign et-brand-shell"/);
 assert.match(italianAbout, /Dall’origine al mercato[\s\S]*Con criterio/);
 assert.match(italianAbout, /parte principale/i);
 assert.match(italianAbout, /Europa[\s\S]*Africa[\s\S]*Mediterraneo[\s\S]*Medio Oriente/i);
