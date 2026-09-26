@@ -51,7 +51,7 @@ const filterCss = fs.readFileSync('public/assets/css/catalogue-filter-contrast-e
 const contactCss = fs.readFileSync('public/assets/css/contact.css', 'utf8');
 assert.match(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100vh/s,
   'Contact hero must fill the viewport');
-assert.match(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100dvh/s,
+assert.match(contactCss, /body\.es-page \.es-hero\s*\{[^}]*min-height:\s*100dvh/s,
   'Contact hero must use the dynamic viewport height');
 assert.match(contactCss, /min-height:\s*100dvh\s*!important/,
   'Contact hero must override the later shared 88svh rule');
