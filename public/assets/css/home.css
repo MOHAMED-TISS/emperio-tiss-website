@@ -543,40 +543,6 @@
 .home-page .home-market-word--med { left: 56%; top: 54px; }
 .home-page .home-market-word--middle-east { right: 0; bottom: 52px; text-align: right; }
 
-.home-page .market-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(244, 240, 230, .13);
-  border-bottom: 1px solid rgba(244, 240, 230, .13);
-}
-
-.home-page .market-grid article {
-  min-height: 190px;
-  padding: 28px 22px 32px;
-  border-inline-start: 1px solid rgba(244, 240, 230, .13);
-}
-
-.home-page .market-grid article:first-child {
-  border-inline-start: 0;
-}
-
-.home-page .market-grid span {
-  color: var(--home-champagne);
-  font: 600 9px/1 var(--et-sans);
-  letter-spacing: .15em;
-}
-
-.home-page .market-grid h3 {
-  margin: 42px 0 12px;
-  font: 400 25px/1 var(--et-serif);
-}
-
-.home-page .market-grid p {
-  margin: 0;
-  color: rgba(244, 240, 230, .48);
-  font: 400 11px/1.75 var(--et-sans);
-}
-
 .home-page .text-link {
   display: inline-flex;
   align-items: center;
@@ -844,14 +810,6 @@
     margin-top: 22px;
   }
 
-  .home-page .market-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .home-page .market-grid article:nth-child(odd) {
-    border-inline-start: 0;
-  }
-
   .home-page .site-footer .footer-main {
     grid-template-columns: 1fr 1fr;
   }
@@ -1055,25 +1013,6 @@
 
   .home-page .home-market-word small {
     display: none;
-  }
-
-  .home-page .market-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .home-page .market-grid article {
-    min-height: auto;
-    padding: 24px 0 26px;
-    border-inline-start: 0 !important;
-    border-top: 1px solid rgba(244, 240, 230, .13);
-  }
-
-  .home-page .market-grid article:first-child {
-    border-top: 0;
-  }
-
-  .home-page .market-grid h3 {
-    margin: 18px 0 8px;
   }
 
   .home-page .company-values {

@@ -174,7 +174,7 @@ jobs:
             'home-market-word--africa',
             'home-market-word--med',
             'home-market-word--middle-east',
-            '/assets/css/home.css?v=20260926-home-architecture-1',
+            '/assets/css/home.css?v=20260927-home-architecture-2',
             '/assets/js/home-modern.js?v=20260926-home-architecture-1'
           ];
           for (const token of requiredHtml) {
@@ -184,7 +184,7 @@ jobs:
             }
           }
 
-          for (const legacy of ['home-markets-map', 'home-modern.css', 'home-scroll-progress', 'home-stagger', '@keyframes hmDash']) {
+          for (const legacy of ['home-markets-map', 'market-grid', 'home-modern.css', 'home-scroll-progress', 'home-stagger', '@keyframes hmDash']) {
             if (html.includes(legacy) || css.includes(legacy) || js.includes(legacy)) {
               console.error('Legacy Home layer still present: ' + legacy);
               process.exit(1);
