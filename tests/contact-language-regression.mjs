@@ -46,6 +46,9 @@ for (const [lang, path, prefix] of pages) {
 }
 
 const filterCss = fs.readFileSync('public/assets/css/catalogue-filter-contrast-en-fr.css', 'utf8');
+const contactCss = fs.readFileSync('public/assets/css/contact.css', 'utf8');
+assert.match(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100vh/s,
+  'Contact hero must fill the viewport');
 for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'products-site', 'news-page']) {
   assert.doesNotMatch(filterCss, new RegExp(`\\.${pageClass} a\\[href\\*="contact"\\]`),
     `${pageClass}: content CTA sizing must not capture the 06 contact link in the menu`);
