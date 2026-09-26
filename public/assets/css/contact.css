@@ -1,7 +1,7 @@
 /* Shared contact/form module — all languages */
 .es-page .es-hero {
-  min-height: 100vh;
-  min-height: 100dvh
+  min-height: 100vh !important;
+  min-height: 100dvh !important
 }
 
 .contact-form {

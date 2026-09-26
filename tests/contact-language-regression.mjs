@@ -17,7 +17,7 @@ for (const [lang, path, prefix] of pages) {
   assert.match(html, /class="[^"]*es-page[^"]*"/, `${lang}: Contact must use the ES visual shell`);
   assert.match(html, /href="\/assets\/css\/es-pages\.css/,
     `${lang}: ES visual stylesheet must be loaded`);
-  assert.match(html, /href="\/assets\/css\/contact\.css\?v=20260926-hero100-dvh"/,
+  assert.match(html, /href="\/assets\/css\/contact\.css\?v=20260926-hero100-force"/,
     `${lang}: contact stylesheet cache key must include the 100vh hero release`);
   assert.match(html, /action="\/api\/contact"/,
   `${lang}: form must use canonical contact endpoint`);
@@ -53,6 +53,8 @@ assert.match(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100vh/s,
   'Contact hero must fill the viewport');
 assert.match(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100dvh/s,
   'Contact hero must use the dynamic viewport height');
+assert.match(contactCss, /min-height:\s*100dvh\s*!important/,
+  'Contact hero must override the later shared 88svh rule');
 assert.doesNotMatch(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100svh/s,
   'Contact hero must not use the smaller viewport height');
 for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'products-site', 'news-page']) {
