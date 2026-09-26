@@ -4,9 +4,26 @@
   const doc = document;
   const root = document.documentElement;
   const lang = (root.lang || 'en').slice(0, 2).toLowerCase();
+  const path = (window.location.pathname || '/').replace(/\/+/g, '/');
+  const isProductPath = /\/products(?:\/|$)/.test(path);
+
+  const assetPath = value => {
+    try {
+      return new URL(value, doc.baseURI).pathname;
+    } catch (_) {
+      return String(value || '').split('?')[0];
+    }
+  };
+
+  const hasAsset = (selector, attribute, value) => {
+    const target = assetPath(value);
+    return [...doc.querySelectorAll(selector)].some(node =>
+      assetPath(node.getAttribute(attribute) || '') === target);
+  };
 
   const loadCss = (href, key) => {
-    if (doc.querySelector(`link[data-${key}]`)) return;
+    if (doc.querySelector(`link[data-${key}]`) ||
+        hasAsset('link[rel="stylesheet"]', 'href', href)) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
@@ -15,7 +32,8 @@
   };
 
   const loadScript = (src, key) => {
-    if (doc.querySelector(`script[data-${key}]`)) return;
+    if (doc.querySelector(`script[data-${key}]`) ||
+        hasAsset('script[src]', 'src', src)) return;
     const script = document.createElement('script');
     script.src = src;
     script.async = false;
@@ -24,11 +42,13 @@
   };
 
   loadCss('/assets/css/site-pages.css?v=20260821-3', 'etSitePages');
-  loadCss('/assets/css/site-pages-unified.css?v=20260821-1', 'etUnifiedPages');
+  loadCss('/assets/css/site-pages-unified.css?v=20260926-dependency-cleanup', 'etUnifiedPages');
   loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
-  loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
-  loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260912-mobile-ux-landscape-1', 'etCatalogueFilterContrast');
+  if (isProductPath) {
+    loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
+    loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
+  }
   loadCss('/assets/css/header-final.css?v=20260922-shared-shell', 'etHeaderFinalCanonical');
   if (lang === 'ar') {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
@@ -162,7 +182,11 @@
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/header-final.js?v=20260922-shared-shell', 'etHeaderFinalScript');
   loadScript('/assets/js/global-core.js?v=20260922-fruit-inquiry', 'etGlobalCore');
-  loadScript('/assets/js/catalog-polish.js?v=20260823-catalogue-polish-1', 'etCatalogPolish');
+  if (isProductPath) {
+    loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');
+    if (['en', 'fr'].includes(lang)) {
+      loadScript('/assets/js/en-catalog-filter-fix.js?v=20260926-no-prototype-patch', 'etEnCatalogFilterFix');
+    }
+  }
   loadScript('/assets/js/site-polish.js?v=20260922-shared-shell', 'etSitePolish');
-  loadScript('/assets/js/en-catalog-filter-fix.js?v=20260912-fr-filter-fix-1', 'etEnCatalogFilterFix');
 })();

@@ -47,7 +47,7 @@ for (const [lang, path, prefix] of pages) {
   assert.match(html, /<option>Otro|<option>Other|<option>Autre|<option>Altro|<option>أخرى/);
 }
 
-const filterCss = fs.readFileSync('public/assets/css/catalogue-filter-contrast-en-fr.css', 'utf8');
+const sharedPageCss = fs.readFileSync('public/assets/css/site-pages-unified.css', 'utf8');
 const contactCss = fs.readFileSync('public/assets/css/contact.css', 'utf8');
 assert.match(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100vh/s,
   'Contact hero must fill the viewport');
@@ -58,9 +58,9 @@ assert.match(contactCss, /min-height:\s*100dvh\s*!important/,
 assert.doesNotMatch(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100svh/s,
   'Contact hero must not use the smaller viewport height');
 for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'products-site', 'news-page']) {
-  assert.doesNotMatch(filterCss, new RegExp(`\\.${pageClass} a\\[href\\*="contact"\\]`),
+  assert.doesNotMatch(sharedPageCss, new RegExp(`\\.${pageClass} a\\[href\\*="contact"\\]`),
     `${pageClass}: content CTA sizing must not capture the 06 contact link in the menu`);
-  assert.match(filterCss, new RegExp(`\\.${pageClass} main a\\[href\\*="contact"\\]`),
+  assert.match(sharedPageCss, new RegExp(`\\.${pageClass} main a\\[href\\*="contact"\\]`),
     `${pageClass}: contact CTA sizing must stay scoped to main content`);
 }
 

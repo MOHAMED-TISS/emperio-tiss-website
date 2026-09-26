@@ -9,7 +9,10 @@
   /* Fish is a dedicated canonical catalogue and must never be replaced by the
      market-priority international catalogue shell. ES already follows this
      path; keep all multilingual Fish pages on the same implementation. */
-  const fishPath = /\/products\/seafood\/fish(?:\/|$)/.test((location.pathname || '/').replace(/\/+/g, '/'));
+  const normalizedPath = (location.pathname || '/').replace(/\/+/g, '/');
+  const fishPath = /\/products\/seafood\/fish(?:\/|$)/.test(normalizedPath);
+  const marketCataloguePath = /\/products\/(?:seafood\/(?:fish|shellfish|cephalopods)|fruits|vegetables)(?:\/|$)/
+    .test(normalizedPath);
   if (fishPath) return;
 
   root.lang = lang;
@@ -93,18 +96,20 @@
     script.dataset.etItalianLanguageSwitcher = 'true';
     doc.head.appendChild(script);
   }
-  if (!doc.querySelector('script[data-etMarketCatalogueShell]')) {
-    const script = doc.createElement('script');
-    script.src = '/assets/js/market-catalogue-shell.js?v=20260922-shell';
-    script.async = false;
-    script.dataset.etMarketCatalogueShell = 'true';
-    doc.head.appendChild(script);
-  }
-  if (!doc.querySelector('script[data-etMarketCatalogue]')) {
-    const script = doc.createElement('script');
-    script.src = '/assets/js/market-catalogue.js?v=20260909.3';
-    script.async = false;
-    script.dataset.etMarketCatalogue = 'true';
-    doc.head.appendChild(script);
+  if (marketCataloguePath) {
+    if (!doc.querySelector('script[data-etMarketCatalogueShell]')) {
+      const script = doc.createElement('script');
+      script.src = '/assets/js/market-catalogue-shell.js?v=20260922-shell';
+      script.async = false;
+      script.dataset.etMarketCatalogueShell = 'true';
+      doc.head.appendChild(script);
+    }
+    if (!doc.querySelector('script[data-etMarketCatalogue]')) {
+      const script = doc.createElement('script');
+      script.src = '/assets/js/market-catalogue.js?v=20260909.3';
+      script.async = false;
+      script.dataset.etMarketCatalogue = 'true';
+      doc.head.appendChild(script);
+    }
   }
 })();

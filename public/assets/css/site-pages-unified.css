@@ -425,3 +425,239 @@ body.news-page h3 {
     display: none !important
   }
 }
+
+/* Shared responsive page composition.
+   Extracted from the former catalogue filter stylesheet so catalogue assets
+   stay route-scoped while About, Contact, News and other shared pages keep
+   the approved mobile behaviour. */
+/* Mobile editorial composition */
+@media (max-width: 800px) {
+  body.es-page .es-hero,
+  body.intl-page .intl-hero,
+  body.ar-page .ar-hero,
+  body.about-page .about-hero,
+  body.products-site .product-hero,
+  body.news-page .news-hero,
+  body.seafood-subpage .page-hero,
+  body.fish-catalog-pilot .page-hero {
+    text-align: center !important; background-position: center center !important;
+  }
+
+  body.es-page .es-hero > .container,
+  body.es-page .es-hero > .es-container,
+  body.intl-page .intl-hero > .container,
+  body.intl-page .intl-hero > .intl-container,
+  body.ar-page .ar-hero > .container,
+  body.ar-page .ar-hero > .ar-container,
+  body.about-page .about-hero > .container,
+  body.products-site .product-hero > .p-container,
+  body.news-page .news-hero > .container,
+  body.seafood-subpage .page-hero > .container,
+  body.seafood-subpage .page-hero > .intl-container,
+  body.fish-catalog-pilot .page-hero > .container {
+    width: min(100% - 32px, 720px) !important; margin-inline: auto !important; text-align: center !important;
+  }
+
+  body.es-page .es-hero .hero-content,
+  body.intl-page .intl-hero .hero-content,
+  body.ar-page .ar-hero .hero-content,
+  body.about-page .about-hero .hero-content,
+  body.products-site .product-hero .hero-content,
+  body.news-page .news-hero .hero-content,
+  body.seafood-subpage .page-hero .hero-content,
+  body.fish-catalog-pilot .page-hero .hero-content {
+    width: 100% !important; max-width: 720px !important; margin-inline: auto !important; text-align: center !important;
+  }
+
+  body.es-page .es-hero h1, body.intl-page .intl-hero h1, body.ar-page .ar-hero h1,
+  body.about-page .about-hero h1, body.products-site .product-hero h1, body.news-page .news-hero h1,
+  body.seafood-subpage .page-hero h1, body.fish-catalog-pilot .page-hero h1,
+  body.es-page .es-hero p, body.intl-page .intl-hero p, body.ar-page .ar-hero p,
+  body.about-page .about-hero p, body.products-site .product-hero p, body.news-page .news-hero p,
+  body.seafood-subpage .page-hero p, body.fish-catalog-pilot .page-hero p { margin-inline: auto !important; }
+
+  body.es-page .es-hero .hero-actions, body.intl-page .intl-hero .hero-actions, body.ar-page .ar-hero .hero-actions,
+  body.products-site .product-hero .hero-actions, body.seafood-subpage .page-hero .hero-actions,
+  body.es-page .es-hero .actions, body.intl-page .intl-hero .actions, body.ar-page .ar-hero .actions,
+  body.products-site .product-hero .actions, body.seafood-subpage .page-hero .actions {
+    display: flex !important; width: 100% !important; max-width: 100% !important; align-items: center !important;
+    justify-content: center !important; flex-wrap: wrap !important; gap: 10px !important; margin-inline: auto !important;
+  }
+
+  body.es-page .es-hero a.button, body.intl-page .intl-hero a.button, body.ar-page .ar-hero a.button,
+  body.products-site .product-hero a.button, body.seafood-subpage .page-hero a.button,
+  body.es-page .es-hero .button, body.intl-page .intl-hero .button, body.ar-page .ar-hero .button,
+  body.products-site .product-hero .button, body.seafood-subpage .page-hero .button {
+    display: inline-flex !important; width: fit-content !important; max-width: calc(100vw - 40px) !important;
+    min-width: 0 !important; flex: 0 0 auto !important; align-self: center !important; white-space: nowrap !important;
+    margin-inline: auto !important;
+  }
+}
+
+/* Buttons size to their own content */
+.es-page .es-btn, .intl-page .intl-btn, .ar-page .ar-btn, .about-page .about-btn, .products-site .button,
+.news-page a[class*=button], .es-page main a[href*="contact"], .intl-page main a[href*="contact"],
+.ar-page main a[href*="contact"], .about-page main a[href*="contact"], .products-site main a[href*="contact"], .news-page main a[href*="contact"] {
+  width: max-content !important; max-width: calc(100% - 32px) !important; min-width: 0 !important;
+  flex: 0 0 auto !important; white-space: nowrap !important; align-self: center !important;
+}
+
+@media (max-width: 800px) {
+  .es-page .es-btn, .intl-page .intl-btn, .ar-page .ar-btn, .about-page .about-btn, .products-site .button,
+  .news-page a[class*=button], .es-page main a[href*="contact"], .intl-page main a[href*="contact"], .ar-page main a[href*="contact"],
+  .about-page main a[href*="contact"], .products-site main a[href*="contact"], .news-page main a[href*="contact"] {
+    width: max-content !important; max-width: calc(100vw - 40px) !important; min-height: 48px !important;
+    padding-inline: 18px !important; margin-inline: auto !important;
+  }
+}
+
+[dir="rtl"] .es-page .es-btn, [dir="rtl"] .intl-page .intl-btn, [dir="rtl"] .ar-page .ar-btn,
+[dir="rtl"] .about-page .about-btn, [dir="rtl"] .products-site .button, [dir="rtl"] .news-page a[class*=button] { direction: rtl !important; }
+
+/* Mobile UX polish: safe-area spacing, centered hero composition, compact CTAs and landscape support */
+@media (max-width: 800px) {
+  :root { --mobile-gutter: max(16px, env(safe-area-inset-left)); }
+
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body.es-page .es-hero,
+  body.intl-page .intl-hero,
+  body.ar-page .ar-hero,
+  body.about-page .about-hero,
+  body.products-site .product-hero,
+  body.news-page .news-hero,
+  body.seafood-subpage .page-hero,
+  body.fish-catalog-pilot .page-hero {
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: max(84px, env(safe-area-inset-top) + 56px) !important;
+    padding-bottom: max(48px, env(safe-area-inset-bottom) + 40px) !important;
+    box-sizing: border-box !important;
+  }
+
+  body.es-page .es-hero > .container,
+  body.es-page .es-hero > .es-container,
+  body.intl-page .intl-hero > .container,
+  body.intl-page .intl-hero > .intl-container,
+  body.ar-page .ar-hero > .container,
+  body.ar-page .ar-hero > .ar-container,
+  body.about-page .about-hero > .container,
+  body.products-site .product-hero > .p-container,
+  body.news-page .news-hero > .container,
+  body.seafood-subpage .page-hero > .container,
+  body.seafood-subpage .page-hero > .intl-container,
+  body.fish-catalog-pilot .page-hero > .container {
+    width: calc(100% - 32px) !important;
+    max-width: 720px !important;
+    margin-inline: auto !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-content {
+    width: min(100%, 680px) !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    text-align: center !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-content h1 {
+    max-width: 14ch !important;
+    margin-inline: auto !important;
+    text-wrap: balance;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-content p {
+    width: min(100%, 36rem) !important;
+    margin-inline: auto !important;
+    text-wrap: pretty;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-actions,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .actions {
+    width: fit-content !important;
+    max-width: calc(100% - 8px) !important;
+    margin-inline: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-actions > *,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .actions > * {
+    flex: 0 0 auto !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button).button,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button)[class*="btn"],
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button).hero-cta,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button).catalog-cta {
+    width: max-content !important;
+    max-width: calc(100vw - 40px) !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    margin-inline: auto !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .site-header,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .header-inner {
+    padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* Phones in landscape: preserve a true viewport hero without crushing the content */
+@media (orientation: landscape) and (max-width: 900px) {
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(.es-hero, .intl-hero, .ar-hero, .about-hero, .product-hero, .news-hero, .page-hero) {
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+    height: auto !important;
+    padding-top: max(68px, env(safe-area-inset-top) + 28px) !important;
+    padding-bottom: max(28px, env(safe-area-inset-bottom) + 24px) !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-content {
+    max-width: min(760px, calc(100vw - 48px)) !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-content h1 {
+    max-width: 18ch !important;
+    font-size: clamp(2rem, 7vw, 4.2rem) !important;
+    line-height: .96 !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-content p {
+    max-width: 46rem !important;
+    font-size: clamp(.78rem, 1.6vw, 1rem) !important;
+  }
+
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .hero-actions,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .actions {
+    gap: 8px !important;
+  }
+}
+
+/* Very short landscape screens: prioritize content over decorative spacing */
+@media (orientation: landscape) and (max-width: 900px) and (max-height: 520px) {
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(.es-hero, .intl-hero, .ar-hero, .about-hero, .product-hero, .news-hero, .page-hero) {
+    padding-top: max(56px, env(safe-area-inset-top) + 18px) !important;
+    padding-bottom: max(20px, env(safe-area-inset-bottom) + 16px) !important;
+  }
+}
+
+/* Small screens: prevent controls from becoming visually oversized */
+@media (max-width: 520px) {
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button).button,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button)[class*="btn"],
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button).hero-cta,
+  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) :is(a, button).catalog-cta {
+    min-height: 44px !important;
+    padding: .72rem 1rem !important;
+    font-size: .68rem !important;
+    letter-spacing: .08em !important;
+  }
+}

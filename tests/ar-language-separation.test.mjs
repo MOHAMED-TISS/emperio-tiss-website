@@ -67,6 +67,7 @@ test('Arabic geography adapter keeps commercial targeting regional', () => {
 
 test('legacy root Arabic adapter filenames have no runtime consumers', () => {
   const forbidden = [
+    '/assets/css/home-ar.css',
     '/assets/css/ar-visual.css',
     '/assets/css/ar-pages.css',
     '/assets/js/ar-es-normalizer.js',
@@ -86,4 +87,22 @@ test('legacy root Arabic adapter filenames have no runtime consumers', () => {
       `${file} still references ${needle}`
     );
   }
+});
+
+
+test('shared runtime deduplicates assets and keeps catalogue code route-scoped', () => {
+  const global = read('public/assets/js/global.js');
+  const globalCss = read('public/assets/css/global.css');
+  const header = read('public/assets/js/header-final.js');
+  const filterFix = read('public/assets/js/en-catalog-filter-fix.js');
+
+  assert.match(global, /const hasAsset =/);
+  assert.match(global, /hasAsset\('link\[rel="stylesheet"\]'/);
+  assert.match(global, /hasAsset\('script\[src\]'/);
+  assert.match(global, /const isProductPath =/);
+  assert.doesNotMatch(globalCss, /@import[^;]*header-final\.css/);
+  assert.match(header, /window\.__etHeaderFinalReady/);
+  assert.doesNotMatch(filterFix, /Array\.prototype\.includes\s*=/);
+  assert.ok(!fs.existsSync('public/assets/css/home-ar.css'),
+    'duplicate root Arabic home stylesheet must stay removed');
 });

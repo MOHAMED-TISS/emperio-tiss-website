@@ -3,27 +3,7 @@
   const lang = (document.documentElement.lang || '').slice(0, 2).toLowerCase();
   if (!['en', 'fr'].includes(lang)) return;
 
-  // Normalize the international Fish renderer's uppercase FRESH/FROZEN
-  // condition data against the lowercase filter state. English is the
-  // current renderer variant that needs this normalization.
-  if (lang === 'en') {
-    const nativeIncludes = Array.prototype.includes;
-    if (!Array.prototype.__etFishConditionNormalized) {
-      Object.defineProperty(Array.prototype, '__etFishConditionNormalized', {
-        value: true,
-        enumerable: false
-      });
-      Array.prototype.includes = function(searchElement, fromIndex) {
-        if ((searchElement === 'fresh' || searchElement === 'frozen') && this.length && this
-          .every(v => v === 'FRESH' || v === 'FROZEN')) {
-          return nativeIncludes.call(this, String(searchElement).toUpperCase(), fromIndex);
-        }
-        return nativeIncludes.call(this, searchElement, fromIndex);
-      };
-    }
-  }
-
-  let syncing = false;
+  // Catalogue state stays local to the catalogue runtime. Never patch native prototypes.\n\n  let syncing = false;
   const getPressed = selector => document.querySelector(`${selector}[aria-pressed="true"]`);
 
   const syncFish = () => {

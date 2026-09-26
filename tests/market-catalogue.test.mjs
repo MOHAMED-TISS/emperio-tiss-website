@@ -122,3 +122,9 @@ test('Italian catalogue translates Spanish technical values in the shared render
   assert.match(renderer, /Secondo requisiti della destinazione/);
   assert.match(renderer, /Secondo mercato/);
 });
+
+
+test('international shell gates market catalogue runtime to catalogue routes', () => {
+  assert.match(shell, /marketCataloguePath/);
+  assert.match(shell, /if \(marketCataloguePath\)/);
+});

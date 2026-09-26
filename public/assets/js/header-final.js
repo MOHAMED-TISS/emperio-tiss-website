@@ -5,6 +5,9 @@
 (() => {
   'use strict';
 
+  if (window.__etHeaderFinalReady) return;
+  window.__etHeaderFinalReady = true;
+
   const clearLegacyInlineHeaderStyles = () => {
     document.querySelectorAll('.site-header').forEach((header) => {
       [

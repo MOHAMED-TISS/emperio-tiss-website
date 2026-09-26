@@ -1,35 +1,33 @@
-name: Validate multilingual market catalogues
+name: Validate site assets and market catalogues
 
 on:
   push:
     paths:
+      - 'public/*.html'
+      - 'public/**/*.html'
+      - 'public/assets/css/**/*.css'
+      - 'public/assets/js/**/*.js'
       - 'public/assets/data/catalogue-market-priority.json'
       - 'public/assets/data/catalog-v1.3.json'
-      - 'public/assets/js/market-catalogue.js'
-      - 'public/assets/js/international-shell.js'
-      - 'public/assets/css/catalogue-market-unified.css'
       - 'tests/market-catalogue.test.mjs'
-      - 'public/ar/**'
-      - 'public/assets/css/ar/**'
-      - 'public/assets/js/ar/**'
       - 'tests/ar-es-design.test.mjs'
       - 'tests/ar-es-normalizer.test.mjs'
       - 'tests/ar-language-separation.test.mjs'
+      - 'tests/contact-language-regression.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   pull_request:
     paths:
+      - 'public/*.html'
+      - 'public/**/*.html'
+      - 'public/assets/css/**/*.css'
+      - 'public/assets/js/**/*.js'
       - 'public/assets/data/catalogue-market-priority.json'
       - 'public/assets/data/catalog-v1.3.json'
-      - 'public/assets/js/market-catalogue.js'
-      - 'public/assets/js/international-shell.js'
-      - 'public/assets/css/catalogue-market-unified.css'
       - 'tests/market-catalogue.test.mjs'
-      - 'public/ar/**'
-      - 'public/assets/css/ar/**'
-      - 'public/assets/js/ar/**'
       - 'tests/ar-es-design.test.mjs'
       - 'tests/ar-es-normalizer.test.mjs'
       - 'tests/ar-language-separation.test.mjs'
+      - 'tests/contact-language-regression.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   workflow_dispatch:
 
@@ -41,14 +39,80 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Syntax check
+
+      - name: Syntax check all JavaScript
         run: |
-          node --check public/assets/js/market-catalogue.js
-          node --check public/assets/js/international-shell.js
-          node --check public/assets/js/ar/es-normalizer.js
-          node --check public/assets/js/ar/content-geography.js
-          node --check public/assets/js/ar/catalogue-taxonomy.js
-          node --check public/assets/js/ar/loader.js
+          set -euo pipefail
+          find public/assets/js src -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+
+      - name: CSS brace balance
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const walk = dir => fs.readdirSync(dir, {withFileTypes:true}).flatMap(entry => {
+            const p = path.join(dir, entry.name);
+            return entry.isDirectory() ? walk(p) : [p];
+          });
+          const bad = [];
+          for (const file of walk('public/assets/css').filter(p => p.endsWith('.css'))) {
+            const css = fs.readFileSync(file, 'utf8');
+            const opens = (css.match(/{/g) || []).length;
+            const closes = (css.match(/}/g) || []).length;
+            if (opens !== closes) bad.push(file + ': ' + opens + ' opening / ' + closes + ' closing');
+          }
+          if (bad.length) {
+            console.error('Unbalanced CSS braces:\n' + bad.join('\n'));
+            process.exit(1);
+          }
+          console.log('CSS brace balance: PASS');
+          NODE
+
+      - name: Runtime asset dependency audit
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const crypto = require('crypto');
+
+          const walk = dir => fs.readdirSync(dir, {withFileTypes:true}).flatMap(entry => {
+            const p = path.join(dir, entry.name);
+            return entry.isDirectory() ? walk(p) : [p];
+          });
+
+          const publicFiles = walk('public');
+          const runtimeSources = publicFiles.filter(p => /\.(?:html|css|js)$/.test(p));
+          const assets = publicFiles.filter(p =>
+            /^public[\\/]assets[\\/](?:css|js)[\\/].+\.(?:css|js)$/.test(p));
+
+          const sourceText = new Map(runtimeSources.map(p => [p, fs.readFileSync(p, 'utf8')]));
+          const orphans = [];
+          const hashes = new Map();
+
+          for (const asset of assets) {
+            const runtimePath = '/' + asset.slice('public/'.length).replaceAll('\\', '/');
+            const refs = runtimeSources.filter(source =>
+              source !== asset && sourceText.get(source).includes(runtimePath));
+            if (!refs.length) orphans.push(asset);
+
+            const hash = crypto.createHash('sha256').update(fs.readFileSync(asset)).digest('hex');
+            const group = hashes.get(hash) || [];
+            group.push(asset);
+            hashes.set(hash, group);
+          }
+
+          const duplicates = [...hashes.values()].filter(group => group.length > 1);
+          if (orphans.length || duplicates.length) {
+            if (orphans.length) console.error('Unreferenced runtime assets:\n' + orphans.join('\n'));
+            if (duplicates.length) {
+              console.error('Byte-identical CSS/JS assets:\n' +
+                duplicates.map(group => group.join(' <=> ')).join('\n'));
+            }
+            process.exit(1);
+          }
+          console.log('Runtime asset dependency audit: PASS');
+          NODE
+
       - name: Catalogue tests
         run: node --test tests/market-catalogue.test.mjs
       - name: Arabic ES parity tests
@@ -57,3 +121,5 @@ jobs:
         run: node --test tests/ar-es-normalizer.test.mjs
       - name: Arabic separation tests
         run: node --test tests/ar-language-separation.test.mjs
+      - name: Contact shared-style regression
+        run: node tests/contact-language-regression.mjs
