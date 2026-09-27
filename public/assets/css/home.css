@@ -1469,3 +1469,23 @@ body.home-experience a:focus-visible{outline:2px solid var(--et-champagne);outli
 @media(prefers-reduced-motion:reduce){.home-page.home-experience .et-experience a.home-action,.home-page.home-experience .approved-cta,.home-page.home-experience .et-experience .contact-disc{transition:none;transform:none}}
 .home-page.home-experience .et-experience a.home-action{width:fit-content;max-width:100%;justify-content:space-between;gap:24px;line-height:1.5;text-align:left}
 .home-page.home-experience .et-experience a.home-action span{margin-left:0;flex-shrink:0;font:400 22px/1 'DM Sans',Arial,sans-serif}
+
+/* International Home: shared composition, Arabic reading direction and type rhythm. */
+html[lang="ar"] .home-page.home-experience{font-family:'Noto Naskh Arabic',Tahoma,serif}
+html[lang="ar"] .home-page.home-experience .et-experience{--serif:'Noto Naskh Arabic',Tahoma,serif;--sans:'Noto Naskh Arabic',Tahoma,serif}
+html[lang="ar"] .home-page.home-experience :is(h1,h2,h3,p,a,button,.small,.chapter,.scene-caption,.scene-bottom,.seasonal>span,.approved-footer-location){font-family:'Noto Naskh Arabic',Tahoma,serif;letter-spacing:0}
+html[lang="ar"] .home-page.home-experience :is(.approved-hero h1,.et-experience h2){line-height:1.35}
+html[lang="ar"] .home-page.home-experience em{font-style:normal}
+html[lang="ar"] .home-page.home-experience .approved-hero:before{background:linear-gradient(270deg,rgba(11,30,51,.85),rgba(11,30,51,.45) 48%,rgba(11,30,51,.1) 78%)}
+html[lang="ar"] .home-page.home-experience .approved-geography{left:auto;right:8%}
+html[lang="ar"] .home-page.home-experience .et-experience .scene-shade{background:linear-gradient(270deg,rgba(11,30,51,.89),rgba(11,30,51,.15) 60%,rgba(11,30,51,.56)),linear-gradient(0deg,rgba(11,30,51,.8),transparent 50%)}
+html[lang="ar"] .home-page.home-experience .et-experience :is(.categories button,a.home-action){text-align:right}
+html[lang="ar"] .home-page.home-experience .et-experience .opening h2 em{padding-left:0;padding-right:50px}
+html[lang="ar"] .home-page.home-experience .et-experience .categories button[aria-selected=true]{transform:translateX(-8px)}
+html[lang="ar"] body.home-experience .approved-footer-brand{border-right:0;border-left:1px solid var(--et-champagne);padding-right:0;padding-left:22px}
+html[lang="ar"] body.home-experience .approved-footer-location{border-left:0;border-right:1px solid var(--et-champagne);padding-left:0;padding-right:25px}
+html[lang="ar"] body.home-experience a[href^="mailto:"]{direction:ltr;unicode-bidi:isolate}
+html[lang="ar"] .home-page.home-experience .home-markets-map{direction:ltr}
+html[lang="ar"] .home-page.home-experience .home-markets-map text{font-family:'Noto Naskh Arabic',Tahoma,serif;letter-spacing:0}
+@media(max-width:700px){html[lang="ar"] body.home-experience.et-brand-shell .site-header .site-logo{margin-right:0;margin-left:auto}html[lang="ar"] .home-page.home-experience .approved-geography{right:7%}html[lang="ar"] body.home-experience .approved-footer-brand{border:0;padding:0}html[lang="ar"] .home-page.home-experience .et-experience .opening h2 em{padding-right:0}html[lang="ar"] .home-page.home-experience .et-experience .categories button{font-size:43px}}
+@media(prefers-reduced-motion:reduce){html[lang="ar"] .home-page.home-experience .et-experience .categories button[aria-selected=true]{transform:none}}

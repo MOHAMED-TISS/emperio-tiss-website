@@ -52,162 +52,121 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/home.css">
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20260922-shared-shell">
-  </head>
-  <body class="home-page et-brand-shell">
-    <header class="site-header" id="luxuryHeader">
-      <div class="header-inner"><nav class="home-header-nav" aria-label="Company · Products"><a href="/en/about/">Company</a><a href="/en/products/">Products</a></nav><a class="site-logo" href="/en/" aria-label="EMPERIO TISS — Home"><img class="home-metal-logo" src="/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal" alt="EMPERIO TISS S.L." width="440" height="440"></a><nav class="home-header-secondary" aria-label="Markets · Contact"><a href="/en/markets/">Markets</a><a href="/en/contact/">Contact</a></nav><a class="et-whatsapp" href="https://wa.me/34614270684" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M20.5 3.5A10.9 10.9 0 0 0 13 1.1 10.9 10.9 0 0 0 3.2 17.4L2 22l4.7-1.2A10.9 10.9 0 1 0 20.5 3.5Zm-7.4 17.2a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-2.8.7.8-2.7.8-2.7.8-2.7.2-.3a9.1 9.1 0 1 1 7.1 3.7Zm5-6.8c-.3-.2-1.8-.9-2-.9-.3-.1-.4-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.6-1.3-3.7-2.9-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6 0-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1.1 1.9-1.1 3 0 .7.2 1.3.5 1.9.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.5.6.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3Z" />
-          </svg><span>Contact us on WhatsApp</span></a>
-        <nav class="et-language-switch" aria-label="Language"><a href="/">ES</a><span>·</span><a class="current" href="/en/" aria-current="page">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a></nav><button class="mobile-menu" id="menuToggleBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
-      </div>
-    </header>
-    <div class="nav-overlay" id="navOverlay" aria-hidden="true">
-      <div class="nav-overlay-inner">
-        <nav class="nav-overlay-links" aria-label="Main navigation"><a href="/en/"><span class="idx">01</span><span>Home</span></a><a href="/en/about/"><span class="idx">02</span><span>Company</span></a>
-          <details class="nav-products">
-            <summary><span class="idx">03</span><span>Products</span></summary>
-            <div class="nav-products-links"><a href="/en/products/">All products</a><a href="/en/products/seafood/">Seafood</a><a href="/en/products/seafood/fish/">Fish</a><a href="/en/products/seafood/shellfish/">Shellfish</a><a href="/en/products/seafood/cephalopods/">Cephalopods</a><a href="/en/products/fruits/">Fruits</a><a href="/en/products/vegetables/">Vegetables</a><a href="/en/products/seasonal/">Seasonal</a></div>
-          </details><a href="/en/markets/"><span class="idx">04</span><span>Markets</span></a><a href="/en/news/"><span class="idx">05</span><span>News</span></a><a href="/en/contact/"><span class="idx">06</span><span>Contact</span></a>
-        </nav>
-        <div class="nav-overlay-foot">
-          <div class="nav-overlay-lang"><a href="/">ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a></div>
-          <div class="nav-overlay-contact"><a href="/en/contact/">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span></div>
-        </div>
+  <link rel="stylesheet" href="/assets/css/home.css?v=20260927-localized-homes">
+</head>
+  <body class="home-page home-logo-trial et-brand-shell home-experience">
+  <header class="site-header" id="luxuryHeader">
+    <div class="header-inner">
+      <nav class="home-header-nav" aria-label="Main navigation"><a href="/en/about/">Company</a><a href="/en/products/">Products</a></nav>
+      <a href="/en/" class="site-logo" aria-label="EMPERIO TISS — Home">
+        <img class="home-metal-logo" src="/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal" alt="EMPERIO TISS S.L." width="440" height="440" fetchpriority="high">
+      </a>
+      <nav class="home-header-secondary" aria-label="Markets and contact"><a href="/en/markets/">Markets</a><a href="/en/contact/">Contact</a></nav>
+      <a href="https://wa.me/34614270684" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 3.5A10.9 10.9 0 0 0 13 1.1 10.9 10.9 0 0 0 3.2 17.4L2 22l4.7-1.2A10.9 10.9 0 1 0 20.5 3.5Zm-7.4 17.2a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-2.8.7.8-2.7.8-2.7.2-.3a9.1 9.1 0 1 1 7.1 3.7Zm5-6.8c-.3-.2-1.8-.9-2-.9-.3-.1-.4-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.6-1.3-3.7-2.9-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6 0-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1.1 1.9-1.1 3 0 .7.2 1.3.5 1.9.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.5.6.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3Z"/></svg>
+        <span>Contact us on WhatsApp</span>
+      </a>
+      <nav class="et-language-switch" aria-label="Languages">
+        <a href="/" >ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a>
+      </nav>
+      <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay" aria-hidden="true">
+    <div class="nav-overlay-inner">
+      <nav class="nav-overlay-links" aria-label="Main navigation">
+        <a href="/en/" class="active"><span class="idx">01</span><span>Home</span></a>
+        <a href="/en/about/"><span class="idx">02</span><span>Company</span></a>
+        <details class="nav-products">
+          <summary><span class="idx">03</span><span>Products</span></summary>
+          <div class="nav-products-links">
+            <a href="/en/products/">All products</a>
+            <a href="/en/products/seafood/">Seafood</a>
+            <a href="/en/products/seafood/fish/">Fish</a>
+            <a href="/en/products/seafood/shellfish/">Shellfish</a>
+            <a href="/en/products/seafood/cephalopods/">Cephalopods</a>
+            <a href="/en/products/fruits/">Fruit</a>
+            <a href="/en/products/vegetables/">Vegetables</a>
+            <a href="/en/products/seasonal/">Seasonal</a>
+          </div>
+        </details>
+        <a href="/en/markets/"><span class="idx">04</span><span>Markets</span></a>
+        <a href="/en/news/"><span class="idx">05</span><span>News</span></a>
+        <a href="/en/contact/"><span class="idx">06</span><span>Contact</span></a>
+      </nav>
+      <div class="nav-overlay-foot">
+        <div class="nav-overlay-lang"><a href="/" >ES</a><span>·</span><a href="/en/" class="current">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a></div>
+        <div class="nav-overlay-contact"><a href="/en/contact/">Business enquiry ↗</a><span>Madrid · Europe · Africa · Mediterranean</span></div>
       </div>
     </div>
-    <main>
-      <section class="hero">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="hero-kicker"><span></span>
-              <p>EMPERIO TISS</p>
-            </div>
-            <h1><span class="hero-line-white">From</span><span class="hero-line-gold">origin</span><span class="hero-line-white">to market.</span></h1>
-            <p class="hero-description"><strong>From Origin to Market. With Purpose.</strong><span>Specialized sourcing, selected products and international operations built on judgment, precision and reliability.</span></p>
-            <div class="hero-actions"><a href="/en/products/" class="button button-light">Discover products <span>↗</span></a><a href="/en/contact/" class="button button-outline">Business enquiry <span>↗</span></a></div>
-          </div>
-          <div class="hero-side"><span class="hero-number">01</span>
-            <div class="hero-side-line"></div>
-            <p>EUROPE<br>AFRICA<br>MEDITERRANEAN</p>
-          </div>
-        </div>
-        <div class="hero-bottom"><span>PRODUCT</span><i></i><span>ORIGIN</span><i></i><span>DESTINATION</span></div>
-      </section>
-      <section class="intro-section">
-        <div class="container">
-          <div class="section-index">02</div>
-          <div class="intro-content">
-            <p class="eyebrow">OUR VISION</p>
-            <h2>A more <em>direct connection.</em></h2>
-            <div class="intro-bottom">
-              <p class="intro-lead">We work around products, people and markets that require trust, precision and continuity.</p>
-              <div class="intro-copy">
-                <p>EMPERIO TISS works from origin to market, combining strategic sourcing, product knowledge and operational capacity to build solid, sustainable commercial relationships.</p>
-                <p>Our approach combines product knowledge, market understanding and coordination geared to each destination.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="products-section">
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">PRODUCTS</p>
-              <h2>What we <em>select.</em></h2>
-            </div>
-            <p class="section-intro">A professional selection organized around specific market categories and needs.</p>
-          </div>
-          <div class="product-list"><a href="/en/products/seafood/" class="product-row"><span class="product-number">01</span>
-              <div>
-                <h3>Seafood</h3>
-                <p>Fish · Shellfish · Cephalopods</p>
-              </div><span class="product-arrow">↗</span>
-            </a><a href="/en/products/fruits/" class="product-row"><span class="product-number">02</span>
-              <div>
-                <h3>Fruits and vegetables</h3>
-                <p>Fresh produce · Origin · Season</p>
-              </div><span class="product-arrow">↗</span>
-            </a><a href="/en/products/seasonal/" class="product-row"><span class="product-number">03</span>
-              <div>
-                <h3>Seasonal selection</h3>
-                <p>Availability · Origin · Opportunities</p>
-              </div><span class="product-arrow">↗</span>
-            </a></div>
-        </div>
-      </section>
-      <section class="markets-section">
-        <div class="container">
-          <p class="eyebrow">MARKETS</p>
-          <div class="markets-title">
-            <h2>Europe <span>↔</span> Africa</h2>
-            <p>with connections to the Mediterranean and international markets.</p>
-          </div>
-          <div class="market-grid">
-            <article><span>01</span>
-              <h3>Europe</h3>
-              <p>Spain · France · Italy · Germany · Netherlands</p>
-            </article>
-            <article><span>02</span>
-              <h3>Africa</h3>
-              <p>Morocco · Tunisia · Mauritania · West Africa</p>
-            </article>
-            <article><span>03</span>
-              <h3>Mediterranean</h3>
-              <p>A strategic zone connecting different origins and destinations.</p>
-            </article>
-            <article><span>04</span>
-              <h3>Middle East</h3>
-              <p>Progressive development of new commercial connections.</p>
-            </article>
-          </div><a href="/en/markets/" class="text-link light-link">Explore markets <span>↗</span></a>
-        </div>
-      </section>
-      <section class="company-section">
-        <div class="container">
-          <div class="company-grid">
-            <div>
-              <p class="eyebrow">EMPERIO TISS</p>
-              <h2>We build <em>relationships.</em></h2>
-            </div>
-            <div class="company-copy">
-              <p class="large-copy">More than connecting an origin with a destination, we aim to build professional relationships that can grow over time.</p>
-              <div class="company-values">
-                <div><span>01</span><strong>Knowledge</strong></div>
-                <div><span>02</span><strong>Clarity</strong></div>
-                <div><span>03</span><strong>Reliability</strong></div>
-                <div><span>04</span><strong>Continuity</strong></div>
-              </div><a href="/en/about/" class="text-link">Get to know EMPERIO TISS <span>↗</span></a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="contact-section" id="contact">
-        <div class="container">
-          <div class="contact-inner">
-            <p class="eyebrow">BUSINESS ENQUIRY</p>
-            <h2>Let's talk about <em>your next destination.</em></h2>
-            <p class="contact-text">Tell us what product you are looking for, where you are and what your destination is. We will study the best way to move forward.</p><a href="/en/contact/" class="button button-light large-button">Contact EMPERIO TISS <span>↗</span></a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer">
+  </div>
+
+  <main>
+    <section class="hero approved-hero" aria-labelledby="hero-title">
+<img class="approved-hero-image" src="/assets/images/home-mediterranean.webp" alt="" width="1672" height="941" fetchpriority="high">
+<div class="approved-hero-copy"><p class="approved-kicker">SELECTED ORIGINS. CLEAR SPECIFICATIONS.</p><h1 id="hero-title">From origin,<br>to your next<br>market.</h1><p class="approved-description">Seafood, fruit and vegetables<br>for professional supply requirements.</p><a class="approved-cta" href="/en/products/">Explore products <span aria-hidden="true">→</span></a></div>
+<p class="approved-geography">MADRID · EUROPE · AFRICA · MEDITERRANEAN</p></section>
+
+    <div class="et-experience"><div role="region" class="collection" aria-labelledby="collection-title">
+<div class="chapter"><span>01 / SELECTED FOR YOUR REQUIREMENTS</span><span>SEA · LAND · SEASON</span></div>
+<div class="opening"><h2 id="collection-title">Every origin,<br><em>a distinct character.</em></h2><p>The product comes first.<br>Your requirements shape the selection.</p></div>
+<div class="scene">
+<div class="scene-images" aria-hidden="true"><img decoding="async" class="scene-image active" data-scene="sea" src="/assets/images/home-seafood.webp" alt=""><img decoding="async" class="scene-image" data-scene="fruit" src="/assets/images/fruits-orchard.webp" alt=""><img decoding="async" class="scene-image" data-scene="vegetable" src="/assets/images/home-produce.webp" alt=""></div>
+<div class="scene-shade"></div><div class="scene-caption"><span>THE EMPERIO TISS SELECTION</span><span id="scene-count">01 / 03</span></div>
+<div class="scene-content"><div role="tablist" aria-label="Product categories" class="categories"><button type="button" role="tab" aria-selected="true" aria-controls="product-panel" id="tab-sea" data-category="sea"><span>01</span>Seafood<sup>↗</sup></button><button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-fruit" data-category="fruit" tabindex="-1"><span>02</span>Fruit<sup>↗</sup></button><button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-vegetable" data-category="vegetable" tabindex="-1"><span>03</span>Vegetables<sup>↗</sup></button></div>
+<div class="product-panel" role="tabpanel" id="product-panel" aria-labelledby="tab-sea" tabindex="0"><span class="small" id="product-label">SEAFOOD</span><p id="product-description">Fish, shellfish and cephalopods.<br>Defined species, origin and format<br>for your purchasing requirements.</p><a class="home-action" id="product-link" href="/en/products/seafood/">Explore the selection <span>↗</span></a></div></div>
+<div class="scene-bottom"><span>CHOOSE A CATEGORY TO EXPLORE</span><span>PRIME ORIGINS. GLOBAL REACH.</span></div></div>
+<div class="seasonal"><span>AVAILABILITY FOLLOWS THE SEASONS.</span><a class="home-action" href="/en/products/seasonal/">Discover seasonal products <span>↗</span></a></div></div><div role="region" class="approach" aria-labelledby="approach-title"><div class="approach-heading reveal"><span class="small">02 / FROM SELECTION TO AGREEMENT</span><h2 id="approach-title">The difference<br>is in <em>the details.</em></h2></div><div class="approach-layout"><div class="origin-image reveal"><img loading="lazy" decoding="async" src="/assets/images/home-origins.webp" alt="Landscape at origin"><span>ORIGIN · CRITERIA · DESTINATION</span></div><div class="steps"><article class="reveal"><span class="step-number">01</span><div><h3>Select.</h3><p>Product, origin and availability.<br>The right origin for each requirement.</p></div></article><article class="reveal"><span class="step-number">02</span><div><h3>Specify.</h3><p>Quality, size, storage and packing.<br>Agree specifications before proceeding.</p></div></article><article class="reveal"><span class="step-number">03</span><div><h3>Coordinate.</h3><p>Volume, schedule and destination.<br>Clear terms for every order.</p></div></article><a class="approach-link home-action" href="/en/about/">Discover how we work <span>↗</span></a></div></div></div></div>
+
+    <section class="markets-section">
       <div class="container">
-        <div class="footer-main">
-          <div class="footer-brand"><img src="/assets/images/logo.png" alt="EMPERIO TISS" class="footer-logo">
-            <p>Your trusted partner in international markets.</p>
-          </div>
-          <div class="footer-column"><strong>Navigation</strong><a href="/en/">Home</a><a href="/en/about/">Company</a><a href="/en/products/">Products</a><a href="/en/markets/">Markets</a><a href="/en/news/">News</a><a href="/en/contact/">Contact</a></div>
-          <div class="footer-column"><strong>Products</strong><a href="/en/products/seafood/">Seafood</a><a href="/en/products/fruits/">Fruits &amp; Vegetables</a><a href="/en/products/seasonal/">Seasonal</a></div>
-          <div class="footer-column"><strong>Legal</strong><a href="/legal/aviso-legal.html">Legal notice</a><a href="/legal/privacidad.html">Privacy</a><a href="/legal/cookies.html">Cookies</a></div>
+        <div class="markets-top">
+          <p class="eyebrow">MARKETS</p>
+          <p class="markets-description">Connecting production regions with professional destinations.</p>
         </div>
-        <div class="footer-bottom"><span>© 2026 EMPERIO TISS S.L.</span><span>Madrid · Spain</span></div>
+        <div class="markets-title">
+          <h2>Europe <span>↔</span> Africa</h2>
+          <p>with connections across the Mediterranean and international markets.</p>
+        </div>
+
+        <div class="home-markets-map" aria-hidden="true">
+          <svg viewBox="0 0 760 360" role="presentation">
+            <path class="route" d="M140 170 C245 80, 310 95, 380 175 S515 220, 650 160"></path>
+            <path class="route route-2" d="M145 170 C225 210, 286 245, 382 178 S495 90, 588 122"></path>
+            <path class="route route-3" d="M140 170 C250 145, 318 152, 388 200 S502 270, 655 258"></path>
+            <circle class="node" cx="140" cy="170" r="5"></circle>
+            <circle class="node" cx="320" cy="135" r="4"></circle>
+            <circle class="node" cx="380" cy="178" r="6"></circle>
+            <circle class="node" cx="508" cy="192" r="4"></circle>
+            <circle class="node" cx="650" cy="160" r="5"></circle>
+            <text class="map-word" x="88" y="144">MADRID</text><text class="map-sub" x="88" y="160">HEAD OFFICE</text>
+            <text class="map-word" x="284" y="110">EUROPE</text><text class="map-sub" x="284" y="126">Spain · France · Italy</text>
+            <text class="map-word" x="400" y="166">MEDITERRANEAN</text>
+            <text class="map-word" x="532" y="116">MIDDLE EAST</text><text class="map-sub" x="532" y="132">Gulf · Levant</text>
+            <text class="map-word" x="492" y="246">AFRICA</text><text class="map-sub" x="492" y="262">Tunisia · Morocco · Mauritania</text>
+          </svg>
+        </div>
+
+        <div class="market-grid">
+          <article><span>01</span><h3>Europe</h3><p>Spain · France · Italy · Germany · Netherlands</p></article>
+          <article><span>02</span><h3>Africa</h3><p>Morocco · Tunisia · Mauritania · West Africa</p></article>
+          <article><span>03</span><h3>Mediterranean</h3><p>A strategic region linking origins and destinations.</p></article>
+          <article><span>04</span><h3>Middle East</h3><p>Progressively developing new commercial relationships.</p></article>
+        </div>
+        <a href="/en/markets/" class="text-link light-link">Explore markets<span>→</span></a>
       </div>
-    </footer>
-    <script src="/assets/js/global.js?v=20260922-shared-shell" defer></script>
-    <script src="/assets/js/header-final.js?v=20260922-shared-shell" defer></script>
-  </body>
+    </section>
+
+    <div class="et-experience" id="contact"><div role="region" class="invitation"><span class="small">YOUR NEXT SUPPLY REQUIREMENT</span><div class="invitation-content"><h2>Let’s begin<br>with <em>a conversation.</em></h2><a class="contact-disc" href="/en/contact/"><span>LET’S TALK</span><span aria-hidden="true">↗</span></a></div><div class="invitation-bottom"><p>Tell us your product and specifications.<br>Let’s define the next step.</p><a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a></div></div></div>
+  </main>
+<script type="application/json" id="home-scenes">{"sea":{"url":"seafood","count":"01 / 03","label":"SEAFOOD","description":"Fish, shellfish and cephalopods.\nDefined species, origin and format\nfor your purchasing requirements."},"fruit":{"url":"fruits","count":"02 / 03","label":"FRUIT","description":"Variety, size and ripeness.\nSelected by origin and season\nto match your purchasing requirements."},"vegetable":{"url":"vegetables","count":"03 / 03","label":"VEGETABLES","description":"Origin quality and agreed formats.\nA selection matched to your volumes\nand professional destination."}}</script>
+
+  <footer class="et-universal-footer home-approved-footer"><div class="approved-footer-grid"><a class="approved-footer-brand" href="/en/" aria-label="EMPERIO TISS — Home"><img src="/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal" alt="EMPERIO TISS S.L." width="440" height="440" loading="lazy"><span>PRIME ORIGINS. GLOBAL REACH.</span></a><nav aria-label="Company"><h2>Company</h2><a href="/en/about/">About us</a><a href="/en/about/">How we work</a><a href="/en/markets/">Markets</a><a href="/en/news/">News</a></nav><nav aria-label="Products"><h2>Products</h2><a href="/en/products/seafood/">Seafood</a><a href="/en/products/fruits/">Fruit</a><a href="/en/products/vegetables/">Vegetables</a><a href="/en/products/seasonal/">Seasonal</a></nav><div class="approved-footer-contact"><h2>Contact</h2><a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a><a href="https://wa.me/34614270684" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div><p class="approved-footer-location">MADRID<br>EUROPE<br>AFRICA<br>MEDITERRANEAN</p></div><div class="approved-footer-bottom"><span>© 2026 EMPERIO TISS S.L. All rights reserved.</span><nav aria-label="Legal information"><a href="/legal/aviso-legal.html">Legal notice</a><a href="/legal/privacidad.html">Privacy</a><a href="/legal/cookies.html">Cookies</a></nav><span>PRIME ORIGINS. GLOBAL REACH.</span></div></footer>
+
+  <script src="/assets/js/global.js?v=20260927-localized-homes" defer></script>
+  <script src="/assets/js/header-final.js?v=20260926-brand-foundation-2" defer></script>
+  <script src="/assets/js/home-modern.js?v=20260927-localized-homes" defer></script>
+</body>
 </html>

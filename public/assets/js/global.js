@@ -50,13 +50,13 @@
     loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
   }
   loadCss('/assets/css/header-final.css?v=20260926-brand-foundation-2', 'etHeaderFinalCanonical');
-  if (lang === 'ar') {
+  if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
   }
 
-  if (['en', 'fr', 'ar', 'it'].includes(lang)) {
+  if (['en', 'fr', 'ar', 'it'].includes(lang) && !document.body.classList.contains('home-experience')) {
     loadScript('/assets/js/international-shell.js?v=20260922-shared-shell', 'etInternationalShell');
   }
 
