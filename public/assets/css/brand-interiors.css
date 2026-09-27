@@ -562,3 +562,15 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page):not(.private-admin
     transition: none !important;
   }
 }
+
+
+/* Canonical metallic brand mark in legacy public footers. */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-footer img,
+  .site-footer .footer-logo,
+  .fish-site-footer .footer-logo,
+  .footer-band img
+) {
+  content: url("/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal") !important;
+  object-fit: contain !important;
+}
