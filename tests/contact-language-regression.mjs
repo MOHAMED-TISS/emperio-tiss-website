@@ -55,8 +55,8 @@ assert.match(contactCss, /body\.es-page \.es-hero\s*\{[^}]*min-height:\s*100dvh/
   'Contact hero must use the dynamic viewport height');
 assert.match(contactCss, /min-height:\s*100dvh\s*!important/,
   'Contact hero must override the later shared 88svh rule');
-assert.doesNotMatch(contactCss, /\.es-page \.es-hero\s*\{[^}]*min-height:\s*100svh/s,
-  'Contact hero must not use the smaller viewport height');
+assert.match(contactCss, /body\.es-page \.es-hero\s*\{[^}]*min-height:\s*100svh/s,
+  'Contact hero must include the stable viewport-height contract alongside 100dvh');
 for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'products-site', 'news-page']) {
   assert.doesNotMatch(sharedPageCss, new RegExp(`\\.${pageClass} a\\[href\\*="contact"\\]`),
     `${pageClass}: content CTA sizing must not capture the 06 contact link in the menu`);
