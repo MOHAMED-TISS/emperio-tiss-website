@@ -60,6 +60,9 @@
     loadScript('/assets/js/international-shell.js?v=20260922-shared-shell', 'etInternationalShell');
   }
 
+  // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
+  loadCss('/assets/css/brand-interiors.css?v=20260927-home-sync-1', 'etBrandInteriors');
+
   const socialCopy = {
     es: { whatsapp: 'Contactar por WhatsApp', linkedin: 'LinkedIn' },
     en: { whatsapp: 'Contact us on WhatsApp', linkedin: 'LinkedIn' },
