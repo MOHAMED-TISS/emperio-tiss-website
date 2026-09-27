@@ -64,9 +64,6 @@ for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'produ
     `${pageClass}: contact CTA sizing must stay scoped to main content`);
 }
 
-console.log('contact-language-regression: PASS');
-
-
 const globalCore = fs.readFileSync('public/assets/js/global-core.js', 'utf8');
 const sitePolish = fs.readFileSync('public/assets/js/site-polish.js', 'utf8');
 const workerSource = fs.readFileSync('src/index.js', 'utf8');
@@ -90,9 +87,11 @@ assert.match(workerSource, /TURNSTILE_HOSTNAMES\.has\(result\.hostname\)/);
 assert.match(workerSource, /allowRequest\(request, env, email, 'contact'\)/);
 
 
-for (const file of contactPages) {
+for (const [, file] of pages) {
   const html = fs.readFileSync(file, 'utf8');
   assert.match(html, /\/assets\/js\/global\.js\?v=20260927-turnstile-1/,
     file + ' must force the Turnstile-capable global runtime');
 }
 assert.match(globalCore, /TURNSTILE_API/);
+
+console.log('contact-language-regression: PASS');
