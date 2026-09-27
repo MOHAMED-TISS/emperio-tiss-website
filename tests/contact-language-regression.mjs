@@ -65,3 +65,26 @@ for (const pageClass of ['es-page', 'intl-page', 'ar-page', 'about-page', 'produ
 }
 
 console.log('contact-language-regression: PASS');
+
+
+const globalCore = fs.readFileSync('public/assets/js/global-core.js', 'utf8');
+const sitePolish = fs.readFileSync('public/assets/js/site-polish.js', 'utf8');
+const workerSource = fs.readFileSync('src/index.js', 'utf8');
+
+assert.match(globalCore, /challenges\.cloudflare\.com\/turnstile\/v0\/api\.js\?render=explicit/,
+  'Contact runtime must load the official Turnstile client API');
+assert.match(globalCore, /0x4AAAAAAEaIn_beKLMv4VjA/,
+  'Contact runtime must use the configured public Turnstile sitekey');
+assert.match(globalCore, /action:\s*'contact'/,
+  'Contact Turnstile widget must use the contact action');
+assert.match(globalCore, /payload\.set\('cf-turnstile-response',\s*token\)/,
+  'All contact submissions must send the Turnstile token');
+assert.match(globalCore, /\^\\\/\(en\|fr\|it\|ar\)\\\/contact/,
+  'Protected contact runtime must include all international contact routes');
+assert.doesNotMatch(sitePolish, /initSecureContactForm|window\.turnstile/,
+  'site-polish must not contain a second or unreachable Turnstile implementation');
+assert.match(workerSource, /TURNSTILE_SECRET/);
+assert.match(workerSource, /turnstile\/v0\/siteverify/);
+assert.match(workerSource, /result\.action !== 'contact'/);
+assert.match(workerSource, /TURNSTILE_HOSTNAMES\.has\(result\.hostname\)/);
+assert.match(workerSource, /allowRequest\(request, env, email, 'contact'\)/);

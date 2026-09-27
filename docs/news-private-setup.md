@@ -73,6 +73,7 @@ Set:
 ```bash
 npx wrangler secret put RESEND_API_KEY
 npx wrangler secret put ADMIN_API_KEY
+npx wrangler secret put TURNSTILE_SECRET
 ```
 
 `RESEND_API_KEY` is used by the existing contact flow and the new newsletter/private communication flows. `ADMIN_API_KEY` protects approval, offer and newsletter sending endpoints.
@@ -114,3 +115,11 @@ Send a newsletter to confirmed subscribers. Add `language` to segment by languag
 All admin requests require:
 
 `Authorization: Bearer <ADMIN_API_KEY>`
+
+
+## Contact Turnstile
+
+The public Contact form uses Turnstile sitekey `0x4AAAAAAEaIn_beKLMv4VjA`.
+The matching secret must be stored only as the Worker secret `TURNSTILE_SECRET`.
+The Worker validates every Contact token through Cloudflare Siteverify and rejects
+missing tokens, invalid actions, unexpected hostnames and rate-limited requests.

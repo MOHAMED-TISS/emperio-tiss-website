@@ -47,12 +47,40 @@
   };
 
   const contactCopy = {
-    es: { sending: 'Enviando consulta…', success: 'Consulta enviada correctamente. Gracias.', error: 'No se pudo enviar la consulta. Inténtalo de nuevo.' },
-    en: { sending: 'Sending enquiry…', success: 'Enquiry sent successfully. Thank you.', error: 'Could not send the enquiry. Please try again.' },
-    fr: { sending: 'Envoi de la demande…', success: 'Demande envoyée avec succès. Merci.', error: 'Impossible d’envoyer la demande. Veuillez réessayer.' },
-    it: { sending: 'Invio della richiesta…', success: 'Richiesta inviata correttamente. Grazie.', error: 'Impossibile inviare la richiesta. Riprova.' },
-    ar: { sending: 'جارٍ إرسال الطلب…', success: 'تم إرسال الطلب بنجاح. شكرًا لكم.', error: 'تعذر إرسال الطلب. حاولوا مرة أخرى.' }
-  }[lang] || { sending: 'Sending enquiry…', success: 'Enquiry sent successfully. Thank you.', error: 'Could not send the enquiry. Please try again.' };
+    es: { verifying: 'Verificando seguridad…', sending: 'Enviando consulta…', success: 'Consulta enviada correctamente. Gracias.', error: 'No se pudo enviar la consulta. Inténtalo de nuevo.', security: 'No se pudo completar la verificación de seguridad. Inténtalo de nuevo.' },
+    en: { verifying: 'Verifying security…', sending: 'Sending enquiry…', success: 'Enquiry sent successfully. Thank you.', error: 'Could not send the enquiry. Please try again.', security: 'Security verification could not be completed. Please try again.' },
+    fr: { verifying: 'Vérification de sécurité…', sending: 'Envoi de la demande…', success: 'Demande envoyée avec succès. Merci.', error: 'Impossible d’envoyer la demande. Veuillez réessayer.', security: 'La vérification de sécurité n’a pas pu être effectuée. Veuillez réessayer.' },
+    it: { verifying: 'Verifica di sicurezza…', sending: 'Invio della richiesta…', success: 'Richiesta inviata correttamente. Grazie.', error: 'Impossibile inviare la richiesta. Riprova.', security: 'Impossibile completare la verifica di sicurezza. Riprova.' },
+    ar: { verifying: 'جارٍ التحقق من الأمان…', sending: 'جارٍ إرسال الطلب…', success: 'تم إرسال الطلب بنجاح. شكرًا لكم.', error: 'تعذر إرسال الطلب. حاولوا مرة أخرى.', security: 'تعذر إكمال التحقق الأمني. حاولوا مرة أخرى.' }
+  }[lang] || { verifying: 'Verifying security…', sending: 'Sending enquiry…', success: 'Enquiry sent successfully. Thank you.', error: 'Could not send the enquiry. Please try again.', security: 'Security verification could not be completed. Please try again.' };
+
+  const TURNSTILE_SITE_KEY = '0x4AAAAAAEaIn_beKLMv4VjA';
+  const TURNSTILE_API = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  let turnstileApiPromise = null;
+
+  const loadTurnstileApi = () => {
+    if (window.turnstile) return Promise.resolve(window.turnstile);
+    if (turnstileApiPromise) return turnstileApiPromise;
+    turnstileApiPromise = new Promise((resolve, reject) => {
+      const existing = doc.querySelector('script[data-et-turnstile],script[src*="challenges.cloudflare.com/turnstile/"]');
+      const script = existing || doc.createElement('script');
+      const done = () => window.turnstile ? resolve(window.turnstile) : reject(new Error('TURNSTILE_API_UNAVAILABLE'));
+      if (!existing) {
+        script.src = TURNSTILE_API;
+        script.async = true;
+        script.defer = true;
+        script.dataset.etTurnstile = 'true';
+        doc.head.appendChild(script);
+      }
+      script.addEventListener('load', done, { once: true });
+      script.addEventListener('error', () => reject(new Error('TURNSTILE_API_UNAVAILABLE')), { once: true });
+      if (existing && window.turnstile) resolve(window.turnstile);
+    }).catch(error => {
+      turnstileApiPromise = null;
+      throw error;
+    });
+    return turnstileApiPromise;
+  };
 
   const L = paths[lang] ? lang : 'en';
   const P = paths[L];
@@ -147,6 +175,7 @@
     const button = form?.querySelector('.form-submit');
     if (!form || !status || !button || form.dataset.etSubmitBound === 'true') return;
     form.dataset.etSubmitBound = 'true';
+
     // Carry a fruit selection into the Spanish inquiry without submitting it.
     if (lang === 'es') {
       const params = new URLSearchParams(location.search);
@@ -161,26 +190,103 @@
       }
     }
 
+    const mount = doc.createElement('div');
+    mount.className = 'contact-turnstile';
+    mount.setAttribute('aria-label', 'Security verification');
+    status.insertAdjacentElement('beforebegin', mount);
+
+    let widgetId = null;
+    let pendingToken = null;
+
+    const ensureWidget = async () => {
+      const turnstile = await loadTurnstileApi();
+      if (widgetId !== null) return turnstile;
+      widgetId = turnstile.render(mount, {
+        sitekey: TURNSTILE_SITE_KEY,
+        action: 'contact',
+        execution: 'execute',
+        appearance: 'interaction-only',
+        callback: token => {
+          if (!pendingToken) return;
+          const resolve = pendingToken.resolve;
+          pendingToken = null;
+          resolve(token);
+        },
+        'expired-callback': () => {
+          if (!pendingToken) return;
+          const reject = pendingToken.reject;
+          pendingToken = null;
+          reject(new Error('TURNSTILE_EXPIRED'));
+        },
+        'error-callback': () => {
+          if (!pendingToken) return;
+          const reject = pendingToken.reject;
+          pendingToken = null;
+          reject(new Error('TURNSTILE_FAILED'));
+        }
+      });
+      return turnstile;
+    };
+
+    const getTurnstileToken = async () => {
+      const turnstile = await ensureWidget();
+      if (widgetId === null || pendingToken) throw new Error('TURNSTILE_UNAVAILABLE');
+      return new Promise((resolve, reject) => {
+        pendingToken = { resolve, reject };
+        try {
+          turnstile.execute(widgetId);
+        } catch (error) {
+          pendingToken = null;
+          reject(error);
+        }
+      });
+    };
+
+    const resetTurnstile = () => {
+      if (widgetId !== null && window.turnstile) {
+        try { window.turnstile.reset(widgetId); } catch (_) {}
+      }
+      pendingToken = null;
+    };
+
+    // Start loading early, but keep the contact form usable while the API arrives.
+    ensureWidget().catch(() => {});
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      if (!form.reportValidity()) return;
+      if (!form.reportValidity() || button.disabled) return;
       const honey = form.querySelector('input[name="_honey"]');
       if (honey?.value) return;
       button.disabled = true;
-      status.textContent = contactCopy.sending;
+      status.textContent = contactCopy.verifying;
       status.dataset.state = 'pending';
       try {
-        const response = await fetch('/api/contact', { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const token = await getTurnstileToken();
+        const payload = new FormData(form);
+        payload.set('cf-turnstile-response', token);
+        status.textContent = contactCopy.sending;
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          body: payload,
+          headers: { Accept: 'application/json' }
+        });
         const result = await response.json().catch(() => ({}));
-        if (!response.ok || !result.ok) throw new Error(result.error || contactCopy.error);
+        if (!response.ok || !result.ok) {
+          const securityFailure = String(result.code || '').startsWith('TURNSTILE_');
+          throw new Error(securityFailure ? contactCopy.security : (result.error || contactCopy.error));
+        }
         form.reset();
         status.textContent = contactCopy.success;
         status.dataset.state = 'success';
       } catch (error) {
-        status.textContent = error.message || contactCopy.error;
+        const securityFailure = String(error?.message || '').startsWith('TURNSTILE_');
+        status.textContent = securityFailure ? contactCopy.security : (error.message || contactCopy.error);
         status.dataset.state = 'error';
-      } finally { button.disabled = false; }
+      } finally {
+        resetTurnstile();
+        button.disabled = false;
+      }
     }, true);
   };
 

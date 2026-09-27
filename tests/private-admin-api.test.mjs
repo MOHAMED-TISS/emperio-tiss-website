@@ -261,3 +261,69 @@ test('started campaign preview uses saved recipients after audience changes',asy
   assert.equal(result.done,true); assert.equal(result.sent,0);
   assert.equal(sql.prepare('SELECT status FROM campaign_deliveries').get().status,'skipped');
 });
+
+
+test('contact rejects missing Turnstile tokens before sending mail', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET='turnstile-secret';
+  const form=new FormData();
+  for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'ana@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+  const response=await worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com'},body:form}),env);
+  assert.equal(response.status,400);
+  assert.equal((await response.json()).code,'TURNSTILE_TOKEN_REQUIRED');
+});
+
+test('contact validates Turnstile action and hostname server-side before sending mail', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET='turnstile-secret';
+  const contact=async token => {
+    const form=new FormData();
+    for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'ana@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+    form.set('cf-turnstile-response',token);
+    return worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com','cf-connecting-ip':'203.0.113.10'},body:form}),env);
+  };
+  const originalFetch=globalThis.fetch;
+  let mailSent=0;
+  globalThis.fetch=async (url,options)=>{
+    if (url==='https://challenges.cloudflare.com/turnstile/v0/siteverify') {
+      const response=options.body.get('response');
+      if (response==='bad-action') return Response.json({success:true,action:'login',hostname:'emperio-tiss.com'});
+      if (response==='bad-host') return Response.json({success:true,action:'contact',hostname:'attacker.example'});
+      return Response.json({success:true,action:'contact',hostname:'emperio-tiss.com'});
+    }
+    if (url==='https://api.resend.com/emails') { mailSent++; return new Response('{}'); }
+    throw new Error('Unexpected URL: '+url);
+  };
+  try {
+    assert.equal((await contact('bad-action')).status,403);
+    assert.equal((await contact('bad-host')).status,403);
+    const accepted=await contact('valid-token');
+    assert.equal(accepted.status,200);
+    assert.equal((await accepted.json()).ok,true);
+    assert.equal(mailSent,1);
+  } finally { globalThis.fetch=originalFetch; }
+});
+
+test('contact rate limiting blocks repeated verification attempts', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET='turnstile-secret';
+  const originalFetch=globalThis.fetch;
+  globalThis.fetch=async url => {
+    if (url==='https://challenges.cloudflare.com/turnstile/v0/siteverify') return Response.json({success:false,'error-codes':['invalid-input-response']});
+    throw new Error('Mail must not be sent for invalid Turnstile tokens');
+  };
+  const send=async index => {
+    const form=new FormData();
+    for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'ana@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+    form.set('cf-turnstile-response','invalid-'+index);
+    return worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com','cf-connecting-ip':'203.0.113.20'},body:form}),env);
+  };
+  try {
+    assert.equal((await send(1)).status,403);
+    assert.equal((await send(2)).status,403);
+    assert.equal((await send(3)).status,403);
+    const limited=await send(4);
+    assert.equal(limited.status,429);
+    assert.equal((await limited.json()).code,'RATE_LIMITED');
+  } finally { globalThis.fetch=originalFetch; }
+});

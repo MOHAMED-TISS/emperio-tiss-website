@@ -1,5 +1,7 @@
 const ALLOWED_ORIGINS = new Set(['https://emperio-tiss.com', 'https://www.emperio-tiss.com']);
 const RESEND = 'https://api.resend.com/emails';
+const TURNSTILE_VERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const TURNSTILE_HOSTNAMES = new Set(['emperio-tiss.com', 'www.emperio-tiss.com']);
 const json = (data, status = 200) => new Response(JSON.stringify(data), {
   status,
   headers: {
@@ -97,7 +99,7 @@ async function subscribe(request, env) {
     ok: false,
     error: 'Introduce un email válido y acepta las comunicaciones.'
   }, 400);
-  if (!(await allowRequest(request, env, email))) return json({ok:false,error:'Please wait before requesting another email.'},429);
+  if (!(await allowRequest(request, env, email, 'newsletter'))) return json({ok:false,error:'Please wait before requesting another email.'},429);
   const existing = await env.NEWS_DB.prepare('SELECT confirmed_at,unsubscribed_at FROM subscribers WHERE email=?').bind(email).first();
   if (existing?.confirmed_at && !existing.unsubscribed_at) return json({ok:true,message:'Subscription request received.'});
   const raw = token(),
@@ -171,7 +173,7 @@ async function requestAccess(request, env) {
     error: copy.invalidEmail,
     code: 'INVALID_EMAIL'
   }, 400);
-  if (!(await allowRequest(request, env, email))) return json({ok:false,error:'Please wait before requesting access again.'},429);
+  if (!(await allowRequest(request, env, email, 'private-access'))) return json({ok:false,error:'Please wait before requesting access again.'},429);
   let client = await env.NEWS_DB.prepare("SELECT email,company,status FROM clients WHERE email=?")
     .bind(email).first();
   if (client?.status === 'approved') {
@@ -347,10 +349,11 @@ async function adminSendOffer(request, env) {
 async function adminNewsletter(request, env) {
   return sendCampaign(request, env, 'newsletter');
 }
-async function allowRequest(request, env, email) {
+async function allowRequest(request, env, email, scope = 'general') {
   const period = Math.floor(now()/600);
   const address = request.headers.get('cf-connecting-ip') || 'local';
-  const buckets = [[`email:${await sha(email)}:${period}`,3],[`ip:${await sha(address)}:${period}`,20]];
+  const safeScope = clean(scope, 40).replace(/[^a-z0-9_-]/gi, '') || 'general';
+  const buckets = [[`${safeScope}:email:${await sha(email)}:${period}`,3],[`${safeScope}:ip:${await sha(address)}:${period}`,20]];
   await env.NEWS_DB.prepare('DELETE FROM request_limits WHERE expires_at<?').bind(now()).run();
   for (const [bucket,limit] of buckets) {
     const r = await env.NEWS_DB.prepare('INSERT INTO request_limits(bucket,count,expires_at) VALUES(?,1,?) ON CONFLICT(bucket) DO UPDATE SET count=count+1 RETURNING count').bind(bucket,now()+600).first();
@@ -496,49 +499,82 @@ async function unsubscribe(request,env) {
 }
 const escapeHtml = value => clean(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+async function verifyTurnstile(request, env, rawToken) {
+  if (!env.TURNSTILE_SECRET) return {ok:false,status:503,code:'TURNSTILE_NOT_CONFIGURED'};
+  const tokenValue = String(rawToken ?? '').trim();
+  if (!tokenValue || tokenValue.length > 2048) return {ok:false,status:400,code:'TURNSTILE_TOKEN_REQUIRED'};
+  const payload = new FormData();
+  payload.set('secret', env.TURNSTILE_SECRET);
+  payload.set('response', tokenValue);
+  const remoteip = request.headers.get('cf-connecting-ip');
+  if (remoteip) payload.set('remoteip', remoteip);
+  payload.set('idempotency_key', crypto.randomUUID());
+
+  let result;
+  try {
+    const response = await fetch(TURNSTILE_VERIFY, {
+      method: 'POST',
+      body: payload,
+      signal: AbortSignal.timeout(10000)
+    });
+    if (!response.ok) throw new Error(`TURNSTILE_SITEVERIFY_${response.status}`);
+    result = await response.json();
+  } catch {
+    return {ok:false,status:503,code:'TURNSTILE_UNAVAILABLE'};
+  }
+
+  if (!result?.success || result.action !== 'contact' || !TURNSTILE_HOSTNAMES.has(result.hostname)) {
+    return {ok:false,status:403,code:'TURNSTILE_FAILED'};
+  }
+  return {ok:true};
+}
+
 async function handleContact(request, env) {
-  if (!originOk(request)) return json({
-    ok: false,
-    error: 'Origen no autorizado.'
-  }, 403);
+  if (!originOk(request)) return json({ok:false,error:'Origen no autorizado.'},403);
+  if (!dbOk(env)) return json({ok:false,error:'El servicio de contacto no está disponible temporalmente.',code:'CONTACT_DB_UNAVAILABLE'},503);
+
   const form = await request.formData();
-  if (clean(form.get('_honey'), 200)) return json({
-    ok: false,
-    error: 'Solicitud rechazada.'
-  }, 400);
+  if (clean(form.get('_honey'), 200)) return json({ok:false,error:'Solicitud rechazada.'},400);
+
   const nombre = clean(form.get('nombre'), 120),
     empresa = clean(form.get('empresa'), 160),
-    email = clean(form.get('email'), 254),
+    email = clean(form.get('email'), 254).toLowerCase(),
     telefono = clean(form.get('telefono'), 80),
     producto = clean(form.get('producto'), 120),
     destino = clean(form.get('destino'), 160),
-    mensaje = clean(form.get('mensaje'), 4000);
+    mensaje = clean(form.get('mensaje'), 4000),
+    turnstileToken = form.get('cf-turnstile-response');
+
   if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje)
-  return json({
-      ok: false,
-      error: 'Completa todos los campos obligatorios.',
-      code: 'VALIDATION_FAILED'
-    }, 400);
-  if (!emailOk(email)) return json({
-    ok: false,
-    error: 'Introduce un email válido.',
-    code: 'INVALID_EMAIL'
-  }, 400);
+    return json({ok:false,error:'Completa todos los campos obligatorios.',code:'VALIDATION_FAILED'},400);
+  if (!emailOk(email)) return json({ok:false,error:'Introduce un email válido.',code:'INVALID_EMAIL'},400);
+  if (!env.TURNSTILE_SECRET) return json({ok:false,error:'La verificación de seguridad no está configurada.',code:'TURNSTILE_NOT_CONFIGURED'},503);
+  if (!turnstileToken || String(turnstileToken).trim().length > 2048)
+    return json({ok:false,error:'Completa la verificación de seguridad.',code:'TURNSTILE_TOKEN_REQUIRED'},400);
+
+  if (!(await allowRequest(request, env, email, 'contact')))
+    return json({ok:false,error:'Espera unos minutos antes de enviar otra consulta.',code:'RATE_LIMITED'},429);
+
+  const verification = await verifyTurnstile(request, env, turnstileToken);
+  if (!verification.ok) {
+    const unavailable = verification.status === 503;
+    return json({
+      ok:false,
+      error: unavailable ? 'La verificación de seguridad no está disponible temporalmente.' : 'No se pudo validar la verificación de seguridad.',
+      code: verification.code
+    }, verification.status);
+  }
+
   const html =
     `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Producto:</strong> ${escapeHtml(producto)}</p><p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p>`;
   try {
-    await resend(env, 'info@emperio-tiss.com', `Nueva consulta B2B — ${empresa} — ${producto}`,
-      html, email)
-  } catch (e) {
-    return json({
-      ok: false,
-      error: 'No se pudo enviar la consulta. Inténtalo de nuevo.'
-    }, 502)
+    await resend(env, 'info@emperio-tiss.com', `Nueva consulta B2B — ${empresa} — ${producto}`, html, email);
+  } catch {
+    return json({ok:false,error:'No se pudo enviar la consulta. Inténtalo de nuevo.'},502);
   }
-  return json({
-    ok: true
-  })
+  return json({ok:true});
 }
+
 async function fetchHandler(request, env) {
   const url = new URL(request.url);
   if (url.pathname.startsWith('/api/') && request.method==='POST' && Number(request.headers.get('content-length'))>32768) return json({ok:false,error:'Request too large.'},413);
