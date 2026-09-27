@@ -10,7 +10,7 @@ const pages = [
 ];
 
 const switchOrder = ['ES', 'EN', 'FR', 'IT', 'AR'];
-const backendFields = ['nombre', 'empresa', 'email', 'telefono', 'producto', 'destino', 'mensaje'];
+const backendFields = ['nombre', 'empresa', 'cif', 'email', 'telefono', 'producto', 'destino', 'mensaje'];
 
 for (const [lang, path, prefix] of pages) {
   const html = fs.readFileSync(path, 'utf8');
@@ -22,6 +22,7 @@ for (const [lang, path, prefix] of pages) {
   assert.match(html, /action="\/api\/contact"/,
   `${lang}: form must use canonical contact endpoint`);
 
+  assert.match(html, /<input[^>]*name="cif"[^>]*required[^>]*>/);
   const switcher = html.match(/class="et-language-switch"[\s\S]*?<\/nav>/)?.[0] || '';
   const found = [...switcher.matchAll(/>\s*(ES|EN|FR|IT|AR)\s*</g)].map((m) => m[1]);
   assert.deepEqual(found, switchOrder, `${lang}: language switcher must be ES/EN/FR/IT/AR`);

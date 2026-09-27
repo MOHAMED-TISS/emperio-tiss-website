@@ -54,6 +54,7 @@
             <form class="contact-form" id="contactForm" action="/api/contact" method="POST" novalidate><input type="hidden" name="_honey" value="">
               <div class="form-required-notice"><strong><span class="required-star">*</span> Fields marked with * are required.</strong></div>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> Name</span><input type="text" name="nombre" placeholder="Your name" autocomplete="name" required></label><label><span><span class="required-star">*</span> Company</span><input type="text" name="empresa" placeholder="Company name" autocomplete="organization" required></label></div>
+              <label><span><span class="required-star">*</span> Company tax ID (CIF / VAT)</span><input type="text" name="cif" placeholder="Company tax identification number" maxlength="80" required></label>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> Email</span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label><label><span><span class="required-star">*</span> Phone</span><input type="tel" name="telefono" placeholder="+34" autocomplete="tel" required></label></div>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> Product</span><select name="producto" required>
                     <option value="" selected disabled>Select a product</option>

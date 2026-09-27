@@ -52,6 +52,7 @@
             <form class="contact-form" id="contactForm" action="/api/contact" method="POST" novalidate><input type="hidden" name="_honey" value="">
               <div class="form-required-notice"><strong><span class="required-star">*</span> الحقول المعلّمة بـ * إلزامية.</strong></div>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> الاسم</span><input type="text" name="nombre" placeholder="الاسم" autocomplete="name" required></label><label><span><span class="required-star">*</span> الشركة</span><input type="text" name="empresa" placeholder="اسم الشركة" autocomplete="organization" required></label></div>
+              <label><span><span class="required-star">*</span> الرقم الضريبي للشركة</span><input type="text" name="cif" placeholder="أدخل الرقم الضريبي للشركة" maxlength="80" required></label>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> البريد الإلكتروني</span><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required></label><label><span><span class="required-star">*</span> الهاتف</span><input type="tel" name="telefono" placeholder="+34" autocomplete="tel" required></label></div>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> المنتج</span><select name="producto" required>
                     <option value="" selected disabled>اختر المنتج</option>

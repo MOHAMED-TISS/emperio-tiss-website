@@ -51,6 +51,7 @@
             <form class="contact-form" id="contactForm" action="/api/contact" method="POST" novalidate><input type="hidden" name="_honey" value="">
               <div class="form-required-notice"><strong><span class="required-star">*</span> I campi con * sono obbligatori.</strong></div>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> Nome</span><input type="text" name="nombre" placeholder="Il tuo nome" autocomplete="name" required></label><label><span><span class="required-star">*</span> Azienda</span><input type="text" name="empresa" placeholder="Nome azienda" autocomplete="organization" required></label></div>
+              <label><span><span class="required-star">*</span> Codice fiscale / Partita IVA</span><input type="text" name="cif" placeholder="Identificativo fiscale dell’azienda" maxlength="80" required></label>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> Email</span><input type="email" name="email" placeholder="tua@email.com" autocomplete="email" required></label><label><span><span class="required-star">*</span> Telefono</span><input type="tel" name="telefono" placeholder="+39" autocomplete="tel" required></label></div>
               <div class="contact-form__row"><label><span><span class="required-star">*</span> Prodotto</span><select name="producto" required>
                     <option value="" selected disabled>Seleziona un prodotto</option>

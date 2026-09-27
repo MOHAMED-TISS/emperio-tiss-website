@@ -562,6 +562,7 @@ async function handleContact(request, env) {
 
   const nombre = clean(form.get('nombre'), 120),
     empresa = clean(form.get('empresa'), 160),
+    cif = clean(form.get('cif'), 80),
     email = clean(form.get('email'), 254).toLowerCase(),
     telefono = clean(form.get('telefono'), 80),
     producto = clean(form.get('producto'), 120),
@@ -586,12 +587,12 @@ async function handleContact(request, env) {
     }, verification.status);
   }
 
-  if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje)
+  if (!nombre || !empresa || !cif || !email || !telefono || !producto || !destino || !mensaje)
     return json({ok:false,error:'Completa todos los campos obligatorios.',code:'VALIDATION_FAILED'},400);
   if (!emailOk(email)) return json({ok:false,error:'Introduce un email válido.',code:'INVALID_EMAIL'},400);
 
   const html =
-    `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Producto:</strong> ${escapeHtml(producto)}</p><p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p>`;
+    `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>CIF / Identificación fiscal:</strong> ${escapeHtml(cif)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Producto:</strong> ${escapeHtml(producto)}</p><p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p>`;
   try {
     await resend(env, 'info@emperio-tiss.com', `Nueva consulta B2B — ${empresa} — ${producto}`, html, email);
   } catch {
