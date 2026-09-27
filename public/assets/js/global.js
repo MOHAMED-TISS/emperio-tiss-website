@@ -181,12 +181,12 @@
 
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/header-final.js?v=20260926-brand-foundation-2', 'etHeaderFinalScript');
-  loadScript('/assets/js/global-core.js?v=20260922-fruit-inquiry', 'etGlobalCore');
+  loadScript('/assets/js/global-core.js?v=20260927-turnstile-1', 'etGlobalCore');
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');
     if (['en', 'fr'].includes(lang)) {
       loadScript('/assets/js/en-catalog-filter-fix.js?v=20260926-no-prototype-patch', 'etEnCatalogFilterFix');
     }
   }
-  loadScript('/assets/js/site-polish.js?v=20260922-shared-shell', 'etSitePolish');
+  loadScript('/assets/js/site-polish.js?v=20260927-turnstile-1', 'etSitePolish');
 })();

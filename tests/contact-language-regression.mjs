@@ -88,3 +88,11 @@ assert.match(workerSource, /turnstile\/v0\/siteverify/);
 assert.match(workerSource, /result\.action !== 'contact'/);
 assert.match(workerSource, /TURNSTILE_HOSTNAMES\.has\(result\.hostname\)/);
 assert.match(workerSource, /allowRequest\(request, env, email, 'contact'\)/);
+
+
+for (const file of contactPages) {
+  const html = fs.readFileSync(file, 'utf8');
+  assert.match(html, /\/assets\/js\/global\.js\?v=20260927-turnstile-1/,
+    file + ' must force the Turnstile-capable global runtime');
+}
+assert.match(globalCore, /TURNSTILE_API/);
