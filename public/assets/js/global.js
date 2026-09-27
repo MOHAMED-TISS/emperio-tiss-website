@@ -181,7 +181,7 @@
 
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/header-final.js?v=20260926-brand-foundation-2', 'etHeaderFinalScript');
-  loadScript('/assets/js/global-core.js?v=20260927-visible-turnstile-1', 'etGlobalCore');
+  loadScript('/assets/js/global-core.js?v=20260927-turnstile-secret-compat-1', 'etGlobalCore');
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');
     if (['en', 'fr'].includes(lang)) {

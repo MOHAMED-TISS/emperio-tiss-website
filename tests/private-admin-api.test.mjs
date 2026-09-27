@@ -327,3 +327,40 @@ test('contact rate limiting blocks repeated verification attempts', async () => 
     assert.equal((await limited.json()).code,'RATE_LIMITED');
   } finally { globalThis.fetch=originalFetch; }
 });
+
+
+test('contact accepts the common TURNSTILE_SECRET_KEY alias', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET_KEY='turnstile-secret';
+  const form=new FormData();
+  for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'alias@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+  form.set('cf-turnstile-response','valid-token');
+  const originalFetch=globalThis.fetch;
+  globalThis.fetch=async (url)=>{
+    if (url==='https://challenges.cloudflare.com/turnstile/v0/siteverify') return Response.json({success:true,action:'contact',hostname:'emperio-tiss.com'});
+    if (url==='https://api.resend.com/emails') return new Response('{}');
+    throw new Error('Unexpected URL: '+url);
+  };
+  try {
+    const response=await worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com','cf-connecting-ip':'203.0.113.30'},body:form}),env);
+    assert.equal(response.status,200);
+  } finally { globalThis.fetch=originalFetch; }
+});
+
+test('contact identifies an invalid Turnstile secret without sending mail', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET='bad-secret';
+  const form=new FormData();
+  for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'badsecret@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+  form.set('cf-turnstile-response','token');
+  const originalFetch=globalThis.fetch;
+  globalThis.fetch=async url => {
+    if (url==='https://challenges.cloudflare.com/turnstile/v0/siteverify') return Response.json({success:false,'error-codes':['invalid-input-secret']});
+    throw new Error('Mail must not be sent when the Turnstile secret is invalid');
+  };
+  try {
+    const response=await worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com','cf-connecting-ip':'203.0.113.31'},body:form}),env);
+    assert.equal(response.status,503);
+    assert.equal((await response.json()).code,'TURNSTILE_SECRET_INVALID');
+  } finally { globalThis.fetch=originalFetch; }
+});

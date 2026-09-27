@@ -499,12 +499,15 @@ async function unsubscribe(request,env) {
 }
 const escapeHtml = value => clean(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+const turnstileSecret = env => env.TURNSTILE_SECRET || env.TURNSTILE_SECRET_KEY || env.CF_TURNSTILE_SECRET || '';
+
 async function verifyTurnstile(request, env, rawToken) {
-  if (!env.TURNSTILE_SECRET) return {ok:false,status:503,code:'TURNSTILE_NOT_CONFIGURED'};
+  const secret = turnstileSecret(env);
+  if (!secret) return {ok:false,status:503,code:'TURNSTILE_NOT_CONFIGURED'};
   const tokenValue = String(rawToken ?? '').trim();
   if (!tokenValue || tokenValue.length > 2048) return {ok:false,status:400,code:'TURNSTILE_TOKEN_REQUIRED'};
   const payload = new FormData();
-  payload.set('secret', env.TURNSTILE_SECRET);
+  payload.set('secret', secret);
   payload.set('response', tokenValue);
   const remoteip = request.headers.get('cf-connecting-ip');
   if (remoteip) payload.set('remoteip', remoteip);
@@ -523,9 +526,18 @@ async function verifyTurnstile(request, env, rawToken) {
     return {ok:false,status:503,code:'TURNSTILE_UNAVAILABLE'};
   }
 
-  if (!result?.success || result.action !== 'contact' || !TURNSTILE_HOSTNAMES.has(result.hostname)) {
+  if (!result?.success) {
+    const errors = Array.isArray(result?.['error-codes']) ? result['error-codes'] : [];
+    if (errors.includes('missing-input-secret') || errors.includes('invalid-input-secret')) {
+      return {ok:false,status:503,code:'TURNSTILE_SECRET_INVALID'};
+    }
+    if (errors.includes('timeout-or-duplicate')) {
+      return {ok:false,status:403,code:'TURNSTILE_TOKEN_EXPIRED'};
+    }
     return {ok:false,status:403,code:'TURNSTILE_FAILED'};
   }
+  if (result.action !== 'contact') return {ok:false,status:403,code:'TURNSTILE_ACTION_MISMATCH'};
+  if (!TURNSTILE_HOSTNAMES.has(result.hostname)) return {ok:false,status:403,code:'TURNSTILE_HOSTNAME_MISMATCH'};
   return {ok:true};
 }
 
@@ -548,7 +560,7 @@ async function handleContact(request, env) {
   if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje)
     return json({ok:false,error:'Completa todos los campos obligatorios.',code:'VALIDATION_FAILED'},400);
   if (!emailOk(email)) return json({ok:false,error:'Introduce un email válido.',code:'INVALID_EMAIL'},400);
-  if (!env.TURNSTILE_SECRET) return json({ok:false,error:'La verificación de seguridad no está configurada.',code:'TURNSTILE_NOT_CONFIGURED'},503);
+  if (!turnstileSecret(env)) return json({ok:false,error:'La verificación de seguridad no está configurada.',code:'TURNSTILE_NOT_CONFIGURED'},503);
   if (!turnstileToken || String(turnstileToken).trim().length > 2048)
     return json({ok:false,error:'Completa la verificación de seguridad.',code:'TURNSTILE_TOKEN_REQUIRED'},400);
 

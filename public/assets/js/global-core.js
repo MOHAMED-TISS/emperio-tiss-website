@@ -47,7 +47,7 @@
   };
 
   const contactCopy = {
-    es: { verifying: 'Verificando seguridad…', sending: 'Enviando consulta…', success: 'Consulta enviada correctamente. Gracias.', error: 'No se pudo enviar la consulta. Inténtalo de nuevo.', security: 'No se pudo completar la verificación de seguridad. Inténtalo de nuevo.' },
+    es: { verifying: 'Verificando seguridad…', sending: 'Enviando consulta…', success: 'Consulta enviada correctamente. Gracias.', error: 'No se pudo enviar la consulta. Inténtalo de nuevo.', security: 'No se pudo completar la verificación de seguridad. Inténtalo de nuevo.', serverSecurity: 'La verificación de seguridad del servidor no está configurada correctamente.' },
     en: { verifying: 'Verifying security…', sending: 'Sending enquiry…', success: 'Enquiry sent successfully. Thank you.', error: 'Could not send the enquiry. Please try again.', security: 'Security verification could not be completed. Please try again.' },
     fr: { verifying: 'Vérification de sécurité…', sending: 'Envoi de la demande…', success: 'Demande envoyée avec succès. Merci.', error: 'Impossible d’envoyer la demande. Veuillez réessayer.', security: 'La vérification de sécurité n’a pas pu être effectuée. Veuillez réessayer.' },
     it: { verifying: 'Verifica di sicurezza…', sending: 'Invio della richiesta…', success: 'Richiesta inviata correttamente. Grazie.', error: 'Impossibile inviare la richiesta. Riprova.', security: 'Impossibile completare la verifica di sicurezza. Riprova.' },
@@ -264,7 +264,11 @@
         });
         const result = await response.json().catch(() => ({}));
         if (!response.ok || !result.ok) {
-          const securityFailure = String(result.code || '').startsWith('TURNSTILE_');
+          const code = String(result.code || '');
+          if (['TURNSTILE_NOT_CONFIGURED', 'TURNSTILE_SECRET_INVALID'].includes(code)) {
+            throw new Error(contactCopy.serverSecurity || contactCopy.security);
+          }
+          const securityFailure = code.startsWith('TURNSTILE_');
           throw new Error(securityFailure ? contactCopy.security : (result.error || contactCopy.error));
         }
         form.reset();
