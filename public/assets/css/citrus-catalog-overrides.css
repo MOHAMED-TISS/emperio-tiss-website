@@ -462,7 +462,7 @@
    Scope is the Spanish fruits page; shared navigation and other languages stay independent. */
 .produce-page.fruits-editorial { --fruit-line: rgba(11,30,51,.18); --fruit-muted: #505d69; }
 .fruits-editorial main { font-family: 'DM Sans', sans-serif; }
-.fruits-editorial .page-hero { min-height: 760px; min-height: 92svh; padding: 180px 0 80px; background: #0B1E33; }
+.fruits-editorial .page-hero { min-height: 100vh; min-height: 100svh; min-height: 100dvh; padding: 180px 0 80px; background: #0B1E33; }
 .fruits-editorial .page-hero::before { inset: 0; height: auto; transform: none; background: linear-gradient(90deg,rgba(11,30,51,.92),rgba(11,30,51,.64) 55%,rgba(11,30,51,.18)); z-index: 1; opacity: 1; }
 .fruits-editorial .page-hero::after { content: none; }
 .fruits-editorial .fruits-hero-photo { position: absolute; inset: 0; }
@@ -519,7 +519,7 @@
  .fruits-editorial .fruit-special-head { grid-template-columns: 1fr; gap: 18px; }
  .fruits-editorial .citrus-family-layout { grid-template-columns: 1fr; padding-left: 0; gap: 24px; }
  .fruits-editorial .fruit-other-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
- .fruits-editorial .page-hero { min-height: 780px; min-height: 95svh; padding: 140px 0 50px; }
+ .fruits-editorial .page-hero { min-height: 100vh; min-height: 100svh; min-height: 100dvh; padding: 140px 0 50px; }
  .fruits-editorial .page-hero::before { background: linear-gradient(90deg,rgba(11,30,51,.89),rgba(11,30,51,.65)); }
 }
 @media(max-width: 480px) {

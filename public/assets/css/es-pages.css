@@ -23,7 +23,9 @@ body.es-page {
 }
 
 .es-page .es-hero {
-  min-height: 88vh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   padding: 150px 0 90px;
@@ -284,7 +286,9 @@ body.es-page {
 }
 
 .es-page.about-page .es-hero {
-  min-height: 84vh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   padding-bottom: 110px;
   background: radial-gradient(circle at 78% 18%, rgba(199, 162, 96, .13), transparent 30%), linear-gradient(135deg, #071e17 0%, #10352a 52%, #163a2d 100%)
 }
