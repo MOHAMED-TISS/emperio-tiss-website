@@ -41,8 +41,8 @@
     doc.head.appendChild(script);
   };
 
-  loadCss('/assets/css/site-pages.css?v=20260926-brand-foundation-2', 'etSitePages');
-  loadCss('/assets/css/site-pages-unified.css?v=20260926-brand-foundation-2', 'etUnifiedPages');
+  loadCss('/assets/css/site-pages.css?v=20260927-hero100', 'etSitePages');
+  loadCss('/assets/css/site-pages-unified.css?v=20260927-hero100', 'etUnifiedPages');
   loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   if (isProductPath) {

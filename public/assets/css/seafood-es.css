@@ -13,7 +13,9 @@
 }
 
 .seafood-page .es-hero {
-  min-height: 94svh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   position: relative;
@@ -267,7 +269,9 @@
   }
 
   .seafood-page .es-hero {
-    min-height: 84svh;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     padding-bottom: 52px
   }
 

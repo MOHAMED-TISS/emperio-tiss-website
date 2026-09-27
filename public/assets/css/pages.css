@@ -84,7 +84,8 @@ html[lang="fr"] .intl-hero .intl-btn {
 /* FULL-SCREEN HERO SYSTEM — shared ES page opening scenes occupy the first viewport. */
 .es-page .es-hero {
   min-height: 100vh;
-  min-height: 100svh
+  min-height: 100svh;
+  min-height: 100dvh
 }
 
 @media(max-width:800px) {

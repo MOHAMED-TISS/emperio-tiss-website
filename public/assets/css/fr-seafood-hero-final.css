@@ -3,7 +3,9 @@ html[lang="fr"] body.fr-seafood-visual .intl-hero {
   height: 100vh !important;
   min-height: 100vh !important;
   height: 100svh !important;
+  height: 100dvh !important;
   min-height: 100svh !important;
+  min-height: 100dvh !important;
   max-height: none !important;
   box-sizing: border-box;
 }

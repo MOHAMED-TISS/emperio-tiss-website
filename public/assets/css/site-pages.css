@@ -60,7 +60,9 @@
 .about-page .about-hero,
 .products-site .product-hero,
 .news-page .news-hero {
-  min-block-size: 88svh;
+  min-block-size: 100vh;
+  min-block-size: 100svh;
+  min-block-size: 100dvh;
   padding-block: 150px 82px;
   display: flex;
   align-items: flex-end
@@ -282,7 +284,9 @@
   .about-page .about-hero,
   .products-site .product-hero,
   .news-page .news-hero {
-    min-block-size: 80svh;
+    min-block-size: 100vh;
+    min-block-size: 100svh;
+    min-block-size: 100dvh;
     padding-block: 125px 64px
   }
 

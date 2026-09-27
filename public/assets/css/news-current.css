@@ -25,6 +25,7 @@
 .news-hero {
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   background: radial-gradient(circle at 80% 20%, rgba(208, 176, 113, .12), transparent 28%), linear-gradient(135deg, #071b17, #0b2b21 54%, #12382b);
   color: #fff;
   position: relative;
@@ -659,6 +660,7 @@
 .private-hero {
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: center
 }
@@ -703,7 +705,8 @@
 @media(max-width:640px) {
   .news-hero {
     min-height: 100vh;
-    min-height: 100svh
+    min-height: 100svh;
+    min-height: 100dvh
   }
 
   .news-hero-meta {

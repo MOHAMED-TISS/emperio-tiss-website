@@ -74,7 +74,9 @@ body.news-page h3 {
 .about-page .about-hero,
 .products-site .product-hero,
 .news-page .news-hero {
-  min-height: 88svh !important;
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+  min-height: 100dvh !important;
   padding: 150px 0 82px !important;
   display: flex !important;
   align-items: flex-end !important
@@ -333,7 +335,9 @@ body.news-page h3 {
   .about-page .about-hero,
   .products-site .product-hero,
   .news-page .news-hero {
-    min-height: 80svh !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
     padding: 125px 0 64px !important
   }
 

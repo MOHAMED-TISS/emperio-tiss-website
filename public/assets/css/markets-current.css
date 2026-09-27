@@ -44,7 +44,11 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  min-height: 680px;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   align-items: center
@@ -651,7 +655,9 @@
   .current-pin {
     position: relative;
     height: auto;
-    min-height: 760px
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh
   }
 
   .current-stage {
@@ -660,7 +666,9 @@
 
   .current-movement {
     position: relative;
-    min-height: 760px;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important

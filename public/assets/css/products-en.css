@@ -24,7 +24,9 @@ body.products-site {
 }
 
 .products-site .product-hero {
-  min-height: 90vh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   padding: 150px 0 90px;
@@ -283,7 +285,9 @@ body.products-site {
   }
 
   .products-site .product-hero {
-    min-height: 80vh;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     padding: 125px 0 65px
   }
 
@@ -333,12 +337,14 @@ body.products-site {
 /* FULL-SCREEN HERO SYSTEM — product opening scene fills the first viewport on every device. */
 .products-site .product-hero {
   min-height: 100vh;
-  min-height: 100svh
+  min-height: 100svh;
+  min-height: 100dvh
 }
 
 @media(max-width:800px) {
   .products-site .product-hero {
     min-height: 100vh;
-    min-height: 100svh
+    min-height: 100svh;
+    min-height: 100dvh
   }
 }

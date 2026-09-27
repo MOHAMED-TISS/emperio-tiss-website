@@ -13,7 +13,9 @@
 
 /* Legacy hero background intentionally neutral: fish-editorial.css owns the photograph, focus treatment and hero geometry. */
 .seafood-subpage .page-hero {
+  min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   padding: 0;
@@ -88,7 +90,9 @@
 
 @media(max-width:700px) {
   .seafood-subpage .page-hero {
-    min-height: 100svh;
+    min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
     padding: 0
   }
 

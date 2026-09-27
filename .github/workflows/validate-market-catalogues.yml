@@ -206,6 +206,71 @@ jobs:
           console.log('Home architecture regression: PASS');
           NODE
 
+      - name: Hero viewport regression
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const walk = dir => fs.readdirSync(dir, {withFileTypes:true}).flatMap(entry => {
+            const p = path.join(dir, entry.name);
+            return entry.isDirectory() ? walk(p) : [p];
+          });
+
+          const failures = [];
+          const heroBlocks = [];
+          for (const file of walk('public/assets/css').filter(p => p.endsWith('.css'))) {
+            const css = fs.readFileSync(file, 'utf8');
+            const blockRe = /([^{}]+)\{([^{}]*)\}/g;
+            let match;
+            while ((match = blockRe.exec(css))) {
+              const selector = match[1].trim();
+              const body = match[2];
+              if (!/(?:hero|current-pin|current-movement)/i.test(selector)) continue;
+              const viewportRe = /(?:min-height|min-block-size|height)\s*:\s*(\d+(?:\.\d+)?)(s|d)?vh\b/gi;
+              let value;
+              while ((value = viewportRe.exec(body))) {
+                heroBlocks.push({file, selector, value: Number(value[1]), unit: (value[2] || '') + 'vh'});
+                if (Number(value[1]) < 100) {
+                  failures.push(file + ' :: ' + selector.replace(/\s+/g, ' ') + ' -> ' + value[0]);
+                }
+              }
+            }
+          }
+
+          if (failures.length) {
+            console.error('Hero viewport values below 100 are forbidden:\n' + failures.join('\n'));
+            process.exit(1);
+          }
+
+          const required = [
+            ['public/assets/css/home.css', 'approved-hero'],
+            ['public/assets/css/site-pages-unified.css', 'product-hero'],
+            ['public/assets/css/about-media.css', 'about-it-hero'],
+            ['public/assets/css/products-en.css', 'product-hero'],
+            ['public/assets/css/seafood-es.css', 'es-hero'],
+            ['public/assets/css/seafood-subpages-en.css', 'page-hero'],
+            ['public/assets/css/seafood-subpages-es.css', 'page-hero'],
+            ['public/assets/css/produce-es.css', 'page-hero'],
+            ['public/assets/css/markets-current.css', 'current-pin'],
+            ['public/assets/css/news-current.css', 'news-hero'],
+            ['public/assets/css/contact.css', 'es-hero']
+          ];
+
+          for (const [file, selectorNeedle] of required) {
+            const matches = heroBlocks.filter(x => x.file === file && x.selector.includes(selectorNeedle));
+            if (!matches.some(x => x.value === 100 && x.unit === 'dvh')) {
+              failures.push(file + ' :: ' + selectorNeedle + ' lacks a 100dvh contract');
+            }
+          }
+
+          if (failures.length) {
+            console.error('Hero viewport contract failed:\n' + failures.join('\n'));
+            process.exit(1);
+          }
+          console.log('Hero viewport regression: PASS');
+          NODE
+
       - name: Catalogue tests
         run: node --test tests/market-catalogue.test.mjs
       - name: Arabic ES parity tests

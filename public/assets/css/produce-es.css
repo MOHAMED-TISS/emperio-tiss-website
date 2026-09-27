@@ -12,6 +12,7 @@
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   display: grid;
   align-items: end;
   padding: 150px 0 82px;

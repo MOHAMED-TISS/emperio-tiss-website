@@ -3,8 +3,10 @@ html[lang="it"] body.seafood-subpage .page-hero,
 html[lang="it"] body.seafood-subpage .intl-hero {
   min-height: 100vh !important;
   min-height: 100svh !important;
+  min-height: 100dvh !important;
   height: 100vh !important;
   height: 100svh !important;
+  height: 100dvh !important;
 }
 
 /* Shellfish hero: restore an image-led opening while overriding the legacy transparent hero rule. */

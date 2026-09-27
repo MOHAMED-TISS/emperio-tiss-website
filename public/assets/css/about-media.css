@@ -2,7 +2,9 @@
 /* Visual rhythm: image / clean / image / clean / image / clean / image / clean */
 
 .es-page.about-page .es-hero {
+  min-height: 100vh !important;
   min-height: 100svh !important;
+  min-height: 100dvh !important;
   height: auto;
   padding-top: 150px;
   padding-bottom: 88px;
@@ -44,7 +46,9 @@
 }
 
 .it-about-redesign .about-it-hero {
+  min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   display: grid;
   align-items: end;
   padding: 180px 0 88px;
@@ -342,7 +346,9 @@
   }
 
   .it-about-redesign .about-it-hero {
-    min-height: 92svh;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     padding: 150px 0 62px;
   }
 
@@ -835,7 +841,9 @@
 
 @media(max-width:800px) {
   .es-page.about-page .es-hero {
+    min-height: 100vh !important;
     min-height: 100svh !important;
+    min-height: 100dvh !important;
     padding-top: 124px;
     padding-bottom: 64px;
     background-position: center 42%;
