@@ -364,3 +364,41 @@ test('contact identifies an invalid Turnstile secret without sending mail', asyn
     assert.equal((await response.json()).code,'TURNSTILE_SECRET_INVALID');
   } finally { globalThis.fetch=originalFetch; }
 });
+
+test('contact fails closed when Siteverify is unavailable', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET='turnstile-secret';
+  const form=new FormData();
+  for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'unavailable@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+  form.set('cf-turnstile-response','token');
+  const originalFetch=globalThis.fetch;
+  globalThis.fetch=async url => {
+    if (url==='https://challenges.cloudflare.com/turnstile/v0/siteverify') throw new Error('unavailable');
+    throw new Error('Mail must not be sent when Siteverify is unavailable');
+  };
+  try {
+    const response=await worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com','cf-connecting-ip':'203.0.113.32'},body:form}),env);
+    assert.equal(response.status,503);
+    assert.equal((await response.json()).code,'TURNSTILE_UNAVAILABLE');
+  } finally { globalThis.fetch=originalFetch; }
+});
+
+test('contact rejects expired or duplicate Turnstile tokens without sending mail', async () => {
+  const {env}=setup(true);
+  env.TURNSTILE_SECRET='turnstile-secret';
+  const form=new FormData();
+  for (const [key,value] of Object.entries({nombre:'Ana',empresa:'Atlantic Foods',email:'duplicate@example.com',telefono:'+34 600 111 222',producto:'Pescados',destino:'Madrid',mensaje:'Caballa 500 g'})) form.set(key,value);
+  form.set('cf-turnstile-response','used-token');
+  const originalFetch=globalThis.fetch;
+  const originalWarn=console.warn;
+  console.warn=()=>{};
+  globalThis.fetch=async url => {
+    if (url==='https://challenges.cloudflare.com/turnstile/v0/siteverify') return Response.json({success:false,'error-codes':['timeout-or-duplicate']});
+    throw new Error('Mail must not be sent for an expired or duplicate token');
+  };
+  try {
+    const response=await worker.fetch(new Request('https://emperio-tiss.com/api/contact',{method:'POST',headers:{origin:'https://emperio-tiss.com','cf-connecting-ip':'203.0.113.33'},body:form}),env);
+    assert.equal(response.status,403);
+    assert.equal((await response.json()).code,'TURNSTILE_TOKEN_EXPIRED');
+  } finally { globalThis.fetch=originalFetch; console.warn=originalWarn; }
+});

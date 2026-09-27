@@ -528,6 +528,12 @@ async function verifyTurnstile(request, env, rawToken) {
 
   if (!result?.success) {
     const errors = Array.isArray(result?.['error-codes']) ? result['error-codes'] : [];
+    console.warn('Turnstile verification failed', {
+      success: false,
+      action: clean(result?.action, 80),
+      hostname: clean(result?.hostname, 255),
+      errors
+    });
     if (errors.includes('missing-input-secret') || errors.includes('invalid-input-secret')) {
       return {ok:false,status:503,code:'TURNSTILE_SECRET_INVALID'};
     }
@@ -536,8 +542,14 @@ async function verifyTurnstile(request, env, rawToken) {
     }
     return {ok:false,status:403,code:'TURNSTILE_FAILED'};
   }
-  if (result.action !== 'contact') return {ok:false,status:403,code:'TURNSTILE_ACTION_MISMATCH'};
-  if (!TURNSTILE_HOSTNAMES.has(result.hostname)) return {ok:false,status:403,code:'TURNSTILE_HOSTNAME_MISMATCH'};
+  if (result.action !== 'contact') {
+    console.warn('Turnstile verification failed', {success:true,action:clean(result.action,80),hostname:clean(result.hostname,255),errors:[]});
+    return {ok:false,status:403,code:'TURNSTILE_ACTION_MISMATCH'};
+  }
+  if (!TURNSTILE_HOSTNAMES.has(result.hostname)) {
+    console.warn('Turnstile verification failed', {success:true,action:clean(result.action,80),hostname:clean(result.hostname,255),errors:[]});
+    return {ok:false,status:403,code:'TURNSTILE_HOSTNAME_MISMATCH'};
+  }
   return {ok:true};
 }
 
@@ -557,9 +569,6 @@ async function handleContact(request, env) {
     mensaje = clean(form.get('mensaje'), 4000),
     turnstileToken = form.get('cf-turnstile-response');
 
-  if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje)
-    return json({ok:false,error:'Completa todos los campos obligatorios.',code:'VALIDATION_FAILED'},400);
-  if (!emailOk(email)) return json({ok:false,error:'Introduce un email válido.',code:'INVALID_EMAIL'},400);
   if (!turnstileSecret(env)) return json({ok:false,error:'La verificación de seguridad no está configurada.',code:'TURNSTILE_NOT_CONFIGURED'},503);
   if (!turnstileToken || String(turnstileToken).trim().length > 2048)
     return json({ok:false,error:'Completa la verificación de seguridad.',code:'TURNSTILE_TOKEN_REQUIRED'},400);
@@ -576,6 +585,10 @@ async function handleContact(request, env) {
       code: verification.code
     }, verification.status);
   }
+
+  if (!nombre || !empresa || !email || !telefono || !producto || !destino || !mensaje)
+    return json({ok:false,error:'Completa todos los campos obligatorios.',code:'VALIDATION_FAILED'},400);
+  if (!emailOk(email)) return json({ok:false,error:'Introduce un email válido.',code:'INVALID_EMAIL'},400);
 
   const html =
     `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Producto:</strong> ${escapeHtml(producto)}</p><p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p>`;
