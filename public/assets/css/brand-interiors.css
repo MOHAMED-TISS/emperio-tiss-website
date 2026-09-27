@@ -3,7 +3,7 @@
    Scope deliberately excludes the approved home experience and private/admin surfaces.
 */
 
-body:not(.home-experience):not(.private-page) {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) {
   --et-page-navy: #0B1E33;
   --et-page-navy-deep: #071524;
   --et-page-ivory: #F4F0E6;
@@ -17,7 +17,7 @@ body:not(.home-experience):not(.private-page) {
 }
 
 /* Retire legacy green/sand systems without changing page semantics. */
-body:not(.home-experience):not(.private-page).markets-current {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current {
   --mc-deep: var(--et-page-navy);
   --mc-deeper: var(--et-page-navy-deep);
   --mc-ivory: var(--et-page-ivory);
@@ -28,7 +28,7 @@ body:not(.home-experience):not(.private-page).markets-current {
   --mc-line: rgba(201, 162, 75, .62);
 }
 
-body:not(.home-experience):not(.private-page).news-current {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).news-current {
   --news-deep: var(--et-page-navy-deep);
   --news-ivory: var(--et-page-ivory);
   --news-ink: var(--et-page-ink);
@@ -37,21 +37,21 @@ body:not(.home-experience):not(.private-page).news-current {
   --news-line: var(--et-page-line);
 }
 
-body:not(.home-experience):not(.private-page).produce-page {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page {
   --produce-accent: var(--et-page-champagne);
   --produce-navy: var(--et-page-navy);
   --produce-ivory: var(--et-page-ivory);
   --produce-gold: var(--et-page-champagne);
 }
 
-body:not(.home-experience):not(.private-page).seafood-page {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page {
   --sea: var(--et-page-navy);
   --sea-deep: var(--et-page-navy-deep);
   --sea-blue: #173A57;
   --sea-line: var(--et-page-line);
 }
 
-body:not(.home-experience):not(.private-page).seafood-subpage {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage {
   --marine: var(--et-page-navy);
   --marine-2: #173A57;
   --marine-soft: var(--et-page-paper);
@@ -60,11 +60,11 @@ body:not(.home-experience):not(.private-page).seafood-subpage {
 }
 
 /* The approved metallic seal is the canonical brand mark on all public interiors. */
-body:not(.home-experience):not(.private-page) .site-header .site-logo img {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .site-header .site-logo img {
   opacity: 0 !important;
 }
 
-body:not(.home-experience):not(.private-page) .site-header .site-logo::after {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .site-header .site-logo::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -74,7 +74,7 @@ body:not(.home-experience):not(.private-page) .site-header .site-logo::after {
 }
 
 /* Shared editorial geometry. */
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-container,
   .page-hero-inner,
   .catalog-inner,
@@ -86,7 +86,7 @@ body:not(.home-experience):not(.private-page) :is(
   margin-inline: auto;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-kicker,
   .es-label,
   .eyebrow,
@@ -102,7 +102,7 @@ body:not(.home-experience):not(.private-page) :is(
   text-transform: uppercase;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero h1,
   .page-hero h1,
   .current-title,
@@ -114,7 +114,7 @@ body:not(.home-experience):not(.private-page) :is(
   letter-spacing: -.055em !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero h1 em,
   .page-hero h1 em,
   .current-title em,
@@ -130,11 +130,11 @@ body:not(.home-experience):not(.private-page) :is(
 }
 
 /* Opening scenes: one restrained navy authority across About, Contact and catalogues. */
-body:not(.home-experience):not(.private-page) .es-page .es-hero,
-body:not(.home-experience):not(.private-page).seafood-page .es-hero,
-body:not(.home-experience):not(.private-page).produce-page .page-hero,
-body:not(.home-experience):not(.private-page).seafood-subpage .page-hero,
-body:not(.home-experience):not(.private-page) .news-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-page .es-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-hero {
   position: relative;
   min-height: 100vh !important;
   min-height: 100svh !important;
@@ -147,30 +147,30 @@ body:not(.home-experience):not(.private-page) .news-hero {
   color: var(--et-page-ivory) !important;
 }
 
-body:not(.home-experience):not(.private-page) .es-page .es-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-page .es-hero {
   background:
     radial-gradient(circle at 78% 20%, rgba(201,162,75,.12), transparent 24%),
     linear-gradient(125deg, #071524 0%, #0B1E33 58%, #132A43 100%) !important;
 }
 
-body:not(.home-experience):not(.private-page).seafood-page .es-hero,
-body:not(.home-experience):not(.private-page).seafood-subpage .page-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero {
   background:
     linear-gradient(102deg, rgba(7,21,36,.92) 0%, rgba(11,30,51,.70) 48%, rgba(11,30,51,.34) 100%),
     var(--hero-image, url("/assets/images/home-seafood.webp")) center/cover no-repeat !important;
 }
 
-body:not(.home-experience):not(.private-page).produce-page .page-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero {
   background:
     linear-gradient(102deg, rgba(7,21,36,.90) 0%, rgba(11,30,51,.68) 50%, rgba(11,30,51,.28) 100%),
     #0B1E33 !important;
 }
 
-body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .page-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page.fruits-editorial .page-hero {
   background: #0B1E33 !important;
 }
 
-body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .fruits-hero-photo {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page.fruits-editorial .fruits-hero-photo {
   position: absolute;
   inset: 0;
   z-index: -2;
@@ -179,13 +179,13 @@ body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .fru
   height: 100%;
 }
 
-body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .fruits-hero-photo img {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page.fruits-editorial .fruits-hero-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .page-hero::before {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page.fruits-editorial .page-hero::before {
   inset: 0 !important;
   height: auto !important;
   transform: none !important;
@@ -194,7 +194,7 @@ body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .pag
   z-index: -1;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero .es-lead,
   .page-hero .lead,
   .current-lead,
@@ -209,27 +209,27 @@ body:not(.home-experience):not(.private-page) :is(
 }
 
 /* Editorial sections and rhythm. */
-body:not(.home-experience):not(.private-page) .es-section,
-body:not(.home-experience):not(.private-page) .catalog-section,
-body:not(.home-experience):not(.private-page) .seafood-catalog,
-body:not(.home-experience):not(.private-page) .news-feature-section,
-body:not(.home-experience):not(.private-page) .news-stream {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-section,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .catalog-section,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-feature-section,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-stream {
   background: var(--et-page-ivory) !important;
   color: var(--et-page-ink) !important;
 }
 
-body:not(.home-experience):not(.private-page) .es-section {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-section {
   padding: clamp(94px, 11vw, 150px) 0;
 }
 
-body:not(.home-experience):not(.private-page) .es-section.dark,
-body:not(.home-experience):not(.private-page) .news-intelligence,
-body:not(.home-experience):not(.private-page) .news-private {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-section.dark,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-intelligence,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-private {
   background: var(--et-page-navy) !important;
   color: var(--et-page-ivory) !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-section h2,
   .catalog-head h2,
   .seafood-catalog__head h2,
@@ -243,7 +243,7 @@ body:not(.home-experience):not(.private-page) :is(
   letter-spacing: -.045em !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-copy,
   .catalog-head > p,
   .seafood-catalog__head > p,
@@ -255,12 +255,12 @@ body:not(.home-experience):not(.private-page) :is(
   line-height: 1.82 !important;
 }
 
-body:not(.home-experience):not(.private-page) .dark :is(.es-copy, p) {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .dark :is(.es-copy, p) {
   color: rgba(244,240,230,.68) !important;
 }
 
 /* Cards: less app-like, more editorial. */
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-cards,
   .product-catalog-grid,
   .seafood-catalog-grid
@@ -269,7 +269,7 @@ body:not(.home-experience):not(.private-page) :is(
   background: var(--et-page-line);
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-card,
   .product-card,
   .seafood-catalog-card
@@ -280,7 +280,7 @@ body:not(.home-experience):not(.private-page) :is(
   box-shadow: none !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-card,
   .product-card,
   .seafood-catalog-card
@@ -290,7 +290,7 @@ body:not(.home-experience):not(.private-page) :is(
   z-index: 2;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-card h3,
   .product-card__title,
   .seafood-catalog-card h3
@@ -299,7 +299,7 @@ body:not(.home-experience):not(.private-page) :is(
   font-family: var(--et-serif) !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-card-num,
   .product-card__group,
   .product-card__meta,
@@ -309,7 +309,7 @@ body:not(.home-experience):not(.private-page) :is(
 }
 
 /* Catalogue controls use the same thin-line / champagne interaction language as Home. */
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .seafood-category-nav,
   .fish-catalog__filters,
   .catalog-filter
@@ -317,20 +317,20 @@ body:not(.home-experience):not(.private-page) :is(
   border-color: rgba(11,30,51,.12) !important;
 }
 
-body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-subpage .seafood-category-nav {
   background: rgba(244,240,230,.86) !important;
   border: 1px solid rgba(11,30,51,.10) !important;
   border-radius: 2px !important;
   box-shadow: none !important;
 }
 
-body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav__links {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-subpage .seafood-category-nav__links {
   background: var(--et-page-navy) !important;
   border-radius: 2px !important;
   box-shadow: none !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .seafood-catalog-search,
   .contact-form input,
   .contact-form textarea,
@@ -342,7 +342,7 @@ body:not(.home-experience):not(.private-page) :is(
   color: var(--et-page-ink) !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .seafood-catalog-search,
   .contact-form input,
   .contact-form textarea,
@@ -355,7 +355,7 @@ body:not(.home-experience):not(.private-page) :is(
 }
 
 /* Buttons and text links echo the approved Home actions. */
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-btn,
   .fruits-button,
   .news-button,
@@ -378,7 +378,7 @@ body:not(.home-experience):not(.private-page) :is(
   transition: transform .35s var(--et-ease), background .35s var(--et-ease), color .35s var(--et-ease);
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-btn.primary,
   .fruits-button,
   .current-cta a
@@ -388,7 +388,7 @@ body:not(.home-experience):not(.private-page) :is(
   color: var(--et-page-navy) !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-btn,
   .fruits-button,
   .news-button,
@@ -399,7 +399,7 @@ body:not(.home-experience):not(.private-page) :is(
 }
 
 /* Contact form: cleaner, wider editorial canvas. */
-body:not(.home-experience):not(.private-page) .es-form-wrap {
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-form-wrap {
   background: var(--et-page-paper) !important;
   border: 1px solid var(--et-page-line) !important;
   border-radius: 0 !important;
@@ -407,50 +407,50 @@ body:not(.home-experience):not(.private-page) .es-form-wrap {
 }
 
 /* Markets keeps its distinctive scroll narrative, now inside the same brand world. */
-body:not(.home-experience):not(.private-page).markets-current .current-stage {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current .current-stage {
   background: linear-gradient(180deg, #071524 0%, #0B1E33 34%, #102A45 58%, #0B1E33 78%, #071524 100%) !important;
 }
 
-body:not(.home-experience):not(.private-page).markets-current .current-content::before {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current .current-content::before {
   background: linear-gradient(90deg, rgba(7,21,36,.66), rgba(7,21,36,.34), transparent) !important;
 }
 
-body:not(.home-experience):not(.private-page).markets-current .current-word {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current .current-word {
   color: rgba(244,240,230,.08) !important;
 }
 
-body:not(.home-experience):not(.private-page).markets-current .current-word span {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current .current-word span {
   color: rgba(201,162,75,.26) !important;
 }
 
-body:not(.home-experience):not(.private-page).markets-current .current-line path {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current .current-line path {
   stroke: rgba(201,162,75,.66) !important;
 }
 
-body:not(.home-experience):not(.private-page).markets-current .current-cta {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).markets-current .current-cta {
   background: var(--et-page-ivory) !important;
   color: var(--et-page-ink) !important;
 }
 
 /* News: same hierarchy, no legacy green. */
-body:not(.home-experience):not(.private-page).news-current .news-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).news-current .news-hero {
   background:
     radial-gradient(circle at 78% 18%, rgba(201,162,75,.13), transparent 27%),
     linear-gradient(130deg, #071524, #0B1E33 58%, #132A43) !important;
 }
 
-body:not(.home-experience):not(.private-page).news-current .news-feature {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).news-current .news-feature {
   background: var(--et-page-navy) !important;
 }
 
-body:not(.home-experience):not(.private-page).news-current .news-feature-visual {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).news-current .news-feature-visual {
   background:
     radial-gradient(circle at 48% 46%, rgba(201,162,75,.14), transparent 18%),
     linear-gradient(145deg, #071524, #132A43) !important;
 }
 
 /* Footers: universal dark close, including compact catalogue footer bands. */
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-footer,
   .site-footer,
   .fish-site-footer,
@@ -460,7 +460,7 @@ body:not(.home-experience):not(.private-page) :is(
   color: var(--et-page-ivory) !important;
 }
 
-body:not(.home-experience):not(.private-page) :is(
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-footer,
   .site-footer,
   .fish-site-footer,
@@ -479,7 +479,7 @@ body.home-page:not(.home-experience) .site-header .site-logo::after {
 }
 
 /* RTL stays RTL; the visual system should not force Western alignment. */
-html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
+html[dir="rtl"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-container,
   .page-hero-inner,
   .catalog-inner,
@@ -491,7 +491,7 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
 }
 
 @media (max-width: 800px) {
-  body:not(.home-experience):not(.private-page) :is(
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
     .es-container,
     .page-hero-inner,
     .catalog-inner,
@@ -502,15 +502,15 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
     width: min(100% - 36px, 1180px);
   }
 
-  body:not(.home-experience):not(.private-page) .es-page .es-hero,
-  body:not(.home-experience):not(.private-page).seafood-page .es-hero,
-  body:not(.home-experience):not(.private-page).produce-page .page-hero,
-  body:not(.home-experience):not(.private-page).seafood-subpage .page-hero,
-  body:not(.home-experience):not(.private-page) .news-hero {
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-page .es-hero,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-hero {
     padding: 132px 0 54px !important;
   }
 
-  body:not(.home-experience):not(.private-page) :is(
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
     .es-hero h1,
     .page-hero h1,
     .current-title,
@@ -520,7 +520,7 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
     line-height: .92 !important;
   }
 
-  body:not(.home-experience):not(.private-page) :is(
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
     .es-copy,
     .catalog-head > p,
     .seafood-catalog__head > p,
@@ -534,7 +534,7 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
     line-height: 1.72 !important;
   }
 
-  body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav {
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-subpage .seafood-category-nav {
     width: calc(100% - 36px);
     max-width: none;
     margin: 24px auto 46px;
@@ -543,13 +543,13 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
     overflow-x: auto;
   }
 
-  body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav__links {
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-subpage .seafood-category-nav__links {
     min-width: max-content;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body:not(.home-experience):not(.private-page) :is(
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
     .es-card,
     .product-card,
     .seafood-catalog-card,
