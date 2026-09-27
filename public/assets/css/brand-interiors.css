@@ -130,7 +130,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
 }
 
 /* Opening scenes: one restrained navy authority across About, Contact and catalogues. */
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-page .es-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page).es-page .es-hero,
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
 body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero,
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero,
@@ -147,7 +147,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-her
   color: var(--et-page-ivory) !important;
 }
 
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-page .es-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).es-page .es-hero {
   background:
     radial-gradient(circle at 78% 20%, rgba(201,162,75,.12), transparent 24%),
     linear-gradient(125deg, #071524 0%, #0B1E33 58%, #132A43 100%) !important;
@@ -502,7 +502,7 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page):not(.private-admin
     width: min(100% - 36px, 1180px);
   }
 
-  body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-page .es-hero,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).es-page .es-hero,
   body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
   body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero,
   body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero,
