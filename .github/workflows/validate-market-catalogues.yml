@@ -171,7 +171,7 @@ jobs:
           const requiredHtml = [
             'home-markets-map',
             'market-grid',
-            '/assets/css/home.css?v=20260927-contact-presence',
+            '/assets/css/home.css?v=20260927-action-buttons',
             '/assets/js/home-modern.js?v=20260927-experience'
           ];
           for (const token of requiredHtml) {
