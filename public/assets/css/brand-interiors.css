@@ -59,19 +59,8 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-s
   --marine-gold: var(--et-page-champagne);
 }
 
-/* The approved metallic seal is the canonical brand mark on all public interiors. */
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .site-header .site-logo img {
-  opacity: 0 !important;
-}
-
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .site-header .site-logo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block;
-  background: url("/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal") center/contain no-repeat;
-  pointer-events: none;
-}
+/* Header branding is owned exclusively by header-final.css + header-canonical.js.
+   Do not redraw or override the canonical Home masthead here. */
 
 /* Shared editorial geometry. */
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
