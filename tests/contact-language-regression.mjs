@@ -78,7 +78,7 @@ assert.match(globalCore, /appearance:\s*'always'/,
   'Contact Turnstile widget must remain visible in the form');
 assert.doesNotMatch(globalCore, /execution:\s*'execute'/,
   'Contact Turnstile must not use hidden execute-only mode');
-assert.match(globalCore, /payload\.set\('cf-turnstile-response',\s*token\)/,
+assert.match(globalCore, /payload\.set\('cf-turnstile-response',\s*turnstileToken\)/,
   'All contact submissions must send the Turnstile token');
 assert.match(globalCore, /\^\\\/\(en\|fr\|it\|ar\)\\\/contact/,
   'Protected contact runtime must include all international contact routes');
