@@ -1,0 +1,564 @@
+/* EMPERIO TISS — INTERIOR BRAND SYSTEM
+   Aligns public inner pages with the approved 2026 home identity.
+   Scope deliberately excludes the approved home experience and private/admin surfaces.
+*/
+
+body:not(.home-experience):not(.private-page) {
+  --et-page-navy: #0B1E33;
+  --et-page-navy-deep: #071524;
+  --et-page-ivory: #F4F0E6;
+  --et-page-paper: #F8F5EE;
+  --et-page-champagne: #C9A24B;
+  --et-page-ink: #0B1E33;
+  --et-page-muted: rgba(11, 30, 51, .62);
+  --et-page-line: rgba(11, 30, 51, .13);
+  background: var(--et-page-ivory);
+  color: var(--et-page-ink);
+}
+
+/* Retire legacy green/sand systems without changing page semantics. */
+body:not(.home-experience):not(.private-page).markets-current {
+  --mc-deep: var(--et-page-navy);
+  --mc-deeper: var(--et-page-navy-deep);
+  --mc-ivory: var(--et-page-ivory);
+  --mc-sand: #DDD3BE;
+  --mc-gold: var(--et-page-champagne);
+  --mc-ink: var(--et-page-ink);
+  --mc-muted: var(--et-page-muted);
+  --mc-line: rgba(201, 162, 75, .62);
+}
+
+body:not(.home-experience):not(.private-page).news-current {
+  --news-deep: var(--et-page-navy-deep);
+  --news-ivory: var(--et-page-ivory);
+  --news-ink: var(--et-page-ink);
+  --news-gold: var(--et-page-champagne);
+  --news-muted: var(--et-page-muted);
+  --news-line: var(--et-page-line);
+}
+
+body:not(.home-experience):not(.private-page).produce-page {
+  --produce-accent: var(--et-page-champagne);
+  --produce-navy: var(--et-page-navy);
+  --produce-ivory: var(--et-page-ivory);
+  --produce-gold: var(--et-page-champagne);
+}
+
+body:not(.home-experience):not(.private-page).seafood-page {
+  --sea: var(--et-page-navy);
+  --sea-deep: var(--et-page-navy-deep);
+  --sea-blue: #173A57;
+  --sea-line: var(--et-page-line);
+}
+
+body:not(.home-experience):not(.private-page).seafood-subpage {
+  --marine: var(--et-page-navy);
+  --marine-2: #173A57;
+  --marine-soft: var(--et-page-paper);
+  --marine-ink: var(--et-page-ink);
+  --marine-gold: var(--et-page-champagne);
+}
+
+/* The approved metallic seal is the canonical brand mark on all public interiors. */
+body:not(.home-experience):not(.private-page) .site-header .site-logo img {
+  opacity: 0 !important;
+}
+
+body:not(.home-experience):not(.private-page) .site-header .site-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: url("/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal") center/contain no-repeat;
+  pointer-events: none;
+}
+
+/* Shared editorial geometry. */
+body:not(.home-experience):not(.private-page) :is(
+  .es-container,
+  .page-hero-inner,
+  .catalog-inner,
+  .seafood-catalog__inner,
+  .current-wrap,
+  .news-wrap
+) {
+  width: min(1180px, calc(100% - 72px));
+  margin-inline: auto;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-kicker,
+  .es-label,
+  .eyebrow,
+  .current-eyebrow,
+  .news-eyebrow
+) {
+  color: var(--et-page-champagne) !important;
+  font-family: var(--et-sans) !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+  letter-spacing: .19em !important;
+  text-transform: uppercase;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-hero h1,
+  .page-hero h1,
+  .current-title,
+  .news-hero h1
+) {
+  font-family: var(--et-serif) !important;
+  font-weight: 400 !important;
+  line-height: .88 !important;
+  letter-spacing: -.055em !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-hero h1 em,
+  .page-hero h1 em,
+  .current-title em,
+  .news-hero h1 em,
+  .es-section h2 em,
+  .catalog-head h2 em,
+  .seafood-catalog__head h2 em,
+  .news-section-head h2 em,
+  .current-movement-left h2 em
+) {
+  color: var(--et-page-champagne) !important;
+  font-style: italic;
+}
+
+/* Opening scenes: one restrained navy authority across About, Contact and catalogues. */
+body:not(.home-experience):not(.private-page) .es-page .es-hero,
+body:not(.home-experience):not(.private-page).seafood-page .es-hero,
+body:not(.home-experience):not(.private-page).produce-page .page-hero,
+body:not(.home-experience):not(.private-page).seafood-subpage .page-hero,
+body:not(.home-experience):not(.private-page) .news-hero {
+  position: relative;
+  min-height: 100vh !important;
+  min-height: 100svh !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  padding: 166px 0 86px !important;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--et-page-navy) !important;
+  color: var(--et-page-ivory) !important;
+}
+
+body:not(.home-experience):not(.private-page) .es-page .es-hero {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(201,162,75,.12), transparent 24%),
+    linear-gradient(125deg, #071524 0%, #0B1E33 58%, #132A43 100%) !important;
+}
+
+body:not(.home-experience):not(.private-page).seafood-page .es-hero,
+body:not(.home-experience):not(.private-page).seafood-subpage .page-hero {
+  background:
+    linear-gradient(102deg, rgba(7,21,36,.92) 0%, rgba(11,30,51,.70) 48%, rgba(11,30,51,.34) 100%),
+    var(--hero-image, url("/assets/images/home-seafood.webp")) center/cover no-repeat !important;
+}
+
+body:not(.home-experience):not(.private-page).produce-page .page-hero {
+  background:
+    linear-gradient(102deg, rgba(7,21,36,.90) 0%, rgba(11,30,51,.68) 50%, rgba(11,30,51,.28) 100%),
+    #0B1E33 !important;
+}
+
+body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .page-hero {
+  background: #0B1E33 !important;
+}
+
+body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .fruits-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .fruits-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body:not(.home-experience):not(.private-page).produce-page.fruits-editorial .page-hero::before {
+  inset: 0 !important;
+  height: auto !important;
+  transform: none !important;
+  background: linear-gradient(102deg, rgba(7,21,36,.91), rgba(11,30,51,.64) 55%, rgba(11,30,51,.30)) !important;
+  opacity: 1 !important;
+  z-index: -1;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-hero .es-lead,
+  .page-hero .lead,
+  .current-lead,
+  .news-lead
+) {
+  max-width: 700px;
+  color: rgba(244,240,230,.82) !important;
+  font-family: var(--et-serif) !important;
+  font-size: clamp(17px, 1.7vw, 21px) !important;
+  line-height: 1.72 !important;
+  letter-spacing: .006em;
+}
+
+/* Editorial sections and rhythm. */
+body:not(.home-experience):not(.private-page) .es-section,
+body:not(.home-experience):not(.private-page) .catalog-section,
+body:not(.home-experience):not(.private-page) .seafood-catalog,
+body:not(.home-experience):not(.private-page) .news-feature-section,
+body:not(.home-experience):not(.private-page) .news-stream {
+  background: var(--et-page-ivory) !important;
+  color: var(--et-page-ink) !important;
+}
+
+body:not(.home-experience):not(.private-page) .es-section {
+  padding: clamp(94px, 11vw, 150px) 0;
+}
+
+body:not(.home-experience):not(.private-page) .es-section.dark,
+body:not(.home-experience):not(.private-page) .news-intelligence,
+body:not(.home-experience):not(.private-page) .news-private {
+  background: var(--et-page-navy) !important;
+  color: var(--et-page-ivory) !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-section h2,
+  .catalog-head h2,
+  .seafood-catalog__head h2,
+  .news-section-head h2,
+  .current-movement-left h2
+) {
+  color: inherit;
+  font-family: var(--et-serif) !important;
+  font-weight: 400 !important;
+  line-height: .92 !important;
+  letter-spacing: -.045em !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-copy,
+  .catalog-head > p,
+  .seafood-catalog__head > p,
+  .news-section-head > p
+) {
+  color: var(--et-page-muted) !important;
+  font-family: var(--et-serif) !important;
+  font-size: 17px !important;
+  line-height: 1.82 !important;
+}
+
+body:not(.home-experience):not(.private-page) .dark :is(.es-copy, p) {
+  color: rgba(244,240,230,.68) !important;
+}
+
+/* Cards: less app-like, more editorial. */
+body:not(.home-experience):not(.private-page) :is(
+  .es-cards,
+  .product-catalog-grid,
+  .seafood-catalog-grid
+) {
+  gap: 1px !important;
+  background: var(--et-page-line);
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-card,
+  .product-card,
+  .seafood-catalog-card
+) {
+  background: var(--et-page-paper) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-card,
+  .product-card,
+  .seafood-catalog-card
+):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(11,30,51,.09) !important;
+  z-index: 2;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-card h3,
+  .product-card__title,
+  .seafood-catalog-card h3
+) {
+  color: var(--et-page-ink) !important;
+  font-family: var(--et-serif) !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-card-num,
+  .product-card__group,
+  .product-card__meta,
+  .seafood-catalog-card__meta
+) {
+  color: var(--et-page-champagne) !important;
+}
+
+/* Catalogue controls use the same thin-line / champagne interaction language as Home. */
+body:not(.home-experience):not(.private-page) :is(
+  .seafood-category-nav,
+  .fish-catalog__filters,
+  .catalog-filter
+) {
+  border-color: rgba(11,30,51,.12) !important;
+}
+
+body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav {
+  background: rgba(244,240,230,.86) !important;
+  border: 1px solid rgba(11,30,51,.10) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+
+body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav__links {
+  background: var(--et-page-navy) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .seafood-catalog-search,
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select
+) {
+  border: 1px solid rgba(11,30,51,.16) !important;
+  border-radius: 2px !important;
+  background: rgba(248,245,238,.82) !important;
+  color: var(--et-page-ink) !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .seafood-catalog-search,
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select
+):focus {
+  outline: 1px solid var(--et-page-champagne) !important;
+  outline-offset: 2px;
+  border-color: var(--et-page-champagne) !important;
+  box-shadow: none !important;
+}
+
+/* Buttons and text links echo the approved Home actions. */
+body:not(.home-experience):not(.private-page) :is(
+  .es-btn,
+  .fruits-button,
+  .news-button,
+  .news-text-link,
+  .current-cta a
+) {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 22px;
+  border: 1px solid rgba(201,162,75,.64) !important;
+  border-radius: 999px !important;
+  background: transparent;
+  color: inherit;
+  font: 600 10px/1 var(--et-sans) !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase;
+  transition: transform .35s var(--et-ease), background .35s var(--et-ease), color .35s var(--et-ease);
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-btn.primary,
+  .fruits-button,
+  .current-cta a
+) {
+  background: linear-gradient(135deg, var(--et-page-ivory), #E4C98C) !important;
+  border-color: var(--et-page-champagne) !important;
+  color: var(--et-page-navy) !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-btn,
+  .fruits-button,
+  .news-button,
+  .news-text-link,
+  .current-cta a
+):hover {
+  transform: translateY(-3px);
+}
+
+/* Contact form: cleaner, wider editorial canvas. */
+body:not(.home-experience):not(.private-page) .es-form-wrap {
+  background: var(--et-page-paper) !important;
+  border: 1px solid var(--et-page-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Markets keeps its distinctive scroll narrative, now inside the same brand world. */
+body:not(.home-experience):not(.private-page).markets-current .current-stage {
+  background: linear-gradient(180deg, #071524 0%, #0B1E33 34%, #102A45 58%, #0B1E33 78%, #071524 100%) !important;
+}
+
+body:not(.home-experience):not(.private-page).markets-current .current-content::before {
+  background: linear-gradient(90deg, rgba(7,21,36,.66), rgba(7,21,36,.34), transparent) !important;
+}
+
+body:not(.home-experience):not(.private-page).markets-current .current-word {
+  color: rgba(244,240,230,.08) !important;
+}
+
+body:not(.home-experience):not(.private-page).markets-current .current-word span {
+  color: rgba(201,162,75,.26) !important;
+}
+
+body:not(.home-experience):not(.private-page).markets-current .current-line path {
+  stroke: rgba(201,162,75,.66) !important;
+}
+
+body:not(.home-experience):not(.private-page).markets-current .current-cta {
+  background: var(--et-page-ivory) !important;
+  color: var(--et-page-ink) !important;
+}
+
+/* News: same hierarchy, no legacy green. */
+body:not(.home-experience):not(.private-page).news-current .news-hero {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(201,162,75,.13), transparent 27%),
+    linear-gradient(130deg, #071524, #0B1E33 58%, #132A43) !important;
+}
+
+body:not(.home-experience):not(.private-page).news-current .news-feature {
+  background: var(--et-page-navy) !important;
+}
+
+body:not(.home-experience):not(.private-page).news-current .news-feature-visual {
+  background:
+    radial-gradient(circle at 48% 46%, rgba(201,162,75,.14), transparent 18%),
+    linear-gradient(145deg, #071524, #132A43) !important;
+}
+
+/* Footers: universal dark close, including compact catalogue footer bands. */
+body:not(.home-experience):not(.private-page) :is(
+  .es-footer,
+  .site-footer,
+  .fish-site-footer,
+  .footer-band
+) {
+  background: var(--et-page-navy-deep) !important;
+  color: var(--et-page-ivory) !important;
+}
+
+body:not(.home-experience):not(.private-page) :is(
+  .es-footer,
+  .site-footer,
+  .fish-site-footer,
+  .footer-band
+) img {
+  filter: none;
+}
+
+/* Product/seasonal landing pages already inherit Home's composition; only normalize the shell. */
+body.home-page:not(.home-experience) {
+  background: var(--et-page-ivory);
+}
+
+body.home-page:not(.home-experience) .site-header .site-logo::after {
+  background-image: url("/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal");
+}
+
+/* RTL stays RTL; the visual system should not force Western alignment. */
+html[dir="rtl"] body:not(.home-experience):not(.private-page) :is(
+  .es-container,
+  .page-hero-inner,
+  .catalog-inner,
+  .seafood-catalog__inner,
+  .current-wrap,
+  .news-wrap
+) {
+  text-align: start;
+}
+
+@media (max-width: 800px) {
+  body:not(.home-experience):not(.private-page) :is(
+    .es-container,
+    .page-hero-inner,
+    .catalog-inner,
+    .seafood-catalog__inner,
+    .current-wrap,
+    .news-wrap
+  ) {
+    width: min(100% - 36px, 1180px);
+  }
+
+  body:not(.home-experience):not(.private-page) .es-page .es-hero,
+  body:not(.home-experience):not(.private-page).seafood-page .es-hero,
+  body:not(.home-experience):not(.private-page).produce-page .page-hero,
+  body:not(.home-experience):not(.private-page).seafood-subpage .page-hero,
+  body:not(.home-experience):not(.private-page) .news-hero {
+    padding: 132px 0 54px !important;
+  }
+
+  body:not(.home-experience):not(.private-page) :is(
+    .es-hero h1,
+    .page-hero h1,
+    .current-title,
+    .news-hero h1
+  ) {
+    font-size: clamp(3.3rem, 15vw, 5.6rem) !important;
+    line-height: .92 !important;
+  }
+
+  body:not(.home-experience):not(.private-page) :is(
+    .es-copy,
+    .catalog-head > p,
+    .seafood-catalog__head > p,
+    .news-section-head > p,
+    .es-hero .es-lead,
+    .page-hero .lead,
+    .current-lead,
+    .news-lead
+  ) {
+    font-size: 16px !important;
+    line-height: 1.72 !important;
+  }
+
+  body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav {
+    width: calc(100% - 36px);
+    max-width: none;
+    margin: 24px auto 46px;
+    padding: 12px;
+    gap: 12px;
+    overflow-x: auto;
+  }
+
+  body:not(.home-experience):not(.private-page) .seafood-subpage .seafood-category-nav__links {
+    min-width: max-content;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home-experience):not(.private-page) :is(
+    .es-card,
+    .product-card,
+    .seafood-catalog-card,
+    .es-btn,
+    .fruits-button,
+    .news-button,
+    .news-text-link,
+    .current-cta a
+  ) {
+    transition: none !important;
+  }
+}
