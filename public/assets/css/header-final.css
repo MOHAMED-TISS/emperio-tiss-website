@@ -1,4 +1,4 @@
-@import url("/assets/css/brand-interiors.css?v=20260927-home-sync-1");
+@import url("/assets/css/brand-interiors.css?v=20260927-header-unified-1");
 
 /* EMPERIO TISS — SHARED BRAND MASTHEAD
    Concept: Maritime Seal Masthead.
@@ -120,7 +120,7 @@
   text-decoration: none;
 }
 
-.site-header .home-header-nav a::after {
+.site-header :is(.home-header-nav, .home-header-secondary) a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -133,12 +133,19 @@
   transition: transform .35s var(--et-ease, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.site-header .home-header-nav a:hover::after,
-.site-header .home-header-nav a:focus-visible::after {
+.site-header :is(.home-header-nav, .home-header-secondary) a:hover::after,
+.site-header :is(.home-header-nav, .home-header-secondary) a:focus-visible::after,
+.site-header :is(.home-header-nav, .home-header-secondary) a.is-active::after,
+.site-header :is(.home-header-nav, .home-header-secondary) a[aria-current="page"]::after {
   transform: scaleX(1);
 }
 
 .site-header .home-header-secondary a:hover {
+  color: var(--et-champagne, #C9A24B);
+}
+
+.site-header :is(.home-header-nav, .home-header-secondary) a.is-active,
+.site-header :is(.home-header-nav, .home-header-secondary) a[aria-current="page"] {
   color: var(--et-champagne, #C9A24B);
 }
 
@@ -617,7 +624,7 @@ html[dir="rtl"] body.et-brand-shell .nav-overlay-contact {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-header .home-header-nav a::after,
+  .site-header :is(.home-header-nav, .home-header-secondary) a::after,
   .site-header :is(.et-whatsapp, .et-language-current, .mobile-menu),
   .site-header .et-language-dropdown,
   .site-header .et-language-dropdown a,
