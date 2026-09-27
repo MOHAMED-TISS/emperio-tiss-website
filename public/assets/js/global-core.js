@@ -196,7 +196,7 @@
     status.insertAdjacentElement('beforebegin', mount);
 
     let widgetId = null;
-    let pendingToken = null;
+    let turnstileToken = '';
 
     const ensureWidget = async () => {
       const turnstile = await loadTurnstileApi();
@@ -204,53 +204,40 @@
       widgetId = turnstile.render(mount, {
         sitekey: TURNSTILE_SITE_KEY,
         action: 'contact',
-        execution: 'execute',
-        appearance: 'interaction-only',
+        appearance: 'always',
+        theme: 'light',
         callback: token => {
-          if (!pendingToken) return;
-          const resolve = pendingToken.resolve;
-          pendingToken = null;
-          resolve(token);
+          turnstileToken = token || '';
+          if (status.dataset.state === 'security') {
+            status.textContent = '';
+            delete status.dataset.state;
+          }
         },
         'expired-callback': () => {
-          if (!pendingToken) return;
-          const reject = pendingToken.reject;
-          pendingToken = null;
-          reject(new Error('TURNSTILE_EXPIRED'));
+          turnstileToken = '';
+          status.textContent = contactCopy.security;
+          status.dataset.state = 'security';
         },
         'error-callback': () => {
-          if (!pendingToken) return;
-          const reject = pendingToken.reject;
-          pendingToken = null;
-          reject(new Error('TURNSTILE_FAILED'));
+          turnstileToken = '';
+          status.textContent = contactCopy.security;
+          status.dataset.state = 'error';
         }
       });
       return turnstile;
     };
 
-    const getTurnstileToken = async () => {
-      const turnstile = await ensureWidget();
-      if (widgetId === null || pendingToken) throw new Error('TURNSTILE_UNAVAILABLE');
-      return new Promise((resolve, reject) => {
-        pendingToken = { resolve, reject };
-        try {
-          turnstile.execute(widgetId);
-        } catch (error) {
-          pendingToken = null;
-          reject(error);
-        }
-      });
-    };
-
     const resetTurnstile = () => {
+      turnstileToken = '';
       if (widgetId !== null && window.turnstile) {
         try { window.turnstile.reset(widgetId); } catch (_) {}
       }
-      pendingToken = null;
     };
 
-    // Start loading early, but keep the contact form usable while the API arrives.
-    ensureWidget().catch(() => {});
+    ensureWidget().catch(() => {
+      status.textContent = contactCopy.security;
+      status.dataset.state = 'error';
+    });
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -262,9 +249,13 @@
       status.textContent = contactCopy.verifying;
       status.dataset.state = 'pending';
       try {
-        const token = await getTurnstileToken();
+        await ensureWidget();
+        if (!turnstileToken && widgetId !== null && window.turnstile?.getResponse) {
+          turnstileToken = window.turnstile.getResponse(widgetId) || '';
+        }
+        if (!turnstileToken) throw new Error('TURNSTILE_TOKEN_REQUIRED');
         const payload = new FormData(form);
-        payload.set('cf-turnstile-response', token);
+        payload.set('cf-turnstile-response', turnstileToken);
         status.textContent = contactCopy.sending;
         const response = await fetch('/api/contact', {
           method: 'POST',

@@ -106,3 +106,33 @@ body.es-page .es-hero {
     justify-content: center
   }
 }
+
+/* Visible Turnstile verification — part of the Contact conversion flow. */
+.contact-form .contact-turnstile {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 4px 0 2px;
+  overflow: visible;
+}
+
+html[dir="rtl"] .contact-form .contact-turnstile {
+  justify-content: flex-end;
+}
+
+.contact-form .contact-turnstile iframe {
+  max-width: 100%;
+}
+
+@media (max-width: 360px) {
+  .contact-form .contact-turnstile {
+    transform: scale(.92);
+    transform-origin: left center;
+    width: 108.7%;
+  }
+
+  html[dir="rtl"] .contact-form .contact-turnstile {
+    transform-origin: right center;
+  }
+}

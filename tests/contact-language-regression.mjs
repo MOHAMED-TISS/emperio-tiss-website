@@ -17,7 +17,7 @@ for (const [lang, path, prefix] of pages) {
   assert.match(html, /class="[^"]*es-page[^"]*"/, `${lang}: Contact must use the ES visual shell`);
   assert.match(html, /href="\/assets\/css\/es-pages\.css/,
     `${lang}: ES visual stylesheet must be loaded`);
-  assert.match(html, /href="\/assets\/css\/contact\.css\?v=20260926-hero100-force"/,
+  assert.match(html, /href="\/assets\/css\/contact\.css\?v=20260927-visible-turnstile-1"/,
     `${lang}: contact stylesheet cache key must include the 100vh hero release`);
   assert.match(html, /action="\/api\/contact"/,
   `${lang}: form must use canonical contact endpoint`);
@@ -74,6 +74,10 @@ assert.match(globalCore, /0x4AAAAAAEaIn_beKLMv4VjA/,
   'Contact runtime must use the configured public Turnstile sitekey');
 assert.match(globalCore, /action:\s*'contact'/,
   'Contact Turnstile widget must use the contact action');
+assert.match(globalCore, /appearance:\s*'always'/,
+  'Contact Turnstile widget must remain visible in the form');
+assert.doesNotMatch(globalCore, /execution:\s*'execute'/,
+  'Contact Turnstile must not use hidden execute-only mode');
 assert.match(globalCore, /payload\.set\('cf-turnstile-response',\s*token\)/,
   'All contact submissions must send the Turnstile token');
 assert.match(globalCore, /\^\\\/\(en\|fr\|it\|ar\)\\\/contact/,
@@ -89,9 +93,12 @@ assert.match(workerSource, /allowRequest\(request, env, email, 'contact'\)/);
 
 for (const [, file] of pages) {
   const html = fs.readFileSync(file, 'utf8');
-  assert.match(html, /\/assets\/js\/global\.js\?v=20260927-turnstile-1/,
+  assert.match(html, /\/assets\/js\/global\.js\?v=20260927-visible-turnstile-1/,
     file + ' must force the Turnstile-capable global runtime');
 }
 assert.match(globalCore, /TURNSTILE_API/);
 
 console.log('contact-language-regression: PASS');
+
+assert.match(contactCss, /\.contact-form \.contact-turnstile\s*\{/,
+  'Contact stylesheet must reserve visible space for the Turnstile widget');
