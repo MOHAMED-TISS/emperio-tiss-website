@@ -93,7 +93,7 @@ assert.match(workerSource, /allowRequest\(request, env, email, 'contact'\)/);
 
 for (const [, file] of pages) {
   const html = fs.readFileSync(file, 'utf8');
-  assert.match(html, /\/assets\/js\/global\.js\?v=20260927-visible-turnstile-1/,
+  assert.match(html, /\/assets\/js\/global\.js\?v=20260927-turnstile-secret-compat-1/,
     file + ' must force the Turnstile-capable global runtime');
 }
 assert.match(globalCore, /TURNSTILE_API/);
