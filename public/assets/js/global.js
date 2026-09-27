@@ -49,7 +49,7 @@
     loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
     loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
   }
-  loadCss('/assets/css/header-final.css?v=20260926-brand-foundation-2', 'etHeaderFinalCanonical');
+  loadCss('/assets/css/header-final.css?v=20260927-canonical-header-1', 'etHeaderFinalCanonical');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
@@ -61,7 +61,7 @@
   }
 
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
-  loadCss('/assets/css/brand-interiors.css?v=20260927-home-sync-1', 'etBrandInteriors');
+  loadCss('/assets/css/brand-interiors.css?v=20260927-header-unified-1', 'etBrandInteriors');
 
   const socialCopy = {
     es: { whatsapp: 'Contactar por WhatsApp', linkedin: 'LinkedIn' },
