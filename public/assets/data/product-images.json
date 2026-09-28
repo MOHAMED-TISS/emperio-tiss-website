@@ -73,6 +73,10 @@
     "/assets/products/incoming/Pez sable.webp",
     "/assets/products/incoming/Pez sable 1.jpg"
   ],
+  "pulpo-bandeja": [
+    "/assets/products/Pulpo Bandeja.jpeg",
+    "/assets/products/Pulpo Bandeja 2.jpeg"
+  ],
   "pulpo-bloque": [
     "/assets/products/incoming/Pulpo.jpg",
     "/assets/products/incoming/Pulpo(1).jpg",
@@ -113,9 +117,5 @@
   ],
   "sole": [
     "/assets/products/incoming/Lenguado.jpg"
-  ],
-  "pulpo-bandeja": [
-    "/assets/products/Pulpo Bandeja.jpeg",
-    "/assets/products/Pulpo Bandeja 2.jpeg"
   ]
 }
