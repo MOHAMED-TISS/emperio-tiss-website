@@ -149,6 +149,42 @@
       "reference": "7849"
     },
     {
+      "id": "puntilla-extra",
+      "commercialName": "Calamaretti extra",
+      "scientificName": "Alloteuthis spp.",
+      "group": "Cefalopodi",
+      "type": "Calamaro",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Marocco"
+      ],
+      "faoZone": [
+        "Secondo zona di cattura"
+      ],
+      "calibre": [
+        "Secondo disponibilità"
+      ],
+      "quality": [
+        "Specifica professionale"
+      ],
+      "format": [
+        "Intero / surgelato"
+      ],
+      "packaging": [
+        "Secondo mercato"
+      ],
+      "availability": [
+        "Secondo disponibilità"
+      ],
+      "images": [
+        "/assets/products/incoming/Puntillas-extra-1.webp?v=20260928-puntillas-fix-1",
+        "/assets/products/incoming/Puntillas-extra-2.webp?v=20260928-puntillas-fix-1"
+      ],
+      "reference": "7426"
+    },
+    {
       "id": "sepia-limpia-iqf",
       "commercialName": "Seppia pulita IQF / Blocco",
       "scientificName": "Sepia spp.",
