@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/news-current.css?v=20260925-private">
-    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260928-admin-topbar-1">
+    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260928-commercial-pipeline-1">
   </head>
   <body class="news-current private-admin-page">
     <header class="admin-topbar" aria-label="Operations Desk navigation">
@@ -62,6 +62,18 @@
                 <figure class="admin-chart"><figcaption><span>DEMAND</span><strong>Product categories</strong></figcaption><div id="categoryChart" class="admin-bars"></div></figure>
               </div>
               <div class="admin-grid"><div><h3>Clients &amp; access requests</h3><div id="clientList" class="admin-list"></div></div><div><h3>Subscribers</h3><div id="subscriberList" class="admin-list"></div></div></div>
+              <section class="admin-inquiries">
+                <div class="admin-card-head"><div><span class="admin-kicker">COMMERCIAL PIPELINE</span><h2>Product enquiries.</h2></div></div>
+                <div class="admin-inquiry-kpis" aria-label="Commercial inquiry pipeline">
+                  <article><span>New</span><strong id="inquiryNew">0</strong></article>
+                  <article><span>Qualified</span><strong id="inquiryQualified">0</strong></article>
+                  <article><span>Studying</span><strong id="inquiryStudying">0</strong></article>
+                  <article><span>Offered</span><strong id="inquiryOffered">0</strong></article>
+                  <article><span>Won</span><strong id="inquiryWon">0</strong></article>
+                  <article><span>Lost</span><strong id="inquiryLost">0</strong></article>
+                </div>
+                <div id="inquiryList" class="admin-list admin-inquiry-list"></div>
+              </section>
             </section>
             <section class="admin-card">
               <div class="admin-card-head">
@@ -134,6 +146,6 @@
         </div>
       </section>
     </main>
-    <script src="/assets/js/private-admin.js?v=20260925-analytics" defer></script>
+    <script src="/assets/js/private-admin.js?v=20260928-commercial-pipeline-1" defer></script>
   </body>
 </html>
