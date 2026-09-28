@@ -69,6 +69,10 @@
     "tomato-cherry-long": "3988",
     "tomato-cherry-round": "5093",
     "watermelon": "4018",
-    "zucchini": "1515"
+    "zucchini": "1515",
+    "sole": "3257"
+  },
+  "aliases": {
+    "mero": "mero-amarillo"
   }
 }
