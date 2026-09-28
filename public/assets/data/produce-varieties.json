@@ -7,7 +7,8 @@
         "Clemenules",
         "Oronules",
         "Marisol"
-      ]
+      ],
+      "reference": "4387"
     },
     {
       "id": "mandarina",
@@ -23,7 +24,8 @@
       ],
       "origin": [
         "España / Marruecos según campaña"
-      ]
+      ],
+      "reference": "1819"
     },
     {
       "id": "orange",
@@ -38,7 +40,8 @@
       ],
       "origin": [
         "España / Marruecos según campaña"
-      ]
+      ],
+      "reference": "6368"
     },
     {
       "id": "mango",
@@ -50,7 +53,8 @@
       ],
       "origin": [
         "España / Marruecos / según temporada"
-      ]
+      ],
+      "reference": "9747"
     },
     {
       "id": "pineapple",
@@ -63,7 +67,8 @@
       ],
       "origin": [
         "Según temporada y programa de suministro"
-      ]
+      ],
+      "reference": "3991"
     },
     {
       "id": "avocado",
@@ -77,7 +82,8 @@
       ],
       "origin": [
         "España / Marruecos / según programa"
-      ]
+      ],
+      "reference": "1860"
     },
     {
       "id": "dates",
@@ -90,7 +96,8 @@
       ],
       "origin": [
         "Marruecos / según programa de suministro"
-      ]
+      ],
+      "reference": "8485"
     },
     {
       "id": "melon",
@@ -105,7 +112,8 @@
       ],
       "origin": [
         "España / Marruecos según temporada"
-      ]
+      ],
+      "reference": "7131"
     },
     {
       "id": "watermelon",
@@ -119,7 +127,8 @@
       ],
       "origin": [
         "España / Marruecos según temporada"
-      ]
+      ],
+      "reference": "4018"
     },
     {
       "id": "apple",
@@ -128,7 +137,8 @@
         "Golden",
         "Granny Smith",
         "Fuji"
-      ]
+      ],
+      "reference": "6781"
     },
     {
       "id": "tomato",
@@ -172,7 +182,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "7848"
     },
     {
       "id": "tomato-cherry-round",
@@ -209,7 +220,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "5093"
     },
     {
       "id": "tomato-cherry-long",
@@ -246,7 +258,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "3988"
     },
     {
       "id": "pepper",
@@ -289,7 +302,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "2216"
     },
     {
       "id": "cucumber",
@@ -331,7 +345,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "3717"
     },
     {
       "id": "zucchini",
@@ -372,7 +387,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "1515"
     },
     {
       "id": "aubergine",
@@ -414,7 +430,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "6199"
     },
     {
       "id": "green-bean",
@@ -456,7 +473,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "7637"
     },
     {
       "id": "broccoli",
@@ -497,7 +515,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "2452"
     },
     {
       "id": "cauliflower",
@@ -538,7 +557,8 @@
           3,
           3
         ]
-      }
+      },
+      "reference": "2082"
     },
     {
       "id": "potato",
@@ -581,7 +601,8 @@
           1,
           1
         ]
-      }
+      },
+      "reference": "2074"
     },
     {
       "id": "garlic",
@@ -623,7 +644,8 @@
           1,
           1
         ]
-      }
+      },
+      "reference": "5948"
     }
   ]
 }
