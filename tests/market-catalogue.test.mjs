@@ -10,6 +10,11 @@ const css = fs.readFileSync('public/assets/css/catalogue-market-unified.css', 'u
 const shell = fs.readFileSync('public/assets/js/international-shell.js', 'utf8');
 const catalog = JSON.parse(fs.readFileSync('public/assets/data/catalog.json', 'utf8'));
 const extendedCatalog = JSON.parse(fs.readFileSync('public/assets/data/catalog-v1.3.json', 'utf8'));
+const spanishSet = JSON.parse(fs.readFileSync('public/assets/data/catalogue-es-products.json', 'utf8'));
+const fishRenderer = fs.readFileSync('public/assets/js/fish-catalog.js', 'utf8');
+const shellfishEs = JSON.parse(fs.readFileSync('public/assets/data/shellfish-catalog-es.json', 'utf8'));
+const cephalopodsEs = JSON.parse(fs.readFileSync('public/assets/data/cephalopods-catalog-es.json', 'utf8'));
+const fruitsEs = JSON.parse(fs.readFileSync('public/assets/data/fruit-catalog-v1.json', 'utf8'));
 
 const categories = ['seafood/fish', 'seafood/shellfish', 'seafood/cephalopods', 'produce/fruits',
   'produce/vegetables'
@@ -25,24 +30,58 @@ test('market priority defines every target category for every international loca
   }
 });
 
-test('priority IDs exist in the complete B2B catalogue sources', () => {
+test('every locale is an exact permutation of the visible Spanish catalogue set', () => {
+  for (const category of categories) {
+    const expected = spanishSet.categories[category] || [];
+    assert.ok(expected.length, `${category} Spanish authority set missing`);
+    const expectedSorted = [...expected].sort();
+    for (const locale of locales) {
+      const actual = config.priority[category]?.[locale] || [];
+      assert.equal(actual.length, expected.length, `${category}/${locale} product count differs from ES`);
+      assert.deepEqual([...new Set(actual)].sort(), expectedSorted,
+        `${category}/${locale} must contain exactly the Spanish catalogue products`);
+    }
+  }
+});
+
+test('Spanish authority manifest matches the products actually rendered on ES catalogue pages', () => {
+  const fishBlock = fishRenderer.match(/const products = \[([\s\S]*?)\n  \];\n\n  const frozenArProducts/);
+  assert.ok(fishBlock, 'Spanish fish product list not found');
+  const visibleFish = [...fishBlock[1].matchAll(/\[\s*'([^']+)'/g)].map(match => match[1]);
+  assert.deepEqual(spanishSet.categories['seafood/fish'], visibleFish);
+
+  assert.deepEqual(spanishSet.categories['seafood/shellfish'],
+    (shellfishEs.products || []).map(p => p.id));
+  assert.deepEqual(spanishSet.categories['seafood/cephalopods'],
+    (cephalopodsEs.products || []).map(p => p.id));
+  assert.deepEqual(spanishSet.categories['produce/fruits'],
+    (fruitsEs.products || []).map(p => p.id));
+
+  const visibleVegetables = (extendedCatalog.products || [])
+    .filter(p => p.family === 'produce' && p.subcategory === 'vegetables' && p.status === 'active')
+    .map(p => p.id);
+  assert.deepEqual(spanishSet.categories['produce/vegetables'], visibleVegetables);
+});
+
+test('every Spanish catalogue product resolves to master commercial data', () => {
   const ids = new Set([
     ...(catalog.products || []).map(p => p.id),
     ...(extendedCatalog.products || []).map(p => p.id)
   ]);
   for (const category of categories) {
-    for (const locale of locales) {
-      for (const id of config.priority[category]?.[locale] || []) {
-        assert.ok(ids.has(id), `${category}/${locale} references unknown product ${id}`);
-      }
+    for (const id of spanishSet.categories[category] || []) {
+      const dataId = spanishSet.dataAliases?.[id] || id;
+      assert.ok(ids.has(dataId), `${category} Spanish product ${id} has no master data source`);
     }
   }
 });
 
-test('renderer uses the complete catalogue and handles legacy fruit subcategories', () => {
-  assert.match(renderer, /CATALOG_URL\s*=\s*'\/assets\/data\/catalog\.json'/);
-  assert.match(renderer, /CATALOG_EXTENDED_URL\s*=\s*'\/assets\/data\/catalog-v1\.3\.json'/);
-  assert.match(renderer, /new Set\(\[\s*'fruits'\s*,\s*'citrus'\s*,\s*'exotics'\s*,\s*'core-produce'\s*\]\)/);
+test('renderer uses the Spanish catalogue set as product authority and market priority only for sorting', () => {
+  assert.match(renderer, /ES_SET_URL\s*=\s*'\/assets\/data\/catalogue-es-products\.json'/);
+  assert.match(renderer, /spanishIds\s*=\s*esSet\?\.categories/);
+  assert.match(renderer, /dataAliases/);
+  assert.match(renderer, /marketOrder/);
+  assert.match(renderer, /sourceIndex/);
 });
 
 test('international shell applies the Spanish category CSS baseline and seafood navigation', () => {
