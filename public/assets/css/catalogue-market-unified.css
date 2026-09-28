@@ -164,24 +164,6 @@
   transform: scale(1.015)
 }
 
-.market-catalogue-card__priority {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 6px 8px;
-  border-radius: 999px;
-  background: rgba(16, 35, 49, .72);
-  backdrop-filter: blur(5px);
-  color: #fff;
-  font: 500 9px/1 var(--et-sans, "DM Sans", Arial, sans-serif);
-  letter-spacing: .1em;
-  text-transform: uppercase
-}
-
-/* IT catalogue: keep market-priority sorting/data, but remove the visible image ticket. */
-html[lang="it"] .market-catalogue-card__priority {
-  display: none
-}
 
 .market-catalogue-card__body {
   padding: 1.35rem 1.35rem 1.5rem;
@@ -304,10 +286,6 @@ html[lang="it"] .market-catalogue-card__priority {
   letter-spacing: .1em
 }
 
-html[dir=rtl] .market-catalogue-card__priority {
-  left: auto;
-  right: 12px
-}
 
 html[dir=rtl] .market-catalogue__toolbar {
   flex-direction: row-reverse
