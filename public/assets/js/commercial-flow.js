@@ -17,10 +17,11 @@
     const link=doc.createElement('link'); link.rel='stylesheet'; link.href='/assets/css/commercial-flow.css?v=20260928-commercial-flow-1'; link.dataset.etCommercialFlow='true'; doc.head.appendChild(link);
   }
   let referenceMap={};
+  let referenceAliases={};
   let referencesLoaded=false;
   const referenceReady=fetch('/assets/data/product-references.json?v=20260928-ref4-1',{cache:'no-cache'})
     .then(r=>r.ok?r.json():{})
-    .then(data=>{ referenceMap=data.references || {}; referencesLoaded=true; return referenceMap; })
+    .then(data=>{ referenceMap=data.references || {}; referenceAliases=data.aliases || {}; referencesLoaded=true; return referenceMap; })
     .catch(()=>{ referencesLoaded=true; return {}; });
   const path=location.pathname.replace(/\/+/g,'/');
   const base=lang==='es'?'/':`/${lang}/`;
@@ -63,7 +64,7 @@
       const title=compact(titleNode?.textContent);
       if(!title) continue;
       const productId=card.dataset.productId || slug(title);
-      const productReference=referenceMap[productId] || card.dataset.productReference || '';
+      const productReference=referenceMap[productId] || referenceMap[referenceAliases[productId]] || card.dataset.productReference || '';
       if(productReference){
         card.dataset.productReference=productReference;
         if(!card.querySelector(':scope .et-product-reference')){
