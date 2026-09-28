@@ -7,18 +7,16 @@ const admin=fs.readFileSync('public/assets/js/private-admin.js','utf8');
 const page=fs.readFileSync('public/private/admin/index.html','utf8');
 const catalog=JSON.parse(fs.readFileSync('public/assets/data/catalog-v1.3.json','utf8'));
 const registry=JSON.parse(fs.readFileSync('public/assets/data/product-references.json','utf8'));
-const catalogueFiles=[
-  'public/assets/data/catalog-v1.3.json',
-  'public/assets/data/catalog.json',
-  'public/assets/data/cephalopods-catalog-es.json',
-  'public/assets/data/cephalopods-catalog-fr.json',
-  'public/assets/data/cephalopods-catalog-it.json',
-  'public/assets/data/fish-catalog-es.json',
-  'public/assets/data/shellfish-catalog-es.json',
-  'public/assets/data/shellfish-catalog-fr.json',
-  'public/assets/data/fruit-catalog-v1.json',
-  'public/assets/data/produce-varieties.json'
-];
+const dataDir='public/assets/data';
+const catalogueFiles=fs.readdirSync(dataDir)
+  .filter(name=>name.endsWith('.json'))
+  .filter(name=>!name.includes('demo'))
+  .filter(name=>!['product-images.json','product-references.json','catalogue-market-priority.json'].includes(name))
+  .map(name=>`${dataDir}/${name}`)
+  .filter(file=>{
+    const data=JSON.parse(fs.readFileSync(file,'utf8'));
+    return Array.isArray(data.products) && data.products.length>0;
+  });
 assert.match(worker,/INQ-/);
 assert.match(worker,/inquiries\/status/);
 assert.match(core,/product_specification/);
@@ -41,6 +39,14 @@ for(const file of catalogueFiles){
   for(const product of data.products || []){
     assert.ok(registry.references[product.id],`${file}: unregistered product ${product.id}`);
     assert.equal(product.reference,registry.references[product.id],`${file}: inconsistent reference for ${product.id}`);
+  }
+}
+const crossLanguageRefs=new Map();
+for(const file of catalogueFiles){
+  const data=JSON.parse(fs.readFileSync(file,'utf8'));
+  for(const product of data.products || []){
+    if(!crossLanguageRefs.has(product.id)) crossLanguageRefs.set(product.id,product.reference);
+    assert.equal(product.reference,crossLanguageRefs.get(product.id),`Cross-language product references must remain identical for ${product.id}`);
   }
 }
 for(const p of catalog.products) for(const f of ['faoZone','quality','format','packaging','weights','season','availability','moq','destinationConstraints','documents']) assert.ok(Array.isArray(p[f]),`${p.id} missing ${f}`);
