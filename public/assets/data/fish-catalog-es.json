@@ -35,7 +35,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "7513"
     },
     {
       "id": "dorada",
@@ -70,7 +71,8 @@
       ],
       "availability": [
         "Sujeto a disponibilidad"
-      ]
+      ],
+      "reference": "1637"
     },
     {
       "id": "lubina",
@@ -105,7 +107,8 @@
       ],
       "availability": [
         "Sujeto a disponibilidad"
-      ]
+      ],
+      "reference": "3926"
     },
     {
       "id": "merluza-pijota",
@@ -139,7 +142,8 @@
       ],
       "availability": [
         "Según campaña y disponibilidad"
-      ]
+      ],
+      "reference": "6517"
     },
     {
       "id": "mujol",
@@ -173,7 +177,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "5783"
     },
     {
       "id": "rape",
@@ -207,7 +212,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "4459"
     },
     {
       "id": "san-pedro",
@@ -242,7 +248,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "4582"
     },
     {
       "id": "mero-amarillo",
@@ -277,7 +284,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "2315"
     },
     {
       "id": "pargo",
@@ -312,7 +320,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "2771"
     },
     {
       "id": "denton",
@@ -347,7 +356,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "2112"
     },
     {
       "id": "sama",
@@ -382,7 +392,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "2665"
     },
     {
       "id": "sargo",
@@ -416,7 +427,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "9409"
     },
     {
       "id": "rascacio",
@@ -450,7 +462,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "2143"
     },
     {
       "id": "caballa",
@@ -485,7 +498,8 @@
       ],
       "availability": [
         "Según campaña y disponibilidad"
-      ]
+      ],
+      "reference": "8681"
     },
     {
       "id": "salmonete",
@@ -520,7 +534,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "1364"
     },
     {
       "id": "atun",
@@ -555,7 +570,8 @@
       ],
       "availability": [
         "Según programa y disponibilidad"
-      ]
+      ],
+      "reference": "6946"
     },
     {
       "id": "pez-limon",
@@ -590,7 +606,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "7787"
     },
     {
       "id": "boqueron",
@@ -624,7 +641,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "9279"
     },
     {
       "id": "pez-sable",
@@ -656,7 +674,8 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "reference": "1879"
     },
     {
       "id": "pez-espada",
@@ -688,7 +707,8 @@
       ],
       "availability": [
         "Según programa y disponibilidad"
-      ]
+      ],
+      "reference": "8696"
     }
   ]
 }
