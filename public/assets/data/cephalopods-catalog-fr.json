@@ -143,6 +143,43 @@
         "/assets/products/incoming/Sepia Limpia.jpg",
         "/assets/products/incoming/Sepia Limpia(1).jpg"
       ]
+    },
+    {
+      "id": "bottarga",
+      "commercialName": "Boutargue surgelée",
+      "scientificName": "",
+      "group": "Céphalopodes",
+      "type": "Boutargue",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Selon origine"
+      ],
+      "faoZone": [
+        "Selon zone FAO"
+      ],
+      "calibre": [
+        "Selon spécification de l’acheteur"
+      ],
+      "quality": [
+        "Spécification professionnelle"
+      ],
+      "format": [
+        "Selon présentation"
+      ],
+      "packaging": [
+        "Selon marché"
+      ],
+      "availability": [
+        "Selon disponibilité"
+      ],
+      "images": [
+        "/assets/products/incoming/Bottarga(1).jpg",
+        "/assets/products/incoming/Bottarga.jpg",
+        "/assets/products/incoming/Bottarga(2).jpg",
+        "/assets/products/incoming/Bottarga(3).jpg"
+      ]
     }
   ]
 }
