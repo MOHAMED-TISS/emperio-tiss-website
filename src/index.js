@@ -21,33 +21,40 @@ const now = () => Math.floor(Date.now() / 1000);
 let inquirySchemaReady;
 async function ensureInquirySchema(env) {
   if (!dbOk(env)) throw new Error('NEWS_DB_MISSING');
-  if (!inquirySchemaReady) inquirySchemaReady = env.NEWS_DB.batch([
-    env.NEWS_DB.prepare(`CREATE TABLE IF NOT EXISTS inquiries (
-      id TEXT PRIMARY KEY,
-      status TEXT NOT NULL DEFAULT 'new' CHECK(status IN ('new','qualified','studying','offered','won','lost')),
-      created_at INTEGER NOT NULL,
-      updated_at INTEGER NOT NULL,
-      language TEXT NOT NULL DEFAULT 'en',
-      source TEXT,
-      page_url TEXT,
-      name TEXT,
-      company TEXT,
-      tax_id TEXT,
-      email TEXT NOT NULL,
-      phone TEXT,
-      product_category TEXT,
-      product_id TEXT,
-      product_name TEXT,
-      origin TEXT,
-      destination TEXT,
-      specification TEXT,
-      message TEXT,
-      notification_status TEXT,
-      notification_error TEXT
-    )`),
-    env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_status_created ON inquiries(status,created_at DESC)'),
-    env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_email ON inquiries(email)')
-  ]).catch(error => { inquirySchemaReady = null; throw error; });
+  if (!inquirySchemaReady) inquirySchemaReady = (async () => {
+    await env.NEWS_DB.batch([
+      env.NEWS_DB.prepare(`CREATE TABLE IF NOT EXISTS inquiries (
+        id TEXT PRIMARY KEY,
+        status TEXT NOT NULL DEFAULT 'new' CHECK(status IN ('new','qualified','studying','offered','won','lost')),
+        created_at INTEGER NOT NULL,
+        updated_at INTEGER NOT NULL,
+        language TEXT NOT NULL DEFAULT 'en',
+        source TEXT,
+        page_url TEXT,
+        name TEXT,
+        company TEXT,
+        tax_id TEXT,
+        email TEXT NOT NULL,
+        phone TEXT,
+        product_category TEXT,
+        product_id TEXT,
+        product_reference TEXT,
+        product_name TEXT,
+        origin TEXT,
+        destination TEXT,
+        specification TEXT,
+        message TEXT,
+        notification_status TEXT,
+        notification_error TEXT
+      )`),
+      env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_status_created ON inquiries(status,created_at DESC)'),
+      env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_email ON inquiries(email)')
+    ]);
+    const columns = await env.NEWS_DB.prepare('PRAGMA table_info(inquiries)').all();
+    if (!(columns.results || []).some(row => row.name === 'product_reference')) {
+      await env.NEWS_DB.prepare('ALTER TABLE inquiries ADD COLUMN product_reference TEXT').run();
+    }
+  })().catch(error => { inquirySchemaReady = null; throw error; });
   return inquirySchemaReady;
 }
 const enc = new TextEncoder();
@@ -416,7 +423,7 @@ async function adminOverview(request,env) {
     env.NEWS_DB.prepare("SELECT country AS label,COUNT(*) AS count FROM clients WHERE country IS NOT NULL AND country<>'' GROUP BY country ORDER BY count DESC,label LIMIT 12").all(),
     env.NEWS_DB.prepare("SELECT category AS label,COUNT(*) AS count FROM client_interests GROUP BY category ORDER BY count DESC,label").all(),
     env.NEWS_DB.prepare("SELECT language AS label,COUNT(*) AS count FROM clients GROUP BY language ORDER BY count DESC,label").all(),
-    env.NEWS_DB.prepare("SELECT id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_name,origin,destination,specification,message,notification_status FROM inquiries ORDER BY created_at DESC LIMIT 200").all(),
+    env.NEWS_DB.prepare("SELECT id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_reference,product_name,origin,destination,specification,message,notification_status FROM inquiries ORDER BY created_at DESC LIMIT 200").all(),
     env.NEWS_DB.prepare("SELECT status,COUNT(*) AS count FROM inquiries GROUP BY status").all()
   ]);
   const dailyMap = new Map(dailyRows.results.map(row => [row.day,Number(row.count)]));
@@ -610,6 +617,8 @@ async function handleContact(request, env) {
     pageUrl = clean(form.get('page_url'), 500),
     productCategory = clean(form.get('product_category'), 120) || producto,
     productId = clean(form.get('product_id'), 160),
+    productReferenceRaw = clean(form.get('product_reference'), 4),
+    productReference = /^\d{4}$/.test(productReferenceRaw) ? productReferenceRaw : '',
     productName = clean(form.get('product_name'), 240),
     productOrigin = clean(form.get('product_origin'), 240),
     productSpecification = clean(form.get('product_specification'), 2000),
@@ -640,12 +649,12 @@ async function handleContact(request, env) {
   const inquiryId = `INQ-${new Date().toISOString().slice(0,10).replaceAll('-','')}-${crypto.randomUUID().slice(0,8).toUpperCase()}`;
   const createdAt = now();
   await env.NEWS_DB.prepare(
-    `INSERT INTO inquiries(id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_name,origin,destination,specification,message,notification_status)
-     VALUES(?,'new',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending')`
-  ).bind(inquiryId,createdAt,createdAt,language,source,pageUrl,nombre,empresa,cif,email,telefono,productCategory,productId,productName,productOrigin,destino,productSpecification,mensaje).run();
+    `INSERT INTO inquiries(id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_reference,product_name,origin,destination,specification,message,notification_status)
+     VALUES(?,'new',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending')`
+  ).bind(inquiryId,createdAt,createdAt,language,source,pageUrl,nombre,empresa,cif,email,telefono,productCategory,productId,productReference,productName,productOrigin,destino,productSpecification,mensaje).run();
 
   const html =
-    `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Referencia:</strong> ${escapeHtml(inquiryId)}</p><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>CIF / Identificación fiscal:</strong> ${escapeHtml(cif)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Categoría:</strong> ${escapeHtml(producto)}</p>${productName ? `<p><strong>Referencia producto:</strong> ${escapeHtml(productName)}</p>` : ''}${productOrigin ? `<p><strong>Origen:</strong> ${escapeHtml(productOrigin)}</p>` : ''}${productSpecification ? `<p><strong>Especificación:</strong> ${escapeHtml(productSpecification)}</p>` : ''}<p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p><p><a href="https://emperio-tiss.com/private/admin/">Abrir Operations Desk</a></p>`;
+    `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Consulta:</strong> ${escapeHtml(inquiryId)}</p><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>CIF / Identificación fiscal:</strong> ${escapeHtml(cif)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Categoría:</strong> ${escapeHtml(producto)}</p>${productReference ? `<p><strong>Referencia producto:</strong> REF. ${escapeHtml(productReference)}</p>` : ''}${productName ? `<p><strong>Producto:</strong> ${escapeHtml(productName)}</p>` : ''}${productOrigin ? `<p><strong>Origen:</strong> ${escapeHtml(productOrigin)}</p>` : ''}${productSpecification ? `<p><strong>Especificación:</strong> ${escapeHtml(productSpecification)}</p>` : ''}<p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p><p><a href="https://emperio-tiss.com/private/admin/">Abrir Operations Desk</a></p>`;
   try {
     await resend(env, 'info@emperio-tiss.com', `${inquiryId} — ${empresa} — ${productName || producto}`, html, email, `inquiry-${inquiryId}`);
     await env.NEWS_DB.prepare("UPDATE inquiries SET notification_status='sent',notification_error=NULL,updated_at=? WHERE id=?").bind(now(),inquiryId).run();
