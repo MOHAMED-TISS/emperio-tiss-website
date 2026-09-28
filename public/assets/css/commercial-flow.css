@@ -1,0 +1,20 @@
+.et-operation-flow{background:#071524;color:#f4f0e6;padding:clamp(70px,8vw,118px) 0;border-top:1px solid rgba(201,162,75,.22)}
+.et-operation-flow__inner{width:min(1240px,calc(100% - 48px));margin:auto}
+.et-operation-flow__head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.75fr);gap:clamp(32px,6vw,90px);align-items:end;padding-bottom:34px;border-bottom:1px solid rgba(244,240,230,.14)}
+.et-operation-flow__eyebrow{margin:0 0 14px;color:#c9a24b;font:700 10px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.18em}
+.et-operation-flow h2{margin:0;max-width:760px;font:400 clamp(2.8rem,5.5vw,5.6rem)/.92 "Playfair Display",Georgia,serif;letter-spacing:-.045em}
+.et-operation-flow__head>p{margin:0;color:rgba(244,240,230,.68);font:400 15px/1.75 "DM Sans",Arial,sans-serif}
+.et-operation-flow__steps{list-style:none;margin:0;padding:32px 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-bottom:1px solid rgba(244,240,230,.14)}
+.et-operation-flow__steps li{min-width:0;padding:0 18px;border-right:1px solid rgba(244,240,230,.10)}
+.et-operation-flow__steps li:first-child{padding-left:0}.et-operation-flow__steps li:last-child{border-right:0}
+.et-operation-flow__steps span{display:block;margin-bottom:16px;color:#c9a24b;font:600 9px/1 "DM Sans",Arial,sans-serif;letter-spacing:.14em}
+.et-operation-flow__steps strong{display:block;font:500 13px/1.35 "DM Sans",Arial,sans-serif}
+.et-operation-flow__controls{display:flex;flex-wrap:wrap;gap:9px;padding-top:26px}
+.et-operation-flow__controls span{padding:9px 11px;border:1px solid rgba(244,240,230,.14);color:rgba(244,240,230,.72);font:500 10px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.04em}
+.et-rfq-link{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;margin-top:14px;padding:10px 0 7px;border-bottom:1px solid #c9a24b;color:#0b1e33!important;font:700 10px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;text-decoration:none!important}
+.market-catalogue-card .et-rfq-link,.compact-catalog-card .et-rfq-link,.seafood-catalog-card .et-rfq-link{margin-top:auto}
+.et-product-rfq{margin:28px 0;color:#0b1e33!important}
+[dir=rtl] .et-operation-flow__steps li{border-right:0;border-left:1px solid rgba(244,240,230,.10)}
+[dir=rtl] .et-operation-flow__steps li:last-child{border-left:0}
+@media(max-width:960px){.et-operation-flow__head{grid-template-columns:1fr}.et-operation-flow__steps{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}.et-operation-flow__steps li:nth-child(3){border-right:0}}
+@media(max-width:600px){.et-operation-flow{padding:64px 0}.et-operation-flow__inner{width:calc(100% - 32px)}.et-operation-flow__steps{grid-template-columns:1fr 1fr}.et-operation-flow__steps li{padding:12px 14px;border-bottom:1px solid rgba(244,240,230,.08)}.et-operation-flow__steps li:nth-child(odd){padding-left:0}.et-operation-flow__steps li:nth-child(even){border-right:0}.et-operation-flow__controls{gap:7px}.et-operation-flow__controls span{font-size:9px}}
