@@ -181,10 +181,10 @@
     },
     {
       "id": "bottarga",
-      "commercialName": "Bottarga congelada",
-      "scientificName": "Según especificación del producto",
+      "commercialName": "Botarga congelada",
+      "scientificName": "",
       "group": "Cefalópodos",
-      "type": "Bottarga",
+      "type": "Botarga",
       "condition": [
         "frozen"
       ],
