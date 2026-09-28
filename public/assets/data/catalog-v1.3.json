@@ -394,7 +394,7 @@
       "family": "seafood",
       "category": "seafood",
       "subcategory": "cephalopods",
-      "commercialName": "Sepia limpia IQF",
+      "commercialName": "Sepia limpia IQF / Bloque",
       "scientificName": "Sepia spp.",
       "condition": [
         "frozen"
@@ -409,7 +409,10 @@
       "images": [
         "/assets/products/incoming/Sepia%20Limpia(1).jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "format": [
+        "Limpia / IQF / Bloque"
+      ]
     },
     {
       "id": "clementina",
