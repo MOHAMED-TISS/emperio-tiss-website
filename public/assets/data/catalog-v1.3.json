@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.4",
+  "schemaVersion": "2.0",
   "market": "B2B",
   "families": [
     {
@@ -56,7 +56,17 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "moruno",
@@ -95,7 +105,12 @@
       "images": [
         "/assets/products/incoming/Moruno.jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "cigala",
@@ -135,7 +150,12 @@
         "/assets/products/incoming/Cigala.jpeg",
         "/assets/products/incoming/Cigala(1).jpeg"
       ],
-      "status": "active"
+      "status": "active",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "gamba-blanca",
@@ -174,7 +194,12 @@
       "images": [
         "/assets/products/incoming/Gamba%20Blanca.jpeg"
       ],
-      "status": "active"
+      "status": "active",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "langostino-tigre",
@@ -212,7 +237,12 @@
       "images": [
         "/assets/products/incoming/Langostino_Tigre.jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "langostino-vannamei",
@@ -232,7 +262,17 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "pulpo-flor",
@@ -254,7 +294,17 @@
       "images": [
         "/assets/products/incoming/Pulpo%20Flor.jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "pulpo-natural",
@@ -276,7 +326,17 @@
       "images": [
         "/assets/products/incoming/Pulpo.jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "pulpo-bandeja",
@@ -314,7 +374,12 @@
       ],
       "availability": [
         "Según disponibilidad"
-      ]
+      ],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "calamar-envuelto",
@@ -336,7 +401,17 @@
       "images": [
         "/assets/products/incoming/Calamar.jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "puntilla-extra",
@@ -359,7 +434,17 @@
         "/assets/products/incoming/Puntillas-extra-1.webp?v=20260928-puntillas-fix-1",
         "/assets/products/incoming/Puntillas-extra-2.webp?v=20260928-puntillas-fix-1"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "almendrita",
@@ -381,7 +466,17 @@
       "images": [
         "/assets/products/incoming/Calamar(2).jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "tiras-sepia-limpia",
@@ -403,7 +498,17 @@
       "images": [
         "/assets/products/incoming/Sepia%20Limpia.jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "sepia-limpia-iqf",
@@ -428,7 +533,16 @@
       "status": "active",
       "format": [
         "Limpia / IQF / Bloque"
-      ]
+      ],
+      "faoZone": [],
+      "quality": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "clementina",
@@ -448,7 +562,17 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "navelina",
@@ -468,7 +592,17 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "mango",
@@ -485,7 +619,18 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "calibre": []
     },
     {
       "id": "apple",
@@ -502,7 +647,18 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "calibre": []
     },
     {
       "id": "tomato",
@@ -536,7 +692,13 @@
       "images": [
         "https://images.pexels.com/photos/38444066/pexels-photo-38444066.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "tomato-cherry-round",
@@ -570,7 +732,13 @@
       "images": [
         "https://images.pexels.com/photos/11229105/pexels-photo-11229105.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "tomato-cherry-long",
@@ -604,7 +772,13 @@
       "images": [
         "https://frutalahuerta.com/wp-content/uploads/2024/11/tomate-cherry-pera-1.png"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "pepper",
@@ -638,7 +812,13 @@
       "images": [
         "https://images.pexels.com/photos/7258137/pexels-photo-7258137.jpeg?cs=srgb&dl=pexels-sharon-snider-2339082-7258137.jpg&fm=jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "cucumber",
@@ -672,7 +852,13 @@
       "images": [
         "https://images.pexels.com/photos/10111495/pexels-photo-10111495.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "zucchini",
@@ -706,7 +892,13 @@
       "images": [
         "https://images.pexels.com/photos/20180753/pexels-photo-20180753.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "aubergine",
@@ -740,7 +932,13 @@
       "images": [
         "https://images.pexels.com/photos/6576750/pexels-photo-6576750.jpeg?auto=compress&dpr=1&h=750&w=1260"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "green-bean",
@@ -774,7 +972,13 @@
       "images": [
         "https://images.pexels.com/photos/5202090/pexels-photo-5202090.jpeg?cs=srgb&dl=pexels-karola-g-5202090.jpg&fm=jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "broccoli",
@@ -808,7 +1012,13 @@
       "images": [
         "https://images.pexels.com/photos/4564501/pexels-photo-4564501.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "cauliflower",
@@ -842,7 +1052,13 @@
       "images": [
         "https://images.pexels.com/photos/12955519/pexels-photo-12955519.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "potato",
@@ -876,7 +1092,13 @@
       "images": [
         "https://images.pexels.com/photos/35595249/pexels-photo-35595249/free-photo-of-close-up-of-fresh-white-potatoes.jpeg?auto=compress&dpr=1&h=750&w=1260"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "garlic",
@@ -910,7 +1132,13 @@
       "images": [
         "https://images.pexels.com/photos/4197494/pexels-photo-4197494.jpeg?auto=compress&cs=tinysrgb&w=1200"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "clementina-seasonal",
@@ -927,7 +1155,18 @@
       ],
       "image": "",
       "images": [],
-      "status": "active"
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "calibre": []
     },
     {
       "id": "sardina",
@@ -942,7 +1181,18 @@
       "origin": [],
       "image": "",
       "images": [],
-      "status": "draft"
+      "status": "draft",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "calibre": []
     },
     {
       "id": "bottarga",
@@ -982,7 +1232,12 @@
         "/assets/products/incoming/Bottarga(2).jpg",
         "/assets/products/incoming/Bottarga(3).jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     }
   ]
 }
