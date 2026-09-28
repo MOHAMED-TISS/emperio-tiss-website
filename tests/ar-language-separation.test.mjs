@@ -93,7 +93,7 @@ test('legacy root Arabic adapter filenames have no runtime consumers', () => {
 test('shared runtime deduplicates assets and keeps catalogue code route-scoped', () => {
   const global = read('public/assets/js/global.js');
   const globalCss = read('public/assets/css/global.css');
-  const header = read('public/assets/js/header-final.js');
+  const header = read('public/assets/js/header-canonical.js');
   const filterFix = read('public/assets/js/en-catalog-filter-fix.js');
 
   assert.match(global, /const hasAsset =/);
