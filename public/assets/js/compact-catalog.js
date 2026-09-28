@@ -75,6 +75,12 @@
     'calamar-envuelto': 'Squid',
     'sepia-limpia-iqf': 'Cuttlefish'
   };
+  const arNames = {
+    'sepia-limpia-iqf': 'سيبيا منظفة IQF / بلوك'
+  };
+  const arTypes = {
+    'sepia-limpia-iqf': 'سيبيا'
+  };
   let products = [];
   let activeFilter = frozenSeafoodFamily ? 'frozen' : 'all';
   let imageMap = {};
@@ -147,8 +153,8 @@
   function card(product) {
     const images = Array.isArray(product.images) ? product.images : product.image ? [product
       .image] : [];
-    const displayName = product._enName || product.commercialName;
-    const displayType = product._enType || product.type || product.group;
+    const displayName = product._enName || product._arName || product.commercialName;
+    const displayType = product._enType || product._arType || product.type || product.group;
     const meta = [(product.condition || []).map(cond).join(' · '), first(product.origin), first(
       product.calibre) || first(product.quality)].filter(Boolean).join(' · ');
     const params = new URLSearchParams({
@@ -238,6 +244,8 @@
       !subcategories.length || subcategories.includes(p.subcategory))).map(p => ({
       ...p,
       condition: frozenSeafoodFamily ? ['frozen'] : p.condition,
+      _arName: lang === 'ar' ? (arNames[p.id] || '') : '',
+      _arType: lang === 'ar' ? (arTypes[p.id] || '') : '',
       images: imageMap[p.id] || p.images || (p.image ? [p.image] : [])
     }));
   };
