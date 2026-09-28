@@ -1210,7 +1210,7 @@
 }
 /* Approved Mediterranean mockup: ES-only glass masthead, landscape and compact footer. */
 body.home-experience.et-brand-shell .site-header{top:18px;width:calc(100% - 56px);max-width:1384px;height:98px;border-radius:2px;padding:8px 28px;background:rgba(11,30,51,.64);border:1px solid rgba(244,240,230,.38);box-shadow:inset 0 0 0 8px rgba(11,30,51,.14);backdrop-filter:blur(14px)}
-body.home-experience.et-brand-shell .site-header.scrolled{background:rgba(11,30,51,.94)}
+body.home-experience.et-brand-shell .site-header.scrolled{background:rgba(11,30,51,.28);border-color:rgba(244,240,230,.24);box-shadow:inset 0 0 0 8px rgba(11,30,51,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 body.home-experience.et-brand-shell .site-header .site-logo{height:86px;width:120px}
 body.home-experience.et-brand-shell .site-header .site-logo .home-metal-logo{width:86px;height:86px}
 body.home-experience.et-brand-shell .site-header .home-header-nav,body.home-experience.et-brand-shell .site-header .home-header-secondary{gap:30px}
