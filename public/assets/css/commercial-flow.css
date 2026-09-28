@@ -11,6 +11,8 @@
 .et-operation-flow__steps strong{display:block;font:500 13px/1.35 "DM Sans",Arial,sans-serif}
 .et-operation-flow__controls{display:flex;flex-wrap:wrap;gap:9px;padding-top:26px}
 .et-operation-flow__controls span{padding:9px 11px;border:1px solid rgba(244,240,230,.14);color:rgba(244,240,230,.72);font:500 10px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.04em}
+.et-product-reference{margin:0 0 8px;color:#8a683c;font:700 9px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.et-product-reference+ h3,.et-product-reference+.compact-catalog-card__title,.et-product-reference+.market-catalogue-card__name{margin-top:0}
 .et-rfq-link{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;margin-top:14px;padding:10px 0 7px;border-bottom:1px solid #c9a24b;color:#0b1e33!important;font:700 10px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;text-decoration:none!important}
 .market-catalogue-card .et-rfq-link,.compact-catalog-card .et-rfq-link,.seafood-catalog-card .et-rfq-link,.fish-catalog-card .et-rfq-link,.fish-emblematic-card .et-rfq-link,.product-card .et-rfq-link{margin-top:auto}
 .et-product-rfq{margin:28px 0;color:#0b1e33!important}
