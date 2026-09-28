@@ -149,6 +149,42 @@
       "reference": "7849"
     },
     {
+      "id": "puntilla-extra",
+      "commercialName": "Petits calamars extra",
+      "scientificName": "Alloteuthis spp.",
+      "group": "Céphalopodes",
+      "type": "Calamar",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Maroc"
+      ],
+      "faoZone": [
+        "Selon zone de capture"
+      ],
+      "calibre": [
+        "Selon disponibilité"
+      ],
+      "quality": [
+        "Spécification professionnelle"
+      ],
+      "format": [
+        "Entier / surgelé"
+      ],
+      "packaging": [
+        "Selon marché"
+      ],
+      "availability": [
+        "Selon disponibilité"
+      ],
+      "images": [
+        "/assets/products/incoming/Puntillas-extra-1.webp?v=20260928-puntillas-fix-1",
+        "/assets/products/incoming/Puntillas-extra-2.webp?v=20260928-puntillas-fix-1"
+      ],
+      "reference": "7426"
+    },
+    {
       "id": "sepia-limpia-iqf",
       "commercialName": "Seiche nettoyée IQF / Bloc",
       "scientificName": "Sepia spp.",
