@@ -181,6 +181,7 @@
       inquiry_source: params.get('source') || (params.get('product_id') ? 'catalogue' : 'contact'),
       page_url: params.get('from') || document.referrer || location.pathname,
       product_id: params.get('product_id') || params.get('product') || '',
+      product_reference: params.get('product_reference') || '',
       product_name: params.get('product_name') || '',
       product_origin: params.get('origin') || '',
       product_specification: params.get('specification') || '',
@@ -203,11 +204,11 @@
       ar:{fish:'الأسماك',shellfish:'المأكولات البحرية',cephalopods:'رأسيات الأرجل',fruits:'الفواكه',vegetables:'الخضروات',seasonal:'المنتجات الموسمية'}
     };
     const messageLabels = {
-      es:{product:'Producto',origin:'Origen',spec:'Especificación'},
-      en:{product:'Product',origin:'Origin',spec:'Specification'},
-      fr:{product:'Produit',origin:'Origine',spec:'Spécification'},
-      it:{product:'Prodotto',origin:'Origine',spec:'Specifica'},
-      ar:{product:'المنتج',origin:'المنشأ',spec:'المواصفات'}
+      es:{product:'Producto',ref:'Referencia',origin:'Origen',spec:'Especificación'},
+      en:{product:'Product',ref:'Reference',origin:'Origin',spec:'Specification'},
+      fr:{product:'Produit',ref:'Référence',origin:'Origine',spec:'Spécification'},
+      it:{product:'Prodotto',ref:'Referenza',origin:'Origine',spec:'Specifica'},
+      ar:{product:'المنتج',ref:'المرجع',origin:'المنشأ',spec:'المواصفات'}
     };
     const message = form.querySelector('[name="mensaje"]');
     const select = form.querySelector('[name="producto"]');
@@ -218,6 +219,7 @@
       const L=messageLabels[lang] || messageLabels.en;
       const lines=[
         `${L.product}: ${hiddenContext.product_name || hiddenContext.product_id}`,
+        hiddenContext.product_reference ? `${L.ref}: REF. ${hiddenContext.product_reference}` : '',
         hiddenContext.product_origin ? `${L.origin}: ${hiddenContext.product_origin}` : '',
         hiddenContext.product_specification ? `${L.spec}: ${hiddenContext.product_specification}` : ''
       ].filter(Boolean);
