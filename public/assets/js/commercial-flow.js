@@ -16,6 +16,12 @@
   if (!doc.querySelector('link[data-et-commercial-flow]')) {
     const link=doc.createElement('link'); link.rel='stylesheet'; link.href='/assets/css/commercial-flow.css?v=20260928-commercial-flow-1'; link.dataset.etCommercialFlow='true'; doc.head.appendChild(link);
   }
+  let referenceMap={};
+  let referencesLoaded=false;
+  const referenceReady=fetch('/assets/data/product-references.json?v=20260928-ref4-1',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():{})
+    .then(data=>{ referenceMap=data.references || {}; referencesLoaded=true; return referenceMap; })
+    .catch(()=>{ referencesLoaded=true; return {}; });
   const path=location.pathname.replace(/\/+/g,'/');
   const base=lang==='es'?'/':`/${lang}/`;
   const contact=`${base}contact/`;
@@ -30,9 +36,10 @@
   };
   const compact=v=>String(v||'').replace(/\s+/g,' ').trim();
   const slug=v=>compact(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,120);
-  const makeHref=(productId,productName,specification,origin,category,source='catalogue')=>{
+  const makeHref=(productId,productReference,productName,specification,origin,category,source='catalogue')=>{
     const q=new URLSearchParams();
     if(productId) q.set('product_id',productId);
+    if(productReference) q.set('product_reference',productReference);
     if(productName) q.set('product_name',productName);
     if(specification) q.set('specification',specification.slice(0,1200));
     if(origin) q.set('origin',origin.slice(0,240));
@@ -52,23 +59,34 @@
   const decorate=()=>{
     const cards=doc.querySelectorAll('.seafood-catalog-card,.compact-catalog-card,.market-catalogue-card,.fish-catalog-card,.fish-emblematic-card,[data-product-id].product-card,.product-row[data-product-id]');
     for(const card of cards){
-      if(card.querySelector(':scope .et-rfq-link')) continue;
-      const title=compact(card.querySelector('h3,.compact-catalog-card__title,.market-catalogue-card__name,h2')?.textContent);
+      const titleNode=card.querySelector('h3,.compact-catalog-card__title,.market-catalogue-card__name,h2');
+      const title=compact(titleNode?.textContent);
       if(!title) continue;
       const productId=card.dataset.productId || slug(title);
+      const productReference=referenceMap[productId] || card.dataset.productReference || '';
+      if(productReference){
+        card.dataset.productReference=productReference;
+        if(!card.querySelector(':scope .et-product-reference')){
+          const ref=doc.createElement('p'); ref.className='et-product-reference'; ref.textContent=`REF. ${productReference}`;
+          titleNode?.insertAdjacentElement('beforebegin',ref);
+        }
+      }
       const spec=compact(card.querySelector('.seafood-catalog-card__details,.compact-catalog-card__details,.market-catalogue-card__details,.fish-catalog-card__details,.fish-catalog-card__specs,.product-card__details')?.textContent);
       const host=card.querySelector('.seafood-catalog-card__body,.compact-catalog-card__body,.market-catalogue-card__body,.fish-catalog-card__body,.fish-emblematic-card__body,.product-card__body') || card;
-      const a=doc.createElement('a'); a.className='et-rfq-link'; a.textContent=L.cta; a.href=makeHref(productId,title,spec,'',categoryFromPath()); host.appendChild(a);
+      let a=card.querySelector(':scope .et-rfq-link');
+      if(!a){ a=doc.createElement('a'); a.className='et-rfq-link'; a.textContent=L.cta; host.appendChild(a); }
+      a.href=makeHref(productId,productReference,title,spec,'',categoryFromPath());
     }
     if(body.classList.contains('product-detail-page') && !doc.querySelector('.et-product-rfq')){
       const title=compact(doc.querySelector('main h1,main h2')?.textContent);
       if(title){
         const spec=compact(doc.querySelector('.product-detail-specs,.product-specs,.product-detail__specs')?.textContent);
-        const a=doc.createElement('a'); a.className='et-rfq-link et-product-rfq'; a.textContent=L.cta; a.href=makeHref(slug(title),title,spec,'',categoryFromPath(),'product-detail');
+        const a=doc.createElement('a'); a.className='et-rfq-link et-product-rfq'; a.textContent=L.cta; a.href=makeHref(slug(title),'',title,spec,'',categoryFromPath(),'product-detail');
         (doc.querySelector('.product-detail__copy,.product-detail-copy,main')||doc.body).appendChild(a);
       }
     }
   };
   decorate();
+  referenceReady.then(decorate);
   new MutationObserver(decorate).observe(doc.body,{childList:true,subtree:true});
 })();
