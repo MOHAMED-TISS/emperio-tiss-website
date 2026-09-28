@@ -110,6 +110,40 @@
       ]
     },
     {
+      "id": "puntilla-extra",
+      "commercialName": "Puntillas extra",
+      "scientificName": "Illex / Loligo spp.",
+      "group": "Cefalópodos",
+      "type": "Puntilla",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Marruecos"
+      ],
+      "faoZone": [
+        "Según zona de captura"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / congelada"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "images": [
+        "/assets/products/incoming/Calamar(1).jpg"
+      ]
+    },
+    {
       "id": "sepia-limpia-iqf",
       "commercialName": "Sepia limpia IQF",
       "scientificName": "Sepia spp.",
