@@ -68,6 +68,37 @@
   const date = value => new Date(value*1000).toLocaleString();
   const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
   const categoryName = value => ({seafood:'Seafood',fruits:'Fruits',vegetables:'Vegetables'}[value] || value);
+  const inquiryStatuses=['new','qualified','studying','offered','won','lost'];
+  const renderInquiryPipeline = pipeline => {
+    for (const status of inquiryStatuses) {
+      const id='inquiry'+status.charAt(0).toUpperCase()+status.slice(1);
+      const el=byId(id); if (el) el.textContent=String(number(pipeline?.[status]));
+    }
+  };
+  const renderInquiry = inquiry => {
+    const host=byId('inquiryList'); if (!host) return;
+    const item=document.createElement('div'); item.className='admin-record admin-inquiry-record';
+    const text=document.createElement('div'), strong=document.createElement('strong'), detail=document.createElement('p');
+    strong.textContent=`${inquiry.id} — ${inquiry.company || inquiry.email}`;
+    detail.textContent=[
+      `${inquiry.status.toUpperCase()} · ${inquiry.product_name || inquiry.product_category || 'General enquiry'} · ${inquiry.destination || 'No destination'}`,
+      `${inquiry.email} · ${inquiry.phone || 'No phone'} · ${inquiry.language.toUpperCase()} · ${inquiry.source || 'contact'}`,
+      inquiry.origin ? `Origin: ${inquiry.origin}` : '',
+      inquiry.specification ? `Specification: ${inquiry.specification}` : '',
+      inquiry.message ? `Requirement: ${inquiry.message}` : '',
+      `Created: ${date(inquiry.created_at)} · email: ${inquiry.notification_status || 'unknown'}`
+    ].filter(Boolean).join('\n');
+    text.append(strong,detail);
+    const select=document.createElement('select'); select.className='admin-inquiry-status'; select.setAttribute('aria-label',`Pipeline status for ${inquiry.id}`);
+    for (const status of inquiryStatuses) select.add(new Option(status.toUpperCase(),status,false,status===inquiry.status));
+    select.addEventListener('change',async()=>{
+      select.disabled=true;
+      try { await call('/api/private/admin/inquiries/status',{id:inquiry.id,status:select.value}); await refresh(); }
+      catch(error){ set(byId('serviceStatus'),error.message); select.value=inquiry.status; }
+      finally { select.disabled=false; }
+    });
+    item.append(text,select); host.append(item);
+  };
   const renderBars = (host, rows, label) => {
     host.replaceChildren();
     if (!rows.length) {
@@ -117,8 +148,9 @@
     if (current!==generation || !adminKey) return;
     emailConfigured=d.emailConfigured;
     renderAnalytics(d.analytics);
+    renderInquiryPipeline(d.inquiryPipeline || {});
     set(byId('serviceStatus'), emailConfigured ? 'Database connected · email secret configured. Confirm the sender domain is verified in Resend before sending.' : 'Database connected · email sending disabled: RESEND_API_KEY is missing.',emailConfigured);
-    for (const id of ['clientList','subscriberList','offerList','campaignList']) byId(id).replaceChildren();
+    for (const id of ['clientList','subscriberList','offerList','campaignList','inquiryList']) byId(id).replaceChildren();
     for (const c of d.clients) {
       const categories=(c.interest_categories || '').split(',').filter(Boolean).map(categoryName).join(', ') || 'No categories (legacy record)';
       const detail=[
@@ -134,6 +166,7 @@
       form.elements.company.focus();
       })
     }
+    for(const inquiry of (d.inquiries || [])) renderInquiry(inquiry);
     for(const s of d.subscribers) row(byId('subscriberList'),s.email,`${s.language.toUpperCase()} · ${s.unsubscribed_at ? 'Unsubscribed' : s.confirmed_at ? 'Confirmed' : 'Awaiting confirmation'}`);
     const select=byId('offerSelect'); select.replaceChildren(new Option('Choose an active offer',''));
     for(const o of d.offers) {
