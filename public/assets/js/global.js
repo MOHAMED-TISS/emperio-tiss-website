@@ -185,6 +185,7 @@
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/header-canonical.js?v=20260928-home-header-1', 'etCanonicalHeaderScript');
   loadScript('/assets/js/global-core.js?v=20260927-turnstile-secret-compat-1', 'etGlobalCore');
+  loadScript('/assets/js/commercial-flow.js?v=20260928-commercial-flow-1', 'etCommercialFlow');
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');
     if (['en', 'fr'].includes(lang)) {
