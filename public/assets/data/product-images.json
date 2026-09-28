@@ -113,5 +113,9 @@
   ],
   "sole": [
     "/assets/products/incoming/Lenguado.jpg"
+  ],
+  "pulpo-bandeja": [
+    "/assets/products/Pulpo Bandeja.jpeg",
+    "/assets/products/Pulpo Bandeja 2.jpeg"
   ]
 }
