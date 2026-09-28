@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "lastReviewed": "2026-09-09",
+  "lastReviewed": "2026-09-28",
   "locales": {
     "es": {
       "market": "Spain / Mediterranean wholesale",
@@ -40,18 +40,18 @@
         "atun",
         "pez-limon",
         "boqueron",
-        "mero-amarillo",
+        "mero",
         "sama",
         "rascacio",
-        "pez-sable",
-        "pez-espada"
+        "pez-espada",
+        "sardina",
+        "sole"
       ],
       "en": [
         "atun",
         "merluza-pijota",
         "lubina",
         "caballa",
-        "pez-sable",
         "rape",
         "san-pedro",
         "dorada",
@@ -63,9 +63,11 @@
         "sargo",
         "pargo",
         "pez-limon",
-        "mero-amarillo",
+        "mero",
         "sama",
-        "rascacio"
+        "rascacio",
+        "sardina",
+        "sole"
       ],
       "fr": [
         "merluza-pijota",
@@ -73,7 +75,7 @@
         "lubina",
         "san-pedro",
         "rape",
-        "mero-amarillo",
+        "mero",
         "caballa",
         "salmonete",
         "atun",
@@ -86,7 +88,8 @@
         "pargo",
         "sama",
         "rascacio",
-        "pez-sable"
+        "sardina",
+        "sole"
       ],
       "it": [
         "dorada",
@@ -104,16 +107,17 @@
         "sargo",
         "pez-limon",
         "pargo",
-        "mero-amarillo",
+        "mero",
         "sama",
         "rascacio",
-        "pez-sable"
+        "sardina",
+        "sole"
       ],
       "ar": [
         "dorada",
         "lubina",
         "atun",
-        "mero-amarillo",
+        "mero",
         "caballa",
         "pez-espada",
         "san-pedro",
@@ -128,7 +132,8 @@
         "mujol",
         "sama",
         "rascacio",
-        "pez-sable"
+        "sardina",
+        "sole"
       ]
     },
     "seafood/shellfish": {
@@ -136,11 +141,9 @@
         "gamba-blanca",
         "cigala",
         "moruno",
-        "langostino-tigre",
-        "langostino-vannamei"
+        "langostino-tigre"
       ],
       "en": [
-        "langostino-vannamei",
         "gamba-blanca",
         "langostino-tigre",
         "cigala",
@@ -150,18 +153,15 @@
         "gamba-blanca",
         "cigala",
         "moruno",
-        "langostino-vannamei",
         "langostino-tigre"
       ],
       "it": [
         "gamba-blanca",
         "cigala",
-        "langostino-vannamei",
         "langostino-tigre",
         "moruno"
       ],
       "ar": [
-        "langostino-vannamei",
         "gamba-blanca",
         "langostino-tigre",
         "cigala",
@@ -171,56 +171,46 @@
     "seafood/cephalopods": {
       "es": [
         "pulpo-flor",
-        "pulpo-natural",
+        "pulpo-bloque",
         "pulpo-bandeja",
         "calamar-envuelto",
         "puntilla-extra",
-        "almendrita",
-        "tiras-sepia-limpia",
         "sepia-limpia-iqf",
         "bottarga"
       ],
       "en": [
-        "pulpo-natural",
+        "pulpo-bloque",
         "calamar-envuelto",
         "puntilla-extra",
         "pulpo-flor",
         "sepia-limpia-iqf",
-        "tiras-sepia-limpia",
-        "almendrita",
         "pulpo-bandeja",
         "bottarga"
       ],
       "fr": [
-        "pulpo-natural",
+        "pulpo-bloque",
         "calamar-envuelto",
         "pulpo-flor",
         "sepia-limpia-iqf",
-        "tiras-sepia-limpia",
         "puntilla-extra",
-        "almendrita",
         "pulpo-bandeja",
         "bottarga"
       ],
       "it": [
-        "pulpo-natural",
+        "pulpo-bloque",
         "calamar-envuelto",
         "puntilla-extra",
         "pulpo-flor",
         "sepia-limpia-iqf",
-        "tiras-sepia-limpia",
-        "almendrita",
         "pulpo-bandeja",
         "bottarga"
       ],
       "ar": [
-        "pulpo-natural",
+        "pulpo-bloque",
         "calamar-envuelto",
         "pulpo-flor",
         "puntilla-extra",
         "sepia-limpia-iqf",
-        "tiras-sepia-limpia",
-        "almendrita",
         "pulpo-bandeja",
         "bottarga"
       ]
@@ -228,33 +218,63 @@
     "produce/fruits": {
       "es": [
         "clementina",
-        "navelina",
+        "orange",
         "mango",
-        "apple"
+        "apple",
+        "mandarina",
+        "pineapple",
+        "avocado",
+        "dates",
+        "melon",
+        "watermelon"
       ],
       "en": [
         "apple",
         "clementina",
-        "navelina",
-        "mango"
+        "orange",
+        "mango",
+        "mandarina",
+        "pineapple",
+        "avocado",
+        "dates",
+        "melon",
+        "watermelon"
       ],
       "fr": [
         "apple",
         "clementina",
-        "navelina",
-        "mango"
+        "orange",
+        "mango",
+        "mandarina",
+        "pineapple",
+        "avocado",
+        "dates",
+        "melon",
+        "watermelon"
       ],
       "it": [
         "clementina",
         "apple",
-        "navelina",
-        "mango"
+        "orange",
+        "mango",
+        "mandarina",
+        "pineapple",
+        "avocado",
+        "dates",
+        "melon",
+        "watermelon"
       ],
       "ar": [
         "clementina",
         "mango",
-        "navelina",
-        "apple"
+        "orange",
+        "apple",
+        "mandarina",
+        "pineapple",
+        "avocado",
+        "dates",
+        "melon",
+        "watermelon"
       ]
     },
     "produce/vegetables": {
@@ -266,7 +286,11 @@
         "cucumber",
         "zucchini",
         "aubergine",
-        "green-bean"
+        "green-bean",
+        "broccoli",
+        "cauliflower",
+        "potato",
+        "garlic"
       ],
       "en": [
         "tomato",
@@ -276,7 +300,11 @@
         "aubergine",
         "green-bean",
         "tomato-cherry-round",
-        "tomato-cherry-long"
+        "tomato-cherry-long",
+        "broccoli",
+        "cauliflower",
+        "potato",
+        "garlic"
       ],
       "fr": [
         "tomato",
@@ -286,7 +314,11 @@
         "aubergine",
         "green-bean",
         "tomato-cherry-round",
-        "tomato-cherry-long"
+        "tomato-cherry-long",
+        "broccoli",
+        "cauliflower",
+        "potato",
+        "garlic"
       ],
       "it": [
         "tomato",
@@ -296,7 +328,11 @@
         "cucumber",
         "green-bean",
         "tomato-cherry-round",
-        "tomato-cherry-long"
+        "tomato-cherry-long",
+        "broccoli",
+        "cauliflower",
+        "potato",
+        "garlic"
       ],
       "ar": [
         "tomato",
@@ -306,7 +342,11 @@
         "zucchini",
         "green-bean",
         "tomato-cherry-round",
-        "tomato-cherry-long"
+        "tomato-cherry-long",
+        "broccoli",
+        "cauliflower",
+        "potato",
+        "garlic"
       ]
     }
   },
@@ -586,6 +626,96 @@
       "fr": "Boutargue surgelée",
       "it": "Bottarga surgelata",
       "ar": "بطارخ مجمدة"
+    },
+    "sardina": {
+      "en": "European sardine",
+      "fr": "Sardine",
+      "it": "Sardina",
+      "ar": "السردين"
+    },
+    "sole": {
+      "en": "Common sole",
+      "fr": "Sole commune",
+      "it": "Sogliola",
+      "ar": "سمك موسى"
+    },
+    "mero": {
+      "en": "Dusky grouper",
+      "fr": "Mérou brun",
+      "it": "Cernia bruna",
+      "ar": "الهامور"
+    },
+    "pulpo-bloque": {
+      "en": "Block octopus",
+      "fr": "Poulpe bloc",
+      "it": "Polpo a blocco",
+      "ar": "أخطبوط بلوك"
+    },
+    "mandarina": {
+      "en": "Mandarin",
+      "fr": "Mandarine",
+      "it": "Mandarino",
+      "ar": "اليوسفي"
+    },
+    "orange": {
+      "en": "Orange",
+      "fr": "Orange",
+      "it": "Arancia",
+      "ar": "البرتقال"
+    },
+    "pineapple": {
+      "en": "Pineapple",
+      "fr": "Ananas",
+      "it": "Ananas",
+      "ar": "الأناناس"
+    },
+    "avocado": {
+      "en": "Avocado",
+      "fr": "Avocat",
+      "it": "Avocado",
+      "ar": "الأفوكادو"
+    },
+    "dates": {
+      "en": "Dates",
+      "fr": "Dattes",
+      "it": "Datteri",
+      "ar": "التمور"
+    },
+    "melon": {
+      "en": "Melon",
+      "fr": "Melon",
+      "it": "Melone",
+      "ar": "الشمام"
+    },
+    "watermelon": {
+      "en": "Watermelon",
+      "fr": "Pastèque",
+      "it": "Anguria",
+      "ar": "البطيخ"
+    },
+    "broccoli": {
+      "en": "Broccoli",
+      "fr": "Brocoli",
+      "it": "Broccoli",
+      "ar": "البروكلي"
+    },
+    "cauliflower": {
+      "en": "Cauliflower",
+      "fr": "Chou-fleur",
+      "it": "Cavolfiore",
+      "ar": "القرنبيط"
+    },
+    "potato": {
+      "en": "Potato",
+      "fr": "Pomme de terre",
+      "it": "Patata",
+      "ar": "البطاطس"
+    },
+    "garlic": {
+      "en": "Garlic",
+      "fr": "Ail",
+      "it": "Aglio",
+      "ar": "الثوم"
     }
   }
 }
