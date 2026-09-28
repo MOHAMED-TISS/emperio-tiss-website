@@ -22,6 +22,7 @@
   const CATALOG_URL = '/assets/data/catalog.json';
   const CATALOG_EXTENDED_URL = '/assets/data/catalog-v1.3.json';
   const PRIORITY_URL = '/assets/data/catalogue-market-priority.json';
+  const ES_SET_URL = '/assets/data/catalogue-es-products.json';
   const IMAGES_URL = '/assets/data/product-images.json';
 
   const labels = {
@@ -275,29 +276,33 @@
     cache: 'no-cache'
   }).then(r => r.json()), fetch(PRIORITY_URL, {
     cache: 'no-cache'
+  }).then(r => r.json()), fetch(ES_SET_URL, {
+    cache: 'no-cache'
   }).then(r => r.json()), fetch(IMAGES_URL, {
     cache: 'no-cache'
   }).then(r => r.ok ? r.json() : {})])
-    .then(([catalog, extendedCatalog, priority, imageMap]) => {
+    .then(([catalog, extendedCatalog, priority, esSet, imageMap]) => {
       const productsById = new Map((catalog.products || []).filter(p => p?.id).map(p => [p.id, p]));
       for (const product of extendedCatalog.products || []) {
-        if (product?.id && !productsById.has(product.id)) productsById.set(product.id, product);
+        if (product?.id) productsById.set(product.id, {...(productsById.get(product.id) || {}), ...product});
       }
-      const marketOrder = priority?.priority?.[`${family}/${subcategory}`]?.[lang] || [];
+      const categoryKey = `${family}/${subcategory}`;
+      const spanishIds = esSet?.categories?.[categoryKey] || [];
+      const dataAliases = esSet?.dataAliases || {};
+      const marketOrder = priority?.priority?.[categoryKey]?.[lang] || spanishIds;
       const orderIndex = new Map(marketOrder.map((id, i) => [id, i]));
-      const allowedSubcategories = subcategory === 'fruits' ?
-        new Set(['fruits', 'citrus', 'exotics', 'core-produce']) : new Set([subcategory]);
-      const products = [...productsById.values()].filter(p => p.status !== 'inactive' && p
-        .family === family && allowedSubcategories.has(p.subcategory));
+      const sourceIndex = new Map(spanishIds.map((id, i) => [id, i]));
+      const products = spanishIds.map(id => {
+        const dataId = dataAliases[id] || id;
+        const source = productsById.get(dataId);
+        if (!source || source.status === 'inactive') return null;
+        return {...source, id, dataId};
+      }).filter(Boolean);
       if (!products.length) return;
       products.sort((a, b) => {
-        const ai = orderIndex.has(a.id) ? orderIndex.get(a.id) : 99999,
-          bi = orderIndex.has(b.id) ? orderIndex.get(b.id) : 99999;
-        if (ai !== bi) return ai - bi;
-        return String(a.commercialName || a.id).localeCompare(String(b.commercialName || b.id), undefined, {
-          numeric: true,
-          sensitivity: 'base'
-        });
+        const ai = orderIndex.has(a.id) ? orderIndex.get(a.id) : 100000 + (sourceIndex.get(a.id) || 0),
+          bi = orderIndex.has(b.id) ? orderIndex.get(b.id) : 100000 + (sourceIndex.get(b.id) || 0);
+        return ai - bi;
       });
       render(products, priority, imageMap, orderIndex);
     }).catch(err => console.warn('[EMPERIO TISS] market catalogue unavailable', err));
@@ -326,7 +331,7 @@
     section.id = 'marketCatalogue';
     const marketName = priority?.locales?.[lang]?.market || lang.toUpperCase();
     section.innerHTML =
-      `<div class="market-catalogue__inner"><div class="market-catalogue__head"><div><p class="market-catalogue__eyebrow">${labels.eyebrow} / ${String(orderIndex.size || 0).padStart(2, '0')}</p><h2 class="market-catalogue__title">${esc(title)}<br><em>${esc(labels.suffix)}</em></h2></div><p class="market-catalogue__intro">${esc(labels.intro)}</p></div><div class="market-catalogue__context"><span class="market-catalogue__tag">${esc(marketName)}</span><span class="market-catalogue__tag">${esc(subcategory)}</span></div><div class="market-catalogue__toolbar"><input class="market-catalogue__search" type="search" placeholder="${esc(labels.search)}" aria-label="${esc(labels.search)}"><p class="market-catalogue__count"></p></div><div class="market-catalogue__filters"><button class="market-catalogue__filter" data-state="all" aria-pressed="true">${labels.all}</button><button class="market-catalogue__filter" data-state="fresh" aria-pressed="false">${labels.fresh}</button><button class="market-catalogue__filter" data-state="frozen" aria-pressed="false">${labels.frozen}</button></div><div class="market-catalogue__grid" aria-live="polite"></div></div>`;
+      `<div class="market-catalogue__inner"><div class="market-catalogue__head"><div><p class="market-catalogue__eyebrow">${labels.eyebrow} / ${String(products.length || 0).padStart(2, '0')}</p><h2 class="market-catalogue__title">${esc(title)}<br><em>${esc(labels.suffix)}</em></h2></div><p class="market-catalogue__intro">${esc(labels.intro)}</p></div><div class="market-catalogue__context"><span class="market-catalogue__tag">${esc(marketName)}</span><span class="market-catalogue__tag">${esc(subcategory)}</span></div><div class="market-catalogue__toolbar"><input class="market-catalogue__search" type="search" placeholder="${esc(labels.search)}" aria-label="${esc(labels.search)}"><p class="market-catalogue__count"></p></div><div class="market-catalogue__filters"><button class="market-catalogue__filter" data-state="all" aria-pressed="true">${labels.all}</button><button class="market-catalogue__filter" data-state="fresh" aria-pressed="false">${labels.fresh}</button><button class="market-catalogue__filter" data-state="frozen" aria-pressed="false">${labels.frozen}</button></div><div class="market-catalogue__grid" aria-live="polite"></div></div>`;
     const main = document.querySelector('main');
     const anchor = main?.querySelector('.fish-emblematic,.cta,.ar-cta') || null;
     if (anchor) anchor.insertAdjacentElement('afterend', section);
@@ -367,7 +372,7 @@
       grid.innerHTML = visible.length ? visible.map(p => {
         const images = getImages(imageMap, p.id);
         const img = images[0] || p.image || '';
-        return `<article class="market-catalogue-card" data-product-id="${esc(p.id)}"><div class="market-catalogue-card__media" data-images='${esc(JSON.stringify(images))}'>${img ? `<img src="${esc(img)}" alt="${esc(translatedName(p))}" loading="lazy" draggable="false">` : '<span class="market-catalogue-card__placeholder">EMPERIO TISS</span>'}</div><div class="market-catalogue-card__body"><p class="market-catalogue-card__meta">${esc(categoryLabel(p))}</p><h3 class="market-catalogue-card__name">${esc(translatedName(p))}</h3>${p.scientificName ? `<p class="market-catalogue-card__scientific"><em>${esc(p.scientificName)}</em></p>` : ''}<div class="market-catalogue-card__details">${details(p)}</div></div></article>`;
+        return `<article class="market-catalogue-card" data-product-id="${esc(p.id)}" data-product-reference="${esc(p.reference || '')}"><div class="market-catalogue-card__media" data-images='${esc(JSON.stringify(images))}'>${img ? `<img src="${esc(img)}" alt="${esc(translatedName(p))}" loading="lazy" draggable="false">` : '<span class="market-catalogue-card__placeholder">EMPERIO TISS</span>'}</div><div class="market-catalogue-card__body"><p class="market-catalogue-card__meta">${esc(categoryLabel(p))}</p><h3 class="market-catalogue-card__name">${esc(translatedName(p))}</h3>${p.scientificName ? `<p class="market-catalogue-card__scientific"><em>${esc(p.scientificName)}</em></p>` : ''}<div class="market-catalogue-card__details">${details(p)}</div></div></article>`;
       }).join('') : `<p class="market-catalogue__empty">${lang === 'ar' ? 'لا توجد مراجع مطابقة.' : lang === 'fr' ? 'Aucune référence ne correspond.' : lang === 'it' ? 'Nessuna referenza corrisponde.' : 'No references match your search.'}`;
       bindLightboxes();
     };
