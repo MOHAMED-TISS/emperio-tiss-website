@@ -159,6 +159,7 @@
     'Entera / según referencia': 'Whole / according to reference',
     'Flor / según referencia': 'Flower / according to reference',
     'Bloque / según referencia': 'Block / according to reference',
+    'Bandeja / según referencia': 'Tray / according to reference',
     'Entero / envuelto': 'Whole / wrapped',
     'Limpia / IQF': 'Cleaned / IQF',
     'Limpia / IQF / Bloque': 'Cleaned / IQF / Block',
@@ -203,6 +204,8 @@
     'langostino-tigre': 'Tiger prawn',
     'pulpo-flor': 'Flower octopus',
     'pulpo-bloque': 'Block octopus',
+    'pulpo-bandeja': 'Octopus',
+    'pulpo-bandeja': 'Tray-packed octopus',
     'calamar-envuelto': 'Wrapped squid',
     'sepia-limpia-iqf': 'Cleaned cuttlefish IQF / Block'
   };
