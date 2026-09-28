@@ -607,11 +607,6 @@ body.news-page h3 {
     white-space: nowrap !important;
     margin-inline: auto !important;
   }
-
-  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .site-header,
-  :is(body.es-page, body.intl-page, body.ar-page, body.about-page, body.products-site, body.news-page, body.seafood-subpage, body.fish-catalog-pilot) .header-inner {
-    padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right)) !important;
-  }
 }
 
 /* Phones in landscape: preserve a true viewport hero without crushing the content */
