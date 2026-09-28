@@ -63,7 +63,7 @@
     'pulpo-flor': 'Flower octopus',
     'pulpo-bloque': 'Block octopus',
     'calamar-envuelto': 'Wrapped squid',
-    'sepia-limpia-iqf': 'Cleaned cuttlefish IQF'
+    'sepia-limpia-iqf': 'Cleaned cuttlefish IQF / Block'
   };
   const enTypes = {
     moruno: 'Mediterranean',
