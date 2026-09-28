@@ -176,13 +176,57 @@
     if (!form || !status || !button || form.dataset.etSubmitBound === 'true') return;
     form.dataset.etSubmitBound = 'true';
 
-    // Carry a fruit selection into the Spanish inquiry without submitting it.
-    if (lang === 'es') {
-      const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(location.search);
+    const hiddenContext = {
+      inquiry_source: params.get('source') || (params.get('product_id') ? 'catalogue' : 'contact'),
+      page_url: params.get('from') || document.referrer || location.pathname,
+      product_id: params.get('product_id') || params.get('product') || '',
+      product_name: params.get('product_name') || '',
+      product_origin: params.get('origin') || '',
+      product_specification: params.get('specification') || '',
+      product_category: params.get('category') || '',
+      language: lang
+    };
+    for (const [name,value] of Object.entries(hiddenContext)) {
+      let input=form.querySelector(`input[name="${name}"]`);
+      if (!input) {
+        input=doc.createElement('input'); input.type='hidden'; input.name=name; form.appendChild(input);
+      }
+      input.value=String(value || '').slice(0,1200);
+    }
+
+    const categoryOptions = {
+      es:{fish:'Pescados',shellfish:'Mariscos',cephalopods:'Cefalópodos',fruits:'Frutas',vegetables:'Hortalizas',seasonal:'Productos de temporada'},
+      en:{fish:'Fish',shellfish:'Shellfish',cephalopods:'Cephalopods',fruits:'Fruits',vegetables:'Vegetables',seasonal:'Seasonal products'},
+      fr:{fish:'Poissons',shellfish:'Fruits de mer',cephalopods:'Céphalopodes',fruits:'Fruits',vegetables:'Légumes',seasonal:'Produits de saison'},
+      it:{fish:'Pesce',shellfish:'Molluschi e crostacei',cephalopods:'Cefalopodi',fruits:'Frutta',vegetables:'Ortaggi',seasonal:'Prodotti stagionali'},
+      ar:{fish:'الأسماك',shellfish:'المأكولات البحرية',cephalopods:'رأسيات الأرجل',fruits:'الفواكه',vegetables:'الخضروات',seasonal:'المنتجات الموسمية'}
+    };
+    const messageLabels = {
+      es:{product:'Producto',origin:'Origen',spec:'Especificación'},
+      en:{product:'Product',origin:'Origin',spec:'Specification'},
+      fr:{product:'Produit',origin:'Origine',spec:'Spécification'},
+      it:{product:'Prodotto',origin:'Origine',spec:'Specifica'},
+      ar:{product:'المنتج',origin:'المنشأ',spec:'المواصفات'}
+    };
+    const message = form.querySelector('[name="mensaje"]');
+    const select = form.querySelector('[name="producto"]');
+    const category = params.get('category') || '';
+    const optionValue = categoryOptions[lang]?.[category];
+    if (select && optionValue && [...select.options].some(o=>o.textContent.trim()===optionValue)) select.value=optionValue;
+    if (message && !message.value && (hiddenContext.product_name || hiddenContext.product_id)) {
+      const L=messageLabels[lang] || messageLabels.en;
+      const lines=[
+        `${L.product}: ${hiddenContext.product_name || hiddenContext.product_id}`,
+        hiddenContext.product_origin ? `${L.origin}: ${hiddenContext.product_origin}` : '',
+        hiddenContext.product_specification ? `${L.spec}: ${hiddenContext.product_specification}` : ''
+      ].filter(Boolean);
+      message.value=lines.join('\n');
+    }
+
+    if (lang === 'es' && !hiddenContext.product_name) {
       const names = {frutas:'Frutas',clementina:'Clementina',mandarina:'Mandarina',orange:'Naranja',mango:'Mango',pineapple:'Piña',avocado:'Aguacate',dates:'Dátiles',melon:'Melón',watermelon:'Sandía',apple:'Manzana'};
       const product = names[params.get('product')];
-      const message = form.querySelector('[name="mensaje"]');
-      const select = form.querySelector('[name="producto"]');
       if (product && message && !message.value) {
         if (select) select.value = 'Frutas';
         const variety = (params.get('variety') || '').slice(0,80);
@@ -272,7 +316,7 @@
           throw new Error(securityFailure ? contactCopy.security : (result.error || contactCopy.error));
         }
         form.reset();
-        status.textContent = contactCopy.success;
+        status.textContent = contactCopy.success + (result.inquiry_id ? ` · Ref. ${result.inquiry_id}` : '');
         status.dataset.state = 'success';
       } catch (error) {
         const securityFailure = String(error?.message || '').startsWith('TURNSTILE_');
