@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS inquiries (
   phone TEXT,
   product_category TEXT,
   product_id TEXT,
+  product_reference TEXT,
   product_name TEXT,
   origin TEXT,
   destination TEXT,
