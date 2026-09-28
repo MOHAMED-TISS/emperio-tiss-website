@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0",
+  "authority": "Visible Spanish catalogues",
+  "categories": {
+    "seafood/fish": [
+      "dorada",
+      "lubina",
+      "merluza-pijota",
+      "rape",
+      "caballa",
+      "sardina",
+      "boqueron",
+      "salmonete",
+      "atun",
+      "pez-espada",
+      "san-pedro",
+      "denton",
+      "sargo",
+      "sole",
+      "pez-limon",
+      "mujol",
+      "pargo",
+      "mero",
+      "sama",
+      "rascacio"
+    ],
+    "seafood/shellfish": [
+      "moruno",
+      "cigala",
+      "gamba-blanca",
+      "langostino-tigre"
+    ],
+    "seafood/cephalopods": [
+      "pulpo-flor",
+      "pulpo-bloque",
+      "pulpo-bandeja",
+      "calamar-envuelto",
+      "puntilla-extra",
+      "sepia-limpia-iqf",
+      "bottarga"
+    ],
+    "produce/fruits": [
+      "clementina",
+      "mandarina",
+      "orange",
+      "mango",
+      "pineapple",
+      "avocado",
+      "dates",
+      "melon",
+      "watermelon",
+      "apple"
+    ],
+    "produce/vegetables": [
+      "tomato",
+      "tomato-cherry-round",
+      "tomato-cherry-long",
+      "pepper",
+      "cucumber",
+      "zucchini",
+      "aubergine",
+      "green-bean",
+      "broccoli",
+      "cauliflower",
+      "potato",
+      "garlic"
+    ]
+  },
+  "dataAliases": {
+    "mero": "mero-amarillo"
+  }
+}
