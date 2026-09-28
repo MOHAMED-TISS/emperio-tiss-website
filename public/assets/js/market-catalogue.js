@@ -224,6 +224,51 @@
     return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' / ') : translateOne(value);
   };
 
+  const bottargaTechnicalTranslations = {
+    en: {
+      'Según origen': 'According to origin',
+      'Según zona FAO': 'According to FAO area',
+      'Según especificación del comprador': 'According to buyer specification',
+      'Especificación profesional': 'Professional specification',
+      'Según presentación': 'According to presentation',
+      'Según mercado': 'According to market',
+      'Según disponibilidad': 'As available'
+    },
+    fr: {
+      'Según origen': 'Selon origine',
+      'Según zona FAO': 'Selon zone FAO',
+      'Según especificación del comprador': 'Selon spécification de l’acheteur',
+      'Especificación profesional': 'Spécification professionnelle',
+      'Según presentación': 'Selon présentation',
+      'Según mercado': 'Selon marché',
+      'Según disponibilidad': 'Selon disponibilité'
+    },
+    it: {
+      'Según origen': 'Secondo origine',
+      'Según zona FAO': 'Secondo zona FAO',
+      'Según especificación del comprador': 'Secondo specifica del buyer',
+      'Especificación profesional': 'Specifica professionale',
+      'Según presentación': 'Secondo presentazione',
+      'Según mercado': 'Secondo mercato',
+      'Según disponibilidad': 'Secondo disponibilità'
+    },
+    ar: {
+      'Según origen': 'حسب المنشأ',
+      'Según zona FAO': 'حسب منطقة FAO',
+      'Según especificación del comprador': 'حسب مواصفات المشتري',
+      'Especificación profesional': 'مواصفات مهنية',
+      'Según presentación': 'حسب طريقة التقديم',
+      'Según mercado': 'حسب السوق',
+      'Según disponibilidad': 'حسب التوفر'
+    }
+  };
+
+  const translateBottargaValue = value => {
+    const map = bottargaTechnicalTranslations[lang] || {};
+    const translateOne = item => map[String(item ?? '')] || String(item ?? '');
+    return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' / ') : translateOne(value);
+  };
+
   Promise.all([fetch(CATALOG_URL, {
     cache: 'no-cache'
   }).then(r => r.json()), fetch(CATALOG_EXTENDED_URL, {
@@ -292,20 +337,21 @@
       count = section.querySelector('.market-catalogue__count');
     let state = 'all';
     const translatedName = p => priority?.names?.[p.id]?.[lang] || p.commercialName || p.id;
-    const translateValue = value => lang === 'it' ? translateItValue(value) : value;
+    const translateValue = (value, product) => product?.id === 'bottarga' ?
+      translateBottargaValue(value) : (lang === 'it' ? translateItValue(value) : value);
     const capitalizeCatalogueLabel = value => String(value ?? '').replace(/(^|[\s/-])([a-zà-ÿ])/giu, (_, prefix, letter) => `${prefix}${letter.toLocaleUpperCase()}`);
-    const categoryLabel = p => capitalizeCatalogueLabel(translateValue(p.catalogGroup || p.category || p.subcategory || subcategory));
+    const categoryLabel = p => capitalizeCatalogueLabel(translateValue(p.catalogGroup || p.category || p.subcategory || subcategory, p));
     const conditionLabel = p => (p.condition || []).map(c => norm(c) === 'fresh' ? labels.fresh :
-      norm(c) === 'frozen' ? labels.frozen : translateValue(c)).join(' / ') || labels.according;
+      norm(c) === 'frozen' ? labels.frozen : translateValue(c, p)).join(' / ') || labels.according;
     const details = p => [
       [labels.family, categoryLabel(p)],
       [labels.condition, conditionLabel(p)],
-      [labels.origin, translateValue((p.origin || []).join(' / ') || labels.according)],
-      [labels.calibre, translateValue((p.calibre || []).join(' / ') || labels.according)],
-      [labels.quality, translateValue((p.quality || []).join(' / ') || labels.according)],
-      [labels.format, translateValue((p.format || []).join(' / ') || labels.according)],
-      [labels.packaging, translateValue((p.packaging || []).join(' / ') || labels.according)],
-      [labels.availability, translateValue((p.availability || []).join(' / ') || labels.according)]
+      [labels.origin, translateValue((p.origin || []).join(' / ') || labels.according, p)],
+      [labels.calibre, translateValue((p.calibre || []).join(' / ') || labels.according, p)],
+      [labels.quality, translateValue((p.quality || []).join(' / ') || labels.according, p)],
+      [labels.format, translateValue((p.format || []).join(' / ') || labels.according, p)],
+      [labels.packaging, translateValue((p.packaging || []).join(' / ') || labels.according, p)],
+      [labels.availability, translateValue((p.availability || []).join(' / ') || labels.according, p)]
     ].map(([k, v]) =>
       `<div class="market-catalogue-card__detail"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`
     ).join('');
