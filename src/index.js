@@ -18,6 +18,38 @@ const originOk = r => {
 };
 const dbOk = e => e && e.NEWS_DB;
 const now = () => Math.floor(Date.now() / 1000);
+let inquirySchemaReady;
+async function ensureInquirySchema(env) {
+  if (!dbOk(env)) throw new Error('NEWS_DB_MISSING');
+  if (!inquirySchemaReady) inquirySchemaReady = env.NEWS_DB.batch([
+    env.NEWS_DB.prepare(`CREATE TABLE IF NOT EXISTS inquiries (
+      id TEXT PRIMARY KEY,
+      status TEXT NOT NULL DEFAULT 'new' CHECK(status IN ('new','qualified','studying','offered','won','lost')),
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL,
+      language TEXT NOT NULL DEFAULT 'en',
+      source TEXT,
+      page_url TEXT,
+      name TEXT,
+      company TEXT,
+      tax_id TEXT,
+      email TEXT NOT NULL,
+      phone TEXT,
+      product_category TEXT,
+      product_id TEXT,
+      product_name TEXT,
+      origin TEXT,
+      destination TEXT,
+      specification TEXT,
+      message TEXT,
+      notification_status TEXT,
+      notification_error TEXT
+    )`),
+    env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_status_created ON inquiries(status,created_at DESC)'),
+    env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_email ON inquiries(email)')
+  ]).catch(error => { inquirySchemaReady = null; throw error; });
+  return inquirySchemaReady;
+}
 const enc = new TextEncoder();
 async function sha(v) {
   const b = await crypto.subtle.digest('SHA-256', enc.encode(v));
@@ -367,7 +399,8 @@ async function adminGuard(request,env) {
 }
 async function adminOverview(request,env) {
   const denied = await adminGuard(request,env); if (denied) return denied;
-  const [clients,offers,subscribers,campaigns,summary,dailyRows,countries,categories,languages] = await Promise.all([
+  await ensureInquirySchema(env);
+  const [clients,offers,subscribers,campaigns,summary,dailyRows,countries,categories,languages,inquiries,inquirySummary] = await Promise.all([
     env.NEWS_DB.prepare('SELECT email,name,company,language,status,created_at,updated_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,notification_status FROM clients ORDER BY created_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare('SELECT * FROM private_offers ORDER BY created_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare('SELECT email,language,consent_at,confirmed_at,unsubscribed_at FROM subscribers ORDER BY consent_at DESC LIMIT 200').all(),
@@ -382,7 +415,9 @@ async function adminOverview(request,env) {
     env.NEWS_DB.prepare("SELECT strftime('%Y-%m-%d',created_at,'unixepoch') AS day,COUNT(*) AS count FROM clients WHERE created_at>=unixepoch('now','-29 days','start of day') GROUP BY day ORDER BY day").all(),
     env.NEWS_DB.prepare("SELECT country AS label,COUNT(*) AS count FROM clients WHERE country IS NOT NULL AND country<>'' GROUP BY country ORDER BY count DESC,label LIMIT 12").all(),
     env.NEWS_DB.prepare("SELECT category AS label,COUNT(*) AS count FROM client_interests GROUP BY category ORDER BY count DESC,label").all(),
-    env.NEWS_DB.prepare("SELECT language AS label,COUNT(*) AS count FROM clients GROUP BY language ORDER BY count DESC,label").all()
+    env.NEWS_DB.prepare("SELECT language AS label,COUNT(*) AS count FROM clients GROUP BY language ORDER BY count DESC,label").all(),
+    env.NEWS_DB.prepare("SELECT id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_name,origin,destination,specification,message,notification_status FROM inquiries ORDER BY created_at DESC LIMIT 200").all(),
+    env.NEWS_DB.prepare("SELECT status,COUNT(*) AS count FROM inquiries GROUP BY status").all()
   ]);
   const dailyMap = new Map(dailyRows.results.map(row => [row.day,Number(row.count)]));
   const daily = [];
@@ -397,7 +432,8 @@ async function adminOverview(request,env) {
   const countRows = result => result.results.map(row => ({label:row.label,count:Number(row.count)}));
   return json({
     ok:true,emailConfigured:Boolean(env.RESEND_API_KEY),clients:clients.results,offers:offers.results,
-    subscribers:subscribers.results,campaigns:campaigns.results,
+    subscribers:subscribers.results,campaigns:campaigns.results,inquiries:inquiries.results,
+    inquiryPipeline:Object.fromEntries(inquirySummary.results.map(row=>[row.status,Number(row.count)])),
     analytics:{
       summary:{total:Number(summary.total),pending:Number(summary.pending),approved:Number(summary.approved),rejected:Number(summary.rejected)},
       daily,countries:countRows(countries),categories:countRows(categories),languages:countRows(languages)
@@ -568,6 +604,15 @@ async function handleContact(request, env) {
     producto = clean(form.get('producto'), 120),
     destino = clean(form.get('destino'), 160),
     mensaje = clean(form.get('mensaje'), 4000),
+    languageRaw = clean(form.get('language'), 2),
+    language = ['es','en','fr','it','ar'].includes(languageRaw) ? languageRaw : 'en',
+    source = clean(form.get('inquiry_source'), 80) || 'contact',
+    pageUrl = clean(form.get('page_url'), 500),
+    productCategory = clean(form.get('product_category'), 120) || producto,
+    productId = clean(form.get('product_id'), 160),
+    productName = clean(form.get('product_name'), 240),
+    productOrigin = clean(form.get('product_origin'), 240),
+    productSpecification = clean(form.get('product_specification'), 2000),
     turnstileToken = form.get('cf-turnstile-response');
 
   if (!turnstileSecret(env)) return json({ok:false,error:'La verificación de seguridad no está configurada.',code:'TURNSTILE_NOT_CONFIGURED'},503);
@@ -591,20 +636,45 @@ async function handleContact(request, env) {
     return json({ok:false,error:'Completa todos los campos obligatorios.',code:'VALIDATION_FAILED'},400);
   if (!emailOk(email)) return json({ok:false,error:'Introduce un email válido.',code:'INVALID_EMAIL'},400);
 
+  await ensureInquirySchema(env);
+  const inquiryId = `INQ-${new Date().toISOString().slice(0,10).replaceAll('-','')}-${crypto.randomUUID().slice(0,8).toUpperCase()}`;
+  const createdAt = now();
+  await env.NEWS_DB.prepare(
+    `INSERT INTO inquiries(id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_name,origin,destination,specification,message,notification_status)
+     VALUES(?,'new',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending')`
+  ).bind(inquiryId,createdAt,createdAt,language,source,pageUrl,nombre,empresa,cif,email,telefono,productCategory,productId,productName,productOrigin,destino,productSpecification,mensaje).run();
+
   const html =
-    `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>CIF / Identificación fiscal:</strong> ${escapeHtml(cif)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Producto:</strong> ${escapeHtml(producto)}</p><p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p>`;
+    `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Referencia:</strong> ${escapeHtml(inquiryId)}</p><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>CIF / Identificación fiscal:</strong> ${escapeHtml(cif)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Categoría:</strong> ${escapeHtml(producto)}</p>${productName ? `<p><strong>Referencia producto:</strong> ${escapeHtml(productName)}</p>` : ''}${productOrigin ? `<p><strong>Origen:</strong> ${escapeHtml(productOrigin)}</p>` : ''}${productSpecification ? `<p><strong>Especificación:</strong> ${escapeHtml(productSpecification)}</p>` : ''}<p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p><p><a href="https://emperio-tiss.com/private/admin/">Abrir Operations Desk</a></p>`;
   try {
-    await resend(env, 'info@emperio-tiss.com', `Nueva consulta B2B — ${empresa} — ${producto}`, html, email);
-  } catch {
-    return json({ok:false,error:'No se pudo enviar la consulta. Inténtalo de nuevo.'},502);
+    await resend(env, 'info@emperio-tiss.com', `${inquiryId} — ${empresa} — ${productName || producto}`, html, email, `inquiry-${inquiryId}`);
+    await env.NEWS_DB.prepare("UPDATE inquiries SET notification_status='sent',notification_error=NULL,updated_at=? WHERE id=?").bind(now(),inquiryId).run();
+    return json({ok:true,inquiry_id:inquiryId,email_sent:true});
+  } catch (error) {
+    await env.NEWS_DB.prepare("UPDATE inquiries SET notification_status='failed',notification_error=?,updated_at=? WHERE id=?")
+      .bind(clean(error?.message || 'EMAIL_FAILED',120),now(),inquiryId).run();
+    return json({ok:true,inquiry_id:inquiryId,email_sent:false,warning:'La consulta se ha registrado, pero la notificación por email está temporalmente pendiente.'});
   }
-  return json({ok:true});
+}
+
+async function adminInquiryStatus(request,env) {
+  const denied = await adminGuard(request,env); if (denied) return denied;
+  await ensureInquirySchema(env);
+  const body = await request.json();
+  const id = clean(body.id,80);
+  const status = clean(body.status,20).toLowerCase();
+  const allowed = new Set(['new','qualified','studying','offered','won','lost']);
+  if (!id || !allowed.has(status)) return json({ok:false,error:'Invalid inquiry status.'},400);
+  const result = await env.NEWS_DB.prepare('UPDATE inquiries SET status=?,updated_at=? WHERE id=?').bind(status,now(),id).run();
+  if (!result.meta.changes) return json({ok:false,error:'Inquiry not found.'},404);
+  return json({ok:true,id,status});
 }
 
 async function fetchHandler(request, env) {
   const url = new URL(request.url);
   if (url.pathname.startsWith('/api/') && request.method==='POST' && Number(request.headers.get('content-length'))>32768) return json({ok:false,error:'Request too large.'},413);
   if (url.pathname==='/api/private/admin/overview' && request.method==='GET') return adminOverview(request,env);
+  if (url.pathname==='/api/private/admin/inquiries/status' && request.method==='POST') return adminInquiryStatus(request,env);
   if (url.pathname==='/api/private/admin/campaigns' && request.method==='POST') return saveCampaign(request,env);
   if (url.pathname==='/api/private/admin/campaigns/preview' && request.method==='GET') return campaignPreview(request,env);
   if (url.pathname==='/api/newsletter/unsubscribe' && ['GET','POST'].includes(request.method)) return unsubscribe(request,env);
