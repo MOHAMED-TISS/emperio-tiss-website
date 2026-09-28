@@ -35,7 +35,7 @@
         vegetables: 'Vegetables'
       },
       suffix: 'by reference.',
-      intro: 'Technical and commercial references presented for professional sourcing.'
+      intro: 'Technical and commercial references presented for professional sourcing.',
       search: 'Search species or product...',
       all: 'All',
       fresh: 'Fresh',
@@ -63,7 +63,7 @@
         vegetables: 'Légumes'
       },
       suffix: 'par référence.',
-      intro: 'Références techniques et commerciales pour le sourcing professionnel.'
+      intro: 'Références techniques et commerciales pour le sourcing professionnel.',
       search: 'Rechercher une espèce ou un produit...',
       all: 'Tous',
       fresh: 'Frais',
@@ -91,7 +91,7 @@
         vegetables: 'Ortaggi'
       },
       suffix: 'per referenza.',
-      intro: 'Riferimenti tecnici e commerciali per il sourcing professionale.'
+      intro: 'Riferimenti tecnici e commerciali per il sourcing professionale.',
       search: 'Cerca specie o prodotto...',
       all: 'Tutti',
       fresh: 'Fresco',
@@ -119,7 +119,7 @@
         vegetables: 'الخضروات'
       },
       suffix: 'حسب المرجع.',
-      intro: 'مراجع فنية وتجارية للمشترين المحترفين.'
+      intro: 'مراجع فنية وتجارية للمشترين المحترفين.',
       search: 'ابحث عن نوع أو منتج...',
       all: 'الكل',
       fresh: 'طازج',
