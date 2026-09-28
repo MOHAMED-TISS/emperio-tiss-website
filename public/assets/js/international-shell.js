@@ -104,7 +104,7 @@
     }
     if (!doc.querySelector('script[data-etMarketCatalogue]')) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/market-catalogue.js?v=20260928-no-market-priority-1';
+      script.src = '/assets/js/market-catalogue.js?v=20260928-bottarga-inline-1';
       script.async = false;
       script.dataset.etMarketCatalogue = 'true';
       doc.head.appendChild(script);
