@@ -1273,6 +1273,345 @@
       "destinationConstraints": [],
       "documents": [],
       "reference": "7999"
+    },
+    {
+      "id": "mandarina",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "citrus",
+      "commercialName": "Mandarina",
+      "scientificName": "Citrus reticulata",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos según campaña"
+      ],
+      "varieties": [
+        "Nadorcott",
+        "Orri",
+        "Tango",
+        "Nova",
+        "Berkane"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "1819"
+    },
+    {
+      "id": "orange",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "citrus",
+      "commercialName": "Naranja",
+      "scientificName": "Citrus sinensis",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos según campaña"
+      ],
+      "varieties": [
+        "Navelina",
+        "Lane Late",
+        "Navel Late",
+        "Valencia Late"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "6368"
+    },
+    {
+      "id": "pineapple",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "exotics",
+      "commercialName": "Piña",
+      "scientificName": "Ananas comosus",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según temporada y programa de suministro"
+      ],
+      "varieties": [
+        "MD2",
+        "Sweet Cayenne"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "3991"
+    },
+    {
+      "id": "avocado",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "exotics",
+      "commercialName": "Aguacate",
+      "scientificName": "Persea americana",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos / según programa"
+      ],
+      "varieties": [
+        "Hass",
+        "Fuerte",
+        "Reed"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "1860"
+    },
+    {
+      "id": "dates",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "exotics",
+      "commercialName": "Dátiles",
+      "scientificName": "Phoenix dactylifera",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Marruecos / según programa de suministro"
+      ],
+      "varieties": [
+        "Medjool",
+        "Deglet Nour"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "8485"
+    },
+    {
+      "id": "melon",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Melón",
+      "scientificName": "Cucumis melo",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos según temporada"
+      ],
+      "varieties": [
+        "Piel de Sapo",
+        "Galia",
+        "Cantalupo",
+        "Charentais"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "7131"
+    },
+    {
+      "id": "watermelon",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Sandía",
+      "scientificName": "Citrullus lanatus",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos según temporada"
+      ],
+      "varieties": [
+        "Sin semillas",
+        "Con semillas",
+        "Mini"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "4018"
+    },
+    {
+      "id": "pulpo-bloque",
+      "commercialName": "Pulpo bloque",
+      "scientificName": "Octopus vulgaris",
+      "group": "Cefalópodos",
+      "type": "Pulpo",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Atlántico / Mediterráneo según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Bloque / según referencia"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y disponibilidad"
+      ],
+      "images": [
+        "/assets/products/incoming/Pulpo.jpg",
+        "/assets/products/incoming/Pulpo(1).jpg",
+        "/assets/products/incoming/Pulpo(3).jpg"
+      ],
+      "reference": "9188",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "cephalopods",
+      "status": "active",
+      "image": "/assets/products/incoming/Pulpo.jpg"
+    },
+    {
+      "id": "sole",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Lenguado",
+      "scientificName": "Solea solea",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Mediterráneo / Atlántico según disponibilidad"
+      ],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "/assets/products/incoming/Lenguado.jpg",
+      "images": [
+        "/assets/products/incoming/Lenguado.jpg"
+      ],
+      "status": "active",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3257"
     }
   ]
 }
