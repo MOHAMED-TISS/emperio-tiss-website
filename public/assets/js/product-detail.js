@@ -161,6 +161,7 @@
     'Bloque / según referencia': 'Block / according to reference',
     'Entero / envuelto': 'Whole / wrapped',
     'Limpia / IQF': 'Cleaned / IQF',
+    'Limpia / IQF / Bloque': 'Cleaned / IQF / Block',
     'Entero / según destino': 'Whole / according to destination'
   };
 
@@ -203,7 +204,7 @@
     'pulpo-flor': 'Flower octopus',
     'pulpo-bloque': 'Block octopus',
     'calamar-envuelto': 'Wrapped squid',
-    'sepia-limpia-iqf': 'Cleaned cuttlefish IQF'
+    'sepia-limpia-iqf': 'Cleaned cuttlefish IQF / Block'
   };
   const enTypes = {
     moruno: 'Mediterranean',
