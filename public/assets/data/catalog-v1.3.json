@@ -927,6 +927,46 @@
       "image": "",
       "images": [],
       "status": "draft"
+    },
+    {
+      "id": "bottarga",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "cephalopods",
+      "commercialName": "Botarga congelada",
+      "scientificName": "",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Según origen"
+      ],
+      "faoZone": [
+        "Según zona FAO"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según presentación"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "/assets/products/incoming/Bottarga(1).jpg",
+      "images": [
+        "/assets/products/incoming/Bottarga(1).jpg",
+        "/assets/products/incoming/Bottarga.jpg",
+        "/assets/products/incoming/Bottarga(2).jpg",
+        "/assets/products/incoming/Bottarga(3).jpg"
+      ],
+      "status": "active"
     }
   ]
 }
