@@ -5,8 +5,66 @@
   --admin-gold: #c9a24b;
 }
 
+
+/* Dedicated fixed header for the private Operations Desk. */
+.private-admin-page .admin-site-header {
+  z-index: 1400;
+}
+
+.private-admin-page .admin-site-header .admin-header-private,
+.private-admin-page .admin-site-header .admin-header-actions {
+  pointer-events: auto;
+}
+
+.private-admin-page .admin-site-header .admin-header-private {
+  order: 1;
+  margin-right: auto;
+  padding: 14px 0;
+  color: #f4f0e6;
+  font-family: var(--et-sans, "DM Sans", Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.private-admin-page .admin-site-header .admin-header-actions {
+  order: 3;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: auto;
+}
+
+.private-admin-page .admin-site-header .admin-header-actions a {
+  position: relative;
+  padding: 14px 0;
+  color: #f4f0e6;
+  font-family: var(--et-sans, "DM Sans", Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .045em;
+  text-decoration: none;
+}
+
+.private-admin-page .admin-site-header .admin-header-private:hover,
+.private-admin-page .admin-site-header .admin-header-actions a:hover,
+.private-admin-page .admin-site-header .admin-header-private:focus-visible,
+.private-admin-page .admin-site-header .admin-header-actions a:focus-visible {
+  color: #d8bb7a;
+}
+
+.private-admin-page .admin-site-header .site-logo img {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+}
+
 .admin-shell {
-  padding: 110px 0 90px
+  padding: 158px 0 90px
 }
 
 .admin-wrap {
@@ -194,7 +252,7 @@
   }
 
   .admin-shell {
-    padding-top: 80px
+    padding-top: 122px
   }
 }
 
@@ -250,4 +308,47 @@
 }
 @media(prefers-reduced-motion:reduce) {
   .private-admin-page { scroll-behavior: auto; }
+}
+
+
+@media(max-width:700px) {
+  .private-admin-page .admin-site-header {
+    padding-inline: 12px;
+  }
+
+  .private-admin-page .admin-site-header .site-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 62px;
+    height: 62px;
+    margin: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .private-admin-page .admin-site-header .site-logo img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .private-admin-page .admin-site-header .admin-header-private {
+    max-width: 92px;
+    padding: 8px 0;
+    font-size: 9px;
+    line-height: 1.25;
+    letter-spacing: .09em;
+  }
+
+  .private-admin-page .admin-site-header .admin-header-actions {
+    gap: 12px;
+  }
+
+  .private-admin-page .admin-site-header .admin-header-actions a {
+    padding: 10px 0;
+    font-size: 10px;
+  }
+
+  .private-admin-page .admin-site-header .admin-header-actions a:first-child {
+    display: none;
+  }
 }
