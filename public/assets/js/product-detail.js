@@ -285,6 +285,7 @@
     const contactBase = lang==='es' ? '/contact/' : `/${lang}/contact/`;
     const inquiry = new URLSearchParams({
       product_id: product.id || '',
+      product_reference: product.reference || '',
       product_name: product.commercialName || '',
       category: categoryKey,
       specification: [product.scientificName, ...(product.origin||[]), ...(product.calibre||[]), ...(product.format||[])].filter(Boolean).join(' · '),
@@ -292,7 +293,7 @@
       from: location.pathname
     });
     root.innerHTML =
-      `<article class="product-detail" data-product-id="${esc(product.id)}"><div class="product-detail__media">${product.image?`<img src="${esc(product.image)}" alt="${esc(product.commercialName)}" loading="eager">`:'<div class="product-detail__placeholder">EMPERIO TISS</div>'}</div><div class="product-detail__content"><p class="product-detail__eyebrow">${esc(category)}</p><h1 class="product-detail__title">${esc(product.commercialName)}</h1>${product.scientificName?`<p><em>${esc(product.scientificName)}</em></p>`:''}<div class="product-detail__specs">${specs}</div><a class="button button-light et-contextual-rfq" href="${contactBase}?${inquiry.toString()}">${esc(t.request)} <span>↗</span></a></div></article>`;
+      `<article class="product-detail" data-product-id="${esc(product.id)}"><div class="product-detail__media">${product.image?`<img src="${esc(product.image)}" alt="${esc(product.commercialName)}" loading="eager">`:'<div class="product-detail__placeholder">EMPERIO TISS</div>'}</div><div class="product-detail__content"><p class="product-detail__eyebrow">${esc(category)}</p>${product.reference?`<p class="et-product-reference">REF. ${esc(product.reference)}</p>`:''}<h1 class="product-detail__title">${esc(product.commercialName)}</h1>${product.scientificName?`<p><em>${esc(product.scientificName)}</em></p>`:''}<div class="product-detail__specs">${specs}</div><a class="button button-light et-contextual-rfq" href="${contactBase}?${inquiry.toString()}">${esc(t.request)} <span>↗</span></a></div></article>`;
     document.title = `${product.commercialName} | EMPERIO TISS`;
   }
 
