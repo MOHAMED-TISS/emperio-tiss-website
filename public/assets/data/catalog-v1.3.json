@@ -1210,9 +1210,11 @@
         "fresh"
       ],
       "origin": [],
-      "image": "",
-      "images": [],
-      "status": "draft",
+      "image": "/assets/products/incoming/sardina.jpg",
+      "images": [
+        "/assets/products/incoming/sardina.jpg"
+      ],
+      "status": "active",
       "faoZone": [],
       "quality": [],
       "format": [],
