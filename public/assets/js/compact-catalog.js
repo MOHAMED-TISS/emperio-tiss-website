@@ -63,7 +63,8 @@
     'pulpo-flor': 'Flower octopus',
     'pulpo-bloque': 'Block octopus',
     'calamar-envuelto': 'Wrapped squid',
-    'sepia-limpia-iqf': 'Cleaned cuttlefish IQF / Block'
+    'sepia-limpia-iqf': 'Cleaned cuttlefish IQF / Block',
+    bottarga: 'Frozen bottarga'
   };
   const enTypes = {
     moruno: 'Mediterranean',
@@ -73,13 +74,89 @@
     'pulpo-flor': 'Octopus',
     'pulpo-bloque': 'Octopus',
     'calamar-envuelto': 'Squid',
-    'sepia-limpia-iqf': 'Cuttlefish'
+    'sepia-limpia-iqf': 'Cuttlefish',
+    bottarga: 'Bottarga'
   };
   const arNames = {
-    'sepia-limpia-iqf': 'سيبيا منظفة IQF / بلوك'
+    'sepia-limpia-iqf': 'سيبيا منظفة IQF / بلوك',
+    bottarga: 'بطارخ مجمدة'
   };
   const arTypes = {
-    'sepia-limpia-iqf': 'سيبيا'
+    'sepia-limpia-iqf': 'سيبيا',
+    bottarga: 'بطارخ'
+  };
+
+  const inlineSpecIds = new Set(['bottarga']);
+  const inlineLabels = {
+    en: {
+      condition: 'Condition',
+      origin: 'Origin',
+      fao: 'FAO area',
+      calibre: 'Calibre',
+      quality: 'Quality',
+      format: 'Format',
+      packaging: 'Packaging',
+      availability: 'Availability'
+    },
+    es: {
+      condition: 'Estado',
+      origin: 'Origen',
+      fao: 'Zona FAO',
+      calibre: 'Calibre',
+      quality: 'Calidad',
+      format: 'Formato',
+      packaging: 'Embalaje',
+      availability: 'Disponibilidad'
+    },
+    fr: {
+      condition: 'État',
+      origin: 'Origine',
+      fao: 'Zone FAO',
+      calibre: 'Calibre',
+      quality: 'Qualité',
+      format: 'Format',
+      packaging: 'Conditionnement',
+      availability: 'Disponibilité'
+    },
+    ar: {
+      condition: 'الحالة',
+      origin: 'المنشأ',
+      fao: 'منطقة FAO',
+      calibre: 'العيار',
+      quality: 'الجودة',
+      format: 'الشكل',
+      packaging: 'التعبئة',
+      availability: 'التوفر'
+    }
+  };
+  const inlineT = inlineLabels[lang] || inlineLabels.en;
+  const enInlineValues = {
+    'Según origen': 'According to origin',
+    'Según zona FAO': 'According to FAO area',
+    'Según especificación del comprador': 'According to buyer specification',
+    'Especificación profesional': 'Professional specification',
+    'Según presentación': 'According to presentation',
+    'Según mercado': 'According to market',
+    'Según disponibilidad': 'As available'
+  };
+  const localizedInlineValue = value => {
+    const raw = first(value);
+    if (lang === 'en') return enInlineValues[raw] || raw;
+    return raw;
+  };
+  const inlineDetails = product => {
+    if (!inlineSpecIds.has(product.id)) return '';
+    const rows = [
+      [inlineT.condition, (product.condition || []).map(cond).join(' · ')],
+      [inlineT.origin, localizedInlineValue(product.origin)],
+      [inlineT.fao, localizedInlineValue(product.faoZone)],
+      [inlineT.calibre, localizedInlineValue(product.calibre)],
+      [inlineT.quality, localizedInlineValue(product.quality)],
+      [inlineT.format, localizedInlineValue(product.format)],
+      [inlineT.packaging, localizedInlineValue(product.packaging)],
+      [inlineT.availability, localizedInlineValue(product.availability)]
+    ].filter(([, value]) => value);
+    return `<div class="compact-catalog-card__details">${rows.map(([label,value]) => `<div class="compact-catalog-card__detail"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`).join('')}</div>`;
   };
   let products = [];
   let activeFilter = frozenSeafoodFamily ? 'frozen' : 'all';
@@ -155,6 +232,7 @@
       .image] : [];
     const displayName = product._enName || product._arName || product.commercialName;
     const displayType = product._enType || product._arType || product.type || product.group;
+    const inline = inlineSpecIds.has(product.id);
     const meta = [(product.condition || []).map(cond).join(' · '), first(product.origin), first(
       product.calibre) || first(product.quality)].filter(Boolean).join(' · ');
     const params = new URLSearchParams({
@@ -167,7 +245,13 @@
     const media = images.length ?
       `<button class="compact-catalog-card__media" type="button" data-gallery='${esc(JSON.stringify(images))}' aria-label="${esc(displayName)}"><img src="${esc(images[0])}" alt="${esc(displayName)}" loading="lazy" draggable="false"></button>` :
       '<div class="compact-catalog-card__media"><span class="compact-catalog-card__placeholder">EMPERIO TISS</span></div>';
-    return `<article class="compact-catalog-card" data-product-id="${esc(product.id)}">${media}<div class="compact-catalog-card__body"><p class="compact-catalog-card__meta">${esc(displayType)}</p><h3 class="compact-catalog-card__title">${esc(displayName)}</h3><p class="compact-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>${meta?`<p class="compact-catalog-card__spec">${esc(meta)}</p>`:''}<a class="compact-catalog-card__link" href="${href}">${esc(t.detail)} ↗</a></div></article>`;
+    const scientific = product.scientificName ?
+      `<p class="compact-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p>` : '';
+    const specification = inline ? inlineDetails(product) :
+      (meta ? `<p class="compact-catalog-card__spec">${esc(meta)}</p>` : '');
+    const action = inline ? '' :
+      `<a class="compact-catalog-card__link" href="${href}">${esc(t.detail)} ↗</a>`;
+    return `<article class="compact-catalog-card${inline?' compact-catalog-card--inline-spec':''}" data-product-id="${esc(product.id)}">${media}<div class="compact-catalog-card__body"><p class="compact-catalog-card__meta">${esc(displayType)}</p><h3 class="compact-catalog-card__title">${esc(displayName)}</h3>${scientific}${specification}${action}</div></article>`;
   }
 
   function syncFilterAvailability() {
