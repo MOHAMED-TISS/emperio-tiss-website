@@ -81,7 +81,7 @@
     const text=document.createElement('div'), strong=document.createElement('strong'), detail=document.createElement('p');
     strong.textContent=`${inquiry.id} — ${inquiry.company || inquiry.email}`;
     detail.textContent=[
-      `${inquiry.status.toUpperCase()} · ${inquiry.product_name || inquiry.product_category || 'General enquiry'} · ${inquiry.destination || 'No destination'}`,
+      `${inquiry.status.toUpperCase()} · ${inquiry.product_reference ? `REF. ${inquiry.product_reference} · ` : ''}${inquiry.product_name || inquiry.product_category || 'General enquiry'} · ${inquiry.destination || 'No destination'}`,
       `${inquiry.email} · ${inquiry.phone || 'No phone'} · ${inquiry.language.toUpperCase()} · ${inquiry.source || 'contact'}`,
       inquiry.origin ? `Origin: ${inquiry.origin}` : '',
       inquiry.specification ? `Specification: ${inquiry.specification}` : '',
