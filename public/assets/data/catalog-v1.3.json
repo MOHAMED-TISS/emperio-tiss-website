@@ -66,7 +66,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "1637"
     },
     {
       "id": "moruno",
@@ -110,7 +111,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "4281"
     },
     {
       "id": "cigala",
@@ -155,7 +157,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "5522"
     },
     {
       "id": "gamba-blanca",
@@ -199,7 +202,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "6816"
     },
     {
       "id": "langostino-tigre",
@@ -242,7 +246,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "9449"
     },
     {
       "id": "langostino-vannamei",
@@ -272,7 +277,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "6625"
     },
     {
       "id": "pulpo-flor",
@@ -304,7 +310,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "7324"
     },
     {
       "id": "pulpo-natural",
@@ -336,7 +343,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "1788"
     },
     {
       "id": "pulpo-bandeja",
@@ -379,7 +387,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "9120"
     },
     {
       "id": "calamar-envuelto",
@@ -411,7 +420,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "7849"
     },
     {
       "id": "puntilla-extra",
@@ -444,7 +454,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "7426"
     },
     {
       "id": "almendrita",
@@ -476,7 +487,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "6155"
     },
     {
       "id": "tiras-sepia-limpia",
@@ -508,7 +520,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "8913"
     },
     {
       "id": "sepia-limpia-iqf",
@@ -542,7 +555,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "3798"
     },
     {
       "id": "clementina",
@@ -572,7 +586,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "4387"
     },
     {
       "id": "navelina",
@@ -602,7 +617,8 @@
       "availability": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "4873"
     },
     {
       "id": "mango",
@@ -630,7 +646,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "calibre": []
+      "calibre": [],
+      "reference": "9747"
     },
     {
       "id": "apple",
@@ -658,7 +675,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "calibre": []
+      "calibre": [],
+      "reference": "6781"
     },
     {
       "id": "tomato",
@@ -698,7 +716,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "7848"
     },
     {
       "id": "tomato-cherry-round",
@@ -738,7 +757,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "5093"
     },
     {
       "id": "tomato-cherry-long",
@@ -778,7 +798,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "3988"
     },
     {
       "id": "pepper",
@@ -818,7 +839,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "2216"
     },
     {
       "id": "cucumber",
@@ -858,7 +880,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "3717"
     },
     {
       "id": "zucchini",
@@ -898,7 +921,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "1515"
     },
     {
       "id": "aubergine",
@@ -938,7 +962,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "6199"
     },
     {
       "id": "green-bean",
@@ -978,7 +1003,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "7637"
     },
     {
       "id": "broccoli",
@@ -1018,7 +1044,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "2452"
     },
     {
       "id": "cauliflower",
@@ -1058,7 +1085,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "2082"
     },
     {
       "id": "potato",
@@ -1098,7 +1126,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "2074"
     },
     {
       "id": "garlic",
@@ -1138,7 +1167,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "5948"
     },
     {
       "id": "clementina-seasonal",
@@ -1166,7 +1196,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "calibre": []
+      "calibre": [],
+      "reference": "8335"
     },
     {
       "id": "sardina",
@@ -1192,7 +1223,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "calibre": []
+      "calibre": [],
+      "reference": "4646"
     },
     {
       "id": "bottarga",
@@ -1237,7 +1269,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "reference": "7999"
     }
   ]
 }
