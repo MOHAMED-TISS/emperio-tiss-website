@@ -251,11 +251,67 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) .dark :is
 /* Cards: less app-like, more editorial. */
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-cards,
-  .product-catalog-grid,
-  .seafood-catalog-grid
+  .product-catalog-grid
 ) {
   gap: 1px !important;
   background: var(--et-page-line);
+}
+
+/* Seafood catalogue: open editorial grid with deliberate breathing room. */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog__inner {
+  width: min(1320px, calc(100% - 64px)) !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog__toolbar {
+  margin-bottom: clamp(2rem, 3vw, 3rem) !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: clamp(30px, 3.4vw, 48px) !important;
+  row-gap: clamp(38px, 4.2vw, 58px) !important;
+  align-items: start;
+  background: transparent !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-card {
+  background: rgba(248,245,238,.94) !important;
+  border: 1px solid rgba(11,30,51,.10) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 12px 34px rgba(11,30,51,.045) !important;
+  overflow: hidden;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(11,30,51,.085) !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-card__media {
+  aspect-ratio: 4 / 3 !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-card__body {
+  padding: clamp(1.55rem, 2.1vw, 2rem) !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-card__details {
+  margin-top: 1.15rem !important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-card__detail {
+  padding-block: .66rem !important;
+}
+
+@media (max-width: 900px) {
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog-grid {
+    grid-template-columns: 1fr !important;
+    row-gap: 32px !important;
+  }
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-catalog__inner {
+    width: min(100% - 32px, 680px) !important;
+  }
 }
 
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
