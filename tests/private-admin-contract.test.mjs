@@ -34,8 +34,11 @@ for (const id of ['metricTotal','metricPending','metricApproved','metricRejected
   assert.match(page,new RegExp(`id=["']${id}["']`));
 }
 assert.match(script,/renderAnalytics/);
+assert.match(page,/id=["']inquiryList["']/);
+assert.match(script,/admin-inquiry-status/);
+assert.match(script,/\/api\/private\/admin\/inquiries\/status/);
 assert.match(script,/notification_status/);
 assert.match(script,/interest_categories/);
-assert.match(page,/private-admin\.js\?v=20260925-analytics/);
+assert.match(page,/private-admin\.js\?v=20260928-commercial-pipeline-1/);
 
 console.log('private-admin contract: PASS');
