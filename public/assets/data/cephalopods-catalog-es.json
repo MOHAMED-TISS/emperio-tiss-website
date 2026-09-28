@@ -35,7 +35,8 @@
       "images": [
         "/assets/products/incoming/Pulpo Flor.jpg",
         "/assets/products/incoming/Pulpo flor (2).jpg"
-      ]
+      ],
+      "reference": "7324"
     },
     {
       "id": "pulpo-bloque",
@@ -71,7 +72,8 @@
         "/assets/products/incoming/Pulpo.jpg",
         "/assets/products/incoming/Pulpo(1).jpg",
         "/assets/products/incoming/Pulpo(3).jpg"
-      ]
+      ],
+      "reference": "9188"
     },
     {
       "id": "pulpo-bandeja",
@@ -106,7 +108,8 @@
       "images": [
         "/assets/products/Pulpo Bandeja.jpeg",
         "/assets/products/Pulpo Bandeja 2.jpeg"
-      ]
+      ],
+      "reference": "9120"
     },
     {
       "id": "calamar-envuelto",
@@ -142,7 +145,8 @@
         "/assets/products/incoming/Calamar.jpg",
         "/assets/products/incoming/Calamar(1).jpg",
         "/assets/products/incoming/Calamar(2).jpg"
-      ]
+      ],
+      "reference": "7849"
     },
     {
       "id": "puntilla-extra",
@@ -177,7 +181,8 @@
       "images": [
         "/assets/products/incoming/Puntillas-extra-1.webp?v=20260928-puntillas-fix-1",
         "/assets/products/incoming/Puntillas-extra-2.webp?v=20260928-puntillas-fix-1"
-      ]
+      ],
+      "reference": "7426"
     },
     {
       "id": "sepia-limpia-iqf",
@@ -212,7 +217,8 @@
       "images": [
         "/assets/products/incoming/Sepia Limpia.jpg",
         "/assets/products/incoming/Sepia Limpia(1).jpg"
-      ]
+      ],
+      "reference": "3798"
     },
     {
       "id": "bottarga",
@@ -249,7 +255,8 @@
         "/assets/products/incoming/Bottarga.jpg",
         "/assets/products/incoming/Bottarga(2).jpg",
         "/assets/products/incoming/Bottarga(3).jpg"
-      ]
+      ],
+      "reference": "7999"
     }
   ]
 }
