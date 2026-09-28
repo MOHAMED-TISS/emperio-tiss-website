@@ -57,7 +57,7 @@
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang) && !document.body.classList.contains('home-experience')) {
-    loadScript('/assets/js/international-shell.js?v=20260928-no-market-priority-1', 'etInternationalShell');
+    loadScript('/assets/js/international-shell.js?v=20260928-bottarga-inline-1', 'etInternationalShell');
   }
 
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
