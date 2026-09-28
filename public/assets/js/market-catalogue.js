@@ -264,7 +264,7 @@
     if (!document.querySelector('link[data-market-catalogue-css]')) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = '/assets/css/catalogue-market-unified.css?v=20260909.2';
+      link.href = '/assets/css/catalogue-market-unified.css?v=20260928-no-market-priority-1';
       link.dataset.marketCatalogueCss = 'true';
       document.head.appendChild(link);
     }
