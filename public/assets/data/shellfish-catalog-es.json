@@ -37,7 +37,8 @@
         "/assets/products/incoming/Moruno(1).jpg",
         "/assets/products/incoming/Moruno.jpeg",
         "/assets/products/incoming/Moruno.jpg"
-      ]
+      ],
+      "reference": "4281"
     },
     {
       "id": "cigala",
@@ -72,7 +73,8 @@
       "images": [
         "/assets/products/incoming/Cigala.jpeg",
         "/assets/products/incoming/Cigala(1).jpeg"
-      ]
+      ],
+      "reference": "5522"
     },
     {
       "id": "gamba-blanca",
@@ -106,7 +108,8 @@
       ],
       "images": [
         "/assets/products/incoming/Gamba Blanca.jpeg"
-      ]
+      ],
+      "reference": "6816"
     },
     {
       "id": "langostino-tigre",
@@ -141,7 +144,8 @@
       "images": [
         "/assets/products/incoming/Langostino_Tigre.jpg",
         "/assets/products/incoming/Langostino_Tigre(1).jpg"
-      ]
+      ],
+      "reference": "9449"
     }
   ]
 }
