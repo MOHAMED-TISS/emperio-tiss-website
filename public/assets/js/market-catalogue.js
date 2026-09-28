@@ -34,8 +34,8 @@
         fruits: 'Fruits',
         vegetables: 'Vegetables'
       },
-      suffix: 'by market priority.',
-      intro: 'Technical and commercial references presented for professional sourcing, ordered for this market.',
+      suffix: 'by reference.',
+      intro: 'Technical and commercial references presented for professional sourcing.'
       search: 'Search species or product...',
       all: 'All',
       fresh: 'Fresh',
@@ -62,8 +62,8 @@
         fruits: 'Fruits',
         vegetables: 'Légumes'
       },
-      suffix: 'par priorité marché.',
-      intro: 'Références techniques et commerciales pour le sourcing professionnel, ordonnées selon le marché français.',
+      suffix: 'par référence.',
+      intro: 'Références techniques et commerciales pour le sourcing professionnel.'
       search: 'Rechercher une espèce ou un produit...',
       all: 'Tous',
       fresh: 'Frais',
@@ -90,8 +90,8 @@
         fruits: 'Frutta',
         vegetables: 'Ortaggi'
       },
-      suffix: 'per priorità di mercato.',
-      intro: 'Riferimenti tecnici e commerciali per il sourcing professionale, ordinati secondo il mercato italiano.',
+      suffix: 'per referenza.',
+      intro: 'Riferimenti tecnici e commerciali per il sourcing professionale.'
       search: 'Cerca specie o prodotto...',
       all: 'Tutti',
       fresh: 'Fresco',
@@ -118,8 +118,8 @@
         fruits: 'الفواكه',
         vegetables: 'الخضروات'
       },
-      suffix: 'حسب أولوية السوق.',
-      intro: 'مراجع فنية وتجارية للمشترين المحترفين، مرتبة وفق أولوية سوق الشرق الأوسط.',
+      suffix: 'حسب المرجع.',
+      intro: 'مراجع فنية وتجارية للمشترين المحترفين.'
       search: 'ابحث عن نوع أو منتج...',
       all: 'الكل',
       fresh: 'طازج',
@@ -321,9 +321,7 @@
       grid.innerHTML = visible.length ? visible.map(p => {
         const images = getImages(imageMap, p.id);
         const img = images[0] || p.image || '';
-        const priorityBadge = orderIndex.has(p.id) && lang !== 'it' ?
-          `<span class="market-catalogue-card__priority">${lang === 'ar' ? 'أولوية السوق' : 'Market priority'}</span>` : '';
-        return `<article class="market-catalogue-card" data-product-id="${esc(p.id)}"><div class="market-catalogue-card__media" data-images='${esc(JSON.stringify(images))}'>${img ? `<img src="${esc(img)}" alt="${esc(translatedName(p))}" loading="lazy" draggable="false">` : '<span class="market-catalogue-card__placeholder">EMPERIO TISS</span>'}${priorityBadge}</div><div class="market-catalogue-card__body"><p class="market-catalogue-card__meta">${esc(categoryLabel(p))}</p><h3 class="market-catalogue-card__name">${esc(translatedName(p))}</h3>${p.scientificName ? `<p class="market-catalogue-card__scientific"><em>${esc(p.scientificName)}</em></p>` : ''}<div class="market-catalogue-card__details">${details(p)}</div></div></article>`;
+        return `<article class="market-catalogue-card" data-product-id="${esc(p.id)}"><div class="market-catalogue-card__media" data-images='${esc(JSON.stringify(images))}'>${img ? `<img src="${esc(img)}" alt="${esc(translatedName(p))}" loading="lazy" draggable="false">` : '<span class="market-catalogue-card__placeholder">EMPERIO TISS</span>'}</div><div class="market-catalogue-card__body"><p class="market-catalogue-card__meta">${esc(categoryLabel(p))}</p><h3 class="market-catalogue-card__name">${esc(translatedName(p))}</h3>${p.scientificName ? `<p class="market-catalogue-card__scientific"><em>${esc(p.scientificName)}</em></p>` : ''}<div class="market-catalogue-card__details">${details(p)}</div></div></article>`;
       }).join('') : `<p class="market-catalogue__empty">${lang === 'ar' ? 'لا توجد مراجع مطابقة.' : lang === 'fr' ? 'Aucune référence ne correspond.' : lang === 'it' ? 'Nessuna referenza corrisponde.' : 'No references match your search.'}`;
       bindLightboxes();
     };
