@@ -74,6 +74,40 @@
       ]
     },
     {
+      "id": "pulpo-bandeja",
+      "commercialName": "Pulpo en bandeja",
+      "scientificName": "Octopus vulgaris",
+      "group": "Cefalópodos",
+      "type": "Pulpo",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Según programa de suministro"
+      ],
+      "faoZone": [
+        "Según origen"
+      ],
+      "calibre": [
+        "Según disponibilidad"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Bandeja / según referencia"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "images": [
+        "/assets/products/incoming/Pulpo(1).jpg"
+      ]
+    },
+    {
       "id": "calamar-envuelto",
       "commercialName": "Calamar envuelto",
       "scientificName": "Illex / Loligo spp.",

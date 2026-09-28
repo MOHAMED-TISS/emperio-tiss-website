@@ -62,6 +62,7 @@
     'langostino-tigre': 'Tiger prawn',
     'pulpo-flor': 'Flower octopus',
     'pulpo-bloque': 'Block octopus',
+    'pulpo-bandeja': 'Tray-packed octopus',
     'calamar-envuelto': 'Wrapped squid',
     'sepia-limpia-iqf': 'Cleaned cuttlefish IQF / Block',
     bottarga: 'Frozen bottarga'
@@ -73,6 +74,7 @@
     'langostino-tigre': 'Prawn',
     'pulpo-flor': 'Octopus',
     'pulpo-bloque': 'Octopus',
+    'pulpo-bandeja': 'Octopus',
     'calamar-envuelto': 'Squid',
     'sepia-limpia-iqf': 'Cuttlefish',
     bottarga: 'Bottarga'

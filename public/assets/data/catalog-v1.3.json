@@ -283,7 +283,7 @@
       "family": "seafood",
       "category": "seafood",
       "subcategory": "cephalopods",
-      "commercialName": "Pulpo bandeja",
+      "commercialName": "Pulpo en bandeja",
       "scientificName": "Octopus vulgaris",
       "condition": [
         "frozen"
@@ -298,7 +298,22 @@
       "images": [
         "/assets/products/incoming/Pulpo(1).jpg"
       ],
-      "status": "active"
+      "status": "active",
+      "faoZone": [
+        "Según origen"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Bandeja / según referencia"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ]
     },
     {
       "id": "calamar-envuelto",

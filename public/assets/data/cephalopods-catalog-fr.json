@@ -74,6 +74,40 @@
       ]
     },
     {
+      "id": "pulpo-bandeja",
+      "commercialName": "Poulpe en barquette",
+      "scientificName": "Octopus vulgaris",
+      "group": "Céphalopodes",
+      "type": "Poulpe",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Selon programme d’approvisionnement"
+      ],
+      "faoZone": [
+        "Selon origine"
+      ],
+      "calibre": [
+        "Selon disponibilité"
+      ],
+      "quality": [
+        "Spécification professionnelle"
+      ],
+      "format": [
+        "Barquette / selon référence"
+      ],
+      "packaging": [
+        "Selon marché"
+      ],
+      "availability": [
+        "Selon disponibilité"
+      ],
+      "images": [
+        "/assets/products/incoming/Pulpo(1).jpg"
+      ]
+    },
+    {
       "id": "calamar-envuelto",
       "commercialName": "Calamar enveloppé",
       "scientificName": "Illex / Loligo spp.",

@@ -74,6 +74,40 @@
       ]
     },
     {
+      "id": "pulpo-bandeja",
+      "commercialName": "Polpo in vaschetta",
+      "scientificName": "Octopus vulgaris",
+      "group": "Cefalopodi",
+      "type": "Polpo",
+      "condition": [
+        "frozen"
+      ],
+      "origin": [
+        "Secondo programma di fornitura"
+      ],
+      "faoZone": [
+        "Secondo origine"
+      ],
+      "calibre": [
+        "Secondo disponibilità"
+      ],
+      "quality": [
+        "Specifica professionale"
+      ],
+      "format": [
+        "Vaschetta / secondo riferimento"
+      ],
+      "packaging": [
+        "Secondo mercato"
+      ],
+      "availability": [
+        "Secondo disponibilità"
+      ],
+      "images": [
+        "/assets/products/incoming/Pulpo(1).jpg"
+      ]
+    },
+    {
       "id": "calamar-envuelto",
       "commercialName": "Calamaro avvolto",
       "scientificName": "Illex / Loligo spp.",
