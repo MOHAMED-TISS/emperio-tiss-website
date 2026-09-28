@@ -36,7 +36,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "4387"
     },
     {
       "id": "mandarina",
@@ -73,7 +74,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "1819"
     },
     {
       "id": "orange",
@@ -109,7 +111,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "6368"
     },
     {
       "id": "mango",
@@ -145,7 +148,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "9747"
     },
     {
       "id": "pineapple",
@@ -179,7 +183,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "3991"
     },
     {
       "id": "avocado",
@@ -214,7 +219,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "1860"
     },
     {
       "id": "dates",
@@ -248,7 +254,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "8485"
     },
     {
       "id": "melon",
@@ -284,7 +291,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "7131"
     },
     {
       "id": "watermelon",
@@ -319,7 +327,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "4018"
     },
     {
       "id": "apple",
@@ -355,7 +364,8 @@
       "availability": [
         "Según campaña y programa"
       ],
-      "status": "active"
+      "status": "active",
+      "reference": "6781"
     }
   ]
 }
