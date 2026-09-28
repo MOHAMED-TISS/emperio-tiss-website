@@ -63,7 +63,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "1637"
     },
     {
       "id": "lubina",
@@ -97,7 +98,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "3926"
     },
     {
       "id": "merluza-pijota",
@@ -132,7 +134,8 @@
         "Según campaña y disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "6517"
     },
     {
       "id": "mujol",
@@ -166,7 +169,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "5783"
     },
     {
       "id": "rape",
@@ -201,7 +205,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "4459"
     },
     {
       "id": "san-pedro",
@@ -235,7 +240,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "4582"
     },
     {
       "id": "mero-amarillo",
@@ -270,7 +276,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "2315"
     },
     {
       "id": "pargo",
@@ -305,7 +312,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "2771"
     },
     {
       "id": "denton",
@@ -339,7 +347,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "2112"
     },
     {
       "id": "sama",
@@ -373,7 +382,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "2665"
     },
     {
       "id": "sargo",
@@ -407,7 +417,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "9409"
     },
     {
       "id": "rascacio",
@@ -441,7 +452,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "2143"
     },
     {
       "id": "caballa",
@@ -476,7 +488,8 @@
         "Según campaña y disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "8681"
     },
     {
       "id": "salmonete",
@@ -510,7 +523,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "1364"
     },
     {
       "id": "atun",
@@ -545,7 +559,8 @@
         "Según programa y disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "6946"
     },
     {
       "id": "pez-limon",
@@ -579,7 +594,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "7787"
     },
     {
       "id": "boqueron",
@@ -613,7 +629,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "9279"
     },
     {
       "id": "pez-sable",
@@ -648,7 +665,8 @@
         "Según disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "1879"
     },
     {
       "id": "pez-espada",
@@ -683,7 +701,8 @@
         "Según programa y disponibilidad"
       ],
       "image": "",
-      "status": "active"
+      "status": "active",
+      "reference": "8696"
     }
   ]
 }
