@@ -6,9 +6,7 @@
   const lang = (root.lang || 'en').slice(0, 2).toLowerCase();
   if (!['en', 'fr', 'ar', 'it'].includes(lang)) return;
 
-  /* Fish is a dedicated canonical catalogue and must never be replaced by the
-     market-priority international catalogue shell. ES already follows this
-     path; keep all multilingual Fish pages on the same implementation. */
+  /* Fish uses its dedicated canonical catalogue renderer across languages. */
   const normalizedPath = (location.pathname || '/').replace(/\/+/g, '/');
   const fishPath = /\/products\/seafood\/fish(?:\/|$)/.test(normalizedPath);
   const marketCataloguePath = /\/products\/(?:seafood\/(?:fish|shellfish|cephalopods)|fruits|vegetables)(?:\/|$)/
@@ -106,7 +104,7 @@
     }
     if (!doc.querySelector('script[data-etMarketCatalogue]')) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/market-catalogue.js?v=20260909.3';
+      script.src = '/assets/js/market-catalogue.js?v=20260928-no-market-priority-1';
       script.async = false;
       script.dataset.etMarketCatalogue = 'true';
       doc.head.appendChild(script);
