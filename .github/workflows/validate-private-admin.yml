@@ -1,7 +1,7 @@
 name: Validate private admin
 on:
   push:
-    paths: ['src/**', 'migrations/**', 'public/private/admin/**', 'public/assets/js/private*.js', 'public/assets/css/private-admin.css', 'tests/private-admin*.mjs', 'wrangler.jsonc', '.github/workflows/validate-private-admin.yml']
+    paths: ['src/**', 'migrations/**', 'public/private/admin/**', 'public/assets/js/private*.js', 'public/assets/js/commercial-flow.js', 'public/assets/js/global-core.js', 'public/assets/js/product-detail.js', 'public/assets/data/catalog-v1.3.json', 'public/assets/css/private-admin.css', 'public/assets/css/commercial-flow.css', 'tests/private-admin*.mjs', 'tests/commercial-inquiries.test.mjs', 'wrangler.jsonc', '.github/workflows/validate-private-admin.yml']
   pull_request:
     paths: ['src/**', 'migrations/**', 'public/private/admin/**', 'public/assets/js/private*.js', 'public/assets/css/private-admin.css', 'tests/private-admin*.mjs', 'wrangler.jsonc', '.github/workflows/validate-private-admin.yml']
 jobs:
@@ -15,4 +15,7 @@ jobs:
       - run: node --check src/index.js
       - run: node --check public/assets/js/private-admin.js
       - run: node --check public/assets/js/private.js
-      - run: node --test tests/private-admin-api.test.mjs tests/private-admin-contract.test.mjs tests/seo-metadata.test.mjs tests/seo-pages.test.mjs
+      - run: node --check public/assets/js/commercial-flow.js
+      - run: node --check public/assets/js/global-core.js
+      - run: node --check public/assets/js/product-detail.js
+      - run: node --test tests/private-admin-api.test.mjs tests/private-admin-contract.test.mjs tests/commercial-inquiries.test.mjs tests/seo-metadata.test.mjs tests/seo-pages.test.mjs
