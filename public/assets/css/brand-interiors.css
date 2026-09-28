@@ -681,6 +681,8 @@ body.brand-pages {
 }
 .brand-pages main :is(.es-hero,.intl-hero,.ar-hero,.product-hero,.page-hero) h1 {
   font-family: var(--et-serif);
+  font-size: var(--brand-hero-size);
+  line-height: .98;
   font-weight: 400;
   text-wrap: balance;
 }
