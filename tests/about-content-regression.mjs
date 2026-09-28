@@ -30,7 +30,7 @@ for (const [lang, path] of pages) {
   if (lang === 'it') {
     assert.match(
       html,
-      /site-pages-unified\.css\?v=20260924-main-contact-scope[^>]+data-etUnifiedPages="true"/,
+      /site-pages-unified\.css\?v=20260928-editorial[^>]+data-etUnifiedPages="true"/,
       'it: must preload the corrected page system without a stale duplicate',
     );
   }
@@ -51,7 +51,7 @@ for (const [lang, path] of pages) {
 }
 
 const italianAbout = fs.readFileSync('public/it/about/index.html', 'utf8');
-assert.match(italianAbout, /class="es-page about-page it-about-redesign et-brand-shell"/);
+assert.match(italianAbout, /class="es-page about-page it-about-redesign et-brand-shell brand-pages"/);
 assert.match(italianAbout, /Dall’origine al mercato[\s\S]*Con criterio/);
 assert.match(italianAbout, /parte principale/i);
 assert.match(italianAbout, /Europa[\s\S]*Africa[\s\S]*Mediterraneo[\s\S]*Medio Oriente/i);

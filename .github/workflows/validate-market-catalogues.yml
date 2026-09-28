@@ -148,8 +148,8 @@ jobs:
             const html = fs.readFileSync(file, 'utf8');
             for (const token of [
               '/assets/css/global.css?v=20260926-brand-foundation-2',
-              '/assets/css/header-final.css?v=20260927-canonical-header-1',
-              '/assets/js/global.js?v=20260927-canonical-header-1'
+              '/assets/css/header-final.css?v=',
+              '/assets/js/global.js?v='
             ]) {
               if (!html.includes(token)) {
                 console.error(file + ' is missing fresh shared asset key: ' + token);

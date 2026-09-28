@@ -122,7 +122,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
 body:not(.home-experience):not(.private-page):not(.private-admin-page).es-page .es-hero,
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
 body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero,
-body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero,
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage:not(.fish-catalog-pilot) .page-hero,
 body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-hero {
   position: relative;
   min-height: 100vh !important;
@@ -143,7 +143,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page).es-page .
 }
 
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
-body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero {
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage:not(.fish-catalog-pilot) .page-hero {
   background:
     linear-gradient(102deg, rgba(7,21,36,.92) 0%, rgba(11,30,51,.70) 48%, rgba(11,30,51,.34) 100%),
     var(--hero-image, url("/assets/images/home-seafood.webp")) center/cover no-repeat !important;
@@ -556,7 +556,7 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page):not(.private-admin
   body:not(.home-experience):not(.private-page):not(.private-admin-page).es-page .es-hero,
   body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-page .es-hero,
   body:not(.home-experience):not(.private-page):not(.private-admin-page).produce-page .page-hero,
-  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage .page-hero,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage:not(.fish-catalog-pilot) .page-hero,
   body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-hero {
     padding: 132px 0 54px !important;
   }
@@ -567,7 +567,7 @@ html[dir="rtl"] body:not(.home-experience):not(.private-page):not(.private-admin
     .current-title,
     .news-hero h1
   ) {
-    font-size: clamp(3.3rem, 15vw, 5.6rem) !important;
+    font-size: var(--brand-hero-size, clamp(3.3rem, 15vw, 5.6rem)) !important;
     line-height: .92 !important;
   }
 
@@ -666,47 +666,47 @@ body.brand-pages {
 .brand-pages main { overflow: clip; }
 .brand-pages main :is(h1,h2,h3) { text-wrap: balance; }
 .brand-pages main :is(p,li) { overflow-wrap: break-word; }
-.brand-pages main :is(.es-container,.page-hero-inner,.catalog-inner,.news-wrap,.spec-inner) {
+.brand-pages main :is(.es-container,.intl-container,.ar-container,.p-container,.page-hero-inner,.catalog-inner,.news-wrap,.spec-inner) {
   width: min(1180px, calc(100% - 72px));
   margin-inline: auto;
 }
-.brand-pages main :is(.es-kicker,.es-label,.eyebrow,.news-eyebrow,.legal-kicker) {
+.brand-pages main :is(.es-kicker,.es-label,.intl-kicker,.intl-label,.ar-kicker,.ar-label,.eyebrow,.news-eyebrow,.legal-kicker) {
   font: 600 10px/1.5 var(--et-sans);
   letter-spacing: .2em;
   text-transform: uppercase;
 }
-.brand-pages main :is(.es-hero,.page-hero,.news-hero):not(h1) {
+.brand-pages main :is(.es-hero,.intl-hero,.ar-hero,.product-hero,.page-hero,.news-hero):not(h1) {
   color: var(--et-ivory);
   isolation: isolate;
 }
-.brand-pages main :is(.es-hero,.page-hero) h1 {
+.brand-pages main :is(.es-hero,.intl-hero,.ar-hero,.product-hero,.page-hero) h1 {
   font-family: var(--et-serif);
   font-weight: 400;
   text-wrap: balance;
 }
-.brand-pages main :is(.es-hero,.page-hero,.news-hero) h1 em {
+.brand-pages main :is(.es-hero,.intl-hero,.ar-hero,.product-hero,.page-hero,.news-hero) h1 em {
   color: var(--et-champagne);
 }
-.brand-pages main :is(.es-lead,.lead,.news-lead) {
+.brand-pages main :is(.es-lead,.intl-lead,.ar-lead,.lead,.news-lead) {
   max-width: 640px;
   font-family: var(--et-sans);
   line-height: 1.8;
 }
-.brand-pages main :is(.es-section,.catalog-section,.spec-section,.news-stream) {
+.brand-pages main :is(.es-section,.intl-section,.ar-section,.p-section,.catalog-section,.spec-section,.news-stream) {
   padding-block: clamp(64px,8vw,116px);
 }
-.brand-pages main :is(.es-section,.catalog-head,.spec-head,.news-section-head) h2 {
+.brand-pages main :is(.es-section,.intl-section,.ar-section,.p-section,.catalog-head,.spec-head,.news-section-head) h2 {
   font: 400 clamp(2.5rem,4.7vw,5rem)/1.03 var(--et-serif);
   letter-spacing: -.045em;
   margin: 0 0 24px;
 }
-.brand-pages main .es-grid {
+.brand-pages main :is(.es-grid,.intl-grid,.ar-grid,.section-grid) {
   display: grid;
   grid-template-columns: minmax(0,1fr) minmax(0,.8fr);
   align-items: center;
   gap: clamp(32px,7vw,100px);
 }
-.brand-pages main .es-copy { margin: 0; max-width: 620px; }
+.brand-pages main :is(.es-copy,.intl-copy,.ar-copy,.section-copy) { margin: 0; max-width: 620px; }
 .brand-pages main .es-section.dark {
   --et-muted: rgba(244,240,230,.8);
   --es-muted: rgba(244,240,230,.8);
@@ -766,8 +766,8 @@ body.brand-pages {
 .brand-pages main :is(a,button,input,select,textarea):focus-visible { outline:2px solid var(--et-champagne); outline-offset:4px; }
 @media(max-width:800px) {
   body.brand-pages { --brand-hero-size:clamp(2.8rem,10vw,4.8rem); }
-  .brand-pages main :is(.es-container,.page-hero-inner,.catalog-inner,.news-wrap,.spec-inner) { width:calc(100% - 40px); }
-  .brand-pages main .es-grid,.brand-pages.about-page main .about-values-head { grid-template-columns:1fr; gap:24px; }
+  .brand-pages main :is(.es-container,.intl-container,.ar-container,.p-container,.page-hero-inner,.catalog-inner,.news-wrap,.spec-inner) { width:calc(100% - 40px); }
+  .brand-pages main :is(.es-grid,.intl-grid,.ar-grid,.section-grid),.brand-pages.about-page main .about-values-head { grid-template-columns:1fr; gap:24px; }
   .brand-pages.about-page main .about-values-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 24px; }
   .brand-pages main .es-form-wrap { padding:24px 18px; }
 }
@@ -784,4 +784,21 @@ html[dir=rtl] .brand-pages main :is(h1,h2,h3) { line-height:1.35; letter-spacing
   }
 }
 
-.brand-pages main :is(.hero,.es-hero,.page-hero,.news-hero,.dark,.news-intelligence,.news-private) { --brand-accent-text:var(--et-champagne); }
+.brand-pages main :is(.hero,.es-hero,.intl-hero,.ar-hero,.product-hero,.page-hero,.news-hero,.dark,.news-intelligence,.news-private) { --brand-accent-text:var(--et-champagne); }
+
+body.brand-pages main :is(.intl-hero,.ar-hero,.product-hero) { background:var(--et-navy); color:var(--et-ivory); }
+body.brand-pages main :is(.intl-hero,.ar-hero,.product-hero) h1 em { color:var(--et-champagne); }
+
+/* Existing approved product imagery, shared across localized category openings. */
+body.brand-pages[data-brand-category="fruits"] { --brand-hero-image:url("/assets/images/fruits-orchard.webp"); }
+body.brand-pages[data-brand-category="vegetables"] { --brand-hero-image:url("/assets/images/home-produce.webp"); }
+body.brand-pages[data-brand-category="seasonal"] { --brand-hero-image:url("/assets/images/home-seasonal.webp"); }
+body.brand-pages[data-brand-category="seafood"] { --brand-hero-image:url("/assets/images/home-seafood.webp"); }
+body.brand-pages[data-brand-category] main :is(.intl-hero,.ar-hero,.product-hero) {
+ background-image:linear-gradient(90deg,rgba(11,30,51,.92),rgba(11,30,51,.48)),var(--brand-hero-image);
+ background-size:cover; background-position:center 40%;
+}
+.brand-pages.news-current main .news-hero-orbit { display:none; }
+.brand-pages.news-current main .news-hero-grid { grid-template-columns:minmax(0,1fr); }
+.brand-pages.news-current main .news-hero-grid>div { max-width:900px; }
+@media(max-width:640px){body.brand-pages[data-brand-category="fruits"] { --brand-hero-image:url("/assets/images/fruits-orchard-mobile.webp"); }}
