@@ -28,8 +28,8 @@ a{color:inherit;text-decoration:none}
 .split-hero{min-height:720px;position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:var(--navy)}
 .split-side{position:relative;min-height:720px;background-size:cover;background-position:center}
 .split-side::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,28,.22),rgba(4,18,28,.68))}
-.split-side.sea{background-image:url('/assets/images/home-seafood.webp')}
-.split-side.produce{background-image:url('/assets/images/fruits-orchard.webp')}
+.split-side.sea{background-image:url('../images/home-seafood.webp')}
+.split-side.produce{background-image:url('../images/fruits-orchard.webp')}
 .split-hero-center{position:absolute;z-index:10;left:50%;top:74px;transform:translateX(-50%);width:min(590px,43vw);height:calc(100% - 74px);padding:72px 54px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff;background:linear-gradient(90deg,rgba(3,20,31,.35),rgba(3,20,31,.9) 22%,rgba(3,20,31,.9) 78%,rgba(3,20,31,.35))}
 .split-kicker{margin:0 0 16px;color:#e2b24e;font-size:12px;font-weight:600;letter-spacing:.3em}
 .split-hero-center h1{margin:0;font:400 clamp(42px,4.3vw,70px)/.98 "Playfair Display",serif}
@@ -53,8 +53,8 @@ a{color:inherit;text-decoration:none}
 .sector-mini-brand span{font:500 17px "Playfair Display",serif}
 .sector-mini-nav{display:flex;gap:17px;font-size:10px;color:rgba(255,255,255,.8)}
 .sector-feature{position:relative;min-height:290px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:34px}
-.sector-feature.seafood{background-image:linear-gradient(90deg,rgba(4,25,38,.86),rgba(4,25,38,.18)),url('/assets/images/home-mediterranean.webp')}
-.sector-feature.produce{background-image:linear-gradient(90deg,rgba(12,30,14,.78),rgba(12,30,14,.13)),url('/assets/images/fruits-orchard.webp')}
+.sector-feature.seafood{background-image:linear-gradient(90deg,rgba(4,25,38,.86),rgba(4,25,38,.18)),url('../images/home-mediterranean.webp')}
+.sector-feature.produce{background-image:linear-gradient(90deg,rgba(12,30,14,.78),rgba(12,30,14,.13)),url('../images/fruits-orchard.webp')}
 .sector-feature-copy{max-width:520px;color:#fff}
 .sector-feature-copy h2{margin:0 0 7px;font:400 clamp(37px,4vw,58px)/.98 "Playfair Display",serif}
 .sector-feature-copy h3{margin:0 0 17px;font:400 18px/1.2 "Playfair Display",serif}
@@ -67,14 +67,14 @@ a{color:inherit;text-decoration:none}
 .sector-card h4{margin:0 0 5px;font:500 17px "Playfair Display",serif}
 .sector-card p{margin:0;color:#657078;font-size:10px;line-height:1.4}
 .sector-card-arrow{margin-top:auto;align-self:flex-end;width:25px;height:25px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:#9e7428;font-size:12px}
-.media-fish{background-image:url('/assets/images/home-seafood.webp')}
-.media-shellfish{background-image:url('/assets/images/home-seafood.webp');background-position:40% 60%}
-.media-cephalopods{background-image:url('/assets/images/home-ocean-poster.webp')}
-.media-sea-seasonal{background-image:url('/assets/images/home-seasonal.webp')}
-.media-fruit{background-image:url('/assets/images/fruits-orchard.webp')}
-.media-veg{background-image:url('/assets/images/home-produce.webp')}
-.media-produce-seasonal{background-image:url('/assets/images/home-seasonal.webp')}
-.media-market{background-image:url('/assets/images/home-origins.webp')}
+.media-fish{background-image:url('../images/home-seafood.webp')}
+.media-shellfish{background-image:url('../images/home-seafood.webp');background-position:40% 60%}
+.media-cephalopods{background-image:url('../images/home-ocean-poster.webp')}
+.media-sea-seasonal{background-image:url('../images/home-seasonal.webp')}
+.media-fruit{background-image:url('../images/fruits-orchard.webp')}
+.media-veg{background-image:url('../images/home-produce.webp')}
+.media-produce-seasonal{background-image:url('../images/home-seasonal.webp')}
+.media-market{background-image:url('../images/home-origins.webp')}
 
 .bottom-grid{max-width:1500px;margin:14px auto 0;display:grid;grid-template-columns:1.05fr 1.15fr 1.15fr;gap:14px}
 .bottom-card{min-height:270px;position:relative;overflow:hidden;border:1px solid #d8d0c3;background:#fff}
@@ -85,18 +85,18 @@ a{color:inherit;text-decoration:none}
 .seasonal-tile{min-height:188px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background-size:cover;background-position:center;position:relative}
 .seasonal-tile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(4,23,34,.76))}
 .seasonal-tile>*{position:relative}
-.seasonal-tile.sea{background-image:url('/assets/images/home-seafood.webp')}
-.seasonal-tile.produce{background-image:url('/assets/images/home-seasonal.webp')}
+.seasonal-tile.sea{background-image:url('../images/home-seafood.webp')}
+.seasonal-tile.produce{background-image:url('../images/home-seasonal.webp')}
 .seasonal-tile h4{margin:0 0 4px;font:400 19px "Playfair Display",serif}
 .seasonal-tile p{margin:0;font-size:10px;color:rgba(255,255,255,.82)}
-.markets-card{background:linear-gradient(rgba(3,23,37,.88),rgba(3,23,37,.88)),url('/assets/images/home-origins.webp') center/cover;color:#fff;padding:26px}
+.markets-card{background:linear-gradient(rgba(3,23,37,.88),rgba(3,23,37,.88)),url('../images/home-origins.webp') center/cover;color:#fff;padding:26px}
 .markets-card h3,.news-card h3{margin:0;font:400 30px "Playfair Display",serif}
 .markets-card>p,.news-card>p{font-size:11px;color:rgba(255,255,255,.8)}
 .market-points{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:58px}
 .market-points div{border-top:1px solid rgba(214,170,78,.7);padding-top:12px}
 .market-points strong{display:block;font:400 15px "Playfair Display",serif}
 .market-points span{font-size:9px;color:rgba(255,255,255,.65)}
-.news-card{background:linear-gradient(90deg,rgba(4,26,38,.87),rgba(4,26,38,.38)),url('/assets/images/home-mediterranean.webp') center/cover;color:#fff;padding:32px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.news-card{background:linear-gradient(90deg,rgba(4,26,38,.87),rgba(4,26,38,.38)),url('../images/home-mediterranean.webp') center/cover;color:#fff;padding:32px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .news-card .demo-btn{margin-top:24px;padding:12px 16px;border:1px solid var(--gold);font-size:11px}
 .demo-footer{max-width:1500px;margin:14px auto 0;padding:20px 4px 5px;display:flex;justify-content:space-between;gap:20px;color:#6f756f;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
 
