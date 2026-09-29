@@ -126,7 +126,7 @@
     }).join(' ');
     const line=document.createElementNS(ns,'polyline'); line.setAttribute('points',points); line.setAttribute('class','admin-trend-line'); svg.append(line); host.append(svg);
     const total=values.reduce((sum,value)=>sum+value,0);
-    host.setAttribute('aria-label',`${total} private access requests during the last 30 days; peak ${Math.max(...values,0)} in one day.`);
+    host.setAttribute('aria-label',`${total} SIGNATURE access requests during the last 30 days; peak ${Math.max(...values,0)} in one day.`);
     for (const row of rows) {
       const tr=document.createElement('tr'), day=document.createElement('th'), count=document.createElement('td');
       day.scope='row'; day.textContent=row.day; count.textContent=String(number(row.count)); tr.append(day,count); body.append(tr)
