@@ -1,293 +1,325 @@
-/* Fruits catalogue refinement — ES editorial page.
-   Keeps the established navy / ivory / champagne system and improves catalogue usability. */
+/* EMPERIO TISS — Fruits catalogue v2
+   Image-led editorial system. Navy / ivory / champagne. */
 
-.fruits-editorial {
+.fruits-editorial{
   --fruit-navy:#0b1e33;
   --fruit-ivory:#f4f0e6;
+  --fruit-ivory-2:#ebe5d9;
   --fruit-champagne:#c9a24b;
   --fruit-ink:#12283d;
-  --fruit-muted:#5d6872;
-  --fruit-line:rgba(11,30,51,.16);
+  --fruit-muted:#64707a;
+  --fruit-line:rgba(11,30,51,.14);
 }
 
-.fruits-editorial .fruit-special-shell{padding-bottom:18px}
-.fruits-editorial .fruit-special-head{margin-bottom:34px}
-.fruits-editorial .fruit-special-intro{max-width:540px}
-
-.fruits-editorial .fruits-family-nav{
-  position:sticky;
-  top:82px;
-  z-index:8;
-  margin:0 0 42px;
-  padding:12px 0;
-  background:rgba(244,240,230,.94);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+.fruits-editorial .catalog-section{
+  background:var(--fruit-ivory);
+  padding:clamp(72px,8vw,110px) 0 72px;
 }
-.fruits-editorial .fruits-family-nav a{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  min-height:38px;
-  font-weight:600;
-}
-.fruits-editorial .fruits-family-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:100%;
-  bottom:5px;
-  height:1px;
-  background:var(--fruit-champagne);
-  transition:right .25s ease;
-}
-.fruits-editorial .fruits-family-nav a:hover::after,
-.fruits-editorial .fruits-family-nav a:focus-visible::after{right:0}
-
-.fruits-editorial .citrus-family-block{
-  padding:54px 0 62px;
-}
-.fruits-editorial .citrus-family-heading{
-  grid-template-columns:58px minmax(0,1fr);
-  gap:22px;
-  margin-bottom:34px;
-}
-.fruits-editorial .citrus-family-number{
-  width:38px;
-  height:38px;
-  display:grid;
-  place-items:center;
-  padding:0;
-  border:1px solid var(--fruit-line);
-  border-radius:50%;
-  font-weight:700;
-  color:var(--fruit-champagne);
-}
-.fruits-editorial .citrus-family-title p{max-width:560px}
-.fruits-editorial .citrus-family-layout{
-  grid-template-columns:minmax(0,1.35fr) minmax(320px,.72fr);
-  gap:clamp(36px,5vw,72px);
-  padding-left:80px;
-}
-.fruits-editorial .citrus-variety-row{
-  min-height:78px;
-  padding:20px 0;
-  transition:padding-left .25s ease,background .25s ease;
-}
-.fruits-editorial .citrus-variety-row:hover{
-  padding-left:10px;
-  background:rgba(255,255,255,.22);
-}
-.fruits-editorial .citrus-variety-main h4{font-size:clamp(22px,2vw,28px)}
-.fruits-editorial .citrus-variety-request{
-  text-decoration:none;
-  border-bottom:1px solid rgba(11,30,51,.34);
-}
-.fruits-editorial .citrus-variety-request:hover{border-bottom-color:var(--fruit-champagne)}
-.fruits-editorial .citrus-family-spec{
-  border:1px solid rgba(11,30,51,.17);
-  background:rgba(255,255,255,.38);
-  box-shadow:0 20px 55px rgba(11,30,51,.06);
-}
-.fruits-editorial .citrus-family-spec[open] summary{
-  padding-bottom:16px;
-  border-bottom:1px solid var(--fruit-line);
-}
-.fruits-editorial .citrus-family-spec summary::marker{color:var(--fruit-champagne)}
-
 .fruits-editorial .catalog-other-section{
-  margin-top:0;
-  padding:clamp(74px,9vw,118px) 0;
-  background:
-    radial-gradient(circle at 82% 8%,rgba(201,162,75,.10),transparent 28%),
-    var(--fruit-navy);
-}
-.fruits-editorial .fruit-other-head{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);
-  gap:50px;
-  align-items:end;
-  margin-bottom:36px;
-}
-.fruits-editorial .fruit-other-head h3{
-  max-width:720px;
-  margin:12px 0 0;
-}
-.fruits-editorial .fruit-other-lead{
   margin:0;
-  max-width:500px;
-  color:rgba(244,240,230,.72);
+  padding:0 0 clamp(88px,10vw,132px);
+  background:var(--fruit-ivory);
+  color:var(--fruit-ink);
+}
+.fruits-editorial .catalog-inner{
+  width:min(1240px,calc(100% - 56px));
+  margin:auto;
+}
+.fruits-editorial .fruit-catalog-shell{width:100%}
+
+.fruits-editorial .fruit-catalog-intro{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(300px,.72fr);
+  gap:clamp(36px,6vw,86px);
+  align-items:end;
+  padding-bottom:34px;
+}
+.fruits-editorial .fruit-catalog-kicker{
+  display:block;
+  margin-bottom:14px;
+  color:var(--fruit-champagne);
+  font:700 10px/1.3 'DM Sans',sans-serif;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.fruits-editorial .fruit-catalog-intro h2{
+  margin:0;
+  color:var(--fruit-navy);
+  font:400 clamp(42px,5vw,70px)/1.02 'Playfair Display',serif;
+  letter-spacing:-.035em;
+}
+.fruits-editorial .fruit-catalog-intro h2 em{
+  color:var(--fruit-navy);
+  font-weight:400;
+}
+.fruits-editorial .fruit-catalog-intro>p{
+  margin:0 0 6px;
+  max-width:520px;
+  color:var(--fruit-muted);
   font:400 15px/1.75 'DM Sans',sans-serif;
 }
-.fruits-editorial .fruit-other-toolbar{
+
+.fruits-editorial .fruit-catalog-nav{
   display:flex;
-  justify-content:space-between;
-  gap:20px;
+  gap:30px;
   align-items:center;
-  padding:16px 0;
-  margin-bottom:28px;
-  border-top:1px solid rgba(244,240,230,.22);
-  border-bottom:1px solid rgba(244,240,230,.22);
-  color:rgba(244,240,230,.68);
-  font:600 10px/1.4 'DM Sans',sans-serif;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+  padding:15px 0;
+  margin-bottom:54px;
+  border-top:1px solid var(--fruit-line);
+  border-bottom:1px solid var(--fruit-line);
 }
-.fruits-editorial .fruit-other-toolbar strong{
+.fruits-editorial .fruit-catalog-nav a{
+  color:var(--fruit-navy);
+  text-decoration:none;
+  font:600 12px/1.4 'DM Sans',sans-serif;
+  letter-spacing:.04em;
+}
+.fruits-editorial .fruit-catalog-nav a:hover{
   color:var(--fruit-champagne);
-  font-weight:600;
 }
 
-.fruits-editorial .fruit-other-grid{
+.fruits-editorial .fruit-catalog-group{
+  scroll-margin-top:110px;
+}
+.fruits-editorial .fruit-catalog-group-head{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:22px;
+  grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);
+  gap:40px;
+  align-items:end;
+  padding:0 0 24px;
+  margin-bottom:22px;
+  border-bottom:1px solid var(--fruit-line);
 }
-.fruits-editorial .fruit-other-card{
-  position:relative;
+.fruits-editorial .fruit-catalog-group-head h2{
+  margin:0;
+  color:var(--fruit-navy);
+  font:400 clamp(32px,3.4vw,46px)/1.05 'Playfair Display',serif;
+}
+.fruits-editorial .fruit-catalog-group-head p{
+  margin:0;
+  max-width:520px;
+  justify-self:end;
+  color:var(--fruit-muted);
+  font:400 14px/1.7 'DM Sans',sans-serif;
+}
+
+.fruits-editorial .fruit-catalog-grid{
   display:grid;
-  grid-template-columns:minmax(180px,.78fr) minmax(0,1.22fr);
-  min-height:330px;
-  padding:0;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:26px 22px;
+}
+.fruits-editorial .fruit-catalog-grid.is-featured-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-bottom:84px;
+}
+
+.fruits-editorial .fruit-catalog-card{
+  min-width:0;
+  background:#fffdf8;
+  border:1px solid rgba(11,30,51,.11);
   overflow:hidden;
-  border:1px solid rgba(244,240,230,.18);
-  background:rgba(255,255,255,.025);
-  transition:transform .28s ease,border-color .28s ease,background .28s ease;
+  transition:border-color .24s ease,transform .24s ease;
 }
-.fruits-editorial .fruit-other-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(201,162,75,.52);
-  background:rgba(255,255,255,.045);
+@media(hover:hover) and (pointer:fine){
+  .fruits-editorial .fruit-catalog-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(201,162,75,.68);
+  }
 }
-.fruits-editorial .fruit-other-media{
+.fruits-editorial .fruit-catalog-media{
   position:relative;
-  min-height:100%;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 60% 35%,rgba(201,162,75,.20),transparent 30%),
-    linear-gradient(145deg,#17334a,#0a1a2b);
-  border-right:1px solid rgba(244,240,230,.14);
-}
-.fruits-editorial .fruit-card-placeholder{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding:22px;
-}
-.fruits-editorial .fruit-card-placeholder span{
-  font:500 10px/1.4 'DM Sans',sans-serif;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(244,240,230,.58);
-}
-.fruits-editorial .fruit-card-placeholder strong{
   display:block;
-  margin-top:8px;
-  font:400 clamp(26px,3vw,40px)/1.05 'Playfair Display',serif;
-  color:rgba(244,240,230,.92);
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:#ddd6c8;
 }
-.fruits-editorial .fruit-other-media .produce-image-button,
-.fruits-editorial .fruit-other-media .produce-image-button img{
+.fruits-editorial .fruit-catalog-card.is-featured .fruit-catalog-media{
+  aspect-ratio:5/4;
+}
+.fruits-editorial .fruit-catalog-media img{
   width:100%;
   height:100%;
-  min-height:330px;
+  display:block;
+  object-fit:cover;
+  transition:transform .55s cubic-bezier(.2,.75,.2,1);
 }
-.fruits-editorial .fruit-other-media .produce-image-button img{object-fit:cover}
-
-.fruits-editorial .fruit-other-content{
-  display:flex;
-  flex-direction:column;
-  padding:28px 28px 24px;
+@media(hover:hover) and (pointer:fine){
+  .fruits-editorial .fruit-catalog-card:hover .fruit-catalog-media img{
+    transform:scale(1.025);
+  }
 }
-.fruits-editorial .fruit-card-topline{
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  align-items:center;
-  margin-bottom:18px;
-}
-.fruits-editorial .fruit-card-index{
-  color:var(--fruit-champagne);
+.fruits-editorial .fruit-catalog-index{
+  position:absolute;
+  top:14px;
+  left:14px;
+  min-width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  padding:0 9px;
+  background:rgba(11,30,51,.84);
+  backdrop-filter:blur(7px);
+  color:#fff;
   font:700 10px/1 'DM Sans',sans-serif;
-  letter-spacing:.12em;
+  letter-spacing:.08em;
 }
-.fruits-editorial .fruit-card-group{
-  color:rgba(244,240,230,.58);
-  font:600 9px/1 'DM Sans',sans-serif;
-  letter-spacing:.12em;
+
+.fruits-editorial .fruit-catalog-body{
+  padding:22px 22px 24px;
+}
+.fruits-editorial .fruit-catalog-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:start;
+  padding-bottom:18px;
+  margin-bottom:18px;
+  border-bottom:1px solid var(--fruit-line);
+}
+.fruits-editorial .fruit-catalog-heading h3{
+  margin:0;
+  color:var(--fruit-navy);
+  font:400 clamp(26px,2.6vw,35px)/1.05 'Playfair Display',serif;
+  letter-spacing:-.025em;
+}
+.fruits-editorial .fruit-catalog-heading p{
+  margin:6px 0 0;
+  color:var(--fruit-muted);
+  font:400 12px/1.45 'DM Sans',sans-serif;
+}
+.fruits-editorial .fruit-catalog-status{
+  max-width:118px;
+  padding-top:4px;
+  color:var(--fruit-champagne);
+  text-align:right;
+  font:700 9px/1.45 'DM Sans',sans-serif;
+  letter-spacing:.08em;
   text-transform:uppercase;
 }
-.fruits-editorial .fruit-other-card h4{
-  margin:0;
-  color:var(--fruit-ivory);
-  font:400 clamp(28px,3vw,38px)/1.08 'Playfair Display',serif;
-}
-.fruits-editorial .fruit-scientific{
-  margin:7px 0 22px;
-  color:rgba(244,240,230,.58);
-  font:400 13px/1.5 'DM Sans',sans-serif;
-}
-.fruits-editorial .fruit-card-specs{
+
+.fruits-editorial .fruit-catalog-meta{
   display:grid;
-  gap:13px;
+  gap:14px;
   margin:0 0 22px;
 }
-.fruits-editorial .fruit-card-spec{
+.fruits-editorial .fruit-catalog-meta>div{
   display:grid;
-  grid-template-columns:82px 1fr;
+  grid-template-columns:74px minmax(0,1fr);
   gap:14px;
-  padding-top:11px;
-  border-top:1px solid rgba(244,240,230,.14);
 }
-.fruits-editorial .fruit-card-spec dt{
-  color:var(--fruit-champagne);
-  font:600 9px/1.45 'DM Sans',sans-serif;
-  letter-spacing:.10em;
+.fruits-editorial .fruit-catalog-meta dt{
+  color:var(--fruit-muted);
+  font:700 9px/1.5 'DM Sans',sans-serif;
+  letter-spacing:.12em;
   text-transform:uppercase;
 }
-.fruits-editorial .fruit-card-spec dd{
+.fruits-editorial .fruit-catalog-meta dd{
   margin:0;
-  color:rgba(244,240,230,.82);
-  font:400 12px/1.55 'DM Sans',sans-serif;
+  color:var(--fruit-ink);
+  font:500 12px/1.55 'DM Sans',sans-serif;
 }
-.fruits-editorial .fruit-other-request{
-  margin-top:auto;
-  align-self:flex-start;
-  padding:9px 0 5px;
-  color:var(--fruit-ivory);
-  text-decoration:none;
-  border-bottom:1px solid rgba(201,162,75,.74);
+.fruits-editorial .fruit-catalog-meta dd span{
+  display:inline-block;
 }
-.fruits-editorial .fruit-other-request:hover{color:var(--fruit-champagne)}
+.fruits-editorial .fruit-catalog-meta dd span:not(:last-child)::after{
+  content:' · ';
+  color:var(--fruit-champagne);
+}
 
-@media(max-width:980px){
-  .fruits-editorial .fruits-family-nav{top:72px}
-  .fruits-editorial .citrus-family-layout{padding-left:0}
-  .fruits-editorial .fruit-other-card{grid-template-columns:1fr}
-  .fruits-editorial .fruit-other-media{min-height:230px;border-right:0;border-bottom:1px solid rgba(244,240,230,.14)}
-  .fruits-editorial .fruit-other-media .produce-image-button,
-  .fruits-editorial .fruit-other-media .produce-image-button img{min-height:230px}
+.fruits-editorial .fruit-catalog-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:18px;
+  min-height:36px;
+  color:var(--fruit-navy);
+  text-decoration:none;
+  border-bottom:1px solid rgba(11,30,51,.34);
+  font:600 12px/1.4 'DM Sans',sans-serif;
+}
+.fruits-editorial .fruit-catalog-cta:hover{
+  color:var(--fruit-champagne);
+  border-bottom-color:var(--fruit-champagne);
+}
+
+/* Remove the previous heavy catalogue components if older styles are cached. */
+.fruits-editorial .fruit-special-head,
+.fruits-editorial .fruits-family-nav,
+.fruits-editorial .citrus-family-block,
+.fruits-editorial .fruit-other-head,
+.fruits-editorial .fruit-other-toolbar,
+.fruits-editorial .fruit-other-grid{
+  all:unset;
+}
+
+/* External catalogue photos: avoid broken visual blocks if a source is unavailable. */
+.fruits-editorial .fruit-catalog-media:has(img[src=""]){
+  background:linear-gradient(135deg,#d8d0c2,#eee9df);
+}
+.fruits-editorial .fruit-catalog-media img[src=""]{display:none}
+
+@media(max-width:1000px){
+  .fruits-editorial .fruit-catalog-grid,
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid .fruit-catalog-card:first-child{
+    grid-column:span 2;
+  }
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid .fruit-catalog-card:first-child .fruit-catalog-media{
+    aspect-ratio:16/8.3;
+  }
 }
 @media(max-width:760px){
-  .fruits-editorial .fruits-family-nav{
-    position:static;
-    gap:4px 18px;
-    overflow-x:auto;
-    flex-wrap:nowrap;
-    scrollbar-width:none;
+  .fruits-editorial .catalog-inner{
+    width:calc(100% - 34px);
   }
-  .fruits-editorial .fruits-family-nav::-webkit-scrollbar{display:none}
-  .fruits-editorial .fruits-family-nav a{flex:0 0 auto}
-  .fruits-editorial .fruit-other-head{grid-template-columns:1fr;gap:18px}
-  .fruits-editorial .fruit-other-grid{grid-template-columns:1fr}
+  .fruits-editorial .catalog-section{
+    padding-top:58px;
+  }
+  .fruits-editorial .fruit-catalog-intro,
+  .fruits-editorial .fruit-catalog-group-head{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .fruits-editorial .fruit-catalog-group-head p{
+    justify-self:start;
+  }
+  .fruits-editorial .fruit-catalog-nav{
+    margin-bottom:42px;
+  }
+  .fruits-editorial .fruit-catalog-grid,
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid .fruit-catalog-card:first-child{
+    grid-column:auto;
+  }
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid .fruit-catalog-card:first-child .fruit-catalog-media,
+  .fruits-editorial .fruit-catalog-card.is-featured .fruit-catalog-media,
+  .fruits-editorial .fruit-catalog-media{
+    aspect-ratio:4/3;
+  }
+  .fruits-editorial .fruit-catalog-grid.is-featured-grid{
+    margin-bottom:68px;
+  }
 }
-@media(max-width:480px){
-  .fruits-editorial .citrus-family-block{padding:42px 0 48px}
-  .fruits-editorial .citrus-family-heading{grid-template-columns:42px 1fr;gap:12px}
-  .fruits-editorial .citrus-family-number{width:32px;height:32px}
-  .fruits-editorial .fruit-other-card{min-height:0}
-  .fruits-editorial .fruit-other-content{padding:24px 22px 22px}
-  .fruits-editorial .fruit-card-spec{grid-template-columns:72px 1fr}
+@media(max-width:430px){
+  .fruits-editorial .fruit-catalog-intro h2{
+    font-size:40px;
+  }
+  .fruits-editorial .fruit-catalog-body{
+    padding:20px 18px 22px;
+  }
+  .fruits-editorial .fruit-catalog-heading{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .fruits-editorial .fruit-catalog-status{
+    max-width:none;
+    text-align:left;
+  }
+  .fruits-editorial .fruit-catalog-meta>div{
+    grid-template-columns:66px minmax(0,1fr);
+  }
 }
