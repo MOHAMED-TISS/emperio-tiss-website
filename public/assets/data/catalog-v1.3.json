@@ -1310,7 +1310,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "1819"
+      "reference": "1819",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "orange",
@@ -1347,7 +1354,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "6368"
+      "reference": "6368",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "pineapple",
@@ -1382,7 +1396,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "3991"
+      "reference": "3991",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "avocado",
@@ -1418,7 +1439,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "1860"
+      "reference": "1860",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "dates",
@@ -1453,7 +1481,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "8485"
+      "reference": "8485",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "melon",
@@ -1490,7 +1525,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "7131"
+      "reference": "7131",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "watermelon",
@@ -1526,7 +1568,14 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "4018"
+      "reference": "4018",
+      "faoZone": [],
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "images": []
     },
     {
       "id": "pulpo-bloque",
@@ -1568,7 +1617,12 @@
       "category": "seafood",
       "subcategory": "cephalopods",
       "status": "active",
-      "image": "/assets/products/incoming/Pulpo.jpg"
+      "image": "/assets/products/incoming/Pulpo.jpg",
+      "weights": [],
+      "season": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": []
     },
     {
       "id": "sole",
