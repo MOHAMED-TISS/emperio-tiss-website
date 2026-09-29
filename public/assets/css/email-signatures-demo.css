@@ -1,0 +1,47 @@
+:root{
+  --navy:#061e2d;--navy2:#0b3348;--ivory:#f4efe6;--gold:#c6a15a;--ink:#102532;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#e9e5dd;font-family:"DM Sans",Arial,sans-serif}
+body{padding:30px}
+.signature{
+  width:1200px;min-height:360px;margin:0 auto;background:var(--ivory);
+  display:grid;grid-template-columns:300px 1fr 360px;overflow:hidden;
+  border:1px solid #d8d0c3;box-shadow:0 18px 50px rgba(4,22,33,.12);
+}
+.brand{
+  background:radial-gradient(circle at 50% 35%,#0b3348 0,#061e2d 70%);
+  padding:34px 28px;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  border-right:1px solid rgba(198,161,90,.65)
+}
+.brand img{width:205px;height:auto;display:block}
+.brand .tagline{margin-top:12px;font-size:10px;letter-spacing:.22em;color:#dbc08a;text-align:center}
+.info{padding:42px 48px;display:flex;flex-direction:column;justify-content:center}
+.kicker{font-size:11px;letter-spacing:.28em;color:#a78446;text-transform:uppercase}
+.info h1{margin:8px 0 22px;font:400 46px/1 "Playfair Display",serif;color:var(--navy)}
+.rule{width:54px;height:2px;background:var(--gold);margin-bottom:24px}
+.row{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;margin:8px 0;color:#17303e;font-size:17px;line-height:1.35}
+.icon{width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:#9b783d;font-size:13px}
+.social{display:flex;gap:12px;margin-top:20px}
+.social a{width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;text-decoration:none;font-weight:700;color:var(--navy)}
+.image{
+  position:relative;background:
+  linear-gradient(90deg,rgba(4,25,37,.15),rgba(4,25,37,.55)),
+  url("https://emperio-tiss.com/assets/images/home-mediterranean.webp") center/cover;
+  color:white;display:flex;align-items:flex-end;padding:34px
+}
+.image:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(4,25,37,.72))}
+.image-copy{position:relative;z-index:2}
+.image-copy strong{display:block;font:400 34px/1.03 "Playfair Display",serif}
+.image-copy span{display:block;margin-top:14px;font-size:10px;letter-spacing:.22em;color:#e0c37f}
+.bottom{
+  grid-column:1/-1;background:#061e2d;color:white;display:grid;grid-template-columns:repeat(5,1fr);
+  border-top:1px solid #c6a15a
+}
+.bottom div{padding:15px 12px;text-align:center;font-size:10px;letter-spacing:.1em;border-right:1px solid rgba(198,161,90,.35)}
+.bottom div:last-child{border-right:0}
+.note{width:1200px;margin:14px auto 0;font-size:12px;color:#6e7476}
+@media(max-width:800px){
+ body{padding:12px}.signature{width:100%;grid-template-columns:1fr}.brand{padding:24px}.brand img{width:170px}
+ .info{padding:30px 24px}.image{min-height:240px}.bottom{grid-template-columns:1fr 1fr}.note{width:100%}
+}
