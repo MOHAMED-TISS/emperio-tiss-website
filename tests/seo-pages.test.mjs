@@ -100,3 +100,16 @@ test('all localized language groups are represented exactly 13 times', () => {
     assert.equal(count, 13, `${language} should have exactly 13 sitemap URLs`);
   }
 });
+
+
+test('Cloudflare routes every canonical HTML URL through the SEO worker', () => {
+  const wranglerPath = path.join(ROOT, 'wrangler.jsonc');
+  const wrangler = JSON.parse(fs.readFileSync(wranglerPath, 'utf8'));
+  const configured = wrangler.assets?.run_worker_first;
+
+  assert.ok(Array.isArray(configured), 'assets.run_worker_first must be an explicit route list');
+  assert.equal(wrangler.assets?.html_handling, 'force-trailing-slash');
+
+  const sitemapPaths = urls.map(url => new URL(url).pathname).sort();
+  assert.deepEqual([...configured].sort(), sitemapPaths);
+});
