@@ -150,7 +150,7 @@
       ],
       "status": "active",
       "reference": "9747",
-      "image": "https://images.unsplash.com/photo-1772544639276-87bf05fbb2cf?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1587486936739-78df7470c7e0?auto=format&fit=crop&q=88&w=1600"
     },
     {
       "id": "pineapple",
@@ -186,7 +186,7 @@
       ],
       "status": "active",
       "reference": "3991",
-      "image": "https://images.unsplash.com/photo-1518928106471-1b741a52b739?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1595104218600-e7dabb04c68e?auto=format&fit=crop&q=88&w=1600"
     },
     {
       "id": "avocado",
@@ -222,7 +222,7 @@
       ],
       "status": "active",
       "reference": "1860",
-      "image": "https://images.unsplash.com/photo-1555598488-b7d9660fb260?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+      "image": "https://images.unsplash.com/photo-1677555024309-19edb4a1d40e?auto=format&fit=crop&q=88&w=1600",
       "varietyDetails": {
         "Hass": "Piel rugosa que oscurece al madurar, pulpa cremosa y perfil intenso. Referencia principal del mercado profesional.",
         "Fuerte": "Piel lisa de color verde, forma alargada y pulpa cremosa de sabor suave. Mantiene el color verde durante la maduración."
@@ -262,7 +262,7 @@
       ],
       "status": "active",
       "reference": "8485",
-      "image": "https://images.unsplash.com/photo-1770617476915-7269d29d27dc?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1708949125052-803ce4ba955c?auto=format&fit=crop&q=88&w=1600"
     },
     {
       "id": "melon",
@@ -300,7 +300,7 @@
       ],
       "status": "active",
       "reference": "7131",
-      "image": "https://images.unsplash.com/photo-1755071268168-5764b9a0b04a?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1615485290690-285a539321e6?auto=format&fit=crop&q=88&w=1600"
     },
     {
       "id": "watermelon",
@@ -337,7 +337,7 @@
       ],
       "status": "active",
       "reference": "4018",
-      "image": "https://images.unsplash.com/photo-1764182745077-87bcc8e82677?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1630081015918-8a21078e5cee?auto=format&fit=crop&q=88&w=1600"
     },
     {
       "id": "apple",
@@ -375,7 +375,7 @@
       ],
       "status": "active",
       "reference": "6781",
-      "image": "https://images.unsplash.com/photo-1762591878309-d20b4c264632?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&q=88&w=1600"
     },
     {
       "id": "granada",
@@ -412,7 +412,7 @@
       ],
       "status": "active",
       "reference": "granada",
-      "image": "https://images.unsplash.com/photo-1774167939652-3a769b68439e?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1705946090107-e3b7e7ebdfbd?auto=format&fit=crop&q=88&w=1600"
     }
   ]
 }
