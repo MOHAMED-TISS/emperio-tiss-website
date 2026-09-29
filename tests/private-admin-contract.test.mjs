@@ -39,6 +39,6 @@ assert.match(script,/admin-inquiry-status/);
 assert.match(script,/\/api\/private\/admin\/inquiries\/status/);
 assert.match(script,/notification_status/);
 assert.match(script,/interest_categories/);
-assert.match(page,/private-admin\.js\?v=20260928-ref4-1/);
+assert.match(page,/private-admin\.js\?v=20260929-signature-1/);
 
 console.log('private-admin contract: PASS');
