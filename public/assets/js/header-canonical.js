@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20260927-canonical-header-1';
+  const VERSION = '20260929-overlay-preserve-1';
   if (window.__etCanonicalHeaderVersion === VERSION) return;
   window.__etCanonicalHeaderVersion = VERSION;
   window.__etHeaderFinalReady = true; // compatibility with older cached loaders.
@@ -172,6 +172,17 @@
       return;
     }
 
+    // Some legacy product pages still keep #navOverlay inside the header.
+    // Detach it before replacing the header or the menu DOM is destroyed with
+    // the legacy header, leaving a visible toggle with nothing to open.
+    const preservedOverlay =
+      doc.getElementById('navOverlay') ||
+      header.querySelector('.nav-overlay,.intl-overlay') ||
+      doc.querySelector('.nav-overlay,.intl-overlay');
+    if (preservedOverlay && preservedOverlay.parentElement !== body) {
+      body.appendChild(preservedOverlay);
+    }
+
     const canonical = doc.createElement('header');
     canonical.className = 'site-header';
     canonical.id = 'luxuryHeader';
@@ -181,7 +192,7 @@
     header.replaceWith(canonical);
     clearLegacyInlineHeaderStyles(canonical);
 
-    const overlay = doc.getElementById('navOverlay');
+    const overlay = preservedOverlay || doc.getElementById('navOverlay');
     if (overlay && overlay.parentElement !== body) body.appendChild(overlay);
   };
 
