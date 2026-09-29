@@ -351,3 +351,20 @@
   color:rgba(11,30,51,.34);
   font:400 clamp(24px,2.6vw,34px)/1.05 'Playfair Display',serif;
 }
+
+
+/* Commercial product photography treatment. */
+.fruits-editorial .fruit-catalog-media{
+  background:#f5f1e8;
+}
+.fruits-editorial .fruit-catalog-card:not(.is-featured) .fruit-catalog-media img{
+  object-position:center center;
+  filter:saturate(.97) contrast(1.01);
+}
+.fruits-editorial .fruit-catalog-card:not(.is-featured) .fruit-catalog-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(11,30,51,.025);
+}
