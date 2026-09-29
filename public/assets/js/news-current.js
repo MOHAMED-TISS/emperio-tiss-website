@@ -310,7 +310,8 @@
     const e = f.querySelector('.news-form-status');
     if (e) {
       e.textContent = s;
-      e.style.color = ok ? '#2d5e45' : ''
+      e.dataset.state = ok ? 'success' : 'error';
+      e.style.removeProperty('color');
     }
   };
   const form = (f, url) => f.addEventListener('submit', async e => {
