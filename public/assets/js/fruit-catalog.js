@@ -98,11 +98,13 @@
   function productCard(p, i, featured = false) {
     const varieties = unique(p.varieties);
     const href = `/contact/?product=${encodeURIComponent(p.id)}`;
-    return `<article class="fruit-catalog-card${featured ? ' is-featured' : ''}" data-product-id="${esc(p.id)}">
-      <a class="fruit-catalog-media" href="${href}" aria-label="${esc(t.consult)}: ${esc(p.commercialName)}">
-        <img src="${esc(p.image || '')}" alt="${esc(p.commercialName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">
-        <span class="fruit-catalog-index">${String(i + 1).padStart(2, '0')}</span>
-      </a>
+    return `<article class="fruit-catalog-card${featured ? ' is-featured' : ''}" data-product-id="${esc(p.id)}"${featured ? ' data-no-image="true"' : ''}>
+      ${featured
+        ? `<div class="fruit-catalog-citrus-top"><span class="fruit-catalog-index">${String(i + 1).padStart(2, '0')}</span><span class="fruit-catalog-citrus-label">${esc(t.citrus)}</span></div>`
+        : `<a class="fruit-catalog-media" href="${href}" aria-label="${esc(t.consult)}: ${esc(p.commercialName)}">
+            <img src="${esc(p.image || '')}" alt="${esc(p.commercialName)}" loading="lazy" decoding="async">
+            <span class="fruit-catalog-index">${String(i + 1).padStart(2, '0')}</span>
+          </a>`}
       <div class="fruit-catalog-body">
         <div class="fruit-catalog-heading">
           <div>
