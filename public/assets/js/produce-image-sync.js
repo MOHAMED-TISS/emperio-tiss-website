@@ -154,7 +154,7 @@
   }
 
   function renderBaseCards(map) {
-    document.querySelectorAll('.product-card[data-product-id]').forEach(card => {
+    document.querySelectorAll('.product-card[data-product-id], .fruit-other-card[data-product-id]').forEach(card => {
       const images = map.get(productIdFromCard(card));
       if (images) renderCardImage(card, images);
     });
@@ -179,7 +179,7 @@
   }
 
   async function waitForCatalogue(attempt = 0) {
-    if (document.querySelector('.product-card[data-product-id]') || document.querySelector(
+    if (document.querySelector('.product-card[data-product-id], .fruit-other-card[data-product-id]') || document.querySelector(
         '.citrus-family-block')) return true;
     if (attempt >= 50) return false;
     await new Promise(resolve => setTimeout(resolve, READY_TIMEOUT));
