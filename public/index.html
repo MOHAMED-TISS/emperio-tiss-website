@@ -186,24 +186,51 @@
           <p>Key destinations across Europe, Africa and the Middle East.</p>
         </header>
 
-        <svg class="market-map-svg" viewBox="0 0 640 210" role="img" aria-label="EMPERIO TISS market connections">
+        <svg class="market-map-svg" viewBox="0 0 660 150" role="img" aria-label="Europa, África y Oriente Medio">
           <defs>
-            <filter id="glow"><feGaussianBlur stdDeviation="2.3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="marketGlow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="1.7" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="marketGold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f0d58a"/>
+              <stop offset=".45" stop-color="#cda34f"/>
+              <stop offset="1" stop-color="#8b692e"/>
+            </linearGradient>
           </defs>
-          <g class="map-land" fill="none">
-            <path d="M84 86c25-13 44-31 72-35 23-3 34 6 47 6 19 0 26-17 43-18 14-1 22 11 31 20 16 16 34 23 57 25 19 2 31 1 48-8 16-8 36-7 48 4 7 7 6 15 17 19 14 5 32-4 44 6 8 7 8 17 18 20 13 4 31-6 44 2" />
-            <path d="M247 63c-9 10-14 22-10 35 5 14 17 18 27 28 12 12 17 29 27 42" />
-            <path d="M300 88c12 11 22 17 36 22 17 6 34 4 50 12 13 7 24 19 38 22" />
-            <path d="M332 70c15-12 34-18 52-16 18 2 30 12 46 15 13 3 28 0 40 7" />
-            <path d="M396 117c11 4 21 12 29 21 8 10 11 21 16 33" />
+
+          <g class="market-coast" fill="none" stroke="url(#marketGold)" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Iberia / Western Europe -->
+            <path d="M188 55l10-8 13 1 8-8 16 2 8-6 11 5 7 9-4 7 10 4 8-3 7 5 8-1 10 8-4 8-11 4-8-3-12 7-13-3-8 5-10-4-10 4-11-7-12 1-7-8-10-2z"/>
+            <!-- Italy and Balkans -->
+            <path d="M305 67l8 3 4 8-2 8 7 8-4 10 6 9-5 5-6-8-5-9 2-10-5-8z"/>
+            <path d="M329 62l14-5 13 4 13-2 12 6 10-1 8 6-4 7-12 2-7 7-12-1-9 5-10-6-10-1-7-7z"/>
+            <!-- North Africa / Africa -->
+            <path d="M224 91l17-8 25 1 17 6 20-1 18 7 18-2 20 10 13 13-2 13-11 9-4 13-12 10-10 14-10 15-9 16-7-2-3-17-8-10-3-17-9-13-5-15-11-7-10-13-13-7-9-12-9-7z"/>
+            <!-- Middle East -->
+            <path d="M387 79l15-7 15 3 11-4 14 7 13 2 9 9 13 3 8 9-5 8-15-2-9 5-12-2-11 6-12-5-13 2-8-8-10-4-8-9z"/>
+            <!-- Arabian peninsula -->
+            <path d="M424 112l17-5 14 6 15 1 10 9-5 13-11 7-8 13-12-3-7-12-7-8-2-11z"/>
+            <!-- UK / islands -->
+            <path d="M185 40l5-8 7 2 2 8-5 6-6-2z"/>
+            <path d="M205 31l4-6 6 2 1 7-5 4z"/>
+            <!-- Mediterranean islands -->
+            <path d="M278 91l4-2 4 3-2 4-5-1z"/><path d="M335 93l4-1 3 4-2 4-4-2z"/>
           </g>
-          <g class="map-route" fill="none" filter="url(#glow)">
-            <path d="M176 100 C255 55, 315 65, 388 101 S492 125, 536 94"/>
-            <path d="M177 100 C241 115, 303 151, 365 133 S458 73, 515 72"/>
-            <path d="M177 100 C258 92, 312 92, 374 127 S466 166, 530 158"/>
+
+          <g class="market-routes" fill="none" filter="url(#marketGlow)">
+            <path d="M226 78 C286 46, 352 47, 420 79 S505 93, 545 67"/>
+            <path d="M226 78 C281 91, 318 118, 356 117 S430 79, 493 72"/>
+            <path d="M226 78 C276 72, 324 77, 365 102 S442 134, 516 127"/>
           </g>
-          <g class="map-node">
-            <circle cx="176" cy="100" r="5"/><circle cx="387" cy="101" r="4"/><circle cx="365" cy="133" r="4"/><circle cx="536" cy="94" r="4"/><circle cx="530" cy="158" r="4"/>
+
+          <g class="market-dots">
+            <circle cx="226" cy="78" r="4.5"/>
+            <circle cx="356" cy="117" r="3.7"/>
+            <circle cx="420" cy="79" r="3.7"/>
+            <circle cx="493" cy="72" r="3.7"/>
+            <circle cx="516" cy="127" r="3.7"/>
+            <circle cx="545" cy="67" r="3.7"/>
           </g>
         </svg>
 
