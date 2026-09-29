@@ -155,6 +155,7 @@
 
   function renderBaseCards(map) {
     document.querySelectorAll('.product-card[data-product-id], .fruit-other-card[data-product-id], .fruit-catalog-card[data-product-id]').forEach(card => {
+      if (card.dataset.noImage === 'true') return;
       const images = map.get(productIdFromCard(card));
       if (images) renderCardImage(card, images);
     });
