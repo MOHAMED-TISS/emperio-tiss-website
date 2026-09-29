@@ -218,6 +218,19 @@ test('SIGNATURE tracks client login, last seen and actual offer views', async ()
   assert.equal(overview.signature.engagement.views,1);
 });
 
+test('SIGNATURE offer campaign audience respects portal visibility', async () => {
+  const {call,sql}=setup();
+  const expiry=Math.floor(Date.now()/1000)+3600;
+  sql.prepare("INSERT INTO clients(email,company,language,status,created_at,country) VALUES(?,?,?,?,?,?)").run('fr@example.com','FR Buyer','fr','approved',1,'FR');
+  sql.prepare("INSERT INTO clients(email,company,language,status,created_at,country) VALUES(?,?,?,?,?,?)").run('es@example.com','ES Buyer','es','approved',1,'ES');
+  const offer=await (await call('/api/private/admin/offers',{
+    title:'France only',valid_until:expiry,status:'published',visibility_scope:'country',visibility_value:'FR'
+  })).json();
+  const draft=await (await call('/api/private/admin/campaigns',{offer_id:offer.id,kind:'offer',language:''})).json();
+  const preview=await (await call(`/api/private/admin/campaigns/preview?id=${draft.id}`)).json();
+  assert.equal(preview.recipients,1);
+});
+
 test('drafts persist without mail, sending fails closed without mail', async () => {
   const {call,sql} = setup();
   const r = await (await call('/api/private/admin/campaigns',{subject:'Signals',html:'<p>Hello</p>',language:'it'})).json();
