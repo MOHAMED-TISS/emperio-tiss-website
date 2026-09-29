@@ -803,4 +803,72 @@ body.brand-pages[data-brand-category] main :is(.intl-hero,.ar-hero,.product-hero
 .brand-pages.news-current main .news-hero-orbit { display:none; }
 .brand-pages.news-current main .news-hero-grid { grid-template-columns:minmax(0,1fr); }
 .brand-pages.news-current main .news-hero-grid>div { max-width:900px; }
+/* Seasonal editorial — campaign journal: photographic opening, generous ivory
+   selection rows, then an origin-led planning spread. Scoped to ES seasonal. */
+body.seasonal-editorial main { background:var(--et-ivory); color:var(--et-navy); }
+body.seasonal-editorial .season-wrap { width:min(1180px,calc(100% - 80px)); margin-inline:auto; }
+body.seasonal-editorial main :is(h1,h2,h3,p,figure) { margin:0; }
+body.seasonal-editorial main :is(h1,h2,h3) { font-family:var(--et-serif); font-weight:400; }
+body.seasonal-editorial main h2 { font-size:clamp(2.6rem,4.6vw,4.7rem); line-height:1.07; letter-spacing:-.045em; }
+body.seasonal-editorial main p { font-family:var(--et-sans); line-height:1.8; }
+body.seasonal-editorial main em { font-weight:400; color:inherit; }
+body.seasonal-editorial main .season-kicker { font:600 10px/1.6 var(--et-sans); letter-spacing:.2em; text-transform:uppercase; margin-bottom:28px; }
+body.seasonal-editorial .season-opening { position:relative; min-height:100svh; min-height:100dvh; display:grid; isolation:isolate; color:var(--et-ivory); background:var(--et-navy); }
+body.seasonal-editorial .season-cover { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:65% center; z-index:-2; }
+body.seasonal-editorial .season-opening::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(11,30,51,.92),rgba(11,30,51,.62) 55%,rgba(11,30,51,.22)); }
+body.seasonal-editorial .season-opening-inner { padding-block:180px 28px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; }
+body.seasonal-editorial main h1 { max-width:900px; font-size:clamp(3.5rem,7.4vw,7.2rem); line-height:.99; letter-spacing:-.055em; }
+body.seasonal-editorial .season-opening h1 em { color:var(--et-champagne); }
+body.seasonal-editorial .season-lead { max-width:570px; font-size:17px; margin:30px 0; }
+body.seasonal-editorial .season-cta { display:inline-flex; align-items:center; justify-content:space-between; gap:36px; min-height:58px; padding:18px 25px; background:var(--et-champagne); color:var(--et-navy); border:1px solid var(--et-champagne); font:600 13px/1.4 var(--et-sans); text-decoration:none; transition:transform .35s var(--et-ease); }
+body.seasonal-editorial .season-cta:hover { transform:translateY(-3px); }
+body.seasonal-editorial main a:focus-visible { outline:3px solid currentColor; outline-offset:6px; }
+body.seasonal-editorial .season-cta span { font-size:23px; }
+body.seasonal-editorial .season-caption { width:100%; display:flex; justify-content:space-between; gap:24px; border-top:1px solid rgba(244,240,230,.3); margin-top:64px; padding-top:22px; font:500 10px/1.6 var(--et-sans); letter-spacing:.14em; }
+body.seasonal-editorial .season-caption a { color:var(--et-ivory); }
+body.seasonal-editorial .season-selection { padding-block:110px; }
+body.seasonal-editorial .season-heading { max-width:800px; margin-bottom:60px; }
+body.seasonal-editorial .season-heading>p:last-child { max-width:570px; margin-top:28px; }
+body.seasonal-editorial .season-category { display:grid; grid-template-columns:45px 1fr auto; gap:28px; align-items:center; padding:34px 0; border-top:1px solid rgba(11,30,51,.22); color:var(--et-navy); text-decoration:none; }
+body.seasonal-editorial .season-category:last-child { border-bottom:1px solid rgba(11,30,51,.22); }
+body.seasonal-editorial .season-category h3 { font-size:clamp(1.8rem,3vw,2.8rem); margin-bottom:8px; }
+body.seasonal-editorial .season-category p { font-size:14px; }
+body.seasonal-editorial .season-index { font:500 12px var(--et-sans); }
+body.seasonal-editorial .season-category-link { display:flex; gap:24px; align-items:center; font:600 11px var(--et-sans); }
+body.seasonal-editorial .season-category-link>span { font-size:23px; transition:transform .35s var(--et-ease); }
+body.seasonal-editorial .season-category:hover .season-category-link>span { transform:translate(4px,-4px); }
+body.seasonal-editorial .season-category:hover h3 { text-decoration:underline; text-decoration-color:var(--et-seasonal-accent); text-decoration-thickness:1px; text-underline-offset:8px; }
+body.seasonal-editorial .season-note { font-size:12px; max-width:730px; margin-top:24px; }
+body.seasonal-editorial .season-planning { padding-block:90px; border-block:1px solid rgba(11,30,51,.16); }
+body.seasonal-editorial .season-planning-grid { display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; }
+body.seasonal-editorial .season-photo { position:relative; align-self:stretch; min-height:600px; }
+body.seasonal-editorial .season-photo img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+body.seasonal-editorial .season-photo figcaption { position:absolute; bottom:24px; left:24px; right:24px; padding:18px; background:var(--et-navy); color:var(--et-ivory); font:italic 25px var(--et-serif); }
+body.seasonal-editorial .season-planning-copy h2 { font-size:clamp(2.5rem,3.5vw,3.8rem); }
+body.seasonal-editorial .season-steps { list-style:none; counter-reset:step; margin:34px 0 0; padding:0; }
+body.seasonal-editorial .season-steps li { position:relative; padding:20px 0 20px 40px; border-top:1px solid rgba(11,30,51,.18); counter-increment:step; }
+body.seasonal-editorial .season-steps li::before { content:"0" counter(step); position:absolute; left:0; top:25px; font:500 10px var(--et-sans); }
+body.seasonal-editorial .season-steps h3 { font:600 15px/1.5 var(--et-sans); margin-bottom:6px; }
+body.seasonal-editorial .season-steps p { font-size:14px; }
+body.seasonal-editorial .season-inquiry { background:var(--et-navy); color:var(--et-ivory); text-align:center; padding-block:110px; }
+body.seasonal-editorial .season-inquiry h2 em { color:var(--et-champagne); }
+body.seasonal-editorial .season-inquiry p:not(.season-kicker) { max-width:560px; margin:28px auto 32px; }
+body.seasonal-editorial .season-inquiry-note { display:block; margin-top:22px; font:400 11px var(--et-sans); }
+body.seasonal-editorial main>.et-operation-flow { display:none; }
+@media(max-width:800px) {
+ body.seasonal-editorial .season-wrap { width:calc(100% - 40px); }
+ body.seasonal-editorial .season-opening-inner { padding-top:150px; }
+ body.seasonal-editorial .season-lead { font-size:15px; }
+ body.seasonal-editorial .season-caption { margin-top:44px; font-size:9px; flex-wrap:wrap; }
+ body.seasonal-editorial .season-selection,body.seasonal-editorial .season-inquiry { padding-block:72px; }
+ body.seasonal-editorial .season-category { grid-template-columns:24px 1fr; gap:16px; padding:26px 0; }
+ body.seasonal-editorial .season-category-link { grid-column:2; justify-content:space-between; }
+ body.seasonal-editorial .season-planning { padding-block:60px; }
+ body.seasonal-editorial .season-planning-grid { grid-template-columns:1fr; gap:36px; }
+ body.seasonal-editorial .season-photo { min-height:340px; }
+ body.seasonal-editorial .season-planning-copy h2 { font-size:2.7rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+ body.seasonal-editorial .season-cta,body.seasonal-editorial .season-category-link>span { transition:none; transform:none; }
+}
 @media(max-width:640px){body.brand-pages[data-brand-category="fruits"] { --brand-hero-image:url("/assets/images/fruits-orchard-mobile.webp"); }}
