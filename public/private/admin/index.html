@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/news-current.css?v=20260925-private">
-    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260928-commercial-pipeline-1">
+    <link rel="stylesheet" href="/assets/css/private-admin.css?v=20260929-signature-ops-1">
   </head>
   <body class="news-current private-admin-page">
     <header class="admin-topbar" aria-label="Operations Desk navigation">
@@ -52,6 +52,13 @@
                 <article><span>Approved</span><strong id="metricApproved">0</strong></article>
                 <article><span>Rejected</span><strong id="metricRejected">0</strong></article>
               </div>
+              <div class="admin-kpis admin-kpis-signature" aria-label="SIGNATURE activity totals">
+                <article><span>Active offers</span><strong id="metricActiveOffers">0</strong></article>
+                <article><span>Offer views</span><strong id="metricOfferViews">0</strong></article>
+                <article><span>Clients connected</span><strong id="metricConnected">0</strong></article>
+                <article><span>Never connected</span><strong id="metricNeverConnected">0</strong></article>
+                <article><span>Active sessions</span><strong id="metricActiveSessions">0</strong></article>
+              </div>
               <div class="admin-chart-grid">
                 <figure class="admin-chart admin-chart-wide">
                   <figcaption><span>REQUEST FLOW</span><strong>Last 30 days</strong></figcaption>
@@ -61,7 +68,20 @@
                 <figure class="admin-chart"><figcaption><span>GEOGRAPHY</span><strong>Top countries</strong></figcaption><div id="countryChart" class="admin-bars"></div></figure>
                 <figure class="admin-chart"><figcaption><span>DEMAND</span><strong>Product categories</strong></figcaption><div id="categoryChart" class="admin-bars"></div></figure>
               </div>
-              <div class="admin-grid"><div><h3>Clients &amp; access requests</h3><div id="clientList" class="admin-list"></div></div><div><h3>Subscribers</h3><div id="subscriberList" class="admin-list"></div></div></div>
+              <div class="admin-grid admin-data-grid">
+                <div class="admin-client-panel">
+                  <div class="admin-subhead"><div><span class="admin-kicker">CLIENT ACTIVITY</span><h3>Clients &amp; access requests</h3></div><span id="clientResultCount" class="admin-result-count">0 records</span></div>
+                  <div class="admin-filterbar admin-filterbar-clients" aria-label="Client filters">
+                    <label>Search<input id="clientSearch" type="search" placeholder="Company, email, contact…"></label>
+                    <label>Access<select id="clientStatusFilter"><option value="">All</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
+                    <label>Connection<select id="clientConnectionFilter"><option value="">All</option><option value="connected">Has connected</option><option value="never">Never connected</option><option value="active">Active session</option></select></label>
+                    <label>Language<select id="clientLanguageFilter"><option value="">All</option><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option><option value="it">IT</option><option value="ar">AR</option></select></label>
+                    <label>Country<input id="clientCountryFilter" type="search" maxlength="2" placeholder="ES"></label>
+                  </div>
+                  <div id="clientList" class="admin-list admin-client-list"></div>
+                </div>
+                <div><h3>Subscribers</h3><div id="subscriberList" class="admin-list"></div></div>
+              </div>
               <section class="admin-inquiries">
                 <div class="admin-card-head"><div><span class="admin-kicker">COMMERCIAL PIPELINE</span><h2>Product enquiries.</h2></div></div>
                 <div class="admin-inquiry-kpis" aria-label="Commercial inquiry pipeline">
@@ -97,10 +117,41 @@
                   <h2>Create an opportunity.</h2>
                 </div>
               </div>
-              <form data-offer-form><label>Title<input type="text" name="title" maxlength="200" required></label>
-                <div class="admin-grid"><label>Category<input type="text" name="category" maxlength="80" placeholder="SEAFOOD"></label><label>Origin<input type="text" name="origin" maxlength="120" placeholder="Morocco"></label><label>Destination<input type="text" name="destination" maxlength="120" placeholder="Perpignan"></label><label>Availability<input type="text" name="availability" maxlength="120" placeholder="8 MT"></label></div><label>Valid until<input type="datetime-local" name="valid_until" required></label><label>Description<textarea name="description" rows="6" maxlength="2000"></textarea></label><button type="submit">Publish offer ↗</button>
+              <form data-offer-form>
+                <input type="hidden" name="offer_id" value="">
+                <label>Title<input type="text" name="title" maxlength="200" required></label>
+                <div class="admin-grid">
+                  <label>Category<input type="text" name="category" maxlength="80" placeholder="SEAFOOD"></label>
+                  <label>Origin<input type="text" name="origin" maxlength="120" placeholder="Morocco"></label>
+                  <label>Destination<input type="text" name="destination" maxlength="120" placeholder="Perpignan"></label>
+                  <label>Availability<input type="text" name="availability" maxlength="120" placeholder="8 MT"></label>
+                </div>
+                <div class="admin-grid">
+                  <label>Status<select name="status"><option value="published">Published</option><option value="draft">Draft</option></select></label>
+                  <label>Priority<input type="number" name="priority" min="-99" max="99" step="1" value="0"></label>
+                  <label>Visibility<select name="visibility_scope" id="offerVisibilityScope"><option value="all">All approved clients</option><option value="language">Language</option><option value="country">Country</option><option value="client">Specific client</option></select></label>
+                  <label>Audience value<input type="text" name="visibility_value" id="offerVisibilityValue" maxlength="254" placeholder="es / ES / client@company.com" disabled></label>
+                </div>
+                <label>Valid until<input type="datetime-local" name="valid_until" required></label>
+                <label>Description<textarea name="description" rows="6" maxlength="2000"></textarea></label>
+                <div class="admin-form-actions"><button type="submit"><span id="offerSubmitLabel">Save opportunity ↗</span></button><button id="cancelOfferEdit" class="admin-button-secondary" type="button" hidden>Cancel edit</button></div>
                 <p class="admin-status" data-status></p>
               </form>
+            </section>
+            <section class="admin-card admin-wide admin-offer-control">
+              <div class="admin-card-head">
+                <div><span class="admin-kicker">OFFER CONTROL</span>
+                  <h2>Manage SIGNATURE opportunities.</h2>
+                </div>
+                <span id="offerResultCount" class="admin-result-count">0 offers</span>
+              </div>
+              <div class="admin-filterbar admin-filterbar-offers" aria-label="Offer filters">
+                <label>Search<input id="offerSearch" type="search" placeholder="Title, origin, destination…"></label>
+                <label>Status<select id="offerStatusFilter"><option value="">All</option><option value="active">Active</option><option value="draft">Draft</option><option value="cancelled">Cancelled</option><option value="expired">Expired</option><option value="deleted">Deleted</option></select></label>
+                <label>Category<input id="offerCategoryFilter" type="search" placeholder="Seafood"></label>
+                <label>Audience<select id="offerAudienceFilter"><option value="">All</option><option value="all">All clients</option><option value="language">Language</option><option value="country">Country</option><option value="client">Specific client</option></select></label>
+              </div>
+              <div id="offerOpsList" class="admin-list admin-offer-list"></div>
             </section>
             <section class="admin-card">
               <div class="admin-card-head">
@@ -108,7 +159,7 @@
                   <h2>Prepare a SIGNATURE opportunity.</h2>
                 </div>
               </div>
-              <div id="offerList" class="admin-list"></div>
+              <p class="admin-help">Only active published opportunities can be distributed. Audience segmentation on the offer controls who can see it after authentication.</p>
               <form data-send-offer-form><label>Active offer<select name="offer_id" id="offerSelect" required><option value="">Choose an offer</option></select></label><label>Audience language<select name="language"><option value="">All approved clients</option><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="ar">العربية</option></select></label><button type="submit">Save distribution draft ↗</button>
                 <p class="admin-status" data-status></p>
               </form>
@@ -146,6 +197,10 @@
         </div>
       </section>
     </main>
-    <script src="/assets/js/private-admin.js?v=20260929-signature-1" defer></script>
+    <dialog id="offerPreviewDialog" class="admin-preview-dialog">
+      <div class="admin-preview-dialog__head"><div><span class="admin-kicker">CLIENT PREVIEW</span><h2>How the client sees this opportunity.</h2></div><button id="closeOfferPreview" type="button" aria-label="Close preview">×</button></div>
+      <div id="offerClientPreview" class="admin-client-preview"></div>
+    </dialog>
+    <script src="/assets/js/private-admin.js?v=20260929-signature-ops-1" defer></script>
   </body>
 </html>
