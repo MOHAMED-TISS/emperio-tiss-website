@@ -226,7 +226,8 @@
         "avocado",
         "dates",
         "melon",
-        "watermelon"
+        "watermelon",
+        "granada"
       ],
       "en": [
         "apple",
@@ -238,7 +239,8 @@
         "avocado",
         "dates",
         "melon",
-        "watermelon"
+        "watermelon",
+        "granada"
       ],
       "fr": [
         "apple",
@@ -250,7 +252,8 @@
         "avocado",
         "dates",
         "melon",
-        "watermelon"
+        "watermelon",
+        "granada"
       ],
       "it": [
         "clementina",
@@ -262,7 +265,8 @@
         "avocado",
         "dates",
         "melon",
-        "watermelon"
+        "watermelon",
+        "granada"
       ],
       "ar": [
         "clementina",
@@ -274,7 +278,8 @@
         "avocado",
         "dates",
         "melon",
-        "watermelon"
+        "watermelon",
+        "granada"
       ]
     },
     "produce/vegetables": {
@@ -716,6 +721,12 @@
       "fr": "Ail",
       "it": "Aglio",
       "ar": "الثوم"
+    },
+    "granada": {
+      "en": "Pomegranate",
+      "fr": "Grenade",
+      "it": "Melagrana",
+      "ar": "الرمان"
     }
   }
 }
