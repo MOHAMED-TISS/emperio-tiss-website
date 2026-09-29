@@ -19,7 +19,8 @@
       consult: 'Consultar producto',
       selection: 'Explorar catálogo',
       citrusCopy: 'Clementinas, mandarinas y naranjas seleccionadas para programas profesionales.',
-      otherCopy: 'Fruta mediterránea, tropical y de temporada para distintos mercados y programas de suministro.'
+      otherCopy: 'Fruta mediterránea, tropical y de temporada para distintos mercados y programas de suministro.',
+      datesOrigin: 'Túnez / Oriente Medio'
     },
     en: {
       kicker: 'FRUIT CATALOGUE',
@@ -35,7 +36,8 @@
       consult: 'Request product',
       selection: 'Explore catalogue',
       citrusCopy: 'Clementines, mandarins and oranges selected for professional programmes.',
-      otherCopy: 'Mediterranean, tropical and seasonal fruit for different markets and supply programmes.'
+      otherCopy: 'Mediterranean, tropical and seasonal fruit for different markets and supply programmes.',
+      datesOrigin: 'Tunisia / Middle East'
     },
     fr: {
       kicker: 'CATALOGUE FRUITS',
@@ -51,7 +53,8 @@
       consult: 'Consulter le produit',
       selection: 'Explorer le catalogue',
       citrusCopy: 'Clémentines, mandarines et oranges sélectionnées pour les programmes professionnels.',
-      otherCopy: 'Fruits méditerranéens, tropicaux et saisonniers pour différents marchés et programmes.'
+      otherCopy: 'Fruits méditerranéens, tropicaux et saisonniers pour différents marchés et programmes.',
+      datesOrigin: 'Tunisie / Moyen-Orient'
     },
     it: {
       kicker: 'CATALOGO FRUTTA',
@@ -67,7 +70,8 @@
       consult: 'Richiedi prodotto',
       selection: 'Esplora il catalogo',
       citrusCopy: 'Clementine, mandarini e arance selezionati per programmi professionali.',
-      otherCopy: 'Frutta mediterranea, tropicale e stagionale per diversi mercati e programmi.'
+      otherCopy: 'Frutta mediterranea, tropicale e stagionale per diversi mercati e programmi.',
+      datesOrigin: 'Tunisia / Medio Oriente'
     },
     ar: {
       kicker: 'دليل الفواكه',
@@ -83,7 +87,8 @@
       consult: 'استفسر عن المنتج',
       selection: 'استكشف الدليل',
       citrusCopy: 'كلمنتينا ويوسفي وبرتقال مختار لبرامج التوريد المهنية.',
-      otherCopy: 'فواكه متوسطية واستوائية وموسمية لأسواق وبرامج توريد مختلفة.'
+      otherCopy: 'فواكه متوسطية واستوائية وموسمية لأسواق وبرامج توريد مختلفة.',
+      datesOrigin: 'تونس / الشرق الأوسط'
     }
   };
 
@@ -98,6 +103,7 @@
   function productCard(p, i, featured = false) {
     const varieties = unique(p.varieties);
     const href = `/contact/?product=${encodeURIComponent(p.id)}`;
+    const displayOrigin = p.id === 'dates' ? t.datesOrigin : first(p.origin);
     return `<article class="fruit-catalog-card${featured ? ' is-featured' : ''}" data-product-id="${esc(p.id)}">
       <a class="fruit-catalog-media${featured && !p.image ? ' is-placeholder' : ''}" href="${href}" aria-label="${esc(t.consult)}: ${esc(p.commercialName)}">
         ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.commercialName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">` : `<div class="fruit-catalog-photo-placeholder" aria-hidden="true"><span>PHOTO</span><strong>${esc(p.commercialName)}</strong></div>`}
@@ -112,7 +118,7 @@
           <span class="fruit-catalog-status">${esc(t.availability)}</span>
         </div>
         <dl class="fruit-catalog-meta">
-          <div><dt>${esc(t.origin)}</dt><dd>${esc(first(p.origin) || '—')}</dd></div>
+          <div><dt>${esc(t.origin)}</dt><dd>${esc(displayOrigin || '—')}</dd></div>
           <div><dt>${esc(t.varieties)}</dt><dd>${varieties.map(v => `<span>${esc(v)}</span>`).join('')}</dd></div>
         </dl>
         <a class="fruit-catalog-cta" href="${href}">${esc(t.consult)} <span aria-hidden="true">↗</span></a>
