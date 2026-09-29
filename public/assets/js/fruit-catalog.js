@@ -1,316 +1,189 @@
-/* Citrus catalogue — single photographic field, complete static catalogue. */
+/* EMPERIO TISS — Fruits catalogue, image-led editorial layout. */
 (() => {
   'use strict';
+
   const DATA_URL = '/assets/data/fruit-catalog-v1.json';
+
   const I18N = {
     es: {
-      catalogue: 'Catálogo de cítricos',
-      title: 'Del árbol al',
-      subtitle: 'mercado',
-      intro: 'Clementinas, mandarinas y naranjas de España y Marruecos, según campaña. Consulte la variedad y confirme las condiciones para su próximo pedido.',
-      families: ['Clementinas', 'Mandarinas', 'Naranjas'],
-      familyCopy: ['Cítricos tempranos y de mesa.',
-        'Mandarinas seleccionadas para mercado profesional.',
-        'Variedades de mesa y larga ventana comercial.'
-      ],
-      technical: 'Especificación',
-      active: 'Disponible',
+      kicker: 'CATÁLOGO DE FRUTAS',
+      title: 'Selección profesional',
+      subtitle: 'por origen y campaña.',
+      intro: 'Frutas seleccionadas para compradores profesionales. Variedad, origen, calibre y programa de suministro según mercado.',
+      citrus: 'Cítricos',
+      other: 'Otras frutas',
       origin: 'Origen',
-      species: 'Especie',
-      condition: 'Condición',
-      fresh: 'Fresco',
-      calibre: 'Calibre',
-      quality: 'Calidad',
-      format: 'Formato',
-      packaging: 'Embalaje',
+      varieties: 'Variedades',
       campaign: 'Campaña',
-      campaignHint: 'Ventana orientativa · confirmar según origen y semana',
-      request: 'Consultar variedad',
-      reference: 'Ref.',
-      other: 'Selección completa',
-      otherIntro: 'Frutas más allá de los cítricos',
-      otherLead: 'Referencias seleccionadas para programas profesionales, definidas por variedad, origen y condiciones de suministro.',
-      varietiesLabel: 'Variedades',
-      supplyLabel: 'Suministro',
-      supplyValue: 'Según campaña',
-      productsLabel: 'referencias activas',
-      groupExotics: 'Tropicales & exóticas',
-      groupCore: 'Frutas de temporada',
-      details: 'Origen y condiciones',
-      availability: 'Disponibilidad por confirmar según origen, variedad y semana.',
-      requirements: 'Indíquenos calibre, presentación, volumen, destino y fecha de entrega para concretar su solicitud.',
+      availability: 'Según campaña y programa',
       consult: 'Consultar producto',
-      unavailable: 'No se pudo cargar el catálogo. Consulte la selección con nuestro equipo.',
-      selection: 'Explorar por familia'
+      selection: 'Explorar catálogo',
+      citrusCopy: 'Clementinas, mandarinas y naranjas seleccionadas para programas profesionales.',
+      otherCopy: 'Fruta mediterránea, tropical y de temporada para distintos mercados y programas de suministro.'
     },
     en: {
-      catalogue: 'Citrus catalogue',
-      title: 'From tree to',
-      subtitle: 'market',
-      intro: 'Professional citrus selection by origin, variety and specification. A clear view of each reference.',
-      families: ['Clementines', 'Mandarins', 'Oranges'],
-      familyCopy: ['Early and table citrus.', 'Selected mandarins for professional markets.',
-        'Table varieties with broad commercial windows.'
-      ],
-      technical: 'Specification',
-      active: 'Available',
+      kicker: 'FRUIT CATALOGUE',
+      title: 'Professional selection',
+      subtitle: 'by origin and season.',
+      intro: 'Fruit selected for professional buyers. Variety, origin, sizing and supply programme according to market.',
+      citrus: 'Citrus',
+      other: 'Other fruit',
       origin: 'Origin',
-      species: 'Species',
-      condition: 'Condition',
-      fresh: 'Fresh',
-      calibre: 'Calibre',
-      quality: 'Quality',
-      format: 'Format',
-      packaging: 'Packaging',
-      campaign: 'Campaign',
-      campaignHint: 'Indicative window · confirm by origin and week',
-      request: 'Request reference',
-      reference: 'Ref.',
-      other: 'Complete selection',
-      otherIntro: 'Fruit beyond citrus',
-      otherLead: 'Selected references for professional programmes, defined by variety, origin and supply conditions.',
-      varietiesLabel: 'Varieties',
-      supplyLabel: 'Supply',
-      supplyValue: 'According to season',
-      productsLabel: 'active references',
-      groupExotics: 'Tropical & exotic',
-      groupCore: 'Seasonal fruit'
+      varieties: 'Varieties',
+      campaign: 'Season',
+      availability: 'According to season and programme',
+      consult: 'Request product',
+      selection: 'Explore catalogue',
+      citrusCopy: 'Clementines, mandarins and oranges selected for professional programmes.',
+      otherCopy: 'Mediterranean, tropical and seasonal fruit for different markets and supply programmes.'
     },
     fr: {
-      catalogue: 'Catalogue agrumes',
-      title: 'De l’arbre au',
-      subtitle: 'marché',
-      intro: 'Sélection professionnelle d’agrumes par origine, variété et spécification.',
-      families: ['Clémentines', 'Mandarines', 'Oranges'],
-      familyCopy: ['Agrumes précoces et de table.',
-        'Mandarines sélectionnées pour le marché professionnel.',
-        'Variétés de table à large fenêtre commerciale.'
-      ],
-      technical: 'Spécification',
-      active: 'Disponible',
+      kicker: 'CATALOGUE FRUITS',
+      title: 'Sélection professionnelle',
+      subtitle: 'par origine et campagne.',
+      intro: 'Fruits sélectionnés pour les acheteurs professionnels. Variété, origine, calibre et programme selon le marché.',
+      citrus: 'Agrumes',
+      other: 'Autres fruits',
       origin: 'Origine',
-      species: 'Espèce',
-      condition: 'Condition',
-      fresh: 'Frais',
-      calibre: 'Calibre',
-      quality: 'Qualité',
-      format: 'Format',
-      packaging: 'Emballage',
+      varieties: 'Variétés',
       campaign: 'Campagne',
-      campaignHint: 'Fenêtre indicative · confirmer selon origine et semaine',
-      request: 'Demander la référence',
-      reference: 'Réf.',
-      other: 'Sélection complète',
-      otherIntro: 'Fruits au-delà des agrumes',
-      otherLead: 'Références sélectionnées pour les programmes professionnels, définies par variété, origine et conditions d’approvisionnement.',
-      varietiesLabel: 'Variétés',
-      supplyLabel: 'Approvisionnement',
-      supplyValue: 'Selon campagne',
-      productsLabel: 'références actives',
-      groupExotics: 'Tropicaux & exotiques',
-      groupCore: 'Fruits de saison'
+      availability: 'Selon campagne et programme',
+      consult: 'Consulter le produit',
+      selection: 'Explorer le catalogue',
+      citrusCopy: 'Clémentines, mandarines et oranges sélectionnées pour les programmes professionnels.',
+      otherCopy: 'Fruits méditerranéens, tropicaux et saisonniers pour différents marchés et programmes.'
     },
     it: {
-      catalogue: 'Catalogo agrumi',
-      title: 'Dall’albero al',
-      subtitle: 'mercato',
-      intro: 'Selezione professionale di agrumi per origine, varietà e specifica.',
-      families: ['Clementine', 'Mandarini', 'Arance'],
-      familyCopy: ['Agrumi precoci e da tavola.',
-        'Mandarini selezionati per il mercato professionale.',
-        'Varietà da tavola con ampia finestra commerciale.'
-      ],
-      technical: 'Specifiche',
-      active: 'Disponibile',
+      kicker: 'CATALOGO FRUTTA',
+      title: 'Selezione professionale',
+      subtitle: 'per origine e stagione.',
+      intro: 'Frutta selezionata per acquirenti professionali. Varietà, origine, calibro e programma secondo il mercato.',
+      citrus: 'Agrumi',
+      other: 'Altra frutta',
       origin: 'Origine',
-      species: 'Specie',
-      condition: 'Condizione',
-      fresh: 'Fresco',
-      calibre: 'Calibro',
-      quality: 'Qualità',
-      format: 'Formato',
-      packaging: 'Imballaggio',
-      campaign: 'Campagna',
-      campaignHint: 'Finestra indicativa · confermare per origine e settimana',
-      request: 'Richiedi referenza',
-      reference: 'Rif.',
-      other: 'Selezione completa',
-      otherIntro: 'Frutta oltre gli agrumi',
-      otherLead: 'Referenze selezionate per programmi professionali, definite per varietà, origine e condizioni di fornitura.',
-      varietiesLabel: 'Varietà',
-      supplyLabel: 'Fornitura',
-      supplyValue: 'Secondo stagione',
-      productsLabel: 'referenze attive',
-      groupExotics: 'Tropicali & esotici',
-      groupCore: 'Frutta di stagione'
+      varieties: 'Varietà',
+      campaign: 'Stagione',
+      availability: 'Secondo stagione e programma',
+      consult: 'Richiedi prodotto',
+      selection: 'Esplora il catalogo',
+      citrusCopy: 'Clementine, mandarini e arance selezionati per programmi professionali.',
+      otherCopy: 'Frutta mediterranea, tropicale e stagionale per diversi mercati e programmi.'
     },
     ar: {
-      catalogue: 'دليل الحمضيات',
-      title: 'من الشجرة إلى',
-      subtitle: 'السوق',
-      intro: 'اختيار احترافي للحمضيات حسب المنشأ والصنف والمواصفات.',
-      families: ['كلمنتينا', 'يوسفي', 'برتقال'],
-      familyCopy: ['حمضيات مبكرة ومائدة.', 'أصناف يوسفي مختارة للسوق الاحترافي.',
-        'أصناف مائدة بنافذة تسويقية واسعة.'
-      ],
-      technical: 'المواصفات',
-      active: 'متاح',
+      kicker: 'دليل الفواكه',
+      title: 'اختيار احترافي',
+      subtitle: 'حسب المنشأ والموسم.',
+      intro: 'فواكه مختارة للمشترين المحترفين حسب الصنف والمنشأ والحجم وبرنامج التوريد.',
+      citrus: 'الحمضيات',
+      other: 'فواكه أخرى',
       origin: 'المنشأ',
-      species: 'النوع',
-      condition: 'الحالة',
-      fresh: 'طازج',
-      calibre: 'المقاس',
-      quality: 'الجودة',
-      format: 'التنسيق',
-      packaging: 'التغليف',
+      varieties: 'الأصناف',
       campaign: 'الموسم',
-      campaignHint: 'نافذة إرشادية · التأكيد حسب المنشأ والأسبوع',
-      request: 'طلب المرجع',
-      reference: 'مرجع',
-      other: 'التشكيلة الكاملة',
-      otherIntro: 'فواكه تتجاوز الحمضيات',
-      otherLead: 'مراجع مختارة للبرامج المهنية حسب الصنف والمنشأ وشروط التوريد.',
-      varietiesLabel: 'الأصناف',
-      supplyLabel: 'التوريد',
-      supplyValue: 'حسب الموسم',
-      productsLabel: 'مراجع نشطة',
-      groupExotics: 'استوائية وغريبة',
-      groupCore: 'فواكه موسمية'
+      availability: 'حسب الموسم والبرنامج',
+      consult: 'استفسر عن المنتج',
+      selection: 'استكشف الدليل',
+      citrusCopy: 'كلمنتينا ويوسفي وبرتقال مختار لبرامج التوريد المهنية.',
+      otherCopy: 'فواكه متوسطية واستوائية وموسمية لأسواق وبرامج توريد مختلفة.'
     }
   };
-  const lang = document.documentElement.lang?.toLowerCase().slice(0, 2) || 'es',
-    t = I18N[lang] || I18N.es;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;'
-  } [c]));
-  const first = v => Array.isArray(v) ? v[0] : v,
-    unique = v => [...new Set((v || []).filter(Boolean))];
 
-  function ensureStyles() {
-    if (document.body.classList.contains('fruits-editorial') || document.querySelector('link[data-citrus-catalog]')) return;
-    const l = document.createElement('link');
-    l.rel = 'stylesheet';
-    l.href = '/assets/css/citrus-catalog.css?v=20260904.6';
-    l.dataset.citrusCatalog = '1';
-    document.head.appendChild(l)
+  const lang = document.documentElement.lang?.toLowerCase().slice(0, 2) || 'es';
+  const t = I18N[lang] || I18N.es;
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[char]));
+  const first = value => Array.isArray(value) ? value[0] : value;
+  const unique = value => [...new Set((value || []).filter(Boolean))];
+
+  function productCard(p, i, featured = false) {
+    const varieties = unique(p.varieties);
+    const href = `/contact/?product=${encodeURIComponent(p.id)}`;
+    return `<article class="fruit-catalog-card${featured ? ' is-featured' : ''}" data-product-id="${esc(p.id)}">
+      <a class="fruit-catalog-media" href="${href}" aria-label="${esc(t.consult)}: ${esc(p.commercialName)}">
+        <img src="${esc(p.image || '')}" alt="${esc(p.commercialName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">
+        <span class="fruit-catalog-index">${String(i + 1).padStart(2, '0')}</span>
+      </a>
+      <div class="fruit-catalog-body">
+        <div class="fruit-catalog-heading">
+          <div>
+            <h3>${esc(p.commercialName)}</h3>
+            <p><em>${esc(first(p.scientificName) || '')}</em></p>
+          </div>
+          <span class="fruit-catalog-status">${esc(t.availability)}</span>
+        </div>
+        <dl class="fruit-catalog-meta">
+          <div><dt>${esc(t.origin)}</dt><dd>${esc(first(p.origin) || '—')}</dd></div>
+          <div><dt>${esc(t.varieties)}</dt><dd>${varieties.map(v => `<span>${esc(v)}</span>`).join('')}</dd></div>
+        </dl>
+        <a class="fruit-catalog-cta" href="${href}">${esc(t.consult)} <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>`;
   }
 
-  function families(ps) {
-    return ['clementina', 'mandarina', 'orange'].map((id, familyIndex) => {
-      const p = ps.find(x => x.id === id);
-      return p ? {
-        ...p,
-        familyIndex
-      } : null
-    }).filter(Boolean)
+  function sectionMarkup(title, copy, products, featured = false) {
+    return `<section class="fruit-catalog-group" id="${featured ? 'citrusSelection' : 'fruitOther'}">
+      <header class="fruit-catalog-group-head">
+        <h2>${esc(title)}</h2>
+        <p>${esc(copy)}</p>
+      </header>
+      <div class="fruit-catalog-grid${featured ? ' is-featured-grid' : ''}">
+        ${products.map((p, i) => productCard(p, i, featured)).join('')}
+      </div>
+    </section>`;
   }
 
-  function specs(p) {
-    const editorial = document.body.classList.contains('fruits-editorial');
-    const f = editorial ? [[t.origin, first(p.origin)], [t.condition, t.fresh]] : [
-      [t.origin, first(p.origin) || '—'],
-      [t.species, first(p.scientificName) || '—'],
-      [t.condition, first(p.condition) === 'fresh' ? t.fresh : (first(p.condition) || '—')],
-      [t.calibre, first(p.calibre) || 'Según especificación del comprador'],
-      [t.quality, first(p.quality) || 'Especificación profesional'],
-      [t.format, first(p.format) || 'Según destino'],
-      [t.packaging, first(p.packaging) || 'Según mercado'],
-      [t.active, t.active]
-    ];
-    return `<div class="citrus-technical">${f.map(([l,v])=>`<div class="citrus-tech-item"><label>${esc(l)}</label><span>${esc(v)}</span></div>`).join('')}</div>`
-  }
-
-  function campaign(p) {
-    if (document.body.classList.contains('fruits-editorial')) return `<div class="citrus-campaign"><strong>${esc(t.campaign)}</strong><p>${esc(t.availability)}</p><p>${esc(t.requirements)}</p></div>`;
-    const raw = first(p.availability) || first(p.campaign) || t.campaignHint;
-    return `<div class="citrus-campaign"><div class="citrus-campaign-head"><span>${esc(t.campaign)}</span><strong>${esc(raw)}</strong></div><div class="citrus-timeline">${['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'].map((m,i)=>`<span class="citrus-month${i<8?' is-active':''}" title="${m}">${m}</span>`).join('')}</div><p class="citrus-campaign-note">${esc(t.campaignHint)}</p></div>`
-  }
-
-  function varietyRow(p, v, i) {
-    const href = `/contact/?product=${encodeURIComponent(p.id)}&variety=${encodeURIComponent(v)}`;
-    return `<article class="citrus-variety-row"><div class="citrus-variety-number">${String(i+1).padStart(2,'0')}</div><div class="citrus-variety-main"><h4>${esc(v)}</h4><p><em>${esc(p.commercialName)}</em> · ${esc(first(p.scientificName)||'')}</p></div><div class="citrus-variety-ref"><span>${esc(t.reference)}</span><strong>${esc(p.id)}</strong></div><a class="citrus-variety-request" href="${href}">${esc(t.request)} <span>↗</span></a></article>`
-  }
-
-  function familySection(p, i) {
-    const vars = unique(p.varieties);
-    return `<section class="citrus-family-block" id="family-${esc(p.id)}"><header class="citrus-family-heading"><div class="citrus-family-number">0${i+1}</div><div class="citrus-family-title"><span>${esc(t.catalogue)}</span><h3>${esc(t.families[i]||p.commercialName)}</h3><p>${esc(t.familyCopy?.[i]||'')}</p></div><div class="citrus-family-product"><small>${esc(t.reference)}</small><strong>${esc(p.id)}</strong><em>${esc(p.commercialName)}</em></div></header><div class="citrus-family-layout"><div class="citrus-varieties"><div class="citrus-list-label"><span>${esc(t.technical)}</span><strong>${String(vars.length).padStart(2,'0')} ${lang==='es'?'variedades':lang==='fr'?'variétés':lang==='it'?'varietà':lang==='ar'?'أصناف':'varieties'}</strong></div>${vars.map((v,j)=>varietyRow(p,v,j)).join('')}</div><details class="citrus-family-spec" open><summary>${esc(t.details || t.technical)}</summary>${specs(p)}${campaign(p)}</details></div></section>`
-  }
-
-  function other(ps) {
-    const os = ps
-      .filter(p => p.subcategory !== 'citrus' && p.status === 'active')
+  function render(root, otherTarget, products) {
+    const citrusIds = ['clementina', 'mandarina', 'orange'];
+    const citrus = citrusIds.map(id => products.find(p => p.id === id)).filter(Boolean);
+    const others = products
+      .filter(p => !citrusIds.includes(p.id))
       .sort((a, b) => String(a.commercialName || '').localeCompare(String(b.commercialName || ''), lang, { sensitivity: 'base' }));
-    if (!os.length) return '';
 
-    const groupLabel = p => p.subcategory === 'exotics'
-      ? (t.groupExotics || 'Tropicales & exóticas')
-      : (t.groupCore || 'Frutas de temporada');
-
-    return `<section class="fruit-other fruit-full-catalog">
-      <div class="fruit-other-head">
-        <div><span>${esc(t.other)}</span><h3>${esc(t.otherIntro)}</h3></div>
-        <p class="fruit-other-lead">${esc(t.otherLead || t.intro)}</p>
-      </div>
-      <div class="fruit-other-toolbar">
-        <span><strong>${String(os.length).padStart(2,'0')}</strong> ${esc(t.productsLabel || 'referencias')}</span>
-        <span>${esc(t.availability || t.supplyValue || '')}</span>
-      </div>
-      <div class="fruit-other-grid">
-        ${os.map((p,i)=>`<article class="fruit-other-card" data-product-id="${esc(p.id)}">
-          <div class="product-card__media fruit-other-media">
-            <div class="fruit-card-placeholder"><span>${esc(groupLabel(p))}</span><strong>${esc(p.commercialName)}</strong></div>
+    root.innerHTML = `
+      <div class="fruit-catalog-shell">
+        <header class="fruit-catalog-intro">
+          <div>
+            <span class="fruit-catalog-kicker">${esc(t.kicker)}</span>
+            <h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2>
           </div>
-          <div class="fruit-other-content">
-            <div class="fruit-card-topline"><span class="fruit-card-index">${String(i+1).padStart(2,'0')}</span><span class="fruit-card-group">${esc(groupLabel(p))}</span></div>
-            <h4 class="product-card__title">${esc(p.commercialName)}</h4>
-            <p class="fruit-scientific"><em>${esc(first(p.scientificName) || '')}</em></p>
-            <dl class="fruit-card-specs">
-              <div class="fruit-card-spec"><dt>${esc(t.varietiesLabel || 'Variedades')}</dt><dd>${esc(unique(p.varieties).join(' · ') || '—')}</dd></div>
-              <div class="fruit-card-spec"><dt>${esc(t.origin)}</dt><dd>${esc(first(p.origin) || '—')}</dd></div>
-              <div class="fruit-card-spec"><dt>${esc(t.supplyLabel || t.campaign)}</dt><dd>${esc(first(p.availability) || t.supplyValue || '—')}</dd></div>
-            </dl>
-            <a class="fruit-other-request" href="/contact/?product=${encodeURIComponent(p.id)}">${esc(t.consult || t.request)} <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>`).join('')}
-      </div>
-    </section>`
-  }
+          <p>${esc(t.intro)}</p>
+        </header>
+        <nav class="fruit-catalog-nav" aria-label="${esc(t.selection)}">
+          <a href="#citrusSelection">${esc(t.citrus)}</a>
+          <a href="#fruitOther">${esc(t.other)}</a>
+        </nav>
+        ${sectionMarkup(t.citrus, t.citrusCopy, citrus, true)}
+      </div>`;
 
-  function render(root, ps) {
-    const fs = families(ps);
-    root.innerHTML =
-      `<div class="fruit-special-shell"><header class="fruit-special-head"><div><span class="fruit-special-kicker">${esc(t.catalogue)}</span><h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2></div><p class="fruit-special-intro">${esc(t.intro)}</p></header><nav class="fruits-family-nav" aria-label="${esc(t.selection)}">${fs.map((p,i)=>`<a href="#family-${esc(p.id)}">${esc(t.families[i])}</a>`).join('')}<a href="#fruitOther">${esc(t.other)}</a></nav><div class="citrus-orchard">${fs.map(familySection).join('')}</div></div>`
-  }
-  async function init() {
-    const root = document.getElementById('fruitCatalog'),
-      otherTarget = document.getElementById('fruitOther');
-    if (!root) return;
-    ensureStyles();
-    try {
-      const r = await fetch(DATA_URL, {
-        cache: 'no-cache'
-      });
-      if (!r.ok) throw Error(`Fruit catalog request failed: ${r.status}`);
-      const d = await r.json(),
-        ps = Array.isArray(d.products) ? d.products.filter(p => p.status === 'active') : [];
-      if (!ps.length) throw Error('Fruit catalog is empty');
-      window.__ET_CATALOG_PRODUCTS = ps;
-      render(root, ps);
-      if (otherTarget) otherTarget.innerHTML = other(ps)
-    } catch (e) {
-      console.error('[fruit-catalog]', e);
-      root.innerHTML = `<p class="catalog-error">${esc(t.unavailable || 'Catalogue unavailable.')} <a href="/contact/?product=frutas">Contacto</a></p>`;
-      if (otherTarget) otherTarget.innerHTML = ''
+    if (otherTarget) {
+      otherTarget.innerHTML = sectionMarkup(t.other, t.otherCopy, others, false);
     }
   }
-  window.ETFruitCatalog = {
-    init
-  };
-  document.addEventListener('DOMContentLoaded', init, {
-    once: true
-  })
+
+  async function init() {
+    const root = document.getElementById('fruitCatalog');
+    const otherTarget = document.getElementById('fruitOther');
+    if (!root) return;
+
+    try {
+      const response = await fetch(DATA_URL, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`Fruit catalogue request failed: ${response.status}`);
+      const data = await response.json();
+      const products = Array.isArray(data.products) ? data.products.filter(p => p.status === 'active') : [];
+      if (!products.length) throw new Error('Fruit catalogue is empty');
+      window.__ET_CATALOG_PRODUCTS = products;
+      render(root, otherTarget, products);
+    } catch (error) {
+      console.error('[fruit-catalog]', error);
+      root.innerHTML = '<p class="catalog-error">No se pudo cargar el catálogo. <a href="/contact/?product=frutas">Contactar con el equipo</a></p>';
+      if (otherTarget) otherTarget.innerHTML = '';
+    }
+  }
+
+  window.ETFruitCatalog = { init };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
 })();
