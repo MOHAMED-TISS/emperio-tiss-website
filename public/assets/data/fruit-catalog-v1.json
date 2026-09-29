@@ -37,7 +37,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "4387"
+      "reference": "4387",
+      "image": "https://images.unsplash.com/photo-1762197595539-86df27195cc4?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "mandarina",
@@ -75,7 +76,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "1819"
+      "reference": "1819",
+      "image": "https://images.unsplash.com/photo-1706295234704-c5783a4cbe63?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "orange",
@@ -112,7 +114,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "6368"
+      "reference": "6368",
+      "image": "https://images.unsplash.com/photo-1771904866750-e9995d2a3ab3?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "mango",
@@ -149,7 +152,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "9747"
+      "reference": "9747",
+      "image": "https://images.unsplash.com/photo-1772544639276-87bf05fbb2cf?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "pineapple",
@@ -184,7 +188,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "3991"
+      "reference": "3991",
+      "image": "https://images.unsplash.com/photo-1518928106471-1b741a52b739?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "avocado",
@@ -220,7 +225,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "1860"
+      "reference": "1860",
+      "image": "https://images.unsplash.com/photo-1555598488-b7d9660fb260?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "dates",
@@ -255,7 +261,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "8485"
+      "reference": "8485",
+      "image": "https://images.unsplash.com/photo-1770617476915-7269d29d27dc?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "melon",
@@ -292,7 +299,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "7131"
+      "reference": "7131",
+      "image": "https://images.unsplash.com/photo-1755071268168-5764b9a0b04a?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "watermelon",
@@ -328,7 +336,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "4018"
+      "reference": "4018",
+      "image": "https://images.unsplash.com/photo-1764182745077-87bcc8e82677?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "apple",
@@ -365,7 +374,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "6781"
+      "reference": "6781",
+      "image": "https://images.unsplash.com/photo-1762591878309-d20b4c264632?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     },
     {
       "id": "granada",
@@ -401,7 +411,8 @@
         "Según campaña y programa"
       ],
       "status": "active",
-      "reference": "granada"
+      "reference": "granada",
+      "image": "https://images.unsplash.com/photo-1774167939652-3a769b68439e?auto=format&fit=crop&fm=jpg&q=82&w=1400"
     }
   ]
 }
