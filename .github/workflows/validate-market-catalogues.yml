@@ -13,6 +13,7 @@ on:
       - 'tests/ar-es-normalizer.test.mjs'
       - 'tests/ar-language-separation.test.mjs'
       - 'tests/contact-language-regression.mjs'
+      - 'tests/header-menu-overlay.test.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   pull_request:
     paths:
@@ -26,6 +27,7 @@ on:
       - 'tests/ar-es-normalizer.test.mjs'
       - 'tests/ar-language-separation.test.mjs'
       - 'tests/contact-language-regression.mjs'
+      - 'tests/header-menu-overlay.test.mjs'
       - '.github/workflows/validate-market-catalogues.yml'
   workflow_dispatch:
 
@@ -279,3 +281,5 @@ jobs:
         run: node --test tests/ar-language-separation.test.mjs
       - name: Contact shared-style regression
         run: node tests/contact-language-regression.mjs
+      - name: Header menu overlay regression
+        run: node --test tests/header-menu-overlay.test.mjs
