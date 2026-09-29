@@ -21,7 +21,7 @@ class SeoHeadAppender {
   }
 
   element(element) {
-    element.append(buildSeoHead(this.meta) + '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-2026.svg">', { html: true });
+    element.append(buildSeoHead(this.meta) + '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">', { html: true });
   }
 }
 
