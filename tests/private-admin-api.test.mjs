@@ -109,7 +109,7 @@ test('approved clients can request a localized magic link with email only', asyn
     const response=await access({email:'client@example.com',language:'en'}), data=await response.json();
     assert.equal(response.status,200);
     assert.equal(data.code,'ACCESS_LINK_SENT');
-    assert.equal(data.message,'We sent your secure private access link.');
+    assert.equal(data.message,'We sent your secure EMPERIO SIGNATURE access link.');
   } finally {globalThis.fetch=originalFetch;}
 });
 
