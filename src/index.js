@@ -168,11 +168,11 @@ async function subscribe(request, env) {
   })
 }
 const PRIVATE_MESSAGES = {
-  es:{invalidEmail:'Introduce un email válido.',validation:'Completa todos los datos de empresa obligatorios.',received:'Solicitud recibida. Nuestro equipo revisará tu acceso.',linkSent:'Te hemos enviado un enlace seguro de acceso privado.',mailMissing:'El servicio de email no está disponible.',linkFailed:'No se pudo enviar el enlace privado.'},
-  en:{invalidEmail:'Enter a valid email address.',validation:'Complete all required company details.',received:'Request received. Our team will review your access.',linkSent:'We sent your secure private access link.',mailMissing:'The email service is unavailable.',linkFailed:'We could not send the private access link.'},
-  fr:{invalidEmail:'Saisissez une adresse email valide.',validation:"Complétez toutes les informations obligatoires de l'entreprise.",received:"Demande reçue. Notre équipe examinera votre accès.",linkSent:"Nous avons envoyé votre lien sécurisé d'accès privé.",mailMissing:"Le service d'email est indisponible.",linkFailed:"Le lien d'accès privé n'a pas pu être envoyé."},
-  it:{invalidEmail:'Inserisci un indirizzo email valido.',validation:"Completa tutti i dati aziendali obbligatori.",received:"Richiesta ricevuta. Il nostro team esaminerà il tuo accesso.",linkSent:"Abbiamo inviato il link sicuro per l'accesso privato.",mailMissing:"Il servizio email non è disponibile.",linkFailed:"Non è stato possibile inviare il link di accesso privato."},
-  ar:{invalidEmail:'أدخل بريداً إلكترونياً صالحاً.',validation:'أكمل جميع بيانات الشركة المطلوبة.',received:'تم استلام الطلب. سيراجع فريقنا طلب الوصول.',linkSent:'أرسلنا رابط الوصول الخاص الآمن.',mailMissing:'خدمة البريد الإلكتروني غير متاحة.',linkFailed:'تعذر إرسال رابط الوصول الخاص.'}
+  es:{invalidEmail:'Introduce un email válido.',validation:'Completa todos los datos de empresa obligatorios.',received:'Solicitud recibida. Nuestro equipo revisará tu acceso.',linkSent:'Te hemos enviado un enlace seguro de acceso a EMPERIO SIGNATURE.',mailMissing:'El servicio de email no está disponible.',linkFailed:'No se pudo enviar el enlace de EMPERIO SIGNATURE.'},
+  en:{invalidEmail:'Enter a valid email address.',validation:'Complete all required company details.',received:'Request received. Our team will review your access.',linkSent:'We sent your secure EMPERIO SIGNATURE access link.',mailMissing:'The email service is unavailable.',linkFailed:'We could not send the EMPERIO SIGNATURE access link.'},
+  fr:{invalidEmail:'Saisissez une adresse email valide.',validation:"Complétez toutes les informations obligatoires de l'entreprise.",received:"Demande reçue. Notre équipe examinera votre accès.",linkSent:"Nous avons envoyé votre lien sécurisé d'accès à EMPERIO SIGNATURE.",mailMissing:"Le service d'email est indisponible.",linkFailed:"Le lien d'accès à EMPERIO SIGNATURE n'a pas pu être envoyé."},
+  it:{invalidEmail:'Inserisci un indirizzo email valido.',validation:"Completa tutti i dati aziendali obbligatori.",received:"Richiesta ricevuta. Il nostro team esaminerà il tuo accesso.",linkSent:"Abbiamo inviato il link sicuro per l'accesso a EMPERIO SIGNATURE.",mailMissing:"Il servizio email non è disponibile.",linkFailed:"Non è stato possibile inviare il link di accesso a EMPERIO SIGNATURE."},
+  ar:{invalidEmail:'أدخل بريداً إلكترونياً صالحاً.',validation:'أكمل جميع بيانات الشركة المطلوبة.',received:'تم استلام الطلب. سيراجع فريقنا طلب الوصول.',linkSent:'أرسلنا رابط الوصول الآمن إلى EMPERIO SIGNATURE.',mailMissing:'خدمة البريد الإلكتروني غير متاحة.',linkFailed:'تعذر إرسال رابط الوصول إلى EMPERIO SIGNATURE.'}
 };
 async function sendPrivateAccessLink(env,email,language) {
   const copy=PRIVATE_MESSAGES[language] || PRIVATE_MESSAGES.en;
@@ -183,8 +183,8 @@ async function sendPrivateAccessLink(env,email,language) {
     .bind(hash, 'private', email, exp).run();
   const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}`;
   try {
-    await resend(env, email, 'Your EMPERIO PRIVATE access link',
-      `<p>Your EMPERIO PRIVATE access is ready.</p><p><a href="${link}">Enter EMPERIO PRIVATE</a></p><p>This link expires in 30 minutes.</p>`)
+    await resend(env, email, 'Your EMPERIO SIGNATURE access link',
+      `<p>Your EMPERIO SIGNATURE access is ready.</p><p><a href="${link}">Enter EMPERIO SIGNATURE</a></p><p>This link expires in 30 minutes.</p>`)
   } catch (e) {
     return json({ok:false,error:copy.linkFailed,code:'ACCESS_EMAIL_FAILED'},502)
   }
@@ -197,7 +197,7 @@ async function requestAccess(request, env) {
   }, 403);
   if (!dbOk(env)) return json({
     ok: false,
-    error: 'Private access is being configured.'
+    error: 'EMPERIO SIGNATURE access is being configured.'
   }, 503);
   const f = await request.formData(),
     email = clean(f.get('email'), 254).toLowerCase(),
@@ -253,7 +253,7 @@ async function requestAccess(request, env) {
     if (current?.status==='approved') return sendPrivateAccessLink(env,email,language)
   }
   const labels = {seafood:'Productos del mar',fruits:'Frutas',vegetables:'Hortalizas'};
-  const notification = `<h2>Nueva solicitud — EMPERIO PRIVATE</h2>
+  const notification = `<h2>Nueva solicitud — EMPERIO SIGNATURE</h2>
     <p><strong>Empresa:</strong> ${escapeHtml(application.company)}</p>
     <p><strong>CIF / Tax ID:</strong> ${escapeHtml(application.taxId)}</p>
     <p><strong>Dirección:</strong> ${escapeHtml(application.address)}</p>
@@ -266,7 +266,7 @@ async function requestAccess(request, env) {
     <p><strong>Productos concretos:</strong> ${escapeHtml(application.productsInterest || 'No indicado')}</p>
     <p><a href="https://emperio-tiss.com/private/admin/">Revisar en Operations Desk</a></p>`;
   try {
-    await resend(env,'info@emperio-tiss.com',`Nueva solicitud privada — ${application.company}`,notification,email,`private-request-${await sha(`${email}:${requestedAt}`)}`);
+    await resend(env,'info@emperio-tiss.com',`Nueva solicitud SIGNATURE — ${application.company}`,notification,email,`private-request-${await sha(`${email}:${requestedAt}`)}`);
     await env.NEWS_DB.prepare("UPDATE clients SET notification_status='sent',notification_error=NULL WHERE email=?").bind(email).run()
   } catch (error) {
     await env.NEWS_DB.prepare("UPDATE clients SET notification_status='failed',notification_error=? WHERE email=?")
@@ -275,7 +275,7 @@ async function requestAccess(request, env) {
   return json({ok:true,message:copy.received,code:'APPLICATION_RECEIVED'})
 }
 async function privateVerify(request, env) {
-  if (!dbOk(env)) return new Response('Private access is not configured.', {
+  if (!dbOk(env)) return new Response('EMPERIO SIGNATURE access is not configured.', {
     status: 503
   });
   const raw = clean(new URL(request.url).searchParams.get('token'), 200),
@@ -457,8 +457,8 @@ async function saveCampaign(request,env) {
     if (!Number.isInteger(offerId) || offerId<1) return json({ok:false,error:'Choose a valid offer.'},400);
     const o = await env.NEWS_DB.prepare("SELECT * FROM private_offers WHERE id=? AND status='published' AND valid_until>?").bind(offerId,now()).first();
     if (!o) return json({ok:false,error:'Offer is unavailable or expired.'},400);
-    subject = `EMPERIO PRIVATE — ${o.title}`;
-    html = `<h2>${escapeHtml(o.title)}</h2><p>${escapeHtml(o.category)}</p><p>Origin: ${escapeHtml(o.origin)}<br>Destination: ${escapeHtml(o.destination)}<br>Availability: ${escapeHtml(o.availability)}</p><p>${escapeHtml(o.description)}</p><p><a href="https://emperio-tiss.com/private/">View EMPERIO PRIVATE</a></p>`;
+    subject = `EMPERIO SIGNATURE — ${o.title}`;
+    html = `<h2>${escapeHtml(o.title)}</h2><p>${escapeHtml(o.category)}</p><p>Origin: ${escapeHtml(o.origin)}<br>Destination: ${escapeHtml(o.destination)}<br>Availability: ${escapeHtml(o.availability)}</p><p>${escapeHtml(o.description)}</p><p><a href="https://emperio-tiss.com/private/">View EMPERIO SIGNATURE</a></p>`;
   }
   if (!subject || !html) return json({ok:false,error:'Subject and content are required.'},400);
   const id = crypto.randomUUID();
