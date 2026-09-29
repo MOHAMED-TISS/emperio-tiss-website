@@ -592,8 +592,20 @@ async function saveCampaign(request,env) {
   return json({ok:true,id});
 }
 async function campaignAudience(env,campaign) {
-  const base = campaign.kind==='offer' ? "SELECT email FROM clients WHERE status='approved'" : 'SELECT email FROM subscribers WHERE confirmed_at IS NOT NULL AND unsubscribed_at IS NULL';
-  const query = base + (campaign.language ? ' AND language=?' : '') + ' ORDER BY email LIMIT 201';
+  if (campaign.kind==='offer') {
+    await ensureSignatureOperationsSchema(env);
+    const offer=await env.NEWS_DB.prepare("SELECT visibility_scope,visibility_value,status,valid_until,deleted_at FROM private_offers WHERE id=?").bind(campaign.offer_id).first();
+    if (!offer || offer.status!=='published' || offer.deleted_at || Number(offer.valid_until)<=now()) return [];
+    const clauses=["status='approved'"],values=[];
+    if (campaign.language) { clauses.push('language=?'); values.push(campaign.language); }
+    const scope=offer.visibility_scope || 'all', value=offer.visibility_value || '';
+    if (scope==='language') { clauses.push('LOWER(language)=LOWER(?)'); values.push(value); }
+    if (scope==='country') { clauses.push('UPPER(COALESCE(country,\'\'))=UPPER(?)'); values.push(value); }
+    if (scope==='client') { clauses.push('LOWER(email)=LOWER(?)'); values.push(value); }
+    const query=`SELECT email FROM clients WHERE ${clauses.join(' AND ')} ORDER BY email LIMIT 201`;
+    return (await (values.length ? env.NEWS_DB.prepare(query).bind(...values) : env.NEWS_DB.prepare(query)).all()).results;
+  }
+  const query='SELECT email FROM subscribers WHERE confirmed_at IS NOT NULL AND unsubscribed_at IS NULL'+(campaign.language?' AND language=?':'')+' ORDER BY email LIMIT 201';
   return (await (campaign.language ? env.NEWS_DB.prepare(query).bind(campaign.language) : env.NEWS_DB.prepare(query)).all()).results;
 }
 async function campaignPreview(request,env) {
