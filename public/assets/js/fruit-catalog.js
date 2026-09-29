@@ -94,6 +94,56 @@
 
   const lang = document.documentElement.lang?.toLowerCase().slice(0, 2) || 'es';
   const t = I18N[lang] || I18N.es;
+
+  const PRODUCT_NAMES = {
+    es: { clementina:'Clementina', mandarina:'Mandarina', orange:'Naranja', mango:'Mango', pineapple:'Piña', avocado:'Aguacate', dates:'Dátiles', melon:'Melón', watermelon:'Sandía', apple:'Manzana', granada:'Granada' },
+    en: { clementina:'Clementine', mandarina:'Mandarin', orange:'Orange', mango:'Mango', pineapple:'Pineapple', avocado:'Avocado', dates:'Dates', melon:'Melon', watermelon:'Watermelon', apple:'Apple', granada:'Pomegranate' },
+    fr: { clementina:'Clémentine', mandarina:'Mandarine', orange:'Orange', mango:'Mangue', pineapple:'Ananas', avocado:'Avocat', dates:'Dattes', melon:'Melon', watermelon:'Pastèque', apple:'Pomme', granada:'Grenade' },
+    it: { clementina:'Clementina', mandarina:'Mandarino', orange:'Arancia', mango:'Mango', pineapple:'Ananas', avocado:'Avocado', dates:'Datteri', melon:'Melone', watermelon:'Anguria', apple:'Mela', granada:'Melagrana' },
+    ar: { clementina:'كلمنتينا', mandarina:'يوسفي', orange:'برتقال', mango:'مانجو', pineapple:'أناناس', avocado:'أفوكادو', dates:'تمور', melon:'شمام', watermelon:'بطيخ', apple:'تفاح', granada:'رمان' }
+  };
+
+  const ORIGINS = {
+    es: {
+      clementina:'España / Marruecos según campaña', mandarina:'España / Marruecos según campaña', orange:'España / Marruecos según campaña',
+      mango:'España / Marruecos / según temporada', pineapple:'Según temporada y programa de suministro', avocado:'España / Marruecos / según programa',
+      dates:'Túnez / Oriente Medio', melon:'España / Marruecos según temporada', watermelon:'España / Marruecos según temporada',
+      apple:'Según programa de suministro', granada:'España / Marruecos según campaña'
+    },
+    en: {
+      clementina:'Spain / Morocco depending on season', mandarina:'Spain / Morocco depending on season', orange:'Spain / Morocco depending on season',
+      mango:'Spain / Morocco / depending on season', pineapple:'According to season and supply programme', avocado:'Spain / Morocco / according to programme',
+      dates:'Tunisia / Middle East', melon:'Spain / Morocco depending on season', watermelon:'Spain / Morocco depending on season',
+      apple:'According to supply programme', granada:'Spain / Morocco depending on season'
+    },
+    fr: {
+      clementina:'Espagne / Maroc selon campagne', mandarina:'Espagne / Maroc selon campagne', orange:'Espagne / Maroc selon campagne',
+      mango:'Espagne / Maroc / selon saison', pineapple:'Selon saison et programme d’approvisionnement', avocado:'Espagne / Maroc / selon programme',
+      dates:'Tunisie / Moyen-Orient', melon:'Espagne / Maroc selon saison', watermelon:'Espagne / Maroc selon saison',
+      apple:'Selon programme d’approvisionnement', granada:'Espagne / Maroc selon campagne'
+    },
+    it: {
+      clementina:'Spagna / Marocco secondo stagione', mandarina:'Spagna / Marocco secondo stagione', orange:'Spagna / Marocco secondo stagione',
+      mango:'Spagna / Marocco / secondo stagione', pineapple:'Secondo stagione e programma di fornitura', avocado:'Spagna / Marocco / secondo programma',
+      dates:'Tunisia / Medio Oriente', melon:'Spagna / Marocco secondo stagione', watermelon:'Spagna / Marocco secondo stagione',
+      apple:'Secondo programma di fornitura', granada:'Spagna / Marocco secondo stagione'
+    },
+    ar: {
+      clementina:'إسبانيا / المغرب حسب الموسم', mandarina:'إسبانيا / المغرب حسب الموسم', orange:'إسبانيا / المغرب حسب الموسم',
+      mango:'إسبانيا / المغرب / حسب الموسم', pineapple:'حسب الموسم وبرنامج التوريد', avocado:'إسبانيا / المغرب / حسب البرنامج',
+      dates:'تونس / الشرق الأوسط', melon:'إسبانيا / المغرب حسب الموسم', watermelon:'إسبانيا / المغرب حسب الموسم',
+      apple:'حسب برنامج التوريد', granada:'إسبانيا / المغرب حسب الموسم'
+    }
+  };
+
+  const VARIETY_TRANSLATIONS = {
+    en: {'Sin semillas':'Seedless','Con semillas':'Seeded'},
+    fr: {'Sin semillas':'Sans pépins','Con semillas':'Avec pépins'},
+    it: {'Sin semillas':'Senza semi','Con semillas':'Con semi'},
+    ar: {'Sin semillas':'بدون بذور','Con semillas':'ببذور'}
+  };
+
+  const CONTACT_PREFIX = { es:'/contact/', en:'/en/contact/', fr:'/fr/contact/', it:'/it/contact/', ar:'/ar/contact/' };
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[char]));
@@ -101,18 +151,19 @@
   const unique = value => [...new Set((value || []).filter(Boolean))];
 
   function productCard(p, i, featured = false) {
-    const varieties = unique(p.varieties);
-    const href = `/contact/?product=${encodeURIComponent(p.id)}`;
-    const displayOrigin = p.id === 'dates' ? t.datesOrigin : first(p.origin);
+    const displayName = PRODUCT_NAMES[lang]?.[p.id] || p.commercialName;
+    const varieties = unique(p.varieties).map(v => VARIETY_TRANSLATIONS[lang]?.[v] || v);
+    const href = `${CONTACT_PREFIX[lang] || CONTACT_PREFIX.es}?product=${encodeURIComponent(p.id)}`;
+    const displayOrigin = ORIGINS[lang]?.[p.id] || first(p.origin);
     return `<article class="fruit-catalog-card${featured ? ' is-featured' : ''}" data-product-id="${esc(p.id)}">
-      <a class="fruit-catalog-media${featured && !p.image ? ' is-placeholder' : ''}" href="${href}" aria-label="${esc(t.consult)}: ${esc(p.commercialName)}">
-        ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.commercialName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">` : `<div class="fruit-catalog-photo-placeholder" aria-hidden="true"><span>PHOTO</span><strong>${esc(p.commercialName)}</strong></div>`}
+      <a class="fruit-catalog-media${featured && !p.image ? ' is-placeholder' : ''}" href="${href}" aria-label="${esc(t.consult)}: ${esc(displayName)}">
+        ${p.image ? `<img src="${esc(p.image)}" alt="${esc(displayName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">` : `<div class="fruit-catalog-photo-placeholder" aria-hidden="true"><span>PHOTO</span><strong>${esc(displayName)}</strong></div>`}
         <span class="fruit-catalog-index">${String(i + 1).padStart(2, '0')}</span>
       </a>
       <div class="fruit-catalog-body">
         <div class="fruit-catalog-heading">
           <div>
-            <h3>${esc(p.commercialName)}</h3>
+            <h3>${esc(displayName)}</h3>
             <p><em>${esc(first(p.scientificName) || '')}</em></p>
           </div>
           <span class="fruit-catalog-status">${esc(t.availability)}</span>
@@ -143,7 +194,7 @@
     const citrus = citrusIds.map(id => products.find(p => p.id === id)).filter(Boolean);
     const others = products
       .filter(p => !citrusIds.includes(p.id))
-      .sort((a, b) => String(a.commercialName || '').localeCompare(String(b.commercialName || ''), lang, { sensitivity: 'base' }));
+      .sort((a, b) => String(PRODUCT_NAMES[lang]?.[a.id] || a.commercialName || '').localeCompare(String(PRODUCT_NAMES[lang]?.[b.id] || b.commercialName || ''), lang, { sensitivity: 'base' }));
 
     root.innerHTML = `
       <div class="fruit-catalog-shell">
