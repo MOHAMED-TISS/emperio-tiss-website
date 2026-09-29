@@ -9,7 +9,7 @@ class SeoLinkSanitizer {
     const rel = (element.getAttribute('rel') || '').toLowerCase().split(/\s+/).filter(Boolean);
     const hreflang = element.getAttribute('hreflang');
 
-    if (rel.includes('canonical') || (rel.includes('alternate') && hreflang)) {
+    if (rel.includes('canonical') || rel.includes('icon') || (rel.includes('alternate') && hreflang)) {
       element.remove();
     }
   }
@@ -21,7 +21,7 @@ class SeoHeadAppender {
   }
 
   element(element) {
-    element.append(buildSeoHead(this.meta), { html: true });
+    element.append(buildSeoHead(this.meta) + '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-2026.svg">', { html: true });
   }
 }
 
