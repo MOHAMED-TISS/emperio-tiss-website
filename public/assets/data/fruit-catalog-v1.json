@@ -366,6 +366,42 @@
       ],
       "status": "active",
       "reference": "6781"
+    },
+    {
+      "id": "granada",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Granada",
+      "scientificName": "Punica granatum",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos según campaña"
+      ],
+      "varieties": [
+        "Wonderful",
+        "Mollar",
+        "Acco"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "status": "active",
+      "reference": "granada"
     }
   ]
 }
