@@ -778,3 +778,17 @@
 [dir=rtl] .news-current .news-card-grid {
   direction: rtl
 }
+
+
+/* EMPERIO SIGNATURE client opportunity details */
+.private-page .signature-offer-card .signature-offer-validity {
+  margin-top:18px;
+  color:#73551f;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.private-page .signature-offer-card .signature-offer-facts strong {
+  color:inherit;
+}
