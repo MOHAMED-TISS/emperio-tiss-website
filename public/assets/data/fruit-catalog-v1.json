@@ -203,8 +203,7 @@
       ],
       "varieties": [
         "Hass",
-        "Fuerte",
-        "Reed"
+        "Fuerte"
       ],
       "calibre": [
         "Según especificación del comprador"
@@ -223,7 +222,11 @@
       ],
       "status": "active",
       "reference": "1860",
-      "image": "https://images.unsplash.com/photo-1555598488-b7d9660fb260?auto=format&fit=crop&fm=jpg&q=82&w=1400"
+      "image": "https://images.unsplash.com/photo-1555598488-b7d9660fb260?auto=format&fit=crop&fm=jpg&q=82&w=1400",
+      "varietyDetails": {
+        "Hass": "Piel rugosa que oscurece al madurar, pulpa cremosa y perfil intenso. Referencia principal del mercado profesional.",
+        "Fuerte": "Piel lisa de color verde, forma alargada y pulpa cremosa de sabor suave. Mantiene el color verde durante la maduración."
+      }
     },
     {
       "id": "dates",
