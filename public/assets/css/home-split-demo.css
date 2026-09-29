@@ -48,26 +48,26 @@ a{color:inherit;text-decoration:none}
 .demo-main{padding:10px 18px 26px;background:#f3eee4}
 .mockup-sites{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mock-site{background:#fffaf1;border:1px solid #dcd3c6;box-shadow:0 8px 28px rgba(42,37,28,.06);overflow:hidden}
-.mock-site-header{height:54px;background:#061f2e;color:#fff;display:grid;grid-template-columns:205px 1fr auto;align-items:center;padding:0 24px;gap:16px}
+.mock-site-header{height:51px;background:#061f2e;color:#fff;display:grid;grid-template-columns:205px 1fr auto;align-items:center;padding:0 24px;gap:16px}
 .mock-site-brand{display:flex;align-items:center;gap:9px}
 .mock-site-brand img{width:35px;height:35px}
 .mock-site-brand strong{display:block;font:500 16px/1 "Playfair Display",serif;letter-spacing:.03em}
 .mock-site-brand small{display:block;margin-top:4px;font-size:6px;letter-spacing:.12em;color:#d7bb82}
 .mock-site-nav{display:flex;justify-content:center;align-items:center;gap:17px;font-size:9px;color:rgba(255,255,255,.82);white-space:nowrap}
 .mock-contact{padding:8px 18px;border:1px solid #c99a43;font-size:9px}
-.mock-feature{height:272px;position:relative;display:flex;align-items:center;background-size:cover;background-position:center;color:#fff}
+.mock-feature{height:196px;position:relative;display:flex;align-items:center;background-size:cover;background-position:center;color:#fff}
 .mock-feature::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,27,39,.83),rgba(4,27,39,.42) 45%,rgba(4,27,39,.06))}
 .mock-feature-seafood{background-image:url('../images/home-mediterranean.webp');background-position:center 55%}
 .mock-feature-produce{background-image:url('../images/fruits-orchard.webp');background-position:center 48%}
-.mock-feature-copy{position:relative;z-index:2;padding:26px 38px}
-.mock-feature-copy h2{margin:0;font:400 40px/.98 "Playfair Display",serif;letter-spacing:.01em}
-.mock-feature-sub{margin:8px 0 0;font:400 16px "Playfair Display",serif}
-.mock-gold-line{display:block;width:48px;height:2px;background:#c79a43;margin:17px 0 16px}
-.mock-feature-text{margin:0;font-size:11px;line-height:1.55;color:rgba(255,255,255,.88)}
+.mock-feature-copy{position:relative;z-index:2;padding:21px 38px}
+.mock-feature-copy h2{margin:0;font:400 36px/.98 "Playfair Display",serif;letter-spacing:.01em}
+.mock-feature-sub{margin:7px 0 0;font:400 15px "Playfair Display",serif}
+.mock-gold-line{display:block;width:48px;height:2px;background:#c79a43;margin:14px 0 13px}
+.mock-feature-text{margin:0;font-size:10.5px;line-height:1.55;color:rgba(255,255,255,.88)}
 .mock-product-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:10px 12px 12px}
 .mock-product{background:#fffaf1;border:1px solid #e6ded1;min-width:0}
-.mock-product-image{height:98px;background-size:cover;background-position:center}
-.mock-product-copy{position:relative;min-height:70px;padding:11px 10px 10px}
+.mock-product-image{height:86px;background-size:cover;background-position:center}
+.mock-product-copy{position:relative;min-height:66px;padding:10px 10px 9px}
 .mock-product-copy strong{display:block;font:500 12px "Playfair Display",serif;letter-spacing:.02em}
 .mock-product-copy span{display:block;margin-top:5px;color:#646b70;font-size:8px;line-height:1.35;max-width:80%}
 .mock-product-copy i{position:absolute;right:10px;bottom:10px;width:23px;height:23px;display:grid;place-items:center;border:1px solid #c89a43;border-radius:50%;font-style:normal;font-size:11px;color:#9e7428}
@@ -80,13 +80,13 @@ a{color:inherit;text-decoration:none}
 .img-produce-seasonal{background-image:url('../images/home-seasonal.webp')}
 .img-markets{background-image:url('../images/home-origins.webp')}
 
-.mock-bottom-row{max-width:1500px;margin:10px auto 0;display:grid;grid-template-columns:1.03fr 1fr 1fr;gap:12px}
-.mock-seasonal,.mock-markets,.mock-news{height:250px;border:1px solid #d9d0c3;overflow:hidden}
-.mock-seasonal{background:#f8f2e8;padding:12px 10px 10px}
-.mock-seasonal header{text-align:center;height:52px}
-.mock-seasonal h3,.mock-markets h3,.mock-news h3{margin:0;font:400 24px/1.05 "Playfair Display",serif}
+.mock-bottom-row{max-width:1500px;margin:10px auto 0;display:grid;grid-template-columns:1.035fr 1fr 1fr;gap:12px}
+.mock-seasonal,.mock-markets,.mock-news{height:198px;border:1px solid #d9d0c3;overflow:hidden}
+.mock-seasonal{background:#f8f2e8;padding:9px 10px 9px}
+.mock-seasonal header{text-align:center;height:45px}
+.mock-seasonal h3,.mock-markets h3,.mock-news h3{margin:0;font:400 22px/1.05 "Playfair Display",serif}
 .mock-seasonal header p,.mock-markets header p{margin:3px 0 0;font-size:9px}
-.mock-seasonal-grid{height:176px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mock-seasonal-grid{height:135px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .mock-seasonal-card{position:relative;padding:14px;display:flex;align-items:flex-end;justify-content:space-between;color:#fff;background-size:cover;background-position:center}
 .mock-seasonal-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(2,20,31,.84))}
 .mock-seasonal-card>*{position:relative;z-index:1}
@@ -96,24 +96,24 @@ a{color:inherit;text-decoration:none}
 .mock-seasonal-card span{display:block;margin-top:5px;font-size:8px;color:rgba(255,255,255,.78)}
 .mock-seasonal-card i{width:25px;height:25px;border:1px solid #d6a846;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:10px}
 
-.mock-markets{background:radial-gradient(circle at 60% 40%,#0b3b55 0,#062538 42%,#041d2b 100%);color:#fff;padding:11px 20px 12px;position:relative}
+.mock-markets{background:radial-gradient(circle at 58% 42%,#0a3852 0,#06283b 46%,#041c2a 100%);color:#fff;padding:8px 17px 9px;position:relative}
 .mock-markets header{text-align:center;position:relative;z-index:2}
 .mock-markets header p{color:rgba(255,255,255,.78)}
-.market-map-svg{display:block;width:92%;height:116px;margin:0 auto -2px}
-.map-land path{stroke:#c99b44;stroke-width:1.15;opacity:.62}
-.map-route path{stroke:#d9af5f;stroke-width:1.35;opacity:.92}
-.map-node circle{fill:#f1cf80}
+.market-map-svg{display:block;width:94%;height:86px;margin:-1px auto -3px}
+.market-coast path{stroke-width:1.15;opacity:.72}
+.market-routes path{stroke:#dcb968;stroke-width:1.15;opacity:.92}
+.market-dots circle{fill:#f3d487}
 .market-region-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
 .market-region-row div{display:flex;flex-direction:column;align-items:center}
 .market-region-row b{width:22px;height:22px;border:1px solid #d0a34f;border-radius:50%;display:grid;place-items:center;color:#e0bc6d;font-size:11px;font-weight:400;margin-bottom:4px}
-.market-region-row strong{font:400 11px "Playfair Display",serif}
-.market-region-row span{margin-top:3px;font-size:6.8px;line-height:1.35;color:rgba(255,255,255,.73)}
+.market-region-row strong{font:400 10.5px "Playfair Display",serif}
+.market-region-row span{margin-top:2px;font-size:6.4px;line-height:1.35;color:rgba(255,255,255,.73)}
 
 .mock-news{position:relative;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,rgba(4,25,37,.87),rgba(4,25,37,.22)),url('../images/home-seafood.webp') center 58%/cover}
-.mock-news-copy{padding:28px 26px;position:relative;z-index:2}
-.mock-news h3{font-size:24px}
+.mock-news-copy{padding:24px 26px;position:relative;z-index:2}
+.mock-news h3{font-size:22px}
 .mock-news p{margin:10px 0 0;font-size:8.7px;line-height:1.45;color:rgba(255,255,255,.84)}
-.mock-news span{display:inline-block;margin-top:20px;padding:9px 16px;border:1px solid #d0a34f;font-size:9px}
+.mock-news span{display:inline-block;margin-top:17px;padding:9px 16px;border:1px solid #d0a34f;font-size:9px}
 
 .demo-footer{max-width:1500px;margin:12px auto 0;padding:18px 2px 4px;display:flex;justify-content:space-between;gap:20px;color:#77746e;font-size:9px;letter-spacing:.09em;text-transform:uppercase}
 
@@ -123,7 +123,7 @@ a{color:inherit;text-decoration:none}
 }
 @media(max-width:980px){
   .mockup-sites{grid-template-columns:1fr}.mock-bottom-row{grid-template-columns:1fr}
-  .mock-seasonal,.mock-markets,.mock-news{height:auto;min-height:250px}.market-map-svg{height:135px}
+  .mock-seasonal,.mock-markets,.mock-news{height:auto;min-height:230px}.market-map-svg{height:115px}
 }
 @media(max-width:720px){
   .demo-main{padding:8px}.mock-site-header{grid-template-columns:1fr auto;height:58px}.mock-site-nav{display:none}.mock-site-brand strong{font-size:15px}
