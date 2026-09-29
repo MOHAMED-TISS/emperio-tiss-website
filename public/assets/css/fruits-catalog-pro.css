@@ -368,3 +368,32 @@
   pointer-events:none;
   box-shadow:inset 0 0 0 1px rgba(11,30,51,.025);
 }
+
+
+/* Arabic catalogue localization */
+html[dir="rtl"] .fruits-editorial .fruit-catalog-intro,
+html[dir="rtl"] .fruits-editorial .fruit-catalog-group-head,
+html[dir="rtl"] .fruits-editorial .fruit-catalog-heading,
+html[dir="rtl"] .fruits-editorial .fruit-catalog-meta>div{
+  text-align:right;
+}
+html[dir="rtl"] .fruits-editorial .fruit-catalog-intro h2,
+html[dir="rtl"] .fruits-editorial .fruit-catalog-group-head h2,
+html[dir="rtl"] .fruits-editorial .fruit-catalog-heading h3,
+html[dir="rtl"] .fruits-editorial .fruit-catalog-photo-placeholder strong{
+  font-family:'Noto Sans Arabic','DM Sans',sans-serif;
+  letter-spacing:0;
+}
+html[dir="rtl"] .fruits-editorial .fruit-catalog-group-head p{
+  justify-self:start;
+}
+html[dir="rtl"] .fruits-editorial .fruit-catalog-status{
+  text-align:left;
+}
+html[dir="rtl"] .fruits-editorial .fruit-catalog-index{
+  left:auto;
+  right:14px;
+}
+html[dir="rtl"] .fruits-editorial .fruit-catalog-cta{
+  flex-direction:row-reverse;
+}
