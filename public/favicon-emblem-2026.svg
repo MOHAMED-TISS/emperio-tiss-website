@@ -1,0 +1,44 @@
+<svg preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="-18 -8 266 283"><defs>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#775434"/><stop offset=".18" stop-color="#E8CC9F"/><stop offset=".32" stop-color="#FFF0D1"/><stop offset=".48" stop-color="#B28B53"/><stop offset=".68" stop-color="#765235"/><stop offset=".85" stop-color="#D8B785"/><stop offset="1" stop-color="#F4E0BE"/></linearGradient>
+<linearGradient id="shine" x1="0" y1="0" x2=".2" y2="1"><stop stop-color="#FFF1D6"/><stop offset=".3" stop-color="#D8B583"/><stop offset=".58" stop-color="#B58E58"/><stop offset=".78" stop-color="#F4DFC1"/><stop offset="1" stop-color="#A97A44"/></linearGradient>
+<linearGradient id="shadow" x1="0" y1="0" x2="1" y2=".4"><stop stop-color="#64452C"/><stop offset=".5" stop-color="#B58B53"/><stop offset="1" stop-color="#E8C797"/></linearGradient>
+</defs><g fill="url(#gold)">
+<!-- Four tapered compass arcs, retaining intentional openings. -->
+<path d="M107 45 C75 45 47 61 28 87 C48 64 76 48 107 47 Z"/>
+<path d="M124 45 C154 47 181 63 199 87 C181 61 154 44 124 45 Z"/>
+<path d="M24 94 C5 121 4 160 20 188 C7 157 8 123 24 94 Z"/>
+<path d="M203 94 C222 120 225 158 209 189 C222 157 220 120 203 94 Z"/>
+<path d="M25 196 C44 223 73 240 103 241 C73 237 46 222 25 196 Z"/>
+<path d="M127 241 C159 237 188 222 204 198 C186 220 157 235 127 241 Z"/>
+<!-- Compass points. -->
+<path d="M115 6 C113 27 109 34 103 37 C110 40 113 48 115 61 C117 48 120 40 127 37 C120 34 117 27 115 6 Z"/>
+<path d="M115 60 C114 66 112 69 109 70 L115 80 L121 70 C118 69 116 66 115 60 Z"/>
+<path d="M115 231 C112 244 110 247 103 251 C111 254 112 260 115 266 C118 260 119 254 127 251 C120 247 118 244 115 231 Z"/>
+<path d="M10 131 C8 142 7 146 1 149 C7 151 8 156 10 165 C12 156 13 151 19 149 C13 146 12 142 10 131 Z"/>
+<path d="M221 131 C219 142 218 146 212 149 C218 151 219 156 221 165 C223 156 224 151 230 149 C224 146 223 142 221 131 Z"/>
+<!-- Interwoven serif monogram. -->
+<path d="M49 81 H170 V114 H167 C164 90 149 84 126 84 V174 L113 167 V93 C113 85 108 84 99 84 H81 C70 84 66 90 66 103 V130 L55 140 V96 C55 87 54 85 49 83 Z"/>
+<path d="M126 126 C140 126 147 124 151 120 V151 H148 C146 136 140 131 126 130 Z"/>
+<path d="M123 121 C94 115 63 136 48 158 C39 171 37 184 44 195 L54 182 C47 171 55 154 67 142 C84 127 104 122 123 123 Z"/>
+<path d="M113 190 L126 199 V213 C126 218 130 220 135 221 V223 H105 V221 C111 220 113 216 113 211 Z"/>
+<!-- Three continuous, overlapping wave ribbons. -->
+<path d="M42 207 C61 171 86 165 109 175 C132 185 158 208 183 207 C194 207 203 203 208 196 C201 211 185 217 171 214 C146 210 130 194 109 184 C84 172 63 181 42 207 Z"/>
+<path d="M43 212 C65 183 86 180 111 193 C137 206 158 225 188 220 C167 232 145 225 122 212 C90 193 71 189 43 212 Z"/>
+<path d="M45 216 C67 204 80 205 101 216 C121 226 137 234 152 229 C135 241 113 232 95 223 C75 213 61 211 45 216 Z"/>
+</g>
+<!-- Crisp bevel faces use smooth contours, not pixel-derived islands. -->
+<g fill="url(#shine)">
+<path d="M115 9 L115 37 L106 37 C112 32 113 23 115 9 Z"/>
+<path d="M115 37 L123 37 C118 42 116 51 115 59 Z"/>
+<path d="M115 234 L115 251 L106 251 C111 247 113 241 115 234 Z"/>
+<path d="M115 251 L124 251 L115 263 Z"/>
+<path d="M50 82 H169 L166 86 H125 L119 91 L114 86 H77 C64 86 60 90 58 96 L56 90 Z"/>
+<path d="M120 92 L125 86 V171 L120 168 Z"/>
+<path d="M64 103 V130 L58 136 V100 C58 93 60 90 64 88 Z"/>
+<path d="M148 126 V144 C144 133 136 129 126 129 V127 C136 128 143 128 148 126 Z"/>
+<path d="M121 122 C91 123 61 143 50 164 C45 173 44 181 47 188 L51 182 C47 166 61 147 76 137 C91 127 106 123 121 122 Z"/>
+<path d="M43 206 C66 174 87 169 109 179 C134 190 157 212 184 210 C194 209 201 206 205 201 C197 206 192 207 183 207 C158 208 132 185 109 175 C86 165 61 171 43 206 Z"/>
+<path d="M45 211 C68 189 88 187 111 200 C137 215 160 229 183 222 C160 225 137 206 111 193 C86 180 65 183 45 211 Z"/>
+<path d="M47 215 C69 209 82 212 101 222 C119 231 135 237 150 230 C135 233 119 225 101 216 C80 205 67 204 47 215 Z"/>
+</g>
+<g fill="url(#shadow)"><path d="M113 94 L119 91 V168 L113 165 Z"/><path d="M45 208 C65 184 86 179 110 190 C135 202 151 217 176 216 C146 210 130 194 109 184 C84 172 63 181 45 208 Z"/></g></svg>
