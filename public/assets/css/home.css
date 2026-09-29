@@ -1489,3 +1489,38 @@ html[lang="ar"] .home-page.home-experience .home-markets-map{direction:ltr}
 html[lang="ar"] .home-page.home-experience .home-markets-map text{font-family:'Noto Naskh Arabic',Tahoma,serif;letter-spacing:0}
 @media(max-width:700px){html[lang="ar"] body.home-experience.et-brand-shell .site-header .site-logo{margin-right:0;margin-left:auto}html[lang="ar"] .home-page.home-experience .approved-geography{right:7%}html[lang="ar"] body.home-experience .approved-footer-brand{border:0;padding:0}html[lang="ar"] .home-page.home-experience .et-experience .opening h2 em{padding-right:0}html[lang="ar"] .home-page.home-experience .et-experience .categories button{font-size:43px}}
 @media(prefers-reduced-motion:reduce){html[lang="ar"] .home-page.home-experience .et-experience .categories button[aria-selected=true]{transform:none}}
+
+/* EMPERIO PRIVATE — invitation folio, between Markets and the contact closing.
+   A quiet seal and one primary action; the existing News application owns access. */
+.home-page.home-experience .home-private { padding:80px 5%; background:var(--et-ivory); }
+.home-page.home-experience #home-private-title { scroll-margin-top:180px; }
+.home-page.home-experience .home-private-inner { max-width:1260px; margin:auto; display:grid; grid-template-columns:1.3fr .7fr; background:var(--et-navy); color:var(--et-ivory); border:1px solid var(--et-champagne); }
+.home-page.home-experience .home-private-copy { padding:70px clamp(28px,5vw,76px); }
+.home-page.home-experience .home-private-eyebrow { font:500 10px/1.6 var(--et-sans); letter-spacing:.2em; margin:0 0 30px; color:var(--et-champagne); }
+.home-page.home-experience .home-private h2 { font:400 clamp(3rem,5.4vw,5.8rem)/.98 var(--et-serif); letter-spacing:-.045em; margin:0 0 30px; }
+.home-page.home-experience .home-private h2 em { color:var(--et-champagne); font-weight:400; }
+.home-page.home-experience .home-private-description { font:400 23px/1.4 var(--et-serif); margin:0 0 18px; }
+.home-page.home-experience .home-private-detail { max-width:480px; font:400 14px/1.85 var(--et-sans); margin:0 0 30px; }
+.home-page.home-experience .home-private a.home-private-action { display:inline-flex; align-items:center; justify-content:space-between; gap:48px; background:var(--et-champagne); color:var(--et-navy); border:1px solid var(--et-champagne); padding:18px 24px; min-height:58px; font:600 13px/1.4 var(--et-sans); transition:transform .35s var(--et-ease); }
+.home-page.home-experience .home-private-action span { font-size:24px; }
+.home-page.home-experience .home-private-action:hover { transform:translateY(-3px); }
+.home-page.home-experience .home-private-condition { margin:18px 0 0; font:400 11px/1.7 var(--et-sans); }
+.home-page.home-experience .home-private-seal { border-inline-start:1px solid rgba(201,162,75,.3); margin:48px 0; padding:24px 36px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.home-page.home-experience .home-private-label { font:500 9px/1.5 var(--et-sans); letter-spacing:.2em; color:var(--et-champagne); }
+.home-page.home-experience .home-private-seal img { width:clamp(140px,16vw,220px); height:auto; margin:20px 0; }
+.home-page.home-experience .home-private-seal p { font:400 25px/1.45 var(--et-serif); margin:0 0 32px; }
+.home-page.home-experience .home-private-seal a { font:500 11px/1.6 var(--et-sans); border-bottom:1px solid rgba(244,240,230,.5); padding-bottom:9px; }
+.home-page.home-experience .home-private a:focus-visible { outline:2px solid var(--et-ivory); outline-offset:6px; }
+@media(max-width:700px) {
+ .home-page.home-experience .home-private { padding:48px 20px; }
+ .home-page.home-experience .home-private-inner { grid-template-columns:1fr; }
+ .home-page.home-experience .home-private-copy { padding:40px 26px; }
+ .home-page.home-experience .home-private h2 { font-size:clamp(2.6rem,11vw,4rem); }
+ .home-page.home-experience .home-private-seal { border-inline-start:0; border-top:1px solid rgba(201,162,75,.3); margin:0 26px; padding:30px 0; }
+ .home-page.home-experience .home-private-seal img { width:130px; margin:15px 0; }
+ .home-page.home-experience .home-private-seal p { font-size:22px; margin-bottom:22px; }
+ .home-page.home-experience .home-private a.home-private-action { width:100%; gap:16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .home-page.home-experience .home-private a.home-private-action { transition:none; transform:none; }
+}
