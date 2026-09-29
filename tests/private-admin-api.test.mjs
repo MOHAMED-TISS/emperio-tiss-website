@@ -145,6 +145,79 @@ test('offers reject blank titles and expired dates, then return their ID', async
   const r = await (await call('/api/private/admin/offers',{title:'Availability',valid_until:Math.floor(Date.now()/1000)+600})).json();
   assert.ok(r.id > 0);
 });
+test('SIGNATURE offers support audience rules, update, cancel and safe delete', async () => {
+  const {call,sql,env}=setup();
+  const expiry=Math.floor(Date.now()/1000)+3600;
+  const created=await (await call('/api/private/admin/offers',{
+    title:'Morocco sardines',category:'SEAFOOD',origin:'Morocco',destination:'Perpignan',
+    availability:'12 MT',valid_until:expiry,description:'Selected lot',status:'published',
+    priority:8,visibility_scope:'country',visibility_value:'FR'
+  })).json();
+  assert.ok(created.id>0);
+  let row=sql.prepare('SELECT status,visibility_scope,visibility_value,priority FROM private_offers WHERE id=?').get(created.id);
+  assert.deepEqual({...row},{status:'published',visibility_scope:'country',visibility_value:'FR',priority:8});
+
+  const updated=await call('/api/private/admin/offers/update',{
+    id:created.id,title:'Morocco sardines premium',category:'SEAFOOD',origin:'Morocco',
+    destination:'Rungis',availability:'10 MT',valid_until:expiry,description:'Updated',
+    status:'draft',priority:12,visibility_scope:'language',visibility_value:'fr'
+  });
+  assert.equal(updated.status,200);
+  row=sql.prepare('SELECT title,status,destination,visibility_scope,visibility_value,priority FROM private_offers WHERE id=?').get(created.id);
+  assert.deepEqual({...row},{title:'Morocco sardines premium',status:'draft',destination:'Rungis',visibility_scope:'language',visibility_value:'fr',priority:12});
+
+  assert.equal((await call('/api/private/admin/offers/status',{id:created.id,status:'cancelled'})).status,200);
+  assert.equal(sql.prepare('SELECT status FROM private_offers WHERE id=?').get(created.id).status,'cancelled');
+
+  const deleted=await worker.fetch(new Request(`https://emperio-tiss.com/api/private/admin/offers?id=${created.id}`,{
+    method:'DELETE',headers:{authorization:'Bearer test-secret',origin:'https://emperio-tiss.com'}
+  }),env);
+  assert.equal(deleted.status,200);
+  row=sql.prepare('SELECT status,deleted_at FROM private_offers WHERE id=?').get(created.id);
+  assert.equal(row.status,'deleted'); assert.ok(row.deleted_at);
+});
+
+test('SIGNATURE tracks client login, last seen and actual offer views', async () => {
+  const {call,sql,env}=setup();
+  const expiry=Math.floor(Date.now()/1000)+3600;
+  sql.prepare("INSERT INTO clients(email,company,language,status,created_at,country) VALUES(?,?,?,?,?,?)")
+    .run('buyer@example.com','Buyer SAS','fr','approved',1,'FR');
+
+  const offer=await (await call('/api/private/admin/offers',{
+    title:'French market lot',valid_until:expiry,status:'published',
+    visibility_scope:'country',visibility_value:'FR'
+  })).json();
+
+  const rawToken='magic-token';
+  const tokenHash=Buffer.from(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(rawToken))).toString('hex');
+  sql.prepare("INSERT INTO auth_tokens(token_hash,type,email,expires_at) VALUES(?,?,?,?)")
+    .run(tokenHash,'private','buyer@example.com',expiry);
+
+  const verify=await worker.fetch(new Request(`https://emperio-tiss.com/api/private/verify?token=${rawToken}`),env);
+  assert.equal(verify.status,302);
+  const cookie=verify.headers.get('set-cookie').match(/et_private_session=([^;]+)/)[1];
+
+  let client=sql.prepare('SELECT last_login_at,last_seen_at,login_count FROM clients WHERE email=?').get('buyer@example.com');
+  assert.ok(client.last_login_at); assert.ok(client.last_seen_at); assert.equal(client.login_count,1);
+
+  const offersResponse=await worker.fetch(new Request('https://emperio-tiss.com/api/private/offers',{headers:{cookie:`et_private_session=${cookie}`}}),env);
+  const offers=await offersResponse.json();
+  assert.equal(offers.offers.length,1); assert.equal(offers.offers[0].id,offer.id);
+
+  const viewed=await worker.fetch(new Request('https://emperio-tiss.com/api/private/offers/view',{
+    method:'POST',headers:{cookie:`et_private_session=${cookie}`,'content-type':'application/json'},body:JSON.stringify({id:offer.id})
+  }),env);
+  assert.equal(viewed.status,200);
+  const view=sql.prepare('SELECT email,view_count FROM offer_views WHERE offer_id=?').get(offer.id);
+  assert.deepEqual({...view},{email:'buyer@example.com',view_count:1});
+
+  const overview=await (await call('/api/private/admin/overview')).json();
+  const buyer=overview.clients.find(item=>item.email==='buyer@example.com');
+  assert.equal(buyer.offers_viewed,1); assert.equal(buyer.offer_view_count,1);
+  assert.equal(overview.signature.clients.connected,1);
+  assert.equal(overview.signature.engagement.views,1);
+});
+
 test('drafts persist without mail, sending fails closed without mail', async () => {
   const {call,sql} = setup();
   const r = await (await call('/api/private/admin/campaigns',{subject:'Signals',html:'<p>Hello</p>',language:'it'})).json();
