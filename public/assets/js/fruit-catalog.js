@@ -66,8 +66,15 @@
       campaignHint: 'Indicative window · confirm by origin and week',
       request: 'Request reference',
       reference: 'Ref.',
-      other: 'Other references',
-      otherIntro: 'More category products'
+      other: 'Complete selection',
+      otherIntro: 'Fruit beyond citrus',
+      otherLead: 'Selected references for professional programmes, defined by variety, origin and supply conditions.',
+      varietiesLabel: 'Varieties',
+      supplyLabel: 'Supply',
+      supplyValue: 'According to season',
+      productsLabel: 'active references',
+      groupExotics: 'Tropical & exotic',
+      groupCore: 'Seasonal fruit'
     },
     fr: {
       catalogue: 'Catalogue agrumes',
@@ -93,8 +100,15 @@
       campaignHint: 'Fenêtre indicative · confirmer selon origine et semaine',
       request: 'Demander la référence',
       reference: 'Réf.',
-      other: 'Autres références',
-      otherIntro: 'Plus de produits de la catégorie'
+      other: 'Sélection complète',
+      otherIntro: 'Fruits au-delà des agrumes',
+      otherLead: 'Références sélectionnées pour les programmes professionnels, définies par variété, origine et conditions d’approvisionnement.',
+      varietiesLabel: 'Variétés',
+      supplyLabel: 'Approvisionnement',
+      supplyValue: 'Selon campagne',
+      productsLabel: 'références actives',
+      groupExotics: 'Tropicaux & exotiques',
+      groupCore: 'Fruits de saison'
     },
     it: {
       catalogue: 'Catalogo agrumi',
@@ -120,8 +134,15 @@
       campaignHint: 'Finestra indicativa · confermare per origine e settimana',
       request: 'Richiedi referenza',
       reference: 'Rif.',
-      other: 'Altre referenze',
-      otherIntro: 'Altri prodotti della categoria'
+      other: 'Selezione completa',
+      otherIntro: 'Frutta oltre gli agrumi',
+      otherLead: 'Referenze selezionate per programmi professionali, definite per varietà, origine e condizioni di fornitura.',
+      varietiesLabel: 'Varietà',
+      supplyLabel: 'Fornitura',
+      supplyValue: 'Secondo stagione',
+      productsLabel: 'referenze attive',
+      groupExotics: 'Tropicali & esotici',
+      groupCore: 'Frutta di stagione'
     },
     ar: {
       catalogue: 'دليل الحمضيات',
@@ -146,8 +167,15 @@
       campaignHint: 'نافذة إرشادية · التأكيد حسب المنشأ والأسبوع',
       request: 'طلب المرجع',
       reference: 'مرجع',
-      other: 'مراجع أخرى',
-      otherIntro: 'منتجات أخرى من الفئة'
+      other: 'التشكيلة الكاملة',
+      otherIntro: 'فواكه تتجاوز الحمضيات',
+      otherLead: 'مراجع مختارة للبرامج المهنية حسب الصنف والمنشأ وشروط التوريد.',
+      varietiesLabel: 'الأصناف',
+      supplyLabel: 'التوريد',
+      supplyValue: 'حسب الموسم',
+      productsLabel: 'مراجع نشطة',
+      groupExotics: 'استوائية وغريبة',
+      groupCore: 'فواكه موسمية'
     }
   };
   const lang = document.documentElement.lang?.toLowerCase().slice(0, 2) || 'es',
