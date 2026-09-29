@@ -27,8 +27,15 @@
       campaignHint: 'Ventana orientativa · confirmar según origen y semana',
       request: 'Consultar variedad',
       reference: 'Ref.',
-      other: 'Otras referencias',
-      otherIntro: 'Más allá de los cítricos',
+      other: 'Selección completa',
+      otherIntro: 'Frutas más allá de los cítricos',
+      otherLead: 'Referencias seleccionadas para programas profesionales, definidas por variedad, origen y condiciones de suministro.',
+      varietiesLabel: 'Variedades',
+      supplyLabel: 'Suministro',
+      supplyValue: 'Según campaña',
+      productsLabel: 'referencias activas',
+      groupExotics: 'Tropicales & exóticas',
+      groupCore: 'Frutas de temporada',
       details: 'Origen y condiciones',
       availability: 'Disponibilidad por confirmar según origen, variedad y semana.',
       requirements: 'Indíquenos calibre, presentación, volumen, destino y fecha de entrega para concretar su solicitud.',
@@ -202,13 +209,47 @@
 
   function familySection(p, i) {
     const vars = unique(p.varieties);
-    return `<section class="citrus-family-block" id="family-${esc(p.id)}"><header class="citrus-family-heading"><div class="citrus-family-number">0${i+1}</div><div class="citrus-family-title"><span>${esc(t.catalogue)}</span><h3>${esc(t.families[i]||p.commercialName)}</h3><p>${esc(t.familyCopy?.[i]||'')}</p></div><div class="citrus-family-product"><small>${esc(t.reference)}</small><strong>${esc(p.id)}</strong><em>${esc(p.commercialName)}</em></div></header><div class="citrus-family-layout"><div class="citrus-varieties"><div class="citrus-list-label"><span>${esc(t.technical)}</span><strong>${String(vars.length).padStart(2,'0')} ${lang==='es'?'variedades':lang==='fr'?'variétés':lang==='it'?'varietà':lang==='ar'?'أصناف':'varieties'}</strong></div>${vars.map((v,j)=>varietyRow(p,v,j)).join('')}</div><details class="citrus-family-spec"><summary>${esc(t.details || t.technical)}</summary>${specs(p)}${campaign(p)}</details></div></section>`
+    return `<section class="citrus-family-block" id="family-${esc(p.id)}"><header class="citrus-family-heading"><div class="citrus-family-number">0${i+1}</div><div class="citrus-family-title"><span>${esc(t.catalogue)}</span><h3>${esc(t.families[i]||p.commercialName)}</h3><p>${esc(t.familyCopy?.[i]||'')}</p></div><div class="citrus-family-product"><small>${esc(t.reference)}</small><strong>${esc(p.id)}</strong><em>${esc(p.commercialName)}</em></div></header><div class="citrus-family-layout"><div class="citrus-varieties"><div class="citrus-list-label"><span>${esc(t.technical)}</span><strong>${String(vars.length).padStart(2,'0')} ${lang==='es'?'variedades':lang==='fr'?'variétés':lang==='it'?'varietà':lang==='ar'?'أصناف':'varieties'}</strong></div>${vars.map((v,j)=>varietyRow(p,v,j)).join('')}</div><details class="citrus-family-spec" open><summary>${esc(t.details || t.technical)}</summary>${specs(p)}${campaign(p)}</details></div></section>`
   }
 
   function other(ps) {
-    const os = ps.filter(p => p.subcategory !== 'citrus' && p.status === 'active');
+    const os = ps
+      .filter(p => p.subcategory !== 'citrus' && p.status === 'active')
+      .sort((a, b) => String(a.commercialName || '').localeCompare(String(b.commercialName || ''), lang, { sensitivity: 'base' }));
     if (!os.length) return '';
-    return `<section class="fruit-other"><div class="fruit-other-head"><div><span>${esc(t.other)}</span><h3>${esc(t.otherIntro)}</h3></div></div><div class="fruit-other-grid">${os.map((p,i)=>`<article class="fruit-other-card"><span class="index">${String(i+1).padStart(2,'0')}</span><h4>${esc(p.commercialName)}</h4><p>${esc(unique(p.varieties).join(' · ')||first(p.origin)||'')}</p><a class="fruit-other-request" href="/contact/?product=${encodeURIComponent(p.id)}">${esc(t.consult || t.request)} ↗</a></article>`).join('')}</div></section>`
+
+    const groupLabel = p => p.subcategory === 'exotics'
+      ? (t.groupExotics || 'Tropicales & exóticas')
+      : (t.groupCore || 'Frutas de temporada');
+
+    return `<section class="fruit-other fruit-full-catalog">
+      <div class="fruit-other-head">
+        <div><span>${esc(t.other)}</span><h3>${esc(t.otherIntro)}</h3></div>
+        <p class="fruit-other-lead">${esc(t.otherLead || t.intro)}</p>
+      </div>
+      <div class="fruit-other-toolbar">
+        <span><strong>${String(os.length).padStart(2,'0')}</strong> ${esc(t.productsLabel || 'referencias')}</span>
+        <span>${esc(t.availability || t.supplyValue || '')}</span>
+      </div>
+      <div class="fruit-other-grid">
+        ${os.map((p,i)=>`<article class="fruit-other-card" data-product-id="${esc(p.id)}">
+          <div class="product-card__media fruit-other-media">
+            <div class="fruit-card-placeholder"><span>${esc(groupLabel(p))}</span><strong>${esc(p.commercialName)}</strong></div>
+          </div>
+          <div class="fruit-other-content">
+            <div class="fruit-card-topline"><span class="fruit-card-index">${String(i+1).padStart(2,'0')}</span><span class="fruit-card-group">${esc(groupLabel(p))}</span></div>
+            <h4 class="product-card__title">${esc(p.commercialName)}</h4>
+            <p class="fruit-scientific"><em>${esc(first(p.scientificName) || '')}</em></p>
+            <dl class="fruit-card-specs">
+              <div class="fruit-card-spec"><dt>${esc(t.varietiesLabel || 'Variedades')}</dt><dd>${esc(unique(p.varieties).join(' · ') || '—')}</dd></div>
+              <div class="fruit-card-spec"><dt>${esc(t.origin)}</dt><dd>${esc(first(p.origin) || '—')}</dd></div>
+              <div class="fruit-card-spec"><dt>${esc(t.supplyLabel || t.campaign)}</dt><dd>${esc(first(p.availability) || t.supplyValue || '—')}</dd></div>
+            </dl>
+            <a class="fruit-other-request" href="/contact/?product=${encodeURIComponent(p.id)}">${esc(t.consult || t.request)} <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>`).join('')}
+      </div>
+    </section>`
   }
 
   function render(root, ps) {
