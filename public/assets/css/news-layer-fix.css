@@ -592,3 +592,34 @@ body.news-current .news-private :is(input,textarea):focus-visible {
     transition:none!important;
   }
 }
+
+
+/* EMPERIO PRIVATE required field markers */
+body.news-current .news-private .private-field-label {
+  display:inline-flex;
+  align-items:baseline;
+  gap:5px;
+  min-width:0;
+}
+
+body.news-current .news-private .private-required-mark {
+  display:inline-block;
+  flex:0 0 auto;
+  color:#FF5A5F!important;
+  font-size:1.15em;
+  font-weight:800;
+  line-height:1;
+}
+
+body.news-current .news-private .private-field-label--check {
+  display:inline-flex;
+  align-items:flex-start;
+  gap:6px;
+  text-transform:none;
+  letter-spacing:normal;
+  line-height:1.6;
+}
+
+body.news-current .news-private .private-categories legend .private-field-label {
+  display:inline-flex;
+}
