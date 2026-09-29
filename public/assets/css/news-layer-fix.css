@@ -321,9 +321,9 @@ body.news-current .news-private-grid {
   position:relative;
   z-index:2;
   display:grid!important;
-  grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)!important;
-  column-gap:clamp(56px,7vw,96px)!important;
-  row-gap:48px!important;
+  grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr)!important;
+  column-gap:clamp(92px,9vw,144px)!important;
+  row-gap:72px!important;
   align-items:start!important;
   min-width:0;
 }
@@ -332,8 +332,8 @@ body.news-current .news-private-copy {
   position:relative;
   z-index:1;
   min-width:0;
-  max-width:430px;
-  padding-top:10px;
+  max-width:460px;
+  padding-top:6px;
 }
 
 body.news-current .news-private-copy h2 {
@@ -346,9 +346,17 @@ body.news-current .news-private-copy h2 {
   word-break:normal;
 }
 
-body.news-current .news-private-copy > p:not(.news-eyebrow) {
-  max-width:38ch;
-  margin-top:26px!important;
+body.news-current .news-private-copy .news-private-tagline {
+  max-width:34ch;
+  margin:28px 0 0!important;
+  color:var(--news-champagne)!important;
+  font:500 15px/1.65 var(--et-sans,DM Sans,sans-serif)!important;
+  letter-spacing:.01em;
+}
+
+body.news-current .news-private-copy > p:not(.news-eyebrow):not(.news-private-tagline) {
+  max-width:40ch;
+  margin-top:18px!important;
 }
 
 body.news-current .private-forms {
@@ -360,6 +368,7 @@ body.news-current .private-forms {
   min-width:0;
   justify-self:end;
   gap:18px;
+  margin-top:20px;
   isolation:isolate;
 }
 
@@ -395,7 +404,7 @@ body.news-current .news-private h2 em {
   color:var(--news-champagne)!important;
 }
 
-body.news-current .news-private-copy > p:not(.news-eyebrow) {
+body.news-current .news-private-copy > p:not(.news-eyebrow):not(.news-private-tagline) {
   color:rgba(244,240,230,.80)!important;
 }
 
@@ -530,7 +539,7 @@ body.news-current .news-private :is(input,textarea):focus-visible {
 @media(max-width:1120px){
   body.news-current .news-private-grid {
     grid-template-columns:1fr!important;
-    gap:48px!important;
+    gap:76px!important;
   }
 
   body.news-current .news-private-copy {
@@ -547,9 +556,14 @@ body.news-current .news-private :is(input,textarea):focus-visible {
     max-width:62ch;
   }
 
+  body.news-current .news-private-copy .news-private-tagline {
+    max-width:52ch;
+  }
+
   body.news-current .private-forms {
     max-width:none;
     justify-self:stretch;
+    margin-top:0;
   }
 }
 
