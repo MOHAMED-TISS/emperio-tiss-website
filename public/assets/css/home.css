@@ -1524,3 +1524,77 @@ html[lang="ar"] .home-page.home-experience .home-markets-map text{font-family:'N
 @media(prefers-reduced-motion:reduce) {
  .home-page.home-experience .home-private a.home-private-action { transition:none; transform:none; }
 }
+
+
+/* Home ES contact CTA refinement — compact editorial action, not a decorative disc. */
+html[lang="es"] .home-page.home-experience .et-experience .invitation-content {
+  gap:clamp(42px,7vw,110px);
+}
+
+html[lang="es"] .home-page.home-experience .et-experience .contact-disc {
+  flex:0 0 auto;
+  width:auto;
+  height:52px;
+  min-width:0;
+  margin:0;
+  padding:0 19px 0 21px;
+  border:1px solid rgba(201,162,75,.82);
+  border-radius:2px;
+  background:transparent;
+  color:var(--et-ivory);
+  box-shadow:none;
+  display:inline-flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:17px;
+  white-space:nowrap;
+  transition:background-color .28s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .28s var(--ease);
+}
+
+html[lang="es"] .home-page.home-experience .et-experience .contact-disc span:first-child {
+  font:600 10px/1 var(--et-sans);
+  letter-spacing:.16em;
+}
+
+html[lang="es"] .home-page.home-experience .et-experience .contact-disc span:last-child {
+  font:400 19px/1 var(--et-sans);
+  color:var(--et-champagne);
+  transition:transform .28s var(--ease),color .28s var(--ease);
+}
+
+html[lang="es"] .home-page.home-experience .et-experience .contact-disc:hover {
+  transform:translateY(-2px);
+  background:var(--et-champagne);
+  border-color:var(--et-champagne);
+  color:var(--et-navy);
+}
+
+html[lang="es"] .home-page.home-experience .et-experience .contact-disc:hover span:last-child {
+  color:var(--et-navy);
+  transform:translate(2px,-2px);
+}
+
+html[lang="es"] .home-page.home-experience .et-experience .contact-disc:focus-visible {
+  outline:2px solid var(--et-champagne);
+  outline-offset:5px;
+}
+
+@media(max-width:700px) {
+  html[lang="es"] .home-page.home-experience .et-experience .invitation-content {
+    align-items:flex-start;
+    gap:28px;
+  }
+
+  html[lang="es"] .home-page.home-experience .et-experience .contact-disc {
+    width:auto;
+    height:48px;
+    margin-top:0;
+    padding:0 17px 0 19px;
+    gap:14px;
+  }
+
+  html[lang="es"] .home-page.home-experience .et-experience .contact-disc span:last-child {
+    font-size:17px;
+  }
+}
