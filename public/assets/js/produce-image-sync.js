@@ -61,9 +61,9 @@
     style.id = 'etProduceImageSyncStyles';
     style.textContent = `
       .produce-image-source{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:.42rem .55rem;background:linear-gradient(180deg,transparent,rgba(2,18,27,.7));color:rgba(255,255,255,.88);font:600 .43rem/1 var(--et-sans,'DM Sans',sans-serif);letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
-      .product-card__media .produce-image-button{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;overflow:hidden}
-      .product-card__media .produce-image-button img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .65s cubic-bezier(.2,.78,.2,1)}
-      .product-card__media .produce-image-button:hover img{transform:scale(1.035)}
+      .product-card__media .produce-image-button,.fruit-catalog-media .produce-image-button{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;overflow:hidden}
+      .product-card__media .produce-image-button img,.fruit-catalog-media .produce-image-button img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .65s cubic-bezier(.2,.78,.2,1)}
+      .product-card__media .produce-image-button:hover img,.fruit-catalog-media .produce-image-button:hover img{transform:scale(1.035)}
       .produce-image-count{position:absolute;right:.65rem;top:.65rem;padding:.34rem .45rem;background:rgba(2,18,27,.58);backdrop-filter:blur(7px);color:#fff;font:600 .43rem/1 var(--et-sans,'DM Sans',sans-serif);letter-spacing:.08em;text-transform:uppercase}
       .citrus-product-image{position:relative;margin:0 0 1.2rem;min-height:270px;overflow:hidden;background:#e9e4da;box-shadow:0 20px 45px rgba(20,43,58,.1)}
       .citrus-product-image button{position:relative;display:block;width:100%;height:100%;min-height:270px;padding:0;border:0;background:none;cursor:pointer;overflow:hidden}
@@ -143,9 +143,9 @@
   }
 
   function renderCardImage(card, images) {
-    const media = card.querySelector('.product-card__media');
+    const media = card.querySelector('.product-card__media, .fruit-catalog-media');
     if (!media || !images.length) return;
-    const productName = card.querySelector('.product-card__title')?.textContent?.trim() ||
+    const productName = card.querySelector('.product-card__title, .fruit-catalog-heading h3')?.textContent?.trim() ||
       productIdFromCard(card);
     media.innerHTML =
       `<button class="produce-image-button" type="button" aria-label="Ver imágenes de ${esc(productName)}"><img src="${esc(images[0])}" alt="${esc(productName)}" loading="lazy" draggable="false">${images.length > 1 ? `<span class="produce-image-count">${images.length} imágenes</span>` : ''}<span class="produce-image-source">Fruits &amp; Vegetables · Catalogue image</span></button>`;
@@ -154,7 +154,7 @@
   }
 
   function renderBaseCards(map) {
-    document.querySelectorAll('.product-card[data-product-id], .fruit-other-card[data-product-id]').forEach(card => {
+    document.querySelectorAll('.product-card[data-product-id], .fruit-other-card[data-product-id], .fruit-catalog-card[data-product-id]').forEach(card => {
       const images = map.get(productIdFromCard(card));
       if (images) renderCardImage(card, images);
     });
@@ -179,7 +179,7 @@
   }
 
   async function waitForCatalogue(attempt = 0) {
-    if (document.querySelector('.product-card[data-product-id], .fruit-other-card[data-product-id]') || document.querySelector(
+    if (document.querySelector('.product-card[data-product-id], .fruit-other-card[data-product-id], .fruit-catalog-card[data-product-id]') || document.querySelector(
         '.citrus-family-block')) return true;
     if (attempt >= 50) return false;
     await new Promise(resolve => setTimeout(resolve, READY_TIMEOUT));
