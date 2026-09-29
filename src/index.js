@@ -274,56 +274,112 @@ async function requestAccess(request, env) {
   }
   return json({ok:true,message:copy.received,code:'APPLICATION_RECEIVED'})
 }
-async function privateVerify(request, env) {
-  if (!dbOk(env)) return new Response('EMPERIO SIGNATURE access is not configured.', {
-    status: 503
-  });
-  const raw = clean(new URL(request.url).searchParams.get('token'), 200),
-    hash = await sha(raw),
-    row = await env.NEWS_DB.prepare(
-      "SELECT t.email FROM auth_tokens t JOIN clients c ON c.email=t.email WHERE t.token_hash=? AND t.type='private' AND t.expires_at>? AND c.status='approved'")
-    .bind(hash, now()).first();
-  if (!row) return new Response('Invalid or expired access link.', {
-    status: 400
-  });
-  const sessionRaw = token(),
-    sessionHash = await sha(sessionRaw),
-    exp = now() + 604800;
-  await env.NEWS_DB.batch([env.NEWS_DB.prepare(
-    "INSERT INTO private_sessions(token_hash,email,expires_at) VALUES(?,?,?)").bind(
-    sessionHash, row.email, exp), env.NEWS_DB.prepare(
-    "DELETE FROM auth_tokens WHERE token_hash=?").bind(hash)]);
-  return new Response(null, {
-    status: 302,
-    headers: {
-      location: '/private/',
-      'set-cookie': `et_private_session=${sessionRaw}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=604800`
+async function ensureSignatureOperationsSchema(env) {
+  if (!dbOk(env)) return;
+  const ensureColumn = async (table,name,definition) => {
+    const info = await env.NEWS_DB.prepare(`PRAGMA table_info(${table})`).all();
+    if ((info.results || []).some(column => column.name===name)) return;
+    try { await env.NEWS_DB.prepare(`ALTER TABLE ${table} ADD COLUMN ${definition}`).run(); }
+    catch (error) {
+      if (!/duplicate column|already exists/i.test(String(error?.message || error))) throw error;
     }
-  })
+  };
+  await ensureColumn('clients','last_login_at','last_login_at INTEGER');
+  await ensureColumn('clients','last_seen_at','last_seen_at INTEGER');
+  await ensureColumn('clients','login_count','login_count INTEGER NOT NULL DEFAULT 0');
+  await ensureColumn('private_offers','updated_at','updated_at INTEGER');
+  await ensureColumn('private_offers','cancelled_at','cancelled_at INTEGER');
+  await ensureColumn('private_offers','deleted_at','deleted_at INTEGER');
+  await ensureColumn('private_offers','visibility_scope',"visibility_scope TEXT NOT NULL DEFAULT 'all'");
+  await ensureColumn('private_offers','visibility_value','visibility_value TEXT');
+  await ensureColumn('private_offers','priority','priority INTEGER NOT NULL DEFAULT 0');
+  await env.NEWS_DB.prepare(`CREATE TABLE IF NOT EXISTS offer_views (
+    offer_id INTEGER NOT NULL,
+    email TEXT NOT NULL,
+    first_viewed_at INTEGER NOT NULL,
+    last_viewed_at INTEGER NOT NULL,
+    view_count INTEGER NOT NULL DEFAULT 1,
+    PRIMARY KEY(offer_id,email)
+  )`).run();
+  await env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_offer_views_email ON offer_views(email)').run();
+  await env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_offer_views_offer ON offer_views(offer_id,last_viewed_at DESC)').run();
+}
+async function privateSessionClient(request,env) {
+  await ensureSignatureOperationsSchema(env);
+  const cookie=request.headers.get('cookie') || '', match=cookie.match(/(?:^|;\s*)et_private_session=([^;]+)/);
+  if (!match || !dbOk(env)) return null;
+  const hash=await sha(match[1]);
+  return env.NEWS_DB.prepare(`SELECT c.email,c.language,c.country,c.company,c.name,s.expires_at
+    FROM private_sessions s JOIN clients c ON c.email=s.email
+    WHERE s.token_hash=? AND s.expires_at>? AND c.status='approved'`).bind(hash,now()).first();
+}
+const offerVisibilitySql = `(
+  COALESCE(visibility_scope,'all')='all'
+  OR (visibility_scope='language' AND LOWER(COALESCE(visibility_value,''))=LOWER(?))
+  OR (visibility_scope='country' AND UPPER(COALESCE(visibility_value,''))=UPPER(?))
+  OR (visibility_scope='client' AND LOWER(COALESCE(visibility_value,''))=LOWER(?))
+)`;
+const normalizeOfferPayload = body => {
+  const visibilityScope=['all','language','country','client'].includes(clean(body.visibility_scope,20)) ? clean(body.visibility_scope,20) : 'all';
+  const visibilityValue=visibilityScope==='all' ? '' : clean(body.visibility_value,254);
+  const priority=Math.max(-99,Math.min(99,Number.isFinite(Number(body.priority)) ? Math.trunc(Number(body.priority)) : 0));
+  const status=['draft','published'].includes(clean(body.status,20)) ? clean(body.status,20) : 'published';
+  return {
+    title:clean(body.title,200),category:clean(body.category,80),origin:clean(body.origin,120),
+    destination:clean(body.destination,120),availability:clean(body.availability,120),
+    validUntil:Number(body.valid_until),description:clean(body.description,2000),
+    visibilityScope,visibilityValue,priority,status
+  };
+};
+async function privateVerify(request, env) {
+  if (!dbOk(env)) return new Response('EMPERIO SIGNATURE access is not configured.', {status:503});
+  await ensureSignatureOperationsSchema(env);
+  const raw=clean(new URL(request.url).searchParams.get('token'),200), hash=await sha(raw);
+  const row=await env.NEWS_DB.prepare(
+    "SELECT t.email FROM auth_tokens t JOIN clients c ON c.email=t.email WHERE t.token_hash=? AND t.type='private' AND t.expires_at>? AND c.status='approved'"
+  ).bind(hash,now()).first();
+  if (!row) return new Response('Invalid or expired access link.',{status:400});
+  const sessionRaw=token(), sessionHash=await sha(sessionRaw), exp=now()+604800, stamp=now();
+  await env.NEWS_DB.batch([
+    env.NEWS_DB.prepare("INSERT INTO private_sessions(token_hash,email,expires_at) VALUES(?,?,?)").bind(sessionHash,row.email,exp),
+    env.NEWS_DB.prepare("DELETE FROM auth_tokens WHERE token_hash=?").bind(hash),
+    env.NEWS_DB.prepare("UPDATE clients SET last_login_at=?,last_seen_at=?,login_count=COALESCE(login_count,0)+1 WHERE email=?").bind(stamp,stamp,row.email)
+  ]);
+  return new Response(null,{status:302,headers:{
+    location:'/private/',
+    'set-cookie':`et_private_session=${sessionRaw}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=604800`
+  }});
 }
 async function privateOffers(request, env) {
-  const cookie = request.headers.get('cookie') || '',
-    m = cookie.match(/(?:^|;\s*)et_private_session=([^;]+)/);
-  if (!m || !dbOk(env)) return json({
-    ok: false,
-    error: 'Unauthorized'
-  }, 401);
-  const hash = await sha(m[1]),
-    s = await env.NEWS_DB.prepare(
-      "SELECT s.email FROM private_sessions s JOIN clients c ON c.email=s.email WHERE s.token_hash=? AND s.expires_at>? AND c.status='approved'").bind(hash, now())
-    .first();
-  if (!s) return json({
-    ok: false,
-    error: 'Unauthorized'
-  }, 401);
-  const rows = await env.NEWS_DB.prepare(
-    "SELECT id,title,category,origin,destination,availability,valid_until,description,created_at FROM private_offers WHERE status='published' AND valid_until>? ORDER BY created_at DESC"
-    ).bind(now()).all();
-  return json({
-    ok: true,
-    client: s.email,
-    offers: rows.results || []
-  })
+  const client=await privateSessionClient(request,env);
+  if (!client) return json({ok:false,error:'Unauthorized'},401);
+  const stamp=now();
+  await env.NEWS_DB.prepare("UPDATE clients SET last_seen_at=? WHERE email=?").bind(stamp,client.email).run();
+  const rows=await env.NEWS_DB.prepare(`SELECT id,title,category,origin,destination,availability,valid_until,description,created_at,updated_at,priority
+    FROM private_offers
+    WHERE status='published' AND deleted_at IS NULL AND valid_until>? AND ${offerVisibilitySql}
+    ORDER BY priority DESC,created_at DESC`
+  ).bind(stamp,client.language || '',client.country || '',client.email).all();
+  return json({ok:true,client:client.email,company:client.company || '',offers:rows.results || []});
+}
+async function privateOfferView(request,env) {
+  const client=await privateSessionClient(request,env);
+  if (!client) return json({ok:false,error:'Unauthorized'},401);
+  const body=await request.json(), id=Number(body.id);
+  if (!Number.isInteger(id) || id<1) return json({ok:false,error:'Invalid offer.'},400);
+  const stamp=now();
+  const offer=await env.NEWS_DB.prepare(`SELECT id FROM private_offers
+    WHERE id=? AND status='published' AND deleted_at IS NULL AND valid_until>? AND ${offerVisibilitySql}`
+  ).bind(id,stamp,client.language || '',client.country || '',client.email).first();
+  if (!offer) return json({ok:false,error:'Offer unavailable.'},404);
+  await env.NEWS_DB.batch([
+    env.NEWS_DB.prepare(`INSERT INTO offer_views(offer_id,email,first_viewed_at,last_viewed_at,view_count)
+      VALUES(?,?,?,?,1)
+      ON CONFLICT(offer_id,email) DO UPDATE SET last_viewed_at=excluded.last_viewed_at,view_count=offer_views.view_count+1`
+    ).bind(id,client.email,stamp,stamp),
+    env.NEWS_DB.prepare("UPDATE clients SET last_seen_at=? WHERE email=?").bind(stamp,client.email)
+  ]);
+  return json({ok:true});
 }
 async function adminStatus(request, env) {
   if (!(await authAdmin(request, env))) return json({
@@ -362,25 +418,63 @@ async function adminApprove(request, env) {
   })
 }
 async function adminOffer(request, env) {
-  if (!(await authAdmin(request, env))) return json({
-    ok: false,
-    error: 'Unauthorized'
-  }, 401);
-  if (!dbOk(env)) return json({
-    ok: false,
-    error: 'NEWS_DB missing'
-  }, 503);
-  const b = await request.json();
-  if (!clean(b.title,200) || !Number.isInteger(Number(b.valid_until)) || Number(b.valid_until)<=now()) return json({ok:false,error:'Title and future expiry date are required.'},400);
-  const result = await env.NEWS_DB.prepare(
-    "INSERT INTO private_offers(title,category,origin,destination,availability,valid_until,description,status,created_at) VALUES(?,?,?,?,?,?,?,'published',?)"
-    ).bind(clean(b.title, 200), clean(b.category, 80), clean(b.origin, 120), clean(b
-    .destination, 120), clean(b.availability, 120), Number(b.valid_until), clean(b
-    .description, 2000), now()).run();
-  return json({
-    ok: true,
-    id: result.meta.last_row_id
-  })
+  const denied=await adminGuard(request,env); if (denied) return denied;
+  await ensureSignatureOperationsSchema(env);
+  const offer=normalizeOfferPayload(await request.json());
+  if (!offer.title || !Number.isInteger(offer.validUntil) || offer.validUntil<=now())
+    return json({ok:false,error:'Title and future expiry date are required.'},400);
+  if (offer.visibilityScope!=='all' && !offer.visibilityValue)
+    return json({ok:false,error:'Choose an audience value for this visibility rule.'},400);
+  const stamp=now();
+  const result=await env.NEWS_DB.prepare(`INSERT INTO private_offers
+    (title,category,origin,destination,availability,valid_until,description,status,created_at,updated_at,visibility_scope,visibility_value,priority)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)`
+  ).bind(offer.title,offer.category,offer.origin,offer.destination,offer.availability,offer.validUntil,
+    offer.description,offer.status,stamp,stamp,offer.visibilityScope,offer.visibilityValue,offer.priority).run();
+  return json({ok:true,id:result.meta.last_row_id,status:offer.status});
+}
+async function adminOfferUpdate(request,env) {
+  const denied=await adminGuard(request,env); if (denied) return denied;
+  await ensureSignatureOperationsSchema(env);
+  const body=await request.json(), id=Number(body.id), offer=normalizeOfferPayload(body);
+  if (!Number.isInteger(id) || id<1) return json({ok:false,error:'Invalid offer ID.'},400);
+  const current=await env.NEWS_DB.prepare("SELECT id,status FROM private_offers WHERE id=? AND deleted_at IS NULL").bind(id).first();
+  if (!current) return json({ok:false,error:'Offer not found.'},404);
+  if (!offer.title || !Number.isInteger(offer.validUntil) || offer.validUntil<=now())
+    return json({ok:false,error:'Title and future expiry date are required.'},400);
+  if (offer.visibilityScope!=='all' && !offer.visibilityValue)
+    return json({ok:false,error:'Choose an audience value for this visibility rule.'},400);
+  await env.NEWS_DB.prepare(`UPDATE private_offers SET title=?,category=?,origin=?,destination=?,availability=?,valid_until=?,
+    description=?,status=?,updated_at=?,visibility_scope=?,visibility_value=?,priority=?,cancelled_at=CASE WHEN ?='published' THEN NULL ELSE cancelled_at END
+    WHERE id=? AND deleted_at IS NULL`
+  ).bind(offer.title,offer.category,offer.origin,offer.destination,offer.availability,offer.validUntil,offer.description,
+    offer.status,now(),offer.visibilityScope,offer.visibilityValue,offer.priority,offer.status,id).run();
+  return json({ok:true,id,status:offer.status});
+}
+async function adminOfferStatus(request,env) {
+  const denied=await adminGuard(request,env); if (denied) return denied;
+  await ensureSignatureOperationsSchema(env);
+  const body=await request.json(), id=Number(body.id), status=clean(body.status,20);
+  if (!Number.isInteger(id) || id<1 || !['draft','published','cancelled'].includes(status))
+    return json({ok:false,error:'Invalid offer status request.'},400);
+  const offer=await env.NEWS_DB.prepare("SELECT id,valid_until,deleted_at FROM private_offers WHERE id=?").bind(id).first();
+  if (!offer || offer.deleted_at) return json({ok:false,error:'Offer not found.'},404);
+  if (status==='published' && Number(offer.valid_until)<=now()) return json({ok:false,error:'Extend the expiry date before publishing.'},409);
+  const stamp=now();
+  await env.NEWS_DB.prepare(`UPDATE private_offers SET status=?,updated_at=?,cancelled_at=? WHERE id=?`)
+    .bind(status,stamp,status==='cancelled'?stamp:null,id).run();
+  return json({ok:true,id,status});
+}
+async function adminOfferDelete(request,env) {
+  const denied=await adminGuard(request,env); if (denied) return denied;
+  await ensureSignatureOperationsSchema(env);
+  const id=Number(new URL(request.url).searchParams.get('id'));
+  if (!Number.isInteger(id) || id<1) return json({ok:false,error:'Invalid offer ID.'},400);
+  const stamp=now();
+  const result=await env.NEWS_DB.prepare("UPDATE private_offers SET status='deleted',deleted_at=?,updated_at=? WHERE id=? AND deleted_at IS NULL")
+    .bind(stamp,stamp,id).run();
+  if (!result.meta.changes) return json({ok:false,error:'Offer not found.'},404);
+  return json({ok:true,id,status:'deleted'});
 }
 async function adminSendOffer(request, env) {
   return sendCampaign(request, env, 'offer');
@@ -407,9 +501,22 @@ async function adminGuard(request,env) {
 async function adminOverview(request,env) {
   const denied = await adminGuard(request,env); if (denied) return denied;
   await ensureInquirySchema(env);
-  const [clients,offers,subscribers,campaigns,summary,dailyRows,countries,categories,languages,inquiries,inquirySummary] = await Promise.all([
-    env.NEWS_DB.prepare('SELECT email,name,company,language,status,created_at,updated_at,tax_id,address,country,contact_name,mobile,whatsapp,interest_categories,products_interest,notification_status FROM clients ORDER BY created_at DESC LIMIT 200').all(),
-    env.NEWS_DB.prepare('SELECT * FROM private_offers ORDER BY created_at DESC LIMIT 200').all(),
+  await ensureSignatureOperationsSchema(env);
+  const [clients,offers,subscribers,campaigns,summary,dailyRows,countries,categories,languages,inquiries,inquirySummary,offerSummary,engagementSummary] = await Promise.all([
+    env.NEWS_DB.prepare(`SELECT email,name,company,language,status,created_at,updated_at,tax_id,address,country,contact_name,mobile,whatsapp,
+      interest_categories,products_interest,notification_status,last_login_at,last_seen_at,login_count,
+      (SELECT COUNT(*) FROM private_sessions s WHERE s.email=clients.email AND s.expires_at>unixepoch()) AS active_sessions,
+      (SELECT COUNT(*) FROM offer_views v WHERE v.email=clients.email) AS offers_viewed,
+      (SELECT COALESCE(SUM(view_count),0) FROM offer_views v WHERE v.email=clients.email) AS offer_view_count
+      FROM clients ORDER BY created_at DESC LIMIT 200`).all(),
+    env.NEWS_DB.prepare(`SELECT o.*,
+      (SELECT COUNT(*) FROM offer_views v WHERE v.offer_id=o.id) AS unique_viewers,
+      (SELECT COALESCE(SUM(view_count),0) FROM offer_views v WHERE v.offer_id=o.id) AS views,
+      (SELECT MAX(last_viewed_at) FROM offer_views v WHERE v.offer_id=o.id) AS latest_view_at,
+      (SELECT COUNT(*) FROM campaigns c JOIN campaign_deliveries d ON d.campaign_id=c.id
+        WHERE c.offer_id=o.id AND c.kind='offer' AND d.status='sent') AS deliveries
+      FROM private_offers o ORDER BY CASE o.status WHEN 'published' THEN 0 WHEN 'draft' THEN 1 WHEN 'cancelled' THEN 2 ELSE 3 END,
+      o.priority DESC,o.created_at DESC LIMIT 200`).all(),
     env.NEWS_DB.prepare('SELECT email,language,consent_at,confirmed_at,unsubscribed_at FROM subscribers ORDER BY consent_at DESC LIMIT 200').all(),
     env.NEWS_DB.prepare(`SELECT c.*, (SELECT COUNT(*) FROM campaign_deliveries d WHERE d.campaign_id=c.id AND d.status='sent') AS sent,
       (SELECT COUNT(*) FROM campaign_deliveries d WHERE d.campaign_id=c.id AND d.status IN ('failed','sending')) AS failed,
@@ -424,7 +531,21 @@ async function adminOverview(request,env) {
     env.NEWS_DB.prepare("SELECT category AS label,COUNT(*) AS count FROM client_interests GROUP BY category ORDER BY count DESC,label").all(),
     env.NEWS_DB.prepare("SELECT language AS label,COUNT(*) AS count FROM clients GROUP BY language ORDER BY count DESC,label").all(),
     env.NEWS_DB.prepare("SELECT id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_reference,product_name,origin,destination,specification,message,notification_status FROM inquiries ORDER BY created_at DESC LIMIT 200").all(),
-    env.NEWS_DB.prepare("SELECT status,COUNT(*) AS count FROM inquiries GROUP BY status").all()
+    env.NEWS_DB.prepare("SELECT status,COUNT(*) AS count FROM inquiries GROUP BY status").all(),
+    env.NEWS_DB.prepare(`SELECT
+      COALESCE(SUM(CASE WHEN status='published' AND deleted_at IS NULL AND valid_until>unixepoch() THEN 1 ELSE 0 END),0) AS active,
+      COALESCE(SUM(CASE WHEN status='draft' AND deleted_at IS NULL THEN 1 ELSE 0 END),0) AS draft,
+      COALESCE(SUM(CASE WHEN status='cancelled' AND deleted_at IS NULL THEN 1 ELSE 0 END),0) AS cancelled,
+      COALESCE(SUM(CASE WHEN valid_until<=unixepoch() AND status<>'deleted' THEN 1 ELSE 0 END),0) AS expired,
+      COALESCE(SUM(CASE WHEN deleted_at IS NOT NULL OR status='deleted' THEN 1 ELSE 0 END),0) AS deleted
+      FROM private_offers`).first(),
+    env.NEWS_DB.prepare(`SELECT
+      COALESCE(SUM(CASE WHEN status='approved' AND last_login_at IS NOT NULL THEN 1 ELSE 0 END),0) AS connected,
+      COALESCE(SUM(CASE WHEN status='approved' AND last_login_at IS NULL THEN 1 ELSE 0 END),0) AS never_connected,
+      (SELECT COUNT(DISTINCT email) FROM private_sessions WHERE expires_at>unixepoch()) AS active_sessions,
+      (SELECT COALESCE(SUM(view_count),0) FROM offer_views) AS offer_views,
+      (SELECT COUNT(*) FROM offer_views) AS unique_offer_views
+      FROM clients`).first()
   ]);
   const dailyMap = new Map(dailyRows.results.map(row => [row.day,Number(row.count)]));
   const daily = [];
@@ -444,6 +565,11 @@ async function adminOverview(request,env) {
     analytics:{
       summary:{total:Number(summary.total),pending:Number(summary.pending),approved:Number(summary.approved),rejected:Number(summary.rejected)},
       daily,countries:countRows(countries),categories:countRows(categories),languages:countRows(languages)
+    },
+    signature:{
+      offers:{active:Number(offerSummary.active),draft:Number(offerSummary.draft),cancelled:Number(offerSummary.cancelled),expired:Number(offerSummary.expired),deleted:Number(offerSummary.deleted)},
+      clients:{connected:Number(engagementSummary.connected),neverConnected:Number(engagementSummary.never_connected),activeSessions:Number(engagementSummary.active_sessions)},
+      engagement:{views:Number(engagementSummary.offer_views),uniqueViews:Number(engagementSummary.unique_offer_views)}
     }
   });
 }
@@ -684,6 +810,9 @@ async function fetchHandler(request, env) {
   if (url.pathname.startsWith('/api/') && request.method==='POST' && Number(request.headers.get('content-length'))>32768) return json({ok:false,error:'Request too large.'},413);
   if (url.pathname==='/api/private/admin/overview' && request.method==='GET') return adminOverview(request,env);
   if (url.pathname==='/api/private/admin/inquiries/status' && request.method==='POST') return adminInquiryStatus(request,env);
+  if (url.pathname==='/api/private/admin/offers/update' && request.method==='POST') return adminOfferUpdate(request,env);
+  if (url.pathname==='/api/private/admin/offers/status' && request.method==='POST') return adminOfferStatus(request,env);
+  if (url.pathname==='/api/private/admin/offers' && request.method==='DELETE') return adminOfferDelete(request,env);
   if (url.pathname==='/api/private/admin/campaigns' && request.method==='POST') return saveCampaign(request,env);
   if (url.pathname==='/api/private/admin/campaigns/preview' && request.method==='GET') return campaignPreview(request,env);
   if (url.pathname==='/api/newsletter/unsubscribe' && ['GET','POST'].includes(request.method)) return unsubscribe(request,env);
@@ -697,6 +826,7 @@ async function fetchHandler(request, env) {
     request, env);
   if (url.pathname === '/api/private/offers' && request.method === 'GET') return privateOffers(
     request, env);
+  if (url.pathname === '/api/private/offers/view' && request.method === 'POST') return privateOfferView(request,env);
   if (url.pathname === '/api/private/admin/status' && request.method === 'GET')
   return adminStatus(request, env);
   if (url.pathname === '/api/private/admin/approve' && request.method === 'POST')
