@@ -20,7 +20,7 @@
 
   const labels = {
     es: {
-      home: 'Inicio', company: 'Nuestra propuesta', products: 'Productos', seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos & Crustáceos', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada', markets: 'Mercados', news: 'Noticias', contact: 'Contacto', open: 'Abrir menú', close: 'Cerrar menú'
+      home: 'Inicio', company: 'Nuestra propuesta', products: 'Productos', seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos & Crustáceos', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Selección de temporada', markets: 'Mercados', news: 'Noticias', contact: 'Contacto', open: 'Abrir menú', close: 'Cerrar menú'
     },
     en: {
       home: 'Home', company: 'Our approach', products: 'Products', seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish & Crustaceans', cephalopods: 'Cephalopods', fruits: 'Fruits', vegetables: 'Vegetables', seasonal: 'Seasonal', markets: 'Markets', news: 'News', contact: 'Contact', open: 'Open menu', close: 'Close menu'
