@@ -79,9 +79,9 @@
     // Use the approved vector identity on the shared footer.
     if (lang === 'es') {
       const logo = footer.querySelector('.et-footer-logo');
-      logo.src = '/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal';
-      logo.width = 440;
-      logo.height = 440;
+      logo.src = '/assets/images/emperio-tiss-logo.svg?v=20261001-signature';
+      logo.width = 600;
+      logo.height = 430;
       logo.loading = 'lazy';
       logo.decoding = 'async';
     }

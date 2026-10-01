@@ -133,7 +133,7 @@
         <a href="${route('products')}"${currentAttr('products')}>${copy.products}</a>
       </nav>
       <a href="${base}" class="site-logo" aria-label="${copy.home}">
-        <img class="home-metal-logo" src="/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal" alt="EMPERIO TISS S.L." width="440" height="440">
+        <img class="home-metal-logo" src="/assets/images/emperio-tiss-logo.svg?v=20261001-signature" alt="EMPERIO TISS S.L." width="600" height="430">
       </a>
       <nav class="home-header-secondary" aria-label="${copy.navRight}">
         <a href="${route('markets')}"${currentAttr('markets')}>${copy.markets}</a>

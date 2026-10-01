@@ -649,3 +649,44 @@ html[dir="rtl"] body.et-brand-shell .nav-overlay-contact {
     transition: none;
   }
 }
+
+/* Champagne signature: outlined editorial wordmark, compact navigation scale. */
+body.et-brand-shell:is(.home-experience, .et-brand-shell) .site-header .site-logo {
+  width: 128px;
+  height: 86px;
+}
+body.et-brand-shell:is(.home-experience, .et-brand-shell) .site-header .site-logo img.home-metal-logo {
+  width: 120px;
+  height: 86px;
+}
+body.home-experience .approved-footer-brand img {
+  width: 180px;
+  height: 129px;
+  max-width: 100%;
+}
+body.home-experience .approved-footer-brand span {
+  font-size: 8px;
+  letter-spacing: .14em;
+}
+body.et-brand-shell .et-footer-logo {
+  border-radius: 0;
+}
+@media (max-width: 700px) {
+  body.et-brand-shell:is(.home-experience, .et-brand-shell) .site-header .site-logo {
+    width: 90px;
+    height: 62px;
+  }
+  body.et-brand-shell:is(.home-experience, .et-brand-shell) .site-header .site-logo img.home-metal-logo {
+    width: 86px;
+    height: 62px;
+  }
+  body.home-experience .approved-footer-brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  body.home-experience .approved-footer-brand img {
+    width: 168px;
+    height: 120px;
+  }
+}
