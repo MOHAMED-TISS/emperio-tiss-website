@@ -1501,7 +1501,7 @@ html[lang="ar"] .home-page.home-experience .home-markets-map text{font-family:'N
   grid-template-columns:1.3fr .7fr;
   background:
     linear-gradient(90deg,rgba(11,30,51,.94) 0%,rgba(11,30,51,.88) 54%,rgba(11,30,51,.72) 100%),
-    url('/assets/images/home-mediterranean.webp') center 46% / cover no-repeat;
+    url('https://images.unsplash.com/photo-1763874553828-84e0906c9ff7?auto=format&fit=crop&fm=webp&q=82&w=2400') center 50% / cover no-repeat;
   color:var(--et-ivory);
   border:1px solid var(--et-champagne);
 }
