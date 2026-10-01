@@ -1598,3 +1598,34 @@ html[lang="es"] .home-page.home-experience .et-experience .contact-disc:focus-vi
     font-size:17px;
   }
 }
+
+
+/* Home ES architecture hero — Dmytro Yarish / Unsplash */
+html[lang="es"] .home-page.home-experience .approved-hero:before {
+  background:
+    linear-gradient(90deg,
+      rgba(7,21,36,.86) 0%,
+      rgba(7,21,36,.72) 28%,
+      rgba(11,30,51,.43) 52%,
+      rgba(11,30,51,.10) 78%,
+      rgba(11,30,51,.04) 100%);
+}
+
+html[lang="es"] .home-page.home-experience .approved-hero-image {
+  object-position:55% center;
+}
+
+@media(max-width:700px) {
+  html[lang="es"] .home-page.home-experience .approved-hero:before {
+    background:
+      linear-gradient(90deg,
+        rgba(7,21,36,.88) 0%,
+        rgba(7,21,36,.72) 45%,
+        rgba(11,30,51,.28) 78%,
+        rgba(11,30,51,.12) 100%);
+  }
+
+  html[lang="es"] .home-page.home-experience .approved-hero-image {
+    object-position:58% center;
+  }
+}
