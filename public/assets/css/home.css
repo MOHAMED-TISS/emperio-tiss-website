@@ -1490,11 +1490,21 @@ html[lang="ar"] .home-page.home-experience .home-markets-map text{font-family:'N
 @media(max-width:700px){html[lang="ar"] body.home-experience.et-brand-shell .site-header .site-logo{margin-right:0;margin-left:auto}html[lang="ar"] .home-page.home-experience .approved-geography{right:7%}html[lang="ar"] body.home-experience .approved-footer-brand{border:0;padding:0}html[lang="ar"] .home-page.home-experience .et-experience .opening h2 em{padding-right:0}html[lang="ar"] .home-page.home-experience .et-experience .categories button{font-size:43px}}
 @media(prefers-reduced-motion:reduce){html[lang="ar"] .home-page.home-experience .et-experience .categories button[aria-selected=true]{transform:none}}
 
-/* EMPERIO PRIVATE — invitation folio, between Markets and the contact closing.
-   A quiet seal and one primary action; the existing News application owns access. */
+/* EMPERIO SIGNATURE — invitation folio, between Markets and the contact closing.
+   The approved Home photograph becomes the restrained backdrop; contrast remains content-first. */
 .home-page.home-experience .home-private { padding:80px 5%; background:var(--et-ivory); }
 .home-page.home-experience #home-private-title { scroll-margin-top:180px; }
-.home-page.home-experience .home-private-inner { max-width:1260px; margin:auto; display:grid; grid-template-columns:1.3fr .7fr; background:var(--et-navy); color:var(--et-ivory); border:1px solid var(--et-champagne); }
+.home-page.home-experience .home-private-inner {
+  max-width:1260px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  background:
+    linear-gradient(90deg,rgba(11,30,51,.94) 0%,rgba(11,30,51,.88) 54%,rgba(11,30,51,.72) 100%),
+    url('/assets/images/home-mediterranean.webp') center 46% / cover no-repeat;
+  color:var(--et-ivory);
+  border:1px solid var(--et-champagne);
+}
 .home-page.home-experience .home-private-copy { padding:70px clamp(28px,5vw,76px); }
 .home-page.home-experience .home-private-eyebrow { font:500 10px/1.6 var(--et-sans); letter-spacing:.2em; margin:0 0 30px; color:var(--et-champagne); }
 .home-page.home-experience .home-private h2 { font:400 clamp(3rem,5.4vw,5.8rem)/.98 var(--et-serif); letter-spacing:-.045em; margin:0 0 30px; }
