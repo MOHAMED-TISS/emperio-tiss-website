@@ -1,0 +1,351 @@
+/* EMPERIO TISS — JOBY MOTION STUDY
+   Isolated homepage prototype. Remove this file + body class to revert.
+   Visual identity remains EMPERIO; only motion grammar is experimental.
+*/
+
+body.joby-motion-demo {
+  --joby-ease: cubic-bezier(.16,1,.3,1);
+  --joby-fast: .55s;
+  --joby-medium: .75s;
+  --joby-reveal: .95s;
+  --joby-ivory: #F4F0E6;
+  --joby-navy: #0B1E33;
+  --joby-gold: #C9A24B;
+  --joby-teal: #173F49;
+  background: var(--joby-ivory);
+}
+
+body.joby-motion-demo main {
+  overflow: clip;
+}
+
+/* Header chameleon */
+body.joby-motion-demo .site-header {
+  transition:
+    background-color .9s var(--joby-ease),
+    color .5s var(--joby-ease),
+    border-color .5s var(--joby-ease),
+    backdrop-filter .5s var(--joby-ease);
+}
+
+body.joby-motion-demo .site-header .home-header-nav a,
+body.joby-motion-demo .site-header .home-header-secondary a,
+body.joby-motion-demo .site-header .et-language-switch a,
+body.joby-motion-demo .site-header .et-language-switch span,
+body.joby-motion-demo .site-header .et-whatsapp,
+body.joby-motion-demo .site-header .mobile-menu span {
+  transition:
+    color .5s var(--joby-ease),
+    background-color .5s var(--joby-ease),
+    border-color .5s var(--joby-ease),
+    opacity .5s var(--joby-ease);
+}
+
+body.joby-motion-demo .site-header.joby-header--dark {
+  background: rgba(11,30,51,.08);
+  color: var(--joby-ivory);
+  border-color: rgba(244,240,230,.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.joby-motion-demo .site-header.joby-header--dark :is(.home-header-nav a,.home-header-secondary a,.et-language-switch a,.et-language-switch span,.et-whatsapp) {
+  color: rgba(244,240,230,.92);
+}
+
+body.joby-motion-demo .site-header.joby-header--dark .mobile-menu span {
+  background: var(--joby-ivory);
+}
+
+body.joby-motion-demo .site-header.joby-header--dark .home-metal-logo {
+  filter: brightness(0) invert(1);
+}
+
+body.joby-motion-demo .site-header.joby-header--light {
+  background: rgba(244,240,230,.76);
+  color: var(--joby-navy);
+  border-color: rgba(11,30,51,.10);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body.joby-motion-demo .site-header.joby-header--light :is(.home-header-nav a,.home-header-secondary a,.et-language-switch a,.et-language-switch span,.et-whatsapp) {
+  color: rgba(11,30,51,.88);
+}
+
+body.joby-motion-demo .site-header.joby-header--light .mobile-menu span {
+  background: var(--joby-navy);
+}
+
+body.joby-motion-demo .site-header.joby-header--light .home-metal-logo {
+  filter: none;
+}
+
+/* Hero becomes a cinematic opening rather than a static poster */
+body.joby-motion-demo .approved-hero {
+  min-height: 100svh;
+  min-height: 100dvh;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+body.joby-motion-demo .approved-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7,20,34,.14) 0%, rgba(7,20,34,.02) 35%, rgba(7,20,34,.30) 100%),
+    linear-gradient(90deg, rgba(7,20,34,.52) 0%, rgba(7,20,34,.12) 58%, rgba(7,20,34,.02) 100%);
+}
+
+body.joby-motion-demo .approved-hero-image {
+  transform-origin: 50% 55%;
+  will-change: transform, filter;
+}
+
+body.joby-motion-demo .approved-hero-copy,
+body.joby-motion-demo .approved-geography {
+  z-index: 2;
+}
+
+body.joby-motion-demo .approved-hero-copy h1 {
+  overflow: visible;
+}
+
+body.joby-motion-demo .joby-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .08em;
+  margin-bottom: -.08em;
+}
+
+body.joby-motion-demo .joby-line > span {
+  display: block;
+  will-change: transform;
+}
+
+body.joby-motion-demo .approved-kicker,
+body.joby-motion-demo .approved-description,
+body.joby-motion-demo .approved-cta,
+body.joby-motion-demo .approved-geography {
+  will-change: transform, opacity;
+}
+
+body.joby-motion-demo .approved-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+body.joby-motion-demo .approved-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .65s var(--joby-ease);
+}
+
+body.joby-motion-demo .approved-cta:hover::after {
+  transform: scaleX(1);
+}
+
+/* Section rhythm: each chapter reveals upward through an invisible mask */
+body.joby-motion-demo .joby-reveal {
+  will-change: transform, opacity;
+}
+
+body.joby-motion-demo :is(.chapter,.opening,.approach-heading,.markets-top,.markets-title,.home-private-copy,.home-private-seal,.invitation-content,.invitation-bottom) {
+  position: relative;
+}
+
+/* Product universe: use the viewport as a stage */
+body.joby-motion-demo .collection .scene {
+  position: relative;
+  min-height: 92svh;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+body.joby-motion-demo .scene-images,
+body.joby-motion-demo .scene-image {
+  will-change: transform, clip-path, opacity;
+}
+
+body.joby-motion-demo .scene-image {
+  transform: scale(1.08);
+}
+
+body.joby-motion-demo .scene-shade {
+  transition: opacity .7s var(--joby-ease);
+}
+
+body.joby-motion-demo .categories button {
+  transition:
+    transform .55s var(--joby-ease),
+    opacity .55s var(--joby-ease),
+    color .55s var(--joby-ease);
+}
+
+body.joby-motion-demo .categories button:hover,
+body.joby-motion-demo .categories button[aria-selected="true"] {
+  transform: translateX(10px);
+}
+
+/* Directional image curtain */
+body.joby-motion-demo .origin-image {
+  overflow: hidden;
+}
+
+body.joby-motion-demo .origin-image img {
+  transform: scale(1.08);
+  transform-origin: 50% 50%;
+  will-change: transform, clip-path;
+}
+
+/* Approach rows move as one restrained sequence */
+body.joby-motion-demo .steps article {
+  transform-origin: 0 50%;
+  will-change: transform, opacity;
+}
+
+/* Markets: technical drawing is revealed rather than just displayed */
+body.joby-motion-demo .markets-section {
+  isolation: isolate;
+}
+
+body.joby-motion-demo .home-markets-map {
+  overflow: hidden;
+}
+
+body.joby-motion-demo .home-markets-map .route {
+  vector-effect: non-scaling-stroke;
+}
+
+body.joby-motion-demo .home-markets-map .node,
+body.joby-motion-demo .market-grid article {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+body.joby-motion-demo .market-grid article {
+  transition:
+    transform .6s var(--joby-ease),
+    border-color .6s var(--joby-ease),
+    background-color .6s var(--joby-ease);
+}
+
+body.joby-motion-demo .market-grid article:hover {
+  transform: translateY(-7px);
+}
+
+/* Signature takeover: solid tone rises behind the existing content */
+body.joby-motion-demo .home-private {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+body.joby-motion-demo .joby-private-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 75% 35%, rgba(201,162,75,.13), transparent 34%),
+    linear-gradient(180deg, #173F49 0%, #0B1E33 100%);
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+
+body.joby-motion-demo .home-private-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Contact closes with a clean editorial reveal */
+body.joby-motion-demo .invitation {
+  position: relative;
+  overflow: hidden;
+}
+
+body.joby-motion-demo .contact-disc {
+  transition:
+    transform .65s var(--joby-ease),
+    background-color .65s var(--joby-ease),
+    color .65s var(--joby-ease);
+}
+
+body.joby-motion-demo .contact-disc:hover {
+  transform: rotate(-3deg) scale(1.04);
+}
+
+/* Layered menu panel — visual enhancement only; existing menu JS still controls state */
+body.joby-motion-demo .nav-overlay {
+  isolation: isolate;
+}
+
+body.joby-motion-demo .nav-overlay::before,
+body.joby-motion-demo .nav-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transform: translateY(-102%);
+  transition: transform .62s var(--joby-ease);
+  pointer-events: none;
+}
+
+body.joby-motion-demo .nav-overlay::before {
+  background: var(--joby-gold);
+}
+
+body.joby-motion-demo .nav-overlay::after {
+  z-index: -1;
+  background: var(--joby-navy);
+  transition-delay: .08s;
+}
+
+body.joby-motion-demo .nav-overlay:is(.open,.active,.is-open,[aria-hidden="false"])::before,
+body.joby-motion-demo .nav-overlay:is(.open,.active,.is-open,[aria-hidden="false"])::after {
+  transform: translateY(0);
+}
+
+/* Accessibility / mobile */
+@media (max-width: 900px) {
+  body.joby-motion-demo .collection .scene {
+    min-height: auto;
+  }
+
+  body.joby-motion-demo .categories button:hover,
+  body.joby-motion-demo .categories button[aria-selected="true"] {
+    transform: none;
+  }
+
+  body.joby-motion-demo .site-header.joby-header--light,
+  body.joby-motion-demo .site-header.joby-header--dark {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.joby-motion-demo *,
+  body.joby-motion-demo *::before,
+  body.joby-motion-demo *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+
+  body.joby-motion-demo .joby-private-wash {
+    clip-path: inset(0);
+  }
+}
