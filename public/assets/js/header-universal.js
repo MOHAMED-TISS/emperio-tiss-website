@@ -18,13 +18,6 @@
   if (!body) return;
 
   const path = (location.pathname || '/').replace(/\/+/g, '/');
-  const isAdmin =
-    path === '/private/admin' ||
-    path.startsWith('/private/admin/') ||
-    body.classList.contains('private-admin-page');
-
-  if (isAdmin) return;
-
   const supported = ['es', 'en', 'fr', 'ar', 'it'];
   const detected = (root.lang || 'es').slice(0, 2).toLowerCase();
   const lang = supported.includes(detected) ? detected : 'es';
@@ -188,7 +181,11 @@
   const install = () => {
     body.classList.add('et-brand-shell');
 
-    let header = doc.querySelector('body > .site-header') || doc.querySelector('.site-header');
+    let header =
+      doc.querySelector('body > .site-header') ||
+      doc.querySelector('.site-header') ||
+      doc.querySelector('body > .admin-topbar') ||
+      doc.querySelector('.admin-topbar');
     const headerReady = header?.dataset.etUniversalHeader === VERSION;
 
     if (!headerReady) {
@@ -233,7 +230,11 @@
     queued = true;
     queueMicrotask(() => {
       queued = false;
-      const header = doc.querySelector('body > .site-header') || doc.querySelector('.site-header');
+      const header =
+        doc.querySelector('body > .site-header') ||
+        doc.querySelector('.site-header') ||
+        doc.querySelector('body > .admin-topbar') ||
+        doc.querySelector('.admin-topbar');
       const overlay = doc.getElementById('navOverlay');
       if (
         !header ||
@@ -245,4 +246,43 @@
   });
 
   observer.observe(body, { childList: true, subtree: true });
+
+  /* Private admin does not load global-core.js; keep its universal menu functional
+     without importing the rest of the public shell. */
+  if (body.classList.contains('private-admin-page') && !window.__etAdminUniversalMenuBound) {
+    window.__etAdminUniversalMenuBound = true;
+
+    const closeMenu = () => {
+      const overlay = doc.getElementById('navOverlay');
+      const button = doc.getElementById('menuToggleBtn');
+      body.classList.remove('nav-open', 'menu-open');
+      overlay?.setAttribute('aria-hidden', 'true');
+      button?.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMenu = () => {
+      const overlay = doc.getElementById('navOverlay');
+      const button = doc.getElementById('menuToggleBtn');
+      body.classList.add('nav-open');
+      overlay?.setAttribute('aria-hidden', 'false');
+      button?.setAttribute('aria-expanded', 'true');
+    };
+
+    doc.addEventListener('click', (event) => {
+      const button = event.target.closest('#menuToggleBtn');
+      if (button) {
+        event.preventDefault();
+        if (button.getAttribute('aria-expanded') === 'true') closeMenu();
+        else openMenu();
+        return;
+      }
+
+      const overlay = event.target.closest('#navOverlay');
+      if (overlay && event.target.closest('a')) closeMenu();
+    });
+
+    doc.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }
 })();
