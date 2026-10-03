@@ -3,7 +3,7 @@
 
   const doc = document;
   const body = doc.body;
-  if (!body || body.classList.contains('private-page') || body.classList.contains('private-admin-page')) return;
+  if (!body || body.classList.contains('private-admin-page')) return;
 
   const VERSION = '20261003-terminal-footer-2';
   if (window.__etTerminalFooterVersion === VERSION) return;
@@ -19,7 +19,8 @@
   };
   loadCss();
 
-  const langRaw = (doc.documentElement.lang || 'es').slice(0,2).toLowerCase();
+  const isPrivatePortal = body.classList.contains('private-page');
+  const langRaw = isPrivatePortal ? 'es' : (doc.documentElement.lang || 'es').slice(0,2).toLowerCase();
   const lang = ['es','en','fr','it','ar'].includes(langRaw) ? langRaw : 'es';
   const base = lang === 'es' ? '/' : `/${lang}/`;
   const route = (segment) => `${base}${segment}/`;
