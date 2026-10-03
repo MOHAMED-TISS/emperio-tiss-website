@@ -1,25 +1,27 @@
-/* EMPERIO TISS — Joby Experience header language
-   Universal header inspired by the current Joby /experience masthead:
-   floating ivory pill + compact menu + contextual label + fullscreen navigation.
+/* EMPERIO TISS — Joby Experience masthead
+   Actual visual reference: transparent masthead over imagery,
+   menu at left, centered symbol, small utility link at right.
 */
 
 :root{
-  --et-joby-ivory:#f2f0e5;
+  --et-joby-blue:#007AE5;
   --et-joby-ink:#111214;
-  --et-joby-blue:#3f7fe5;
   --et-joby-ease:cubic-bezier(.16,1,.3,1);
 }
 
-/* Floating capsule */
-html body .site-header{
+/* ---------------------------------------------------------
+   CLOSED HEADER — no pill, no bar, no background
+   --------------------------------------------------------- */
+html body .site-header,
+html body .site-header.scrolled{
   position:fixed!important;
-  top:18px!important;
-  left:20px!important;
-  right:20px!important;
+  top:17px!important;
+  left:16px!important;
+  right:16px!important;
   width:auto!important;
   max-width:none!important;
-  height:auto!important;
-  min-height:0!important;
+  height:30px!important;
+  min-height:30px!important;
   margin:0!important;
   padding:0!important;
   border:0!important;
@@ -32,79 +34,79 @@ html body .site-header{
   pointer-events:none!important;
   direction:ltr!important;
   z-index:1200!important;
-  animation:etJobyHeaderIn .78s var(--et-joby-ease) both;
-}
-
-html body .site-header.scrolled{
-  background:transparent!important;
-  border:0!important;
-  box-shadow:none!important;
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
 }
 
 html body .site-header>.header-inner{
   position:relative!important;
   width:100%!important;
-  max-width:none!important;
-  height:58px!important;
-  min-height:58px!important;
+  height:30px!important;
+  min-height:30px!important;
   margin:0!important;
-  padding:0 15px 0 17px!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:flex-start!important;
-  gap:0!important;
-  border:1px solid rgba(17,18,20,.08)!important;
-  border-radius:999px!important;
-  background:var(--et-joby-ivory)!important;
-  box-shadow:0 3px 12px rgba(0,0,0,.08)!important;
-  color:var(--et-joby-ink)!important;
-  overflow:visible!important;
-  pointer-events:auto!important;
-}
-
-html body .site-header :is(.home-header-nav,.home-header-secondary,.et-whatsapp,.et-language-switch){
-  display:none!important;
-}
-
-/* Two-line hamburger */
-html body .site-header .mobile-menu{
-  position:relative!important;
-  inset:auto!important;
-  order:1!important;
-  flex:0 0 38px!important;
-  width:38px!important;
-  height:38px!important;
-  min-width:38px!important;
-  margin:0 15px 0 0!important;
   padding:0!important;
   display:block!important;
   border:0!important;
-  border-radius:50%!important;
+  border-radius:0!important;
   background:transparent!important;
   box-shadow:none!important;
-  color:var(--et-joby-ink)!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+}
+
+/* Hide legacy utilities in the closed masthead.
+   They remain available inside the fullscreen menu. */
+html body .site-header :is(
+  .home-header-nav,
+  .home-header-secondary,
+  .et-whatsapp,
+  .et-language-switch,
+  .joby-header-current
+){
+  display:none!important;
+}
+
+/* Left hamburger */
+html body .site-header .mobile-menu{
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:28px!important;
+  height:28px!important;
+  min-width:28px!important;
+  margin:0!important;
+  padding:0!important;
+  display:block!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#fff!important;
   cursor:pointer!important;
-  z-index:2!important;
+  pointer-events:auto!important;
+  mix-blend-mode:difference;
 }
 
 html body .site-header .mobile-menu span{
   position:absolute!important;
-  left:7px!important;
-  width:24px!important;
-  height:1.5px!important;
+  left:0!important;
+  width:17px!important;
+  height:1px!important;
   margin:0!important;
   border:0!important;
   border-radius:99px!important;
-  background:var(--et-joby-ink)!important;
+  background:#fff!important;
   transform-origin:center!important;
   opacity:1!important;
-  transition:transform .38s var(--et-joby-ease),top .38s var(--et-joby-ease),opacity .2s ease!important;
+  transition:
+    transform .34s var(--et-joby-ease),
+    top .34s var(--et-joby-ease),
+    width .34s var(--et-joby-ease),
+    opacity .18s ease!important;
 }
 
 html body .site-header .mobile-menu span:nth-child(1){
-  top:15px!important;
+  top:9px!important;
   transform:none!important;
 }
 
@@ -113,75 +115,113 @@ html body .site-header .mobile-menu span:nth-child(2){
 }
 
 html body .site-header .mobile-menu span:nth-child(3){
-  top:23px!important;
+  top:15px!important;
   transform:none!important;
+}
+
+html body.nav-open .site-header .mobile-menu,
+html body.menu-open .site-header .mobile-menu{
+  mix-blend-mode:normal!important;
 }
 
 html body.nav-open .site-header .mobile-menu span:nth-child(1),
 html body.menu-open .site-header .mobile-menu span:nth-child(1),
 html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(1){
-  top:19px!important;
+  top:12px!important;
+  width:18px!important;
   transform:rotate(45deg)!important;
 }
 
 html body.nav-open .site-header .mobile-menu span:nth-child(3),
 html body.menu-open .site-header .mobile-menu span:nth-child(3),
 html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(3){
-  top:19px!important;
+  top:12px!important;
+  width:18px!important;
   transform:rotate(-45deg)!important;
 }
 
-/* Current-page label */
-html body .joby-header-current{
-  order:2!important;
-  display:inline-flex!important;
-  align-items:center!important;
-  min-height:38px!important;
-  color:var(--et-joby-ink)!important;
-  font:600 14px/1 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:-.025em!important;
-  white-space:nowrap!important;
-}
-
-/* Compact EMPERIO mark on the right */
+/* Centered EMPERIO symbol — mirrors Joby's centered mark */
 html body .site-header .site-logo{
-  position:relative!important;
-  inset:auto!important;
-  top:auto!important;
-  left:auto!important;
+  position:absolute!important;
+  left:50%!important;
+  top:-1px!important;
   right:auto!important;
   bottom:auto!important;
-  order:3!important;
-  width:38px!important;
-  height:44px!important;
-  min-width:38px!important;
-  margin:0 3px 0 auto!important;
+  width:28px!important;
+  height:30px!important;
+  margin:0!important;
   padding:0!important;
   display:flex!important;
-  align-items:center!important;
+  align-items:flex-start!important;
   justify-content:center!important;
   border:0!important;
   background:transparent!important;
   box-shadow:none!important;
-  transform:none!important;
+  transform:translateX(-50%)!important;
   overflow:visible!important;
+  pointer-events:auto!important;
+  mix-blend-mode:difference;
 }
 
 html body .site-header .site-logo img,
 html body .site-header .site-logo img.home-metal-logo{
   display:block!important;
-  width:30px!important;
-  height:36px!important;
+  width:23px!important;
+  height:27px!important;
   max-width:none!important;
   max-height:none!important;
   object-fit:contain!important;
-  object-position:center!important;
-  filter:none!important;
+  object-position:center top!important;
   opacity:1!important;
   visibility:visible!important;
+  filter:brightness(0) invert(1)!important;
 }
 
-/* Fullscreen Joby-like menu */
+html body.nav-open .site-header .site-logo,
+html body.menu-open .site-header .site-logo{
+  mix-blend-mode:normal!important;
+}
+
+html body.nav-open .site-header .site-logo img,
+html body.menu-open .site-header .site-logo img{
+  filter:brightness(0) invert(1)!important;
+}
+
+/* Small utility at top right — same role as Joby's Investors link */
+html body .joby-header-utility{
+  position:absolute!important;
+  right:0!important;
+  top:3px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:4px!important;
+  min-height:20px!important;
+  margin:0!important;
+  padding:0!important;
+  color:#fff!important;
+  font:500 9px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  text-decoration:none!important;
+  pointer-events:auto!important;
+  mix-blend-mode:difference;
+  white-space:nowrap!important;
+}
+
+html body .joby-header-utility span{
+  font-size:10px!important;
+  transform:translateY(-.5px);
+}
+
+html body.nav-open .joby-header-utility,
+html body.menu-open .joby-header-utility{
+  color:#fff!important;
+  mix-blend-mode:normal!important;
+}
+
+/* ---------------------------------------------------------
+   FULLSCREEN NAVIGATION
+   --------------------------------------------------------- */
 html body.et-brand-shell .nav-overlay,
 html body .nav-overlay{
   position:fixed!important;
@@ -217,11 +257,11 @@ html body .nav-overlay-inner{
   min-height:100svh!important;
   min-height:100dvh!important;
   margin:0 auto!important;
-  padding:116px 5vw 42px!important;
+  padding:88px 5vw 34px!important;
   display:grid!important;
   grid-template-rows:1fr auto!important;
   align-content:stretch!important;
-  gap:40px!important;
+  gap:36px!important;
 }
 
 html body.et-brand-shell .nav-overlay-links,
@@ -241,7 +281,7 @@ html body .nav-products>summary{
   align-items:baseline!important;
   gap:0!important;
   min-height:0!important;
-  padding:4px 0!important;
+  padding:2px 0!important;
   border:0!important;
   background:transparent!important;
   color:#fff!important;
@@ -252,16 +292,15 @@ html body .nav-overlay-links>a .idx,
 html body .nav-products>summary .idx{
   flex:0 0 38px!important;
   width:38px!important;
-  color:rgba(255,255,255,.52)!important;
-  font:600 10px/1 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:0!important;
+  color:rgba(255,255,255,.50)!important;
+  font:600 9px/1 "DM Sans",Arial,sans-serif!important;
 }
 
 html body .nav-overlay-links>a>span:not(.idx),
 html body .nav-products>summary>span:not(.idx){
   color:#fff!important;
-  font:600 clamp(46px,6.7vw,104px)/.9 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:-.065em!important;
+  font:500 clamp(43px,5.9vw,88px)/.94 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.048em!important;
   transition:opacity .28s ease!important;
 }
 
@@ -270,7 +309,7 @@ html body .nav-overlay-links>a.active>span:not(.idx),
 html body .nav-overlay-links>a.is-active>span:not(.idx),
 html body .nav-products>summary:hover>span:not(.idx){
   color:#fff!important;
-  opacity:.56!important;
+  opacity:.52!important;
 }
 
 html body .nav-products{
@@ -286,29 +325,55 @@ html body .nav-products>summary::-webkit-details-marker{
   display:none!important;
 }
 
+/* Product subcategories — larger, cleaner Joby-like typographic tier */
 html body .nav-products-links{
-  margin:12px 0 20px 38px!important;
+  width:min(850px,calc(100% - 38px))!important;
+  margin:18px 0 24px 38px!important;
   padding:0!important;
-  display:flex!important;
-  flex-wrap:wrap!important;
-  gap:8px 18px!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  column-gap:44px!important;
+  row-gap:8px!important;
 }
 
 html body .nav-products-links a{
-  color:rgba(255,255,255,.74)!important;
-  font:500 15px/1.45 "DM Sans",Arial,sans-serif!important;
+  position:relative!important;
+  display:block!important;
+  padding:3px 0 5px!important;
+  color:rgba(255,255,255,.82)!important;
+  font:500 clamp(18px,1.55vw,25px)/1.08 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.025em!important;
   text-decoration:none!important;
+  transition:opacity .24s ease,transform .36s var(--et-joby-ease)!important;
+}
+
+html body .nav-products-links a::after{
+  content:"↗";
+  display:inline-block;
+  margin-left:8px;
+  font-size:.62em;
+  vertical-align:top;
+  opacity:0;
+  transform:translate(-4px,2px);
+  transition:opacity .24s ease,transform .36s var(--et-joby-ease);
 }
 
 html body .nav-products-links a:hover{
   color:#fff!important;
+  opacity:1!important;
+  transform:translateX(4px);
+}
+
+html body .nav-products-links a:hover::after{
+  opacity:.72;
+  transform:translate(0,2px);
 }
 
 html body.et-brand-shell .nav-overlay-foot,
 html body .nav-overlay-foot{
   width:100%!important;
-  padding:22px 0 0!important;
-  border-top:1px solid rgba(255,255,255,.3)!important;
+  padding:18px 0 0!important;
+  border-top:1px solid rgba(255,255,255,.28)!important;
   color:#fff!important;
   display:flex!important;
   justify-content:space-between!important;
@@ -325,9 +390,9 @@ html body .nav-overlay-lang{
 
 html body .nav-overlay-lang a,
 html body .nav-overlay-lang span{
-  color:rgba(255,255,255,.76)!important;
-  font:600 12px/1 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:.04em!important;
+  color:rgba(255,255,255,.72)!important;
+  font:500 11px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.025em!important;
 }
 
 html body .nav-overlay-lang a.current{
@@ -338,21 +403,15 @@ html body .nav-overlay-contact{
   display:flex!important;
   flex-direction:column!important;
   align-items:flex-end!important;
-  gap:6px!important;
-  color:rgba(255,255,255,.7)!important;
+  gap:5px!important;
+  color:rgba(255,255,255,.66)!important;
   text-align:right!important;
-  font:500 12px/1.35 "DM Sans",Arial,sans-serif!important;
+  font:500 11px/1.35 "DM Sans",Arial,sans-serif!important;
 }
 
 html body .nav-overlay-contact a{
   color:#fff!important;
-  font:600 13px/1.3 "DM Sans",Arial,sans-serif!important;
-}
-
-/* Keep pill neutral over every page background */
-html body.nav-open .site-header>.header-inner,
-html body.menu-open .site-header>.header-inner{
-  background:var(--et-joby-ivory)!important;
+  font:500 12px/1.3 "DM Sans",Arial,sans-serif!important;
 }
 
 html body.nav-open,
@@ -360,80 +419,72 @@ html body.menu-open{
   overflow:hidden!important;
 }
 
+/* Arabic pages keep the masthead geometry LTR, menu content may remain RTL where needed. */
 html[lang="ar"] body .site-header,
-html[lang="ar"] body .site-header>.header-inner,
-html[lang="ar"] body .joby-header-current{
+html[lang="ar"] body .site-header>.header-inner{
   direction:ltr!important;
 }
 
-@keyframes etJobyHeaderIn{
-  from{opacity:0;transform:translateY(-16px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
 @media(max-width:700px){
-  html body .site-header{
-    top:12px!important;
-    left:12px!important;
-    right:12px!important;
+  html body .site-header,
+  html body .site-header.scrolled{
+    top:14px!important;
+    left:14px!important;
+    right:14px!important;
+    height:28px!important;
+    min-height:28px!important;
   }
 
   html body .site-header>.header-inner{
-    height:50px!important;
-    min-height:50px!important;
-    padding:0 10px 0 12px!important;
+    height:28px!important;
+    min-height:28px!important;
   }
 
   html body .site-header .mobile-menu{
-    width:34px!important;
-    height:34px!important;
-    min-width:34px!important;
-    margin-right:10px!important;
+    width:26px!important;
+    height:26px!important;
   }
 
   html body .site-header .mobile-menu span{
-    left:6px!important;
-    width:22px!important;
-  }
-
-  html body .site-header .mobile-menu span:nth-child(1){top:13px!important}
-  html body .site-header .mobile-menu span:nth-child(3){top:21px!important}
-
-  html body.nav-open .site-header .mobile-menu span:nth-child(1),
-  html body.menu-open .site-header .mobile-menu span:nth-child(1),
-  html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(1),
-  html body.nav-open .site-header .mobile-menu span:nth-child(3),
-  html body.menu-open .site-header .mobile-menu span:nth-child(3),
-  html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(3){
-    top:17px!important;
-  }
-
-  html body .joby-header-current{
-    max-width:calc(100vw - 132px)!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-    font-size:13px!important;
+    width:16px!important;
   }
 
   html body .site-header .site-logo{
-    width:34px!important;
-    height:38px!important;
+    top:-1px!important;
+    width:26px!important;
+    height:28px!important;
   }
 
   html body .site-header .site-logo img,
   html body .site-header .site-logo img.home-metal-logo{
-    width:25px!important;
-    height:31px!important;
+    width:21px!important;
+    height:25px!important;
+  }
+
+  html body .joby-header-utility{
+    top:3px!important;
+    font-size:8px!important;
   }
 
   html body.et-brand-shell .nav-overlay-inner,
   html body .nav-overlay-inner{
-    padding:88px 20px 28px!important;
+    padding:72px 20px 24px!important;
   }
 
   html body .nav-overlay-links>a>span:not(.idx),
   html body .nav-products>summary>span:not(.idx){
-    font-size:clamp(40px,13vw,66px)!important;
+    font-size:clamp(38px,12.2vw,60px)!important;
+  }
+
+  html body .nav-products-links{
+    width:calc(100% - 32px)!important;
+    margin:14px 0 20px 32px!important;
+    grid-template-columns:1fr!important;
+    row-gap:7px!important;
+  }
+
+  html body .nav-products-links a{
+    font-size:18px!important;
   }
 
   html body .nav-overlay-foot{
@@ -448,6 +499,9 @@ html[lang="ar"] body .joby-header-current{
 }
 
 @media(prefers-reduced-motion:reduce){
-  html body .site-header{animation:none!important}
-  html body .nav-overlay{transition:none!important}
+  html body .nav-overlay,
+  html body .nav-products-links a,
+  html body .mobile-menu span{
+    transition:none!important;
+  }
 }
