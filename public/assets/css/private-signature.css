@@ -443,3 +443,8 @@ body.private-page *{box-sizing:border-box}
   .signature-offer-action span{transition:none!important}
   .private-loading-card{animation:none}
 }
+
+
+/* Signature is a single protected route, not a localized route tree. */
+body.private-page .nav-overlay-lang{display:none!important}
+body.private-page .nav-overlay-foot{justify-content:flex-end!important}
