@@ -1,5 +1,6 @@
 /* EMPERIO TISS — selected Joby motion on production home
-   Scope: Lenis + hero + markets + final supply CTA.
+   Scope: hero + markets + final supply CTA.
+   Smooth scrolling is initialized globally by /assets/js/smooth-scroll.js.
 */
 (() => {
   'use strict';
@@ -10,34 +11,6 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
-
-  /* Same inertial scroll feel used in the demo. */
-  if (!reduceMotion.matches && window.Lenis) {
-    try {
-      const lenis = new window.Lenis({
-        duration: 1.05,
-        smoothWheel: true,
-        wheelMultiplier: .9,
-        touchMultiplier: 1
-      });
-
-      if (gsap && ScrollTrigger) {
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => lenis.raf(time * 1000));
-        gsap.ticker.lagSmoothing(0);
-      } else {
-        const raf = (time) => {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        };
-        requestAnimationFrame(raf);
-      }
-
-      window.__emperioLenis = lenis;
-    } catch (_) {
-      /* Native scrolling remains available. */
-    }
-  }
 
   const fallbackReveal = () => {
     const nodes = document.querySelectorAll(
