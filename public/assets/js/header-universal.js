@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-home-es-universal-1';
+  const VERSION = '20261003-joby-experience-1';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
