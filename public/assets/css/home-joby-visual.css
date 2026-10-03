@@ -352,7 +352,7 @@ body.joby-motion-demo .home-private::before{
   position:absolute;
   inset:0;
   z-index:-2;
-  background:url('/assets/images/home-origins.webp') center/cover no-repeat;
+  background:url('../images/home-origins.webp') center/cover no-repeat;
   filter:saturate(.72) contrast(1.05) brightness(.68);
   transform:scale(1.03);
 }
