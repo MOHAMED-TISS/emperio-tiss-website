@@ -52,12 +52,11 @@
   loadCss('/assets/css/header-final.css?v=20261001-signature', 'etHeaderFinalCanonical');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
-    loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooterAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang) && !document.body.classList.contains('home-experience')) {
-    loadScript('/assets/js/international-shell.js?v=20260928-es-set-1', 'etInternationalShell');
+    loadScript('/assets/js/international-shell.js?v=20261003-terminal-footer-fix-1', 'etInternationalShell');
   }
 
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
@@ -203,8 +202,8 @@
       loadScript('/assets/js/en-catalog-filter-fix.js?v=20260926-no-prototype-patch', 'etEnCatalogFilterFix');
     }
   }
-  loadScript('/assets/js/site-polish.js?v=20260927-turnstile-1', 'etSitePolish');
-  loadCss('/assets/css/footer-terminal.css?v=20261003-1', 'etTerminalFooterCss');
-  loadScript('/assets/js/footer-terminal.js?v=20261003-1', 'etTerminalFooterScript');
+  loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
+  loadCss('/assets/css/footer-terminal.css?v=20261003-2', 'etTerminalFooterCss');
+  loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
   loadScript('/assets/js/smooth-scroll.js?v=20261003-1', 'etSmoothScroll');
 })();
