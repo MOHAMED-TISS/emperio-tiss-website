@@ -193,4 +193,5 @@
     }
   }
   loadScript('/assets/js/site-polish.js?v=20260927-turnstile-1', 'etSitePolish');
+  loadScript('/assets/js/smooth-scroll.js?v=20261003-1', 'etSmoothScroll');
 })();
