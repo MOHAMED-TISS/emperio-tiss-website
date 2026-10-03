@@ -96,6 +96,8 @@
   const buildNavigation = () => {
     normalizeMenuOverlays();
     const nav = get('.nav-overlay-links');
+    const universalOverlay = nav?.closest('#navOverlay')?.dataset?.etUniversalOverlay;
+    if (universalOverlay) return;
     if (!nav || nav.dataset.etNavigationBuilt === 'true') return;
     nav.innerHTML = `
       <a href="${P.home}">${idx('01',labels.home)}</a>
