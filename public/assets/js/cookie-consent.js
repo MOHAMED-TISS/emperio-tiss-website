@@ -7,7 +7,8 @@
   if (window.__etCookieConsentLoaded) return;
   window.__etCookieConsentLoaded = true;
 
-  const VERSION = '20261004-1';
+  const VERSION = '20261004-2';
+  const GA_MEASUREMENT_ID = 'G-8NHTCK0ZE7';
   const STORAGE_KEY = 'et_cookie_consent_v1';
   const langCode = (doc.documentElement.lang || 'es').slice(0,2).toLowerCase();
   const lang = ['es','en','fr','it','ar'].includes(langCode) ? langCode : 'es';
@@ -27,7 +28,7 @@
       functional:'Funcionales',
       functionalText:'Preferencias o funciones externas opcionales.',
       analytics:'Analítica',
-      analyticsText:'Medición de uso. Actualmente no hay herramientas analíticas registradas.',
+      analyticsText:'Medición de uso con Google Analytics 4. Solo se activa si das tu consentimiento.',
       marketing:'Marketing',
       marketingText:'Publicidad o seguimiento comercial. Actualmente no se utiliza.',
       manage:'Cookies'
@@ -38,7 +39,7 @@
       more:'Cookie policy',accept:'Accept',reject:'Reject',configure:'Configure',save:'Save preferences',
       necessary:'Necessary',necessaryText:'Required for security, navigation and private access. They cannot be disabled.',
       functional:'Functional',functionalText:'Optional preferences or external functionality.',
-      analytics:'Analytics',analyticsText:'Usage measurement. No analytics tools are currently registered.',
+      analytics:'Analytics',analyticsText:'Usage measurement with Google Analytics 4. Activated only with your consent.',
       marketing:'Marketing',marketingText:'Advertising or commercial tracking. Not currently used.',manage:'Cookies'
     },
     fr:{
@@ -47,7 +48,7 @@
       more:'Politique de cookies',accept:'Accepter',reject:'Refuser',configure:'Configurer',save:'Enregistrer',
       necessary:'Nécessaires',necessaryText:'Indispensables à la sécurité, à la navigation et à l’accès privé.',
       functional:'Fonctionnels',functionalText:'Préférences ou fonctions externes optionnelles.',
-      analytics:'Analyse',analyticsText:'Mesure d’utilisation. Aucun outil analytique n’est actuellement enregistré.',
+      analytics:'Analyse',analyticsText:'Mesure d’utilisation avec Google Analytics 4. Activée uniquement avec votre consentement.',
       marketing:'Marketing',marketingText:'Publicité ou suivi commercial. Non utilisé actuellement.',manage:'Cookies'
     },
     it:{
@@ -56,7 +57,7 @@
       more:'Politica cookie',accept:'Accetta',reject:'Rifiuta',configure:'Configura',save:'Salva preferenze',
       necessary:'Necessari',necessaryText:'Necessari per sicurezza, navigazione e accesso privato.',
       functional:'Funzionali',functionalText:'Preferenze o funzioni esterne opzionali.',
-      analytics:'Analitici',analyticsText:'Misurazione dell’uso. Nessuno strumento analitico è attualmente registrato.',
+      analytics:'Analitici',analyticsText:'Misurazione dell’uso con Google Analytics 4. Attivata solo con il tuo consenso.',
       marketing:'Marketing',marketingText:'Pubblicità o tracciamento commerciale. Non utilizzato attualmente.',manage:'Cookie'
     },
     ar:{
@@ -65,10 +66,72 @@
       more:'سياسة ملفات الارتباط',accept:'قبول',reject:'رفض',configure:'إعداد',save:'حفظ التفضيلات',
       necessary:'ضرورية',necessaryText:'ضرورية للأمان والتصفح والوصول الخاص ولا يمكن تعطيلها.',
       functional:'وظيفية',functionalText:'تفضيلات أو وظائف خارجية اختيارية.',
-      analytics:'تحليلية',analyticsText:'لقياس الاستخدام. لا توجد أدوات تحليل مسجلة حالياً.',
+      analytics:'تحليلية',analyticsText:'قياس استخدام الموقع عبر Google Analytics 4. لا يتم تفعيله إلا بموافقتك.',
       marketing:'تسويق',marketingText:'إعلانات أو تتبع تجاري. غير مستخدم حالياً.',manage:'ملفات الارتباط'
     }
   }[lang];
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+
+  // Google Consent Mode defaults: nothing optional is granted before a choice.
+  window.gtag('consent','default',{
+    analytics_storage:'denied',
+    ad_storage:'denied',
+    ad_user_data:'denied',
+    ad_personalization:'denied',
+    wait_for_update:500
+  });
+
+  let gaLoaded = Boolean(doc.querySelector('script[data-et-ga4]'));
+
+  const deleteAnalyticsCookies = () => {
+    const names = ['_ga', '_ga_' + GA_MEASUREMENT_ID.replace(/^G-/,'')];
+    const host = location.hostname;
+    const domains = ['', host, '.' + host, '.emperio-tiss.com'];
+    for (const name of names) {
+      for (const domain of domains) {
+        const domainPart = domain ? '; domain=' + domain : '';
+        doc.cookie = name + '=; Max-Age=0; path=/' + domainPart + '; SameSite=Lax';
+      }
+    }
+  };
+
+  const loadGA4 = () => {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    const script = doc.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_MEASUREMENT_ID);
+    script.dataset.etGa4 = 'true';
+    script.onload = () => {
+      window.gtag('js', new Date());
+      window.gtag('config', GA_MEASUREMENT_ID, {
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+    };
+    doc.head.appendChild(script);
+  };
+
+  const applyGoogleConsent = (prefs) => {
+    const analyticsGranted = Boolean(prefs?.analytics);
+    const marketingGranted = Boolean(prefs?.marketing);
+
+    window.gtag('consent','update',{
+      analytics_storage: analyticsGranted ? 'granted' : 'denied',
+      ad_storage: marketingGranted ? 'granted' : 'denied',
+      ad_user_data: marketingGranted ? 'granted' : 'denied',
+      ad_personalization: marketingGranted ? 'granted' : 'denied'
+    });
+
+    if (analyticsGranted) {
+      loadGA4();
+    } else {
+      deleteAnalyticsCookies();
+    }
+  };
 
   const read = () => {
     try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null'); }
@@ -79,6 +142,7 @@
     try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch (_) {}
     window.ETConsent = value;
     window.dispatchEvent(new CustomEvent('et:consentchange',{detail:value}));
+    applyGoogleConsent(value);
     activateOptional(value);
   };
 
@@ -187,6 +251,7 @@
   manage.addEventListener('click',() => show(true));
 
   if (existing) {
+    applyGoogleConsent(existing);
     activateOptional(existing);
     manage.classList.add('is-visible');
   } else {
