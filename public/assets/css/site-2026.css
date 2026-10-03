@@ -815,3 +815,692 @@ html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin
     scroll-behavior:auto!important;
   }
 }
+
+
+/* =========================================================
+   EMPERIO 2026 — SYSTEM V3
+   Stronger sitewide composition aligned with current Home,
+   Signature and Terminal-style footer.
+   ========================================================= */
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page){
+  --et26-blue:#337fe5;
+  --et26-blue-2:#286bc6;
+  --et26-paper:#f1f0ea;
+  --et26-paper-soft:#e7e6df;
+  --et26-ink:#101317;
+  --et26-navy:#0b1d31;
+  --et26-muted:#68707a;
+  --et26-line:rgba(16,19,23,.15);
+  --et26-ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* Remove residual serif/champagne legacy language */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .playfair,.serif,.gold,.champagne,
+  [style*="Playfair"],[style*="Cormorant"]
+){
+  font-family:"DM Sans",Arial,sans-serif!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-kicker,.es-label,.eyebrow,.hero-note,.season-kicker,
+  .news-eyebrow,.current-eyebrow,.catalog-kicker,.catalog-count
+){
+  color:rgba(16,19,23,.48)!important;
+}
+
+/* ---------------------------------------------------------
+   HERO — same visual grammar everywhere
+   --------------------------------------------------------- */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
+){
+  border:0!important;
+  border-radius:0!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero,.page-hero,.season-opening,.news-hero
+) :is(.es-container,.page-hero-inner,.season-wrap,.news-wrap){
+  align-self:stretch!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero,.page-hero,.season-opening,.news-hero
+) :is(.es-kicker,.eyebrow,.season-kicker,.news-eyebrow){
+  color:rgba(255,255,255,.62)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero,.page-hero,.season-opening,.news-hero
+) :is(.es-actions,.fruits-actions,.hero-actions){
+  margin-top:32px!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:10px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .hero-note,.season-caption,.hero-bottom
+){
+  color:rgba(255,255,255,.52)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:9px!important;
+  font-weight:600!important;
+  letter-spacing:.07em!important;
+}
+
+/* stronger image treatments by family */
+body.about-page .es-hero{
+  background:
+    linear-gradient(180deg,rgba(8,20,34,.06),rgba(8,20,34,.74)),
+    linear-gradient(90deg,rgba(8,20,34,.78),rgba(8,20,34,.08) 68%),
+    url('/assets/images/home-origins.webp') center 54%/cover no-repeat!important;
+}
+body.contact-page .es-hero,
+body.es-page:not(.about-page):not(.seafood-page) .es-hero{
+  background:
+    linear-gradient(180deg,rgba(8,20,34,.05),rgba(8,20,34,.76)),
+    linear-gradient(90deg,rgba(8,20,34,.82),rgba(8,20,34,.10) 70%),
+    url('/assets/images/home-mediterranean.webp') center/cover no-repeat!important;
+}
+body.seafood-page .es-hero,
+body.seafood-subpage .page-hero{
+  background:
+    linear-gradient(180deg,rgba(7,19,34,.06),rgba(7,19,34,.78)),
+    linear-gradient(90deg,rgba(7,19,34,.82),rgba(7,19,34,.08) 72%),
+    url('/assets/images/home-seafood.webp') center/cover no-repeat!important;
+}
+
+/* ---------------------------------------------------------
+   SECTION LANGUAGE
+   --------------------------------------------------------- */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) main > :is(
+  section,.es-section,.intro-section,.products-section,.company-section,
+  .catalog-section,.catalog-other-section,.season-selection,.season-planning,
+  .season-inquiry,.news-feature-section,.news-stream,.news-intelligence,
+  .news-subscribe,.news-private
+){
+  position:relative!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-grid,.section-heading,.catalog-head,.seafood-catalog__head,
+  .fish-catalog__head,.news-section-head,.company-grid
+){
+  padding-bottom:38px!important;
+  border-bottom:1px solid var(--et26-line)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section.dark,.company-section,.news-intelligence,.season-planning
+) :is(.es-grid,.section-heading,.catalog-head,.news-section-head,.company-grid){
+  border-color:rgba(255,255,255,.18)!important;
+}
+
+/* section labels on their own line */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-label,.eyebrow,.season-kicker,.news-eyebrow
+){
+  margin-bottom:18px!important;
+}
+
+/* ---------------------------------------------------------
+   ABOUT
+   --------------------------------------------------------- */
+body.about-page .es-section{
+  min-height:72svh!important;
+  display:flex!important;
+  align-items:center!important;
+}
+body.about-page .es-section.dark{
+  background:var(--et26-blue)!important;
+}
+body.about-page .es-section.dark :is(h2,.es-label,.es-copy,strong){
+  color:#fff!important;
+}
+body.about-page .es-section.dark .es-copy{
+  color:rgba(255,255,255,.72)!important;
+}
+body.about-page .about-values{
+  min-height:auto!important;
+}
+body.about-page .about-values-head{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr)!important;
+  gap:70px!important;
+  align-items:end!important;
+  padding-bottom:38px!important;
+  border-bottom:1px solid var(--et26-line)!important;
+}
+body.about-page .about-values-grid{
+  margin-top:18px!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+body.about-page .about-values-grid article{
+  min-height:250px!important;
+  padding:24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  border-radius:16px!important;
+}
+body.about-page .about-values-grid article>span{
+  color:#7b828a!important;
+  font-size:9px!important;
+  font-weight:600!important;
+}
+body.about-page .about-values-grid article h3{
+  margin:auto 0 8px!important;
+  font-size:34px!important;
+}
+body.about-page .about-idea{
+  min-height:74svh!important;
+  padding:100px 0!important;
+  display:flex!important;
+  align-items:center!important;
+  background:var(--et26-navy)!important;
+  color:#fff!important;
+}
+body.about-page .about-idea :is(h2,.es-label,.es-lead){color:#fff!important}
+body.about-page .about-idea-orbit{display:none!important}
+
+/* ---------------------------------------------------------
+   CONTACT
+   --------------------------------------------------------- */
+body.es-page:has(#business-enquiry) #business-enquiry{
+  background:var(--et26-paper)!important;
+}
+body.es-page .es-form-wrap{
+  margin-top:50px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+}
+body.es-page .contact-form{
+  max-width:980px!important;
+  margin:0!important;
+  padding:30px!important;
+  border:1px solid var(--et26-line)!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+body.es-page .contact-form__row{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:14px!important;
+}
+body.es-page .contact-form label{
+  display:grid!important;
+  gap:8px!important;
+  margin-bottom:14px!important;
+}
+body.es-page .form-required-notice{
+  margin:0 0 22px!important;
+  color:#6a7179!important;
+  font-size:10px!important;
+}
+body.es-page .required-star{color:#d45147!important}
+body.es-page .es-list{
+  margin-top:42px!important;
+  border-top:1px solid rgba(255,255,255,.18)!important;
+}
+body.es-page .es-list-row{
+  min-height:68px!important;
+  display:grid!important;
+  grid-template-columns:120px 1fr auto!important;
+  align-items:center!important;
+  gap:24px!important;
+  border-bottom:1px solid rgba(255,255,255,.14)!important;
+}
+body.es-page .es-list-row span{
+  color:rgba(255,255,255,.48)!important;
+  font-size:9px!important;
+  font-weight:600!important;
+  letter-spacing:.05em!important;
+}
+body.es-page .es-list-row strong{
+  color:#fff!important;
+  font-size:16px!important;
+  letter-spacing:-.02em!important;
+}
+
+/* ---------------------------------------------------------
+   PRODUCT LANDING
+   --------------------------------------------------------- */
+body.products-landing-page .hero{
+  min-height:88svh!important;
+  background:var(--et26-blue)!important;
+}
+body.products-landing-page .hero-grid{
+  min-height:inherit!important;
+  padding:140px 0 56px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.5fr) minmax(180px,.5fr)!important;
+  align-items:end!important;
+}
+body.products-landing-page .hero-number{
+  color:rgba(255,255,255,.45)!important;
+}
+body.products-landing-page .intro-section{
+  background:var(--et26-paper)!important;
+}
+body.products-landing-page .product-list{
+  margin-top:18px!important;
+}
+body.products-landing-page .product-row{
+  border-radius:0!important;
+  border:0!important;
+  border-top:1px solid var(--et26-line)!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.products-landing-page .product-row:last-child{
+  border-bottom:1px solid var(--et26-line)!important;
+}
+body.products-landing-page .product-row:hover{
+  background:#fff!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+body.products-landing-page .product-row h3{
+  font-size:clamp(34px,4vw,60px)!important;
+}
+body.products-landing-page .markets-section{
+  padding:100px 0!important;
+}
+body.products-landing-page .market-grid{
+  margin-top:52px!important;
+  grid-template-columns:repeat(4,1fr)!important;
+  border-top:1px solid rgba(255,255,255,.22)!important;
+}
+body.products-landing-page .market-grid article{
+  min-height:230px!important;
+  padding:24px 18px 20px!important;
+  border:0!important;
+  border-right:1px solid rgba(255,255,255,.18)!important;
+}
+body.products-landing-page .market-grid article:last-child{border-right:0!important}
+body.products-landing-page .company-section{
+  background:var(--et26-navy)!important;
+}
+
+/* ---------------------------------------------------------
+   SEAFOOD
+   --------------------------------------------------------- */
+body.seafood-page .es-cards{
+  margin-top:28px!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+body.seafood-page .es-card{
+  min-height:360px!important;
+  padding:24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  border-radius:16px!important;
+}
+body.seafood-page .es-card-num{
+  color:#808791!important;
+  font-size:9px!important;
+}
+body.seafood-page .es-card h3{
+  margin:80px 0 12px!important;
+  font-size:44px!important;
+}
+body.seafood-page .es-card p{
+  color:#666e77!important;
+  font-size:12px!important;
+  line-height:1.55!important;
+}
+body.seafood-page .es-link{
+  margin-top:24px!important;
+  color:var(--et26-ink)!important;
+  font-size:11px!important;
+  font-weight:600!important;
+}
+body.seafood-page .es-section.dark{
+  background:var(--et26-blue)!important;
+}
+body.seafood-page .spec-band{
+  margin-top:46px!important;
+  border-top:1px solid rgba(255,255,255,.2)!important;
+}
+body.seafood-page .spec-row{
+  min-height:70px!important;
+  display:grid!important;
+  grid-template-columns:50px 1fr 1fr!important;
+  gap:22px!important;
+  align-items:center!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+}
+body.seafood-page .spec-row :is(span,strong){color:#fff!important}
+
+/* ---------------------------------------------------------
+   CATALOGUES
+   --------------------------------------------------------- */
+body.produce-page .catalog-section,
+body.seafood-subpage .fish-catalog,
+body.seafood-subpage .seafood-catalog{
+  padding-top:86px!important;
+}
+body.produce-page .catalog-head,
+body.seafood-subpage :is(.fish-catalog__head,.seafood-catalog__head){
+  margin-bottom:28px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .product-catalog-grid,.fish-catalog-grid,.seafood-catalog-grid,.compact-catalog-grid
+){
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card,.seafood-catalog-card,.compact-catalog-card,.product-card
+){
+  border-radius:16px!important;
+  background:#fff!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card__media,.seafood-catalog-card__media,.compact-catalog-card__media,.product-card__media
+){
+  aspect-ratio:4/3!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card__media,.seafood-catalog-card__media,.compact-catalog-card__media,.product-card__media
+) img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  transition:transform .8s var(--et26-ease)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card,.seafood-catalog-card,.compact-catalog-card,.product-card
+):hover :is(.fish-catalog-card__media,.seafood-catalog-card__media,.compact-catalog-card__media,.product-card__media) img{
+  transform:scale(1.035)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card__body,.seafood-catalog-card__body,.compact-catalog-card__body,.product-card__body
+){
+  padding:18px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card h3,.seafood-catalog-card h3,.compact-catalog-card h3,.product-card h3
+){
+  font-size:28px!important;
+  line-height:1!important;
+}
+
+/* ---------------------------------------------------------
+   FRUITS / VEGETABLES
+   --------------------------------------------------------- */
+body.produce-fruits-page .page-hero,
+body.produce-vegetables-page .page-hero{
+  min-height:86svh!important;
+}
+body.produce-fruits-page .fruits-actions>a:not(.fruits-button){
+  min-height:48px!important;
+  padding:0 4px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  color:#fff!important;
+  font-size:11px!important;
+  font-weight:600!important;
+}
+body.produce-page .catalog-other-section{
+  background:var(--et26-paper-soft)!important;
+}
+
+/* ---------------------------------------------------------
+   SEASONAL
+   --------------------------------------------------------- */
+body.seasonal-editorial .season-selection{
+  background:var(--et26-paper)!important;
+}
+body.seasonal-editorial .season-heading{
+  max-width:1100px!important;
+}
+body.seasonal-editorial .season-categories{
+  margin-top:44px!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+body.seasonal-editorial .season-category{
+  min-height:320px!important;
+  padding:24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  border-radius:16px!important;
+}
+body.seasonal-editorial .season-category h3{
+  margin-top:auto!important;
+  font-size:38px!important;
+}
+body.seasonal-editorial .season-planning{
+  background:var(--et26-blue)!important;
+}
+body.seasonal-editorial .season-planning-grid{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:64px!important;
+  align-items:center!important;
+}
+body.seasonal-editorial .season-planning :is(h2,h3,p,.season-kicker){color:#fff!important}
+body.seasonal-editorial .season-steps li{
+  padding:18px 0!important;
+  border-top:1px solid rgba(255,255,255,.2)!important;
+}
+body.seasonal-editorial .season-inquiry{
+  min-height:70svh!important;
+  display:flex!important;
+  align-items:center!important;
+  background:var(--et26-navy)!important;
+  color:#fff!important;
+}
+body.seasonal-editorial .season-inquiry :is(h2,p,.season-kicker){color:#fff!important}
+
+/* ---------------------------------------------------------
+   MARKETS
+   --------------------------------------------------------- */
+body.markets-current{
+  background:var(--et26-blue)!important;
+}
+body.markets-current .current-stage{
+  min-height:100svh!important;
+  padding-top:110px!important;
+}
+body.markets-current .current-wrap{
+  width:min(1400px,90vw)!important;
+}
+body.markets-current .current-stage,
+body.markets-current .current-movement{
+  background:var(--et26-blue)!important;
+}
+body.markets-current .current-movement{
+  padding:100px 0!important;
+}
+body.markets-current .current-movement-grid{
+  display:grid!important;
+  grid-template-columns:1.15fr .85fr!important;
+  gap:80px!important;
+}
+body.markets-current .current-region-list{
+  margin-top:36px!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+}
+body.markets-current .current-region-list span{
+  min-height:34px!important;
+  padding:0 12px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+}
+body.markets-current .current-cta{
+  min-height:72svh!important;
+  display:flex!important;
+  align-items:center!important;
+}
+
+/* ---------------------------------------------------------
+   NEWS
+   --------------------------------------------------------- */
+body.news-current .news-feature-section,
+body.news-current .news-stream{
+  background:var(--et26-paper)!important;
+}
+body.news-current .news-card-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+body.news-current .news-card{
+  min-height:360px!important;
+  padding:24px!important;
+  border-radius:16px!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+body.news-current .news-card h3{
+  margin-top:auto!important;
+  font-size:32px!important;
+  line-height:1.02!important;
+}
+body.news-current .news-intelligence{
+  min-height:72svh!important;
+  display:flex!important;
+  align-items:center!important;
+}
+body.news-current .news-private{
+  background:var(--et26-navy)!important;
+}
+body.news-current .news-subscribe{
+  background:var(--et26-paper-soft)!important;
+}
+
+/* ---------------------------------------------------------
+   LEGAL
+   --------------------------------------------------------- */
+body.es-legal-page .es-legal{
+  min-height:100svh!important;
+  padding-top:150px!important;
+}
+body.es-legal-page .legal-wrap{
+  width:min(1020px,90vw)!important;
+}
+body.es-legal-page .legal-wrap h1{
+  max-width:8.5ch!important;
+}
+body.es-legal-page .legal-wrap h2{
+  font-size:32px!important;
+}
+body.es-legal-page .legal-wrap p,
+body.es-legal-page .legal-wrap li{
+  max-width:800px!important;
+  color:#626a73!important;
+  font-size:14px!important;
+  line-height:1.72!important;
+}
+
+/* ---------------------------------------------------------
+   MOBILE SYSTEM
+   --------------------------------------------------------- */
+@media(max-width:980px){
+  body.about-page .about-values-grid,
+  body.seafood-page .es-cards,
+  body.seasonal-editorial .season-categories,
+  body.news-current .news-card-grid,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .product-catalog-grid,.fish-catalog-grid,.seafood-catalog-grid,.compact-catalog-grid
+  ){
+    grid-template-columns:1fr 1fr!important;
+  }
+
+  body.products-landing-page .market-grid{
+    grid-template-columns:1fr 1fr!important;
+  }
+  body.products-landing-page .market-grid article:nth-child(2){
+    border-right:0!important;
+  }
+  body.products-landing-page .market-grid article:nth-child(-n+2){
+    border-bottom:1px solid rgba(255,255,255,.18)!important;
+  }
+
+  body.seasonal-editorial .season-planning-grid,
+  body.markets-current .current-movement-grid{
+    grid-template-columns:1fr!important;
+    gap:42px!important;
+  }
+}
+
+@media(max-width:700px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
+  ){
+    min-height:70svh!important;
+    min-height:70dvh!important;
+  }
+
+  body.about-page .es-section{
+    min-height:auto!important;
+  }
+
+  body.about-page .about-values-head,
+  body.es-page .contact-form__row{
+    grid-template-columns:1fr!important;
+  }
+
+  body.about-page .about-values-grid,
+  body.seafood-page .es-cards,
+  body.seasonal-editorial .season-categories,
+  body.news-current .news-card-grid,
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .product-catalog-grid,.fish-catalog-grid,.seafood-catalog-grid,.compact-catalog-grid
+  ){
+    grid-template-columns:1fr!important;
+  }
+
+  body.es-page .contact-form{
+    padding:20px!important;
+    border-radius:16px!important;
+  }
+
+  body.es-page .es-list-row{
+    grid-template-columns:80px 1fr!important;
+  }
+  body.es-page .es-list-row>span:last-child{display:none!important}
+
+  body.products-landing-page .hero-grid{
+    grid-template-columns:1fr!important;
+    padding:112px 0 38px!important;
+  }
+  body.products-landing-page .hero-side{display:none!important}
+
+  body.products-landing-page .product-row{
+    grid-template-columns:28px 1fr 20px!important;
+    padding:20px 4px!important;
+  }
+
+  body.products-landing-page .market-grid{
+    grid-template-columns:1fr!important;
+  }
+  body.products-landing-page .market-grid article{
+    border-right:0!important;
+    border-bottom:1px solid rgba(255,255,255,.18)!important;
+  }
+
+  body.seafood-page .spec-row{
+    grid-template-columns:34px 1fr!important;
+  }
+  body.seafood-page .spec-row>span:last-child{
+    grid-column:2!important;
+  }
+
+  body.seasonal-editorial .season-category{
+    min-height:230px!important;
+  }
+
+  body.markets-current .current-stage{
+    padding-top:94px!important;
+  }
+}
