@@ -267,3 +267,58 @@ body.home-page.home-experience{
   .home-joby-selected-markets .market-grid article,
   .home-joby-selected-contact .contact-disc{transition:none!important}
 }
+
+
+/* ARABIC JOBY HOME OVERRIDES — same layout, native typography and RTL */
+html[lang="ar"] .home-joby-selected-hero{
+  direction:rtl;
+}
+html[lang="ar"] .home-joby-selected-hero::before{
+  background:
+    linear-gradient(180deg,rgba(5,14,24,.10) 0%,rgba(5,14,24,.06) 35%,rgba(5,14,24,.78) 100%),
+    linear-gradient(270deg,rgba(5,14,24,.62) 0%,rgba(5,14,24,.08) 62%,rgba(5,14,24,.08) 100%)!important;
+}
+html[lang="ar"] .home-joby-selected-hero :is(
+  .approved-kicker,
+  h1,
+  .approved-description,
+  .approved-cta,
+  .approved-geography
+),
+html[lang="ar"] .home-joby-selected-markets :is(
+  .eyebrow,
+  .markets-description,
+  .markets-title h2,
+  .markets-title h2 span,
+  .markets-title p,
+  .market-grid article h3,
+  .market-grid article p,
+  .text-link
+),
+html[lang="ar"] .home-joby-selected-contact :is(
+  .small,
+  h2,
+  h2 em,
+  .contact-disc,
+  .contact-disc span,
+  .invitation-bottom p,
+  .invitation-bottom a
+){
+  font-family:'Noto Naskh Arabic','Noto Sans Arabic',Tahoma,sans-serif!important;
+  letter-spacing:0!important;
+}
+html[lang="ar"] .home-joby-selected-hero h1,
+html[lang="ar"] .home-joby-selected-markets .markets-title h2,
+html[lang="ar"] .home-joby-selected-contact .invitation h2{
+  line-height:1.18!important;
+}
+html[lang="ar"] .home-joby-selected-markets .home-markets-map{
+  direction:ltr!important;
+}
+html[lang="ar"] .home-joby-selected-markets .home-markets-map :is(.map-word,.map-sub){
+  font-family:'Noto Naskh Arabic','Noto Sans Arabic',Tahoma,sans-serif!important;
+  letter-spacing:0!important;
+}
+html[lang="ar"] .home-joby-selected-contact{
+  direction:rtl;
+}
