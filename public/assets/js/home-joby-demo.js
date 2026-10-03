@@ -14,6 +14,35 @@
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
 
+  /* Joby-style floating pill: preserve canonical menu behavior, change only the demo presentation. */
+  const installJobyHeader = () => {
+    const liveHeader = document.querySelector('.site-header');
+    const inner = liveHeader?.querySelector('.header-inner');
+    if (!liveHeader || !inner) return;
+
+    liveHeader.classList.add('joby-pill-header');
+
+    let current = inner.querySelector('.joby-header-current');
+    if (!current) {
+      current = document.createElement('span');
+      current.className = 'joby-header-current';
+      current.textContent = 'EMPERIO TISS';
+      current.setAttribute('aria-hidden', 'true');
+      inner.appendChild(current);
+    }
+
+    const logo = inner.querySelector('.site-logo img');
+    if (logo) {
+      logo.src = '/assets/images/emperio-tiss-emblem.svg';
+      logo.removeAttribute('srcset');
+      logo.alt = 'EMPERIO TISS';
+      logo.width = 230;
+      logo.height = 267;
+    }
+  };
+
+  installJobyHeader();
+
   const fallbackReveal = () => {
     const nodes = document.querySelectorAll(
       '.chapter,.opening,.approach-heading,.origin-image,.steps article,.markets-top,.markets-title,.home-markets-map,.market-grid article,.home-private-copy,.home-private-seal,.invitation-content,.invitation-bottom'
