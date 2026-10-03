@@ -13,7 +13,7 @@
     if (doc.querySelector('link[data-et-terminal-footer]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/footer-terminal.css?v=20261003-3';
+    link.href = '/assets/css/footer-terminal.css?v=20261003-4';
     link.dataset.etTerminalFooter = 'true';
     doc.head.appendChild(link);
   };
