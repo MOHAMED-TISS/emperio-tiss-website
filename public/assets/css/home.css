@@ -3103,3 +3103,315 @@ html[lang="ar"] .home-page.home-experience .et-experience .collection .categorie
     transform:none!important;
   }
 }
+
+
+/* =========================================================
+   APPROACH V3 — FINAL CASCADE FIX + BALANCED COMPOSITION
+   Explicitly overrides legacy .approach rules with higher specificity.
+   ========================================================= */
+.home-page.home-experience .et-experience .approach.approach-v2{
+  padding:clamp(72px,7vw,108px) 5vw clamp(82px,8vw,120px)!important;
+  background:#f2f1eb!important;
+  color:#111214!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading{
+  width:min(1380px,100%)!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr)!important;
+  gap:clamp(44px,6vw,92px)!important;
+  align-items:end!important;
+  padding:0 0 clamp(38px,4vw,56px)!important;
+  border-bottom:1px solid rgba(17,18,20,.17)!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta{
+  max-width:430px!important;
+  align-self:end!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading .small{
+  display:block!important;
+  margin:0 0 18px!important;
+  padding:0!important;
+  color:#69717a!important;
+  font:600 9px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.075em!important;
+  text-transform:uppercase!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta p{
+  max-width:410px!important;
+  margin:0!important;
+  color:#5e666f!important;
+  font:500 14px/1.62 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.01em!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 h2{
+  max-width:8.7ch!important;
+  margin:0!important;
+  color:#111214!important;
+  font:600 clamp(66px,7.3vw,118px)/.88 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.066em!important;
+  text-wrap:balance!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 h2 em{
+  color:#111214!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-style:normal!important;
+  font-weight:400!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-layout{
+  width:min(1380px,100%)!important;
+  margin:clamp(46px,5vw,70px) auto 0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,.95fr) minmax(430px,1.05fr)!important;
+  gap:clamp(46px,6vw,88px)!important;
+  align-items:start!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image{
+  position:relative!important;
+  width:100%!important;
+  margin:0!important;
+  aspect-ratio:4/3!important;
+  overflow:hidden!important;
+  border-radius:20px!important;
+  background:#d8d8d2!important;
+  box-shadow:none!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:
+    linear-gradient(180deg,rgba(7,18,30,.02) 42%,rgba(7,18,30,.64) 100%)!important;
+  pointer-events:none!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  transform:scale(1.01)!important;
+  transition:transform 1s cubic-bezier(.16,1,.3,1)!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image:hover img{
+  transform:scale(1.035)!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image figcaption{
+  position:absolute!important;
+  left:22px!important;
+  right:22px!important;
+  bottom:20px!important;
+  z-index:2!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:space-between!important;
+  gap:20px!important;
+  color:#fff!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image figcaption span{
+  max-width:180px!important;
+  color:rgba(255,255,255,.68)!important;
+  font:600 8px/1.35 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .origin-image figcaption strong{
+  max-width:260px!important;
+  color:#fff!important;
+  text-align:right!important;
+  font:500 15px/1.25 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.02em!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .steps{
+  width:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .steps article{
+  position:relative!important;
+  margin:0!important;
+  padding:22px 18px 24px 0!important;
+  display:grid!important;
+  grid-template-columns:42px 1fr!important;
+  gap:16px!important;
+  border-top:1px solid rgba(17,18,20,.17)!important;
+  background:transparent!important;
+  transition:
+    background .28s ease,
+    padding-left .35s cubic-bezier(.16,1,.3,1)!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .steps article:first-child{
+  border-top:0!important;
+  padding-top:0!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .steps article:hover{
+  padding-left:14px!important;
+  background:rgba(51,127,229,.045)!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .step-number{
+  padding-top:5px!important;
+  color:#337fe5!important;
+  font:600 9px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.05em!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .step-kicker{
+  display:block!important;
+  margin:0 0 8px!important;
+  color:#757d85!important;
+  font:600 8px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.075em!important;
+  text-transform:uppercase!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .steps h3{
+  margin:0 0 8px!important;
+  color:#111214!important;
+  font:600 clamp(30px,2.7vw,44px)/.98 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.048em!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .steps p{
+  max-width:560px!important;
+  margin:0!important;
+  color:#5f6770!important;
+  font:500 12.5px/1.58 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.008em!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-specs{
+  margin-top:4px!important;
+  padding:18px 0 20px!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+  border-top:1px solid rgba(17,18,20,.17)!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-specs span{
+  min-height:30px!important;
+  padding:0 11px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  border:1px solid rgba(17,18,20,.16)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.34)!important;
+  color:#535b64!important;
+  font:600 9px/1 "DM Sans",Arial,sans-serif!important;
+}
+
+.home-page.home-experience .et-experience .approach.approach-v2 .approach-link{
+  width:max-content!important;
+  min-height:50px!important;
+  margin-top:2px!important;
+}
+
+@media(max-width:900px){
+  .home-page.home-experience .et-experience .approach.approach-v2 .approach-heading{
+    grid-template-columns:1fr!important;
+    gap:26px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 h2{
+    max-width:9.2ch!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .approach-layout{
+    grid-template-columns:1fr!important;
+    gap:36px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .origin-image{
+    aspect-ratio:16/10!important;
+  }
+}
+
+@media(max-width:700px){
+  .home-page.home-experience .et-experience .approach.approach-v2{
+    padding:62px 16px 72px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .approach-heading{
+    padding-bottom:28px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta p{
+    font-size:13px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 h2{
+    font-size:clamp(52px,14.8vw,74px)!important;
+    line-height:.9!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .approach-layout{
+    margin-top:34px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .origin-image{
+    aspect-ratio:4/3!important;
+    border-radius:16px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .origin-image figcaption{
+    left:16px!important;
+    right:16px!important;
+    bottom:14px!important;
+    display:block!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .origin-image figcaption strong{
+    display:block!important;
+    max-width:230px!important;
+    margin-top:7px!important;
+    text-align:left!important;
+    font-size:13px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .steps article{
+    grid-template-columns:30px 1fr!important;
+    gap:10px!important;
+    padding:19px 0 22px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .steps article:hover{
+    padding-left:0!important;
+    background:transparent!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .steps h3{
+    font-size:32px!important;
+  }
+
+  .home-page.home-experience .et-experience .approach.approach-v2 .steps p{
+    font-size:12px!important;
+  }
+}
+
+html[lang="ar"] .home-page.home-experience .et-experience .approach.approach-v2 :is(
+  .approach-heading .small,.approach-heading-meta p,h2,h2 em,
+  .origin-image figcaption span,.origin-image figcaption strong,
+  .step-number,.step-kicker,.steps h3,.steps p,.approach-specs span,.approach-link
+){
+  font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif!important;
+  letter-spacing:0!important;
+}
