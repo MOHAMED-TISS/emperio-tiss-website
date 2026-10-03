@@ -203,7 +203,7 @@
     }
   }
   loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
-  loadCss('/assets/css/footer-terminal.css?v=20261003-3', 'etTerminalFooterCss');
+  loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
   loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
   loadScript('/assets/js/smooth-scroll.js?v=20261003-1', 'etSmoothScroll');
 })();
