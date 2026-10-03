@@ -9,7 +9,6 @@
     link.dataset[key] = 'true';
     doc.head.appendChild(link);
   };
-  loadCss('/assets/css/universal-footer.css?v=20260823-footer-es-1', 'etUniversalFooter');
   const style = document.createElement('style');
   style.textContent = `
     :is(.button,.es-btn,.intl-btn,.ar-btn,.about-btn,.cta-button,.contact-button,.inquiry-button){border-radius:999px!important;min-height:50px;padding-inline:22px;display:inline-flex;align-items:center;justify-content:center;gap:14px;font-family:var(--et-sans,"DM Sans",sans-serif)!important;font-size:10px!important;font-weight:700!important;letter-spacing:.1em!important;line-height:1!important;text-transform:uppercase;transition:transform .28s cubic-bezier(.165,.84,.44,1),background-color .28s ease,border-color .28s ease,box-shadow .28s ease}
@@ -36,56 +35,10 @@
   if (!['/contact/', '/contact'].includes(location.pathname)) removeLegacyArrows();
 
   const ensureUniversalFooter = () => {
-    const lang = (doc.documentElement.lang || '').slice(0, 2).toLowerCase();
-    if (!['es', 'en', 'fr', 'it', 'ar'].includes(lang)) return;
-    doc.querySelectorAll('footer:not(.et-universal-footer)').forEach(footer => footer.remove());
-    if (doc.querySelector('.et-universal-footer')) return;
-
-    const copy = lang === 'en' ? {
-      tagline: 'Your trusted partner in international markets.', nav: 'Navigation', home: 'Home', company: 'Company', products: 'Products', markets: 'Markets', news: 'News', contact: 'Contact',
-      seafood: 'Seafood', fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods', fruits: 'Fruit', vegetables: 'Vegetables', seasonal: 'Seasonal',
-      inquiry: 'Business enquiry', legal: 'Legal notice', privacy: 'Privacy policy', cookies: 'Cookie policy', reserved: 'All rights reserved.',
-      disclaimer: 'The information published is provided for information purposes and does not constitute a contractual offer.', region: 'MADRID · SPAIN · EUROPE · AFRICA · MEDITERRANEAN'
-    } : lang === 'fr' ? {
-      tagline: 'Votre partenaire de confiance sur les marchés internationaux.',
-      nav: 'Navigation', home: 'Accueil', company: 'Entreprise', products: 'Produits', markets: 'Marchés', news: 'Actualités', contact: 'Contact',
-      seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Fruits de mer & Crustacés', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Produits de saison',
-      inquiry: 'Demande B2B', legal: 'Mentions légales', privacy: 'Politique de confidentialité', cookies: 'Politique relative aux cookies', reserved: 'Tous droits réservés.',
-      disclaimer: 'Les informations publiées sont fournies à titre informatif et ne constituent pas une offre contractuelle.', region: 'MADRID · ESPAGNE · EUROPE · AFRIQUE · MÉDITERRANÉE'
-    } : lang === 'it' ? {
-      tagline: 'Il tuo partner di fiducia nei mercati internazionali.',
-      nav: 'Navigazione', home: 'Home', company: 'Azienda', products: 'Prodotti', markets: 'Mercati', news: 'Notizie', contact: 'Contatti',
-      seafood: 'Prodotti del mare', fish: 'Pesce', shellfish: 'Molluschi & crostacei', cephalopods: 'Cefalopodi', fruits: 'Frutta', vegetables: 'Ortaggi', seasonal: 'Stagionale',
-      inquiry: 'Richiesta B2B', legal: 'Note legali', privacy: 'Privacy', cookies: 'Cookie policy', reserved: 'Tutti i diritti riservati.',
-      disclaimer: 'Le informazioni pubblicate sono fornite a titolo informativo e non costituiscono un’offerta contrattuale.', region: 'MADRID · SPAGNA · EUROPA · AFRICA · MEDITERRANEO'
-    } : lang === 'ar' ? {
-      tagline: 'شريككم الموثوق في الأسواق الدولية.',
-      nav: 'التنقل', home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا',
-      seafood: 'المأكولات البحرية', fish: 'الأسماك', shellfish: 'الرخويات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'المنتجات الموسمية',
-      inquiry: 'استفسار تجاري', legal: 'الإشعار القانوني', privacy: 'سياسة الخصوصية', cookies: 'سياسة ملفات تعريف الارتباط', reserved: 'جميع الحقوق محفوظة.',
-      disclaimer: 'المعلومات المنشورة مقدمة لأغراض إعلامية ولا تشكل عرضًا تعاقديًا.', region: 'مدريد · إسبانيا · أوروبا · أفريقيا · البحر المتوسط'
-    } : {
-      tagline: 'Tu socio de confianza en los mercados internacionales.',
-      nav: 'Navegación', home: 'Inicio', company: 'Empresa', products: 'Productos', markets: 'Mercados', news: 'Noticias', contact: 'Contacto',
-      seafood: 'Productos del mar', fish: 'Pescados', shellfish: 'Mariscos & Crustáceos', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada',
-      inquiry: 'Consulta empresarial', legal: 'Aviso legal', privacy: 'Política de privacidad', cookies: 'Política de cookies', reserved: 'Todos los derechos reservados.',
-      disclaimer: 'La información publicada tiene carácter informativo y no constituye una oferta contractual.', region: 'MADRID · ESPAÑA · EUROPA · ÁFRICA · MEDITERRÁNEO'
-    };
-
-    const base = lang === 'en' ? '/en/' : lang === 'fr' ? '/fr/' : lang === 'it' ? '/it/' : lang === 'ar' ? '/ar/' : '/';
-    const footer = doc.createElement('footer');
-    footer.className = 'et-universal-footer';
-    footer.innerHTML = `<div class="et-footer-container"><div class="et-footer-main"><div class="et-footer-brand"><img class="et-footer-logo" src="/logo.png" alt="EMPERIO TISS"><p>${copy.tagline}</p></div><div class="et-footer-column"><strong>${copy.nav}</strong><a href="${base}">${copy.home}</a><a href="${base}about/">${copy.company}</a><a href="${base}products/">${copy.products}</a><a href="${base}markets/">${copy.markets}</a><a href="${base}news/">${copy.news}</a><a href="${base}contact/">${copy.contact}</a></div><div class="et-footer-column"><strong>${copy.products}</strong><a href="${base}products/seafood/">${copy.seafood}</a><a href="${base}products/seafood/fish/">${copy.fish}</a><a href="${base}products/seafood/shellfish/">${copy.shellfish}</a><a href="${base}products/seafood/cephalopods/">${copy.cephalopods}</a><a href="${base}products/fruits/">${copy.fruits}</a><a href="${base}products/vegetables/">${copy.vegetables}</a><a href="${base}products/seasonal/">${copy.seasonal}</a></div><div class="et-footer-column"><strong>${copy.company}</strong><a href="${base}contact/">${copy.inquiry}</a><a href="/legal/aviso-legal.html">${copy.legal}</a><a href="/legal/privacidad.html">${copy.privacy}</a><a href="/legal/cookies.html">${copy.cookies}</a></div></div><div class="et-footer-legal"><p>© 2026 <span class="et-footer-company">EMPERIO TISS S.L.</span> ${copy.reserved}</p><p>${copy.disclaimer}</p></div><div class="et-footer-bottom"><span>EMPERIO TISS S.L.</span><span>${copy.region}</span></div></div>`;
-    // Use the approved vector identity on the shared footer.
-    if (lang === 'es') {
-      const logo = footer.querySelector('.et-footer-logo');
-      logo.src = '/assets/images/emperio-tiss-logo.svg?v=20261001-signature';
-      logo.width = 600;
-      logo.height = 430;
-      logo.loading = 'lazy';
-      logo.decoding = 'async';
-    }
-    doc.body.appendChild(footer);
+    // Footer ownership moved to /assets/js/footer-terminal.js.
+    // Do not create or preserve the legacy .et-universal-footer here.
+    const legacy = doc.querySelectorAll('footer.et-universal-footer');
+    legacy.forEach((footer) => footer.remove());
   };
   ensureUniversalFooter();
 })();
