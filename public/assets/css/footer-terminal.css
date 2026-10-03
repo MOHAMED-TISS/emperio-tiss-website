@@ -307,3 +307,9 @@ html[dir="rtl"] .et-terminal-footer__region{text-align:left}
     font-size:clamp(78px,22vw,120px);
   }
 }
+
+
+/* hide legacy static footers before renderer mounts */
+body:not(.private-page):not(.private-admin-page) > footer:not(.et-terminal-footer){
+  display:none!important;
+}
