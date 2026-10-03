@@ -62,6 +62,9 @@
 
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
   loadCss('/assets/css/brand-interiors.css?v=20260928-catalogue-layout-3', 'etBrandInteriors');
+  if (!document.body.classList.contains('home-experience') && !document.body.classList.contains('private-page') && !document.body.classList.contains('private-admin-page')) {
+    loadCss('/assets/css/site-2026.css?v=20261003-1', 'etSite2026');
+  }
 
   const socialCopy = {
     es: { whatsapp: 'Contactar por WhatsApp', linkedin: 'LinkedIn' },
