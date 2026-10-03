@@ -15,6 +15,15 @@
     .trim()
     .slice(0,max);
 
+  const normalizeProductCategory = (value) => {
+    const v = String(value || '').toLowerCase();
+    if (/sea|fish|pesc|marisc|cefal|seafood/.test(v)) return 'seafood';
+    if (/frut|fruit/.test(v)) return 'fruits';
+    if (/hort|veget/.test(v)) return 'vegetables';
+    if (/tempor|season/.test(v)) return 'seasonal';
+    return value ? 'other' : '';
+  };
+
   const safeParams = (params={}) => {
     const out = {
       language: lang,
@@ -91,7 +100,7 @@
   window.addEventListener('et:contact-success', (event) => {
     const d = event.detail || {};
     track('contact_form_submit', {
-      product_category: d.product_category || undefined,
+      product_category: normalizeProductCategory(d.product_category) || undefined,
       form_location: d.form_location || 'contact'
     });
   });
