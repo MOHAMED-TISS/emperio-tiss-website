@@ -1,48 +1,64 @@
 <!doctype html>
-<html                                                                                         lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>EMPERIO SIGNATURE | EMPERIO TISS</title>
-    <link rel="icon" href="/assets/images/logo.png">
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/pages.css">
-    <link rel="stylesheet" href="/assets/css/news-current.css?v=20260929-signature-ops-1">
-    <link rel="stylesheet" href="/assets/css/header-final.css?v=20260922-shared-shell">
-  </head>
-  <body class="news-current private-page">
-    <header class="site-header">
-      <div class="header-inner"><a class="site-logo" href="/en/"><img src="/assets/images/logo.png" alt="EMPERIO TISS" width="94" height="62"></a><a class="et-language-switch" href="/en/news/">← News</a></div>
-    </header>
-    <main>
-      <section class="news-intelligence private-hero">
-        <div class="news-wrap">
-          <p class="news-eyebrow">EMPERIO SIGNATURE</p>
-          <h1 class="news-hero h1">Selected opportunities.<br><em>Direct access.</em></h1>
-          <p class="news-lead">Curated commercial opportunities and selected availability for approved EMPERIO SIGNATURE partners.</p>
-          <p id="private-status" class="news-form-status"></p>
-        </div>
-      </section>
-      <section class="news-stream">
-        <div class="news-wrap">
-          <div class="news-section-head">
-            <div>
-              <p class="news-eyebrow">SIGNATURE OPPORTUNITIES</p>
-              <h2>Current <em>opportunities.</em></h2>
-            </div>
-            <p>Availability is time-sensitive. Use the contact route attached to each opportunity to discuss a requirement.</p>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>EMPERIO SIGNATURE | Acceso profesional</title>
+  <meta name="description" content="Acceso privado EMPERIO SIGNATURE para empresas aprobadas: oportunidades seleccionadas y disponibilidad comercial.">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/global.css?v=20260926-brand-foundation-2">
+  <link rel="stylesheet" href="/assets/css/header-final.css?v=20261001-signature">
+  <link rel="stylesheet" href="/assets/css/private-signature.css?v=20261003-1">
+</head>
+<body class="private-page et-brand-shell">
+  <main>
+    <section class="private-signature-hero" aria-labelledby="private-title">
+      <div class="private-signature-hero__inner">
+        <p class="private-signature-kicker">EMPERIO SIGNATURE · ACCESO PROFESIONAL</p>
+        <h1 id="private-title">Oportunidades seleccionadas.<br><em>Acceso directo.</em></h1>
+
+        <div class="private-signature-hero__bottom">
+          <p class="private-signature-lead">Un espacio reservado para empresas aprobadas, con disponibilidad comercial y referencias seleccionadas según mercado y perfil profesional.</p>
+
+          <div class="private-signature-access" aria-live="polite">
+            <span class="private-signature-access__label">ESTADO DE ACCESO</span>
+            <p id="private-status">Comprobando acceso Signature…</p>
           </div>
-          <div id="private-offers" class="news-card-grid"></div>
         </div>
-      </section>
-    </main>
-    <footer class="es-footer">
-      <div class="es-container">
-        <div class="es-footer-bottom"><span>© 2026 EMPERIO TISS S.L.</span><a href="/en/contact/">Business enquiry ↗</a></div>
       </div>
-    </footer>
-    <script src="/assets/js/private.js?v=20260929-signature-ops-1" defer></script>
-    <script src="/assets/js/global.js?v=20260922-shared-shell" defer></script>
-    <script src="/assets/js/header-universal.js?v=20261003-commercial-header-6" defer></script>
+    </section>
+
+    <section class="private-opportunities" aria-labelledby="private-opportunities-title">
+      <div class="private-opportunities__inner">
+        <div class="private-opportunities__head">
+          <div>
+            <p class="private-opportunities__eyebrow">SIGNATURE / DISPONIBILIDAD ACTUAL</p>
+            <h2 id="private-opportunities-title">Oportunidades<br><em>activas.</em></h2>
+          </div>
+          <p class="private-opportunities__intro">La disponibilidad puede cambiar. Cada oportunidad muestra origen, destino y ventana comercial para facilitar una primera valoración antes de contactar.</p>
+        </div>
+
+        <div id="private-offers" class="private-offers-grid" aria-live="polite" aria-busy="true">
+          <div class="private-loading-card" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="private-signature-footer">
+    <div class="private-signature-footer__inner">
+      <span>© 2026 EMPERIO TISS S.L.</span>
+      <img src="/assets/images/emperio-tiss-emblem.svg?v=20261003-private" alt="EMPERIO TISS" width="230" height="267">
+      <span>PRIME ORIGINS. GLOBAL REACH.</span>
+    </div>
+    <a class="et-linkedin" href="https://www.linkedin.com/company/emperiotiss/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" hidden>LinkedIn</a>
+  </footer>
+
+  <script src="/assets/js/private.js?v=20261003-signature-v2" defer></script>
+  <script src="/assets/js/global.js?v=20261003-private-signature" defer></script>
 </body>
 </html>
