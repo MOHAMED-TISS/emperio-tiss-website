@@ -53,7 +53,8 @@
       legal:'Aviso legal',
       privacy:'Privacidad',
       cookies:'Cookies',
-      copyright:'© 2026 EMPERIO TISS S.L.'
+      copyright:'© 2026 EMPERIO TISS S.L.',
+      region:'Madrid · Europa · África · Mediterráneo'
     },
     en: {
       kicker:'EMPERIO TISS · PROFESSIONAL SUPPLY',
@@ -81,7 +82,8 @@
       legal:'Legal notice',
       privacy:'Privacy',
       cookies:'Cookies',
-      copyright:'© 2026 EMPERIO TISS S.L.'
+      copyright:'© 2026 EMPERIO TISS S.L.',
+      region:'Madrid · Europe · Africa · Mediterranean'
     },
     fr: {
       kicker:'EMPERIO TISS · APPROVISIONNEMENT PROFESSIONNEL',
@@ -109,7 +111,8 @@
       legal:'Mentions légales',
       privacy:'Confidentialité',
       cookies:'Cookies',
-      copyright:'© 2026 EMPERIO TISS S.L.'
+      copyright:'© 2026 EMPERIO TISS S.L.',
+      region:'Madrid · Europe · Afrique · Méditerranée'
     },
     it: {
       kicker:'EMPERIO TISS · FORNITURA PROFESSIONALE',
@@ -137,7 +140,8 @@
       legal:'Note legali',
       privacy:'Privacy',
       cookies:'Cookie',
-      copyright:'© 2026 EMPERIO TISS S.L.'
+      copyright:'© 2026 EMPERIO TISS S.L.',
+      region:'Madrid · Europa · Africa · Mediterraneo'
     },
     ar: {
       kicker:'EMPERIO TISS · توريد مهني',
@@ -165,7 +169,8 @@
       legal:'الإشعار القانوني',
       privacy:'الخصوصية',
       cookies:'ملفات الارتباط',
-      copyright:'© 2026 EMPERIO TISS S.L.'
+      copyright:'© 2026 EMPERIO TISS S.L.',
+      region:'مدريد · أوروبا · أفريقيا · البحر المتوسط'
     }
   }[lang];
 
@@ -202,7 +207,7 @@
             <img src="/assets/images/emperio-tiss-emblem.svg?v=20261003-header-current" alt="" width="230" height="267" loading="lazy">
             <strong>EMPERIO TISS</strong>
           </div>
-          <p>PRIME ORIGINS. GLOBAL REACH.<br>Madrid · Europa · África · Mediterráneo</p>
+          <p>PRIME ORIGINS. GLOBAL REACH.<br>${copy.region}</p>
         </div>
 
         <nav class="et-terminal-footer__col" aria-label="${copy.products}">
