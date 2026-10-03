@@ -336,19 +336,6 @@ html body .nav-products-links{
   gap:8px!important;
 }
 
-html body .nav-products-links .nav-product-all{
-  display:inline-flex!important;
-  align-items:center!important;
-  margin:0 0 12px!important;
-  padding:0 0 5px!important;
-  color:rgba(255,255,255,.56)!important;
-  font:600 11px/1 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:.075em!important;
-  text-transform:uppercase!important;
-  text-decoration:none!important;
-  border-bottom:1px solid rgba(255,255,255,.22)!important;
-}
-
 html body .nav-products-links .nav-product-parent{
   position:relative!important;
   display:inline-flex!important;
@@ -536,11 +523,6 @@ html[lang="ar"] body .site-header>.header-inner{
     width:calc(100% - 32px)!important;
     margin:15px 0 22px 32px!important;
     gap:7px!important;
-  }
-
-  html body .nav-products-links .nav-product-all{
-    margin-bottom:10px!important;
-    font-size:10px!important;
   }
 
   html body .nav-products-links .nav-product-parent{
