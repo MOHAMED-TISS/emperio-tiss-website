@@ -93,10 +93,17 @@
     const header = doc.createElement('header');
     header.className = 'site-header';
     header.id = 'luxuryHeader';
-    const fishHomeAria = lang === 'ar' ? 'EMPERIO TISS — الرئيسية' : 'EMPERIO TISS - Inicio';
+    const fishHomeAria = {
+      es: 'EMPERIO TISS - Inicio',
+      en: 'EMPERIO TISS - Home',
+      fr: 'EMPERIO TISS - Accueil',
+      it: 'EMPERIO TISS - Home',
+      ar: 'EMPERIO TISS — الرئيسية'
+    }[lang] || 'EMPERIO TISS - Inicio';
+    const fishHomeHref = lang === 'es' ? '/' : `/${lang}/`;
     const fishMenuAria = lang === 'ar' ? 'فتح القائمة' : 'Abrir menú';
     const fishLanguageAria = lang === 'ar' ? 'اللغة' : 'Idiomas';
-    header.innerHTML = `<div class="header-inner"><a href="/" class="site-logo" aria-label="${fishHomeAria}"><img src="/logo.png" alt="EMPERIO TISS" width="94" height="62"></a><a href="${whatsappHref}" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${socialCopy.whatsapp}">${whatsappIcon}<span>${socialCopy.whatsapp}</span></a><nav class="et-language-switch" aria-label="${fishLanguageAria}"><a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a></nav><button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="${fishMenuAria}" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button></div>`;
+    header.innerHTML = `<div class="header-inner"><a href="${fishHomeHref}" class="site-logo" aria-label="${fishHomeAria}"><img class="home-metal-logo" src="/assets/images/emperio-tiss-emblem.svg?v=20261003-header-current" alt="EMPERIO TISS S.L." width="230" height="267"></a><a href="${whatsappHref}" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${socialCopy.whatsapp}">${whatsappIcon}<span>${socialCopy.whatsapp}</span></a><nav class="et-language-switch" aria-label="${fishLanguageAria}"><a href="/" class="current">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/fr/">FR</a><span>·</span><a href="/ar/">AR</a><span>·</span><a href="/it/">IT</a></nav><button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="${fishMenuAria}" aria-expanded="false" aria-controls="navOverlay"><span></span><span></span><span></span></button></div>`;
     if (oldHeader) oldHeader.replaceWith(header); else doc.body.insertAdjacentElement('afterbegin', header);
     const overlay = existingOverlay || doc.querySelector('#navOverlay');
     if (overlay && overlay.parentElement !== doc.body) doc.body.appendChild(overlay);
@@ -185,7 +192,7 @@
   doc.addEventListener('selectstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  loadScript('/assets/js/header-canonical.js?v=20260929-overlay-preserve-1', 'etCanonicalHeaderScript');
+  loadScript('/assets/js/header-canonical.js?v=20261003-emblem-route-1', 'etCanonicalHeaderScript');
   loadScript('/assets/js/header-universal.js?v=20261003-commercial-header-6', 'etUniversalHomeHeader');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20261003-universal-nav-1', 'etGlobalCore');
