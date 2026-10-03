@@ -1504,3 +1504,157 @@ body.es-legal-page .legal-wrap li{
     padding-top:94px!important;
   }
 }
+
+
+/* =========================================================
+   SEAFOOD SWITCHER V4 — single source of truth
+   Kills legacy navy/glass switcher rules from fish/seafood CSS.
+   ========================================================= */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav{
+  position:relative!important;
+  z-index:3!important;
+  width:min(1360px,90vw)!important;
+  max-width:none!important;
+  min-height:0!important;
+  margin:0 auto 46px!important;
+  padding:18px 0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:28px!important;
+  overflow:visible!important;
+  border:0!important;
+  border-bottom:1px solid var(--et26-line)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  color:var(--et26-ink)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav::before,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav::after{
+  content:none!important;
+  display:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__label{
+  flex:0 0 auto!important;
+  margin:0!important;
+  color:#6c737b!important;
+  font:600 9px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.075em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links{
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:4px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:2px!important;
+  overflow:visible!important;
+  border:1px solid rgba(16,19,23,.14)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.72)!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a{
+  position:relative!important;
+  width:auto!important;
+  height:40px!important;
+  min-height:40px!important;
+  margin:0!important;
+  padding:0 15px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#6a7179!important;
+  font:600 10px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.015em!important;
+  text-transform:none!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .35s var(--et26-ease)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a span{
+  color:#8b9198!important;
+  font:600 8px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.03em!important;
+  opacity:1!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a::before,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a::after{
+  content:none!important;
+  display:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:hover,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:focus-visible{
+  background:rgba(51,127,229,.08)!important;
+  color:var(--et26-ink)!important;
+  transform:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a.is-active,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a[aria-current="page"]{
+  background:var(--et26-blue)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a.is-active span,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a[aria-current="page"] span{
+  color:rgba(255,255,255,.72)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:focus-visible{
+  outline:2px solid rgba(51,127,229,.55)!important;
+  outline-offset:2px!important;
+}
+
+@media(max-width:760px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav{
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    margin:0 16px 34px!important;
+    padding:14px 0!important;
+    gap:0!important;
+    display:block!important;
+    overflow:visible!important;
+  }
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__label{
+    display:none!important;
+  }
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links{
+    width:100%!important;
+    height:auto!important;
+    padding:4px!important;
+    justify-content:flex-start!important;
+    gap:2px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links::-webkit-scrollbar{
+    display:none!important;
+  }
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a{
+    flex:0 0 auto!important;
+    height:38px!important;
+    min-height:38px!important;
+    padding:0 13px!important;
+    font-size:10px!important;
+  }
+}
