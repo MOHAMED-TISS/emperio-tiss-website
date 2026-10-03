@@ -62,7 +62,7 @@
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
   loadCss('/assets/css/brand-interiors.css?v=20260928-catalogue-layout-3', 'etBrandInteriors');
   if (!document.body.classList.contains('home-experience') && !document.body.classList.contains('private-page') && !document.body.classList.contains('private-admin-page')) {
-    loadCss('/assets/css/site-2026.css?v=20261003-2', 'etSite2026');
+    loadCss('/assets/css/site-2026.css?v=20261003-3', 'etSite2026');
   }
 
   const socialCopy = {
@@ -159,7 +159,7 @@
 
   const ensureFooterLinkedIn = () => {
     const footer = doc.querySelector('footer');
-    if (!footer || footer.querySelector('.et-linkedin')) return;
+    if (!footer || footer.classList.contains('et-terminal-footer') || footer.querySelector('.et-linkedin')) return;
     const link = doc.createElement('a');
     link.className = 'et-linkedin';
     link.href = linkedinHref;
