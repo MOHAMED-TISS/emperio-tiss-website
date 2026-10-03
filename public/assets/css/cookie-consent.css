@@ -75,13 +75,15 @@
   border-color:#fff;
   outline:0;
 }
-.et-cookie-consent [data-cookie-accept]{
+.et-cookie-consent [data-cookie-accept],
+.et-cookie-consent [data-cookie-reject]{
   background:#fff;
   border-color:#fff;
   color:#0b1d31;
 }
-.et-cookie-consent [data-cookie-reject]{
+.et-cookie-consent [data-cookie-configure]{
   background:rgba(255,255,255,.06);
+  color:#fff;
 }
 .et-cookie-consent__settings{
   grid-column:1/-1;
