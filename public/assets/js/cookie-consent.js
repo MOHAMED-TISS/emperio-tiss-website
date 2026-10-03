@@ -104,15 +104,13 @@
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_MEASUREMENT_ID);
     script.dataset.etGa4 = 'true';
-    script.onload = () => {
-      window.gtag('js', new Date());
-      window.gtag('config', GA_MEASUREMENT_ID, {
-        anonymize_ip: true,
-        allow_google_signals: false,
-        allow_ad_personalization_signals: false
-      });
-    };
     doc.head.appendChild(script);
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
   };
 
   const applyGoogleConsent = (prefs) => {
@@ -143,8 +141,8 @@
   const write = (value) => {
     try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch (_) {}
     window.ETConsent = value;
-    window.dispatchEvent(new CustomEvent('et:consentchange',{detail:value}));
     applyGoogleConsent(value);
+    window.dispatchEvent(new CustomEvent('et:consentchange',{detail:value}));
     activateOptional(value);
   };
 
