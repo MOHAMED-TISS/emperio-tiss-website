@@ -183,7 +183,7 @@
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
   loadScript('/assets/js/header-canonical.js?v=20260929-overlay-preserve-1', 'etCanonicalHeaderScript');
-  loadScript('/assets/js/header-universal.js?v=20261003-commercial-header-2', 'etUniversalHomeHeader');
+  loadScript('/assets/js/header-universal.js?v=20261003-commercial-header-3', 'etUniversalHomeHeader');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20261003-universal-nav-1', 'etGlobalCore');
   loadScript('/assets/js/commercial-flow.js?v=20260928-es-set-1', 'etCommercialFlow');
