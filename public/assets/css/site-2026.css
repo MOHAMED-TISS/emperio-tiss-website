@@ -1,0 +1,817 @@
+/* EMPERIO TISS — SITEWIDE 2026 VISUAL SYSTEM
+   Unifies every public interior page with the current Home / Signature direction.
+   Loaded after legacy/page-specific CSS through global.js.
+*/
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page){
+  --et26-blue:#3f7fe5;
+  --et26-blue-deep:#2f68cc;
+  --et26-paper:#f3f2ec;
+  --et26-paper-2:#e9e8e1;
+  --et26-ink:#111214;
+  --et26-navy:#07182b;
+  --et26-muted:#666d75;
+  --et26-line:rgba(17,18,20,.16);
+  --et26-white:#fff;
+  --et26-ease:cubic-bezier(.16,1,.3,1);
+  background:var(--et26-paper)!important;
+  color:var(--et26-ink)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  overflow-x:hidden!important;
+}
+
+/* GLOBAL TYPE */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2,h3,h4,h5,h6){
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-style:normal!important;
+  font-weight:600!important;
+  letter-spacing:-.045em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2,h3,h4,h5,h6) em{
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-style:normal!important;
+  font-weight:400!important;
+  color:inherit!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(p,li,label,input,textarea,select,button,a){
+  font-family:"DM Sans",Arial,sans-serif;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-kicker,.es-label,.eyebrow,.current-eyebrow,.news-eyebrow,.hero-kicker,
+  .season-kicker,.legal-kicker,[class*="__eyebrow"]
+){
+  color:var(--et26-muted)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:10px!important;
+  font-weight:600!important;
+  line-height:1.15!important;
+  letter-spacing:.065em!important;
+  text-transform:uppercase!important;
+}
+
+/* CONTAINERS */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-container,.container,.page-hero-inner,.catalog-inner,.seafood-catalog__inner,
+  .fish-catalog__inner,.compact-catalog__inner,.current-wrap,.news-wrap,.season-wrap,
+  .legal-wrap,.p-container
+){
+  width:min(1360px,90vw)!important;
+  margin-inline:auto!important;
+}
+
+/* HERO SYSTEM */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
+){
+  position:relative!important;
+  min-height:86svh!important;
+  min-height:86dvh!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  padding:150px 0 64px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  color:#fff!important;
+  background-color:var(--et26-navy)!important;
+}
+body.about-page.es-page main>.es-hero{
+  min-height:86svh!important;
+  height:auto!important;
+  padding:150px 0 64px!important;
+  background:
+    linear-gradient(180deg,rgba(6,18,32,.08),rgba(6,18,32,.72)),
+    linear-gradient(90deg,rgba(6,18,32,.78),rgba(6,18,32,.12) 72%),
+    url('/assets/images/home-origins.webp') center/cover no-repeat!important;
+}
+body.es-page:not(.about-page):not(.seafood-page) .es-hero{
+  background:
+    linear-gradient(180deg,rgba(6,18,32,.08),rgba(6,18,32,.76)),
+    linear-gradient(90deg,rgba(6,18,32,.80),rgba(6,18,32,.14) 75%),
+    url('/assets/images/home-mediterranean.webp') center/cover no-repeat!important;
+}
+body.seafood-page .es-hero,
+body.seafood-subpage .page-hero{
+  background:
+    linear-gradient(180deg,rgba(5,17,31,.10),rgba(5,17,31,.78)),
+    linear-gradient(90deg,rgba(5,17,31,.82),rgba(5,17,31,.12) 74%),
+    url('/assets/images/home-seafood.webp') center/cover no-repeat!important;
+}
+body.produce-vegetables-page .page-hero{
+  background:
+    linear-gradient(180deg,rgba(10,28,24,.06),rgba(5,18,29,.70)),
+    linear-gradient(90deg,rgba(5,18,29,.72),rgba(5,18,29,.10) 72%),
+    url('/assets/images/home-produce.webp') center/cover no-repeat!important;
+}
+body.produce-fruits-page .page-hero{
+  background:#17251c!important;
+}
+body.produce-fruits-page .fruits-hero-photo{
+  position:absolute!important;
+  inset:0!important;
+  z-index:-2!important;
+}
+body.produce-fruits-page .fruits-hero-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  filter:saturate(.88) brightness(.75)!important;
+}
+body.produce-fruits-page .page-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(90deg,rgba(5,18,29,.77),rgba(5,18,29,.14) 75%),linear-gradient(180deg,transparent 30%,rgba(5,18,29,.65));
+}
+body.products-landing-page .hero{
+  background:var(--et26-blue)!important;
+}
+body.seasonal-editorial .season-opening{
+  min-height:90svh!important;
+  padding:140px 0 60px!important;
+}
+body.seasonal-editorial .season-cover{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  z-index:-2!important;
+  filter:saturate(.88) brightness(.72)!important;
+}
+body.seasonal-editorial .season-opening::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(90deg,rgba(4,17,30,.78),rgba(4,17,30,.12) 78%),linear-gradient(180deg,transparent 25%,rgba(4,17,30,.66));
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero h1,.page-hero h1,.products-landing-page .hero h1,.season-opening h1,.news-hero h1
+){
+  max-width:10ch!important;
+  margin:0!important;
+  color:#fff!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:clamp(62px,8vw,132px)!important;
+  font-weight:600!important;
+  line-height:.87!important;
+  letter-spacing:-.07em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero h1 em,.page-hero h1 em,.products-landing-page .hero h1 em,.season-opening h1 em,.news-hero h1 em
+){
+  color:#fff!important;
+  font-style:normal!important;
+  font-weight:400!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-lead,.page-hero .lead,.hero-description,.season-lead,.news-lead
+){
+  max-width:650px!important;
+  margin-top:28px!important;
+  color:rgba(255,255,255,.82)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:clamp(15px,1.4vw,19px)!important;
+  font-weight:500!important;
+  line-height:1.5!important;
+  letter-spacing:-.012em!important;
+}
+
+/* SECTION RHYTHM */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section,.intro-section,.products-section,.company-section,.catalog-section,
+  .catalog-other-section,.seafood-catalog,.fish-catalog,.fish-emblematic,
+  .news-feature-section,.news-stream,.news-intelligence,.news-subscribe,.news-private,
+  .season-selection,.season-planning,.season-inquiry
+){
+  padding-top:100px!important;
+  padding-bottom:100px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section,.intro-section,.products-section,.catalog-section,.catalog-other-section,
+  .seafood-catalog,.fish-catalog,.fish-emblematic,.news-feature-section,.news-stream,
+  .season-selection
+){
+  background:var(--et26-paper)!important;
+  color:var(--et26-ink)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section.dark,.company-section,.news-intelligence,.season-planning
+){
+  background:var(--et26-navy)!important;
+  color:#fff!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section h2,.intro-section h2,.products-section h2,.company-section h2,
+  .catalog-head h2,.seafood-catalog__head h2,.fish-catalog__head h2,.fish-emblematic h2,
+  .news-section-head h2,.news-intelligence h2,.news-subscribe h2,.news-private h2,.news-cta h2,
+  .season-selection h2,.season-planning h2,.season-inquiry h2
+){
+  margin:0!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:clamp(48px,6vw,98px)!important;
+  font-weight:600!important;
+  line-height:.9!important;
+  letter-spacing:-.065em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section h2 em,.intro-section h2 em,.products-section h2 em,.company-section h2 em,
+  .catalog-head h2 em,.seafood-catalog__head h2 em,.fish-catalog__head h2 em,.fish-emblematic h2 em,
+  .news-section-head h2 em,.news-intelligence h2 em,.news-subscribe h2 em,.news-private h2 em,.news-cta h2 em,
+  .season-selection h2 em,.season-planning h2 em,.season-inquiry h2 em
+){
+  color:inherit!important;
+  font-style:normal!important;
+  font-weight:400!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-copy,.intro-copy p,.section-intro,.company-copy p,.catalog-head>p,
+  .seafood-catalog__head>p,.fish-catalog__head>p,.news-section-head>p,
+  .season-heading>p,.season-planning-copy p,.season-inquiry>div>p
+){
+  color:var(--et26-muted)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:14px!important;
+  font-weight:500!important;
+  line-height:1.65!important;
+  letter-spacing:-.005em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-section.dark :is(.es-copy,p),
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .company-section p,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-intelligence p,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .season-planning p{
+  color:rgba(255,255,255,.66)!important;
+}
+
+/* EDITORIAL GRIDS */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-grid,.section-heading,.catalog-head,.seafood-catalog__head,.fish-catalog__head,
+  .news-section-head,.company-grid
+){
+  display:grid!important;
+  grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr)!important;
+  gap:clamp(48px,7vw,110px)!important;
+  align-items:end!important;
+}
+
+/* CARDS */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-card,.about-values-grid article,.product-row,.news-card,.season-category,
+  .fish-emblematic-card,.fish-catalog-card,.seafood-catalog-card,.compact-catalog-card,
+  .market-catalogue-card,.product-card
+){
+  border:1px solid var(--et26-line)!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+  transition:transform .5s var(--et26-ease),box-shadow .35s ease,border-color .3s ease!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-card,.about-values-grid article,.product-row,.news-card,.season-category,
+  .fish-emblematic-card,.fish-catalog-card,.seafood-catalog-card,.compact-catalog-card,
+  .market-catalogue-card,.product-card
+):hover{
+  transform:translateY(-5px)!important;
+  border-color:rgba(17,18,20,.24)!important;
+  box-shadow:0 22px 50px rgba(18,32,48,.07)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-card h3,.about-values-grid article h3,.product-row h3,.news-card h3,.season-category h3,
+  .fish-emblematic-card h3,.fish-catalog-card h3,.seafood-catalog-card h3,
+  .compact-catalog-card h3,.compact-catalog-card__title,.market-catalogue-card__name,.product-card h3
+){
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-weight:600!important;
+  letter-spacing:-.04em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-card__media,.fish-catalog-card__gallery,.seafood-catalog-card__media,
+  .compact-catalog-card__media,.product-card__media
+){
+  overflow:hidden!important;
+  background:#ecebe5!important;
+}
+
+/* CATALOG LAYOUT */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog-grid,.seafood-catalog-grid,.compact-catalog-grid,.product-catalog-grid,
+  .fish-emblematic__grid
+){
+  gap:18px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog__search,.seafood-catalog-search,.compact-catalog__search,
+  .catalog-search,input[type="search"]
+){
+  min-height:50px!important;
+  border:1px solid var(--et26-line)!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  color:var(--et26-ink)!important;
+  box-shadow:none!important;
+  font:500 13px/1 "DM Sans",Arial,sans-serif!important;
+  padding-inline:18px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog__filter,.seafood-catalog__filter,.compact-catalog__filter,
+  [class*="catalog"][class*="filter"] button
+){
+  min-height:38px!important;
+  padding:0 14px!important;
+  border:1px solid var(--et26-line)!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:#555d66!important;
+  font:600 10px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.01em!important;
+  text-transform:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog__filter,.seafood-catalog__filter,.compact-catalog__filter
+)[aria-pressed="true"]{
+  background:var(--et26-ink)!important;
+  border-color:var(--et26-ink)!important;
+  color:#fff!important;
+}
+
+/* SEAFOOD CATEGORY NAV */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav{
+  position:relative!important;
+  width:min(1360px,90vw)!important;
+  margin:0 auto!important;
+  padding:24px 0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:28px!important;
+  border:0!important;
+  border-bottom:1px solid var(--et26-line)!important;
+  background:var(--et26-paper)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__label{
+  color:#747b84!important;
+  font:600 9px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.07em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links{
+  display:flex!important;
+  gap:6px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a{
+  min-height:36px!important;
+  padding:0 13px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  border-radius:999px!important;
+  color:#5a626b!important;
+  font:600 11px/1 "DM Sans",Arial,sans-serif!important;
+  text-decoration:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a.is-active{
+  background:var(--et26-ink)!important;
+  color:#fff!important;
+}
+
+/* PRODUCT LANDING */
+body.products-landing-page .hero-grid{
+  width:min(1360px,90vw)!important;
+  margin:0 auto!important;
+}
+body.products-landing-page .hero h1 span{
+  color:#fff!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+}
+body.products-landing-page .hero-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:10px!important;
+  margin-top:30px!important;
+}
+body.products-landing-page .product-list{
+  display:grid!important;
+  gap:12px!important;
+}
+body.products-landing-page .product-row{
+  min-height:150px!important;
+  padding:24px 26px!important;
+  display:grid!important;
+  grid-template-columns:44px 1fr auto!important;
+  align-items:center!important;
+  text-decoration:none!important;
+  color:var(--et26-ink)!important;
+}
+body.products-landing-page .product-row h3{
+  margin:0 0 7px!important;
+  font-size:clamp(30px,3.3vw,52px)!important;
+}
+body.products-landing-page .markets-section{
+  background:var(--et26-blue)!important;
+  color:#fff!important;
+}
+body.products-landing-page .markets-section :is(h2,h3,p,.eyebrow){color:#fff!important}
+body.products-landing-page .market-grid article{
+  border-color:rgba(255,255,255,.26)!important;
+  background:transparent!important;
+}
+
+/* FORMS */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .contact-form,.news-form,.news-subscribe-form,form
+) :is(input:not([type="hidden"]),select,textarea){
+  width:100%;
+  min-height:52px!important;
+  padding:14px 16px!important;
+  border:1px solid var(--et26-line)!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  color:var(--et26-ink)!important;
+  box-shadow:none!important;
+  outline:none!important;
+  font:500 13px/1.4 "DM Sans",Arial,sans-serif!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) form textarea{
+  min-height:160px!important;
+  resize:vertical;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) form label>span{
+  color:#59616a!important;
+  font-size:10px!important;
+  font-weight:600!important;
+  letter-spacing:.02em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .contact-form,.news-form,.news-subscribe-form,form
+) :is(input,select,textarea):focus{
+  border-color:rgba(63,127,229,.72)!important;
+  box-shadow:0 0 0 3px rgba(63,127,229,.10)!important;
+}
+
+/* BUTTONS & LINKS */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) main :is(
+  .es-btn,.button,.fruits-button,.season-cta,.hero-cta,.current-cta a,
+  .news-text-link,.news-form button,.contact-form button,.text-link
+){
+  min-height:48px!important;
+  padding:0 20px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:18px!important;
+  border:1px solid transparent!important;
+  border-radius:999px!important;
+  background:var(--et26-blue)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+  font:600 12px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  text-decoration:none!important;
+  transition:transform .4s var(--et26-ease),background .25s ease!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) main :is(
+  .es-btn,.button,.fruits-button,.season-cta,.hero-cta,.current-cta a,
+  .news-text-link,.news-form button,.contact-form button,.text-link
+):hover{
+  transform:translateY(-3px)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-hero .es-btn,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .page-hero .hero-cta,
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .season-opening .season-cta{
+  background:rgba(255,255,255,.10)!important;
+  border-color:rgba(255,255,255,.54)!important;
+  backdrop-filter:blur(10px)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+}
+
+/* ABOUT */
+body.about-page .about-values-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:14px!important;
+  margin-top:44px!important;
+}
+body.about-page .about-values-grid article{
+  min-height:210px!important;
+  padding:24px!important;
+}
+body.about-page .about-values-grid article h3{
+  margin:36px 0 8px!important;
+  font-size:30px!important;
+}
+
+/* MARKETS — CURRENT */
+body.markets-current .current-stage,
+body.markets-current .current-pin{
+  background:var(--et26-blue)!important;
+  color:#fff!important;
+}
+body.markets-current .current-bg{
+  background:transparent!important;
+}
+body.markets-current .current-grid{
+  opacity:.12!important;
+}
+body.markets-current .current-title,
+body.markets-current .current-movement-left h2{
+  color:#fff!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-size:clamp(58px,7.5vw,126px)!important;
+  font-weight:600!important;
+  line-height:.88!important;
+  letter-spacing:-.07em!important;
+}
+body.markets-current .current-title em,
+body.markets-current .current-movement-left h2 em{color:#fff!important;font-style:normal!important;font-weight:400!important}
+body.markets-current .current-lead,
+body.markets-current .current-movement-copy{
+  color:rgba(255,255,255,.74)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+}
+body.markets-current .current-region-list span{
+  border:1px solid rgba(255,255,255,.25)!important;
+  border-radius:999px!important;
+  color:#fff!important;
+}
+body.markets-current .current-line path{stroke:rgba(255,255,255,.56)!important}
+body.markets-current .current-dot{background:#fff!important}
+body.markets-current .current-cta{
+  padding:110px 5vw!important;
+  background:var(--et26-paper)!important;
+  color:var(--et26-ink)!important;
+}
+body.markets-current .current-cta .current-wrap{width:min(1360px,90vw)!important}
+body.markets-current .current-cta h2{
+  max-width:10ch!important;
+  color:var(--et26-ink)!important;
+  font-size:clamp(54px,7vw,110px)!important;
+  line-height:.9!important;
+}
+body.markets-current .current-cta h2 em{color:inherit!important;font-style:normal!important}
+
+/* NEWS */
+body.news-current{
+  --news-deep:var(--et26-navy)!important;
+  --news-ivory:var(--et26-paper)!important;
+  --news-ink:var(--et26-ink)!important;
+  --news-gold:var(--et26-blue)!important;
+  --news-muted:var(--et26-muted)!important;
+  --news-line:var(--et26-line)!important;
+}
+body.news-current .news-hero{
+  background:
+    linear-gradient(180deg,rgba(4,16,30,.10),rgba(4,16,30,.78)),
+    linear-gradient(90deg,rgba(4,16,30,.80),rgba(4,16,30,.14) 76%),
+    url('/assets/images/home-mediterranean.webp') center/cover no-repeat!important;
+}
+body.news-current .news-hero::after{display:none!important}
+body.news-current :is(.news-hero h1,.news-section-head h2,.news-intelligence h2,.news-subscribe h2,.news-private h2,.news-cta h2){
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-weight:600!important;
+  letter-spacing:-.06em!important;
+}
+body.news-current :is(.news-hero h1 em,.news-section-head h2 em,.news-intelligence h2 em,.news-subscribe h2 em,.news-private h2 em,.news-cta h2 em){
+  color:inherit!important;
+  font-style:normal!important;
+  font-weight:400!important;
+}
+body.news-current .news-card-grid{
+  gap:14px!important;
+  border:0!important;
+  background:transparent!important;
+}
+body.news-current .news-card{
+  min-height:340px!important;
+  padding:24px!important;
+  border:1px solid var(--et26-line)!important;
+}
+body.news-current .news-card .news-tag{
+  margin-top:46px!important;
+  color:#5c79a8!important;
+}
+body.news-current .news-card h3{
+  font-size:30px!important;
+}
+body.news-current .news-intelligence{
+  background:var(--et26-blue)!important;
+}
+body.news-current .news-subscribe{
+  background:var(--et26-paper-2)!important;
+}
+body.news-current .news-private{
+  background:var(--et26-navy)!important;
+  color:#fff!important;
+}
+
+/* SEASONAL */
+body.seasonal-editorial .season-selection,
+body.seasonal-editorial .season-planning,
+body.seasonal-editorial .season-inquiry{
+  padding-left:5vw!important;
+  padding-right:5vw!important;
+}
+body.seasonal-editorial .season-category{
+  min-height:130px!important;
+  padding:22px 24px!important;
+}
+body.seasonal-editorial .season-photo{
+  border-radius:20px!important;
+  overflow:hidden!important;
+}
+
+/* LEGAL */
+body.es-legal-page{
+  background:var(--et26-paper)!important;
+}
+body.es-legal-page .es-legal{
+  padding:130px 0 90px!important;
+}
+body.es-legal-page .legal-wrap{
+  width:min(980px,90vw)!important;
+  padding:0!important;
+}
+body.es-legal-page .legal-wrap h1{
+  margin:0 0 58px!important;
+  font-size:clamp(60px,8vw,120px)!important;
+  line-height:.88!important;
+  letter-spacing:-.07em!important;
+}
+body.es-legal-page .legal-wrap h2{
+  margin:46px 0 14px!important;
+  padding-top:22px!important;
+  border-top:1px solid var(--et26-line)!important;
+  font-size:28px!important;
+  letter-spacing:-.035em!important;
+}
+body.es-legal-page .legal-wrap p{
+  max-width:760px!important;
+  color:var(--et26-muted)!important;
+  font-size:14px!important;
+  line-height:1.7!important;
+}
+body.es-legal-page .legal-back{
+  margin-top:44px!important;
+  min-height:46px!important;
+  padding:0 18px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  border-radius:999px!important;
+  background:var(--et26-ink)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+}
+
+/* FOOTERS */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-footer,.footer-band,.fish-site-footer,.site-footer,.et-universal-footer
+){
+  background:var(--et26-navy)!important;
+  color:rgba(255,255,255,.64)!important;
+  border:0!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-footer,.fish-site-footer,.site-footer,.et-universal-footer
+){
+  padding-top:62px!important;
+  padding-bottom:26px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .footer-band{
+  padding:26px 5vw!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-footer-grid,.footer-main,.et-footer-main
+){
+  gap:44px!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) footer :is(a,strong,h2){
+  font-family:"DM Sans",Arial,sans-serif!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) footer a{
+  color:rgba(255,255,255,.66)!important;
+  text-decoration:none!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) footer a:hover{color:#fff!important}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) footer img{
+  object-fit:contain!important;
+  max-height:62px!important;
+  filter:brightness(0) invert(1)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-footer-bottom,.footer-bottom,.footer-legal,.et-footer-legal,.et-footer-bottom
+){
+  border-color:rgba(255,255,255,.14)!important;
+}
+
+/* ARABIC */
+html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin-page){
+  font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif!important;
+}
+html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  h1,h2,h3,h4,h5,h6,p,a,button,label,input,textarea,select,
+  .es-kicker,.es-label,.eyebrow,.current-eyebrow,.news-eyebrow,.season-kicker,.legal-kicker
+){
+  font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif!important;
+  letter-spacing:0!important;
+}
+html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2,h3){line-height:1.18!important}
+
+/* MOBILE */
+@media(max-width:900px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-container,.container,.page-hero-inner,.catalog-inner,.seafood-catalog__inner,
+    .fish-catalog__inner,.compact-catalog__inner,.current-wrap,.news-wrap,.season-wrap,
+    .legal-wrap,.p-container
+  ){width:calc(100% - 40px)!important}
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-grid,.section-heading,.catalog-head,.seafood-catalog__head,.fish-catalog__head,
+    .news-section-head,.company-grid
+  ){grid-template-columns:1fr!important;gap:28px!important}
+
+  body.about-page .about-values-grid{grid-template-columns:1fr 1fr!important}
+  body.news-current .news-card-grid{grid-template-columns:1fr 1fr!important}
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+  }
+}
+
+@media(max-width:700px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-container,.container,.page-hero-inner,.catalog-inner,.seafood-catalog__inner,
+    .fish-catalog__inner,.compact-catalog__inner,.current-wrap,.news-wrap,.season-wrap,
+    .legal-wrap,.p-container
+  ){width:calc(100% - 32px)!important}
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
+  ){
+    min-height:72svh!important;
+    min-height:72dvh!important;
+    padding:108px 0 38px!important;
+  }
+  body.about-page.es-page main>.es-hero{
+    min-height:72svh!important;
+    height:auto!important;
+    padding:108px 0 38px!important;
+  }
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-hero h1,.page-hero h1,.products-landing-page .hero h1,.season-opening h1,.news-hero h1
+  ){
+    font-size:clamp(50px,15vw,76px)!important;
+    line-height:.9!important;
+  }
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-section,.intro-section,.products-section,.company-section,.catalog-section,
+    .catalog-other-section,.seafood-catalog,.fish-catalog,.fish-emblematic,
+    .news-feature-section,.news-stream,.news-intelligence,.news-subscribe,.news-private,
+    .season-selection,.season-planning,.season-inquiry
+  ){
+    padding-top:66px!important;
+    padding-bottom:66px!important;
+  }
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+    .es-section h2,.intro-section h2,.products-section h2,.company-section h2,
+    .catalog-head h2,.seafood-catalog__head h2,.fish-catalog__head h2,.fish-emblematic h2,
+    .news-section-head h2,.news-intelligence h2,.news-subscribe h2,.news-private h2,.news-cta h2,
+    .season-selection h2,.season-planning h2,.season-inquiry h2
+  ){
+    font-size:clamp(42px,12.8vw,66px)!important;
+  }
+
+  body.about-page .about-values-grid{grid-template-columns:1fr!important}
+  body.news-current .news-card-grid{grid-template-columns:1fr!important}
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav{
+    width:calc(100% - 32px)!important;
+    padding:18px 0!important;
+  }
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links{
+    width:100%!important;
+    overflow-x:auto!important;
+    padding-bottom:2px!important;
+  }
+
+  body.products-landing-page .product-row{
+    min-height:120px!important;
+    padding:20px!important;
+    grid-template-columns:30px 1fr auto!important;
+  }
+
+  body.markets-current .current-cta{padding:72px 20px!important}
+  body.seasonal-editorial .season-selection,
+  body.seasonal-editorial .season-planning,
+  body.seasonal-editorial .season-inquiry{padding-left:20px!important;padding-right:20px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page) *{
+    scroll-behavior:auto!important;
+  }
+}
