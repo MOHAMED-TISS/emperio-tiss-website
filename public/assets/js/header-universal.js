@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-joby-experience-2';
+  const VERSION = '20261003-joby-experience-3';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -23,7 +23,7 @@
     if (doc.querySelector('link[data-et-joby-header]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-joby-experience.css?v=20261003-2';
+    link.href = '/assets/css/header-joby-experience.css?v=20261003-3';
     link.dataset.etJobyHeader = 'true';
     doc.head.appendChild(link);
   };
@@ -173,14 +173,20 @@
         <details class="nav-products">
           <summary><span class="idx">03</span><span>${copy.products}</span></summary>
           <div class="nav-products-links">
-            <a href="${route('products')}">${copy.products}</a>
-            <a href="${route('products/seafood')}">${copy.seafood}</a>
-            <a href="${route('products/seafood/fish')}">${copy.fish}</a>
-            <a href="${route('products/seafood/shellfish')}">${copy.shellfish}</a>
-            <a href="${route('products/seafood/cephalopods')}">${copy.cephalopods}</a>
-            <a href="${route('products/fruits')}">${copy.fruits}</a>
-            <a href="${route('products/vegetables')}">${copy.vegetables}</a>
-            <a href="${route('products/seasonal')}">${copy.seasonal}</a>
+            <a class="nav-product-all" href="${route('products')}">${copy.products}</a>
+
+            <div class="nav-product-group">
+              <a class="nav-product-parent" href="${route('products/seafood')}">${copy.seafood}</a>
+              <div class="nav-product-children">
+                <a href="${route('products/seafood/fish')}">${copy.fish}</a>
+                <a href="${route('products/seafood/shellfish')}">${copy.shellfish}</a>
+                <a href="${route('products/seafood/cephalopods')}">${copy.cephalopods}</a>
+              </div>
+            </div>
+
+            <a class="nav-product-parent" href="${route('products/fruits')}">${copy.fruits}</a>
+            <a class="nav-product-parent" href="${route('products/vegetables')}">${copy.vegetables}</a>
+            <a class="nav-product-parent" href="${route('products/seasonal')}">${copy.seasonal}</a>
           </div>
         </details>
         <a href="${route('markets')}"${currentAttr('markets')}><span class="idx">04</span><span>${copy.markets}</span></a>
