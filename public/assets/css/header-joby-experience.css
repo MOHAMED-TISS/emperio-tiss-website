@@ -16,8 +16,8 @@ html body .site-header,
 html body .site-header.scrolled{
   position:fixed!important;
   top:12px!important;
-  left:18px!important;
-  right:18px!important;
+  left:28px!important;
+  right:28px!important;
   width:auto!important;
   max-width:none!important;
   height:64px!important;
@@ -130,7 +130,7 @@ html body .site-header .mobile-menu span{
 }
 
 html body .site-header .mobile-menu span:nth-child(1){
-  top:21px!important;
+  top:22px!important;
   width:17px!important;
   margin-left:-8.5px!important;
 }
@@ -140,7 +140,7 @@ html body .site-header .mobile-menu span:nth-child(2){
 }
 
 html body .site-header .mobile-menu span:nth-child(3){
-  top:28px!important;
+  top:26px!important;
   width:12px!important;
   margin-left:-6px!important;
 }
@@ -282,8 +282,8 @@ html body.menu-open .joby-header-utility{
   html body .site-header,
   html body .site-header.scrolled{
     top:8px!important;
-    left:10px!important;
-    right:10px!important;
+    left:16px!important;
+    right:16px!important;
     height:60px!important;
     min-height:60px!important;
   }
