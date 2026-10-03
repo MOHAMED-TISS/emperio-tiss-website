@@ -221,20 +221,21 @@
 }
 
 .et-terminal-footer__wordmark-wrap{
-  overflow:hidden;
+  overflow:visible;
   border-top:1px solid var(--tf-line);
+  padding-bottom:20px;
 }
 .et-terminal-footer__wordmark{
   margin:0;
-  padding:24px 1vw 0;
+  padding:26px 1vw 18px;
   color:#fff;
   font-size:clamp(108px,15.6vw,258px);
   font-weight:600;
-  line-height:.72;
+  line-height:.84;
   letter-spacing:-.084em;
   white-space:nowrap;
   text-align:center;
-  transform:translateY(12%);
+  transform:none;
   user-select:none;
 }
 
@@ -302,9 +303,15 @@ html[dir="rtl"] .et-terminal-footer__region{text-align:left}
   .et-terminal-footer__meta nav{justify-self:start}
   .et-terminal-footer__meta nav{justify-content:flex-start}
   .et-terminal-footer__region{text-align:left}
+  .et-terminal-footer__wordmark-wrap{
+    padding-bottom:14px;
+  }
   .et-terminal-footer__wordmark{
-    padding-top:18px;
-    font-size:clamp(78px,22vw,120px);
+    padding:18px 2vw 14px;
+    font-size:clamp(72px,20vw,108px);
+    line-height:.88;
+    white-space:nowrap;
+    transform:none;
   }
 }
 
