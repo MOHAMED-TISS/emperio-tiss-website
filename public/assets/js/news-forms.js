@@ -107,6 +107,11 @@
         if (response.ok && data.ok) {
           setStatus(form, data.message || (kind === 'newsletter' ? copy.newsletterOk :
             copy.privateOk), true);
+          if (kind === 'private') {
+            window.dispatchEvent(new CustomEvent('et:signature-request-success', {
+              detail: { categories: payload.getAll('categories').map(String) }
+            }))
+          }
           if (kind === 'newsletter') {
             form.reset();
             const consent = form.querySelector('input[name="consent"]');
