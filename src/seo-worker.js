@@ -24,7 +24,7 @@ class SeoHeadAppender {
     element.append(
       buildSeoHead(this.meta) +
       '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">' +
-      '<script src="/assets/js/header-universal.js?v=20261003-commercial-header-4" defer></script>',
+      '<script src="/assets/js/header-universal.js?v=20261003-commercial-header-5" defer></script>',
       { html: true }
     );
   }
