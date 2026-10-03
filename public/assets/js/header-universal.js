@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-commercial-header-6';
+  const VERSION = '20261003-commercial-header-7';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -139,7 +139,7 @@
       </button>
 
       <a href="${base}" class="site-logo" aria-label="${copy.homeAria}">
-        <img class="home-metal-logo" src="/assets/images/emperio-tiss-emblem.svg?v=20261003-joby-2" alt="EMPERIO TISS S.L." width="230" height="267">
+        <img class="home-metal-logo" src="/assets/images/emperio-tiss-emblem.svg?v=20261003-header-current" alt="EMPERIO TISS S.L." width="230" height="267">
       </a>
 
       <a class="joby-header-utility" href="${route('contact')}">
