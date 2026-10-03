@@ -126,6 +126,8 @@
       ad_personalization: marketingGranted ? 'granted' : 'denied'
     });
 
+    window['ga-disable-' + GA_MEASUREMENT_ID] = !analyticsGranted;
+
     if (analyticsGranted) {
       loadGA4();
     } else {
