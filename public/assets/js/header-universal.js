@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-joby-experience-4';
+  const VERSION = '20261003-joby-experience-5';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -167,7 +167,7 @@
 
   const overlayMarkup = `
     <div class="nav-overlay-inner">
-      <nav class="nav-overlay-links" aria-label="${copy.nav}">
+      <nav class="nav-overlay-links" aria-label="${copy.nav}" data-et-navigation-built="true">
         <a href="${base}"${contentPath === '/' ? ' class="active" aria-current="page"' : ''}><span class="idx">01</span><span>${copy.home}</span></a>
         <a href="${route('about')}"${currentAttr('about')}><span class="idx">02</span><span>${copy.company}</span></a>
         <details class="nav-products">
