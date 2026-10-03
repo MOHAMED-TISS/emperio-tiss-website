@@ -1,0 +1,125 @@
+/* EMPERIO SIGNATURE ADMIN — 2026 visual alignment */
+.private-admin-page{
+  min-height:100vh!important;
+  background:#f3f2ec!important;
+  color:#111214!important;
+  --admin-blue:#3f7fe5;
+  --admin-ink:#111214;
+  --admin-paper:#f3f2ec;
+  --admin-surface:#fff;
+  --admin-line:rgba(17,18,20,.14);
+  font-family:"DM Sans",Arial,sans-serif!important;
+}
+.private-admin-page main{background:#f3f2ec!important}
+.private-admin-page .admin-shell{padding:112px 0 90px!important}
+.private-admin-page .admin-wrap{width:min(1360px,calc(100% - 56px))!important}
+.private-admin-page .admin-head{
+  margin-bottom:34px!important;
+  padding-bottom:28px!important;
+  border-bottom:1px solid var(--admin-line)!important;
+}
+.private-admin-page .admin-head h1{
+  margin:0!important;
+  color:var(--admin-ink)!important;
+  font:600 clamp(3.6rem,7vw,7.4rem)/.88 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.065em!important;
+}
+.private-admin-page .admin-head h1 em{
+  color:var(--admin-ink)!important;
+  font-style:normal!important;
+  font-weight:400!important;
+}
+.private-admin-page .admin-head p{color:#646b74!important;font:500 14px/1.6 "DM Sans",Arial,sans-serif!important}
+.private-admin-page .admin-head a{color:var(--admin-ink)!important;font:600 11px/1 "DM Sans",Arial,sans-serif!important;letter-spacing:0!important;text-transform:none!important}
+
+.private-admin-page :is(.admin-auth,.admin-card,.admin-chart,.admin-kpis article,.admin-inquiry-kpis article){
+  border:1px solid var(--admin-line)!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  color:var(--admin-ink)!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+.private-admin-page .admin-auth,
+.private-admin-page .admin-card{padding:26px!important}
+.private-admin-page .admin-panel{gap:18px!important}
+.private-admin-page .admin-card-head{border-bottom:1px solid var(--admin-line)!important}
+.private-admin-page .admin-kicker,
+.private-admin-page .news-eyebrow{color:#6a7fa0!important;letter-spacing:.07em!important}
+.private-admin-page .admin-card h2,
+.private-admin-page .admin-chart figcaption strong,
+.private-admin-page .admin-kpis strong,
+.private-admin-page .admin-inquiry-kpis strong{
+  color:var(--admin-ink)!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-style:normal!important;
+  font-weight:600!important;
+  letter-spacing:-.04em!important;
+}
+.private-admin-page .admin-card h2{font-size:2rem!important}
+.private-admin-page .admin-card p,
+.private-admin-page .admin-record p,
+.private-admin-page .admin-empty{color:#646b74!important}
+
+.private-admin-page :is(.admin-card label,.admin-auth label){
+  color:#5d646d!important;
+  font:600 10px/1.2 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.03em!important;
+  text-transform:none!important;
+}
+.private-admin-page :is(.admin-card input,.admin-card textarea,.admin-card select,.admin-auth input){
+  min-height:48px!important;
+  border:1px solid var(--admin-line)!important;
+  border-radius:12px!important;
+  background:#f8f7f3!important;
+  color:var(--admin-ink)!important;
+  font:500 13px/1.4 "DM Sans",Arial,sans-serif!important;
+}
+.private-admin-page select option{background:#fff!important;color:#111214!important}
+.private-admin-page :is(.admin-card input,.admin-card textarea,.admin-card select,.admin-auth input):focus{
+  border-color:rgba(63,127,229,.72)!important;
+  box-shadow:0 0 0 3px rgba(63,127,229,.10)!important;
+}
+.private-admin-page :is(.admin-card button,.admin-auth button){
+  min-height:46px!important;
+  padding:0 17px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:var(--admin-blue)!important;
+  color:#fff!important;
+  font:600 11px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+.private-admin-page .admin-toolbar button{background:#111214!important}
+.private-admin-page .admin-status{color:#5574a5!important;font-size:12px!important}
+.private-admin-page [data-state="success"]{color:#34704e!important}
+
+.private-admin-page .admin-kpis,
+.private-admin-page .admin-inquiry-kpis{gap:10px!important}
+.private-admin-page .admin-kpis article,
+.private-admin-page .admin-inquiry-kpis article{padding:18px!important;background:#f7f6f1!important}
+.private-admin-page .admin-kpis span,
+.private-admin-page .admin-inquiry-kpis span{color:#777e86!important;letter-spacing:.05em!important}
+.private-admin-page .admin-kpis strong{font-size:clamp(2rem,3.4vw,3.2rem)!important}
+.private-admin-page .admin-chart{background:#fff!important}
+.private-admin-page .admin-chart figcaption span{color:#6680aa!important;letter-spacing:.06em!important}
+.private-admin-page .admin-trend{border-bottom:1px solid var(--admin-line)!important;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 44px,rgba(17,18,20,.05) 45px)!important}
+.private-admin-page .admin-trend-line{stroke:var(--admin-blue)!important}
+.private-admin-page .admin-bars>div>div{color:#5f6670!important}
+.private-admin-page .admin-bars progress{background:#e6e7e7!important;accent-color:var(--admin-blue)!important}
+.private-admin-page .admin-bars progress::-webkit-progress-bar{background:#e6e7e7!important}
+.private-admin-page .admin-bars progress::-webkit-progress-value{background:var(--admin-blue)!important}
+.private-admin-page .admin-bars progress::-moz-progress-bar{background:var(--admin-blue)!important}
+
+.private-admin-page .admin-record{border-bottom:1px solid var(--admin-line)!important}
+.private-admin-page .admin-record strong{color:var(--admin-ink)!important}
+.private-admin-page .admin-inquiries{border-top:1px solid var(--admin-line)!important}
+.private-admin-page iframe{border:1px solid var(--admin-line)!important;border-radius:12px!important}
+
+@media(max-width:700px){
+  .private-admin-page .admin-wrap{width:calc(100% - 28px)!important}
+  .private-admin-page .admin-shell{padding-top:96px!important}
+  .private-admin-page .admin-head h1{font-size:3.5rem!important}
+  .private-admin-page :is(.admin-card,.admin-auth){padding:18px!important;border-radius:14px!important}
+}
