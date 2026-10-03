@@ -1,0 +1,171 @@
+/* EMPERIO TISS — Cookie consent */
+.et-cookie-consent{
+  --cc-bg:#0b1d31;
+  --cc-fg:#fff;
+  --cc-muted:rgba(255,255,255,.68);
+  --cc-line:rgba(255,255,255,.18);
+  --cc-blue:#337fe5;
+  position:fixed;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  z-index:100000;
+  display:none;
+  font-family:"DM Sans",Arial,sans-serif;
+}
+.et-cookie-consent.is-visible{display:block}
+.et-cookie-consent__panel{
+  width:min(1120px,100%);
+  margin:0 auto;
+  padding:22px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:26px;
+  align-items:end;
+  border:1px solid var(--cc-line);
+  border-radius:20px;
+  background:rgba(11,29,49,.97);
+  color:var(--cc-fg);
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.et-cookie-consent__kicker{
+  margin:0 0 9px;
+  color:rgba(255,255,255,.48);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.et-cookie-consent h2{
+  margin:0 0 10px;
+  color:#fff;
+  font-size:clamp(24px,3vw,38px);
+  font-weight:600;
+  line-height:.95;
+  letter-spacing:-.045em;
+}
+.et-cookie-consent p{
+  max-width:720px;
+  margin:0;
+  color:var(--cc-muted);
+  font-size:12px;
+  line-height:1.55;
+}
+.et-cookie-consent p a{color:#fff;text-underline-offset:3px}
+.et-cookie-consent__actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:8px;
+}
+.et-cookie-consent button{
+  min-height:44px;
+  padding:0 16px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  font:600 11px/1 "DM Sans",Arial,sans-serif;
+}
+.et-cookie-consent button:hover,
+.et-cookie-consent button:focus-visible{
+  border-color:#fff;
+  outline:0;
+}
+.et-cookie-consent [data-cookie-accept]{
+  background:#fff;
+  border-color:#fff;
+  color:#0b1d31;
+}
+.et-cookie-consent [data-cookie-reject]{
+  background:rgba(255,255,255,.06);
+}
+.et-cookie-consent__settings{
+  grid-column:1/-1;
+  display:none;
+  margin-top:2px;
+  padding-top:18px;
+  border-top:1px solid var(--cc-line);
+}
+.et-cookie-consent.is-settings .et-cookie-consent__settings{display:block}
+.et-cookie-consent__settings-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+.et-cookie-choice{
+  min-height:118px;
+  padding:15px;
+  border:1px solid var(--cc-line);
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+}
+.et-cookie-choice__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.et-cookie-choice strong{
+  color:#fff;
+  font-size:11px;
+}
+.et-cookie-choice p{
+  margin-top:9px;
+  font-size:10px;
+  line-height:1.45;
+}
+.et-cookie-choice input{
+  width:18px;
+  height:18px;
+  accent-color:var(--cc-blue);
+}
+.et-cookie-consent__save{
+  margin-top:14px;
+  display:flex;
+  justify-content:flex-end;
+}
+.et-cookie-manage{
+  position:fixed;
+  left:16px;
+  bottom:16px;
+  z-index:99990;
+  min-height:38px;
+  padding:0 13px;
+  display:none;
+  align-items:center;
+  border:1px solid rgba(17,18,20,.15);
+  border-radius:999px;
+  background:#f5f4ef;
+  color:#111214;
+  box-shadow:0 8px 24px rgba(0,0,0,.10);
+  cursor:pointer;
+  font:600 10px/1 "DM Sans",Arial,sans-serif;
+}
+.et-cookie-manage.is-visible{display:inline-flex}
+
+@media(max-width:760px){
+  .et-cookie-consent{left:10px;right:10px;bottom:10px}
+  .et-cookie-consent__panel{
+    padding:18px;
+    grid-template-columns:1fr;
+    gap:18px;
+    border-radius:16px;
+  }
+  .et-cookie-consent__actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    justify-content:stretch;
+  }
+  .et-cookie-consent__actions button{width:100%}
+  .et-cookie-consent [data-cookie-configure]{grid-column:1/-1}
+  .et-cookie-consent__settings-grid{grid-template-columns:1fr}
+  .et-cookie-consent__save button{width:100%}
+  .et-cookie-manage{left:10px;bottom:10px}
+}
+html[dir="rtl"] .et-cookie-consent,
+html[dir="rtl"] .et-cookie-manage{font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif}
+html[dir="rtl"] .et-cookie-manage{left:auto;right:16px}
