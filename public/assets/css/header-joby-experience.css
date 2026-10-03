@@ -1,0 +1,453 @@
+/* EMPERIO TISS — Joby Experience header language
+   Universal header inspired by the current Joby /experience masthead:
+   floating ivory pill + compact menu + contextual label + fullscreen navigation.
+*/
+
+:root{
+  --et-joby-ivory:#f2f0e5;
+  --et-joby-ink:#111214;
+  --et-joby-blue:#3f7fe5;
+  --et-joby-ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* Floating capsule */
+html body .site-header{
+  position:fixed!important;
+  top:18px!important;
+  left:20px!important;
+  right:20px!important;
+  width:auto!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  transform:none!important;
+  pointer-events:none!important;
+  direction:ltr!important;
+  z-index:1200!important;
+  animation:etJobyHeaderIn .78s var(--et-joby-ease) both;
+}
+
+html body .site-header.scrolled{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+html body .site-header>.header-inner{
+  position:relative!important;
+  width:100%!important;
+  max-width:none!important;
+  height:58px!important;
+  min-height:58px!important;
+  margin:0!important;
+  padding:0 15px 0 17px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:0!important;
+  border:1px solid rgba(17,18,20,.08)!important;
+  border-radius:999px!important;
+  background:var(--et-joby-ivory)!important;
+  box-shadow:0 3px 12px rgba(0,0,0,.08)!important;
+  color:var(--et-joby-ink)!important;
+  overflow:visible!important;
+  pointer-events:auto!important;
+}
+
+html body .site-header :is(.home-header-nav,.home-header-secondary,.et-whatsapp,.et-language-switch){
+  display:none!important;
+}
+
+/* Two-line hamburger */
+html body .site-header .mobile-menu{
+  position:relative!important;
+  inset:auto!important;
+  order:1!important;
+  flex:0 0 38px!important;
+  width:38px!important;
+  height:38px!important;
+  min-width:38px!important;
+  margin:0 15px 0 0!important;
+  padding:0!important;
+  display:block!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--et-joby-ink)!important;
+  cursor:pointer!important;
+  z-index:2!important;
+}
+
+html body .site-header .mobile-menu span{
+  position:absolute!important;
+  left:7px!important;
+  width:24px!important;
+  height:1.5px!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:99px!important;
+  background:var(--et-joby-ink)!important;
+  transform-origin:center!important;
+  opacity:1!important;
+  transition:transform .38s var(--et-joby-ease),top .38s var(--et-joby-ease),opacity .2s ease!important;
+}
+
+html body .site-header .mobile-menu span:nth-child(1){
+  top:15px!important;
+  transform:none!important;
+}
+
+html body .site-header .mobile-menu span:nth-child(2){
+  display:none!important;
+}
+
+html body .site-header .mobile-menu span:nth-child(3){
+  top:23px!important;
+  transform:none!important;
+}
+
+html body.nav-open .site-header .mobile-menu span:nth-child(1),
+html body.menu-open .site-header .mobile-menu span:nth-child(1),
+html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(1){
+  top:19px!important;
+  transform:rotate(45deg)!important;
+}
+
+html body.nav-open .site-header .mobile-menu span:nth-child(3),
+html body.menu-open .site-header .mobile-menu span:nth-child(3),
+html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(3){
+  top:19px!important;
+  transform:rotate(-45deg)!important;
+}
+
+/* Current-page label */
+html body .joby-header-current{
+  order:2!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  min-height:38px!important;
+  color:var(--et-joby-ink)!important;
+  font:600 14px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.025em!important;
+  white-space:nowrap!important;
+}
+
+/* Compact EMPERIO mark on the right */
+html body .site-header .site-logo{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  order:3!important;
+  width:38px!important;
+  height:44px!important;
+  min-width:38px!important;
+  margin:0 3px 0 auto!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+  overflow:visible!important;
+}
+
+html body .site-header .site-logo img,
+html body .site-header .site-logo img.home-metal-logo{
+  display:block!important;
+  width:30px!important;
+  height:36px!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  filter:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* Fullscreen Joby-like menu */
+html body.et-brand-shell .nav-overlay,
+html body .nav-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:1100!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:var(--et-joby-blue)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  color:#fff!important;
+  overflow-y:auto!important;
+  transition:opacity .42s var(--et-joby-ease),visibility .42s step-end!important;
+}
+
+html body.nav-open .nav-overlay,
+html body.menu-open .nav-overlay,
+html body .nav-overlay[aria-hidden="false"]{
+  transition:opacity .42s var(--et-joby-ease),visibility 0s!important;
+}
+
+html body .nav-overlay::before,
+html body .nav-overlay::after{
+  display:none!important;
+}
+
+html body.et-brand-shell .nav-overlay-inner,
+html body .nav-overlay-inner{
+  position:relative!important;
+  width:min(1440px,100%)!important;
+  height:auto!important;
+  min-height:100svh!important;
+  min-height:100dvh!important;
+  margin:0 auto!important;
+  padding:116px 5vw 42px!important;
+  display:grid!important;
+  grid-template-rows:1fr auto!important;
+  align-content:stretch!important;
+  gap:40px!important;
+}
+
+html body.et-brand-shell .nav-overlay-links,
+html body .nav-overlay-links{
+  width:100%!important;
+  max-width:none!important;
+  align-self:center!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:0!important;
+}
+
+html body .nav-overlay-links>a,
+html body .nav-products>summary{
+  position:relative!important;
+  display:flex!important;
+  align-items:baseline!important;
+  gap:0!important;
+  min-height:0!important;
+  padding:4px 0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  text-decoration:none!important;
+}
+
+html body .nav-overlay-links>a .idx,
+html body .nav-products>summary .idx{
+  flex:0 0 38px!important;
+  width:38px!important;
+  color:rgba(255,255,255,.52)!important;
+  font:600 10px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:0!important;
+}
+
+html body .nav-overlay-links>a>span:not(.idx),
+html body .nav-products>summary>span:not(.idx){
+  color:#fff!important;
+  font:600 clamp(46px,6.7vw,104px)/.9 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.065em!important;
+  transition:opacity .28s ease!important;
+}
+
+html body .nav-overlay-links>a:hover>span:not(.idx),
+html body .nav-overlay-links>a.active>span:not(.idx),
+html body .nav-overlay-links>a.is-active>span:not(.idx),
+html body .nav-products>summary:hover>span:not(.idx){
+  color:#fff!important;
+  opacity:.56!important;
+}
+
+html body .nav-products{
+  margin:0!important;
+}
+
+html body .nav-products>summary{
+  list-style:none!important;
+  cursor:pointer!important;
+}
+
+html body .nav-products>summary::-webkit-details-marker{
+  display:none!important;
+}
+
+html body .nav-products-links{
+  margin:12px 0 20px 38px!important;
+  padding:0!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:8px 18px!important;
+}
+
+html body .nav-products-links a{
+  color:rgba(255,255,255,.74)!important;
+  font:500 15px/1.45 "DM Sans",Arial,sans-serif!important;
+  text-decoration:none!important;
+}
+
+html body .nav-products-links a:hover{
+  color:#fff!important;
+}
+
+html body.et-brand-shell .nav-overlay-foot,
+html body .nav-overlay-foot{
+  width:100%!important;
+  padding:22px 0 0!important;
+  border-top:1px solid rgba(255,255,255,.3)!important;
+  color:#fff!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:flex-end!important;
+  gap:28px!important;
+}
+
+html body .nav-overlay-lang{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  direction:ltr!important;
+}
+
+html body .nav-overlay-lang a,
+html body .nav-overlay-lang span{
+  color:rgba(255,255,255,.76)!important;
+  font:600 12px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+
+html body .nav-overlay-lang a.current{
+  color:#fff!important;
+}
+
+html body .nav-overlay-contact{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-end!important;
+  gap:6px!important;
+  color:rgba(255,255,255,.7)!important;
+  text-align:right!important;
+  font:500 12px/1.35 "DM Sans",Arial,sans-serif!important;
+}
+
+html body .nav-overlay-contact a{
+  color:#fff!important;
+  font:600 13px/1.3 "DM Sans",Arial,sans-serif!important;
+}
+
+/* Keep pill neutral over every page background */
+html body.nav-open .site-header>.header-inner,
+html body.menu-open .site-header>.header-inner{
+  background:var(--et-joby-ivory)!important;
+}
+
+html body.nav-open,
+html body.menu-open{
+  overflow:hidden!important;
+}
+
+html[lang="ar"] body .site-header,
+html[lang="ar"] body .site-header>.header-inner,
+html[lang="ar"] body .joby-header-current{
+  direction:ltr!important;
+}
+
+@keyframes etJobyHeaderIn{
+  from{opacity:0;transform:translateY(-16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:700px){
+  html body .site-header{
+    top:12px!important;
+    left:12px!important;
+    right:12px!important;
+  }
+
+  html body .site-header>.header-inner{
+    height:50px!important;
+    min-height:50px!important;
+    padding:0 10px 0 12px!important;
+  }
+
+  html body .site-header .mobile-menu{
+    width:34px!important;
+    height:34px!important;
+    min-width:34px!important;
+    margin-right:10px!important;
+  }
+
+  html body .site-header .mobile-menu span{
+    left:6px!important;
+    width:22px!important;
+  }
+
+  html body .site-header .mobile-menu span:nth-child(1){top:13px!important}
+  html body .site-header .mobile-menu span:nth-child(3){top:21px!important}
+
+  html body.nav-open .site-header .mobile-menu span:nth-child(1),
+  html body.menu-open .site-header .mobile-menu span:nth-child(1),
+  html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(1),
+  html body.nav-open .site-header .mobile-menu span:nth-child(3),
+  html body.menu-open .site-header .mobile-menu span:nth-child(3),
+  html body .site-header .mobile-menu[aria-expanded="true"] span:nth-child(3){
+    top:17px!important;
+  }
+
+  html body .joby-header-current{
+    max-width:calc(100vw - 132px)!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    font-size:13px!important;
+  }
+
+  html body .site-header .site-logo{
+    width:34px!important;
+    height:38px!important;
+  }
+
+  html body .site-header .site-logo img,
+  html body .site-header .site-logo img.home-metal-logo{
+    width:25px!important;
+    height:31px!important;
+  }
+
+  html body.et-brand-shell .nav-overlay-inner,
+  html body .nav-overlay-inner{
+    padding:88px 20px 28px!important;
+  }
+
+  html body .nav-overlay-links>a>span:not(.idx),
+  html body .nav-products>summary>span:not(.idx){
+    font-size:clamp(40px,13vw,66px)!important;
+  }
+
+  html body .nav-overlay-foot{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+  }
+
+  html body .nav-overlay-contact{
+    align-items:flex-start!important;
+    text-align:left!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html body .site-header{animation:none!important}
+  html body .nav-overlay{transition:none!important}
+}
