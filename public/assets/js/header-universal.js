@@ -18,6 +18,17 @@
   if (!body) return;
 
   const path = (location.pathname || '/').replace(/\/+/g, '/');
+
+  const ensureJobyHeaderCss = () => {
+    if (doc.querySelector('link[data-et-joby-header]')) return;
+    const link = doc.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/css/header-joby-experience.css?v=20261003-1';
+    link.dataset.etJobyHeader = 'true';
+    doc.head.appendChild(link);
+  };
+
+  ensureJobyHeaderCss();
   const supported = ['es', 'en', 'fr', 'ar', 'it'];
   const detected = (root.lang || 'es').slice(0, 2).toLowerCase();
   const lang = supported.includes(detected) ? detected : 'es';
@@ -112,6 +123,18 @@
   const currentAttr = (segment) =>
     isSection(segment) ? ' class="is-active" aria-current="page"' : '';
 
+  const sectionLabel = (() => {
+    if (path.startsWith('/private/')) return 'SIGNATURE';
+    if (contentPath === '/') return copy.home;
+    if (isSection('about')) return copy.company;
+    if (isSection('products')) return copy.products;
+    if (isSection('markets')) return copy.markets;
+    if (isSection('news')) return copy.news;
+    if (isSection('contact')) return copy.contact;
+    if (contentPath.startsWith('/legal/')) return 'EMPERIO TISS';
+    return 'EMPERIO TISS';
+  })();
+
   const whatsappIcon =
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 3.5A10.9 10.9 0 0 0 13 1.1 10.9 10.9 0 0 0 3.2 17.4L2 22l4.7-1.2A10.9 10.9 0 1 0 20.5 3.5Zm-7.4 17.2a9.1 9.1 0 0 1-4.6-1.2l-.3-.2-2.8.7.8-2.7.8-2.7.2-.3a9.1 9.1 0 1 1 7.1 3.7Zm5-6.8c-.3-.2-1.8-.9-2-.9-.3-.1-.4-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.7-2.6-1.3-3.7-2.9-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6 0-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-1.1 1.9-1.1 3 0 .7.2 1.3.5 1.9.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.5.6.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3Z"/></svg>';
 
@@ -123,26 +146,32 @@
 
   const headerMarkup = `
     <div class="header-inner">
+      <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="${copy.menu}" aria-expanded="false" aria-controls="navOverlay">
+        <span></span><span></span><span></span>
+      </button>
+      <span class="joby-header-current" aria-hidden="true">${sectionLabel}</span>
+
       <nav class="home-header-nav" aria-label="${copy.navLeft}">
         <a href="${route('about')}"${currentAttr('about')}>${copy.company}</a>
         <a href="${route('products')}"${currentAttr('products')}>${copy.products}</a>
       </nav>
+
       <a href="${base}" class="site-logo" aria-label="${copy.homeAria}">
-        <img class="home-metal-logo" src="/assets/images/emperio-tiss-logo.svg?v=20261001-signature" alt="EMPERIO TISS S.L." width="600" height="430">
+        <img class="home-metal-logo" src="/assets/images/emperio-tiss-emblem.svg?v=20261003-joby" alt="EMPERIO TISS S.L." width="230" height="267">
       </a>
+
       <nav class="home-header-secondary" aria-label="${copy.navRight}">
         <a href="${route('markets')}"${currentAttr('markets')}>${copy.markets}</a>
         <a href="${route('contact')}"${currentAttr('contact')}>${copy.contact}</a>
       </nav>
+
       <a href="https://wa.me/34614270684" class="et-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="${copy.whatsapp}">
         ${whatsappIcon}<span>${copy.whatsapp}</span>
       </a>
+
       <nav class="et-language-switch" aria-label="${copy.languages}">
         ${languageLinks}
       </nav>
-      <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="${copy.menu}" aria-expanded="false" aria-controls="navOverlay">
-        <span></span><span></span><span></span>
-      </button>
     </div>`;
 
   const overlayMarkup = `
@@ -169,7 +198,7 @@
       </nav>
       <div class="nav-overlay-foot">
         <div class="nav-overlay-lang">${languageLinks}</div>
-        <div class="nav-overlay-contact"><a href="${route('contact')}">${copy.enquiry}</a><span>${copy.locale}</span></div>
+        <div class="nav-overlay-contact"><a href="${route('contact')}">${copy.enquiry}</a><a href="https://wa.me/34614270684" target="_blank" rel="noopener noreferrer">${copy.whatsapp} ↗</a><span>${copy.locale}</span></div>
       </div>
     </div>`;
 
