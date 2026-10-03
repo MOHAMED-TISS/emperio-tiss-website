@@ -5,7 +5,7 @@
   'use strict';
 
   const body = document.body;
-  if (!body?.classList.contains('home-joby-selected')) return;
+  if (!document.querySelector('.home-joby-selected-hero,.home-joby-selected-markets,.home-joby-selected-contact')) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const gsap = window.gsap;
