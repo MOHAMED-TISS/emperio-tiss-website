@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-commercial-header-7';
+  const VERSION = '20261003-commercial-header-8';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -23,7 +23,7 @@
     if (doc.querySelector('link[data-et-joby-header]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-joby-experience.css?v=20261003-commercial-6';
+    link.href = '/assets/css/header-joby-experience.css?v=20261003-commercial-8';
     link.dataset.etJobyHeader = 'true';
     doc.head.appendChild(link);
   };
@@ -132,6 +132,11 @@
     return `${index ? '<span>·</span>' : ''}<a href="${languageHref(code)}"${current}>${code.toUpperCase()}</a>`;
   }).join('');
 
+  const headerLanguageLinks = languageOrder.map((code) => {
+    const current = code === lang ? ' class="current" aria-current="page"' : '';
+    return `<a href="${languageHref(code)}"${current}>${code.toUpperCase()}</a>`;
+  }).join('');
+
   const headerMarkup = `
     <div class="header-inner">
       <button id="menuToggleBtn" class="mobile-menu" type="button" aria-label="${copy.menu}" aria-expanded="false" aria-controls="navOverlay">
@@ -160,9 +165,15 @@
         ${whatsappIcon}<span>${copy.whatsapp}</span>
       </a>
 
-      <nav class="et-language-switch" aria-label="${copy.languages}">
-        ${languageLinks}
-      </nav>
+      <details class="header-language-switch">
+        <summary aria-label="${copy.languages}">
+          <span>${lang.toUpperCase()}</span>
+          <span class="header-language-chevron" aria-hidden="true">⌄</span>
+        </summary>
+        <nav class="header-language-menu" aria-label="${copy.languages}">
+          ${headerLanguageLinks}
+        </nav>
+      </details>
     </div>`;
 
   const overlayMarkup = `
