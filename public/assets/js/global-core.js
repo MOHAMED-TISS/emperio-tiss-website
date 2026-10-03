@@ -319,6 +319,13 @@
           const securityFailure = code.startsWith('TURNSTILE_');
           throw new Error(securityFailure ? contactCopy.security : (result.error || contactCopy.error));
         }
+        const analyticsProductCategory = clean(form.querySelector('[name="producto"]')?.value || form.querySelector('[name="product_category"]')?.value || '', 80);
+        window.dispatchEvent(new CustomEvent('et:contact-success', {
+          detail: {
+            product_category: analyticsProductCategory || undefined,
+            form_location: 'contact'
+          }
+        }));
         form.reset();
         status.textContent = contactCopy.success + (result.inquiry_id ? ` · Ref. ${result.inquiry_id}` : '');
         status.dataset.state = 'success';
