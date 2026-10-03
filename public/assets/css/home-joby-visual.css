@@ -1,0 +1,506 @@
+/* EMPERIO TISS — JOBY VISUAL STUDY
+   Demo branch only. Brings image treatment, backgrounds and typography
+   much closer to Joby's current homepage while retaining EMPERIO content.
+*/
+
+body.joby-motion-demo{
+  --j-blue:#3f7fe5;
+  --j-blue-deep:#2f68cc;
+  --j-paper:#f4f4ef;
+  --j-white:#ffffff;
+  --j-ink:#111214;
+  --j-muted:#6b6f76;
+  background:var(--j-paper);
+  color:var(--j-ink);
+}
+body.joby-motion-demo :is(h1,h2,h3,.categories button){
+  font-family:'DM Sans',Arial,sans-serif!important;
+  font-style:normal!important;
+}
+body.joby-motion-demo em{font-style:normal!important}
+
+/* HERO — full-bleed photographic statement, Joby-style */
+body.joby-motion-demo .approved-hero{
+  min-height:100svh!important;
+  min-height:100dvh!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  padding:0 5vw clamp(42px,7vh,78px)!important;
+  background:#101820!important;
+}
+body.joby-motion-demo .approved-hero-image{
+  object-position:center 48%!important;
+  filter:saturate(.82) contrast(1.04) brightness(.76);
+}
+body.joby-motion-demo .approved-hero::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background:
+    linear-gradient(180deg,rgba(5,14,24,.10) 0%,rgba(5,14,24,.06) 35%,rgba(5,14,24,.78) 100%),
+    linear-gradient(90deg,rgba(5,14,24,.62) 0%,rgba(5,14,24,.08) 62%,rgba(5,14,24,.08) 100%)!important;
+}
+body.joby-motion-demo .approved-hero::after{display:none!important}
+body.joby-motion-demo .approved-hero-copy{
+  width:min(1080px,90vw)!important;
+  max-width:none!important;
+  position:relative!important;
+  z-index:2!important;
+}
+body.joby-motion-demo .approved-kicker{
+  margin:0 0 22px!important;
+  color:rgba(255,255,255,.86)!important;
+  font:600 12px/1.1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.02em!important;
+  text-transform:none!important;
+}
+body.joby-motion-demo .approved-hero h1{
+  max-width:9.8ch!important;
+  margin:0!important;
+  color:#fff!important;
+  font:600 clamp(68px,8.25vw,142px)/.86 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.067em!important;
+  text-wrap:balance;
+}
+body.joby-motion-demo .approved-description{
+  max-width:480px!important;
+  margin:28px 0 0!important;
+  color:rgba(255,255,255,.92)!important;
+  font:500 clamp(15px,1.3vw,19px)/1.45 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .approved-cta{
+  margin-top:28px!important;
+  min-height:48px!important;
+  padding:0 21px!important;
+  gap:24px!important;
+  border:1px solid rgba(255,255,255,.72)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.08)!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  font:600 13px/1 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .approved-geography{
+  left:auto!important;
+  right:5vw!important;
+  bottom:clamp(48px,7vh,80px)!important;
+  color:rgba(255,255,255,.62)!important;
+  font:600 10px/1.2 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.08em!important;
+}
+
+/* BLUE INTERLUDE — Joby's strong colour-block rhythm */
+body.joby-motion-demo .et-experience:first-of-type{
+  background:var(--j-blue)!important;
+}
+body.joby-motion-demo .et-experience .collection{
+  padding:0!important;
+  background:var(--j-blue)!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .collection .chapter{
+  width:min(1360px,90vw);
+  margin:0 auto;
+  padding:44px 0 0!important;
+  color:rgba(255,255,255,.78)!important;
+  font:600 11px/1.2 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+body.joby-motion-demo .collection .opening{
+  min-height:72svh;
+  width:min(1360px,90vw);
+  margin:0 auto!important;
+  padding:6vh 0 8vh!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr)!important;
+  align-items:end!important;
+  gap:7vw!important;
+}
+body.joby-motion-demo .collection .opening h2{
+  max-width:8.5ch;
+  color:#fff!important;
+  font:600 clamp(70px,8.9vw,150px)/.86 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.07em!important;
+}
+body.joby-motion-demo .collection .opening h2 em{
+  padding-left:0!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .collection .opening p{
+  max-width:330px;
+  margin:0 0 8px!important;
+  color:rgba(255,255,255,.88)!important;
+  font:500 clamp(16px,1.45vw,21px)/1.45 'DM Sans',Arial,sans-serif!important;
+}
+
+/* EXPERIENCE IMAGE — full viewport, almost no chrome */
+body.joby-motion-demo .collection .scene{
+  min-height:100svh!important;
+  min-height:100dvh!important;
+  width:100%!important;
+  border-radius:0!important;
+  background:#09131d!important;
+}
+body.joby-motion-demo .collection .scene-image{
+  object-position:center!important;
+  filter:saturate(.87) contrast(1.04) brightness(.82);
+}
+body.joby-motion-demo .collection .scene-shade{
+  background:
+    linear-gradient(180deg,rgba(5,13,22,.18),rgba(5,13,22,.02) 42%,rgba(5,13,22,.72) 100%),
+    linear-gradient(90deg,rgba(5,13,22,.58),rgba(5,13,22,.04) 62%)!important;
+}
+body.joby-motion-demo .collection .scene-caption{
+  padding:34px 5vw!important;
+  color:rgba(255,255,255,.82)!important;
+  font:600 11px/1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+body.joby-motion-demo .collection .scene-caption>span:last-child{color:#fff!important}
+body.joby-motion-demo .collection .scene-content{
+  position:absolute!important;
+  left:5vw!important;
+  right:5vw!important;
+  bottom:72px!important;
+  padding:0!important;
+  grid-template-columns:minmax(0,1.25fr) minmax(280px,.55fr)!important;
+  gap:8vw!important;
+}
+body.joby-motion-demo .collection .categories button{
+  padding:5px 0!important;
+  color:#fff!important;
+  font:600 clamp(56px,7.6vw,122px)/.88 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.065em!important;
+  opacity:.4!important;
+}
+body.joby-motion-demo .collection .categories button[aria-selected=true]{opacity:1!important}
+body.joby-motion-demo .collection .categories button span,
+body.joby-motion-demo .collection .categories button sup{font-size:.13em!important;letter-spacing:0!important}
+body.joby-motion-demo .collection .product-panel{
+  align-self:end;
+  color:#fff!important;
+}
+body.joby-motion-demo .collection .product-panel .small{
+  color:rgba(255,255,255,.7)!important;
+  font:600 11px/1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+body.joby-motion-demo .collection .product-panel p{
+  margin:16px 0 24px!important;
+  color:rgba(255,255,255,.92)!important;
+  font:500 16px/1.5 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .collection .product-panel .home-action{
+  min-height:44px!important;
+  padding:0!important;
+  border:0!important;
+  border-bottom:1px solid rgba(255,255,255,.75)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .collection .scene-bottom{display:none!important}
+body.joby-motion-demo .collection .seasonal{
+  width:min(1360px,90vw);
+  margin:auto;
+  padding:48px 0 60px!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .collection .seasonal>a{
+  color:#fff!important;
+  font:600 20px/1.2 'DM Sans',Arial,sans-serif!important;
+}
+
+/* WHITE PRODUCT/PROCESS CHAPTER */
+body.joby-motion-demo .et-experience .approach{
+  padding:120px 5vw 130px!important;
+  background:var(--j-paper)!important;
+  color:var(--j-ink)!important;
+}
+body.joby-motion-demo .approach-heading{
+  width:min(1360px,100%);
+  margin:auto;
+  grid-template-columns:.45fr 1.55fr!important;
+}
+body.joby-motion-demo .approach-heading>.small{
+  color:#555d66!important;
+  font:600 11px/1.35 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.03em!important;
+}
+body.joby-motion-demo .approach h2{
+  max-width:11ch;
+  color:var(--j-ink)!important;
+  font:600 clamp(65px,7.5vw,126px)/.88 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.067em!important;
+}
+body.joby-motion-demo .approach h2 em{color:var(--j-ink)!important}
+body.joby-motion-demo .approach-layout{
+  width:min(1360px,100%);
+  margin:90px auto 0!important;
+  grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr)!important;
+  gap:8vw!important;
+}
+body.joby-motion-demo .origin-image{
+  margin:0!important;
+  aspect-ratio:1.32/1!important;
+  border-radius:18px;
+  overflow:hidden;
+}
+body.joby-motion-demo .origin-image img{
+  filter:saturate(.82) contrast(1.03);
+}
+body.joby-motion-demo .origin-image>span{
+  left:22px!important;
+  bottom:22px!important;
+  border-radius:999px;
+  padding:10px 14px!important;
+  background:rgba(17,18,20,.68)!important;
+  backdrop-filter:blur(10px);
+}
+body.joby-motion-demo .steps article{
+  padding:26px 0 30px!important;
+  border-top:1px solid rgba(17,18,20,.2)!important;
+}
+body.joby-motion-demo .step-number{
+  color:#737980!important;
+  font:600 12px/1 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .steps h3{
+  color:var(--j-ink)!important;
+  font:600 clamp(30px,3vw,48px)/1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.045em!important;
+}
+body.joby-motion-demo .steps p{
+  color:#5c626a!important;
+  font:450 15px/1.55 'DM Sans',Arial,sans-serif!important;
+}
+
+/* MARKETS — Joby electric-blue chapter */
+body.joby-motion-demo .markets-section{
+  padding:125px 0 110px!important;
+  background:var(--j-blue)!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .markets-section>.container{
+  width:min(1360px,90vw)!important;
+}
+body.joby-motion-demo .markets-section .eyebrow{
+  color:rgba(255,255,255,.75)!important;
+  font:600 11px/1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+body.joby-motion-demo .markets-description{
+  color:rgba(255,255,255,.84)!important;
+  font:500 16px/1.5 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .markets-title{
+  margin:100px 0 65px!important;
+}
+body.joby-motion-demo .markets-title h2{
+  max-width:10ch;
+  color:#fff!important;
+  font:600 clamp(68px,8.4vw,142px)/.86 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.07em!important;
+}
+body.joby-motion-demo .markets-title h2 span{color:#fff!important;font-weight:400!important}
+body.joby-motion-demo .markets-title p{
+  color:rgba(255,255,255,.78)!important;
+  font:500 16px/1.5 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .home-markets-map{
+  margin:60px 0 74px!important;
+  min-height:420px;
+  border:0!important;
+}
+body.joby-motion-demo .home-markets-map svg{width:100%;height:auto}
+body.joby-motion-demo .home-markets-map :is(.route,.node){stroke:#fff!important}
+body.joby-motion-demo .home-markets-map .map-word{fill:#fff!important;font-family:'DM Sans',Arial,sans-serif!important}
+body.joby-motion-demo .home-markets-map .map-sub{fill:rgba(255,255,255,.62)!important}
+body.joby-motion-demo .market-grid{
+  border-color:rgba(255,255,255,.26)!important;
+}
+body.joby-motion-demo .market-grid article{
+  min-height:200px;
+  padding:28px 24px 34px!important;
+  border-color:rgba(255,255,255,.26)!important;
+}
+body.joby-motion-demo .market-grid article span{color:rgba(255,255,255,.55)!important}
+body.joby-motion-demo .market-grid article h3{
+  color:#fff!important;
+  font:600 30px/1.05 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .market-grid article p{color:rgba(255,255,255,.76)!important}
+
+/* SIGNATURE — Joby's story/full-image takeover language */
+body.joby-motion-demo .home-private{
+  position:relative!important;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  padding:100px 5vw 80px!important;
+  background:#101820!important;
+  color:#fff!important;
+  overflow:hidden;
+}
+body.joby-motion-demo .home-private::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:url('/assets/images/home-origins.webp') center/cover no-repeat;
+  filter:saturate(.72) contrast(1.05) brightness(.68);
+  transform:scale(1.03);
+}
+body.joby-motion-demo .home-private::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(8,18,28,.08),rgba(8,18,28,.74)),
+    linear-gradient(90deg,rgba(8,18,28,.70),rgba(8,18,28,.12) 65%);
+}
+body.joby-motion-demo .joby-private-wash{display:none!important}
+body.joby-motion-demo .home-private-inner{
+  width:min(1360px,100%)!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr)!important;
+  gap:9vw!important;
+  align-items:end!important;
+}
+body.joby-motion-demo .home-private-eyebrow,
+body.joby-motion-demo .home-private-label{
+  color:rgba(255,255,255,.72)!important;
+  font:600 11px/1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+body.joby-motion-demo .home-private h2{
+  max-width:9ch;
+  margin:20px 0 22px!important;
+  color:#fff!important;
+  font:600 clamp(70px,8.5vw,145px)/.84 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.07em!important;
+}
+body.joby-motion-demo .home-private h2 em{color:#fff!important}
+body.joby-motion-demo .home-private-description{
+  color:#fff!important;
+  font:600 20px/1.35 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .home-private-detail{
+  max-width:580px!important;
+  color:rgba(255,255,255,.82)!important;
+  font:450 15px/1.6 'DM Sans',Arial,sans-serif!important;
+}
+body.joby-motion-demo .home-private-action{
+  display:inline-flex!important;
+  margin-top:20px!important;
+  padding:0 0 8px!important;
+  border:0!important;
+  border-bottom:1px solid #fff!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .home-private-seal{
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+}
+body.joby-motion-demo .home-private-seal img{filter:brightness(0) invert(1);opacity:.9}
+
+/* CONTACT — clean blue ending rather than luxury ornament */
+body.joby-motion-demo .et-experience .invitation{
+  padding:110px 5vw 70px!important;
+  background:var(--j-paper)!important;
+  color:var(--j-ink)!important;
+}
+body.joby-motion-demo .invitation>.small{
+  color:#676e77!important;
+  font:600 11px/1 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:.04em!important;
+}
+body.joby-motion-demo .invitation-content{
+  margin:55px 0 85px!important;
+}
+body.joby-motion-demo .invitation h2{
+  max-width:10ch;
+  color:var(--j-ink)!important;
+  font:600 clamp(66px,8vw,136px)/.86 'DM Sans',Arial,sans-serif!important;
+  letter-spacing:-.07em!important;
+}
+body.joby-motion-demo .invitation h2 em{color:var(--j-ink)!important}
+body.joby-motion-demo .contact-disc{
+  flex:0 0 auto!important;
+  width:auto!important;
+  height:auto!important;
+  min-height:50px!important;
+  padding:0 24px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:var(--j-blue)!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  flex-direction:row!important;
+}
+body.joby-motion-demo .contact-disc span:last-child{font-size:20px!important;color:#fff!important}
+body.joby-motion-demo .invitation-bottom{
+  border-color:rgba(17,18,20,.18)!important;
+}
+body.joby-motion-demo .invitation-bottom p{color:#666d74!important}
+body.joby-motion-demo .invitation-bottom a{color:var(--j-ink)!important}
+
+/* Header closer to Joby's simple transparent navigation */
+body.joby-motion-demo .site-header{
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+body.joby-motion-demo .site-header .header-inner{
+  width:calc(100% - 10vw)!important;
+  max-width:none!important;
+}
+body.joby-motion-demo .site-header .home-header-nav a,
+body.joby-motion-demo .site-header .home-header-secondary a{
+  font-size:13px!important;
+  font-weight:600!important;
+  letter-spacing:-.01em!important;
+}
+
+/* Mobile: preserve hierarchy without sticky/pinned overload */
+@media(max-width:900px){
+  body.joby-motion-demo .approved-hero{padding:0 20px 42px!important}
+  body.joby-motion-demo .approved-hero h1{font-size:clamp(54px,16vw,88px)!important;max-width:8.5ch!important}
+  body.joby-motion-demo .approved-geography{display:none!important}
+  body.joby-motion-demo .collection .chapter{width:calc(100% - 40px)}
+  body.joby-motion-demo .collection .opening{
+    width:calc(100% - 40px);
+    min-height:68svh;
+    grid-template-columns:1fr!important;
+    align-content:end!important;
+    gap:34px!important
+  }
+  body.joby-motion-demo .collection .opening h2{font-size:clamp(58px,17vw,90px)!important}
+  body.joby-motion-demo .collection .scene-content{
+    left:20px!important;right:20px!important;bottom:36px!important;
+    grid-template-columns:1fr!important;gap:24px!important
+  }
+  body.joby-motion-demo .collection .categories button{font-size:clamp(47px,14vw,72px)!important}
+  body.joby-motion-demo .collection .product-panel{display:none}
+  body.joby-motion-demo .approach-heading,
+  body.joby-motion-demo .approach-layout,
+  body.joby-motion-demo .home-private-inner{grid-template-columns:1fr!important}
+  body.joby-motion-demo .approach-layout{margin-top:50px!important}
+  body.joby-motion-demo .markets-title{margin-top:60px!important}
+  body.joby-motion-demo .market-grid{grid-template-columns:1fr 1fr!important}
+  body.joby-motion-demo .home-private{min-height:86svh;padding:80px 20px 48px!important}
+  body.joby-motion-demo .home-private-seal{display:none!important}
+  body.joby-motion-demo .invitation-content{display:block!important}
+  body.joby-motion-demo .contact-disc{margin-top:32px}
+}
