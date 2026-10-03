@@ -325,48 +325,104 @@ html body .nav-products>summary::-webkit-details-marker{
   display:none!important;
 }
 
-/* Product subcategories — larger, cleaner Joby-like typographic tier */
+/* Product submenu — editorial hierarchy, not a generic link grid */
 html body .nav-products-links{
-  width:min(850px,calc(100% - 38px))!important;
-  margin:18px 0 24px 38px!important;
+  width:min(720px,calc(100% - 38px))!important;
+  margin:20px 0 28px 38px!important;
   padding:0!important;
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  column-gap:44px!important;
-  row-gap:8px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:8px!important;
 }
 
-html body .nav-products-links a{
-  position:relative!important;
-  display:block!important;
-  padding:3px 0 5px!important;
-  color:rgba(255,255,255,.82)!important;
-  font:500 clamp(18px,1.55vw,25px)/1.08 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:-.025em!important;
+html body .nav-products-links .nav-product-all{
+  display:inline-flex!important;
+  align-items:center!important;
+  margin:0 0 12px!important;
+  padding:0 0 5px!important;
+  color:rgba(255,255,255,.56)!important;
+  font:600 11px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.075em!important;
+  text-transform:uppercase!important;
   text-decoration:none!important;
-  transition:opacity .24s ease,transform .36s var(--et-joby-ease)!important;
+  border-bottom:1px solid rgba(255,255,255,.22)!important;
 }
 
-html body .nav-products-links a::after{
+html body .nav-products-links .nav-product-parent{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:baseline!important;
+  width:auto!important;
+  margin:0!important;
+  padding:1px 0 2px!important;
+  color:#fff!important;
+  font:500 clamp(26px,2.15vw,35px)/.98 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.042em!important;
+  text-decoration:none!important;
+  transition:opacity .22s ease,transform .34s var(--et-joby-ease)!important;
+}
+
+html body .nav-products-links .nav-product-parent::after{
   content:"↗";
-  display:inline-block;
-  margin-left:8px;
-  font-size:.62em;
-  vertical-align:top;
+  margin-left:9px;
+  font-size:.44em;
+  line-height:1;
   opacity:0;
-  transform:translate(-4px,2px);
-  transition:opacity .24s ease,transform .36s var(--et-joby-ease);
+  transform:translate(-4px,-5px);
+  transition:opacity .22s ease,transform .34s var(--et-joby-ease);
 }
 
-html body .nav-products-links a:hover{
+html body .nav-products-links .nav-product-parent:hover{
+  opacity:.62!important;
+  transform:translateX(3px);
+}
+
+html body .nav-products-links .nav-product-parent:hover::after{
+  opacity:.78;
+  transform:translate(0,-5px);
+}
+
+html body .nav-product-group{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:7px!important;
+  margin:0 0 2px!important;
+}
+
+html body .nav-product-children{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:0!important;
+  margin:0 0 4px 1px!important;
+  padding:0!important;
+}
+
+html body .nav-product-children a{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  margin:0!important;
+  padding:0!important;
+  color:rgba(255,255,255,.64)!important;
+  font:500 14px/1.35 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.012em!important;
+  text-decoration:none!important;
+  transition:color .2s ease,opacity .2s ease!important;
+}
+
+html body .nav-product-children a:not(:last-child)::after{
+  content:"·";
+  display:inline-block;
+  margin:0 10px!important;
+  color:rgba(255,255,255,.34)!important;
+}
+
+html body .nav-product-children a:hover{
   color:#fff!important;
   opacity:1!important;
-  transform:translateX(4px);
-}
-
-html body .nav-products-links a:hover::after{
-  opacity:.72;
-  transform:translate(0,2px);
 }
 
 html body.et-brand-shell .nav-overlay-foot,
@@ -478,13 +534,31 @@ html[lang="ar"] body .site-header>.header-inner{
 
   html body .nav-products-links{
     width:calc(100% - 32px)!important;
-    margin:14px 0 20px 32px!important;
-    grid-template-columns:1fr!important;
-    row-gap:7px!important;
+    margin:15px 0 22px 32px!important;
+    gap:7px!important;
   }
 
-  html body .nav-products-links a{
-    font-size:18px!important;
+  html body .nav-products-links .nav-product-all{
+    margin-bottom:10px!important;
+    font-size:10px!important;
+  }
+
+  html body .nav-products-links .nav-product-parent{
+    font-size:clamp(24px,7vw,31px)!important;
+    line-height:1!important;
+  }
+
+  html body .nav-product-children{
+    margin-top:1px!important;
+    margin-bottom:5px!important;
+  }
+
+  html body .nav-product-children a{
+    font-size:13px!important;
+  }
+
+  html body .nav-product-children a:not(:last-child)::after{
+    margin:0 8px!important;
   }
 
   html body .nav-overlay-foot{
