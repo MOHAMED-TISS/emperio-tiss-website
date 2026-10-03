@@ -204,5 +204,7 @@
     }
   }
   loadScript('/assets/js/site-polish.js?v=20260927-turnstile-1', 'etSitePolish');
+  loadCss('/assets/css/footer-terminal.css?v=20261003-1', 'etTerminalFooterCss');
+  loadScript('/assets/js/footer-terminal.js?v=20261003-1', 'etTerminalFooterScript');
   loadScript('/assets/js/smooth-scroll.js?v=20261003-1', 'etSmoothScroll');
 })();
