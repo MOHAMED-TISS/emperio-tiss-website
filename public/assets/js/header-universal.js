@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-joby-experience-1';
+  const VERSION = '20261003-joby-experience-2';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -23,7 +23,7 @@
     if (doc.querySelector('link[data-et-joby-header]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-joby-experience.css?v=20261003-1';
+    link.href = '/assets/css/header-joby-experience.css?v=20261003-2';
     link.dataset.etJobyHeader = 'true';
     doc.head.appendChild(link);
   };
