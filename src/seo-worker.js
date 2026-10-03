@@ -25,7 +25,9 @@ class SeoHeadAppender {
       buildSeoHead(this.meta) +
       '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">' +
       '<link rel="stylesheet" href="/assets/css/site-2026.css?v=20261003-2">' +
-      '<script src="/assets/js/header-universal.js?v=20261003-commercial-header-7" defer></script>',
+      '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-1">' +
+      '<script src="/assets/js/header-universal.js?v=20261003-commercial-header-7" defer></script>' +
+      '<script src="/assets/js/footer-terminal.js?v=20261003-1" defer></script>',
       { html: true }
     );
   }
