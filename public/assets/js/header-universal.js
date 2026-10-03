@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-joby-experience-3';
+  const VERSION = '20261003-joby-experience-4';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -232,7 +232,12 @@
     clearLegacyInlineStyles(header);
 
     let overlay = doc.getElementById('navOverlay');
-    if (!overlay || overlay.dataset.etUniversalOverlay !== VERSION) {
+    const hierarchyOk =
+      !!overlay?.querySelector('.nav-product-parent') &&
+      !!overlay?.querySelector('.nav-product-children') &&
+      !!overlay?.querySelector('.nav-product-all');
+
+    if (!overlay || overlay.dataset.etUniversalOverlay !== VERSION || !hierarchyOk) {
       const canonicalOverlay = doc.createElement('div');
       canonicalOverlay.id = 'navOverlay';
       canonicalOverlay.className = 'nav-overlay';
@@ -262,11 +267,17 @@
         doc.querySelector('body > .admin-topbar') ||
         doc.querySelector('.admin-topbar');
       const overlay = doc.getElementById('navOverlay');
+      const productHierarchyOk =
+        !!overlay?.querySelector('.nav-product-parent') &&
+        !!overlay?.querySelector('.nav-product-children') &&
+        !!overlay?.querySelector('.nav-product-all');
+
       if (
         !header ||
         header.dataset.etUniversalHeader !== VERSION ||
         !overlay ||
-        overlay.dataset.etUniversalOverlay !== VERSION
+        overlay.dataset.etUniversalOverlay !== VERSION ||
+        !productHierarchyOk
       ) install();
     });
   });
