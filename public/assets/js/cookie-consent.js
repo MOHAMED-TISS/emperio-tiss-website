@@ -4,6 +4,8 @@
   const doc = document;
   const body = doc.body;
   if (!body || body.classList.contains('private-admin-page')) return;
+  if (window.__etCookieConsentLoaded) return;
+  window.__etCookieConsentLoaded = true;
 
   const VERSION = '20261004-1';
   const STORAGE_KEY = 'et_cookie_consent_v1';
