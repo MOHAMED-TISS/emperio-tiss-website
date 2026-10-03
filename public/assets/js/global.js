@@ -203,7 +203,7 @@
     }
   }
   loadCss('/assets/css/cookie-consent.css?v=20261004-3', 'etCookieConsentCss');
-  loadScript('/assets/js/cookie-consent.js?v=20261004-2', 'etCookieConsentScript');
+  loadScript('/assets/js/cookie-consent.js?v=20261004-3', 'etCookieConsentScript');
   loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
   loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
   loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
