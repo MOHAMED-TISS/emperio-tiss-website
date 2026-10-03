@@ -2793,3 +2793,313 @@ html[lang="ar"] .home-page.home-experience .et-experience .collection .categorie
     transform:none!important;
   }
 }
+
+
+/* =========================================================
+   HOME BUTTON SYSTEM V2
+   Unified CTA geometry, hierarchy and interaction.
+   ========================================================= */
+.home-page.home-experience{
+  --btn-h:52px;
+  --btn-r:999px;
+  --btn-ease:cubic-bezier(.16,1,.3,1);
+  --btn-blue:#337fe5;
+  --btn-navy:#0b1d31;
+}
+
+/* Shared button mechanics */
+.home-page.home-experience :is(
+  .approved-cta,
+  .collection .product-panel a,
+  .seasonal a.home-action,
+  .approach-v2 .approach-link,
+  .home-signature-v2 .home-private-action,
+  .home-signature-v2 .home-private-login,
+  .home-joby-selected-markets .text-link,
+  .home-joby-selected-contact .contact-disc
+){
+  min-height:var(--btn-h)!important;
+  padding:0 18px 0 20px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:20px!important;
+  border-radius:var(--btn-r)!important;
+  box-shadow:none!important;
+  font:600 12px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.005em!important;
+  text-decoration:none!important;
+  text-transform:none!important;
+  transition:
+    transform .35s var(--btn-ease),
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease!important;
+}
+
+.home-page.home-experience :is(
+  .approved-cta,
+  .collection .product-panel a,
+  .seasonal a.home-action,
+  .approach-v2 .approach-link,
+  .home-signature-v2 .home-private-action,
+  .home-signature-v2 .home-private-login,
+  .home-joby-selected-markets .text-link,
+  .home-joby-selected-contact .contact-disc
+):hover{
+  transform:translateY(-2px)!important;
+}
+
+.home-page.home-experience :is(
+  .approved-cta,
+  .collection .product-panel a,
+  .seasonal a.home-action,
+  .approach-v2 .approach-link,
+  .home-signature-v2 .home-private-action,
+  .home-signature-v2 .home-private-login,
+  .home-joby-selected-markets .text-link,
+  .home-joby-selected-contact .contact-disc
+):focus-visible{
+  outline:2px solid currentColor!important;
+  outline-offset:4px!important;
+}
+
+/* Arrow chip */
+.home-page.home-experience :is(
+  .approved-cta,
+  .collection .product-panel a,
+  .seasonal a.home-action,
+  .approach-v2 .approach-link,
+  .home-signature-v2 .home-private-action,
+  .home-signature-v2 .home-private-login,
+  .home-joby-selected-markets .text-link,
+  .home-joby-selected-contact .contact-disc
+)>span:last-child{
+  width:28px!important;
+  height:28px!important;
+  flex:0 0 28px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  border-radius:50%!important;
+  font:600 14px/1 "DM Sans",Arial,sans-serif!important;
+  transition:
+    transform .35s var(--btn-ease),
+    background .25s ease,
+    color .25s ease!important;
+}
+
+.home-page.home-experience :is(
+  .approved-cta,
+  .collection .product-panel a,
+  .seasonal a.home-action,
+  .approach-v2 .approach-link,
+  .home-signature-v2 .home-private-action,
+  .home-signature-v2 .home-private-login,
+  .home-joby-selected-markets .text-link,
+  .home-joby-selected-contact .contact-disc
+):hover>span:last-child{
+  transform:translate(2px,-1px)!important;
+}
+
+/* Hero — white premium primary */
+.home-page.home-experience .approved-cta{
+  margin-top:30px!important;
+  border:1px solid rgba(255,255,255,.92)!important;
+  background:#fff!important;
+  color:var(--btn-navy)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.home-page.home-experience .approved-cta>span:last-child{
+  background:var(--btn-blue)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .approved-cta:hover{
+  background:#eef4ff!important;
+  border-color:#eef4ff!important;
+}
+
+/* Collection — white primary inside image */
+.home-page.home-experience .collection .product-panel a{
+  width:100%!important;
+  justify-content:space-between!important;
+  border:1px solid #fff!important;
+  background:#fff!important;
+  color:var(--btn-navy)!important;
+}
+.home-page.home-experience .collection .product-panel a>span:last-child{
+  background:var(--btn-blue)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .collection .product-panel a:hover{
+  background:#eef4ff!important;
+  border-color:#eef4ff!important;
+}
+
+/* Seasonal — dark button on paper */
+.home-page.home-experience .et-experience .seasonal a.home-action{
+  padding-left:21px!important;
+  border:1px solid var(--btn-navy)!important;
+  background:var(--btn-navy)!important;
+  color:#fff!important;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  font-style:normal!important;
+}
+.home-page.home-experience .et-experience .seasonal a.home-action>span:last-child{
+  background:rgba(255,255,255,.12)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .et-experience .seasonal a.home-action:hover{
+  background:#17304d!important;
+  border-color:#17304d!important;
+}
+
+/* Approach — outlined editorial secondary */
+.home-page.home-experience .approach-v2 .approach-link{
+  width:max-content!important;
+  margin-top:4px!important;
+  padding:0 16px 0 20px!important;
+  border:1px solid rgba(17,18,20,.22)!important;
+  border-radius:var(--btn-r)!important;
+  background:transparent!important;
+  color:#111214!important;
+}
+.home-page.home-experience .approach-v2 .approach-link>span:last-child{
+  background:#111214!important;
+  color:#fff!important;
+}
+.home-page.home-experience .approach-v2 .approach-link:hover{
+  background:#fff!important;
+  border-color:rgba(17,18,20,.30)!important;
+}
+
+/* Markets — ghost white over blue */
+.home-page.home-experience .home-joby-selected-markets .text-link{
+  margin-top:30px!important;
+  width:max-content!important;
+  border:1px solid rgba(255,255,255,.34)!important;
+  background:rgba(255,255,255,.06)!important;
+  color:#fff!important;
+  backdrop-filter:blur(8px)!important;
+  -webkit-backdrop-filter:blur(8px)!important;
+}
+.home-page.home-experience .home-joby-selected-markets .text-link>span:last-child{
+  background:#fff!important;
+  color:#337fe5!important;
+}
+.home-page.home-experience .home-joby-selected-markets .text-link:hover{
+  background:rgba(255,255,255,.12)!important;
+  border-color:rgba(255,255,255,.52)!important;
+}
+
+/* Signature */
+.home-page.home-experience .home-signature-v2 .home-private-action{
+  border:1px solid #fff!important;
+  background:#fff!important;
+  color:var(--btn-navy)!important;
+}
+.home-page.home-experience .home-signature-v2 .home-private-action>span:last-child{
+  background:var(--btn-blue)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .home-signature-v2 .home-private-login{
+  border:1px solid rgba(255,255,255,.28)!important;
+  background:rgba(255,255,255,.055)!important;
+  color:#fff!important;
+  backdrop-filter:blur(10px)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+}
+.home-page.home-experience .home-signature-v2 .home-private-login>span:last-child{
+  background:rgba(255,255,255,.12)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .home-signature-v2 .home-private-login:hover{
+  background:rgba(255,255,255,.11)!important;
+  border-color:rgba(255,255,255,.44)!important;
+}
+
+/* Final contact — stronger commercial CTA */
+.home-page.home-experience .home-joby-selected-contact .contact-disc{
+  width:auto!important;
+  height:auto!important;
+  min-width:154px!important;
+  flex:0 0 auto!important;
+  flex-direction:row!important;
+  border:1px solid var(--btn-blue)!important;
+  background:var(--btn-blue)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .home-joby-selected-contact .contact-disc>span:first-child{
+  color:#fff!important;
+  font:600 12px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.01em!important;
+}
+.home-page.home-experience .home-joby-selected-contact .contact-disc>span:last-child{
+  background:rgba(255,255,255,.14)!important;
+  color:#fff!important;
+}
+.home-page.home-experience .home-joby-selected-contact .contact-disc:hover{
+  background:#2b6fcc!important;
+  border-color:#2b6fcc!important;
+}
+
+@media(max-width:700px){
+  .home-page.home-experience{
+    --btn-h:50px;
+  }
+
+  .home-page.home-experience :is(
+    .approved-cta,
+    .collection .product-panel a,
+    .seasonal a.home-action,
+    .approach-v2 .approach-link,
+    .home-signature-v2 .home-private-action,
+    .home-signature-v2 .home-private-login,
+    .home-joby-selected-markets .text-link,
+    .home-joby-selected-contact .contact-disc
+  ){
+    font-size:11px!important;
+  }
+
+  .home-page.home-experience .approved-cta,
+  .home-page.home-experience .collection .product-panel a,
+  .home-page.home-experience .seasonal a.home-action,
+  .home-page.home-experience .approach-v2 .approach-link,
+  .home-page.home-experience .home-signature-v2 .home-private-action,
+  .home-page.home-experience .home-signature-v2 .home-private-login{
+    width:100%!important;
+    justify-content:space-between!important;
+  }
+
+  .home-page.home-experience .home-joby-selected-contact .contact-disc{
+    width:max-content!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-page.home-experience :is(
+    .approved-cta,
+    .collection .product-panel a,
+    .seasonal a.home-action,
+    .approach-v2 .approach-link,
+    .home-signature-v2 .home-private-action,
+    .home-signature-v2 .home-private-login,
+    .home-joby-selected-markets .text-link,
+    .home-joby-selected-contact .contact-disc
+  ),
+  .home-page.home-experience :is(
+    .approved-cta,
+    .collection .product-panel a,
+    .seasonal a.home-action,
+    .approach-v2 .approach-link,
+    .home-signature-v2 .home-private-action,
+    .home-signature-v2 .home-private-login,
+    .home-joby-selected-markets .text-link,
+    .home-joby-selected-contact .contact-disc
+  )>span:last-child{
+    transition:none!important;
+    transform:none!important;
+  }
+}
