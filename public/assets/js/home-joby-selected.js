@@ -132,6 +132,10 @@
 
   reveal('.markets-top', 30, .75);
   reveal('.markets-title', 70, 1);
+  reveal('.home-signature-copy', 58, .95);
+  reveal('.home-signature-panel', 42, .9);
+  reveal('.home-signature-topline', 22, .7);
+  reveal('.home-signature-bottom', 22, .7);
   reveal('#contact .invitation-content', 72, 1);
   reveal('#contact .invitation-bottom', 30, .75);
 
