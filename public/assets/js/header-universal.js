@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261003-joby-experience-5';
+  const VERSION = '20261003-joby-experience-6';
   const LEGACY_CANONICAL_VERSION = '20260929-overlay-preserve-1';
 
   if (window.__etUniversalHomeHeaderVersion === VERSION) return;
@@ -173,8 +173,6 @@
         <details class="nav-products">
           <summary><span class="idx">03</span><span>${copy.products}</span></summary>
           <div class="nav-products-links">
-            <a class="nav-product-all" href="${route('products')}">${copy.products}</a>
-
             <div class="nav-product-group">
               <a class="nav-product-parent" href="${route('products/seafood')}">${copy.seafood}</a>
               <div class="nav-product-children">
@@ -234,8 +232,7 @@
     let overlay = doc.getElementById('navOverlay');
     const hierarchyOk =
       !!overlay?.querySelector('.nav-product-parent') &&
-      !!overlay?.querySelector('.nav-product-children') &&
-      !!overlay?.querySelector('.nav-product-all');
+      !!overlay?.querySelector('.nav-product-children');
 
     if (!overlay || overlay.dataset.etUniversalOverlay !== VERSION || !hierarchyOk) {
       const canonicalOverlay = doc.createElement('div');
@@ -269,8 +266,7 @@
       const overlay = doc.getElementById('navOverlay');
       const productHierarchyOk =
         !!overlay?.querySelector('.nav-product-parent') &&
-        !!overlay?.querySelector('.nav-product-children') &&
-        !!overlay?.querySelector('.nav-product-all');
+        !!overlay?.querySelector('.nav-product-children');
 
       if (
         !header ||
