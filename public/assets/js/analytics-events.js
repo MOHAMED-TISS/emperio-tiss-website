@@ -24,22 +24,45 @@
     return value ? 'other' : '';
   };
 
-  const safeParams = (params={}) => {
+  // Strict allowlist: GA4 must never become a second CRM or receive free-form/PII fields.
+  const eventParamAllowlist = Object.freeze({
+    contact_form_submit: ['product_category','form_location'],
+    whatsapp_click: ['link_location'],
+    product_view: ['product_category','product_subcategory'],
+    signature_request: ['interest_categories','form_location'],
+    market_view: ['market_section']
+  });
+
+  const looksLikePII = (value) => {
+    const text = String(value || '');
+    return /@/.test(text) || /(?:\+?\d[\d\s().-]{6,}\d)/.test(text);
+  };
+
+  const safeParams = (name, params={}) => {
+    const allowed = eventParamAllowlist[name];
+    if (!allowed) return null;
     const out = {
       language: lang,
       page_path: location.pathname
     };
     for (const [key,value] of Object.entries(params)) {
-      if (value === undefined || value === null || value === '') continue;
-      if (typeof value === 'boolean' || typeof value === 'number') out[key] = value;
-      else out[key] = clean(value);
+      if (!allowed.includes(key) || value === undefined || value === null || value === '') continue;
+      if (typeof value === 'boolean' || typeof value === 'number') {
+        out[key] = value;
+        continue;
+      }
+      const normalized = clean(value);
+      if (!normalized || looksLikePII(normalized)) continue;
+      out[key] = normalized;
     }
     return out;
   };
 
   const track = (name, params={}) => {
     if (!consented() || typeof window.gtag !== 'function') return false;
-    window.gtag('event', name, safeParams(params));
+    const payload = safeParams(name, params);
+    if (!payload) return false;
+    window.gtag('event', name, payload);
     return true;
   };
 
