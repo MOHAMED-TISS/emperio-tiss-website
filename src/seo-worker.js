@@ -24,11 +24,14 @@ class SeoHeadAppender {
     element.append(
       buildSeoHead(this.meta) +
       '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">' +
+      '<script>(function(){try{var t=localStorage.getItem("et_theme_mode");document.documentElement.dataset.etTheme=(t==="dark"||t==="light")?t:"light"}catch(e){document.documentElement.dataset.etTheme="light"}})();</script>' +
       '<link rel="stylesheet" href="/assets/css/site-2026.css?v=20261003-4">' +
+      '<link rel="stylesheet" href="/assets/css/theme-mode.css?v=20261004-1">' +
       '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261004-5">' +
       '<script src="/assets/js/cookie-consent.js?v=20261004-5" defer></script>' +
       '<script src="/assets/js/analytics-events.js?v=20261004-3" defer></script>' +
+      '<script src="/assets/js/theme-mode.js?v=20261004-1" defer></script>' +
       '<script src="/assets/js/header-universal.js?v=20261003-commercial-header-8" defer></script>' +
       '<script src="/assets/js/footer-terminal.js?v=20261003-2" defer></script>',
       { html: true }
