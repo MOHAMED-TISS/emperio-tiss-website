@@ -115,7 +115,8 @@
 
   const applyGoogleConsent = (prefs) => {
     const analyticsGranted = Boolean(prefs?.analytics);
-    const marketingGranted = Boolean(prefs?.marketing);
+    // Marketing tags are not in use. Keep all advertising consent signals denied.
+    const marketingGranted = false;
 
     window.gtag('consent','update',{
       analytics_storage: analyticsGranted ? 'granted' : 'denied',
@@ -138,12 +139,21 @@
     catch (_) { return null; }
   };
 
+  const normalizePrefs = (value) => value ? {
+    ...value,
+    necessary: true,
+    functional: Boolean(value.functional),
+    analytics: Boolean(value.analytics),
+    marketing: false
+  } : null;
+
   const write = (value) => {
-    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch (_) {}
-    window.ETConsent = value;
-    applyGoogleConsent(value);
-    window.dispatchEvent(new CustomEvent('et:consentchange',{detail:value}));
-    activateOptional(value);
+    const normalized = normalizePrefs(value) || {necessary:true,functional:false,analytics:false,marketing:false,version:VERSION,ts:Date.now()};
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(normalized)); } catch (_) {}
+    window.ETConsent = normalized;
+    applyGoogleConsent(normalized);
+    window.dispatchEvent(new CustomEvent('et:consentchange',{detail:normalized}));
+    activateOptional(normalized);
   };
 
   const activateOptional = (prefs) => {
@@ -161,7 +171,10 @@
     });
   };
 
-  const existing = read();
+  const existing = normalizePrefs(read());
+  if (existing) {
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(existing)); } catch (_) {}
+  }
   window.ETConsent = existing || {necessary:true,functional:false,analytics:false,marketing:false};
 
   const banner = doc.createElement('section');
@@ -186,7 +199,7 @@
           <label class="et-cookie-choice"><span class="et-cookie-choice__top"><strong>${copy.necessary}</strong><input type="checkbox" checked disabled></span><p>${copy.necessaryText}</p></label>
           <label class="et-cookie-choice"><span class="et-cookie-choice__top"><strong>${copy.functional}</strong><input type="checkbox" data-cookie-functional></span><p>${copy.functionalText}</p></label>
           <label class="et-cookie-choice"><span class="et-cookie-choice__top"><strong>${copy.analytics}</strong><input type="checkbox" data-cookie-analytics></span><p>${copy.analyticsText}</p></label>
-          <label class="et-cookie-choice"><span class="et-cookie-choice__top"><strong>${copy.marketing}</strong><input type="checkbox" data-cookie-marketing></span><p>${copy.marketingText}</p></label>
+          <label class="et-cookie-choice"><span class="et-cookie-choice__top"><strong>${copy.marketing}</strong><input type="checkbox" data-cookie-marketing disabled></span><p>${copy.marketingText}</p></label>
         </div>
         <div class="et-cookie-consent__save"><button type="button" data-cookie-save>${copy.save}</button></div>
       </div>
@@ -207,7 +220,7 @@
   };
 
   const syncInputs = (prefs) => {
-    for (const key of Object.keys(inputs)) inputs[key].checked = Boolean(prefs?.[key]);
+    for (const key of Object.keys(inputs)) inputs[key].checked = key === 'marketing' ? false : Boolean(prefs?.[key]);
   };
 
   const close = () => {
@@ -223,7 +236,7 @@
   };
 
   banner.querySelector('[data-cookie-accept]').addEventListener('click',() => {
-    write({necessary:true,functional:true,analytics:true,marketing:true,version:VERSION,ts:Date.now()});
+    write({necessary:true,functional:true,analytics:true,marketing:false,version:VERSION,ts:Date.now()});
     close();
   });
 
@@ -241,7 +254,7 @@
       necessary:true,
       functional:inputs.functional.checked,
       analytics:inputs.analytics.checked,
-      marketing:inputs.marketing.checked,
+      marketing:false,
       version:VERSION,
       ts:Date.now()
     });
