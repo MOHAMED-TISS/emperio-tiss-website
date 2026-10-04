@@ -1,3 +1,4 @@
+import signatureMail from './signature-messages.js';
 const ALLOWED_ORIGINS = new Set(['https://emperio-tiss.com', 'https://www.emperio-tiss.com']);
 const RESEND = 'https://api.resend.com/emails';
 const TURNSTILE_VERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -19,10 +20,10 @@ const originOk = r => {
 };
 const dbOk = e => e && e.NEWS_DB;
 const now = () => Math.floor(Date.now() / 1000);
-let inquirySchemaReady;
+const inquirySchemas = new WeakMap();
 async function ensureInquirySchema(env) {
   if (!dbOk(env)) throw new Error('NEWS_DB_MISSING');
-  if (!inquirySchemaReady) inquirySchemaReady = (async () => {
+  if (!inquirySchemas.has(env.NEWS_DB)) inquirySchemas.set(env.NEWS_DB, (async () => {
     await env.NEWS_DB.batch([
       env.NEWS_DB.prepare(`CREATE TABLE IF NOT EXISTS inquiries (
         id TEXT PRIMARY KEY,
@@ -60,8 +61,8 @@ async function ensureInquirySchema(env) {
     if (!inquiryColumns.has('privacy_notice_version')) {
       await env.NEWS_DB.prepare('ALTER TABLE inquiries ADD COLUMN privacy_notice_version TEXT').run();
     }
-  })().catch(error => { inquirySchemaReady = null; throw error; });
-  return inquirySchemaReady;
+  })().catch(error => { inquirySchemas.delete(env.NEWS_DB); throw error; }));
+  return inquirySchemas.get(env.NEWS_DB);
 }
 const enc = new TextEncoder();
 async function sha(v) {
@@ -187,10 +188,10 @@ async function sendPrivateAccessLink(env,email,language) {
   await env.NEWS_DB.prepare(
       "INSERT OR REPLACE INTO auth_tokens(token_hash,type,email,expires_at) VALUES(?,?,?,?)")
     .bind(hash, 'private', email, exp).run();
-  const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}`;
+  const link = `https://emperio-tiss.com/api/private/verify?token=${encodeURIComponent(raw)}&lang=${encodeURIComponent(language)}`;
   try {
-    await resend(env, email, 'Your EMPERIO SIGNATURE access link',
-      `<p>Your EMPERIO SIGNATURE access is ready.</p><p><a href="${link}">Enter EMPERIO SIGNATURE</a></p><p>This link expires in 30 minutes.</p>`)
+    const mail=signatureMail[language]||signatureMail.en;
+    await resend(env,email, 'EMPERIO SIGNATURE · '+mail.subject, `<div lang="${language}" dir="${language==='ar'?'rtl':'ltr'}"><p>${mail.body}</p><p><a href="${link}">${mail.enter}</a></p><p>${mail.expiry}</p></div>`)
   } catch (e) {
     return json({ok:false,error:copy.linkFailed,code:'ACCESS_EMAIL_FAILED'},502)
   }
@@ -338,13 +339,15 @@ const normalizeOfferPayload = body => {
   };
 };
 async function privateVerify(request, env) {
+  const language=new URL(request.url).searchParams.get('lang');
+  const portal=['en','fr','it','ar'].includes(language)?`/${language}/private/`:'/private/';
   if (!dbOk(env)) return new Response('EMPERIO SIGNATURE access is not configured.', {status:503});
   await ensureSignatureOperationsSchema(env);
   const raw=clean(new URL(request.url).searchParams.get('token'),200), hash=await sha(raw);
   const row=await env.NEWS_DB.prepare(
     "SELECT t.email FROM auth_tokens t JOIN clients c ON c.email=t.email WHERE t.token_hash=? AND t.type='private' AND t.expires_at>? AND c.status='approved'"
   ).bind(hash,now()).first();
-  if (!row) return new Response('Invalid or expired access link.',{status:400});
+  if (!row) return Response.redirect(new URL(portal+'?access_error=expired',request.url),302);
   const sessionRaw=token(), sessionHash=await sha(sessionRaw), exp=now()+604800, stamp=now();
   await env.NEWS_DB.batch([
     env.NEWS_DB.prepare("INSERT INTO private_sessions(token_hash,email,expires_at) VALUES(?,?,?)").bind(sessionHash,row.email,exp),
@@ -352,7 +355,7 @@ async function privateVerify(request, env) {
     env.NEWS_DB.prepare("UPDATE clients SET last_login_at=?,last_seen_at=?,login_count=COALESCE(login_count,0)+1 WHERE email=?").bind(stamp,stamp,row.email)
   ]);
   return new Response(null,{status:302,headers:{
-    location:'/private/',
+    location:portal,
     'set-cookie':`et_private_session=${sessionRaw}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=604800`
   }});
 }

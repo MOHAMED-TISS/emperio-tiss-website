@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>EMPERIO SIGNATURE | Accès clients</title>
+  <meta name="description" content="Les offres de votre entreprise, vos demandes et leur suivi dans un seul espace.">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/global.css?v=20260926-brand-foundation-2">
+  <link rel="stylesheet" href="/assets/css/header-final.css?v=20261001-signature">
+  <link rel="stylesheet" href="/assets/css/private-signature.css?v=20261003-2">
+  <link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-5">
+  <link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261004-5">
+<link rel="stylesheet" href="/assets/css/signature-client.css?v=20261004-3"><link rel="canonical" href="https://emperio-tiss.com/fr/private/"><link rel="alternate" hreflang="es" href="https://emperio-tiss.com/private/"><link rel="alternate" hreflang="en" href="https://emperio-tiss.com/en/private/"><link rel="alternate" hreflang="fr" href="https://emperio-tiss.com/fr/private/"><link rel="alternate" hreflang="it" href="https://emperio-tiss.com/it/private/"><link rel="alternate" hreflang="ar" href="https://emperio-tiss.com/ar/private/"></head>
+
+<body class="private-page et-brand-shell">
+<main>
+<section class="signature-login" id="signature-login" aria-labelledby="login-title">
+<div><p class="private-signature-kicker">EMPERIO SIGNATURE</p><h1 id="login-title">Votre prochaine opération commence ici.</h1><p>Les offres de votre entreprise, vos demandes et leur suivi dans un seul espace.</p><ul class="signature-benefits"><li>Offres en cours</li><li>Mes demandes</li><li>Assistance commerciale</li></ul></div>
+<div class="signature-login-panel"><form id="signature-login-form"><p class="portal-eyebrow">Réservé aux entreprises approuvées</p><h2>Bienvenue sur Signature.</h2><p>Saisissez l’email approuvé de votre entreprise. Nous vous enverrons un lien sécurisé pour vous connecter sans mot de passe.</p><label for="signature-email">Email professionnel</label><input id="signature-email" name="email" type="email" autocomplete="email" required maxlength="254" dir="ltr"><button type="submit">Recevoir le lien d’accès</button><p id="login-feedback" role="status"></p></form>
+<section id="login-sent" hidden aria-live="polite"><span class="signature-success-mark" aria-hidden="true">✓</span><h2>Consultez votre messagerie.</h2><p id="sent-email" dir="ltr"></p><p>Le lien est valable 30 minutes. Vérifiez aussi vos courriers indésirables.</p><button id="resend-link" type="button">Renvoyer le lien</button><button id="change-email" type="button">Utiliser un autre email</button><p id="sent-feedback" role="status"></p></section>
+<div class="signature-login-help"><p>Première visite ? <a href="/fr/news/#emperio-private">Demander l’accès</a></p><a href="/fr/contact/">Assistance commerciale</a><span aria-hidden="true"> · </span><a href="/legal/privacidad.html">Confidentialité</a></div></div>
+</section>
+<div id="signature-workspace" hidden><div class="signature-account"><span id="signature-company"></span><button id="signature-logout" type="button">Se déconnecter</button></div>
+<nav class="portal-nav" aria-label="EMPERIO SIGNATURE"><a href="#private-opportunities-title">Offres en cours</a><a href="#client-history">Mes demandes</a><a href="/fr/contact/">Assistance commerciale</a></nav>
+<section class="private-signature-hero"><div class="private-signature-hero__inner"><p class="private-signature-kicker">EMPERIO SIGNATURE</p><h1>Votre espace commercial.</h1><div class="private-signature-hero__bottom"><p class="private-signature-lead">Consultez les produits disponibles et transmettez vos besoins à notre équipe.</p><div class="private-signature-access"><p id="private-status" role="status">Vérification de votre accès…</p></div></div></div></section>
+<div class="portal-summary"><article><span>Offres en cours</span><strong id="offer-count">—</strong><p>Produits en cours pour votre profil</p></article><article><span>Mes demandes</span><strong id="request-count">—</strong><p>Les 50 dernières demandes</p></article><article><span>Assistance commerciale</span><p>Sous réserve de confirmation commerciale</p><a href="/fr/contact/">Assistance commerciale</a></article></div>
+<section class="private-opportunities"><div class="private-opportunities__inner"><div class="private-opportunities__head"><h2 id="private-opportunities-title">Offres en cours</h2><p class="private-opportunities__intro">Chaque demande reste soumise à disponibilité et à la confirmation du prix et des conditions.</p></div>
+<div class="signature-filters"><label>Rechercher par produit ou origine<input type="search" id="offer-search" autocomplete="off"></label><label>Toutes les catégories<select id="offer-category"><option value="">Toutes les catégories</option></select></label></div>
+<div id="private-offers" class="private-offers-grid" aria-live="polite" aria-busy="true"></div></div></section>
+<section class="signature-history" id="client-history"><h2>Mes demandes</h2><p>Chaque demande reste soumise à disponibilité et à la confirmation du prix et des conditions.</p><div id="signature-history" aria-live="polite"></div></section></div>
+</main>
+<dialog id="signature-request" aria-labelledby="request-heading"><form id="signature-request-form"><button type="button" class="request-close" aria-label="Fermer">×</button><h2 id="request-heading">Vérifier la disponibilité</h2><p id="request-offer"></p><div class="request-grid"><label>Quantité<input name="quantity" type="number" min="0.01" max="100000000" step="any" required></label><label>Unité<select name="unit"><option value="kg">kg</option><option value="tonnes">Tonnes</option><option value="boxes">Caisses</option><option value="pallets">Palettes</option></select></label></div><label>Destination<input name="destination" required maxlength="160" placeholder="Ville et pays"></label><label>Date souhaitée<input name="date" type="date" required></label><label>Précisions (facultatif)<textarea name="notes" maxlength="2000" rows="3"></textarea></label><p>Chaque demande reste soumise à disponibilité et à la confirmation du prix et des conditions.</p><button type="submit">Envoyer la demande</button><p id="request-feedback" role="status"></p></form></dialog>
+<script src="/assets/i18n/signature.js?v=20261004-3" defer></script><script src="/assets/js/private.js?v=20261004-3" defer></script><script src="/assets/js/footer-terminal.js?v=20261004-signature" defer></script><script src="/assets/js/global.js?v=20261003-private-signature" defer></script><script src="/assets/js/cookie-consent.js?v=20261004-5" defer></script></body></html>

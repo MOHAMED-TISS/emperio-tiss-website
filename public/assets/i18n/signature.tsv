@@ -1,0 +1,71 @@
+key|es|en|fr|it|ar
+title|Acceso de clientes|Client login|Accès clients|Accesso clienti|دخول العملاء
+headline|Su próxima operación empieza aquí.|Your next operation starts here.|Votre prochaine opération commence ici.|La prossima operazione inizia qui.|عمليتكم التجارية القادمة تبدأ هنا.
+intro|Ofertas para su empresa, solicitudes y seguimiento comercial en un único espacio.|Your company’s offers, requests and commercial follow-up in one place.|Les offres de votre entreprise, vos demandes et leur suivi dans un seul espace.|Offerte per la vostra azienda, richieste e aggiornamenti in un unico spazio.|عروض شركتكم وطلباتكم ومتابعتها التجارية في مكان واحد.
+welcome|Bienvenido a Signature.|Welcome to Signature.|Bienvenue sur Signature.|Benvenuti su Signature.|مرحباً بكم في Signature.
+loginHelp|Introduzca el email aprobado de su empresa. Le enviaremos un enlace seguro para entrar sin contraseña.|Enter your approved company email. We’ll send a secure link to sign in without a password.|Saisissez l’email approuvé de votre entreprise. Nous vous enverrons un lien sécurisé pour vous connecter sans mot de passe.|Inserite l’email approvata della vostra azienda. Riceverete un link sicuro per accedere senza password.|أدخلوا البريد الإلكتروني المعتمد لشركتكم. سنرسل رابطاً آمناً للدخول دون كلمة مرور.
+email|Email profesional|Business email|Email professionnel|Email aziendale|البريد الإلكتروني المهني
+login|Recibir enlace de acceso|Send access link|Recevoir le lien d’accès|Ricevi il link di accesso|إرسال رابط الدخول
+newClient|¿Es su primera visita?|First time here?|Première visite ?|È la vostra prima visita?|هل هذه زيارتكم الأولى؟
+apply|Solicitar aprobación|Apply for access|Demander l’accès|Richiedi l’accesso|طلب اعتماد الحساب
+help|Asistencia comercial|Commercial support|Assistance commerciale|Assistenza commerciale|الدعم التجاري
+privacy|Privacidad|Privacy|Confidentialité|Privacy|الخصوصية
+approved|Reservado a empresas aprobadas|For approved businesses|Réservé aux entreprises approuvées|Riservato alle aziende approvate|مخصص للشركات المعتمدة
+offers|Ofertas actuales|Current offers|Offres en cours|Offerte attuali|العروض الحالية
+requests|Mis solicitudes|My requests|Mes demandes|Le mie richieste|طلباتي
+logout|Cerrar sesión|Sign out|Se déconnecter|Esci|تسجيل الخروج
+workspace|Su espacio comercial.|Your commercial workspace.|Votre espace commercial.|Il vostro spazio commerciale.|مساحتكم التجارية.
+workspaceIntro|Revise las referencias disponibles y envíe su necesidad a nuestro equipo.|Review available products and send your requirements to our team.|Consultez les produits disponibles et transmettez vos besoins à notre équipe.|Consultate i prodotti disponibili e inviate le vostre esigenze al nostro team.|اطّلعوا على المنتجات المتاحة وأرسلوا احتياجاتكم إلى فريقنا.
+access|Acceso verificado|Access verified|Accès vérifié|Accesso verificato|تم التحقق من الدخول
+checking|Comprobando su acceso…|Checking your access…|Vérification de votre accès…|Verifica dell’accesso…|جارٍ التحقق من الدخول…
+active|Referencias vigentes para su perfil|Active products for your profile|Produits en cours pour votre profil|Prodotti attivi per il vostro profilo|المنتجات المتاحة لحسابكم
+last50|Últimas 50 solicitudes|Latest 50 requests|Les 50 dernières demandes|Ultime 50 richieste|آخر 50 طلباً
+conditions|Sujeto a confirmación comercial|Subject to commercial confirmation|Sous réserve de confirmation commerciale|Soggetto a conferma commerciale|رهناً بالتأكيد التجاري
+search|Buscar por producto u origen|Search by product or origin|Rechercher par produit ou origine|Cerca per prodotto o origine|البحث حسب المنتج أو المنشأ
+all|Todas las categorías|All categories|Toutes les catégories|Tutte le categorie|جميع الفئات
+seafood|Productos del mar|Seafood|Produits de la mer|Prodotti del mare|المنتجات البحرية
+fruits|Frutas|Fruit|Fruits|Frutta|الفواكه
+vegetables|Hortalizas|Vegetables|Légumes|Ortaggi|الخضروات
+availability|Consultar disponibilidad|Check availability|Vérifier la disponibilité|Verifica disponibilità|الاستفسار عن التوفر
+order|Solicitar pedido|Request an order|Demander une commande|Richiedi un ordine|طلب شراء
+origin|Origen|Origin|Origine|Origine|المنشأ
+destination|Destino|Destination|Destination|Destinazione|الوجهة
+available|Disponibilidad|Availability|Disponibilité|Disponibilità|التوفر
+validUntil|Vigente hasta|Valid until|Valable jusqu’au|Valida fino al|صالح حتى
+confirm|Por confirmar|To be confirmed|À confirmer|Da confermare|يُؤكّد لاحقاً
+empty|No hay ofertas activas para su perfil.|No active offers for your profile.|Aucune offre active pour votre profil.|Nessuna offerta attiva per il vostro profilo.|لا توجد عروض نشطة لحسابكم.
+emptyHelp|Puede transmitirnos su necesidad y revisar opciones con nuestro equipo.|Send us your requirements to review options with our team.|Transmettez-nous vos besoins pour étudier les options avec notre équipe.|Inviateci le vostre esigenze per valutare le opzioni con il nostro team.|أرسلوا احتياجاتكم لدراسة الخيارات مع فريقنا.
+noMatches|No hay ofertas que coincidan con su búsqueda.|No offers match your search.|Aucune offre ne correspond à votre recherche.|Nessuna offerta corrisponde alla ricerca.|لا توجد عروض مطابقة لبحثكم.
+clear|Limpiar búsqueda|Clear search|Effacer la recherche|Cancella ricerca|مسح البحث
+historyHelp|Cada solicitud está sujeta a disponibilidad y confirmación de precio y condiciones.|Each request is subject to availability and confirmation of price and terms.|Chaque demande reste soumise à disponibilité et à la confirmation du prix et des conditions.|Ogni richiesta è soggetta a disponibilità e conferma del prezzo e delle condizioni.|يخضع كل طلب لتوفر المنتج وتأكيد السعر والشروط.
+emptyHistory|Todavía no tiene solicitudes. Seleccione una oferta para empezar.|No requests yet. Select an offer to get started.|Aucune demande pour le moment. Sélectionnez une offre pour commencer.|Nessuna richiesta al momento. Selezionate un’offerta per iniziare.|لا توجد طلبات بعد. اختاروا عرضاً للبدء.
+loading|Cargando…|Loading…|Chargement…|Caricamento…|جارٍ التحميل…
+retry|Reintentar|Try again|Réessayer|Riprova|إعادة المحاولة
+error|No hemos podido completar la operación. Inténtelo de nuevo.|We couldn’t complete this action. Please try again.|Impossible de terminer cette opération. Veuillez réessayer.|Impossibile completare l’operazione. Riprovate.|تعذر إكمال العملية. يرجى المحاولة مجدداً.
+expired|Su sesión ha caducado. Solicite un nuevo enlace para entrar.|Your session expired. Request a new link to sign in.|Votre session a expiré. Demandez un nouveau lien pour vous connecter.|La sessione è scaduta. Richiedete un nuovo link per accedere.|انتهت الجلسة. اطلبوا رابطاً جديداً للدخول.
+expiredLink|El enlace ha caducado o ya se ha utilizado. Solicite uno nuevo.|This link has expired or has already been used. Request a new one.|Ce lien a expiré ou a déjà été utilisé. Demandez-en un nouveau.|Il link è scaduto o è già stato utilizzato. Richiedetene uno nuovo.|انتهت صلاحية الرابط أو سبق استخدامه. اطلبوا رابطاً جديداً.
+sending|Enviando…|Sending…|Envoi…|Invio…|جارٍ الإرسال…
+sent|Revise su correo.|Check your inbox.|Consultez votre messagerie.|Controllate la posta.|تحققوا من بريدكم الإلكتروني.
+sentHelp|El enlace es válido durante 30 minutos. Revise también la carpeta de spam.|The link is valid for 30 minutes. Check your spam folder too.|Le lien est valable 30 minutes. Vérifiez aussi vos courriers indésirables.|Il link è valido per 30 minuti. Controllate anche la cartella spam.|الرابط صالح لمدة 30 دقيقة. تحققوا أيضاً من مجلد الرسائل غير المرغوب فيها.
+changeEmail|Usar otro email|Use another email|Utiliser un autre email|Usa un’altra email|استخدام بريد إلكتروني آخر
+resend|Volver a enviar enlace|Resend link|Renvoyer le lien|Invia nuovamente il link|إعادة إرسال الرابط
+approvalRequired|Este email necesita aprobación. Solicite acceso o contacte con nuestro equipo.|This email needs approval. Apply for access or contact our team.|Cet email doit être approuvé. Demandez l’accès ou contactez notre équipe.|Questa email richiede approvazione. Richiedete l’accesso o contattateci.|يحتاج هذا البريد إلى اعتماد. اطلبوا الوصول أو تواصلوا مع فريقنا.
+rateLimit|Ha realizado varias solicitudes. Espere unos minutos antes de reintentar.|You’ve made several requests. Wait a few minutes before trying again.|Vous avez envoyé plusieurs demandes. Patientez quelques minutes avant de réessayer.|Avete inviato diverse richieste. Attendete qualche minuto prima di riprovare.|أرسلتم عدة طلبات. انتظروا بضع دقائق قبل المحاولة مجدداً.
+close|Cerrar|Close|Fermer|Chiudi|إغلاق
+quantity|Cantidad|Quantity|Quantité|Quantità|الكمية
+unit|Unidad|Unit|Unité|Unità|الوحدة
+tonnes|Toneladas|Tonnes|Tonnes|Tonnellate|طن
+boxes|Cajas|Boxes|Caisses|Scatole|صناديق
+pallets|Palés|Pallets|Palettes|Pallet|منصات تحميل
+city|Ciudad y país|City and country|Ville et pays|Città e paese|المدينة والبلد
+date|Fecha prevista|Preferred date|Date souhaitée|Data prevista|التاريخ المطلوب
+notes|Detalles adicionales (opcional)|Additional details (optional)|Précisions (facultatif)|Dettagli aggiuntivi (facoltativo)|تفاصيل إضافية (اختياري)
+submit|Enviar solicitud|Send request|Envoyer la demande|Invia richiesta|إرسال الطلب
+requestSent|Solicitud registrada.|Request received.|Demande enregistrée.|Richiesta registrata.|تم تسجيل الطلب.
+reference|Referencia|Reference|Référence|Riferimento|المرجع
+new|Recibida|Received|Reçue|Ricevuta|تم الاستلام
+qualified|En revisión|Under review|En cours d’examen|In revisione|قيد المراجعة
+studying|En estudio|Being assessed|À l’étude|In valutazione|قيد الدراسة
+offered|Propuesta enviada|Proposal sent|Proposition envoyée|Proposta inviata|تم إرسال العرض
+won|Finalizada|Completed|Finalisée|Completata|مكتمل
+lost|Cerrada|Closed|Clôturée|Chiusa|مغلق

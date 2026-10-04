@@ -187,9 +187,9 @@
     img.style.webkitTouchCallout = 'none';
   });
   protectPageImages();
-  doc.addEventListener('contextmenu', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('dragstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
-  doc.addEventListener('selectstart', (event) => { if (event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
+  doc.addEventListener('contextmenu', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
+  doc.addEventListener('dragstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
+  doc.addEventListener('selectstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
   loadScript('/assets/js/header-canonical.js?v=20261003-emblem-route-1', 'etCanonicalHeaderScript');

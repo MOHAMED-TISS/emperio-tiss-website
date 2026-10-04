@@ -65,3 +65,13 @@ test('Signature requests enforce approval, visibility, ownership, validation and
  const logout=await call('/api/private/logout',{});assert.equal(logout.status,200);assert.match(logout.headers.get('set-cookie'),/Max-Age=0/);
  assert.equal((await call('/api/private/requests')).status,401);
 });
+
+test('access links preserve portal language and expired links return to localized login',async()=>{
+ const {sql,env,access}=setup(true);let sent;const original=globalThis.fetch;
+ sql.prepare("INSERT INTO clients(email,company,status,created_at,language) VALUES('fr@example.com','Client','approved',1,'fr')").run();
+ globalThis.fetch=async(_u,options)=>{sent=JSON.parse(options.body);return Response.json({id:'mock'});};
+ try{assert.equal((await access({email:'fr@example.com',language:'fr'})).status,200);assert.match(sent.html,/lang=fr/);assert.match(sent.subject,/Accès clients/);
+ const link=sent.html.match(/href="([^"]+)"/)[1];const valid=await worker.fetch(new Request(link),env);assert.equal(valid.headers.get('location'),'/fr/private/');
+ const expired=await worker.fetch(new Request(link),env);assert.match(expired.headers.get('location'),/\/fr\/private\/\?access_error=expired$/);
+ }finally{globalThis.fetch=original;}
+});

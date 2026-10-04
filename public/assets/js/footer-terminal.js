@@ -20,7 +20,7 @@
   loadCss();
 
   const isPrivatePortal = body.classList.contains('private-page');
-  const langRaw = isPrivatePortal ? 'es' : (doc.documentElement.lang || 'es').slice(0,2).toLowerCase();
+  const langRaw = (doc.documentElement.lang || 'es').slice(0,2).toLowerCase();
   const lang = ['es','en','fr','it','ar'].includes(langRaw) ? langRaw : 'es';
   const base = lang === 'es' ? '/' : `/${lang}/`;
   const route = (segment) => `${base}${segment}/`;
@@ -185,7 +185,7 @@
         </section>
 
         <section class="et-terminal-footer__directory">
-          <a class="et-terminal-footer__feature" href="/private/">
+          <a class="et-terminal-footer__feature" href="${route('private')}">
             <span class="et-terminal-footer__label">${copy.featureLabel}</span>
             <img src="/assets/images/emperio-tiss-emblem.svg?v=20261003-header-current" alt="" width="230" height="267" loading="lazy">
             <div>
