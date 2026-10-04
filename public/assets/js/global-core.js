@@ -253,7 +253,7 @@
         sitekey: TURNSTILE_SITE_KEY,
         action: 'contact',
         appearance: 'always',
-        theme: 'light',
+        theme: document.documentElement.dataset.etTheme === 'dark' ? 'dark' : 'light',
         callback: token => {
           turnstileToken = token || '';
           if (status.dataset.state === 'security') {
@@ -274,6 +274,16 @@
       });
       return turnstile;
     };
+
+    window.addEventListener('et:themechange', async () => {
+      if (widgetId === null || !window.turnstile) return;
+      try {
+        window.turnstile.remove(widgetId);
+        widgetId = null;
+        turnstileToken = '';
+        await ensureWidget();
+      } catch (_) {}
+    });
 
     const resetTurnstile = () => {
       turnstileToken = '';
