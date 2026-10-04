@@ -150,23 +150,162 @@
 .et-cookie-manage.is-visible{display:inline-flex}
 
 @media(max-width:760px){
-  .et-cookie-consent{left:10px;right:10px;bottom:10px}
+  .et-cookie-consent{
+    left:8px;
+    right:8px;
+    bottom:max(8px, env(safe-area-inset-bottom));
+  }
+
   .et-cookie-consent__panel{
+    width:100%;
+    max-height:calc(100dvh - 16px - env(safe-area-inset-bottom));
     padding:18px;
     grid-template-columns:1fr;
-    gap:18px;
-    border-radius:16px;
+    gap:16px;
+    align-items:stretch;
+    border-radius:18px;
+    overflow:auto;
+    overscroll-behavior:contain;
+    scrollbar-width:thin;
   }
+
+  .et-cookie-consent__kicker{
+    margin-bottom:7px;
+    font-size:8px;
+    letter-spacing:.09em;
+  }
+
+  .et-cookie-consent h2{
+    margin-bottom:9px;
+    font-size:26px;
+    line-height:1;
+    letter-spacing:-.04em;
+  }
+
+  .et-cookie-consent p{
+    max-width:none;
+    font-size:12px;
+    line-height:1.5;
+  }
+
   .et-cookie-consent__actions{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:
+      "reject accept"
+      "configure configure";
+    gap:8px;
     justify-content:stretch;
   }
-  .et-cookie-consent__actions button{width:100%}
-  .et-cookie-consent [data-cookie-configure]{grid-column:1/-1}
-  .et-cookie-consent__settings-grid{grid-template-columns:1fr}
-  .et-cookie-consent__save button{width:100%}
-  .et-cookie-manage{left:10px;bottom:10px}
+
+  .et-cookie-consent__actions button{
+    width:100%;
+    min-width:0;
+    min-height:46px;
+    padding:0 12px;
+    font-size:11px;
+  }
+
+  .et-cookie-consent [data-cookie-reject]{grid-area:reject}
+  .et-cookie-consent [data-cookie-accept]{grid-area:accept}
+  .et-cookie-consent [data-cookie-configure]{
+    grid-area:configure;
+    min-height:42px;
+    background:rgba(255,255,255,.045);
+  }
+
+  .et-cookie-consent__settings{
+    margin-top:0;
+    padding-top:14px;
+  }
+
+  .et-cookie-consent__settings-grid{
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+
+  .et-cookie-choice{
+    min-height:0;
+    padding:13px 14px;
+    border-radius:12px;
+  }
+
+  .et-cookie-choice__top{
+    gap:10px;
+  }
+
+  .et-cookie-choice strong{
+    font-size:11px;
+  }
+
+  .et-cookie-choice p{
+    margin-top:6px;
+    font-size:10.5px;
+    line-height:1.4;
+  }
+
+  .et-cookie-choice input{
+    flex:0 0 auto;
+    width:20px;
+    height:20px;
+  }
+
+  .et-cookie-choice:has(input:disabled){
+    background:rgba(255,255,255,.025);
+  }
+
+  .et-cookie-consent__save{
+    margin-top:10px;
+  }
+
+  .et-cookie-consent__save button{
+    width:100%;
+    min-height:46px;
+  }
+
+  .et-cookie-manage{
+    left:10px;
+    bottom:max(10px, env(safe-area-inset-bottom));
+    min-height:36px;
+    padding:0 12px;
+    font-size:10px;
+  }
+}
+
+@media(max-width:380px){
+  .et-cookie-consent{
+    left:6px;
+    right:6px;
+    bottom:max(6px, env(safe-area-inset-bottom));
+  }
+
+  .et-cookie-consent__panel{
+    max-height:calc(100dvh - 12px - env(safe-area-inset-bottom));
+    padding:16px 14px;
+    gap:14px;
+    border-radius:16px;
+  }
+
+  .et-cookie-consent h2{
+    font-size:23px;
+  }
+
+  .et-cookie-consent p{
+    font-size:11.5px;
+  }
+
+  .et-cookie-consent__actions{
+    gap:7px;
+  }
+
+  .et-cookie-consent__actions button{
+    padding:0 9px;
+    font-size:10.5px;
+  }
+
+  .et-cookie-choice{
+    padding:12px;
+  }
 }
 html[dir="rtl"] .et-cookie-consent,
 html[dir="rtl"] .et-cookie-manage{font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif}
