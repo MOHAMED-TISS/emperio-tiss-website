@@ -12,12 +12,12 @@
   const supported = new Set(['light','dark']);
   const lang = (root.lang || 'es').slice(0,2).toLowerCase();
   const labels = {
-    es:{light:'Cambiar a modo claro',dark:'Cambiar a modo nocturno',name:'Tema visual'},
-    en:{light:'Switch to light mode',dark:'Switch to dark mode',name:'Visual theme'},
-    fr:{light:'Passer au mode clair',dark:'Passer au mode sombre',name:'Thème visuel'},
-    it:{light:'Passa alla modalità chiara',dark:'Passa alla modalità scura',name:'Tema visivo'},
-    ar:{light:'التبديل إلى الوضع الفاتح',dark:'التبديل إلى الوضع الداكن',name:'المظهر'}
-  }[lang] || {light:'Switch to light mode',dark:'Switch to dark mode',name:'Visual theme'};
+    es:{light:'Cambiar a modo claro',dark:'Cambiar a modo nocturno',name:'Tema visual',lightName:'Modo claro',darkName:'Modo nocturno'},
+    en:{light:'Switch to light mode',dark:'Switch to dark mode',name:'Visual theme',lightName:'Light mode',darkName:'Night mode'},
+    fr:{light:'Passer au mode clair',dark:'Passer au mode sombre',name:'Thème visuel',lightName:'Mode clair',darkName:'Mode sombre'},
+    it:{light:'Passa alla modalità chiara',dark:'Passa alla modalità scura',name:'Tema visivo',lightName:'Modalità chiara',darkName:'Modalità scura'},
+    ar:{light:'التبديل إلى الوضع الفاتح',dark:'التبديل إلى الوضع الداكن',name:'المظهر',lightName:'الوضع الفاتح',darkName:'الوضع الداكن'}
+  }[lang] || {light:'Switch to light mode',dark:'Switch to dark mode',name:'Visual theme',lightName:'Light mode',darkName:'Night mode'};
 
   const readStored = () => {
     try {
@@ -50,6 +50,8 @@
       button.setAttribute('aria-pressed', String(isDark));
       button.setAttribute('aria-label', isDark ? labels.light : labels.dark);
       button.setAttribute('title', isDark ? labels.light : labels.dark);
+      const text = button.querySelector('.et-theme-toggle__label');
+      if (text) text.textContent = isDark ? labels.lightName : labels.darkName;
     });
   };
 
@@ -71,12 +73,12 @@
       <svg viewBox="0 0 24 24" focusable="false"><path d="M19.3 15.1A7.9 7.9 0 0 1 8.9 4.7 7.9 7.9 0 1 0 19.3 15.1Z"></path></svg>
     </span>`;
 
-  const buildButton = () => {
+  const buildButton = (overlay=false) => {
     const button = doc.createElement('button');
     button.type = 'button';
-    button.className = 'et-theme-toggle';
+    button.className = overlay ? 'et-theme-toggle et-theme-toggle--overlay' : 'et-theme-toggle';
     button.dataset.etThemeControl = 'true';
-    button.innerHTML = icon;
+    button.innerHTML = overlay ? icon + '<span class="et-theme-toggle__label"></span>' : icon;
     button.addEventListener('click', () => {
       const current = root.dataset.etTheme === 'dark' ? 'dark' : 'light';
       apply(current === 'dark' ? 'light' : 'dark', true);
@@ -86,13 +88,21 @@
 
   const ensureToggle = () => {
     const header = doc.querySelector('.site-header');
-    if (!header || header.querySelector('.et-theme-toggle')) return;
-    const container = header.querySelector('.header-inner') || header;
-    const language = container.querySelector('.header-language-switch,.et-language-switch,.language-nav');
-    const menu = container.querySelector('#menuToggleBtn,.mobile-menu');
-    const button = buildButton();
-    button.setAttribute('aria-label', labels.name);
-    container.insertBefore(button, language || menu || null);
+    if (header && !header.querySelector('.et-theme-toggle:not(.et-theme-toggle--overlay)')) {
+      const container = header.querySelector('.header-inner') || header;
+      const language = container.querySelector('.header-language-switch,.et-language-switch,.language-nav');
+      const menu = container.querySelector('#menuToggleBtn,.mobile-menu');
+      const button = buildButton(false);
+      button.setAttribute('aria-label', labels.name);
+      container.insertBefore(button, language || menu || null);
+    }
+
+    const overlay = doc.querySelector('.nav-overlay');
+    if (overlay && !overlay.querySelector('.et-theme-toggle--overlay')) {
+      const foot = overlay.querySelector('.nav-overlay-foot') || overlay.querySelector('.nav-overlay-inner') || overlay;
+      const button = buildButton(true);
+      foot.appendChild(button);
+    }
     syncButtons(root.dataset.etTheme || initial);
   };
 
