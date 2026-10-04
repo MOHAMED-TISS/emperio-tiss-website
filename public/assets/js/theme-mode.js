@@ -47,11 +47,16 @@
   const syncButtons = theme => {
     doc.querySelectorAll('.et-theme-toggle').forEach(button => {
       const isDark = theme === 'dark';
-      button.setAttribute('aria-pressed', String(isDark));
-      button.setAttribute('aria-label', isDark ? labels.light : labels.dark);
-      button.setAttribute('title', isDark ? labels.light : labels.dark);
+      const pressed = String(isDark);
+      const aria = isDark ? labels.light : labels.dark;
+      const label = isDark ? labels.lightName : labels.darkName;
+
+      if (button.getAttribute('aria-pressed') !== pressed) button.setAttribute('aria-pressed', pressed);
+      if (button.getAttribute('aria-label') !== aria) button.setAttribute('aria-label', aria);
+      if (button.getAttribute('title') !== aria) button.setAttribute('title', aria);
+
       const text = button.querySelector('.et-theme-toggle__label');
-      if (text) text.textContent = isDark ? labels.lightName : labels.darkName;
+      if (text && text.textContent !== label) text.textContent = label;
     });
   };
 
@@ -109,7 +114,15 @@
   apply(initial, false);
   ensureToggle();
 
-  const observer = new MutationObserver(() => ensureToggle());
+  let observerQueued = false;
+  const observer = new MutationObserver(() => {
+    if (observerQueued) return;
+    observerQueued = true;
+    requestAnimationFrame(() => {
+      observerQueued = false;
+      ensureToggle();
+    });
+  });
   observer.observe(body,{childList:true,subtree:true});
 
   window.ETTheme = Object.freeze({
