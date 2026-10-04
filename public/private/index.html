@@ -15,9 +15,10 @@
   <link rel="stylesheet" href="/assets/css/private-signature.css?v=20261003-2">
   <link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-5">
   <link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261004-3">
-</head>
+<link rel="stylesheet" href="/assets/css/signature-client.css?v=20261004-1"></head>
+
 <body class="private-page et-brand-shell">
-  <main>
+  <main><section class="signature-login" id="signature-login" aria-labelledby="login-title"><div><p class="private-signature-kicker">EMPERIO SIGNATURE</p><h1 id="login-title">Su selección.<br>Su espacio privado.</h1><p>Acceda a las ofertas actuales y envíe consultas de disponibilidad o solicitudes de pedido.</p><span>EXCLUSIVO PARA EMPRESAS APROBADAS</span></div><form id="signature-login-form"><h2>Acceso de clientes</h2><p>Reciba un enlace seguro en el email aprobado de su empresa. No necesita contraseña.</p><label for="signature-email">Email profesional</label><input id="signature-email" name="email" type="email" autocomplete="email" required maxlength="254"><button type="submit">Recibir enlace de acceso</button><p id="login-feedback" role="status"></p><a href="/news/#emperio-private">¿Todavía no tiene acceso? Solicitar aprobación</a></form></section><div id="signature-workspace" hidden><div class="signature-account"><span id="signature-company">Área de cliente</span><button id="signature-logout" type="button">Cerrar sesión</button></div>
     <section class="private-signature-hero" aria-labelledby="private-title">
       <div class="private-signature-hero__inner">
         <p class="private-signature-kicker">EMPERIO SIGNATURE · ACCESO PROFESIONAL</p>
@@ -49,8 +50,9 @@
         </div>
       </div>
     </section>
-  </main>
-  <script src="/assets/js/private.js?v=20261003-signature-v2" defer></script>
+  <section class="signature-history"><h2>Mis solicitudes</h2><p>Las solicitudes no confirman stock, precio ni pedido. Nuestro equipo revisará las condiciones con su empresa.</p><div id="signature-history" aria-live="polite"></div></section></div></main><dialog id="signature-request" aria-labelledby="request-heading"><form id="signature-request-form"><button type="button" class="request-close" aria-label="Cerrar solicitud">×</button><p class="private-signature-kicker">SOLICITUD COMERCIAL</p><h2 id="request-heading">Consultar disponibilidad</h2><p id="request-offer"></p><div class="request-grid"><label>Cantidad<input name="quantity" type="number" min="0.01" max="100000000" step="any" required></label><label>Unidad<select name="unit"><option value="kg">kg</option><option value="tonnes">Toneladas</option><option value="boxes">Cajas</option><option value="pallets">Palés</option></select></label></div><label>Destino<input name="destination" required maxlength="160" placeholder="Ciudad y país"></label><label>Fecha prevista<input name="date" type="date" required></label><label>Detalles adicionales<textarea name="notes" maxlength="2000" rows="3"></textarea></label><p>El envío es una solicitud, sujeta a disponibilidad y confirmación comercial.</p><button type="submit">Enviar solicitud</button><p id="request-feedback" role="status"></p></form></dialog>
+
+  <script src="/assets/js/private.js?v=20261003-client-1" defer></script>
   <script src="/assets/js/footer-terminal.js?v=20261003-private-1" defer></script>
   <script src="/assets/js/global.js?v=20261003-private-signature" defer></script>
   <script src="/assets/js/cookie-consent.js?v=20261004-4" defer></script>

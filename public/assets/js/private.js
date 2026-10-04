@@ -49,6 +49,7 @@
       </div>
     </section>`;
 
+  const offersById = new Map();
   const viewed = new Set();
 
   const recordView = async (id) => {
@@ -91,6 +92,7 @@
   };
 
   const renderOffers = (offers) => {
+    offers.forEach(offer => offersById.set(Number(offer.id),offer));
     host.innerHTML = offers.map((rawOffer, index) => {
       const id = Number(rawOffer.id);
       const title = escape(rawOffer.title || 'Oportunidad Signature');
@@ -120,7 +122,7 @@
 
           <div class="signature-offer-card__foot">
             <p class="signature-offer-validity">Disponible hasta ${escape(validity)}</p>
-            <a class="signature-offer-action" href="/contact/">Consultar oportunidad <span aria-hidden="true">↗</span></a>
+            <div class="signature-actions"><button class="signature-offer-action" type="button" data-request="availability" data-id="${id}">Consultar disponibilidad</button><button class="signature-offer-action" type="button" data-request="order" data-id="${id}">Solicitar pedido</button></div>
           </div>
         </article>`;
     }).join('');
@@ -141,6 +143,9 @@
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok || !data.ok) {
+        if(response.status!==401)throw new Error('SERVICE_UNAVAILABLE');
+        document.querySelector('#signature-login').hidden=false;
+        document.querySelector('#signature-workspace').hidden=true;
         setStatus('No hay una sesión Signature activa.', 'notice');
         host.innerHTML = stateCard({
           label: 'ACCESO SIGNATURE',
@@ -153,6 +158,10 @@
         return;
       }
 
+      document.querySelector('#signature-login').hidden = true;
+      document.querySelector('#signature-workspace').hidden = false;
+      document.querySelector('#signature-company').textContent = data.company || data.client || 'Área de cliente';
+      loadHistory();
       const company = String(data.company || '').trim();
       setStatus(company ? `Acceso verificado · ${company}` : 'Acceso Signature verificado.', 'success');
 
@@ -172,6 +181,7 @@
       renderOffers(offers);
       setBusy(false);
     } catch (_) {
+      document.querySelector('#login-feedback').textContent='No hemos podido comprobar su sesión. Recargue la página para reintentar.';
       setStatus('No hemos podido verificar el acceso en este momento.', 'notice');
       host.innerHTML = stateCard({
         label: 'SERVICIO NO DISPONIBLE',
@@ -183,6 +193,21 @@
       setBusy(false);
     }
   };
+
+  const loginForm=document.querySelector('#signature-login-form');
+  loginForm.addEventListener('submit',async event=>{
+    event.preventDefault();const button=loginForm.querySelector('button'),feedback=document.querySelector('#login-feedback');button.disabled=true;feedback.textContent='Enviando enlace…';
+    try{const form=new FormData(loginForm);form.set('language','es');const r=await fetch('/api/private/request-access',{method:'POST',body:form,credentials:'same-origin'});const data=await r.json();if(!r.ok){if(data.code==='VALIDATION_FAILED')throw new Error('Este acceso requiere una empresa aprobada. Solicite aprobación o contacte con EMPERIO TISS.');throw new Error(data.error||'No se ha podido enviar el enlace.');}feedback.textContent=data.message||'Revise su email para acceder mediante el enlace seguro.';}catch(e){feedback.textContent=e.message||'Error de conexión. Inténtelo de nuevo.';}finally{button.disabled=false;}
+  });
+  document.querySelector('#signature-logout').addEventListener('click',async()=>{try{const r=await fetch('/api/private/logout',{method:'POST',credentials:'same-origin'});if(!r.ok)throw Error();location.reload();}catch{setStatus('No se ha podido cerrar sesión. Inténtelo de nuevo.','notice')}});
+  const historyHost=document.querySelector('#signature-history');
+  const statuses={new:'Recibida',qualified:'En revisión',studying:'En estudio',offered:'Propuesta enviada',won:'Finalizada',lost:'Cerrada'};
+  async function loadHistory(){historyHost.textContent='Cargando solicitudes…';try{const r=await fetch('/api/private/requests',{cache:'no-store',credentials:'same-origin'}),data=await r.json();if(!r.ok)throw Error();historyHost.innerHTML=data.requests.length?data.requests.map(item=>`<article class="signature-request-row"><div><strong>${escape(item.product_name)}</strong><p>${escape(item.specification)} · ${escape(item.destination)}</p><small>${escape(item.id)} · ${escape(formatDate(item.created_at))}</small></div><p>${escape(statuses[item.status]||'En revisión')}</p></article>`).join(''):'<p>Todavía no ha enviado solicitudes desde Signature.</p>';}catch{historyHost.innerHTML='<p>No se han podido cargar sus solicitudes. <button type="button" id="retry-history">Reintentar</button></p>';historyHost.querySelector('button').addEventListener('click',loadHistory);}}
+  const dialog=document.querySelector('#signature-request'),requestForm=document.querySelector('#signature-request-form');let selectedOffer,requestKind,requestPending=false;
+  host.addEventListener('click',event=>{const button=event.target.closest('[data-request]');if(!button||requestPending)return;selectedOffer=offersById.get(Number(button.dataset.id));if(!selectedOffer)return;requestKind=button.dataset.request;requestForm.reset();requestForm.querySelector('[type=submit]').disabled=false;document.querySelector('#request-feedback').textContent='';document.querySelector('#request-heading').textContent=requestKind==='order'?'Solicitar pedido':'Consultar disponibilidad';document.querySelector('#request-offer').textContent=selectedOffer.title;requestForm.elements.date.min=new Date().toISOString().slice(0,10);dialog.showModal();});
+  dialog.querySelector('.request-close').addEventListener('click',()=>{if(!requestPending)dialog.close()});
+  dialog.addEventListener('cancel',event=>{if(requestPending)event.preventDefault()});
+  requestForm.addEventListener('submit',async event=>{event.preventDefault();const button=requestForm.querySelector('[type=submit]'),feedback=document.querySelector('#request-feedback');requestPending=true;button.disabled=true;feedback.textContent='Registrando solicitud…';try{const payload=Object.fromEntries(new FormData(requestForm));payload.offer_id=selectedOffer.id;payload.kind=requestKind;const r=await fetch('/api/private/requests',{method:'POST',credentials:'same-origin',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}),data=await r.json();if(!r.ok)throw new Error(data.error||'No se ha podido registrar la solicitud.');feedback.textContent=data.message+' Referencia: '+data.id;await loadHistory();}catch(e){feedback.textContent=e.message||'Error de conexión. No se ha confirmado el envío.';button.disabled=false;}finally{requestPending=false;}});
 
   load();
 })();

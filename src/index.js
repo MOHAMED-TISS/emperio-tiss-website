@@ -381,6 +381,36 @@ async function privateOfferView(request,env) {
   ]);
   return json({ok:true});
 }
+
+async function privateClientRequests(request,env) {
+  if (request.method==='POST' && !originOk(request)) return json({ok:false,error:'Origen no autorizado.'},403);
+  if (!dbOk(env)) return json({ok:false,error:'Servicio no disponible.'},503);
+  const client=await privateSessionClient(request,env);
+  if (!client) return json({ok:false,error:'Inicie sesión con una empresa aprobada.'},401);
+  await ensureInquirySchema(env);
+  if (request.method==='GET') {
+    const rows=await env.NEWS_DB.prepare("SELECT id,status,created_at,product_name,destination,specification,message FROM inquiries WHERE email=? AND source IN ('signature-availability','signature-order') ORDER BY created_at DESC LIMIT 50").bind(client.email).all();
+    return json({ok:true,requests:rows.results||[]});
+  }
+  let body;try{body=await request.json()}catch{return json({ok:false,error:'Solicitud no válida.'},400)}
+  if(!body||typeof body!=='object'||Array.isArray(body))return json({ok:false,error:'Solicitud no válida.'},400);
+  const offerId=Number(body.offer_id),kind=body.kind,quantity=Number(body.quantity),unit=clean(body.unit,10),destination=clean(body.destination,160),date=clean(body.date,10),notes=clean(body.notes,2000);
+  if (!Number.isSafeInteger(offerId)||offerId<1||!['availability','order'].includes(kind)||!Number.isFinite(quantity)||quantity<=0||quantity>100000000||!['kg','tonnes','boxes','pallets'].includes(unit)||!destination||!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date))||new Date(date).toISOString().slice(0,10)!==date||date<new Date().toISOString().slice(0,10)) return json({ok:false,error:'Revise cantidad, unidad, destino y fecha.'},400);
+  const offer=await env.NEWS_DB.prepare(`SELECT id,title,category,origin FROM private_offers WHERE id=? AND status='published' AND deleted_at IS NULL AND valid_until>? AND ${offerVisibilitySql}`).bind(offerId,now(),client.language||'',client.country||'',client.email).first();
+  if(!offer)return json({ok:false,error:'Esta oferta ya no está disponible para su cuenta.'},404);
+  if(!(await allowRequest(request,env,client.email,'signature-request')))return json({ok:false,error:'Espere antes de enviar otra solicitud.'},429);
+  const id='SIG-'+crypto.randomUUID(),stamp=now(),specification=quantity+' '+unit+' · '+date;
+  const message=(kind==='order'?'Solicitud de pedido':'Consulta de disponibilidad')+' — Oferta #'+offerId+' — '+specification+'\n'+notes+'\nPendiente de confirmación comercial.';
+  await env.NEWS_DB.prepare("INSERT INTO inquiries(id,status,created_at,updated_at,language,source,page_url,name,company,email,product_category,product_id,product_name,origin,destination,specification,message,notification_status) VALUES(?,'new',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'desk')").bind(id,stamp,stamp,client.language||'es','signature-'+kind,'/private/',client.name||'',client.company||'',client.email,offer.category,String(offer.id),offer.title,offer.origin,destination,specification,message).run();
+  return json({ok:true,id,message:'Solicitud registrada. Pendiente de confirmación comercial.'},201);
+}
+async function privateLogout(request,env){
+  if(!originOk(request))return json({ok:false,error:'Origen no autorizado.'},403);
+  const match=(request.headers.get('cookie')||'').match(/(?:^|;\s*)et_private_session=([^;]+)/);
+  if(match&&dbOk(env))await env.NEWS_DB.prepare('DELETE FROM private_sessions WHERE token_hash=?').bind(await sha(match[1])).run();
+  const response=json({ok:true});response.headers.set('set-cookie','et_private_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0');return response;
+}
+
 async function adminStatus(request, env) {
   if (!(await authAdmin(request, env))) return json({
     ok: false,
@@ -820,6 +850,8 @@ async function adminInquiryStatus(request,env) {
 async function fetchHandler(request, env) {
   const url = new URL(request.url);
   if (url.pathname.startsWith('/api/') && request.method==='POST' && Number(request.headers.get('content-length'))>32768) return json({ok:false,error:'Request too large.'},413);
+  if (url.pathname==='/api/private/requests' && ['GET','POST'].includes(request.method)) return privateClientRequests(request,env);
+  if (url.pathname==='/api/private/logout' && request.method==='POST') return privateLogout(request,env);
   if (url.pathname==='/api/private/admin/overview' && request.method==='GET') return adminOverview(request,env);
   if (url.pathname==='/api/private/admin/inquiries/status' && request.method==='POST') return adminInquiryStatus(request,env);
   if (url.pathname==='/api/private/admin/offers/update' && request.method==='POST') return adminOfferUpdate(request,env);
