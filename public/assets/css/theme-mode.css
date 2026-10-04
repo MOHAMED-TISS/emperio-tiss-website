@@ -1,0 +1,276 @@
+/* EMPERIO TISS — public light / night mode */
+:root{
+  --et-theme-dark-bg:#081827;
+  --et-theme-dark-surface:#0e2237;
+  --et-theme-dark-surface-2:#122a42;
+  --et-theme-dark-ink:#f4f0e6;
+  --et-theme-dark-muted:#aeb8c5;
+  --et-theme-dark-line:rgba(244,240,230,.16);
+  --et-theme-dark-gold:#c9a24b;
+}
+
+html[data-et-theme="light"]{color-scheme:light}
+html[data-et-theme="dark"]{color-scheme:dark}
+
+.et-theme-toggle{
+  order:3;
+  width:44px;
+  height:44px;
+  min-width:44px;
+  flex:0 0 44px;
+  display:inline-grid;
+  place-items:center;
+  margin:0 2px 0 0;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:var(--et-ivory,#F4F0E6);
+  pointer-events:auto;
+  cursor:pointer;
+  transition:opacity .2s ease,background .2s ease;
+}
+.et-theme-toggle:hover{background:rgba(244,240,230,.08)}
+.et-theme-toggle:focus-visible{outline:2px solid var(--et-champagne,#C9A24B);outline-offset:3px}
+.et-theme-toggle__icon{
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+}
+.et-theme-toggle__icon svg{
+  width:18px;
+  height:18px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.et-theme-toggle__icon--sun{display:none}
+html[data-et-theme="dark"] .et-theme-toggle__icon--moon{display:none}
+html[data-et-theme="dark"] .et-theme-toggle__icon--sun{display:grid}
+
+/* Preserve the approved photographic/dark masthead in both modes. */
+html[data-et-theme="dark"] body:not(.private-page):not(.private-admin-page) .site-header{
+  background:rgba(5,18,31,.78)!important;
+  border-color:rgba(244,240,230,.22)!important;
+  box-shadow:inset 0 0 0 8px rgba(5,18,31,.16)!important;
+}
+html[data-et-theme="dark"] body:not(.private-page):not(.private-admin-page) .site-header.scrolled{
+  background:rgba(5,18,31,.62)!important;
+}
+
+/* Home — night mode keeps image scenes intact and changes editorial light surfaces only. */
+html[data-et-theme="dark"] body.home-experience{
+  background:var(--et-theme-dark-bg)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .et-experience{
+  background:var(--et-theme-dark-bg)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .et-experience .collection{
+  background:var(--et-theme-dark-bg)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .et-experience .chapter,
+html[data-et-theme="dark"] body.home-experience .et-experience .opening,
+html[data-et-theme="dark"] body.home-experience .et-experience .seasonal{
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .et-experience .opening p,
+html[data-et-theme="dark"] body.home-experience .et-experience .seasonal>span{
+  color:var(--et-theme-dark-muted)!important;
+}
+html[data-et-theme="dark"] body.home-experience .et-experience .seasonal{
+  border-color:var(--et-theme-dark-line)!important;
+}
+html[data-et-theme="dark"] body.home-experience .et-experience .seasonal a{
+  color:var(--et-theme-dark-ink)!important;
+}
+
+html[data-et-theme="dark"] body.home-experience .et-experience .approach-v2,
+html[data-et-theme="dark"] body.home-experience .et-experience .approach{
+  background:var(--et-theme-dark-surface)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .approach-v2 .approach-heading{
+  border-color:var(--et-theme-dark-line)!important;
+}
+html[data-et-theme="dark"] body.home-experience .approach-v2 :is(h2,h2 em,h3),
+html[data-et-theme="dark"] body.home-experience .et-experience .approach :is(h2,h2 em,h3){
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .approach-v2 :is(.approach-heading .small,.approach-heading-meta p,.steps p),
+html[data-et-theme="dark"] body.home-experience .et-experience .approach .steps p{
+  color:var(--et-theme-dark-muted)!important;
+}
+html[data-et-theme="dark"] body.home-experience .approach-v2 .steps article,
+html[data-et-theme="dark"] body.home-experience .approach-v2 .approach-link,
+html[data-et-theme="dark"] body.home-experience .et-experience .approach .steps article,
+html[data-et-theme="dark"] body.home-experience .et-experience .approach .approach-link{
+  border-color:var(--et-theme-dark-line)!important;
+}
+html[data-et-theme="dark"] body.home-experience .approach-v2 .step-number,
+html[data-et-theme="dark"] body.home-experience .et-experience .approach .step-number{
+  color:#d6b96f!important;
+}
+html[data-et-theme="dark"] body.home-experience .approach-v2 .approach-specs span{
+  border-color:var(--et-theme-dark-line)!important;
+  color:var(--et-theme-dark-muted)!important;
+}
+
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-markets{
+  background:#12345a!important;
+}
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-contact .invitation{
+  background:var(--et-theme-dark-bg)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-contact .invitation :is(h2,h2 em){
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-contact .invitation>.small,
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-contact .invitation-bottom p{
+  color:var(--et-theme-dark-muted)!important;
+}
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-contact .invitation-bottom{
+  border-color:var(--et-theme-dark-line)!important;
+}
+html[data-et-theme="dark"] body.home-experience .home-joby-selected-contact .invitation-bottom a{
+  color:var(--et-theme-dark-ink)!important;
+}
+
+/* Interior pages — drive the 2026 system from the existing variables. */
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page){
+  --et26-paper:var(--et-theme-dark-bg);
+  --et26-paper-2:#0c2033;
+  --et26-ink:var(--et-theme-dark-ink);
+  --et26-navy:#04111f;
+  --et26-muted:var(--et-theme-dark-muted);
+  --et26-line:var(--et-theme-dark-line);
+  --et26-white:var(--et-theme-dark-surface);
+  background:var(--et-theme-dark-bg)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-section,.intro-section,.products-section,.catalog-section,.catalog-other-section,
+  .seafood-catalog,.fish-catalog,.fish-emblematic,.news-feature-section,.news-stream,
+  .season-selection,.legal-section,.legal-main,.current-main
+){
+  background:var(--et-theme-dark-bg)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-card,.about-values-grid article,.product-row,.news-card,.season-category,
+  .fish-emblematic-card,.fish-catalog-card,.seafood-catalog-card,.compact-catalog-card,
+  .market-catalogue-card,.product-card,.legal-card
+){
+  background:var(--et-theme-dark-surface)!important;
+  border-color:var(--et-theme-dark-line)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-card h3,.about-values-grid article h3,.product-row h3,.news-card h3,.season-category h3,
+  .fish-emblematic-card h3,.fish-catalog-card h3,.seafood-catalog-card h3,
+  .compact-catalog-card h3,.compact-catalog-card__title,.market-catalogue-card__name,.product-card h3,
+  .legal-card h3
+){
+  color:var(--et-theme-dark-ink)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-copy,.intro-copy p,.section-intro,.company-copy p,.catalog-head>p,
+  .seafood-catalog__head>p,.fish-catalog__head>p,.news-section-head>p,
+  .season-heading>p,.legal-section p,.legal-card p,.product-description
+){
+  color:var(--et-theme-dark-muted)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .fish-catalog__search,.seafood-catalog-search,.compact-catalog__search,.catalog-search,input[type="search"]
+){
+  background:var(--et-theme-dark-surface)!important;
+  color:var(--et-theme-dark-ink)!important;
+  border-color:var(--et-theme-dark-line)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .contact-form,.news-form,.news-subscribe-form,form
+) :is(input:not([type="hidden"]),select,textarea){
+  background:var(--et-theme-dark-surface)!important;
+  color:var(--et-theme-dark-ink)!important;
+  border-color:var(--et-theme-dark-line)!important;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(input,textarea)::placeholder{
+  color:#8391a1!important;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) select option{
+  background:var(--et-theme-dark-surface)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) form label>span{
+  color:var(--et-theme-dark-muted)!important;
+}
+
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav{
+  background:var(--et-theme-dark-bg)!important;
+  border-color:var(--et-theme-dark-line)!important;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__label,
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a{
+  color:var(--et-theme-dark-muted)!important;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a.is-active{
+  background:var(--et-theme-dark-ink)!important;
+  color:var(--et-theme-dark-bg)!important;
+}
+
+html[data-et-theme="dark"] body.products-landing-page .product-row{
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body.products-landing-page .product-row:hover{
+  border-color:rgba(244,240,230,.28)!important;
+  box-shadow:0 22px 50px rgba(0,0,0,.20)!important;
+}
+
+/* Legal/cookie surfaces. */
+html[data-et-theme="dark"] body:not(.private-page):not(.private-admin-page) :is(.legal-wrap,.legal-section__content){
+  color:var(--et-theme-dark-ink)!important;
+}
+html[data-et-theme="dark"] body:not(.private-page):not(.private-admin-page) .legal-callout{
+  background:var(--et-theme-dark-surface-2)!important;
+  border-color:var(--et-theme-dark-line)!important;
+  color:var(--et-theme-dark-ink)!important;
+}
+
+/* Keep utility controls legible in both themes. */
+html[data-et-theme="dark"] .et-cookie-manage{
+  background:#10263d;
+  color:#f4f0e6;
+  border-color:rgba(244,240,230,.18);
+}
+
+@media(max-width:700px){
+  .et-theme-toggle{
+    order:3;
+    width:40px;
+    height:40px;
+    min-width:40px;
+    flex-basis:40px;
+    margin:0;
+  }
+  .et-theme-toggle__icon,
+  .et-theme-toggle__icon svg{
+    width:17px;
+    height:17px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .et-theme-toggle{transition:none}
+}
