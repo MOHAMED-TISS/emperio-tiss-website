@@ -2,6 +2,7 @@ const ALLOWED_ORIGINS = new Set(['https://emperio-tiss.com', 'https://www.emperi
 const RESEND = 'https://api.resend.com/emails';
 const TURNSTILE_VERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const TURNSTILE_HOSTNAMES = new Set(['emperio-tiss.com', 'www.emperio-tiss.com']);
+const PRIVACY_NOTICE_VERSION = '2026-10-04';
 const json = (data, status = 200) => new Response(JSON.stringify(data), {
   status,
   headers: {
@@ -44,6 +45,7 @@ async function ensureInquirySchema(env) {
         destination TEXT,
         specification TEXT,
         message TEXT,
+        privacy_notice_version TEXT,
         notification_status TEXT,
         notification_error TEXT
       )`),
@@ -51,8 +53,12 @@ async function ensureInquirySchema(env) {
       env.NEWS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_inquiries_email ON inquiries(email)')
     ]);
     const columns = await env.NEWS_DB.prepare('PRAGMA table_info(inquiries)').all();
-    if (!(columns.results || []).some(row => row.name === 'product_reference')) {
+    const inquiryColumns = new Set((columns.results || []).map(row => row.name));
+    if (!inquiryColumns.has('product_reference')) {
       await env.NEWS_DB.prepare('ALTER TABLE inquiries ADD COLUMN product_reference TEXT').run();
+    }
+    if (!inquiryColumns.has('privacy_notice_version')) {
+      await env.NEWS_DB.prepare('ALTER TABLE inquiries ADD COLUMN privacy_notice_version TEXT').run();
     }
   })().catch(error => { inquirySchemaReady = null; throw error; });
   return inquirySchemaReady;
@@ -817,9 +823,9 @@ async function handleContact(request, env) {
   const inquiryId = `INQ-${new Date().toISOString().slice(0,10).replaceAll('-','')}-${crypto.randomUUID().slice(0,8).toUpperCase()}`;
   const createdAt = now();
   await env.NEWS_DB.prepare(
-    `INSERT INTO inquiries(id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_reference,product_name,origin,destination,specification,message,notification_status)
-     VALUES(?,'new',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending')`
-  ).bind(inquiryId,createdAt,createdAt,language,source,pageUrl,nombre,empresa,cif,email,telefono,productCategory,productId,productReference,productName,productOrigin,destino,productSpecification,mensaje).run();
+    `INSERT INTO inquiries(id,status,created_at,updated_at,language,source,page_url,name,company,tax_id,email,phone,product_category,product_id,product_reference,product_name,origin,destination,specification,message,privacy_notice_version,notification_status)
+     VALUES(?,'new',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'pending')`
+  ).bind(inquiryId,createdAt,createdAt,language,source,pageUrl,nombre,empresa,cif,email,telefono,productCategory,productId,productReference,productName,productOrigin,destino,productSpecification,mensaje,PRIVACY_NOTICE_VERSION).run();
 
   const html =
     `<h2>Nueva consulta B2B — EMPERIO TISS</h2><p><strong>Consulta:</strong> ${escapeHtml(inquiryId)}</p><p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p><p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p><p><strong>CIF / Identificación fiscal:</strong> ${escapeHtml(cif)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p><p><strong>Categoría:</strong> ${escapeHtml(producto)}</p>${productReference ? `<p><strong>Referencia producto:</strong> REF. ${escapeHtml(productReference)}</p>` : ''}${productName ? `<p><strong>Producto:</strong> ${escapeHtml(productName)}</p>` : ''}${productOrigin ? `<p><strong>Origen:</strong> ${escapeHtml(productOrigin)}</p>` : ''}${productSpecification ? `<p><strong>Especificación:</strong> ${escapeHtml(productSpecification)}</p>` : ''}<p><strong>Destino:</strong> ${escapeHtml(destino)}</p><p><strong>Necesidad:</strong></p><p>${escapeHtml(mensaje).replaceAll('\n','<br>')}</p><p><a href="https://emperio-tiss.com/private/admin/">Abrir Operations Desk</a></p>`;
