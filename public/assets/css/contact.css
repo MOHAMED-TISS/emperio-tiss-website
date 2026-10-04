@@ -136,3 +136,18 @@ html[dir="rtl"] .contact-form .contact-turnstile {
     transform-origin: right center;
   }
 }
+
+
+.contact-form__privacy {
+  margin: .15rem 0 .25rem;
+  max-width: 820px;
+  color: var(--es-muted, #69746d);
+  font-size: .72rem;
+  line-height: 1.6;
+}
+
+.contact-form__privacy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: .16em;
+}
