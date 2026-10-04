@@ -1,3 +1,49 @@
 .signature-login{max-width:1160px;margin:0 auto;padding:150px 28px 80px;display:grid;grid-template-columns:1.1fr 1fr;gap:90px;align-items:center}.signature-login h1{font:500 clamp(42px,5vw,70px)/1.05 'DM Sans',sans-serif;letter-spacing:-.055em;margin:25px 0}.signature-login p{font-size:16px;line-height:1.7;max-width:440px}.signature-login>div>span{display:block;margin-top:40px;font-size:10px;letter-spacing:.13em;color:#526a70}.signature-login form{background:#f4f0e6;color:#113641;border-radius:24px;padding:38px}.signature-login h2{font:500 26px 'DM Sans',sans-serif}.signature-login form p{font-size:14px}.signature-login form a{color:#113641;font-size:13px;line-height:1.6}.signature-login label,#signature-request label{display:block;font-size:13px;margin:18px 0 8px}.signature-login input,#signature-request input,#signature-request select,#signature-request textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid #9bb1b3;background:#fff;border-radius:8px;padding:12px;font:400 16px 'DM Sans',sans-serif;min-height:48px;color:#113641}#signature-request label input,#signature-request label select,#signature-request label textarea{display:block;margin-top:7px}.signature-login button,#signature-request button[type=submit],.signature-offer-action{border:0;border-radius:8px;background:#123b43;color:#fff;padding:14px 20px;min-height:48px;font:500 14px 'DM Sans',sans-serif;cursor:pointer}.signature-login button{width:100%;margin:20px 0 0}.signature-login button:disabled,#signature-request button:disabled{opacity:.65;cursor:wait}.signature-account{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:130px 6% 20px}.signature-account button{background:none;border:1px solid #849da3;color:inherit;border-radius:30px;min-height:44px;padding:10px 18px;cursor:pointer}.signature-account+.private-signature-hero{min-height:0;padding-top:35px;padding-bottom:45px}.signature-account+.private-signature-hero h1{font-size:clamp(34px,4vw,58px)}.signature-history{max-width:1160px;margin:0 auto;padding:40px 28px 80px}.signature-history h2{font:500 30px 'DM Sans',sans-serif}.signature-history>p{line-height:1.7;color:#526a70;max-width:700px}.signature-request-row{border-top:1px solid #b7c4c6;padding:22px 0;display:grid;grid-template-columns:1fr auto;gap:12px}.signature-request-row p{margin:4px 0;font-size:14px}.signature-request-row small{color:#526a70}.signature-request-row strong{font-weight:500}.signature-actions{display:flex;flex-wrap:wrap;gap:10px}.signature-actions button{background:#e1c99f;color:#113641}.signature-actions button+button{background:#123b43;color:#fff;border:1px solid #a8c0c4}#signature-request{border:0;border-radius:20px;background:#f4f0e6;color:#123b43;max-width:560px;width:calc(100% - 32px);max-height:calc(100dvh - 40px);padding:30px;box-sizing:border-box}#signature-request::backdrop{background:#031820bb;backdrop-filter:blur(5px)}#signature-request h2{font:500 28px 'DM Sans',sans-serif}#signature-request p{font-size:13px;line-height:1.6}.request-close{float:right;background:transparent;border:0;min-width:44px;min-height:44px;font-size:28px;cursor:pointer}.request-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}[hidden]{display:none}#signature-request:focus-visible,.signature-login :focus-visible,.signature-account :focus-visible,.signature-actions :focus-visible{outline:2px solid #398cc2;outline-offset:4px}@media(max-width:700px){.signature-login{grid-template-columns:1fr;gap:32px;padding:130px 22px 50px}.signature-login form{padding:24px}.signature-login h1{font-size:44px}.signature-login>div>span{margin-top:20px}.signature-request-row{grid-template-columns:1fr}#signature-request{padding:22px}.signature-actions{flex-direction:column}.signature-actions button{width:100%}}
 
 .signature-login .private-signature-kicker,#signature-request .private-signature-kicker{color:#526a70}
+/* Professional client workspace */
+body.private-page{--portal-teal:#103d43;--portal-muted:#53696e;--portal-line:#d5dfdd;background:#f1f4f1}
+.signature-login{max-width:none;min-height:760px;padding:160px max(6vw,24px) 90px;gap:8vw;background:linear-gradient(90deg,#082e35ed,#082e35b8),url('/assets/images/home-origins.webp') center/cover;color:#fff}
+.signature-login h1{font-size:clamp(40px,4.3vw,68px);line-height:1.08;max-width:670px;font-weight:500;letter-spacing:-.045em}
+.signature-login>div>p:not(.private-signature-kicker){color:#d7e3e1;max-width:470px}
+.signature-login .private-signature-kicker{color:#d5bd92;letter-spacing:.2em;font-size:11px}
+.signature-login>div>span{color:#c6d5d2;font-size:9px;line-height:2.2;max-width:420px}
+.signature-login form{max-width:470px;width:100%;justify-self:end;background:#fafbf8;padding:44px;border:1px solid #fff6;border-radius:18px;box-shadow:0 24px 64px #001c3433}
+.signature-login form h2{font-size:29px;letter-spacing:-.035em;line-height:1.15;margin:18px 0}
+.portal-eyebrow{font-size:10px;letter-spacing:.12em;color:#62736f}
+.signature-account{max-width:1320px;margin:auto;padding:130px 32px 24px;font-size:14px;font-weight:600}
+.signature-account button{font:500 12px 'DM Sans',sans-serif;border-color:var(--portal-line);background:#fff}
+.portal-nav{max-width:1256px;margin:0 auto;display:flex;gap:32px;padding:0 0 20px;border-bottom:1px solid var(--portal-line)}
+.portal-nav a{font-size:13px;color:var(--portal-teal);padding:12px 0;text-decoration:none}
+#signature-workspace .private-signature-hero{min-height:0;background:none;color:var(--portal-teal);padding:38px 32px 28px;max-width:1320px;margin:auto;display:block}
+#signature-workspace .private-signature-hero::before,#signature-workspace .private-signature-hero::after{content:none}
+#signature-workspace .private-signature-hero h1{font-size:clamp(32px,3.4vw,48px);line-height:1.15;max-width:none;color:var(--portal-teal);letter-spacing:-.045em}
+#signature-workspace .private-signature-kicker{color:var(--portal-muted);font-size:10px;margin-bottom:16px}
+#signature-workspace .private-signature-lead{color:var(--portal-muted);font-size:15px;max-width:620px;font-weight:400}
+#signature-workspace .private-signature-hero__bottom{margin-top:18px;gap:24px}
+#signature-workspace .private-signature-access{background:#e4ece7;border:0;border-radius:8px;min-width:0;padding:12px 18px;backdrop-filter:none}
+#signature-workspace .private-signature-access p,#signature-workspace .private-signature-access__label{color:#254d42;font-size:11px}
+.portal-summary{max-width:1320px;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 auto 44px}
+.portal-summary article{padding:24px;background:#fff;border:1px solid var(--portal-line);border-radius:12px}
+.portal-summary span{font-size:9px;letter-spacing:.09em;color:var(--portal-muted);display:block}
+.portal-summary strong{font-size:36px;letter-spacing:-.04em;font-weight:500;display:block;margin:12px 0;color:var(--portal-teal)}
+.portal-summary p{font-size:12px;color:var(--portal-muted);margin:0;line-height:1.5}
+#signature-workspace .private-opportunities{padding:0 32px 40px;max-width:1320px;margin:auto;background:none}
+#signature-workspace .private-opportunities__head{margin-bottom:24px;gap:24px}
+#signature-workspace .private-opportunities__head h2{font-size:30px;line-height:1.2;letter-spacing:-.035em}
+#signature-workspace .private-opportunities__eyebrow{font-size:9px;margin-bottom:10px;color:var(--portal-muted)}
+#signature-workspace .private-opportunities__intro{font-size:12px;line-height:1.6;max-width:420px;color:var(--portal-muted)}
+#signature-workspace .signature-offer-card{border:1px solid var(--portal-line);border-radius:12px;padding:28px;box-shadow:0 4px 16px #0c363204}
+#signature-workspace .signature-offer-card h3{font-size:27px;letter-spacing:-.025em;line-height:1.2}
+.signature-history{max-width:1320px;padding:12px 32px 72px;scroll-margin-top:100px}
+.signature-history h2{font-size:28px;letter-spacing:-.035em}
+.signature-history>p{font-size:13px;max-width:680px}
+#signature-history{background:#fff;border:1px solid var(--portal-line);border-radius:12px;padding:24px;font-size:14px;margin-top:24px}
+.signature-request-row:first-child{border-top:0}.signature-request-row:last-child{padding-bottom:0}
+#private-opportunities-title{scroll-margin-top:110px}
+.signature-actions button,.signature-login button{transition:background 180ms ease,transform 180ms ease}
+.signature-actions button:hover,.signature-login button:hover{filter:brightness(.93)}
+.signature-actions button:active,.signature-login button:active{transform:translateY(1px)}
+.portal-nav a:focus-visible{outline:2px solid #287782;outline-offset:4px}
+@media(max-width:700px){.signature-login{padding:130px 24px 50px;min-height:0;gap:36px}.signature-login form{padding:28px;max-width:none}.signature-login h1{font-size:42px}.signature-account{padding:115px 20px 20px}.portal-nav{margin:0 20px;gap:20px;overflow-x:auto}.portal-nav a{white-space:nowrap;font-size:11px}#signature-workspace .private-signature-hero{padding:28px 20px}#signature-workspace .private-signature-hero__bottom{grid-template-columns:1fr}.portal-summary{padding:0 20px;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:30px}.portal-summary article{padding:18px}.portal-summary article:last-child{grid-column:1/-1}.portal-summary strong{font-size:29px}#signature-workspace .private-opportunities{padding:0 20px 30px}#signature-workspace .private-opportunities__head{display:block}.signature-history{padding:0 20px 50px}#signature-workspace .signature-offer-card{padding:22px}}
+@media(prefers-reduced-motion:reduce){.signature-actions button,.signature-login button{transition:none}}
