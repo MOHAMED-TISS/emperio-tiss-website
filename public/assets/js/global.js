@@ -202,7 +202,7 @@
       loadScript('/assets/js/en-catalog-filter-fix.js?v=20260926-no-prototype-patch', 'etEnCatalogFilterFix');
     }
   }
-  loadCss('/assets/css/cookie-consent.css?v=20261004-4', 'etCookieConsentCss');
+  loadCss('/assets/css/cookie-consent.css?v=20261004-5', 'etCookieConsentCss');
   loadScript('/assets/js/cookie-consent.js?v=20261004-5', 'etCookieConsentScript');
   loadScript('/assets/js/analytics-events.js?v=20261004-3', 'etAnalyticsEventsScript');
   loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
