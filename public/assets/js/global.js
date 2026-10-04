@@ -50,7 +50,7 @@
     loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
   }
   loadCss('/assets/css/header-final.css?v=20261001-signature', 'etHeaderFinalCanonical');
-  loadCss('/assets/css/theme-mode.css?v=20261004-2', 'etThemeModeCss');
+  loadCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
