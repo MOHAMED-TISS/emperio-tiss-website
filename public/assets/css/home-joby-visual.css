@@ -893,8 +893,14 @@ body.joby-motion-demo .site-header .home-header-secondary{
 body.joby-motion-demo .site-header .home-header-nav a,
 body.joby-motion-demo .site-header .home-header-secondary a{
   color:var(--sp-ink)!important;
-  font:550 calc(13px - var(--sp-p)*1px)/1 'DM Sans',Arial,sans-serif!important;
-  letter-spacing:-.015em!important;
+  font-family:'DM Sans',Arial,sans-serif!important;
+  font-size:12.5px!important;
+  font-weight:500!important;
+  line-height:1!important;
+  letter-spacing:-.024em!important;
+  font-optical-sizing:auto!important;
+  text-rendering:optimizeLegibility!important;
+  -webkit-font-smoothing:antialiased!important;
   text-shadow:0 1px 14px rgba(0,0,0,.16)!important;
   transition:opacity .22s ease,transform .22s ease,color .45s ease!important;
 }
@@ -946,20 +952,28 @@ body.joby-motion-demo .site-header .super-signature{
   display:inline-flex!important;
   align-items:center!important;
   height:36px!important;
-  padding:0 13px!important;
+  padding:0 14px!important;
   border:1px solid rgba(255,255,255,.20)!important;
   border-radius:999px!important;
   background:rgba(255,255,255,.07)!important;
   color:var(--sp-ink)!important;
-  font:600 11px/1 'DM Sans',Arial,sans-serif!important;
-  letter-spacing:.025em!important;
+  font-family:'DM Sans',Arial,sans-serif!important;
+  font-size:10.25px!important;
+  font-weight:650!important;
+  line-height:1!important;
+  letter-spacing:.105em!important;
+  font-optical-sizing:auto!important;
   text-decoration:none!important;
 }
 body.joby-motion-demo .site-header .super-lang{
   color:var(--sp-ink)!important;
-  font:600 10px/1 'DM Sans',Arial,sans-serif!important;
-  letter-spacing:.07em!important;
-  opacity:.84!important;
+  font-family:'DM Sans',Arial,sans-serif!important;
+  font-size:9.75px!important;
+  font-weight:650!important;
+  line-height:1!important;
+  letter-spacing:.14em!important;
+  font-optical-sizing:auto!important;
+  opacity:.78!important;
 }
 body.joby-motion-demo .site-header .super-theme-toggle{
   width:36px!important;
@@ -989,9 +1003,15 @@ body.joby-motion-demo .site-header .super-contact{
   border-radius:999px!important;
   display:inline-flex!important;
   align-items:center!important;
+  gap:7px!important;
   background:rgba(255,255,255,.92)!important;
   color:#11161a!important;
-  font:650 12px/1 'DM Sans',Arial,sans-serif!important;
+  font-family:'DM Sans',Arial,sans-serif!important;
+  font-size:11.5px!important;
+  font-weight:600!important;
+  line-height:1!important;
+  letter-spacing:-.012em!important;
+  font-optical-sizing:auto!important;
   text-decoration:none!important;
   box-shadow:0 5px 18px rgba(0,0,0,.10)!important;
 }
