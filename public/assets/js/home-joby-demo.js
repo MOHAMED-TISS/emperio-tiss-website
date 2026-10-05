@@ -43,14 +43,14 @@
 
   installJobyHeader();
 
-  /* SUPERPOWER HEADER REFERENCE — real progressive contraction, EMPERIO identity. */
+  /* SUPERPOWER HEADER REFERENCE — richer controls, liquid glass and eased contraction. */
   const installProgressiveHeader = () => {
     const liveHeader = document.querySelector('.site-header');
     const inner = liveHeader?.querySelector('.header-inner');
     if (!liveHeader || !inner) return;
 
-    const current = inner.querySelector('.joby-header-current');
-    if (current) current.remove();
+    const currentLabel = inner.querySelector('.joby-header-current');
+    if (currentLabel) currentLabel.remove();
 
     const logo = inner.querySelector('.site-logo img');
     if (logo) {
@@ -61,40 +61,108 @@
       logo.height = 430;
     }
 
+    const primary = inner.querySelector('.home-header-nav');
+    if (primary) {
+      primary.innerHTML = '<a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a>';
+    }
+
+    const secondary = inner.querySelector('.home-header-secondary');
+    if (secondary) {
+      secondary.innerHTML = '<a href="/news/">Noticias</a>';
+    }
+
+    let tools = inner.querySelector('.super-header-tools');
+    if (!tools) {
+      tools = document.createElement('div');
+      tools.className = 'super-header-tools';
+      if (secondary) tools.appendChild(secondary);
+
+      const signature = document.createElement('a');
+      signature.className = 'super-signature';
+      signature.href = '/news/#emperio-private';
+      signature.textContent = 'SIGNATURE';
+
+      const lang = document.createElement('span');
+      lang.className = 'super-lang';
+      lang.textContent = 'ES';
+
+      const theme = document.createElement('button');
+      theme.className = 'super-theme-toggle';
+      theme.type = 'button';
+      theme.setAttribute('aria-label', 'Cambiar modo claro u oscuro');
+      theme.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>';
+
+      const contact = document.createElement('a');
+      contact.className = 'super-contact';
+      contact.href = '/contact/';
+      contact.innerHTML = 'Contacto <span aria-hidden="true">↗</span>';
+
+      tools.append(signature, lang, theme, contact);
+      inner.appendChild(tools);
+
+      const applyTheme = (mode) => {
+        const themeMode = mode === 'light' ? 'light' : 'dark';
+        body.dataset.superTheme = themeMode;
+        document.documentElement.dataset.theme = themeMode;
+        theme.setAttribute('aria-pressed', themeMode === 'light' ? 'true' : 'false');
+        try { localStorage.setItem('emperio-super-theme', themeMode); } catch (_) {}
+      };
+
+      let initialTheme = 'dark';
+      try {
+        const stored = localStorage.getItem('emperio-super-theme');
+        if (stored === 'light' || stored === 'dark') initialTheme = stored;
+      } catch (_) {}
+      applyTheme(initialTheme);
+
+      theme.addEventListener('click', () => {
+        applyTheme(body.dataset.superTheme === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    let target = 0;
+    let current = 0;
     let raf = 0;
+
+    const getTarget = () => {
+      if (window.matchMedia('(max-width: 980px)').matches) return 0;
+      return Math.min(1, Math.max(0, window.scrollY / 520));
+    };
+
     const render = () => {
-      raf = 0;
-      const compact = window.matchMedia('(max-width: 980px)').matches;
+      const delta = target - current;
+      current += delta * .105;
 
-      if (compact) {
-        inner.style.setProperty('--joby-pill-width', '100%');
-        inner.style.setProperty('--joby-pill-height', '54px');
-        return;
+      const vw = window.innerWidth;
+      const endWidth = vw >= 1500 ? 62 : vw >= 1280 ? 66 : vw >= 1050 ? 72 : 78;
+      const width = 100 - ((100 - endWidth) * current);
+      const height = 80 - (24 * current);
+      const blur = 27 + (12 * current);
+      const pad = 28 - (10 * current);
+      const gap = 25 - (8 * current);
+
+      inner.style.setProperty('--sp-p', current.toFixed(4));
+      inner.style.setProperty('--sp-pill-width', width.toFixed(3) + '%');
+      inner.style.setProperty('--sp-pill-height', height.toFixed(2) + 'px');
+      inner.style.setProperty('--sp-blur', blur.toFixed(1) + 'px');
+      inner.style.setProperty('--sp-pad', pad.toFixed(1) + 'px');
+      inner.style.setProperty('--sp-gap', gap.toFixed(1) + 'px');
+
+      if (Math.abs(delta) > .0007) {
+        raf = window.requestAnimationFrame(render);
+      } else {
+        raf = 0;
       }
-
-      const range = 280;
-      const progress = Math.min(1, Math.max(0, window.scrollY / range));
-      const width = 100 - (27 * progress);
-      const height = 76 - (18 * progress);
-      const glassAlpha = .10 + (.07 * progress);
-      const glassBlur = 30 + (6 * progress);
-      const borderAlpha = .30 - (.08 * progress);
-
-      inner.style.setProperty('--joby-pill-width', width.toFixed(3) + '%');
-      inner.style.setProperty('--joby-pill-height', height.toFixed(2) + 'px');
-      inner.style.setProperty('--joby-glass-alpha', glassAlpha.toFixed(3));
-      inner.style.setProperty('--joby-glass-blur', glassBlur.toFixed(1) + 'px');
-      inner.style.setProperty('--joby-border-alpha', borderAlpha.toFixed(3));
     };
 
-    const queueRender = () => {
-      if (raf) return;
-      raf = window.requestAnimationFrame(render);
+    const update = () => {
+      target = getTarget();
+      if (!raf) raf = window.requestAnimationFrame(render);
     };
 
-    render();
-    window.addEventListener('scroll', queueRender, { passive: true });
-    window.addEventListener('resize', queueRender, { passive: true });
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
   };
 
   installProgressiveHeader();
