@@ -802,6 +802,18 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   .contact{font-size:14.75px!important}
 }
 
+
+/* V19 — more breathing room at both ends */
+.nav.left{left:var(--pad)!important}
+.tools{right:var(--pad)!important}
+@media(max-width:1180px){
+  .nav.left{left:30px!important}
+  .tools{right:30px!important}
+}
+@media(max-width:900px){
+  .tools{right:12px!important}
+}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -885,7 +897,7 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
     const width = 100 - ((100 - endWidth) * current);
     const height = 88 - (26 * current);
     const blur = 34 + (10 * current);
-    const pad = 28 - (10 * current);
+    const pad = 44 - (12 * current);
     const gap = 25 - (8 * current);
 
     glass.style.setProperty('--p', current.toFixed(4));
