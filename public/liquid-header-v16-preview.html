@@ -760,6 +760,14 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   }
 }
 
+
+/* V17 — Noticias joins the primary navigation */
+@media(max-width:1180px){
+  .nav.left a:nth-child(3){display:inline-flex!important}
+  .nav.left a:nth-child(4){display:none!important}
+  .mini-link{display:none!important}
+}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -767,13 +775,12 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   <div class="glass" id="glass">
     <div class="menu" aria-hidden="true"></div>
     <nav class="nav left">
-      <a href="#">Empresa</a><a href="#">Productos</a><a href="#">Mercados</a>
+      <a href="#">Empresa</a><a href="#">Productos</a><a href="#">Mercados</a><a href="#">Noticias</a>
     </nav>
     <a class="logo" href="#" aria-label="EMPERIO TISS">
       <img class="logo-mark" src="https://raw.githack.com/MOHAMED-TISS/emperio-tiss-website/demo-joby-motion-home/public/assets/images/emperio-tiss-emblem.svg" alt="EMPERIO TISS">
     </a>
     <div class="tools">
-      <a class="mini-link" href="#">Noticias</a>
       <span class="lang">ES</span>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
         <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
