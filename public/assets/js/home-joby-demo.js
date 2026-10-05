@@ -43,6 +43,56 @@
 
   installJobyHeader();
 
+  /* CODEX CONTINUATION — real progressive header contraction. */
+  const installProgressiveHeader = () => {
+    const liveHeader = document.querySelector('.site-header');
+    const inner = liveHeader?.querySelector('.header-inner');
+    if (!liveHeader || !inner) return;
+
+    const current = inner.querySelector('.joby-header-current');
+    if (current) current.remove();
+
+    const logo = inner.querySelector('.site-logo img');
+    if (logo) {
+      logo.src = '/assets/images/emperio-tiss-logo.svg?v=20261001-signature';
+      logo.removeAttribute('srcset');
+      logo.alt = 'EMPERIO TISS S.L.';
+      logo.width = 600;
+      logo.height = 430;
+    }
+
+    let raf = 0;
+    const render = () => {
+      raf = 0;
+      const compact = window.matchMedia('(max-width: 980px)').matches;
+
+      if (compact) {
+        inner.style.setProperty('--joby-pill-width', '100%');
+        inner.style.setProperty('--joby-pill-height', '54px');
+        return;
+      }
+
+      const range = 280;
+      const progress = Math.min(1, Math.max(0, window.scrollY / range));
+      const width = 100 - (27 * progress);
+      const height = 76 - (18 * progress);
+
+      inner.style.setProperty('--joby-pill-width', width.toFixed(3) + '%');
+      inner.style.setProperty('--joby-pill-height', height.toFixed(2) + 'px');
+    };
+
+    const queueRender = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(render);
+    };
+
+    render();
+    window.addEventListener('scroll', queueRender, { passive: true });
+    window.addEventListener('resize', queueRender, { passive: true });
+  };
+
+  installProgressiveHeader();
+
   const fallbackReveal = () => {
     const nodes = document.querySelectorAll(
       '.chapter,.opening,.approach-heading,.origin-image,.steps article,.markets-top,.markets-title,.home-markets-map,.market-grid article,.home-private-copy,.home-private-seal,.invitation-content,.invitation-bottom'
