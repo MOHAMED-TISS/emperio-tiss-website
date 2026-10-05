@@ -1639,6 +1639,6 @@ body.joby-motion-demo .site-header .super-contact{
 }
 
 
-/* V12 — no arrows or chevrons */
-body.joby-motion-demo .site-header .super-lang::after{display:none!important}
+/* V12 — contact without arrow; ES keeps chevron */
+body.joby-motion-demo .site-header .super-lang::after{display:inline-block!important}
 body.joby-motion-demo .site-header .super-contact span{display:none!important}
