@@ -142,7 +142,7 @@
       const width = 100 - ((100 - endWidth) * current);
       const height = 88 - (26 * current);
       const blur = 34 + (10 * current);
-      const pad = 28 - (10 * current);
+      const pad = 44 - (12 * current);
       const gap = 25 - (8 * current);
 
       inner.style.setProperty('--sp-p', current.toFixed(4));
