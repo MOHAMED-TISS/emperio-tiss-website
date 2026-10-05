@@ -891,26 +891,95 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   }
 }
 
+
+/* V22 — isolated emblem + compact centered controls */
+.logo{
+  left:var(--pad)!important;
+}
+.center-cluster{
+  position:absolute!important;
+  left:54%!important;
+  top:50%!important;
+  z-index:4!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:30px!important;
+  width:auto!important;
+  transform:translate(-50%,-50%)!important;
+  white-space:nowrap!important;
+}
+.center-cluster .nav.left,
+.center-cluster .tools{
+  position:static!important;
+  inset:auto!important;
+  width:auto!important;
+  transform:none!important;
+  justify-content:flex-start!important;
+}
+.center-cluster .nav.left{
+  gap:23px!important;
+}
+.center-cluster .tools{
+  gap:11px!important;
+}
+.center-cluster .cta-cluster{
+  gap:7px!important;
+  padding-left:13px!important;
+  margin-left:1px!important;
+}
+@media(max-width:1400px){
+  .center-cluster{
+    left:55%!important;
+    gap:24px!important;
+  }
+  .center-cluster .nav.left{gap:19px!important}
+}
+@media(max-width:1180px){
+  .logo{left:30px!important}
+  .center-cluster{
+    left:56%!important;
+    gap:18px!important;
+  }
+  .center-cluster .nav.left{gap:16px!important}
+  .center-cluster .tools{gap:9px!important}
+}
+@media(max-width:900px){
+  .center-cluster{
+    position:static!important;
+    transform:none!important;
+    width:auto!important;
+  }
+  .center-cluster .nav.left{display:none!important}
+  .center-cluster .tools{
+    position:absolute!important;
+    right:12px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+  }
+}
+
 </style>
 </head>
 <body data-theme="dark">
 <header class="site-header">
   <div class="glass" id="glass">
     <div class="menu" aria-hidden="true"></div>
-    <nav class="nav left">
-      <a href="#">Empresa</a><a href="#">Productos</a><a href="#">Mercados</a><a href="#">Noticias</a>
-    </nav>
     <a class="logo" href="#" aria-label="EMPERIO TISS">
       <img class="logo-mark" src="https://raw.githack.com/MOHAMED-TISS/emperio-tiss-website/demo-joby-motion-home/public/assets/images/emperio-tiss-emblem.svg" alt="EMPERIO TISS">
     </a>
-    <div class="tools">
-      <span class="lang">ES</span>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
-        <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
-      </button>
-      <div class="cta-cluster">
-        <a class="signature" href="#">Signature</a>
-        <a class="contact" href="#">Contacto</a>
+    <div class="center-cluster">
+      <nav class="nav left">
+        <a href="#">Empresa</a><a href="#">Productos</a><a href="#">Mercados</a><a href="#">Noticias</a>
+      </nav>
+      <div class="tools">
+        <span class="lang">ES</span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
+          <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+        <div class="cta-cluster">
+          <a class="signature" href="#">Signature</a>
+          <a class="contact" href="#">Contacto</a>
+        </div>
       </div>
     </div>
   </div>
