@@ -1496,3 +1496,42 @@ body.joby-motion-demo .site-header .super-header-tools{
   body.joby-motion-demo .site-header .site-logo{width:118px!important;height:46px!important}
   body.joby-motion-demo .site-header .super-theme-toggle{width:38px!important;height:38px!important}
 }
+
+
+/* V9 — larger scale, lighter weight */
+body.joby-motion-demo .site-header .home-header-nav a,
+body.joby-motion-demo .site-header .home-header-secondary a{
+  font-size:18px!important;
+  font-weight:600!important;
+  letter-spacing:-.04em!important;
+}
+body.joby-motion-demo .site-header .super-signature{
+  font-size:17px!important;
+  font-weight:600!important;
+  letter-spacing:-.032em!important;
+}
+body.joby-motion-demo .site-header .super-lang{
+  font-size:12.5px!important;
+  font-weight:600!important;
+  letter-spacing:-.012em!important;
+}
+body.joby-motion-demo .site-header .super-contact{
+  font-size:16.25px!important;
+  font-weight:600!important;
+  letter-spacing:-.03em!important;
+}
+body.joby-motion-demo .site-header .home-header-nav{
+  gap:clamp(30px,2.15vw,42px)!important;
+}
+body.joby-motion-demo .site-header .super-header-tools{
+  gap:17px!important;
+}
+@media(max-width:1180px){
+  body.joby-motion-demo .site-header .home-header-nav a,
+  body.joby-motion-demo .site-header .home-header-secondary a{
+    font-size:16.5px!important;
+  }
+  body.joby-motion-demo .site-header .super-contact{
+    font-size:15px!important;
+  }
+}
