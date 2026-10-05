@@ -1920,3 +1920,30 @@ body.joby-motion-demo .site-header .super-header-tools{
 @media(max-width:980px){
   body.joby-motion-demo .site-header .super-header-tools{right:12px!important}
 }
+
+
+/* V20 — emblem moves to the primary-navigation side */
+body.joby-motion-demo .site-header .site-logo{
+  left:var(--sp-pad)!important;
+  right:auto!important;
+  transform:translateY(-50%) scale(calc(1 - var(--sp-p)*.08))!important;
+  transform-origin:center!important;
+}
+body.joby-motion-demo .site-header .home-header-nav{
+  left:calc(var(--sp-pad) + 96px)!important;
+}
+@media(max-width:1180px){
+  body.joby-motion-demo .site-header .site-logo{
+    left:30px!important;
+  }
+  body.joby-motion-demo .site-header .home-header-nav{
+    left:112px!important;
+  }
+}
+@media(max-width:980px){
+  body.joby-motion-demo .site-header .site-logo{
+    left:50%!important;
+    right:auto!important;
+    transform:translate(-50%,-50%)!important;
+  }
+}
