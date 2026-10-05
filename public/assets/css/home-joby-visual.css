@@ -1340,3 +1340,42 @@ body.joby-motion-demo .site-header .super-contact{
   font-weight:600!important;
   letter-spacing:-.025em!important;
 }
+
+
+/* V7 — larger, bolder grotesk typography */
+body.joby-motion-demo .site-header .home-header-nav a,
+body.joby-motion-demo .site-header .home-header-secondary a{
+  font-size:14.25px!important;
+  font-weight:700!important;
+  letter-spacing:-.045em!important;
+}
+body.joby-motion-demo .site-header .super-signature{
+  font-size:13.75px!important;
+  font-weight:700!important;
+  letter-spacing:-.038em!important;
+}
+body.joby-motion-demo .site-header .super-lang{
+  font-size:10.75px!important;
+  font-weight:700!important;
+  letter-spacing:-.015em!important;
+}
+body.joby-motion-demo .site-header .super-contact{
+  font-size:13.25px!important;
+  font-weight:700!important;
+  letter-spacing:-.038em!important;
+}
+body.joby-motion-demo .site-header .home-header-nav{
+  gap:clamp(24px,1.9vw,34px)!important;
+}
+body.joby-motion-demo .site-header .super-header-tools{
+  gap:14px!important;
+}
+@media(max-width:1180px){
+  body.joby-motion-demo .site-header .home-header-nav a,
+  body.joby-motion-demo .site-header .home-header-secondary a{
+    font-size:13.5px!important;
+  }
+  body.joby-motion-demo .site-header .super-contact{
+    font-size:12.75px!important;
+  }
+}
