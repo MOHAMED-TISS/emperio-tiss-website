@@ -524,6 +524,51 @@ body[data-theme="light"] .contact{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.48),0 5px 14px rgba(31,45,52,.04)!important;
 }
 
+
+/* V11 — CTA cluster: Signature + Contacto together */
+.tools{
+  gap:14px!important;
+}
+.cta-cluster{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:5px;
+  padding-left:16px;
+}
+.cta-cluster:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  width:1px;
+  height:28px;
+  transform:translateY(-50%);
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.22),transparent);
+}
+.signature,.contact{
+  flex:0 0 auto;
+}
+.signature{
+  min-width:112px;
+  justify-content:center;
+}
+.contact{
+  min-width:126px;
+  justify-content:center;
+}
+@media(max-width:1180px){
+  .cta-cluster{padding-left:10px;margin-left:1px;gap:6px}
+  .signature{display:inline-flex!important;min-width:96px}
+  .contact{min-width:110px}
+}
+@media(max-width:1040px){
+  .signature{display:none!important}
+  .cta-cluster{padding-left:0;margin-left:0}
+  .cta-cluster:before{display:none}
+}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -538,12 +583,14 @@ body[data-theme="light"] .contact{
     </a>
     <div class="tools">
       <a class="mini-link" href="#">Noticias</a>
-      <a class="signature" href="#">Signature</a>
       <span class="lang">ES</span>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
         <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
       </button>
-      <a class="contact" href="#">Contacto ↗</a>
+      <div class="cta-cluster">
+        <a class="signature" href="#">Signature</a>
+        <a class="contact" href="#">Contacto ↗</a>
+      </div>
     </div>
   </div>
 </header>
