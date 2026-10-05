@@ -814,6 +814,33 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   .tools{right:12px!important}
 }
 
+
+/* V20 — emblem moves to the primary-navigation side */
+.logo{
+  left:var(--pad)!important;
+  right:auto!important;
+  transform:translateY(-50%) scale(calc(1 - var(--p)*.08))!important;
+  transform-origin:center!important;
+}
+.nav.left{
+  left:calc(var(--pad) + 96px)!important;
+}
+@media(max-width:1180px){
+  .logo{
+    left:30px!important;
+  }
+  .nav.left{
+    left:112px!important;
+  }
+}
+@media(max-width:900px){
+  .logo{
+    left:50%!important;
+    right:auto!important;
+    transform:translate(-50%,-50%)!important;
+  }
+}
+
 </style>
 </head>
 <body data-theme="dark">
