@@ -76,9 +76,15 @@
       const progress = Math.min(1, Math.max(0, window.scrollY / range));
       const width = 100 - (27 * progress);
       const height = 76 - (18 * progress);
+      const glassAlpha = .10 + (.07 * progress);
+      const glassBlur = 30 + (6 * progress);
+      const borderAlpha = .30 - (.08 * progress);
 
       inner.style.setProperty('--joby-pill-width', width.toFixed(3) + '%');
       inner.style.setProperty('--joby-pill-height', height.toFixed(2) + 'px');
+      inner.style.setProperty('--joby-glass-alpha', glassAlpha.toFixed(3));
+      inner.style.setProperty('--joby-glass-blur', glassBlur.toFixed(1) + 'px');
+      inner.style.setProperty('--joby-border-alpha', borderAlpha.toFixed(3));
     };
 
     const queueRender = () => {
