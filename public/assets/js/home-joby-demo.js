@@ -60,19 +60,19 @@
 
     const primary = inner.querySelector('.home-header-nav');
     if (primary) {
-      primary.innerHTML = '<a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a>';
+      primary.innerHTML = '<a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a><a href="/news/">Noticias</a>';
     }
 
     const secondary = inner.querySelector('.home-header-secondary');
     if (secondary) {
-      secondary.innerHTML = '<a href="/news/">Noticias</a>';
+      secondary.innerHTML = '';
+      secondary.setAttribute('aria-hidden', 'true');
     }
 
     let tools = inner.querySelector('.super-header-tools');
     if (!tools) {
       tools = document.createElement('div');
       tools.className = 'super-header-tools';
-      if (secondary) tools.appendChild(secondary);
 
       const signature = document.createElement('a');
       signature.className = 'super-signature';
