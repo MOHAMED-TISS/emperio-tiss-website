@@ -101,6 +101,15 @@
       tools.append(lang, theme, ctaCluster);
       inner.appendChild(tools);
 
+      let centerCluster = inner.querySelector('.super-center-cluster');
+      if (!centerCluster) {
+        centerCluster = document.createElement('div');
+        centerCluster.className = 'super-center-cluster';
+        inner.appendChild(centerCluster);
+      }
+      if (primary) centerCluster.appendChild(primary);
+      centerCluster.appendChild(tools);
+
       const applyTheme = (mode) => {
         const themeMode = mode === 'light' ? 'light' : 'dark';
         body.dataset.superTheme = themeMode;
