@@ -80,7 +80,7 @@
       const signature = document.createElement('a');
       signature.className = 'super-signature';
       signature.href = '/news/#emperio-private';
-      signature.textContent = 'SIGNATURE';
+      signature.textContent = 'Signature';
 
       const lang = document.createElement('span');
       lang.className = 'super-lang';
