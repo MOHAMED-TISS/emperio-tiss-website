@@ -1301,3 +1301,42 @@ body.joby-motion-demo .site-header :is(a,button):focus-visible{
   body.joby-motion-demo .site-header .site-logo{width:110px!important;height:43px!important}
   body.joby-motion-demo .site-header .super-theme-toggle{width:32px!important;height:32px!important}
 }
+
+
+/* V6 — reference typography: compact modern grotesk */
+body.joby-motion-demo .site-header .home-header-nav a,
+body.joby-motion-demo .site-header .home-header-secondary a,
+body.joby-motion-demo .site-header .super-signature,
+body.joby-motion-demo .site-header .super-lang,
+body.joby-motion-demo .site-header .super-contact,
+body.joby-motion-demo .site-header .super-theme-toggle{
+  font-family:'Inter Tight','DM Sans',Arial,sans-serif!important;
+  font-optical-sizing:auto!important;
+  font-synthesis:none!important;
+}
+body.joby-motion-demo .site-header .home-header-nav a,
+body.joby-motion-demo .site-header .home-header-secondary a{
+  font-size:12.75px!important;
+  font-weight:600!important;
+  line-height:1!important;
+  letter-spacing:-.032em!important;
+  text-transform:none!important;
+}
+body.joby-motion-demo .site-header .super-signature{
+  font-family:'Inter Tight','DM Sans',Arial,sans-serif!important;
+  font-size:12.25px!important;
+  font-style:normal!important;
+  font-weight:600!important;
+  line-height:1!important;
+  letter-spacing:-.028em!important;
+}
+body.joby-motion-demo .site-header .super-lang{
+  font-size:10px!important;
+  font-weight:600!important;
+  letter-spacing:-.01em!important;
+}
+body.joby-motion-demo .site-header .super-contact{
+  font-size:12px!important;
+  font-weight:600!important;
+  letter-spacing:-.025em!important;
+}
