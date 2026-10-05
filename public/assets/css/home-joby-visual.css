@@ -1904,3 +1904,19 @@ body.joby-motion-demo .site-header .super-contact{
     font-size:14.75px!important;
   }
 }
+
+
+/* V19 — more breathing room at both ends */
+body.joby-motion-demo .site-header .home-header-nav{
+  left:var(--sp-pad)!important;
+}
+body.joby-motion-demo .site-header .super-header-tools{
+  right:var(--sp-pad)!important;
+}
+@media(max-width:1180px){
+  body.joby-motion-demo .site-header .home-header-nav{left:30px!important}
+  body.joby-motion-demo .site-header .super-header-tools{right:30px!important}
+}
+@media(max-width:980px){
+  body.joby-motion-demo .site-header .super-header-tools{right:12px!important}
+}
