@@ -1637,3 +1637,8 @@ body.joby-motion-demo .site-header .super-contact{
   }
   body.joby-motion-demo .site-header .super-cta-cluster::before{display:none!important}
 }
+
+
+/* V12 — no arrows or chevrons */
+body.joby-motion-demo .site-header .super-lang::after{display:none!important}
+body.joby-motion-demo .site-header .super-contact span{display:none!important}
