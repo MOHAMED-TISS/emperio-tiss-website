@@ -841,6 +841,56 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   }
 }
 
+
+/* V21 — distribute masthead content across the full bar */
+.nav.left{
+  left:calc(var(--pad) + 104px)!important;
+  width:min(40%,600px)!important;
+  gap:0!important;
+  justify-content:space-between!important;
+}
+.tools{
+  right:var(--pad)!important;
+  width:min(38%,520px)!important;
+  gap:0!important;
+  justify-content:space-between!important;
+}
+.cta-cluster{
+  margin-left:0!important;
+}
+@media(max-width:1400px){
+  .nav.left{
+    width:41%!important;
+  }
+  .tools{
+    width:39%!important;
+  }
+}
+@media(max-width:1180px){
+  .nav.left{
+    left:112px!important;
+    width:39%!important;
+  }
+  .tools{
+    right:30px!important;
+    width:40%!important;
+  }
+}
+@media(max-width:1040px){
+  .nav.left{
+    width:44%!important;
+  }
+  .tools{
+    width:34%!important;
+  }
+}
+@media(max-width:900px){
+  .tools{
+    width:auto!important;
+    right:12px!important;
+  }
+}
+
 </style>
 </head>
 <body data-theme="dark">
