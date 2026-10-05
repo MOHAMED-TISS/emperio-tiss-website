@@ -139,8 +139,8 @@
       const vw = window.innerWidth;
       const endWidth = vw >= 1500 ? 62 : vw >= 1280 ? 66 : vw >= 1050 ? 72 : 78;
       const width = 100 - ((100 - endWidth) * current);
-      const height = 80 - (24 * current);
-      const blur = 27 + (12 * current);
+      const height = 88 - (26 * current);
+      const blur = 34 + (10 * current);
       const pad = 28 - (10 * current);
       const gap = 25 - (8 * current);
 
