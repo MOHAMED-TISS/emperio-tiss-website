@@ -14,7 +14,7 @@
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
 
-  /* Joby-style floating pill: preserve canonical menu behavior, change only the demo presentation. */
+  /* Legacy demo header bootstrap; final geometry follows the Superpower reference below. */
   const installJobyHeader = () => {
     const liveHeader = document.querySelector('.site-header');
     const inner = liveHeader?.querySelector('.header-inner');
@@ -43,7 +43,7 @@
 
   installJobyHeader();
 
-  /* CODEX CONTINUATION — real progressive header contraction. */
+  /* SUPERPOWER HEADER REFERENCE — real progressive contraction, EMPERIO identity. */
   const installProgressiveHeader = () => {
     const liveHeader = document.querySelector('.site-header');
     const inner = liveHeader?.querySelector('.header-inner');
@@ -406,7 +406,7 @@
     });
   }
 
-  /* Chameleon header: derive light/dark mode from the scene under it. */
+  /* Scene state remains available; the Superpower-reference glass stays visually consistent. */
   const setHeader = (mode) => {
     if (!header) return;
     header.classList.toggle('joby-header--dark', mode === 'dark');
