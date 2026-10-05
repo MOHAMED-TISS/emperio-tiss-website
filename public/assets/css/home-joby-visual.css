@@ -1997,3 +1997,78 @@ body.joby-motion-demo .site-header .super-cta-cluster{
     right:12px!important;
   }
 }
+
+
+/* V22 — isolated emblem + compact centered controls */
+body.joby-motion-demo .site-header .site-logo{
+  left:var(--sp-pad)!important;
+}
+body.joby-motion-demo .site-header .super-center-cluster{
+  position:absolute!important;
+  left:54%!important;
+  top:50%!important;
+  z-index:4!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:30px!important;
+  width:auto!important;
+  transform:translate(-50%,-50%)!important;
+  white-space:nowrap!important;
+}
+body.joby-motion-demo .site-header .super-center-cluster .home-header-nav,
+body.joby-motion-demo .site-header .super-center-cluster .super-header-tools{
+  position:static!important;
+  inset:auto!important;
+  width:auto!important;
+  transform:none!important;
+  justify-content:flex-start!important;
+}
+body.joby-motion-demo .site-header .super-center-cluster .home-header-nav{
+  gap:23px!important;
+}
+body.joby-motion-demo .site-header .super-center-cluster .super-header-tools{
+  gap:11px!important;
+}
+body.joby-motion-demo .site-header .super-center-cluster .super-cta-cluster{
+  gap:7px!important;
+  padding-left:13px!important;
+  margin-left:1px!important;
+}
+@media(max-width:1400px){
+  body.joby-motion-demo .site-header .super-center-cluster{
+    left:55%!important;
+    gap:24px!important;
+  }
+  body.joby-motion-demo .site-header .super-center-cluster .home-header-nav{
+    gap:19px!important;
+  }
+}
+@media(max-width:1180px){
+  body.joby-motion-demo .site-header .site-logo{left:30px!important}
+  body.joby-motion-demo .site-header .super-center-cluster{
+    left:56%!important;
+    gap:18px!important;
+  }
+  body.joby-motion-demo .site-header .super-center-cluster .home-header-nav{
+    gap:16px!important;
+  }
+  body.joby-motion-demo .site-header .super-center-cluster .super-header-tools{
+    gap:9px!important;
+  }
+}
+@media(max-width:980px){
+  body.joby-motion-demo .site-header .super-center-cluster{
+    position:static!important;
+    transform:none!important;
+    width:auto!important;
+  }
+  body.joby-motion-demo .site-header .super-center-cluster .home-header-nav{
+    display:none!important;
+  }
+  body.joby-motion-demo .site-header .super-center-cluster .super-header-tools{
+    position:absolute!important;
+    right:12px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+  }
+}
