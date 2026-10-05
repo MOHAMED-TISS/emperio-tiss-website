@@ -475,6 +475,55 @@ body[data-theme="light"] .contact{
   .contact{font-size:15px!important}
 }
 
+
+/* V10 — higher transparency glassmorphism */
+.glass{
+  border-color:rgba(255,255,255,.20)!important;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.095),rgba(255,255,255,.026) 40%,rgba(255,255,255,.012) 66%,rgba(255,255,255,.055)),
+    rgba(7,14,20,.045)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -1px 0 rgba(255,255,255,.045),
+    0 18px 48px rgba(0,0,0,.10)!important;
+  backdrop-filter:blur(var(--blur)) saturate(175%) brightness(1.06)!important;
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(175%) brightness(1.06)!important;
+}
+body[data-theme="light"] .glass{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.26),rgba(255,255,255,.085) 42%,rgba(255,255,255,.035) 72%,rgba(255,255,255,.14)),
+    rgba(255,255,255,.07)!important;
+  border-color:rgba(255,255,255,.40)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(255,255,255,.08),
+    0 18px 44px rgba(31,45,52,.09)!important;
+}
+.glass:before{
+  background:
+    radial-gradient(125% 115% at 14% -26%,rgba(255,255,255,.19),rgba(255,255,255,.045) 30%,transparent 57%),
+    radial-gradient(95% 120% at 92% 120%,rgba(255,255,255,.055),transparent 63%),
+    linear-gradient(180deg,rgba(255,255,255,.045),transparent 44%,rgba(255,255,255,.012) 80%,rgba(255,255,255,.028))!important;
+}
+.glass:after{
+  opacity:.36!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.19),rgba(255,255,255,.025) 54%,transparent)!important;
+}
+.signature,
+.theme-toggle,
+.contact{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(255,255,255,.18)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 16px rgba(0,0,0,.035)!important;
+}
+body[data-theme="light"] .signature,
+body[data-theme="light"] .theme-toggle,
+body[data-theme="light"] .contact{
+  background:rgba(255,255,255,.16)!important;
+  border-color:rgba(255,255,255,.32)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.48),0 5px 14px rgba(31,45,52,.04)!important;
+}
+
 </style>
 </head>
 <body data-theme="dark">
