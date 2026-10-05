@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>EMPERIO TISS — Liquid Glass Header Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#07121a;color:#fff;font-family:"DM Sans",sans-serif}
+body{min-height:220vh}
+.hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(3,10,15,.10),rgba(3,10,15,.12) 55%,rgba(3,10,15,.64)),
+    url("https://images.unsplash.com/photo-1771962760095-1db83de4cb0f?auto=format&fit=crop&fm=webp&q=88&w=2400") center/cover no-repeat;
+}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,8,12,.46),transparent 55%)}
+.copy{position:absolute;z-index:2;left:5vw;bottom:8vh;max-width:900px}
+.copy small{display:block;margin-bottom:20px;font-size:12px;letter-spacing:.08em}
+.copy h1{margin:0;font-size:clamp(58px,7.6vw,120px);line-height:.9;letter-spacing:-.06em;font-weight:600}
+.copy p{max-width:500px;font-size:18px;line-height:1.5;color:rgba(255,255,255,.82)}
+.scroll-note{
+  position:fixed;right:24px;bottom:22px;z-index:50;padding:9px 13px;border-radius:999px;
+  background:rgba(5,10,16,.22);border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+  font-size:11px;color:rgba(255,255,255,.76)
+}
+.site-header{position:fixed;top:18px;left:20px;right:20px;z-index:1000;pointer-events:none}
+.glass{
+  --w:100%;--h:76px;--alpha:.08;--blur:30px;--border:.30;
+  position:relative;isolation:isolate;width:var(--w);height:var(--h);margin:0 auto;
+  border:1px solid rgba(255,255,255,var(--border));border-radius:999px;overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.045) 34%,rgba(255,255,255,.018) 58%,rgba(255,255,255,.09)),
+    rgba(5,10,16,var(--alpha));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -1px 0 rgba(255,255,255,.055),
+    0 14px 44px rgba(0,0,0,.16);
+  backdrop-filter:blur(var(--blur)) saturate(190%) brightness(1.08);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(190%) brightness(1.08);
+  pointer-events:auto;transition:box-shadow .25s ease;
+}
+.glass:before{
+  content:"";position:absolute;inset:1px;z-index:0;border-radius:inherit;pointer-events:none;
+  background:
+    radial-gradient(105% 100% at 15% -25%,rgba(255,255,255,.26),rgba(255,255,255,.08) 25%,transparent 53%),
+    radial-gradient(92% 120% at 90% 122%,rgba(255,255,255,.10),transparent 58%),
+    linear-gradient(180deg,rgba(255,255,255,.055),transparent 42%,rgba(255,255,255,.02) 75%,rgba(255,255,255,.05));
+}
+.glass:after{
+  content:"";position:absolute;left:4%;right:4%;top:1px;height:42%;z-index:0;border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.03) 52%,transparent);
+  opacity:.50;pointer-events:none
+}
+.nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;display:flex;gap:28px;align-items:center}
+.nav.left{left:30px}.nav.right{right:30px}
+.nav a{color:rgba(255,255,255,.95);text-decoration:none;font-size:13px;font-weight:550;text-shadow:0 1px 14px rgba(0,0,0,.34)}
+.logo{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;
+  width:124px;height:52px;display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,.16))
+}
+.logo img{width:100%;height:100%;object-fit:contain}
+.spacer{min-height:120vh;background:linear-gradient(180deg,#0a1d28,#eef0eb);padding:120px 5vw;color:#fff}
+.spacer h2{font-size:clamp(48px,7vw,100px);line-height:.94;letter-spacing:-.055em;margin:0}
+.spacer p{max-width:700px;font-size:18px;color:rgba(255,255,255,.72)}
+@media(max-width:900px){
+  .site-header{top:12px;left:12px;right:12px}
+  .glass{width:100%!important;height:54px!important}
+  .nav{display:none}
+  .logo{width:106px;height:42px}
+  .menu{display:block}
+}
+.menu{display:none;position:absolute;left:13px;top:50%;z-index:5;width:34px;height:34px;transform:translateY(-50%)}
+.menu:before,.menu:after{content:"";position:absolute;left:7px;width:20px;height:1.5px;background:#fff;border-radius:99px}
+.menu:before{top:13px}.menu:after{top:20px}
+@media(max-width:900px){.menu{display:block}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="glass" id="glass">
+    <div class="menu" aria-hidden="true"></div>
+    <nav class="nav left"><a href="#">Empresa</a><a href="#">Productos</a></nav>
+    <a class="logo" href="#" aria-label="EMPERIO TISS">
+      <img src="https://raw.githack.com/MOHAMED-TISS/emperio-tiss-website/demo-joby-motion-home/public/assets/images/emperio-tiss-logo.svg?v=20261001-signature" alt="EMPERIO TISS">
+    </a>
+    <nav class="nav right"><a href="#">Mercados</a><a href="#">Contacto</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="copy">
+    <small>PRIME ORIGINS. GLOBAL REACH.</small>
+    <h1>Del origen,<br>a su próximo<br>mercado.</h1>
+    <p>Una muestra online aislada para evaluar únicamente el comportamiento y acabado liquid glass del header.</p>
+  </div>
+</section>
+
+<section class="spacer">
+  <h2>El vidrio se contrae<br>con el scroll.</h2>
+  <p>De 100% a 73% de ancho y de 76px a 58px de altura, aumentando ligeramente blur y densidad sin convertirse en una barra opaca.</p>
+</section>
+
+<div class="scroll-note">SCROLL PARA VER LA CONTRACCIÓN</div>
+
+<script>
+(() => {
+  const glass = document.getElementById('glass');
+  let raf = 0;
+  const draw = () => {
+    raf = 0;
+    if (matchMedia('(max-width:900px)').matches) {
+      glass.style.setProperty('--w','100%');
+      glass.style.setProperty('--h','54px');
+      return;
+    }
+    const p = Math.min(1, Math.max(0, scrollY / 320));
+    glass.style.setProperty('--w', (100 - 27*p).toFixed(3) + '%');
+    glass.style.setProperty('--h', (76 - 18*p).toFixed(2) + 'px');
+    glass.style.setProperty('--alpha', (.08 + .065*p).toFixed(3));
+    glass.style.setProperty('--blur', (30 + 7*p).toFixed(1) + 'px');
+    glass.style.setProperty('--border', (.30 - .08*p).toFixed(3));
+  };
+  const queue = () => { if (!raf) raf = requestAnimationFrame(draw); };
+  addEventListener('scroll',queue,{passive:true});
+  addEventListener('resize',queue,{passive:true});
+  draw();
+})();
+</script>
+</body>
+</html>
