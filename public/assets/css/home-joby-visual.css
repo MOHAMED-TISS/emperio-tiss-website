@@ -457,7 +457,7 @@ body.joby-motion-demo .invitation-bottom{
 body.joby-motion-demo .invitation-bottom p{color:#666d74!important}
 body.joby-motion-demo .invitation-bottom a{color:var(--j-ink)!important}
 
-/* Header closer to Joby's simple transparent navigation */
+/* Legacy demo header layer — superseded below by Superpower reference geometry */
 body.joby-motion-demo .site-header{
   border-bottom:0!important;
   box-shadow:none!important;
@@ -507,8 +507,8 @@ body.joby-motion-demo .site-header .home-header-secondary a{
 
 
 /* =========================================================
-   JOBY-STYLE FLOATING PILL HEADER
-   Demo only — same structural language, EMPERIO identity.
+   LEGACY FLOATING HEADER LAYER
+   Superseded by the Superpower-reference block at the end.
    ========================================================= */
 body.joby-motion-demo .site-header,
 body.joby-motion-demo .site-header.joby-header--dark,
@@ -786,7 +786,7 @@ body.joby-motion-demo.menu-open .site-header .header-inner{
 }
 
 
-/* CODEX CONTINUATION — progressive dark-glass masthead */
+/* SUPERPOWER HEADER REFERENCE — progressive dark glass, EMPERIO identity */
 body.joby-motion-demo .site-header,
 body.joby-motion-demo .site-header.joby-header--dark,
 body.joby-motion-demo .site-header.joby-header--light{
