@@ -105,6 +105,9 @@
         body.dataset.superTheme = themeMode;
         document.documentElement.dataset.theme = themeMode;
         theme.setAttribute('aria-pressed', themeMode === 'light' ? 'true' : 'false');
+        theme.innerHTML = themeMode === 'light'
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.6A8.5 8.5 0 0 1 8.4 3.6 8.6 8.6 0 1 0 20.4 15.6Z"/></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>';
         try { localStorage.setItem('emperio-super-theme', themeMode); } catch (_) {}
       };
 
