@@ -95,7 +95,7 @@
       const contact = document.createElement('a');
       contact.className = 'super-contact';
       contact.href = '/contact/';
-      contact.innerHTML = 'Contacto <span aria-hidden="true">↗</span>';
+      contact.textContent = 'Contacto';
 
       const ctaCluster = document.createElement('div');
       ctaCluster.className = 'super-cta-cluster';
