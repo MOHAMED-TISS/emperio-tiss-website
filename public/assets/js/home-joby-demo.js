@@ -52,13 +52,10 @@
     const currentLabel = inner.querySelector('.joby-header-current');
     if (currentLabel) currentLabel.remove();
 
-    const logo = inner.querySelector('.site-logo img');
-    if (logo) {
-      logo.src = '/assets/images/emperio-tiss-logo.svg?v=20261001-signature';
-      logo.removeAttribute('srcset');
-      logo.alt = 'EMPERIO TISS S.L.';
-      logo.width = 600;
-      logo.height = 430;
+    const logoLink = inner.querySelector('.site-logo');
+    if (logoLink) {
+      logoLink.setAttribute('aria-label', 'EMPERIO TISS S.L.');
+      logoLink.innerHTML = '<img class="logo-mark" src="/assets/images/emperio-tiss-emblem.svg" alt=""><span class="logo-wordmark">EMPERIO TISS</span>';
     }
 
     const primary = inner.querySelector('.home-header-nav');
