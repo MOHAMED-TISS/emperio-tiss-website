@@ -55,7 +55,7 @@
     const logoLink = inner.querySelector('.site-logo');
     if (logoLink) {
       logoLink.setAttribute('aria-label', 'EMPERIO TISS S.L.');
-      logoLink.innerHTML = '<img class="logo-mark" src="/assets/images/emperio-tiss-emblem.svg" alt=""><span class="logo-wordmark">EMPERIO TISS</span>';
+      logoLink.innerHTML = '<img class="logo-mark" src="/assets/images/emperio-tiss-emblem.svg" alt="EMPERIO TISS">';
     }
 
     const primary = inner.querySelector('.home-header-nav');
