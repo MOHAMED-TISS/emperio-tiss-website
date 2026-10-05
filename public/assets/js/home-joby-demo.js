@@ -97,7 +97,11 @@
       contact.href = '/contact/';
       contact.innerHTML = 'Contacto <span aria-hidden="true">↗</span>';
 
-      tools.append(signature, lang, theme, contact);
+      const ctaCluster = document.createElement('div');
+      ctaCluster.className = 'super-cta-cluster';
+      ctaCluster.append(signature, contact);
+
+      tools.append(lang, theme, ctaCluster);
       inner.appendChild(tools);
 
       const applyTheme = (mode) => {
