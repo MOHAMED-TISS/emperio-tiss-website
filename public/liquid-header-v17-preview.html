@@ -7,7 +7,7 @@
 <title>EMPERIO TISS — Liquid Glass Header V2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Inter:opsz,wght@14..32,400..600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 :root{
@@ -766,6 +766,40 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   .nav.left a:nth-child(3){display:inline-flex!important}
   .nav.left a:nth-child(4){display:none!important}
   .mini-link{display:none!important}
+}
+
+
+/* V18 — Joby-inspired typography system */
+.nav a,.mini-link,.signature,.lang,.contact,.theme-toggle{
+  font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  font-optical-sizing:auto!important;
+  font-synthesis:none!important;
+}
+.nav a,.mini-link{
+  font-size:17.5px!important;
+  font-weight:500!important;
+  line-height:1!important;
+  letter-spacing:-.028em!important;
+}
+.signature{
+  font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  font-size:16.5px!important;
+  font-weight:500!important;
+  letter-spacing:-.025em!important;
+}
+.lang{
+  font-size:12px!important;
+  font-weight:500!important;
+  letter-spacing:-.015em!important;
+}
+.contact{
+  font-size:16px!important;
+  font-weight:500!important;
+  letter-spacing:-.026em!important;
+}
+@media(max-width:1180px){
+  .nav a,.mini-link{font-size:16px!important}
+  .contact{font-size:14.75px!important}
 }
 
 </style>
