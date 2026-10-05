@@ -7,19 +7,21 @@
 <title>EMPERIO TISS — Liquid Glass Header V2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 :root{
   --ink:#fff;--muted:rgba(255,255,255,.72);
-  --glass-rgb:8,14,20;--glass-alpha:.08;
-  --line-alpha:.28;--shine-alpha:.22;
+  --glass-rgb:7,12,17;--glass-alpha:.075;
+  --line-alpha:.24;--shine-alpha:.20;
+  --champagne:#dbc79c;--champagne-soft:rgba(219,199,156,.42);
   --page:#08141d;--page2:#dfe7e5;
 }
 body[data-theme="light"]{
-  --ink:#101519;--muted:rgba(16,21,25,.66);
-  --glass-rgb:255,255,255;--glass-alpha:.16;
-  --line-alpha:.48;--shine-alpha:.62;
+  --ink:#111417;--muted:rgba(17,20,23,.62);
+  --glass-rgb:255,255,255;--glass-alpha:.18;
+  --line-alpha:.34;--shine-alpha:.52;
+  --champagne:#9f7f45;--champagne-soft:rgba(159,127,69,.30);
   --page:#eef3f1;--page2:#0b1821;
 }
 html,body{margin:0;font-family:"DM Sans",sans-serif;background:var(--page);color:var(--ink);transition:background .55s cubic-bezier(.16,1,.3,1),color .45s ease;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;font-synthesis:none}
@@ -28,14 +30,14 @@ body{min-height:260vh}
 .glass{
   --p:0;--w:100%;--h:80px;--blur:27px;--pad:28px;--gap:25px;
   width:var(--w);height:var(--h);margin:0 auto;position:relative;isolation:isolate;
-  border:1px solid rgba(255,255,255,var(--line-alpha));border-radius:999px;overflow:hidden;
+  border:1px solid rgba(232,220,198,var(--line-alpha));border-radius:999px;overflow:hidden;
   background:
     linear-gradient(135deg,rgba(255,255,255,calc(.13 - var(--p)*.025)),rgba(255,255,255,.025) 42%,rgba(255,255,255,.075)),
     rgba(var(--glass-rgb),var(--glass-alpha));
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,calc(.34 + var(--p)*.06)),
-    inset 0 -1px 0 rgba(255,255,255,.045),
-    0 14px 48px rgba(0,0,0,calc(.10 + var(--p)*.09));
+    inset 0 1px 0 rgba(255,255,255,calc(.28 + var(--p)*.05)),
+    inset 0 -1px 0 rgba(219,199,156,.055),
+    0 18px 52px rgba(0,0,0,calc(.09 + var(--p)*.08));
   backdrop-filter:blur(var(--blur)) saturate(190%) brightness(1.07);
   -webkit-backdrop-filter:blur(var(--blur)) saturate(190%) brightness(1.07);
   pointer-events:auto;will-change:width,height,backdrop-filter;
@@ -56,14 +58,20 @@ body{min-height:260vh}
 .nav.left{left:var(--pad)}
 .tools{right:calc(var(--pad) - 12px);gap:calc(var(--gap)*.72)}
 .nav a,.mini-link{
-  color:var(--ink);text-decoration:none;
+  position:relative;color:var(--ink);text-decoration:none;
   font-family:"DM Sans",sans-serif;font-optical-sizing:auto;
-  font-size:12.5px;font-weight:500;line-height:1;
-  letter-spacing:-.024em;
-  text-shadow:0 1px 14px rgba(0,0,0,.16);
-  transition:opacity .22s ease,transform .22s ease,color .45s ease
+  font-size:11.75px;font-weight:500;line-height:1;
+  letter-spacing:.01em;
+  text-shadow:0 1px 14px rgba(0,0,0,.14);
+  transition:opacity .28s ease,transform .28s ease,color .45s ease
 }
-.nav a:hover,.mini-link:hover{opacity:.62;transform:translateY(-1px)}
+.nav a:after,.mini-link:after{
+  content:"";position:absolute;left:0;right:0;bottom:-7px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--champagne),transparent);
+  transform:scaleX(0);opacity:0;transform-origin:center;transition:transform .32s cubic-bezier(.16,1,.3,1),opacity .32s ease
+}
+.nav a:hover,.mini-link:hover{opacity:.82;transform:translateY(-1px)}
+.nav a:hover:after,.mini-link:hover:after{transform:scaleX(1);opacity:.72}
 .logo{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(calc(1 - var(--p)*.12));
   transform-origin:center;z-index:4;width:126px;height:52px;display:flex;align-items:center;justify-content:center;
@@ -71,32 +79,44 @@ body{min-height:260vh}
 }
 .logo img{width:100%;height:100%;object-fit:contain}
 .signature{
-  display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;text-decoration:none;
-  color:var(--ink);
-  font-family:"DM Sans",sans-serif;font-optical-sizing:auto;
-  font-size:10.25px;font-weight:650;line-height:1;letter-spacing:.105em;
-  border:1px solid rgba(255,255,255,.20);
-  background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
+  display:inline-flex;align-items:center;height:34px;padding:0 14px 1px;border-radius:999px;text-decoration:none;
+  color:var(--champagne);
+  font-family:"Playfair Display",serif;
+  font-size:14px;font-style:italic;font-weight:500;line-height:1;letter-spacing:.012em;
+  border:1px solid var(--champagne-soft);
+  background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
 }
 .lang{
-  color:var(--ink);opacity:.78;
+  position:relative;padding-left:15px;color:var(--ink);opacity:.72;
   font-family:"DM Sans",sans-serif;font-optical-sizing:auto;
-  font-size:9.75px;font-weight:650;line-height:1;letter-spacing:.14em
+  font-size:9px;font-weight:650;line-height:1;letter-spacing:.18em
+}
+.lang:before{
+  content:"";position:absolute;left:0;top:50%;width:1px;height:17px;transform:translateY(-50%);
+  background:linear-gradient(180deg,transparent,var(--champagne-soft),transparent)
 }
 .theme-toggle{
-  width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);
-  color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0;transition:transform .25s ease,background .25s ease,color .45s ease
+  width:33px;height:33px;border-radius:50%;border:1px solid var(--champagne-soft);background:rgba(255,255,255,.045);
+  color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease,color .45s ease,border-color .28s ease
 }
 .theme-toggle:hover{transform:scale(1.05)}
-.theme-toggle svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7}
+.theme-toggle svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.45}
 .contact{
-  height:40px;padding:0 17px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;text-decoration:none;
-  background:rgba(255,255,255,.92);color:#11161a;
+  height:39px;padding:0 17px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  background:linear-gradient(135deg,rgba(250,247,239,.97),rgba(222,204,164,.92));
+  color:#171511;border:1px solid rgba(255,255,255,.34);
   font-family:"DM Sans",sans-serif;font-optical-sizing:auto;
-  font-size:11.5px;font-weight:600;line-height:1;letter-spacing:-.012em;
-  box-shadow:0 5px 18px rgba(0,0,0,.10)
+  font-size:11px;font-weight:600;line-height:1;letter-spacing:.005em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.56),0 8px 22px rgba(0,0,0,.10)
 }
-body[data-theme="light"] .contact{background:#101519;color:#fff}
+.contact span{font-size:10px;opacity:.62;transform:translateY(-.5px)}
+body[data-theme="light"] .contact{
+  background:linear-gradient(135deg,#17191c,#282a2d);color:#f4ead6;border-color:rgba(159,127,69,.32)
+}
 .hero{
   min-height:100vh;position:relative;overflow:hidden;
   background:
@@ -146,7 +166,7 @@ body[data-theme="light"] .contact{background:#101519;color:#fff}
     </a>
     <div class="tools">
       <a class="mini-link" href="#">Noticias</a>
-      <a class="signature" href="#">SIGNATURE</a>
+      <a class="signature" href="#">Signature</a>
       <span class="lang">ES</span>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
         <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
