@@ -872,11 +872,11 @@ body.products-landing-page.products-2026 .hero-grid{
 }
 
 
-/* PRODUCTS HERO — lift CTA row only, independent of viewport height */
+/* PRODUCTS HERO — balanced CTA spacing */
 @media (min-width:901px){
   body.products-landing-page.products-2026 .hero-actions{
     position:relative!important;
-    top:-28px!important;
+    top:-16px!important;
     transform:none!important;
   }
 }
