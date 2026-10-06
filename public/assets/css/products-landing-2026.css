@@ -872,15 +872,11 @@ body.products-landing-page.products-2026 .hero-grid{
 }
 
 
-/* PRODUCTS HERO — lift CTA row only */
-@media (min-width:901px) and (max-height:760px){
+/* PRODUCTS HERO — lift CTA row only, independent of viewport height */
+@media (min-width:901px){
   body.products-landing-page.products-2026 .hero-actions{
-    transform:translateY(-30px)!important;
-  }
-}
-
-@media (min-width:901px) and (max-height:660px){
-  body.products-landing-page.products-2026 .hero-actions{
-    transform:translateY(-26px)!important;
+    position:relative!important;
+    top:-28px!important;
+    transform:none!important;
   }
 }
