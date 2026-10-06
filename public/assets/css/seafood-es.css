@@ -352,3 +352,40 @@ body.seafood-page .es-hero{
     box-sizing:border-box!important;
   }
 }
+
+
+/* SEAFOOD SHORT VIEWPORT COMPOSITION */
+@media (min-width:801px) and (max-height:760px){
+  body.seafood-page .es-hero{
+    padding-top:116px!important;
+    padding-bottom:54px!important;
+  }
+
+  body.seafood-page .es-hero h1{
+    margin:16px 0!important;
+    font-size:clamp(58px,7.4vw,104px)!important;
+  }
+
+  body.seafood-page .es-lead{
+    max-width:620px!important;
+    font-size:16px!important;
+    line-height:1.55!important;
+  }
+}
+
+@media (min-width:801px) and (max-height:660px){
+  body.seafood-page .es-hero{
+    padding-top:96px!important;
+    padding-bottom:44px!important;
+  }
+
+  body.seafood-page .es-hero h1{
+    margin:12px 0!important;
+    font-size:clamp(52px,6.7vw,90px)!important;
+  }
+
+  body.seafood-page .es-lead{
+    font-size:15px!important;
+    line-height:1.5!important;
+  }
+}
