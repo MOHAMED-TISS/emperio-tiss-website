@@ -873,18 +873,118 @@ body.seasonal-editorial main>.et-operation-flow { display:none; }
 }
 @media(max-width:640px){body.brand-pages[data-brand-category="fruits"] { --brand-hero-image:url("/assets/images/fruits-orchard-mobile.webp"); }}
 
-
-/* SHELLFISH HERO — Moruno asset */
-body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero {
-  background:
-    linear-gradient(102deg, rgba(5,18,31,.90) 0%, rgba(8,24,39,.68) 46%, rgba(8,24,39,.22) 100%),
-    url("/assets/products/incoming/Moruno(1).jpeg") 50% 58% / cover no-repeat !important;
+/* SHELLFISH HERO — Moruno editorial composition
+   Vertical source is shown almost complete instead of being forced through cover. */
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:#0b1e33!important;
 }
 
-@media (max-width:800px) {
-  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero {
+/* Ambient fill: same photograph, enlarged and softly blurred only to fill the canvas. */
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+  content:""!important;
+  position:absolute!important;
+  inset:-5%!important;
+  z-index:0!important;
+  width:auto!important;
+  height:auto!important;
+  transform:scale(1.08)!important;
+  background:
+    linear-gradient(90deg,rgba(7,21,36,.82) 0%,rgba(7,21,36,.52) 42%,rgba(7,21,36,.20) 100%),
+    url("/assets/products/incoming/Moruno(1).jpeg") 50% 54% / cover no-repeat!important;
+  filter:blur(22px) saturate(.92)!important;
+  opacity:.58!important;
+  pointer-events:none!important;
+}
+
+/* Foreground photograph: zoomed OUT and placed to the right.
+   auto 88% preserves the original vertical proportions and shows nearly the full frame. */
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:
+    linear-gradient(90deg,
+      rgba(7,21,36,.88) 0%,
+      rgba(7,21,36,.72) 27%,
+      rgba(7,21,36,.36) 48%,
+      rgba(7,21,36,.10) 68%,
+      rgba(7,21,36,.02) 100%
+    ),
+    url("/assets/products/incoming/Moruno(1).jpeg") 78% 52% / auto 88% no-repeat!important;
+  pointer-events:none!important;
+}
+
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero-inner{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* Light mode keeps the image clearer and the fade warmer/lighter. */
+html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero{
+  background:#ede8df!important;
+}
+
+html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+  background:
+    linear-gradient(90deg,rgba(236,232,224,.82) 0%,rgba(236,232,224,.54) 44%,rgba(236,232,224,.16) 100%),
+    url("/assets/products/incoming/Moruno(1).jpeg") 50% 54% / cover no-repeat!important;
+  filter:blur(24px) saturate(.86) brightness(1.06)!important;
+  opacity:.48!important;
+}
+
+html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
+  background:
+    linear-gradient(90deg,
+      rgba(239,235,226,.90) 0%,
+      rgba(239,235,226,.74) 28%,
+      rgba(239,235,226,.38) 49%,
+      rgba(239,235,226,.10) 69%,
+      rgba(239,235,226,.02) 100%
+    ),
+    url("/assets/products/incoming/Moruno(1).jpeg") 78% 52% / auto 88% no-repeat!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero :is(.eyebrow,h1,.lead){
+  color:#0b1e33!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1 em{
+  color:#7d5d26!important;
+}
+
+@media(max-width:1100px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
     background:
-      linear-gradient(180deg, rgba(5,18,31,.62) 0%, rgba(5,18,31,.52) 42%, rgba(5,18,31,.84) 100%),
-      url("/assets/products/incoming/Moruno(1).jpeg") 50% 62% / cover no-repeat !important;
+      linear-gradient(90deg,rgba(7,21,36,.88) 0%,rgba(7,21,36,.66) 38%,rgba(7,21,36,.22) 70%,rgba(7,21,36,.04) 100%),
+      url("/assets/products/incoming/Moruno(1).jpeg") 86% 52% / auto 82% no-repeat!important;
+  }
+  html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
+    background:
+      linear-gradient(90deg,rgba(239,235,226,.91) 0%,rgba(239,235,226,.70) 38%,rgba(239,235,226,.24) 70%,rgba(239,235,226,.03) 100%),
+      url("/assets/products/incoming/Moruno(1).jpeg") 86% 52% / auto 82% no-repeat!important;
+  }
+}
+
+@media(max-width:800px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+    inset:-7%!important;
+    filter:blur(20px) saturate(.90)!important;
+    opacity:.52!important;
+  }
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
+    background:
+      linear-gradient(180deg,rgba(7,21,36,.18) 0%,rgba(7,21,36,.24) 42%,rgba(7,21,36,.86) 100%),
+      url("/assets/products/incoming/Moruno(1).jpeg") 50% 42% / auto 74% no-repeat!important;
+  }
+
+  html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
+    background:
+      linear-gradient(180deg,rgba(239,235,226,.10) 0%,rgba(239,235,226,.18) 42%,rgba(239,235,226,.88) 100%),
+      url("/assets/products/incoming/Moruno(1).jpeg") 50% 42% / auto 74% no-repeat!important;
   }
 }
