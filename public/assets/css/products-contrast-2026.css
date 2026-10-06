@@ -203,37 +203,173 @@ body.products-landing-page.products-2026 .product-marquee-links a{
   background:rgba(8,20,31,.38)!important;
 }
 
-/* COMMERCIAL LOGIC — fixed navy chapter in both themes */
-body.products-landing-page.products-2026 .markets-section{
-  background:#081827!important;
+/* COMMERCIAL LOGIC — follows the active theme */
+/* Light mode: continuous ivory chapter with the preceding selection section. */
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic{
+  background:
+    radial-gradient(circle at 82% 18%,rgba(138,107,52,.075),transparent 24%),
+    radial-gradient(circle at 12% 82%,rgba(54,82,105,.045),transparent 28%),
+    linear-gradient(180deg,#f4f4ef 0%,#f1f0ea 100%)!important;
+  color:#111214!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic::before,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic::before{
+  background:
+    radial-gradient(circle at 74% 34%,rgba(138,107,52,.055),transparent 28%),
+    linear-gradient(180deg,rgba(255,255,255,.16),transparent 28%,rgba(17,18,20,.018))!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic::after,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic::after{
+  background:linear-gradient(115deg,transparent 36%,rgba(255,255,255,.34) 50%,transparent 64%)!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .markets-top,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .markets-top{
+  border-bottom-color:rgba(17,18,20,.16)!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic :is(.eyebrow,.commercial-stage-kicker),
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic :is(.eyebrow,.commercial-stage-kicker){
+  color:#755a2c!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic :is(.markets-description,.markets-title p,.commercial-stage-copy>p:last-child),
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic :is(.markets-description,.markets-title p,.commercial-stage-copy>p:last-child){
+  color:#5b6570!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic :is(.markets-title h2,.commercial-stage h3),
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic :is(.markets-title h2,.commercial-stage h3){
+  color:#111214!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .markets-title h2 span,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .markets-title h2 span{
+  color:#8a6b34!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-flow::before,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-flow::before{
+  background:linear-gradient(
+    90deg,
+    rgba(138,107,52,.14) 0%,
+    rgba(138,107,52,.58) 15%,
+    rgba(138,107,52,.30) 50%,
+    rgba(138,107,52,.58) 85%,
+    rgba(138,107,52,.14) 100%
+  )!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-stage,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-stage{
+  border-inline-start-color:rgba(17,18,20,.12)!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-node,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-node{
+  border-color:rgba(138,107,52,.62)!important;
+  background:#f4f4ef!important;
+  box-shadow:
+    0 0 0 7px #f4f4ef,
+    0 0 0 8px rgba(138,107,52,.10)!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-node span,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-node span{
+  color:#755a2c!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-stage:hover .commercial-node,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-stage:hover .commercial-node{
+  background:rgba(138,107,52,.10)!important;
+  border-color:#8a6b34!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-summary,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-summary{
+  border-top-color:rgba(17,18,20,.14)!important;
+  color:#687079!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-summary strong,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-summary strong{
+  color:#755a2c!important;
+}
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-summary i,
+html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-summary i{
+  background:linear-gradient(90deg,rgba(138,107,52,.08),rgba(138,107,52,.42),rgba(138,107,52,.08))!important;
+}
+
+@media(max-width:900px){
+  html[data-et-theme="light"] body.products-landing-page.products-2026 .commercial-logic .commercial-stage,
+  html:not([data-et-theme="dark"]) body.products-landing-page.products-2026 .commercial-logic .commercial-stage{
+    border-top-color:rgba(138,107,52,.20)!important;
+  }
+}
+
+/* Dark mode: preserve the approved navy treatment. */
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic{
+  background:
+    radial-gradient(circle at 82% 18%,rgba(216,196,158,.10),transparent 24%),
+    radial-gradient(circle at 12% 82%,rgba(81,112,138,.10),transparent 28%),
+    linear-gradient(180deg,#081827 0%,#0a1d2e 100%)!important;
   color:#fff!important;
 }
 
-body.products-landing-page.products-2026 .markets-section .eyebrow,
-body.products-landing-page.products-2026 .market-grid article>span{
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .markets-top{
+  border-bottom-color:rgba(255,255,255,.14)!important;
+}
+
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic :is(.eyebrow,.commercial-stage-kicker){
   color:#d8c49e!important;
 }
 
-body.products-landing-page.products-2026 .markets-title h2,
-body.products-landing-page.products-2026 .market-grid h3{
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic :is(.markets-description,.markets-title p){
+  color:rgba(246,241,232,.70)!important;
+}
+
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic :is(.markets-title h2,.commercial-stage h3){
   color:#fff!important;
 }
 
-body.products-landing-page.products-2026 :is(.markets-description,.markets-title p){
-  color:rgba(255,255,255,.76)!important;
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .markets-title h2 span{
+  color:#d8c49e!important;
 }
 
-body.products-landing-page.products-2026 .market-grid p{
-  color:rgba(255,255,255,.70)!important;
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-stage-copy>p:last-child{
+  color:rgba(246,241,232,.64)!important;
 }
 
-body.products-landing-page.products-2026 .market-grid{
-  border-top-color:rgba(255,255,255,.20)!important;
-  border-bottom-color:rgba(255,255,255,.20)!important;
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-stage{
+  border-inline-start-color:rgba(255,255,255,.10)!important;
 }
 
-body.products-landing-page.products-2026 .market-grid article{
-  border-inline-start-color:rgba(255,255,255,.20)!important;
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-node{
+  border-color:rgba(216,196,158,.62)!important;
+  background:rgba(8,24,39,.92)!important;
+  box-shadow:
+    0 0 0 7px rgba(8,24,39,.92),
+    0 0 0 8px rgba(216,196,158,.08)!important;
+}
+
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-node span,
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-summary strong{
+  color:#e1c996!important;
+}
+
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-summary{
+  border-top-color:rgba(255,255,255,.12)!important;
+  color:rgba(246,241,232,.54)!important;
+}
+
+@media(max-width:900px){
+  html[data-et-theme="dark"] body.products-landing-page.products-2026 .commercial-logic .commercial-stage{
+    border-top-color:rgba(216,196,158,.18)!important;
+  }
 }
 
 /* FOOTER — fixed dark close in both themes */
