@@ -390,12 +390,11 @@ body.seafood-page .es-hero{
   }
 }
 
-
-/* SEAFOOD CATEGORY CARDS — photographic editorial treatment */
+/* SEAFOOD CATEGORY CARDS — refined image + ivory editorial panel */
 .seafood-page .es-cards{
   display:grid!important;
   grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  gap:12px!important;
+  gap:18px!important;
   margin-top:64px!important;
   background:transparent!important;
   border:0!important;
@@ -404,100 +403,100 @@ body.seafood-page .es-hero{
 .seafood-page .es-card{
   position:relative!important;
   isolation:isolate!important;
-  min-height:460px!important;
-  padding:28px!important;
+  min-height:520px!important;
+  padding:0!important;
   overflow:hidden!important;
-  border:1px solid rgba(255,255,255,.16)!important;
-  border-radius:22px!important;
-  background:#0b1e33!important;
-  color:#fff!important;
-  box-shadow:none!important;
+  border:1px solid rgba(11,30,51,.12)!important;
+  border-radius:24px!important;
+  background:#f3f0e9!important;
+  color:#0b1e33!important;
+  box-shadow:0 10px 28px rgba(11,30,51,.055)!important;
   display:flex!important;
   flex-direction:column!important;
-  justify-content:space-between!important;
+  justify-content:flex-end!important;
   transition:
-    transform .5s cubic-bezier(.16,1,.3,1),
-    box-shadow .5s cubic-bezier(.16,1,.3,1),
-    border-color .35s ease!important;
+    transform .48s cubic-bezier(.16,1,.3,1),
+    box-shadow .48s cubic-bezier(.16,1,.3,1),
+    border-color .32s ease!important;
 }
 
 .seafood-page .es-card::before{
   content:""!important;
   position:absolute!important;
-  inset:0!important;
-  z-index:-2!important;
+  inset:0 0 auto 0!important;
+  height:61%!important;
+  z-index:0!important;
   background-position:center!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
   transform:scale(1.015)!important;
-  transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s ease!important;
+  transition:transform .75s cubic-bezier(.16,1,.3,1),filter .45s ease!important;
 }
 
 .seafood-page .es-card:nth-child(1)::before{
-  background-image:url("/assets/products/incoming/dorada.jpg")!important;
-  background-position:52% 50%!important;
+  background-image:url("/assets/products/incoming/lubina.jpg")!important;
+  background-position:50% 48%!important;
 }
 
 .seafood-page .es-card:nth-child(2)::before{
-  background-image:url("/assets/products/incoming/Langostino_Tigre.jpg")!important;
+  background-image:url("/assets/products/incoming/Moruno(1).jpeg")!important;
   background-position:50% 52%!important;
 }
 
 .seafood-page .es-card:nth-child(3)::before{
-  background-image:url("/assets/products/incoming/Pulpo%20Flor.jpg")!important;
+  background-image:url("/assets/products/incoming/Pulpo.jpg")!important;
   background-position:50% 48%!important;
 }
 
 .seafood-page .es-card::after{
   content:""!important;
   position:absolute!important;
-  inset:0!important;
-  z-index:-1!important;
+  inset:0 0 auto 0!important;
+  height:61%!important;
+  z-index:1!important;
   pointer-events:none!important;
   background:
-    linear-gradient(180deg,
-      rgba(5,18,31,.18) 0%,
-      rgba(5,18,31,.06) 30%,
-      rgba(5,18,31,.34) 58%,
-      rgba(5,18,31,.88) 100%
-    )!important;
+    linear-gradient(180deg,rgba(5,18,31,.05) 0%,rgba(5,18,31,.02) 58%,rgba(5,18,31,.24) 100%)!important;
 }
 
 .seafood-page .es-card:hover{
-  transform:translateY(-5px)!important;
-  background:#0b1e33!important;
-  border-color:rgba(219,199,156,.42)!important;
-  box-shadow:0 22px 46px rgba(5,18,31,.16)!important;
+  transform:translateY(-6px)!important;
+  border-color:rgba(159,127,69,.26)!important;
+  background:#f3f0e9!important;
+  box-shadow:0 22px 46px rgba(11,30,51,.10)!important;
 }
 
 .seafood-page .es-card:hover::before{
-  transform:scale(1.055)!important;
-  filter:saturate(1.04) contrast(1.02)!important;
+  transform:scale(1.05)!important;
+  filter:saturate(1.03) contrast(1.015)!important;
 }
 
 .seafood-page .es-card>div{
-  display:flex!important;
-  min-height:100%!important;
-  flex-direction:column!important;
-  justify-content:flex-end!important;
-  flex:1 1 auto!important;
+  position:relative!important;
+  z-index:2!important;
+  min-height:203px!important;
+  padding:30px 30px 8px!important;
+  display:block!important;
+  background:
+    linear-gradient(180deg,rgba(247,244,237,.99),rgba(243,240,233,1))!important;
 }
 
 .seafood-page .es-card-num{
   position:absolute!important;
-  top:26px!important;
-  left:26px!important;
+  top:22px!important;
+  left:22px!important;
+  z-index:3!important;
   display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
   min-width:34px!important;
-  height:28px!important;
+  height:30px!important;
   margin:0!important;
   padding:0 10px!important;
-  border:1px solid rgba(255,255,255,.20)!important;
+  border:1px solid rgba(255,255,255,.38)!important;
   border-radius:999px!important;
-  background:rgba(7,19,30,.18)!important;
-  color:#f0ddba!important;
+  background:rgba(7,19,30,.44)!important;
+  color:#f6ead2!important;
   font-family:'Inter','DM Sans',sans-serif!important;
   font-size:10px!important;
   font-weight:600!important;
@@ -508,108 +507,146 @@ body.seafood-page .es-hero{
 }
 
 .seafood-page .es-card h3{
-  max-width:10ch!important;
   margin:0 0 12px!important;
-  color:#fff!important;
+  color:#0b1e33!important;
   font-family:'Inter','DM Sans',sans-serif!important;
-  font-size:clamp(34px,3.1vw,50px)!important;
+  font-size:clamp(34px,2.8vw,48px)!important;
   font-weight:500!important;
   line-height:.94!important;
   letter-spacing:-.055em!important;
-  text-shadow:0 2px 16px rgba(0,0,0,.22)!important;
+  text-shadow:none!important;
 }
 
 .seafood-page .es-card p{
-  max-width:34ch!important;
+  max-width:36ch!important;
   margin:0!important;
-  color:rgba(255,255,255,.72)!important;
+  color:#667079!important;
   font-family:'Inter','DM Sans',sans-serif!important;
   font-size:13px!important;
   font-weight:400!important;
-  line-height:1.55!important;
+  line-height:1.6!important;
   letter-spacing:-.01em!important;
-  text-shadow:0 1px 10px rgba(0,0,0,.20)!important;
+  text-shadow:none!important;
 }
 
 .seafood-page .es-link{
+  position:relative!important;
+  z-index:3!important;
   align-self:flex-start!important;
-  min-height:40px!important;
-  margin-top:22px!important;
-  padding:0 15px!important;
+  min-height:42px!important;
+  margin:14px 30px 28px!important;
+  padding:0 16px!important;
   display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
-  border:1px solid rgba(255,255,255,.22)!important;
+  border:1px solid rgba(11,30,51,.18)!important;
   border-radius:999px!important;
-  background:rgba(255,255,255,.07)!important;
-  color:#fff!important;
+  background:rgba(11,30,51,.025)!important;
+  color:#0b1e33!important;
   font-family:'Inter','DM Sans',sans-serif!important;
-  font-size:11.5px!important;
+  font-size:12px!important;
   font-weight:500!important;
   line-height:1!important;
-  letter-spacing:-.005em!important;
+  letter-spacing:-.01em!important;
   text-transform:none!important;
   text-decoration:none!important;
-  backdrop-filter:blur(12px) saturate(140%)!important;
-  -webkit-backdrop-filter:blur(12px) saturate(140%)!important;
-  transition:background .25s ease,border-color .25s ease,transform .25s ease!important;
+  transition:background .24s ease,border-color .24s ease,transform .24s ease!important;
 }
 
 .seafood-page .es-link span{
   display:none!important;
 }
 
+.seafood-page .es-link::after{
+  content:"↗"!important;
+  margin-left:10px!important;
+  color:#9f7f45!important;
+  font-size:12px!important;
+}
+
 .seafood-page .es-link:hover{
   transform:translateY(-1px)!important;
-  background:rgba(255,255,255,.13)!important;
-  border-color:rgba(219,199,156,.42)!important;
+  background:#0b1e33!important;
+  border-color:#0b1e33!important;
+  color:#fff!important;
 }
 
-html[data-et-theme="light"] .seafood-page .es-card{
-  border-color:rgba(11,30,51,.10)!important;
+.seafood-page .es-link:hover::after{
+  color:#ead8b3!important;
 }
 
-@media(max-width:980px){
+html[data-et-theme="dark"] .seafood-page .es-card{
+  border-color:rgba(255,255,255,.10)!important;
+  background:#111d28!important;
+}
+
+html[data-et-theme="dark"] .seafood-page .es-card>div{
+  background:linear-gradient(180deg,rgba(18,29,40,.99),rgba(15,25,35,1))!important;
+}
+
+html[data-et-theme="dark"] .seafood-page .es-card h3{
+  color:#f5f1e8!important;
+}
+
+html[data-et-theme="dark"] .seafood-page .es-card p{
+  color:rgba(245,241,232,.64)!important;
+}
+
+html[data-et-theme="dark"] .seafood-page .es-link{
+  color:#f5f1e8!important;
+  border-color:rgba(255,255,255,.18)!important;
+  background:rgba(255,255,255,.035)!important;
+}
+
+@media(max-width:1050px){
   .seafood-page .es-cards{
     grid-template-columns:1fr 1fr!important;
   }
 
-  .seafood-page .es-card{
-    min-height:410px!important;
-  }
-
   .seafood-page .es-card:nth-child(3){
     grid-column:1/-1!important;
-    min-height:390px!important;
+  }
+
+  .seafood-page .es-card:nth-child(3)::before{
+    background-position:50% 42%!important;
   }
 }
 
-@media(max-width:680px){
+@media(max-width:700px){
   .seafood-page .es-cards{
     grid-template-columns:1fr!important;
-    gap:10px!important;
-    margin-top:44px!important;
+    gap:14px!important;
+    margin-top:46px!important;
   }
 
   .seafood-page .es-card,
   .seafood-page .es-card:nth-child(3){
     grid-column:auto!important;
-    min-height:360px!important;
-    padding:24px!important;
-    border-radius:18px!important;
+    min-height:480px!important;
+    border-radius:20px!important;
+  }
+
+  .seafood-page .es-card::before,
+  .seafood-page .es-card::after{
+    height:58%!important;
+  }
+
+  .seafood-page .es-card>div{
+    min-height:200px!important;
+    padding:26px 24px 8px!important;
   }
 
   .seafood-page .es-card-num{
-    top:22px!important;
-    left:22px!important;
+    top:18px!important;
+    left:18px!important;
   }
 
   .seafood-page .es-card h3{
     font-size:clamp(32px,10vw,44px)!important;
   }
 
-  .seafood-page .es-card p{
-    max-width:31ch!important;
+  .seafood-page .es-link{
+    margin:12px 24px 24px!important;
   }
 }
 
