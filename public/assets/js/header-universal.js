@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-7';
+  const VERSION = '20261006-liquid-universal-8';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -111,9 +111,10 @@
         <img src="/assets/images/emperio-tiss-emblem.svg" alt="EMPERIO TISS" width="230" height="267" draggable="false">
       </a>
 
-      <nav class="et-liquid-nav" aria-label="${copy.company} · ${copy.products} · ${copy.markets} · ${copy.news}">
+      <nav class="et-liquid-nav" aria-label="${copy.company} · ${copy.products} · ${copy.seasonal} · ${copy.markets} · ${copy.news}">
         <a href="${route('about')}"${activeAttr('about')}>${copy.company}</a>
         <a href="${route('products')}"${activeAttr('products')}>${copy.products}</a>
+        <a href="${route('products/seasonal')}"${activeAttr('products/seasonal')}>${copy.seasonal}</a>
         <a href="${route('markets')}"${activeAttr('markets')}>${copy.markets}</a>
         <a href="${route('news')}"${activeAttr('news')}>${copy.news}</a>
       </nav>
@@ -153,12 +154,12 @@
             </div>
             <a class="nav-product-parent" href="${route('products/fruits')}">${copy.fruits}</a>
             <a class="nav-product-parent" href="${route('products/vegetables')}">${copy.vegetables}</a>
-            <a class="nav-product-parent" href="${route('products/seasonal')}">${copy.seasonal}</a>
           </div>
         </details>
-        <a href="${route('markets')}"${activeAttr('markets')}><span class="idx">04</span><span>${copy.markets}</span></a>
-        <a href="${route('news')}"${activeAttr('news')}><span class="idx">05</span><span>${copy.news}</span></a>
-        <a href="${route('contact')}"${activeAttr('contact')}><span class="idx">06</span><span>${copy.contact}</span></a>
+        <a href="${route('products/seasonal')}"${activeAttr('products/seasonal')}><span class="idx">04</span><span>${copy.seasonal}</span></a>
+        <a href="${route('markets')}"${activeAttr('markets')}><span class="idx">05</span><span>${copy.markets}</span></a>
+        <a href="${route('news')}"${activeAttr('news')}><span class="idx">06</span><span>${copy.news}</span></a>
+        <a href="${route('contact')}"${activeAttr('contact')}><span class="idx">07</span><span>${copy.contact}</span></a>
       </nav>
       <div class="nav-overlay-foot">
         <div class="nav-overlay-lang">${supported.map(code => `<a href="${languageHref(code)}"${code === lang ? ' class="current" aria-current="page"' : ''}>${code.toUpperCase()}</a>`).join('<span>·</span>')}</div>
@@ -173,7 +174,7 @@
     if (doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-7';
+    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-8';
     link.dataset.etLiquidHeaderCss = 'true';
     doc.head.appendChild(link);
   };
