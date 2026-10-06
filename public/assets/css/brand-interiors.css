@@ -873,170 +873,193 @@ body.seasonal-editorial main>.et-operation-flow { display:none; }
 }
 @media(max-width:640px){body.brand-pages[data-brand-category="fruits"] { --brand-hero-image:url("/assets/images/fruits-orchard-mobile.webp"); }}
 
-/* SHELLFISH HERO — full-bleed Pexels background */
+/* SHELLFISH HERO — final full-bleed composition */
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero{
   position:relative!important;
   isolation:isolate!important;
   overflow:hidden!important;
+  min-height:100svh!important;
+  min-height:100dvh!important;
+  display:flex!important;
+  align-items:center!important;
+  padding:150px 0 72px!important;
   background:
-    url("https://images.pexels.com/photos/9397240/pexels-photo-9397240.jpeg") 50% 50% / cover no-repeat!important;
+    url("https://images.pexels.com/photos/9397240/pexels-photo-9397240.jpeg") 54% 50% / cover no-repeat!important;
+  color:#fff!important;
 }
 
-/* Full-width fade for copy legibility; no image panel or secondary photo layer. */
+/* Localized contrast only behind the copy; the photograph remains visible. */
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
   content:""!important;
   position:absolute!important;
   inset:0!important;
   z-index:0!important;
-  width:auto!important;
-  height:auto!important;
-  transform:none!important;
-  filter:none!important;
-  opacity:1!important;
   pointer-events:none!important;
   background:
-    linear-gradient(90deg,
-      rgba(5,18,31,.82) 0%,
-      rgba(5,18,31,.66) 30%,
-      rgba(5,18,31,.38) 54%,
-      rgba(5,18,31,.16) 76%,
-      rgba(5,18,31,.08) 100%
+    radial-gradient(
+      62% 72% at 18% 53%,
+      rgba(5,18,31,.66) 0%,
+      rgba(5,18,31,.50) 29%,
+      rgba(5,18,31,.28) 49%,
+      rgba(5,18,31,.10) 66%,
+      transparent 82%
     ),
-    linear-gradient(180deg,
-      rgba(5,18,31,.10) 0%,
-      rgba(5,18,31,.02) 58%,
-      rgba(5,18,31,.28) 100%
+    linear-gradient(
+      180deg,
+      rgba(5,18,31,.12) 0%,
+      transparent 24%,
+      transparent 72%,
+      rgba(5,18,31,.13) 100%
     )!important;
 }
 
-/* Explicitly remove the previous right-side image layer. */
+/* Remove every previous secondary image/fade layer. */
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::after{
   content:none!important;
   display:none!important;
-  background:none!important;
 }
 
+/* Editorial copy placement */
 body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero-inner{
   position:relative!important;
   z-index:2!important;
+  width:min(1320px,calc(100% - 11vw))!important;
+  max-width:none!important;
+  margin:0 auto!important;
+  padding:0!important;
 }
 
-/* Light mode: same full-bleed photograph, with a softer ivory fade. */
-html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero{
-  background:
-    url("https://images.pexels.com/photos/9397240/pexels-photo-9397240.jpeg") 50% 50% / cover no-repeat!important;
+body.seafood-subpage.shellfish-hero-moruno .page-hero .eyebrow{
+  display:block!important;
+  margin:0 0 22px!important;
+  color:#ead8b3!important;
+  font:600 11px/1 'Inter','DM Sans',sans-serif!important;
+  letter-spacing:.055em!important;
+  text-transform:uppercase!important;
+  text-shadow:0 1px 10px rgba(0,0,0,.22)!important;
 }
 
-html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
-  background:
-    linear-gradient(90deg,
-      rgba(244,240,230,.82) 0%,
-      rgba(244,240,230,.66) 30%,
-      rgba(244,240,230,.38) 54%,
-      rgba(244,240,230,.15) 76%,
-      rgba(244,240,230,.05) 100%
-    ),
-    linear-gradient(180deg,
-      rgba(244,240,230,.06) 0%,
-      rgba(244,240,230,.02) 58%,
-      rgba(244,240,230,.20) 100%
-    )!important;
+body.seafood-subpage.shellfish-hero-moruno .page-hero h1{
+  max-width:7.6ch!important;
+  margin:0!important;
+  color:#fff!important;
+  font-family:'Inter','DM Sans',sans-serif!important;
+  font-size:clamp(72px,7.2vw,126px)!important;
+  font-weight:500!important;
+  line-height:.84!important;
+  letter-spacing:-.065em!important;
+  text-shadow:0 2px 20px rgba(0,0,0,.20)!important;
 }
 
-html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero :is(.eyebrow,h1,.lead){
-  color:#0b1e33!important;
+body.seafood-subpage.shellfish-hero-moruno .page-hero h1 em{
+  display:block!important;
+  color:#fff!important;
+  font:inherit!important;
+  font-style:normal!important;
+  font-weight:400!important;
+  letter-spacing:-.07em!important;
 }
 
+body.seafood-subpage.shellfish-hero-moruno .page-hero .lead{
+  max-width:610px!important;
+  margin:30px 0 0!important;
+  color:rgba(255,255,255,.88)!important;
+  font-family:'Inter','DM Sans',sans-serif!important;
+  font-size:clamp(16px,1.25vw,19px)!important;
+  font-weight:450!important;
+  line-height:1.55!important;
+  letter-spacing:-.018em!important;
+  text-shadow:0 1px 12px rgba(0,0,0,.22)!important;
+}
+
+/* A photographic hero keeps the same high-contrast copy in both themes. */
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero :is(.eyebrow,h1,h1 em,.lead){
+  color:inherit!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero .eyebrow{
+  color:#ead8b3!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1,
 html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1 em{
-  color:#6f5122!important;
+  color:#fff!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero .lead{
+  color:rgba(255,255,255,.88)!important;
+}
+
+/* Large desktop: slightly wider copy canvas, without covering the right-side oysters. */
+@media(min-width:1500px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero-inner{
+    width:min(1360px,calc(100% - 12vw))!important;
+  }
+
+  body.seafood-subpage.shellfish-hero-moruno .page-hero h1{
+    max-width:7.8ch!important;
+  }
+}
+
+@media(max-width:1100px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero{
+    background-position:58% 50%!important;
+  }
+
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+    background:
+      radial-gradient(
+        76% 74% at 24% 54%,
+        rgba(5,18,31,.67) 0%,
+        rgba(5,18,31,.47) 34%,
+        rgba(5,18,31,.20) 58%,
+        transparent 80%
+      ),
+      linear-gradient(180deg,rgba(5,18,31,.10),transparent 26%,transparent 70%,rgba(5,18,31,.14))!important;
+  }
+
+  body.seafood-subpage.shellfish-hero-moruno .page-hero h1{
+    font-size:clamp(64px,9.6vw,104px)!important;
+  }
 }
 
 @media(max-width:800px){
   body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero{
-    background:
-      url("https://images.pexels.com/photos/9397240/pexels-photo-9397240.jpeg") 58% 50% / cover no-repeat!important;
+    align-items:flex-end!important;
+    padding:128px 0 58px!important;
+    background-position:61% 50%!important;
   }
 
   body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
     background:
-      linear-gradient(180deg,
-        rgba(5,18,31,.18) 0%,
-        rgba(5,18,31,.26) 40%,
+      linear-gradient(
+        180deg,
+        rgba(5,18,31,.08) 0%,
+        rgba(5,18,31,.10) 34%,
+        rgba(5,18,31,.44) 68%,
         rgba(5,18,31,.78) 100%
       )!important;
   }
 
-  html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
-    background:
-      linear-gradient(180deg,
-        rgba(244,240,230,.12) 0%,
-        rgba(244,240,230,.24) 42%,
-        rgba(244,240,230,.80) 100%
-      )!important;
-  }
-}
-
-
-/* SHELLFISH HERO — refined scrim, preserve the photograph */
-body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
-  background:
-    radial-gradient(
-      70% 82% at 18% 56%,
-      rgba(5,18,31,.52) 0%,
-      rgba(5,18,31,.36) 34%,
-      rgba(5,18,31,.16) 58%,
-      rgba(5,18,31,.04) 78%,
-      transparent 100%
-    )!important;
-}
-
-html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
-  background:
-    radial-gradient(
-      68% 80% at 18% 56%,
-      rgba(244,240,230,.40) 0%,
-      rgba(244,240,230,.25) 34%,
-      rgba(244,240,230,.10) 58%,
-      rgba(244,240,230,.025) 78%,
-      transparent 100%
-    )!important;
-}
-
-html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero .eyebrow{
-  color:#0b1e33!important;
-}
-
-html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1{
-  color:#0b1e33!important;
-  text-shadow:0 1px 20px rgba(244,240,230,.12)!important;
-}
-
-html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1 em{
-  color:#6f5122!important;
-}
-
-html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero .lead{
-  color:rgba(11,30,51,.90)!important;
-}
-
-@media(max-width:800px){
-  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(5,18,31,.06) 0%,
-        rgba(5,18,31,.10) 38%,
-        rgba(5,18,31,.54) 100%
-      )!important;
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero-inner{
+    width:calc(100% - 40px)!important;
   }
 
-  html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(244,240,230,.03) 0%,
-        rgba(244,240,230,.08) 40%,
-        rgba(244,240,230,.42) 100%
-      )!important;
+  body.seafood-subpage.shellfish-hero-moruno .page-hero .eyebrow{
+    margin-bottom:16px!important;
+    font-size:10px!important;
+  }
+
+  body.seafood-subpage.shellfish-hero-moruno .page-hero h1{
+    max-width:8.2ch!important;
+    font-size:clamp(56px,16vw,84px)!important;
+    line-height:.87!important;
+  }
+
+  body.seafood-subpage.shellfish-hero-moruno .page-hero .lead{
+    max-width:34rem!important;
+    margin-top:22px!important;
+    font-size:15px!important;
+    line-height:1.5!important;
   }
 }
