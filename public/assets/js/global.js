@@ -51,6 +51,7 @@
   }
   loadCss('/assets/css/header-final.css?v=20261001-signature', 'etHeaderFinalCanonical');
   loadCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
+  loadCss('/assets/css/scrollbar-editorial.css?v=20261006-1', 'etEditorialScrollbar');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
