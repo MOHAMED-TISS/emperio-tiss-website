@@ -408,3 +408,28 @@ body.liquid-header-v23[data-liquid-theme="light"] .site-header .liquid-signature
     transform:translateY(-50%)!important;
   }
 }
+
+
+/* MAIN CLEANUP — prevent legacy header controls from mixing with V23 */
+body.liquid-header-v23 .site-header .mobile-menu{
+  display:none!important;
+}
+body.liquid-header-v23 .site-header :is(
+  .joby-header-utility,
+  .home-header-secondary,
+  .et-whatsapp,
+  .header-language-switch,
+  .et-language-switch,
+  .et-language-current,
+  .et-language-dropdown
+){
+  display:none!important;
+}
+body.liquid-header-v23 .site-header .header-inner{
+  gap:0!important;
+}
+@media(max-width:980px){
+  body.liquid-header-v23 .site-header .mobile-menu{
+    display:block!important;
+  }
+}
