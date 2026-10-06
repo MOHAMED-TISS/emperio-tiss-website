@@ -958,6 +958,88 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
   }
 }
 
+
+/* V23 — pinned right controls + refined neutral glass */
+.glass{
+  border-color:rgba(238,225,199,.22)!important;
+  background:
+    linear-gradient(135deg,rgba(248,239,220,.075),rgba(255,255,255,.020) 42%,rgba(255,255,255,.010) 70%,rgba(223,204,166,.045)),
+    rgba(18,17,15,.045)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    inset 0 -1px 0 rgba(219,199,156,.040),
+    0 18px 48px rgba(0,0,0,.09)!important;
+  backdrop-filter:blur(var(--blur)) saturate(155%) brightness(1.045)!important;
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(155%) brightness(1.045)!important;
+}
+body[data-theme="light"] .glass{
+  background:
+    linear-gradient(135deg,rgba(255,252,246,.24),rgba(255,255,255,.075) 44%,rgba(255,255,255,.025) 72%,rgba(228,214,185,.085)),
+    rgba(246,241,231,.055)!important;
+  border-color:rgba(176,150,104,.24)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.58),
+    inset 0 -1px 0 rgba(159,127,69,.045),
+    0 18px 44px rgba(42,36,28,.075)!important;
+}
+.glass:before{
+  background:
+    radial-gradient(125% 115% at 14% -26%,rgba(255,255,255,.14),rgba(255,255,255,.030) 30%,transparent 58%),
+    radial-gradient(95% 120% at 92% 120%,rgba(219,199,156,.040),transparent 63%),
+    linear-gradient(180deg,rgba(255,255,255,.032),transparent 44%,rgba(219,199,156,.010) 80%,rgba(255,255,255,.022))!important;
+}
+.glass:after{
+  opacity:.28!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.018) 54%,transparent)!important;
+}
+.center-cluster{
+  left:48.5%!important;
+  gap:0!important;
+}
+.center-cluster .nav.left{
+  position:static!important;
+  inset:auto!important;
+  width:auto!important;
+  transform:none!important;
+  gap:21px!important;
+  justify-content:center!important;
+}
+.tools{
+  position:absolute!important;
+  top:50%!important;
+  right:var(--pad)!important;
+  left:auto!important;
+  width:auto!important;
+  transform:translateY(-50%)!important;
+  gap:10px!important;
+  justify-content:flex-end!important;
+}
+.tools .cta-cluster{
+  gap:6px!important;
+  padding-left:12px!important;
+  margin-left:1px!important;
+}
+@media(max-width:1400px){
+  .center-cluster{left:47.5%!important}
+  .center-cluster .nav.left{gap:18px!important}
+}
+@media(max-width:1180px){
+  .center-cluster{left:47%!important}
+  .center-cluster .nav.left{gap:15px!important}
+  .tools{right:30px!important;gap:8px!important}
+}
+@media(max-width:1040px){
+  .center-cluster{left:46%!important}
+}
+@media(max-width:900px){
+  .center-cluster{display:none!important}
+  .tools{
+    right:12px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+  }
+}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -971,15 +1053,15 @@ body[data-theme="light"] .logo .logo-wordmark{color:#111417!important}
       <nav class="nav left">
         <a href="#">Empresa</a><a href="#">Productos</a><a href="#">Mercados</a><a href="#">Noticias</a>
       </nav>
-      <div class="tools">
-        <span class="lang">ES</span>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
-          <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
-        </button>
-        <div class="cta-cluster">
-          <a class="signature" href="#">Signature</a>
-          <a class="contact" href="#">Contacto</a>
-        </div>
+    </div>
+    <div class="tools">
+      <span class="lang">ES</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar modo claro/oscuro">
+        <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
+      </button>
+      <div class="cta-cluster">
+        <a class="signature" href="#">Signature</a>
+        <a class="contact" href="#">Contacto</a>
       </div>
     </div>
   </div>
