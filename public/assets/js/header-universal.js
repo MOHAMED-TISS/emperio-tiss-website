@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-10';
+  const VERSION = '20261006-liquid-universal-11';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -153,7 +153,7 @@
               </div>
             </div>
             <div class="nav-product-group">
-              <a class="nav-product-parent" href="${route('products')}#produce">${copy.produce}</a>
+              <a class="nav-product-parent" href="${route('products/fruits-vegetables')}">${copy.produce}</a>
               <div class="nav-product-children">
                 <a href="${route('products/fruits')}">${copy.fruits}</a>
                 <a href="${route('products/vegetables')}">${copy.vegetables}</a>
@@ -176,10 +176,10 @@
     </div>`;
 
   const ensureCss = () => {
-    const href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-10';
+    const href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-11';
     const existing = doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]');
     if (existing) {
-      if (!existing.getAttribute('href')?.includes('20261006-liquid-universal-10')) existing.setAttribute('href',href);
+      if (!existing.getAttribute('href')?.includes('20261006-liquid-universal-11')) existing.setAttribute('href',href);
       existing.dataset.etLiquidHeaderCss = 'true';
       return;
     }
