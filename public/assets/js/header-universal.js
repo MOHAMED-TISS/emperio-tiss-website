@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-2';
+  const VERSION = '20261006-liquid-universal-3';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -165,10 +165,10 @@
     </div>`;
 
   const ensureCss = () => {
-    if (doc.querySelector('link[data-et-liquid-header-css]')) return;
+    if (doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-2';
+    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-3';
     link.dataset.etLiquidHeaderCss = 'true';
     doc.head.appendChild(link);
   };
@@ -300,7 +300,7 @@
     current = force ? target : current + delta * .105;
 
     const vw = innerWidth;
-    const endWidth = vw >= 1500 ? 62 : vw >= 1280 ? 66 : vw >= 1050 ? 72 : 78;
+    const endWidth = vw >= 1700 ? 62 : vw >= 1500 ? 70 : vw >= 1280 ? 78 : vw >= 1050 ? 84 : 90;
     const width = 100 - ((100 - endWidth) * current);
     const height = 88 - (26 * current);
     const blur = 34 + (10 * current);
