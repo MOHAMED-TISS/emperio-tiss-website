@@ -527,8 +527,8 @@ body.seafood-page .es-hero{
 }
 
 .seafood-page .es-marquee-fish .es-marquee-image{
-  background-image:url("/assets/products/incoming/lubina.jpg")!important;
-  background-position:50% 48%!important;
+  background-image:url("/assets/products/incoming/Pez%20lim%C3%B3n.jpg")!important;
+  background-position:50% 50%!important;
 }
 
 .seafood-page .es-marquee-shellfish .es-marquee-image{
@@ -537,8 +537,8 @@ body.seafood-page .es-hero{
 }
 
 .seafood-page .es-marquee-cephalopods .es-marquee-image{
-  background-image:url("/assets/products/incoming/Pulpo%20Flor.jpg")!important;
-  background-position:50% 46%!important;
+  background-image:url("/assets/products/incoming/Calamar(1).jpg")!important;
+  background-position:50% 50%!important;
 }
 
 .seafood-page .es-marquee-row::after{
