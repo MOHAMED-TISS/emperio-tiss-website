@@ -1487,3 +1487,57 @@ body.products-landing-page.products-2026 .commercial-summary i{
     transform:none!important;
   }
 }
+
+
+/* PRODUCTS 2026 — RTL / Arabic typography */
+html[dir="rtl"] body.products-landing-page.products-2026{
+  font-family:"Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+}
+
+html[dir="rtl"] body.products-landing-page.products-2026 :is(
+  h1,h2,h3,p,a,span,strong,em,button,
+  .hero-kicker p,.hero-description,.hero-side p,.hero-bottom,
+  .eyebrow,.section-index,.intro-lead,.intro-copy,.section-intro,
+  .product-marquee-line span,.product-marquee-top,.product-marquee-bottom,
+  .markets-description,.commercial-stage-kicker,.commercial-stage-copy,
+  .commercial-summary,.large-copy,.company-values,.text-link,.contact-text
+){
+  font-family:"Noto Sans Arabic",Tahoma,Arial,sans-serif!important;
+}
+
+html[dir="rtl"] body.products-landing-page.products-2026 .hero h1,
+html[dir="rtl"] body.products-landing-page.products-2026 :is(.intro-section,.company-section,.contact-section) h2,
+html[dir="rtl"] body.products-landing-page.products-2026 .markets-title h2{
+  letter-spacing:-.035em!important;
+}
+
+html[dir="rtl"] body.products-landing-page.products-2026 .product-marquee-line{
+  direction:rtl!important;
+}
+
+html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage:first-child{
+  padding-left:clamp(22px,2.4vw,38px)!important;
+  padding-right:0!important;
+}
+
+html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage:last-child{
+  padding-right:clamp(22px,2.4vw,38px)!important;
+  padding-left:0!important;
+}
+
+@media(max-width:900px){
+  html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage:nth-child(odd){
+    padding-left:26px!important;
+    padding-right:0!important;
+  }
+}
+
+@media(max-width:560px){
+  html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage,
+  html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage:first-child,
+  html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage:last-child,
+  html[dir="rtl"] body.products-landing-page.products-2026 .commercial-stage:nth-child(odd){
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+}
