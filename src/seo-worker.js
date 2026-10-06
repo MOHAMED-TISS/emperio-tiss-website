@@ -30,6 +30,7 @@ class SeoHeadAppender {
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap">' +
       '<link rel="stylesheet" href="/assets/css/site-2026.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/theme-mode.css?v=20261004-3">' +
+      '<link rel="stylesheet" href="/assets/css/scrollbar-editorial.css?v=20261006-1">' +
       '<link rel="stylesheet" href="/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-11">' +
       '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261004-5">' +
