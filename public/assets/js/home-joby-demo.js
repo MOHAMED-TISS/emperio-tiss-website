@@ -108,7 +108,6 @@
         inner.appendChild(centerCluster);
       }
       if (primary) centerCluster.appendChild(primary);
-      centerCluster.appendChild(tools);
 
       const applyTheme = (mode) => {
         const themeMode = mode === 'light' ? 'light' : 'dark';
