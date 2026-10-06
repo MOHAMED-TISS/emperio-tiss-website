@@ -773,3 +773,92 @@ html[data-et-theme="light"] .et-liquid-header.is-over-hero .et-liquid-logo img{
     border-color:rgba(255,255,255,.28)!important;
   }
 }
+
+
+/* SHELLFISH HERO HEADER — graphite / oyster / pearl glass */
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero{
+  --elh-ink:#fbfaf6;
+  --elh-champagne:#d8c39b;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-bar,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-bar{
+  background:
+    linear-gradient(135deg,
+      rgba(48,52,53,.74) 0%,
+      rgba(37,42,44,.66) 38%,
+      rgba(31,36,39,.61) 68%,
+      rgba(55,51,46,.58) 100%
+    ),
+    rgba(28,33,36,.48)!important;
+  border-color:rgba(231,225,214,.38)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(216,195,155,.055),
+    0 18px 42px rgba(8,12,15,.18)!important;
+  backdrop-filter:blur(var(--elh-blur)) saturate(125%) brightness(.94)!important;
+  -webkit-backdrop-filter:blur(var(--elh-blur)) saturate(125%) brightness(.94)!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-bar::before,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-bar::before{
+  background:
+    radial-gradient(120% 130% at 14% -30%,rgba(255,255,255,.16),rgba(255,255,255,.035) 32%,transparent 60%),
+    radial-gradient(105% 130% at 91% 118%,rgba(216,195,155,.065),transparent 62%),
+    linear-gradient(180deg,rgba(255,255,255,.035),transparent 46%,rgba(216,195,155,.018) 82%,rgba(255,255,255,.022))!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-bar::after{
+  opacity:.22!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.015) 58%,transparent)!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-nav a,
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-lang,
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-theme,
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-contact,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-nav a,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-lang,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-theme,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-contact{
+  color:#fbfaf6!important;
+  text-shadow:0 1px 10px rgba(0,0,0,.24)!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-nav a:hover,
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-nav a.is-active,
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-nav a[aria-current="page"]{
+  color:#e1c999!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-theme,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-theme{
+  background:rgba(18,24,28,.34)!important;
+  border-color:rgba(235,229,219,.30)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 5px 14px rgba(0,0,0,.10)!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-contact,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-contact{
+  background:rgba(248,246,240,.075)!important;
+  border-color:rgba(235,229,219,.30)!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-signature,
+html[data-et-theme="light"] body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-signature{
+  color:#ead9b6!important;
+  border-color:rgba(216,195,155,.54)!important;
+  background:
+    linear-gradient(180deg,rgba(216,195,155,.12),rgba(255,255,255,.025)),
+    rgba(255,255,255,.025)!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-lang::after{
+  color:#d8c39b!important;
+}
+
+body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-logo img{
+  filter:drop-shadow(0 2px 9px rgba(0,0,0,.20)) saturate(.92)!important;
+}
