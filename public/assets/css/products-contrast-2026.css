@@ -268,3 +268,65 @@ body.products-landing-page.products-2026 :is(a,button):focus-visible{
   outline:2px solid #d8c49e!important;
   outline-offset:4px!important;
 }
+
+
+/* COMPANY / METHODOLOGY — explicit readable state in both themes */
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section{
+  background:#f4f4ef!important;
+  color:#111214!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .eyebrow{
+  color:#755a2c!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section h2,
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section h2 em{
+  color:#111214!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .large-copy{
+  color:#1b1d1f!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values strong{
+  color:#25282b!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values span{
+  color:#755a2c!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .text-link{
+  color:#17191b!important;
+  border-bottom-color:rgba(17,18,20,.42)!important;
+}
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-grid,
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values,
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values>div{
+  border-color:rgba(17,18,20,.18)!important;
+}
+
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section{
+  background:#0a1724!important;
+  color:#f5f1e8!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .eyebrow{
+  color:#d8c49e!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section h2,
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section h2 em{
+  color:#f5f1e8!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .large-copy{
+  color:#f1ede5!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values strong{
+  color:#f0ece4!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values span{
+  color:#d8c49e!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .text-link{
+  color:#f5f1e8!important;
+  border-bottom-color:rgba(216,196,158,.55)!important;
+}
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-grid,
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values,
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values>div{
+  border-color:rgba(245,241,232,.18)!important;
+}
