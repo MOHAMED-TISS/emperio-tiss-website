@@ -527,8 +527,8 @@ body.seafood-page .es-hero{
 }
 
 .seafood-page .es-marquee-fish .es-marquee-image{
-  background-image:url("/assets/products/incoming/Pez%20lim%C3%B3n.jpg")!important;
-  background-position:50% 50%!important;
+  background-image:url("https://images.pexels.com/photos/39227100/pexels-photo-39227100.jpeg")!important;
+  background-position:50% 52%!important;
 }
 
 .seafood-page .es-marquee-shellfish .es-marquee-image{
