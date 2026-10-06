@@ -4,22 +4,10 @@
   const body = document.body;
   if (!body?.classList.contains('liquid-header-v23')) return;
 
-  const header = document.querySelector('.site-header');
-  const inner = header?.querySelector('.header-inner');
-  if (!header || !inner) return;
-
-  const logo = inner.querySelector('.site-logo');
-  const primary = inner.querySelector('.home-header-nav');
-  const tools = inner.querySelector('.liquid-tools');
-  const theme = tools?.querySelector('.liquid-theme');
-
-  if (logo) {
-    logo.setAttribute('aria-label','EMPERIO TISS - Inicio');
-  }
-
-  if (primary && primary.children.length !== 4) {
-    primary.innerHTML = '<a href="/about/">Empresa</a><a href="/products/">Productos</a><a href="/markets/">Mercados</a><a href="/news/">Noticias</a>';
-  }
+  const header = document.getElementById('etLiquidHeader');
+  const bar = header?.querySelector('.et-liquid-bar');
+  const theme = header?.querySelector('.et-liquid-theme');
+  if (!header || !bar) return;
 
   if (theme) {
     const iconSun = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>';
@@ -50,8 +38,8 @@
   let raf = 0;
 
   const readTarget = () => {
-    if (window.matchMedia('(max-width: 980px)').matches) return 0;
-    return Math.min(1, Math.max(0, window.scrollY / 520));
+    if (window.matchMedia('(max-width:980px)').matches) return 0;
+    return Math.min(1,Math.max(0,window.scrollY / 520));
   };
 
   const render = () => {
@@ -65,11 +53,11 @@
     const blur = 34 + (10 * current);
     const pad = 44 - (12 * current);
 
-    inner.style.setProperty('--lh-p', current.toFixed(4));
-    inner.style.setProperty('--lh-width', width.toFixed(3) + '%');
-    inner.style.setProperty('--lh-height', height.toFixed(2) + 'px');
-    inner.style.setProperty('--lh-blur', blur.toFixed(1) + 'px');
-    inner.style.setProperty('--lh-pad', pad.toFixed(1) + 'px');
+    bar.style.setProperty('--elh-p',current.toFixed(4));
+    bar.style.setProperty('--elh-width',width.toFixed(3) + '%');
+    bar.style.setProperty('--elh-height',height.toFixed(2) + 'px');
+    bar.style.setProperty('--elh-blur',blur.toFixed(1) + 'px');
+    bar.style.setProperty('--elh-pad',pad.toFixed(1) + 'px');
 
     if (Math.abs(delta) > .0007) raf = requestAnimationFrame(render);
     else raf = 0;
@@ -81,6 +69,6 @@
   };
 
   update();
-  window.addEventListener('scroll', update, { passive:true });
-  window.addEventListener('resize', update, { passive:true });
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
 })();
