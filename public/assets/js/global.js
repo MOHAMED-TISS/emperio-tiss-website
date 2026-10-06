@@ -193,11 +193,11 @@
   doc.addEventListener('selectstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  loadCss('/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-9', 'etLiquidHeaderCss');
-  loadScript('/assets/js/header-universal.js?v=20261006-liquid-universal-9', 'etUniversalHomeHeader');
+  loadCss('/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-10', 'etLiquidHeaderCss');
+  loadScript('/assets/js/header-universal.js?v=20261006-liquid-universal-10', 'etUniversalHomeHeader');
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
-  loadScript('/assets/js/global-core.js?v=20261006-liquid-universal-9', 'etGlobalCore');
+  loadScript('/assets/js/global-core.js?v=20261006-liquid-universal-10', 'etGlobalCore');
   loadScript('/assets/js/commercial-flow.js?v=20260928-es-set-1', 'etCommercialFlow');
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');
