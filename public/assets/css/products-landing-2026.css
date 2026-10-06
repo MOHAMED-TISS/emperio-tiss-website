@@ -53,7 +53,7 @@ body.products-landing-page.products-2026 .hero{
   background:
     linear-gradient(180deg,rgba(5,15,24,.10) 0%,rgba(5,15,24,.06) 34%,rgba(5,15,24,.74) 100%),
     linear-gradient(90deg,rgba(5,15,24,.72) 0%,rgba(5,15,24,.28) 48%,rgba(5,15,24,.10) 100%),
-    url("/assets/images/home-origins.webp") center 48%/cover no-repeat!important;
+    url("/assets/images/home-origins.webp") center calc(48% + var(--products-parallax-bg,0px))/cover no-repeat!important;
   color:#fff!important;
 }
 
@@ -1221,5 +1221,33 @@ body.products-landing-page.products-2026 .selection-families .section-heading{
 
   body.products-landing-page.products-2026 .selection-families .section-heading{
     padding-top:42px!important;
+  }
+}
+
+
+/* PRODUCTS HERO — subtle editorial parallax */
+body.products-landing-page.products-2026 .hero{
+  --products-parallax-bg:0px;
+  --products-parallax-glow:0px;
+  background-attachment:scroll!important;
+  will-change:background-position;
+}
+
+body.products-landing-page.products-2026 .hero::before{
+  transform:translate3d(0,var(--products-parallax-glow,0px),0) scale(1.045)!important;
+  transform-origin:center center!important;
+  will-change:transform;
+}
+
+@media(max-width:900px),(prefers-reduced-motion:reduce){
+  body.products-landing-page.products-2026 .hero{
+    --products-parallax-bg:0px!important;
+    --products-parallax-glow:0px!important;
+    will-change:auto;
+  }
+
+  body.products-landing-page.products-2026 .hero::before{
+    transform:none!important;
+    will-change:auto;
   }
 }
