@@ -790,3 +790,83 @@ body.products-landing-page.products-2026 .hero-grid{
     max-height:100dvh!important;
   }
 }
+
+
+/* SHORT VIEWPORT COMPOSITION — keep 100dvh without overlap */
+@media (min-width:901px) and (max-height:760px){
+  body.products-landing-page.products-2026 .hero-grid{
+    padding-top:112px!important;
+    padding-bottom:74px!important;
+    align-items:end!important;
+  }
+
+  body.products-landing-page.products-2026 .hero h1{
+    font-size:clamp(64px,7.2vw,108px)!important;
+    line-height:.84!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-kicker{
+    margin-bottom:14px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-description{
+    margin-top:20px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-description>span{
+    margin-top:7px!important;
+    line-height:1.55!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-actions{
+    margin-top:20px!important;
+    margin-bottom:0!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-actions .button{
+    min-height:42px!important;
+    padding-inline:16px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-side{
+    display:none!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-bottom{
+    bottom:14px!important;
+    gap:10px!important;
+  }
+}
+
+@media (min-width:901px) and (max-height:660px){
+  body.products-landing-page.products-2026 .hero-grid{
+    padding-top:94px!important;
+    padding-bottom:66px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero h1{
+    font-size:clamp(58px,6.5vw,92px)!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-description strong{
+    font-size:17px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-description>span{
+    font-size:13px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-actions{
+    margin-top:16px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-actions .button{
+    min-height:40px!important;
+    font-size:12px!important;
+  }
+
+  body.products-landing-page.products-2026 .hero-bottom{
+    bottom:10px!important;
+    font-size:8px!important;
+  }
+}
