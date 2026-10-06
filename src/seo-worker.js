@@ -30,13 +30,13 @@ class SeoHeadAppender {
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap">' +
       '<link rel="stylesheet" href="/assets/css/site-2026.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/theme-mode.css?v=20261004-3">' +
-      '<link rel="stylesheet" href="/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-3">' +
+      '<link rel="stylesheet" href="/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-4">' +
       '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261004-5">' +
       '<script src="/assets/js/cookie-consent.js?v=20261004-5" defer></script>' +
       '<script src="/assets/js/analytics-events.js?v=20261004-3" defer></script>' +
       '<script src="/assets/js/theme-mode.js?v=20261004-3" defer></script>' +
-      '<script src="/assets/js/header-universal.js?v=20261006-liquid-universal-3" defer></script>' +
+      '<script src="/assets/js/header-universal.js?v=20261006-liquid-universal-4" defer></script>' +
       '<script src="/assets/js/footer-terminal.js?v=20261003-2" defer></script>',
       { html: true }
     );
