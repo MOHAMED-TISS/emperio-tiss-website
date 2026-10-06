@@ -79,14 +79,6 @@ html[data-et-theme="dark"] .et-whatsapp-float:focus-visible{
   color:#a8e4ca;
 }
 
-/* Avoid competing with the initial cookie choice dialog. */
-body:has(.et-cookie-consent.is-visible) .et-whatsapp-float{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transform:translateY(8px);
-}
-
 html[dir="rtl"] .et-whatsapp-float{
   right:auto;
   left:16px;
@@ -98,6 +90,13 @@ html[dir="rtl"] .et-cookie-manage{
 }
 
 @media(max-width:760px){
+  body:has(.et-cookie-consent.is-visible) .et-whatsapp-float{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(8px);
+  }
+
   .et-whatsapp-float{
     right:10px;
     bottom:max(10px,env(safe-area-inset-bottom));
