@@ -549,13 +549,13 @@ body.seafood-page .es-hero{
   pointer-events:none!important;
   background:
     linear-gradient(90deg,
-      rgba(244,241,234,.94) 0%,
-      rgba(244,241,234,.62) 19%,
-      rgba(244,241,234,.12) 48%,
-      rgba(244,241,234,.04) 72%,
-      rgba(244,241,234,.74) 100%
+      rgba(244,241,234,.56) 0%,
+      rgba(244,241,234,.30) 19%,
+      rgba(244,241,234,.06) 48%,
+      rgba(244,241,234,.02) 72%,
+      rgba(244,241,234,.34) 100%
     )!important;
-  opacity:.40!important;
+  opacity:.24!important;
   transition:opacity .45s ease!important;
 }
 
