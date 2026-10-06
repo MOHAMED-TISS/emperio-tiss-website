@@ -213,20 +213,27 @@
   loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
   loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
 
-  // /products/ contrast must be physically last because site-2026/theme layers are injected at runtime.
+  // Product landing visual stack is universal across ES / EN / FR / IT / AR.
+  // Re-append it after generic runtime layers so every language shares one cascade.
   if (doc.body.classList.contains('products-landing-page') && doc.body.classList.contains('products-2026')) {
-    const contrastHref = '/assets/css/products-contrast-2026.css?v=20261007-5';
-    let contrastLink = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(link =>
-      assetPath(link.getAttribute('href') || '') === assetPath(contrastHref)
-    );
-    if (!contrastLink) {
-      contrastLink = doc.createElement('link');
-      contrastLink.rel = 'stylesheet';
-      contrastLink.dataset.etProductsContrast = 'true';
-      doc.head.appendChild(contrastLink);
-    }
-    contrastLink.href = contrastHref;
-    doc.head.appendChild(contrastLink);
+    const productLandingStack = [
+      ['/assets/css/products-landing-2026.css?v=20261007-universal-2','etProductsLanding'],
+      ['/assets/css/products-marquee-luxe.css?v=20261007-universal-1','etProductsMarquee'],
+      ['/assets/css/products-contrast-2026.css?v=20261007-5','etProductsContrast']
+    ];
+
+    productLandingStack.forEach(([href,key]) => {
+      let link = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(node =>
+        assetPath(node.getAttribute('href') || '') === assetPath(href)
+      );
+      if (!link) {
+        link = doc.createElement('link');
+        link.rel = 'stylesheet';
+        link.dataset[key] = 'true';
+      }
+      link.href = href;
+      doc.head.appendChild(link);
+    });
   }
 
   // Produce family landing must win over dynamically injected generic product styles.
