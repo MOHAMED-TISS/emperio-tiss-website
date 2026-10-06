@@ -872,3 +872,19 @@ body.seasonal-editorial main>.et-operation-flow { display:none; }
  body.seasonal-editorial .season-cta,body.seasonal-editorial .season-category-link>span { transition:none; transform:none; }
 }
 @media(max-width:640px){body.brand-pages[data-brand-category="fruits"] { --brand-hero-image:url("/assets/images/fruits-orchard-mobile.webp"); }}
+
+
+/* SHELLFISH HERO — Moruno asset */
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero {
+  background:
+    linear-gradient(102deg, rgba(5,18,31,.90) 0%, rgba(8,24,39,.68) 46%, rgba(8,24,39,.22) 100%),
+    url("/assets/products/incoming/Moruno(1).jpeg") 50% 58% / cover no-repeat !important;
+}
+
+@media (max-width:800px) {
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero {
+    background:
+      linear-gradient(180deg, rgba(5,18,31,.62) 0%, rgba(5,18,31,.52) 42%, rgba(5,18,31,.84) 100%),
+      url("/assets/products/incoming/Moruno(1).jpeg") 50% 62% / cover no-repeat !important;
+  }
+}
