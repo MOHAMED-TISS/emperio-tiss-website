@@ -52,7 +52,7 @@
   loadCss('/assets/css/header-final.css?v=20261001-signature', 'etHeaderFinalCanonical');
   loadCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
   loadCss('/assets/css/scrollbar-editorial.css?v=20261006-2', 'etEditorialScrollbar');
-  loadCss('/assets/css/whatsapp-floating.css?v=20261007-1', 'etFloatingWhatsAppCss');
+  loadCss('/assets/css/whatsapp-floating.css?v=20261007-2', 'etFloatingWhatsAppCss');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
