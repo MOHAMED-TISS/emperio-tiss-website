@@ -208,8 +208,15 @@
   const manage = doc.createElement('button');
   manage.type = 'button';
   manage.className = 'et-cookie-manage';
-  manage.textContent = copy.manage;
+  manage.innerHTML = `
+    <svg class="et-cookie-manage__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 2.5a9.5 9.5 0 1 0 9.5 9.5 4.4 4.4 0 0 1-5.15-5.15A4.4 4.4 0 0 1 12 2.5Z"></path>
+      <circle cx="8.1" cy="9" r="1.05"></circle>
+      <circle cx="10.2" cy="15.2" r="1.05"></circle>
+      <circle cx="15.2" cy="12.7" r="1.05"></circle>
+    </svg>`;
   manage.setAttribute('aria-label', copy.configure);
+  manage.setAttribute('title', copy.manage);
 
   body.append(banner,manage);
 
