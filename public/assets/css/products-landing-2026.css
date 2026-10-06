@@ -53,7 +53,7 @@ body.products-landing-page.products-2026 .hero{
   background:
     linear-gradient(180deg,rgba(5,15,24,.10) 0%,rgba(5,15,24,.06) 34%,rgba(5,15,24,.74) 100%),
     linear-gradient(90deg,rgba(5,15,24,.72) 0%,rgba(5,15,24,.28) 48%,rgba(5,15,24,.10) 100%),
-    url("/assets/images/home-origins.webp") center 48%/cover no-repeat!important;
+    url("https://images.pexels.com/photos/33515021/pexels-photo-33515021.jpeg") center 50%/cover no-repeat!important;
   color:#fff!important;
 }
 
