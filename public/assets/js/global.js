@@ -230,7 +230,7 @@
 
   // Produce family landing must win over dynamically injected generic product styles.
   if (/\/products\/fruits-vegetables\/?$/.test(path)) {
-    const produceFamilyHref = '/assets/css/produce-family-2026.css?v=20261006-1';
+    const produceFamilyHref = '/assets/css/produce-family-2026.css?v=20261006-2';
     let produceFamilyLink = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(link =>
       assetPath(link.getAttribute('href') || '') === assetPath(produceFamilyHref)
     );
