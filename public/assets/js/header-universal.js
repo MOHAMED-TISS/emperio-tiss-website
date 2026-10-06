@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-8';
+  const VERSION = '20261006-liquid-universal-9';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -39,35 +39,35 @@
       home:'Inicio', company:'Empresa', products:'Productos', markets:'Mercados', news:'Noticias',
       contact:'Contacto', signature:'Signature', languages:'Idiomas', menu:'Abrir menú', close:'Cerrar menú',
       seafood:'Productos del mar', fish:'Pescados', shellfish:'Mariscos', cephalopods:'Cefalópodos',
-      fruits:'Frutas', vegetables:'Hortalizas', seasonal:'Temporada',
+      produce:'Frutas y hortalizas', fruits:'Frutas', vegetables:'Hortalizas', seasonal:'Temporada',
       enquiry:'Consulta empresarial', locale:'Madrid · Europa · África · Mediterráneo'
     },
     en: {
       home:'Home', company:'Company', products:'Products', markets:'Markets', news:'News',
       contact:'Contact', signature:'Signature', languages:'Languages', menu:'Open menu', close:'Close menu',
       seafood:'Seafood', fish:'Fish', shellfish:'Shellfish', cephalopods:'Cephalopods',
-      fruits:'Fruits', vegetables:'Vegetables', seasonal:'Seasonal',
+      produce:'Produce', fruits:'Fruits', vegetables:'Vegetables', seasonal:'Seasonal',
       enquiry:'Business enquiry', locale:'Madrid · Europe · Africa · Mediterranean'
     },
     fr: {
       home:'Accueil', company:'Entreprise', products:'Produits', markets:'Marchés', news:'Actualités',
       contact:'Contact', signature:'Signature', languages:'Langues', menu:'Ouvrir le menu', close:'Fermer le menu',
       seafood:'Produits de la mer', fish:'Poissons', shellfish:'Crustacés', cephalopods:'Céphalopodes',
-      fruits:'Fruits', vegetables:'Légumes', seasonal:'Saison',
+      produce:'Fruits & légumes', fruits:'Fruits', vegetables:'Légumes', seasonal:'Saison',
       enquiry:'Demande commerciale', locale:'Madrid · Europe · Afrique · Méditerranée'
     },
     it: {
       home:'Home', company:'Azienda', products:'Prodotti', markets:'Mercati', news:'Notizie',
       contact:'Contatti', signature:'Signature', languages:'Lingue', menu:'Apri menu', close:'Chiudi menu',
       seafood:'Prodotti del mare', fish:'Pesce', shellfish:'Crostacei', cephalopods:'Cefalopodi',
-      fruits:'Frutta', vegetables:'Ortaggi', seasonal:'Stagionale',
+      produce:'Ortofrutta', fruits:'Frutta', vegetables:'Ortaggi', seasonal:'Stagionale',
       enquiry:'Richiesta commerciale', locale:'Madrid · Europa · Africa · Mediterraneo'
     },
     ar: {
       home:'الرئيسية', company:'الشركة', products:'المنتجات', markets:'الأسواق', news:'الأخبار',
       contact:'اتصل بنا', signature:'Signature', languages:'اللغات', menu:'فتح القائمة', close:'إغلاق القائمة',
       seafood:'المأكولات البحرية', fish:'الأسماك', shellfish:'الرخويات', cephalopods:'رأسيات الأرجل',
-      fruits:'الفواكه', vegetables:'الخضروات', seasonal:'الموسمية',
+      produce:'الفواكه والخضروات', fruits:'الفواكه', vegetables:'الخضروات', seasonal:'الموسمية',
       enquiry:'استفسار تجاري', locale:'مدريد · أوروبا · أفريقيا · البحر المتوسط'
     }
   }[lang];
@@ -152,8 +152,13 @@
                 <a href="${route('products/seafood/cephalopods')}">${copy.cephalopods}</a>
               </div>
             </div>
-            <a class="nav-product-parent" href="${route('products/fruits')}">${copy.fruits}</a>
-            <a class="nav-product-parent" href="${route('products/vegetables')}">${copy.vegetables}</a>
+            <div class="nav-product-group">
+              <a class="nav-product-parent" href="${route('products')}#produce">${copy.produce}</a>
+              <div class="nav-product-children">
+                <a href="${route('products/fruits')}">${copy.fruits}</a>
+                <a href="${route('products/vegetables')}">${copy.vegetables}</a>
+              </div>
+            </div>
           </div>
         </details>
         <a href="${route('products/seasonal')}"${activeAttr('products/seasonal')}><span class="idx">04</span><span>${copy.seasonal}</span></a>
@@ -171,10 +176,16 @@
     </div>`;
 
   const ensureCss = () => {
-    if (doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]')) return;
+    const href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-9';
+    const existing = doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]');
+    if (existing) {
+      if (!existing.getAttribute('href')?.includes('20261006-liquid-universal-9')) existing.setAttribute('href',href);
+      existing.dataset.etLiquidHeaderCss = 'true';
+      return;
+    }
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-8';
+    link.href = href;
     link.dataset.etLiquidHeaderCss = 'true';
     doc.head.appendChild(link);
   };
