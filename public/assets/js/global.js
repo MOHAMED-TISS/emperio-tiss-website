@@ -137,6 +137,7 @@
   };
 
   const ensureHeaderWhatsApp = () => {
+    if (doc.body.classList.contains('liquid-header-v23')) return;
     const header = doc.querySelector('.site-header,.et-header-inner,.header-inner,.p-header-inner,.es-header-inner');
     if (!header) return;
     const container = header.querySelector('.header-inner') || header;
@@ -192,8 +193,10 @@
   doc.addEventListener('selectstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  loadScript('/assets/js/header-canonical.js?v=20261003-emblem-route-1', 'etCanonicalHeaderScript');
-  loadScript('/assets/js/header-universal.js?v=20261003-commercial-header-8', 'etUniversalHomeHeader');
+  if (!doc.body.classList.contains('liquid-header-v23')) {
+    loadScript('/assets/js/header-canonical.js?v=20261003-emblem-route-1', 'etCanonicalHeaderScript');
+    loadScript('/assets/js/header-universal.js?v=20261003-commercial-header-8', 'etUniversalHomeHeader');
+  }
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20261004-theme-2', 'etGlobalCore');
