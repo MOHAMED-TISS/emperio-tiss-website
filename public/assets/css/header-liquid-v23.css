@@ -862,3 +862,35 @@ body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-lang::after
 body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-logo img{
   filter:drop-shadow(0 2px 9px rgba(0,0,0,.20)) saturate(.92)!important;
 }
+
+
+/* CONTRACTED HEADER COLLISION GUARD — reserve language/tool zone */
+.et-liquid-nav{
+  z-index:2;
+}
+
+.et-liquid-tools{
+  position:relative;
+  z-index:3;
+}
+
+.et-liquid-language{
+  flex:0 0 50px;
+}
+
+@media(min-width:1241px){
+  .et-liquid-nav{
+    gap:calc(21px - (4px * var(--elh-p)));
+    transform:
+      translate(
+        calc(-50% - (108px * var(--elh-p))),
+        -50%
+      );
+  }
+}
+
+@media(min-width:1241px) and (max-width:1400px){
+  .et-liquid-nav{
+    gap:calc(18px - (3px * var(--elh-p)));
+  }
+}
