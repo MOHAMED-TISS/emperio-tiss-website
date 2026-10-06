@@ -875,12 +875,12 @@ body.products-landing-page.products-2026 .hero-grid{
 /* PRODUCTS HERO — lift CTA row only */
 @media (min-width:901px) and (max-height:760px){
   body.products-landing-page.products-2026 .hero-actions{
-    transform:translateY(-12px)!important;
+    transform:translateY(-30px)!important;
   }
 }
 
 @media (min-width:901px) and (max-height:660px){
   body.products-landing-page.products-2026 .hero-actions{
-    transform:translateY(-10px)!important;
+    transform:translateY(-26px)!important;
   }
 }
