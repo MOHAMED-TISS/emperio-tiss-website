@@ -145,6 +145,7 @@
   doc.addEventListener('click', (event) => {
     const button = event.target.closest(buttonSelector);
     if (button) {
+      if (button.closest('.et-liquid-header')) return;
       normalizeMenuOverlays();
       const overlay = get(overlaySelector);
       if (!overlay) return;
