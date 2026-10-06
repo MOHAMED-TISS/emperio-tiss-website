@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-1';
+  const VERSION = '20261006-liquid-universal-2';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -98,7 +98,7 @@
 
   const headerMarkup = `
     <div class="et-liquid-bar">
-      <button id="menuToggleBtn" class="et-liquid-menu" type="button" aria-label="${copy.menu}" aria-expanded="false" aria-controls="navOverlay">
+      <button id="etLiquidMenuBtn" class="et-liquid-menu" type="button" aria-label="${copy.menu}" aria-expanded="false" aria-controls="navOverlay">
         <span></span><span></span><span></span>
       </button>
 
@@ -168,7 +168,7 @@
     if (doc.querySelector('link[data-et-liquid-header-css]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-1';
+    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-2';
     link.dataset.etLiquidHeaderCss = 'true';
     doc.head.appendChild(link);
   };
