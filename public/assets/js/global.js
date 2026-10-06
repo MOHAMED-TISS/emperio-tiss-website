@@ -193,10 +193,8 @@
   doc.addEventListener('selectstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  if (!doc.body.classList.contains('liquid-header-v23')) {
-    loadScript('/assets/js/header-canonical.js?v=20261003-emblem-route-1', 'etCanonicalHeaderScript');
-    loadScript('/assets/js/header-universal.js?v=20261003-commercial-header-8', 'etUniversalHomeHeader');
-  }
+  loadCss('/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-1', 'etLiquidHeaderCss');
+  loadScript('/assets/js/header-universal.js?v=20261006-liquid-universal-1', 'etUniversalHomeHeader');
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20261004-theme-2', 'etGlobalCore');
