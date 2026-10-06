@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-4';
+  const VERSION = '20261006-liquid-universal-5';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -173,7 +173,7 @@
     if (doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-4';
+    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-5';
     link.dataset.etLiquidHeaderCss = 'true';
     doc.head.appendChild(link);
   };
