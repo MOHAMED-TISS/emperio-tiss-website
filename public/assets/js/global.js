@@ -52,6 +52,7 @@
   loadCss('/assets/css/header-final.css?v=20261001-signature', 'etHeaderFinalCanonical');
   loadCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
   loadCss('/assets/css/scrollbar-editorial.css?v=20261006-2', 'etEditorialScrollbar');
+  loadCss('/assets/css/whatsapp-floating.css?v=20261007-1', 'etFloatingWhatsAppCss');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
     loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
@@ -208,6 +209,7 @@
   }
   loadCss('/assets/css/cookie-consent.css?v=20261007-6', 'etCookieConsentCss');
   loadScript('/assets/js/cookie-consent.js?v=20261007-6', 'etCookieConsentScript');
+  loadScript('/assets/js/whatsapp-floating.js?v=20261007-1', 'etFloatingWhatsAppScript');
   loadScript('/assets/js/analytics-events.js?v=20261004-3', 'etAnalyticsEventsScript');
   loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
   loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
