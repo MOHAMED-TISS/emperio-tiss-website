@@ -17,6 +17,11 @@
   const root = doc.documentElement;
   if (!body) return;
 
+  if (
+    body.classList.contains('liquid-header-v23') ||
+    doc.getElementById('etLiquidHeader')
+  ) return;
+
   const path = (location.pathname || '/').replace(/\/+/g, '/');
 
   const ensureJobyHeaderCss = () => {
