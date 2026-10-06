@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-9';
+  const VERSION = '20261006-liquid-universal-10';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -176,10 +176,10 @@
     </div>`;
 
   const ensureCss = () => {
-    const href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-9';
+    const href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-10';
     const existing = doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]');
     if (existing) {
-      if (!existing.getAttribute('href')?.includes('20261006-liquid-universal-9')) existing.setAttribute('href',href);
+      if (!existing.getAttribute('href')?.includes('20261006-liquid-universal-10')) existing.setAttribute('href',href);
       existing.dataset.etLiquidHeaderCss = 'true';
       return;
     }
@@ -345,7 +345,9 @@
     current = force ? target : current + delta * .105;
 
     const vw = innerWidth;
-    const endWidth = vw >= 1700 ? 62 : vw >= 1500 ? 70 : vw >= 1280 ? 78 : vw >= 1050 ? 84 : 90;
+    const baseEndWidth = vw >= 1700 ? 62 : vw >= 1500 ? 70 : vw >= 1280 ? 78 : vw >= 1050 ? 84 : 90;
+    const fiveLinkFloor = vw > 1240 ? Math.min(96, (1080 / vw) * 100) : 0;
+    const endWidth = Math.max(baseEndWidth, fiveLinkFloor);
     const width = 100 - ((100 - endWidth) * current);
     const height = 88 - (26 * current);
     const blur = 34 + (10 * current);
