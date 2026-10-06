@@ -215,7 +215,7 @@
 
   // /products/ contrast must be physically last because site-2026/theme layers are injected at runtime.
   if (doc.body.classList.contains('products-landing-page') && doc.body.classList.contains('products-2026')) {
-    const contrastHref = '/assets/css/products-contrast-2026.css?v=20261007-4';
+    const contrastHref = '/assets/css/products-contrast-2026.css?v=20261007-5';
     let contrastLink = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(link =>
       assetPath(link.getAttribute('href') || '') === assetPath(contrastHref)
     );
