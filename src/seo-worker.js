@@ -16,11 +16,16 @@ class SeoLinkSanitizer {
 }
 
 class SeoHeadAppender {
-  constructor(meta) {
+  constructor(meta, { skipUniversalHeader = false } = {}) {
     this.meta = meta;
+    this.skipUniversalHeader = skipUniversalHeader;
   }
 
   element(element) {
+    const universalHeaderScript = this.skipUniversalHeader
+      ? ''
+      : '<script src="/assets/js/header-universal.js?v=20261006-liquid-guard-1" defer></script>';
+
     element.append(
       buildSeoHead(this.meta) +
       '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">' +
@@ -32,7 +37,7 @@ class SeoHeadAppender {
       '<script src="/assets/js/cookie-consent.js?v=20261004-5" defer></script>' +
       '<script src="/assets/js/analytics-events.js?v=20261004-3" defer></script>' +
       '<script src="/assets/js/theme-mode.js?v=20261004-3" defer></script>' +
-      '<script src="/assets/js/header-universal.js?v=20261003-commercial-header-8" defer></script>' +
+      universalHeaderScript +
       '<script src="/assets/js/footer-terminal.js?v=20261003-2" defer></script>',
       { html: true }
     );
@@ -42,12 +47,16 @@ class SeoHeadAppender {
 export function normalizeSeoResponse(request, response) {
   if (request.method !== 'GET' || !response.ok || !isHtmlResponse(response)) return response;
 
-  const meta = getSeoMeta(new URL(request.url).pathname);
+  const pathname = new URL(request.url).pathname;
+  const meta = getSeoMeta(pathname);
   if (!meta) return response;
+
+  const normalizedPath = pathname.replace(/\/+$/,'') || '/';
+  const skipUniversalHeader = normalizedPath === '/' || normalizedPath === '/index.html';
 
   return new HTMLRewriter()
     .on('link', new SeoLinkSanitizer())
-    .on('head', new SeoHeadAppender(meta))
+    .on('head', new SeoHeadAppender(meta, { skipUniversalHeader }))
     .transform(response);
 }
 
