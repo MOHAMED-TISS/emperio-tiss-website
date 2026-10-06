@@ -880,3 +880,9 @@ body.products-landing-page.products-2026 .hero-grid{
     transform:none!important;
   }
 }
+
+
+/* TWO-FAMILY PRODUCTS — force Produce artwork after nth-child legacy rules */
+body.products-landing-page.products-2026.two-product-families .product-row.produce-row{
+  background-image:url("/assets/images/home-produce.webp")!important;
+}
