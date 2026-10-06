@@ -211,5 +211,22 @@
   loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
   loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
   loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
+
+  // /products/ contrast must be physically last because site-2026/theme layers are injected at runtime.
+  if (doc.body.classList.contains('products-landing-page') && doc.body.classList.contains('products-2026')) {
+    const contrastHref = '/assets/css/products-contrast-2026.css?v=20261006-2';
+    let contrastLink = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(link =>
+      assetPath(link.getAttribute('href') || '') === assetPath(contrastHref)
+    );
+    if (!contrastLink) {
+      contrastLink = doc.createElement('link');
+      contrastLink.rel = 'stylesheet';
+      contrastLink.dataset.etProductsContrast = 'true';
+      doc.head.appendChild(contrastLink);
+    }
+    contrastLink.href = contrastHref;
+    doc.head.appendChild(contrastLink);
+  }
+
   loadScript('/assets/js/smooth-scroll.js?v=20261003-1', 'etSmoothScroll');
 })();
