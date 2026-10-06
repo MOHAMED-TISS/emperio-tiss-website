@@ -13,6 +13,12 @@
   const doc = document;
   const body = doc.body;
   const root = doc.documentElement;
+
+  if (
+    body?.classList.contains('liquid-header-v23') ||
+    doc.getElementById('etLiquidHeader')
+  ) return;
+
   const path = (window.location.pathname || '/').replace(/\/+/g, '/');
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const supported = ['es', 'en', 'fr', 'it', 'ar'];
