@@ -393,8 +393,11 @@ body.seafood-page .es-hero{
 /* SEAFOOD FAMILIES — luxury marquee */
 .seafood-page .es-family-marquee{
   margin-top:72px!important;
-  border-top:1px solid rgba(11,30,51,.18)!important;
-  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:10px!important;
+  border-top:0!important;
+  overflow:visible!important;
 }
 
 .seafood-page .es-marquee-row{
@@ -404,7 +407,8 @@ body.seafood-page .es-hero{
   display:flex!important;
   align-items:center!important;
   overflow:hidden!important;
-  border-bottom:1px solid rgba(11,30,51,.18)!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:14px!important;
   color:#f6f1e7!important;
   text-decoration:none!important;
   background:#0b1e33!important;
