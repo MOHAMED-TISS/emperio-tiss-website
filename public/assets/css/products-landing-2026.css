@@ -1193,3 +1193,33 @@ body.products-landing-page.products-2026 .product-marquee-links{
     transition:none!important;
   }
 }
+
+
+/* SELECTION — intro + product families are one continuous section */
+body.products-landing-page.products-2026 .selection-section{
+  padding-bottom:clamp(92px,8vw,138px)!important;
+}
+
+body.products-landing-page.products-2026 .selection-section .intro-content{
+  max-width:none!important;
+}
+
+body.products-landing-page.products-2026 .selection-families{
+  margin-top:clamp(82px,8vw,128px)!important;
+}
+
+body.products-landing-page.products-2026 .selection-families .section-heading{
+  margin-bottom:52px!important;
+  padding-top:54px!important;
+  border-top:1px solid var(--p26-line)!important;
+}
+
+@media(max-width:900px){
+  body.products-landing-page.products-2026 .selection-families{
+    margin-top:72px!important;
+  }
+
+  body.products-landing-page.products-2026 .selection-families .section-heading{
+    padding-top:42px!important;
+  }
+}
