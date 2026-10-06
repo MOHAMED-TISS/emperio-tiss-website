@@ -975,3 +975,68 @@ html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-her
       )!important;
   }
 }
+
+
+/* SHELLFISH HERO — refined scrim, preserve the photograph */
+body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+  background:
+    radial-gradient(
+      70% 82% at 18% 56%,
+      rgba(5,18,31,.52) 0%,
+      rgba(5,18,31,.36) 34%,
+      rgba(5,18,31,.16) 58%,
+      rgba(5,18,31,.04) 78%,
+      transparent 100%
+    )!important;
+}
+
+html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+  background:
+    radial-gradient(
+      68% 80% at 18% 56%,
+      rgba(244,240,230,.40) 0%,
+      rgba(244,240,230,.25) 34%,
+      rgba(244,240,230,.10) 58%,
+      rgba(244,240,230,.025) 78%,
+      transparent 100%
+    )!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero .eyebrow{
+  color:#0b1e33!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1{
+  color:#0b1e33!important;
+  text-shadow:0 1px 20px rgba(244,240,230,.12)!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero h1 em{
+  color:#6f5122!important;
+}
+
+html[data-et-theme="light"] body.seafood-subpage.shellfish-hero-moruno .page-hero .lead{
+  color:rgba(11,30,51,.90)!important;
+}
+
+@media(max-width:800px){
+  body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5,18,31,.06) 0%,
+        rgba(5,18,31,.10) 38%,
+        rgba(5,18,31,.54) 100%
+      )!important;
+  }
+
+  html[data-et-theme="light"] body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-subpage.shellfish-hero-moruno .page-hero::before{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(244,240,230,.03) 0%,
+        rgba(244,240,230,.08) 40%,
+        rgba(244,240,230,.42) 100%
+      )!important;
+  }
+}
