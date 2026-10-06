@@ -269,64 +269,74 @@ body.products-landing-page.products-2026 :is(a,button):focus-visible{
   outline-offset:4px!important;
 }
 
-
-/* COMPANY / METHODOLOGY — explicit readable state in both themes */
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section{
-  background:#f4f4ef!important;
-  color:#111214!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .eyebrow{
-  color:#755a2c!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section h2,
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section h2 em{
-  color:#111214!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .large-copy{
-  color:#1b1d1f!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values strong{
-  color:#25282b!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values span{
-  color:#755a2c!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .text-link{
-  color:#17191b!important;
-  border-bottom-color:rgba(17,18,20,.42)!important;
-}
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-grid,
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values,
-html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section .company-values>div{
-  border-color:rgba(17,18,20,.18)!important;
+/* COMPANY / METHODOLOGY — fixed dark chapter in both themes */
+body.products-landing-page.products-2026 .company-section{
+  background:#0b1b2b!important;
+  color:#f6f1e8!important;
 }
 
+body.products-landing-page.products-2026 .company-section .company-grid{
+  border-bottom-color:rgba(246,241,232,.18)!important;
+}
+
+body.products-landing-page.products-2026 .company-section .eyebrow{
+  color:#d9c49b!important;
+}
+
+body.products-landing-page.products-2026 .company-section h2,
+body.products-landing-page.products-2026 .company-section h2 em{
+  color:#f8f4ec!important;
+  text-shadow:none!important;
+}
+
+body.products-landing-page.products-2026 .company-section .large-copy{
+  color:#eee8dc!important;
+}
+
+body.products-landing-page.products-2026 .company-section .company-values{
+  border-top-color:rgba(246,241,232,.20)!important;
+}
+
+body.products-landing-page.products-2026 .company-section .company-values>div{
+  border-bottom-color:rgba(246,241,232,.16)!important;
+}
+
+body.products-landing-page.products-2026 .company-section .company-values span{
+  color:#d9c49b!important;
+}
+
+body.products-landing-page.products-2026 .company-section .company-values strong{
+  color:#f4efe6!important;
+}
+
+body.products-landing-page.products-2026 .company-section .text-link{
+  color:#f7f2e8!important;
+  border-bottom-color:rgba(217,196,155,.58)!important;
+  background:transparent!important;
+}
+
+body.products-landing-page.products-2026 .company-section .text-link span{
+  color:#d9c49b!important;
+}
+
+body.products-landing-page.products-2026 .company-section .text-link:hover{
+  color:#fff!important;
+  border-bottom-color:#d9c49b!important;
+}
+
+/* prevent generic light/dark page rules from recolouring this dark chapter */
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section,
 html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section{
-  background:#0a1724!important;
-  color:#f5f1e8!important;
+  background:#0b1b2b!important;
+  color:#f6f1e8!important;
 }
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .eyebrow{
-  color:#d8c49e!important;
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section :is(h2,h2 em,.large-copy,.company-values strong,.text-link),
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section :is(h2,h2 em,.large-copy,.company-values strong,.text-link){
+  color:#f6f1e8!important;
 }
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section h2,
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section h2 em{
-  color:#f5f1e8!important;
-}
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .large-copy{
-  color:#f1ede5!important;
-}
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values strong{
-  color:#f0ece4!important;
-}
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values span{
-  color:#d8c49e!important;
-}
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .text-link{
-  color:#f5f1e8!important;
-  border-bottom-color:rgba(216,196,158,.55)!important;
-}
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-grid,
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values,
-html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section .company-values>div{
-  border-color:rgba(245,241,232,.18)!important;
+
+html[data-et-theme="light"] body.products-landing-page.products-2026 .company-section :is(.eyebrow,.company-values span,.text-link span),
+html[data-et-theme="dark"] body.products-landing-page.products-2026 .company-section :is(.eyebrow,.company-values span,.text-link span){
+  color:#d9c49b!important;
 }
