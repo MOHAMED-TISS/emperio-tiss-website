@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-5';
+  const VERSION = '20261006-liquid-universal-6';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -173,7 +173,7 @@
     if (doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-5';
+    link.href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-6';
     link.dataset.etLiquidHeaderCss = 'true';
     doc.head.appendChild(link);
   };
@@ -289,6 +289,34 @@
   let current = 0;
   let raf = 0;
 
+  const heroSelector = [
+    'main > .hero',
+    'main > .page-hero',
+    'main > .es-hero',
+    'main > .intl-hero',
+    'main > .ar-hero',
+    'main > .product-hero',
+    'main > .about-hero',
+    'main > .news-hero',
+    'main > section.hero',
+    'main > section[class$="-hero"]'
+  ].join(',');
+
+  const updateHeroContrast = () => {
+    const header = doc.getElementById('etLiquidHeader');
+    const hero = doc.querySelector(heroSelector);
+    if (!header || !hero) {
+      header?.classList.remove('is-over-hero');
+      return;
+    }
+
+    const headerRect = header.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+    const probeY = Math.max(headerRect.top, 0) + Math.min(headerRect.height || 88, 88) * .55;
+    const overHero = heroRect.top <= probeY && heroRect.bottom > probeY;
+    header.classList.toggle('is-over-hero', overHero);
+  };
+
   const scrollTarget = () => {
     if (matchMedia('(max-width:980px)').matches) return 0;
     return Math.min(1,Math.max(0,scrollY / 520));
@@ -322,6 +350,7 @@
   };
 
   const updateScrollState = (force=false) => {
+    updateHeroContrast();
     target = scrollTarget();
     if (force) {
       current = target;
@@ -375,7 +404,10 @@
     },{passive:true});
 
     window.addEventListener('scroll',() => updateScrollState(false),{passive:true});
-    window.addEventListener('et:themechange',syncThemeIcon);
+    window.addEventListener('et:themechange',() => {
+      syncThemeIcon();
+      updateHeroContrast();
+    });
   }
 
   let observerQueued = false;
