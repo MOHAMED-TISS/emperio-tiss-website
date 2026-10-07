@@ -1,0 +1,146 @@
+/* EMPERIO TISS — HOME ES navigation/clarity pilot
+   Article-inspired: navigation stays explicit; motion carries brand language. */
+
+/* Home ES only: marquee becomes brand/product language, not duplicate navigation. */
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__viewport{
+  left:0!important;
+  right:0!important;
+  bottom:220px!important;
+  min-height:64px!important;
+  border-left:0!important;
+  border-right:0!important;
+  border-radius:0!important;
+  background:
+    linear-gradient(90deg,rgba(5,19,31,.58),rgba(5,19,31,.34) 20%,rgba(5,19,31,.34) 80%,rgba(5,19,31,.58))!important;
+  border-top:1px solid rgba(239,221,185,.12)!important;
+  border-bottom:1px solid rgba(239,221,185,.12)!important;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.035)!important;
+  backdrop-filter:blur(14px) saturate(115%)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(115%)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__viewport::before,
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__viewport::after{
+  width:76px!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__track{
+  animation-duration:108s!important;
+  transition:opacity .24s ease,transform .42s cubic-bezier(.16,1,.3,1)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__track.is-switching{
+  opacity:.28!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__run{
+  gap:0!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__word{
+  padding:0 .08em!important;
+  color:rgba(249,244,235,.63)!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__word--term{
+  font:600 clamp(9px,.78vw,11px)/1 "Inter","DM Sans",sans-serif!important;
+  letter-spacing:.16em!important;
+  text-transform:uppercase!important;
+  font-style:normal!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__word--family{
+  color:#ead7af!important;
+  font:400 italic clamp(24px,2.3vw,35px)/1 "Playfair Display",Georgia,serif!important;
+  letter-spacing:-.035em!important;
+  text-transform:none!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__sep{
+  width:clamp(32px,3.2vw,52px)!important;
+  margin:0 clamp(11px,1.4vw,18px)!important;
+  background:linear-gradient(90deg,transparent,rgba(222,194,138,.30),transparent)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee__sep::after{
+  width:2px!important;
+  height:2px!important;
+  background:#d8bd86!important;
+}
+
+/* Selected category remains the only navigation control in the scene. */
+html[lang="es"] body.home-page.home-experience .home-selection-marquee .categories button{
+  color:rgba(247,241,231,.42)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee .categories button[aria-selected="true"]{
+  color:#fffaf1!important;
+  font-weight:600!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-marquee .categories button[aria-selected="true"]::after{
+  width:28px!important;
+}
+
+/* Home ES mobile: explicit "MENÚ" label instead of icon-only navigation. */
+@media(max-width:980px){
+  html[lang="es"] body.home-page .et-liquid-menu{
+    width:88px!important;
+    min-width:88px!important;
+    height:38px!important;
+    border-radius:999px!important;
+  }
+
+  html[lang="es"] body.home-page .et-liquid-menu span{
+    left:12px!important;
+    width:16px!important;
+  }
+
+  html[lang="es"] body.home-page .et-liquid-menu::after{
+    content:"MENÚ";
+    position:absolute;
+    left:38px;
+    top:50%;
+    transform:translateY(-50%);
+    color:currentColor;
+    font:600 9px/1 "Inter","DM Sans",sans-serif;
+    letter-spacing:.11em;
+  }
+
+  html[lang="es"] body.home-page .et-liquid-menu.is-open::after{
+    content:"CERRAR";
+    letter-spacing:.08em;
+  }
+}
+
+@media(max-width:700px){
+  html[lang="es"] body.home-page.home-experience .home-selection-marquee__viewport{
+    left:0!important;
+    right:0!important;
+    bottom:272px!important;
+    min-height:52px!important;
+  }
+
+  html[lang="es"] body.home-page.home-experience .home-selection-marquee__track{
+    animation-duration:82s!important;
+  }
+
+  html[lang="es"] body.home-page.home-experience .home-selection-marquee__word--term{
+    font-size:8px!important;
+    letter-spacing:.14em!important;
+  }
+
+  html[lang="es"] body.home-page.home-experience .home-selection-marquee__word--family{
+    font-size:22px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html[lang="es"] body.home-page.home-experience .home-selection-marquee__track{
+    transition:none!important;
+  }
+}
