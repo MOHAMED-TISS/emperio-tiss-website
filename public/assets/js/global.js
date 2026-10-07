@@ -215,6 +215,22 @@
   loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
   loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
 
+  // Home signature selection marquee is shared across ES / EN / FR / IT / AR.
+  // Re-append after legacy Home layers so this approved component owns the final cascade.
+  if (doc.body.classList.contains('home-experience')) {
+    const homeSelectionHref = '/assets/css/home-selection-marquee.css?v=20261007-1';
+    let homeSelectionLink = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(link =>
+      assetPath(link.getAttribute('href') || '') === assetPath(homeSelectionHref)
+    );
+    if (!homeSelectionLink) {
+      homeSelectionLink = doc.createElement('link');
+      homeSelectionLink.rel = 'stylesheet';
+      homeSelectionLink.dataset.etHomeSelectionMarquee = 'true';
+    }
+    homeSelectionLink.href = homeSelectionHref;
+    doc.head.appendChild(homeSelectionLink);
+  }
+
   // Product landing visual stack is universal across ES / EN / FR / IT / AR.
   // Re-append it after generic runtime layers so every language shares one cascade.
   if (doc.body.classList.contains('products-landing-page') && doc.body.classList.contains('products-2026')) {
