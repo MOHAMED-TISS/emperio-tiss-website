@@ -30,7 +30,6 @@
       options:[
         ['Productos del mar','Hola, quiero consultar disponibilidad, origen y especificaciones de productos del mar.'],
         ['Frutas y hortalizas','Hola, quiero consultar disponibilidad, origen, calibre y campaña de frutas y hortalizas.'],
-        ['Logística / destino','Hola, quiero consultar una operación con destino, volumen y necesidades logísticas concretas.'],
         ['Solicitud de producto','Hola, estoy buscando un producto específico y quiero enviar los detalles de mi solicitud.'],
         ['Otra consulta','Hola, quisiera hacer una consulta comercial a EMPERIO TISS.']
       ]
@@ -43,7 +42,6 @@
       options:[
         ['Seafood','Hello, I would like to ask about availability, origin and specifications for seafood products.'],
         ['Produce','Hello, I would like to ask about availability, origin, sizing and season for fruits and vegetables.'],
-        ['Logistics / destination','Hello, I would like to discuss an operation with a specific destination, volume and logistics requirements.'],
         ['Product request','Hello, I am looking for a specific product and would like to send the details of my request.'],
         ['Other enquiry','Hello, I would like to make a business enquiry to EMPERIO TISS.']
       ]
@@ -56,7 +54,6 @@
       options:[
         ['Produits de la mer','Bonjour, je souhaite connaître la disponibilité, l’origine et les spécifications de produits de la mer.'],
         ['Fruits & légumes','Bonjour, je souhaite connaître la disponibilité, l’origine, le calibre et la campagne de fruits et légumes.'],
-        ['Logistique / destination','Bonjour, je souhaite discuter d’une opération avec une destination, un volume et des besoins logistiques précis.'],
         ['Demande produit','Bonjour, je recherche un produit précis et souhaite envoyer les détails de ma demande.'],
         ['Autre demande','Bonjour, je souhaite adresser une demande commerciale à EMPERIO TISS.']
       ]
@@ -69,7 +66,6 @@
       options:[
         ['Prodotti del mare','Buongiorno, vorrei chiedere disponibilità, origine e specifiche per prodotti del mare.'],
         ['Ortofrutta','Buongiorno, vorrei chiedere disponibilità, origine, calibro e campagna per frutta e ortaggi.'],
-        ['Logistica / destinazione','Buongiorno, vorrei discutere un’operazione con destinazione, volume ed esigenze logistiche specifiche.'],
         ['Richiesta prodotto','Buongiorno, sto cercando un prodotto specifico e vorrei inviare i dettagli della mia richiesta.'],
         ['Altra richiesta','Buongiorno, vorrei inviare una richiesta commerciale a EMPERIO TISS.']
       ]
@@ -82,7 +78,6 @@
       options:[
         ['المأكولات البحرية','مرحباً، أرغب في الاستفسار عن التوفر والمنشأ والمواصفات لمنتجات المأكولات البحرية.'],
         ['الفواكه والخضروات','مرحباً، أرغب في الاستفسار عن التوفر والمنشأ والحجم والموسم للفواكه والخضروات.'],
-        ['اللوجستيات / الوجهة','مرحباً، أرغب في مناقشة عملية بوجهة وحجم ومتطلبات لوجستية محددة.'],
         ['طلب منتج','مرحباً، أبحث عن منتج محدد وأرغب في إرسال تفاصيل طلبي.'],
         ['استفسار آخر','مرحباً، أرغب في إرسال استفسار تجاري إلى EMPERIO TISS.']
       ]
