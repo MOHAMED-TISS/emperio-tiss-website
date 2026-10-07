@@ -12,11 +12,11 @@
 
   const vocab = {
     sea: {
-      family:'Productos del mar',
+      family:'Mar',
       terms:['Especie','Origen','Formato','Disponibilidad']
     },
     fruit: {
-      family:'Fruta fresca',
+      family:'Frutas',
       terms:['Variedad','Origen','Campaña','Calibre']
     },
     vegetable: {
