@@ -116,30 +116,59 @@
   color:#e2cc9e!important;
 }
 
-/* restrained marquee ribbon */
+/* editorial ticker ribbon — clear, full-bleed inside the scene */
 .home-page.home-experience .et-experience .collection .home-selection-marquee__viewport{
   position:absolute!important;
-  z-index:5!important;
+  z-index:6!important;
   left:0!important;
   right:0!important;
-  top:47%!important;
+  top:44%!important;
   transform:translateY(-50%)!important;
   overflow:hidden!important;
-  padding:10px 0 18px!important;
-  background:linear-gradient(90deg,rgba(4,15,25,.18),rgba(4,15,25,.05) 24%,rgba(4,15,25,.05) 76%,rgba(4,15,25,.18))!important;
-  border-top:1px solid rgba(247,241,231,.08)!important;
-  border-bottom:1px solid rgba(247,241,231,.08)!important;
-  backdrop-filter:blur(1.5px)!important;
-  -webkit-backdrop-filter:blur(1.5px)!important;
-  mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)!important;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)!important;
+  padding:0!important;
+  min-height:92px!important;
+  display:flex!important;
+  align-items:center!important;
+  border-top:1px solid rgba(177,146,92,.20)!important;
+  border-bottom:1px solid rgba(177,146,92,.20)!important;
+  background:
+    linear-gradient(90deg,rgba(247,243,235,.91),rgba(244,240,230,.84) 50%,rgba(247,243,235,.91))!important;
+  box-shadow:
+    0 14px 38px rgba(7,20,32,.10),
+    inset 0 1px 0 rgba(255,255,255,.72)!important;
+  backdrop-filter:blur(16px) saturate(125%)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(125%)!important;
+  mask-image:none!important;
+  -webkit-mask-image:none!important;
+}
+
+.home-page.home-experience .et-experience .collection .home-selection-marquee__viewport::before,
+.home-page.home-experience .et-experience .collection .home-selection-marquee__viewport::after{
+  content:""!important;
+  position:absolute!important;
+  top:0!important;
+  bottom:0!important;
+  z-index:2!important;
+  width:72px!important;
+  pointer-events:none!important;
+}
+
+.home-page.home-experience .et-experience .collection .home-selection-marquee__viewport::before{
+  left:0!important;
+  background:linear-gradient(90deg,rgba(247,243,235,.98),rgba(247,243,235,0))!important;
+}
+
+.home-page.home-experience .et-experience .collection .home-selection-marquee__viewport::after{
+  right:0!important;
+  background:linear-gradient(270deg,rgba(247,243,235,.98),rgba(247,243,235,0))!important;
 }
 
 .home-page.home-experience .et-experience .collection .home-selection-marquee__track{
   display:flex!important;
   width:max-content!important;
+  align-items:center!important;
   will-change:transform!important;
-  animation:homeSignatureMarqueeV5 82s linear infinite!important;
+  animation:homeSignatureMarqueeV6 88s linear infinite!important;
 }
 
 .home-page.home-experience .et-experience .collection .home-selection-marquee__run{
@@ -152,12 +181,12 @@
 .home-page.home-experience .et-experience .collection .home-selection-marquee__word{
   display:inline-block!important;
   padding:0 .08em!important;
-  color:rgba(249,243,233,.46)!important;
-  font:400 clamp(46px,4.9vw,76px)/1 "Playfair Display",Georgia,serif!important;
-  letter-spacing:-.042em!important;
-  text-shadow:0 8px 24px rgba(0,0,0,.12)!important;
-  opacity:.74!important;
-  transition:color .6s ease,opacity .6s ease!important;
+  color:rgba(17,34,51,.62)!important;
+  font:500 clamp(30px,3.15vw,50px)/1 "Playfair Display",Georgia,serif!important;
+  letter-spacing:-.036em!important;
+  text-shadow:none!important;
+  opacity:1!important;
+  transition:color .55s ease,opacity .55s ease!important;
 }
 
 .home-page.home-experience .et-experience .collection .home-selection-marquee__word em{
@@ -166,20 +195,29 @@
 }
 
 .home-page.home-experience .et-experience .collection .home-selection-marquee__word.is-current{
-  color:#f0e3c8!important;
-  opacity:1!important;
+  color:#0b1e33!important;
 }
 
 .home-page.home-experience .et-experience .collection .home-selection-marquee__sep{
   position:relative!important;
-  width:clamp(42px,4vw,62px)!important;
+  width:clamp(54px,5vw,84px)!important;
   height:1px!important;
-  margin:0 clamp(18px,2.2vw,30px)!important;
+  margin:0 clamp(20px,2.3vw,34px)!important;
   flex:0 0 auto!important;
-  background:linear-gradient(90deg,transparent,rgba(228,205,161,.30),transparent)!important;
+  background:linear-gradient(90deg,transparent,rgba(177,146,92,.54),transparent)!important;
 }
+
 .home-page.home-experience .et-experience .collection .home-selection-marquee__sep::after{
-  display:none!important;
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:4px!important;
+  height:4px!important;
+  border-radius:50%!important;
+  background:#b58f54!important;
+  transform:translate(-50%,-50%)!important;
+  box-shadow:0 0 0 3px rgba(181,143,84,.08)!important;
 }
 
 /* bottom editorial strip */
@@ -379,7 +417,7 @@
   animation-play-state:paused!important;
 }
 
-@keyframes homeSignatureMarqueeV5{
+@keyframes homeSignatureMarqueeV6{
   from{transform:translate3d(0,0,0)}
   to{transform:translate3d(-50%,0,0)}
 }
@@ -448,18 +486,18 @@ html[dir="rtl"] .home-page.home-experience .et-experience .collection .home-sele
     font-size:6.5px!important;
   }
   .home-page.home-experience .et-experience .collection .home-selection-marquee__viewport{
-    top:39%!important;
-    padding:8px 0 13px!important;
+    top:38%!important;
+    min-height:72px!important;
   }
   .home-page.home-experience .et-experience .collection .home-selection-marquee__track{
-    animation-duration:58s!important;
+    animation-duration:64s!important;
   }
   .home-page.home-experience .et-experience .collection .home-selection-marquee__word{
-    font-size:clamp(40px,12.8vw,58px)!important;
+    font-size:clamp(27px,8.5vw,40px)!important;
   }
   .home-page.home-experience .et-experience .collection .home-selection-marquee__sep{
-    width:26px!important;
-    margin:0 11px!important;
+    width:34px!important;
+    margin:0 13px!important;
   }
   .home-page.home-experience .et-experience .collection .home-selection-marquee .scene-content{
     left:20px!important;
