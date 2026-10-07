@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/header-final.css?v=20261001-signatureshared-shell">
   <link rel="stylesheet" href="/assets/css/home.css?v=20261003-approach-v3">
+  <link rel="stylesheet" href="/assets/css/home-selection-marquee.css?v=20261007-1">
     <link rel="stylesheet" href="/assets/css/home-joby-selected.css?v=20261003-buttons-v2">
   <link rel="stylesheet" href="/assets/css/header-joby-experience.css?v=20261003-commercial-8" data-et-joby-header="true">
 </head>
@@ -107,12 +108,30 @@
     <div class="et-experience"><div role="region" class="collection" aria-labelledby="collection-title">
 <div class="chapter"><span>01 / UNE SÉLECTION EXIGEANTE</span><span>MER · TERRE · SAISON</span></div>
 <div class="opening"><h2 id="collection-title">Chaque origine,<br><em>sa singularité.</em></h2><p>Le produit au cœur de la démarche.<br>Votre marché guide notre sélection.</p></div>
-<div class="scene">
+<div class="scene home-selection-marquee">
 <div class="scene-images" aria-hidden="true"><img decoding="async" class="scene-image active" data-scene="sea" src="https://images.pexels.com/photos/8351893/pexels-photo-8351893.jpeg" alt=""><img decoding="async" class="scene-image" data-scene="fruit" src="/assets/images/fruits-orchard.webp" alt=""><img decoding="async" class="scene-image" data-scene="vegetable" src="https://images.pexels.com/photos/9634233/pexels-photo-9634233.jpeg" alt=""></div>
-<div class="scene-shade"></div><div class="scene-caption"><span>LA SÉLECTION EMPERIO TISS</span><span id="scene-count">01 / 03</span></div>
-<div class="scene-content"><div role="tablist" aria-label="Familles de produits" class="categories"><button type="button" role="tab" aria-selected="true" aria-controls="product-panel" id="tab-sea" data-category="sea"><span>01</span>Mer<sup>↗</sup></button><button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-fruit" data-category="fruit" tabindex="-1"><span>02</span>Fruits<sup>↗</sup></button><button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-vegetable" data-category="vegetable" tabindex="-1"><span>03</span>Légumes<sup>↗</sup></button></div>
-<div class="product-panel" role="tabpanel" id="product-panel" aria-labelledby="tab-sea" tabindex="0"><span class="small" id="product-label">PRODUITS DE LA MER</span><p id="product-description">Poissons, crustacés, coquillages et céphalopodes.<br>Espèce, origine et présentation précisées<br>selon vos besoins professionnels.</p><a class="home-action" id="product-link" href="/fr/products/seafood/">Découvrir la sélection <span>↗</span></a></div></div>
-<div class="scene-bottom"><span>CHOISISSEZ UNE FAMILLE À DÉCOUVRIR</span><span>PRIME ORIGINS. GLOBAL REACH.</span></div></div>
+<div class="scene-shade"></div>
+<div class="scene-caption"><span>LA SÉLECTION EMPERIO TISS</span><span id="scene-count">01 / 03</span></div>
+<div class="home-selection-marquee__viewport" aria-hidden="true">
+  <div class="home-selection-marquee__track">
+    <div class="home-selection-marquee__run"><span class="home-selection-marquee__word is-current" data-marquee-category="sea"><em>Mer</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="fruit"><em>Fruits</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="vegetable"><em>Légumes</em></span><i class="home-selection-marquee__sep"></i></div>
+    <div class="home-selection-marquee__run"><span class="home-selection-marquee__word is-current" data-marquee-category="sea"><em>Mer</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="fruit"><em>Fruits</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="vegetable"><em>Légumes</em></span><i class="home-selection-marquee__sep"></i></div>
+  </div>
+</div>
+<div class="scene-content">
+  <div role="tablist" aria-label="Familles de produits" class="categories">
+    <button type="button" role="tab" aria-selected="true" aria-controls="product-panel" id="tab-sea" data-category="sea"><span>01</span>Mer</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-fruit" data-category="fruit" tabindex="-1"><span>02</span>Fruits</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-vegetable" data-category="vegetable" tabindex="-1"><span>03</span>Légumes</button>
+  </div>
+  <div class="product-panel" role="tabpanel" id="product-panel" aria-labelledby="tab-sea" tabindex="0">
+    <span class="small" id="product-label">PRODUITS DE LA MER</span>
+    <p id="product-description">Poissons, crustacés, coquillages et céphalopodes.<br>Espèce, origine et présentation précisées<br>selon vos besoins professionnels.</p>
+    <a class="home-action" id="product-link" href="/fr/products/seafood/">Découvrir la sélection <span>↗</span></a>
+  </div>
+</div>
+<div class="scene-bottom"><span>CHOISISSEZ UNE FAMILLE À DÉCOUVRIR</span><span>PRIME ORIGINS. GLOBAL REACH.</span></div>
+</div>
 <div class="seasonal"><span>LE RYTHME DES SAISONS COMPTE.</span><a class="home-action" href="/fr/products/seasonal/">Découvrir les produits de saison <span>↗</span></a></div></div><section role="region" class="approach approach-v2" aria-labelledby="approach-title">
   <div class="approach-heading reveal">
     <div class="approach-heading-meta">
@@ -270,9 +289,9 @@
 
   
 
-  <script src="/assets/js/global.js?v=20260928-header-scroll-1s" defer></script>
+  <script src="/assets/js/global.js?v=20261007-home-marquee-1" defer></script>
   <script src="/assets/js/header-canonical.js?v=20260928-home-header-1" defer></script>
-  <script src="/assets/js/home-modern.js?v=20260927-localized-homes" defer></script>
+  <script src="/assets/js/home-modern.js?v=20261007-signature-marquee-1" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
   <script src="/assets/js/home-joby-selected.js?v=20261003-i18n-1" defer></script>
