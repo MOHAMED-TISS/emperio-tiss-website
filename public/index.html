@@ -53,6 +53,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400..600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/global.css?v=20260926-brand-foundation-2">
   <link rel="stylesheet" href="/assets/css/home.css?v=20261003-approach-v3">
+  <link rel="stylesheet" href="/assets/css/home-selection-marquee.css?v=20261007-1">
   <link rel="stylesheet" href="/assets/css/header-final.css?v=20261001-signature">
   <link rel="stylesheet" href="/assets/css/home-joby-selected.css?v=20261003-buttons-v2">
   <link rel="stylesheet" href="/assets/css/home-frame.css?v=20261003-1"><link rel="stylesheet" href="/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-6"></head>
@@ -125,12 +126,30 @@
     <div class="et-experience"><div role="region" class="collection" aria-labelledby="collection-title">
 <div class="chapter"><span>01 / UNA SELECCIÓN CON CRITERIO</span><span>MAR · TIERRA · TEMPORADA</span></div>
 <div class="opening"><h2 id="collection-title">Cada origen,<br><em>una expresión.</em></h2><p>El producto es el punto de partida.<br>Su mercado, el destino.</p></div>
-<div class="scene">
+<div class="scene home-selection-marquee">
 <div class="scene-images" aria-hidden="true"><img decoding="async" class="scene-image active" data-scene="sea" src="https://images.pexels.com/photos/8351893/pexels-photo-8351893.jpeg" alt=""><img decoding="async" class="scene-image" data-scene="fruit" src="/assets/images/fruits-orchard.webp" alt=""><img decoding="async" class="scene-image" data-scene="vegetable" src="https://images.pexels.com/photos/9634233/pexels-photo-9634233.jpeg" alt=""></div>
-<div class="scene-shade"></div><div class="scene-caption"><span>LA SELECCIÓN EMPERIO TISS</span><span id="scene-count">01 / 03</span></div>
-<div class="scene-content"><div role="tablist" aria-label="Familias de productos" class="categories"><button type="button" role="tab" aria-selected="true" aria-controls="product-panel" id="tab-sea" data-category="sea"><span>01</span>Mar<sup>↗</sup></button><button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-fruit" data-category="fruit" tabindex="-1"><span>02</span>Frutas<sup>↗</sup></button><button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-vegetable" data-category="vegetable" tabindex="-1"><span>03</span>Hortalizas<sup>↗</sup></button></div>
-<div class="product-panel" role="tabpanel" id="product-panel" aria-labelledby="tab-sea" tabindex="0"><span class="small" id="product-label">PRODUCTOS DEL MAR</span><p id="product-description">Pescados, mariscos y cefalópodos.<br>Especie, origen y presentación definidos<br>para su necesidad profesional.</p><a class="home-action" id="product-link" href="/products/seafood/">Explorar selección <span>↗</span></a></div></div>
-<div class="scene-bottom"><span>SELECCIONE UN UNIVERSO PARA EXPLORAR</span><span>PRIME ORIGINS. GLOBAL REACH.</span></div></div>
+<div class="scene-shade"></div>
+<div class="scene-caption"><span>LA SELECCIÓN EMPERIO TISS</span><span id="scene-count">01 / 03</span></div>
+<div class="home-selection-marquee__viewport" aria-hidden="true">
+  <div class="home-selection-marquee__track">
+    <div class="home-selection-marquee__run"><span class="home-selection-marquee__word is-current" data-marquee-category="sea"><em>Mar</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="fruit"><em>Frutas</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="vegetable"><em>Hortalizas</em></span><i class="home-selection-marquee__sep"></i></div>
+    <div class="home-selection-marquee__run"><span class="home-selection-marquee__word is-current" data-marquee-category="sea"><em>Mar</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="fruit"><em>Frutas</em></span><i class="home-selection-marquee__sep"></i><span class="home-selection-marquee__word" data-marquee-category="vegetable"><em>Hortalizas</em></span><i class="home-selection-marquee__sep"></i></div>
+  </div>
+</div>
+<div class="scene-content">
+  <div role="tablist" aria-label="Familias de productos" class="categories">
+    <button type="button" role="tab" aria-selected="true" aria-controls="product-panel" id="tab-sea" data-category="sea"><span>01</span>Mar</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-fruit" data-category="fruit" tabindex="-1"><span>02</span>Frutas</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="product-panel" id="tab-vegetable" data-category="vegetable" tabindex="-1"><span>03</span>Hortalizas</button>
+  </div>
+  <div class="product-panel" role="tabpanel" id="product-panel" aria-labelledby="tab-sea" tabindex="0">
+    <span class="small" id="product-label">PRODUCTOS DEL MAR</span>
+    <p id="product-description">Pescados, mariscos y cefalópodos.<br>Especie, origen y presentación definidos<br>para su necesidad profesional.</p>
+    <a class="home-action" id="product-link" href="/products/seafood/">Explorar selección <span>↗</span></a>
+  </div>
+</div>
+<div class="scene-bottom"><span>SELECCIONE UN UNIVERSO PARA EXPLORAR</span><span>PRIME ORIGINS. GLOBAL REACH.</span></div>
+</div>
 <div class="seasonal"><span>EL TIEMPO TAMBIÉN SELECCIONA.</span><a class="home-action" href="/products/seasonal/">Descubrir la temporada <span>↗</span></a></div></div><section role="region" class="approach approach-v2" aria-labelledby="approach-title">
   <div class="approach-heading reveal">
     <div class="approach-heading-meta">
@@ -287,8 +306,8 @@
 
   
 
-  <script src="/assets/js/global.js?v=20261006-liquid-universal-6" defer></script>
-  <script src="/assets/js/home-modern.js?v=20260927-experience" defer></script>
+  <script src="/assets/js/global.js?v=20261007-home-marquee-1" defer></script>
+  <script src="/assets/js/home-modern.js?v=20261007-signature-marquee-1" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
   <script src="/assets/js/home-joby-selected.js?v=20261003-1" defer></script>
