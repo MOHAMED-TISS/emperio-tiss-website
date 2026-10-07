@@ -218,7 +218,7 @@
   // Home signature selection marquee is shared across ES / EN / FR / IT / AR.
   // Re-append after legacy Home layers so this approved component owns the final cascade.
   if (doc.body.classList.contains('home-experience')) {
-    const homeSelectionHref = '/assets/css/home-selection-marquee.css?v=20261007-1';
+    const homeSelectionHref = '/assets/css/home-selection-marquee.css?v=20261007-2';
     let homeSelectionLink = [...doc.querySelectorAll('link[rel="stylesheet"]')].find(link =>
       assetPath(link.getAttribute('href') || '') === assetPath(homeSelectionHref)
     );
