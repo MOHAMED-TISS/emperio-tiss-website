@@ -31,12 +31,12 @@ class SeoHeadAppender {
       '<link rel="stylesheet" href="/assets/css/site-2026.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/theme-mode.css?v=20261004-3">' +
       '<link rel="stylesheet" href="/assets/css/scrollbar-editorial.css?v=20261006-2">' +
-      '<link rel="stylesheet" href="/assets/css/whatsapp-floating.css?v=20261007-2">' +
+      '<link rel="stylesheet" href="/assets/css/whatsapp-floating.css?v=20261007-3">' +
       '<link rel="stylesheet" href="/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-11">' +
       '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-4">' +
       '<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261007-6">' +
       '<script src="/assets/js/cookie-consent.js?v=20261007-6" defer></script>' +
-      '<script src="/assets/js/whatsapp-floating.js?v=20261007-1" defer></script>' +
+      '<script src="/assets/js/whatsapp-floating.js?v=20261007-3" defer></script>' +
       '<script src="/assets/js/analytics-events.js?v=20261004-3" defer></script>' +
       '<script src="/assets/js/theme-mode.js?v=20261004-3" defer></script>' +
       '<script src="/assets/js/header-universal.js?v=20261006-liquid-universal-11" defer></script>' +
