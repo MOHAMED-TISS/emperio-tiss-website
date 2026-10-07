@@ -398,3 +398,60 @@ html[data-et-theme="dark"][lang="es"] body.home-page.home-experience .home-selec
 @media(prefers-reduced-motion:reduce){
   html[lang="es"] body.home-page.home-experience .home-selection-redesign__hero-word{transition:none}
 }
+
+
+/* v5 — larger bottom marquee */
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker{
+  min-height:88px!important;
+  background:
+    linear-gradient(90deg,rgba(5,18,30,.82),rgba(5,18,30,.68) 50%,rgba(5,18,30,.82))!important;
+  border-top:1px solid rgba(229,205,159,.20)!important;
+  backdrop-filter:blur(16px) saturate(118%)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(118%)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker .home-selection-marquee__track{
+  animation-duration:84s!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker .home-selection-marquee__word--term{
+  color:rgba(250,245,235,.76)!important;
+  font:600 clamp(12px,1.05vw,15px)/1 "Inter","DM Sans",sans-serif!important;
+  letter-spacing:.14em!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker .home-selection-marquee__sep{
+  width:clamp(56px,5vw,78px)!important;
+  margin:0 clamp(20px,2.2vw,32px)!important;
+  background:linear-gradient(90deg,transparent,rgba(224,197,142,.48),transparent)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker .home-selection-marquee__sep::after{
+  width:4px!important;
+  height:4px!important;
+  box-shadow:0 0 0 4px rgba(216,189,134,.07)!important;
+}
+
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__panel{
+  bottom:136px!important;
+}
+
+@media(max-width:700px){
+  html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker{
+    min-height:68px!important;
+  }
+
+  html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker .home-selection-marquee__word--term{
+    font-size:10px!important;
+    letter-spacing:.12em!important;
+  }
+
+  html[lang="es"] body.home-page.home-experience .home-selection-redesign__ticker .home-selection-marquee__sep{
+    width:38px!important;
+    margin:0 14px!important;
+  }
+
+  html[lang="es"] body.home-page.home-experience .home-selection-redesign__panel{
+    bottom:100px!important;
+  }
+}
