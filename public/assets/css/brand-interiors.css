@@ -526,7 +526,7 @@ body.home-page:not(.home-experience) {
 }
 
 body.home-page:not(.home-experience) .site-header .site-logo::after {
-  background-image: url("/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal");
+  background-image: url("/assets/images/emperio-tiss-logo.svg?v=20261008-brand");
 }
 
 /* RTL stays RTL; the visual system should not force Western alignment. */
@@ -622,7 +622,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .fish-site-footer .footer-logo,
   .footer-band img
 ) {
-  content: url("/assets/images/emperio-tiss-logo.svg?v=20260922-arc-metal") !important;
+  content: url("/assets/images/emperio-tiss-logo.svg?v=20261008-brand") !important;
   object-fit: contain !important;
 }
 

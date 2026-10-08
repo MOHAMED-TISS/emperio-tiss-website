@@ -23,7 +23,7 @@ class SeoHeadAppender {
   element(element) {
     element.append(
       buildSeoHead(this.meta) +
-      '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=2">' +
+      '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=20261008-brand">' +
       '<script>(function(){try{var t=localStorage.getItem("et_theme_mode");document.documentElement.dataset.etTheme=(t==="dark"||t==="light")?t:"light"}catch(e){document.documentElement.dataset.etTheme="light"}})();</script>' +
       '<link rel="preconnect" href="https://fonts.googleapis.com">' +
       '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +

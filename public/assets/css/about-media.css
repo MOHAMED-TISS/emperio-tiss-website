@@ -84,7 +84,7 @@
   right: clamp(-80px, 3vw, 40px);
   width: min(48vw, 650px);
   aspect-ratio: 1;
-  background: url("/assets/images/emperio-tiss-emblem.svg") center / contain no-repeat;
+  background: url("/assets/images/emperio-tiss-emblem.svg?v=20261008-brand") center / contain no-repeat;
   opacity: .075;
   transform: translateY(-50%);
   pointer-events: none;

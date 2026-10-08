@@ -1834,8 +1834,8 @@ html[lang="es"] .home-page.home-experience .approved-hero-image {
   width:42px;
   height:49px;
   object-fit:contain;
-  filter:brightness(0) invert(1);
-  opacity:.96;
+  filter:none;
+  opacity:1;
 }
 
 .home-page.home-experience .home-signature-benefits{
@@ -2342,7 +2342,7 @@ body.home-experience .approved-footer-brand{
 body.home-experience .approved-footer-brand img{
   width:82px;
   height:94px;
-  filter:brightness(0) invert(1);
+  filter:none;
 }
 body.home-experience .approved-footer-brand span{
   margin-top:14px;

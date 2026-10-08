@@ -109,7 +109,7 @@
   width:42px;
   height:50px;
   object-fit:contain;
-  filter:brightness(0) invert(1);
+  filter:none;
 }
 .et-terminal-footer__feature>div{
   align-self:end;

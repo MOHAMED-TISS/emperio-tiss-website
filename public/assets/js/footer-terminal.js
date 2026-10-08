@@ -187,7 +187,7 @@
         <section class="et-terminal-footer__directory">
           <a class="et-terminal-footer__feature" href="${route('private')}">
             <span class="et-terminal-footer__label">${copy.featureLabel}</span>
-            <img src="/assets/images/emperio-tiss-emblem.svg?v=20261003-header-current" alt="" width="230" height="267" loading="lazy">
+            <img src="/assets/images/emperio-tiss-emblem.svg?v=20261008-brand" alt="" width="230" height="267" loading="lazy">
             <div>
               <strong>${copy.featureTitle}</strong>
               <small>${copy.featureText}</small>

@@ -380,7 +380,7 @@ body.private-page *{box-sizing:border-box}
   width:34px;
   height:40px;
   object-fit:contain;
-  filter:brightness(0) invert(1);
+  filter:none;
 }
 
 .private-loading-card{

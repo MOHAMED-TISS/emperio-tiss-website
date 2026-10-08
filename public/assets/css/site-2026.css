@@ -697,7 +697,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) footer a:
 body:not(.home-experience):not(.private-page):not(.private-admin-page) footer img{
   object-fit:contain!important;
   max-height:62px!important;
-  filter:brightness(0) invert(1)!important;
+  filter:none!important;
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-footer-bottom,.footer-bottom,.footer-legal,.et-footer-legal,.et-footer-bottom

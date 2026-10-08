@@ -108,7 +108,9 @@
       </button>
 
       <a href="${base}" class="et-liquid-logo" aria-label="EMPERIO TISS">
-        <img src="/assets/images/emperio-tiss-emblem.svg" alt="EMPERIO TISS" width="230" height="267" draggable="false">
+        <img class="et-liquid-emblem" src="/assets/images/emperio-tiss-emblem.svg?v=20261008-brand" alt="EMPERIO TISS" width="201" height="240" draggable="false">
+        <img class="et-liquid-wordmark et-liquid-wordmark--dark" src="/assets/images/brand/emperio-tiss-wordmark-gold.svg?v=20261008-brand" alt="" width="640" height="68" draggable="false">
+        <img class="et-liquid-wordmark et-liquid-wordmark--light" src="/assets/images/brand/emperio-tiss-wordmark-gold-on-light.svg?v=20261008-brand" alt="" width="640" height="68" draggable="false">
       </a>
 
       <nav class="et-liquid-nav" aria-label="${copy.company} · ${copy.products} · ${copy.seasonal} · ${copy.markets} · ${copy.news}">

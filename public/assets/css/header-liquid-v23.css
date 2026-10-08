@@ -894,3 +894,36 @@ body.shellfish-hero-moruno .et-liquid-header.is-over-hero .et-liquid-logo img{
     gap:calc(18px - (3px * var(--elh-p)));
   }
 }
+
+/* ---- Brand identity 2026-10: emblem + EMPERIO TISS wordmark ---- */
+.et-liquid-logo{
+  width:auto;
+  min-width:76px;
+  flex:0 0 auto;
+  gap:12px;
+  justify-content:flex-start;
+}
+.et-liquid-logo .et-liquid-emblem{width:54px;height:65px}
+.et-liquid-logo .et-liquid-wordmark{
+  width:auto;
+  height:21px;
+  max-width:none;
+  object-fit:contain;
+  filter:none!important;
+}
+.et-liquid-wordmark--light{display:none}
+html[data-et-theme="light"] .et-liquid-header:not(.is-over-hero) .et-liquid-wordmark--dark{display:none}
+html[data-et-theme="light"] .et-liquid-header:not(.is-over-hero) .et-liquid-wordmark--light{display:block}
+
+@media(max-width:1240px){
+  .et-liquid-logo{min-width:66px}
+  .et-liquid-logo .et-liquid-emblem{width:47px;height:57px}
+  .et-liquid-logo .et-liquid-wordmark{display:none!important}
+}
+@media(max-width:980px){
+  .et-liquid-logo{width:auto;min-width:0;gap:9px;justify-content:center}
+  .et-liquid-logo .et-liquid-emblem{width:41px;height:50px}
+  .et-liquid-logo .et-liquid-wordmark--dark{display:block!important;height:16px}
+  html[data-et-theme="light"] .et-liquid-header:not(.is-over-hero) .et-liquid-wordmark--dark{display:none!important}
+  html[data-et-theme="light"] .et-liquid-header:not(.is-over-hero) .et-liquid-wordmark--light{display:block!important;height:16px}
+}
