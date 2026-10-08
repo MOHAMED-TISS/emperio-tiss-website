@@ -326,3 +326,39 @@ html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .invitation
 }
 html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta .small{color:#cfb57e!important}
 html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta .small{color:var(--hb-gold-deep)!important}
+
+/* ---------- small labels: legible in both themes ---------- */
+html[lang="es"] body.home-page.home-experience .et-experience :is(
+  .home-selection-redesign__eyebrow,
+  .home-selection-redesign__seasonal span,
+  .approach.approach-v2 .approach-heading-meta .small,
+  .home-joby-selected-contact .invitation>.small
+){
+  font-size:10.5px!important;
+  font-weight:500!important;
+  letter-spacing:.28em!important;
+}
+/* light theme: a deeper gold on cream (≥5.5:1) */
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .et-experience :is(
+  .home-selection-redesign__eyebrow,
+  .home-selection-redesign__seasonal span,
+  .approach.approach-v2 .approach-heading-meta .small,
+  .home-joby-selected-contact .invitation>.small
+){color:#765a2c!important}
+
+/* seasonal strip button: same champagne pill as the other actions */
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__seasonal a.home-action{
+  min-height:48px!important;
+  padding:0 24px!important;
+  gap:14px!important;
+  border:1px solid rgba(240,222,180,.7)!important;
+  border-radius:999px!important;
+  background:var(--hb-gold-metal)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(96,72,32,.35),0 10px 26px rgba(9,20,31,.16)!important;
+  color:#0b1824!important;
+  font:600 10.5px/1 var(--hb-sans)!important;
+  letter-spacing:.22em!important;
+  text-transform:uppercase!important;
+}
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__seasonal a.home-action:hover{transform:translateY(-2px)!important}
+html[lang="es"] body.home-page.home-experience .home-selection-redesign__seasonal a.home-action span{color:#0b1824!important}

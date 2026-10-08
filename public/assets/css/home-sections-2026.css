@@ -457,3 +457,9 @@ html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-step.i
 html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-steps__link{border-bottom-color:rgba(212,185,127,.5)}
 html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-steps__link:hover{color:var(--hs-gold-light)}
 html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-steps__frame{box-shadow:0 40px 90px rgba(0,0,0,.4),0 0 0 1px rgba(231,207,156,.2)}
+
+/* light theme: deeper gold for the small step labels (≥5.5:1 on cream) */
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience :is(.ets-step__kicker,.ets-step__chips li){color:#765a2c}
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .ets-step__chips li{border-color:rgba(118,90,44,.38)}
+html[lang="es"] body.home-page.home-experience .ets-step__kicker{font-size:11px}
+html[lang="es"] body.home-page.home-experience .ets-step__chips li{font-size:10.5px}
