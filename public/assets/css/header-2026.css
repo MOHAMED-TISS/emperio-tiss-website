@@ -16,24 +16,45 @@
 }
 
 /* ---------- header shell ---------- */
+/* --eth-p (0 → 1) is driven by header-universal.js as the page scrolls: every
+   dimension below interpolates with it, so the bar contracts gradually.
+   --eth-g is the amount of liquid glass (follows --eth-p over the hero, full elsewhere). */
 .eth{
+  --eth-p:0;
+  --eth-g:var(--eth-p);
   position:fixed;
   inset:0 0 auto 0;
   z-index:1000;
   color:var(--eth-cream);
   font-family:var(--eth-font);
   pointer-events:none;
+  opacity:0;
+  transition:opacity .28s var(--eth-ease);
 }
+.eth.is-ready{opacity:1}
+.eth:not(.is-over-hero){--eth-g:1}
 .eth *{box-sizing:border-box}
 .eth a,.eth button{pointer-events:auto}
 .eth svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .eth :focus-visible,.eth-menu :focus-visible{outline:2px solid var(--eth-gold-light);outline-offset:3px;border-radius:6px}
 
+/* soft top shade for legibility over the hero; fades out while contracting */
+.eth::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:170px;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(9,20,31,.62) 0%,rgba(9,20,31,.22) 62%,rgba(9,20,31,0) 100%);
+  opacity:calc(1 - var(--eth-p) * 1.6);
+}
+.eth:not(.is-over-hero)::before{opacity:0}
+
 .eth-skip{
   position:absolute;
   inset-inline-start:16px;
   top:-60px;
-  z-index:2;
+  z-index:3;
   padding:10px 16px;
   border-radius:999px;
   background:var(--eth-gold);
@@ -45,15 +66,16 @@
 .eth-skip:focus{top:12px}
 .eth-main-anchor{position:absolute;width:1px;height:1px;overflow:hidden}
 
-/* top strip */
+/* top strip: collapses during the first third of the contraction */
 .eth-strip{
+  position:relative;
   pointer-events:auto;
-  max-height:36px;
+  max-height:calc(36px * clamp(0, 1 - var(--eth-p) * 3, 1));
+  opacity:clamp(0, 1 - var(--eth-p) * 3, 1);
   overflow:hidden;
-  background:rgba(5,12,19,.72);
-  border-bottom:1px solid var(--eth-line);
-  transition:max-height .35s var(--eth-ease),opacity .25s var(--eth-ease),border-color .25s;
+  border-bottom:1px solid rgba(183,160,109,calc(.24 * clamp(0, 1 - var(--eth-p) * 3, 1)));
 }
+.eth:not(.is-over-hero) .eth-strip{max-height:0;opacity:0;border-bottom-color:transparent}
 .eth-strip__inner{
   height:35px;
   padding:0 48px;
@@ -85,27 +107,69 @@
 }
 .eth-theme svg{width:16px;height:16px}
 
-/* main bar */
+/* main bar — liquid glass */
 .eth-bar{
   pointer-events:auto;
   position:relative;
+  isolation:isolate;
   display:grid;
   grid-template-columns:1fr auto 1fr;
   align-items:center;
   gap:24px;
-  height:100px;
-  padding:0 48px;
-  margin:0 auto;
-  border-bottom:1px solid rgba(244,240,230,.12);
-  background:linear-gradient(180deg,rgba(9,20,31,.72) 0%,rgba(9,20,31,.28) 70%,rgba(9,20,31,0) 100%);
-  transition:height .35s var(--eth-ease),width .35s var(--eth-ease),margin .35s var(--eth-ease),padding .35s var(--eth-ease),
-             border-radius .35s var(--eth-ease),background-color .25s,border-color .25s,box-shadow .35s;
+  width:calc(100% - var(--eth-p) * (100% - min(1120px, 100% - 32px)));
+  height:calc(100px - 36px * var(--eth-p));
+  margin:calc(12px * var(--eth-p)) auto 0;
+  padding:0 calc(48px - 34px * var(--eth-p));
+  border:1px solid rgba(255,255,255,calc(.14 * var(--eth-g)));
+  border-top-color:rgba(255,255,255,calc(.26 * var(--eth-g)));
+  border-radius:calc(34px * var(--eth-p));
+  background:
+    linear-gradient(180deg,rgba(255,255,255,calc(.06 * var(--eth-g))) 0%,rgba(255,255,255,0) 50%),
+    rgba(9,20,31,calc(.42 * var(--eth-g)));
+  -webkit-backdrop-filter:blur(calc(24px * var(--eth-g))) saturate(calc(100% + 80% * var(--eth-g)));
+  backdrop-filter:blur(calc(24px * var(--eth-g))) saturate(calc(100% + 80% * var(--eth-g)));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,calc(.24 * var(--eth-g))),
+    inset 0 -1px 0 rgba(0,0,0,calc(.18 * var(--eth-g))),
+    0 18px 48px rgba(0,0,0,calc(.24 * var(--eth-p)));
+  transition:background-color .3s,color .3s,border-color .3s;
+}
+/* glass sheen: a diagonal highlight that gives the "liquid" reflection */
+.eth-bar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 140% at 12% -30%,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 46%),
+    linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.06) 48%,rgba(255,255,255,0) 62%),
+    linear-gradient(90deg,rgba(183,160,109,.08),rgba(183,160,109,0) 30%,rgba(183,160,109,0) 70%,rgba(183,160,109,.08));
+  opacity:var(--eth-g);
+}
+/* hairline under the full-width bar at the top of the page */
+.eth-bar::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 -1px 0;
+  height:1px;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(183,160,109,0),rgba(183,160,109,.35),rgba(183,160,109,0));
+  opacity:calc(1 - var(--eth-p) * 2);
 }
 .eth-bar__side{display:flex;align-items:center;gap:28px;min-width:0}
 .eth-bar__side--end{justify-content:flex-end;gap:12px}
 .eth-bar__side--end .eth-nav{margin-inline-end:16px}
 
-.eth-nav{display:flex;align-items:center;gap:30px}
+.eth-nav{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  opacity:clamp(0, 1 - var(--eth-p) * 2.2, 1);
+}
+.eth.is-compact .eth-nav,.eth.is-compact .eth-signature{visibility:hidden;pointer-events:none}
+.eth-signature{opacity:clamp(0, 1 - var(--eth-p) * 2.2, 1)}
 .eth-nav a{
   position:relative;
   color:inherit;
@@ -129,7 +193,7 @@
 .eth-nav a:hover::after,.eth-nav a.is-active::after{transform:scaleX(1)}
 .eth-nav a.is-active,.eth-nav a:hover{color:var(--eth-gold-light)}
 
-/* logo */
+/* logo: stacked lockup that scales down smoothly */
 .eth-logo{
   display:flex;
   flex-direction:column;
@@ -137,10 +201,11 @@
   gap:6px;
   direction:ltr; /* the brand lockup never mirrors in RTL */
   text-decoration:none;
-  transition:gap .35s var(--eth-ease);
+  transform:scale(calc(1 - .4 * var(--eth-p)));
+  transform-origin:center;
 }
-.eth-logo__emblem{display:block;width:auto;height:52px;transition:height .35s var(--eth-ease)}
-.eth-logo__name{display:block;width:auto;height:27px;transition:height .35s var(--eth-ease)}
+.eth-logo__emblem{display:block;width:auto;height:52px}
+.eth-logo__name{display:block;width:auto;height:27px}
 .eth-logo__name--light{display:none}
 
 /* buttons */
@@ -173,59 +238,27 @@
 }
 .eth-menu-btn:hover{border-color:var(--eth-gold-light);color:var(--eth-gold-light)}
 
-/* ---------- states ---------- */
-
-/* top of a page without a dark hero: solid surface, no strip */
-.eth:not(.is-over-hero):not(.is-compact) .eth-strip{max-height:0;opacity:0;border-color:transparent}
-.eth:not(.is-over-hero):not(.is-compact) .eth-bar{
-  height:88px;
-  background:rgba(9,20,31,.94);
-  border-bottom-color:var(--eth-line);
-  -webkit-backdrop-filter:blur(18px);
-  backdrop-filter:blur(18px);
+/* ---------- light theme: cream liquid glass away from the dark hero ---------- */
+html[data-et-theme="light"] .eth:not(.is-over-hero){color:var(--eth-navy)}
+html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-bar{
+  border-color:rgba(255,255,255,.55);
+  border-bottom-color:rgba(143,111,60,.18);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.08) 52%,rgba(255,255,255,0) 100%),
+    rgba(250,247,240,.34);
+  -webkit-backdrop-filter:blur(28px) saturate(190%);
+  backdrop-filter:blur(28px) saturate(190%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.7),
+    inset 0 -1px 0 rgba(143,111,60,.1),
+    0 16px 42px rgba(9,20,31,calc(.1 + .06 * var(--eth-p)));
 }
-.eth:not(.is-over-hero):not(.is-compact) .eth-logo__emblem{height:44px}
-.eth:not(.is-over-hero):not(.is-compact) .eth-logo__name{height:23px}
-
-/* compact floating bar after scrolling */
-.eth.is-compact .eth-strip{max-height:0;opacity:0;border-color:transparent}
-.eth.is-compact .eth-bar{
-  width:min(1120px,calc(100% - 32px));
-  height:64px;
-  margin-top:12px;
-  padding:0 12px 0 14px;
-  border:1px solid rgba(183,160,109,.34);
-  border-radius:999px;
-  background:rgba(9,20,31,.9);
-  -webkit-backdrop-filter:blur(22px) saturate(1.2);
-  backdrop-filter:blur(22px) saturate(1.2);
-  box-shadow:0 18px 44px rgba(0,0,0,.28);
-}
-.eth.is-compact .eth-nav,.eth.is-compact .eth-signature{display:none}
-.eth.is-compact .eth-logo{flex-direction:row;gap:9px}
-.eth.is-compact .eth-logo__emblem{height:40px}
-.eth.is-compact .eth-logo__name{height:22px}
-.eth.is-compact .eth-btn,.eth.is-compact .eth-menu-btn{height:38px}
-
-/* light theme: cream surfaces when the header is not over a dark hero */
-html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-bar,
-html[data-et-theme="light"] .eth.is-compact .eth-bar{
-  background:rgba(244,240,230,.94);
-  border-color:rgba(143,111,60,.28);
-  color:var(--eth-navy);
-}
-html[data-et-theme="light"] .eth.is-compact .eth-bar{box-shadow:0 18px 40px rgba(9,20,31,.14)}
-html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-logo__name--dark,
-html[data-et-theme="light"] .eth.is-compact .eth-logo__name--dark{display:none}
-html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-logo__name--light,
-html[data-et-theme="light"] .eth.is-compact .eth-logo__name--light{display:block}
+html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-logo__name--dark{display:none}
+html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-logo__name--light{display:block}
 html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-nav a.is-active,
-html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-nav a:hover,
-html[data-et-theme="light"] .eth.is-compact .eth-nav a:hover{color:var(--eth-gold-deep)}
-html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-btn--ghost,
-html[data-et-theme="light"] .eth.is-compact .eth-btn--ghost{color:var(--eth-gold-deep);border-color:rgba(143,111,60,.6)}
-html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-menu-btn,
-html[data-et-theme="light"] .eth.is-compact .eth-menu-btn{border-color:rgba(9,20,31,.3);background:rgba(9,20,31,.04)}
+html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-nav a:hover{color:var(--eth-gold-deep)}
+html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-btn--ghost{color:var(--eth-gold-deep);border-color:rgba(143,111,60,.6)}
+html[data-et-theme="light"] .eth:not(.is-over-hero) .eth-menu-btn{border-color:rgba(9,20,31,.28);background:rgba(255,255,255,.35)}
 
 /* ---------- responsive ---------- */
 @media (max-width:1240px){
@@ -234,24 +267,27 @@ html[data-et-theme="light"] .eth.is-compact .eth-menu-btn{border-color:rgba(9,20
 @media (max-width:1100px){
   .eth-strip{display:none}
   .eth-signature{display:none}
-  .eth-bar{padding:0 24px}
+  .eth-bar{padding:0 calc(24px - 12px * var(--eth-p))}
 }
 @media (max-width:720px){
-  .eth-bar,
-  .eth:not(.is-over-hero):not(.is-compact) .eth-bar{height:68px;padding:0 14px;gap:10px}
-  .eth-logo,.eth.is-compact .eth-logo{flex-direction:row;gap:8px}
-  .eth-logo__emblem,
-  .eth:not(.is-over-hero):not(.is-compact) .eth-logo__emblem,
-  .eth.is-compact .eth-logo__emblem{height:38px}
-  .eth-logo__name,
-  .eth:not(.is-over-hero):not(.is-compact) .eth-logo__name,
-  .eth.is-compact .eth-logo__name{height:21px}
+  .eth-bar{
+    width:calc(100% - var(--eth-p) * 16px);
+    height:calc(68px - 10px * var(--eth-p));
+    margin-top:calc(8px * var(--eth-p));
+    padding:0 calc(14px - 6px * var(--eth-p));
+    gap:10px;
+  }
+  .eth-logo{flex-direction:row;gap:8px;transform:scale(calc(1 - .08 * var(--eth-p)))}
+  .eth-logo__emblem{height:38px}
+  .eth-logo__name{height:21px}
   .eth-menu-btn{width:42px;padding:0}
   .eth-menu-btn span,.eth-contact__label{display:none}
   .eth-contact{width:42px;padding:0}
   .eth-contact svg{display:block}
-  .eth.is-compact .eth-bar{height:58px;margin-top:8px;width:calc(100% - 16px);padding:0 8px}
-  .eth.is-compact .eth-btn,.eth.is-compact .eth-menu-btn{height:40px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .eth,.eth *{transition:none!important}
 }
 
 /* ---------- full-screen menu ---------- */

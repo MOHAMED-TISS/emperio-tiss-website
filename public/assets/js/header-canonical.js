@@ -5,7 +5,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20260929-overlay-preserve-1';
+  const VERSION = '20261008-eth-yield-1';
   if (window.__etCanonicalHeaderVersion === VERSION) return;
   window.__etCanonicalHeaderVersion = VERSION;
   window.__etHeaderFinalReady = true; // compatibility with older cached loaders.
@@ -163,7 +163,12 @@
     ].forEach((property) => header.style.removeProperty(property));
   };
 
+  // The 2026 header (header-universal.js) owns every public page now: stand down so the two never fight.
+  const ethInCharge = () =>
+    Boolean(doc.getElementById('ethHeader') || doc.querySelector('script[src*="header-universal.js"]'));
+
   const installCanonicalHeader = () => {
+    if (ethInCharge()) return;
     body.classList.add('et-brand-shell');
 
     let header = doc.querySelector('body > .site-header') || doc.querySelector('.site-header');
@@ -207,6 +212,10 @@
   // A few legacy scripts can still mutate or replace the header after DOM ready.
   // Reassert the canonical structure only when the header itself was replaced.
   const observer = new MutationObserver(() => {
+    if (ethInCharge()) {
+      observer.disconnect();
+      return;
+    }
     const header = doc.querySelector('body > .site-header') || doc.querySelector('.site-header');
     if (!header || header.dataset.etCanonicalHeader !== VERSION) installCanonicalHeader();
   });

@@ -9,7 +9,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261008-eth-1';
+  const VERSION = '20261008-eth-3';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -320,7 +320,20 @@
 
     ensureMainTarget();
     syncTheme();
-    updateScrollState();
+    // Start in the right state (e.g. after a reload mid-page) without animating from the top.
+    target = progress = Math.min(1, Math.max(0, scrollY / COMPACT_DISTANCE));
+    updateHero(header);
+    paint(header);
+    header.classList.add('is-ready');
+  };
+
+  // Legacy scripts (e.g. the fish catalogue rebuild) may insert an old header later: remove it.
+  const LEGACY_HEADERS = 'body > .site-header, body > .p-header, body > #etLiquidHeader, body > header.et-liquid-header';
+  const removeLegacyHeaders = () => {
+    doc.querySelectorAll(LEGACY_HEADERS).forEach(old => {
+      old.querySelectorAll('#navOverlay,.nav-overlay,.intl-overlay').forEach(overlay => body.appendChild(overlay));
+      old.remove();
+    });
   };
 
   // ---- theme
@@ -390,12 +403,15 @@
     'main > section[class$="-hero"]', 'main > section[class*="-hero "]'
   ].join(',');
 
-  let ticking = false;
-  const updateScrollState = () => {
-    ticking = false;
-    const header = doc.getElementById('ethHeader');
-    if (!header) return;
-    header.classList.toggle('is-compact', scrollY > 48);
+  // Gradual contraction: --eth-p eases from 0 (top) to 1 (compact) as the page scrolls.
+  const COMPACT_DISTANCE = 280;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let progress = 0;
+  let target = 0;
+  let frame = 0;
+  const nextFrame = fn => (doc.hidden ? setTimeout(fn, 16) : requestAnimationFrame(fn));
+
+  const updateHero = header => {
     const hero = doc.querySelector(heroSelector);
     let overHero = false;
     if (hero) {
@@ -405,13 +421,31 @@
     }
     header.classList.toggle('is-over-hero', overHero);
   };
-  const requestUpdate = () => {
-    if (ticking) return;
-    ticking = true;
-    // requestAnimationFrame is paused in background tabs; fall back to a timer there.
-    if (doc.hidden) setTimeout(updateScrollState, 16);
-    else requestAnimationFrame(updateScrollState);
+
+  const paint = header => {
+    header.style.setProperty('--eth-p', progress.toFixed(4));
+    header.classList.toggle('is-compact', progress > 0.6);
+    header.classList.toggle('is-scrolled', progress > 0.02);
   };
+
+  const step = () => {
+    frame = 0;
+    const header = doc.getElementById('ethHeader');
+    if (!header) return;
+    const delta = target - progress;
+    progress = reduceMotion.matches || Math.abs(delta) < 0.002 ? target : progress + delta * 0.16;
+    paint(header);
+    if (progress !== target) frame = nextFrame(step);
+  };
+
+  const updateScrollState = () => {
+    const header = doc.getElementById('ethHeader');
+    if (!header) return;
+    updateHero(header);
+    target = Math.min(1, Math.max(0, scrollY / COMPACT_DISTANCE));
+    if (!frame) frame = nextFrame(step);
+  };
+  const requestUpdate = updateScrollState;
 
   install();
   // The hero can still be settling (fonts, images, late scripts) when the header installs.
@@ -466,13 +500,23 @@
   }
 
   // Re-install if a legacy script replaces or removes the header later.
+  // Capped so a legacy script that keeps re-inserting its header can never loop with this one.
   let queued = false;
-  new MutationObserver(() => {
-    if (queued || (doc.getElementById('ethHeader') && doc.getElementById('ethMenu'))) return;
+  let repairs = 0;
+  const observer = new MutationObserver(() => {
+    if (queued) return;
+    const missing = !doc.getElementById('ethHeader') || !doc.getElementById('ethMenu');
+    if (!missing && !doc.querySelector(LEGACY_HEADERS)) return;
+    if (++repairs > 12) {
+      observer.disconnect();
+      return;
+    }
     queued = true;
     queueMicrotask(() => {
       queued = false;
       if (!doc.getElementById('ethHeader') || !doc.getElementById('ethMenu')) install();
+      removeLegacyHeaders();
     });
-  }).observe(body, { childList: true, subtree: true });
+  });
+  observer.observe(body, { childList: true });
 })();
