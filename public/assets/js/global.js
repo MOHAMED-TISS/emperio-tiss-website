@@ -196,7 +196,7 @@
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
   loadCss('/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-11', 'etLiquidHeaderCss');
-  loadScript('/assets/js/header-universal.js?v=20261008-eth-5', 'etUniversalHomeHeader');
+  loadScript('/assets/js/header-universal.js?v=20261008-eth-6', 'etUniversalHomeHeader');
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20261006-liquid-universal-11', 'etGlobalCore');

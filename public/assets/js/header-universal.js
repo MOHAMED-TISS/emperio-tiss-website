@@ -9,7 +9,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261008-eth-5';
+  const VERSION = '20261008-eth-6';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -402,9 +402,10 @@
     'main > .product-hero', 'main > .about-hero', 'main > .news-hero', 'main > section.hero',
     'main > section[class$="-hero"]', 'main > section[class*="-hero "]',
     // dark bands further down the page: the header switches to its navy glass over them too
-    '[data-eth-dark]', '.home-selection-redesign__stage', '.home-joby-selected-markets',
-    '.home-signature-v2', 'body > .et-terminal-footer'
+    '[data-eth-dark]:not([data-eth-dark="theme"])', '.home-selection-redesign__stage', 'body > .et-terminal-footer'
   ].join(',');
+  // bands that are dark only in the dark theme (they turn ivory in the light theme)
+  const themeDarkSelector = '[data-eth-dark="theme"]';
 
   // Gradual contraction: --eth-p eases from 0 (top) to 1 (compact) as the page scrolls.
   const COMPACT_DISTANCE = 280;
@@ -416,7 +417,9 @@
 
   const updateHero = header => {
     const probe = Math.min(header.getBoundingClientRect().bottom, 140) * 0.6;
-    const overHero = [...doc.querySelectorAll(heroSelector)].some(zone => {
+    const zones = [...doc.querySelectorAll(heroSelector)];
+    if (readTheme() === 'dark') zones.push(...doc.querySelectorAll(themeDarkSelector));
+    const overHero = zones.some(zone => {
       const rect = zone.getBoundingClientRect();
       return rect.top <= probe && rect.bottom > probe;
     });
@@ -497,7 +500,7 @@
 
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate, { passive: true });
-    window.addEventListener('et:themechange', syncTheme);
+    window.addEventListener('et:themechange', () => { syncTheme(); requestUpdate(); });
   }
 
   // Re-install if a legacy script replaces or removes the header later.
