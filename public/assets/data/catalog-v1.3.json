@@ -679,6 +679,35 @@
       "reference": "6781"
     },
     {
+      "id": "granada",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Granada",
+      "scientificName": "Punica granatum",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "España / Marruecos según campaña"
+      ],
+      "image": "",
+      "images": [],
+      "status": "active",
+      "faoZone": [],
+      "quality": [],
+      "format": [],
+      "packaging": [],
+      "weights": [],
+      "season": [],
+      "availability": [],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "calibre": [],
+      "reference": "5394"
+    },
+    {
       "id": "tomato",
       "family": "produce",
       "category": "produce",
