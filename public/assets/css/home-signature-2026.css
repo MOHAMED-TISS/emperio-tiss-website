@@ -1,0 +1,191 @@
+/* EMPERIO TISS — Home ES "EMPERIO Signature" (2026-10)
+   Private-access still life (velvet in the dark theme, ivory linen in the light theme),
+   copy on the left, the objects visible on the right, benefits as a gold-ringed glass strip. */
+
+html[lang="es"] body.home-page.home-experience .home-signature-v2{
+  --sg-navy:#0b1e33;
+  --sg-deep:#07131f;
+  --sg-ivory:#f7f3ea;
+  --sg-gold:#b7a06d;
+  --sg-gold-light:#e7cf9c;
+  --sg-gold-deep:#765a2c;
+  --sg-serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sg-sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+
+/* ---------- photograph + veil ---------- */
+html[lang="es"] body.home-page.home-experience .home-signature-media{
+  /* anchored to the right edge so the objects never sit under the copy; the veil hides the seam */
+  background:#f4efe4 url("/assets/images/signature/signature-light-2026.webp") right 42% / max(70%,1200px) auto no-repeat!important;
+  transform:none!important;
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-media{
+  background-color:#08131f!important;
+  background-image:url("/assets/images/signature/signature-dark-2026.webp")!important;
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-v2{background:var(--sg-deep)!important}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-overlay{
+  background:
+    linear-gradient(90deg,rgba(7,19,31,.95) 0%,rgba(7,19,31,.82) 34%,rgba(7,19,31,.2) 60%,rgba(7,19,31,0) 100%),
+    linear-gradient(180deg,rgba(7,19,31,.35) 0%,rgba(7,19,31,0) 26%,rgba(7,19,31,0) 58%,rgba(7,19,31,.88) 100%)!important;
+}
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .home-signature-overlay{
+  background:
+    linear-gradient(90deg,rgba(247,243,234,.96) 0%,rgba(247,243,234,.84) 34%,rgba(247,243,234,.18) 60%,rgba(247,243,234,0) 100%),
+    linear-gradient(180deg,rgba(247,243,234,.4) 0%,rgba(247,243,234,0) 26%,rgba(247,243,234,0) 58%,rgba(247,243,234,.9) 100%)!important;
+}
+
+/* ---------- frame ---------- */
+html[lang="es"] body.home-page.home-experience .home-signature-v2::after{
+  content:"";
+  position:absolute;
+  inset:22px;
+  z-index:-1;
+  border:1px solid rgba(183,160,109,.22);
+  border-radius:28px;
+  pointer-events:none;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-shell{gap:28px!important;padding:52px 0 40px!important}
+html[lang="es"] body.home-page.home-experience .home-signature-v2 :is(.home-signature-topline,.home-signature-bottom){
+  font:500 10px/1 var(--sg-sans)!important;
+  letter-spacing:.32em!important;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-v2 .home-signature-topline span:first-child{display:flex;align-items:center;gap:14px}
+html[lang="es"] body.home-page.home-experience .home-signature-v2 .home-signature-topline span:first-child::before{content:"";width:28px;height:1px;background:var(--sg-gold)}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-v2 :is(.home-signature-topline,.home-signature-bottom){color:rgba(244,240,230,.62)!important;border-color:rgba(231,207,156,.16)!important}
+
+/* ---------- copy ---------- */
+html[lang="es"] body.home-page.home-experience .home-signature-grid{
+  display:flex!important;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:clamp(40px,5vw,64px)!important;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-copy{max-width:min(640px,52%)!important}
+html[lang="es"] body.home-page.home-experience #home-private-title{
+  max-width:none!important;
+  font-size:clamp(46px,4.5vw,80px)!important;
+  line-height:1.04!important;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-v2 .home-private-eyebrow{
+  font:500 10.5px/1 var(--sg-sans)!important;
+  letter-spacing:.3em!important;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-v2 .home-private-description{
+  max-width:520px!important;
+  font:400 18px/1.65 var(--sg-sans)!important;
+  letter-spacing:0!important;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-v2 .home-private-condition{
+  font:400 italic 14px/1.6 var(--sg-serif)!important;
+  letter-spacing:0!important;
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-v2 .home-private-eyebrow{color:var(--sg-gold-light)!important}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience #home-private-title em{color:var(--sg-gold-light)!important}
+
+/* ---------- benefits: a gold-ringed glass strip ---------- */
+html[lang="es"] body.home-page.home-experience .home-signature-panel{
+  display:grid!important;
+  grid-template-columns:minmax(190px,.7fr) 3fr;
+  align-items:stretch;
+  padding:30px 34px!important;
+  border:1px solid transparent!important;
+  border-radius:24px!important;
+  overflow:hidden;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  padding:1px;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(100deg,rgba(231,207,156,.8) 0%,rgba(183,160,109,.16) 26%,rgba(183,160,109,.06) 50%,rgba(183,160,109,.16) 74%,rgba(231,207,156,.8) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-panel{
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),rgba(7,19,31,.58)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 30px 80px rgba(0,0,0,.35)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(140%)!important;
+  backdrop-filter:blur(18px) saturate(140%)!important;
+}
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .home-signature-panel{
+  background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.66))!important;
+  -webkit-backdrop-filter:blur(18px) saturate(140%)!important;
+  backdrop-filter:blur(18px) saturate(140%)!important;
+}
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .home-signature-panel::before{
+  background:linear-gradient(100deg,rgba(118,90,44,.6) 0%,rgba(118,90,44,.14) 26%,rgba(118,90,44,.05) 50%,rgba(118,90,44,.14) 74%,rgba(118,90,44,.6) 100%);
+}
+html[lang="es"] body.home-page.home-experience .home-signature-panel-head{
+  min-height:0!important;
+  flex-direction:column-reverse;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  gap:16px!important;
+  padding:0 30px 0 0!important;
+  border-bottom:0!important;
+  border-right:1px solid rgba(183,160,109,.28);
+}
+html[lang="es"] body.home-page.home-experience .home-signature-panel-head>span{
+  font:500 10px/1.5 var(--sg-sans)!important;
+  letter-spacing:.28em!important;
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-panel-head>span{color:var(--sg-gold-light)!important}
+html[lang="es"] body.home-page.home-experience .home-signature-panel-head img{width:48px!important;height:56px!important}
+html[lang="es"] body.home-page.home-experience .home-signature-benefits{
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr);
+}
+html[lang="es"] body.home-page.home-experience .home-signature-benefits article{
+  grid-template-columns:1fr!important;
+  gap:12px!important;
+  padding:0 28px!important;
+  border-bottom:0!important;
+  border-left:1px solid rgba(183,160,109,.2);
+}
+html[lang="es"] body.home-page.home-experience .home-signature-benefits article:first-child{border-left:0}
+html[lang="es"] body.home-page.home-experience .home-signature-benefits article>span{
+  font:400 italic 22px/1 var(--sg-serif)!important;
+  letter-spacing:.02em!important;
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-benefits article>span{color:var(--sg-gold-light)!important}
+html[lang="es"] body.home-page.home-experience .home-signature-benefits h3{
+  margin:0 0 8px!important;
+  font:400 24px/1.1 var(--sg-serif)!important;
+  letter-spacing:-.01em!important;
+}
+html[lang="es"] body.home-page.home-experience .home-signature-benefits p{font:400 13.5px/1.6 var(--sg-sans)!important}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-benefits h3{color:#fffaf0!important}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-benefits p{color:rgba(244,240,230,.72)!important}
+
+/* ---------- mobile ---------- */
+@media (max-width:900px){
+  html[lang="es"] body.home-page.home-experience .home-signature-media{
+    background-image:url("/assets/images/signature/signature-light-2026-mobile.webp")!important;
+    background-position:center top!important;
+    background-size:100% auto!important;
+    background-color:transparent!important;
+  }
+  html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-media{
+    background-image:url("/assets/images/signature/signature-dark-2026-mobile.webp")!important;
+  }
+  html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .home-signature-overlay{
+    background:linear-gradient(180deg,rgba(7,19,31,.15) 0%,rgba(7,19,31,.55) 30%,rgba(7,19,31,.96) 48%,var(--sg-deep) 100%)!important;
+  }
+  html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .home-signature-overlay{
+    background:linear-gradient(180deg,rgba(247,243,234,.1) 0%,rgba(247,243,234,.6) 30%,rgba(247,243,234,.97) 48%,var(--sg-ivory) 100%)!important;
+  }
+  html[lang="es"] body.home-page.home-experience .home-signature-v2::after{inset:10px;border-radius:20px}
+  html[lang="es"] body.home-page.home-experience .home-signature-shell{padding-top:46vw!important}
+  html[lang="es"] body.home-page.home-experience .home-signature-v2 .home-signature-topline{display:none!important}
+  html[lang="es"] body.home-page.home-experience .home-signature-copy{max-width:none!important}
+  html[lang="es"] body.home-page.home-experience .home-signature-panel{grid-template-columns:1fr;padding:24px 22px!important}
+  html[lang="es"] body.home-page.home-experience .home-signature-panel-head{flex-direction:row-reverse;align-items:center!important;justify-content:space-between!important;padding:0 0 18px!important;border-right:0;border-bottom:1px solid rgba(183,160,109,.28)!important}
+  html[lang="es"] body.home-page.home-experience .home-signature-benefits{grid-template-columns:1fr}
+  html[lang="es"] body.home-page.home-experience .home-signature-benefits article{padding:18px 0!important;border-left:0;border-top:1px solid rgba(183,160,109,.2)}
+  html[lang="es"] body.home-page.home-experience .home-signature-benefits article:first-child{border-top:0}
+}
