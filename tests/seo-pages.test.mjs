@@ -32,11 +32,11 @@ function hreflangFrom(html) {
   return entries;
 }
 
-test('SEO route matrix matches the 65-entry sitemap contract', () => {
-  assert.equal(SEO_ROUTE_SUFFIXES.length, 13);
+test('SEO route matrix matches the 70-entry sitemap contract', () => {
+  assert.equal(SEO_ROUTE_SUFFIXES.length, 14);
   assert.equal(SEO_LANGUAGES.length, 5);
-  assert.equal(urls.length, 65);
-  assert.equal(new Set(urls).size, 65);
+  assert.equal(urls.length, 70);
+  assert.equal(new Set(urls).size, 70);
 
   for (const url of urls) {
     assert.ok(getSeoMeta(new URL(url).pathname), `sitemap URL is outside SEO matrix: ${url}`);
@@ -90,14 +90,14 @@ test('existing static canonical and hreflang signals never contradict the route 
   assert.deepEqual(failures, [], failures.join('\n'));
 });
 
-test('all localized language groups are represented exactly 13 times', () => {
+test('all localized language groups are represented exactly 14 times', () => {
   for (const language of SEO_LANGUAGES) {
     const count = urls.filter(url => {
       const pathname = new URL(url).pathname;
       if (language === 'es') return !/^\/(en|fr|it|ar)(\/|$)/.test(pathname);
       return pathname === `/${language}/` || pathname.startsWith(`/${language}/`);
     }).length;
-    assert.equal(count, 13, `${language} should have exactly 13 sitemap URLs`);
+    assert.equal(count, 14, `${language} should have exactly 14 sitemap URLs`);
   }
 });
 

@@ -11,7 +11,8 @@ const shell = fs.readFileSync('public/assets/js/international-shell.js', 'utf8')
 const catalog = JSON.parse(fs.readFileSync('public/assets/data/catalog.json', 'utf8'));
 const extendedCatalog = JSON.parse(fs.readFileSync('public/assets/data/catalog-v1.3.json', 'utf8'));
 const spanishSet = JSON.parse(fs.readFileSync('public/assets/data/catalogue-es-products.json', 'utf8'));
-const fishRenderer = fs.readFileSync('public/assets/js/fish-catalog.js', 'utf8');
+// normalise line endings: Windows checkouts (core.autocrlf) turn LF into CRLF
+const fishRenderer = fs.readFileSync('public/assets/js/fish-catalog.js', 'utf8').replace(/\r\n/g, '\n');
 const shellfishEs = JSON.parse(fs.readFileSync('public/assets/data/shellfish-catalog-es.json', 'utf8'));
 const cephalopodsEs = JSON.parse(fs.readFileSync('public/assets/data/cephalopods-catalog-es.json', 'utf8'));
 const fruitsEs = JSON.parse(fs.readFileSync('public/assets/data/fruit-catalog-v1.json', 'utf8'));

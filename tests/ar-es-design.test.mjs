@@ -66,11 +66,14 @@ test('Arabic generic content pages expose the ES page body class', () => {
 });
 
 test('Arabic Products landing mirrors the Spanish product structure', () => {
+  // Both landings use the two-families marquee layout (2026 redesign).
   const html = read('public/ar/products/index.html');
-  assert.match(html, /body class="[^"]*home-page[^"]*ar-home[^"]*ar-products-page[^"]*"/);
-  assert.equal((html.match(/class="product-row"/g) || []).length, 4);
-  assert.match(html, /class="products-section"/);
-  assert.match(html, /class="markets-section"/);
+  const es = read('public/products/index.html');
+  const bodyClass = source => (source.match(/<body class="([^"]*)"/) || [])[1];
+  assert.equal(bodyClass(html), bodyClass(es));
+  assert.equal((html.match(/class="product-marquee-row/g) || []).length,
+    (es.match(/class="product-marquee-row/g) || []).length);
+  assert.match(html, /class="markets-section[^"]*"/);
   assert.match(html, /class="company-section"/);
   assert.match(html, /class="contact-section"/);
 });

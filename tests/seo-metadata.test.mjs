@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getSeoMeta, isSeoCanonicalPath, SEO_ROUTE_SUFFIXES, buildSeoHead } from '../src/seo-metadata.js';
 
-test('canonical route matrix contains the 13 sitemap page families', () => {
-  assert.equal(SEO_ROUTE_SUFFIXES.length, 13);
+test('canonical route matrix contains the 14 sitemap page families', () => {
+  assert.equal(SEO_ROUTE_SUFFIXES.length, 14);
   assert.ok(SEO_ROUTE_SUFFIXES.includes('/'));
   assert.ok(SEO_ROUTE_SUFFIXES.includes('/products/seafood/fish/'));
   assert.ok(SEO_ROUTE_SUFFIXES.includes('/contact/'));

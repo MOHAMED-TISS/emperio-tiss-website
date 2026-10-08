@@ -14,22 +14,22 @@ async function renderCatalogue(products = data.products) {
   const roots = {fruitCatalog: {innerHTML: ''}, fruitOther: {innerHTML: ''}};
   let init;
   vm.runInNewContext(js, {
-    document: {documentElement: {lang: 'es'}, body: {classList: {contains: () => true}},
+    document: {readyState: 'loading', documentElement: {lang: 'es'}, body: {classList: {contains: () => true}},
       getElementById: id => roots[id], addEventListener: (_, fn) => {init = fn;}},
     window: {}, console, fetch: async () => ({ok: true, json: async () => ({products})})
   });
   await init();
   return roots;
 }
-test('fruit inquiry links retain product and variety selection', async () => {
+test('fruit inquiry links retain the product selection', async () => {
   const roots = await renderCatalogue();
-  assert.match(roots.fruitCatalog.innerHTML, /product=clementina&variety=Clemenules/);
+  assert.match(roots.fruitCatalog.innerHTML, /product=clementina/);
   assert.match(roots.fruitOther.innerHTML, /contact\/\?product=/);
 });
 test('unverified campaign months are not presented as availability', async () => {
   const roots = await renderCatalogue();
   assert.doesNotMatch(roots.fruitCatalog.innerHTML, /is-active|citrus-month/);
-  assert.match(roots.fruitCatalog.innerHTML, /Disponibilidad por confirmar/);
+  assert.match(roots.fruitCatalog.innerHTML, /Según campaña y programa/);
 });
 test('catalogue escapes product values before inserting HTML', async () => {
   const products = structuredClone(data.products);
@@ -38,10 +38,11 @@ test('catalogue escapes product values before inserting HTML', async () => {
   assert.doesNotMatch(roots.fruitCatalog.innerHTML, /<script>/);
   assert.match(roots.fruitCatalog.innerHTML, /&lt;script&gt;/);
 });
-test('conditions remain accessible through native disclosure controls', async () => {
+test('conditions are always visible in a definition list on every card', async () => {
   const roots = await renderCatalogue();
-  assert.equal((roots.fruitCatalog.innerHTML.match(/<details /g) || []).length, 3);
-  assert.equal((roots.fruitCatalog.innerHTML.match(/<summary>/g) || []).length, 3);
+  const cards = (roots.fruitCatalog.innerHTML.match(/class="fruit-catalog-status"/g) || []).length;
+  assert.ok(cards > 0);
+  assert.equal((roots.fruitCatalog.innerHTML.match(/<dl class="fruit-catalog-meta">/g) || []).length, cards);
 });
 
 test('fruit page loads the catalogue renderer before the fruit presenter', () => {

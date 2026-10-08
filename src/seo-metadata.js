@@ -10,6 +10,7 @@ export const SEO_ROUTE_SUFFIXES = [
   '/products/seafood/fish/',
   '/products/seafood/shellfish/',
   '/products/seafood/cephalopods/',
+  '/products/fruits-vegetables/',
   '/products/fruits/',
   '/products/vegetables/',
   '/products/seasonal/',

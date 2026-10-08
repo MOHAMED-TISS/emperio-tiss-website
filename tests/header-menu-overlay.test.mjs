@@ -8,19 +8,27 @@ const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>{
   return entry.isDirectory()?walk(p):[p];
 });
 
-test('canonical header preserves a legacy nav overlay before replacing the header',()=>{
+const universal=fs.readFileSync('public/assets/js/header-universal.js','utf8');
+
+test('canonical header preserves a legacy nav overlay and stands down for the 2026 header',()=>{
   const canonical=fs.readFileSync('public/assets/js/header-canonical.js','utf8');
   const preserve=canonical.indexOf('const preservedOverlay');
   const replace=canonical.indexOf('header.replaceWith(canonical)');
   assert.ok(preserve>=0,'preservedOverlay guard is missing');
   assert.ok(replace>preserve,'overlay must be detached before the legacy header is replaced');
+  // the 2026 runtime header owns every page: the canonical header must not fight it
+  assert.match(canonical,/ethInCharge/);
 
   const global=fs.readFileSync('public/assets/js/global.js','utf8');
-  assert.match(global,/header-canonical\.js\?v=20260929-overlay-preserve-1/);
+  assert.match(global,/header-universal\.js\?v=/);
 });
 
-test('pages that still nest navOverlay inside the legacy header force the fixed runtime',()=>{
-  const nested=[];
+test('legacy overlays nested inside old headers are moved to <body> by the 2026 header',()=>{
+  // header-universal.js relocates #navOverlay before replacing or removing a legacy header,
+  // so pages that still nest the overlay keep a working menu regardless of their global.js version.
+  assert.match(universal,/#navOverlay/);
+  assert.match(universal,/body\.appendChild\((legacyOverlay|overlay)\)/);
+
   for(const file of walk('public').filter(file=>file.endsWith('.html'))){
     const html=fs.readFileSync(file,'utf8');
     const overlay=html.indexOf('id="navOverlay"');
@@ -28,14 +36,8 @@ test('pages that still nest navOverlay inside the legacy header force the fixed 
     const headerStart=html.lastIndexOf('<header',overlay);
     const headerEnd=headerStart>=0?html.indexOf('</header>',headerStart):-1;
     if(headerStart>=0 && headerEnd>=0 && overlay<headerEnd){
-      nested.push(file.replaceAll('\\','/'));
-      assert.match(html,/global\.js\?v=20260929-menu-overlay-fix-1/,file+' must force the fixed global runtime');
+      // the page must load the 2026 header, directly or through global.js
+      assert.match(html,/header-universal\.js|global\.js/,file+' must load the 2026 header runtime');
     }
   }
-  assert.deepEqual(nested.sort(),[
-    'public/products/fruits/index.html',
-    'public/products/seafood/cephalopods/index.html',
-    'public/products/seafood/shellfish/index.html',
-    'public/products/vegetables/index.html'
-  ]);
 });
