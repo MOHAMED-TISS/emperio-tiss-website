@@ -35,14 +35,14 @@ class SeoHeadAppender {
       '<link rel="stylesheet" href="/assets/css/header-2026.css?v=20261008-eth-6" data-eth-css="true">' +
       // Hide the legacy static headers from the very first paint; header-universal.js replaces them.
       '<style data-eth-critical>body>.site-header,body>.p-header,body>#etLiquidHeader,body>header.et-liquid-header{visibility:hidden!important}</style>' +
-      '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261003-4">' +
+      '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261008-footer-1">' +
       '<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261007-6">' +
       '<script src="/assets/js/cookie-consent.js?v=20261007-6" defer></script>' +
       '<script src="/assets/js/whatsapp-floating.js?v=20261007-4" defer></script>' +
       '<script src="/assets/js/analytics-events.js?v=20261004-3" defer></script>' +
       '<script src="/assets/js/theme-mode.js?v=20261004-3" defer></script>' +
       '<script src="/assets/js/header-universal.js?v=20261008-eth-6" defer></script>' +
-      '<script src="/assets/js/footer-terminal.js?v=20261003-2" defer></script>',
+      '<script src="/assets/js/footer-terminal.js?v=20261008-footer-1" defer></script>',
       { html: true }
     );
   }

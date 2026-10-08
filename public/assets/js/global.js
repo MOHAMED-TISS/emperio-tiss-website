@@ -212,8 +212,8 @@
   loadScript('/assets/js/whatsapp-floating.js?v=20261007-4', 'etFloatingWhatsAppScript');
   loadScript('/assets/js/analytics-events.js?v=20261004-3', 'etAnalyticsEventsScript');
   loadScript('/assets/js/site-polish.js?v=20261003-terminal-footer-fix-1', 'etSitePolish');
-  loadCss('/assets/css/footer-terminal.css?v=20261003-4', 'etTerminalFooterCss');
-  loadScript('/assets/js/footer-terminal.js?v=20261003-2', 'etTerminalFooterScript');
+  loadCss('/assets/css/footer-terminal.css?v=20261008-footer-1', 'etTerminalFooterCss');
+  loadScript('/assets/js/footer-terminal.js?v=20261008-footer-1', 'etTerminalFooterScript');
 
   // Home signature selection marquee is shared across ES / EN / FR / IT / AR.
   // Re-append after legacy Home layers so this approved component owns the final cascade.

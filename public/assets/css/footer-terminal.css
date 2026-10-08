@@ -320,3 +320,161 @@ html[dir="rtl"] .et-terminal-footer__region{text-align:left}
 body:not(.private-page):not(.private-admin-page) > footer:not(.et-terminal-footer){
   display:none!important;
 }
+
+
+/* =========================================================
+   PREMIUM DIRECTORY (2026-10)
+   Brand block · Products · Company · Contact with LinkedIn / WhatsApp
+   in their own colours; one meta row; the wordmark below is unchanged.
+   ========================================================= */
+.et-terminal-footer{
+  --tf-gold:#b7a06d;
+  --tf-gold-light:#e7cf9c;
+  --tf-serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --tf-line:rgba(231,207,156,.16);
+}
+.et-terminal-footer__directory{
+  grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.1fr);
+  gap:clamp(32px,4.5vw,72px);
+  padding:72px 0 64px;
+  border-bottom-color:var(--tf-line);
+}
+.et-terminal-footer__directory>*{min-width:0}
+
+/* brand block */
+.et-terminal-footer__brand img{
+  display:block;
+  width:auto;
+  height:64px;
+  margin-bottom:24px;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.35));
+}
+.et-terminal-footer__tagline{
+  margin:0 0 16px;
+  color:var(--tf-gold-light);
+  font:500 10.5px/1.4 "DM Sans",Arial,sans-serif;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+}
+.et-terminal-footer__blurb{
+  max-width:34ch;
+  margin:0;
+  color:rgba(245,244,239,.66);
+  font:400 italic 17px/1.6 var(--tf-serif);
+}
+
+/* columns */
+.et-terminal-footer__label{
+  margin-bottom:22px;
+  color:var(--tf-gold-light);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.3em;
+}
+.et-terminal-footer__col a{
+  position:relative;
+  margin:0 0 14px;
+  color:rgba(245,244,239,.82);
+  font:400 15px/1.3 var(--tf-serif);
+  letter-spacing:0;
+  transition:color .3s ease,transform .35s cubic-bezier(.16,1,.3,1);
+}
+.et-terminal-footer__col a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-3px;
+  height:1px;
+  background:var(--tf-gold-light);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .45s cubic-bezier(.16,1,.3,1);
+}
+.et-terminal-footer__col a:hover{color:#fff;transform:none}
+.et-terminal-footer__col a:hover::after{transform:scaleX(1)}
+
+/* contact */
+.et-terminal-footer__reach-email{
+  margin-top:0;
+  color:var(--tf-gold-light);
+  font:400 21px/1.2 var(--tf-serif);
+  letter-spacing:-.005em;
+  overflow-wrap:anywhere;
+  border-bottom:1px solid rgba(231,207,156,.35);
+  padding-bottom:6px;
+  transition:border-color .3s ease;
+}
+.et-terminal-footer__reach-email:hover{border-bottom-color:var(--tf-gold-light)}
+.et-terminal-footer__location{
+  margin:14px 0 0!important;
+  color:rgba(245,244,239,.6)!important;
+  font:500 10.5px/1.4 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+.et-terminal-footer__social{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:26px;
+}
+.et-terminal-footer__social-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  min-height:42px;
+  padding:0 16px 0 6px;
+  border:1px solid rgba(231,207,156,.22);
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  color:rgba(245,244,239,.88)!important;
+  font:500 12px/1 "DM Sans",Arial,sans-serif;
+  letter-spacing:.04em;
+  transition:background-color .3s ease,border-color .3s ease,transform .35s cubic-bezier(.16,1,.3,1);
+}
+.et-terminal-footer__social-link:hover{background:rgba(255,255,255,.08);border-color:rgba(231,207,156,.45);transform:translateY(-2px)}
+.et-terminal-footer__social-icon{
+  display:inline-grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  flex:none;
+  color:#fff;
+}
+.et-terminal-footer__social-icon svg{width:17px;height:17px}
+/* official brand colours */
+.et-terminal-footer__social-link--linkedin .et-terminal-footer__social-icon{background:#0a66c2;border-radius:7px}
+.et-terminal-footer__social-link--whatsapp .et-terminal-footer__social-icon{background:#25d366;border-radius:50%}
+.et-terminal-footer__social-link--whatsapp .et-terminal-footer__social-icon svg{width:18px;height:18px}
+
+/* meta row */
+.et-terminal-footer__meta{
+  grid-template-columns:1fr auto;
+  padding:22px 0;
+  border-bottom-color:var(--tf-line);
+  color:rgba(245,244,239,.56);
+  font-size:11px;
+  letter-spacing:.04em;
+}
+.et-terminal-footer__meta>span{justify-self:start}
+.et-terminal-footer__meta nav{gap:22px}
+.et-terminal-footer__meta nav a{color:rgba(245,244,239,.66)}
+.et-terminal-footer__meta nav a:hover{color:var(--tf-gold-light)}
+.et-terminal-footer__wordmark-wrap{border-top-color:var(--tf-line)}
+
+html[dir="rtl"] .et-terminal-footer__social-link{padding:0 6px 0 16px}
+html[dir="rtl"] .et-terminal-footer__col a::after{transform-origin:right}
+
+@media(max-width:980px){
+  .et-terminal-footer__directory{grid-template-columns:1fr 1fr}
+  .et-terminal-footer__brand,
+  .et-terminal-footer__reach{grid-column:1/-1;min-height:0}
+}
+@media(max-width:700px){
+  .et-terminal-footer__directory{padding:52px 0 44px;gap:40px 24px}
+  .et-terminal-footer__brand img{height:54px}
+  .et-terminal-footer__blurb{font-size:16px}
+  .et-terminal-footer__meta{grid-template-columns:1fr}
+  .et-terminal-footer__meta nav{justify-self:start;justify-content:flex-start}
+}
