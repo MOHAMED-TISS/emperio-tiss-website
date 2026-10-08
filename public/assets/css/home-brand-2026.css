@@ -307,3 +307,22 @@ html[lang="es"] body.home-page.home-experience .et-terminal-footer__reach-title{
 @media (prefers-reduced-motion:reduce){
   html[lang="es"] body.home-page.home-experience :is(.approved-hero .approved-cta,.home-signature-v2 a.home-private-action,.home-joby-selected-contact .contact-disc)::after{display:none!important}
 }
+
+/* ---------- dark theme: light golds on navy ---------- */
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience :is(
+  #collection-title em,
+  #approach-title em,
+  .home-joby-selected-contact .invitation h2 em
+){color:var(--hb-gold-light)!important}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience :is(
+  .home-selection-redesign__eyebrow,
+  .home-selection-redesign__seasonal span,
+  .approach-heading-meta .small,
+  .home-joby-selected-contact .invitation>.small
+){color:#cfb57e!important}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .invitation-bottom a{
+  color:var(--hb-gold-light)!important;
+  border-color:rgba(231,207,156,.45)!important;
+}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta .small{color:#cfb57e!important}
+html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .et-experience .approach.approach-v2 .approach-heading-meta .small{color:var(--hb-gold-deep)!important}

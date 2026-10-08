@@ -447,3 +447,13 @@ html[lang="es"] body.home-page.home-experience .ets-atlas__link:hover{background
   html[lang="es"] body.home-page.home-experience :is(.ets-steps__image,.ets-step,.atlas-arc,.atlas-dots,.atlas-city){transition:none!important}
   html[lang="es"] body.home-page.home-experience :is(.atlas-pulse,.atlas-hub__ring,.ets-atlas__progress,.ets-atlas__detail){animation:none!important}
 }
+
+/* dark theme: steps on navy */
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-step{border-top-color:rgba(231,207,156,.16)}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience :is(.ets-step__kicker,.ets-steps__link span){color:#d4b97f}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-step__chips li{color:#d4b97f;border-color:rgba(212,185,127,.4)}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-step__num{-webkit-text-stroke-color:#d4b97f}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-step.is-active .ets-step__num{color:rgba(212,185,127,.2)}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-steps__link{border-bottom-color:rgba(212,185,127,.5)}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-steps__link:hover{color:var(--hs-gold-light)}
+html[lang="es"][data-et-theme="dark"] body.home-page.home-experience .ets-steps__frame{box-shadow:0 40px 90px rgba(0,0,0,.4),0 0 0 1px rgba(231,207,156,.2)}
