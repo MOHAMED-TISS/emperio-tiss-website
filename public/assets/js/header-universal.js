@@ -1,11 +1,15 @@
-/* EMPERIO TISS — UNIVERSAL LIQUID GLASS HEADER
-   One isolated masthead for every public page and language.
-   Does not reuse legacy .site-header markup or styling.
+/* EMPERIO TISS — EDITORIAL HEADER (2026-10)
+   One masthead for every public page and language:
+   - top strip (markets, email, languages, theme) on wide screens
+   - main bar: Menu button + left links | centred compact logo | right links + Signature + Contact
+   - compact floating bar on scroll
+   - full-screen menu (#ethMenu) opened by the Menu button
+   Uses its own `eth-` namespace so the legacy header stylesheets cannot interfere.
 */
 (() => {
   'use strict';
 
-  const VERSION = '20261006-liquid-universal-11';
+  const VERSION = '20261008-eth-1';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -27,54 +31,73 @@
     body.classList.contains('private-admin-page')
   ) return;
 
-  const supported = ['es','en','fr','it','ar'];
-  const detected = (root.lang || 'es').slice(0,2).toLowerCase();
+  const supported = ['es', 'en', 'fr', 'it', 'ar'];
+  const languageNames = { es: 'Español', en: 'English', fr: 'Français', it: 'Italiano', ar: 'العربية' };
+  const detected = (root.lang || 'es').slice(0, 2).toLowerCase();
   const lang = supported.includes(detected) ? detected : 'es';
   const prefix = lang === 'es' ? '' : `/${lang}`;
   const base = `${prefix}/`;
-  const route = segment => `${prefix}/${String(segment).replace(/^\/+|\/+$/g,'')}/`;
+  const route = segment => `${prefix}/${String(segment).replace(/^\/+|\/+$/g, '')}/`;
+  const EMAIL = 'info@emperio-tiss.com';
+  const TAGLINE = 'Rising together, leading the world';
+  const ASSET_V = '20261008-eth-1';
 
   const copy = {
     es: {
-      home:'Inicio', company:'Empresa', products:'Productos', markets:'Mercados', news:'Noticias',
-      contact:'Contacto', signature:'Signature', languages:'Idiomas', menu:'Abrir menú', close:'Cerrar menú',
-      seafood:'Productos del mar', fish:'Pescados', shellfish:'Mariscos', cephalopods:'Cefalópodos',
-      produce:'Frutas y hortalizas', fruits:'Frutas', vegetables:'Hortalizas', seasonal:'Temporada',
-      enquiry:'Consulta empresarial', locale:'Madrid · Europa · África · Mediterráneo'
+      home: 'Inicio', company: 'Empresa', products: 'Productos', markets: 'Mercados', news: 'Noticias',
+      contact: 'Contacto', signature: 'Signature', languages: 'Idiomas', language: 'Idioma',
+      menu: 'Menú', openMenu: 'Abrir menú', close: 'Cerrar', closeMenu: 'Cerrar menú',
+      mainNav: 'Navegación principal', skip: 'Saltar al contenido', theme: 'Cambiar tema',
+      fish: 'Pescado', shellfish: 'Marisco', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada',
+      locale: 'Madrid · Europa · África · Mediterráneo · Oriente Medio',
+      featured: 'Destacado', featuredTitle: 'Del origen, a su próximo mercado.',
+      sigTitle: 'Acceso profesional', sigText: 'Ofertas privadas, disponibilidad y referencias para empresas aprobadas.', sigCta: 'Entrar'
     },
     en: {
-      home:'Home', company:'Company', products:'Products', markets:'Markets', news:'News',
-      contact:'Contact', signature:'Signature', languages:'Languages', menu:'Open menu', close:'Close menu',
-      seafood:'Seafood', fish:'Fish', shellfish:'Shellfish', cephalopods:'Cephalopods',
-      produce:'Produce', fruits:'Fruits', vegetables:'Vegetables', seasonal:'Seasonal',
-      enquiry:'Business enquiry', locale:'Madrid · Europe · Africa · Mediterranean'
+      home: 'Home', company: 'Company', products: 'Products', markets: 'Markets', news: 'News',
+      contact: 'Contact', signature: 'Signature', languages: 'Languages', language: 'Language',
+      menu: 'Menu', openMenu: 'Open menu', close: 'Close', closeMenu: 'Close menu',
+      mainNav: 'Main navigation', skip: 'Skip to content', theme: 'Change theme',
+      fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods', fruits: 'Fruits', vegetables: 'Vegetables', seasonal: 'Seasonal',
+      locale: 'Madrid · Europe · Africa · Mediterranean · Middle East',
+      featured: 'Featured', featuredTitle: 'From origin to your next market.',
+      sigTitle: 'Professional access', sigText: 'Private offers, availability and references for approved companies.', sigCta: 'Enter'
     },
     fr: {
-      home:'Accueil', company:'Entreprise', products:'Produits', markets:'Marchés', news:'Actualités',
-      contact:'Contact', signature:'Signature', languages:'Langues', menu:'Ouvrir le menu', close:'Fermer le menu',
-      seafood:'Produits de la mer', fish:'Poissons', shellfish:'Crustacés', cephalopods:'Céphalopodes',
-      produce:'Fruits & légumes', fruits:'Fruits', vegetables:'Légumes', seasonal:'Saison',
-      enquiry:'Demande commerciale', locale:'Madrid · Europe · Afrique · Méditerranée'
+      home: 'Accueil', company: 'Entreprise', products: 'Produits', markets: 'Marchés', news: 'Actualités',
+      contact: 'Contact', signature: 'Signature', languages: 'Langues', language: 'Langue',
+      menu: 'Menu', openMenu: 'Ouvrir le menu', close: 'Fermer', closeMenu: 'Fermer le menu',
+      mainNav: 'Navigation principale', skip: 'Aller au contenu', theme: 'Changer de thème',
+      fish: 'Poissons', shellfish: 'Crustacés', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Saison',
+      locale: 'Madrid · Europe · Afrique · Méditerranée · Moyen-Orient',
+      featured: 'À la une', featuredTitle: 'De l’origine à votre prochain marché.',
+      sigTitle: 'Accès professionnel', sigText: 'Offres privées, disponibilités et références pour les entreprises approuvées.', sigCta: 'Entrer'
     },
     it: {
-      home:'Home', company:'Azienda', products:'Prodotti', markets:'Mercati', news:'Notizie',
-      contact:'Contatti', signature:'Signature', languages:'Lingue', menu:'Apri menu', close:'Chiudi menu',
-      seafood:'Prodotti del mare', fish:'Pesce', shellfish:'Crostacei', cephalopods:'Cefalopodi',
-      produce:'Ortofrutta', fruits:'Frutta', vegetables:'Ortaggi', seasonal:'Stagionale',
-      enquiry:'Richiesta commerciale', locale:'Madrid · Europa · Africa · Mediterraneo'
+      home: 'Home', company: 'Azienda', products: 'Prodotti', markets: 'Mercati', news: 'Notizie',
+      contact: 'Contatti', signature: 'Signature', languages: 'Lingue', language: 'Lingua',
+      menu: 'Menu', openMenu: 'Apri menu', close: 'Chiudi', closeMenu: 'Chiudi menu',
+      mainNav: 'Navigazione principale', skip: 'Vai al contenuto', theme: 'Cambia tema',
+      fish: 'Pesce', shellfish: 'Crostacei', cephalopods: 'Cefalopodi', fruits: 'Frutta', vegetables: 'Ortaggi', seasonal: 'Stagionale',
+      locale: 'Madrid · Europa · Africa · Mediterraneo · Medio Oriente',
+      featured: 'In evidenza', featuredTitle: 'Dall’origine al vostro prossimo mercato.',
+      sigTitle: 'Accesso professionale', sigText: 'Offerte private, disponibilità e referenze per aziende approvate.', sigCta: 'Accedi'
     },
     ar: {
-      home:'الرئيسية', company:'الشركة', products:'المنتجات', markets:'الأسواق', news:'الأخبار',
-      contact:'اتصل بنا', signature:'Signature', languages:'اللغات', menu:'فتح القائمة', close:'إغلاق القائمة',
-      seafood:'المأكولات البحرية', fish:'الأسماك', shellfish:'الرخويات', cephalopods:'رأسيات الأرجل',
-      produce:'الفواكه والخضروات', fruits:'الفواكه', vegetables:'الخضروات', seasonal:'الموسمية',
-      enquiry:'استفسار تجاري', locale:'مدريد · أوروبا · أفريقيا · البحر المتوسط'
+      home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', markets: 'الأسواق', news: 'الأخبار',
+      contact: 'اتصل بنا', signature: 'Signature', languages: 'اللغات', language: 'اللغة',
+      menu: 'القائمة', openMenu: 'فتح القائمة', close: 'إغلاق', closeMenu: 'إغلاق القائمة',
+      mainNav: 'التنقل الرئيسي', skip: 'انتقل إلى المحتوى', theme: 'تغيير المظهر',
+      fish: 'الأسماك', shellfish: 'القشريات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'الموسمية',
+      locale: 'مدريد · أوروبا · أفريقيا · البحر المتوسط · الشرق الأوسط',
+      featured: 'مميز', featuredTitle: 'من المنشأ إلى سوقك التالي.',
+      sigTitle: 'دخول مهني', sigText: 'عروض خاصة وتوفر ومراجع للشركات المعتمدة.', sigCta: 'دخول'
     }
   }[lang];
 
   const contentPath = (() => {
     let pathname = rawPath;
-    for (const code of ['en','fr','it','ar']) {
+    for (const code of ['en', 'fr', 'it', 'ar']) {
       const marker = `/${code}`;
       if (pathname === marker || pathname.startsWith(`${marker}/`)) {
         pathname = pathname.slice(marker.length) || '/';
@@ -90,172 +113,220 @@
     return `/${code}${contentPath === '/' ? '/' : contentPath}`;
   };
 
-  const normalizedSection = contentPath.replace(/^\/+|\/+$/g,'');
-  const isSection = section =>
-    normalizedSection === section || normalizedSection.startsWith(`${section}/`);
-  const activeAttr = section =>
-    isSection(section) ? ' class="is-active" aria-current="page"' : '';
+  const normalizedSection = contentPath.replace(/^\/+|\/+$/g, '');
+  const isSection = section => normalizedSection === section || normalizedSection.startsWith(`${section}/`);
+  const current = section => (isSection(section) ? ' class="is-active" aria-current="page"' : '');
+  const productsActive = isSection('products') && !isSection('products/seasonal');
 
-  const languageMenu = supported.map(code => {
-    const active = code === lang ? ' class="current" aria-current="page"' : '';
-    return `<a href="${languageHref(code)}"${active}>${code.toUpperCase()}</a>`;
-  }).join('');
+  const icon = {
+    menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+    close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg>',
+    sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>',
+    moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.6A8.5 8.5 0 0 1 8.4 3.6 8.6 8.6 0 1 0 20.4 15.6Z"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>'
+  };
+
+  const logo = cls => `
+    <a href="${base}" class="eth-logo ${cls}" aria-label="EMPERIO TISS — ${copy.home}">
+      <img class="eth-logo__emblem" src="/assets/images/emperio-tiss-emblem.svg?v=20261008-brand" alt="" width="201" height="240" draggable="false">
+      <img class="eth-logo__name eth-logo__name--dark" src="/assets/images/brand/emperio-tiss-name-compact-gold.svg?v=${ASSET_V}" alt="" width="356" height="100" draggable="false">
+      <img class="eth-logo__name eth-logo__name--light" src="/assets/images/brand/emperio-tiss-name-compact-gold-on-light.svg?v=${ASSET_V}" alt="" width="356" height="100" draggable="false">
+    </a>`;
+
+  const languageLinks = cls => supported.map(code =>
+    `<a class="${cls}" href="${languageHref(code)}" hreflang="${code}" lang="${code}"${code === lang ? ' aria-current="true"' : ''}>${code.toUpperCase()}</a>`
+  ).join('');
 
   const headerMarkup = `
-    <div class="et-liquid-bar">
-      <button id="etLiquidMenuBtn" class="et-liquid-menu" type="button" aria-label="${copy.menu}" aria-expanded="false" aria-controls="navOverlay">
-        <span></span><span></span><span></span>
-      </button>
-
-      <a href="${base}" class="et-liquid-logo" aria-label="EMPERIO TISS">
-        <img class="et-liquid-emblem" src="/assets/images/emperio-tiss-emblem.svg?v=20261008-brand" alt="EMPERIO TISS" width="201" height="240" draggable="false">
-        <img class="et-liquid-wordmark et-liquid-wordmark--dark" src="/assets/images/brand/emperio-tiss-wordmark-gold.svg?v=20261008-brand" alt="" width="640" height="68" draggable="false">
-        <img class="et-liquid-wordmark et-liquid-wordmark--light" src="/assets/images/brand/emperio-tiss-wordmark-gold-on-light.svg?v=20261008-brand" alt="" width="640" height="68" draggable="false">
-      </a>
-
-      <nav class="et-liquid-nav" aria-label="${copy.company} · ${copy.products} · ${copy.seasonal} · ${copy.markets} · ${copy.news}">
-        <a href="${route('about')}"${activeAttr('about')}>${copy.company}</a>
-        <a href="${route('products')}"${activeAttr('products')}>${copy.products}</a>
-        <a href="${route('products/seasonal')}"${activeAttr('products/seasonal')}>${copy.seasonal}</a>
-        <a href="${route('markets')}"${activeAttr('markets')}>${copy.markets}</a>
-        <a href="${route('news')}"${activeAttr('news')}>${copy.news}</a>
-      </nav>
-
-      <div class="et-liquid-tools">
-        <details class="et-liquid-language">
-          <summary class="et-liquid-lang" aria-label="${copy.languages}">${lang.toUpperCase()}</summary>
-          <nav class="et-liquid-language-menu" aria-label="${copy.languages}">
-            ${languageMenu}
-          </nav>
-        </details>
-
-        <button class="et-liquid-theme" type="button" aria-label="Tema visual" aria-pressed="false"></button>
-
-        <div class="et-liquid-ctas">
-          <a class="et-liquid-signature" href="${route('news')}#emperio-private">${copy.signature}</a>
-          <a class="et-liquid-contact" href="${route('contact')}">${copy.contact}</a>
+    <a class="eth-skip" href="#eth-main">${copy.skip}</a>
+    <div class="eth-strip">
+      <div class="eth-strip__inner">
+        <span class="eth-strip__locale">${copy.locale}</span>
+        <div class="eth-strip__tools">
+          <a class="eth-strip__mail" href="mailto:${EMAIL}">${EMAIL}</a>
+          <nav class="eth-strip__langs" aria-label="${copy.languages}">${languageLinks('eth-strip__lang')}</nav>
+          <button class="eth-theme" type="button" aria-label="${copy.theme}" aria-pressed="false"></button>
         </div>
+      </div>
+    </div>
+    <div class="eth-bar">
+      <div class="eth-bar__side eth-bar__side--start">
+        <button class="eth-menu-btn" type="button" aria-expanded="false" aria-controls="ethMenu">
+          ${icon.menu}<span>${copy.menu}</span>
+        </button>
+        <nav class="eth-nav" aria-label="${copy.mainNav}">
+          <a href="${route('about')}"${current('about')}>${copy.company}</a>
+          <a href="${route('products')}"${productsActive ? ' class="is-active" aria-current="page"' : ''}>${copy.products}</a>
+          <a href="${route('products/seasonal')}"${current('products/seasonal')}>${copy.seasonal}</a>
+        </nav>
+      </div>
+      ${logo('eth-logo--bar')}
+      <div class="eth-bar__side eth-bar__side--end">
+        <nav class="eth-nav" aria-label="${copy.mainNav} 2">
+          <a href="${route('markets')}"${current('markets')}>${copy.markets}</a>
+          <a href="${route('news')}"${current('news')}>${copy.news}</a>
+        </nav>
+        <a class="eth-btn eth-btn--ghost eth-signature" href="${route('news')}#emperio-private">${copy.signature}</a>
+        <a class="eth-btn eth-btn--gold eth-contact" href="${route('contact')}">
+          <span class="eth-contact__label">${copy.contact}</span>${icon.mail}
+        </a>
       </div>
     </div>`;
 
-  const overlayMarkup = `
-    <div class="nav-overlay-inner">
-      <nav class="nav-overlay-links" aria-label="${copy.menu}" data-et-navigation-built="true">
-        <a href="${base}"${contentPath === '/' ? ' class="active" aria-current="page"' : ''}><span class="idx">01</span><span>${copy.home}</span></a>
-        <a href="${route('about')}"${activeAttr('about')}><span class="idx">02</span><span>${copy.company}</span></a>
-        <details class="nav-products">
-          <summary><span class="idx">03</span><span>${copy.products}</span></summary>
-          <div class="nav-products-links">
-            <div class="nav-product-group">
-              <a class="nav-product-parent" href="${route('products/seafood')}">${copy.seafood}</a>
-              <div class="nav-product-children">
+  const menuItems = [
+    ['about', copy.company],
+    ['products', copy.products],
+    ['products/seasonal', copy.seasonal],
+    ['markets', copy.markets],
+    ['news', copy.news],
+    ['contact', copy.contact]
+  ];
+
+  const menuMarkup = `
+    <div class="eth-menu__top">
+      <button class="eth-menu__close" type="button" aria-label="${copy.closeMenu}">${icon.close}<span>${copy.close}</span></button>
+      ${logo('eth-logo--menu')}
+      <div class="eth-menu__top-end">
+        <nav class="eth-menu__langs-top" aria-label="${copy.languages}">${languageLinks('eth-menu__lang-top')}</nav>
+        <a class="eth-btn eth-btn--gold" href="${route('contact')}">${copy.contact}</a>
+      </div>
+    </div>
+    <div class="eth-menu__body">
+      <div class="eth-menu__main">
+        <nav class="eth-menu__nav" aria-label="${copy.mainNav}">
+          <ol>
+            ${menuItems.map(([seg, label], i) => {
+              const active = seg === 'products' ? productsActive : isSection(seg);
+              const sub = seg === 'products' ? `
+              <div class="eth-menu__sub">
                 <a href="${route('products/seafood/fish')}">${copy.fish}</a>
                 <a href="${route('products/seafood/shellfish')}">${copy.shellfish}</a>
                 <a href="${route('products/seafood/cephalopods')}">${copy.cephalopods}</a>
-              </div>
-            </div>
-            <div class="nav-product-group">
-              <a class="nav-product-parent" href="${route('products/fruits-vegetables')}">${copy.produce}</a>
-              <div class="nav-product-children">
                 <a href="${route('products/fruits')}">${copy.fruits}</a>
                 <a href="${route('products/vegetables')}">${copy.vegetables}</a>
-              </div>
-            </div>
+              </div>` : '';
+              return `<li>
+              <a class="eth-menu__link${active ? ' is-active' : ''}" href="${route(seg)}"${active ? ' aria-current="page"' : ''}>
+                <span class="eth-menu__idx">${String(i + 1).padStart(2, '0')}</span><span class="eth-menu__label">${label}</span>
+              </a>${sub}
+            </li>`;
+            }).join('')}
+          </ol>
+        </nav>
+        <div class="eth-menu__foot">
+          <div class="eth-menu__block">
+            <span class="eth-menu__kicker">${copy.language}</span>
+            <div class="eth-menu__langs">${supported.map(code => `<a href="${languageHref(code)}" hreflang="${code}" lang="${code}"${code === lang ? ' aria-current="true"' : ''}>${languageNames[code]}</a>`).join('')}</div>
           </div>
-        </details>
-        <a href="${route('products/seasonal')}"${activeAttr('products/seasonal')}><span class="idx">04</span><span>${copy.seasonal}</span></a>
-        <a href="${route('markets')}"${activeAttr('markets')}><span class="idx">05</span><span>${copy.markets}</span></a>
-        <a href="${route('news')}"${activeAttr('news')}><span class="idx">06</span><span>${copy.news}</span></a>
-        <a href="${route('contact')}"${activeAttr('contact')}><span class="idx">07</span><span>${copy.contact}</span></a>
-      </nav>
-      <div class="nav-overlay-foot">
-        <div class="nav-overlay-lang">${supported.map(code => `<a href="${languageHref(code)}"${code === lang ? ' class="current" aria-current="page"' : ''}>${code.toUpperCase()}</a>`).join('<span>·</span>')}</div>
-        <div class="nav-overlay-contact">
-          <a href="${route('contact')}">${copy.enquiry}</a>
-          <span>${copy.locale}</span>
+          <div class="eth-menu__block">
+            <span class="eth-menu__kicker">${copy.contact}</span>
+            <p><a href="mailto:${EMAIL}">${EMAIL}</a> · Madrid</p>
+          </div>
+          <div class="eth-menu__block eth-menu__block--row">
+            <span class="eth-menu__tagline">${TAGLINE}</span>
+            <button class="eth-theme" type="button" aria-label="${copy.theme}" aria-pressed="false"></button>
+          </div>
         </div>
       </div>
+      <aside class="eth-menu__aside">
+        <a class="eth-menu__feature" href="${route('products')}">
+          <img src="/assets/images/home-ocean-poster.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
+          <span class="eth-menu__feature-text">
+            <span class="eth-menu__kicker">${copy.featured}</span>
+            <span class="eth-menu__feature-title">${copy.featuredTitle}</span>
+          </span>
+        </a>
+        <a class="eth-menu__signature" href="${route('news')}#emperio-private">
+          <img src="/assets/images/emperio-tiss-emblem.svg?v=20261008-brand" alt="" width="201" height="240">
+          <span>
+            <span class="eth-menu__kicker">EMPERIO Signature</span>
+            <span class="eth-menu__sig-title">${copy.sigTitle}</span>
+            <span class="eth-menu__sig-text">${copy.sigText}</span>
+            <span class="eth-menu__sig-cta">${copy.sigCta} ${icon.arrow}</span>
+          </span>
+        </a>
+      </aside>
     </div>`;
 
   const ensureCss = () => {
-    const href = '/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-11';
-    const existing = doc.querySelector('link[data-et-liquid-header-css],link[href*="header-liquid-v23.css"]');
+    const href = `/assets/css/header-2026.css?v=${VERSION}`;
+    const existing = doc.querySelector('link[data-eth-css]');
     if (existing) {
-      if (!existing.getAttribute('href')?.includes('20261006-liquid-universal-11')) existing.setAttribute('href',href);
-      existing.dataset.etLiquidHeaderCss = 'true';
+      if (existing.getAttribute('href') !== href) existing.setAttribute('href', href);
       return;
     }
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
-    link.dataset.etLiquidHeaderCss = 'true';
+    link.dataset.ethCss = 'true';
     doc.head.appendChild(link);
+  };
+
+  const ensureMainTarget = () => {
+    if (doc.getElementById('eth-main')) return;
+    const main = doc.querySelector('main') || doc.querySelector('[role="main"]');
+    if (!main) return;
+    const anchor = doc.createElement('span');
+    anchor.id = 'eth-main';
+    anchor.tabIndex = -1;
+    anchor.className = 'eth-main-anchor';
+    main.insertAdjacentElement('afterbegin', anchor);
   };
 
   const install = () => {
     ensureCss();
-    body.classList.add('liquid-header-v23','et-liquid-universal');
+    body.classList.add('eth-header-2026');
 
-    const existingLiquid = doc.getElementById('etLiquidHeader');
+    const existing = doc.getElementById('ethHeader');
     const legacyHeader =
+      doc.getElementById('etLiquidHeader') ||
       doc.querySelector('body > .site-header') ||
       doc.querySelector('body > .p-header') ||
       doc.querySelector('body > .admin-topbar');
 
-    const nestedOverlay =
-      doc.getElementById('navOverlay') ||
-      legacyHeader?.querySelector('#navOverlay,.nav-overlay,.intl-overlay') ||
-      existingLiquid?.querySelector('#navOverlay,.nav-overlay,.intl-overlay');
+    // Keep any legacy overlay attached to <body> (other scripts still reference it) but out of the way.
+    const legacyOverlay = doc.getElementById('navOverlay') || legacyHeader?.querySelector('#navOverlay,.nav-overlay,.intl-overlay');
+    if (legacyOverlay && legacyOverlay.parentElement !== body) body.appendChild(legacyOverlay);
 
-    if (nestedOverlay && nestedOverlay.parentElement !== body) body.appendChild(nestedOverlay);
-
-    let header = existingLiquid;
-    if (!header || header.dataset.etLiquidUniversal !== VERSION) {
+    let header = existing;
+    if (!header || header.dataset.ethVersion !== VERSION) {
       const next = doc.createElement('header');
-      next.className = 'et-liquid-header';
-      next.id = 'etLiquidHeader';
-      next.dataset.etLiquidUniversal = VERSION;
+      next.className = 'eth';
+      next.id = 'ethHeader';
+      next.dataset.ethVersion = VERSION;
       next.innerHTML = headerMarkup;
-
       if (header) header.replaceWith(next);
       else if (legacyHeader) legacyHeader.replaceWith(next);
       else body.insertAdjacentElement('afterbegin', next);
-
       header = next;
-    } else if (!header.querySelector('.et-liquid-language')) {
-      header.innerHTML = headerMarkup;
     }
 
-    let overlay = doc.getElementById('navOverlay');
-    const overlayReady =
-      overlay?.dataset.etLiquidUniversal === VERSION &&
-      overlay.querySelector('.nav-product-parent') &&
-      overlay.querySelector('.nav-product-children');
-
-    if (!overlayReady) {
-      const nextOverlay = doc.createElement('div');
-      nextOverlay.id = 'navOverlay';
-      nextOverlay.className = 'nav-overlay';
-      nextOverlay.setAttribute('aria-hidden','true');
-      nextOverlay.dataset.etLiquidUniversal = VERSION;
-      nextOverlay.innerHTML = overlayMarkup;
-
-      if (overlay) overlay.replaceWith(nextOverlay);
-      else header.insertAdjacentElement('afterend',nextOverlay);
-      overlay = nextOverlay;
+    let menu = doc.getElementById('ethMenu');
+    if (!menu || menu.dataset.ethVersion !== VERSION) {
+      const next = doc.createElement('div');
+      next.id = 'ethMenu';
+      next.className = 'eth-menu';
+      next.dataset.ethVersion = VERSION;
+      next.setAttribute('role', 'dialog');
+      next.setAttribute('aria-modal', 'true');
+      next.setAttribute('aria-label', copy.menu);
+      next.hidden = true;
+      next.innerHTML = menuMarkup;
+      if (menu) menu.replaceWith(next);
+      else header.insertAdjacentElement('afterend', next);
+      menu = next;
     }
 
-    if (overlay.parentElement !== body) body.appendChild(overlay);
-    syncThemeIcon();
-    updateScrollState(true);
+    ensureMainTarget();
+    syncTheme();
+    updateScrollState();
   };
 
-  const sunIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>';
-  const moonIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.6A8.5 8.5 0 0 1 8.4 3.6 8.6 8.6 0 1 0 20.4 15.6Z"/></svg>';
-
+  // ---- theme
   const readTheme = () => {
-    const current = root.dataset.etTheme;
-    if (current === 'dark' || current === 'light') return current;
+    const value = root.dataset.etTheme;
+    if (value === 'dark' || value === 'light') return value;
     try {
       const saved = localStorage.getItem('et_theme_mode');
       if (saved === 'dark' || saved === 'light') return saved;
@@ -263,13 +334,12 @@
     return 'light';
   };
 
-  const syncThemeIcon = () => {
-    const button = doc.querySelector('.et-liquid-theme');
-    if (!button) return;
-    const theme = readTheme();
-    const isDark = theme === 'dark';
-    button.setAttribute('aria-pressed',String(isDark));
-    button.innerHTML = isDark ? sunIcon : moonIcon;
+  const syncTheme = () => {
+    const isDark = readTheme() === 'dark';
+    doc.querySelectorAll('.eth-theme').forEach(button => {
+      button.setAttribute('aria-pressed', String(isDark));
+      button.innerHTML = isDark ? icon.sun : icon.moon;
+    });
   };
 
   const setTheme = theme => {
@@ -279,162 +349,130 @@
     } else {
       root.dataset.etTheme = next;
       root.style.colorScheme = next;
-      try { localStorage.setItem('et_theme_mode',next); } catch (_) {}
-      window.dispatchEvent(new CustomEvent('et:themechange',{detail:{theme:next}}));
+      try { localStorage.setItem('et_theme_mode', next); } catch (_) {}
+      window.dispatchEvent(new CustomEvent('et:themechange', { detail: { theme: next } }));
     }
-    syncThemeIcon();
+    syncTheme();
   };
 
-  const menuState = open => {
-    const button = doc.querySelector('.et-liquid-menu');
-    const overlay = doc.getElementById('navOverlay');
-    if (!button || !overlay) return;
+  // ---- full-screen menu
+  let lastFocus = null;
+  const focusable = el => [...el.querySelectorAll('a[href],button:not([disabled])')].filter(n => n.offsetParent !== null);
 
-    body.classList.toggle('nav-open',open);
-    body.classList.toggle('menu-open',open);
-    root.classList.toggle('menu-is-open',open);
-    button.classList.toggle('is-open',open);
-    button.setAttribute('aria-expanded',String(open));
-    button.setAttribute('aria-label',open ? copy.close : copy.menu);
-    overlay.setAttribute('aria-hidden',String(!open));
+  const setMenu = open => {
+    const menu = doc.getElementById('ethMenu');
+    const button = doc.querySelector('.eth-menu-btn');
+    if (!menu || !button) return;
+    if (open === !menu.hidden) return;
+
+    if (open) {
+      lastFocus = doc.activeElement;
+      menu.hidden = false;
+      requestAnimationFrame(() => menu.classList.add('is-open'));
+      body.classList.add('eth-menu-open');
+      button.setAttribute('aria-expanded', 'true');
+      menu.querySelector('.eth-menu__close')?.focus({ preventScroll: true });
+    } else {
+      menu.classList.remove('is-open');
+      body.classList.remove('eth-menu-open');
+      button.setAttribute('aria-expanded', 'false');
+      const done = () => { if (!menu.classList.contains('is-open')) menu.hidden = true; };
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) done();
+      else setTimeout(done, 320);
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({ preventScroll: true });
+    }
   };
 
-  let target = 0;
-  let current = 0;
-  let raf = 0;
-
+  // ---- scroll / hero states
   const heroSelector = [
-    'main > .hero',
-    'main > .page-hero',
-    'main > .es-hero',
-    'main > .intl-hero',
-    'main > .ar-hero',
-    'main > .product-hero',
-    'main > .about-hero',
-    'main > .news-hero',
-    'main > section.hero',
-    'main > section[class$="-hero"]'
+    'main > .hero', 'main > .page-hero', 'main > .es-hero', 'main > .intl-hero', 'main > .ar-hero',
+    'main > .product-hero', 'main > .about-hero', 'main > .news-hero', 'main > section.hero',
+    'main > section[class$="-hero"]', 'main > section[class*="-hero "]'
   ].join(',');
 
-  const updateHeroContrast = () => {
-    const header = doc.getElementById('etLiquidHeader');
+  let ticking = false;
+  const updateScrollState = () => {
+    ticking = false;
+    const header = doc.getElementById('ethHeader');
+    if (!header) return;
+    header.classList.toggle('is-compact', scrollY > 48);
     const hero = doc.querySelector(heroSelector);
-    if (!header || !hero) {
-      header?.classList.remove('is-over-hero');
-      return;
+    let overHero = false;
+    if (hero) {
+      const rect = hero.getBoundingClientRect();
+      const probe = Math.min(header.getBoundingClientRect().bottom, 140) * 0.6;
+      overHero = rect.top <= probe && rect.bottom > probe;
     }
-
-    const headerRect = header.getBoundingClientRect();
-    const heroRect = hero.getBoundingClientRect();
-    const probeY = Math.max(headerRect.top, 0) + Math.min(headerRect.height || 88, 88) * .55;
-    const overHero = heroRect.top <= probeY && heroRect.bottom > probeY;
     header.classList.toggle('is-over-hero', overHero);
   };
-
-  const scrollTarget = () => {
-    if (matchMedia('(max-width:980px)').matches) return 0;
-    return Math.min(1,Math.max(0,scrollY / 520));
-  };
-
-  const renderScroll = force => {
-    const bar = doc.querySelector('.et-liquid-bar');
-    if (!bar) {
-      raf = 0;
-      return;
-    }
-
-    const delta = target - current;
-    current = force ? target : current + delta * .105;
-
-    const vw = innerWidth;
-    const baseEndWidth = vw >= 1700 ? 62 : vw >= 1500 ? 70 : vw >= 1280 ? 78 : vw >= 1050 ? 84 : 90;
-    const fiveLinkFloor = vw > 1240 ? Math.min(96, (1080 / vw) * 100) : 0;
-    const endWidth = Math.max(baseEndWidth, fiveLinkFloor);
-    const width = 100 - ((100 - endWidth) * current);
-    const height = 88 - (26 * current);
-    const blur = 34 + (10 * current);
-    const pad = 44 - (12 * current);
-
-    bar.style.setProperty('--elh-p',current.toFixed(4));
-    bar.style.setProperty('--elh-width',width.toFixed(3) + '%');
-    bar.style.setProperty('--elh-height',height.toFixed(2) + 'px');
-    bar.style.setProperty('--elh-blur',blur.toFixed(1) + 'px');
-    bar.style.setProperty('--elh-pad',pad.toFixed(1) + 'px');
-
-    if (!force && Math.abs(delta) > .0007) raf = requestAnimationFrame(() => renderScroll(false));
-    else raf = 0;
-  };
-
-  const updateScrollState = (force=false) => {
-    updateHeroContrast();
-    target = scrollTarget();
-    if (force) {
-      current = target;
-      renderScroll(true);
-      return;
-    }
-    if (!raf) raf = requestAnimationFrame(() => renderScroll(false));
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    // requestAnimationFrame is paused in background tabs; fall back to a timer there.
+    if (doc.hidden) setTimeout(updateScrollState, 16);
+    else requestAnimationFrame(updateScrollState);
   };
 
   install();
+  // The hero can still be settling (fonts, images, late scripts) when the header installs.
+  setTimeout(updateScrollState, 60);
+  setTimeout(updateScrollState, 600);
+  if (doc.readyState !== 'complete') window.addEventListener('load', updateScrollState, { once: true });
 
-  if (!window.__etLiquidUniversalEventsBound) {
-    window.__etLiquidUniversalEventsBound = true;
+  if (!window.__ethEventsBound) {
+    window.__ethEventsBound = true;
 
     doc.addEventListener('click', event => {
-      const menuButton = event.target.closest('.et-liquid-menu');
-      if (menuButton) {
+      if (event.target.closest('.eth-menu-btn')) {
         event.preventDefault();
-        event.stopPropagation();
-        menuState(menuButton.getAttribute('aria-expanded') !== 'true');
+        const menu = doc.getElementById('ethMenu');
+        setMenu(menu ? menu.hidden : true);
         return;
       }
-
-      const themeButton = event.target.closest('.et-liquid-theme');
-      if (themeButton) {
+      if (event.target.closest('.eth-menu__close')) {
+        event.preventDefault();
+        setMenu(false);
+        return;
+      }
+      if (event.target.closest('.eth-theme')) {
         event.preventDefault();
         setTheme(readTheme() === 'dark' ? 'light' : 'dark');
         return;
       }
-
-      const overlay = event.target.closest('#navOverlay');
-      if (overlay && (event.target === overlay || event.target.closest('a'))) {
-        menuState(false);
-      }
-
-      doc.querySelectorAll('.et-liquid-language[open]').forEach(details => {
-        if (!event.target.closest('.et-liquid-language')) details.removeAttribute('open');
-      });
+      if (event.target.closest('#ethMenu a[href]')) setMenu(false);
     });
 
-    doc.addEventListener('keydown',event => {
+    doc.addEventListener('keydown', event => {
+      const menu = doc.getElementById('ethMenu');
+      if (!menu || menu.hidden) return;
       if (event.key === 'Escape') {
-        menuState(false);
-        doc.querySelectorAll('.et-liquid-language[open]').forEach(details => details.removeAttribute('open'));
+        event.preventDefault();
+        setMenu(false);
+        return;
+      }
+      if (event.key === 'Tab') {
+        const items = focusable(menu);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (event.shiftKey && doc.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && doc.activeElement === last) { event.preventDefault(); first.focus(); }
       }
     });
 
-    window.addEventListener('resize',() => {
-      if (innerWidth > 980) menuState(false);
-      updateScrollState(true);
-    },{passive:true});
-
-    window.addEventListener('scroll',() => updateScrollState(false),{passive:true});
-    window.addEventListener('et:themechange',() => {
-      syncThemeIcon();
-      updateHeroContrast();
-    });
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    window.addEventListener('et:themechange', syncTheme);
   }
 
-  let observerQueued = false;
-  const observer = new MutationObserver(() => {
-    if (observerQueued) return;
-    if (doc.getElementById('etLiquidHeader')) return;
-    observerQueued = true;
+  // Re-install if a legacy script replaces or removes the header later.
+  let queued = false;
+  new MutationObserver(() => {
+    if (queued || (doc.getElementById('ethHeader') && doc.getElementById('ethMenu'))) return;
+    queued = true;
     queueMicrotask(() => {
-      observerQueued = false;
-      if (!doc.getElementById('etLiquidHeader')) install();
+      queued = false;
+      if (!doc.getElementById('ethHeader') || !doc.getElementById('ethMenu')) install();
     });
-  });
-  observer.observe(body,{childList:true,subtree:true});
+  }).observe(body, { childList: true, subtree: true });
 })();
