@@ -9,7 +9,7 @@
 (() => {
   'use strict';
 
-  const VERSION = '20261008-eth-4';
+  const VERSION = '20261008-eth-5';
   if (window.__etLiquidUniversalHeaderVersion === VERSION) return;
   window.__etLiquidUniversalHeaderVersion = VERSION;
 
@@ -400,7 +400,10 @@
   const heroSelector = [
     'main > .hero', 'main > .page-hero', 'main > .es-hero', 'main > .intl-hero', 'main > .ar-hero',
     'main > .product-hero', 'main > .about-hero', 'main > .news-hero', 'main > section.hero',
-    'main > section[class$="-hero"]', 'main > section[class*="-hero "]'
+    'main > section[class$="-hero"]', 'main > section[class*="-hero "]',
+    // dark bands further down the page: the header switches to its navy glass over them too
+    '[data-eth-dark]', '.home-selection-redesign__stage', '.home-joby-selected-markets',
+    '.home-signature-v2', 'body > .et-terminal-footer'
   ].join(',');
 
   // Gradual contraction: --eth-p eases from 0 (top) to 1 (compact) as the page scrolls.
@@ -412,13 +415,11 @@
   const nextFrame = fn => (doc.hidden ? setTimeout(fn, 16) : requestAnimationFrame(fn));
 
   const updateHero = header => {
-    const hero = doc.querySelector(heroSelector);
-    let overHero = false;
-    if (hero) {
-      const rect = hero.getBoundingClientRect();
-      const probe = Math.min(header.getBoundingClientRect().bottom, 140) * 0.6;
-      overHero = rect.top <= probe && rect.bottom > probe;
-    }
+    const probe = Math.min(header.getBoundingClientRect().bottom, 140) * 0.6;
+    const overHero = [...doc.querySelectorAll(heroSelector)].some(zone => {
+      const rect = zone.getBoundingClientRect();
+      return rect.top <= probe && rect.bottom > probe;
+    });
     header.classList.toggle('is-over-hero', overHero);
   };
 
