@@ -463,3 +463,13 @@ html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience :is(.
 html[lang="es"]:not([data-et-theme="dark"]) body.home-page.home-experience .ets-step__chips li{border-color:rgba(118,90,44,.38)}
 html[lang="es"] body.home-page.home-experience .ets-step__kicker{font-size:11px}
 html[lang="es"] body.home-page.home-experience .ets-step__chips li{font-size:10.5px}
+
+/* the Mediterranean is a catch zone: its sea dots shimmer softly when active */
+html[lang="es"] body.home-page.home-experience .atlas-dots--sea{stroke-width:3.4}
+html[lang="es"] body.home-page.home-experience .atlas-dots--sea.is-on{animation:etsAtlasSea 4.5s ease-in-out infinite}
+@keyframes etsAtlasSea{0%,100%{opacity:.95}50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){
+  html[lang="es"] body.home-page.home-experience .atlas-dots--sea.is-on{animation:none}
+}
+/* sea dots only appear while the Mediterranean is selected (otherwise the sea would read as land) */
+html[lang="es"] body.home-page.home-experience .ets-atlas .atlas-dots--sea:not(.is-on){opacity:0!important}
