@@ -163,6 +163,14 @@ test('Italian catalogue translates Spanish technical values in the shared render
   assert.match(renderer, /Secondo mercato/);
 });
 
+test('English catalogue translates Spanish technical values in the shared renderer', () => {
+  assert.match(renderer, /translateEnValue/);
+  assert.match(renderer, /lang === 'en' \? translateEnValue\(value\)/);
+  assert.match(renderer, /Relaid, cleaned and depurated/);
+  assert.match(renderer, /'Spain'/);
+  assert.match(renderer, /subject to availability/);
+});
+
 
 test('international shell gates market catalogue runtime to catalogue routes', () => {
   assert.match(shell, /marketCataloguePath/);

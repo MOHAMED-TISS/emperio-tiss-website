@@ -200,7 +200,10 @@
     'Entera / según destino': 'Intera / secondo destinazione',
     'Entero / cola / según destino': 'Intero / coda / secondo destinazione',
     'Según requisitos del destino': 'Secondo requisiti della destinazione',
-    'Según mercado': 'Secondo mercato'
+    'Según mercado': 'Secondo mercato',
+    'Según especificación del comprador': 'Secondo specifica del cliente',
+    'Según especificación profesional': 'Specifica professionale',
+    'Según especificación professional': 'Specifica professionale'
   };
 
   const translateItValue = value => {
@@ -227,7 +230,56 @@
         .replace(/Mediterráneo/g, 'Mediterraneo')
         .replace(/Atlántico/g, 'Atlantico')
         .replace(/Entero/g, 'Intero')
-        .replace(/Entera/g, 'Intera');
+        .replace(/Entera/g, 'Intera')
+        .replace(/\bMarruecos\b/g, 'Marocco').replace(/\bNoruega\b/g, 'Norvegia')
+        .replace(/\bBandeja\b/g, 'Vaschetta').replace(/\bBloque\b/g, 'Blocco').replace(/\bLimpia\b/g, 'Pulita')
+        .replace(/\beviscerada\b/g, 'eviscerata').replace(/\blomo\b/g, 'filetto').replace(/\bcola\b/g, 'coda')
+        .replace(/\bporciones\b/g, 'porzioni').replace(/según destino/gi, 'secondo destinazione')
+        .replace(/según referencia/gi, 'secondo referenza').replace(/según (campaña|temporada)/gi, 'secondo stagione')
+        .replace(/según programa/gi, 'secondo programma');
+    };
+    return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' / ') : translateOne(value);
+  };
+
+  // catalog-v1.3 technical values are written in Spanish; EN pages show them in English
+  const enTechnicalTranslations = {
+    'Reparcado, limpio y depurado': 'Relaid, cleaned and depurated',
+    'Vivo · reparcado · limpio (desbisado) · depurado': 'Live · relaid · cleaned (debyssed) · depurated',
+    'Sacos de 2, 5 y 10 kg': '2, 5 and 10 kg sacks',
+    'Limpia / IQF / Bloque': 'Cleaned / IQF / Block',
+    'Especificación profesional': 'Professional specification',
+    'Según especificación profesional': 'Professional specification',
+    'Según especificación professional': 'Professional specification',
+    'Según especificación del comprador': 'To buyer specification',
+    'Según requisitos del destino': 'To destination requirements',
+    'Entero / porciones según destino': 'Whole / portions to destination requirements'
+  };
+  const translateEnValue = value => {
+    const translateOne = item => {
+      const raw = String(item ?? '');
+      if (enTechnicalTranslations[raw]) return enTechnicalTranslations[raw];
+      return raw
+        .replace(/\bEspaña\b/g, 'Spain').replace(/\bMarruecos\b/g, 'Morocco').replace(/\bNoruega\b/g, 'Norway').replace(/\bTúnez\b/g, 'Tunisia')
+        .replace(/Mediterráneo/g, 'Mediterranean').replace(/Atlántico/g, 'Atlantic')
+        .replace(/\bEntera?o?\b/g, 'Whole').replace(/\beviscerada\b/g, 'gutted').replace(/\blomo\b/g, 'loin').replace(/\bcola\b/g, 'tail')
+        .replace(/\bBandeja\b/g, 'Tray').replace(/\bBloque\b/g, 'Block')
+        .replace(/según campaña y disponibilidad/gi, 'subject to season and availability')
+        .replace(/según campaña y programa/gi, 'subject to season and programme')
+        .replace(/según programa y disponibilidad/gi, 'subject to programme and availability')
+        .replace(/según temporada y programa de suministro/gi, 'subject to season and supply programme')
+        .replace(/según especie y programa de suministro/gi, 'by species and supply programme')
+        .replace(/según programa de suministro/gi, 'according to supply programme')
+        .replace(/según (campaña|temporada)/gi, 'subject to season')
+        .replace(/según programa/gi, 'according to programme')
+        .replace(/según disponibilidad/gi, 'subject to availability')
+        .replace(/según origen disponible/gi, 'according to available origin')
+        .replace(/según origen/gi, 'according to origin')
+        .replace(/según presentación/gi, 'according to presentation')
+        .replace(/según referencia/gi, 'per reference')
+        .replace(/según destino/gi, 'according to destination')
+        .replace(/según mercado/gi, 'according to market')
+        .replace(/^(subject|according|by|per) /, (m, w) => w[0].toUpperCase() + w.slice(1) + ' ')
+        .replace(/(\w) (subject|according) to/g, '$1, $2 to');
     };
     return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' / ') : translateOne(value);
   };
@@ -350,7 +402,7 @@
     let state = 'all';
     const translatedName = p => priority?.names?.[p.id]?.[lang] || p.commercialName || p.id;
     const translateValue = (value, product) => product?.id === 'bottarga' ?
-      translateBottargaValue(value) : (lang === 'it' ? translateItValue(value) : value);
+      translateBottargaValue(value) : (lang === 'it' ? translateItValue(value) : lang === 'en' ? translateEnValue(value) : value);
     const capitalizeCatalogueLabel = value => String(value ?? '').replace(/(^|[\s/-])([a-zà-ÿ])/giu, (_, prefix, letter) => `${prefix}${letter.toLocaleUpperCase()}`);
     const categoryLabel = p => capitalizeCatalogueLabel(translateValue(p.catalogGroup || p.category || p.subcategory || subcategory, p));
     const conditionLabel = p => (p.condition || []).map(c => norm(c) === 'fresh' ? labels.fresh :
