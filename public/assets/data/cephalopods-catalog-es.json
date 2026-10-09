@@ -18,7 +18,7 @@
         "FAO 27 / FAO 37 según origen"
       ],
       "calibre": [
-        "Según disponibilidad"
+        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1,5–2 kg) · T5 (1,2–1,5 kg) · T6 (0,8–1,2 kg) · T7 (0,5–0,8 kg) · T8 (0,3–0,5 kg) — peso por pieza"
       ],
       "quality": [
         "Especificación profesional"
@@ -54,7 +54,7 @@
         "FAO 27 / FAO 37 según origen"
       ],
       "calibre": [
-        "Según disponibilidad"
+        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1,5–2 kg) · T5 (1,2–1,5 kg) · T6 (0,8–1,2 kg) · T7 (0,5–0,8 kg) · T8 (0,3–0,5 kg) — peso por pieza"
       ],
       "quality": [
         "Especificación profesional"
@@ -91,7 +91,7 @@
         "Según origen"
       ],
       "calibre": [
-        "Según disponibilidad"
+        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1,5–2 kg) · T5 (1,2–1,5 kg) · T6 (0,8–1,2 kg) · T7 (0,5–0,8 kg) · T8 (0,3–0,5 kg) — peso por pieza"
       ],
       "quality": [
         "Especificación profesional"
@@ -114,7 +114,7 @@
     {
       "id": "calamar-envuelto",
       "commercialName": "Calamar envuelto",
-      "scientificName": "Illex / Loligo spp.",
+      "scientificName": "Loligo vulgaris",
       "group": "Cefalópodos",
       "type": "Calamar",
       "condition": [
@@ -127,7 +127,7 @@
         "Según origen"
       ],
       "calibre": [
-        "Según disponibilidad"
+        "GG (+35) · G (31–35) · M (26–30) · P (21–25) · 2P (16–20) · 3P (12–16) · 4P (8–12) — longitud, cm"
       ],
       "quality": [
         "Especificación profesional"
@@ -200,7 +200,7 @@
         "Según origen"
       ],
       "calibre": [
-        "Según disponibilidad"
+        "U/1 · 1/2 · 2/4 · 5/7 · 8/12 · 13/20 · 20/40 · 40/60 · 60/up — piezas/kg"
       ],
       "quality": [
         "Especificación profesional"
@@ -236,7 +236,7 @@
         "Según zona FAO"
       ],
       "calibre": [
-        "Según especificación del comprador"
+        "70/100 · 80/110 · 110/150 · 150/200 g — peso por pieza"
       ],
       "quality": [
         "Especificación profesional"

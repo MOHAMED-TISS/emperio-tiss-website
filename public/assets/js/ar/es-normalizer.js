@@ -45,7 +45,7 @@
       .replace(/\bSegún mercado\b/g,'حسب السوق').replace(/\bSegún campaña y disponibilidad\b/g,'حسب الموسم والتوفر')
       .replace(/\bSegún programa de suministro\b/g,'حسب برنامج التوريد').replace(/\bSegún especie y programa de suministro\b/g,'حسب النوع وبرنامج التوريد')
       .replace(/\bSegún origen\b/g,'حسب المنشأ').replace(/\bSegún requisitos del destino\b/g,'حسب متطلبات الوجهة')
-      .replace(/\bEspecificación profesional\b/g,'مواصفة مهنية').replace(/\bTúnez\b/g,'تونس').replace(/\bEspaña\b/g,'إسبانيا');
+      .replace(/\bEspecificación profesional\b/g,'مواصفة مهنية').replace(/Half shell/g,'نصف صدفة').replace(/\bMeat\b/g,'لحم').replace(/pcs\/kg/g,'قطعة/كغ').replace(/Entero cocido \/ media concha \/ carne/g,'كامل مطهو / نصف صدفة / لحم').replace(/^molluscs$/i,'رخويات').replace(/\bTúnez\b/g,'تونس').replace(/\bEspaña\b/g,'إسبانيا');
   };
 
   const injectStyle = () => {

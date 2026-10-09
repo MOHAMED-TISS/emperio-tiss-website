@@ -144,6 +144,7 @@
     "seafood/shellfish": {
       "es": [
         "gamba-blanca",
+        "mejillon",
         "cigala",
         "moruno",
         "langostino-tigre"
@@ -151,10 +152,12 @@
       "en": [
         "gamba-blanca",
         "langostino-tigre",
+        "mejillon",
         "cigala",
         "moruno"
       ],
       "fr": [
+        "mejillon",
         "gamba-blanca",
         "cigala",
         "moruno",
@@ -162,6 +165,7 @@
       ],
       "it": [
         "gamba-blanca",
+        "mejillon",
         "cigala",
         "langostino-tigre",
         "moruno"
@@ -170,7 +174,8 @@
         "gamba-blanca",
         "langostino-tigre",
         "cigala",
-        "moruno"
+        "moruno",
+        "mejillon"
       ]
     },
     "seafood/cephalopods": {
@@ -733,6 +738,12 @@
       "fr": "Grenade",
       "it": "Melagrana",
       "ar": "الرمان"
+    },
+    "mejillon": {
+      "en": "Mussel",
+      "fr": "Moule",
+      "it": "Cozza",
+      "ar": "بلح البحر"
     }
   }
 }
