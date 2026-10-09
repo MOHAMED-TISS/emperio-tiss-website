@@ -248,9 +248,13 @@ html[dir="rtl"] .et-terminal-footer :is(h2,a,p,span,strong,small){
   letter-spacing:0;
 }
 html[dir="rtl"] .et-terminal-footer__col a:hover{transform:translateX(-3px)}
-html[dir="rtl"] .et-terminal-footer__wordmark{
+/* the company name is Latin type: same face and tracking as in every other language.
+   Arabic page layers set serif type and zero tracking on every paragraph with !important and
+   up to (0,5,2) specificity (site-2026.css), hence !important and the repeated class (0,5,3). */
+html[dir="rtl"] body .et-terminal-footer p.et-terminal-footer__wordmark.et-terminal-footer__wordmark.et-terminal-footer__wordmark{
   direction:ltr;
-  font-family:"DM Sans",Arial,sans-serif;
+  font-family:"DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.084em!important;
 }
 html[dir="rtl"] .et-terminal-footer__region{text-align:left}
 

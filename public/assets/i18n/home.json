@@ -193,7 +193,7 @@
       "مختارات EMPERIO TISS"
     ],
     "Mar": [
-      "Seafood",
+      "Sea",
       "Mer",
       "Mare",
       "البحر"
@@ -599,6 +599,402 @@
       "EMPERIO TISS — Accueil",
       "EMPERIO TISS — Home",
       "EMPERIO TISS — الرئيسية"
+    ],
+    "01 / SELECCIÓN EMPERIO TISS": [
+      "01 / THE EMPERIO TISS SELECTION",
+      "01 / LA SÉLECTION EMPERIO TISS",
+      "01 / LA SELEZIONE EMPERIO TISS",
+      "01 / مختارات EMPERIO TISS"
+    ],
+    "Tres universos.": [
+      "Three worlds.",
+      "Trois univers.",
+      "Tre universi.",
+      "ثلاثة عوالم."
+    ],
+    "Un mismo criterio.": [
+      "One standard.",
+      "Une même exigence.",
+      "Un unico criterio.",
+      "ومعيار واحد."
+    ],
+    "Producto, origen, especificación y disponibilidad.": [
+      "Product, origin, specification and availability.",
+      "Produit, origine, spécification et disponibilité.",
+      "Prodotto, origine, specifiche e disponibilità.",
+      "المنتج والمنشأ والمواصفات والتوافر."
+    ],
+    "Una selección pensada para necesidades profesionales.": [
+      "A selection built around professional requirements.",
+      "Une sélection pensée pour les besoins professionnels.",
+      "Una selezione pensata per le esigenze professionali.",
+      "اختيار مصمَّم لاحتياجات المحترفين."
+    ],
+    "EMPERIO TISS / SELECCIÓN DE PRODUCTO": [
+      "EMPERIO TISS / PRODUCT SELECTION",
+      "EMPERIO TISS / SÉLECTION DE PRODUITS",
+      "EMPERIO TISS / SELEZIONE DI PRODOTTI",
+      "EMPERIO TISS / اختيار المنتجات"
+    ],
+    "MAR": [
+      "SEA",
+      "MER",
+      "MARE",
+      "البحر"
+    ],
+    "Fruta fresca": [
+      "Fresh fruit",
+      "Fruits frais",
+      "Frutta fresca",
+      "فواكه طازجة"
+    ],
+    "Selección de origen": [
+      "Selected at origin",
+      "Sélection d’origine",
+      "Selezione d’origine",
+      "مختارة من المنشأ"
+    ],
+    "Especie": [
+      "Species",
+      "Espèce",
+      "Specie",
+      "النوع"
+    ],
+    "Origen": [
+      "Origin",
+      "Origine",
+      "Origine",
+      "المنشأ"
+    ],
+    "Formato": [
+      "Format",
+      "Format",
+      "Formato",
+      "التعبئة"
+    ],
+    "Disponibilidad": [
+      "Availability",
+      "Disponibilité",
+      "Disponibilità",
+      "التوافر"
+    ],
+    "TEMPORADA": [
+      "SEASONAL",
+      "SAISON",
+      "STAGIONE",
+      "الموسم"
+    ],
+    "El tiempo también selecciona.": [
+      "Availability follows the seasons.",
+      "Le rythme des saisons compte.",
+      "Ogni stagione ha il suo momento.",
+      "لكل موسم اختياراته."
+    ],
+    "Antes de mover producto, definimos lo esencial: referencia, especificación, volumen, calendario y destino.": [
+      "Before any product moves, we define the essentials: reference, specification, volume, schedule and destination.",
+      "Avant de déplacer un produit, nous définissons l’essentiel : référence, spécification, volume, calendrier et destination.",
+      "Prima di muovere il prodotto definiamo l’essenziale: referenza, specifiche, volume, calendario e destinazione.",
+      "قبل نقل أي منتج نحدّد الأساسيات: المرجع والمواصفات والكمية والجدول الزمني والوجهة."
+    ],
+    "Del producto": [
+      "From product",
+      "Du produit",
+      "Dal prodotto",
+      "من المنتج"
+    ],
+    "al acuerdo.": [
+      "to agreement.",
+      "à l’accord.",
+      "all’accordo.",
+      "إلى الاتفاق."
+    ],
+    "Producto y origen": [
+      "Product and origin",
+      "Produit et origine",
+      "Prodotto e origine",
+      "المنتج والمنشأ"
+    ],
+    "PRODUCTO Y ORIGEN": [
+      "PRODUCT AND ORIGIN",
+      "PRODUIT ET ORIGINE",
+      "PRODOTTO E ORIGINE",
+      "المنتج والمنشأ"
+    ],
+    "Definimos la referencia, procedencia y disponibilidad adecuada para la necesidad concreta.": [
+      "We define the right reference, origin and availability for each specific requirement.",
+      "Nous définissons la référence, la provenance et la disponibilité adaptées à chaque besoin précis.",
+      "Definiamo la referenza, la provenienza e la disponibilità adatte a ogni esigenza specifica.",
+      "نحدّد المرجع والمنشأ والتوافر المناسب لكل احتياج محدد."
+    ],
+    "Referencia": [
+      "Reference",
+      "Référence",
+      "Referenza",
+      "المرجع"
+    ],
+    "ESPECIFICACIÓN": [
+      "SPECIFICATION",
+      "SPÉCIFICATION",
+      "SPECIFICHE",
+      "المواصفات"
+    ],
+    "Especificación": [
+      "Specification",
+      "Spécification",
+      "Specifiche",
+      "المواصفات"
+    ],
+    "Calidad, calibre, conservación, presentación y formato quedan claros antes de avanzar.": [
+      "Quality, size, storage, presentation and packing are agreed before moving forward.",
+      "Qualité, calibre, conservation, présentation et conditionnement sont clarifiés avant d’avancer.",
+      "Qualità, calibro, conservazione, presentazione e confezionamento vengono chiariti prima di procedere.",
+      "نتفق على الجودة والحجم والحفظ وطريقة التقديم والتعبئة قبل المضي قدماً."
+    ],
+    "Calidad": [
+      "Quality",
+      "Qualité",
+      "Qualità",
+      "الجودة"
+    ],
+    "Calibre": [
+      "Size",
+      "Calibre",
+      "Calibro",
+      "الحجم"
+    ],
+    "OPERACIÓN": [
+      "OPERATION",
+      "OPÉRATION",
+      "OPERAZIONE",
+      "التنفيذ"
+    ],
+    "Operación": [
+      "Operation",
+      "Opération",
+      "Operazione",
+      "التنفيذ"
+    ],
+    "Volumen, calendario, destino y condiciones se alinean para convertir la selección en una operación viable.": [
+      "Volume, schedule, destination and terms are aligned to turn the selection into a workable operation.",
+      "Volume, calendrier, destination et conditions s’alignent pour transformer la sélection en une opération viable.",
+      "Volume, calendario, destinazione e condizioni si allineano per trasformare la selezione in una fornitura concreta.",
+      "نوائم بين الكمية والجدول الزمني والوجهة والشروط لتتحول المختارات إلى عملية توريد قابلة للتنفيذ."
+    ],
+    "Volumen": [
+      "Volume",
+      "Volume",
+      "Volume",
+      "الكمية"
+    ],
+    "Calendario": [
+      "Schedule",
+      "Calendrier",
+      "Calendario",
+      "الجدول الزمني"
+    ],
+    "Destino": [
+      "Destination",
+      "Destination",
+      "Destinazione",
+      "الوجهة"
+    ],
+    "Cómo trabajamos": [
+      "How we work",
+      "Notre démarche",
+      "Come lavoriamo",
+      "أسلوب عملنا"
+    ],
+    "03 / MERCADOS": [
+      "03 / MARKETS",
+      "03 / MARCHÉS",
+      "03 / MERCATI",
+      "03 / الأسواق"
+    ],
+    "Desde Madrid, una red que une zonas de producción y de captura, como el Mediterráneo, con destinos profesionales en Europa, África y Oriente Medio.": [
+      "From Madrid, a network linking production regions and fishing grounds such as the Mediterranean with professional destinations across Europe, Africa and the Middle East.",
+      "Depuis Madrid, un réseau qui relie zones de production et zones de pêche, comme la Méditerranée, à des destinations professionnelles en Europe, en Afrique et au Moyen-Orient.",
+      "Da Madrid, una rete che unisce aree di produzione e zone di pesca, come il Mediterraneo, a destinazioni professionali in Europa, Africa e Medio Oriente.",
+      "من مدريد، شبكة تربط مناطق الإنتاج ومناطق الصيد، مثل البحر المتوسط، بوجهات مهنية في أوروبا وأفريقيا والشرق الأوسط."
+    ],
+    "Zona de captura · Origen del pescado": [
+      "Fishing grounds · Origin of the fish",
+      "Zone de pêche · Origine du poisson",
+      "Zona di pesca · Origine del pesce",
+      "منطقة صيد · منشأ الأسماك"
+    ],
+    "01 · DESDE MADRID": [
+      "01 · FROM MADRID",
+      "01 · DEPUIS MADRID",
+      "01 · DA MADRID",
+      "01 · من مدريد"
+    ],
+    "02 · DESDE MADRID": [
+      "02 · FROM MADRID",
+      "02 · DEPUIS MADRID",
+      "02 · DA MADRID",
+      "02 · من مدريد"
+    ],
+    "04 · DESDE MADRID": [
+      "04 · FROM MADRID",
+      "04 · DEPUIS MADRID",
+      "04 · DA MADRID",
+      "04 · من مدريد"
+    ],
+    "03 · ZONA DE CAPTURA": [
+      "03 · FISHING GROUNDS",
+      "03 · ZONE DE PÊCHE",
+      "03 · ZONA DI PESCA",
+      "03 · منطقة صيد"
+    ],
+    "Conexiones con los principales destinos profesionales de Europa.": [
+      "Connections with Europe’s main professional destinations.",
+      "Des liaisons avec les principales destinations professionnelles d’Europe.",
+      "Collegamenti con le principali destinazioni professionali europee.",
+      "روابط مع أبرز الوجهات المهنية في أوروبا."
+    ],
+    "Zonas de producción y origen conectadas con los mercados europeos.": [
+      "Production and origin regions connected with European markets.",
+      "Des zones de production et d’origine reliées aux marchés européens.",
+      "Aree di produzione e d’origine collegate ai mercati europei.",
+      "مناطق إنتاج ومنشأ مرتبطة بالأسواق الأوروبية."
+    ],
+    "Caladeros de origen del pescado: el punto de partida de la selección que llevamos a cada destino.": [
+      "The fishing grounds where our fish originates: the starting point of the selection we bring to each destination.",
+      "Les zones de pêche d’où provient le poisson : le point de départ de la sélection que nous acheminons vers chaque destination.",
+      "Le zone di pesca da cui proviene il pesce: il punto di partenza della selezione che portiamo a ogni destinazione.",
+      "مناطق صيد الأسماك: نقطة انطلاق المختارات التي نوصلها إلى كل وجهة."
+    ],
+    "ACCESO PROFESIONAL": [
+      "PROFESSIONAL ACCESS",
+      "ACCÈS PROFESSIONNEL",
+      "ACCESSO PROFESSIONALE",
+      "وصول مهني"
+    ],
+    "04 / OPORTUNIDADES SELECCIONADAS": [
+      "04 / SELECTED OPPORTUNITIES",
+      "04 / OPPORTUNITÉS SÉLECTIONNÉES",
+      "04 / OPPORTUNITÀ SELEZIONATE",
+      "04 / فرص مختارة"
+    ],
+    "Un acceso más directo": [
+      "More direct access",
+      "Un accès plus direct",
+      "Un accesso più diretto",
+      "وصول أكثر مباشرة"
+    ],
+    "a lo que encaja con su mercado.": [
+      "to what fits your market.",
+      "à ce qui correspond à votre marché.",
+      "a ciò che è adatto al vostro mercato.",
+      "إلى ما يناسب سوقكم."
+    ],
+    "Disponibilidad comercial, referencias seleccionadas y oportunidades adaptadas al perfil de cada empresa.": [
+      "Commercial availability, selected references and opportunities tailored to each company profile.",
+      "Disponibilités commerciales, références sélectionnées et opportunités adaptées au profil de chaque entreprise.",
+      "Disponibilità commerciale, referenze selezionate e opportunità adattate al profilo di ogni azienda.",
+      "توافر تجاري، مراجع مختارة وفرص ملائمة لملف كل شركة."
+    ],
+    "Solicitar acceso": [
+      "Request access",
+      "Demander l’accès",
+      "Richiedi accesso",
+      "طلب الوصول"
+    ],
+    "Acceder a Signature": [
+      "Access Signature",
+      "Accéder à Signature",
+      "Accedi a Signature",
+      "الدخول إلى Signature"
+    ],
+    "Acceso reservado a empresas aprobadas. Cada solicitud se revisa antes de habilitar la cuenta.": [
+      "Access reserved for approved companies. Each request is reviewed before the account is enabled.",
+      "Accès réservé aux entreprises approuvées. Chaque demande est examinée avant l’activation du compte.",
+      "Accesso riservato alle aziende approvate. Ogni richiesta viene verificata prima dell’attivazione.",
+      "الوصول مخصص للشركات المعتمدة. تتم مراجعة كل طلب قبل تفعيل الحساب."
+    ],
+    "PARA EMPRESAS APROBADAS": [
+      "FOR APPROVED COMPANIES",
+      "POUR LES ENTREPRISES APPROUVÉES",
+      "PER AZIENDE APPROVATE",
+      "للشركات المعتمدة"
+    ],
+    "Oportunidades": [
+      "Opportunities",
+      "Opportunités",
+      "Opportunità",
+      "الفرص"
+    ],
+    "Selección comercial relevante según producto, origen y mercado.": [
+      "Commercial selection relevant by product, origin and market.",
+      "Sélection commerciale pertinente selon le produit, l’origine et le marché.",
+      "Selezione commerciale rilevante in base a prodotto, origine e mercato.",
+      "اختيار تجاري مناسب بحسب المنتج والمنشأ والسوق."
+    ],
+    "Referencias activas y ventanas comerciales con información más directa.": [
+      "Active references and commercial windows with more direct information.",
+      "Références actives et fenêtres commerciales avec une information plus directe.",
+      "Referenze attive e finestre commerciali con informazioni più dirette.",
+      "مراجع نشطة ونوافذ تجارية بمعلومات أكثر مباشرة."
+    ],
+    "Acceso privado": [
+      "Private access",
+      "Accès privé",
+      "Accesso privato",
+      "وصول خاص"
+    ],
+    "Un espacio reservado para consultar oportunidades y dar seguimiento.": [
+      "A reserved space to review opportunities and follow up.",
+      "Un espace réservé pour consulter les opportunités et assurer le suivi.",
+      "Uno spazio riservato per consultare opportunità e seguirne l’evoluzione.",
+      "مساحة مخصصة لمراجعة الفرص ومتابعتها."
+    ],
+    "ORÍGENES SELECTOS. ALCANCE GLOBAL.": [
+      "PRIME ORIGINS. GLOBAL REACH.",
+      "ORIGINES CHOISIES. PORTÉE MONDIALE.",
+      "ORIGINI SCELTE. PORTATA GLOBALE.",
+      "أصول مختارة. حضور عالمي."
+    ],
+    "05 / SU PRÓXIMO SUMINISTRO": [
+      "05 / YOUR NEXT SUPPLY REQUIREMENT",
+      "05 / VOTRE PROCHAIN APPROVISIONNEMENT",
+      "05 / LA VOSTRA PROSSIMA FORNITURA",
+      "05 / احتياجاتكم القادمة من التوريد"
+    ],
+    "por una conversación.": [
+      "with a conversation.",
+      "par un échange.",
+      "con un dialogo.",
+      "بحوار معاً."
+    ],
+    "Cambiar modo claro u oscuro": [
+      "Switch light or dark mode",
+      "Basculer entre mode clair et sombre",
+      "Passa alla modalità chiara o scura",
+      "التبديل بين الوضع الفاتح والداكن"
+    ],
+    "Criterios": [
+      "Criteria",
+      "Critères",
+      "Criteri",
+      "المعايير"
+    ],
+    "Regiones": [
+      "Regions",
+      "Régions",
+      "Regioni",
+      "المناطق"
+    ],
+    "Mapa: desde Madrid hacia Europa, África y Oriente Medio; el Mediterráneo como zona de captura": [
+      "Map: from Madrid to Europe, Africa and the Middle East; the Mediterranean as a fishing ground",
+      "Carte : depuis Madrid vers l’Europe, l’Afrique et le Moyen-Orient ; la Méditerranée comme zone de pêche",
+      "Mappa: da Madrid verso Europa, Africa e Medio Oriente; il Mediterraneo come zona di pesca",
+      "خريطة: من مدريد إلى أوروبا وأفريقيا والشرق الأوسط، والبحر المتوسط منطقة صيد"
+    ],
+    "Qué ofrece EMPERIO Signature": [
+      "What EMPERIO Signature offers",
+      "Ce que propose EMPERIO Signature",
+      "Cosa offre EMPERIO Signature",
+      "ما يقدّمه EMPERIO Signature"
     ]
   },
   "scenes": {

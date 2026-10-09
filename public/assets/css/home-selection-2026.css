@@ -2,7 +2,7 @@
    Editorial marquees: a large serif marquee of the family name and a fine attribute ribbon.
    Final layer: scoped selectors outrank home-selection-marquee.css and home-es-navigation-pilot.css. */
 
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage{
   --ets-cream:#f6ead2;
   --ets-gold:#d9bd85;
   --ets-gold-light:#ecd8aa;
@@ -17,14 +17,14 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
 }
 
 /* cinematic grade: deep top for the index, open centre, deep base for copy */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-image{object-position:50% 62%!important;filter:saturate(.96) contrast(1.02) brightness(.96)!important}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-image.active{filter:saturate(1) contrast(1.03) brightness(1)!important;transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 6s cubic-bezier(.16,1,.3,1),filter 1.2s ease!important}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-shade{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-image{object-position:50% 62%!important;filter:saturate(.96) contrast(1.02) brightness(.96)!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-image.active{filter:saturate(1) contrast(1.03) brightness(1)!important;transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 6s cubic-bezier(.16,1,.3,1),filter 1.2s ease!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-shade{
   background:
     radial-gradient(120% 80% at 50% 50%,rgba(var(--ets-navy),0) 40%,rgba(var(--ets-navy),.42) 100%),
     linear-gradient(180deg,rgba(var(--ets-navy),.62) 0%,rgba(var(--ets-navy),.18) 22%,rgba(var(--ets-navy),0) 42%,rgba(var(--ets-navy),.06) 64%,rgba(var(--ets-navy),.72) 100%),linear-gradient(270deg,rgba(var(--ets-navy),.74) 0%,rgba(var(--ets-navy),.4) 24%,rgba(var(--ets-navy),0) 44%)!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage::before{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage::before{
   inset:14px!important;
   border:1px solid rgba(236,216,170,.14)!important;
   border-radius:20px!important;
@@ -32,7 +32,7 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
 }
 
 /* folio */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio{
   top:34px!important;
   left:var(--ets-pad)!important;
   right:var(--ets-pad)!important;
@@ -42,12 +42,12 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   font:500 9.5px/1 "DM Sans","Inter",sans-serif!important;
   letter-spacing:.34em!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:first-child{display:flex;align-items:center;gap:14px}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:first-child::before{content:"";width:28px;height:1px;background:var(--ets-gold)}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:last-child{color:var(--ets-gold-light)!important;font-family:"Playfair Display",Georgia,serif!important;font-size:14px!important;font-style:italic;letter-spacing:.08em!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:first-child{display:flex;align-items:center;gap:14px}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:first-child::before{content:"";width:28px;height:1px;background:var(--ets-gold)}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:last-child{color:var(--ets-gold-light)!important;font-family:"Playfair Display",Georgia,serif!important;font-size:14px!important;font-style:italic;letter-spacing:.08em!important}
 
 /* category index — one quiet editorial row */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories{
   top:78px!important;
   left:var(--ets-pad)!important;
   right:var(--ets-pad)!important;
@@ -59,7 +59,7 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   border:0!important;
   z-index:12!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button{
   width:auto!important;
   min-height:0!important;
   display:flex!important;
@@ -71,9 +71,9 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   color:rgba(246,234,210,.42)!important;
   transition:color .45s ease!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button:hover{color:rgba(246,234,210,.78)!important}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button[aria-selected="true"]{color:var(--ets-cream)!important;background:transparent!important}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button>span{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button:hover{color:rgba(246,234,210,.78)!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button[aria-selected="true"]{color:var(--ets-cream)!important;background:transparent!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button>span{
   margin:0!important;
   color:var(--ets-gold)!important;
   font:500 9px/1 "DM Sans","Inter",sans-serif!important;
@@ -81,11 +81,11 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   align-self:flex-start!important;
   padding-top:6px!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button strong{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button strong{
   font:400 clamp(28px,2.5vw,40px)/1 "Playfair Display",Georgia,serif!important;
   letter-spacing:-.02em!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button small{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button small{
   color:rgba(246,234,210,.5)!important;
   font:500 8.5px/1 "DM Sans","Inter",sans-serif!important;
   letter-spacing:.26em!important;
@@ -95,21 +95,21 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   opacity:0;
   transition:opacity .45s ease,max-width .7s cubic-bezier(.16,1,.3,1)!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button[aria-selected="true"] small{max-width:220px;opacity:1}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button::after{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button[aria-selected="true"] small{max-width:220px;opacity:1}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button::after{
   top:auto!important;
   bottom:0!important;
   height:1px!important;
   background:linear-gradient(90deg,var(--ets-gold-light),rgba(217,189,133,0))!important;
   transition:width .8s cubic-bezier(.16,1,.3,1)!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button[aria-selected="true"]::after{width:100%!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button[aria-selected="true"]::after{width:100%!important}
 
 /* the old static word is replaced by the editorial marquee */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__hero-word{display:none!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__hero-word{display:none!important}
 
 /* large editorial marquee */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand{
   position:absolute;
   z-index:6;
   left:0;
@@ -122,21 +122,21 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);
   transition:opacity .5s ease,filter .5s ease;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__track{display:flex;width:max-content;animation:etsMarquee 70s linear infinite}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__run{display:flex;align-items:center;flex:none;white-space:nowrap}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__word{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__track{display:flex;width:max-content;animation:etsMarquee 70s linear infinite}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__run{display:flex;align-items:center;flex:none;white-space:nowrap}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__word{
   padding:0 .14em .06em;
   color:rgba(246,234,210,.94);
   font:400 italic clamp(104px,11.6vw,200px)/1 "Playfair Display",Georgia,serif;
   letter-spacing:-.045em;
   text-shadow:0 18px 60px rgba(0,0,0,.28);
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__word--outline{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__word--outline{
   color:transparent;
   -webkit-text-stroke:1px rgba(236,216,170,.72);
   text-shadow:none;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__sep{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__sep{
   flex:none;
   width:12px;
   height:12px;
@@ -147,7 +147,7 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
 }
 
 /* product copy — bottom right, clear of both marquees */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel{
   right:var(--ets-pad)!important;
   left:auto!important;
   bottom:96px!important;
@@ -156,17 +156,17 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   border-top:1px solid rgba(236,216,170,.28)!important;
   z-index:12!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel .small{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel .small{
   color:var(--ets-gold-light)!important;
   font:500 9px/1 "DM Sans","Inter",sans-serif!important;
   letter-spacing:.32em!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel p{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel p{
   margin:16px 0 22px!important;
   color:rgba(246,240,230,.8)!important;
   font:400 14px/1.75 "DM Sans","Inter",sans-serif!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel a.home-action{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel a.home-action{
   gap:14px!important;
   padding:0 0 8px!important;
   color:var(--ets-cream)!important;
@@ -175,12 +175,12 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   letter-spacing:.26em!important;
   text-transform:uppercase!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel a.home-action:hover{color:var(--ets-gold-light)!important;border-bottom-color:var(--ets-gold-light)!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel a.home-action:hover{color:var(--ets-gold-light)!important;border-bottom-color:var(--ets-gold-light)!important}
 
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage::after{display:none!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage::after{display:none!important}
 
 /* fine attribute ribbon */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker{
   left:0!important;
   right:0!important;
   top:auto!important;
@@ -198,21 +198,21 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
   z-index:12!important;
   transition:opacity .5s ease!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker::before,
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker::after{display:none!important}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__track{animation:etsMarquee 110s linear infinite reverse!important}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__word--term{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker::before,
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker::after{display:none!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__track{animation:etsMarquee 110s linear infinite reverse!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__word--term{
   color:rgba(246,234,210,.72)!important;
   font:400 10.5px/1 "DM Sans","Inter",sans-serif!important;
   letter-spacing:.38em!important;
   text-transform:uppercase!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__sep{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__sep{
   width:72px!important;
   margin:0 28px!important;
   background:linear-gradient(90deg,transparent,rgba(217,189,133,.45),transparent)!important;
 }
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__sep::after{
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__sep::after{
   width:5px!important;
   height:5px!important;
   border-radius:0!important;
@@ -223,42 +223,42 @@ html[lang="es"] body.home-page.home-experience .et-experience .collection .home-
 }
 
 /* pause both marquees while the visitor reads or hovers */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage:hover .ets-grand__track,
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage:hover .home-selection-redesign__ticker .home-selection-marquee__track{animation-play-state:paused!important}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage:hover .ets-grand__track,
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage:hover .home-selection-redesign__ticker .home-selection-marquee__track{animation-play-state:paused!important}
 
 /* switching families: a soft dissolve */
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage.is-switching .ets-grand{opacity:0;filter:blur(6px)}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage.is-switching .home-selection-redesign__ticker .home-selection-marquee__track{opacity:0;transition:opacity .25s ease}
-html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__track{transition:opacity .5s ease}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage.is-switching .ets-grand{opacity:0;filter:blur(6px)}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage.is-switching .home-selection-redesign__ticker .home-selection-marquee__track{opacity:0;transition:opacity .25s ease}
+html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__track{transition:opacity .5s ease}
 
 @keyframes etsMarquee{to{transform:translate3d(-50%,0,0)}}
 
 @media (max-width:900px){
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel{width:min(360px,46vw)!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel{width:min(360px,46vw)!important}
 }
 
 @media (max-width:700px){
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage{height:720px!important;min-height:720px!important;border-radius:20px!important;--ets-pad:20px}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio{top:24px!important;font-size:8px!important;letter-spacing:.26em!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:first-child::before{width:16px}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories{top:52px!important;gap:20px!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button{flex-direction:column!important;gap:6px!important;padding:12px 0 10px!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button>span{display:none!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button strong{font-size:clamp(22px,6.6vw,28px)!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button small{display:none!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-image{object-position:34% 60%!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-shade{background:linear-gradient(180deg,rgba(var(--ets-navy),.7) 0%,rgba(var(--ets-navy),.12) 20%,rgba(var(--ets-navy),0) 36%,rgba(var(--ets-navy),.55) 56%,rgba(var(--ets-navy),.92) 70%,rgba(var(--ets-navy),.96) 100%)!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand{top:44%}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__word{font-size:clamp(84px,24vw,120px)}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__sep{width:9px;height:9px;margin:0 22px}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel{left:20px!important;right:20px!important;width:auto!important;bottom:84px!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel p{font-size:13px!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker{min-height:52px!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__word--term{font-size:9.5px!important;letter-spacing:.3em!important}
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__sep{width:40px!important;margin:0 16px!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage{height:720px!important;min-height:720px!important;border-radius:20px!important;--ets-pad:20px}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio{top:24px!important;font-size:8px!important;letter-spacing:.26em!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__folio span:first-child::before{width:16px}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories{top:52px!important;gap:20px!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button{flex-direction:column!important;gap:6px!important;padding:12px 0 10px!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button>span{display:none!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button strong{font-size:clamp(22px,6.6vw,28px)!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__categories button small{display:none!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-image{object-position:34% 60%!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .scene-shade{background:linear-gradient(180deg,rgba(var(--ets-navy),.7) 0%,rgba(var(--ets-navy),.12) 20%,rgba(var(--ets-navy),0) 36%,rgba(var(--ets-navy),.55) 56%,rgba(var(--ets-navy),.92) 70%,rgba(var(--ets-navy),.96) 100%)!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand{top:44%}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__word{font-size:clamp(84px,24vw,120px)}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__sep{width:9px;height:9px;margin:0 22px}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel{left:20px!important;right:20px!important;width:auto!important;bottom:84px!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__panel p{font-size:13px!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker{min-height:52px!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__word--term{font-size:9.5px!important;letter-spacing:.3em!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__sep{width:40px!important;margin:0 16px!important}
 }
 
 @media (prefers-reduced-motion:reduce){
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__track,
-  html[lang="es"] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__track{animation:none!important}
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .ets-grand__track,
+  html[lang] body.home-page.home-experience .et-experience .collection .home-selection-redesign .home-selection-redesign__stage .home-selection-redesign__ticker .home-selection-marquee__track{animation:none!important}
 }

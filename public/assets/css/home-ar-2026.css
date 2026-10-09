@@ -1,0 +1,37 @@
+/* EMPERIO TISS — Arabic layer for the 2026 Home sections (loaded on /ar/ only, after them).
+   Arabic is a joined script: letter-spacing breaks it, so tracking is removed everywhere;
+   display type uses Noto Naskh Arabic (the Arabic counterpart of Playfair), text Noto Sans Arabic.
+   Maps and marquees keep their left-to-right geometry. */
+
+html[lang="ar"] body.home-page.home-experience :is(
+  .home-selection-redesign,.approach-v2,.ets-atlas,.home-signature-v2
+) :is(h1,h2,h3,h4,p,span,strong,small,em,b,a,button,li,div,dt,dd){
+  letter-spacing:0!important;
+}
+
+html[lang="ar"] body.home-page.home-experience :is(
+  .home-selection-redesign,.approach-v2,.ets-atlas,.home-signature-v2
+) :is(h2,h3,h2 em,.ets-grand__word,.home-selection-redesign__hero-word){
+  font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,serif!important;
+}
+
+html[lang="ar"] body.home-page.home-experience :is(
+  .home-selection-redesign,.approach-v2,.ets-atlas,.home-signature-v2
+) :is(p,span,small,a,button,li,strong){
+  font-family:"Noto Sans Arabic","DM Sans",Tahoma,sans-serif;
+}
+
+/* the map is geography: it never mirrors */
+html[lang="ar"] body.home-page.home-experience .ets-atlas :is(.atlas-map,svg){direction:ltr}
+html[lang="ar"] body.home-page.home-experience :is(.atlas-city,.atlas-hub) text{
+  font-family:"Noto Sans Arabic",Tahoma,sans-serif;
+  font-size:12px;
+  letter-spacing:0;
+}
+
+/* marquees loop with a -50% translate: keep their tracks left-to-right */
+html[lang="ar"] body.home-page.home-experience :is(.home-selection-marquee__viewport,.ets-grand){direction:ltr}
+html[lang="ar"] body.home-page.home-experience :is(.home-selection-marquee__word,.ets-grand__word){unicode-bidi:isolate;direction:rtl}
+
+/* Signature: mirror the photograph and its veil so the objects sit opposite the right-aligned copy */
+html[lang="ar"] body.home-page.home-experience :is(.home-signature-media,.home-signature-overlay){transform:scaleX(-1)!important}
