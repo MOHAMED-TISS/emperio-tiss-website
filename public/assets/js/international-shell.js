@@ -5,6 +5,8 @@
     body = doc.body;
   const lang = (root.lang || 'en').slice(0, 2).toLowerCase();
   if (!['en', 'fr', 'ar', 'it'].includes(lang)) return;
+  // The Signature portal is a standalone app without the public header, in every language.
+  if (body.matches('.private-page, .private-admin-page')) return;
 
   /* Fish uses its dedicated canonical catalogue renderer across languages. */
   const normalizedPath = (location.pathname || '/').replace(/\/+/g, '/');

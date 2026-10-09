@@ -12,14 +12,13 @@ const universal=fs.readFileSync('public/assets/js/header-universal.js','utf8');
 
 test('the 2026 header is the only header runtime',()=>{
   // the legacy canonical header and its stylesheets were retired: nothing may load them again.
-  // Only the private Signature portal keeps header-final.css for its own header.
-  assert.ok(!fs.existsSync('public/assets/js/header-canonical.js'),'header-canonical.js must stay removed');
-  const legacy=/header-canonical\.js|header-joby-experience\.css|header-liquid-v23\.css|canonical-nav\.css/;
+  for(const file of ['public/assets/js/header-canonical.js','public/assets/css/header-final.css']) assert.ok(!fs.existsSync(file),file+' must stay removed');
+  const legacy=/header-canonical\.js|header-final\.css|header-joby-experience\.css|header-liquid-v23\.css|canonical-nav\.css/;
   for(const file of walk('public').filter(file=>/\.(html|js)$/.test(file))){
-    const source=fs.readFileSync(file,'utf8');
-    assert.doesNotMatch(source,legacy,file+' still loads a retired legacy header asset');
-    if(!/[\\/]private[\\/]/.test(file)) assert.doesNotMatch(source,/header-final\.css/,file+' must not load the private portal header stylesheet');
+    assert.doesNotMatch(fs.readFileSync(file,'utf8'),legacy,file+' still loads a retired legacy header asset');
   }
+  // the Signature portal is a standalone app: no public header in any language
+  assert.match(fs.readFileSync('public/assets/js/international-shell.js','utf8'),/private-page, \.private-admin-page'\)\) return/);
 
   const global=fs.readFileSync('public/assets/js/global.js','utf8');
   assert.match(global,/header-universal\.js\?v=/);
