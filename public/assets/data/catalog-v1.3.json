@@ -1701,31 +1701,31 @@
       "category": "seafood",
       "subcategory": "shellfish",
       "catalogGroup": "molluscs",
-      "commercialName": "Mejillón",
+      "commercialName": "Mejillón de Galicia",
       "scientificName": "Mytilus galloprovincialis",
       "condition": [
-        "frozen"
+        "fresh"
       ],
       "origin": [
-        "Según origen"
+        "Galicia (España)"
       ],
       "faoZone": [
-        "Según origen"
+        "FAO 27"
       ],
       "calibre": [
-        "Half shell: 40/60 · 60/80 · 80/100 — Meat: 100/200 · 200/300 · 300/500 — pcs/kg"
+        "E1 (≤23) · E2 (24–27) · N1 (28–32) · N2 (33–40) — pcs/kg"
       ],
       "quality": [
-        "Especificación profesional"
+        "Reparcado, limpio y depurado"
       ],
       "format": [
-        "Entero cocido / media concha / carne"
+        "Vivo · reparcado · limpio (desbisado) · depurado"
       ],
       "packaging": [
-        "Según mercado"
+        "Sacos de 2, 5 y 10 kg"
       ],
       "availability": [
-        "Según disponibilidad"
+        "Según campaña y disponibilidad"
       ],
       "image": "",
       "images": [],
@@ -1735,7 +1735,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "2799"
+      "reference": "2799",
+      "type": "Bivalvo vivo"
     }
   ]
 }

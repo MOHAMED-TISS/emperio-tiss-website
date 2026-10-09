@@ -149,33 +149,33 @@
     },
     {
       "id": "mejillon",
-      "commercialName": "Moule",
+      "commercialName": "Moule de Galice",
       "scientificName": "Mytilus galloprovincialis",
       "group": "Fruits de mer / Mollusques",
-      "type": "Bivalve",
+      "type": "Bivalve vivant",
       "condition": [
-        "frozen"
+        "fresh"
       ],
       "origin": [
-        "Selon origine"
+        "Galice (Espagne)"
       ],
       "faoZone": [
-        "Selon origine"
+        "FAO 27"
       ],
       "calibre": [
-        "Demi-coquille: 40/60 · 60/80 · 80/100 — Chair: 100/200 · 200/300 · 300/500 — pièces/kg"
+        "E1 (≤23) · E2 (24–27) · N1 (28–32) · N2 (33–40) — pièces/kg"
       ],
       "quality": [
-        "Spécification professionnelle"
+        "Reparquée, nettoyée et purifiée"
       ],
       "format": [
-        "Entière cuite / demi-coquille / chair"
+        "Vivante · reparquée · nettoyée (débyssée) · purifiée"
       ],
       "packaging": [
-        "Selon marché"
+        "Sacs de 2, 5 et 10 kg"
       ],
       "availability": [
-        "Selon disponibilité"
+        "Selon campagne et disponibilité"
       ],
       "images": [],
       "reference": "2799"
