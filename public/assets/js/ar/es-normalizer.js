@@ -22,6 +22,8 @@
     ['Crudo, limpio y eviscerado · seleccionado pieza a pieza','نيء، منظف ومنزوع الأحشاء · منتقى قطعة قطعة'],
     ['Bandeja individual · clasificado por tamaño','صينية فردية · مصنف حسب الحجم'],['Envasado y etiquetado individual, listo para venta','معبأ وموسوم بشكل فردي، جاهز للبيع'],
     ['Limpia, sin piel ni vísceras','منظفة، دون جلد أو أحشاء'],['Limpia · IQF con glaseado ligero / bloque','منظفة · IQF بتزجيج خفيف / كتلة'],
+    ['Reparcado, limpio y depurado · consumo preferente: 6 días a 7 °C máx.','معاد استزراعه ومنظف ومنقّى · يفضل استهلاكه خلال 6 أيام عند 7 °م كحد أقصى'],
+    ['Malla de 1–2 kg · sacos de 3, 5, 6, 10 y 15 kg · palé europeo 120×80 o americano 120×100','شبكة 1–2 كغ · أكياس 3 و5 و6 و10 و15 كغ · منصة أوروبية 120×80 أو أمريكية 120×100'],
     ['Según corte','حسب القطع'],['Bloques de 500 g','كتل 500 غ'],
     ['Fresco','طازج'],['Fresh','طازج'],['Congelado','مجمد'],['Frozen','مجمد'],
     ['Pez de escama','أسماك ذات قشور'],['Pez cartilaginoso','أسماك غضروفية'],['Pescados especiales','أسماك خاصة'],

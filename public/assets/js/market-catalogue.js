@@ -216,6 +216,8 @@
     'Envasado y etiquetado individual, listo para venta': 'Confezionato ed etichettato singolarmente, pronto per la vendita',
     'Limpia, sin piel ni vísceras': 'Pulita, senza pelle né visceri',
     'Limpia · IQF con glaseado ligero / bloque': 'Pulita · IQF con glassatura leggera / blocco',
+    'Reparcado, limpio y depurado · consumo preferente: 6 días a 7 °C máx.': 'Stabulato, pulito e depurato · da consumarsi preferibilmente entro 6 giorni a max 7 °C',
+    'Malla de 1–2 kg · sacos de 3, 5, 6, 10 y 15 kg · palé europeo 120×80 o americano 120×100': 'Retine da 1–2 kg · sacchi da 3, 5, 6, 10 e 15 kg · pallet europeo 120×80 o americano 120×100',
     'Según corte': 'Secondo taglio',
     'Bloques de 500 g': 'Blocchi da 500 g'
   };
@@ -276,6 +278,8 @@
     'Envasado y etiquetado individual, listo para venta': 'Individually packed and labelled, retail-ready',
     'Limpia, sin piel ni vísceras': 'Cleaned, skinless and gutted',
     'Limpia · IQF con glaseado ligero / bloque': 'Cleaned · IQF with light glaze / block',
+    'Reparcado, limpio y depurado · consumo preferente: 6 días a 7 °C máx.': 'Relaid, cleaned and depurated · best before: 6 days at 7 °C max.',
+    'Malla de 1–2 kg · sacos de 3, 5, 6, 10 y 15 kg · palé europeo 120×80 o americano 120×100': '1–2 kg mesh bags · 3, 5, 6, 10 and 15 kg sacks · Euro pallet 120×80 or US pallet 120×100',
     'Según corte': 'According to cut',
     'Bloques de 500 g': '500 g blocks'
   };
