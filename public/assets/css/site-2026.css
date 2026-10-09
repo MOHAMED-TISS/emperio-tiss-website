@@ -56,7 +56,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h3,h4
 /* dark grounds (heroes, navy sections) and the dark theme use the light golds */
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero,
-  .es-section.dark,.company-section,.news-intelligence,.season-planning,.current-stage,.current-movement,.products-landing-page .markets-section
+  .es-section.dark,.company-section,.news-intelligence,.season-planning,.current-stage,.current-movement,.products-landing-page .markets-section,.et-operation-flow
 ),
 html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page){
   --et26-accent:var(--et26-gold-light);
@@ -1703,3 +1703,15 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-
     font-size:10px!important;
   }
 }
+
+/* ---------------------------------------------------------
+   CONTRAST FIXES (2026-10 audit) — text that disappeared on its own ground
+   --------------------------------------------------------- */
+/* the contact call-to-action panel is cream: its lead is ink, not white */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-cta :is(p,.es-lead){color:rgba(16,24,32,.72)!important}
+/* the fish signature cards are navy: their specification link is light gold */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .fish-emblematic-card .et-rfq-link{color:#e7cf9c!important}
+/* the fish signature intro sits on the light ground */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .fish-emblematic__intro p{color:rgba(16,24,32,.66)}
+/* produce pages colour every h2 navy or green: titles on their navy hero stay cream */
+body.produce-page :is(.intl-hero,.intl-section.dark) h2{color:#f4f0e6!important}

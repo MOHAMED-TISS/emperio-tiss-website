@@ -5,6 +5,8 @@ body.news-current {
   --news-navy:#0B1E33;
   --news-deep:#071524;
   --news-ivory:#F4F0E6;
+  /* text on the navy sections: ivory in both themes (--news-ivory turns navy in the dark theme) */
+  --news-on-navy:#F4F0E6;
   --news-paper:#F8F5EE;
   --news-champagne:#C9A24B;
   --news-bronze:#73551F;
@@ -51,7 +53,7 @@ body.news-current .news-hero {
   background:
     radial-gradient(circle at 80% 16%,rgba(201,162,75,.14),transparent 28%),
     linear-gradient(130deg,#071524 0%,#0B1E33 58%,#132A43 100%)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-hero::after {
@@ -71,7 +73,7 @@ body.news-current .news-hero-meta {
 }
 
 body.news-current .news-hero h1 {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-hero h1 em,
@@ -84,7 +86,7 @@ body.news-current .news-lead {
 }
 
 body.news-current .news-text-link {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
   border-bottom:1px solid rgba(201,162,75,.72);
   padding-bottom:6px;
 }
@@ -113,7 +115,7 @@ body.news-current .news-feature {
   z-index:1;
   overflow:hidden;
   background:var(--news-navy)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
   border:1px solid rgba(201,162,75,.18);
 }
 
@@ -142,7 +144,7 @@ body.news-current .news-feature-visual span {
 }
 
 body.news-current .news-feature-copy h3 {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-feature-copy p {
@@ -224,12 +226,12 @@ body.news-current .news-intelligence {
   background:
     radial-gradient(circle at 12% 18%,rgba(201,162,75,.08),transparent 27%),
     linear-gradient(135deg,#071524,#0B1E33 66%,#132A43)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-intelligence h2,
 body.news-current .news-observations strong {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-intelligence .news-eyebrow,
@@ -287,7 +289,7 @@ body.news-current .news-subscribe .news-form :is(input[type=email],input[type=te
 
 body.news-current .news-subscribe .news-form button {
   background:var(--news-navy)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
   border:1px solid var(--news-navy)!important;
 }
 
@@ -298,7 +300,7 @@ body.news-current .news-private {
   isolation:isolate;
   overflow:clip;
   background:var(--news-navy)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-private::before {
@@ -397,7 +399,7 @@ body.news-current .news-private .news-eyebrow {
 }
 
 body.news-current .news-private h2 {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-private h2 em {
@@ -410,7 +412,7 @@ body.news-current .news-private-copy > p:not(.news-eyebrow):not(.news-private-ta
 
 body.news-current .news-private .news-form {
   background:var(--news-deep)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
   border:1px solid rgba(201,162,75,.26)!important;
   box-shadow:0 22px 52px rgba(0,0,0,.14);
 }
@@ -422,7 +424,7 @@ body.news-current .news-private .private-login-form {
 }
 
 body.news-current .private-login-copy strong {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .private-login-copy p {
@@ -441,7 +443,7 @@ body.news-current .news-private .private-categories {
 }
 
 body.news-current .news-private .private-categories label {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
   background:rgba(244,240,230,.035);
   border-color:rgba(244,240,230,.16)!important;
 }
@@ -502,7 +504,7 @@ body.news-current .news-private .news-form-status[data-state="error"] {
 /* CLOSING CTA */
 body.news-current .news-cta {
   background:var(--news-deep)!important;
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-cta .news-eyebrow {
@@ -510,7 +512,7 @@ body.news-current .news-cta .news-eyebrow {
 }
 
 body.news-current .news-cta h2 {
-  color:var(--news-ivory)!important;
+  color:var(--news-on-navy)!important;
 }
 
 body.news-current .news-solid-link {

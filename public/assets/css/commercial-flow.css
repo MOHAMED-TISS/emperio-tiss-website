@@ -2,6 +2,7 @@
 .et-operation-flow__inner{width:min(1240px,calc(100% - 48px));margin:auto}
 .et-operation-flow__head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.75fr);gap:clamp(32px,6vw,90px);align-items:end;padding-bottom:34px;border-bottom:1px solid rgba(244,240,230,.14)}
 .et-operation-flow__eyebrow{margin:0 0 14px;color:#c9a24b;font:700 10px/1.2 "DM Sans",Arial,sans-serif;letter-spacing:.18em}
+.et-operation-flow .et-operation-flow__head h2{color:#f4f0e6}
 .et-operation-flow h2{margin:0;max-width:760px;font:400 clamp(2.8rem,5.5vw,5.6rem)/.92 "Playfair Display",Georgia,serif;letter-spacing:-.045em}
 .et-operation-flow__head>p{margin:0;color:rgba(244,240,230,.68);font:400 15px/1.75 "DM Sans",Arial,sans-serif}
 .et-operation-flow__steps{list-style:none;margin:0;padding:32px 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-bottom:1px solid rgba(244,240,230,.14)}

@@ -38,6 +38,7 @@
   letter-spacing:.09em;
   text-transform:uppercase;
 }
+.et-terminal-footer .et-terminal-footer__statement h2{color:#fff}
 .et-terminal-footer__statement h2{
   max-width:9.4ch;
   margin:0;

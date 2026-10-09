@@ -58,7 +58,7 @@ body.produce-family-page .pf-hero-inner{
 body.produce-family-page .pf-kicker,
 body.produce-family-page .pf-label{
   margin:0 0 22px;
-  color:var(--pf-gold);
+  color:#765a2c;
   font:600 10px/1.2 'Inter','DM Sans',sans-serif;
   letter-spacing:.18em;
   text-transform:uppercase;

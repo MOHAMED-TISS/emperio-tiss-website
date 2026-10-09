@@ -164,10 +164,11 @@ html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.pr
   color:var(--et-theme-dark-ink)!important;
 }
 
+/* Product cards (fish, seafood, compact and market catalogues) stay light gallery cards in the dark
+   theme: their typography is built for a light ground. Editorial cards turn navy. */
 html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-card,.about-values-grid article,.product-row,.news-card,.season-category,
-  .fish-emblematic-card,.fish-catalog-card,.seafood-catalog-card,.compact-catalog-card,
-  .market-catalogue-card,.product-card,.legal-card
+  .fish-emblematic-card,.legal-card
 ){
   background:var(--et-theme-dark-surface)!important;
   border-color:var(--et-theme-dark-line)!important;
@@ -176,9 +177,7 @@ html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.pr
 
 html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-card h3,.about-values-grid article h3,.product-row h3,.news-card h3,.season-category h3,
-  .fish-emblematic-card h3,.fish-catalog-card h3,.seafood-catalog-card h3,
-  .compact-catalog-card h3,.compact-catalog-card__title,.market-catalogue-card__name,.product-card h3,
-  .legal-card h3
+  .fish-emblematic-card h3,.legal-card h3
 ){
   color:var(--et-theme-dark-ink)!important;
 }
@@ -552,3 +551,59 @@ html[data-et-theme="dark"] body.home-page.home-experience .approved-footer-botto
 html[data-et-theme="dark"] body.home-page.home-experience .approved-footer-bottom a{
   color:rgba(255,255,255,.74)!important;
 }
+
+/* =========================================================
+   DARK THEME — contrast fixes (2026-10 audit: every visible text
+   must stand out from the ground it sits on)
+   ========================================================= */
+/* Legal pages: navy sections, cream copy */
+html[data-et-theme="dark"] body.es-legal-page :is(h1,h2,h3,strong,dt,dd,li,td){color:#f4f0e6!important}
+html[data-et-theme="dark"] body.es-legal-page .legal-section__content a:not(.legal-back):not(.legal-links-row a):not(.legal-definition a){color:#f4f0e6!important}
+html[data-et-theme="dark"] body.es-legal-page .legal-index a{background:rgba(244,240,230,.06)!important;border-color:rgba(244,240,230,.14)!important;color:rgba(244,240,230,.78)!important}
+html[data-et-theme="dark"] body.es-legal-page .legal-table-wrap{background:rgba(244,240,230,.04)!important}
+html[data-et-theme="dark"] body.es-legal-page .legal-table th{color:#cfb57e!important}
+html[data-et-theme="dark"] body.es-legal-page .legal-back{color:#0b1824!important}
+
+/* Seafood category switcher */
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links{background:rgba(244,240,230,.05)!important;border-color:rgba(244,240,230,.14)!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:not(.is-active):not([aria-current="page"]){color:rgba(244,240,230,.74)!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:not(.is-active):not([aria-current="page"]) span{color:rgba(244,240,230,.5)!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links :is(a.is-active,a[aria-current="page"]) span{color:rgba(11,24,36,.55)!important}
+
+/* Editorial cards turn navy: their copy and numbers turn cream */
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-card :is(p,.es-card-num){color:rgba(244,240,230,.74)!important}
+
+/* Produce pages: section titles and catalogue tabs on the dark ground (the catalogue panel stays cream) */
+html[data-et-theme="dark"] body.produce-page :is(h2,.fruit-catalog-nav a){color:#f4f0e6!important}
+html[data-et-theme="dark"] body.produce-page .market-catalogue h2{color:#101820!important}
+
+/* Panels that stay light in the dark theme: light-ground golds and ink copy */
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.market-catalogue,.compact-catalog,.about-it-closing){
+  --et26-accent:#8f6f3c;
+  --et26-label:#765a2c;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .market-catalogue .market-catalogue__eyebrow{color:#765a2c!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .compact-catalog .compact-catalog__head h2{color:#101820!important}
+/* international product pages: their cards stay light, with ink titles */
+html[data-et-theme="dark"] body.products-site .cards .card :is(h3,p,span){color:#101820!important}
+/* Italian About: copy on the dark ground (its closing panel stays cream, ruled above) */
+html[data-et-theme="dark"] body.it-about-redesign main.about-it-main :is(p,dd,dt,li){color:rgba(244,240,230,.74)!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .about-it-closing :is(h2,p){color:#101820!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-cta :is(p,.es-lead){color:rgba(16,24,32,.72)!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) .news-subscribe :is(label,label span){color:rgba(16,24,32,.66)!important}
+
+/* International product pages: their light sections follow the dark ground */
+html[data-et-theme="dark"] body.products-site :is(.p-section,section.cta){background:var(--et-theme-dark-bg)!important}
+
+/* Specification request on the navy signature cards */
+/* Italian About keeps its own cream page ground: follow the dark theme */
+html[data-et-theme="dark"] body.it-about-redesign main.about-it-main{background:var(--et-theme-dark-bg)!important}
+html[data-et-theme="dark"] body:not(.home-experience) .fish-emblematic__intro p{color:rgba(244,240,230,.7)!important}
+/* International pages: cards and the closing panel follow the dark ground; copy turns cream */
+html[data-et-theme="dark"] body.intl-page :is(.intl-card,.intl-cta){background:var(--et-theme-dark-surface)!important;border-color:var(--et-theme-dark-line)!important}
+html[data-et-theme="dark"] body:is(.intl-page,.products-site) :is(.intl-copy,.section-copy){color:rgba(244,240,230,.72)!important}
+/* White boxes inside legal pages, the contact form and the product error panel stay light: ink copy */
+html[data-et-theme="dark"] body.es-legal-page .legal-section__content :is(.legal-definition,.legal-links-row a) :is(strong,span,p,a),
+html[data-et-theme="dark"] body.es-legal-page .legal-section__content .legal-links-row a{color:#101820!important}
+html[data-et-theme="dark"] body:not(.home-experience) .contact-form #contactFormStatus{color:#101820!important}
+html[data-et-theme="dark"] body.product-detail-page .product-detail-error :is(h1,p,a){color:#101820!important}
