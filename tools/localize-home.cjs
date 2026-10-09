@@ -51,7 +51,7 @@ for (const [index, lang] of ['en', 'fr', 'it', 'ar'].entries()) {
   body = body.replace(/\/assets\/images\/markets\/atlas-2026\.svg/g, `/assets/images/markets/atlas-2026-${lang}.svg`);
   body = body.replace(/(<img\b[^>]*loading="lazy"[^>]*?) loading="lazy"/g, '$1');
   const scenes = {};
-  for (const key of ['sea', 'fruit', 'vegetable']) scenes[key] = { ...copy.scenes[key], label: copy.scenes[key].label[index], description: copy.scenes[key].description[index] };
+  for (const key of ['sea', 'fruit']) scenes[key] = { ...copy.scenes[key], label: copy.scenes[key].label[index], description: copy.scenes[key].description[index] };
   body = body.replace(/\n?<script type="application\/json" id="home-scenes">[\s\S]*?<\/script>/, '');
   body = body.replace('</main>', '</main>\n<script type="application/json" id="home-scenes">' + JSON.stringify(scenes).replace(/</g, '\\u003c') + '</script>');
   fs.writeFileSync(file, head + body);

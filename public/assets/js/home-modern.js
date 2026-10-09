@@ -118,19 +118,13 @@
       label:'PRODUCTOS DEL MAR',
       description:'Pescados, mariscos y cefalópodos.\nEspecie, origen y presentación definidos\npara su necesidad profesional.',
       url:'seafood',
-      count:'01 / 03'
+      count:'01 / 02'
     },
     fruit:{
-      label:'FRUTAS',
-      description:'Variedad, calibre y maduración.\nSeleccionamos según origen, temporada\ny necesidades de su mercado.',
-      url:'fruits',
-      count:'02 / 03'
-    },
-    vegetable:{
-      label:'HORTALIZAS',
-      description:'Calidad de origen y formatos definidos.\nUna selección adaptada a su volumen\ny destino profesional.',
-      url:'vegetables',
-      count:'03 / 03'
+      label:'FRUTAS Y HORTALIZAS',
+      description:'Variedad, origen, calibre y campaña.\nFrutas y hortalizas seleccionadas según origen\ny necesidades de su mercado.',
+      url:'fruits-vegetables',
+      count:'02 / 02'
     }
   };
 
