@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const html = fs.readFileSync('public/products/seafood/fish/index.html', 'utf8');
-const headerCss = fs.readFileSync('public/assets/css/header-final.css', 'utf8');
+const fishCss = fs.readFileSync('public/assets/css/fish-editorial.css', 'utf8');
 const globalCss = fs.readFileSync('public/assets/css/global.css', 'utf8');
 
 test('fish page uses the premium editorial visual layer', () => {
@@ -25,11 +25,8 @@ test('fish page does not rename the global navigation controls', () => {
   assert.match(html, /id="navOverlay"/);
 });
 
-test('fish catalogue does not override the shared branded header', () => {
-  assert.doesNotMatch(headerCss, /\.fish-catalog-pilot \.site-header\s*\{/);
-  assert.match(headerCss, /(^|\n)\.site-header\s*\{/);
-  assert.equal((headerCss.match(/(^|\n)\.site-header\s*\{/g) || []).length, 1);
-  assert.doesNotMatch(headerCss, /--et-pill-/);
+test('fish catalogue does not override the shared 2026 header', () => {
+  assert.doesNotMatch(fishCss, /.site-header|.eth|#ethHeader/);
 });
 
 test('global design tokens use the approved EMPERIO TISS palette and motion system', () => {

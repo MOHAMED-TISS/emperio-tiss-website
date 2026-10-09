@@ -17,8 +17,8 @@ for (const [lang, path, prefix] of pages) {
   assert.match(html, /class="[^"]*es-page[^"]*"/, `${lang}: Contact must use the ES visual shell`);
   assert.match(html, /href="\/assets\/css\/es-pages\.css/,
     `${lang}: ES visual stylesheet must be loaded`);
-  assert.match(html, /href="\/assets\/css\/contact\.css\?v=20260927-visible-turnstile-1"/,
-    `${lang}: contact stylesheet cache key must include the 100vh hero release`);
+  assert.match(html, /href="\/assets\/css\/contact\.css\?v=\d{8}-[\w-]+"/,
+    `${lang}: contact stylesheet must be loaded with a cache key`);
   assert.match(html, /action="\/api\/contact"/,
   `${lang}: form must use canonical contact endpoint`);
 

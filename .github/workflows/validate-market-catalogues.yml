@@ -148,7 +148,7 @@ jobs:
             const html = fs.readFileSync(file, 'utf8');
             for (const token of [
               '/assets/css/global.css?v=20260926-brand-foundation-2',
-              '/assets/css/header-final.css?v=',
+              '/assets/css/header-2026.css?v=',
               '/assets/js/global.js?v='
             ]) {
               if (!html.includes(token)) {
@@ -169,10 +169,10 @@ jobs:
           const js = fs.readFileSync('public/assets/js/home-modern.js', 'utf8');
 
           const requiredHtml = [
-            'home-markets-map',
-            'market-grid',
+            'ets-atlas',
+            '/assets/images/markets/atlas-2026.svg',
             '/assets/css/home.css?v=',
-            '/assets/js/home-modern.js?v=20260927-experience'
+            '/assets/js/home-modern.js?v='
           ];
           for (const token of requiredHtml) {
             if (!html.includes(token)) {

@@ -4,6 +4,27 @@ import { buildSeoHead, getSeoMeta } from './seo-metadata.js';
 const isHtmlResponse = response =>
   (response.headers.get('content-type') || '').toLowerCase().includes('text/html');
 
+// Stylesheets SeoHeadAppender appends at the end of <head>. A static copy earlier in the page is
+// redundant: the appended (later) copy already decides the cascade, so dropping the earlier one
+// changes nothing visually and saves a duplicate stylesheet.
+const APPENDED_STYLESHEETS = new Set([
+  '/assets/css/site-2026.css',
+  '/assets/css/theme-mode.css',
+  '/assets/css/scrollbar-editorial.css',
+  '/assets/css/whatsapp-floating.css',
+  '/assets/css/header-2026.css',
+  '/assets/css/footer-terminal.css',
+  '/assets/css/cookie-consent.css'
+]);
+
+const stylesheetPath = href => {
+  try {
+    return new URL(href, 'https://emperio-tiss.com').pathname;
+  } catch (_) {
+    return '';
+  }
+};
+
 class SeoLinkSanitizer {
   element(element) {
     const rel = (element.getAttribute('rel') || '').toLowerCase().split(/\s+/).filter(Boolean);
@@ -11,7 +32,20 @@ class SeoLinkSanitizer {
 
     if (rel.includes('canonical') || rel.includes('icon') || (rel.includes('alternate') && hreflang)) {
       element.remove();
+      return;
     }
+
+    if (rel.includes('stylesheet') && !element.getAttribute('media') &&
+        APPENDED_STYLESHEETS.has(stylesheetPath(element.getAttribute('href') || ''))) {
+      element.remove();
+    }
+  }
+}
+
+// SeoHeadAppender adds the same critical rule at the end of <head>, so the static copy is redundant.
+class CriticalStyleSanitizer {
+  element(element) {
+    element.remove();
   }
 }
 
@@ -34,7 +68,7 @@ class SeoHeadAppender {
       '<link rel="stylesheet" href="/assets/css/whatsapp-floating.css?v=20261007-3">' +
       '<link rel="stylesheet" href="/assets/css/header-2026.css?v=20261008-eth-6" data-eth-css="true">' +
       // Hide the legacy static headers from the very first paint; header-universal.js replaces them.
-      '<style data-eth-critical>body>.site-header,body>.p-header,body>#etLiquidHeader,body>header.et-liquid-header{visibility:hidden!important}</style>' +
+      '<style data-eth-critical>body>.site-header,body>.p-header,body>#etLiquidHeader,body>header.et-liquid-header{visibility:hidden!important;position:fixed!important;top:0!important;left:0!important;right:0!important}</style>' +
       '<link rel="stylesheet" href="/assets/css/footer-terminal.css?v=20261008-footer-1">' +
       '<link rel="stylesheet" href="/assets/css/cookie-consent.css?v=20261007-6">' +
       '<script src="/assets/js/cookie-consent.js?v=20261007-6" defer></script>' +
@@ -59,6 +93,7 @@ export function normalizeSeoResponse(request, response) {
 
   return new HTMLRewriter()
     .on('link', new SeoLinkSanitizer())
+    .on('style[data-eth-critical]', new CriticalStyleSanitizer())
     .on('head', new SeoHeadAppender(meta))
     .transform(response);
 }

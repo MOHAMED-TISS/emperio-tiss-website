@@ -478,3 +478,35 @@ html[dir="rtl"] .et-terminal-footer__col a::after{transform-origin:right}
   .et-terminal-footer__meta{grid-template-columns:1fr}
   .et-terminal-footer__meta nav{justify-self:start;justify-content:flex-start}
 }
+
+/* Contact links in the footer stay plain links on interior pages (moved verbatim from the retired
+   canonical-nav.css so the approved footer keeps its exact look). */
+.es-page footer a[href*="contact"],
+.intl-page footer a[href*="contact"],
+.ar-page footer a[href*="contact"],
+.about-page footer a[href*="contact"],
+.products-site footer a[href*="contact"],
+.news-page footer a[href*="contact"] {
+  position: static !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.es-page footer a[href*="contact"]::before,
+.intl-page footer a[href*="contact"]::before,
+.ar-page footer a[href*="contact"]::before,
+.about-page footer a[href*="contact"]::before,
+.products-site footer a[href*="contact"]::before,
+.news-page footer a[href*="contact"]::before {
+  content: none !important;
+  display: none !important;
+}

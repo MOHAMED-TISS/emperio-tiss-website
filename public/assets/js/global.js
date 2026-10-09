@@ -43,13 +43,11 @@
 
   loadCss('/assets/css/site-pages.css?v=20260927-hero100', 'etSitePages');
   loadCss('/assets/css/site-pages-unified.css?v=20260928-home-header-1', 'etUnifiedPages');
-  loadCss('/assets/css/canonical-nav.css?v=20260824-2', 'etCanonicalNav');
   loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
   if (isProductPath) {
     loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
     loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
   }
-  loadCss('/assets/css/header-final.css?v=20261001-signature', 'etHeaderFinalCanonical');
   loadCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
   loadCss('/assets/css/scrollbar-editorial.css?v=20261006-2', 'etEditorialScrollbar');
   loadCss('/assets/css/whatsapp-floating.css?v=20261007-3', 'etFloatingWhatsAppCss');
@@ -195,7 +193,6 @@
   doc.addEventListener('selectstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  loadCss('/assets/css/header-liquid-v23.css?v=20261006-liquid-universal-11', 'etLiquidHeaderCss');
   loadScript('/assets/js/header-universal.js?v=20261008-eth-6', 'etUniversalHomeHeader');
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
