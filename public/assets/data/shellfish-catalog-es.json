@@ -149,7 +149,7 @@
     },
     {
       "id": "mejillon",
-      "commercialName": "Mejillón de Galicia",
+      "commercialName": "Mejillón",
       "scientificName": "Mytilus galloprovincialis",
       "group": "Mariscos / Moluscos",
       "type": "Bivalvo vivo",
@@ -157,7 +157,7 @@
         "fresh"
       ],
       "origin": [
-        "Galicia (España)"
+        "España"
       ],
       "faoZone": [
         "FAO 27"

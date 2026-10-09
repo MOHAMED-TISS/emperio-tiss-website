@@ -149,7 +149,7 @@
     },
     {
       "id": "mejillon",
-      "commercialName": "Moule de Galice",
+      "commercialName": "Moule",
       "scientificName": "Mytilus galloprovincialis",
       "group": "Fruits de mer / Mollusques",
       "type": "Bivalve vivant",
@@ -157,7 +157,7 @@
         "fresh"
       ],
       "origin": [
-        "Galice (Espagne)"
+        "Espagne"
       ],
       "faoZone": [
         "FAO 27"

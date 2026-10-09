@@ -1701,13 +1701,13 @@
       "category": "seafood",
       "subcategory": "shellfish",
       "catalogGroup": "molluscs",
-      "commercialName": "Mejillón de Galicia",
+      "commercialName": "Mejillón",
       "scientificName": "Mytilus galloprovincialis",
       "condition": [
         "fresh"
       ],
       "origin": [
-        "Galicia (España)"
+        "España"
       ],
       "faoZone": [
         "FAO 27"

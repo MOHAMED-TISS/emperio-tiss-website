@@ -215,7 +215,7 @@
         .replace(/Half shell/g, 'Mezzo guscio').replace(/\bMeat\b/g, 'Polpa').replace(/pcs\/kg/g, 'pezzi/kg')
         .replace(/Entero cocido \/ media concha \/ carne/g, 'Intera cotta / mezzo guscio / polpa').replace(/^molluscs$/i, 'Molluschi')
         .replace(/Según origen/g, 'Secondo origine')
-        .replace(/Galicia \(España\)/g, 'Galizia (Spagna)').replace(/Bivalvo vivo/g, 'Bivalve vivo')
+        .replace(/\bEspaña\b/g, 'Spagna').replace(/Bivalvo vivo/g, 'Bivalve vivo')
         .replace(/Vivo · reparcado · limpio \(desbisado\) · depurado/g, 'Vivo · stabulato · pulito (sbissato) · depurato')
         .replace(/Reparcado, limpio y depurado/g, 'Stabulato, pulito e depurato').replace(/Sacos de 2, 5 y 10 kg/g, 'Sacchi da 2, 5 e 10 kg')
         .replace(/Según mercado/g, 'Secondo mercato')
