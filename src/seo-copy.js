@@ -168,7 +168,6 @@ export function buildStructuredData(language, suffix, canonical) {
     url: `${ORIGIN}/`,
     logo: `${ORIGIN}/assets/images/logo.png`,
     email: 'info@emperio-tiss.com',
-    foundingDate: '2024',
     address: { '@type': 'PostalAddress', addressLocality: 'Madrid', addressCountry: 'ES' },
     areaServed: ['Europe', 'Africa', 'Middle East'],
     contactPoint: { '@type': 'ContactPoint', contactType: 'sales', email: 'info@emperio-tiss.com', availableLanguage: ['es', 'en', 'fr', 'it', 'ar'] },
