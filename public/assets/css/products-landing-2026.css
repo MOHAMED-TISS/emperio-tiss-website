@@ -124,8 +124,8 @@ body.products-landing-page.products-2026 .hero h1{
   max-width:9.4ch!important;
   margin:0!important;
   color:#fff!important;
-  font:600 clamp(72px,8.6vw,150px)/.85 'Inter','DM Sans',sans-serif!important;
-  letter-spacing:-.066em!important;
+  font:400 clamp(64px,7.4vw,124px)/.98 'Playfair Display',Georgia,'Times New Roman',serif!important;
+  letter-spacing:-.025em!important;
   text-shadow:none!important;
 }
 
@@ -264,14 +264,14 @@ body.products-landing-page.products-2026 :is(.intro-section,.products-section,.c
 body.products-landing-page.products-2026 .markets-title h2{
   margin:0!important;
   color:var(--p26-ink)!important;
-  font:600 clamp(58px,6.5vw,112px)/.88 'Inter','DM Sans',sans-serif!important;
-  letter-spacing:-.065em!important;
+  font:400 clamp(46px,5.4vw,90px)/1.02 'Playfair Display',Georgia,'Times New Roman',serif!important;
+  letter-spacing:-.025em!important;
 }
 
 body.products-landing-page.products-2026 h2 em{
-  color:inherit!important;
-  font-style:normal!important;
-  font-weight:500!important;
+  color:var(--et26-accent,#8f6f3c)!important;
+  font-style:italic!important;
+  font-weight:400!important;
 }
 
 /* INTRO */
@@ -413,8 +413,8 @@ body.products-landing-page.products-2026 .product-row>div{
 body.products-landing-page.products-2026 .product-row h3{
   margin:0!important;
   color:#fff!important;
-  font:600 clamp(34px,3.25vw,54px)/.95 'Inter','DM Sans',sans-serif!important;
-  letter-spacing:-.055em!important;
+  font:italic 400 clamp(34px,3.25vw,54px)/1 'Playfair Display',Georgia,'Times New Roman',serif!important;
+  letter-spacing:-.02em!important;
 }
 
 body.products-landing-page.products-2026 .product-row p{
@@ -1270,16 +1270,17 @@ body.products-landing-page.products-2026 .commercial-logic .markets-title{
 }
 
 body.products-landing-page.products-2026 .commercial-logic .markets-title h2{
-  max-width:8.2ch!important;
-  font-size:clamp(62px,7.2vw,122px)!important;
-  line-height:.86!important;
-  letter-spacing:-.068em!important;
+  max-width:9ch!important;
+  font-size:clamp(54px,6.4vw,106px)!important;
+  line-height:1!important;
+  letter-spacing:-.025em!important;
 }
 
 body.products-landing-page.products-2026 .commercial-logic .markets-title h2 span{
   display:block!important;
-  color:#d8c49e!important;
+  color:#e7cf9c!important;
   font:inherit!important;
+  font-style:italic!important;
   vertical-align:baseline!important;
 }
 

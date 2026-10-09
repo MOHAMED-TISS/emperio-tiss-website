@@ -444,11 +444,12 @@ body.seafood-page .es-hero{
   display:inline-block!important;
   padding:0 .18em!important;
   color:#f6f1e7!important;
-  font-family:'Inter','DM Sans',sans-serif!important;
-  font-size:clamp(68px,8vw,124px)!important;
-  font-weight:500!important;
-  line-height:.84!important;
-  letter-spacing:-.07em!important;
+  font-family:'Playfair Display',Georgia,'Times New Roman',serif!important;
+  font-style:italic!important;
+  font-size:clamp(62px,7.2vw,112px)!important;
+  font-weight:400!important;
+  line-height:1!important;
+  letter-spacing:-.02em!important;
   transition:color .4s ease,opacity .4s ease!important;
 }
 

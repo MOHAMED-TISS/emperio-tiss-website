@@ -220,8 +220,8 @@ body.produce-family-page .pf-marquee-line span{
   display:inline-block;
   padding:0 .18em;
   color:#f8f3e9;
-  font:500 clamp(66px,7.2vw,112px)/.84 'Inter','DM Sans',sans-serif;
-  letter-spacing:-.068em;
+  font:italic 400 clamp(62px,6.8vw,106px)/1 'Playfair Display',Georgia,'Times New Roman',serif;
+  letter-spacing:-.02em;
   text-shadow:0 4px 24px rgba(0,0,0,.14);
 }
 

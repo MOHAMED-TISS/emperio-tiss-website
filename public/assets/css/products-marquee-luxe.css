@@ -116,8 +116,8 @@ body.products-landing-page.products-2026 .product-marquee-line span{
   display:inline-block!important;
   padding:0 .12em!important;
   color:#f8f2e7!important;
-  font:500 clamp(72px,8vw,126px)/.82 'Inter','DM Sans',sans-serif!important;
-  letter-spacing:-.072em!important;
+  font:italic 400 clamp(66px,7.2vw,112px)/1 'Playfair Display',Georgia,'Times New Roman',serif!important;
+  letter-spacing:-.02em!important;
   text-shadow:0 4px 24px rgba(0,0,0,.18)!important;
 }
 

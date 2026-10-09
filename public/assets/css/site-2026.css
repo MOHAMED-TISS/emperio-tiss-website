@@ -1,11 +1,19 @@
 /* EMPERIO TISS — SITEWIDE 2026 VISUAL SYSTEM
-   Unifies every public interior page with the current Home / Signature direction.
+   Unifies every public interior page with the current Home / Signature direction:
+   Playfair display titles with an italic gold line, gold labels, champagne actions, navy grounds.
    Loaded after legacy/page-specific CSS through global.js.
 */
 
 body:not(.home-experience):not(.private-page):not(.private-admin-page){
-  --et26-blue:#3f7fe5;
-  --et26-blue-deep:#2f68cc;
+  /* brand navy (the former blue accent) */
+  --et26-blue:#0b1e33;
+  --et26-blue-deep:#07131f;
+  /* Home brand language: Playfair display type, gold accents, champagne actions */
+  --et26-display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --et26-accent:#8f6f3c;
+  --et26-label:#765a2c;
+  --et26-gold-light:#e7cf9c;
+  --et26-gold-metal:linear-gradient(135deg,#ecdcb1 0%,#c9ad73 34%,#a98a51 58%,#d6bd86 82%,#ecdcb1 100%);
   --et26-paper:#f3f2ec;
   --et26-paper-2:#e9e8e1;
   --et26-ink:#111214;
@@ -20,19 +28,46 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page){
   overflow-x:hidden!important;
 }
 
-/* GLOBAL TYPE */
-body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2,h3,h4,h5,h6){
+/* GLOBAL TYPE — display titles in Playfair (as on the Home), interface titles in DM Sans */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2){
+  font-family:var(--et26-display)!important;
+  font-style:normal!important;
+  font-weight:400!important;
+  letter-spacing:-.025em!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2) em{
+  font-family:var(--et26-display)!important;
+  font-style:italic!important;
+  font-weight:400!important;
+  color:var(--et26-accent)!important;
+}
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h3,h4,h5,h6){
   font-family:"DM Sans",Arial,sans-serif!important;
   font-style:normal!important;
   font-weight:600!important;
   letter-spacing:-.045em!important;
 }
-body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2,h3,h4,h5,h6) em{
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h3,h4,h5,h6) em{
   font-family:"DM Sans",Arial,sans-serif!important;
   font-style:normal!important;
   font-weight:400!important;
   color:inherit!important;
 }
+/* dark grounds (heroes, navy sections) and the dark theme use the light golds */
+body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
+  .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero,
+  .es-section.dark,.company-section,.news-intelligence,.season-planning,.current-stage,.current-movement,.products-landing-page .markets-section
+),
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page){
+  --et26-accent:var(--et26-gold-light);
+  --et26-label:#cfb57e;
+}
+/* call-to-action panels stay cream in the dark theme: they keep the light-ground golds and ink titles */
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.es-cta,.news-subscribe,.current-cta){
+  --et26-accent:#8f6f3c;
+  --et26-label:#765a2c;
+}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.es-cta,.news-subscribe,.current-cta) :is(h2,h3){color:#101820!important}
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(p,li,label,input,textarea,select,button,a){
   font-family:"DM Sans",Arial,sans-serif;
 }
@@ -150,20 +185,20 @@ body.seasonal-editorial .season-opening::after{
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero h1,.page-hero h1,.products-landing-page .hero h1,.season-opening h1,.news-hero h1
 ){
-  max-width:10ch!important;
+  max-width:11ch!important;
   margin:0!important;
   color:#fff!important;
-  font-family:"DM Sans",Arial,sans-serif!important;
-  font-size:clamp(62px,8vw,132px)!important;
-  font-weight:600!important;
-  line-height:.87!important;
-  letter-spacing:-.07em!important;
+  font-family:var(--et26-display)!important;
+  font-size:clamp(56px,6.6vw,112px)!important;
+  font-weight:400!important;
+  line-height:.98!important;
+  letter-spacing:-.025em!important;
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero h1 em,.page-hero h1 em,.products-landing-page .hero h1 em,.season-opening h1 em,.news-hero h1 em
 ){
-  color:#fff!important;
-  font-style:normal!important;
+  color:var(--et26-gold-light)!important;
+  font-style:italic!important;
   font-weight:400!important;
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
@@ -210,11 +245,11 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .season-selection h2,.season-planning h2,.season-inquiry h2
 ){
   margin:0!important;
-  font-family:"DM Sans",Arial,sans-serif!important;
-  font-size:clamp(48px,6vw,98px)!important;
-  font-weight:600!important;
-  line-height:.9!important;
-  letter-spacing:-.065em!important;
+  font-family:var(--et26-display)!important;
+  font-size:clamp(42px,5.2vw,86px)!important;
+  font-weight:400!important;
+  line-height:1.02!important;
+  letter-spacing:-.025em!important;
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-section h2 em,.intro-section h2 em,.products-section h2 em,.company-section h2 em,
@@ -222,7 +257,8 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .news-section-head h2 em,.news-intelligence h2 em,.news-subscribe h2 em,.news-private h2 em,.news-cta h2 em,
   .season-selection h2 em,.season-planning h2 em,.season-inquiry h2 em
 ){
-  color:inherit!important;
+  color:var(--et26-accent)!important;
+  font-style:italic!important;
   font-style:normal!important;
   font-weight:400!important;
 }
@@ -383,7 +419,7 @@ body.products-landing-page .hero-grid{
 }
 body.products-landing-page .hero h1 span{
   color:#fff!important;
-  font-family:"DM Sans",Arial,sans-serif!important;
+  font-family:var(--et26-display)!important;
 }
 body.products-landing-page .hero-actions{
   display:flex!important;
@@ -446,8 +482,8 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) form labe
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .contact-form,.news-form,.news-subscribe-form,form
 ) :is(input,select,textarea):focus{
-  border-color:rgba(63,127,229,.72)!important;
-  box-shadow:0 0 0 3px rgba(63,127,229,.10)!important;
+  border-color:rgba(169,138,81,.75)!important;
+  box-shadow:0 0 0 3px rgba(169,138,81,.14)!important;
 }
 
 /* BUTTONS & LINKS */
@@ -461,14 +497,14 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) main :is(
   align-items:center!important;
   justify-content:center!important;
   gap:18px!important;
-  border:1px solid transparent!important;
+  border:1px solid rgba(240,222,180,.7)!important;
   border-radius:999px!important;
-  background:var(--et26-blue)!important;
-  color:#fff!important;
-  box-shadow:none!important;
-  font:600 12px/1 "DM Sans",Arial,sans-serif!important;
-  letter-spacing:0!important;
-  text-transform:none!important;
+  background:var(--et26-gold-metal)!important;
+  color:#0b1824!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(96,72,32,.35),0 10px 26px rgba(9,20,31,.18)!important;
+  font:600 11px/1 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase!important;
   text-decoration:none!important;
   transition:transform .4s var(--et26-ease),background .25s ease!important;
 }
@@ -478,9 +514,11 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) main :is(
 ):hover{
   transform:translateY(-3px)!important;
 }
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-hero .es-btn,
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .page-hero .hero-cta,
-body:not(.home-experience):not(.private-page):not(.private-admin-page) .season-opening .season-cta{
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .es-hero .es-btn:not(:first-child),
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .page-hero .hero-cta:not(:first-child),
+body:not(.home-experience):not(.private-page):not(.private-admin-page) .season-opening .season-cta:not(:first-child){
+  color:#fff!important;
+  box-shadow:none!important;
   background:rgba(255,255,255,.10)!important;
   border-color:rgba(255,255,255,.54)!important;
   backdrop-filter:blur(10px)!important;
@@ -518,14 +556,14 @@ body.markets-current .current-grid{
 body.markets-current .current-title,
 body.markets-current .current-movement-left h2{
   color:#fff!important;
-  font-family:"DM Sans",Arial,sans-serif!important;
-  font-size:clamp(58px,7.5vw,126px)!important;
-  font-weight:600!important;
-  line-height:.88!important;
-  letter-spacing:-.07em!important;
+  font-family:var(--et26-display)!important;
+  font-size:clamp(54px,6.6vw,112px)!important;
+  font-weight:400!important;
+  line-height:.98!important;
+  letter-spacing:-.025em!important;
 }
 body.markets-current .current-title em,
-body.markets-current .current-movement-left h2 em{color:#fff!important;font-style:normal!important;font-weight:400!important}
+body.markets-current .current-movement-left h2 em{color:var(--et26-gold-light)!important;font-style:italic!important;font-weight:400!important}
 body.markets-current .current-lead,
 body.markets-current .current-movement-copy{
   color:rgba(255,255,255,.74)!important;
@@ -569,13 +607,13 @@ body.news-current .news-hero{
 }
 body.news-current .news-hero::after{display:none!important}
 body.news-current :is(.news-hero h1,.news-section-head h2,.news-intelligence h2,.news-subscribe h2,.news-private h2,.news-cta h2){
-  font-family:"DM Sans",Arial,sans-serif!important;
-  font-weight:600!important;
-  letter-spacing:-.06em!important;
+  font-family:var(--et26-display)!important;
+  font-weight:400!important;
+  letter-spacing:-.025em!important;
 }
 body.news-current :is(.news-hero h1 em,.news-section-head h2 em,.news-intelligence h2 em,.news-subscribe h2 em,.news-private h2 em,.news-cta h2 em){
-  color:inherit!important;
-  font-style:normal!important;
+  color:var(--et26-accent)!important;
+  font-style:italic!important;
   font-weight:400!important;
 }
 body.news-current .news-card-grid{
@@ -717,6 +755,13 @@ html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin
   letter-spacing:0!important;
 }
 html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2,h3){line-height:1.18!important}
+/* Arabic has no Playfair glyphs: titles' gold lines and the large marquees use Noto Naskh, upright */
+html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(h1,h2) em,
+html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.product-marquee-line span,.es-marquee-line span,.pf-marquee-line span){
+  font-family:"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,serif!important;
+  font-style:normal!important;
+  letter-spacing:0!important;
+}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -824,8 +869,8 @@ html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin
    ========================================================= */
 
 body:not(.home-experience):not(.private-page):not(.private-admin-page){
-  --et26-blue:#337fe5;
-  --et26-blue-2:#286bc6;
+  --et26-blue:#0b1e33;
+  --et26-blue-2:#07131f;
   --et26-paper:#f1f0ea;
   --et26-paper-soft:#e7e6df;
   --et26-ink:#101317;
@@ -846,7 +891,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-kicker,.es-label,.eyebrow,.hero-note,.season-kicker,
   .news-eyebrow,.current-eyebrow,.catalog-kicker,.catalog-count
 ){
-  color:rgba(16,19,23,.48)!important;
+  color:var(--et26-label)!important;
 }
 
 /* ---------------------------------------------------------
@@ -1604,7 +1649,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:hover,
 body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:focus-visible{
-  background:rgba(51,127,229,.08)!important;
+  background:rgba(169,138,81,.10)!important;
   color:var(--et26-ink)!important;
   transform:none!important;
 }
@@ -1619,7 +1664,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-
   color:rgba(255,255,255,.72)!important;
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) .seafood-category-nav__links a:focus-visible{
-  outline:2px solid rgba(51,127,229,.55)!important;
+  outline:2px solid rgba(169,138,81,.6)!important;
   outline-offset:2px!important;
 }
 

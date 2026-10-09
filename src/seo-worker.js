@@ -94,7 +94,7 @@ class SeoHeadAppender {
         '<script>(function(){try{var t=localStorage.getItem("et_theme_mode");document.documentElement.dataset.etTheme=(t==="dark"||t==="light")?t:"light"}catch(e){document.documentElement.dataset.etTheme="light"}})();</script>' +
         '<link rel="preconnect" href="https://fonts.googleapis.com">' +
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&display=swap">' +
+        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">' +
         bundleTag(WORKER_STYLESHEETS) +
         CRITICAL_STYLE +
         '<script src="/assets/js/cookie-consent.js?v=20261007-6" defer></script>' +
