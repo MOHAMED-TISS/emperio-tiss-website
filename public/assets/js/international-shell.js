@@ -11,7 +11,8 @@
   /* Fish uses its dedicated canonical catalogue renderer across languages. */
   const normalizedPath = (location.pathname || '/').replace(/\/+/g, '/');
   const fishPath = /\/products\/seafood\/fish(?:\/|$)/.test(normalizedPath);
-  const marketCataloguePath = /\/products\/(?:seafood\/(?:fish|shellfish|cephalopods)|fruits|vegetables)(?:\/|$)/
+  /* Fruits has its own editorial catalogue in every language (the market catalogue duplicated it). */
+  const marketCataloguePath = /\/products\/(?:seafood\/(?:fish|shellfish|cephalopods)|vegetables)(?:\/|$)/
     .test(normalizedPath);
   if (fishPath) return;
 
