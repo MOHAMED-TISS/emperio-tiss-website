@@ -1,8 +1,19 @@
 (() => {
   'use strict';
-  if (!document.querySelector(
-      '.fish-catalog-card, .seafood-catalog-card, .product-card, [data-catalog-family]')) return;
+  // Catalogues are rendered by other scripts, often after this one runs: wait for the first card
+  // instead of giving up, so the finish and the inline galleries apply on every visit.
+  const CARDS = '.fish-catalog-card, .seafood-catalog-card, .product-card, [data-catalog-family]';
+  const whenCards = start => {
+    if (document.querySelector(CARDS)) return start();
+    const wait = new MutationObserver(() => {
+      if (!document.querySelector(CARDS)) return;
+      wait.disconnect();
+      start();
+    });
+    wait.observe(document.body, { childList: true, subtree: true });
+  };
 
+  whenCards(() => {
   const style = document.createElement('style');
   style.textContent = `
     /* Shared catalogue finish */
@@ -122,5 +133,6 @@
   observer.observe(document.body, {
     childList: true,
     subtree: true
+  });
   });
 })();
