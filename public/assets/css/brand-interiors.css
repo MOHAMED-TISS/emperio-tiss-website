@@ -59,8 +59,8 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-s
   --marine-gold: var(--et-page-champagne);
 }
 
-/* Header branding is owned exclusively by header-final.css + header-canonical.js.
-   Do not redraw or override the canonical Home masthead here. */
+/* Header branding is owned exclusively by header-2026.css + header-universal.js.
+   Do not redraw or override the header here. */
 
 /* Shared editorial geometry. */
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(

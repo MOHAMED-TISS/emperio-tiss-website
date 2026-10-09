@@ -7,7 +7,6 @@
   const assetVersion = '20260923-ar-idempotent';
   const css = [
     '/assets/css/ar/visual.css',
-    '/assets/css/ar/home.css',
     '/assets/css/ar/pages.css',
     '/assets/css/ar/catalogues.css'
   ];

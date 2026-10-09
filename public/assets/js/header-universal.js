@@ -251,6 +251,8 @@
 
   const ensureCss = () => {
     const href = `/assets/css/header-2026.css?v=${VERSION}`;
+    // already served inside a worker stylesheet bundle
+    if (doc.querySelector('link[data-et-bundle~="/assets/css/header-2026.css"]')) return;
     const existing = doc.querySelector('link[data-eth-css]');
     if (existing) {
       if (existing.getAttribute('href') !== href) existing.setAttribute('href', href);

@@ -21,7 +21,6 @@ const walk = (directory) => {
 test('AR-specific asset paths exist', () => {
   for (const file of [
     'public/assets/css/ar/visual.css',
-    'public/assets/css/ar/home.css',
     'public/assets/css/ar/pages.css',
     'public/assets/css/ar/catalogues.css',
     'public/assets/js/ar/loader.js',
@@ -35,7 +34,6 @@ test('the Arabic loader owns the AR entry points', () => {
   const loader = read('public/assets/js/ar/loader.js');
   for (const href of [
     '/assets/css/ar/visual.css',
-    '/assets/css/ar/home.css',
     '/assets/css/ar/pages.css',
     '/assets/css/ar/catalogues.css',
     '/assets/js/ar/es-normalizer.js',

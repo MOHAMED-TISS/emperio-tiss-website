@@ -3,6 +3,9 @@
   "name": "emperio-tiss-website",
   "main": "./src/seo-worker.js",
   "compatibility_date": "2026-08-15",
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA"
+  },
   "d1_databases": [
     {
       "binding": "NEWS_DB",

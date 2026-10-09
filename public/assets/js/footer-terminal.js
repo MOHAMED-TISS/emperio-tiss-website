@@ -10,7 +10,7 @@
   window.__etTerminalFooterVersion = VERSION;
 
   const loadCss = () => {
-    if (doc.querySelector('link[data-et-terminal-footer]')) return;
+    if (doc.querySelector('link[data-et-terminal-footer], link[data-et-bundle~="/assets/css/footer-terminal.css"]')) return;
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/assets/css/footer-terminal.css?v=20261008-footer-1';

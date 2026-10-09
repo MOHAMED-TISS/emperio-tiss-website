@@ -15,8 +15,13 @@
     }
   };
 
+  // Stylesheets served inside a worker bundle (<link data-et-bundle="/assets/css/a.css …">).
+  const bundledCss = () => [...doc.querySelectorAll('link[data-et-bundle]')]
+    .flatMap(link => (link.getAttribute('data-et-bundle') || '').split(/\s+/));
+
   const hasAsset = (selector, attribute, value) => {
     const target = assetPath(value);
+    if (selector.startsWith('link') && bundledCss().includes(target)) return true;
     return [...doc.querySelectorAll(selector)].some(node =>
       assetPath(node.getAttribute(attribute) || '') === target);
   };
@@ -31,6 +36,29 @@
     doc.head.appendChild(link);
   };
 
+  // Stylesheets requested back to back are fetched as one worker bundle: same order, one request.
+  let cssBatch = [];
+  const queueCss = (href, key) => {
+    if (doc.querySelector(`link[data-${key}]`) ||
+        hasAsset('link[rel="stylesheet"]', 'href', href) ||
+        cssBatch.some(([queued]) => assetPath(queued) === assetPath(href))) return;
+    cssBatch.push([href, key]);
+  };
+  const flushCss = () => {
+    const batch = cssBatch;
+    cssBatch = [];
+    const names = batch.map(([href]) => (assetPath(href).match(/^\/assets\/css\/([a-z0-9][a-z0-9.-]*)\.css$/i) || [])[1]);
+    if (batch.length < 2 || names.some(name => !name)) {
+      batch.forEach(([href, key]) => loadCss(href, key));
+      return;
+    }
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `/assets/css/bundle.css?f=${names.join(',')}`;
+    link.dataset.etBundle = names.map(name => `/assets/css/${name}.css`).join(' ');
+    doc.head.appendChild(link);
+  };
+
   const loadScript = (src, key) => {
     if (doc.querySelector(`script[data-${key}]`) ||
         hasAsset('script[src]', 'src', src)) return;
@@ -41,18 +69,17 @@
     doc.head.appendChild(script);
   };
 
-  loadCss('/assets/css/site-pages.css?v=20260927-hero100', 'etSitePages');
-  loadCss('/assets/css/site-pages-unified.css?v=20260928-home-header-1', 'etUnifiedPages');
-  loadCss('/assets/css/catalogue-taxonomy.css?v=20260823-catalogue-1', 'etCatalogueTaxonomy');
+  queueCss('/assets/css/site-pages.css?v=20260927-hero100', 'etSitePages');
+  queueCss('/assets/css/site-pages-unified.css?v=20260928-home-header-1', 'etUnifiedPages');
   if (isProductPath) {
-    loadCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
-    loadCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
+    queueCss('/assets/css/catalogue-type-scale-unified.css?v=20260823-es-baseline-2', 'etCatalogueTypeScale');
+    queueCss('/assets/css/catalogue-filter-contrast-en-fr.css?v=20260926-catalogue-only', 'etCatalogueFilterContrast');
   }
-  loadCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
-  loadCss('/assets/css/scrollbar-editorial.css?v=20261006-2', 'etEditorialScrollbar');
-  loadCss('/assets/css/whatsapp-floating.css?v=20261007-3', 'etFloatingWhatsAppCss');
+  queueCss('/assets/css/theme-mode.css?v=20261004-3', 'etThemeModeCss');
+  queueCss('/assets/css/scrollbar-editorial.css?v=20261006-2', 'etEditorialScrollbar');
+  queueCss('/assets/css/whatsapp-floating.css?v=20261007-3', 'etFloatingWhatsAppCss');
   if (lang === 'ar' && !document.body.classList.contains('home-experience')) {
-    loadCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
+    queueCss('/assets/css/es-pages.css?v=20260911-es-ar-1', 'etEsPagesAr');
     loadScript('/assets/js/ar/loader.js?v=20260923-ar-idempotent', 'etArLayerLoader');
   }
 
@@ -61,10 +88,11 @@
   }
 
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
-  loadCss('/assets/css/brand-interiors.css?v=20260928-catalogue-layout-3', 'etBrandInteriors');
+  queueCss('/assets/css/brand-interiors.css?v=20260928-catalogue-layout-3', 'etBrandInteriors');
   if (!document.body.classList.contains('home-experience') && !document.body.classList.contains('private-page') && !document.body.classList.contains('private-admin-page')) {
-    loadCss('/assets/css/site-2026.css?v=20261003-4', 'etSite2026');
+    queueCss('/assets/css/site-2026.css?v=20261003-4', 'etSite2026');
   }
+  flushCss();
 
   const socialCopy = {
     es: { whatsapp: 'Contactar por WhatsApp', linkedin: 'LinkedIn' },
