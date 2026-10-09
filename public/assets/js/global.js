@@ -221,7 +221,7 @@
   doc.addEventListener('selectstart', (event) => { if (event.target instanceof Element && event.target.closest(pageImageSelector)) event.preventDefault(); }, true);
   new MutationObserver(() => protectPageImages()).observe(doc.documentElement, { childList: true, subtree: true });
 
-  loadScript('/assets/js/header-universal.js?v=20261008-eth-6', 'etUniversalHomeHeader');
+  loadScript('/assets/js/header-universal.js?v=20261009-eth-7', 'etUniversalHomeHeader');
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
   loadScript('/assets/js/global-core.js?v=20261006-liquid-universal-11', 'etGlobalCore');

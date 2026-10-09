@@ -138,7 +138,7 @@ class SeoHeadAppender {
         '<script src="/assets/js/whatsapp-floating.js?v=20261007-4" defer></script>' +
         '<script src="/assets/js/analytics-events.js?v=20261004-3" defer></script>' +
         '<script src="/assets/js/theme-mode.js?v=20261004-3" defer></script>' +
-        '<script src="/assets/js/header-universal.js?v=20261008-eth-6" defer></script>' +
+        '<script src="/assets/js/header-universal.js?v=20261009-eth-7" defer></script>' +
         '<script src="/assets/js/footer-terminal.js?v=20261009-footer-2" defer></script>',
         { html: true }
       );

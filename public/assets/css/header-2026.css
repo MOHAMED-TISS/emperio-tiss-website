@@ -473,6 +473,33 @@ body.eth-menu-open{overflow:hidden}
   .eth-menu__signature{padding:22px}
 }
 
+/* languages + light/dark in the bar: shown when the top strip is not (compact bar, pages without hero, tablet/phone) */
+.eth-tools{display:none;align-items:center;gap:2px}
+/* in the compact bar the hidden links leave the flow, so Contact keeps its full width */
+.eth.is-compact .eth-bar__side--end .eth-nav,.eth.is-compact .eth-signature{display:none}
+.eth-contact{flex-shrink:0}
+.eth.is-compact .eth-tools,.eth:not(.is-over-hero) .eth-tools{display:flex}
+.eth-lang{position:relative}
+.eth-lang summary{pointer-events:auto;list-style:none;display:inline-flex;align-items:center;gap:4px;height:36px;padding:0 10px;border-radius:999px;cursor:pointer;color:inherit;font:500 11px/1 var(--eth-font);letter-spacing:.16em;transition:color .25s}
+.eth-lang summary::-webkit-details-marker{display:none}
+.eth-lang summary svg{width:12px;height:12px;transition:transform .25s var(--eth-ease)}
+.eth-lang[open] summary svg{transform:rotate(180deg)}
+.eth-lang summary:hover{color:var(--eth-gold-light)}
+.eth-lang__list{position:absolute;top:calc(100% + 12px);inset-inline-end:0;display:grid;gap:2px;min-width:78px;padding:6px;border:1px solid rgba(231,207,156,.28);border-radius:14px;background:rgba(9,20,31,.95);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.eth .eth-lang__item{display:block;padding:10px 12px;border-radius:9px;color:var(--eth-cream);text-decoration:none;text-align:center;font:500 11px/1 var(--eth-font);letter-spacing:.16em;transition:background .2s,color .2s}
+.eth .eth-lang__item:hover{background:rgba(231,207,156,.12);color:var(--eth-gold-light)}
+.eth .eth-lang__item[aria-current=true]{color:var(--eth-gold-light)}
+.eth-theme--bar{width:36px;height:36px;color:inherit;transition:color .25s}
+.eth-theme--bar:hover{color:var(--eth-gold-light)}
+html[data-et-theme=light] .eth:not(.is-over-hero) .eth-lang summary:hover,
+html[data-et-theme=light] .eth:not(.is-over-hero) .eth-theme--bar:hover{color:var(--eth-gold-deep)}
+@media (max-width:1100px){.eth-tools{display:flex}}
+@media (max-width:720px){
+  .eth-tools{gap:0}
+  .eth-lang summary{height:34px;padding:0 6px}
+  .eth-theme--bar{width:32px;height:32px}
+}
+
 @media (prefers-reduced-motion:reduce){
   .eth *,.eth-menu,.eth-menu *{transition:none!important;animation:none!important}
 }

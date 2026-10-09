@@ -124,7 +124,8 @@
     mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg>',
     sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>',
     moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.6A8.5 8.5 0 0 1 8.4 3.6 8.6 8.6 0 1 0 20.4 15.6Z"/></svg>',
-    arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>'
+    arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>',
+    chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
   };
 
   const logo = cls => `
@@ -168,6 +169,13 @@
           <a href="${route('news')}"${current('news')}>${copy.news}</a>
         </nav>
         <a class="eth-btn eth-btn--ghost eth-signature" href="${route('news')}#emperio-private">${copy.signature}</a>
+        <div class="eth-tools">
+          <details class="eth-lang">
+            <summary aria-label="${copy.languages}"><span>${lang.toUpperCase()}</span>${icon.chevron}</summary>
+            <nav class="eth-lang__list" aria-label="${copy.languages}">${languageLinks('eth-lang__item')}</nav>
+          </details>
+          <button class="eth-theme eth-theme--bar" type="button" aria-label="${copy.theme}" aria-pressed="false"></button>
+        </div>
         <a class="eth-btn eth-btn--gold eth-contact" href="${route('contact')}">
           <span class="eth-contact__label">${copy.contact}</span>${icon.mail}
         </a>
@@ -463,6 +471,8 @@
     window.__ethEventsBound = true;
 
     doc.addEventListener('click', event => {
+      // compact language list: close when clicking anywhere else
+      doc.querySelectorAll('.eth-lang[open]').forEach(list => { if (!list.contains(event.target)) list.open = false; });
       if (event.target.closest('.eth-menu-btn')) {
         event.preventDefault();
         const menu = doc.getElementById('ethMenu');
@@ -483,6 +493,7 @@
     });
 
     doc.addEventListener('keydown', event => {
+      if (event.key === 'Escape') doc.querySelectorAll('.eth-lang[open]').forEach(list => { list.open = false; list.querySelector('summary')?.focus(); });
       const menu = doc.getElementById('ethMenu');
       if (!menu || menu.hidden) return;
       if (event.key === 'Escape') {
