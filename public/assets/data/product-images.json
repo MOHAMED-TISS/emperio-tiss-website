@@ -44,6 +44,9 @@
   "lubina": [
     "/assets/products/incoming/lubina.jpg"
   ],
+  "mejillon": [
+    "/assets/products/incoming/Mejillon.jpg"
+  ],
   "merluza-pijota": [
     "/assets/products/incoming/Pijota-pescadilla.jpg"
   ],
@@ -116,8 +119,5 @@
   ],
   "sole": [
     "/assets/products/incoming/Lenguado.jpg"
-  ],
-  "mejillon": [
-    "/assets/products/incoming/Mejillon.jpg"
   ]
 }
