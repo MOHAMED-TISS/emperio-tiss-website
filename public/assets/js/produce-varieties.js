@@ -224,11 +224,15 @@
           ...product
         }));
       const all = [...merged, ...additions];
+      // products follow consumption in this language's market
+      const marketLang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+      const marketPriority = (await fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))).priority || {};
+      const marketRank = product => { const order = marketPriority[`${product.family}/${product.subcategory}`]?.[marketLang] || []; const index = order.indexOf(product.id); return index < 0 ? order.length : index; };
       window.__ET_CATALOG_PRODUCTS = all;
       document.querySelectorAll('[data-catalog-family="produce"]').forEach(target => {
         const subcategories = (target.dataset.catalogSubcategories || '').split(',').map(
           value => value.trim()).filter(Boolean);
-        const selected = all.filter(product => product.family === 'produce' && (!
+        const selected = all.slice().sort((x, y) => marketRank(x) - marketRank(y)).filter(product => product.family === 'produce' && (!
             subcategories.length || subcategories.includes(product.subcategory)) &&
           product.status === 'active');
         target.innerHTML = selected.length ? selected.map(product => window

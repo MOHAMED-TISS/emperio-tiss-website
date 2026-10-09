@@ -36,7 +36,8 @@
     pargo:{es:'Pargo',en:'Common seabream / red porgy',fr:'Pagrus commun',it:'Pagro',ar:'المرجان'},
     mero:{es:'Mero',en:'Dusky grouper',fr:'Mérou brun',it:'Cernia bruna',ar:'الهامور'},
     sama:{es:'Sama',en:'Dentex',fr:'Dentex',it:'Dentice',ar:'السما'},
-    rascacio:{es:'Rascacio',en:'Scorpionfish',fr:'Rascasse',it:'Scorfano',ar:'سمك العقرب'}
+    rascacio:{es:'Rascacio',en:'Scorpionfish',fr:'Rascasse',it:'Scorfano',ar:'سمك العقرب'},
+    salmon:{es:'Salmón',en:'Atlantic salmon',fr:'Saumon atlantique',it:'Salmone atlantico',ar:'السلمون الأطلسي'}
   };
 
   const products = [
@@ -44,22 +45,23 @@
     ['lubina','Dicentrarchus labrax','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['merluza-pijota','Merluccius merluccius','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['rape','Lophius spp.','Pez de escama','Blanco / semigraso','Fresco','Atlántico / Mediterráneo','FAO 27 / FAO 37'],
-    ['caballa','Scomber colias','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
-    ['sardina','Sardina pilchardus','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
-    ['boqueron','Engraulis encrasicolus','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
-    ['salmonete','Mullus surmuletus','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
+    ['caballa','Scomber colias','Pez de escama','Azul / graso','Fresco / Congelado','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
+    ['sardina','Sardina pilchardus','Pez de escama','Azul / graso','Fresco / Congelado','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
+    ['boqueron','Engraulis encrasicolus','Pez de escama','Azul / graso','Fresco / Congelado','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
+    ['salmonete','Mullus surmuletus','Pez de escama','Azul / graso','Fresco / Congelado','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['atun','Thunnus thynnus','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
-    ['pez-espada','Xiphias gladius','Pescados especiales','Especial','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
+    ['pez-espada','Xiphias gladius','Pescados especiales','Especial','Fresco / Congelado','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['san-pedro','Zeus faber','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['denton','Dentex dentex','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['sargo','Diplodus sargus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
-    ['sole','Solea solea','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
+    ['sole','Solea solea','Pez de escama','Blanco / semigraso','Fresco / Congelado','Mediterráneo / Atlántico','FAO 27 / FAO 37'],
     ['pez-limon','Seriola dumerili','Pez de escama','Azul / graso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['mujol','Mugil cephalus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['pargo','Pagrus pagrus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['mero','Epinephelus marginatus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
     ['sama','Dentex gibbosus','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
-    ['rascacio','Scorpaena scrofa','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37']
+    ['rascacio','Scorpaena scrofa','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37'],
+    ['salmon','Salmo salar','Pez de escama','Azul / graso','Fresco / Congelado','Noruega','FAO 27']
   ];
 
   // Technical values are written in Spanish; Arabic pages translate them in ar/es-normalizer.js.
@@ -69,7 +71,8 @@
     'Especial':{en:'Special',fr:'Spécial',it:'Speciale'},
     'Mediterráneo / Atlántico oriental':{en:'Mediterranean / Eastern Atlantic',fr:'Méditerranée / Atlantique Est',it:'Mediterraneo / Atlantico orientale'},
     'Mediterráneo / Atlántico':{en:'Mediterranean / Atlantic',fr:'Méditerranée / Atlantique',it:'Mediterraneo / Atlantico'},
-    'Atlántico / Mediterráneo':{en:'Atlantic / Mediterranean',fr:'Atlantique / Méditerranée',it:'Atlantico / Mediterraneo'}
+    'Atlántico / Mediterráneo':{en:'Atlantic / Mediterranean',fr:'Atlantique / Méditerranée',it:'Atlantico / Mediterraneo'},
+    'Noruega':{en:'Norway',fr:'Norvège',it:'Norvegia',ar:'النرويج'}
   };
   const localize = value => (values[value] || {})[lang] || value;
   const viewImages = {es:'Ver imágenes de',en:'View images of',fr:'Voir les images :',it:'Vedi le immagini di',ar:'عرض صور'}[lang] || 'View images of';
@@ -170,7 +173,7 @@
     const vals = [
       [labels.family, cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special],
       [labels.type, localize(product.type)],
-      [labels.state, product.condition === 'Congelado' ? labels.frozen : labels.fresh],
+      [labels.state, [product.condition.includes('Fresco') && labels.fresh, product.condition.includes('Congelado') && labels.frozen].filter(Boolean).join(' / ')],
       [labels.origin, localize(product.origin)],
       [labels.fao, product.faoZone],
       [labels.calibre, labels.according],
@@ -255,8 +258,14 @@
 
   search.addEventListener('input', render);
 
-  fetch('/assets/data/product-images.json', {cache:'no-cache'})
-    .then(response => response.ok ? response.json() : {})
-    .then(images => { imageMap = images || {}; render(); })
-    .catch(() => render());
+  const json = url => fetch(url, {cache:'no-cache'}).then(response => response.ok ? response.json() : {}).catch(() => ({}));
+  Promise.all([json('/assets/data/product-images.json'), json('/assets/data/catalogue-market-priority.json')])
+    .then(([images, priority]) => {
+      imageMap = images || {};
+      // products follow consumption in this language's market
+      const order = priority?.priority?.['seafood/fish']?.[lang] || [];
+      const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
+      allProducts.sort((a, b) => rank(a.id) - rank(b.id));
+      render();
+    });
 })();

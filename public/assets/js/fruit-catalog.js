@@ -189,12 +189,14 @@
     </section>`;
   }
 
-  function render(root, otherTarget, products) {
+  function render(root, otherTarget, products, order = []) {
+    // within each group, products follow consumption in this language's market
+    const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
     const citrusIds = ['clementina', 'mandarina', 'orange'];
-    const citrus = citrusIds.map(id => products.find(p => p.id === id)).filter(Boolean);
+    const citrus = citrusIds.map(id => products.find(p => p.id === id)).filter(Boolean).sort((a, b) => rank(a.id) - rank(b.id));
     const others = products
       .filter(p => !citrusIds.includes(p.id))
-      .sort((a, b) => String(PRODUCT_NAMES[lang]?.[a.id] || a.commercialName || '').localeCompare(String(PRODUCT_NAMES[lang]?.[b.id] || b.commercialName || ''), lang, { sensitivity: 'base' }));
+      .sort((a, b) => rank(a.id) - rank(b.id) || String(PRODUCT_NAMES[lang]?.[a.id] || a.commercialName || '').localeCompare(String(PRODUCT_NAMES[lang]?.[b.id] || b.commercialName || ''), lang, { sensitivity: 'base' }));
 
     root.innerHTML = `
       <div class="fruit-catalog-shell">
@@ -223,13 +225,16 @@
     if (!root) return;
 
     try {
-      const response = await fetch(DATA_URL, { cache: 'no-cache' });
+      const [response, priority] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch('/assets/data/catalogue-market-priority.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+      ]);
       if (!response.ok) throw new Error(`Fruit catalogue request failed: ${response.status}`);
       const data = await response.json();
       const products = Array.isArray(data.products) ? data.products.filter(p => p.status === 'active') : [];
       if (!products.length) throw new Error('Fruit catalogue is empty');
       window.__ET_CATALOG_PRODUCTS = products;
-      render(root, otherTarget, products);
+      render(root, otherTarget, products, priority?.priority?.['produce/fruits']?.[lang] || []);
     } catch (error) {
       console.error('[fruit-catalog]', error);
       root.innerHTML = '<p class="catalog-error">No se pudo cargar el catálogo. <a href="/contact/?product=frutas">Contactar con el equipo</a></p>';

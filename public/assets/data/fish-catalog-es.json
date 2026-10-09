@@ -512,7 +512,8 @@
         "premium"
       ],
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [
         "Mediterráneo / Atlántico según disponibilidad"
@@ -619,7 +620,8 @@
         "azul"
       ],
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [
         "Mediterráneo / Atlántico según disponibilidad"
@@ -685,7 +687,8 @@
       "type": "Especial",
       "tags": [],
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [
         "Según programa de suministro"

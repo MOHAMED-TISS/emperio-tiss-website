@@ -1236,7 +1236,8 @@
       "commercialName": "Sardina",
       "scientificName": "Sardina pilchardus",
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [],
       "image": "/assets/products/incoming/sardina.jpg",
@@ -1661,7 +1662,8 @@
       "commercialName": "Lenguado",
       "scientificName": "Solea solea",
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [
         "Mediterráneo / Atlántico según disponibilidad"

@@ -45,3 +45,18 @@ test('every language shows the Spanish fish catalogue, no language-only referenc
   const ar = read('public/ar/products/seafood/fish/index.html');
   assert.doesNotMatch(ar, /ar-fish-gcc-note|طازجة ومجمدة/);
 });
+
+test('seven species are fresh and frozen, and every catalogue follows its market consumption order', () => {
+  // owner 2026-10-09
+  const fish = read('public/assets/js/fish-catalog.js');
+  for (const id of ['caballa', 'boqueron', 'sardina', 'pez-espada', 'salmon', 'sole', 'salmonete']) {
+    assert.match(fish, new RegExp(`\\['${id}','[^']+','[^']+','[^']+','Fresco / Congelado'`), `${id} must be fresh and frozen`);
+  }
+  const priority = JSON.parse(read('public/assets/data/catalogue-market-priority.json')).priority;
+  for (const key of ['seafood/fish', 'seafood/shellfish', 'seafood/cephalopods', 'produce/fruits', 'produce/vegetables']) {
+    for (const lang of ['es', 'en', 'fr', 'it', 'ar']) assert.ok(priority[key][lang].length, `${key}/${lang} market order missing`);
+  }
+  for (const file of ['fish-catalog.js', 'fruit-catalog.js', 'seafood-catalog-es.js', 'seafood-catalog-fr.js', 'products-catalog.js', 'produce-varieties.js', 'market-catalogue.js']) {
+    assert.match(read(`public/assets/js/${file}`), /catalogue-market-priority\.json/, `${file} must order products by market`);
+  }
+});

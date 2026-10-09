@@ -114,13 +114,17 @@
   grid.addEventListener('dragstart', e => {
     if (e.target.closest('.seafood-catalog-card__media')) e.preventDefault()
   });
+  const priority = fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}));
   fetch(url, {
     cache: 'no-cache'
   }).then(r => {
     if (!r.ok) throw Error(r.status);
     return r.json()
-  }).then(d => {
-    products = d.products || [];
+  }).then(d => priority.then(p => ({d, p}))).then(({d, p}) => {
+    // products follow consumption in this language's market
+    const order = p?.priority?.[/shellfish/.test(url) ? 'seafood/shellfish' : 'seafood/cephalopods']?.fr || [];
+    const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
+    products = (d.products || []).slice().sort((a, b) => rank(a.id) - rank(b.id));
     render()
   }).catch(() => {
     count.textContent = 'Indisponible';

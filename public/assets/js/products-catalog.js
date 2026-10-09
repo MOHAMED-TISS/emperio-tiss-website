@@ -283,6 +283,13 @@
     bindGalleries(element);
   }
 
+  // products follow consumption in this language's market (catalogue-market-priority.json)
+  let marketPriority = {};
+  const byMarket = list => {
+    const rank = p => { const order = marketPriority?.[`${p.family}/${p.subcategory}`]?.[lang] || []; const index = order.indexOf(p.id); return index < 0 ? order.length : index; };
+    return list.slice().sort((a, b) => rank(a) - rank(b));
+  };
+
   function renderRequestedCatalogs(data) {
     window.__ET_CATALOG_PRODUCTS = data.products;
     const products = data.products.filter(product => product.status === 'active');
@@ -290,8 +297,8 @@
       const family = element.dataset.catalogFamily;
       const subcategories = (element.dataset.catalogSubcategories || '').split(',').map(
         value => value.trim()).filter(Boolean);
-      renderInto(element, products.filter(product => product.family === family && (!
-        subcategories.length || subcategories.includes(product.subcategory))));
+      renderInto(element, byMarket(products.filter(product => product.family === family && (!
+        subcategories.length || subcategories.includes(product.subcategory)))));
     });
   }
 
@@ -342,6 +349,7 @@
     if (!targets.length && !injected) return null;
     try {
       const data = await loadCatalog();
+      marketPriority = (await fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))).priority || {};
       renderRequestedCatalogs(data);
       document.documentElement.dataset.catalogReady = 'true';
     } catch (error) {

@@ -136,15 +136,19 @@
     if (e.target.closest('.seafood-catalog-card__media')) e.preventDefault();
   });
 
+  const priority = fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}));
   fetch(url, {
     cache: 'no-cache'
   }).then(r => {
     if (!r.ok) throw Error(r.status);
     return r.json();
-  }).then(d => {
-    products = d.products || [];
+  }).then(d => priority.then(p => {
+    // products follow consumption in the Spanish market
+    const order = p?.priority?.[/shellfish/.test(url) ? 'seafood/shellfish' : 'seafood/cephalopods']?.es || [];
+    const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
+    products = (d.products || []).slice().sort((a, b) => rank(a.id) - rank(b.id));
     render();
-  }).catch(() => {
+  })).catch(() => {
     count.textContent = 'No disponible';
     grid.innerHTML = '<p class="seafood-catalog-empty">Catálogo no disponible.</p>';
   });

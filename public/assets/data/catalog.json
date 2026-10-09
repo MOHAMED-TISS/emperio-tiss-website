@@ -499,7 +499,8 @@
       "commercialName": "Salmonete",
       "scientificName": "Mullus spp.",
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [
         "Mediterráneo / Atlántico según disponibilidad"
@@ -605,7 +606,8 @@
       "commercialName": "Boquerón",
       "scientificName": "Engraulis encrasicolus",
       "condition": [
-        "fresh"
+        "fresh",
+        "frozen"
       ],
       "origin": [
         "Mediterráneo / Atlántico según disponibilidad"
@@ -703,6 +705,42 @@
       "image": "",
       "status": "active",
       "reference": "8696"
+    },
+    {
+      "id": "salmon",
+      "family": "seafood",
+      "category": "seafood",
+      "subcategory": "fish",
+      "commercialName": "Salmón",
+      "scientificName": "Salmo salar",
+      "condition": [
+        "fresh",
+        "frozen"
+      ],
+      "origin": [
+        "Noruega"
+      ],
+      "faoZone": [
+        "FAO 27"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / porciones según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "availability": [
+        "Según disponibilidad"
+      ],
+      "image": "/assets/products/incoming/Salmon.jpg",
+      "status": "active",
+      "reference": "7513"
     }
   ]
 }
