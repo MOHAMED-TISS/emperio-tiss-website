@@ -3,7 +3,9 @@
   const lang = (document.documentElement.lang || '').slice(0, 2).toLowerCase();
   if (!['en', 'fr'].includes(lang)) return;
 
-  // Catalogue state stays local to the catalogue runtime. Never patch native prototypes.\n\n  let syncing = false;
+  // Catalogue state stays local to the catalogue runtime. Never patch native prototypes.
+
+  let syncing = false;
   const getPressed = selector => document.querySelector(`${selector}[aria-pressed="true"]`);
 
   const syncFish = () => {
