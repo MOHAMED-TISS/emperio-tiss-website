@@ -41,6 +41,7 @@
       all: 'All',
       fresh: 'Fresh',
       frozen: 'Frozen',
+      onboard: 'Frozen at sea',
       references: 'references',
       reference: 'reference',
       family: 'Family',
@@ -69,6 +70,7 @@
       all: 'Tous',
       fresh: 'Frais',
       frozen: 'Surgelé',
+      onboard: 'Congelé à bord',
       references: 'références',
       reference: 'référence',
       family: 'Famille',
@@ -97,6 +99,7 @@
       all: 'Tutti',
       fresh: 'Fresco',
       frozen: 'Surgelato',
+      onboard: 'Congelato a bordo',
       references: 'referenze',
       reference: 'referenza',
       family: 'Famiglia',
@@ -125,6 +128,7 @@
       all: 'الكل',
       fresh: 'طازج',
       frozen: 'مجمد',
+      onboard: 'مجمد على متن السفينة',
       references: 'مراجع',
       reference: 'مرجع',
       family: 'الفئة',
@@ -373,7 +377,7 @@
     if (!document.querySelector('link[data-market-catalogue-css]')) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = '/assets/css/catalogue-market-unified.css?v=20260928-no-market-priority-1';
+      link.href = '/assets/css/catalogue-market-unified.css?v=20261009-condition-groups';
       link.dataset.marketCatalogueCss = 'true';
       document.head.appendChild(link);
     }
@@ -405,7 +409,7 @@
       translateBottargaValue(value) : (lang === 'it' ? translateItValue(value) : lang === 'en' ? translateEnValue(value) : value);
     const capitalizeCatalogueLabel = value => String(value ?? '').replace(/(^|[\s/-])([a-zà-ÿ])/giu, (_, prefix, letter) => `${prefix}${letter.toLocaleUpperCase()}`);
     const categoryLabel = p => capitalizeCatalogueLabel(translateValue(p.catalogGroup || p.category || p.subcategory || subcategory, p));
-    const conditionLabel = p => (p.condition || []).map(c => norm(c) === 'fresh' ? labels.fresh :
+    const conditionLabel = p => p.frozenOnBoard ? labels.onboard : (p.condition || []).map(c => norm(c) === 'fresh' ? labels.fresh :
       norm(c) === 'frozen' ? labels.frozen : translateValue(c, p)).join(' / ') || labels.according;
     const details = p => [
       [labels.family, categoryLabel(p)],
@@ -428,11 +432,19 @@
         return cOk && (!q || hay.includes(q));
       });
       count.textContent = `${visible.length} ${visible.length === 1 ? labels.reference : labels.references}`;
-      grid.innerHTML = visible.length ? visible.map(p => {
+      const cardHtml = p => {
         const images = getImages(imageMap, p.id);
         const img = images[0] || p.image || '';
         return `<article class="market-catalogue-card" data-product-id="${esc(p.id)}" data-product-reference="${esc(p.reference || '')}"><div class="market-catalogue-card__media" data-images='${esc(JSON.stringify(images))}'>${img ? `<img src="${esc(img)}" alt="${esc(translatedName(p))}" loading="lazy" draggable="false">` : '<span class="market-catalogue-card__placeholder">EMPERIO TISS</span>'}</div><div class="market-catalogue-card__body"><p class="market-catalogue-card__meta">${esc(categoryLabel(p))}</p><h3 class="market-catalogue-card__name">${esc(translatedName(p))}</h3>${p.scientificName ? `<p class="market-catalogue-card__scientific"><em>${esc(p.scientificName)}</em></p>` : ''}<div class="market-catalogue-card__details">${details(p)}</div></div></article>`;
-      }).join('') : `<p class="market-catalogue__empty">${lang === 'ar' ? 'لا توجد مراجع مطابقة.' : lang === 'fr' ? 'Aucune référence ne correspond.' : lang === 'it' ? 'Nessuna referenza corrisponde.' : 'No references match your search.'}`;
+      };
+      // products are shown in groups by state (frozen at sea / frozen / fresh) when a page mixes them
+      const groupKey = p => p.frozenOnBoard ? 'onboard' : (p.condition || []).map(norm).includes('frozen') ? 'frozen' : 'fresh';
+      const keys = ['onboard', 'frozen', 'fresh'].filter(k => visible.some(p => groupKey(p) === k));
+      const grouped = keys.length < 2 ? visible.map(cardHtml).join('') : keys.map(k => {
+        const items = visible.filter(p => groupKey(p) === k);
+        return `<div class="catalog-condition-group" role="heading" aria-level="3">${esc(labels[k])}<span>${items.length} ${items.length === 1 ? labels.reference : labels.references}</span></div>${items.map(cardHtml).join('')}`;
+      }).join('');
+      grid.innerHTML = visible.length ? grouped : `<p class="market-catalogue__empty">${lang === 'ar' ? 'لا توجد مراجع مطابقة.' : lang === 'fr' ? 'Aucune référence ne correspond.' : lang === 'it' ? 'Nessuna referenza corrisponde.' : 'No references match your search.'}`;
       bindLightboxes();
     };
     const bindLightboxes = () => grid.querySelectorAll('.market-catalogue-card__media').forEach(media => {

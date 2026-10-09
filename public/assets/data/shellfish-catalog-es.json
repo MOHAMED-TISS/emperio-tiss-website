@@ -38,7 +38,8 @@
         "/assets/products/incoming/Moruno.jpeg",
         "/assets/products/incoming/Moruno.jpg"
       ],
-      "reference": "4281"
+      "reference": "4281",
+      "frozenOnBoard": true
     },
     {
       "id": "cigala",
@@ -74,7 +75,8 @@
         "/assets/products/incoming/Cigala.jpeg",
         "/assets/products/incoming/Cigala(1).jpeg"
       ],
-      "reference": "5522"
+      "reference": "5522",
+      "frozenOnBoard": true
     },
     {
       "id": "gamba-blanca",
@@ -109,7 +111,8 @@
       "images": [
         "/assets/products/incoming/Gamba Blanca.jpeg"
       ],
-      "reference": "6816"
+      "reference": "6816",
+      "frozenOnBoard": true
     },
     {
       "id": "langostino-tigre",
@@ -145,7 +148,8 @@
         "/assets/products/incoming/Langostino_Tigre.jpg",
         "/assets/products/incoming/Langostino_Tigre(1).jpg"
       ],
-      "reference": "9449"
+      "reference": "9449",
+      "frozenOnBoard": true
     },
     {
       "id": "mejillon",

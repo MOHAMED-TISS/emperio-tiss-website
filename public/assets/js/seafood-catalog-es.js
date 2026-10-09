@@ -32,8 +32,19 @@
     packaging: 'Embalaje',
     availability: 'Disponibilidad'
   };
-  const state = v => (v || []).map(x => x === 'fresh' ? 'Fresco' : x === 'frozen' ? 'Congelado' :
+  const state = (v, p) => p?.frozenOnBoard ? 'Congelado a bordo' : (v || []).map(x => x === 'fresh' ? 'Fresco' : x === 'frozen' ? 'Congelado' :
     x).join(' · ');
+  // products are shown in groups by state (frozen on board / frozen / fresh) when a page mixes them
+  const groupKey = p => p.frozenOnBoard ? 'onboard' : (p.condition || []).includes('frozen') ? 'frozen' : 'fresh';
+  const groupNames = {onboard: 'Congelado a bordo', frozen: 'Congelado', fresh: 'Fresco'};
+  const grouped = list => {
+    const keys = Object.keys(groupNames).filter(k => list.some(p => groupKey(p) === k));
+    if (keys.length < 2) return list.map(card).join('');
+    return keys.map(k => {
+      const items = list.filter(p => groupKey(p) === k);
+      return `<div class="catalog-condition-group" role="heading" aria-level="3">${esc(groupNames[k])}<span>${items.length} ${items.length===1?'referencia':'referencias'}</span></div>${items.map(card).join('')}`;
+    }).join('');
+  };
 
   const style = document.createElement('style');
   style.textContent = `
@@ -52,6 +63,9 @@
     .catalog-image-modal__label{position:fixed;left:24px;bottom:20px;color:rgba(255,255,255,.85);font:500 13px/1.3 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;}
     .catalog-image-modal__count{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);color:rgba(255,255,255,.75);font:500 12px/1 'DM Sans',sans-serif;}
     @media(max-width:700px){.catalog-image-modal__prev{left:8px}.catalog-image-modal__next{right:8px}}
+    .seafood-catalog-grid .catalog-condition-group{grid-column:1/-1;flex:1 0 100%;display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:8px 0 0;padding:0 0 10px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent);font:600 12px/1.3 'DM Sans',sans-serif;letter-spacing:.14em!important;text-transform:uppercase;}
+    .seafood-catalog-grid .catalog-condition-group:not(:first-child){margin-top:32px;}
+    .seafood-catalog-grid .catalog-condition-group span{font-weight:500;letter-spacing:.08em;opacity:.62;}
   `;
   document.head.appendChild(style);
 
@@ -110,7 +124,7 @@
 
   const card = p => {
     const imgs = imageList(p);
-    return `<article class="seafood-catalog-card" data-product-id="${esc(p.id||'')}"><div class="seafood-catalog-card__media" data-image-list="${esc(JSON.stringify(imgs))}" data-image-alt="${esc(p.commercialName)}">${imgs.length?`<button class="seafood-catalog-card__image-button" type="button" aria-label="Ver imágenes de ${esc(p.commercialName)}"><img src="${esc(imgs[0])}" alt="${esc(p.commercialName)}" loading="lazy" draggable="false">${imgs.length>1?`<span class="seafood-catalog-card__image-count">${imgs.length} imágenes</span>`:''}</button>`:'<span>EMPERIO TISS</span>'}</div><div class="seafood-catalog-card__body"><p class="seafood-catalog-card__meta">${esc(p.group)}</p><h3>${esc(p.commercialName)}</h3>${p.scientificName?`<p class="seafood-catalog-card__scientific"><em>${esc(p.scientificName)}</em></p>`:''}<div class="seafood-catalog-card__details">${spec(labels.group,p.group)}${spec(labels.type,p.type)}${spec(labels.condition,state(p.condition))}${spec(labels.origin,p.origin)}${spec(labels.fao,p.faoZone)}${spec(labels.calibre,p.calibre)}${spec(labels.quality,p.quality)}${spec(labels.format,p.format)}${spec(labels.packaging,p.packaging)}${spec(labels.availability,p.availability)}</div></div></article>`;
+    return `<article class="seafood-catalog-card" data-product-id="${esc(p.id||'')}"><div class="seafood-catalog-card__media" data-image-list="${esc(JSON.stringify(imgs))}" data-image-alt="${esc(p.commercialName)}">${imgs.length?`<button class="seafood-catalog-card__image-button" type="button" aria-label="Ver imágenes de ${esc(p.commercialName)}"><img src="${esc(imgs[0])}" alt="${esc(p.commercialName)}" loading="lazy" draggable="false">${imgs.length>1?`<span class="seafood-catalog-card__image-count">${imgs.length} imágenes</span>`:''}</button>`:'<span>EMPERIO TISS</span>'}</div><div class="seafood-catalog-card__body"><p class="seafood-catalog-card__meta">${esc(p.group)}</p><h3>${esc(p.commercialName)}</h3>${p.scientificName?`<p class="seafood-catalog-card__scientific"><em>${esc(p.scientificName)}</em></p>`:''}<div class="seafood-catalog-card__details">${spec(labels.group,p.group)}${spec(labels.type,p.type)}${spec(labels.condition,state(p.condition,p))}${spec(labels.origin,p.origin)}${spec(labels.fao,p.faoZone)}${spec(labels.calibre,p.calibre)}${spec(labels.quality,p.quality)}${spec(labels.format,p.format)}${spec(labels.packaging,p.packaging)}${spec(labels.availability,p.availability)}</div></div></article>`;
   };
 
   let products = [];
@@ -118,7 +132,7 @@
     const q = (search.value || '').trim().toLowerCase();
     const visible = products.filter(p => !q || JSON.stringify(p).toLowerCase().includes(q));
     count.textContent = `${visible.length} ${visible.length===1?'referencia':'referencias'}`;
-    grid.innerHTML = visible.map(card).join('') ||
+    grid.innerHTML = grouped(visible) ||
       '<p class="seafood-catalog-empty">No hay referencias que coincidan con la búsqueda.</p>';
   };
   grid.addEventListener('click', e => {

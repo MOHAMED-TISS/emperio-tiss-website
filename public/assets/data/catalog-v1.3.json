@@ -111,7 +111,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "4281"
+      "reference": "4281",
+      "frozenOnBoard": true
     },
     {
       "id": "cigala",
@@ -156,7 +157,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "5522"
+      "reference": "5522",
+      "frozenOnBoard": true
     },
     {
       "id": "gamba-blanca",
@@ -200,7 +202,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "6816"
+      "reference": "6816",
+      "frozenOnBoard": true
     },
     {
       "id": "langostino-tigre",
@@ -244,7 +247,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "9449"
+      "reference": "9449",
+      "frozenOnBoard": true
     },
     {
       "id": "langostino-vannamei",

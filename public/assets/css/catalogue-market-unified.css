@@ -341,3 +341,8 @@ html[dir=rtl] .market-catalogue__lb-next {
     padding: 72px 0
   }
 }
+/* condition groups: frozen at sea / frozen / fresh (owner 2026-10-09) */
+.market-catalogue__grid .catalog-condition-group{grid-column:1/-1;flex:1 0 100%;display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:8px 0 0;padding:0 0 10px;border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent);font:600 12px/1.3 'DM Sans',sans-serif;letter-spacing:.14em!important;text-transform:uppercase}
+.market-catalogue__grid .catalog-condition-group:not(:first-child){margin-top:32px}
+.market-catalogue__grid .catalog-condition-group span{font-weight:500;letter-spacing:.08em;opacity:.62}
+[dir=rtl] .market-catalogue__grid .catalog-condition-group{letter-spacing:0!important}
