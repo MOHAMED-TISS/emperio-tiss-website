@@ -12,6 +12,8 @@ test('canonical route matrix contains the 14 sitemap page families', () => {
 test('localized route produces self canonical and five language alternates', () => {
   const meta = getSeoMeta('/ar/about/');
   assert.deepEqual(meta, {
+    language: 'ar',
+    suffix: '/about/',
     canonical: 'https://emperio-tiss.com/ar/about/',
     hreflang: {
       es: 'https://emperio-tiss.com/about/',

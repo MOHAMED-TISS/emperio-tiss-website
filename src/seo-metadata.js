@@ -67,6 +67,8 @@ export function getSeoMeta(pathname) {
   );
 
   return {
+    language: parsed.language,
+    suffix: parsed.suffix,
     canonical: localized[parsed.language],
     hreflang: {
       ...localized,

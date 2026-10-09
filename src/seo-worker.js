@@ -1,5 +1,6 @@
 import baseWorker from './index.js';
 import { buildSeoHead, getSeoMeta } from './seo-metadata.js';
+import { buildSocialHead, buildStructuredData, seoCopy } from './seo-copy.js';
 import {
   bundleTag, cssName, isGroupableLink, parseBundleRequest, serveBundle,
   SUPERSEDED_STYLESHEETS, WORKER_STYLESHEETS
@@ -13,6 +14,31 @@ const CRITICAL_STYLE = '<style data-eth-critical>body>.site-header,body>.p-heade
 
 
 const relList = element => (element.getAttribute('rel') || '').toLowerCase().split(/\s+/).filter(Boolean);
+
+// Title, description, sharing tags and JSON-LD come from one table (seo-copy.js):
+// static copies in the pages are replaced so every language gets the same complete set.
+class SeoCopyRewriter {
+  constructor(copy, state) {
+    this.copy = copy;
+    this.state = state;
+  }
+
+  element(element) {
+    const tag = element.tagName.toLowerCase();
+    if (tag === 'title') {
+      element.setInnerContent(this.copy.title);
+      this.state.title = true;
+    } else if (tag === 'meta' && (element.getAttribute('name') || '').toLowerCase() === 'description') {
+      element.setAttribute('content', this.copy.description);
+      this.state.description = true;
+    } else if (tag === 'meta' || tag === 'script') {
+      element.remove();
+    }
+  }
+}
+
+const escapeText = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const escapeAttr = value => escapeText(value).replace(/"/g, '&quot;');
 
 class SeoLinkSanitizer {
   element(element) {
@@ -82,6 +108,16 @@ class SeoHeadAppender {
     this.state = state;
   }
 
+  copyHead() {
+    const { meta, state } = this;
+    const copy = seoCopy(meta.language, meta.suffix);
+    if (!copy) return '';
+    return (state.title ? '' : `<title>${escapeText(copy.title)}</title>`) +
+      (state.description ? '' : `<meta name="description" content="${escapeAttr(copy.description)}">`) +
+      buildSocialHead(meta.language, meta.suffix, meta.canonical) +
+      buildStructuredData(meta.language, meta.suffix, meta.canonical);
+  }
+
   element(element) {
     element.onEndTag(end => {
       const { state } = this;
@@ -89,6 +125,7 @@ class SeoHeadAppender {
       state.run = [];
       end.before(
         pending +
+        this.copyHead() +
         buildSeoHead(this.meta) +
         '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=20261008-brand">' +
         '<script>(function(){try{var t=localStorage.getItem("et_theme_mode");document.documentElement.dataset.etTheme=(t==="dark"||t==="light")?t:"light"}catch(e){document.documentElement.dataset.etTheme="light"}})();</script>' +
@@ -119,7 +156,15 @@ export function normalizeSeoResponse(request, response) {
   if (!meta) return response;
 
   const state = { run: [] };
-  return new HTMLRewriter()
+  const copy = seoCopy(meta.language, meta.suffix);
+  let rewriter = new HTMLRewriter();
+  if (copy) {
+    const copyRewriter = new SeoCopyRewriter(copy, state);
+    for (const selector of ['head title', 'head meta[name="description"]', 'head meta[property^="og:"]', 'head meta[name^="twitter:"]', 'head script[type="application/ld+json"]']) {
+      rewriter = rewriter.on(selector, copyRewriter);
+    }
+  }
+  return rewriter
     .on('link', new SeoLinkSanitizer())
     .on('head *', new HeadStylesheets(state))
     .on('head', new SeoHeadAppender(meta, state))
