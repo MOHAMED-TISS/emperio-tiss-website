@@ -499,7 +499,17 @@ html[data-et-theme=light] .eth:not(.is-over-hero) .eth-theme--bar:hover{color:va
   .eth-lang summary{height:34px;padding:0 6px}
   .eth-theme--bar{width:32px;height:32px}
 }
+/* narrow phones: the selector shrinks to the language code so the centred logo keeps clear space */
+@media (max-width:480px){
+  .eth-bar{gap:6px}
+  .eth-lang summary{padding:0 4px;gap:0}
+  .eth-lang summary svg{display:none}
+  .eth-theme--bar{width:30px}
+  .eth-bar__side--end{gap:4px}
+}
 
 @media (prefers-reduced-motion:reduce){
   .eth *,.eth-menu,.eth-menu *{transition:none!important;animation:none!important}
 }
+/* very small phones (<350px): the bar keeps the emblem only, so the tools never overlap the logo */
+@media (max-width:349px){.eth-logo--bar .eth-logo__name{display:none!important}}
