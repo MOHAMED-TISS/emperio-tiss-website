@@ -34,6 +34,8 @@ for (const [lang, path, base, title] of pages) {
     assert.ok(html.includes(`id="${id}`), `${lang}: missing ${id}`);
   }
   assert.equal((html.match(/<li><span>0\d<\/span><h3>/g) || []).length, 10, `${lang}: six values and four operating steps`);
+  // owner 2026-10-09: two business areas; Seasonal is the current campaign selection, only linked
+  assert.equal((html.match(/class="co-area"/g) || []).length, 2, `${lang}: two business areas`);
   assert.doesNotMatch(html, /co-figures/, `${lang}: no figures (owner 2026-10-09)`);
   for (const route of ['contact/', 'products/seafood/', 'products/fruits-vegetables/', 'products/seasonal/', 'markets/', 'private/']) {
     assert.ok(html.includes(`href="${base}${route}"`), `${lang}: link to ${base}${route}`);
