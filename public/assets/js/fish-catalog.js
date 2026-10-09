@@ -76,7 +76,8 @@
     ['rascacio','Scorpaena scrofa','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37']
   ];
 
-  const frozenArProducts = [
+  // Frozen references, offered in every language (photos pending for most of them).
+  const frozenProducts = [
     ['bacalao','Gadus morhua','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 21 / FAO 27'],
     ['abadejo','Pollachius virens','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
     ['eglefino','Melanogrammus aeglefinus','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
@@ -93,21 +94,27 @@
     ['pez-espada-congelado','Xiphias gladius','Pescados especiales','Especial','Congelado','Atlántico / Mediterráneo','FAO 27 / FAO 37']
   ];
 
-  const allProducts = [...products, ...(lang === 'ar' ? frozenArProducts : [])].map(([id,scientificName,group,type,condition,origin,faoZone]) => ({
+  // Technical values are written in Spanish; Arabic pages translate them in ar/es-normalizer.js.
+  const values = {
+    'Blanco / semigraso':{en:'White / semi-oily',fr:'Blanc / demi-gras',it:'Bianco / semigrasso'},
+    'Azul / graso':{en:'Blue / oily',fr:'Bleu / gras',it:'Azzurro / grasso'},
+    'Especial':{en:'Special',fr:'Spécial',it:'Speciale'},
+    'Mediterráneo / Atlántico oriental':{en:'Mediterranean / Eastern Atlantic',fr:'Méditerranée / Atlantique Est',it:'Mediterraneo / Atlantico orientale'},
+    'Mediterráneo / Atlántico':{en:'Mediterranean / Atlantic',fr:'Méditerranée / Atlantique',it:'Mediterraneo / Atlantico'},
+    'Atlántico / Mediterráneo':{en:'Atlantic / Mediterranean',fr:'Atlantique / Méditerranée',it:'Atlantico / Mediterraneo'},
+    'Atlántico / abastecimiento español':{en:'Atlantic / supplied via Spain',fr:'Atlantique / approvisionnement via l’Espagne',it:'Atlantico / fornitura tramite la Spagna'},
+    'Abastecimiento internacional vía España':{en:'International supply via Spain',fr:'Approvisionnement international via l’Espagne',it:'Fornitura internazionale tramite la Spagna'}
+  };
+  const localize = value => (values[value] || {})[lang] || value;
+  const viewImages = {es:'Ver imágenes de',en:'View images of',fr:'Voir les images :',it:'Vedi le immagini di',ar:'عرض صور'}[lang] || 'View images of';
+
+  const allProducts = [...products, ...frozenProducts].map(([id,scientificName,group,type,condition,origin,faoZone]) => ({
     id, scientificName, group, type, condition, origin, faoZone,
     name: (names[id] || {})[lang] || (names[id] || {}).es || id
   }));
 
   const categoryOf = p => p.group === 'Pescados especiales' ? 'special' : p.type.startsWith('Azul') ? 'blue' : 'white';
   const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
-
-  if (lang !== 'ar') {
-    document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
-      button.hidden = true;
-      button.disabled = true;
-      button.setAttribute('aria-hidden', 'true');
-    });
-  }
 
   let imageMap = {};
   let condition = 'all';
@@ -186,9 +193,9 @@
     const cat = categoryOf(product);
     const vals = [
       [labels.family, cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special],
-      [labels.type, product.type],
+      [labels.type, localize(product.type)],
       [labels.state, product.condition === 'Congelado' ? labels.frozen : labels.fresh],
-      [labels.origin, product.origin],
+      [labels.origin, localize(product.origin)],
       [labels.fao, product.faoZone],
       [labels.calibre, labels.according],
       [labels.quality, labels.professional],
@@ -215,7 +222,7 @@
       const image = images[0] || '';
       const mediaData = esc(JSON.stringify(images));
       const cat = categoryOf(product);
-      return `<article class="fish-catalog-card" data-product-id="${esc(product.id)}"><div class="fish-catalog-card__media" data-images='${mediaData}' data-image-index="0" tabindex="0" role="button" aria-label="${esc(labels.all === 'Todos' ? `Ver imágenes de ${product.name}` : `View images of ${product.name}`)}">${image ? `<img class="fish-card-image" src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}${images.length > 1 ? `<button class="fish-card-nav fish-card-nav--prev" type="button" aria-label="Previous image">‹</button><button class="fish-card-nav fish-card-nav--next" type="button" aria-label="Next image">›</button><span class="fish-card-counter">1 / ${images.length}</span>` : ''}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special)}</p><h3 class="fish-catalog-card__title">${esc(product.name)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-catalog-card__details">${details(product)}</div></div></article>`;
+      return `<article class="fish-catalog-card" data-product-id="${esc(product.id)}"><div class="fish-catalog-card__media" data-images='${mediaData}' data-image-index="0" tabindex="0" role="button" aria-label="${esc(`${viewImages} ${product.name}`)}">${image ? `<img class="fish-card-image" src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '<span class="fish-catalog-card__placeholder">EMPERIO TISS</span>'}${images.length > 1 ? `<button class="fish-card-nav fish-card-nav--prev" type="button" aria-label="Previous image">‹</button><button class="fish-card-nav fish-card-nav--next" type="button" aria-label="Next image">›</button><span class="fish-card-counter">1 / ${images.length}</span>` : ''}</div><div class="fish-catalog-card__body"><p class="fish-catalog-card__meta">${esc(cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special)}</p><h3 class="fish-catalog-card__title">${esc(product.name)}</h3><p class="fish-catalog-card__scientific"><em>${esc(product.scientificName)}</em></p><div class="fish-catalog-card__details">${details(product)}</div></div></article>`;
     }).join('') : `<p class="fish-catalog__empty">${labels.none}</p>`;
   };
 

@@ -229,7 +229,7 @@
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');
     if (['en', 'fr'].includes(lang)) {
-      loadScript('/assets/js/en-catalog-filter-fix.js?v=20260926-no-prototype-patch', 'etEnCatalogFilterFix');
+      loadScript('/assets/js/en-catalog-filter-fix.js?v=20261009-frozen-all', 'etEnCatalogFilterFix');
     }
   }
   loadCss('/assets/css/cookie-consent.css?v=20261007-6', 'etCookieConsentCss');

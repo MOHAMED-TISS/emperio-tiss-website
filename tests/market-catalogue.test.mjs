@@ -46,7 +46,7 @@ test('every locale is an exact permutation of the visible Spanish catalogue set'
 });
 
 test('Spanish authority manifest matches the products actually rendered on ES catalogue pages', () => {
-  const fishBlock = fishRenderer.match(/const products = \[([\s\S]*?)\n  \];\n\n  const frozenArProducts/);
+  const fishBlock = fishRenderer.match(/const products = \[([\s\S]*?)\n  \];\n\n  \/\/ Frozen references[^\n]*\n  const frozenProducts/);
   assert.ok(fishBlock, 'Spanish fish product list not found');
   const visibleFish = [...fishBlock[1].matchAll(/\[\s*'([^']+)'/g)].map(match => match[1]);
   assert.deepEqual(spanishSet.categories['seafood/fish'], visibleFish);

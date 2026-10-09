@@ -27,7 +27,7 @@
 
   const copy = {
     es: {
-      blurb:'Productos del mar, frutas y hortalizas para el suministro profesional entre Europa, África y el Mediterráneo.',
+      blurb:'Productos del mar, frutas y hortalizas para el suministro profesional, desde Madrid al mundo.',
       location:'Madrid · España',
       signature:'EMPERIO Signature',
       follow:'Síganos',
@@ -56,11 +56,11 @@
       legal:'Aviso legal',
       privacy:'Privacidad',
       cookies:'Cookies',
-      region:'Madrid · España · Europa · África · Mediterráneo',
+      region:'Desde Madrid al mundo',
       copyright:'Copyright EMPERIO TISS S.L. © 2026'
     },
     en: {
-      blurb:'Seafood, fruit and vegetables for professional supply between Europe, Africa and the Mediterranean.',
+      blurb:'Seafood, fruit and vegetables for professional supply, from Madrid to the world.',
       location:'Madrid · Spain',
       signature:'EMPERIO Signature',
       follow:'Follow us',
@@ -89,11 +89,11 @@
       legal:'Legal notice',
       privacy:'Privacy',
       cookies:'Cookies',
-      region:'Madrid · Spain · Europe · Africa · Mediterranean',
+      region:'From Madrid to the world',
       copyright:'Copyright EMPERIO TISS S.L. © 2026'
     },
     fr: {
-      blurb:'Produits de la mer, fruits et légumes pour l’approvisionnement professionnel entre l’Europe, l’Afrique et la Méditerranée.',
+      blurb:'Produits de la mer, fruits et légumes pour l’approvisionnement professionnel, de Madrid au monde.',
       location:'Madrid · Espagne',
       signature:'EMPERIO Signature',
       follow:'Suivez-nous',
@@ -122,11 +122,11 @@
       legal:'Mentions légales',
       privacy:'Confidentialité',
       cookies:'Cookies',
-      region:'Madrid · Espagne · Europe · Afrique · Méditerranée',
+      region:'De Madrid au monde',
       copyright:'Copyright EMPERIO TISS S.L. © 2026'
     },
     it: {
-      blurb:'Prodotti del mare, frutta e ortaggi per la fornitura professionale tra Europa, Africa e Mediterraneo.',
+      blurb:'Prodotti del mare, frutta e ortaggi per la fornitura professionale, da Madrid al mondo.',
       location:'Madrid · Spagna',
       signature:'EMPERIO Signature',
       follow:'Seguiteci',
@@ -155,11 +155,11 @@
       legal:'Note legali',
       privacy:'Privacy',
       cookies:'Cookie',
-      region:'Madrid · Spagna · Europa · Africa · Mediterraneo',
+      region:'Da Madrid al mondo',
       copyright:'Copyright EMPERIO TISS S.L. © 2026'
     },
     ar: {
-      blurb:'منتجات بحرية وفواكه وخضروات للتوريد المهني بين أوروبا وأفريقيا والبحر المتوسط.',
+      blurb:'منتجات بحرية وفواكه وخضروات للتوريد المهني، من مدريد إلى العالم.',
       location:'مدريد · إسبانيا',
       signature:'EMPERIO Signature',
       follow:'تابعونا',
@@ -188,7 +188,7 @@
       legal:'الإشعار القانوني',
       privacy:'الخصوصية',
       cookies:'ملفات الارتباط',
-      region:'مدريد · إسبانيا · أوروبا · أفريقيا · البحر المتوسط',
+      region:'من مدريد إلى العالم',
       copyright:'Copyright EMPERIO TISS S.L. © 2026'
     }
   }[lang];

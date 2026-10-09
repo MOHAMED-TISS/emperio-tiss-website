@@ -367,7 +367,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
 }
 body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .fish-catalog__filter,.seafood-catalog__filter,.compact-catalog__filter
-)[aria-pressed="true"]{
+)[aria-pressed="true"][aria-pressed="true"]{ /* doubled: the base rule's :is() carries an attribute+element selector */
   background:var(--et26-ink)!important;
   border-color:var(--et26-ink)!important;
   color:#fff!important;

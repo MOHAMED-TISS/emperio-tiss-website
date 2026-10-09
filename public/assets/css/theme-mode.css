@@ -607,3 +607,11 @@ html[data-et-theme="dark"] body.es-legal-page .legal-section__content :is(.legal
 html[data-et-theme="dark"] body.es-legal-page .legal-section__content .legal-links-row a{color:#101820!important}
 html[data-et-theme="dark"] body:not(.home-experience) .contact-form #contactFormStatus{color:#101820!important}
 html[data-et-theme="dark"] body.product-detail-page .product-detail-error :is(h1,p,a){color:#101820!important}
+
+/* Fish catalogue toolbar: a dark glass band on the navy ground instead of a grey ivory film */
+html[data-et-theme="dark"] .fish-catalog__toolbar{background:rgba(243,239,230,.06);border-color:rgba(243,239,230,.16)}
+html[data-et-theme="dark"] .fish-catalog__toolbar .fish-catalog__count{color:rgba(243,239,230,.76)}
+
+/* Catalogue filter pills on the navy ground: readable labels, champagne for the active filter */
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.fish-catalog__filter,.seafood-catalog__filter,.compact-catalog__filter)[class]{color:rgba(243,239,230,.8)!important;border-color:rgba(243,239,230,.24)!important}
+html[data-et-theme="dark"] body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.fish-catalog__filter,.seafood-catalog__filter,.compact-catalog__filter)[class][aria-pressed="true"]{background:#e7cf9c!important;border-color:#e7cf9c!important;color:#0b1e33!important}

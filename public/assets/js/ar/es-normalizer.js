@@ -15,8 +15,8 @@
 
   const translations = new Map([
     ['Legal','قانوني'],['Legal notice','إشعار قانوني'],['Privacy','الخصوصية'],['Cookies','ملفات تعريف الارتباط'],
-    ['EUROPE · AFRICA · MEDITERRANEAN · MIDDLE EAST','أوروبا · أفريقيا · المتوسط · الشرق الأوسط'],
-    ['Europe · Africa · Mediterranean · Middle East','أوروبا · أفريقيا · المتوسط · الشرق الأوسط'],
+    ['FROM MADRID TO THE WORLD','من مدريد إلى العالم'],
+    ['From Madrid to the world','من مدريد إلى العالم'],
     ['Fresco','طازج'],['Fresh','طازج'],['Congelado','مجمد'],['Frozen','مجمد'],
     ['Pez de escama','أسماك ذات قشور'],['Pez cartilaginoso','أسماك غضروفية'],['Pescados especiales','أسماك خاصة'],
     ['Blanco / semigraso','أبيض / متوسط الدهن'],['Azul / graso','أزرق / دهني'],['Especial','خاص'],

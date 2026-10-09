@@ -54,7 +54,9 @@ const italianAbout = fs.readFileSync('public/it/about/index.html', 'utf8');
 assert.match(italianAbout, /class="es-page about-page it-about-redesign et-brand-shell brand-pages"/);
 assert.match(italianAbout, /Dall’origine al mercato[\s\S]*Con criterio/);
 assert.match(italianAbout, /parte principale/i);
-assert.match(italianAbout, /Europa[\s\S]*Africa[\s\S]*Mediterraneo[\s\S]*Medio Oriente/i);
+assert.match(italianAbout, /Europa <span>·<\/span> Africa <span>·<\/span> Medio Oriente/);
+// the Mediterranean is a fishing ground, never listed next to the markets
+assert.doesNotMatch(italianAbout, /Africa <span>·<\/span> Mediterraneo/);
 assert.match(italianAbout, /Prodotti del mare[\s\S]*Frutta e ortaggi[\s\S]*Stagionalità/i);
 assert.match(aboutCss, /\.it-about-redesign \.about-it-hero/);
 assert.match(aboutCss, /prefers-reduced-motion:\s*reduce/);

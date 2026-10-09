@@ -49,7 +49,7 @@
       menu: 'Menú', openMenu: 'Abrir menú', close: 'Cerrar', closeMenu: 'Cerrar menú',
       mainNav: 'Navegación principal', skip: 'Saltar al contenido', theme: 'Cambiar tema',
       fish: 'Pescado', shellfish: 'Marisco', cephalopods: 'Cefalópodos', fruits: 'Frutas', vegetables: 'Hortalizas', seasonal: 'Temporada',
-      locale: 'Madrid · Europa · África · Mediterráneo · Oriente Medio',
+      locale: 'Desde Madrid al mundo',
       featured: 'Destacado', featuredTitle: 'Del origen, a su próximo mercado.',
       sigTitle: 'Acceso profesional', sigText: 'Ofertas privadas, disponibilidad y referencias para empresas aprobadas.', sigCta: 'Entrar'
     },
@@ -59,7 +59,7 @@
       menu: 'Menu', openMenu: 'Open menu', close: 'Close', closeMenu: 'Close menu',
       mainNav: 'Main navigation', skip: 'Skip to content', theme: 'Change theme',
       fish: 'Fish', shellfish: 'Shellfish', cephalopods: 'Cephalopods', fruits: 'Fruits', vegetables: 'Vegetables', seasonal: 'Seasonal',
-      locale: 'Madrid · Europe · Africa · Mediterranean · Middle East',
+      locale: 'From Madrid to the world',
       featured: 'Featured', featuredTitle: 'From origin to your next market.',
       sigTitle: 'Professional access', sigText: 'Private offers, availability and references for approved companies.', sigCta: 'Enter'
     },
@@ -69,7 +69,7 @@
       menu: 'Menu', openMenu: 'Ouvrir le menu', close: 'Fermer', closeMenu: 'Fermer le menu',
       mainNav: 'Navigation principale', skip: 'Aller au contenu', theme: 'Changer de thème',
       fish: 'Poissons', shellfish: 'Crustacés', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Saison',
-      locale: 'Madrid · Europe · Afrique · Méditerranée · Moyen-Orient',
+      locale: 'De Madrid au monde',
       featured: 'À la une', featuredTitle: 'De l’origine à votre prochain marché.',
       sigTitle: 'Accès professionnel', sigText: 'Offres privées, disponibilités et références pour les entreprises approuvées.', sigCta: 'Entrer'
     },
@@ -79,7 +79,7 @@
       menu: 'Menu', openMenu: 'Apri menu', close: 'Chiudi', closeMenu: 'Chiudi menu',
       mainNav: 'Navigazione principale', skip: 'Vai al contenuto', theme: 'Cambia tema',
       fish: 'Pesce', shellfish: 'Crostacei', cephalopods: 'Cefalopodi', fruits: 'Frutta', vegetables: 'Ortaggi', seasonal: 'Stagionale',
-      locale: 'Madrid · Europa · Africa · Mediterraneo · Medio Oriente',
+      locale: 'Da Madrid al mondo',
       featured: 'In evidenza', featuredTitle: 'Dall’origine al vostro prossimo mercato.',
       sigTitle: 'Accesso professionale', sigText: 'Offerte private, disponibilità e referenze per aziende approvate.', sigCta: 'Accedi'
     },
@@ -89,7 +89,7 @@
       menu: 'القائمة', openMenu: 'فتح القائمة', close: 'إغلاق', closeMenu: 'إغلاق القائمة',
       mainNav: 'التنقل الرئيسي', skip: 'انتقل إلى المحتوى', theme: 'تغيير المظهر',
       fish: 'الأسماك', shellfish: 'القشريات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'الموسمية',
-      locale: 'مدريد · أوروبا · أفريقيا · البحر المتوسط · الشرق الأوسط',
+      locale: 'من مدريد إلى العالم',
       featured: 'مميز', featuredTitle: 'من المنشأ إلى سوقك التالي.',
       sigTitle: 'دخول مهني', sigText: 'عروض خاصة وتوفر ومراجع للشركات المعتمدة.', sigCta: 'دخول'
     }
