@@ -14,23 +14,28 @@
   const copy={
     es:{
       sea:{title:'Mar',terms:['Especie','Origen','Formato','Calibre','Disponibilidad']},
-      fruit:{title:'Frutas y hortalizas',terms:['Variedad','Origen','Campaña','Calibre','Formato']}
+      fruit:{title:'Frutas',terms:['Variedad','Origen','Campaña','Calibre','Formato']},
+      vegetable:{title:'Hortalizas',terms:['Variedad','Origen','Calidad','Formato','Campaña']}
     },
     en:{
       sea:{title:'Sea',terms:['Species','Origin','Format','Size','Availability']},
-      fruit:{title:'Produce',terms:['Variety','Origin','Season','Size','Format']}
+      fruit:{title:'Fruit',terms:['Variety','Origin','Season','Size','Format']},
+      vegetable:{title:'Vegetables',terms:['Variety','Origin','Quality','Format','Season']}
     },
     fr:{
       sea:{title:'Mer',terms:['Espèce','Origine','Format','Calibre','Disponibilité']},
-      fruit:{title:'Fruits et légumes',terms:['Variété','Origine','Campagne','Calibre','Format']}
+      fruit:{title:'Fruits',terms:['Variété','Origine','Campagne','Calibre','Format']},
+      vegetable:{title:'Légumes',terms:['Variété','Origine','Qualité','Format','Campagne']}
     },
     it:{
       sea:{title:'Mare',terms:['Specie','Origine','Formato','Calibro','Disponibilità']},
-      fruit:{title:'Frutta e ortaggi',terms:['Varietà','Origine','Campagna','Calibro','Formato']}
+      fruit:{title:'Frutta',terms:['Varietà','Origine','Campagna','Calibro','Formato']},
+      vegetable:{title:'Ortaggi',terms:['Varietà','Origine','Qualità','Formato','Campagna']}
     },
     ar:{
       sea:{title:'البحر',terms:['النوع','المنشأ','التعبئة','الحجم','التوافر']},
-      fruit:{title:'الفواكه والخضروات',terms:['الصنف','المنشأ','الموسم','الحجم','التعبئة']}
+      fruit:{title:'الفواكه',terms:['الصنف','المنشأ','الموسم','الحجم','التعبئة']},
+      vegetable:{title:'الخضروات',terms:['الصنف','المنشأ','الجودة','التعبئة','الموسم']}
     }
   };
   const data=copy[(document.documentElement.lang||'es').slice(0,2).toLowerCase()]||copy.es;

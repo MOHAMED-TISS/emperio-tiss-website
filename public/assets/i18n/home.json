@@ -606,6 +606,12 @@
       "01 / LA SELEZIONE EMPERIO TISS",
       "01 / مختارات EMPERIO TISS"
     ],
+    "Tres universos.": [
+      "Three worlds.",
+      "Trois univers.",
+      "Tre universi.",
+      "ثلاثة عوالم."
+    ],
     "Un mismo criterio.": [
       "One standard.",
       "Une même exigence.",
@@ -989,24 +995,12 @@
       "Ce que propose EMPERIO Signature",
       "Cosa offre EMPERIO Signature",
       "ما يقدّمه EMPERIO Signature"
-    ],
-    "Dos universos.": [
-      "Two worlds.",
-      "Deux univers.",
-      "Due universi.",
-      "عالمان."
-    ],
-    "Frutas y hortalizas": [
-      "Produce",
-      "Fruits et légumes",
-      "Frutta e ortaggi",
-      "الفواكه والخضروات"
     ]
   },
   "scenes": {
     "sea": {
       "url": "seafood",
-      "count": "01 / 02",
+      "count": "01 / 03",
       "label": [
         "SEAFOOD",
         "PRODUITS DE LA MER",
@@ -1021,19 +1015,35 @@
       ]
     },
     "fruit": {
-      "url": "fruits-vegetables",
-      "count": "02 / 02",
+      "url": "fruits",
+      "count": "02 / 03",
       "label": [
-        "PRODUCE",
-        "FRUITS ET LÉGUMES",
-        "FRUTTA E ORTAGGI",
-        "الفواكه والخضروات"
+        "FRUIT",
+        "FRUITS",
+        "FRUTTA",
+        "الفواكه"
       ],
       "description": [
-        "Variety, origin, size and season.\nFruit and vegetables selected by origin\nto match your market’s requirements.",
-        "Variété, origine, calibre et campagne.\nFruits et légumes sélectionnés selon l’origine\net les besoins de votre marché.",
-        "Varietà, origine, calibro e campagna.\nFrutta e ortaggi selezionati per origine\nsecondo le esigenze del vostro mercato.",
-        "الصنف والمنشأ والحجم والموسم.\nفواكه وخضروات مختارة حسب المنشأ\nبما يلائم متطلبات سوقكم."
+        "Variety, size and ripeness.\nSelected by origin and season\nto match your purchasing requirements.",
+        "Variété, calibre et maturité.\nUne sélection selon l’origine et la saison,\nadaptée aux exigences de votre marché.",
+        "Varietà, calibro e maturazione.\nOrigini e stagionalità guidano la scelta,\nsecondo le esigenze del vostro mercato.",
+        "الصنف والحجم ودرجة النضج.\nاختيار حسب المنشأ والموسم\nبما يلائم متطلبات سوقكم."
+      ]
+    },
+    "vegetable": {
+      "url": "vegetables",
+      "count": "03 / 03",
+      "label": [
+        "VEGETABLES",
+        "LÉGUMES",
+        "ORTAGGI",
+        "الخضروات"
+      ],
+      "description": [
+        "Origin quality and agreed formats.\nA selection matched to your volumes\nand professional destination.",
+        "Qualité à l’origine et formats définis.\nUne sélection adaptée à vos volumes\net à votre destination professionnelle.",
+        "Qualità all’origine e formati definiti.\nUna selezione adeguata ai vostri volumi\ne alla destinazione professionale.",
+        "جودة من المنشأ وأشكال تعبئة محددة.\nاختيار يناسب الكميات المطلوبة\nووجهة التوريد."
       ]
     }
   }
