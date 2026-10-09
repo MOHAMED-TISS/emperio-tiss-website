@@ -3,7 +3,8 @@
    usage: node tools/build-about.cjs [lang ...]   (default: every language in COPY)
    Copy only restates what the site already says (company page, values, responsibility,
    operating process, Home geography). The Mediterranean is a fishing ground, never a market.
-   Owner 2026-10-09: no figures, no team, no sanitary registration, no founding year. */
+   Owner 2026-10-09: no figures, no team, no sanitary registration, no founding year; EMPERIO TISS
+   is a principal that selects, buys and supplies — never a broker or intermediary, not even implicitly. */
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -11,35 +12,31 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..', 'public');
 const ARROW = '<span class="co-arrow" aria-hidden="true">→</span>';
 const HERO_IMAGE = 'https://images.pexels.com/photos/29258685/pexels-photo-29258685.jpeg?auto=compress&cs=tinysrgb&w=1200';
-const AREA_IMAGES = ['/assets/images/home-seafood.webp', '/assets/images/home-produce.webp'];
-// Seasonal is not a business area: it is the current campaign's selection, linked below the areas
-const AREA_ROUTES = ['products/seafood/', 'products/fruits-vegetables/'];
 
 const COPY = {
   es: {
     heroLabel: 'EMPERIO TISS S.L. · Madrid',
     h1: 'Del origen al mercado, con criterio.',
-    lead: 'Empresa española de comercio alimentario B2B. Desde Madrid, conectamos orígenes seleccionados con compradores profesionales en Europa, África y Oriente Medio.',
-    contact: 'Contactar', areasLink: 'Áreas de negocio',
-    facts: [['Sede', 'Madrid, España'], ['Actividad', 'Comercio alimentario B2B'], ['Áreas', 'Productos del mar · Frutas y hortalizas'], ['Mercados', 'Europa · África · Oriente Medio']],
-    who: ['01 · Quiénes somos', 'Una empresa para el comercio alimentario profesional.', 'Operamos como parte principal en cada operación: ante el comprador representamos la oferta y respondemos del producto; ante el productor compramos con criterios claros, destino definido y visión de mercado.', 'EMPERIO TISS nace con una visión internacional: comprender mejor los productos, entender mejor los mercados y trabajar mejor con las personas.'],
+    lead: "Empresa española de comercio alimentario B2B con sede en Madrid. Seleccionamos, compramos y suministramos productos del mar, frutas y hortalizas a clientes profesionales en Europa, África y Oriente Medio.",
+    contact: 'Contactar', productsLink: "Ver productos",
+    facts: [["Sede","Madrid, España"],["Actividad","Comercio alimentario B2B"],["Productos","Productos del mar · Frutas y hortalizas"],["Mercados","Europa · África · Oriente Medio"]],
+    who: ['01 · Quiénes somos', 'Una empresa para el comercio alimentario profesional.', "Somos parte de cada operación desde el principio: seleccionamos el origen, compramos el producto, definimos su especificación y respondemos de él ante nuestros clientes hasta su destino.", 'EMPERIO TISS nace con una visión internacional: comprender mejor los productos, entender mejor los mercados y trabajar mejor con las personas.'],
     mvLabel: '02 · Misión, visión y valores', mvTitle: 'Lo que nos guía.',
-    mission: ['Misión', 'Construir un comercio de alimentos más inteligente y más humano: uniendo el conocimiento de cada origen, la tecnología y el criterio de las personas para conectar el mundo con confianza.'],
+    mission: ['Misión', "Construir un comercio de alimentos más inteligente y más humano: uniendo el conocimiento de cada origen, la tecnología y el criterio de las personas para llevar a cada mercado alimentos en los que se pueda confiar."],
     vision: ['Visión', 'Convertirnos en una referencia del comercio internacional de alimentos: una empresa donde cada origen se valora, cada decisión se apoya en conocimiento y cada relación se construye para durar.'],
     valuesTitle: 'Valores',
     values: [['Precisión', 'Los detalles importan.'], ['Integridad', 'Hacemos lo que decimos.'], ['Transparencia', 'La confianza comienza con claridad.'], ['Conocimiento', 'Entender mejor permite decidir mejor.'], ['Responsabilidad', 'Pensamos más allá del resultado inmediato.'], ['Adaptabilidad', 'Evolucionamos con el mercado.']],
-    model: ['03 · Cómo operamos', 'Un modelo de operación claro.', 'Cada operación parte de una necesidad concreta y se estructura en torno a una especificación verificable antes de coordinar el suministro.'],
-    steps: [['Conocer', 'Producto, origen, disponibilidad y contexto comercial.'], ['Especificar', 'Calibre, calidad, presentación, formato y destino, verificados antes de confirmar.'], ['Operar', 'Como parte principal: respondemos del producto ante el comprador y compramos con criterio al productor.'], ['Coordinar', 'Una línea clara desde el acuerdo comercial hasta el mercado de destino.']],
+    model: ['03 · Cómo operamos', 'Un modelo de operación claro.', "Cada operación parte de una necesidad concreta del cliente y se estructura en torno a una especificación verificable antes del suministro."],
+    steps: [["Conocer","Producto, origen, disponibilidad y contexto comercial."],["Especificar","Calibre, calidad, presentación, formato y destino, verificados antes de confirmar."],["Comprar","Compramos el producto con criterios claros y respondemos de él ante nuestros clientes."],["Suministrar","Organizamos el suministro desde el origen hasta el mercado de destino."]],
     principle: ['Precisión antes que promesa.', 'Antes de confirmar, verificamos lo que determina el valor real de la operación: producto, origen, especificación y mercado.'],
-    areas: ['04 · Áreas de negocio', 'Dos áreas de negocio.', 'Cada área se define por origen, especificación y disponibilidad.'],
-    areaList: [['Productos del mar', 'Pescados, mariscos y cefalópodos, frescos y congelados.'], ['Frutas y hortalizas', 'Variedades seleccionadas por origen, calibre y campaña.']],
-    catalogue: 'Ver catálogo', seasonal: 'Ver la selección de temporada',
+    areas: ["04 · Compromiso con el cliente","Nuestro compromiso.","Lo que cada cliente encuentra en EMPERIO TISS."],
+    pledgeList: [["Producto definido","Especie o variedad, origen, calibre, calidad y formato, acordados antes de cada operación."],["Responsabilidad","Respondemos del producto que suministramos."],["Transparencia","Información clara sobre origen, disponibilidad y condiciones."],["Relación duradera","Construimos relaciones comerciales a largo plazo, no operaciones aisladas."]],
     presence: ['05 · Presencia internacional', 'Madrid', 'Sede de EMPERIO TISS S.L. Desde Madrid, al mundo.'],
     regions: [['Europa', 'España, Francia, Italia, Alemania y Países Bajos.'], ['África', 'Marruecos, Túnez, Mauritania y África Occidental.'], ['Oriente Medio', 'Golfo y Levante.']],
     note: 'El Mediterráneo es zona de captura: el origen de parte del pescado que seleccionamos.',
     markets: 'Ver mercados',
     dataLabel: '06 · Datos corporativos', dataTitle: 'Datos corporativos.',
-    data: [['Razón social', 'EMPERIO TISS S.L.'], ['Sede', 'Madrid, España'], ['Actividad', 'Comercio alimentario B2B'], ['Áreas de negocio', 'Productos del mar, frutas y hortalizas'], ['Mercados', 'Europa, África y Oriente Medio'], ['Contacto', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
+    data: [['Razón social', 'EMPERIO TISS S.L.'], ['Sede', 'Madrid, España'], ['Actividad', 'Comercio alimentario B2B'], ["Productos","Productos del mar, frutas y hortalizas"], ['Mercados', 'Europa, África y Oriente Medio'], ['Contacto', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
     commitLabel: '07 · Responsabilidad', commitTitle: 'Responsabilidad.',
     commit: [['El futuro también importa.', 'La alimentación depende de recursos naturales y ecosistemas que debemos proteger. Buscamos trabajar con más eficiencia, menos desperdicio y mayor conciencia sobre los recursos. No buscamos parecer sostenibles: queremos aprender a hacerlo mejor.'], ['La tecnología ayuda. El criterio decide.', 'Usamos nuevas herramientas cuando aportan valor real: mejor información, mejor coordinación y más eficiencia. Detrás de cada decisión siguen estando las personas.']],
     close: ['Contacto', 'Hablemos de una necesidad concreta.', 'Cuéntenos producto, origen, volumen y destino: estudiamos cada consulta profesional.'],
@@ -48,27 +45,26 @@ const COPY = {
   en: {
     heroLabel: 'EMPERIO TISS S.L. · Madrid',
     h1: 'From origin to market, with purpose.',
-    lead: 'A Spanish B2B food trading company. From Madrid, we connect selected origins with professional buyers in Europe, Africa and the Middle East.',
-    contact: 'Contact us', areasLink: 'Business areas',
-    facts: [['Headquarters', 'Madrid, Spain'], ['Activity', 'B2B food trading'], ['Areas', 'Seafood · Fruit and vegetables'], ['Markets', 'Europe · Africa · Middle East']],
-    who: ['01 · Who we are', 'A company built for professional food trade.', 'We act as principal in every operation: for buyers we represent the offer and stand behind the product; for producers we buy with clear criteria, a defined destination and market vision.', 'EMPERIO TISS is built around an international vision: understanding products better, reading markets better and working better with people.'],
+    lead: "A Spanish B2B food trading company based in Madrid. We select, buy and supply seafood, fruit and vegetables to professional customers in Europe, Africa and the Middle East.",
+    contact: 'Contact us', productsLink: "View products",
+    facts: [["Headquarters","Madrid, Spain"],["Activity","B2B food trading"],["Products","Seafood · Fruit and vegetables"],["Markets","Europe · Africa · Middle East"]],
+    who: ['01 · Who we are', 'A company built for professional food trade.', "We are part of every operation from the start: we select the origin, buy the product, define its specification and stand behind it before our customers all the way to its destination.", 'EMPERIO TISS is built around an international vision: understanding products better, reading markets better and working better with people.'],
     mvLabel: '02 · Mission, vision and values', mvTitle: 'What guides us.',
-    mission: ['Mission', 'To build a smarter, more human food trade: bringing together knowledge of every origin, technology and people’s judgement to connect the world with trust.'],
+    mission: ['Mission', "To build a smarter, more human food trade: bringing together knowledge of every origin, technology and people’s judgement to bring every market food it can trust."],
     vision: ['Vision', 'To become a reference in international food trade: a company where every origin is valued, every decision rests on knowledge and every relationship is built to last.'],
     valuesTitle: 'Values',
     values: [['Precision', 'Details matter.'], ['Integrity', 'We do what we say.'], ['Transparency', 'Trust starts with clarity.'], ['Knowledge', 'Understanding better enables better decisions.'], ['Responsibility', 'We think beyond the immediate outcome.'], ['Adaptability', 'We evolve with the market.']],
-    model: ['03 · How we operate', 'A clear operating model.', 'Every operation starts from a concrete need and is structured around a verifiable specification before supply is coordinated.'],
-    steps: [['Understand', 'Product, origin, availability and commercial context.'], ['Specify', 'Size, quality, presentation, format and destination, verified before confirming.'], ['Operate', 'As principal: we stand behind the product for the buyer and buy with judgement from the producer.'], ['Coordinate', 'One clear line from the commercial agreement to the destination market.']],
+    model: ['03 · How we operate', 'A clear operating model.', "Every operation starts from a concrete customer need and is structured around a verifiable specification before supply."],
+    steps: [["Understand","Product, origin, availability and commercial context."],["Specify","Size, quality, presentation, format and destination, verified before confirming."],["Buy","We buy the product with clear criteria and stand behind it before our customers."],["Supply","We organise supply from origin to the destination market."]],
     principle: ['Precision before promise.', 'Before confirming, we check what determines the real value of the operation: product, origin, specification and market.'],
-    areas: ['04 · Business areas', 'Two business areas.', 'Each area is defined by origin, specification and availability.'],
-    areaList: [['Seafood', 'Fish, shellfish and cephalopods, fresh and frozen.'], ['Fruit and vegetables', 'Varieties selected by origin, size and season.']],
-    catalogue: 'View catalogue', seasonal: 'See this season’s selection',
+    areas: ["04 · Commitment to our customers","Our commitment.","What every customer finds at EMPERIO TISS."],
+    pledgeList: [["Defined product","Species or variety, origin, size, quality and format, agreed before every operation."],["Responsibility","We stand behind the product we supply."],["Transparency","Clear information on origin, availability and conditions."],["Lasting relationships","We build long-term commercial relationships, not one-off operations."]],
     presence: ['05 · International presence', 'Madrid', 'Headquarters of EMPERIO TISS S.L. From Madrid to the world.'],
     regions: [['Europe', 'Spain, France, Italy, Germany and the Netherlands.'], ['Africa', 'Morocco, Tunisia, Mauritania and West Africa.'], ['Middle East', 'The Gulf and the Levant.']],
     note: 'The Mediterranean is a fishing ground: the origin of part of the fish we select.',
     markets: 'View markets',
     dataLabel: '06 · Corporate information', dataTitle: 'Corporate information.',
-    data: [['Company name', 'EMPERIO TISS S.L.'], ['Headquarters', 'Madrid, Spain'], ['Activity', 'B2B food trading'], ['Business areas', 'Seafood, fruit and vegetables'], ['Markets', 'Europe, Africa and the Middle East'], ['Contact', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
+    data: [['Company name', 'EMPERIO TISS S.L.'], ['Headquarters', 'Madrid, Spain'], ['Activity', 'B2B food trading'], ["Products","Seafood, fruit and vegetables"], ['Markets', 'Europe, Africa and the Middle East'], ['Contact', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
     commitLabel: '07 · Responsibility', commitTitle: 'Responsibility.',
     commit: [['The future matters too.', 'Food depends on natural resources and ecosystems that deserve protection. We aim to work with greater efficiency, less waste and more awareness of resources. We do not want to look sustainable: we want to learn to do better.'], ['Technology helps. Judgement decides.', 'We use new tools when they create real value: better information, better coordination and greater efficiency. People remain behind every decision.']],
     close: ['Contact', 'Let’s talk about a concrete need.', 'Tell us the product, origin, volume and destination: we study every professional enquiry.'],
@@ -77,27 +73,26 @@ const COPY = {
   fr: {
     heroLabel: 'EMPERIO TISS S.L. · Madrid',
     h1: 'De l’origine au marché, avec discernement.',
-    lead: 'Entreprise espagnole de négoce alimentaire B2B. Depuis Madrid, nous relions des origines sélectionnées à des acheteurs professionnels en Europe, en Afrique et au Moyen-Orient.',
-    contact: 'Nous contacter', areasLink: 'Domaines d’activité',
-    facts: [['Siège', 'Madrid, Espagne'], ['Activité', 'Négoce alimentaire B2B'], ['Domaines', 'Produits de la mer · Fruits et légumes'], ['Marchés', 'Europe · Afrique · Moyen-Orient']],
-    who: ['01 · Qui sommes-nous', 'Une entreprise pensée pour le négoce alimentaire professionnel.', 'Nous intervenons comme partie principale dans chaque opération : pour l’acheteur, nous représentons l’offre et répondons du produit ; pour le producteur, nous achetons avec des critères clairs, une destination définie et une vision de marché.', 'EMPERIO TISS est né d’une vision internationale : mieux comprendre les produits, mieux lire les marchés et mieux travailler avec les personnes.'],
+    lead: "Entreprise espagnole de négoce alimentaire B2B basée à Madrid. Nous sélectionnons, achetons et fournissons des produits de la mer, des fruits et des légumes à des clients professionnels en Europe, en Afrique et au Moyen-Orient.",
+    contact: 'Nous contacter', productsLink: "Voir les produits",
+    facts: [["Siège","Madrid, Espagne"],["Activité","Négoce alimentaire B2B"],["Produits","Produits de la mer · Fruits et légumes"],["Marchés","Europe · Afrique · Moyen-Orient"]],
+    who: ['01 · Qui sommes-nous', 'Une entreprise pensée pour le négoce alimentaire professionnel.', "Nous faisons partie de chaque opération dès le départ : nous sélectionnons l’origine, achetons le produit, définissons sa spécification et en répondons devant nos clients jusqu’à sa destination.", 'EMPERIO TISS est né d’une vision internationale : mieux comprendre les produits, mieux lire les marchés et mieux travailler avec les personnes.'],
     mvLabel: '02 · Mission, vision et valeurs', mvTitle: 'Ce qui nous guide.',
-    mission: ['Mission', 'Construire un commerce alimentaire plus intelligent et plus humain : réunir la connaissance de chaque origine, la technologie et le discernement des personnes pour relier le monde en confiance.'],
+    mission: ['Mission', "Construire un commerce alimentaire plus intelligent et plus humain : réunir la connaissance de chaque origine, la technologie et le discernement des personnes pour apporter à chaque marché des aliments dignes de confiance."],
     vision: ['Vision', 'Devenir une référence du commerce alimentaire international : une entreprise où chaque origine est valorisée, chaque décision s’appuie sur la connaissance et chaque relation est construite pour durer.'],
     valuesTitle: 'Valeurs',
     values: [['Précision', 'Les détails comptent.'], ['Intégrité', 'Nous faisons ce que nous disons.'], ['Transparence', 'La confiance commence par la clarté.'], ['Connaissance', 'Mieux comprendre permet de mieux décider.'], ['Responsabilité', 'Nous pensons au-delà du résultat immédiat.'], ['Adaptabilité', 'Nous évoluons avec le marché.']],
-    model: ['03 · Notre fonctionnement', 'Un modèle opérationnel clair.', 'Chaque opération part d’un besoin concret et se structure autour d’une spécification vérifiable avant la coordination de l’approvisionnement.'],
-    steps: [['Connaître', 'Produit, origine, disponibilité et contexte commercial.'], ['Spécifier', 'Calibre, qualité, présentation, format et destination, vérifiés avant confirmation.'], ['Opérer', 'En partie principale : nous répondons du produit devant l’acheteur et achetons avec discernement au producteur.'], ['Coordonner', 'Une ligne claire de l’accord commercial jusqu’au marché de destination.']],
+    model: ['03 · Notre fonctionnement', 'Un modèle opérationnel clair.', "Chaque opération part d’un besoin concret du client et se structure autour d’une spécification vérifiable avant l’approvisionnement."],
+    steps: [["Connaître","Produit, origine, disponibilité et contexte commercial."],["Spécifier","Calibre, qualité, présentation, format et destination, vérifiés avant confirmation."],["Acheter","Nous achetons le produit avec des critères clairs et en répondons devant nos clients."],["Fournir","Nous organisons l’approvisionnement de l’origine jusqu’au marché de destination."]],
     principle: ['La précision avant la promesse.', 'Avant de confirmer, nous vérifions ce qui détermine la valeur réelle de l’opération : produit, origine, spécification et marché.'],
-    areas: ['04 · Domaines d’activité', 'Deux domaines d’activité.', 'Chaque domaine se définit par l’origine, la spécification et la disponibilité.'],
-    areaList: [['Produits de la mer', 'Poissons, crustacés et céphalopodes, frais et surgelés.'], ['Fruits et légumes', 'Variétés sélectionnées par origine, calibre et campagne.']],
-    catalogue: 'Voir le catalogue', seasonal: 'Voir la sélection de saison',
+    areas: ["04 · Engagement client","Notre engagement.","Ce que chaque client trouve chez EMPERIO TISS."],
+    pledgeList: [["Produit défini","Espèce ou variété, origine, calibre, qualité et format, convenus avant chaque opération."],["Responsabilité","Nous répondons du produit que nous fournissons."],["Transparence","Une information claire sur l’origine, la disponibilité et les conditions."],["Relation durable","Nous construisons des relations commerciales à long terme, pas des opérations isolées."]],
     presence: ['05 · Présence internationale', 'Madrid', 'Siège d’EMPERIO TISS S.L. De Madrid au monde.'],
     regions: [['Europe', 'Espagne, France, Italie, Allemagne et Pays-Bas.'], ['Afrique', 'Maroc, Tunisie, Mauritanie et Afrique de l’Ouest.'], ['Moyen-Orient', 'Golfe et Levant.']],
     note: 'La Méditerranée est une zone de pêche : l’origine d’une partie du poisson que nous sélectionnons.',
     markets: 'Voir les marchés',
     dataLabel: '06 · Informations sur l’entreprise', dataTitle: 'Informations sur l’entreprise.',
-    data: [['Raison sociale', 'EMPERIO TISS S.L.'], ['Siège', 'Madrid, Espagne'], ['Activité', 'Négoce alimentaire B2B'], ['Domaines d’activité', 'Produits de la mer, fruits et légumes'], ['Marchés', 'Europe, Afrique et Moyen-Orient'], ['Contact', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
+    data: [['Raison sociale', 'EMPERIO TISS S.L.'], ['Siège', 'Madrid, Espagne'], ['Activité', 'Négoce alimentaire B2B'], ["Produits","Produits de la mer, fruits et légumes"], ['Marchés', 'Europe, Afrique et Moyen-Orient'], ['Contact', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
     commitLabel: '07 · Responsabilité', commitTitle: 'Responsabilité.',
     commit: [['L’avenir compte aussi.', 'L’alimentation dépend de ressources naturelles et d’écosystèmes qui doivent être préservés. Nous voulons travailler avec plus d’efficacité, moins de gaspillage et davantage de conscience des ressources. Nous ne cherchons pas à paraître responsables : nous voulons apprendre à faire mieux.'], ['La technologie aide. Le jugement décide.', 'Nous utilisons de nouveaux outils lorsqu’ils créent une vraie valeur : meilleure information, meilleure coordination, plus d’efficacité. Derrière chaque décision, il y a toujours des personnes.']],
     close: ['Contact', 'Parlons d’un besoin concret.', 'Indiquez produit, origine, volume et destination : nous étudions chaque demande professionnelle.'],
@@ -106,27 +101,26 @@ const COPY = {
   it: {
     heroLabel: 'EMPERIO TISS S.L. · Madrid',
     h1: 'Dall’origine al mercato, con criterio.',
-    lead: 'Azienda spagnola di commercio alimentare B2B. Da Madrid colleghiamo origini selezionate con buyer professionali in Europa, Africa e Medio Oriente.',
-    contact: 'Contatta', areasLink: 'Aree di business',
-    facts: [['Sede', 'Madrid, Spagna'], ['Attività', 'Commercio alimentare B2B'], ['Aree', 'Prodotti del mare · Frutta e ortaggi'], ['Mercati', 'Europa · Africa · Medio Oriente']],
-    who: ['01 · Chi siamo', 'Un’azienda pensata per il commercio alimentare professionale.', 'Operiamo come parte principale in ogni operazione: per i compratori rappresentiamo l’offerta e rispondiamo del prodotto; per i produttori acquistiamo con criteri chiari, destinazione definita e visione di mercato.', 'EMPERIO TISS nasce con una visione internazionale: capire meglio i prodotti, leggere meglio i mercati e lavorare meglio con le persone.'],
+    lead: "Azienda spagnola di commercio alimentare B2B con sede a Madrid. Selezioniamo, acquistiamo e forniamo prodotti del mare, frutta e ortaggi a clienti professionali in Europa, Africa e Medio Oriente.",
+    contact: 'Contatta', productsLink: "Vedi i prodotti",
+    facts: [["Sede","Madrid, Spagna"],["Attività","Commercio alimentare B2B"],["Prodotti","Prodotti del mare · Frutta e ortaggi"],["Mercati","Europa · Africa · Medio Oriente"]],
+    who: ['01 · Chi siamo', 'Un’azienda pensata per il commercio alimentare professionale.', "Siamo parte di ogni operazione fin dall’inizio: selezioniamo l’origine, acquistiamo il prodotto, ne definiamo le specifiche e ne rispondiamo verso i nostri clienti fino alla destinazione.", 'EMPERIO TISS nasce con una visione internazionale: capire meglio i prodotti, leggere meglio i mercati e lavorare meglio con le persone.'],
     mvLabel: '02 · Missione, visione e valori', mvTitle: 'Ciò che ci guida.',
-    mission: ['Missione', 'Costruire un commercio alimentare più intelligente e più umano: unire la conoscenza di ogni origine, la tecnologia e il giudizio delle persone per connettere il mondo con fiducia.'],
+    mission: ['Missione', "Costruire un commercio alimentare più intelligente e più umano: unire la conoscenza di ogni origine, la tecnologia e il giudizio delle persone per portare in ogni mercato alimenti di cui fidarsi."],
     vision: ['Visione', 'Diventare un punto di riferimento nel commercio alimentare internazionale: un’azienda in cui ogni origine è valorizzata, ogni decisione si basa sulla conoscenza e ogni relazione è costruita per durare.'],
     valuesTitle: 'Valori',
     values: [['Precisione', 'I dettagli contano.'], ['Integrità', 'Facciamo ciò che diciamo.'], ['Trasparenza', 'La fiducia inizia dalla chiarezza.'], ['Conoscenza', 'Capire meglio permette di decidere meglio.'], ['Responsabilità', 'Pensiamo oltre il risultato immediato.'], ['Adattabilità', 'Evolviamo con il mercato.']],
-    model: ['03 · Come operiamo', 'Un modello operativo chiaro.', 'Ogni operazione parte da un’esigenza concreta e si struttura attorno a una specifica verificabile prima di coordinare la fornitura.'],
-    steps: [['Conoscere', 'Prodotto, origine, disponibilità e contesto commerciale.'], ['Specificare', 'Calibro, qualità, presentazione, formato e destinazione, verificati prima di confermare.'], ['Operare', 'Come parte principale: rispondiamo del prodotto verso il compratore e acquistiamo con criterio dal produttore.'], ['Coordinare', 'Una linea chiara dall’accordo commerciale fino al mercato di destinazione.']],
+    model: ['03 · Come operiamo', 'Un modello operativo chiaro.', "Ogni operazione parte da un’esigenza concreta del cliente e si struttura attorno a una specifica verificabile prima della fornitura."],
+    steps: [["Conoscere","Prodotto, origine, disponibilità e contesto commerciale."],["Specificare","Calibro, qualità, presentazione, formato e destinazione, verificati prima di confermare."],["Acquistare","Acquistiamo il prodotto con criteri chiari e ne rispondiamo verso i nostri clienti."],["Fornire","Organizziamo la fornitura dall’origine al mercato di destinazione."]],
     principle: ['Precisione prima della promessa.', 'Prima di confermare, verifichiamo ciò che determina il valore reale dell’operazione: prodotto, origine, specifiche e mercato.'],
-    areas: ['04 · Aree di business', 'Due aree di business.', 'Ogni area è definita da origine, specifiche e disponibilità.'],
-    areaList: [['Prodotti del mare', 'Pesce, crostacei e cefalopodi, freschi e surgelati.'], ['Frutta e ortaggi', 'Varietà selezionate per origine, calibro e campagna.']],
-    catalogue: 'Vedi il catalogo', seasonal: 'Vedi la selezione di stagione',
+    areas: ["04 · Impegno verso il cliente","Il nostro impegno.","Ciò che ogni cliente trova in EMPERIO TISS."],
+    pledgeList: [["Prodotto definito","Specie o varietà, origine, calibro, qualità e formato, concordati prima di ogni operazione."],["Responsabilità","Rispondiamo del prodotto che forniamo."],["Trasparenza","Informazioni chiare su origine, disponibilità e condizioni."],["Relazione duratura","Costruiamo relazioni commerciali di lungo periodo, non operazioni isolate."]],
     presence: ['05 · Presenza internazionale', 'Madrid', 'Sede di EMPERIO TISS S.L. Da Madrid al mondo.'],
     regions: [['Europa', 'Spagna, Francia, Italia, Germania e Paesi Bassi.'], ['Africa', 'Marocco, Tunisia, Mauritania e Africa occidentale.'], ['Medio Oriente', 'Golfo e Levante.']],
     note: 'Il Mediterraneo è una zona di pesca: l’origine di parte del pesce che selezioniamo.',
     markets: 'Vedi i mercati',
     dataLabel: '06 · Dati societari', dataTitle: 'Dati societari.',
-    data: [['Ragione sociale', 'EMPERIO TISS S.L.'], ['Sede', 'Madrid, Spagna'], ['Attività', 'Commercio alimentare B2B'], ['Aree di business', 'Prodotti del mare, frutta e ortaggi'], ['Mercati', 'Europa, Africa e Medio Oriente'], ['Contatti', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
+    data: [['Ragione sociale', 'EMPERIO TISS S.L.'], ['Sede', 'Madrid, Spagna'], ['Attività', 'Commercio alimentare B2B'], ["Prodotti","Prodotti del mare, frutta e ortaggi"], ['Mercati', 'Europa, Africa e Medio Oriente'], ['Contatti', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
     commitLabel: '07 · Responsabilità', commitTitle: 'Responsabilità.',
     commit: [['Anche il futuro conta.', 'L’alimentazione dipende da risorse naturali ed ecosistemi da proteggere. Vogliamo lavorare con più efficienza, meno sprechi e maggiore consapevolezza delle risorse. Non cerchiamo di sembrare sostenibili: vogliamo imparare a fare meglio.'], ['La tecnologia aiuta. Il criterio decide.', 'Usiamo nuovi strumenti quando portano valore reale: informazioni migliori, coordinamento migliore e più efficienza. Dietro ogni decisione restano le persone.']],
     close: ['Contatti', 'Parliamo di una necessità concreta.', 'Indicateci prodotto, origine, volume e destinazione: valutiamo ogni richiesta professionale.'],
@@ -135,27 +129,26 @@ const COPY = {
   ar: {
     heroLabel: 'EMPERIO TISS S.L. · مدريد',
     h1: 'من المنشأ إلى السوق، بمعايير واضحة.',
-    lead: 'شركة إسبانية للتجارة الغذائية بين الشركات (B2B). من مدريد، نربط مناشئ مختارة بمشترين مهنيين في أوروبا وأفريقيا والشرق الأوسط.',
-    contact: 'تواصل معنا', areasLink: 'مجالات الأعمال',
-    facts: [['المقر', 'مدريد، إسبانيا'], ['النشاط', 'تجارة غذائية بين الشركات'], ['المجالات', 'المنتجات البحرية · الفواكه والخضروات'], ['الأسواق', 'أوروبا · أفريقيا · الشرق الأوسط']],
-    who: ['01 · من نحن', 'شركة مصممة للتجارة الغذائية المهنية.', 'نعمل كطرف رئيسي في كل عملية: للمشترين نمثل العرض ونتحمل مسؤولية المنتج، وللمنتجين نشتري بمعايير واضحة ووجهة محددة ورؤية للسوق.', 'تأسست EMPERIO TISS برؤية دولية: فهم المنتجات بشكل أفضل، وقراءة الأسواق بشكل أفضل، والعمل بشكل أفضل مع الناس.'],
+    lead: "شركة إسبانية للتجارة الغذائية بين الشركات (B2B) مقرها مدريد. نختار ونشتري ونورّد المنتجات البحرية والفواكه والخضروات لعملاء مهنيين في أوروبا وأفريقيا والشرق الأوسط.",
+    contact: 'تواصل معنا', productsLink: "عرض المنتجات",
+    facts: [["المقر","مدريد، إسبانيا"],["النشاط","تجارة غذائية بين الشركات"],["المنتجات","المنتجات البحرية · الفواكه والخضروات"],["الأسواق","أوروبا · أفريقيا · الشرق الأوسط"]],
+    who: ['01 · من نحن', 'شركة مصممة للتجارة الغذائية المهنية.', "نحن جزء من كل عملية منذ بدايتها: نختار المنشأ، ونشتري المنتج، ونحدد مواصفاته، ونتحمل مسؤوليته أمام عملائنا حتى وجهته.", 'تأسست EMPERIO TISS برؤية دولية: فهم المنتجات بشكل أفضل، وقراءة الأسواق بشكل أفضل، والعمل بشكل أفضل مع الناس.'],
     mvLabel: '02 · الرسالة والرؤية والقيم', mvTitle: 'ما يوجّهنا.',
-    mission: ['الرسالة', 'بناء تجارة غذائية أذكى وأكثر إنسانية: نجمع معرفة كل منشأ والتكنولوجيا وحكمة الإنسان لنربط العالم بثقة.'],
+    mission: ['الرسالة', "بناء تجارة غذائية أذكى وأكثر إنسانية: نجمع معرفة كل منشأ والتكنولوجيا وحكمة الإنسان لنقدّم لكل سوق غذاءً يمكن الوثوق به."],
     vision: ['الرؤية', 'أن نصبح مرجعاً في التجارة الغذائية الدولية: شركة يُقدَّر فيها كل منشأ، ويستند فيها كل قرار إلى المعرفة، وتُبنى فيها كل علاقة لتدوم.'],
     valuesTitle: 'القيم',
     values: [['الدقة', 'التفاصيل مهمة.'], ['النزاهة', 'نفعل ما نقول.'], ['الشفافية', 'الثقة تبدأ بالوضوح.'], ['المعرفة', 'الفهم الأفضل يقود إلى قرارات أفضل.'], ['المسؤولية', 'نفكر أبعد من النتيجة الفورية.'], ['المرونة', 'نتطور مع السوق.']],
-    model: ['03 · كيف نعمل', 'نموذج عمل واضح.', 'تبدأ كل عملية من احتياج محدد وتُبنى حول مواصفة قابلة للتحقق قبل تنسيق التوريد.'],
-    steps: [['نفهم', 'المنتج والمنشأ والتوافر والسياق التجاري.'], ['نحدد', 'الحجم والجودة والتقديم والشكل والوجهة، مع التحقق منها قبل التأكيد.'], ['ننفذ', 'كطرف رئيسي: نتحمل مسؤولية المنتج أمام المشتري ونشتري من المنتج بمعايير واضحة.'], ['ننسّق', 'خط واضح من الاتفاق التجاري حتى سوق الوجهة.']],
+    model: ['03 · كيف نعمل', 'نموذج عمل واضح.', "تبدأ كل عملية من احتياج محدد لدى العميل وتُبنى حول مواصفة قابلة للتحقق قبل التوريد."],
+    steps: [["نفهم","المنتج والمنشأ والتوافر والسياق التجاري."],["نحدد","الحجم والجودة والتقديم والشكل والوجهة، مع التحقق منها قبل التأكيد."],["نشتري","نشتري المنتج بمعايير واضحة ونتحمل مسؤوليته أمام عملائنا."],["نورّد","ننظم التوريد من المنشأ حتى سوق الوجهة."]],
     principle: ['الدقة قبل الوعد.', 'قبل التأكيد، نتحقق مما يحدد القيمة الحقيقية للعملية: المنتج والمنشأ والمواصفات والسوق.'],
-    areas: ['04 · مجالات الأعمال', 'مجالان للأعمال.', 'يُحدَّد كل مجال حسب المنشأ والمواصفات والتوافر.'],
-    areaList: [['المنتجات البحرية', 'أسماك وقشريات ورأسيات أرجل، طازجة ومجمدة.'], ['الفواكه والخضروات', 'أصناف مختارة حسب المنشأ والحجم والموسم.']],
-    catalogue: 'عرض الكتالوج', seasonal: 'عرض تشكيلة الموسم',
+    areas: ["04 · التزامنا تجاه العميل","التزامنا.","ما يجده كل عميل لدى EMPERIO TISS."],
+    pledgeList: [["منتج محدد","النوع أو الصنف والمنشأ والحجم والجودة والشكل، متفق عليها قبل كل عملية."],["المسؤولية","نتحمل مسؤولية المنتج الذي نورّده."],["الشفافية","معلومات واضحة عن المنشأ والتوافر والشروط."],["علاقة دائمة","نبني علاقات تجارية طويلة الأمد، لا عمليات منفردة."]],
     presence: ['05 · الحضور الدولي', 'مدريد', 'مقر EMPERIO TISS S.L. من مدريد إلى العالم.'],
     regions: [['أوروبا', 'إسبانيا وفرنسا وإيطاليا وألمانيا وهولندا.'], ['أفريقيا', 'المغرب وتونس وموريتانيا وغرب أفريقيا.'], ['الشرق الأوسط', 'الخليج والمشرق.']],
     note: 'البحر المتوسط منطقة صيد: منشأ جزء من الأسماك التي نختارها.',
     markets: 'عرض الأسواق',
     dataLabel: '06 · بيانات الشركة', dataTitle: 'بيانات الشركة.',
-    data: [['الاسم التجاري', 'EMPERIO TISS S.L.'], ['المقر', 'مدريد، إسبانيا'], ['النشاط', 'تجارة غذائية بين الشركات (B2B)'], ['مجالات الأعمال', 'المنتجات البحرية والفواكه والخضروات'], ['الأسواق', 'أوروبا وأفريقيا والشرق الأوسط'], ['التواصل', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
+    data: [['الاسم التجاري', 'EMPERIO TISS S.L.'], ['المقر', 'مدريد، إسبانيا'], ['النشاط', 'تجارة غذائية بين الشركات (B2B)'], ["المنتجات","المنتجات البحرية والفواكه والخضروات"], ['الأسواق', 'أوروبا وأفريقيا والشرق الأوسط'], ['التواصل', '<a href="mailto:info@emperio-tiss.com">info@emperio-tiss.com</a>']],
     commitLabel: '07 · المسؤولية', commitTitle: 'المسؤولية.',
     commit: [['المستقبل مهم أيضاً.', 'تعتمد منظومة الغذاء على موارد طبيعية ونظم بيئية تستحق الحماية. نريد العمل بكفاءة أكبر وهدر أقل ووعي أكبر بالموارد. لا نريد أن نبدو مستدامين: نريد أن نتعلم كيف نفعل ذلك بشكل أفضل.'], ['التكنولوجيا تساعد. والحُكم يقرر.', 'نستخدم الأدوات الجديدة عندما تضيف قيمة حقيقية: معلومات أفضل وتنسيق أفضل وكفاءة أكبر. وخلف كل قرار يبقى الإنسان.']],
     close: ['تواصل', 'لنتحدث عن احتياج محدد.', 'أخبرونا بالمنتج والمنشأ والكمية والوجهة: ندرس كل طلب مهني.'],
@@ -175,7 +168,7 @@ function main(lang) {
           <p class="co-label">${c.heroLabel}</p>
           <h1 id="co-title">${c.h1}</h1>
           <p class="co-hero-lead">${c.lead}</p>
-          <div class="co-actions"><a class="co-btn co-btn--primary" href="${base}contact/">${c.contact} <span aria-hidden="true">↗</span></a><a class="co-btn co-btn--line" href="#co-areas">${c.areasLink}</a></div>
+          <div class="co-actions"><a class="co-btn co-btn--primary" href="${base}contact/">${c.contact} <span aria-hidden="true">↗</span></a><a class="co-btn co-btn--line" href="${base}products/">${c.productsLink}</a></div>
           <dl class="co-hero-facts">${c.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
         </div>
         <div class="co-hero-media"><img src="${HERO_IMAGE}" alt="" fetchpriority="high" decoding="async"></div>
@@ -205,11 +198,11 @@ function main(lang) {
         </div>
       </section>
 
-      <section class="co-section" id="co-areas" aria-labelledby="co-areas-title">
+      <section class="co-section" aria-labelledby="co-pledge">
         <div class="co-wrap">
-          <div class="co-split" ${R} style="margin-bottom:clamp(44px,5vw,64px)"><div><p class="co-label">${c.areas[0]}</p><h2 id="co-areas-title">${c.areas[1]}</h2></div><p class="co-text">${c.areas[2]}</p></div>
-          <div class="co-areas" ${R}>${c.areaList.map(([t, d], i) => `<a class="co-area" href="${base}${AREA_ROUTES[i]}"><figure><img src="${AREA_IMAGES[i]}" alt="" loading="lazy" decoding="async"></figure><div><span>${pad(i)}</span><h3>${t}</h3><p>${d}</p><span class="co-more">${c.catalogue} ${ARROW}</span></div></a>`).join('')}</div>
-          <p class="co-presence-more" ${R}><a class="co-more" href="${base}products/seasonal/">${c.seasonal} ${ARROW}</a></p>
+          <div class="co-split" ${R} style="margin-bottom:clamp(44px,5vw,64px)"><div><p class="co-label">${c.areas[0]}</p><h2 id="co-pledge">${c.areas[1]}</h2></div><p class="co-text">${c.areas[2]}</p></div>
+          <ul class="co-pledge" ${R}>${c.pledgeList.map(([t, d], i) => `<li><span>${pad(i)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ul>
+          <p class="co-presence-more" ${R}><a class="co-more" href="${base}products/">${c.productsLink} ${ARROW}</a></p>
         </div>
       </section>
 

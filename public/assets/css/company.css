@@ -101,16 +101,14 @@ body.about-2026 .co .co-principle { display: grid; grid-template-columns: minmax
 body.about-2026 .co-principle strong { font-family: var(--co-display); font-weight: 400; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.2; color: var(--co-ink); }
 body.about-2026 .co-principle span { color: var(--co-muted); line-height: 1.7; }
 
-/* 5 · business areas */
-body.about-2026 .co-areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 40px); }
-body.about-2026 .co a.co-area { display: block; color: inherit; text-decoration: none; }
-body.about-2026 .co-area figure { margin: 0 0 24px; aspect-ratio: 4 / 3; overflow: hidden; background: var(--co-line); }
-body.about-2026 .co-area img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); transition: transform .9s cubic-bezier(.16, 1, .3, 1); }
-body.about-2026 .co a.co-area:hover img { transform: scale(1.04); }
-body.about-2026 .co-area span { color: var(--co-gold); font: 600 12px/1 var(--co-sans); letter-spacing: .12em; }
-body.about-2026 .co .co-area h3 { margin-top: 12px !important; font: 400 1.6rem/1.2 var(--co-display) !important; }
-body.about-2026 .co-area p { margin: 12px 0 22px !important; color: var(--co-muted); line-height: 1.7; }
-body.about-2026 .co-area .co-more { pointer-events: none; }
+/* 5 · commitment to the customer */
+body.about-2026 .co-pledge { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--co-line); }
+body.about-2026 .co-pledge li { padding-block: 32px 8px; padding-inline: 0 clamp(16px, 2vw, 28px); }
+body.about-2026 .co-pledge li + li { padding-inline-start: clamp(16px, 2vw, 28px); border-inline-start: 1px solid var(--co-line); }
+body.about-2026 .co-pledge span { display: block; margin-bottom: 20px; color: var(--co-gold); font: 600 12px/1 var(--co-sans); letter-spacing: .12em; }
+body.about-2026 .co .co-pledge h3 { font: 400 1.45rem/1.25 var(--co-display) !important; }
+body.about-2026 .co-pledge p { margin-top: 12px !important; color: var(--co-muted); line-height: 1.7; }
+body.about-2026 .co .co-pledge + .co-presence-more { margin-top: 40px; }
 
 /* 6 · presence */
 body.about-2026 .co-hq { font-family: var(--co-display); font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.1; color: var(--co-ink); }
@@ -157,9 +155,8 @@ body.about-2026 .co-signature p { margin: 10px 0 20px !important; color: var(--c
   body.about-2026 .co-hero-panel { padding: 36px 32px 48px; }
   body.about-2026 .co-split, body.about-2026 .co-contact, body.about-2026 .co-principle { grid-template-columns: 1fr; }
   body.about-2026 .co-model { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
-  body.about-2026 .co-areas { grid-template-columns: 1fr; }
-  body.about-2026 .co a.co-area { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px; align-items: center; }
-  body.about-2026 .co-area figure { margin: 0; }
+  body.about-2026 .co-pledge { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+  body.about-2026 .co-pledge li:nth-child(3) { padding-inline-start: 0; border-inline-start: 0; }
 }
 
 /* phone */
@@ -172,7 +169,8 @@ body.about-2026 .co-signature p { margin: 10px 0 20px !important; color: var(--c
   body.about-2026 .co-mv, body.about-2026 .co-values, body.about-2026 .co-model, body.about-2026 .co-commit, body.about-2026 .co-data { grid-template-columns: 1fr; }
   body.about-2026 .co-mv > div + div { padding-inline-start: 0; border-inline-start: 0; border-top: 1px solid var(--co-line); }
   body.about-2026 .co-data > div:not(:nth-child(3n + 1)) { padding-inline-start: 0; border-inline-start: 0; }
-  body.about-2026 .co a.co-area { grid-template-columns: 1fr; }
+  body.about-2026 .co-pledge { grid-template-columns: 1fr; }
+  body.about-2026 .co-pledge li, body.about-2026 .co-pledge li + li { padding-inline: 0; border-inline-start: 0; border-bottom: 1px solid var(--co-line); padding-bottom: 24px; }
   body.about-2026 .co-regions > div { grid-template-columns: 1fr; gap: 6px; }
   body.about-2026 .co-actions { flex-direction: column; align-items: stretch; }
   body.about-2026 .co .co-actions a.co-btn { width: 100% !important; }

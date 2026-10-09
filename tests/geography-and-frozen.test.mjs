@@ -60,3 +60,10 @@ test('seven species are fresh and frozen, and every catalogue follows its market
     assert.match(read(`public/assets/js/${file}`), /catalogue-market-priority\.json/, `${file} must order products by market`);
   }
 });
+
+test('EMPERIO TISS is never presented as a broker or intermediary', () => {
+  // owner 2026-10-09: not even implicitly (connecting origins with buyers, representing the offer...)
+  const broker = /conecta(?:mos)? (?:productos seleccionados|orígenes)|connects? selected|connecting selected|collega(?:ndo)? (?:prodotti|origini)|relie(?:r)? (?:des origines|zones)|representamos la oferta|we represent the offer|نمثل العرض|نربط مناطق|intermediari|\bbroker\b|courtier/i;
+  const files = walk('public').filter(f => /\.(html|js|json)$/.test(f) && !/[\/]private[\/]/.test(f));
+  for (const file of [...files, 'src/seo-copy.js']) assert.doesNotMatch(read(file), broker, `${file} frames the company as an intermediary`);
+});

@@ -19,7 +19,7 @@ export const SEO_COPY = {
     es: ['Empresa | EMPERIO TISS, suministro alimentario B2B', 'EMPERIO TISS, una empresa internacional orientada al mercado alimentario profesional, con conocimiento, precisión, responsabilidad y visión de largo plazo.'],
     en: ['About EMPERIO TISS | B2B food supply company', 'EMPERIO TISS is an international food company for professional markets, built on knowledge, precision, responsibility and a long-term vision.'],
     fr: ['L’entreprise EMPERIO TISS | Approvisionnement B2B', 'EMPERIO TISS est une entreprise moderne du secteur alimentaire, fondée sur la connaissance, la précision, la responsabilité et l’évolution continue.'],
-    it: ['L’azienda EMPERIO TISS | Fornitura alimentare B2B', 'EMPERIO TISS opera nelle forniture alimentari B2B, collegando origini selezionate e buyer professionali in Europa, Africa e Medio Oriente.'],
+    it: ['L’azienda EMPERIO TISS | Fornitura alimentare B2B', 'EMPERIO TISS seleziona, acquista e fornisce prodotti alimentari a clienti professionali in Europa, Africa e Medio Oriente.'],
     ar: ['عن EMPERIO TISS | شركة توريد غذائي مهني', 'EMPERIO TISS شركة غذائية دولية تخدم السوق المهنية، تقوم على المعرفة والدقة والمسؤولية والرؤية بعيدة المدى.']
   },
   '/products/': {

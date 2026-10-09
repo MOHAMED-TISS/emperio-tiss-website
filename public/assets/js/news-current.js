@@ -54,7 +54,7 @@
           'origin'
         ],
         ['Construir rutas con criterio.',
-          'Conectar mercados exige conocer tanto la oportunidad como la operación.', 'company'
+          'Abrir mercados exige conocer tanto la oportunidad como la operación.', 'company'
         ]
       ],
       obs: ['Seguir la disponibilidad antes del volumen.',
@@ -104,7 +104,7 @@
           'origin'
         ],
         ['Building routes with judgment.',
-          'Connecting markets requires understanding opportunity as well as execution.',
+          'Opening markets requires understanding opportunity as well as execution.',
           'company'
         ]
       ],
@@ -156,7 +156,7 @@
           'origin'
         ],
         ['Construire des routes avec discernement.',
-          "Relier les marchés exige de comprendre l'opportunité autant que l'exécution.",
+          "Ouvrir des marchés exige de comprendre l'opportunité autant que l'exécution.",
           'company'
         ]
       ],
@@ -208,7 +208,7 @@
           'origin'
         ],
         ['Costruire rotte con criterio.',
-          'Collegare i mercati richiede di capire l’opportunità quanto l’esecuzione.',
+          'Aprire mercati richiede di capire l’opportunità quanto l’esecuzione.',
           'company'
         ]
       ],
@@ -256,7 +256,7 @@
         ['تابع المنشأ قبل الحملة.',
           'تبدأ الملاحظة من مكان نشوء المنتج وتنتهي حيث يتم استهلاكه.', 'origin'
         ],
-        ['بناء مسارات بوعي تجاري.', 'ربط الأسواق يتطلب فهم الفرصة والتنفيذ في الوقت نفسه.',
+        ['بناء مسارات بوعي تجاري.', 'فتح الأسواق يتطلب فهم الفرصة والتنفيذ في الوقت نفسه.',
           'company'
         ]
       ],

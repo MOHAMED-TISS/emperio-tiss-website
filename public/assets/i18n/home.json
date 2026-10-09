@@ -342,11 +342,11 @@
       "MERCATI",
       "الأسواق"
     ],
-    "Una red que conecta diferentes zonas de producción y destinos profesionales.": [
-      "Connecting production regions with professional destinations.",
-      "Des liens entre bassins de production et marchés professionnels.",
-      "Colleghiamo aree di produzione e mercati professionali.",
-      "نربط مناطق الإنتاج بوجهات التوريد المهني."
+    "Suministro a destinos profesionales desde zonas de producción seleccionadas.": [
+      "Supply to professional destinations from selected production regions.",
+      "Un approvisionnement des marchés professionnels depuis des bassins de production sélectionnés.",
+      "Forniture verso mercati professionali da aree di produzione selezionate.",
+      "توريد إلى وجهات مهنية من مناطق إنتاج مختارة."
     ],
     "Europa": [
       "Europe",
@@ -360,11 +360,11 @@
       "Africa",
       "أفريقيا"
     ],
-    "con conexiones hacia los mercados internacionales.": [
-      "with connections to international markets.",
-      "avec des liens vers les marchés internationaux.",
-      "con collegamenti verso i mercati internazionali.",
-      "وامتداد نحو الأسواق الدولية."
+    "con presencia en los mercados internacionales.": [
+      "with a presence in international markets.",
+      "avec une présence sur les marchés internationaux.",
+      "con presenza sui mercati internazionali.",
+      "وحضور في الأسواق الدولية."
     ],
     "MADRID": [
       "MADRID",
@@ -438,11 +438,11 @@
       "Mediterraneo",
       "المتوسط"
     ],
-    "Una zona estratégica para conectar diferentes orígenes y destinos.": [
-      "A strategic region linking origins and destinations.",
-      "Un espace stratégique entre origines et destinations.",
-      "Un’area strategica tra origini e destinazioni.",
-      "منطقة استراتيجية تصل بين المناشئ والوجهات."
+    "Una zona de origen estratégica para el producto que suministramos.": [
+      "A strategic origin region for the product we supply.",
+      "Une zone d’origine stratégique pour les produits que nous fournissons.",
+      "Un’area d’origine strategica per i prodotti che forniamo.",
+      "منطقة منشأ استراتيجية للمنتجات التي نورّدها."
     ],
     "Oriente Medio": [
       "Middle East",
@@ -810,11 +810,11 @@
       "03 / MERCATI",
       "03 / الأسواق"
     ],
-    "Desde Madrid, una red que une zonas de producción y de captura, como el Mediterráneo, con destinos profesionales en Europa, África y Oriente Medio.": [
-      "From Madrid, a network linking production regions and fishing grounds such as the Mediterranean with professional destinations across Europe, Africa and the Middle East.",
-      "Depuis Madrid, un réseau qui relie zones de production et zones de pêche, comme la Méditerranée, à des destinations professionnelles en Europe, en Afrique et au Moyen-Orient.",
-      "Da Madrid, una rete che unisce aree di produzione e zone di pesca, come il Mediterraneo, a destinazioni professionali in Europa, Africa e Medio Oriente.",
-      "من مدريد، شبكة تربط مناطق الإنتاج ومناطق الصيد، مثل البحر المتوسط، بوجهات مهنية في أوروبا وأفريقيا والشرق الأوسط."
+    "Desde Madrid, suministramos a destinos profesionales en Europa, África y Oriente Medio producto de zonas de producción y de captura seleccionadas, como el Mediterráneo.": [
+      "From Madrid, we supply professional destinations across Europe, Africa and the Middle East with product from selected production regions and fishing grounds such as the Mediterranean.",
+      "Depuis Madrid, nous fournissons des destinations professionnelles en Europe, en Afrique et au Moyen-Orient avec des produits issus de zones de production et de pêche sélectionnées, comme la Méditerranée.",
+      "Da Madrid forniamo destinazioni professionali in Europa, Africa e Medio Oriente con prodotti da aree di produzione e zone di pesca selezionate, come il Mediterraneo.",
+      "من مدريد، نورّد إلى وجهات مهنية في أوروبا وأفريقيا والشرق الأوسط منتجات من مناطق إنتاج ومناطق صيد مختارة، مثل البحر المتوسط."
     ],
     "Zona de captura · Origen del pescado": [
       "Fishing grounds · Origin of the fish",
@@ -846,17 +846,17 @@
       "03 · ZONA DI PESCA",
       "03 · منطقة صيد"
     ],
-    "Conexiones con los principales destinos profesionales de Europa.": [
-      "Connections with Europe’s main professional destinations.",
-      "Des liaisons avec les principales destinations professionnelles d’Europe.",
-      "Collegamenti con le principali destinazioni professionali europee.",
-      "روابط مع أبرز الوجهات المهنية في أوروبا."
+    "Suministro a los principales destinos profesionales de Europa.": [
+      "Supply to Europe’s main professional destinations.",
+      "Un approvisionnement vers les principales destinations professionnelles d’Europe.",
+      "Forniture verso le principali destinazioni professionali europee.",
+      "توريد إلى أبرز الوجهات المهنية في أوروبا."
     ],
-    "Zonas de producción y origen conectadas con los mercados europeos.": [
-      "Production and origin regions connected with European markets.",
-      "Des zones de production et d’origine reliées aux marchés européens.",
-      "Aree di produzione e d’origine collegate ai mercati europei.",
-      "مناطق إنتاج ومنشأ مرتبطة بالأسواق الأوروبية."
+    "Zonas de producción y origen seleccionadas para los mercados europeos.": [
+      "Production and origin regions selected for European markets.",
+      "Des zones de production et d’origine sélectionnées pour les marchés européens.",
+      "Aree di produzione e d’origine selezionate per i mercati europei.",
+      "مناطق إنتاج ومنشأ مختارة للأسواق الأوروبية."
     ],
     "Caladeros de origen del pescado: el punto de partida de la selección que llevamos a cada destino.": [
       "The fishing grounds where our fish originates: the starting point of the selection we bring to each destination.",

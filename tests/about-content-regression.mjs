@@ -30,14 +30,15 @@ for (const [lang, path, base, title] of pages) {
   assert.match(html, /company\.css/, `${lang}: must load the Company page stylesheet`);
   assert.doesNotMatch(html, /about-media\.css|about-2026\.css/, `${lang}: retired about stylesheets`);
   assert.match(html, title, `${lang}: hero statement`);
-  for (const id of ['co-title', 'co-who', 'co-mv', 'co-model', 'co-areas', 'co-presence', 'co-data', 'co-commit', 'co-close']) {
+  for (const id of ['co-title', 'co-who', 'co-mv', 'co-model', 'co-pledge', 'co-presence', 'co-data', 'co-commit', 'co-close']) {
     assert.ok(html.includes(`id="${id}`), `${lang}: missing ${id}`);
   }
-  assert.equal((html.match(/<li><span>0\d<\/span><h3>/g) || []).length, 10, `${lang}: six values and four operating steps`);
-  // owner 2026-10-09: two business areas; Seasonal is the current campaign selection, only linked
-  assert.equal((html.match(/class="co-area"/g) || []).length, 2, `${lang}: two business areas`);
+  assert.equal((html.match(/<li><span>0\d<\/span><h3>/g) || []).length, 14, `${lang}: six values, four operating steps, four commitments`);
+  // owner 2026-10-09: never a broker or intermediary, not even implicitly
+  assert.doesNotMatch(html.slice(html.indexOf('<main'), html.indexOf('</main>')), /conectamos|connect(?:ing)? (?:selected )?origins|representamos|we represent|nous représentons|rappresentiamo|نمثل|intermedi|broker|courtier/i, `${lang}: broker wording`);
+  assert.equal((html.match(/<ul class="co-pledge"/g) || []).length, 1, `${lang}: customer commitment`);
   assert.doesNotMatch(html, /co-figures/, `${lang}: no figures (owner 2026-10-09)`);
-  for (const route of ['contact/', 'products/seafood/', 'products/fruits-vegetables/', 'products/seasonal/', 'markets/', 'private/']) {
+  for (const route of ['contact/', 'products/', 'markets/', 'private/']) {
     assert.ok(html.includes(`href="${base}${route}"`), `${lang}: link to ${base}${route}`);
   }
   assert.match(html, /info@emperio-tiss\.com/, `${lang}: missing contact`);
