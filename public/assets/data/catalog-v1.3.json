@@ -1778,8 +1778,10 @@
       "availability": [
         "Según campaña y disponibilidad"
       ],
-      "image": "",
-      "images": [],
+      "image": "/assets/products/incoming/Mejillon.jpg",
+      "images": [
+        "/assets/products/incoming/Mejillon.jpg"
+      ],
       "status": "active",
       "weights": [],
       "season": [],

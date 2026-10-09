@@ -181,7 +181,9 @@
       "availability": [
         "Selon campagne et disponibilité"
       ],
-      "images": [],
+      "images": [
+        "/assets/products/incoming/Mejillon.jpg"
+      ],
       "reference": "2799"
     }
   ]
