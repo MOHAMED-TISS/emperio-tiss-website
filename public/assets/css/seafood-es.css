@@ -532,7 +532,7 @@ body.seafood-page .es-hero{
 }
 
 .seafood-page .es-marquee-fish .es-marquee-image{
-  background-image:url("https://images.pexels.com/photos/39227100/pexels-photo-39227100.jpeg")!important;
+  background-image:url("https://images.pexels.com/photos/39227100/pexels-photo-39227100.jpeg?auto=compress&cs=tinysrgb&w=1920")!important;
   background-position:50% 52%!important;
 }
 
@@ -542,7 +542,7 @@ body.seafood-page .es-hero{
 }
 
 .seafood-page .es-marquee-cephalopods .es-marquee-image{
-  background-image:url("https://images.pexels.com/photos/15205276/pexels-photo-15205276.jpeg")!important;
+  background-image:url("https://images.pexels.com/photos/15205276/pexels-photo-15205276.jpeg?auto=compress&cs=tinysrgb&w=1920")!important;
   background-position:50% 50%!important;
 }
 

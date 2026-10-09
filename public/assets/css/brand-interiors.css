@@ -884,7 +884,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page).seafood-s
   align-items:center!important;
   padding:150px 0 72px!important;
   background:
-    url("https://images.pexels.com/photos/9397240/pexels-photo-9397240.jpeg") 54% 50% / cover no-repeat!important;
+    url("https://images.pexels.com/photos/9397240/pexels-photo-9397240.jpeg?auto=compress&cs=tinysrgb&w=1920") 54% 50% / cover no-repeat!important;
   color:#fff!important;
 }
 

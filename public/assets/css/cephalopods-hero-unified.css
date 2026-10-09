@@ -6,7 +6,7 @@ html[lang="fr"] body.fr-seafood-cephalopods .intl-hero,
 html[lang="ar"] body.ar-page .ar-hero {
   background-image:
     linear-gradient(rgba(4, 18, 32, 0.38), rgba(4, 18, 32, 0.38)),
-    url("https://images.pexels.com/photos/9652994/pexels-photo-9652994.jpeg") !important;
+    url("https://images.pexels.com/photos/9652994/pexels-photo-9652994.jpeg?auto=compress&cs=tinysrgb&w=1920") !important;
   background-position: center 40% !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;

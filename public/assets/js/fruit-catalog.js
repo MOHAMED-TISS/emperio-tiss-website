@@ -178,7 +178,7 @@
   }
 
   function sectionMarkup(title, copy, products, featured = false) {
-    return `<section class="fruit-catalog-group" id="${featured ? 'citrusSelection' : 'fruitOther'}">
+    return `<section class="fruit-catalog-group" id="${featured ? 'citrusSelection' : 'fruitOtherSelection'}">
       <header class="fruit-catalog-group-head">
         <h2>${esc(title)}</h2>
         <p>${esc(copy)}</p>
