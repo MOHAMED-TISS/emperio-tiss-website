@@ -47,6 +47,8 @@
   line-height:.83;
   letter-spacing:-.078em;
 }
+/* interior pages: keep the approved statement weight and tracking (display titles elsewhere are Playfair 400) */
+body:not(.home-experience) .et-terminal-footer .et-terminal-footer__statement h2{font-weight:600!important;letter-spacing:-.045em!important}
 .et-terminal-footer__statement-link{
   width:max-content;
   margin-top:34px;
