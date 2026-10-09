@@ -36,21 +36,7 @@
     pargo:{es:'Pargo',en:'Common seabream / red porgy',fr:'Pagrus commun',it:'Pagro',ar:'المرجان'},
     mero:{es:'Mero',en:'Dusky grouper',fr:'Mérou brun',it:'Cernia bruna',ar:'الهامور'},
     sama:{es:'Sama',en:'Dentex',fr:'Dentex',it:'Dentice',ar:'السما'},
-    rascacio:{es:'Rascacio',en:'Scorpionfish',fr:'Rascasse',it:'Scorfano',ar:'سمك العقرب'},
-    bacalao:{es:'Bacalao',en:'Atlantic cod',fr:'Cabillaud',it:'Merluzzo',ar:'سمك القد الأطلسي'},
-    abadejo:{es:'Abadejo / Pollock',en:'Saithe',fr:'Lieu noir',it:'Carbonaro',ar:'سايث / بولوك الأطلسي'},
-    eglefino:{es:'Eglefino',en:'Haddock',fr:'Églefin',it:'Eglefino',ar:'الإيغليفين'},
-    'pollock-alaska':{es:'Abadejo de Alaska',en:'Alaska pollock',fr:'Colin d’Alaska',it:'Pollock d’Alaska',ar:'بولوك ألاسكا'},
-    bacaladilla:{es:'Bacaladilla',en:'Blue whiting',fr:'Merlan bleu',it:'Potassolo',ar:'السمك الأزرق الصغير'},
-    'caballa-atlantica':{es:'Caballa atlántica',en:'Atlantic mackerel',fr:'Maquereau de l’Atlantique',it:'Sgombro atlantico',ar:'الماكريل الأطلسي'},
-    jurel:{es:'Jurel atlántico',en:'Atlantic horse mackerel',fr:'Chinchard d’Europe',it:'Suro',ar:'سمك الحصان الأطلسي'},
-    'merluza-argentina':{es:'Merluza argentina',en:'Argentine hake',fr:'Merlu austral / argentine',it:'Nasello argentino',ar:'النازلي الأرجنتيني'},
-    'merluza-cabo':{es:'Merluza del Cabo',en:'Cape hake',fr:'Merlu du Cap',it:'Nasello del Capo',ar:'نازلي الرأس'},
-    'pez-rojo':{es:'Pez rojo',en:'Redfish',fr:'Poisson rouge',it:'Pesce rosso',ar:'سمك أحمر'},
-    salmon:{es:'Salmón',en:'Atlantic salmon',fr:'Saumon atlantique',it:'Salmone atlantico',ar:'السلمون الأطلسي'},
-    'atun-amarillo':{es:'Atún de aleta amarilla',en:'Yellowfin tuna',fr:'Thon albacore jaune',it:'Tonno a pinne gialle',ar:'التونة صفراء الزعانف'},
-    'atun-blanco':{es:'Atún blanco',en:'Albacore tuna',fr:'Thon germon',it:'Alalunga',ar:'التونة البيضاء'},
-    'pez-espada-congelado':{es:'Pez espada congelado',en:'Frozen swordfish',fr:'Espadon congelé',it:'Pesce spada congelato',ar:'أبو سيف مجمد'}
+    rascacio:{es:'Rascacio',en:'Scorpionfish',fr:'Rascasse',it:'Scorfano',ar:'سمك العقرب'}
   };
 
   const products = [
@@ -76,24 +62,6 @@
     ['rascacio','Scorpaena scrofa','Pez de escama','Blanco / semigraso','Fresco','Mediterráneo / Atlántico oriental','FAO 27 / FAO 37']
   ];
 
-  // Frozen references, offered in every language (photos pending for most of them).
-  const frozenProducts = [
-    ['bacalao','Gadus morhua','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 21 / FAO 27'],
-    ['abadejo','Pollachius virens','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
-    ['eglefino','Melanogrammus aeglefinus','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
-    ['pollock-alaska','Gadus chalcogrammus','Pez de escama','Blanco / semigraso','Congelado','Abastecimiento internacional vía España','FAO 61 / FAO 67'],
-    ['bacaladilla','Micromesistius poutassou','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 27'],
-    ['caballa-atlantica','Scomber scombrus','Pez de escama','Azul / graso','Congelado','Atlántico / abastecimiento español','FAO 27'],
-    ['jurel','Trachurus trachurus','Pez de escama','Azul / graso','Congelado','Atlántico / abastecimiento español','FAO 27'],
-    ['merluza-argentina','Merluccius hubbsi','Pez de escama','Blanco / semigraso','Congelado','Abastecimiento internacional vía España','FAO 41'],
-    ['merluza-cabo','Merluccius capensis / Merluccius paradoxus','Pez de escama','Blanco / semigraso','Congelado','Abastecimiento internacional vía España','FAO 47'],
-    ['pez-rojo','Sebastes spp.','Pez de escama','Blanco / semigraso','Congelado','Atlántico / abastecimiento español','FAO 21 / FAO 27'],
-    ['salmon','Salmo salar','Pez de escama','Azul / graso','Congelado','Abastecimiento internacional vía España','FAO 27'],
-    ['atun-amarillo','Thunnus albacares','Pez de escama','Azul / graso','Congelado','Abastecimiento internacional vía España','FAO 34 / FAO 37 / FAO 51'],
-    ['atun-blanco','Thunnus alalunga','Pez de escama','Azul / graso','Congelado','Atlántico / abastecimiento español','FAO 27'],
-    ['pez-espada-congelado','Xiphias gladius','Pescados especiales','Especial','Congelado','Atlántico / Mediterráneo','FAO 27 / FAO 37']
-  ];
-
   // Technical values are written in Spanish; Arabic pages translate them in ar/es-normalizer.js.
   const values = {
     'Blanco / semigraso':{en:'White / semi-oily',fr:'Blanc / demi-gras',it:'Bianco / semigrasso'},
@@ -101,17 +69,25 @@
     'Especial':{en:'Special',fr:'Spécial',it:'Speciale'},
     'Mediterráneo / Atlántico oriental':{en:'Mediterranean / Eastern Atlantic',fr:'Méditerranée / Atlantique Est',it:'Mediterraneo / Atlantico orientale'},
     'Mediterráneo / Atlántico':{en:'Mediterranean / Atlantic',fr:'Méditerranée / Atlantique',it:'Mediterraneo / Atlantico'},
-    'Atlántico / Mediterráneo':{en:'Atlantic / Mediterranean',fr:'Atlantique / Méditerranée',it:'Atlantico / Mediterraneo'},
-    'Atlántico / abastecimiento español':{en:'Atlantic / supplied via Spain',fr:'Atlantique / approvisionnement via l’Espagne',it:'Atlantico / fornitura tramite la Spagna'},
-    'Abastecimiento internacional vía España':{en:'International supply via Spain',fr:'Approvisionnement international via l’Espagne',it:'Fornitura internazionale tramite la Spagna'}
+    'Atlántico / Mediterráneo':{en:'Atlantic / Mediterranean',fr:'Atlantique / Méditerranée',it:'Atlantico / Mediterraneo'}
   };
   const localize = value => (values[value] || {})[lang] || value;
   const viewImages = {es:'Ver imágenes de',en:'View images of',fr:'Voir les images :',it:'Vedi le immagini di',ar:'عرض صور'}[lang] || 'View images of';
 
-  const allProducts = [...products, ...frozenProducts].map(([id,scientificName,group,type,condition,origin,faoZone]) => ({
+  // The Spanish catalogue is the product authority for every language.
+  const allProducts = products.map(([id,scientificName,group,type,condition,origin,faoZone]) => ({
     id, scientificName, group, type, condition, origin, faoZone,
     name: (names[id] || {})[lang] || (names[id] || {}).es || id
   }));
+
+  // Fresh/Frozen only makes sense when the Spanish set carries frozen references.
+  if (!allProducts.some(p => p.condition.includes('Congelado'))) {
+    document.querySelectorAll('[data-fish-filter="frozen"]').forEach(button => {
+      button.hidden = true;
+      button.disabled = true;
+      button.setAttribute('aria-hidden', 'true');
+    });
+  }
 
   const categoryOf = p => p.group === 'Pescados especiales' ? 'special' : p.type.startsWith('Azul') ? 'blue' : 'white';
   const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));

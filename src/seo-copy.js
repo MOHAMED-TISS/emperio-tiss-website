@@ -37,11 +37,11 @@ export const SEO_COPY = {
     ar: ['الأسماك والقشريات ورأسيات الأرجل | EMPERIO TISS', 'أسماك وقشريات ورأسيات أرجل مختارة للمشترين المهنيين، بمواصفات واضحة للمنشأ والحجم والجودة والتعبئة والتوافر.']
   },
   '/products/seafood/fish/': {
-    es: ['Pescados frescos y congelados | EMPERIO TISS', 'Pescados seleccionados para compradores profesionales, definidos por especie, origen, FAO, calibre, calidad, presentación y disponibilidad.'],
-    en: ['Fresh and frozen fish | EMPERIO TISS', 'Selected fish for professional buyers, defined by species, origin, FAO area, size, quality, presentation and availability.'],
-    fr: ['Poissons frais et surgelés | EMPERIO TISS', 'Poissons sélectionnés pour les acheteurs professionnels, définis par espèce, origine, zone FAO, calibre, qualité, présentation et disponibilité.'],
-    it: ['Pesce fresco e surgelato | EMPERIO TISS', 'Pesce selezionato per buyer professionali, definito per specie, origine, zona FAO, calibro, qualità, presentazione e disponibilità.'],
-    ar: ['أسماك طازجة ومجمدة | EMPERIO TISS', 'كتالوج أسماك مختارة لمنطقة الشرق الأوسط وشمال أفريقيا (MENA): مراجع طازجة ومجمدة وفق النوع والمنشأ والمقاس والجودة والوجهة المهنية.']
+    es: ['Pescados frescos por referencia | EMPERIO TISS', 'Pescados seleccionados para compradores profesionales, definidos por especie, origen, FAO, calibre, calidad, presentación y disponibilidad.'],
+    en: ['Fresh fish by reference | EMPERIO TISS', 'Selected fish for professional buyers, defined by species, origin, FAO area, size, quality, presentation and availability.'],
+    fr: ['Poissons frais par référence | EMPERIO TISS', 'Poissons sélectionnés pour les acheteurs professionnels, définis par espèce, origine, zone FAO, calibre, qualité, présentation et disponibilité.'],
+    it: ['Pesce fresco per referenza | EMPERIO TISS', 'Pesce selezionato per buyer professionali, definito per specie, origine, zona FAO, calibro, qualità, presentazione e disponibilità.'],
+    ar: ['أسماك طازجة حسب المرجع | EMPERIO TISS', 'أسماك مختارة للمشترين المهنيين، محددة حسب النوع والمنشأ ومنطقة FAO والمقاس والجودة والتقديم والتوفر.']
   },
   '/products/seafood/shellfish/': {
     es: ['Mariscos para compradores profesionales | EMPERIO TISS', 'Mariscos seleccionados para compradores profesionales, definidos por especie, origen, calibre, calidad, presentación y disponibilidad.'],

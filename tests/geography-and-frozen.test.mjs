@@ -23,25 +23,25 @@ test('the geography strap reads "From Madrid to the world" and never lists the M
   }
 });
 
-test('frozen fish references are offered in every language, not only in Arabic', () => {
+test('every language shows the Spanish fish catalogue, no language-only references', () => {
+  // owner decision 2026-10-09: the Spanish catalogue is universal (the Arabic-only frozen list was removed)
   const fish = read('public/assets/js/fish-catalog.js');
-  assert.match(fish, /const allProducts = \[\.\.\.products, \.\.\.frozenProducts\]/);
-  assert.doesNotMatch(fish, /frozenArProducts|lang === 'ar' \? frozen/);
-  assert.doesNotMatch(fish, /data-fish-filter="frozen"\]'\)\.forEach/, 'the Frozen filter must not be hidden');
-  const frozen = fish.match(/const frozenProducts = \[([\s\S]*?)\n  \];/)[1];
-  const ids = [...frozen.matchAll(/\['([^']+)'/g)].map(m => m[1]);
-  assert.equal(ids.length, 14);
+  assert.match(fish, /const allProducts = products\.map\(/);
+  assert.doesNotMatch(fish, /frozenArProducts|frozenProducts|lang === 'ar' \?/);
+  const block = fish.match(/const products = \[([\s\S]*?)\n  \];/)[1];
+  const ids = [...block.matchAll(/\['([^']+)'/g)].map(m => m[1]);
+  const spanish = JSON.parse(read('public/assets/data/catalogue-es-products.json')).categories['seafood/fish'];
+  assert.deepEqual(ids, spanish);
   for (const id of ids) {
-    assert.match(fish, new RegExp(`(?:'${id}'|\\b${id}):\\{es:'[^']+',en:'[^']+',fr:'[^']+',it:'[^']+',ar:'[^']+'\\}`), `${id} needs a name in 5 languages`);
+    const named = new RegExp(`(?:'${id}'|\\b${id}):\\{es:'[^']+',en:'[^']+',fr:'[^']+',it:'[^']+',ar:'[^']+'\\}`);
+    assert.match(fish, named, `${id} needs a name in 5 languages`);
   }
   // technical values are translated outside Spanish (Arabic through ar/es-normalizer.js)
-  for (const value of ['Atlántico / abastecimiento español', 'Abastecimiento internacional vía España', 'Blanco / semigraso', 'Azul / graso']) {
+  for (const value of ['Blanco / semigraso', 'Azul / graso', 'Mediterráneo / Atlántico oriental']) {
     assert.ok(fish.includes(`'${value}':{en:`), `${value} needs EN/FR/IT translations`);
   }
-  // EN/FR filters no longer lock Frozen to blue fish
-  const filterFix = read('public/assets/js/en-catalog-filter-fix.js');
-  assert.doesNotMatch(filterFix, /Only Salmon and Mackerel|Frozen is available only for Blue fish/);
-  for (const lang of ['', 'en/', 'fr/', 'it/', 'ar/']) {
-    assert.match(read(`public/${lang}products/seafood/fish/index.html`), /data-fish-filter="frozen"/);
-  }
+  // the Frozen filter only shows when the Spanish set has frozen fish
+  assert.match(fish, /if \(!allProducts\.some\(p => p\.condition\.includes\('Congelado'\)\)\)/);
+  const ar = read('public/ar/products/seafood/fish/index.html');
+  assert.doesNotMatch(ar, /ar-fish-gcc-note|طازجة ومجمدة/);
 });
