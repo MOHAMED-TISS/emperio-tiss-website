@@ -17,6 +17,12 @@
     ['Legal','قانوني'],['Legal notice','إشعار قانوني'],['Privacy','الخصوصية'],['Cookies','ملفات تعريف الارتباط'],
     ['FROM MADRID TO THE WORLD','من مدريد إلى العالم'],
     ['From Madrid to the world','من مدريد إلى العالم'],
+    ['Crudo, limpio y eviscerado · sin tratamientos ni agua añadida','نيء، منظف ومنزوع الأحشاء · دون معالجة أو ماء مضاف'],
+    ['Flor · congelado en crudo · glaseado 10 %','زهرة · مجمد نيئًا · تزجيج 10%'],['Bloque · congelado en crudo · glaseado 10 %','كتلة · مجمد نيئًا · تزجيج 10%'],
+    ['Crudo, limpio y eviscerado · seleccionado pieza a pieza','نيء، منظف ومنزوع الأحشاء · منتقى قطعة قطعة'],
+    ['Bandeja individual · clasificado por tamaño','صينية فردية · مصنف حسب الحجم'],['Envasado y etiquetado individual, listo para venta','معبأ وموسوم بشكل فردي، جاهز للبيع'],
+    ['Limpia, sin piel ni vísceras','منظفة، دون جلد أو أحشاء'],['Limpia · IQF con glaseado ligero / bloque','منظفة · IQF بتزجيج خفيف / كتلة'],
+    ['Según corte','حسب القطع'],['Bloques de 500 g','كتل 500 غ'],
     ['Fresco','طازج'],['Fresh','طازج'],['Congelado','مجمد'],['Frozen','مجمد'],
     ['Pez de escama','أسماك ذات قشور'],['Pez cartilaginoso','أسماك غضروفية'],['Pescados especiales','أسماك خاصة'],
     ['Blanco / semigraso','أبيض / متوسط الدهن'],['Azul / graso','أزرق / دهني'],['Especial','خاص'],
@@ -45,7 +51,7 @@
       .replace(/\bSegún mercado\b/g,'حسب السوق').replace(/\bSegún campaña y disponibilidad\b/g,'حسب الموسم والتوفر')
       .replace(/\bSegún programa de suministro\b/g,'حسب برنامج التوريد').replace(/\bSegún especie y programa de suministro\b/g,'حسب النوع وبرنامج التوريد')
       .replace(/\bSegún origen\b/g,'حسب المنشأ').replace(/\bSegún requisitos del destino\b/g,'حسب متطلبات الوجهة')
-      .replace(/\bEspecificación profesional\b/g,'مواصفة مهنية').replace(/Half shell/g,'نصف صدفة').replace(/\bMeat\b/g,'لحم').replace(/pcs\/kg/g,'قطعة/كغ').replace(/Entero cocido \/ media concha \/ carne/g,'كامل مطهو / نصف صدفة / لحم').replace(/^molluscs$/i,'رخويات').replace(/Bivalvo vivo/g,'رخويات ذات صدفتين حية').replace(/Vivo · reparcado · limpio \(desbisado\) · depurado/g,'حي · معاد استزراعه · منظف · منقّى').replace(/Reparcado, limpio y depurado/g,'معاد استزراعه ومنظف ومنقّى').replace(/Sacos de 2, 5 y 10 kg/g,'أكياس 2 و5 و10 كغ').replace(/Según campaña y disponibilidad/g,'حسب الموسم والتوفر').replace(/\bTúnez\b/g,'تونس').replace(/\bEspaña\b/g,'إسبانيا')
+      .replace(/\bEspecificación profesional\b/g,'مواصفة مهنية').replace(/Half shell/g,'نصف صدفة').replace(/\bMeat\b/g,'لحم').replace(/pcs\/kg/g,'قطعة/كغ').replace(/Entero cocido \/ media concha \/ carne/g,'كامل مطهو / نصف صدفة / لحم').replace(/^molluscs$/i,'رخويات').replace(/^cephalopods$/i,'رأسيات الأرجل').replace(/peso por pieza/g,'الوزن لكل قطعة').replace(/Bivalvo vivo/g,'رخويات ذات صدفتين حية').replace(/Vivo · reparcado · limpio \(desbisado\) · depurado/g,'حي · معاد استزراعه · منظف · منقّى').replace(/Reparcado, limpio y depurado/g,'معاد استزراعه ومنظف ومنقّى').replace(/Sacos de 2, 5 y 10 kg/g,'أكياس 2 و5 و10 كغ').replace(/Según campaña y disponibilidad/g,'حسب الموسم والتوفر').replace(/\bTúnez\b/g,'تونس').replace(/\bEspaña\b/g,'إسبانيا')
       .replace(/Según especificación del comprador/g,'حسب مواصفات المشتري').replace(/Según especificación profess?ional/g,'مواصفات مهنية')
       .replace(/Según campaña y programa/g,'حسب الموسم والبرنامج').replace(/Según programa y disponibilidad/g,'حسب البرنامج والتوفر')
       .replace(/\bMarruecos\b/g,'المغرب').replace(/\bEnter[ao]\b/g,'كامل').replace(/\bLimpia\b/g,'منظفة').replace(/\bBloque\b/g,'كتلة').replace(/\bBandeja\b/g,'صينية')

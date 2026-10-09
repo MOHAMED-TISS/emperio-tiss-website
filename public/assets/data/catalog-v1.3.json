@@ -295,24 +295,35 @@
         "Atlántico / Mediterráneo según disponibilidad"
       ],
       "calibre": [
-        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1.5–2 kg) · T5 (1.2–1.5 kg) · T6 (0.8–1.2 kg) · T7 (0.5–0.8 kg) · T8 (0.3–0.5 kg) — kg"
+        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1.5–2 kg) · T5 (1.2–1.5 kg) · T6 (0.8–1.2 kg) · T7 (0.5–0.8 kg) · T8 (0.33–0.5 kg) — peso por pieza"
       ],
       "image": "/assets/products/incoming/Pulpo%20Flor.jpg",
       "images": [
         "/assets/products/incoming/Pulpo%20Flor.jpg"
       ],
       "status": "active",
-      "faoZone": [],
-      "quality": [],
-      "format": [],
-      "packaging": [],
+      "faoZone": [
+        "FAO 27 / FAO 37 según origen"
+      ],
+      "quality": [
+        "Crudo, limpio y eviscerado · sin tratamientos ni agua añadida"
+      ],
+      "format": [
+        "Flor · congelado en crudo · glaseado 10 %"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
       "weights": [],
       "season": [],
-      "availability": [],
+      "availability": [
+        "Según campaña y disponibilidad"
+      ],
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "7324"
+      "reference": "7324",
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "pulpo-natural",
@@ -361,7 +372,7 @@
         "Según programa de suministro"
       ],
       "calibre": [
-        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1.5–2 kg) · T5 (1.2–1.5 kg) · T6 (0.8–1.2 kg) · T7 (0.5–0.8 kg) · T8 (0.3–0.5 kg) — kg"
+        "800–1500 g · 1500–3000 g · 3000–4000 g · 4000–6000 g · +6000 g — peso por pieza"
       ],
       "image": "/assets/products/Pulpo Bandeja.jpeg",
       "images": [
@@ -370,16 +381,16 @@
       ],
       "status": "active",
       "faoZone": [
-        "Según origen"
+        "FAO 34"
       ],
       "quality": [
-        "Especificación profesional"
+        "Crudo, limpio y eviscerado · seleccionado pieza a pieza"
       ],
       "format": [
-        "Bandeja / según referencia"
+        "Bandeja individual · clasificado por tamaño"
       ],
       "packaging": [
-        "Según mercado"
+        "Envasado y etiquetado individual, listo para venta"
       ],
       "availability": [
         "Según disponibilidad"
@@ -389,7 +400,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "9120"
+      "reference": "9120",
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "calamar-envuelto",
@@ -412,17 +424,28 @@
         "/assets/products/incoming/Calamar.jpg"
       ],
       "status": "active",
-      "faoZone": [],
-      "quality": [],
-      "format": [],
-      "packaging": [],
+      "faoZone": [
+        "Según origen"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entero / envuelto"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
       "weights": [],
       "season": [],
-      "availability": [],
+      "availability": [
+        "Según programa y disponibilidad"
+      ],
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "7849"
+      "reference": "7849",
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "puntilla-extra",
@@ -446,17 +469,28 @@
         "/assets/products/incoming/Puntillas-extra-2.webp?v=20260928-puntillas-fix-1"
       ],
       "status": "active",
-      "faoZone": [],
-      "quality": [],
-      "format": [],
-      "packaging": [],
+      "faoZone": [
+        "Según zona de captura"
+      ],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Entera / congelada"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
       "weights": [],
       "season": [],
-      "availability": [],
+      "availability": [
+        "Según disponibilidad"
+      ],
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "7426"
+      "reference": "7426",
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "almendrita",
@@ -505,7 +539,7 @@
         "Según programa de suministro"
       ],
       "calibre": [
-        "U/1 · 1/2 · 2/4 · 5/7 · 8/12 · 13/20 · 20/40 · 40/60 · 60/up — pcs/kg"
+        "Según corte"
       ],
       "image": "/assets/products/incoming/Sepia%20Limpia.jpg",
       "images": [
@@ -515,7 +549,9 @@
       "faoZone": [],
       "quality": [],
       "format": [],
-      "packaging": [],
+      "packaging": [
+        "Bloques de 500 g"
+      ],
       "weights": [],
       "season": [],
       "availability": [],
@@ -538,7 +574,7 @@
         "Según programa de suministro"
       ],
       "calibre": [
-        "U/1 · 1/2 · 2/4 · 5/7 · 8/12 · 13/20 · 20/40 · 40/60 · 60/up — pcs/kg"
+        "+2000 g · 1500–2000 g · 1000–1500 g · 800–1000 g · 600–800 g · 400–600 g · 200–400 g · 100–200 g · <100 g — peso por pieza"
       ],
       "image": "/assets/products/incoming/Sepia%20Limpia(1).jpg",
       "images": [
@@ -546,18 +582,27 @@
       ],
       "status": "active",
       "format": [
-        "Limpia / IQF / Bloque"
+        "Limpia · IQF con glaseado ligero / bloque"
       ],
-      "faoZone": [],
-      "quality": [],
-      "packaging": [],
+      "faoZone": [
+        "Según origen"
+      ],
+      "quality": [
+        "Limpia, sin piel ni vísceras"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
       "weights": [],
       "season": [],
-      "availability": [],
+      "availability": [
+        "Según disponibilidad"
+      ],
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "3798"
+      "reference": "3798",
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "clementina",
@@ -1276,7 +1321,7 @@
         "Según zona FAO"
       ],
       "calibre": [
-        "70/100 · 80/110 · 110/150 · 150/200 g — kg"
+        "70/100 · 80/110 · 110/150 · 150/200 g — peso por pieza"
       ],
       "quality": [
         "Especificación profesional"
@@ -1303,7 +1348,8 @@
       "moq": [],
       "destinationConstraints": [],
       "documents": [],
-      "reference": "7999"
+      "reference": "7999",
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "mandarina",
@@ -1624,13 +1670,13 @@
         "FAO 27 / FAO 37 según origen"
       ],
       "calibre": [
-        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1.5–2 kg) · T5 (1.2–1.5 kg) · T6 (0.8–1.2 kg) · T7 (0.5–0.8 kg) · T8 (0.3–0.5 kg) — kg"
+        "T1 (+4 kg) · T2 (3–4 kg) · T3 (2–3 kg) · T4 (1.5–2 kg) · T5 (1.2–1.5 kg) · T6 (0.8–1.2 kg) · T7 (0.5–0.8 kg) · T8 (0.33–0.5 kg) — peso por pieza"
       ],
       "quality": [
-        "Especificación profesional"
+        "Crudo, limpio y eviscerado · sin tratamientos ni agua añadida"
       ],
       "format": [
-        "Bloque / según referencia"
+        "Bloque · congelado en crudo · glaseado 10 %"
       ],
       "packaging": [
         "Según mercado"
@@ -1653,7 +1699,8 @@
       "season": [],
       "moq": [],
       "destinationConstraints": [],
-      "documents": []
+      "documents": [],
+      "catalogGroup": "cephalopods"
     },
     {
       "id": "sole",

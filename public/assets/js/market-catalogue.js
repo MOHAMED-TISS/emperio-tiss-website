@@ -207,7 +207,17 @@
     'Según mercado': 'Secondo mercato',
     'Según especificación del comprador': 'Secondo specifica del cliente',
     'Según especificación profesional': 'Specifica professionale',
-    'Según especificación professional': 'Specifica professionale'
+    'Según especificación professional': 'Specifica professionale',
+    'Crudo, limpio y eviscerado · sin tratamientos ni agua añadida': 'Crudo, pulito ed eviscerato · senza trattamenti né acqua aggiunta',
+    'Flor · congelado en crudo · glaseado 10 %': 'Fiore · congelato crudo · glassatura 10 %',
+    'Bloque · congelado en crudo · glaseado 10 %': 'Blocco · congelato crudo · glassatura 10 %',
+    'Crudo, limpio y eviscerado · seleccionado pieza a pieza': 'Crudo, pulito ed eviscerato · selezionato pezzo per pezzo',
+    'Bandeja individual · clasificado por tamaño': 'Vaschetta singola · calibrato per taglia',
+    'Envasado y etiquetado individual, listo para venta': 'Confezionato ed etichettato singolarmente, pronto per la vendita',
+    'Limpia, sin piel ni vísceras': 'Pulita, senza pelle né visceri',
+    'Limpia · IQF con glaseado ligero / bloque': 'Pulita · IQF con glassatura leggera / blocco',
+    'Según corte': 'Secondo taglio',
+    'Bloques de 500 g': 'Blocchi da 500 g'
   };
 
   const translateItValue = value => {
@@ -240,7 +250,8 @@
         .replace(/\beviscerada\b/g, 'eviscerata').replace(/\blomo\b/g, 'filetto').replace(/\bcola\b/g, 'coda')
         .replace(/\bporciones\b/g, 'porzioni').replace(/según destino/gi, 'secondo destinazione')
         .replace(/según referencia/gi, 'secondo referenza').replace(/según (campaña|temporada)/gi, 'secondo stagione')
-        .replace(/según programa/gi, 'secondo programma');
+        .replace(/según programa/gi, 'secondo programma')
+        .replace(/peso por pieza/g, 'peso per pezzo').replace(/^cephalopods$/i, 'Cefalopodi');
     };
     return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' / ') : translateOne(value);
   };
@@ -256,14 +267,24 @@
     'Según especificación professional': 'Professional specification',
     'Según especificación del comprador': 'To buyer specification',
     'Según requisitos del destino': 'To destination requirements',
-    'Entero / porciones según destino': 'Whole / portions to destination requirements'
+    'Entero / porciones según destino': 'Whole / portions to destination requirements',
+    'Crudo, limpio y eviscerado · sin tratamientos ni agua añadida': 'Raw, cleaned and gutted · no treatments, no added water',
+    'Flor · congelado en crudo · glaseado 10 %': 'Flower · frozen raw · 10% glaze',
+    'Bloque · congelado en crudo · glaseado 10 %': 'Block · frozen raw · 10% glaze',
+    'Crudo, limpio y eviscerado · seleccionado pieza a pieza': 'Raw, cleaned and gutted · selected piece by piece',
+    'Bandeja individual · clasificado por tamaño': 'Individual tray · size-graded',
+    'Envasado y etiquetado individual, listo para venta': 'Individually packed and labelled, retail-ready',
+    'Limpia, sin piel ni vísceras': 'Cleaned, skinless and gutted',
+    'Limpia · IQF con glaseado ligero / bloque': 'Cleaned · IQF with light glaze / block',
+    'Según corte': 'According to cut',
+    'Bloques de 500 g': '500 g blocks'
   };
   const translateEnValue = value => {
     const translateOne = item => {
       const raw = String(item ?? '');
       if (enTechnicalTranslations[raw]) return enTechnicalTranslations[raw];
       return raw
-        .replace(/\bEspaña\b/g, 'Spain').replace(/\bMarruecos\b/g, 'Morocco').replace(/\bNoruega\b/g, 'Norway').replace(/\bTúnez\b/g, 'Tunisia')
+        .replace(/peso por pieza/g, 'weight per piece').replace(/\bEspaña\b/g, 'Spain').replace(/\bMarruecos\b/g, 'Morocco').replace(/\bNoruega\b/g, 'Norway').replace(/\bTúnez\b/g, 'Tunisia')
         .replace(/Mediterráneo/g, 'Mediterranean').replace(/Atlántico/g, 'Atlantic')
         .replace(/\bEntera?o?\b/g, 'Whole').replace(/\beviscerada\b/g, 'gutted').replace(/\blomo\b/g, 'loin').replace(/\bcola\b/g, 'tail')
         .replace(/\bBandeja\b/g, 'Tray').replace(/\bBloque\b/g, 'Block')
@@ -329,7 +350,7 @@
 
   const translateBottargaValue = value => {
     const map = bottargaTechnicalTranslations[lang] || {};
-    const translateOne = item => map[String(item ?? '')] || String(item ?? '');
+    const translateOne = item => map[String(item ?? '')] || (lang === 'it' ? translateItValue(item) : lang === 'en' ? translateEnValue(item) : String(item ?? ''));
     return Array.isArray(value) ? value.filter(Boolean).map(translateOne).join(' / ') : translateOne(value);
   };
 
