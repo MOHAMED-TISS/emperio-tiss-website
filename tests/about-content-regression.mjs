@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
 const unifiedCss = fs.readFileSync('public/assets/css/site-pages-unified.css', 'utf8');
-const aboutCss = fs.readFileSync('public/assets/css/about-media.css', 'utf8');
+const aboutCss = fs.readFileSync('public/assets/css/about-2026.css', 'utf8');
 
 assert.doesNotMatch(
   unifiedCss,
@@ -15,50 +15,39 @@ assert.match(
   'about-page contact CTAs must stay scoped to main content',
 );
 
+// The Company page is built by tools/build-about.cjs: one structure, five languages.
 const pages = [
-  ['es', 'public/about/index.html', '/'],
-  ['en', 'public/en/about/index.html', '/en/'],
-  ['fr', 'public/fr/about/index.html', '/fr/'],
-  ['it', 'public/it/about/index.html', '/it/'],
-  ['ar', 'public/ar/about/index.html', '/ar/'],
+  ['es', 'public/about/index.html', '/', /Del origen al mercado/],
+  ['en', 'public/en/about/index.html', '/en/', /From origin to market/],
+  ['fr', 'public/fr/about/index.html', '/fr/', /De l’origine au marché/],
+  ['it', 'public/it/about/index.html', '/it/', /Dall’origine al mercato/],
+  ['ar', 'public/ar/about/index.html', '/ar/', /من المنشأ إلى السوق/],
 ];
+const sections = ['ab26-hero', 'ab26-facts', 'ab26-role', 'ab26-supply', 'ab26-criteria', 'ab26-reach', 'ab26-values', 'ab26-commit', 'ab26-close'];
 
-for (const [lang, path] of pages) {
+for (const [lang, path, base, title] of pages) {
   const html = fs.readFileSync(path, 'utf8');
-  assert.match(html, /es-page/, `${lang}: must use canonical ES page visual shell`);
-  assert.match(html, /about-media\.css/, `${lang}: must load the shared about-page visual system`);
-  if (lang === 'it') {
-    assert.match(
-      html,
-      /site-pages-unified\.css\?v=20260928-editorial[^>]+data-etUnifiedPages="true"/,
-      'it: must preload the corrected page system without a stale duplicate',
-    );
-  }
-  if (lang !== 'it') {
-    assert.match(html, /Nuestra visión|Our vision|Notre vision|رؤيتنا/i,
-      `${lang}: missing vision section`);
-    assert.match(html, /Misión|Mission|رسالتنا/i, `${lang}: missing mission section`);
-    assert.match(html, /Valores|Values|Valeurs|قيم/i, `${lang}: missing values section`);
-    assert.match(html,
-      /medio ambiente|environment|environnement|الموارد الطبيعية|موارد طبيعية|ecosistemas|ecosystems|écosystèmes/i,
-      `${lang}: missing environmental responsibility section`);
-    assert.match(html, /tecnolog|technology|technologie|التكنولوجيا/i,
-      `${lang}: missing supporting technology reference`);
-    assert.match(html, /Responsabilidad|Responsibility|Responsabilité|المسؤولية/i,
-      `${lang}: missing responsibility value`);
+  assert.match(html, /<body class="es-page[^"]*about-page about-2026/, `${lang}: Company page shell`);
+  assert.match(html, /about-2026\.css/, `${lang}: must load the Company page stylesheet`);
+  assert.doesNotMatch(html, /about-media\.css/, `${lang}: the old about stylesheet is retired`);
+  assert.match(html, title, `${lang}: hero title`);
+  for (const section of sections) assert.match(html, new RegExp(`class="ab26-section[^"]*${section}|class="${section}`), `${lang}: missing ${section}`);
+  assert.equal((html.match(/<article><span>0\d<\/span><h3>/g) || []).length, 6, `${lang}: six values`);
+  assert.equal((html.match(/<article><h3>/g) || []).length, 2, `${lang}: responsibility and technology commitments`);
+  for (const route of ['contact/', 'products/seafood/', 'products/fruits-vegetables/', 'products/seasonal/', 'markets/', 'private/']) {
+    assert.ok(html.includes(`href="${base}${route}"`), `${lang}: link to ${base}${route}`);
   }
   assert.match(html, /info@emperio-tiss\.com/, `${lang}: missing contact CTA`);
+  // the Mediterranean is a fishing ground, never listed as a market region
+  const regions = html.match(/<div class="ab26-regions"[\s\S]*?<\/div><\/div>/)[0];
+  assert.doesNotMatch(regions, /Mediterr|Méditerran|المتوسط/, `${lang}: Mediterranean listed as a market`);
+  assert.equal((regions.match(/<h3>/g) || []).length, 3, `${lang}: three market regions`);
+  if (lang === 'ar') assert.match(html, /lang="ar"\s+dir="rtl"[\s\S]*class="es-page ar-page/, 'ar: RTL Arabic page');
 }
 
-const italianAbout = fs.readFileSync('public/it/about/index.html', 'utf8');
-assert.match(italianAbout, /class="es-page about-page it-about-redesign et-brand-shell brand-pages"/);
-assert.match(italianAbout, /Dall’origine al mercato[\s\S]*Con criterio/);
-assert.match(italianAbout, /parte principale/i);
-assert.match(italianAbout, /Europa <span>·<\/span> Africa <span>·<\/span> Medio Oriente/);
-// the Mediterranean is a fishing ground, never listed next to the markets
-assert.doesNotMatch(italianAbout, /Africa <span>·<\/span> Mediterraneo/);
-assert.match(italianAbout, /Prodotti del mare[\s\S]*Frutta e ortaggi[\s\S]*Stagionalità/i);
-assert.match(aboutCss, /\.it-about-redesign \.about-it-hero/);
-assert.match(aboutCss, /prefers-reduced-motion:\s*reduce/);
+// hero always fills the viewport; reveal motion respects reduced-motion users
+assert.match(aboutCss, /\.ab26-hero \{[^}]*min-height: 100svh;[^}]*min-height: 100dvh;/);
+assert.match(aboutCss, /prefers-reduced-motion: no-preference/);
+assert.match(aboutCss, /html\[data-et-theme="dark"\] body\.about-2026/);
 
 console.log('about-content-regression: PASS');
