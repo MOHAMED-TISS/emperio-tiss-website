@@ -64,8 +64,8 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
 ){
   position:relative!important;
-  min-height:86svh!important;
-  min-height:86dvh!important;
+  min-height:100svh!important;
+  min-height:100dvh!important;
   display:flex!important;
   align-items:flex-end!important;
   padding:150px 0 64px!important;
@@ -75,7 +75,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
   background-color:var(--et26-navy)!important;
 }
 body.about-page.es-page main>.es-hero{
-  min-height:86svh!important;
+  min-height:100svh!important;
   height:auto!important;
   padding:150px 0 64px!important;
   background:
@@ -127,7 +127,7 @@ body.products-landing-page .hero{
   background:var(--et26-blue)!important;
 }
 body.seasonal-editorial .season-opening{
-  min-height:90svh!important;
+  min-height:100svh!important;
   padding:140px 0 60px!important;
 }
 body.seasonal-editorial .season-cover{
@@ -749,12 +749,12 @@ html[lang="ar"] body:not(.home-experience):not(.private-page):not(.private-admin
   body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
     .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
   ){
-    min-height:72svh!important;
-    min-height:72dvh!important;
+    min-height:100svh!important;
+    min-height:100dvh!important;
     padding:108px 0 38px!important;
   }
   body.about-page.es-page main>.es-hero{
-    min-height:72svh!important;
+    min-height:100svh!important;
     height:auto!important;
     padding:108px 0 38px!important;
   }
@@ -1067,7 +1067,7 @@ body.es-page .es-list-row strong{
    PRODUCT LANDING
    --------------------------------------------------------- */
 body.products-landing-page .hero{
-  min-height:88svh!important;
+  min-height:100svh!important;
   background:var(--et26-blue)!important;
 }
 body.products-landing-page .hero-grid{
@@ -1236,7 +1236,7 @@ body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
    --------------------------------------------------------- */
 body.produce-fruits-page .page-hero,
 body.produce-vegetables-page .page-hero{
-  min-height:86svh!important;
+  min-height:100svh!important;
 }
 body.produce-fruits-page .fruits-actions>a:not(.fruits-button){
   min-height:48px!important;
@@ -1437,8 +1437,8 @@ body.es-legal-page .legal-wrap li{
   body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(
     .es-hero,.page-hero,.products-landing-page .hero,.season-opening,.news-hero
   ){
-    min-height:70svh!important;
-    min-height:70dvh!important;
+    min-height:100svh!important;
+    min-height:100dvh!important;
   }
 
   body.about-page .es-section{

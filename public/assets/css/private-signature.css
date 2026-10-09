@@ -24,8 +24,8 @@ body.private-page *{box-sizing:border-box}
 
 .private-signature-hero{
   position:relative;
-  min-height:78svh;
-  min-height:78dvh;
+  min-height:100svh;
+  min-height:100dvh;
   padding:130px 5vw 54px;
   display:flex;
   align-items:flex-end;
@@ -395,7 +395,7 @@ body.private-page *{box-sizing:border-box}
 @keyframes privateShimmer{to{background-position:-200% 0}}
 
 @media(max-width:900px){
-  .private-signature-hero{min-height:70svh;padding:118px 24px 44px}
+  .private-signature-hero{min-height:100svh;padding:118px 24px 44px}
   .private-signature-hero__bottom{grid-template-columns:1fr;gap:28px}
   .private-signature-access{min-width:0;max-width:430px}
   .private-opportunities{padding:72px 24px 88px}
@@ -407,7 +407,7 @@ body.private-page *{box-sizing:border-box}
 
 @media(max-width:600px){
   .private-signature-hero{
-    min-height:66svh;
+    min-height:100svh;
     padding:105px 18px 34px;
   }
   .private-signature-kicker{font-size:9px;margin-bottom:18px}
