@@ -275,3 +275,31 @@ html body #fishEmblematic .fish-scroll-cue { margin-top: 46px !important; }
 }
 
 html body .et-sel .et-sel__panel.is-active { flex-grow: 3.4; }
+
+/* ===== emblematic selection on phones: tidy heading + swipe carousel of plates ===== */
+.et-sel__dots { display: none; }
+@media (max-width: 900px) {
+  html body #fishEmblematic.fish-emblematic { padding: 76px 0 64px !important; }
+  html body #fishEmblematic .fish-emblematic__intro { display: flex !important; flex-direction: column; align-items: flex-start; gap: 16px; margin: 0 0 30px !important; padding: 0 !important; }
+  html body #fishEmblematic .fish-emblematic__intro .eyebrow { position: static !important; order: 0; transform: none !important; margin: 0 !important; padding: 0 !important; font-size: 10.5px !important; letter-spacing: .26em !important; }
+  html body #fishEmblematic .fish-emblematic__intro h2 { order: 1; margin: 0 !important; padding: 0 !important; font-size: clamp(40px, 11vw, 52px) !important; line-height: 1 !important; }
+  html body #fishEmblematic .fish-emblematic__intro p { order: 2; max-width: none; font-size: 16px !important; line-height: 1.55 !important; }
+
+  .et-sel { flex-direction: row; height: auto; gap: 12px; margin: 0 -24px; padding: 0 24px 4px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .et-sel::-webkit-scrollbar { display: none; }
+  html body .et-sel .et-sel__panel, html body .et-sel .et-sel__panel.is-active { flex: 0 0 84%; aspect-ratio: 4 / 5.3; scroll-snap-align: start; cursor: default; box-shadow: 0 30px 50px -36px rgba(0, 0, 0, .9); }
+  .et-sel__panel img { transform: none; filter: none; }
+  html body .et-sel .et-sel__spine { display: none; }
+  .et-sel__panel .et-sel__content { left: 22px; right: 22px; bottom: 22px; opacity: 1; transform: none; pointer-events: auto; transition: none; }
+  html body .et-sel .et-sel__kicker { margin-bottom: 10px !important; font-size: 9.5px !important; letter-spacing: .22em !important; }
+  html body .et-sel .et-sel__name { font-size: 40px; }
+  html body .et-sel .et-sel__latin { margin-top: 8px !important; font-size: 15px !important; }
+  html body .et-sel .et-sel__story { margin-top: 14px !important; padding-top: 14px; font-size: 15px !important; line-height: 1.5 !important; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  html body .et-sel .et-sel__open { margin-top: 16px; padding: 12px 18px; font-size: 9.5px !important; letter-spacing: .2em !important; }
+  .et-sel__veil { background: linear-gradient(to top, rgba(4, 14, 26, .96) 0%, rgba(4, 14, 26, .6) 46%, rgba(4, 14, 26, .05) 75%); }
+
+  .et-sel__dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .et-sel__dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(243, 239, 230, .28); transition: background .3s, width .3s; }
+  .et-sel__dots i.is-active { width: 26px; border-radius: 999px; background: var(--mq-gold); }
+  html body #fishEmblematic .fish-scroll-cue { margin-top: 34px !important; }
+}

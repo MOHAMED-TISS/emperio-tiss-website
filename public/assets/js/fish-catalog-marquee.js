@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-8';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-9';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -488,7 +488,21 @@
         if (open) { openPlateFor(open.dataset.id); return; }
         activate(event.target.closest('.et-sel__panel'));
       });
+      // phones: a swipe carousel; gold dots follow the species in view
+      const dots = document.createElement('div');
+      dots.className = 'et-sel__dots';
+      dots.setAttribute('aria-hidden', 'true');
+      host.insertAdjacentElement('afterend', dots);
+      host.addEventListener('scroll', () => {
+        const panels = [...host.querySelectorAll('.et-sel__panel')];
+        const centre = host.scrollLeft + host.clientWidth / 2;
+        const distance = panel => Math.abs(panel.offsetLeft + panel.offsetWidth / 2 - centre);
+        const current = panels.reduce((best, panel, k) => (distance(panel) < distance(panels[best]) ? k : best), 0);
+        dots.querySelectorAll('i').forEach((dot, k) => dot.classList.toggle('is-active', k === current));
+      }, {passive: true});
     }
+    const dotsHost = emblem.querySelector('.et-sel__dots');
+    if (dotsHost) dotsHost.innerHTML = signature.map((_, k) => `<i${k === 0 ? ' class="is-active"' : ''}></i>`).join('');
     host.innerHTML = signature.map(id => allProducts.find(p => p.id === id)).filter(Boolean).map((product, k) => {
       const image = (imageMap[product.id] || [])[0];
       const note = notes[product.id];
