@@ -86,15 +86,15 @@ html[data-et-theme="dark"] body[data-hero]:not(#ph) main > section:first-of-type
 html[data-et-theme="dark"] body[data-hero]:not(#ph) main > section:first-of-type :is(.lead, .hero-copy, .es-lead, .intl-lead, .ar-lead) { color: rgba(244,240,230,.86) !important; }
 
 /* Light theme: the header over the ivory hero reads in black and gold. */
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero { color: #141310 !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero::before {
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero::before {
   background: linear-gradient(180deg, rgba(246,242,234,.86) 0%, rgba(246,242,234,.4) 62%, rgba(246,242,234,0) 100%) !important;
 }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__name--dark { display: none !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__name--light { display: block !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero :is(.eth-nav a.is-active, .eth-nav a:hover, .eth-menu-btn:hover, .eth-lang summary:hover, .eth-theme--bar:hover) { color: #86632e !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-btn--ghost { color: #86632e !important; border-color: rgba(134,99,46,.6) !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__emblem { filter: drop-shadow(0 2px 6px rgba(20,19,16,.16)); }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-logo__name--dark { display: none !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-logo__name--light { display: block !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero :is(.eth-nav a.is-active, .eth-nav a:hover, .eth-menu-btn:hover, .eth-lang summary:hover, .eth-theme--bar:hover) { color: #86632e !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-btn--ghost { color: #86632e !important; border-color: rgba(134,99,46,.6) !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-logo__emblem { filter: drop-shadow(0 2px 6px rgba(20,19,16,.16)); }
 
 /* Two-column openings (EN/IT): the copy stays together on the calm side, clear of the products. */
 html body[data-hero]:not(#ph) main > section:first-of-type .hero-grid { grid-template-columns: minmax(0, 1fr) !important; }
@@ -102,15 +102,15 @@ html body[data-hero]:not(#ph) main > section:first-of-type .hero-grid > * { max-
 
 /* Light theme: the top strip and the bar sit on ivory glass, so the navigation
    keeps its contrast whatever colour of product lies beneath it. */
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-strip {
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-strip {
   background: rgba(246,242,234,.9) !important;
   border-bottom-color: rgba(134,99,46,.2) !important;
 }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-strip__inner { color: #4a463d !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero :is(.eth-strip__lang[aria-current="true"], .eth-strip__lang:hover, .eth-strip__mail:hover, .eth-theme:hover) { color: #86632e !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-strip__langs { border-inline-start-color: rgba(134,99,46,.3) !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-theme { color: #141310 !important; }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-bar {
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-strip__inner { color: #4a463d !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero :is(.eth-strip__lang[aria-current="true"], .eth-strip__lang:hover, .eth-strip__mail:hover, .eth-theme:hover) { color: #86632e !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-strip__langs { border-inline-start-color: rgba(134,99,46,.3) !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-theme { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero .eth-bar {
   background:
     linear-gradient(90deg, rgba(134,99,46,0), rgba(134,99,46,.32), rgba(134,99,46,0)) left bottom / 100% 1px no-repeat,
     rgba(246,242,234,.84) !important;
@@ -120,4 +120,4 @@ html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-bar {
   backdrop-filter: blur(18px) saturate(140%) !important;
   box-shadow: 0 10px 30px rgba(20,19,16,.06) !important;
 }
-html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero :is(.eth-nav a, .eth-menu-btn, .eth-contact__label) { color: #141310; }
+html:not([data-et-theme="dark"]) body:is([data-hero], [data-ivory-hero]) .eth.is-over-hero :is(.eth-nav a, .eth-menu-btn, .eth-contact__label) { color: #141310; }

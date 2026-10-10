@@ -1,0 +1,327 @@
+{
+  "seasonal": {
+    "meta": {
+      "title": "Seasonal · An Almanac of Campaigns | EMPERIO TISS",
+      "description": "The EMPERIO TISS seasonal almanac: an annual vegetable calendar by origin, the four seasons of fruit and the planning of each campaign for professional buyers."
+    },
+    "hero": {
+      "kicker": "EMPERIO TISS · SEASONAL ALMANAC",
+      "h1": "Every season.<br><em>Its moment.</em>",
+      "lead": "Fruit, vegetables and seafood each have their own rhythm. We follow it closely to plan every supply with the right origin, variety and calendar.",
+      "monthLabel": "In season this month",
+      "cta1": "View the calendar",
+      "cta2": "Enquire about a campaign",
+      "caption": "ORIGIN · SEASON · DESTINATION"
+    },
+    "intro": {
+      "kicker": "01 / JUDGEMENT",
+      "h2": "Seasons change.<br><em>Judgement remains.</em>",
+      "p1": "Each product reaches its best at a particular time and from a particular origin. Knowing that calendar makes for better buying: anticipating volumes, choosing the right variety and moving from one origin to the next without losing continuity.",
+      "p2": "This almanac brings together what we observe throughout the year. It is a planning tool, not a stock list: availability, origin and conditions are always confirmed for each request.",
+      "figures": [
+        {
+          "n": "33",
+          "l": "fruits in nine families"
+        },
+        {
+          "n": "12",
+          "l": "vegetables with an annual calendar"
+        },
+        {
+          "n": "32",
+          "l": "seafood products"
+        },
+        {
+          "n": "4",
+          "l": "digits in each permanent reference"
+        }
+      ]
+    },
+    "now": {
+      "kicker": "02 / IN SEASON NOW",
+      "h2": "What is<br><em>at its best.</em>",
+      "lead": "Vegetables with high availability this month, by origin.",
+      "next": "Next month",
+      "high": "High",
+      "medium": "Medium",
+      "limited": "Limited",
+      "spain": "Spain",
+      "morocco": "Morocco",
+      "link": "View all vegetables"
+    },
+    "calendar": {
+      "kicker": "03 / CALENDAR",
+      "h2": "The year,<br><em>month by month.</em>",
+      "lead": "Indicative availability of each vegetable from its two origins. Each month shows Spain above and Morocco below.",
+      "product": "Product",
+      "months": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "monthsLong": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ],
+      "groups": {
+        "tomatoes": "Tomatoes",
+        "fruiting": "Fruiting vegetables",
+        "brassicas": "Brassicas",
+        "roots": "Tubers and bulbs"
+      },
+      "names": {
+        "tomato": "Tomato",
+        "tomato-cherry-round": "Round cherry tomato",
+        "tomato-cherry-long": "Long cherry tomato",
+        "pepper": "Pepper",
+        "cucumber": "Cucumber",
+        "zucchini": "Courgette",
+        "aubergine": "Aubergine",
+        "green-bean": "Green bean",
+        "broccoli": "Broccoli",
+        "cauliflower": "Cauliflower",
+        "potato": "Potato",
+        "garlic": "Garlic"
+      },
+      "note": "Indicative · subject to season and supply programme."
+    },
+    "seasons": {
+      "kicker": "04 / THE FOUR SEASONS",
+      "h2": "Each season<br><em>has its produce.</em>",
+      "lead": "A reading of the year through fruit and vegetables: the broad rhythms that guide buying.",
+      "items": [
+        {
+          "name": "Winter",
+          "title": "The time of citrus.",
+          "text": "Clementines, mandarins and oranges define the winter. Broccoli and cauliflower are in their months of greatest availability, and tomatoes from Morocco take over at the height of their campaign.",
+          "list": "Clementine · Mandarin · Orange · Lemon · Grapefruit"
+        },
+        {
+          "name": "Spring",
+          "title": "Berries open the year.",
+          "text": "Strawberries, blueberries and raspberries herald the spring; the first cherries and apricots follow. Green beans from Spain keep their high availability until summer.",
+          "list": "Strawberry · Blueberry · Raspberry · Cherry · Apricot"
+        },
+        {
+          "name": "Summer",
+          "title": "Stone fruit, in its fullness.",
+          "text": "Peach, nectarine, flat peach and plum, with melon and watermelon. In Spain, tomatoes and potatoes reach their high level of availability, and garlic concentrates its campaign.",
+          "list": "Peach · Nectarine · Flat peach · Plum · Melon · Watermelon"
+        },
+        {
+          "name": "Autumn",
+          "title": "Grapes, pomegranates, figs and persimmons.",
+          "text": "Autumn brings seasonal Mediterranean fruit and dates. For vegetables it is a time of transition: cucumbers, courgettes and aubergines from Spain return to their high level while Morocco begins its campaign.",
+          "list": "Table grapes · Pomegranate · Fig · Persimmon · Dates"
+        }
+      ],
+      "sea": {
+        "title": "Seafood",
+        "text": "Fresh fish follows the rhythm of the catch. Shellfish frozen at sea and frozen cephalopods allow planning with more leeway throughout the year."
+      },
+      "tropical": {
+        "title": "Tropical fruit",
+        "text": "Mango, pineapple, avocado, banana and the other tropical fruits are scheduled according to each product’s origin and campaign."
+      }
+    },
+    "method": {
+      "kicker": "05 / FROM THE CAMPAIGN TO YOUR MARKET",
+      "h2": "Anticipate.<br><em>Select. Honour what was agreed.</em>",
+      "steps": [
+        {
+          "t": "We define your requirement",
+          "p": "Product, specification, volume, destination and preferred delivery date."
+        },
+        {
+          "t": "We review the campaign",
+          "p": "Origin, availability, presentation and supply conditions."
+        },
+        {
+          "t": "We finalise the order",
+          "p": "We agree the commercial, documentary and logistics requirements before confirming."
+        }
+      ],
+      "note": "A selection does not imply confirmed stock. Availability, origin and conditions are verified for each request."
+    },
+    "cta": {
+      "kicker": "06 / YOUR NEXT CAMPAIGN",
+      "h2": "The next selection<br><em>begins with your requirement.</em>",
+      "p": "Share the product, volume, destination and timeframe you need. Our team will study the supply options for your campaign.",
+      "button": "Prepare my enquiry",
+      "small": "Professional enquiries · Personal service"
+    }
+  },
+  "news": {
+    "meta": {
+      "title": "News · The EMPERIO TISS Journal",
+      "description": "The EMPERIO TISS Journal: catalogue news, product notes and keys to origin for professional buyers of seafood, fruit and vegetables."
+    },
+    "hero": {
+      "kicker": "THE EMPERIO TISS JOURNAL",
+      "edition": "October edition · 2026",
+      "place": "From Madrid",
+      "h1": "A sense<br><em>of the market.</em>",
+      "lead": "What changes in our selection and how to read it: catalogue, product and origin, told for those who buy.",
+      "cta": "Read the edition"
+    },
+    "ui": {
+      "filters": {
+        "all": "All",
+        "catalogue": "Catalogue",
+        "product": "Product",
+        "origin": "Origin",
+        "company": "Company"
+      },
+      "cover": "Front page",
+      "inEdition": "In this edition",
+      "indexTitle": "The notes<br><em>in this edition.</em>",
+      "read": "Read the article",
+      "minutes": "min read",
+      "close": "Close",
+      "date": "October 2026",
+      "next": "Next article"
+    },
+    "articles": [
+      {
+        "id": "fruta-nueve-familias",
+        "tag": "catalogue",
+        "image": "fruits",
+        "title": "Fruit, in nine families.",
+        "dek": "Thirty-three references, arranged the way they are bought: by family, origin and campaign.",
+        "body": [
+          "The EMPERIO TISS fruit catalogue now brings together 33 references, organised into nine families: citrus, stone fruit, berries, table grapes, pome fruit, seasonal Mediterranean fruit, tropical fruit, melons and dates.",
+          "Each family groups products that share a campaign rhythm and a way of being specified. Those who buy citrus talk about variety, calibre and destination; those who buy berries, about format and continuity. Arranging the catalogue this way makes the conversation shorter and more precise.",
+          "Recent additions include fig, prickly pear and persimmon, alongside tropical fruits such as lychee, passion fruit and papaya. All have their own photography and a permanent four-digit reference.",
+          "Availability is always confirmed by campaign and supply programme: the catalogue describes what we select, not immediate stock."
+        ],
+        "link": {
+          "label": "View the fruit catalogue",
+          "href": "products/fruits/"
+        }
+      },
+      {
+        "id": "hortalizas-calendario",
+        "tag": "catalogue",
+        "image": "vegetables",
+        "title": "Vegetables: the calendar at a glance.",
+        "dek": "Twelve references with their month-by-month availability in Spain and Morocco.",
+        "body": [
+          "Every vegetable in the catalogue now shows an annual calendar with two origins, Spain and Morocco, and three levels of availability: high, medium and limited.",
+          "It reads at once. When the Spanish tomato campaign winds down at the end of the year, Morocco’s reaches its high level, from November to April. Broccoli and cauliflower concentrate their high availability in the colder months, while potatoes and garlic from Spain reach it in summer.",
+          "These figures are indicative, subject to season and supply programme, and intended for planning purchases in advance. The full almanac, month by month, is on the Seasonal page."
+        ],
+        "link": {
+          "label": "Open the seasonal almanac",
+          "href": "products/seasonal/"
+        }
+      },
+      {
+        "id": "congelado-a-bordo",
+        "tag": "product",
+        "image": "shellfish",
+        "title": "Frozen at sea: the origin, held still.",
+        "dek": "Why four of our shellfish and all our cephalopods are offered frozen.",
+        "body": [
+          "In our catalogue, blue and red shrimp, Norway lobster, deep-water rose shrimp and black tiger prawn are presented frozen at sea. Mussels, by contrast, are offered fresh.",
+          "Freezing at sea takes place on the vessel itself, shortly after the catch. For the buyer, it means a stable product that can be planned with more leeway than fresh.",
+          "Cephalopods – octopus, squid, baby squid and cuttlefish – are offered frozen, specified by species, origin, calibre and presentation.",
+          "Fresh and frozen do not compete: they meet different needs in the kitchen, in distribution and in stock rotation. Choosing well begins with knowing what you are buying for."
+        ],
+        "link": {
+          "label": "View shellfish",
+          "href": "products/seafood/shellfish/"
+        }
+      },
+      {
+        "id": "zona-fao",
+        "tag": "origin",
+        "image": "fish",
+        "title": "Reading an FAO area.",
+        "dek": "The number that accompanies each fish tells you where it was caught. Here is how to read it.",
+        "body": [
+          "The FAO divides the seas and oceans into large, numbered fishing areas. In the European Union, the catch area is part of the mandatory information for fishery products: it is the most precise way of stating their origin.",
+          "Three main areas appear in our catalogue: area 27, Northeast Atlantic; area 34, Eastern Central Atlantic; and area 37, Mediterranean and Black Sea, which is in turn divided into subareas such as 37.1.3 or 37.2.",
+          "That is why we state the country of origin and the FAO area for every reference. It is the information that makes it possible to compare, document and market with transparency."
+        ],
+        "link": {
+          "label": "View fish",
+          "href": "products/seafood/fish/"
+        }
+      },
+      {
+        "id": "calibre",
+        "tag": "product",
+        "image": "cephalopods",
+        "title": "Calibre is not measured the same way everywhere.",
+        "dek": "Weight per piece, pieces per kilo or diameter: each family has its own scale.",
+        "body": [
+          "Talking about calibre without specifying the scale is a frequent source of misunderstanding. For fish it is usually expressed as weight per piece; for shellfish, as pieces per kilo; for fruit, as diameter or number of pieces per pack.",
+          "That is why each product sheet in our catalogue treats calibre according to the product family and, where appropriate, according to the buyer’s specification.",
+          "A good specification – calibre, presentation, format and packaging – is half of a good purchase."
+        ],
+        "link": {
+          "label": "View seafood",
+          "href": "products/seafood/"
+        }
+      },
+      {
+        "id": "referencia-permanente",
+        "tag": "company",
+        "image": "news",
+        "title": "A permanent reference for every product.",
+        "dek": "Four digits that never change: this is how each product is identified in enquiries, orders and offers.",
+        "body": [
+          "Every product in the catalogue – seafood, fruit or vegetable – has its own four-digit reference, shown on its product sheet.",
+          "The reference is permanent: it does not depend on the language, the order of the catalogue or the campaign. It allows a product to be cited without ambiguity in an enquiry, an order or an offer, in any of our five languages."
+        ],
+        "link": {
+          "label": "View all products",
+          "href": "products/"
+        }
+      },
+      {
+        "id": "cinco-idiomas",
+        "tag": "company",
+        "image": "season",
+        "title": "One catalogue, five languages.",
+        "dek": "Spanish, English, French, Italian and Arabic share the same selection, design and references.",
+        "body": [
+          "The EMPERIO TISS catalogue is presented in Spanish, English, French, Italian and Arabic, with the same product selection and the same product sheet design.",
+          "Trade names are adapted to each language; the scientific name, origin, FAO area and reference remain identical. In this way, buyers in different markets are talking about exactly the same product."
+        ],
+        "link": {
+          "label": "Talk to EMPERIO TISS",
+          "href": "contact/"
+        }
+      }
+    ],
+    "quote": {
+      "text": "To select is to decide with judgement: which product, from which origin and at what moment.",
+      "cite": "EMPERIO TISS"
+    },
+    "letter": {
+      "kicker": "THE LETTER",
+      "h2": "The essentials,<br><em>in your inbox.</em>",
+      "text": "Catalogue news, campaign notes and product readings. No noise: only what matters to those who buy."
+    }
+  }
+}

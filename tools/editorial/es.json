@@ -1,0 +1,239 @@
+{
+  "seasonal": {
+    "meta": {
+      "title": "Temporada · Almanaque de campañas | EMPERIO TISS",
+      "description": "Almanaque de temporada de EMPERIO TISS: calendario anual de hortalizas por origen, las cuatro estaciones de la fruta y la planificación de cada campaña para compradores profesionales."
+    },
+    "hero": {
+      "kicker": "EMPERIO TISS · ALMANAQUE DE TEMPORADA",
+      "h1": "Cada campaña.<br><em>Su momento.</em>",
+      "lead": "Frutas, hortalizas y productos del mar tienen su propio ritmo. Lo seguimos de cerca para planificar cada suministro con el origen, la variedad y el calendario adecuados.",
+      "monthLabel": "En campaña este mes",
+      "cta1": "Ver el calendario",
+      "cta2": "Consultar una campaña",
+      "caption": "ORIGEN · CAMPAÑA · DESTINO"
+    },
+    "intro": {
+      "kicker": "01 / EL CRITERIO",
+      "h2": "La temporada cambia.<br><em>El criterio permanece.</em>",
+      "p1": "Cada producto alcanza su mejor momento en una época y en un origen concretos. Conocer ese calendario permite comprar mejor: anticipar volúmenes, elegir la variedad adecuada y enlazar un origen con el siguiente sin perder continuidad.",
+      "p2": "Este almanaque reúne lo que observamos a lo largo del año. Es una herramienta de planificación, no una lista de existencias: la disponibilidad, el origen y las condiciones se confirman siempre para cada solicitud.",
+      "figures": [
+        { "n": "33", "l": "frutas en nueve familias" },
+        { "n": "12", "l": "hortalizas con calendario anual" },
+        { "n": "32", "l": "productos del mar" },
+        { "n": "4", "l": "dígitos de referencia permanente" }
+      ]
+    },
+    "now": {
+      "kicker": "02 / AHORA EN CAMPAÑA",
+      "h2": "Lo que está<br><em>en su momento.</em>",
+      "lead": "Hortalizas con disponibilidad alta este mes, según su origen.",
+      "next": "Próximo mes",
+      "high": "Alta",
+      "medium": "Media",
+      "limited": "Limitada",
+      "spain": "España",
+      "morocco": "Marruecos",
+      "link": "Ver todas las hortalizas"
+    },
+    "calendar": {
+      "kicker": "03 / CALENDARIO",
+      "h2": "El año,<br><em>mes a mes.</em>",
+      "lead": "Disponibilidad orientativa de cada hortaliza en sus dos orígenes. Cada mes muestra España arriba y Marruecos abajo.",
+      "product": "Producto",
+      "months": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+      "monthsLong": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+      "groups": { "tomatoes": "Tomates", "fruiting": "Hortalizas de fruto", "brassicas": "Coles", "roots": "Tubérculos y bulbos" },
+      "names": {
+        "tomato": "Tomate", "tomato-cherry-round": "Tomate cherry redondo", "tomato-cherry-long": "Tomate cherry largo",
+        "pepper": "Pimiento", "cucumber": "Pepino", "zucchini": "Calabacín", "aubergine": "Berenjena", "green-bean": "Judía verde",
+        "broccoli": "Brócoli", "cauliflower": "Coliflor", "potato": "Patata", "garlic": "Ajo"
+      },
+      "note": "Orientativo · sujeto a campaña y programa de suministro."
+    },
+    "seasons": {
+      "kicker": "04 / LAS CUATRO ESTACIONES",
+      "h2": "Cada estación<br><em>tiene su producto.</em>",
+      "lead": "Una lectura del año a través de la fruta y la hortaliza: los grandes ritmos que orientan la compra.",
+      "items": [
+        {
+          "name": "Invierno",
+          "title": "El tiempo de los cítricos.",
+          "text": "Clementinas, mandarinas y naranjas marcan el invierno. Brócoli y coliflor viven sus meses de mayor disponibilidad, y el tomate de Marruecos toma el relevo con su campaña alta.",
+          "list": "Clementina · Mandarina · Naranja · Limón · Pomelo"
+        },
+        {
+          "name": "Primavera",
+          "title": "Los frutos rojos abren el año.",
+          "text": "Fresas, arándanos y frambuesas anuncian la primavera; llegan después las primeras cerezas y los albaricoques. La judía verde de España mantiene su disponibilidad alta hasta el verano.",
+          "list": "Fresa · Arándano · Frambuesa · Cereza · Albaricoque"
+        },
+        {
+          "name": "Verano",
+          "title": "La fruta de hueso, en su plenitud.",
+          "text": "Melocotón, nectarina, paraguayo y ciruela, con el melón y la sandía. En España, el tomate y la patata alcanzan su nivel alto de disponibilidad, y el ajo concentra su campaña.",
+          "list": "Melocotón · Nectarina · Paraguayo · Ciruela · Melón · Sandía"
+        },
+        {
+          "name": "Otoño",
+          "title": "Uva, granada, higo y kaki.",
+          "text": "El otoño trae la fruta mediterránea de temporada y los dátiles. En hortaliza es tiempo de transición: pepino, calabacín y berenjena de España vuelven a su nivel alto mientras Marruecos inicia su campaña.",
+          "list": "Uva de mesa · Granada · Higo · Kaki · Dátiles"
+        }
+      ],
+      "sea": {
+        "title": "Productos del mar",
+        "text": "El pescado fresco sigue el ritmo de la captura. El marisco congelado a bordo y los cefalópodos congelados permiten planificar con más margen a lo largo del año."
+      },
+      "tropical": {
+        "title": "Tropicales",
+        "text": "Mango, piña, aguacate, plátano y el resto de tropicales se programan según origen y campaña de cada producto."
+      }
+    },
+    "method": {
+      "kicker": "05 / DE LA CAMPAÑA A SU MERCADO",
+      "h2": "Anticipar.<br><em>Seleccionar. Cumplir lo acordado.</em>",
+      "steps": [
+        { "t": "Definimos su necesidad", "p": "Producto, especificación, volumen, destino y fecha de entrega deseada." },
+        { "t": "Contrastamos la campaña", "p": "Origen, disponibilidad, presentación y condiciones de suministro." },
+        { "t": "Concretamos la operación", "p": "Acordamos los requisitos comerciales, documentales y logísticos antes de confirmar." }
+      ],
+      "note": "La selección no implica existencias confirmadas. Disponibilidad, origen y condiciones se verifican para cada solicitud."
+    },
+    "cta": {
+      "kicker": "06 / SU PRÓXIMA CAMPAÑA",
+      "h2": "La próxima selección<br><em>empieza con su necesidad.</em>",
+      "p": "Comparta el producto, el volumen, el destino y el plazo que necesita. Nuestro equipo estudiará las opciones de suministro para su campaña.",
+      "button": "Preparar mi consulta",
+      "small": "Consultas profesionales · Atención personalizada"
+    }
+  },
+  "news": {
+    "meta": {
+      "title": "Noticias · Diario EMPERIO TISS",
+      "description": "Diario de EMPERIO TISS: novedades del catálogo, notas de producto y claves de origen para compradores profesionales de productos del mar, frutas y hortalizas."
+    },
+    "hero": {
+      "kicker": "DIARIO EMPERIO TISS",
+      "edition": "Edición de octubre · 2026",
+      "place": "Desde Madrid",
+      "h1": "Criterio<br><em>de mercado.</em>",
+      "lead": "Lo que cambia en nuestra selección y cómo leerlo: catálogo, producto y origen, contados para quien compra.",
+      "cta": "Leer la edición"
+    },
+    "ui": {
+      "filters": { "all": "Todo", "catalogue": "Catálogo", "product": "Producto", "origin": "Origen", "company": "Empresa" },
+      "cover": "Portada",
+      "inEdition": "En esta edición",
+      "indexTitle": "Las notas<br><em>de la edición.</em>",
+      "read": "Leer el artículo",
+      "minutes": "min de lectura",
+      "close": "Cerrar",
+      "date": "Octubre 2026",
+      "next": "Siguiente artículo"
+    },
+    "articles": [
+      {
+        "id": "fruta-nueve-familias",
+        "tag": "catalogue",
+        "image": "fruits",
+        "title": "La fruta, en nueve familias.",
+        "dek": "Treinta y tres referencias ordenadas como se compran: por familia, origen y campaña.",
+        "body": [
+          "El catálogo de frutas de EMPERIO TISS reúne ya 33 referencias, organizadas en nueve familias: cítricos, fruta de hueso, frutos rojos, uva de mesa, fruta de pepita, fruta mediterránea de temporada, tropicales, melones y dátiles.",
+          "Cada familia agrupa productos que comparten ritmo de campaña y forma de especificarse. Quien compra cítricos habla de variedad, calibre y destino; quien compra frutos rojos, de formato y continuidad. Ordenar el catálogo así hace la conversación más corta y más precisa.",
+          "Entre las incorporaciones recientes figuran el higo, el higo chumbo y el kaki, junto a tropicales como el lichi, el maracuyá o la papaya. Todas cuentan con fotografía propia y con una referencia permanente de cuatro dígitos.",
+          "La disponibilidad se confirma siempre por campaña y programa de suministro: el catálogo describe lo que seleccionamos, no existencias inmediatas."
+        ],
+        "link": { "label": "Ver el catálogo de frutas", "href": "products/fruits/" }
+      },
+      {
+        "id": "hortalizas-calendario",
+        "tag": "catalogue",
+        "image": "vegetables",
+        "title": "Hortalizas: el calendario, a la vista.",
+        "dek": "Doce referencias con su disponibilidad mes a mes en España y en Marruecos.",
+        "body": [
+          "Cada hortaliza del catálogo muestra ahora un calendario anual con dos orígenes, España y Marruecos, y tres niveles de disponibilidad: alta, media y limitada.",
+          "La lectura es inmediata. Cuando la campaña española del tomate se reduce a final de año, la de Marruecos alcanza su nivel alto, de noviembre a abril. Brócoli y coliflor concentran su disponibilidad alta en los meses fríos, mientras que la patata y el ajo de España la alcanzan en verano.",
+          "Son datos orientativos, sujetos a campaña y programa de suministro, pensados para planificar las compras con antelación. El almanaque completo, mes a mes, está en la página de Temporada."
+        ],
+        "link": { "label": "Abrir el almanaque de temporada", "href": "products/seasonal/" }
+      },
+      {
+        "id": "congelado-a-bordo",
+        "tag": "product",
+        "image": "shellfish",
+        "title": "Congelado a bordo: el origen, detenido.",
+        "dek": "Por qué cuatro de nuestros mariscos y todos los cefalópodos se ofrecen congelados.",
+        "body": [
+          "En nuestro catálogo, el moruno, la cigala, la gamba blanca y el langostino tigre se presentan congelados a bordo. El mejillón, en cambio, se ofrece fresco.",
+          "La congelación a bordo se realiza en el propio buque, poco después de la captura. Para quien compra, significa un producto estable que puede planificarse con más margen que el fresco.",
+          "Los cefalópodos —pulpo, calamar, puntillas y sepia— se ofrecen congelados, con especificación por especie, origen, calibre y presentación.",
+          "Fresco y congelado no compiten: responden a necesidades distintas de cocina, distribución y rotación. Elegir bien empieza por saber para qué se compra."
+        ],
+        "link": { "label": "Ver mariscos", "href": "products/seafood/shellfish/" }
+      },
+      {
+        "id": "zona-fao",
+        "tag": "origin",
+        "image": "fish",
+        "title": "Leer una zona FAO.",
+        "dek": "El número que acompaña a cada pescado indica dónde se capturó. Así se interpreta.",
+        "body": [
+          "La FAO divide los mares y océanos en grandes áreas de pesca numeradas. En la Unión Europea, la zona de captura forma parte de la información obligatoria de los productos de la pesca: es la forma más precisa de expresar su origen.",
+          "En nuestro catálogo aparecen tres áreas principales: la zona 27, Atlántico Nordeste; la zona 34, Atlántico Centro-Este; y la zona 37, Mediterráneo y mar Negro, que a su vez se divide en subzonas como la 37.1.3 o la 37.2.",
+          "Por eso indicamos para cada referencia el país de origen y la zona FAO. Es la información que permite comparar, documentar y comercializar con transparencia."
+        ],
+        "link": { "label": "Ver pescados", "href": "products/seafood/fish/" }
+      },
+      {
+        "id": "calibre",
+        "tag": "product",
+        "image": "cephalopods",
+        "title": "El calibre no se mide igual en todas partes.",
+        "dek": "Peso por pieza, piezas por kilo o diámetro: cada familia tiene su propia escala.",
+        "body": [
+          "Hablar de calibre sin precisar la escala es una fuente frecuente de malentendidos. En pescado suele expresarse en peso por pieza; en marisco, en piezas por kilo; en fruta, en diámetro o en número de piezas por envase.",
+          "Por eso cada ficha de nuestro catálogo trata el calibre según la familia del producto y, cuando corresponde, según la especificación del comprador.",
+          "Una buena especificación —calibre, presentación, formato y envase— es la mitad de una buena compra."
+        ],
+        "link": { "label": "Ver productos del mar", "href": "products/seafood/" }
+      },
+      {
+        "id": "referencia-permanente",
+        "tag": "company",
+        "image": "news",
+        "title": "Una referencia permanente para cada producto.",
+        "dek": "Cuatro dígitos que no cambian: así se identifica cada producto en consultas, pedidos y ofertas.",
+        "body": [
+          "Cada producto del catálogo —del mar, fruta u hortaliza— tiene una referencia propia de cuatro dígitos, visible en su ficha.",
+          "La referencia es permanente: no depende del idioma, del orden del catálogo ni de la campaña. Permite citar un producto sin ambigüedad en una consulta, un pedido o una oferta, en cualquiera de nuestros cinco idiomas."
+        ],
+        "link": { "label": "Ver todos los productos", "href": "products/" }
+      },
+      {
+        "id": "cinco-idiomas",
+        "tag": "company",
+        "image": "season",
+        "title": "Un mismo catálogo, cinco idiomas.",
+        "dek": "Español, inglés, francés, italiano y árabe comparten selección, diseño y referencias.",
+        "body": [
+          "El catálogo de EMPERIO TISS se presenta en español, inglés, francés, italiano y árabe, con la misma selección de productos y el mismo diseño de ficha.",
+          "Los nombres comerciales se adaptan a cada idioma; el nombre científico, el origen, la zona FAO y la referencia permanecen idénticos. Así, compradores de mercados distintos hablan exactamente del mismo producto."
+        ],
+        "link": { "label": "Hablar con EMPERIO TISS", "href": "contact/" }
+      }
+    ],
+    "quote": {
+      "text": "Seleccionar es decidir con criterio: qué producto, de qué origen y en qué momento.",
+      "cite": "EMPERIO TISS"
+    },
+    "letter": {
+      "kicker": "LA CARTA",
+      "h2": "Lo esencial,<br><em>en su correo.</em>",
+      "text": "Novedades del catálogo, notas de campaña y lecturas de producto. Sin ruido: solo lo relevante para quien compra."
+    }
+  }
+}
