@@ -170,12 +170,13 @@
 
 
   // Marquee layout (Spanish page): species glide by in elegant lines; choosing one opens its plate.
-  if (!document.querySelector('link[data-fish-marquee]')) {
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = '/assets/css/fish-catalog-marquee.css?v=20261010-2';
-    css.dataset.fishMarquee = 'true';
-    document.head.appendChild(css);
+  let marqueeCss = document.querySelector('link[data-fish-marquee]');
+  if (!marqueeCss) {
+    marqueeCss = document.createElement('link');
+    marqueeCss.rel = 'stylesheet';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-2';
+    marqueeCss.dataset.fishMarquee = 'true';
+    document.head.appendChild(marqueeCss);
   }
   const ui = {sheet:'Ficha técnica completa',kitchen:'En cocina',prev:'Especie anterior',next:'Especie siguiente',close:'Cerrar',no:'Nº'};
   // editorial copy per species: general culinary knowledge only, no commercial data
@@ -235,13 +236,21 @@
     const rowA = indexed.filter((_, k) => k % 2 === 0).map(([p, i]) => tile(p, i)).join('');
     const rowB = indexed.filter((_, k) => k % 2 === 1).map(([p, i]) => tile(p, i)).join('');
     grid.innerHTML = `<div class="et-mq">${line(words, 'names', still)}${line(rowA, 'cards', still)}${rowB ? line(rowB, 'cards-reverse', still) : ''}</div>`;
-    // an unhurried, constant speed whatever the length of each line (pixels per second)
-    const speed = {names: 42, cards: 30, 'cards-reverse': 26};
-    grid.querySelectorAll('.et-mq__line:not(.is-still)').forEach(el => {
-      const set = el.querySelector('.et-mq__set');
-      el.querySelector('.et-mq__track').style.setProperty('--et-mq-duration', `${Math.max(24, set.scrollWidth / (speed[el.dataset.line] || 30))}s`);
-    });
+    tune();
   };
+
+  // an unhurried, constant speed whatever the length of each line (pixels per second);
+  // measured again once the stylesheet and fonts are in, and when the window changes size
+  const speed = {names: 42, cards: 30, 'cards-reverse': 26};
+  const tune = () => grid.querySelectorAll('.et-mq__line:not(.is-still)').forEach(el => {
+    const width = el.querySelector('.et-mq__set').scrollWidth;
+    if (width < 600) return;
+    el.querySelector('.et-mq__track').style.setProperty('--et-mq-duration', `${Math.round(width / (speed[el.dataset.line] || 30))}s`);
+  });
+  marqueeCss.addEventListener('load', tune);
+  document.fonts?.ready.then(tune);
+  let resizeTimer = 0;
+  addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(tune, 200); });
 
   // ---- plate: one species at a time over the page
   const plate = document.createElement('div');
