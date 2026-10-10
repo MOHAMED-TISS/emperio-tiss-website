@@ -172,14 +172,36 @@
   if (!document.querySelector('link[data-fish-premium]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/fish-catalog-premium.css?v=20261010-book-2';
+    css.href = '/assets/css/fish-catalog-premium.css?v=20261010-book-3';
     css.dataset.fishPremium = 'true';
     document.head.appendChild(css);
   }
-  const book = {
-    es:{name:'Catálogo de pescados',sheet:'Ficha técnica',prev:'Página anterior',next:'Página siguiente',index:'Índice de especies'},
-    en:{name:'Fish catalogue',sheet:'Technical sheet',prev:'Previous page',next:'Next page',index:'Species index'}
-  }[lang] || {name:'Catálogo de pescados',sheet:'Ficha técnica',prev:'Página anterior',next:'Página siguiente',index:'Índice de especies'};
+  const book = {name:'Catálogo de pescados',sheet:'Ficha técnica completa',kitchen:'En cocina',prev:'Página anterior',next:'Página siguiente',index:'Índice de especies',no:'Nº'};
+
+  // editorial copy per species: general culinary knowledge only, no commercial data
+  const notes = {
+    dorada:['Pez blanco de carne firme, jugosa y de sabor delicado. Un imprescindible de la cocina mediterránea.',['A la sal','Horno','Brasa']],
+    lubina:['Carne blanca, fina y de lasca tersa, con muy poca espina. Elegante en cualquier preparación.',['Parrilla','Horno','Crudo']],
+    'merluza-pijota':['El pescado blanco más apreciado en España: carne suave, lascas tiernas y sabor limpio.',['Plancha','Horno','Salsa verde']],
+    rape:['Carne prieta, sin espinas y de textura casi de marisco. Protagonista de guisos y arroces.',['Guiso','Arroz','Brocheta']],
+    caballa:['Pez azul de sabor intenso y rico en omega-3. Carácter marino en estado puro.',['Brasa','Escabeche','Marinado']],
+    sardina:['Icono del pescado azul: sabrosa, nutritiva y profundamente mediterránea.',['Brasa','Escabeche','Plancha']],
+    boqueron:['Pequeño pez azul de carne fina y sabor marino, emblema de la cocina española.',['En vinagre','Frito','Marinado']],
+    salmonete:['Carne fina y sabrosa de color rosado, muy valorada por la alta cocina.',['Plancha','Frito','Fumet']],
+    atun:['La gran especie del pescado azul: carne roja, densa y de sabor profundo.',['Tataki','Tartar','Plancha']],
+    'pez-espada':['Carne compacta, sin espinas y de sabor suave, ideal en rodajas y lomos.',['Plancha','Brasa','Lomos']],
+    'san-pedro':['Pescado de roca de carne blanca y fina, muy apreciado por la alta cocina.',['Horno','Filetes','Caldos']],
+    denton:['Pez de roca mediterráneo de carne blanca, firme y sabrosa.',['Horno','A la sal','Brasa']],
+    sargo:['Espárido de carne blanca y textura firme, de sabor marcado y limpio.',['Brasa','Horno','Plancha']],
+    sole:['Pescado plano de carne fina y delicada, referencia de la cocina clásica.',['Meunière','Plancha','Filetes']],
+    'pez-limon':['Carne firme con grasa equilibrada, muy apreciada en crudo.',['Sashimi','Tiradito','Brasa']],
+    mujol:['Pescado de carne blanca y sabor marcado; de su hueva nace la bottarga.',['Brasa','Horno','Salazón']],
+    pargo:['Espárido de gran porte y carne blanca, firme y sabrosa.',['Horno','A la sal','Lomos']],
+    mero:['Pescado noble de carne blanca, gelatinosa y untuosa.',['Guiso','Horno','Lomos']],
+    sama:['Pez de la familia del dentón, de carne blanca y firme.',['Horno','A la sal','Parrilla']],
+    rascacio:['Pez de roca de sabor intenso, base clásica de sopas y calderos.',['Sopa','Caldero','Suquet']],
+    salmon:['Carne anaranjada, untuosa y rica en omega-3. De una versatilidad excepcional.',['Crudo','Ahumado','Horno']]
+  };
 
   let referenceMap = {};
   let deck = [];
@@ -196,15 +218,17 @@
     const image = images[0] || '';
     const reference = referenceMap[product.id] || '';
     const number = pad(i + 1);
+    const note = notes[product.id];
     const nav = images.length > 1 ? `<button class="et-fish-card__nav et-fish-card__nav--prev" type="button" aria-label="Previous image">‹</button><button class="et-fish-card__nav et-fish-card__nav--next" type="button" aria-label="Next image">›</button><span class="et-fish-card__counter">1 / ${images.length}</span>` : '';
     return `<article class="fish-catalog-card et-spread ${turn}" data-product-id="${esc(product.id)}"${reference ? ` data-product-reference="${esc(reference)}"` : ''}>`
       + `<div class="et-spread__page et-spread__page--photo"><div class="et-fish-card__media" data-images='${esc(JSON.stringify(images))}' data-image-index="0" tabindex="0" role="button" aria-label="${esc(`${viewImages} ${product.name}`)}">${image ? `<img src="${esc(image)}" alt="${esc(product.name)}" draggable="false">` : '<span class="et-spread__placeholder">EMPERIO TISS</span>'}${nav}</div>`
-      + `<div class="et-spread__cover"><p class="et-spread__eyebrow">${esc(stateOf(product))}</p><p class="et-spread__display"><span>${number}</span>${esc(product.name)}</p><p class="et-spread__tagline">${esc(localize(product.origin))}</p></div></div>`
+      + `<div class="et-spread__frame" aria-hidden="true"></div><div class="et-spread__cover"><span class="et-spread__numeral" aria-hidden="true">${number}</span><p class="et-spread__eyebrow">${esc(stateOf(product))}</p></div></div>`
       + `<div class="et-spread__page et-spread__page--text"><div class="et-spread__head"><span>EMPERIO TISS</span><span>${esc(book.name)}</span></div>`
-      + `<p class="et-spread__kicker">${esc(familyOf(product))}</p><div class="et-fish-card__name et-spread__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-spread__latin">${esc(product.scientificName)}</p>`
-      + `<dl class="et-spread__facts">${rows([[labels.state, stateOf(product)], [labels.origin, localize(product.origin)], [labels.fao, product.faoZone], [labels.type, localize(product.type)]])}</dl>`
-      + `<p class="et-spread__section">${esc(book.sheet)}</p><dl class="et-fish-card__specs et-spread__specs">${rows([[labels.calibre, labels.according], [labels.quality, labels.professional], [labels.presentation, labels.destination], [labels.packaging, labels.market], [labels.availability, labels.according]])}</dl>`
+      + `<p class="et-spread__kicker">${esc(book.no)} ${number} — ${esc(familyOf(product))}</p><div class="et-fish-card__name et-spread__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-spread__latin">${esc(product.scientificName)}</p><span class="et-spread__rule" aria-hidden="true"></span>`
+      + (note ? `<p class="et-spread__story">${esc(note[0])}</p><p class="et-spread__uses"><span>${esc(book.kitchen)}</span>${note[1].map(u => `<em>${esc(u)}</em>`).join('')}</p>` : '')
+      + `<dl class="et-spread__facts">${rows([[labels.state, stateOf(product)], [labels.origin, localize(product.origin)], [labels.fao, product.faoZone]])}</dl>`
       + `<div class="et-fish-card__sheet et-spread__actions"></div>`
+      + `<details class="et-spread__more"><summary>${esc(book.sheet)}</summary><dl class="et-fish-card__specs et-spread__specs">${rows([[labels.type, localize(product.type)], [labels.calibre, labels.according], [labels.quality, labels.professional], [labels.presentation, labels.destination], [labels.packaging, labels.market], [labels.availability, labels.according]])}</dl></details>`
       + `<div class="et-spread__foot">${reference ? `<span class="et-product-reference">REF. ${esc(reference)}</span>` : '<span></span>'}<span>${number} / ${pad(deck.length)}</span></div>`
       + `<button class="et-spread__curl" type="button" aria-label="${esc(book.next)}"></button></div></article>`;
   };
@@ -220,7 +244,7 @@
     if (full || !stage) {
       grid.innerHTML = `<div class="et-book"><div class="et-book__stage">${spread(deck[page], page)}</div>`
         + `<div class="et-book__bar"><button class="et-book__arrow" type="button" data-dir="-1" aria-label="${esc(book.prev)}">${arrowIcon(-1)}</button><span class="et-book__count"></span><button class="et-book__arrow" type="button" data-dir="1" aria-label="${esc(book.next)}">${arrowIcon(1)}</button></div>`
-        + `<nav class="et-book__index" aria-label="${esc(book.index)}">${deck.map((p, i) => `<button class="et-book__tab" type="button" data-page="${i}"><span>${pad(i + 1)}</span>${esc(p.name)}</button>`).join('')}</nav></div>`;
+        + `<nav class="et-book__index" aria-label="${esc(book.index)}">${deck.map((p, i) => { const thumb = (imageMap[p.id] || [])[0]; return `<button class="et-book__tab" type="button" data-page="${i}"><i>${thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy" draggable="false">` : ''}</i><span>${pad(i + 1)}</span><b>${esc(p.name)}</b></button>`; }).join('')}</nav></div>`;
     } else {
       stage.innerHTML = spread(deck[page], page);
     }
