@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-21';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-24';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -375,13 +375,13 @@
       + `<div class="et-plate__photo" data-images='${esc(JSON.stringify(images))}' role="button" tabindex="0" aria-label="${esc(`${viewImages} ${product.name}`)}">`
       + (images[0] ? `<img src="${esc(images[0])}" alt="${esc(product.name)}" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>')
       + `<span class="et-mq__state">${esc(stateOf(product))}</span></div>`
-      + `<div class="et-plate__info"><div class="et-plate__lead"><p class="et-plate__kicker">${esc(familyOf(product))}</p>`
+      + `<div class="et-plate__info"><div class="et-plate__lead"><p class="et-plate__kicker"><span>${esc(familyOf(product))}</span>${reference ? `<span class="et-plate__refchip et-product-reference">REF. ${esc(reference)}</span>` : ''}</p>`
       + `<div class="et-fish-card__name et-plate__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-plate__latin">${esc(product.scientificName)}</p>`
       + (note ? `<p class="et-plate__story">${esc(note[0])}</p>` : '')
       + `</div><div class="et-plate__side"><dl class="et-plate__facts">${rows([[labels.state, stateOf(product)], [labels.origin, localize(product.origin)], [labels.fao, product.faoZone]])}</dl>`
       + `<div class="et-fish-card__sheet et-plate__actions"></div>`
       + `<details class="et-plate__more"><summary>${esc(ui.sheet)}</summary><dl class="et-fish-card__specs et-plate__specs">${rows([[labels.type, localize(product.type)], [labels.calibre, labels.according], [labels.quality, labels.professional], [labels.presentation, labels.destination], [labels.packaging, labels.market], [labels.availability, labels.according]])}</dl></details>`
-      + (reference ? `<p class="et-plate__ref et-product-reference">REF. ${esc(reference)}</p>` : '') + `</div></div></article>`;
+      + `</div></div></article>`;
   };
 
   const show = (index, animate) => {

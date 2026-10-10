@@ -517,3 +517,39 @@ html body .fish-catalog .et-plate__arrow { top: clamp(120px, 23vh, 240px); }
 .et-plate__panel { margin: auto; }
 html.et-plate-open .et-plate { overscroll-behavior: contain; }
 html body .et-scene--index .et-scene__cta { margin-top: 26px !important; }
+
+/* ===== plate always fits the screen, reference always visible (owner 2026-10-10) ===== */
+html body .fish-catalog .et-plate__kicker { display: flex !important; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+html body .fish-catalog .et-plate__kicker .et-plate__refchip {
+  margin: 0 !important; padding: 6px 11px; border: 1px solid rgba(214, 180, 124, .4); border-radius: 999px;
+  color: rgba(243, 239, 230, .85) !important; font: 600 9.5px/1 'DM Sans', sans-serif !important; letter-spacing: .2em !important;
+}
+.et-plate__panel { max-width: 1120px; }
+.et-plate__photo { height: clamp(200px, 38vh, 440px); transition: height .45s cubic-bezier(.2, .7, .2, 1); }
+/* with the technical sheet open the photograph steps back so the whole sheet stays on screen */
+.et-plate__card:has(.et-plate__more[open]) .et-plate__photo { height: clamp(130px, 18vh, 200px); }
+.et-plate__info { padding: 30px 48px 32px; gap: 40px; }
+html body .fish-catalog .et-plate__name { font-size: clamp(40px, 4vw, 62px) !important; }
+html body .fish-catalog .et-plate__story { margin-top: 18px !important; padding-top: 18px; font-size: 18px !important; }
+html body .fish-catalog .et-plate__facts { gap: 12px; padding-bottom: 18px !important; }
+.et-plate__actions { margin-top: 20px; }
+.et-plate__more { margin-top: 16px; }
+html body .fish-catalog .et-plate__more .et-plate__specs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 20px; }
+html body .fish-catalog .et-plate__more .et-plate__specs dd { font-size: 12.5px !important; }
+
+@media (max-width: 900px) {
+  .et-plate__photo { height: 240px; }
+  .et-plate__card:has(.et-plate__more[open]) .et-plate__photo { height: 150px; }
+  .et-plate__info { padding: 24px 22px 28px; gap: 22px; }
+  html body .fish-catalog .et-plate__more .et-plate__specs { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .et-plate { padding-top: 62px; padding-bottom: 14px; }
+  html body .fish-catalog .et-plate__close { top: -50px; }
+  .et-plate__card:has(.et-plate__more[open]) .et-plate__photo { height: 84px; }
+  .et-plate__card:has(.et-plate__more[open]) .et-plate__info { gap: 14px; padding-top: 18px; padding-bottom: 20px; }
+  .et-plate__card:has(.et-plate__more[open]) .et-plate__story { display: none; }
+  html body .fish-catalog .et-plate__card:has(.et-plate__more[open]) .et-plate__name { font-size: 38px !important; }
+  html body .fish-catalog .et-plate__card:has(.et-plate__more[open]) .et-plate__arrow { display: none; }
+}
+@media (max-width: 900px) { html body .fish-catalog .et-plate__panel:has(.et-plate__more[open]) .et-plate__arrow { display: none !important; } }
