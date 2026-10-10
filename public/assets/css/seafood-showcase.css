@@ -52,7 +52,7 @@ html body .et-show .et-mq__card {
 .et-mq__ph { position: absolute; inset: 0 0 40%; display: grid; place-items: center; color: rgba(214, 180, 124, .5); font: 500 11px/1 'DM Sans', sans-serif; letter-spacing: .4em; }
 html body .et-show .et-mq__state {
   position: absolute; top: 18px; left: 18px; z-index: 3; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px;
-  border: 1px solid rgba(214, 180, 124, .45); background: rgba(4, 14, 26, .45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(214, 180, 124, .45); background: rgba(4, 14, 26, .72);
   color: var(--mq-cream); font: 600 9.5px/1 'DM Sans', sans-serif; letter-spacing: .2em; text-transform: uppercase;
 }
 .et-mq__state::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--mq-gold); }
@@ -598,7 +598,7 @@ html body .et-show--grid button.et-show__chip { flex: none; min-height: 0 !impor
 html:not([data-et-theme="dark"]) :is(.et-show, #fishEmblematic, .et-viewer) { --mq-night: #0e0d0b; --mq-night-2: #1b1a17; }
 html:not([data-et-theme="dark"]) body .et-show .et-mq__card { background: var(--mq-night); box-shadow: 0 28px 46px -32px rgba(12, 11, 9, .75); }
 html:not([data-et-theme="dark"]) .et-mq__card::before { background: linear-gradient(to top, rgba(12, 11, 9, .9), rgba(12, 11, 9, .22) 44%, rgba(12, 11, 9, 0) 64%); }
-html:not([data-et-theme="dark"]) body .et-show .et-mq__state { background: rgba(12, 11, 9, .45); }
+html:not([data-et-theme="dark"]) body .et-show .et-mq__state { background: rgba(12, 11, 9, .66); }
 html:not([data-et-theme="dark"]) .et-plate__backdrop { background: rgba(12, 11, 9, .86); }
 html:not([data-et-theme="dark"]) body .et-show .et-plate__close { background: var(--mq-night); }
 html:not([data-et-theme="dark"]) body .et-show .et-plate__arrow { background: rgba(12, 11, 9, .85); }

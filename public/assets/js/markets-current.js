@@ -6,49 +6,50 @@
     line = root.querySelector('.current-line path'),
     dot = root.querySelector('.current-dot'),
     moves = [...root.querySelectorAll('.current-movement')];
+  if (!stage) return;
   let target = 0,
-    shown = 0;
+    shown = 0,
+    frame = 0,
+    active = -1,
+    lineState = '';
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  const update = () => {
-    if (!stage) return;
+  const len = 2600;
+  // the dot travels with a transform (no layout per frame) from its starting point
+  if (dot) {
+    dot.style.top = '18vh';
+    dot.style.left = '9vw';
+  }
+  // One animation frame reads the geometry first and writes styles after,
+  // and keeps easing until the line has caught up with the scroll position.
+  const tick = () => {
+    frame = 0;
     const rect = stage.getBoundingClientRect(),
-      max = Math.max(1, stage.offsetHeight - window.innerHeight),
-      p = clamp(-rect.top / max, 0, 1);
-    target = p;
-    shown += (target - shown) * .1;
-    const len = 2600;
+      max = Math.max(1, stage.offsetHeight - window.innerHeight);
+    target = clamp(-rect.top / max, 0, 1);
+    const delta = target - shown;
+    shown = Math.abs(delta) < 0.0005 ? target : shown + delta * 0.14;
     if (line) {
       line.style.strokeDashoffset = String(len - (len * shown));
       const phase = (shown * moves.length) % 1;
       const hold = phase > 0.15 && phase < 0.7;
       const transition = phase >= 0.7 || phase < 0.15;
-      line.style.opacity = hold ? '0.22' : transition ? '0.78' : '0.38';
-      line.style.strokeWidth = hold ? '0.8' : transition ? '1.6' : '1.05'
+      const state = hold ? 'hold' : transition ? 'transition' : 'rest';
+      if (state !== lineState) {
+        lineState = state;
+        line.style.opacity = hold ? '0.22' : transition ? '0.78' : '0.38';
+        line.style.strokeWidth = hold ? '0.8' : transition ? '1.6' : '1.05';
+      }
     }
-    if (dot) {
-      const y = 18 + shown * 64;
-      dot.style.top = y + 'vh';
-      dot.style.left = (9 + shown * 18) + 'vw'
+    if (dot) dot.style.transform = `translate(-50%, -50%) translate3d(${(shown * 18).toFixed(3)}vw, ${(shown * 64).toFixed(3)}vh, 0)`;
+    const idx = Math.min(moves.length - 1, Math.floor(shown * moves.length));
+    if (idx !== active) {
+      active = idx;
+      moves.forEach((m, i) => m.classList.toggle('active', i === idx));
     }
-    const raw = shown * moves.length;
-    const idx = Math.min(moves.length - 1, Math.floor(raw));
-    moves.forEach((m, i) => {
-      m.classList.toggle('active', i === idx)
-    });
-    root.style.setProperty('--current-progress', shown);
-    root.style.setProperty('--current-hue', String(shown * 18));
-    root.style.setProperty('--current-phase', String(raw % 1))
+    if (shown !== target) frame = requestAnimationFrame(tick);
   };
-  window.addEventListener('scroll', update, {
-    passive: true
-  });
-  window.addEventListener('resize', update, {
-    passive: true
-  });
-  root.addEventListener('pointermove', e => {
-    const r = root.getBoundingClientRect();
-    root.style.setProperty('--mx', (e.clientX - r.left) / r.width);
-    root.style.setProperty('--my', (e.clientY - r.top) / r.height)
-  });
-  update()
+  const request = () => { if (!frame) frame = requestAnimationFrame(tick); };
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', request, { passive: true });
+  request();
 })();

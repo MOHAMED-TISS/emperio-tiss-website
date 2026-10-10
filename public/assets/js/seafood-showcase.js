@@ -10,7 +10,7 @@
   const doc = document, root = doc.documentElement;
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const rtl = lang === 'ar' || root.dir === 'rtl';
-  const VERSION = '20261010-9';
+  const VERSION = '20261010-10';
 
   // hide the original grids until the showcase is ready; show them again if no data ever arrives
   root.classList.add('et-show-on');
@@ -165,8 +165,12 @@
   };
 
   // ---------------------------------------------------------------- marquee
+  // Cards show 600px thumbnails of the original product photographs (the plate keeps the
+  // full photograph): moving tracks then raster small images instead of 1600px originals.
+  const PRODUCT_PHOTO = /\/assets\/products\/(?:incoming\/)?([^/?]+)\.(?:jpe?g|png|webp)(\?[^/]*)?$/i;
+  const thumbOf = src => (src && PRODUCT_PHOTO.test(src) ? src.replace(PRODUCT_PHOTO, '/assets/products/thumbs/$1.webp$2') : src);
   const tile = (item, i) => {
-    const thumb = (item.images || [])[0];
+    const thumb = thumbOf(item.thumb || (item.images || [])[0]);
     return `<button class="et-mq__card" type="button" data-index="${i}" aria-label="${esc(item.name)}">`
       + (thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>')
       + `<span class="et-mq__state">${esc(stateOf(item))}</span>`
@@ -199,7 +203,7 @@
     lines = [];
     if (!deck.length) { stage.innerHTML = `<p class="et-show__empty">${esc(ui.none)}</p>`; return; }
     const card = (item, i) => {
-      const thumb = item.thumb || (item.images || [])[0];
+      const thumb = thumbOf(item.thumb || (item.images || [])[0]);
       const pair = item.thumbDark ? ` class="et-tile__img--light"` : '';
       return `<button class="et-tile" type="button" data-index="${i}" aria-label="${esc(item.name)}">`
         + `<span class="et-tile__photo">${thumb ? `<img${pair} src="${esc(thumb)}" alt="" loading="lazy" decoding="async" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>'}${item.thumbDark ? `<img class="et-tile__img--dark" src="${esc(item.thumbDark)}" alt="" loading="lazy" decoding="async" draggable="false">` : ''}</span>`

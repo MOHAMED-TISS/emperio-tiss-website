@@ -333,6 +333,7 @@
     // Start in the right state (e.g. after a reload mid-page) without animating from the top.
     target = progress = Math.min(1, Math.max(0, scrollY / COMPACT_DISTANCE));
     updateHero(header);
+    painted = -1; // a re-installed header starts without the scroll state
     paint(header);
     header.classList.add('is-ready');
   };
@@ -425,27 +426,50 @@
   let frame = 0;
   const nextFrame = fn => (doc.hidden ? setTimeout(fn, 16) : requestAnimationFrame(fn));
 
+  // The dark zones are collected at most once a second instead of on every scroll event:
+  // late scripts may still add bands, but re-querying the whole document per frame costs jank.
+  let zones = null;
+  let zonesAt = 0;
+  const darkZones = () => {
+    const now = performance.now();
+    if (!zones || now - zonesAt > 1000) {
+      zones = [...doc.querySelectorAll(heroSelector)];
+      if (readTheme() === 'dark') zones.push(...doc.querySelectorAll(themeDarkSelector));
+      zonesAt = now;
+    }
+    return zones;
+  };
+
   const updateHero = header => {
     const probe = Math.min(header.getBoundingClientRect().bottom, 140) * 0.6;
-    const zones = [...doc.querySelectorAll(heroSelector)];
-    if (readTheme() === 'dark') zones.push(...doc.querySelectorAll(themeDarkSelector));
-    const overHero = zones.some(zone => {
+    const overHero = darkZones().some(zone => {
       const rect = zone.getBoundingClientRect();
       return rect.top <= probe && rect.bottom > probe;
     });
     header.classList.toggle('is-over-hero', overHero);
   };
 
+  let painted = -1;
   const paint = header => {
+    if (progress === painted) return;
+    painted = progress;
     header.style.setProperty('--eth-p', progress.toFixed(4));
     header.classList.toggle('is-compact', progress > 0.6);
     header.classList.toggle('is-scrolled', progress > 0.02);
   };
 
+  // One frame does all the work: geometry is read first, styles are written after,
+  // so scrolling never forces a synchronous layout.
+  let dirty = true;
   const step = () => {
     frame = 0;
     const header = doc.getElementById('ethHeader');
     if (!header) return;
+    if (dirty) {
+      dirty = false;
+      updateHero(header);
+      target = Math.min(1, Math.max(0, scrollY / COMPACT_DISTANCE));
+    }
     const delta = target - progress;
     progress = reduceMotion.matches || Math.abs(delta) < 0.002 ? target : progress + delta * 0.16;
     paint(header);
@@ -453,13 +477,11 @@
   };
 
   const updateScrollState = () => {
-    const header = doc.getElementById('ethHeader');
-    if (!header) return;
-    updateHero(header);
-    target = Math.min(1, Math.max(0, scrollY / COMPACT_DISTANCE));
+    dirty = true;
     if (!frame) frame = nextFrame(step);
   };
   const requestUpdate = updateScrollState;
+  window.addEventListener('et:themechange', () => { zones = null; });
 
   install();
   // The hero can still be settling (fonts, images, late scripts) when the header installs.

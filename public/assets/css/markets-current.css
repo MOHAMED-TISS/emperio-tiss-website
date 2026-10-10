@@ -141,7 +141,7 @@
   stroke-dasharray: 2600;
   stroke-dashoffset: 2600;
   filter: drop-shadow(0 0 6px rgba(207, 173, 104, .1));
-  transition: stroke-dashoffset .25s linear
+  transition: none
 }
 
 .current-dot {
