@@ -127,10 +127,6 @@ html[lang="it"] .seafood-category-nav__links a:focus-visible {
   outline-offset: 7px;
 }
 
-/* The Italian Seafood subpages no longer show the emblematic-selection block. */
-html[lang="it"] body.seafood-subpage .fish-emblematic {
-  display: none !important;
-}
 
 @media (max-width: 760px) {
   html[lang="it"] .seafood-category-nav {

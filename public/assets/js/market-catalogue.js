@@ -18,6 +18,7 @@
   const subcategory = match[1] || (path.includes('/vegetables') ? 'vegetables' : 'fruits');
   const family = subcategory === 'fruits' || subcategory === 'vegetables' ? 'produce' : 'seafood';
   if (!targets.some(([f, s]) => f === family && s === subcategory)) return;
+  if (document.getElementById('vegetableCatalog')) return;
 
   const CATALOG_URL = '/assets/data/catalog.json';
   const CATALOG_EXTENDED_URL = '/assets/data/catalog-v1.3.json';
@@ -396,7 +397,7 @@
     }).catch(err => console.warn('[EMPERIO TISS] market catalogue unavailable', err));
 
   function render(products, priority, imageMap, orderIndex) {
-    const existing = document.querySelector('.market-catalogue');
+    const existing = document.getElementById('marketCatalogue');
     if (existing) return;
     document.documentElement.classList.add('market-catalogue-active');
     if (!document.querySelector('link[data-market-catalogue-css]')) {
@@ -415,10 +416,14 @@
       el.setAttribute('aria-hidden', 'true');
     });
     const section = document.createElement('section');
-    section.className = 'market-catalogue';
+    section.className = family === 'seafood' ? 'seafood-catalog' : 'market-catalogue';
     section.id = 'marketCatalogue';
     const marketName = priority?.locales?.[lang]?.market || lang.toUpperCase();
-    section.innerHTML =
+    const seafoodIntro = {en: 'Technical and commercial information for professional sourcing.', fr: 'Informations techniques et commerciales pour le sourcing professionnel.', it: 'Informazioni tecniche e commerciali per il sourcing professionale.', ar: 'معلومات تقنية وتجارية للتوريد المهني.'}[lang];
+    const seafoodEyebrow = {en: 'CATALOGUE', fr: 'CATALOGUE', it: 'CATALOGO', ar: 'الكتالوج'}[lang];
+    if (family === 'seafood') section.innerHTML =
+      `<div class="seafood-catalog__inner"><div class="seafood-catalog__head"><div><span class="eyebrow">${esc(seafoodEyebrow)}</span><h2>${esc(title)}<br><em>${esc(labels.suffix)}</em></h2></div><p>${esc(seafoodIntro)}</p></div><div class="market-catalogue__toolbar"><input class="market-catalogue__search" type="search" placeholder="${esc(labels.search)}" aria-label="${esc(labels.search)}"><p class="market-catalogue__count"></p></div><div class="market-catalogue__filters"><button class="market-catalogue__filter" data-state="all" aria-pressed="true">${labels.all}</button><button class="market-catalogue__filter" data-state="fresh" aria-pressed="false">${labels.fresh}</button><button class="market-catalogue__filter" data-state="frozen" aria-pressed="false">${labels.frozen}</button></div><div class="market-catalogue__grid" aria-live="polite"></div></div>`;
+    else section.innerHTML =
       `<div class="market-catalogue__inner"><div class="market-catalogue__head"><div><p class="market-catalogue__eyebrow">${labels.eyebrow} / ${String(products.length || 0).padStart(2, '0')}</p><h2 class="market-catalogue__title">${esc(title)}<br><em>${esc(labels.suffix)}</em></h2></div><p class="market-catalogue__intro">${esc(labels.intro)}</p></div><div class="market-catalogue__context"><span class="market-catalogue__tag">${esc(marketName)}</span><span class="market-catalogue__tag">${esc(subcategory)}</span></div><div class="market-catalogue__toolbar"><input class="market-catalogue__search" type="search" placeholder="${esc(labels.search)}" aria-label="${esc(labels.search)}"><p class="market-catalogue__count"></p></div><div class="market-catalogue__filters"><button class="market-catalogue__filter" data-state="all" aria-pressed="true">${labels.all}</button><button class="market-catalogue__filter" data-state="fresh" aria-pressed="false">${labels.fresh}</button><button class="market-catalogue__filter" data-state="frozen" aria-pressed="false">${labels.frozen}</button></div><div class="market-catalogue__grid" aria-live="polite"></div></div>`;
     const main = document.querySelector('main');
     const anchor = main?.querySelector('.fish-emblematic,.cta,.ar-cta') || null;
@@ -542,8 +547,8 @@
     const groupNames = {mediterranean: {en: 'Crustaceans', fr: 'Crustacés', it: 'Crostacei', ar: 'قشريات'}, molluscs: {en: 'Molluscs', fr: 'Mollusques', it: 'Molluschi', ar: 'رخويات'}, cephalopods: {en: 'Cephalopods', fr: 'Céphalopodes', it: 'Cefalopodi', ar: 'رأسيات الأرجل'}};
     const groupOf = p => groupNames[norm(p.catalogGroup)]?.[lang] || categoryLabel(p).split('/').pop().trim();
     const detail = {
-      priority: lang === 'fr' ? 0 : 2, lang, category: subcategory, host: section.querySelector('.market-catalogue__inner'),
-      after: section.querySelector('.market-catalogue__context') || section.querySelector('.market-catalogue__head'),
+      priority: lang === 'fr' ? 0 : 2, lang, category: subcategory, host: section.querySelector('.seafood-catalog__inner, .market-catalogue__inner'),
+      after: section.querySelector('.seafood-catalog__head, .market-catalogue__context, .market-catalogue__head'),
       hide: [section.querySelector('.market-catalogue__toolbar'), section.querySelector('.market-catalogue__filters'), grid],
       items: products.map(p => ({
         id: p.id, name: translatedName(p), scientificName: p.scientificName, family: groupOf(p), group: groupOf(p), groupLabel: groupOf(p),

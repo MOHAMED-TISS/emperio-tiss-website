@@ -105,7 +105,7 @@
     }
     if (!doc.querySelector('script[data-etMarketCatalogue]')) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/market-catalogue.js?v=20261010-ar-heroes';
+      script.src = '/assets/js/market-catalogue.js?v=20261010-es-model';
       script.async = false;
       script.dataset.etMarketCatalogue = 'true';
       doc.head.appendChild(script);

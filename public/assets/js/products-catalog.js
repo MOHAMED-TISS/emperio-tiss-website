@@ -102,8 +102,24 @@
     }
   };
 
+  i18n.it = {
+    labels: { fish: 'Pesce', shellfish: 'Crostacei', cephalopods: 'Cefalopodi', citrus: 'Agrumi', exotics: 'Frutta esotica', 'core-produce': 'Altra frutta', vegetables: 'Ortaggi', 'seasonal-selection': 'Stagionale', mediterranean: 'Mediterraneo' },
+    fresh: 'Fresco', frozen: 'Surgelato', detail: 'Vedi la scheda', empty: 'Nessuna referenza attiva in questa categoria.', catalogue: 'CATALOGO', all: 'Referenze selezionate.',
+    seafood: 'Prodotti del mare', seasonal: 'Stagionale', previous: 'Immagine precedente', next: 'Immagine successiva', close: 'Chiudi'
+  };
   const lang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
   const t = i18n[lang] || i18n.es;
+  // the Spanish catalogue is the authority; names and the few technical values are shown in the page language
+  const VALUES = {
+    en: { 'España': 'Spain', 'Marruecos': 'Morocco', 'Según especificación del comprador': 'According to buyer specification', 'Según disponibilidad': 'Subject to availability' },
+    fr: { 'España': 'Espagne', 'Marruecos': 'Maroc', 'Según especificación del comprador': 'Selon la spécification de l’acheteur', 'Según disponibilidad': 'Selon disponibilité' },
+    it: { 'España': 'Spagna', 'Marruecos': 'Marocco', 'Según especificación del comprador': 'Secondo le specifiche dell’acquirente', 'Según disponibilidad': 'Secondo disponibilità' },
+    ar: { 'España': 'إسبانيا', 'Marruecos': 'المغرب', 'Según especificación del comprador': 'حسب مواصفات المشتري', 'Según disponibilidad': 'حسب التوفر' }
+  }[lang] || {};
+  const localValue = value => String(value || '').split(' / ').map(part => VALUES[part.trim()] || part.trim()).join(' / ');
+  const IMAGES_WORD = { es: 'imágenes', en: 'images', fr: 'images', it: 'immagini', ar: 'صور' }[lang] || 'imágenes';
+  let marketNames = {};
+  const nameOf = product => marketNames?.[product.id]?.[lang] || product.commercialName;
   const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (char) => ({
     '&': '&amp;',
     '<': '&lt;',
@@ -206,7 +222,7 @@
     if (!lightboxImages.length) return;
     lightboxIndex = 0;
     const box = document.getElementById('etProductLightbox');
-    box.querySelector('.et-lb-image').dataset.productName = product.commercialName || '';
+    box.querySelector('.et-lb-image').dataset.productName = nameOf(product) || '';
     box.classList.add('is-open');
     box.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -226,14 +242,14 @@
     const category = t.labels[product.subcategory] || product.subcategory || product.family || '';
     const group = product.catalogGroup ? t.labels[product.catalogGroup] || product.catalogGroup :
       '';
-    const meta = [normalizeCondition(product.condition), first(product.origin), first(product
-      .calibre)].filter(Boolean).join(' · ');
+    const meta = [normalizeCondition(product.condition), localValue(first(product.origin)), localValue(first(product
+      .calibre))].filter(Boolean).join(' · ');
     const href = `/products/product.html?id=${encodeURIComponent(product.id)}`;
     const gallery = images(product);
     const media = gallery.length ?
-      `<button class="product-card__image-button" type="button" data-gallery-product="${esc(product.id)}" aria-label="${esc(product.commercialName)}"><img src="${esc(gallery[0])}" alt="${esc(product.commercialName)}" loading="lazy" draggable="false">${gallery.length>1?`<span class="product-card__image-count">${gallery.length} imágenes</span>`:''}</button>` :
+      `<button class="product-card__image-button" type="button" data-gallery-product="${esc(product.id)}" aria-label="${esc(nameOf(product))}"><img src="${esc(gallery[0])}" alt="${esc(nameOf(product))}" loading="lazy" draggable="false">${gallery.length>1?`<span class="product-card__image-count">${gallery.length} ${IMAGES_WORD}</span>`:''}</button>` :
       '<span class="product-card__placeholder">EMPERIO TISS</span>';
-    return `<article class="product-card" data-product-id="${esc(product.id)}"><div class="product-card__media">${media}</div><div class="product-card__body">${group?`<p class="product-card__group">${esc(group)}</p>`:''}<p class="product-card__meta">${esc(category)}</p><h3 class="product-card__title">${esc(product.commercialName)}</h3>${product.scientificName?`<p class="product-card__description"><em>${esc(product.scientificName)}</em></p>`:''}${meta?`<p class="product-card__description">${esc(meta)}</p>`:''}<a class="product-card__link" href="${href}">${esc(t.detail)} <span aria-hidden="true">↗</span></a></div></article>`;
+    return `<article class="product-card" data-product-id="${esc(product.id)}"><div class="product-card__media">${media}</div><div class="product-card__body">${group?`<p class="product-card__group">${esc(group)}</p>`:''}<p class="product-card__meta">${esc(category)}</p><h3 class="product-card__title">${esc(nameOf(product))}</h3>${product.scientificName?`<p class="product-card__description"><em>${esc(product.scientificName)}</em></p>`:''}${meta?`<p class="product-card__description">${esc(meta)}</p>`:''}<a class="product-card__link" href="${href}">${esc(t.detail)} <span aria-hidden="true">↗</span></a></div></article>`;
   }
 
   async function loadCatalog() {
@@ -349,7 +365,9 @@
     if (!targets.length && !injected) return null;
     try {
       const data = await loadCatalog();
-      marketPriority = (await fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))).priority || {};
+      const marketData = await fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+      marketPriority = marketData.priority || {};
+      marketNames = marketData.names || {};
       renderRequestedCatalogs(data);
       document.documentElement.dataset.catalogReady = 'true';
     } catch (error) {
