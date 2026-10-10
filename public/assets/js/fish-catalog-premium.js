@@ -172,7 +172,7 @@
   if (!document.querySelector('link[data-fish-premium]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/fish-catalog-premium.css?v=20261010-book-7';
+    css.href = '/assets/css/fish-catalog-premium.css?v=20261010-book-9';
     css.dataset.fishPremium = 'true';
     document.head.appendChild(css);
   }
@@ -257,7 +257,8 @@
     turn = '';
   };
 
-  // flipbook turn on wide screens: the leaf turns over the spine while the old page stays underneath until it lands
+  // flipbook turn on wide screens, in two halves so each half keeps the exact size of its page:
+  // the old page folds onto the spine (easing in), then the new page unfolds from it (easing out)
   let busy = false;
   const flips = () => matchMedia('(min-width: 821px)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches;
   const flip = (dir, oldPhoto, oldText) => {
@@ -266,15 +267,24 @@
     if (!stage || !fresh) return;
     const newPhoto = fresh.querySelector('.et-spread__page--photo').outerHTML;
     const newText = fresh.querySelector('.et-spread__page--text').outerHTML;
-    const under = dir > 0 ? `<div class="et-under et-under--left">${oldPhoto}</div>` : `<div class="et-under et-under--right">${oldText}</div>`;
-    const leaf = dir > 0
-      ? `<div class="et-leaf et-leaf--next"><div class="et-leaf__face et-leaf__front">${oldText}</div><div class="et-leaf__face et-leaf__back">${newPhoto}</div></div>`
-      : `<div class="et-leaf et-leaf--prev"><div class="et-leaf__face et-leaf__front">${oldPhoto}</div><div class="et-leaf__face et-leaf__back">${newText}</div></div>`;
-    stage.insertAdjacentHTML('beforeend', under + leaf);
+    const layers = dir > 0
+      ? `<div class="et-under et-under--left">${oldPhoto}</div><div class="et-leaf et-leaf--out et-leaf--right">${oldText}</div><div class="et-leaf et-leaf--in et-leaf--left">${newPhoto}</div>`
+      : `<div class="et-under et-under--right">${oldText}</div><div class="et-leaf et-leaf--out et-leaf--left">${oldPhoto}</div><div class="et-leaf et-leaf--in et-leaf--right">${newText}</div>`;
+    stage.insertAdjacentHTML('beforeend', layers);
+    stage.classList.add(dir > 0 ? 'is-turning-next' : 'is-turning-prev');
+    // the request button is added to the new spread right after it renders; mirror it on the incoming leaf
+    requestAnimationFrame(() => {
+      const actions = fresh.querySelector('.et-spread__actions'), leafActions = stage.querySelector('.et-leaf--in .et-spread__actions');
+      if (actions && leafActions) leafActions.innerHTML = actions.innerHTML;
+    });
     busy = true;
-    const done = () => { stage.querySelectorAll('.et-under,.et-leaf').forEach(el => el.remove()); busy = false; };
-    stage.querySelector('.et-leaf').addEventListener('animationend', done, {once:true});
-    setTimeout(() => { if (busy) done(); }, 1500);
+    const done = () => {
+      stage.querySelectorAll('.et-under,.et-leaf').forEach(el => el.remove());
+      stage.classList.remove('is-turning-next', 'is-turning-prev');
+      busy = false;
+    };
+    stage.querySelector('.et-leaf--in').addEventListener('animationend', event => { if (event.target.classList.contains('et-leaf--in')) done(); });
+    setTimeout(() => { if (busy) done(); }, 1600);
   };
 
   const go = next => {

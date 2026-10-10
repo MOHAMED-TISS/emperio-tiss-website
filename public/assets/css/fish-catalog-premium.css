@@ -375,3 +375,39 @@ html body .fish-catalog .et-spread__page .et-spread__story { font-size: 18px !im
   html body .fish-catalog .et-book__stage .et-book__arrow { top: calc((100vw - 32px) * .375); }
 }
 @media (max-width: 820px) { .et-spread__page--text { padding: 30px 22px 24px; } html body .fish-catalog .et-spread__page .et-spread__head { letter-spacing: .2em; } }
+
+/* ===== v7: smooth two-half page turn (fold onto the spine, unfold from it) ===== */
+.et-book__stage { perspective: 2200px; perspective-origin: 55.56% 50%; }
+html body .fish-catalog .et-book__stage .et-leaf {
+  position: absolute; top: 0; bottom: 0; z-index: 6; overflow: hidden; animation: none;
+  transform-style: flat; backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform;
+}
+html body .fish-catalog .et-book__stage .et-leaf > .et-spread__page { height: 100%; }
+html body .fish-catalog .et-book__stage .et-leaf--left { left: 0; width: 55.56%; transform-origin: right center; border-radius: 6px 0 0 6px; }
+html body .fish-catalog .et-book__stage .et-leaf--right { left: 55.56%; width: 44.44%; transform-origin: left center; border-radius: 0 6px 6px 0; }
+/* light falling across the moving page */
+html body .fish-catalog .et-book__stage .et-leaf::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: #020a14; opacity: 0; }
+/* soft shadow on the page underneath, strongest at the spine */
+html body .fish-catalog .et-book__stage .et-under::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; animation: et-under-shade 1s ease forwards; }
+html body .fish-catalog .et-book__stage .et-under--left::after { background: linear-gradient(to left, rgba(2, 10, 20, .45), rgba(2, 10, 20, 0) 55%); }
+html body .fish-catalog .et-book__stage .et-under--right::after { background: linear-gradient(to right, rgba(2, 10, 20, .45), rgba(2, 10, 20, 0) 55%); }
+
+/* forward: right page folds left onto the spine, then the new left page unfolds */
+.is-turning-next .et-leaf--out { animation: et-fold-left .46s cubic-bezier(.55, .06, .68, .19) forwards !important; }
+.is-turning-next .et-leaf--out::after { animation: et-darken .46s ease-in forwards; }
+.is-turning-next .et-leaf--in { transform: rotateY(90deg); animation: et-unfold-from-right .56s cubic-bezier(.22, .61, .36, 1) .46s forwards !important; }
+.is-turning-next .et-leaf--in::after { opacity: .55; animation: et-lighten .56s ease-out .46s forwards; }
+/* backward: left page folds right onto the spine, then the new right page unfolds */
+.is-turning-prev .et-leaf--out { animation: et-fold-right .46s cubic-bezier(.55, .06, .68, .19) forwards !important; }
+.is-turning-prev .et-leaf--out::after { animation: et-darken .46s ease-in forwards; }
+.is-turning-prev .et-leaf--in { transform: rotateY(-90deg); animation: et-unfold-from-left .56s cubic-bezier(.22, .61, .36, 1) .46s forwards !important; }
+.is-turning-prev .et-leaf--in::after { opacity: .55; animation: et-lighten .56s ease-out .46s forwards; }
+
+@keyframes et-fold-left { from { transform: rotateY(0); } to { transform: rotateY(-90deg); } }
+@keyframes et-unfold-from-right { from { transform: rotateY(90deg); } to { transform: rotateY(0); } }
+@keyframes et-fold-right { from { transform: rotateY(0); } to { transform: rotateY(90deg); } }
+@keyframes et-unfold-from-left { from { transform: rotateY(-90deg); } to { transform: rotateY(0); } }
+@keyframes et-darken { from { opacity: 0; } to { opacity: .55; } }
+@keyframes et-lighten { from { opacity: .55; } to { opacity: 0; } }
+@keyframes et-under-shade { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 0; } }
+.et-book__stage { perspective: 4200px; }
