@@ -229,67 +229,177 @@
       "es": [
         "orange",
         "apple",
+        "banana",
         "clementina",
         "mandarina",
+        "lemon",
         "watermelon",
         "melon",
+        "peach",
+        "table-grape",
+        "strawberry",
+        "pear",
+        "nectarine",
         "avocado",
         "pineapple",
+        "kiwi",
         "mango",
+        "flat-peach",
+        "cherry",
+        "plum",
+        "apricot",
+        "persimmon",
         "granada",
-        "dates"
+        "fig",
+        "grapefruit",
+        "lime",
+        "blueberry",
+        "raspberry",
+        "dates",
+        "papaya",
+        "passion-fruit",
+        "lychee",
+        "prickly-pear"
       ],
       "en": [
+        "banana",
         "apple",
         "orange",
-        "clementina",
-        "mandarina",
-        "melon",
+        "strawberry",
+        "table-grape",
         "avocado",
+        "clementina",
+        "blueberry",
+        "lemon",
+        "mandarina",
+        "pear",
+        "melon",
         "pineapple",
         "mango",
         "watermelon",
+        "raspberry",
+        "peach",
+        "nectarine",
+        "cherry",
+        "plum",
+        "kiwi",
+        "lime",
+        "grapefruit",
+        "apricot",
+        "flat-peach",
         "granada",
-        "dates"
+        "persimmon",
+        "fig",
+        "passion-fruit",
+        "papaya",
+        "lychee",
+        "dates",
+        "prickly-pear"
       ],
       "fr": [
         "apple",
+        "banana",
         "orange",
         "clementina",
+        "table-grape",
+        "strawberry",
+        "peach",
+        "nectarine",
         "melon",
+        "pear",
+        "lemon",
         "mandarina",
-        "watermelon",
+        "kiwi",
         "avocado",
+        "cherry",
+        "apricot",
+        "plum",
+        "watermelon",
         "pineapple",
         "mango",
+        "flat-peach",
+        "grapefruit",
+        "raspberry",
+        "blueberry",
+        "lime",
+        "persimmon",
+        "fig",
         "granada",
-        "dates"
+        "dates",
+        "lychee",
+        "passion-fruit",
+        "papaya",
+        "prickly-pear"
       ],
       "it": [
         "apple",
         "orange",
+        "banana",
+        "peach",
+        "nectarine",
+        "table-grape",
         "clementina",
         "mandarina",
+        "pear",
+        "lemon",
+        "kiwi",
+        "strawberry",
         "watermelon",
         "melon",
+        "apricot",
+        "cherry",
+        "plum",
         "pineapple",
         "avocado",
+        "persimmon",
+        "fig",
+        "prickly-pear",
         "mango",
+        "flat-peach",
+        "grapefruit",
         "granada",
-        "dates"
+        "blueberry",
+        "raspberry",
+        "lime",
+        "dates",
+        "lychee",
+        "passion-fruit",
+        "papaya"
       ],
       "ar": [
         "dates",
         "orange",
+        "banana",
         "apple",
         "watermelon",
         "mango",
+        "table-grape",
         "mandarina",
         "clementina",
         "melon",
-        "pineapple",
+        "peach",
+        "strawberry",
+        "lemon",
         "granada",
-        "avocado"
+        "fig",
+        "prickly-pear",
+        "apricot",
+        "pineapple",
+        "avocado",
+        "kiwi",
+        "pear",
+        "nectarine",
+        "plum",
+        "cherry",
+        "grapefruit",
+        "lime",
+        "persimmon",
+        "flat-peach",
+        "papaya",
+        "passion-fruit",
+        "lychee",
+        "blueberry",
+        "raspberry"
       ]
     },
     "produce/vegetables": {
@@ -744,6 +854,138 @@
       "fr": "Moule",
       "it": "Cozza",
       "ar": "بلح البحر"
+    },
+    "lemon": {
+      "en": "Lemon",
+      "fr": "Citron",
+      "it": "Limone",
+      "ar": "ليمون"
+    },
+    "grapefruit": {
+      "en": "Grapefruit",
+      "fr": "Pamplemousse",
+      "it": "Pompelmo",
+      "ar": "جريب فروت"
+    },
+    "lime": {
+      "en": "Lime",
+      "fr": "Citron vert",
+      "it": "Lime",
+      "ar": "ليمون أخضر"
+    },
+    "peach": {
+      "en": "Peach",
+      "fr": "Pêche",
+      "it": "Pesca",
+      "ar": "خوخ"
+    },
+    "nectarine": {
+      "en": "Nectarine",
+      "fr": "Nectarine",
+      "it": "Pesca noce",
+      "ar": "نكتارين"
+    },
+    "flat-peach": {
+      "en": "Flat peach",
+      "fr": "Pêche plate",
+      "it": "Pesca tabacchiera",
+      "ar": "خوخ مسطح"
+    },
+    "apricot": {
+      "en": "Apricot",
+      "fr": "Abricot",
+      "it": "Albicocca",
+      "ar": "مشمش"
+    },
+    "cherry": {
+      "en": "Cherry",
+      "fr": "Cerise",
+      "it": "Ciliegia",
+      "ar": "كرز"
+    },
+    "plum": {
+      "en": "Plum",
+      "fr": "Prune",
+      "it": "Susina",
+      "ar": "برقوق"
+    },
+    "strawberry": {
+      "en": "Strawberry",
+      "fr": "Fraise",
+      "it": "Fragola",
+      "ar": "فراولة"
+    },
+    "blueberry": {
+      "en": "Blueberry",
+      "fr": "Myrtille",
+      "it": "Mirtillo",
+      "ar": "توت أزرق"
+    },
+    "raspberry": {
+      "en": "Raspberry",
+      "fr": "Framboise",
+      "it": "Lampone",
+      "ar": "توت العليق"
+    },
+    "table-grape": {
+      "en": "Table grapes",
+      "fr": "Raisin de table",
+      "it": "Uva da tavola",
+      "ar": "عنب المائدة"
+    },
+    "pear": {
+      "en": "Pear",
+      "fr": "Poire",
+      "it": "Pera",
+      "ar": "إجاص"
+    },
+    "persimmon": {
+      "en": "Persimmon",
+      "fr": "Kaki",
+      "it": "Cachi",
+      "ar": "كاكا"
+    },
+    "fig": {
+      "en": "Fig",
+      "fr": "Figue",
+      "it": "Fico",
+      "ar": "تين"
+    },
+    "prickly-pear": {
+      "en": "Prickly pear",
+      "fr": "Figue de Barbarie",
+      "it": "Fico d’India",
+      "ar": "التين الشوكي"
+    },
+    "banana": {
+      "en": "Banana",
+      "fr": "Banane",
+      "it": "Banana",
+      "ar": "موز"
+    },
+    "kiwi": {
+      "en": "Kiwi",
+      "fr": "Kiwi",
+      "it": "Kiwi",
+      "ar": "كيوي"
+    },
+    "papaya": {
+      "en": "Papaya",
+      "fr": "Papaye",
+      "it": "Papaya",
+      "ar": "بابايا"
+    },
+    "passion-fruit": {
+      "en": "Passion fruit",
+      "fr": "Fruit de la passion",
+      "it": "Frutto della passione",
+      "ar": "فاكهة الباشن"
+    },
+    "lychee": {
+      "en": "Lychee",
+      "fr": "Litchi",
+      "it": "Litchi",
+      "ar": "ليتشي"
     }
   }
 }

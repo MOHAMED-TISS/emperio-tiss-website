@@ -96,11 +96,11 @@
   const t = I18N[lang] || I18N.es;
 
   const PRODUCT_NAMES = {
-    es: { clementina:'Clementina', mandarina:'Mandarina', orange:'Naranja', mango:'Mango', pineapple:'Piña', avocado:'Aguacate', dates:'Dátiles', melon:'Melón', watermelon:'Sandía', apple:'Manzana', granada:'Granada' },
-    en: { clementina:'Clementine', mandarina:'Mandarin', orange:'Orange', mango:'Mango', pineapple:'Pineapple', avocado:'Avocado', dates:'Dates', melon:'Melon', watermelon:'Watermelon', apple:'Apple', granada:'Pomegranate' },
-    fr: { clementina:'Clémentine', mandarina:'Mandarine', orange:'Orange', mango:'Mangue', pineapple:'Ananas', avocado:'Avocat', dates:'Dattes', melon:'Melon', watermelon:'Pastèque', apple:'Pomme', granada:'Grenade' },
-    it: { clementina:'Clementina', mandarina:'Mandarino', orange:'Arancia', mango:'Mango', pineapple:'Ananas', avocado:'Avocado', dates:'Datteri', melon:'Melone', watermelon:'Anguria', apple:'Mela', granada:'Melagrana' },
-    ar: { clementina:'كلمنتينا', mandarina:'يوسفي', orange:'برتقال', mango:'مانجو', pineapple:'أناناس', avocado:'أفوكادو', dates:'تمور', melon:'شمام', watermelon:'بطيخ', apple:'تفاح', granada:'رمان' }
+    es: { clementina:'Clementina', mandarina:'Mandarina', orange:'Naranja', mango:'Mango', pineapple:'Piña', avocado:'Aguacate', dates:'Dátiles', melon:'Melón', watermelon:'Sandía', apple:'Manzana', granada:'Granada', 'lemon':'Limón', 'grapefruit':'Pomelo', 'lime':'Lima', 'peach':'Melocotón', 'nectarine':'Nectarina', 'flat-peach':'Paraguayo', 'apricot':'Albaricoque', 'cherry':'Cereza', 'plum':'Ciruela', 'strawberry':'Fresa', 'blueberry':'Arándano', 'raspberry':'Frambuesa', 'table-grape':'Uva de mesa', 'pear':'Pera', 'persimmon':'Kaki', 'fig':'Higo', 'prickly-pear':'Higo chumbo', 'banana':'Plátano', 'kiwi':'Kiwi', 'papaya':'Papaya', 'passion-fruit':'Maracuyá', 'lychee':'Lichi' },
+    en: { clementina:'Clementine', mandarina:'Mandarin', orange:'Orange', mango:'Mango', pineapple:'Pineapple', avocado:'Avocado', dates:'Dates', melon:'Melon', watermelon:'Watermelon', apple:'Apple', granada:'Pomegranate', 'lemon':'Lemon', 'grapefruit':'Grapefruit', 'lime':'Lime', 'peach':'Peach', 'nectarine':'Nectarine', 'flat-peach':'Flat peach', 'apricot':'Apricot', 'cherry':'Cherry', 'plum':'Plum', 'strawberry':'Strawberry', 'blueberry':'Blueberry', 'raspberry':'Raspberry', 'table-grape':'Table grapes', 'pear':'Pear', 'persimmon':'Persimmon', 'fig':'Fig', 'prickly-pear':'Prickly pear', 'banana':'Banana', 'kiwi':'Kiwi', 'papaya':'Papaya', 'passion-fruit':'Passion fruit', 'lychee':'Lychee' },
+    fr: { clementina:'Clémentine', mandarina:'Mandarine', orange:'Orange', mango:'Mangue', pineapple:'Ananas', avocado:'Avocat', dates:'Dattes', melon:'Melon', watermelon:'Pastèque', apple:'Pomme', granada:'Grenade', 'lemon':'Citron', 'grapefruit':'Pamplemousse', 'lime':'Citron vert', 'peach':'Pêche', 'nectarine':'Nectarine', 'flat-peach':'Pêche plate', 'apricot':'Abricot', 'cherry':'Cerise', 'plum':'Prune', 'strawberry':'Fraise', 'blueberry':'Myrtille', 'raspberry':'Framboise', 'table-grape':'Raisin de table', 'pear':'Poire', 'persimmon':'Kaki', 'fig':'Figue', 'prickly-pear':'Figue de Barbarie', 'banana':'Banane', 'kiwi':'Kiwi', 'papaya':'Papaye', 'passion-fruit':'Fruit de la passion', 'lychee':'Litchi' },
+    it: { clementina:'Clementina', mandarina:'Mandarino', orange:'Arancia', mango:'Mango', pineapple:'Ananas', avocado:'Avocado', dates:'Datteri', melon:'Melone', watermelon:'Anguria', apple:'Mela', granada:'Melagrana', 'lemon':'Limone', 'grapefruit':'Pompelmo', 'lime':'Lime', 'peach':'Pesca', 'nectarine':'Pesca noce', 'flat-peach':'Pesca tabacchiera', 'apricot':'Albicocca', 'cherry':'Ciliegia', 'plum':'Susina', 'strawberry':'Fragola', 'blueberry':'Mirtillo', 'raspberry':'Lampone', 'table-grape':'Uva da tavola', 'pear':'Pera', 'persimmon':'Cachi', 'fig':'Fico', 'prickly-pear':'Fico d’India', 'banana':'Banana', 'kiwi':'Kiwi', 'papaya':'Papaya', 'passion-fruit':'Frutto della passione', 'lychee':'Litchi' },
+    ar: { clementina:'كلمنتينا', mandarina:'يوسفي', orange:'برتقال', mango:'مانجو', pineapple:'أناناس', avocado:'أفوكادو', dates:'تمور', melon:'شمام', watermelon:'بطيخ', apple:'تفاح', granada:'رمان', 'lemon':'ليمون', 'grapefruit':'جريب فروت', 'lime':'ليمون أخضر', 'peach':'خوخ', 'nectarine':'نكتارين', 'flat-peach':'خوخ مسطح', 'apricot':'مشمش', 'cherry':'كرز', 'plum':'برقوق', 'strawberry':'فراولة', 'blueberry':'توت أزرق', 'raspberry':'توت العليق', 'table-grape':'عنب المائدة', 'pear':'إجاص', 'persimmon':'كاكا', 'fig':'تين', 'prickly-pear':'التين الشوكي', 'banana':'موز', 'kiwi':'كيوي', 'papaya':'بابايا', 'passion-fruit':'فاكهة الباشن', 'lychee':'ليتشي' }
   };
 
   const ORIGINS = {
@@ -136,6 +136,11 @@
     }
   };
 
+  const GENERIC_ORIGIN = { es:'Según campaña y programa de suministro', en:'According to season and supply programme', fr:'Selon campagne et programme d’approvisionnement', it:'Secondo stagione e programma di fornitura', ar:'حسب الموسم وبرنامج التوريد' };
+  // fruit families, in catalogue order
+  const GROUPS = {"citrus":{"es":"Cítricos","en":"Citrus","fr":"Agrumes","it":"Agrumi","ar":"الحمضيات"},"stone":{"es":"Fruta de hueso","en":"Stone fruit","fr":"Fruits à noyau","it":"Frutta a nocciolo","ar":"الفواكه ذات النواة"},"berries":{"es":"Frutos rojos","en":"Berries","fr":"Fruits rouges","it":"Frutti di bosco","ar":"التوتيات"},"grapes":{"es":"Uva","en":"Grapes","fr":"Raisin","it":"Uva","ar":"العنب"},"pome":{"es":"Pepita","en":"Pome fruit","fr":"Fruits à pépins","it":"Pomacee","ar":"التفاحيات"},"mediterranean":{"es":"Mediterránea de temporada","en":"Seasonal Mediterranean","fr":"Méditerranéens de saison","it":"Mediterranea di stagione","ar":"فواكه متوسطية موسمية"},"tropical":{"es":"Tropicales","en":"Tropical","fr":"Tropicaux","it":"Tropicali","ar":"الفواكه الاستوائية"},"melons":{"es":"Melones y sandías","en":"Melons","fr":"Melons et pastèques","it":"Meloni e angurie","ar":"الشمام والبطيخ"},"dates":{"es":"Dátiles","en":"Dates","fr":"Dattes","it":"Datteri","ar":"التمور"}};
+  const ALL_FRUITS = { es:'Todas las frutas', en:'All fruit', fr:'Tous les fruits', it:'Tutta la frutta', ar:'كل الفواكه' };
+
   const VARIETY_TRANSLATIONS = {
     en: {'Sin semillas':'Seedless','Con semillas':'Seeded'},
     fr: {'Sin semillas':'Sans pépins','Con semillas':'Avec pépins'},
@@ -154,10 +159,10 @@
     const displayName = PRODUCT_NAMES[lang]?.[p.id] || p.commercialName;
     const varieties = unique(p.varieties).map(v => VARIETY_TRANSLATIONS[lang]?.[v] || v);
     const href = `${CONTACT_PREFIX[lang] || CONTACT_PREFIX.es}?product=${encodeURIComponent(p.id)}`;
-    const displayOrigin = ORIGINS[lang]?.[p.id] || first(p.origin);
+    const displayOrigin = ORIGINS[lang]?.[p.id] || (first(p.origin) === GENERIC_ORIGIN.es ? GENERIC_ORIGIN[lang] || GENERIC_ORIGIN.es : first(p.origin));
     return `<article class="fruit-catalog-card${featured ? ' is-featured' : ''}" data-product-id="${esc(p.id)}">
       <a class="fruit-catalog-media${featured && !p.image ? ' is-placeholder' : ''}" href="${href}" aria-label="${esc(t.consult)}: ${esc(displayName)}">
-        ${p.image ? `<img src="${esc(p.image)}" alt="${esc(displayName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">` : `<div class="fruit-catalog-photo-placeholder" aria-hidden="true"><span>PHOTO</span><strong>${esc(displayName)}</strong></div>`}
+        ${p.image ? `<img src="${esc(p.thumb || p.image)}" alt="${esc(displayName)}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">` : `<div class="fruit-catalog-photo-placeholder" aria-hidden="true"><span>PHOTO</span><strong>${esc(displayName)}</strong></div>`}
         <span class="fruit-catalog-index">${String(i + 1).padStart(2, '0')}</span>
       </a>
       <div class="fruit-catalog-body">
@@ -219,6 +224,40 @@
     }
   }
 
+  // the shared showcase draws the catalogue as a grid by family (where the page loads it)
+  function publishShowcase(root, otherTarget, products, order) {
+    const host = root.parentElement;
+    if (!host || !document.querySelector('script[src*="seafood-showcase"]')) return;
+    let head = host.querySelector('.et-show-head');
+    if (!head) {
+      head = document.createElement('header');
+      head.className = 'et-show-head';
+      head.innerHTML = `<div><span class="et-show-head__kicker">${esc(t.kicker)}</span><h2>${esc(t.title)}<br><em>${esc(t.subtitle)}</em></h2></div><p>${esc(t.intro)}</p>`;
+      host.insertBefore(head, root);
+    }
+    const groupKeys = Object.keys(GROUPS);
+    const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
+    const sorted = products.slice().sort((a, b) => groupKeys.indexOf(a.group) - groupKeys.indexOf(b.group) || rank(a.id) - rank(b.id));
+    const groupName = key => (GROUPS[key] || {})[lang] || (GROUPS[key] || {}).es || key;
+    const detail = {
+      priority: 1, lang, category: 'fruits', layout: 'grid', host, after: head,
+      hide: [root, otherTarget?.closest('section')].filter(Boolean),
+      labels: { allGroups: ALL_FRUITS[lang] || ALL_FRUITS.es },
+      items: sorted.map(p => {
+        const displayOrigin = ORIGINS[lang]?.[p.id] || (first(p.origin) === GENERIC_ORIGIN.es ? GENERIC_ORIGIN[lang] || GENERIC_ORIGIN.es : first(p.origin));
+        const varieties = unique(p.varieties).map(v => VARIETY_TRANSLATIONS[lang]?.[v] || v).join(' · ');
+        return {
+          id: p.id, name: PRODUCT_NAMES[lang]?.[p.id] || p.commercialName, scientificName: first(p.scientificName) || '',
+          group: p.group, groupLabel: groupName(p.group), family: groupName(p.group), states: ['fresh'], origin: displayOrigin, reference: p.reference || '',
+          images: p.image ? [p.image] : [], thumb: p.thumb || p.image || '',
+          specs: [[t.varieties, varieties], [t.campaign, t.availability]].filter(([, v]) => v)
+        };
+      })
+    };
+    (window.__etShowcaseQueue = window.__etShowcaseQueue || []).push(detail);
+    document.dispatchEvent(new CustomEvent('et:showcase', { detail }));
+  }
+
   async function init() {
     const root = document.getElementById('fruitCatalog');
     const otherTarget = document.getElementById('fruitOther');
@@ -234,7 +273,9 @@
       const products = Array.isArray(data.products) ? data.products.filter(p => p.status === 'active') : [];
       if (!products.length) throw new Error('Fruit catalogue is empty');
       window.__ET_CATALOG_PRODUCTS = products;
-      render(root, otherTarget, products, priority?.priority?.['produce/fruits']?.[lang] || []);
+      const order = priority?.priority?.['produce/fruits']?.[lang] || [];
+      render(root, otherTarget, products, order);
+      publishShowcase(root, otherTarget, products, order);
     } catch (error) {
       console.error('[fruit-catalog]', error);
       root.innerHTML = '<p class="catalog-error">No se pudo cargar el catálogo. <a href="/contact/?product=frutas">Contactar con el equipo</a></p>';

@@ -10,12 +10,12 @@
   const doc = document, root = doc.documentElement;
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const rtl = lang === 'ar' || root.dir === 'rtl';
-  const VERSION = '20261010-3';
+  const VERSION = '20261010-5';
 
   // hide the original grids until the showcase is ready; show them again if no data ever arrives
   root.classList.add('et-show-on');
   const early = doc.createElement('style');
-  early.textContent = 'html.et-show-on :is(#fishCatalogGrid,.seafood-catalog-grid,.market-catalogue__grid,#compactCatalogGrid){visibility:hidden;min-height:60vh}';
+  early.textContent = 'html.et-show-on :is(#fishCatalogGrid,.seafood-catalog-grid,.market-catalogue__grid,#compactCatalogGrid,#fruitCatalog){visibility:hidden;min-height:60vh}';
   doc.head.appendChild(early);
   const fallback = setTimeout(() => root.classList.remove('et-show-on'), 5000);
 
@@ -119,7 +119,7 @@
   const build = detail => {
     doc.querySelectorAll('.et-show').forEach(el => el.remove());
     const wrap = doc.createElement('div');
-    wrap.className = 'et-show';
+    wrap.className = detail.layout === 'grid' ? 'et-show et-show--grid' : 'et-show';
     if (rtl) wrap.setAttribute('dir', 'rtl');
     wrap.innerHTML = `<div class="et-show__toolbar"><input class="et-show__search" type="search" placeholder="${esc(ui.search)}" aria-label="${esc(ui.search)}"><p class="et-show__count" aria-live="polite"></p></div>`
       + `<div class="et-show__filters"></div><div class="et-show__stage"></div>`;
@@ -145,7 +145,7 @@
     const chip = (attr, key, label, on) => `<button type="button" class="et-show__chip" data-${attr}="${esc(key)}" aria-pressed="${on}">${esc(label)}</button>`;
     let html = '';
     if (states.length > 1) html += `<div class="et-show__chips">${chip('state', 'all', ui.all, state === 'all')}${states.map(s => chip('state', s, ui[s], state === s)).join('')}</div>`;
-    if (groups.length > 1) html += `<div class="et-show__chips">${chip('group', 'all', ui.allGroups, group === 'all')}${groups.map(([k, l]) => chip('group', k, arText(l), group === k)).join('')}</div>`;
+    if (groups.length > 1) html += `<div class="et-show__chips">${chip('group', 'all', mounted?.labels?.allGroups || ui.allGroups, group === 'all')}${groups.map(([k, l]) => chip('group', k, arText(l), group === k)).join('')}</div>`;
     toolbar.innerHTML = html;
   };
 
@@ -161,7 +161,7 @@
     filters();
     deck = all.filter(matches);
     countEl.textContent = `${deck.length} ${deck.length === 1 ? ui.ref : ui.refs}`;
-    paintMarquee();
+    if (mounted && mounted.layout === 'grid') paintGrid(); else paintMarquee();
   };
 
   // ---------------------------------------------------------------- marquee
@@ -192,6 +192,25 @@
     const control = still ? '' : `<div class="et-mq__controls"><button class="et-mq__toggle" type="button" aria-pressed="${paused}">${toggleInner()}</button></div>`;
     stage.innerHTML = `<div class="et-mq">${control}${line(words, 'names', still)}${line(rowA, 'cards', still)}${rowB ? line(rowB, 'cards-reverse', still) : ''}</div>`;
     tune();
+  };
+
+  // grid layout (fruit): families as tabs; with every family shown the grid is sectioned by family
+  const paintGrid = () => {
+    lines = [];
+    if (!deck.length) { stage.innerHTML = `<p class="et-show__empty">${esc(ui.none)}</p>`; return; }
+    const card = (item, i) => {
+      const thumb = item.thumb || (item.images || [])[0];
+      return `<button class="et-tile" type="button" data-index="${i}" aria-label="${esc(item.name)}">`
+        + `<span class="et-tile__photo">${thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>'}</span>`
+        + `<span class="et-tile__body"><b>${esc(item.name)}</b>${item.scientificName ? `<i>${esc(item.scientificName)}</i>` : ''}${item.origin ? `<em>${esc(item.origin)}</em>` : ''}</span></button>`;
+    };
+    const indexed = deck.map((item, i) => [item, i]);
+    const families = [...new Map(deck.map(item => [item.group, item.groupLabel || item.family])).entries()];
+    const sectioned = group === 'all' && !query && families.length > 1;
+    const html = sectioned
+      ? families.map(([key, label]) => { const list = indexed.filter(([item]) => item.group === key); return `<section class="et-grid__family"><div class="et-grid__head" role="heading" aria-level="3"><span>${esc(arText(label))}</span><i>${pad(list.length)}</i></div><div class="et-grid">${list.map(([item, i]) => card(item, i)).join('')}</div></section>`; }).join('')
+      : `<div class="et-grid">${indexed.map(([item, i]) => card(item, i)).join('')}</div>`;
+    stage.innerHTML = `<div class="et-grid-wrap">${html}</div>`;
   };
 
   // lines glide on their own, ease to a stop under the pointer, follow the hand when dragged and keep

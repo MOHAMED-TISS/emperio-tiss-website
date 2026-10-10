@@ -1790,6 +1790,908 @@
       "documents": [],
       "reference": "2799",
       "type": "Bivalvo vivo"
+    },
+    {
+      "id": "lemon",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Limón",
+      "scientificName": "Citrus limon",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/lemon.webp",
+      "images": [
+        "/assets/images/fruits/lemon.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3877"
+    },
+    {
+      "id": "grapefruit",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Pomelo",
+      "scientificName": "Citrus × paradisi",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/grapefruit.webp",
+      "images": [
+        "/assets/images/fruits/grapefruit.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "7197"
+    },
+    {
+      "id": "lime",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Lima",
+      "scientificName": "Citrus × latifolia",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/lime.webp",
+      "images": [
+        "/assets/images/fruits/lime.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3700"
+    },
+    {
+      "id": "peach",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Melocotón",
+      "scientificName": "Prunus persica",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/peach.webp",
+      "images": [
+        "/assets/images/fruits/peach.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "6692"
+    },
+    {
+      "id": "nectarine",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Nectarina",
+      "scientificName": "Prunus persica var. nucipersica",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/nectarine.webp",
+      "images": [
+        "/assets/images/fruits/nectarine.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "1200"
+    },
+    {
+      "id": "flat-peach",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Paraguayo",
+      "scientificName": "Prunus persica var. platycarpa",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/flat-peach.webp",
+      "images": [
+        "/assets/images/fruits/flat-peach.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "2842"
+    },
+    {
+      "id": "apricot",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Albaricoque",
+      "scientificName": "Prunus armeniaca",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/apricot.webp",
+      "images": [
+        "/assets/images/fruits/apricot.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "2922"
+    },
+    {
+      "id": "cherry",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Cereza",
+      "scientificName": "Prunus avium",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/cherry.webp",
+      "images": [
+        "/assets/images/fruits/cherry.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3394"
+    },
+    {
+      "id": "plum",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Ciruela",
+      "scientificName": "Prunus domestica",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/plum.webp",
+      "images": [
+        "/assets/images/fruits/plum.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "4228"
+    },
+    {
+      "id": "strawberry",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Fresa",
+      "scientificName": "Fragaria × ananassa",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/strawberry.webp",
+      "images": [
+        "/assets/images/fruits/strawberry.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3254"
+    },
+    {
+      "id": "blueberry",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Arándano",
+      "scientificName": "Vaccinium corymbosum",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/blueberry.webp",
+      "images": [
+        "/assets/images/fruits/blueberry.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "1048"
+    },
+    {
+      "id": "raspberry",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Frambuesa",
+      "scientificName": "Rubus idaeus",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/raspberry.webp",
+      "images": [
+        "/assets/images/fruits/raspberry.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "5718"
+    },
+    {
+      "id": "table-grape",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Uva de mesa",
+      "scientificName": "Vitis vinifera",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/table-grape.webp",
+      "images": [
+        "/assets/images/fruits/table-grape.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "4462"
+    },
+    {
+      "id": "pear",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Pera",
+      "scientificName": "Pyrus communis",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/pear.webp",
+      "images": [
+        "/assets/images/fruits/pear.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "6267"
+    },
+    {
+      "id": "persimmon",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Kaki",
+      "scientificName": "Diospyros kaki",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/persimmon.webp",
+      "images": [
+        "/assets/images/fruits/persimmon.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "7932"
+    },
+    {
+      "id": "fig",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Higo",
+      "scientificName": "Ficus carica",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/fig.webp",
+      "images": [
+        "/assets/images/fruits/fig.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "7078"
+    },
+    {
+      "id": "prickly-pear",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Higo chumbo",
+      "scientificName": "Opuntia ficus-indica",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/prickly-pear.webp",
+      "images": [
+        "/assets/images/fruits/prickly-pear.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3602"
+    },
+    {
+      "id": "banana",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Plátano",
+      "scientificName": "Musa acuminata",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/banana.webp",
+      "images": [
+        "/assets/images/fruits/banana.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "6765"
+    },
+    {
+      "id": "kiwi",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Kiwi",
+      "scientificName": "Actinidia deliciosa",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/kiwi.webp",
+      "images": [
+        "/assets/images/fruits/kiwi.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "1920"
+    },
+    {
+      "id": "papaya",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Papaya",
+      "scientificName": "Carica papaya",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/papaya.webp",
+      "images": [
+        "/assets/images/fruits/papaya.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "3612"
+    },
+    {
+      "id": "passion-fruit",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Maracuyá",
+      "scientificName": "Passiflora edulis",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/passion-fruit.webp",
+      "images": [
+        "/assets/images/fruits/passion-fruit.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "4501"
+    },
+    {
+      "id": "lychee",
+      "family": "produce",
+      "category": "produce",
+      "subcategory": "core-produce",
+      "commercialName": "Lichi",
+      "scientificName": "Litchi chinensis",
+      "condition": [
+        "fresh"
+      ],
+      "origin": [
+        "Según campaña y programa de suministro"
+      ],
+      "calibre": [
+        "Según especificación del comprador"
+      ],
+      "image": "/assets/images/fruits/lychee.webp",
+      "images": [
+        "/assets/images/fruits/lychee.webp"
+      ],
+      "status": "active",
+      "faoZone": [],
+      "quality": [
+        "Especificación profesional"
+      ],
+      "format": [
+        "Según destino"
+      ],
+      "packaging": [
+        "Según mercado"
+      ],
+      "weights": [],
+      "season": [],
+      "availability": [
+        "Según campaña y programa"
+      ],
+      "moq": [],
+      "destinationConstraints": [],
+      "documents": [],
+      "reference": "7608"
     }
   ]
 }
