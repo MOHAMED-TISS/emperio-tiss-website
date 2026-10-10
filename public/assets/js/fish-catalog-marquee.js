@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-17';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-18';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -360,9 +360,15 @@
   (document.getElementById('fishCatalog') || document.body).appendChild(plate);
   const plateBody = plate.querySelector('.et-plate__body');
   let lastFocus = null;
+  // the plate browses either the filtered catalogue or, when opened from the emblematic selection, only its species
+  let plateList = null;
+  const plateDeck = () => plateList || deck;
 
   const plateHtml = (product, i) => {
-    const images = Array.isArray(imageMap[product.id]) ? imageMap[product.id] : [];
+    const own = Array.isArray(imageMap[product.id]) ? imageMap[product.id] : [];
+    // signature species open on their scene photograph; the product photos stay in the gallery
+    const hero = plateList && sceneImage[product.id] ? `/assets/images/selection/${sceneImage[product.id]}.webp` : '';
+    const images = hero ? [hero, ...own] : own;
     const reference = referenceMap[product.id] || '';
     const note = notes[product.id];
     return `<article class="fish-catalog-card et-plate__card" data-product-id="${esc(product.id)}"${reference ? ` data-product-reference="${esc(reference)}"` : ''}>`
@@ -379,16 +385,18 @@
   };
 
   const show = (index, animate) => {
-    current = (index + deck.length) % deck.length;
+    const list = plateDeck();
+    current = (index + list.length) % list.length;
     const swap = () => {
-      plateBody.innerHTML = plateHtml(deck[current], current);
-      plate.setAttribute('aria-label', deck[current].name);
-      plate.querySelectorAll('.et-plate__arrow').forEach(arrow => { arrow.hidden = deck.length < 2; });
+      plateBody.innerHTML = plateHtml(list[current], current);
+      plate.setAttribute('aria-label', list[current].name);
+      plate.querySelectorAll('.et-plate__arrow').forEach(arrow => { arrow.hidden = list.length < 2; });
       plateBody.classList.remove('is-leaving');
     };
     if (animate && !reduced()) { plateBody.classList.add('is-leaving'); setTimeout(swap, 260); } else swap();
   };
-  const openPlate = index => {
+  const openPlate = (index, list = null) => {
+    plateList = list;
     lastFocus = document.activeElement;
     show(index, false);
     plate.hidden = false;
@@ -459,16 +467,9 @@
   const emblem = document.getElementById('fishEmblematic');
   const signature = ['dorada', 'lubina', 'merluza-pijota'];
   const openPlateFor = id => {
-    let index = deck.findIndex(p => p.id === id);
-    if (index < 0) {
-      // the species is hidden by the current filters: show the whole catalogue again first
-      condition = 'all'; category = 'all'; search.value = '';
-      document.querySelectorAll('[data-fish-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fishFilter === 'all')));
-      document.querySelectorAll('[data-fish-category]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fishCategory === 'all')));
-      render();
-      index = deck.findIndex(p => p.id === id);
-    }
-    if (index >= 0) openPlate(index);
+    const list = sceneItems();
+    const index = list.findIndex(p => p.id === id);
+    if (index >= 0) openPlate(index, list);
   };
   // the signature trio as an editorial "index and plate": a vertical index of serif names on the left,
   // the photograph on the right, a gold thread under the active name that measures the time to the next one

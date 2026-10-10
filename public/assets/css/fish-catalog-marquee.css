@@ -499,3 +499,9 @@ html body .et-scene--index .et-scene__cta:hover span { color: #061829; transform
   .et-scene__side { bottom: auto; }
 }
 html body .et-scene .et-scene__image { max-width: none !important; }
+
+/* plate fits the screen: photo height follows the viewport */
+.et-plate__photo { aspect-ratio: auto; height: clamp(240px, 46vh, 480px); }
+.et-plate__info { padding: 34px 48px 36px; }
+html body .fish-catalog .et-plate__arrow { top: clamp(120px, 23vh, 240px); }
+@media (max-width: 900px) { .et-plate__photo { height: 260px; } html body .fish-catalog .et-plate__arrow { top: 130px; } .et-plate__info { padding: 26px 22px 30px; } }
