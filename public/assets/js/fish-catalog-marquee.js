@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-11';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-17';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -470,12 +470,12 @@
     }
     if (index >= 0) openPlate(index);
   };
-  // the signature trio is shown like the home page selection: a cinematic scene with tabs,
-  // a slow serif name ribbon, an editorial note and a facts ticker
-  const sceneImage = {dorada: '/assets/images/selection/selection-sea-2026.webp'};
-  let sceneIndex = 0, sceneTimer = 0, sceneHold = false;
+  // the signature trio as an editorial "index and plate": a vertical index of serif names on the left,
+  // the photograph on the right, a gold thread under the active name that measures the time to the next one
+  // scene photography for the signature trio (catalogue cards and plates keep the real product photos)
+  const sceneImage = {dorada: 'fish-dorada-2026', lubina: 'fish-lubina-2026', 'merluza-pijota': 'fish-merluza-2026'};
+  let sceneIndex = 0;
   const sceneItems = () => signature.map(id => allProducts.find(p => p.id === id)).filter(Boolean);
-  const nameRun = product => Array.from({length: 4}, (_, k) => `<span class="et-scene__word${k % 2 ? ' is-outline' : ''}">${esc(product.name)}</span><i class="et-scene__diamond"></i>`).join('');
   const factsRun = product => [localize(product.origin), product.faoZone, familyOf(product), stateOf(product), product.scientificName]
     .map(fact => `<span>${esc(fact)}</span><i></i>`).join('');
   const showScene = (index, user) => {
@@ -485,24 +485,24 @@
     sceneIndex = (index + items.length) % items.length;
     const product = items[sceneIndex], note = notes[product.id];
     scene.querySelectorAll('.et-scene__image').forEach((img, k) => img.classList.toggle('is-active', k === sceneIndex));
-    scene.querySelectorAll('.et-scene__tab').forEach((tab, k) => { tab.setAttribute('aria-selected', String(k === sceneIndex)); tab.tabIndex = k === sceneIndex ? 0 : -1; });
+    scene.querySelectorAll('.et-scene__tab').forEach((tab, k) => {
+      tab.setAttribute('aria-selected', String(k === sceneIndex));
+      tab.tabIndex = k === sceneIndex ? 0 : -1;
+      // restart the thread on the newly active name
+      const thread = tab.querySelector('.et-scene__thread');
+      thread.style.animation = 'none'; void thread.offsetWidth; thread.style.animation = '';
+    });
     scene.querySelector('.et-scene__count').textContent = `${pad(sceneIndex + 1)} / ${pad(items.length)}`;
     const panel = scene.querySelector('.et-scene__panel');
     panel.classList.add('is-changing');
     setTimeout(() => {
       panel.querySelector('.et-scene__label').textContent = `${familyOf(product)} · ${stateOf(product)}`;
       panel.querySelector('.et-scene__note').textContent = note ? note[0] : product.scientificName;
+      panel.querySelector('.et-scene__uses').innerHTML = note ? note[1].map(use => `<em>${esc(use)}</em>`).join('') : '';
       panel.querySelector('.et-scene__cta').dataset.id = product.id;
-      scene.querySelector('.et-scene__names').innerHTML = `<div class="et-scene__run">${nameRun(product)}</div><div class="et-scene__run" aria-hidden="true">${nameRun(product)}</div>`;
       scene.querySelector('.et-scene__facts').innerHTML = `<div class="et-scene__run">${factsRun(product)}${factsRun(product)}</div><div class="et-scene__run" aria-hidden="true">${factsRun(product)}${factsRun(product)}</div>`;
       panel.classList.remove('is-changing');
     }, user ? 180 : 260);
-    if (user) restartScene();
-  };
-  const restartScene = () => {
-    clearInterval(sceneTimer);
-    if (reduced()) return;
-    sceneTimer = setInterval(() => { if (!sceneHold && !document.hidden) showScene(sceneIndex + 1, false); }, 7000);
   };
   const paintSelection = () => {
     if (!emblem) return;
@@ -510,7 +510,7 @@
     let scene = emblem.querySelector('.et-scene');
     if (!scene) {
       scene = document.createElement('div');
-      scene.className = 'et-scene';
+      scene.className = 'et-scene et-scene--index';
       (emblem.querySelector('.fish-emblematic__grid') || emblem.querySelector('.fish-emblematic__intro')).insertAdjacentElement('afterend', scene);
       scene.addEventListener('click', event => {
         const tab = event.target.closest('.et-scene__tab');
@@ -519,25 +519,30 @@
         if (cta) openPlateFor(cta.dataset.id);
       });
       scene.addEventListener('keydown', event => {
-        if (!event.target.closest('.et-scene__tab') || !['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
+        if (!event.target.closest('.et-scene__tab') || !['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) return;
         event.preventDefault();
-        showScene(sceneIndex + (event.key === 'ArrowRight' ? 1 : -1), true);
+        showScene(sceneIndex + (['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1), true);
         scene.querySelector('.et-scene__tab[aria-selected="true"]')?.focus();
       });
-      scene.addEventListener('mouseenter', () => { sceneHold = true; });
-      scene.addEventListener('mouseleave', () => { sceneHold = false; });
-      scene.addEventListener('focusin', () => { sceneHold = true; });
-      scene.addEventListener('focusout', event => { if (!scene.contains(event.relatedTarget)) sceneHold = false; });
+      // the thread pauses while the visitor is reading; when it completes, the next species comes in
+      const hold = on => scene.classList.toggle('is-held', on);
+      scene.addEventListener('mouseenter', () => hold(true));
+      scene.addEventListener('mouseleave', () => hold(false));
+      scene.addEventListener('focusin', () => hold(true));
+      scene.addEventListener('focusout', event => { if (!scene.contains(event.relatedTarget)) hold(false); });
+      // the thread's own animation (not its ::after fill) marks the end of a turn
+      scene.addEventListener('animationend', event => { if (event.animationName === 'et-thread' && !event.pseudoElement) showScene(sceneIndex + 1, false); });
+      document.addEventListener('visibilitychange', () => scene.classList.toggle('is-hidden-tab', document.hidden));
     }
-    scene.innerHTML = `<div class="et-scene__images" aria-hidden="true">${items.map((p, k) => { const src = sceneImage[p.id] || (imageMap[p.id] || [])[0] || ''; return src ? `<img class="et-scene__image${k === 0 ? ' is-active' : ''}" data-id="${esc(p.id)}" src="${esc(src)}" alt="" draggable="false">` : ''; }).join('')}</div>`
+    scene.innerHTML = `<div class="et-scene__images" aria-hidden="true">${items.map((p, k) => { const name = sceneImage[p.id], dir = '/assets/images/selection/'; const src = name ? dir + name + '.webp' : (imageMap[p.id] || [])[0] || ''; const set = name ? ` srcset="${dir}${name}-1000.webp 1000w, ${dir}${name}.webp 1536w" sizes="(max-width: 900px) 100vw, 1300px"` : ''; return src ? `<img class="et-scene__image${k === 0 ? ' is-active' : ''}" data-id="${esc(p.id)}" src="${esc(src)}"${set} alt="" draggable="false">` : ''; }).join('')}</div>`
       + `<div class="et-scene__shade" aria-hidden="true"></div>`
-      + `<div class="et-scene__folio"><span>EMPERIO TISS / SELECCIÓN EMBLEMÁTICA</span><span class="et-scene__count">01 / ${pad(items.length)}</span></div>`
-      + `<div class="et-scene__tabs" role="tablist" aria-label="Selección emblemática">${items.map((p, k) => `<button class="et-scene__tab" type="button" role="tab" data-index="${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><span>${pad(k + 1)}</span><strong>${esc(p.name)}</strong><small>${esc(p.scientificName)}</small></button>`).join('')}</div>`
-      + `<div class="et-scene__names" aria-hidden="true"></div>`
-      + `<div class="et-scene__panel"><span class="et-scene__label"></span><p class="et-scene__note"></p><button class="et-scene__cta" type="button">Ver ficha completa <span aria-hidden="true">↗</span></button></div>`
+      + `<div class="et-scene__folio"><span>Selección emblemática</span><span class="et-scene__count">01 / ${pad(items.length)}</span></div>`
+      + `<div class="et-scene__side">`
+      + `<div class="et-scene__tabs" role="tablist" aria-orientation="vertical" aria-label="Selección emblemática">${items.map((p, k) => `<button class="et-scene__tab" type="button" role="tab" data-index="${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><strong>${esc(p.name)}</strong><small>${esc(p.scientificName)}</small><i class="et-scene__thread" aria-hidden="true"></i></button>`).join('')}</div>`
+      + `<div class="et-scene__panel"><span class="et-scene__label"></span><p class="et-scene__note"></p><p class="et-scene__uses"></p><button class="et-scene__cta" type="button">Ver ficha completa <span aria-hidden="true">→</span></button></div>`
+      + `</div>`
       + `<div class="et-scene__facts" aria-hidden="true"></div>`;
     showScene(0, false);
-    restartScene();
   };
 
   const json = url => fetch(url, {cache:'no-cache'}).then(response => response.ok ? response.json() : {}).catch(() => ({}));
