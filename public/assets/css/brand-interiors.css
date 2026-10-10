@@ -1189,5 +1189,5 @@ html[lang] body:not(.home-experience):not(.private-page):not(.private-admin-page
 html[lang] body:not(.home-experience):not(.private-page):not(.private-admin-page) nav.seafood-category-nav .seafood-category-nav__links a:is(.is-active, [aria-current="page"])::after { opacity: 1 !important; transform: scaleX(1) !important; }
 
 /* contrast (WCAG AA): catalogue intros and the operation-flow eyebrow */
-html:not([data-et-theme="dark"]) body:not(.home-experience) :is(.catalog-head, .seafood-catalog__head) > p { color: #565f68 !important; }
-html body .et-operation-flow .et-operation-flow__eyebrow { color: #a3acb4 !important; }
+html:not([data-et-theme="dark"]) body:not(.home-experience):not(.private-page):not(.private-admin-page) :is(.catalog-head, .seafood-catalog__head) > p { color: #565f68 !important; }
+html body:not(.home-experience):not(.private-page):not(.private-admin-page) .et-operation-flow .et-operation-flow__eyebrow { color: #a3acb4 !important; }
