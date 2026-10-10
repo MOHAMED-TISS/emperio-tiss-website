@@ -10,12 +10,12 @@
   const doc = document, root = doc.documentElement;
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const rtl = lang === 'ar' || root.dir === 'rtl';
-  const VERSION = '20261010-8';
+  const VERSION = '20261010-9';
 
   // hide the original grids until the showcase is ready; show them again if no data ever arrives
   root.classList.add('et-show-on');
   const early = doc.createElement('style');
-  early.textContent = 'html.et-show-on :is(#fishCatalogGrid,.seafood-catalog-grid,.market-catalogue__grid,#compactCatalogGrid,#fruitCatalog){visibility:hidden;min-height:60vh}';
+  early.textContent = 'html.et-show-on :is(#fishCatalogGrid,.seafood-catalog-grid,.market-catalogue__grid,#compactCatalogGrid,#fruitCatalog,#vegetableCatalog){visibility:hidden;min-height:60vh}';
   doc.head.appendChild(early);
   const fallback = setTimeout(() => root.classList.remove('et-show-on'), 5000);
 
@@ -119,7 +119,7 @@
   const build = detail => {
     doc.querySelectorAll('.et-show').forEach(el => el.remove());
     const wrap = doc.createElement('div');
-    wrap.className = detail.layout === 'grid' ? 'et-show et-show--grid' : 'et-show';
+    wrap.className = (detail.layout === 'grid' ? 'et-show et-show--grid' : 'et-show') + (detail.tone === 'white' ? ' et-show--white' : '');
     if (rtl) wrap.setAttribute('dir', 'rtl');
     wrap.innerHTML = `<div class="et-show__toolbar"><input class="et-show__search" type="search" placeholder="${esc(ui.search)}" aria-label="${esc(ui.search)}"><p class="et-show__count" aria-live="polite"></p></div>`
       + `<div class="et-show__filters"></div><div class="et-show__stage"></div>`;
@@ -200,8 +200,9 @@
     if (!deck.length) { stage.innerHTML = `<p class="et-show__empty">${esc(ui.none)}</p>`; return; }
     const card = (item, i) => {
       const thumb = item.thumb || (item.images || [])[0];
+      const pair = item.thumbDark ? ` class="et-tile__img--light"` : '';
       return `<button class="et-tile" type="button" data-index="${i}" aria-label="${esc(item.name)}">`
-        + `<span class="et-tile__photo">${thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy" decoding="async" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>'}</span>`
+        + `<span class="et-tile__photo">${thumb ? `<img${pair} src="${esc(thumb)}" alt="" loading="lazy" decoding="async" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>'}${item.thumbDark ? `<img class="et-tile__img--dark" src="${esc(item.thumbDark)}" alt="" loading="lazy" decoding="async" draggable="false">` : ''}</span>`
         + `<span class="et-tile__body"><b>${esc(item.name)}</b>${item.scientificName ? `<i>${esc(item.scientificName)}</i>` : ''}${item.origin ? `<em>${esc(item.origin)}</em>` : ''}</span></button>`;
     };
     const indexed = deck.map((item, i) => [item, i]);
@@ -357,9 +358,17 @@
     }, {passive: true});
   };
   const plateDeck = () => plateList || deck;
+  const calendarHtml = cal => {
+    if (!cal || !(cal.rows || []).length) return '';
+    const months = cal.months || [];
+    return `<div class="et-cal"><p class="et-cal__title">${esc(cal.title || '')}</p>`
+      + cal.rows.map(([label, levels]) => `<div class="et-cal__row"><span class="et-cal__origin">${esc(label)}</span><ol>${months.map((m, k) => `<li class="et-cal__m lv-${Number(levels[k] || 0)}" title="${esc(m)}"><span>${esc(m)}</span></li>`).join('')}</ol></div>`).join('')
+      + `<p class="et-cal__legend">${(cal.legend || []).map(([lv, text]) => `<span><i class="lv-${lv}"></i>${esc(text)}</span>`).join('')}</p>${cal.note ? `<p class="et-cal__note">${esc(cal.note)}</p>` : ''}</div>`;
+  };
   const plateHtml = item => {
     const hero = plateList && SCENE_IMAGE[item.id] ? `/assets/images/selection/${SCENE_IMAGE[item.id]}.webp` : '';
-    const images = hero ? [hero, ...(item.images || [])] : (item.images || []);
+    const themed = root.dataset.etTheme === 'dark' && (item.imagesDark || []).length ? item.imagesDark : (item.images || []);
+    const images = hero ? [hero, ...themed] : themed;
     const ref = refMap[item.id] || '';
     return `<article class="fish-catalog-card et-plate__card" data-product-id="${esc(item.id)}"${ref ? ` data-product-reference="${esc(ref)}"` : ''}>`
       + `<div class="et-plate__photo" data-images='${esc(JSON.stringify(images))}' role="button" tabindex="0" aria-label="${esc(`${ui.view} ${item.name}`)}">`
@@ -370,7 +379,7 @@
       + (item.note ? `<p class="et-plate__story">${esc(item.note)}</p>` : '')
       + `</div><div class="et-plate__side"><dl class="et-plate__facts">${rows([[ui.state, stateOf(item)], [ui.origin, item.origin], [ui.fao, item.fao]])}</dl>`
       + '<div class="et-fish-card__sheet et-plate__actions"></div>'
-      + ((item.specs || []).length ? `<details class="et-plate__more"><summary>${esc(ui.sheet)}</summary><dl class="et-fish-card__specs et-plate__specs">${rows(item.specs)}</dl></details>` : '')
+        + ((item.specs || []).length || item.calendar ? `<details class="et-plate__more"><summary>${esc(ui.sheet)}</summary>${(item.specs || []).length ? `<dl class="et-fish-card__specs et-plate__specs">${rows(item.specs)}</dl>` : ''}${calendarHtml(item.calendar)}</details>` : '')
       + '</div></div></article>';
   };
   const showPlate = (index, animate) => {

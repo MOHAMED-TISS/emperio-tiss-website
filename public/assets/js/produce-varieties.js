@@ -196,6 +196,45 @@
     bindAvailability();
   }
 
+  // vegetables: the shared showcase draws the catalogue as a grid by family (where the page loads it)
+  const VEG_GROUPS = {
+    tomatoes: { es: 'Tomates', en: 'Tomatoes', fr: 'Tomates', it: 'Pomodori', ar: 'الطماطم' },
+    fruiting: { es: 'Hortalizas de fruto', en: 'Fruiting vegetables', fr: 'Légumes-fruits', it: 'Ortaggi da frutto', ar: 'خضروات ثمرية' },
+    brassicas: { es: 'Coles', en: 'Brassicas', fr: 'Choux', it: 'Cavoli', ar: 'الملفوفيات' },
+    roots: { es: 'Tubérculos y bulbos', en: 'Tubers and bulbs', fr: 'Tubercules et bulbes', it: 'Tuberi e bulbi', ar: 'الدرنات والبصليات' }
+  };
+  const ALL_VEG = { es: 'Todas las hortalizas', en: 'All vegetables', fr: 'Tous les légumes', it: 'Tutti gli ortaggi', ar: 'كل الخضروات' };
+  const CALIBRE = { es: 'Calibre', en: 'Calibre', fr: 'Calibre', it: 'Calibro', ar: 'المقاس' };
+  const VALUE = {
+    en: { 'España': 'Spain', 'Marruecos': 'Morocco', 'Según especificación del comprador': 'According to buyer specification' },
+    fr: { 'España': 'Espagne', 'Marruecos': 'Maroc', 'Según especificación del comprador': 'Selon la spécification de l’acheteur' },
+    it: { 'España': 'Spagna', 'Marruecos': 'Marocco', 'Según especificación del comprador': 'Secondo le specifiche dell’acquirente' },
+    ar: { 'España': 'إسبانيا', 'Marruecos': 'المغرب', 'Según especificación del comprador': 'حسب مواصفات المشتري' }
+  }[lang] || {};
+  const localValue = value => String(Array.isArray(value) ? value[0] || '' : value || '').split(' / ').map(part => VALUE[part.trim()] || part.trim()).join(' / ');
+  function publishShowcase(all, marketRank, names) {
+    const target = document.querySelector('[data-catalog-family="produce"][data-catalog-subcategories="vegetables"]');
+    if (!target || !document.querySelector('script[src*="seafood-showcase"]')) return;
+    const host = target.parentElement;
+    const keys = Object.keys(VEG_GROUPS);
+    const vegs = all.filter(p => p.family === 'produce' && p.subcategory === 'vegetables' && p.status === 'active' && p.group)
+      .sort((a, b) => keys.indexOf(a.group) - keys.indexOf(b.group) || marketRank(a) - marketRank(b));
+    const groupName = key => (VEG_GROUPS[key] || {})[lang] || (VEG_GROUPS[key] || {}).es || key;
+    const detail = {
+      priority: 1, lang, category: 'vegetables', layout: 'grid', tone: 'white', host, after: host.querySelector('.catalog-head'), hide: [target],
+      labels: { allGroups: ALL_VEG[lang] || ALL_VEG.es },
+      items: vegs.map(p => ({
+        id: p.id, name: names?.[p.id]?.[lang] || p.commercialName, scientificName: p.scientificName || '',
+        group: p.group, groupLabel: groupName(p.group), family: groupName(p.group), states: ['fresh'], origin: localValue(p.origin), reference: p.reference || '',
+        images: p.images || (p.image ? [p.image] : []), imagesDark: p.imagesDark || [], thumb: p.thumb || p.image || '', thumbDark: p.thumbDark || '',
+        specs: [[labels[lang] || labels.es, (p.varieties || []).join(' · ')], [CALIBRE[lang] || CALIBRE.es, localValue(p.calibre)]].filter(([, v]) => v),
+        calendar: p.availability ? { title: av.trigger, months: monthLabels, rows: [[av.spain, p.availability.spain || []], [av.morocco, p.availability.morocco || []]], legend: [[3, av.high], [2, av.medium], [1, av.limited]], note: av.legend } : null
+      }))
+    };
+    (window.__etShowcaseQueue = window.__etShowcaseQueue || []).push(detail);
+    document.dispatchEvent(new CustomEvent('et:showcase', { detail }));
+  }
+
   async function init() {
     if (!document.body.classList.contains('produce-page')) return;
     ensureAvailabilityStyles();
@@ -226,7 +265,8 @@
       const all = [...merged, ...additions];
       // products follow consumption in this language's market
       const marketLang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
-      const marketPriority = (await fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))).priority || {};
+      const marketData = await fetch('/assets/data/catalogue-market-priority.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+      const marketPriority = marketData.priority || {};
       const marketRank = product => { const order = marketPriority[`${product.family}/${product.subcategory}`]?.[marketLang] || []; const index = order.indexOf(product.id); return index < 0 ? order.length : index; };
       window.__ET_CATALOG_PRODUCTS = all;
       document.querySelectorAll('[data-catalog-family="produce"]').forEach(target => {
@@ -239,6 +279,7 @@
           .EMPERIO_TISS_CATALOG.card(product)).join('') : target.innerHTML;
       });
       enrichCards(all, additions);
+      publishShowcase(all, marketRank, marketData.names || {});
       document.documentElement.dataset.produceVarietiesReady = 'true';
     } catch (error) {
       console.error('[EMPERIO TISS] Produce varieties failed:', error);

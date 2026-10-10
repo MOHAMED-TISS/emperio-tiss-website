@@ -666,3 +666,59 @@ html[data-et-theme]:not([data-et-theme="dark"]) body .et-show .et-plate article.
 }
 @media (max-width: 900px) { html:not([data-et-theme="dark"]) .et-plate__backdrop::before { inset: 10px; } }
 @media (prefers-reduced-motion: reduce) { html:not([data-et-theme="dark"]) .et-plate__backdrop::before { transition: none; } }
+
+/* ===== photos per theme (vegetables): white set in the light theme, dark set in the dark theme ===== */
+.et-tile__img--dark { display: none; }
+html[data-et-theme="dark"] .et-tile__img--light { display: none; }
+html[data-et-theme="dark"] .et-tile__img--dark { display: block; }
+html:not([data-et-theme="dark"]) .et-show--white .et-tile__photo { background: #fff; box-shadow: 0 0 0 1px rgba(20, 19, 16, .07), 0 22px 40px -32px rgba(20, 19, 16, .45); }
+html:not([data-et-theme="dark"]) .et-show--white .et-tile:hover .et-tile__photo img { filter: none; }
+html:not([data-et-theme="dark"]) .et-show--white .et-plate__photo { background: #fff; }
+html:not([data-et-theme="dark"]) .et-show--white .et-plate__photo::before { background: none; }
+
+/* availability calendar in the technical sheet */
+.et-cal { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(214, 180, 124, .22); }
+html body .et-show .et-cal__title { margin: 0 0 10px !important; color: var(--mq-gold) !important; font: 600 9.5px/1.2 'DM Sans', sans-serif !important; letter-spacing: .22em !important; text-transform: uppercase !important; }
+.et-cal__row { display: grid; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 10px; margin-top: 6px; }
+html body .et-show .et-cal__origin { color: rgba(243, 239, 230, .85); font: 500 12px/1.2 'DM Sans', sans-serif; }
+.et-cal__row ol { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3px; margin: 0; padding: 0; list-style: none; }
+.et-cal__m { display: grid; place-items: center; height: 24px; border-radius: 2px; background: rgba(214, 180, 124, .06); border: 1px solid rgba(214, 180, 124, .16); }
+.et-cal__m span { color: rgba(243, 239, 230, .55); font: 600 8px/1 'DM Sans', sans-serif; letter-spacing: .04em; }
+.et-cal__m.lv-1 { background: rgba(214, 180, 124, .22); }
+.et-cal__m.lv-2 { background: rgba(214, 180, 124, .5); }
+.et-cal__m.lv-3 { background: linear-gradient(135deg, #e2c48f, #b98e52); border-color: transparent; }
+.et-cal__m.lv-2 span, .et-cal__m.lv-3 span { color: #141310; }
+html body .et-show .et-cal__legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 10px 0 0 !important; color: rgba(243, 239, 230, .6); font: 500 10.5px/1.2 'DM Sans', sans-serif; }
+.et-cal__legend span { display: inline-flex; align-items: center; gap: 6px; }
+.et-cal__legend i { width: 12px; height: 8px; border-radius: 1px; border: 1px solid rgba(214, 180, 124, .3); }
+.et-cal__legend i.lv-3 { background: #c9a468; } .et-cal__legend i.lv-2 { background: rgba(214, 180, 124, .5); } .et-cal__legend i.lv-1 { background: rgba(214, 180, 124, .22); }
+html body .et-show .et-cal__note { margin: 8px 0 0 !important; color: rgba(243, 239, 230, .5); font: italic 400 11px/1.4 'Playfair Display', Georgia, serif; }
+/* light theme plate is ivory: ink tones for the calendar */
+html:not([data-et-theme="dark"]) body .et-show .et-cal__origin { color: #141310; }
+html:not([data-et-theme="dark"]) .et-cal__m span { color: rgba(20, 19, 16, .5); }
+html:not([data-et-theme="dark"]) .et-cal__m { background: rgba(156, 119, 64, .05); border-color: rgba(156, 119, 64, .2); }
+html:not([data-et-theme="dark"]) body .et-show :is(.et-cal__legend, .et-cal__note) { color: rgba(20, 19, 16, .6); }
+html:not([data-et-theme="dark"]) body .et-show .et-cal__title { color: #9c7740 !important; }
+@media (max-width: 600px) { .et-cal__row { grid-template-columns: 1fr; gap: 4px; } .et-cal__m { height: 20px; } }
+html:not([data-et-theme="dark"]) .et-cal__m.lv-1 { background: rgba(185, 142, 82, .2); }
+html:not([data-et-theme="dark"]) .et-cal__m.lv-2 { background: rgba(185, 142, 82, .48); border-color: rgba(185, 142, 82, .4); }
+html:not([data-et-theme="dark"]) .et-cal__m.lv-3 { background: linear-gradient(135deg, #d9b97f, #a8803f); border-color: transparent; }
+html:not([data-et-theme="dark"]) .et-cal__m:is(.lv-2, .lv-3) span { color: #141310; }
+html:not([data-et-theme="dark"]) .et-cal__m.lv-3 span { color: #fff; }
+/* calendar contrast (WCAG AA): month initials and note readable on every level, both themes */
+.et-cal__m span { font-size: 9px; }
+html[data-et-theme="dark"] .et-cal__m span { color: rgba(243, 239, 230, .86); }
+html[data-et-theme="dark"] .et-cal__m.lv-2 span { color: #fffaf0; }
+html[data-et-theme="dark"] .et-cal__m.lv-3 span { color: #141310; }
+html[data-et-theme="dark"] body .et-show .et-cal__note { color: rgba(243, 239, 230, .72); }
+html[data-et-theme="dark"] body .et-show .et-cal__legend { color: rgba(243, 239, 230, .78); }
+
+/* light theme contrast (WCAG AA): small gold text uses a deeper gold on ivory */
+html:not([data-et-theme="dark"]) :is(.et-show, #fishEmblematic) { --mq-gold-deep: #86632e; }
+html:not([data-et-theme="dark"]) body .et-show-head :is(.et-show-head__kicker, h2 em) { color: #86632e; }
+html:not([data-et-theme="dark"]) body #fishEmblematic .fish-emblematic__intro :is(.eyebrow, h2 em) { color: #86632e !important; }
+html:not([data-et-theme="dark"]) body .et-show :is(.et-plate__kicker, .et-plate__latin, .et-cal__title) { color: #86632e !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate :is(.et-plate__facts, .et-plate__specs) dt { color: #86632e !important; }
+html:not([data-et-theme="dark"]) .et-cal__m span { color: rgba(20, 19, 16, .78); }
+html:not([data-et-theme="dark"]) .et-cal__m.lv-3 span { color: #141310; }
+html:not([data-et-theme="dark"]) body .et-show :is(.et-cal__legend, .et-cal__note) { color: rgba(20, 19, 16, .72); }
