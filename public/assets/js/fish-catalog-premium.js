@@ -172,7 +172,7 @@
   if (!document.querySelector('link[data-fish-premium]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/fish-catalog-premium.css?v=20261010-book-3';
+    css.href = '/assets/css/fish-catalog-premium.css?v=20261010-book-7';
     css.dataset.fishPremium = 'true';
     document.head.appendChild(css);
   }
@@ -221,7 +221,7 @@
     const note = notes[product.id];
     const nav = images.length > 1 ? `<button class="et-fish-card__nav et-fish-card__nav--prev" type="button" aria-label="Previous image">‹</button><button class="et-fish-card__nav et-fish-card__nav--next" type="button" aria-label="Next image">›</button><span class="et-fish-card__counter">1 / ${images.length}</span>` : '';
     return `<article class="fish-catalog-card et-spread ${turn}" data-product-id="${esc(product.id)}"${reference ? ` data-product-reference="${esc(reference)}"` : ''}>`
-      + `<div class="et-spread__page et-spread__page--photo"><div class="et-fish-card__media" data-images='${esc(JSON.stringify(images))}' data-image-index="0" tabindex="0" role="button" aria-label="${esc(`${viewImages} ${product.name}`)}">${image ? `<img src="${esc(image)}" alt="${esc(product.name)}" draggable="false">` : '<span class="et-spread__placeholder">EMPERIO TISS</span>'}${nav}</div>`
+      + `<div class="et-spread__page et-spread__page--photo"><div class="et-fish-card__media" data-images='${esc(JSON.stringify(images))}' data-image-index="0" tabindex="0" role="button" aria-label="${esc(`${viewImages} ${product.name}`)}">${image ? `<img class="et-spread__bg" src="${esc(image)}" alt="" aria-hidden="true" draggable="false"><img class="et-spread__img" src="${esc(image)}" alt="${esc(product.name)}" draggable="false">` : '<span class="et-spread__placeholder">EMPERIO TISS</span>'}${nav}</div>`
       + `<div class="et-spread__frame" aria-hidden="true"></div><div class="et-spread__cover"><span class="et-spread__numeral" aria-hidden="true">${number}</span><p class="et-spread__eyebrow">${esc(stateOf(product))}</p></div></div>`
       + `<div class="et-spread__page et-spread__page--text"><div class="et-spread__head"><span>EMPERIO TISS</span><span>${esc(book.name)}</span></div>`
       + `<p class="et-spread__kicker">${esc(book.no)} ${number} — ${esc(familyOf(product))}</p><div class="et-fish-card__name et-spread__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-spread__latin">${esc(product.scientificName)}</p><span class="et-spread__rule" aria-hidden="true"></span>`
@@ -242,11 +242,11 @@
     page = Math.min(Math.max(page, 0), deck.length - 1);
     const stage = grid.querySelector('.et-book__stage');
     if (full || !stage) {
-      grid.innerHTML = `<div class="et-book"><div class="et-book__stage">${spread(deck[page], page)}</div>`
-        + `<div class="et-book__bar"><button class="et-book__arrow" type="button" data-dir="-1" aria-label="${esc(book.prev)}">${arrowIcon(-1)}</button><span class="et-book__count"></span><button class="et-book__arrow" type="button" data-dir="1" aria-label="${esc(book.next)}">${arrowIcon(1)}</button></div>`
+      grid.innerHTML = `<div class="et-book"><div class="et-book__stage"><button class="et-book__arrow et-book__arrow--prev" type="button" data-dir="-1" aria-label="${esc(book.prev)}">${arrowIcon(-1)}</button>${spread(deck[page], page)}<button class="et-book__arrow et-book__arrow--next" type="button" data-dir="1" aria-label="${esc(book.next)}">${arrowIcon(1)}</button></div>`
+        + `<div class="et-book__bar"><span class="et-book__count"></span></div>`
         + `<nav class="et-book__index" aria-label="${esc(book.index)}">${deck.map((p, i) => { const thumb = (imageMap[p.id] || [])[0]; return `<button class="et-book__tab" type="button" data-page="${i}"><i>${thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy" draggable="false">` : ''}</i><span>${pad(i + 1)}</span><b>${esc(p.name)}</b></button>`; }).join('')}</nav></div>`;
     } else {
-      stage.innerHTML = spread(deck[page], page);
+      stage.querySelector('.et-spread').outerHTML = spread(deck[page], page);
     }
     grid.querySelector('.et-book__count').innerHTML = `<b>${pad(page + 1)}</b> / ${pad(deck.length)}`;
     grid.querySelectorAll('.et-book__arrow').forEach(arrow => { arrow.disabled = arrow.dataset.dir === '-1' ? page === 0 : page === deck.length - 1; });
@@ -314,12 +314,12 @@
     if (nav) {
       const media = nav.closest('.et-fish-card__media');
       const images = readImages(media);
-      const image = media.querySelector('img');
-      if (!images.length || !image) return;
+      const pictures = media.querySelectorAll('img');
+      if (!images.length || !pictures.length) return;
       const current = Number.parseInt(media.dataset.imageIndex || '0', 10) || 0;
       const next = (current + (nav.classList.contains('et-fish-card__nav--next') ? 1 : -1) + images.length) % images.length;
       media.dataset.imageIndex = String(next);
-      image.src = images[next];
+      pictures.forEach(picture => { picture.src = images[next]; });
       const counter = media.querySelector('.et-fish-card__counter');
       if (counter) counter.textContent = `${next + 1} / ${images.length}`;
       event.preventDefault();
