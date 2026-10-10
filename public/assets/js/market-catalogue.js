@@ -117,8 +117,8 @@
       eyebrow: 'كتالوج المنتجات',
       title: {
         fish: 'الأسماك',
-        shellfish: 'القشريات',
-        cephalopods: 'الرخويات',
+        shellfish: 'القشريات والرخويات',
+        cephalopods: 'رأسيات الأرجل',
         fruits: 'الفواكه',
         vegetables: 'الخضروات'
       },
@@ -422,7 +422,10 @@
       `<div class="market-catalogue__inner"><div class="market-catalogue__head"><div><p class="market-catalogue__eyebrow">${labels.eyebrow} / ${String(products.length || 0).padStart(2, '0')}</p><h2 class="market-catalogue__title">${esc(title)}<br><em>${esc(labels.suffix)}</em></h2></div><p class="market-catalogue__intro">${esc(labels.intro)}</p></div><div class="market-catalogue__context"><span class="market-catalogue__tag">${esc(marketName)}</span><span class="market-catalogue__tag">${esc(subcategory)}</span></div><div class="market-catalogue__toolbar"><input class="market-catalogue__search" type="search" placeholder="${esc(labels.search)}" aria-label="${esc(labels.search)}"><p class="market-catalogue__count"></p></div><div class="market-catalogue__filters"><button class="market-catalogue__filter" data-state="all" aria-pressed="true">${labels.all}</button><button class="market-catalogue__filter" data-state="fresh" aria-pressed="false">${labels.fresh}</button><button class="market-catalogue__filter" data-state="frozen" aria-pressed="false">${labels.frozen}</button></div><div class="market-catalogue__grid" aria-live="polite"></div></div>`;
     const main = document.querySelector('main');
     const anchor = main?.querySelector('.fish-emblematic,.cta,.ar-cta') || null;
+    // the catalogue always comes before the closing operation block
+    const flow = main?.querySelector(':scope > .et-operation-flow');
     if (anchor) anchor.insertAdjacentElement('afterend', section);
+    else if (flow) flow.insertAdjacentElement('beforebegin', section);
     else main?.appendChild(section);
     if (!main) return;
     const grid = section.querySelector('.market-catalogue__grid'),

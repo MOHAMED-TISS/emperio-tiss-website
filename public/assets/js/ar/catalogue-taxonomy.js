@@ -2,7 +2,7 @@
   'use strict';
   if ((document.documentElement.lang || '').slice(0, 2).toLowerCase() !== 'ar') return;
   const path = (location.pathname || '/').replace(/\/+/g, '/');
-  const expected = path.includes('/seafood/shellfish/') ? 'الرخويات' : path.includes('/seafood/cephalopods/') ? 'رأسيات الأرجل' : null;
+  const expected = path.includes('/seafood/shellfish/') ? 'القشريات والرخويات' : path.includes('/seafood/cephalopods/') ? 'رأسيات الأرجل' : null;
   if (!expected) return;
   const patch = () => {
     document.querySelectorAll('.market-catalogue__title').forEach((title) => {

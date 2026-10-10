@@ -523,3 +523,8 @@ html body .et-viewer .et-viewer__btn[hidden] { display: none; }
 /* floating buttons step aside while a plate or the photo viewer is open */
 html.et-plate-open :is(.et-whatsapp-assistant, .et-cookie-manage) { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
 .et-plate__photo[data-images="[]"] { cursor: default; }
+/* Arabic selection: same composition as the other languages, text written right to left */
+html[lang="ar"] .et-scene :is(.et-scene__tab strong, .et-scene__label, .et-scene__note, .et-scene__cta, .et-scene__folio > span:first-child) { direction: rtl; unicode-bidi: isolate; }
+html[lang="ar"] .et-scene :is(.et-scene__tab, .et-scene__panel) { text-align: right; }
+html[lang="ar"] .et-scene .et-scene__tab strong, html[lang="ar"] .et-scene .et-scene__tab small { display: block; }
+html[lang="ar"] .et-scene .et-scene__cta { margin-inline-start: auto; }

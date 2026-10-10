@@ -29,7 +29,7 @@
       home: 'Accueil', company: 'Notre approche', products: 'Produits', seafood: 'Produits de la mer', fish: 'Poissons', shellfish: 'Fruits de mer & Crustacés', cephalopods: 'Céphalopodes', fruits: 'Fruits', vegetables: 'Légumes', seasonal: 'Saison', markets: 'Marchés', news: 'Actualités', contact: 'Contact', open: 'Ouvrir le menu', close: 'Fermer le menu'
     },
     ar: {
-      home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', seafood: 'المأكولات البحرية', fish: 'الأسماك', shellfish: 'الرخويات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'المنتجات الموسمية', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا', open: 'فتح القائمة', close: 'إغلاق القائمة'
+      home: 'الرئيسية', company: 'الشركة', products: 'المنتجات', seafood: 'المأكولات البحرية', fish: 'الأسماك', shellfish: 'القشريات والرخويات', cephalopods: 'رأسيات الأرجل', fruits: 'الفواكه', vegetables: 'الخضروات', seasonal: 'المنتجات الموسمية', markets: 'الأسواق', news: 'الأخبار', contact: 'اتصل بنا', open: 'فتح القائمة', close: 'إغلاق القائمة'
     },
     it: {
       home: 'Home', company: 'La nostra proposta', products: 'Prodotti', seafood: 'Prodotti del mare', fish: 'Pesce', shellfish: 'Molluschi & crostacei', cephalopods: 'Cefalopodi', fruits: 'Frutta', vegetables: 'Ortaggi', seasonal: 'Stagionale', markets: 'Mercati', news: 'Notizie', contact: 'Contatti', open: 'Apri il menu', close: 'Chiudi il menu'

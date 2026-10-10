@@ -84,7 +84,7 @@
   }
 
   if (['en', 'fr', 'ar', 'it'].includes(lang) && !document.body.classList.contains('home-experience')) {
-    loadScript('/assets/js/international-shell.js?v=20261003-terminal-footer-fix-1', 'etInternationalShell');
+    loadScript('/assets/js/international-shell.js?v=20261010-ar-heroes', 'etInternationalShell');
   }
 
   // Public interior brand layer must sit after legacy page CSS so the approved Home identity wins the cascade.
@@ -224,7 +224,7 @@
   loadScript('/assets/js/header-universal.js?v=20261009-eth-7', 'etUniversalHomeHeader');
   loadScript('/assets/js/theme-mode.js?v=20261004-3', 'etThemeModeScript');
   loadScript('/assets/js/language-dropdown.js?v=20260825-flags-1', 'etLanguageDropdown');
-  loadScript('/assets/js/global-core.js?v=20261006-liquid-universal-11', 'etGlobalCore');
+  loadScript('/assets/js/global-core.js?v=20261010-ar-heroes', 'etGlobalCore');
   loadScript('/assets/js/commercial-flow.js?v=20260928-es-set-1', 'etCommercialFlow');
   if (isProductPath) {
     loadScript('/assets/js/catalog-polish.js?v=20260926-product-only', 'etCatalogPolish');

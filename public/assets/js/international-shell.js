@@ -31,7 +31,7 @@
       products: 'المنتجات',
       seafood: 'المأكولات البحرية',
       fish: 'الأسماك',
-      shellfish: 'الرخويات',
+      shellfish: 'القشريات والرخويات',
       cephalopods: 'رأسيات الأرجل',
       fruits: 'الفواكه',
       vegetables: 'الخضروات',
@@ -98,14 +98,14 @@
   if (marketCataloguePath) {
     if (!doc.querySelector('script[data-etMarketCatalogueShell]')) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/market-catalogue-shell.js?v=20260922-shell';
+      script.src = '/assets/js/market-catalogue-shell.js?v=20261010-ar-heroes';
       script.async = false;
       script.dataset.etMarketCatalogueShell = 'true';
       doc.head.appendChild(script);
     }
     if (!doc.querySelector('script[data-etMarketCatalogue]')) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/market-catalogue.js?v=20261010-showcase';
+      script.src = '/assets/js/market-catalogue.js?v=20261010-ar-heroes';
       script.async = false;
       script.dataset.etMarketCatalogue = 'true';
       doc.head.appendChild(script);

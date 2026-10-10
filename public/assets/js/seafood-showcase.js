@@ -10,7 +10,7 @@
   const doc = document, root = doc.documentElement;
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const rtl = lang === 'ar' || root.dir === 'rtl';
-  const VERSION = '20261010-2';
+  const VERSION = '20261010-3';
 
   // hide the original grids until the showcase is ready; show them again if no data ever arrives
   root.classList.add('et-show-on');
@@ -456,7 +456,7 @@
     if (!scene) {
       scene = doc.createElement('div');
       scene.className = 'et-scene et-scene--index';
-      if (rtl) scene.setAttribute('dir', 'rtl');
+      scene.dir = 'ltr'; // the photographs leave their dark side on the left: the layout stays, Arabic text runs right to left inside it
       (emblem.querySelector('.fish-emblematic__grid') || emblem.querySelector('.fish-emblematic__intro')).insertAdjacentElement('afterend', scene);
       scene.addEventListener('click', event => {
         const tab = event.target.closest('.et-scene__tab');
