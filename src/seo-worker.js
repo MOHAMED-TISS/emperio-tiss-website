@@ -40,6 +40,15 @@ class SeoCopyRewriter {
 const escapeText = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escapeAttr = value => escapeText(value).replace(/"/g, '&quot;');
 
+// One square favicon set (ICO 16/32/48, PNG 96/192, touch icon, manifest) for every page; Google
+// reads it from the home page. The version in the URLs makes caches pick up a new emblem.
+const FAVICON_LINKS =
+  '<link rel="icon" href="/favicon.ico?v=20261010" sizes="48x48">' +
+  '<link rel="icon" type="image/png" sizes="192x192" href="/icons/emperio-tiss-192.png?v=20261010">' +
+  '<link rel="icon" type="image/png" sizes="96x96" href="/icons/emperio-tiss-96.png?v=20261010">' +
+  '<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png?v=20261010">' +
+  '<link rel="manifest" href="/site.webmanifest?v=20261010">';
+
 class SeoLinkSanitizer {
   element(element) {
     const rel = relList(element);
@@ -127,7 +136,7 @@ class SeoHeadAppender {
         pending +
         this.copyHead() +
         buildSeoHead(this.meta) +
-        '<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-emblem-2026.svg?v=20261008-brand">' +
+        FAVICON_LINKS +
         '<script>(function(){try{var t=localStorage.getItem("et_theme_mode");document.documentElement.dataset.etTheme=(t==="dark"||t==="light")?t:"light"}catch(e){document.documentElement.dataset.etTheme="light"}})();</script>' +
         '<link rel="preconnect" href="https://fonts.googleapis.com">' +
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +

@@ -158,6 +158,15 @@ const breadcrumb = (language, suffix) => {
   return chain.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: CRUMB[s][index], item: `${ORIGIN}${pathFor(language, s)}` }));
 };
 
+// What the company does, in its own words: it selects, buys and supplies (never an intermediary).
+const ORG_DESCRIPTION = {
+  es: 'EMPERIO TISS S.L. es una empresa de Madrid que selecciona, compra y suministra productos del mar, frutas y hortalizas a compradores profesionales.',
+  en: 'EMPERIO TISS S.L. is a Madrid company that selects, buys and supplies seafood, fruit and vegetables to professional buyers.',
+  fr: 'EMPERIO TISS S.L. est une entreprise madrilène qui sélectionne, achète et fournit des produits de la mer, des fruits et des légumes aux acheteurs professionnels.',
+  it: 'EMPERIO TISS S.L. è un’azienda di Madrid che seleziona, acquista e fornisce prodotti del mare, frutta e ortaggi ad acquirenti professionali.',
+  ar: 'EMPERIO TISS S.L. شركة مقرها مدريد تختار المأكولات البحرية والفواكه والخضروات وتشتريها وتورّدها للمشترين المهنيين.'
+};
+
 export function buildStructuredData(language, suffix, canonical) {
   const copy = seoCopy(language, suffix);
   const org = {
@@ -166,7 +175,8 @@ export function buildStructuredData(language, suffix, canonical) {
     name: 'EMPERIO TISS S.L.',
     alternateName: BRAND,
     url: `${ORIGIN}/`,
-    logo: `${ORIGIN}/assets/images/logo.png`,
+    description: ORG_DESCRIPTION[language] || ORG_DESCRIPTION.en,
+    logo: `${ORIGIN}/icons/emperio-tiss-512.png`,
     email: 'info@emperio-tiss.com',
     address: { '@type': 'PostalAddress', addressLocality: 'Madrid', addressCountry: 'ES' },
     areaServed: ['Europe', 'Africa', 'Middle East'],
