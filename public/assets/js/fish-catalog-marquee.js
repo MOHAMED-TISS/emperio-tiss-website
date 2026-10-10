@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-9';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-11';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -470,50 +470,74 @@
     }
     if (index >= 0) openPlate(index);
   };
-  const activate = panel => {
-    if (!panel || panel.classList.contains('is-active')) return;
-    panel.parentElement.querySelectorAll('.et-sel__panel').forEach(other => { other.classList.toggle('is-active', other === panel); other.setAttribute('aria-expanded', String(other === panel)); });
+  // the signature trio is shown like the home page selection: a cinematic scene with tabs,
+  // a slow serif name ribbon, an editorial note and a facts ticker
+  const sceneImage = {dorada: '/assets/images/selection/selection-sea-2026.webp'};
+  let sceneIndex = 0, sceneTimer = 0, sceneHold = false;
+  const sceneItems = () => signature.map(id => allProducts.find(p => p.id === id)).filter(Boolean);
+  const nameRun = product => Array.from({length: 4}, (_, k) => `<span class="et-scene__word${k % 2 ? ' is-outline' : ''}">${esc(product.name)}</span><i class="et-scene__diamond"></i>`).join('');
+  const factsRun = product => [localize(product.origin), product.faoZone, familyOf(product), stateOf(product), product.scientificName]
+    .map(fact => `<span>${esc(fact)}</span><i></i>`).join('');
+  const showScene = (index, user) => {
+    const items = sceneItems();
+    const scene = emblem?.querySelector('.et-scene');
+    if (!scene || !items.length) return;
+    sceneIndex = (index + items.length) % items.length;
+    const product = items[sceneIndex], note = notes[product.id];
+    scene.querySelectorAll('.et-scene__image').forEach((img, k) => img.classList.toggle('is-active', k === sceneIndex));
+    scene.querySelectorAll('.et-scene__tab').forEach((tab, k) => { tab.setAttribute('aria-selected', String(k === sceneIndex)); tab.tabIndex = k === sceneIndex ? 0 : -1; });
+    scene.querySelector('.et-scene__count').textContent = `${pad(sceneIndex + 1)} / ${pad(items.length)}`;
+    const panel = scene.querySelector('.et-scene__panel');
+    panel.classList.add('is-changing');
+    setTimeout(() => {
+      panel.querySelector('.et-scene__label').textContent = `${familyOf(product)} · ${stateOf(product)}`;
+      panel.querySelector('.et-scene__note').textContent = note ? note[0] : product.scientificName;
+      panel.querySelector('.et-scene__cta').dataset.id = product.id;
+      scene.querySelector('.et-scene__names').innerHTML = `<div class="et-scene__run">${nameRun(product)}</div><div class="et-scene__run" aria-hidden="true">${nameRun(product)}</div>`;
+      scene.querySelector('.et-scene__facts').innerHTML = `<div class="et-scene__run">${factsRun(product)}${factsRun(product)}</div><div class="et-scene__run" aria-hidden="true">${factsRun(product)}${factsRun(product)}</div>`;
+      panel.classList.remove('is-changing');
+    }, user ? 180 : 260);
+    if (user) restartScene();
+  };
+  const restartScene = () => {
+    clearInterval(sceneTimer);
+    if (reduced()) return;
+    sceneTimer = setInterval(() => { if (!sceneHold && !document.hidden) showScene(sceneIndex + 1, false); }, 7000);
   };
   const paintSelection = () => {
     if (!emblem) return;
-    let host = emblem.querySelector('.et-sel');
-    if (!host) {
-      host = document.createElement('div');
-      host.className = 'et-sel';
-      (emblem.querySelector('.fish-emblematic__grid') || emblem.querySelector('.fish-emblematic__intro')).insertAdjacentElement('afterend', host);
-      host.addEventListener('mouseover', event => activate(event.target.closest('.et-sel__panel')));
-      host.addEventListener('focusin', event => activate(event.target.closest('.et-sel__panel')));
-      host.addEventListener('click', event => {
-        const open = event.target.closest('.et-sel__open');
-        if (open) { openPlateFor(open.dataset.id); return; }
-        activate(event.target.closest('.et-sel__panel'));
+    const items = sceneItems();
+    let scene = emblem.querySelector('.et-scene');
+    if (!scene) {
+      scene = document.createElement('div');
+      scene.className = 'et-scene';
+      (emblem.querySelector('.fish-emblematic__grid') || emblem.querySelector('.fish-emblematic__intro')).insertAdjacentElement('afterend', scene);
+      scene.addEventListener('click', event => {
+        const tab = event.target.closest('.et-scene__tab');
+        if (tab) { showScene(Number(tab.dataset.index), true); return; }
+        const cta = event.target.closest('.et-scene__cta');
+        if (cta) openPlateFor(cta.dataset.id);
       });
-      // phones: a swipe carousel; gold dots follow the species in view
-      const dots = document.createElement('div');
-      dots.className = 'et-sel__dots';
-      dots.setAttribute('aria-hidden', 'true');
-      host.insertAdjacentElement('afterend', dots);
-      host.addEventListener('scroll', () => {
-        const panels = [...host.querySelectorAll('.et-sel__panel')];
-        const centre = host.scrollLeft + host.clientWidth / 2;
-        const distance = panel => Math.abs(panel.offsetLeft + panel.offsetWidth / 2 - centre);
-        const current = panels.reduce((best, panel, k) => (distance(panel) < distance(panels[best]) ? k : best), 0);
-        dots.querySelectorAll('i').forEach((dot, k) => dot.classList.toggle('is-active', k === current));
-      }, {passive: true});
+      scene.addEventListener('keydown', event => {
+        if (!event.target.closest('.et-scene__tab') || !['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
+        event.preventDefault();
+        showScene(sceneIndex + (event.key === 'ArrowRight' ? 1 : -1), true);
+        scene.querySelector('.et-scene__tab[aria-selected="true"]')?.focus();
+      });
+      scene.addEventListener('mouseenter', () => { sceneHold = true; });
+      scene.addEventListener('mouseleave', () => { sceneHold = false; });
+      scene.addEventListener('focusin', () => { sceneHold = true; });
+      scene.addEventListener('focusout', event => { if (!scene.contains(event.relatedTarget)) sceneHold = false; });
     }
-    const dotsHost = emblem.querySelector('.et-sel__dots');
-    if (dotsHost) dotsHost.innerHTML = signature.map((_, k) => `<i${k === 0 ? ' class="is-active"' : ''}></i>`).join('');
-    host.innerHTML = signature.map(id => allProducts.find(p => p.id === id)).filter(Boolean).map((product, k) => {
-      const image = (imageMap[product.id] || [])[0];
-      const note = notes[product.id];
-      return `<article class="et-sel__panel${k === 0 ? ' is-active' : ''}" tabindex="0" aria-expanded="${k === 0}">`
-        + (image ? `<img src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '')
-        + `<span class="et-sel__veil" aria-hidden="true"></span><span class="et-sel__spine" aria-hidden="true">${esc(product.name)}</span>`
-        + `<div class="et-sel__content"><p class="et-sel__kicker">${esc(familyOf(product))} · ${esc(stateOf(product))}</p>`
-        + `<div class="et-sel__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-sel__latin">${esc(product.scientificName)}</p>`
-        + (note ? `<p class="et-sel__story">${esc(note[0])}</p>` : '')
-        + `<button class="et-sel__open" type="button" data-id="${esc(product.id)}">Ver ficha completa<span aria-hidden="true">→</span></button></div></article>`;
-    }).join('');
+    scene.innerHTML = `<div class="et-scene__images" aria-hidden="true">${items.map((p, k) => { const src = sceneImage[p.id] || (imageMap[p.id] || [])[0] || ''; return src ? `<img class="et-scene__image${k === 0 ? ' is-active' : ''}" data-id="${esc(p.id)}" src="${esc(src)}" alt="" draggable="false">` : ''; }).join('')}</div>`
+      + `<div class="et-scene__shade" aria-hidden="true"></div>`
+      + `<div class="et-scene__folio"><span>EMPERIO TISS / SELECCIÓN EMBLEMÁTICA</span><span class="et-scene__count">01 / ${pad(items.length)}</span></div>`
+      + `<div class="et-scene__tabs" role="tablist" aria-label="Selección emblemática">${items.map((p, k) => `<button class="et-scene__tab" type="button" role="tab" data-index="${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><span>${pad(k + 1)}</span><strong>${esc(p.name)}</strong><small>${esc(p.scientificName)}</small></button>`).join('')}</div>`
+      + `<div class="et-scene__names" aria-hidden="true"></div>`
+      + `<div class="et-scene__panel"><span class="et-scene__label"></span><p class="et-scene__note"></p><button class="et-scene__cta" type="button">Ver ficha completa <span aria-hidden="true">↗</span></button></div>`
+      + `<div class="et-scene__facts" aria-hidden="true"></div>`;
+    showScene(0, false);
+    restartScene();
   };
 
   const json = url => fetch(url, {cache:'no-cache'}).then(response => response.ok ? response.json() : {}).catch(() => ({}));
