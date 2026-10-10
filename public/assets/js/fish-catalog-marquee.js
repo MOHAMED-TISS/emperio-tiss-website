@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-2';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-3';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -243,9 +243,14 @@
   // measured again once the stylesheet and fonts are in, and when the window changes size
   const speed = {names: 42, cards: 30, 'cards-reverse': 26};
   const tune = () => grid.querySelectorAll('.et-mq__line:not(.is-still)').forEach(el => {
-    const width = el.querySelector('.et-mq__set').scrollWidth;
-    if (width < 600) return;
-    el.querySelector('.et-mq__track').style.setProperty('--et-mq-duration', `${Math.round(width / (speed[el.dataset.line] || 30))}s`);
+    const [set, copy] = el.querySelectorAll('.et-mq__set');
+    if (!set.dataset.base) set.dataset.base = set.innerHTML;
+    if (set.scrollWidth < 600) return; // styles not applied yet
+    // short lines (few references after filtering) repeat until they cover the screen, so the loop never shows a gap
+    const repeat = set.dataset.base.replaceAll('<button ', '<button tabindex="-1" ');
+    for (let guard = 0; set.scrollWidth < el.clientWidth + 120 && guard < 8; guard++) set.insertAdjacentHTML('beforeend', repeat);
+    if (copy) copy.innerHTML = set.innerHTML.replaceAll('<button ', '<button tabindex="-1" ').replaceAll('tabindex="-1" tabindex="-1" ', 'tabindex="-1" ');
+    el.querySelector('.et-mq__track').style.setProperty('--et-mq-duration', `${Math.round(set.scrollWidth / (speed[el.dataset.line] || 30))}s`);
   });
   marqueeCss.addEventListener('load', tune);
   document.fonts?.ready.then(tune);
@@ -290,6 +295,7 @@
     const swap = () => {
       plateBody.innerHTML = plateHtml(deck[current], current);
       plate.setAttribute('aria-label', deck[current].name);
+      plate.querySelectorAll('.et-plate__arrow').forEach(arrow => { arrow.hidden = deck.length < 2; });
       plateBody.classList.remove('is-leaving');
     };
     if (animate && !reduced()) { plateBody.classList.add('is-leaving'); setTimeout(swap, 260); } else swap();

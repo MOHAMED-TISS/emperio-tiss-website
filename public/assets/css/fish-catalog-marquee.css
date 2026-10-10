@@ -171,3 +171,9 @@ html body .fish-catalog .et-mq button.et-mq__word.is-outline { font-style: itali
 html body .fish-catalog .et-mq button.et-mq__card { min-height: 0 !important; box-shadow: 0 28px 46px -32px rgba(4, 14, 26, .75) !important; border-radius: 3px !important; }
 html[data-et-theme] body .fish-catalog .et-plate article.fish-catalog-card.et-plate__card,
 html body .fish-catalog .et-plate article.fish-catalog-card.et-plate__card { background: linear-gradient(160deg, var(--mq-night-2), var(--mq-night) 60%) !important; color: var(--mq-cream) !important; border: 0 !important; }
+
+/* few references after filtering: lines stand still, centred, without a trailing ornament */
+.et-mq__line.is-still .et-mq__track { width: auto; justify-content: center; }
+.et-mq__line.is-still .et-mq__set { flex-wrap: wrap; justify-content: center; row-gap: 22px; }
+.et-mq__line.is-still .et-mq__dot:last-child { display: none; }
+html body .fish-catalog .et-plate__arrow[hidden] { display: none; }
