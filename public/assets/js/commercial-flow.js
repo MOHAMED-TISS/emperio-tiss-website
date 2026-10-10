@@ -60,7 +60,7 @@
   const decorate=()=>{
     const cards=doc.querySelectorAll('.seafood-catalog-card,.compact-catalog-card,.market-catalogue-card,.fish-catalog-card,.fish-emblematic-card,[data-product-id].product-card,.product-row[data-product-id]');
     for(const card of cards){
-      const titleNode=card.querySelector('.et-fish-card__name,h3,.compact-catalog-card__title,.market-catalogue-card__name,h2');
+      const titleNode=card.querySelector('h3,.compact-catalog-card__title,.market-catalogue-card__name,h2');
       const title=compact(titleNode?.textContent);
       if(!title) continue;
       const productId=card.dataset.productId || slug(title);
@@ -72,8 +72,8 @@
           titleNode?.insertAdjacentElement('beforebegin',ref);
         }
       }
-      const spec=compact(card.querySelector('.et-fish-card__specs,.seafood-catalog-card__details,.compact-catalog-card__details,.market-catalogue-card__details,.fish-catalog-card__details,.fish-catalog-card__specs,.product-card__details')?.textContent);
-      const host=card.querySelector('.et-fish-card__sheet,.seafood-catalog-card__body,.compact-catalog-card__body,.market-catalogue-card__body,.fish-catalog-card__body,.fish-emblematic-card__body,.product-card__body') || card;
+      const spec=compact(card.querySelector('.seafood-catalog-card__details,.compact-catalog-card__details,.market-catalogue-card__details,.fish-catalog-card__details,.fish-catalog-card__specs,.product-card__details')?.textContent);
+      const host=card.querySelector('.seafood-catalog-card__body,.compact-catalog-card__body,.market-catalogue-card__body,.fish-catalog-card__body,.fish-emblematic-card__body,.product-card__body') || card;
       let a=card.querySelector(':scope .et-rfq-link');
       if(!a){ a=doc.createElement('a'); a.className='et-rfq-link'; a.textContent=L.cta; host.appendChild(a); }
       a.href=makeHref(productId,productReference,title,spec,'',categoryFromPath());
