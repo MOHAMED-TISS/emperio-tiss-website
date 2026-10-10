@@ -10,7 +10,7 @@
   const doc = document, root = doc.documentElement;
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const rtl = lang === 'ar' || root.dir === 'rtl';
-  const VERSION = '20261010-6';
+  const VERSION = '20261010-7';
 
   // hide the original grids until the showcase is ready; show them again if no data ever arrives
   root.classList.add('et-show-on');
