@@ -593,3 +593,53 @@ html body .et-show--grid button.et-show__chip { flex: none; min-height: 0 !impor
 @media (max-width: 900px) { html body .et-show--grid button.et-show__chip { font-size: 17px !important; } }
 /* fruit still lifes sit in the lower part of the frame: the plate shows the fruit, not the dark backdrop */
 .et-show--grid .et-plate__photo img { object-position: 50% 74%; }
+
+/* ===== light theme: black and gold — navy only in the dark theme (owner 2026-10-10) ===== */
+html:not([data-et-theme="dark"]) :is(.et-show, #fishEmblematic, .et-viewer) { --mq-night: #0e0d0b; --mq-night-2: #1b1a17; }
+html:not([data-et-theme="dark"]) body .et-show .et-mq__card { background: var(--mq-night); box-shadow: 0 28px 46px -32px rgba(12, 11, 9, .75); }
+html:not([data-et-theme="dark"]) .et-mq__card::before { background: linear-gradient(to top, rgba(12, 11, 9, .9), rgba(12, 11, 9, .22) 44%, rgba(12, 11, 9, 0) 64%); }
+html:not([data-et-theme="dark"]) body .et-show .et-mq__state { background: rgba(12, 11, 9, .45); }
+html:not([data-et-theme="dark"]) .et-plate__backdrop { background: rgba(12, 11, 9, .86); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__close { background: var(--mq-night); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__arrow { background: rgba(12, 11, 9, .85); }
+html:not([data-et-theme="dark"]) body .et-show :is(.et-plate__arrow, .et-plate__close):hover { color: var(--mq-night); }
+html:not([data-et-theme="dark"]) body .et-show article.et-plate__card { background: linear-gradient(160deg, var(--mq-night-2), var(--mq-night) 60%) !important; }
+html:not([data-et-theme="dark"]) .et-plate__photo { background: var(--mq-night); }
+html:not([data-et-theme="dark"]) .et-plate__photo::before { background: linear-gradient(to top, rgba(12, 11, 9, .85), rgba(12, 11, 9, 0) 36%); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate .et-rfq-link { color: var(--mq-night) !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-mq button.et-mq__card { box-shadow: 0 28px 46px -32px rgba(12, 11, 9, .75) !important; }
+html[data-et-theme]:not([data-et-theme="dark"]) body .et-show .et-plate article.fish-catalog-card.et-plate__card, html:not([data-et-theme="dark"]) body .et-show .et-plate article.fish-catalog-card.et-plate__card { background: linear-gradient(160deg, var(--mq-night-2), var(--mq-night) 60%) !important; }
+html:not([data-et-theme="dark"]) .et-scene { background: #0e0d0b; }
+html:not([data-et-theme="dark"]) .et-scene--index .et-scene__shade { background: linear-gradient(90deg, rgba(12, 11, 9, .97) 0%, rgba(12, 11, 9, .9) 30%, rgba(12, 11, 9, .35) 52%, rgba(12, 11, 9, 0) 70%),
+              linear-gradient(180deg, rgba(12, 11, 9, .35) 0%, rgba(12, 11, 9, 0) 22%, rgba(12, 11, 9, 0) 76%, rgba(12, 11, 9, .7) 100%); }
+html:not([data-et-theme="dark"]) body .et-scene--index .et-scene__cta { background: rgba(12, 11, 9, .35); }
+html:not([data-et-theme="dark"]) body .et-scene--index .et-scene__cta:hover { color: #0e0d0b; }
+html:not([data-et-theme="dark"]) body .et-scene--index .et-scene__cta:hover span { color: #0e0d0b; }
+@media (max-width: 900px) { html:not([data-et-theme="dark"]) .et-scene--index .et-scene__shade { background: linear-gradient(180deg, rgba(12, 11, 9, .55) 0%, rgba(12, 11, 9, 0) 35%, rgba(12, 11, 9, 0) 60%, #0e0d0b 100%); } }
+html:not([data-et-theme="dark"]) .et-mq__ph { background: linear-gradient(160deg, #1b1a17, #0e0d0b); }
+html:not([data-et-theme="dark"]) .et-viewer { background: rgba(12, 11, 9, .95); }
+html:not([data-et-theme="dark"]) body .et-viewer .et-viewer__btn { background: rgba(12, 11, 9, .6); }
+html:not([data-et-theme="dark"]) body .et-viewer .et-viewer__btn:hover, html:not([data-et-theme="dark"]) body .et-viewer .et-viewer__btn:focus-visible { color: #0e0d0b; }
+html:not([data-et-theme="dark"]) .et-tile__photo { box-shadow: 0 26px 44px -30px rgba(12, 11, 9, .8); }
+
+/* light theme: the plate is ivory with ink and gold; the navy plate belongs to the dark theme only (owner 2026-10-10) */
+html:not([data-et-theme="dark"]) .et-plate__backdrop { background: rgba(236, 233, 224, .9); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate article.fish-catalog-card.et-plate__card,
+html[data-et-theme]:not([data-et-theme="dark"]) body .et-show .et-plate article.fish-catalog-card.et-plate__card {
+  background: #fbfaf6 !important; color: #141310 !important; border: 1px solid rgba(20, 19, 16, .08) !important; box-shadow: 0 60px 120px -60px rgba(20, 19, 16, .45) !important;
+}
+html:not([data-et-theme="dark"]) .et-plate__photo::before { background: linear-gradient(to top, rgba(12, 11, 9, .45), rgba(12, 11, 9, 0) 30%); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__kicker { color: #9c7740 !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__kicker .et-plate__refchip { color: #141310 !important; border-color: rgba(156, 119, 64, .5); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__name { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__latin { color: #9c7740 !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__story { color: rgba(20, 19, 16, .78) !important; border-top-color: rgba(20, 19, 16, .12); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__facts { border-bottom-color: rgba(20, 19, 16, .12); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate :is(.et-plate__facts, .et-plate__specs) dt { color: #9c7740 !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__facts dd { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__specs dd { color: rgba(20, 19, 16, .82) !important; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__more summary { color: rgba(20, 19, 16, .6); }
+html:not([data-et-theme="dark"]) body .et-show .et-plate__more summary::after { color: #9c7740; }
+html:not([data-et-theme="dark"]) body .et-show .et-plate .et-rfq-link { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body .et-show :is(.et-plate__close, .et-plate__arrow) { background: #fbfaf6; color: #141310; border-color: rgba(156, 119, 64, .55); box-shadow: 0 14px 30px -18px rgba(20, 19, 16, .5); }
+html:not([data-et-theme="dark"]) body .et-show :is(.et-plate__close, .et-plate__arrow):hover { background: #d6b47c; color: #141310; }
