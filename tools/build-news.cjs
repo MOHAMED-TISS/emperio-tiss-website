@@ -7,7 +7,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..', 'public');
 const LANGS = ['es', 'en', 'fr', 'it', 'ar'];
-const VERSION = '20261010-1';
+const VERSION = '20261010-2';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const content = {};

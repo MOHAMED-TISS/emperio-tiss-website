@@ -259,3 +259,6 @@ html body.news-journal:not(#nj) .nj-card__open:hover .nj-card__photo img, html b
 /* while an article is open the reader is the only layer: floating helpers step aside */
 html body.news-journal:not(#nj) .nj-reader { z-index: 9400; }
 html.nj-reading :is(.et-whatsapp-assistant, .et-whatsapp-float, .et-cookie-manage, .eth) { visibility: hidden !important; }
+
+/* Light theme: the shared footer closes the journal in black and gold, like its bands (navy stays dark-theme only). */
+html:not([data-et-theme="dark"]) body.news-journal .et-terminal-footer { --tf-bg: #0d0c0a; background: #0d0c0a !important; }

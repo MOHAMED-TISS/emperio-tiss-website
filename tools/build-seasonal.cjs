@@ -6,7 +6,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..', 'public');
 const LANGS = ['es', 'en', 'fr', 'it', 'ar'];
-const VERSION = '20261010-1';
+const VERSION = '20261010-2';
 const GROUPS = {
   tomatoes: ['tomato', 'tomato-cherry-round', 'tomato-cherry-long'],
   fruiting: ['pepper', 'cucumber', 'zucchini', 'aubergine', 'green-bean'],

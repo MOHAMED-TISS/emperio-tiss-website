@@ -255,3 +255,6 @@ html body.seasonal-almanac:not(#sa) .sa-page > .et-operation-flow { display: non
   html body.seasonal-almanac:not(#sa) .sa-now__month { font-size: clamp(3.4rem, 16vw, 5rem) !important; }
 }
 @media (max-width: 560px) { html body.seasonal-almanac:not(#sa) .sa-hero__bar { padding-bottom: 88px; } }
+
+/* Light theme: the shared footer closes the almanac in black and gold, like its bands (navy stays dark-theme only). */
+html:not([data-et-theme="dark"]) body.seasonal-almanac .et-terminal-footer { --tf-bg: #0d0c0a; background: #0d0c0a !important; }
