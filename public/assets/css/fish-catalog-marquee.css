@@ -516,3 +516,4 @@ html body .fish-catalog .et-plate__arrow { top: clamp(120px, 23vh, 240px); }
 .et-plate { display: grid; place-items: initial; align-content: start; justify-content: center; }
 .et-plate__panel { margin: auto; }
 html.et-plate-open .et-plate { overscroll-behavior: contain; }
+html body .et-scene--index .et-scene__cta { margin-top: 26px !important; }

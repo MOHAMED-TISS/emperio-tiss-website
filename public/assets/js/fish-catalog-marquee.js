@@ -174,34 +174,34 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-20';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-21';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
-  const ui = {sheet:'Ficha técnica completa',kitchen:'En cocina',prev:'Especie anterior',next:'Especie siguiente',close:'Cerrar',no:'Nº'};
+  const ui = {sheet:'Ficha técnica completa',prev:'Especie anterior',next:'Especie siguiente',close:'Cerrar',no:'Nº'};
   // editorial copy per species: general culinary knowledge only, no commercial data
   const notes = {
-    dorada:['Pez blanco de carne firme, jugosa y de sabor delicado. Un imprescindible de la cocina mediterránea.',['A la sal','Horno','Brasa']],
-    lubina:['Carne blanca, fina y de lasca tersa, con muy poca espina. Elegante en cualquier preparación.',['Parrilla','Horno','Crudo']],
-    'merluza-pijota':['El pescado blanco más apreciado en España: carne suave, lascas tiernas y sabor limpio.',['Plancha','Horno','Salsa verde']],
-    rape:['Carne prieta, sin espinas y de textura casi de marisco. Protagonista de guisos y arroces.',['Guiso','Arroz','Brocheta']],
-    caballa:['Pez azul de sabor intenso y rico en omega-3. Carácter marino en estado puro.',['Brasa','Escabeche','Marinado']],
-    sardina:['Icono del pescado azul: sabrosa, nutritiva y profundamente mediterránea.',['Brasa','Escabeche','Plancha']],
-    boqueron:['Pequeño pez azul de carne fina y sabor marino, emblema de la cocina española.',['En vinagre','Frito','Marinado']],
-    salmonete:['Carne fina y sabrosa de color rosado, muy valorada por la alta cocina.',['Plancha','Frito','Fumet']],
-    atun:['La gran especie del pescado azul: carne roja, densa y de sabor profundo.',['Tataki','Tartar','Plancha']],
-    'pez-espada':['Carne compacta, sin espinas y de sabor suave, ideal en rodajas y lomos.',['Plancha','Brasa','Lomos']],
-    'san-pedro':['Pescado de roca de carne blanca y fina, muy apreciado por la alta cocina.',['Horno','Filetes','Caldos']],
-    denton:['Pez de roca mediterráneo de carne blanca, firme y sabrosa.',['Horno','A la sal','Brasa']],
-    sargo:['Espárido de carne blanca y textura firme, de sabor marcado y limpio.',['Brasa','Horno','Plancha']],
-    sole:['Pescado plano de carne fina y delicada, referencia de la cocina clásica.',['Meunière','Plancha','Filetes']],
-    'pez-limon':['Carne firme con grasa equilibrada, muy apreciada en crudo.',['Sashimi','Tiradito','Brasa']],
-    mujol:['Pescado de carne blanca y sabor marcado; de su hueva nace la bottarga.',['Brasa','Horno','Salazón']],
-    pargo:['Espárido de gran porte y carne blanca, firme y sabrosa.',['Horno','A la sal','Lomos']],
-    mero:['Pescado noble de carne blanca, gelatinosa y untuosa.',['Guiso','Horno','Lomos']],
-    sama:['Pez de la familia del dentón, de carne blanca y firme.',['Horno','A la sal','Parrilla']],
-    rascacio:['Pez de roca de sabor intenso, base clásica de sopas y calderos.',['Sopa','Caldero','Suquet']],
-    salmon:['Carne anaranjada, untuosa y rica en omega-3. De una versatilidad excepcional.',['Crudo','Ahumado','Horno']]
+    dorada:['Pez blanco de carne firme, jugosa y de sabor delicado. Un imprescindible de la cocina mediterránea.'],
+    lubina:['Carne blanca, fina y de lasca tersa, con muy poca espina. Elegante en cualquier preparación.'],
+    'merluza-pijota':['El pescado blanco más apreciado en España: carne suave, lascas tiernas y sabor limpio.'],
+    rape:['Carne prieta, sin espinas y de textura casi de marisco. Protagonista de guisos y arroces.'],
+    caballa:['Pez azul de sabor intenso y rico en omega-3. Carácter marino en estado puro.'],
+    sardina:['Icono del pescado azul: sabrosa, nutritiva y profundamente mediterránea.'],
+    boqueron:['Pequeño pez azul de carne fina y sabor marino, emblema de la cocina española.'],
+    salmonete:['Carne fina y sabrosa de color rosado, muy valorada por la alta cocina.'],
+    atun:['La gran especie del pescado azul: carne roja, densa y de sabor profundo.'],
+    'pez-espada':['Carne compacta, sin espinas y de sabor suave, ideal en rodajas y lomos.'],
+    'san-pedro':['Pescado de roca de carne blanca y fina, muy apreciado por la alta cocina.'],
+    denton:['Pez de roca mediterráneo de carne blanca, firme y sabrosa.'],
+    sargo:['Espárido de carne blanca y textura firme, de sabor marcado y limpio.'],
+    sole:['Pescado plano de carne fina y delicada, referencia de la cocina clásica.'],
+    'pez-limon':['Carne firme con grasa equilibrada, muy apreciada en crudo.'],
+    mujol:['Pescado de carne blanca y sabor marcado; de su hueva nace la bottarga.'],
+    pargo:['Espárido de gran porte y carne blanca, firme y sabrosa.'],
+    mero:['Pescado noble de carne blanca, gelatinosa y untuosa.'],
+    sama:['Pez de la familia del dentón, de carne blanca y firme.'],
+    rascacio:['Pez de roca de sabor intenso, base clásica de sopas y calderos.'],
+    salmon:['Carne anaranjada, untuosa y rica en omega-3. De una versatilidad excepcional.']
   };
 
   let referenceMap = {};
@@ -377,7 +377,7 @@
       + `<span class="et-mq__state">${esc(stateOf(product))}</span></div>`
       + `<div class="et-plate__info"><div class="et-plate__lead"><p class="et-plate__kicker">${esc(familyOf(product))}</p>`
       + `<div class="et-fish-card__name et-plate__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-plate__latin">${esc(product.scientificName)}</p>`
-      + (note ? `<p class="et-plate__story">${esc(note[0])}</p><p class="et-plate__uses"><span>${esc(ui.kitchen)}</span>${note[1].map(u => `<em>${esc(u)}</em>`).join('')}</p>` : '')
+      + (note ? `<p class="et-plate__story">${esc(note[0])}</p>` : '')
       + `</div><div class="et-plate__side"><dl class="et-plate__facts">${rows([[labels.state, stateOf(product)], [labels.origin, localize(product.origin)], [labels.fao, product.faoZone]])}</dl>`
       + `<div class="et-fish-card__sheet et-plate__actions"></div>`
       + `<details class="et-plate__more"><summary>${esc(ui.sheet)}</summary><dl class="et-fish-card__specs et-plate__specs">${rows([[labels.type, localize(product.type)], [labels.calibre, labels.according], [labels.quality, labels.professional], [labels.presentation, labels.destination], [labels.packaging, labels.market], [labels.availability, labels.according]])}</dl></details>`
@@ -499,7 +499,6 @@
     setTimeout(() => {
       panel.querySelector('.et-scene__label').textContent = `${familyOf(product)} · ${stateOf(product)}`;
       panel.querySelector('.et-scene__note').textContent = note ? note[0] : product.scientificName;
-      panel.querySelector('.et-scene__uses').innerHTML = note ? note[1].map(use => `<em>${esc(use)}</em>`).join('') : '';
       panel.querySelector('.et-scene__cta').dataset.id = product.id;
       scene.querySelector('.et-scene__facts').innerHTML = `<div class="et-scene__run">${factsRun(product)}${factsRun(product)}</div><div class="et-scene__run" aria-hidden="true">${factsRun(product)}${factsRun(product)}</div>`;
       panel.classList.remove('is-changing');
@@ -540,7 +539,7 @@
       + `<div class="et-scene__folio"><span>Selección emblemática</span><span class="et-scene__count">01 / ${pad(items.length)}</span></div>`
       + `<div class="et-scene__side">`
       + `<div class="et-scene__tabs" role="tablist" aria-orientation="vertical" aria-label="Selección emblemática">${items.map((p, k) => `<button class="et-scene__tab" type="button" role="tab" data-index="${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><strong>${esc(p.name)}</strong><small>${esc(p.scientificName)}</small><i class="et-scene__thread" aria-hidden="true"></i></button>`).join('')}</div>`
-      + `<div class="et-scene__panel"><span class="et-scene__label"></span><p class="et-scene__note"></p><p class="et-scene__uses"></p><button class="et-scene__cta" type="button">Ver ficha completa <span aria-hidden="true">→</span></button></div>`
+      + `<div class="et-scene__panel"><span class="et-scene__label"></span><p class="et-scene__note"></p><button class="et-scene__cta" type="button">Ver ficha completa <span aria-hidden="true">→</span></button></div>`
       + `</div>`
       + `<div class="et-scene__facts" aria-hidden="true"></div>`;
     showScene(0, false);
