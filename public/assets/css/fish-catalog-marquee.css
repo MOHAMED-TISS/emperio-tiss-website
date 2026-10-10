@@ -511,3 +511,8 @@ html body .fish-catalog .et-plate__arrow { top: clamp(120px, 23vh, 240px); }
   .et-scene.et-scene--index { height: auto; min-height: clamp(600px, 78vh, 780px); display: flex; align-items: center; }
   .et-scene--index .et-scene__side { position: relative; left: auto; top: auto; bottom: auto; width: min(520px, 42%); margin-left: 56px; padding: 104px 0 108px; justify-content: center; gap: 34px; }
 }
+
+/* plate never cut: centred when it fits, scrolls from the top when the technical sheet makes it taller */
+.et-plate { display: grid; place-items: initial; align-content: start; justify-content: center; }
+.et-plate__panel { margin: auto; }
+html.et-plate-open .et-plate { overscroll-behavior: contain; }
