@@ -10,7 +10,7 @@
   const doc = document, root = doc.documentElement;
   const lang = (root.lang || 'es').slice(0, 2).toLowerCase();
   const rtl = lang === 'ar' || root.dir === 'rtl';
-  const VERSION = '20261010-1';
+  const VERSION = '20261010-2';
 
   // hide the original grids until the showcase is ready; show them again if no data ever arrives
   root.classList.add('et-show-on');
@@ -323,6 +323,8 @@
         return;
       }
       if (plate.hidden) return;
+      const photo = event.target.closest?.('.et-plate__photo');
+      if (photo && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); openViewer(JSON.parse(photo.dataset.images || '[]')); return; }
       if (event.key === 'Escape') closePlate();
       if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); showPlate(current + ((event.key === 'ArrowRight') !== rtl ? 1 : -1), true); }
     });
@@ -387,6 +389,7 @@
     if (!viewer) {
       viewer = doc.createElement('div');
       viewer.className = 'et-viewer';
+      viewer.dir = 'ltr'; // counter and arrows read left to right on every page (Arabic mirrors ‹ ›)
       viewer.hidden = true;
       viewer.innerHTML = `<img class="et-viewer__img" alt="" draggable="false"><button class="et-viewer__btn et-viewer__close" type="button" aria-label="${esc(ui.close)}">×</button><button class="et-viewer__btn et-viewer__prev" type="button" aria-label="${esc(ui.prev)}">‹</button><button class="et-viewer__btn et-viewer__next" type="button" aria-label="${esc(ui.next)}">›</button><span class="et-viewer__count"></span>`;
       doc.body.appendChild(viewer);
@@ -395,6 +398,15 @@
         else if (event.target.closest('.et-viewer__prev')) stepViewer(-1);
         else if (event.target.closest('.et-viewer__next')) stepViewer(1);
       });
+      // phones: swipe between photos
+      let swipeX = null;
+      viewer.addEventListener('touchstart', event => { swipeX = event.touches[0]?.clientX ?? null; }, {passive: true});
+      viewer.addEventListener('touchend', event => {
+        if (swipeX === null) return;
+        const dx = (event.changedTouches[0]?.clientX ?? swipeX) - swipeX;
+        swipeX = null;
+        if (Math.abs(dx) > 50) stepViewer(dx < 0 ? 1 : -1);
+      }, {passive: true});
     }
     gallery = images; galleryIndex = 0; viewer.hidden = false; paintViewer();
   };

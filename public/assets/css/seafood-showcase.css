@@ -497,3 +497,29 @@ html[data-et-theme="dark"] body .market-catalogue .market-catalogue__eyebrow { c
 html[data-et-theme="dark"] body .market-catalogue .market-catalogue__intro { color: rgba(243, 239, 230, .72) !important; }
 /* Latin names keep their own direction on Arabic pages ("Sepia spp." not ".Sepia spp") */
 :is(.et-show, #fishEmblematic) :is(.et-mq__meta i, .et-plate__latin, .et-scene__tab small) { unicode-bidi: plaintext; }
+
+/* full-screen photo viewer, above the plate */
+.et-plate__photo { cursor: zoom-in; }
+.et-viewer { position: fixed; inset: 0; z-index: 9500; display: grid; place-items: center; padding: 56px 80px; background: rgba(3, 10, 20, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: et-viewer-in .3s ease; }
+.et-viewer[hidden] { display: none; }
+@keyframes et-viewer-in { from { opacity: 0; } to { opacity: 1; } }
+.et-viewer__img { display: block; max-width: 100%; max-height: calc(100vh - 112px); width: auto; height: auto; object-fit: contain; border-radius: 3px; box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .9); user-select: none; -webkit-user-drag: none; }
+html body .et-viewer .et-viewer__btn {
+  position: fixed; display: grid; place-items: center; width: 52px; height: 52px; min-height: 0; padding: 0; border-radius: 50%; cursor: pointer; box-shadow: none;
+  border: 1px solid rgba(214, 180, 124, .6); background: rgba(6, 24, 41, .6); color: #f3efe6; font: 300 30px/1 'DM Sans', sans-serif; transition: background .3s, color .3s;
+}
+html body .et-viewer .et-viewer__btn:hover, html body .et-viewer .et-viewer__btn:focus-visible { background: #d6b47c; color: #061829; outline: none; }
+html body .et-viewer .et-viewer__btn[hidden] { display: none; }
+.et-viewer__close { top: 20px; right: 20px; }
+.et-viewer__prev { left: 20px; top: 50%; margin-top: -26px; }
+.et-viewer__next { right: 20px; top: 50%; margin-top: -26px; }
+.et-viewer__count { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); color: rgba(243, 239, 230, .75); font: 600 11px/1 'DM Sans', sans-serif; letter-spacing: .2em; }
+@media (max-width: 700px) {
+  .et-viewer { padding: 70px 10px; }
+  html body .et-viewer .et-viewer__btn { width: 44px; height: 44px; font-size: 26px; }
+  .et-viewer__prev { left: 8px; } .et-viewer__next { right: 8px; }
+  .et-viewer__prev, .et-viewer__next { top: auto; bottom: 14px; margin-top: 0; }
+}
+/* floating buttons step aside while a plate or the photo viewer is open */
+html.et-plate-open :is(.et-whatsapp-assistant, .et-cookie-manage) { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+.et-plate__photo[data-images="[]"] { cursor: default; }
