@@ -177,3 +177,11 @@ html body .fish-catalog .et-plate article.fish-catalog-card.et-plate__card { bac
 .et-mq__line.is-still .et-mq__set { flex-wrap: wrap; justify-content: center; row-gap: 22px; }
 .et-mq__line.is-still .et-mq__dot:last-child { display: none; }
 html body .fish-catalog .et-plate__arrow[hidden] { display: none; }
+
+/* lines are moved by script (auto glide, drag, momentum); no edge fades */
+.et-mq__line { -webkit-mask-image: none !important; mask-image: none !important; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.et-mq__line.is-dragging { cursor: grabbing; }
+.et-mq__line.is-dragging .et-mq__card, .et-mq__line.is-dragging .et-mq__word { pointer-events: none; }
+.et-mq__track { animation: none !important; }
+.et-mq__line.is-still { cursor: auto; touch-action: auto; }
+.et-mq__card img { -webkit-user-drag: none; pointer-events: none; }

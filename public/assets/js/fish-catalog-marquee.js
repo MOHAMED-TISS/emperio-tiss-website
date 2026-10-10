@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-3';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-4';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -241,17 +241,92 @@
 
   // an unhurried, constant speed whatever the length of each line (pixels per second);
   // measured again once the stylesheet and fonts are in, and when the window changes size
-  const speed = {names: 42, cards: 30, 'cards-reverse': 26};
-  const tune = () => grid.querySelectorAll('.et-mq__line:not(.is-still)').forEach(el => {
-    const [set, copy] = el.querySelectorAll('.et-mq__set');
-    if (!set.dataset.base) set.dataset.base = set.innerHTML;
-    if (set.scrollWidth < 600) return; // styles not applied yet
-    // short lines (few references after filtering) repeat until they cover the screen, so the loop never shows a gap
-    const repeat = set.dataset.base.replaceAll('<button ', '<button tabindex="-1" ');
-    for (let guard = 0; set.scrollWidth < el.clientWidth + 120 && guard < 8; guard++) set.insertAdjacentHTML('beforeend', repeat);
-    if (copy) copy.innerHTML = set.innerHTML.replaceAll('<button ', '<button tabindex="-1" ').replaceAll('tabindex="-1" tabindex="-1" ', 'tabindex="-1" ');
-    el.querySelector('.et-mq__track').style.setProperty('--et-mq-duration', `${Math.round(set.scrollWidth / (speed[el.dataset.line] || 30))}s`);
+  // lines are driven frame by frame: they glide on their own, ease to a stop under the pointer,
+  // follow the hand when dragged and carry their momentum when released, then return to their pace
+  const speed = {names: -42, cards: -30, 'cards-reverse': 26};
+  let lines = [];
+  const tune = () => {
+    lines = [];
+    grid.querySelectorAll('.et-mq__line:not(.is-still)').forEach(el => {
+      const [set, copy] = el.querySelectorAll('.et-mq__set');
+      if (!set.dataset.base) set.dataset.base = set.innerHTML;
+      if (set.scrollWidth < 600) return; // styles not applied yet
+      // short lines (few references after filtering) repeat until they cover the screen, so the loop never shows a gap
+      const repeat = set.dataset.base.replaceAll('<button ', '<button tabindex="-1" ');
+      for (let guard = 0; set.scrollWidth < el.clientWidth + 120 && guard < 8; guard++) set.insertAdjacentHTML('beforeend', repeat);
+      if (copy) copy.innerHTML = set.innerHTML.replaceAll('<button ', '<button tabindex="-1" ').replaceAll('tabindex="-1" tabindex="-1" ', 'tabindex="-1" ');
+      const pace = reduced() ? 0 : (speed[el.dataset.line] ?? -30);
+      const old = el.etLine;
+      el.etLine = {el, track: el.querySelector('.et-mq__track'), width: set.getBoundingClientRect().width, x: old?.x ?? 0, v: old?.v ?? pace, pace, hover: false, drag: null};
+      lines.push(el.etLine);
+    });
+    startLoop();
+  };
+
+  let looping = false, lastTime = 0;
+  const frame = now => {
+    const dt = Math.min(.05, (now - lastTime) / 1000 || 0);
+    lastTime = now;
+    for (const line of lines) {
+      if (!line.drag) {
+        // ease towards the line's own pace (or to rest under the pointer); this also bleeds off throw momentum
+        const target = line.hover ? 0 : line.pace;
+        line.v += (target - line.v) * Math.min(1, dt * (Math.abs(line.v - target) > 200 ? 1.6 : 2.4));
+        line.x += line.v * dt;
+      }
+      if (line.width > 0) line.x = ((line.x % line.width) - line.width) % line.width; // keep within one loop: (-width, 0]
+      line.track.style.transform = `translate3d(${line.x.toFixed(2)}px,0,0)`;
+    }
+    if (lines.length) requestAnimationFrame(frame); else looping = false;
+  };
+  const startLoop = () => { if (!looping && lines.length) { looping = true; lastTime = performance.now(); requestAnimationFrame(frame); } };
+
+  // drag with mouse, pen or finger; vertical page scroll stays native (touch-action: pan-y)
+  const lineOf = event => event.target.closest?.('.et-mq__line')?.etLine;
+  grid.addEventListener('pointerdown', event => {
+    const line = lineOf(event);
+    if (!line || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    line.drag = null;
+    line.press = {id: event.pointerId, x: event.clientX, y: event.clientY, startX: line.x, samples: [[performance.now(), event.clientX]]};
   });
+  grid.addEventListener('pointermove', event => {
+    const line = lineOf(event) || lines.find(l => l.press?.id === event.pointerId);
+    if (!line?.press || line.press.id !== event.pointerId) return;
+    const dx = event.clientX - line.press.x;
+    if (!line.drag) {
+      if (Math.abs(dx) < 6 || Math.abs(dx) < Math.abs(event.clientY - line.press.y)) return;
+      line.drag = true;
+      line.el.classList.add('is-dragging');
+      line.el.setPointerCapture?.(event.pointerId);
+    }
+    line.x = line.press.startX + dx;
+    line.press.samples.push([performance.now(), event.clientX]);
+    if (line.press.samples.length > 6) line.press.samples.shift();
+  });
+  const release = event => {
+    const line = lines.find(l => l.press?.id === event.pointerId);
+    if (!line) return;
+    if (line.drag) {
+      // throw: speed of the last few moves, kept within a calm range
+      const samples = line.press.samples, [t0, x0] = samples[0], [t1, x1] = samples[samples.length - 1];
+      const throwSpeed = t1 > t0 ? (x1 - x0) / ((t1 - t0) / 1000) : 0;
+      line.v = Math.max(-2400, Math.min(2400, throwSpeed));
+      line.el.classList.remove('is-dragging');
+      line.justDragged = true;
+      setTimeout(() => { line.justDragged = false; }, 0);
+    }
+    line.drag = null;
+    line.press = null;
+  };
+  grid.addEventListener('pointerup', release);
+  grid.addEventListener('pointercancel', release);
+  // a drag must not open the species it started on
+  grid.addEventListener('click', event => { if (lineOf(event)?.justDragged) { event.preventDefault(); event.stopImmediatePropagation(); } }, true);
+  grid.addEventListener('pointerover', event => { if (event.pointerType === 'mouse') { const line = lineOf(event); if (line) line.hover = true; } });
+  grid.addEventListener('pointerout', event => { if (event.pointerType === 'mouse') { const line = lineOf(event); if (line && !line.el.contains(event.relatedTarget)) line.hover = false; } });
+  grid.addEventListener('focusin', event => { const line = lineOf(event); if (line) line.hover = true; });
+  grid.addEventListener('focusout', event => { const line = lineOf(event); if (line && !line.el.contains(event.relatedTarget)) line.hover = false; });
+
   marqueeCss.addEventListener('load', tune);
   document.fonts?.ready.then(tune);
   let resizeTimer = 0;
