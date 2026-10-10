@@ -532,5 +532,25 @@
     }));
     search.addEventListener('input', renderCards);
     renderCards();
+    if (family !== 'seafood') return;
+    // the shared seafood showcase (marquee and plates) draws these references; the French page keeps its own French data
+    const join = (value, p) => translateValue((value || []).join(' / '), p);
+    // catalogue groups named for the reader (the data key 'mediterranean' groups the crustaceans caught there)
+    const groupNames = {mediterranean: {en: 'Crustaceans', fr: 'Crustacés', it: 'Crostacei', ar: 'قشريات'}, molluscs: {en: 'Molluscs', fr: 'Mollusques', it: 'Molluschi', ar: 'رخويات'}, cephalopods: {en: 'Cephalopods', fr: 'Céphalopodes', it: 'Cefalopodi', ar: 'رأسيات الأرجل'}};
+    const groupOf = p => groupNames[norm(p.catalogGroup)]?.[lang] || categoryLabel(p).split('/').pop().trim();
+    const detail = {
+      priority: lang === 'fr' ? 0 : 2, lang, category: subcategory, host: section.querySelector('.market-catalogue__inner'),
+      after: section.querySelector('.market-catalogue__context') || section.querySelector('.market-catalogue__head'),
+      hide: [section.querySelector('.market-catalogue__toolbar'), section.querySelector('.market-catalogue__filters'), grid],
+      items: products.map(p => ({
+        id: p.id, name: translatedName(p), scientificName: p.scientificName, family: groupOf(p), group: groupOf(p), groupLabel: groupOf(p),
+        states: (p.condition || []).map(norm).filter(c => c === 'fresh' || c === 'frozen'), onboard: !!p.frozenOnBoard,
+        origin: join(p.origin, p), fao: (p.faoZone || []).join(' / '), reference: p.reference || '',
+        images: getImages(imageMap, p.id).length ? getImages(imageMap, p.id) : (p.image ? [p.image] : []),
+        specs: [[labels.calibre, join(p.calibre, p) || labels.according], [labels.quality, join(p.quality, p) || labels.according], [labels.format, join(p.format, p) || labels.according], [labels.packaging, join(p.packaging, p) || labels.according], [labels.availability, join(p.availability, p) || labels.according]]
+      }))
+    };
+    (window.__etShowcaseQueue = window.__etShowcaseQueue || []).push(detail);
+    document.dispatchEvent(new CustomEvent('et:showcase', {detail}));
   }
 })();

@@ -105,7 +105,7 @@
     }
     if (!doc.querySelector('script[data-etMarketCatalogue]')) {
       const script = doc.createElement('script');
-      script.src = '/assets/js/market-catalogue.js?v=20260928-es-set-1';
+      script.src = '/assets/js/market-catalogue.js?v=20261010-showcase';
       script.async = false;
       script.dataset.etMarketCatalogue = 'true';
       doc.head.appendChild(script);

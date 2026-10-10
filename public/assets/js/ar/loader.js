@@ -4,7 +4,7 @@
   if (!(document.documentElement.lang || '').toLowerCase().startsWith('ar')) return;
 
   const head = document.head;
-  const assetVersion = '20260923-ar-idempotent';
+  const assetVersion = '20261010-showcase';
   const css = [
     '/assets/css/ar/visual.css',
     '/assets/css/ar/pages.css',

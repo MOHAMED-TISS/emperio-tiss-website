@@ -159,7 +159,23 @@
     return r.json()
   }).then(d => {
     products = Array.isArray(d.products) ? d.products : [];
-    render()
+    render();
+    // the shared seafood showcase (marquee and plates) draws these references
+    const detail = {
+      priority: 1, lang: 'it', category: /shellfish/.test(url) ? 'shellfish' : 'cephalopods', host: root.querySelector('.seafood-catalog__inner') || root,
+      after: root.querySelector('.seafood-catalog__head'),
+      hide: [...root.querySelectorAll('.seafood-catalog__toolbar'), grid],
+      items: products.map(p => ({
+        id: p.id, name: p.commercialName, scientificName: p.scientificName, family: first(p.group),
+        group: String(first(p.group)).split('/').pop().trim(), groupLabel: String(first(p.group)).split('/').pop().trim(),
+        states: Array.isArray(p.condition) ? p.condition : [], onboard: !!p.frozenOnBoard,
+        origin: first(p.origin), fao: first(p.faoZone), reference: p.reference || '',
+        images: [...new Set(Array.isArray(p.images) ? p.images.filter(Boolean) : (p.image ? [p.image] : []))],
+        specs: [[labels.type, first(p.type)], [labels.calibre, first(p.calibre)], [labels.quality, first(p.quality)], [labels.format, first(p.format)], [labels.packaging, first(p.packaging)], [labels.availability, first(p.availability)]]
+      }))
+    };
+    (window.__etShowcaseQueue = window.__etShowcaseQueue || []).push(detail);
+    document.dispatchEvent(new CustomEvent('et:showcase', {detail}));
   }).catch(() => {
     count.textContent = '0 ' + labels.refs;
     grid.innerHTML = `<p class="seafood-catalog-empty">${labels.empty}</p>`

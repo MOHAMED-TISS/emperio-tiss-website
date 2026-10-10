@@ -488,9 +488,9 @@
     protect();
   };
   protect();
-  document.addEventListener('contextmenu',e=>{if(e.target.closest('img'))e.preventDefault()},true);
-  document.addEventListener('dragstart',e=>{if(e.target.closest('img'))e.preventDefault()},true);
-  document.addEventListener('selectstart',e=>{if(e.target.closest('img'))e.preventDefault()},true);
+  document.addEventListener('contextmenu',e=>{if(e.target.closest?.('img'))e.preventDefault()},true);
+  document.addEventListener('dragstart',e=>{if(e.target.closest?.('img'))e.preventDefault()},true);
+  document.addEventListener('selectstart',e=>{if(e.target.closest?.('img'))e.preventDefault()},true);
   new MutationObserver(protect).observe(document.documentElement,{childList:true,subtree:true});
   fetch('/assets/data/product-images.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(images=>{imageMap=images||{};render()}).catch(()=>render());
 })();

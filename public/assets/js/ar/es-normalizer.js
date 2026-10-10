@@ -139,6 +139,9 @@
     doc.addEventListener('keydown',(e)=>{if(!lightbox||lightbox.hidden)return; if(e.key==='Escape'){e.preventDefault();closeLightbox();} else if(e.key==='ArrowRight'){e.preventDefault();step(-1);} else if(e.key==='ArrowLeft'){e.preventDefault();step(1);}},true);
   };
 
+  // the seafood showcase translates its own strings with the same dictionary
+  window.ETArNormalize = normalizeText;
+  doc.dispatchEvent(new Event('et:ar-normalize'));
   injectStyle(); normalizeClasses(); bindInteractions(); translateVisibleText();
   new MutationObserver(()=>{normalizeClasses();translateVisibleText();}).observe(body,{childList:true,subtree:true});
 })();

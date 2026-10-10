@@ -267,5 +267,23 @@
       const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
       allProducts.sort((a, b) => rank(a.id) - rank(b.id));
       render();
+      // the shared seafood showcase (marquee, plates, selection) draws these references
+      const section = document.getElementById('fishCatalog');
+      const familyLabel = cat => cat === 'white' ? labels.white : cat === 'blue' ? labels.blue : labels.special;
+      const detail = {
+        priority: 1, lang, category: 'fish', host: section?.querySelector('.fish-catalog__inner') || section,
+        after: section?.querySelector('.catalog-head'),
+        hide: [...document.querySelectorAll('#fishCatalog .fish-catalog__toolbar, #fishCatalog .fish-catalog__filters'), grid],
+        items: allProducts.map(product => ({
+          id: product.id, name: product.name, scientificName: product.scientificName,
+          group: categoryOf(product), groupLabel: familyLabel(categoryOf(product)), family: familyLabel(categoryOf(product)),
+          states: [product.condition.includes('Fresco') && 'fresh', product.condition.includes('Congelado') && 'frozen'].filter(Boolean),
+          origin: localize(product.origin), fao: product.faoZone,
+          images: Array.isArray(imageMap[product.id]) ? imageMap[product.id] : [],
+          specs: [[labels.type, localize(product.type)], [labels.calibre, labels.according], [labels.quality, labels.professional], [labels.presentation, labels.destination], [labels.packaging, labels.market], [labels.availability, labels.according]]
+        }))
+      };
+      (window.__etShowcaseQueue = window.__etShowcaseQueue || []).push(detail);
+      document.dispatchEvent(new CustomEvent('et:showcase', {detail}));
     });
 })();
