@@ -99,3 +99,25 @@ html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__em
 /* Two-column openings (EN/IT): the copy stays together on the calm side, clear of the products. */
 html body[data-hero]:not(#ph) main > section:first-of-type .hero-grid { grid-template-columns: minmax(0, 1fr) !important; }
 html body[data-hero]:not(#ph) main > section:first-of-type .hero-grid > * { max-width: 720px !important; }
+
+/* Light theme: the top strip and the bar sit on ivory glass, so the navigation
+   keeps its contrast whatever colour of product lies beneath it. */
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-strip {
+  background: rgba(246,242,234,.9) !important;
+  border-bottom-color: rgba(134,99,46,.2) !important;
+}
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-strip__inner { color: #4a463d !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero :is(.eth-strip__lang[aria-current="true"], .eth-strip__lang:hover, .eth-strip__mail:hover, .eth-theme:hover) { color: #86632e !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-strip__langs { border-inline-start-color: rgba(134,99,46,.3) !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-theme { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-bar {
+  background:
+    linear-gradient(90deg, rgba(134,99,46,0), rgba(134,99,46,.32), rgba(134,99,46,0)) left bottom / 100% 1px no-repeat,
+    rgba(246,242,234,.84) !important;
+  border-color: rgba(255,255,255,.6) !important;
+  border-bottom-color: rgba(134,99,46,.18) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  backdrop-filter: blur(18px) saturate(140%) !important;
+  box-shadow: 0 10px 30px rgba(20,19,16,.06) !important;
+}
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero :is(.eth-nav a, .eth-menu-btn, .eth-contact__label) { color: #141310; }
