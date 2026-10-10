@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-6';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-8';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -455,6 +455,53 @@
   }));
   search.addEventListener('input', render);
 
+  // ---- emblematic selection: an editorial accordion of three signature species
+  const emblem = document.getElementById('fishEmblematic');
+  const signature = ['dorada', 'lubina', 'merluza-pijota'];
+  const openPlateFor = id => {
+    let index = deck.findIndex(p => p.id === id);
+    if (index < 0) {
+      // the species is hidden by the current filters: show the whole catalogue again first
+      condition = 'all'; category = 'all'; search.value = '';
+      document.querySelectorAll('[data-fish-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fishFilter === 'all')));
+      document.querySelectorAll('[data-fish-category]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fishCategory === 'all')));
+      render();
+      index = deck.findIndex(p => p.id === id);
+    }
+    if (index >= 0) openPlate(index);
+  };
+  const activate = panel => {
+    if (!panel || panel.classList.contains('is-active')) return;
+    panel.parentElement.querySelectorAll('.et-sel__panel').forEach(other => { other.classList.toggle('is-active', other === panel); other.setAttribute('aria-expanded', String(other === panel)); });
+  };
+  const paintSelection = () => {
+    if (!emblem) return;
+    let host = emblem.querySelector('.et-sel');
+    if (!host) {
+      host = document.createElement('div');
+      host.className = 'et-sel';
+      (emblem.querySelector('.fish-emblematic__grid') || emblem.querySelector('.fish-emblematic__intro')).insertAdjacentElement('afterend', host);
+      host.addEventListener('mouseover', event => activate(event.target.closest('.et-sel__panel')));
+      host.addEventListener('focusin', event => activate(event.target.closest('.et-sel__panel')));
+      host.addEventListener('click', event => {
+        const open = event.target.closest('.et-sel__open');
+        if (open) { openPlateFor(open.dataset.id); return; }
+        activate(event.target.closest('.et-sel__panel'));
+      });
+    }
+    host.innerHTML = signature.map(id => allProducts.find(p => p.id === id)).filter(Boolean).map((product, k) => {
+      const image = (imageMap[product.id] || [])[0];
+      const note = notes[product.id];
+      return `<article class="et-sel__panel${k === 0 ? ' is-active' : ''}" tabindex="0" aria-expanded="${k === 0}">`
+        + (image ? `<img src="${esc(image)}" alt="${esc(product.name)}" loading="lazy" draggable="false">` : '')
+        + `<span class="et-sel__veil" aria-hidden="true"></span><span class="et-sel__spine" aria-hidden="true">${esc(product.name)}</span>`
+        + `<div class="et-sel__content"><p class="et-sel__kicker">${esc(familyOf(product))} · ${esc(stateOf(product))}</p>`
+        + `<div class="et-sel__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-sel__latin">${esc(product.scientificName)}</p>`
+        + (note ? `<p class="et-sel__story">${esc(note[0])}</p>` : '')
+        + `<button class="et-sel__open" type="button" data-id="${esc(product.id)}">Ver ficha completa<span aria-hidden="true">→</span></button></div></article>`;
+    }).join('');
+  };
+
   const json = url => fetch(url, {cache:'no-cache'}).then(response => response.ok ? response.json() : {}).catch(() => ({}));
   Promise.all([json('/assets/data/product-images.json'), json('/assets/data/catalogue-market-priority.json'), json('/assets/data/product-references.json')])
     .then(([images, priority, references]) => {
@@ -467,5 +514,6 @@
       const rank = id => { const index = order.indexOf(id); return index < 0 ? order.length : index; };
       allProducts.sort((a, b) => rank(a.id) - rank(b.id));
       render();
+      paintSelection();
     });
 })();
