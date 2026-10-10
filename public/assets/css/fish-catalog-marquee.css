@@ -185,3 +185,8 @@ html body .fish-catalog .et-plate__arrow[hidden] { display: none; }
 .et-mq__track { animation: none !important; }
 .et-mq__line.is-still { cursor: auto; touch-action: auto; }
 .et-mq__card img { -webkit-user-drag: none; pointer-events: none; }
+
+/* no numbers and no gold outline on the photographs */
+.et-mq__card::after { display: none !important; }
+html body .fish-catalog .et-mq__meta em, .et-plate__frame, .et-plate__numeral { display: none !important; }
+html body .fish-catalog .et-plate__photo .et-mq__state { right: auto; left: 28px; bottom: 26px; }

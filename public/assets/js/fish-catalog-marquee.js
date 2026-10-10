@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-4';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-5';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -221,7 +221,7 @@
     return `<button class="et-mq__card" type="button" data-index="${i}" aria-label="${esc(product.name)}">`
       + (thumb ? `<img src="${esc(thumb)}" alt="" loading="lazy" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>')
       + `<span class="et-mq__state">${esc(stateOf(product))}</span>`
-      + `<span class="et-mq__meta"><em>${pad(i + 1)}</em><b>${esc(product.name)}</b><i>${esc(product.scientificName)}</i></span></button>`;
+      + `<span class="et-mq__meta"><b>${esc(product.name)}</b><i>${esc(product.scientificName)}</i></span></button>`;
   };
   const word = (product, i) => `<button class="et-mq__word${i % 2 ? ' is-outline' : ''}" type="button" data-index="${i}">${esc(product.name)}</button><span class="et-mq__dot" aria-hidden="true">◆</span>`;
   // each line holds its content twice so the loop is seamless; the copy is hidden from assistive tech
@@ -355,8 +355,8 @@
     return `<article class="fish-catalog-card et-plate__card" data-product-id="${esc(product.id)}"${reference ? ` data-product-reference="${esc(reference)}"` : ''}>`
       + `<div class="et-plate__photo" data-images='${esc(JSON.stringify(images))}' role="button" tabindex="0" aria-label="${esc(`${viewImages} ${product.name}`)}">`
       + (images[0] ? `<img src="${esc(images[0])}" alt="${esc(product.name)}" draggable="false">` : '<span class="et-mq__ph">EMPERIO TISS</span>')
-      + `<span class="et-plate__frame" aria-hidden="true"></span><span class="et-plate__numeral" aria-hidden="true">${pad(i + 1)}</span><span class="et-mq__state">${esc(stateOf(product))}</span></div>`
-      + `<div class="et-plate__info"><div class="et-plate__lead"><p class="et-plate__kicker">${esc(ui.no)} ${pad(i + 1)} — ${esc(familyOf(product))}</p>`
+      + `<span class="et-mq__state">${esc(stateOf(product))}</span></div>`
+      + `<div class="et-plate__info"><div class="et-plate__lead"><p class="et-plate__kicker">${esc(familyOf(product))}</p>`
       + `<div class="et-fish-card__name et-plate__name" role="heading" aria-level="3">${esc(product.name)}</div><p class="et-plate__latin">${esc(product.scientificName)}</p>`
       + (note ? `<p class="et-plate__story">${esc(note[0])}</p><p class="et-plate__uses"><span>${esc(ui.kitchen)}</span>${note[1].map(u => `<em>${esc(u)}</em>`).join('')}</p>` : '')
       + `</div><div class="et-plate__side"><dl class="et-plate__facts">${rows([[labels.state, stateOf(product)], [labels.origin, localize(product.origin)], [labels.fao, product.faoZone]])}</dl>`
