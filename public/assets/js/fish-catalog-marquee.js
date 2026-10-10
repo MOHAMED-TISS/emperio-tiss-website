@@ -174,7 +174,7 @@
   if (!marqueeCss) {
     marqueeCss = document.createElement('link');
     marqueeCss.rel = 'stylesheet';
-    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-5';
+    marqueeCss.href = '/assets/css/fish-catalog-marquee.css?v=20261010-6';
     marqueeCss.dataset.fishMarquee = 'true';
     document.head.appendChild(marqueeCss);
   }
@@ -235,7 +235,8 @@
     const words = indexed.map(([p, i]) => word(p, i)).join('');
     const rowA = indexed.filter((_, k) => k % 2 === 0).map(([p, i]) => tile(p, i)).join('');
     const rowB = indexed.filter((_, k) => k % 2 === 1).map(([p, i]) => tile(p, i)).join('');
-    grid.innerHTML = `<div class="et-mq">${line(words, 'names', still)}${line(rowA, 'cards', still)}${rowB ? line(rowB, 'cards-reverse', still) : ''}</div>`;
+    const control = still ? '' : `<div class="et-mq__controls"><button class="et-mq__toggle" type="button" aria-pressed="${paused}">${toggleInner()}</button></div>`;
+    grid.innerHTML = `<div class="et-mq">${control}${line(words, 'names', still)}${line(rowA, 'cards', still)}${rowB ? line(rowB, 'cards-reverse', still) : ''}</div>`;
     tune();
   };
 
@@ -245,6 +246,18 @@
   // follow the hand when dragged and carry their momentum when released, then return to their pace
   const speed = {names: -42, cards: -30, 'cards-reverse': 26};
   let lines = [];
+  // pause control: the visitor's choice is remembered; reduced-motion visitors start paused
+  let paused = reduced();
+  try { const saved = localStorage.getItem('et_fish_marquee_paused'); if (saved !== null) paused = saved === '1'; } catch (_) {}
+  const toggleInner = () => paused
+    ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span>Reanudar movimiento</span>'
+    : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg><span>Pausar movimiento</span>';
+  const setPaused = value => {
+    paused = value;
+    try { localStorage.setItem('et_fish_marquee_paused', paused ? '1' : '0'); } catch (_) {}
+    const toggle = grid.querySelector('.et-mq__toggle');
+    if (toggle) { toggle.setAttribute('aria-pressed', String(paused)); toggle.innerHTML = toggleInner(); }
+  };
   const tune = () => {
     lines = [];
     grid.querySelectorAll('.et-mq__line:not(.is-still)').forEach(el => {
@@ -255,9 +268,9 @@
       const repeat = set.dataset.base.replaceAll('<button ', '<button tabindex="-1" ');
       for (let guard = 0; set.scrollWidth < el.clientWidth + 120 && guard < 8; guard++) set.insertAdjacentHTML('beforeend', repeat);
       if (copy) copy.innerHTML = set.innerHTML.replaceAll('<button ', '<button tabindex="-1" ').replaceAll('tabindex="-1" tabindex="-1" ', 'tabindex="-1" ');
-      const pace = reduced() ? 0 : (speed[el.dataset.line] ?? -30);
+      const pace = speed[el.dataset.line] ?? -30;
       const old = el.etLine;
-      el.etLine = {el, track: el.querySelector('.et-mq__track'), width: set.getBoundingClientRect().width, x: old?.x ?? 0, v: old?.v ?? pace, pace, hover: false, drag: null};
+      el.etLine = {el, track: el.querySelector('.et-mq__track'), width: set.getBoundingClientRect().width, x: old?.x ?? 0, v: old?.v ?? (paused ? 0 : pace), pace, hover: false, drag: null};
       lines.push(el.etLine);
     });
     startLoop();
@@ -270,7 +283,7 @@
     for (const line of lines) {
       if (!line.drag) {
         // ease towards the line's own pace (or to rest under the pointer); this also bleeds off throw momentum
-        const target = line.hover ? 0 : line.pace;
+        const target = line.hover || paused ? 0 : line.pace;
         line.v += (target - line.v) * Math.min(1, dt * (Math.abs(line.v - target) > 200 ? 1.6 : 2.4));
         line.x += line.v * dt;
       }
@@ -404,6 +417,7 @@
   };
 
   grid.addEventListener('click', event => {
+    if (event.target.closest('.et-mq__toggle')) { setPaused(!paused); return; }
     const pick = event.target.closest('[data-index]');
     if (pick) openPlate(Number(pick.dataset.index));
   });
