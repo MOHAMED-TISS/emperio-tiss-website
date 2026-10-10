@@ -1,0 +1,101 @@
+/* Product subpage heroes — one still life per category, adapted to each theme:
+   ivory photograph with black and gold copy in the light theme, slate photograph
+   with ivory copy over a navy veil in the dark theme. Arabic uses mirrored photos. */
+body[data-hero="fish"]        { --ph-d: url("/assets/images/heroes/fish-dark.webp");        --ph-l: url("/assets/images/heroes/fish-light.webp"); }
+body[data-hero="shellfish"]   { --ph-d: url("/assets/images/heroes/shellfish-dark.webp");   --ph-l: url("/assets/images/heroes/shellfish-light.webp"); }
+body[data-hero="cephalopods"] { --ph-d: url("/assets/images/heroes/cephalopods-dark.webp"); --ph-l: url("/assets/images/heroes/cephalopods-light.webp"); }
+body[data-hero="fruits"]      { --ph-d: url("/assets/images/heroes/fruits-dark.webp");      --ph-l: url("/assets/images/heroes/fruits-light.webp"); }
+body[data-hero="vegetables"]  { --ph-d: url("/assets/images/heroes/vegetables-dark.webp");  --ph-l: url("/assets/images/heroes/vegetables-light.webp"); }
+html[lang="ar"] body[data-hero="fish"]        { --ph-d: url("/assets/images/heroes/fish-dark-rtl.webp");        --ph-l: url("/assets/images/heroes/fish-light-rtl.webp"); }
+html[lang="ar"] body[data-hero="shellfish"]   { --ph-d: url("/assets/images/heroes/shellfish-dark-rtl.webp");   --ph-l: url("/assets/images/heroes/shellfish-light-rtl.webp"); }
+html[lang="ar"] body[data-hero="cephalopods"] { --ph-d: url("/assets/images/heroes/cephalopods-dark-rtl.webp"); --ph-l: url("/assets/images/heroes/cephalopods-light-rtl.webp"); }
+html[lang="ar"] body[data-hero="fruits"]      { --ph-d: url("/assets/images/heroes/fruits-dark-rtl.webp");      --ph-l: url("/assets/images/heroes/fruits-light-rtl.webp"); }
+html[lang="ar"] body[data-hero="vegetables"]  { --ph-d: url("/assets/images/heroes/vegetables-dark-rtl.webp");  --ph-l: url("/assets/images/heroes/vegetables-light-rtl.webp"); }
+@media (max-width: 760px) {
+  body[data-hero="fish"]        { --ph-d: url("/assets/images/heroes/fish-dark-m.webp");        --ph-l: url("/assets/images/heroes/fish-light-m.webp"); }
+  body[data-hero="shellfish"]   { --ph-d: url("/assets/images/heroes/shellfish-dark-m.webp");   --ph-l: url("/assets/images/heroes/shellfish-light-m.webp"); }
+  body[data-hero="cephalopods"] { --ph-d: url("/assets/images/heroes/cephalopods-dark-m.webp"); --ph-l: url("/assets/images/heroes/cephalopods-light-m.webp"); }
+  body[data-hero="fruits"]      { --ph-d: url("/assets/images/heroes/fruits-dark-m.webp");      --ph-l: url("/assets/images/heroes/fruits-light-m.webp"); }
+  body[data-hero="vegetables"]  { --ph-d: url("/assets/images/heroes/vegetables-dark-m.webp");  --ph-l: url("/assets/images/heroes/vegetables-light-m.webp"); }
+  html[lang="ar"] body[data-hero="fish"]        { --ph-d: url("/assets/images/heroes/fish-dark-rtl-m.webp");        --ph-l: url("/assets/images/heroes/fish-light-rtl-m.webp"); }
+  html[lang="ar"] body[data-hero="shellfish"]   { --ph-d: url("/assets/images/heroes/shellfish-dark-rtl-m.webp");   --ph-l: url("/assets/images/heroes/shellfish-light-rtl-m.webp"); }
+  html[lang="ar"] body[data-hero="cephalopods"] { --ph-d: url("/assets/images/heroes/cephalopods-dark-rtl-m.webp"); --ph-l: url("/assets/images/heroes/cephalopods-light-rtl-m.webp"); }
+  html[lang="ar"] body[data-hero="fruits"]      { --ph-d: url("/assets/images/heroes/fruits-dark-rtl-m.webp");      --ph-l: url("/assets/images/heroes/fruits-light-rtl-m.webp"); }
+  html[lang="ar"] body[data-hero="vegetables"]  { --ph-d: url("/assets/images/heroes/vegetables-dark-rtl-m.webp");  --ph-l: url("/assets/images/heroes/vegetables-light-rtl-m.webp"); }
+}
+
+/* Veils: the copy side is calm, the product side stays clear. */
+body[data-hero] {
+  --ph-veil-d: linear-gradient(90deg, rgba(6,15,26,.90) 0%, rgba(6,15,26,.70) 32%, rgba(6,15,26,.22) 56%, rgba(6,15,26,0) 70%);
+  --ph-veil-l: linear-gradient(90deg, rgba(246,242,234,.95) 0%, rgba(246,242,234,.78) 32%, rgba(246,242,234,.24) 56%, rgba(246,242,234,0) 70%);
+  --ph-pos: 50% 50%;
+}
+html[lang="ar"] body[data-hero] {
+  --ph-veil-d: linear-gradient(270deg, rgba(6,15,26,.90) 0%, rgba(6,15,26,.70) 32%, rgba(6,15,26,.22) 56%, rgba(6,15,26,0) 70%);
+  --ph-veil-l: linear-gradient(270deg, rgba(246,242,234,.95) 0%, rgba(246,242,234,.78) 32%, rgba(246,242,234,.24) 56%, rgba(246,242,234,0) 70%);
+}
+@media (max-width: 760px) {
+  body[data-hero], html[lang="ar"] body[data-hero] {
+    --ph-veil-d: linear-gradient(180deg, rgba(6,15,26,.5) 0%, rgba(6,15,26,.72) 55%, rgba(6,15,26,.86) 100%);
+    --ph-veil-l: linear-gradient(180deg, rgba(246,242,234,.56) 0%, rgba(246,242,234,.8) 55%, rgba(246,242,234,.92) 100%);
+    --ph-pos: 76% 50%;
+  }
+  html[lang="ar"] body[data-hero] { --ph-pos: 24% 50%; }
+}
+
+/* Dark theme */
+html[data-et-theme="dark"] body[data-hero]:not(#ph):not(.home-experience):not(.private-page):not(.private-admin-page) main > section:first-of-type {
+  background: var(--ph-veil-d), var(--ph-d) var(--ph-pos) / cover no-repeat !important;
+  background-color: #070f1a !important;
+}
+
+/* Light theme */
+html:not([data-et-theme="dark"]) body[data-hero]:not(#ph):not(.home-experience):not(.private-page):not(.private-admin-page) main > section:first-of-type {
+  background: var(--ph-veil-l), var(--ph-l) var(--ph-pos) / cover no-repeat !important;
+  background-color: #f6f2ea !important;
+  color: #141310 !important;
+}
+
+/* Previous veils and photographs inside the hero give way to the new still life. */
+html body[data-hero]:not(#ph) main > section:first-of-type::before,
+html body[data-hero]:not(#ph) main > section:first-of-type::after { content: none !important; display: none !important; }
+html body[data-hero]:not(#ph) main > section:first-of-type .fruits-hero-photo { display: none !important; }
+html body[data-hero]:not(#ph) main > section:first-of-type :is(div, .page-hero-inner, .es-container, .intl-container, .ar-container, .p-container, .hero-grid) { background: transparent !important; }
+
+/* Light theme copy: black and gold, no shadows. */
+html:not([data-et-theme="dark"]) body[data-hero]:not(#ph) main > section:first-of-type :is(h1, h2, p, li, small, .lead, .hero-copy, .es-lead, .intl-lead, .ar-lead, .hero-note) {
+  color: #141310 !important;
+  text-shadow: none !important;
+}
+html:not([data-et-theme="dark"]) body[data-hero]:not(#ph) main > section:first-of-type :is(.lead, .hero-copy, .es-lead, .intl-lead, .ar-lead, p) {
+  color: #3a372f !important;
+}
+html:not([data-et-theme="dark"]) body[data-hero]:not(#ph) main > section:first-of-type :is(.eyebrow, .es-kicker, .intl-kicker, .ar-kicker, .hero-note, h1 em) {
+  color: #86632e !important;
+  text-shadow: none !important;
+}
+html:not([data-et-theme="dark"]) body[data-hero]:not(#ph) main > section:first-of-type a:not(.primary):not(.fruits-button--primary) {
+  color: #141310 !important;
+  border-color: rgba(20,19,16,.32) !important;
+  text-shadow: none !important;
+}
+
+/* Dark theme copy: ivory with champagne accents. */
+html[data-et-theme="dark"] body[data-hero]:not(#ph) main > section:first-of-type :is(h1, h2) { color: #f4f0e6 !important; }
+html[data-et-theme="dark"] body[data-hero]:not(#ph) main > section:first-of-type :is(.eyebrow, .es-kicker, .intl-kicker, .ar-kicker, h1 em) { color: #d8bd7e !important; }
+html[data-et-theme="dark"] body[data-hero]:not(#ph) main > section:first-of-type :is(.lead, .hero-copy, .es-lead, .intl-lead, .ar-lead) { color: rgba(244,240,230,.86) !important; }
+
+/* Light theme: the header over the ivory hero reads in black and gold. */
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero { color: #141310 !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero::before {
+  background: linear-gradient(180deg, rgba(246,242,234,.86) 0%, rgba(246,242,234,.4) 62%, rgba(246,242,234,0) 100%) !important;
+}
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__name--dark { display: none !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__name--light { display: block !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero :is(.eth-nav a.is-active, .eth-nav a:hover, .eth-menu-btn:hover, .eth-lang summary:hover, .eth-theme--bar:hover) { color: #86632e !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-btn--ghost { color: #86632e !important; border-color: rgba(134,99,46,.6) !important; }
+html:not([data-et-theme="dark"]) body[data-hero] .eth.is-over-hero .eth-logo__emblem { filter: drop-shadow(0 2px 6px rgba(20,19,16,.16)); }
+
+/* Two-column openings (EN/IT): the copy stays together on the calm side, clear of the products. */
+html body[data-hero]:not(#ph) main > section:first-of-type .hero-grid { grid-template-columns: minmax(0, 1fr) !important; }
+html body[data-hero]:not(#ph) main > section:first-of-type .hero-grid > * { max-width: 720px !important; }
